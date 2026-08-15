@@ -5,7 +5,7 @@ import markSrc from "@/assets/doggmatch-mark.png";
  * The approved DoggMatch identity: navy dog emblem inside the orange swoosh,
  * paired with the navy/orange wordmark. One mark, used everywhere.
  */
-export function BrandMark({ className, alt = "" }: { className?: string; alt?: string }) {
+export function BrandMark({ className, alt = "" }: { className?: string | undefined; alt?: string | undefined }) {
   return (
     <img
       src={markSrc}
@@ -20,7 +20,7 @@ export function BrandMark({ className, alt = "" }: { className?: string; alt?: s
   );
 }
 
-export function BrandWordmark({ className }: { className?: string }) {
+export function BrandWordmark({ className }: { className?: string | undefined }) {
   return (
     <span className={cn("font-display font-semibold tracking-[-0.04em] leading-none", className)}>
       <span className="text-foreground">Dogg</span>
@@ -34,9 +34,9 @@ export function BrandLock({
   markClassName,
   wordmarkClassName,
 }: {
-  className?: string;
-  markClassName?: string;
-  wordmarkClassName?: string;
+  className?: string | undefined;
+  markClassName?: string | undefined;
+  wordmarkClassName?: string | undefined;
 }) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
