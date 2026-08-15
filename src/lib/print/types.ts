@@ -9,18 +9,18 @@ import type { Lesson } from "@/data/training/types";
 export type Block =
   | { kind: "text"; text: string }
   | { kind: "note"; text: string }
-  | { kind: "fields"; fields: { label: string; value?: string; wide?: boolean }[] }
-  | { kind: "checklist"; items: string[]; columns?: number }
+  | { kind: "fields"; fields: { label: string; value?: string | undefined; wide?: boolean | undefined }[] }
+  | { kind: "checklist"; items: string[]; columns?: number | undefined }
   | { kind: "week"; days: { name: string; items: string[] }[] }
   | { kind: "planner"; days: string[]; rows: string[] }
-  | { kind: "lines"; count: number; label?: string };
+  | { kind: "lines"; count: number; label?: string | undefined };
 
 export interface DocSection {
   heading: string;
   intro?: string;
   blocks: Block[];
   /** Start this section on a fresh sheet of paper. */
-  newPage?: boolean;
+  newPage?: boolean | undefined;
 }
 
 export interface DocContext {
