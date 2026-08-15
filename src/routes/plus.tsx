@@ -801,9 +801,47 @@ function PlusPage() {
         </ul>
       </Section>
 
+      {/* 17b — Your first week */}
+      <Section className="container-page pt-0">
+        <SectionHead
+          eyebrow="Your first week with DoggMatch+"
+          title="A simple start to life with DoggMatch+."
+          body="Nothing to rush. A little each day, and by the end of the week your dog has a home here."
+        />
+        <ol className="mt-12 grid gap-px overflow-hidden rounded-[1.75rem] border border-border bg-border md:grid-cols-2">
+          {firstWeek.map((d, i) => (
+            <li
+              key={d.day}
+              className={cn(
+                "flex gap-6 bg-background p-7 md:p-9",
+                i === firstWeek.length - 1 && "md:col-span-2",
+              )}
+            >
+              <span className="mt-1 grid h-11 w-11 shrink-0 place-items-center rounded-full border border-border-strong font-display text-sm tabular-nums text-accent">
+                {i + 1}
+              </span>
+              <div className="min-w-0">
+                <p className="eyebrow">{d.day}</p>
+                <h3 className="display-md mt-2">{d.title}</h3>
+                <p className="mt-2 leading-relaxed text-muted-foreground">{d.line}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
       {/* 18 + 19 — Price */}
       <Section className="container-page pt-0">
-        <div className="grid gap-6 lg:grid-cols-2 lg:max-w-4xl">
+        <div className="max-w-2xl">
+          <Eyebrow>Membership</Eyebrow>
+          <h2 className="display-lg mt-6">
+            DoggMatch<span className="text-accent">+</span>
+          </h2>
+          <p className="mt-5 leading-relaxed text-muted-foreground">
+            One membership, everything included. Choose the rhythm that suits you.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 lg:max-w-4xl lg:grid-cols-2">
           <Card className="flex flex-col">
             <p className="eyebrow">Monthly</p>
             <p className="mt-6 font-display text-4xl tracking-tight">
@@ -815,12 +853,13 @@ function PlusPage() {
             <button
               type="button"
               disabled
-              className="mt-8 inline-flex h-14 items-center justify-center rounded-full bg-primary px-8 text-base font-medium text-primary-foreground opacity-50"
+              aria-disabled="true"
+              className="mt-auto inline-flex h-14 w-full items-center justify-center rounded-full border border-border-strong px-8 pt-8 text-base font-medium text-muted-foreground"
             >
               Coming soon
             </button>
           </Card>
-          <Card className="flex flex-col border-border-strong">
+          <Card className="relative flex flex-col border-border-strong bg-surface">
             <div className="flex items-center gap-3">
               <p className="eyebrow">Yearly</p>
               <Badge tone="accent">Best value</Badge>
@@ -828,22 +867,28 @@ function PlusPage() {
             <p className="mt-6 font-display text-4xl tracking-tight">
               €59.99 <span className="text-lg font-normal text-muted-foreground">/ year</span>
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Save with a yearly membership.
+            <p className="mt-4 font-display text-lg tracking-tight text-accent">
+              Just €5 a month when billed yearly
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Save €35.89 a year compared with paying monthly.
             </p>
             <button
               type="button"
               disabled
-              className="mt-8 inline-flex h-14 items-center justify-center rounded-full bg-primary px-8 text-base font-medium text-primary-foreground opacity-50"
+              aria-disabled="true"
+              className="mt-8 inline-flex h-14 w-full items-center justify-center rounded-full bg-primary px-8 text-base font-medium text-primary-foreground opacity-70"
             >
-              Coming soon
+              Join when DoggMatch+ opens
             </button>
           </Card>
         </div>
-        <p className="mt-6 text-sm text-muted-foreground">
-          Memberships aren't open yet. A free trial will be there when they are — nothing to pay,
-          nothing to cancel today.
-        </p>
+        <div className="mt-8 max-w-xl">
+          <p className="font-display text-lg tracking-tight">DoggMatch+ is coming soon.</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            We're putting the final pieces in place. Membership will open shortly.
+          </p>
+        </div>
       </Section>
 
       {/* 20 — Final CTA */}
@@ -852,21 +897,21 @@ function PlusPage() {
           <div className="max-w-2xl">
             <h2 className="display-lg">Your dog is more than a match.</h2>
             <p className="mt-6 text-lg leading-relaxed opacity-80">
-              DoggMatch helps you find the right dog. DoggMatch+ helps you build a great life
-              together.
+              DoggMatch helps you find the dog that's right for you. DoggMatch+ helps you give that
+              dog a really good life.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <ButtonLink to="/my-dog" tone="accent" size="lg">
-                Start with My Dog
+                DoggMatch+ coming soon
                 <Arrow />
               </ButtonLink>
               <ButtonLink
-                to="/breeds"
+                to="/find-my-dog"
                 size="lg"
                 className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
                 tone="ghost"
               >
-                Continue exploring
+                Find My Dog
               </ButtonLink>
             </div>
           </div>
