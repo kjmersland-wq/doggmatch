@@ -20,6 +20,7 @@ import { Route as TrainRouteImport } from './routes/train'
 import { Route as BreedsIndexRouteImport } from './routes/breeds.index'
 import { Route as BreedsBreedIdRouteImport } from './routes/breeds.$breedId'
 import { Route as MyDogIndexRouteImport } from './routes/my-dog.index'
+import { Route as MyDogFoodRouteImport } from './routes/my-dog.food'
 import { Route as MyDogNutritionRouteImport } from './routes/my-dog.nutrition'
 import { Route as MyDogSetupRouteImport } from './routes/my-dog.setup'
 import { Route as MyDogWeightRouteImport } from './routes/my-dog.weight'
@@ -27,6 +28,7 @@ import { Route as TrainIndexRouteImport } from './routes/train.index'
 import { Route as TrainJourneyRouteImport } from './routes/train.journey'
 import { Route as TrainLibraryRouteImport } from './routes/train.library'
 import { Route as TrainSetupRouteImport } from './routes/train.setup'
+import { Route as MyDogCareTopicIdRouteImport } from './routes/my-dog.care.$topicId'
 import { Route as TrainLessonsLessonIdRouteImport } from './routes/train.lessons.$lessonId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -84,6 +86,11 @@ const MyDogIndexRoute = MyDogIndexRouteImport.update({
   path: '/',
   getParentRoute: () => MyDogRoute,
 } as any)
+const MyDogFoodRoute = MyDogFoodRouteImport.update({
+  id: '/food',
+  path: '/food',
+  getParentRoute: () => MyDogRoute,
+} as any)
 const MyDogNutritionRoute = MyDogNutritionRouteImport.update({
   id: '/nutrition',
   path: '/nutrition',
@@ -119,6 +126,11 @@ const TrainSetupRoute = TrainSetupRouteImport.update({
   path: '/setup',
   getParentRoute: () => TrainRoute,
 } as any)
+const MyDogCareTopicIdRoute = MyDogCareTopicIdRouteImport.update({
+  id: '/care/$topicId',
+  path: '/care/$topicId',
+  getParentRoute: () => MyDogRoute,
+} as any)
 const TrainLessonsLessonIdRoute = TrainLessonsLessonIdRouteImport.update({
   id: '/lessons/$lessonId',
   path: '/lessons/$lessonId',
@@ -135,6 +147,7 @@ export interface FileRoutesByFullPath {
   '/my-dog': typeof MyDogRouteWithChildren
   '/train': typeof TrainRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
   '/my-dog/setup': typeof MyDogSetupRoute
   '/my-dog/weight': typeof MyDogWeightRoute
@@ -144,6 +157,7 @@ export interface FileRoutesByFullPath {
   '/breeds/': typeof BreedsIndexRoute
   '/my-dog/': typeof MyDogIndexRoute
   '/train/': typeof TrainIndexRoute
+  '/my-dog/care/$topicId': typeof MyDogCareTopicIdRoute
   '/train/lessons/$lessonId': typeof TrainLessonsLessonIdRoute
 }
 export interface FileRoutesByTo {
@@ -154,6 +168,7 @@ export interface FileRoutesByTo {
   '/find-my-dog': typeof FindMyDogRoute
   '/guides': typeof GuidesRoute
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
   '/my-dog/setup': typeof MyDogSetupRoute
   '/my-dog/weight': typeof MyDogWeightRoute
@@ -163,6 +178,7 @@ export interface FileRoutesByTo {
   '/breeds': typeof BreedsIndexRoute
   '/my-dog': typeof MyDogIndexRoute
   '/train': typeof TrainIndexRoute
+  '/my-dog/care/$topicId': typeof MyDogCareTopicIdRoute
   '/train/lessons/$lessonId': typeof TrainLessonsLessonIdRoute
 }
 export interface FileRoutesById {
@@ -176,6 +192,7 @@ export interface FileRoutesById {
   '/my-dog': typeof MyDogRouteWithChildren
   '/train': typeof TrainRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
   '/my-dog/setup': typeof MyDogSetupRoute
   '/my-dog/weight': typeof MyDogWeightRoute
@@ -185,6 +202,7 @@ export interface FileRoutesById {
   '/breeds/': typeof BreedsIndexRoute
   '/my-dog/': typeof MyDogIndexRoute
   '/train/': typeof TrainIndexRoute
+  '/my-dog/care/$topicId': typeof MyDogCareTopicIdRoute
   '/train/lessons/$lessonId': typeof TrainLessonsLessonIdRoute
 }
 export interface FileRouteTypes {
@@ -199,6 +217,7 @@ export interface FileRouteTypes {
     | '/my-dog'
     | '/train'
     | '/breeds/$breedId'
+    | '/my-dog/food'
     | '/my-dog/nutrition'
     | '/my-dog/setup'
     | '/my-dog/weight'
@@ -208,6 +227,7 @@ export interface FileRouteTypes {
     | '/breeds/'
     | '/my-dog/'
     | '/train/'
+    | '/my-dog/care/$topicId'
     | '/train/lessons/$lessonId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -218,6 +238,7 @@ export interface FileRouteTypes {
     | '/find-my-dog'
     | '/guides'
     | '/breeds/$breedId'
+    | '/my-dog/food'
     | '/my-dog/nutrition'
     | '/my-dog/setup'
     | '/my-dog/weight'
@@ -227,6 +248,7 @@ export interface FileRouteTypes {
     | '/breeds'
     | '/my-dog'
     | '/train'
+    | '/my-dog/care/$topicId'
     | '/train/lessons/$lessonId'
   id:
     | '__root__'
@@ -239,6 +261,7 @@ export interface FileRouteTypes {
     | '/my-dog'
     | '/train'
     | '/breeds/$breedId'
+    | '/my-dog/food'
     | '/my-dog/nutrition'
     | '/my-dog/setup'
     | '/my-dog/weight'
@@ -248,6 +271,7 @@ export interface FileRouteTypes {
     | '/breeds/'
     | '/my-dog/'
     | '/train/'
+    | '/my-dog/care/$topicId'
     | '/train/lessons/$lessonId'
   fileRoutesById: FileRoutesById
 }
@@ -343,6 +367,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MyDogIndexRouteImport
       parentRoute: typeof MyDogRoute
     }
+    '/my-dog/food': {
+      id: '/my-dog/food'
+      path: '/food'
+      fullPath: '/my-dog/food'
+      preLoaderRoute: typeof MyDogFoodRouteImport
+      parentRoute: typeof MyDogRoute
+    }
     '/my-dog/nutrition': {
       id: '/my-dog/nutrition'
       path: '/nutrition'
@@ -392,6 +423,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainSetupRouteImport
       parentRoute: typeof TrainRoute
     }
+    '/my-dog/care/$topicId': {
+      id: '/my-dog/care/$topicId'
+      path: '/care/$topicId'
+      fullPath: '/my-dog/care/$topicId'
+      preLoaderRoute: typeof MyDogCareTopicIdRouteImport
+      parentRoute: typeof MyDogRoute
+    }
     '/train/lessons/$lessonId': {
       id: '/train/lessons/$lessonId'
       path: '/lessons/$lessonId'
@@ -403,17 +441,21 @@ declare module '@tanstack/react-router' {
 }
 
 interface MyDogRouteChildren {
+  MyDogFoodRoute: typeof MyDogFoodRoute
   MyDogNutritionRoute: typeof MyDogNutritionRoute
   MyDogSetupRoute: typeof MyDogSetupRoute
   MyDogWeightRoute: typeof MyDogWeightRoute
   MyDogIndexRoute: typeof MyDogIndexRoute
+  MyDogCareTopicIdRoute: typeof MyDogCareTopicIdRoute
 }
 
 const MyDogRouteChildren: MyDogRouteChildren = {
+  MyDogFoodRoute: MyDogFoodRoute,
   MyDogNutritionRoute: MyDogNutritionRoute,
   MyDogSetupRoute: MyDogSetupRoute,
   MyDogWeightRoute: MyDogWeightRoute,
   MyDogIndexRoute: MyDogIndexRoute,
+  MyDogCareTopicIdRoute: MyDogCareTopicIdRoute,
 }
 
 const MyDogRouteWithChildren = MyDogRoute._addFileChildren(MyDogRouteChildren)
