@@ -18,10 +18,12 @@ export function SiteFooter() {
           </div>
 
           <FooterColumn title={t.footer.discover}>
+            <FooterLink to="/get-a-dog">{t.nav.getADog}</FooterLink>
             <FooterLink to="/find-my-dog">{t.nav.findMyDog}</FooterLink>
             <FooterLink to="/breeds">{t.nav.breeds}</FooterLink>
             <FooterLink to="/compare">{t.nav.compare}</FooterLink>
             <FooterLink to="/dog-life">{t.nav.dogLife}</FooterLink>
+            <FooterLink to="/travel">{t.nav.travel}</FooterLink>
           </FooterColumn>
 
           <FooterColumn title={t.footer.resources}>
@@ -41,11 +43,19 @@ export function SiteFooter() {
           </FooterColumn>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-border pt-8 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
-          <p>
-            © {year} {t.brand.name}. {t.footer.rights}
+        <div className="mt-16 border-t border-border pt-8">
+          <div className="flex flex-col gap-4 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
+            <p>
+              © {year} {t.brand.name}. {t.footer.rights}
+            </p>
+            <p className="max-w-md md:text-right">{t.footer.note}</p>
+          </div>
+
+          <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
+            {t.footer.builtBy}{" "}
+            <span className="font-medium tracking-[0.02em] text-foreground">KM TECH LABS</span>{" "}
+            {t.footer.builtIn}
           </p>
-          <p className="max-w-md md:text-right">{t.footer.note}</p>
         </div>
       </div>
     </footer>

@@ -230,6 +230,8 @@ export const en = {
     privacy: "Privacy",
     terms: "Terms",
     rights: "All rights reserved.",
+    builtBy: "Built and run by",
+    builtIn: "in Kristiansand, Norway.",
     note: "DoggMatch offers general guidance about life with a dog. For anything medical, please talk to your vet.",
   },
   states: {
