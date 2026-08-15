@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Check, Plus } from "lucide-react";
+import { breedImages } from "@/data/breed-images";
 import { careStore, useCareState } from "@/lib/care/store";
 import { careDue } from "@/lib/care/calendar";
 import { kindLabel, type WeekDay } from "@/lib/care/week";
@@ -8,31 +9,39 @@ import { trainingStore, useTrainingState, type DogProfile } from "@/lib/training
 /** Switch between the dogs you've added, without leaving the page. */
 export function DogSwitcher({ active }: { active?: DogProfile }) {
   const { dogs } = useTrainingState();
-  if (dogs.length < 2) return null;
+  if (dogs.length === 0) return null;
 
   return (
     <div className="flex flex-wrap items-center gap-2">
       {dogs.map((dog) => {
         const on = dog.id === active?.id;
+        const photo = dog.breedId ? breedImages[dog.breedId] : undefined;
         return (
           <button
             key={dog.id}
             type="button"
             onClick={() => trainingStore.setActiveDog(dog.id)}
             aria-pressed={on}
-            className={`rounded-full border px-4 py-2 text-sm transition-colors ${
+            className={`inline-flex items-center gap-2 rounded-full border py-1.5 pl-1.5 pr-4 text-sm transition-colors ${
               on
                 ? "border-foreground bg-foreground text-background"
                 : "border-border text-muted-foreground hover:border-border-strong hover:text-foreground"
             }`}
           >
+            <span className="grid h-7 w-7 shrink-0 place-items-center overflow-hidden rounded-full bg-surface text-[0.7rem] font-semibold text-foreground">
+              {photo ? (
+                <img src={photo} alt="" width={56} height={56} className="h-full w-full object-cover" />
+              ) : (
+                dog.name.slice(0, 1).toUpperCase()
+              )}
+            </span>
             {dog.name}
           </button>
         );
       })}
       <Link
         to="/my-dog/setup"
-        className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-border px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground"
+        className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-border px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground"
       >
         <Plus className="h-3.5 w-3.5" />
         Another dog
