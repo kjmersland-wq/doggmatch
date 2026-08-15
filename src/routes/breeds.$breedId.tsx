@@ -13,10 +13,10 @@ export const Route = createFileRoute("/breeds/$breedId")({
   },
   head: ({ params, loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Breed unavailable — DogMatch" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "Breed unavailable — DoggMatch" }, { name: "robots", content: "noindex" }] };
     }
     const name = loaderData.content.displayName;
-    const title = `${name} — temperament, energy and daily life | DogMatch`;
+    const title = `${name} — temperament, energy and daily life | DoggMatch`;
     const description = loaderData.content.summary;
     return {
       meta: [

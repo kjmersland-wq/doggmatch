@@ -9,9 +9,9 @@ import heroImage from "@/assets/hero.jpg";
 import homeImage from "@/assets/editorial-home.jpg";
 import dogLifeImage from "@/assets/dog-life.jpg";
 
-const title = "DogMatch — Find the dog that's right for your life";
+const title = "DoggMatch — Find the dog that's right for your life";
 const description =
-  "A smarter way to discover the dog breed that fits your lifestyle, home, personality and everyday life. Personalised, explainable breed matching.";
+  "DoggMatch helps you discover the dog breeds most compatible with your lifestyle, home, personality and needs — a free, transparent match you can trace to a reason.";
 const ogImage =
   "https://project--133462b6-1f26-496e-a35b-0de87a08b8b1.lovable.app/og-image.jpg";
 
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: ogImage },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "DogMatch — the right dog, the right life" },
+      { property: "og:image:alt", content: "DoggMatch — the right dog, the right life" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: ogImage },
@@ -102,11 +102,16 @@ function HomePage() {
             </div>
             <figure className="absolute -bottom-8 left-4 hidden w-60 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-lift)] md:block lg:-left-10">
               <figcaption className="eyebrow">Sample match</figcaption>
-              <p className="mt-3 font-display text-lg leading-tight">Labrador Retriever</p>
+              <p className="mt-3 font-display text-lg leading-tight text-foreground">
+                Labrador Retriever
+              </p>
+              <p className="mt-2 font-display text-3xl font-semibold tabular-nums tracking-tight text-accent">
+                94<span className="text-xl align-top">%</span>
+              </p>
               <div className="mt-3 h-[3px] w-full overflow-hidden rounded-full bg-surface-strong">
-                <span className="block h-full w-[94%] rounded-full bg-primary" />
+                <span className="block h-full w-[94%] rounded-full bg-accent" />
               </div>
-              <p className="mt-2 text-xs text-muted-foreground">94% compatibility</p>
+              <p className="mt-2 text-xs text-muted-foreground">compatibility</p>
             </figure>
           </div>
         </div>

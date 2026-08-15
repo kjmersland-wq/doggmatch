@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useT } from "@/i18n";
+import { BrandLock } from "./brand-logo";
 
 export function SiteFooter() {
   const t = useT();
@@ -10,12 +11,7 @@ export function SiteFooter() {
       <div className="container-page py-20 md:py-24">
         <div className="grid gap-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="max-w-sm">
-            <div className="flex items-baseline gap-[2px]">
-              <span className="font-display text-2xl font-semibold tracking-[-0.04em]">Dog</span>
-              <span className="font-display text-2xl font-semibold tracking-[-0.04em] text-primary">
-                Match
-              </span>
-            </div>
+            <BrandLock markClassName="h-10 w-10" wordmarkClassName="text-2xl" />
             <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted-foreground">
               {t.brand.secondary} A transparent compatibility platform for people choosing a dog.
             </p>

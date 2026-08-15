@@ -29,7 +29,7 @@ function NotFoundComponent() {
             to="/"
             className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-7 text-sm font-medium text-primary-foreground transition-colors hover:opacity-90"
           >
-            Back to DogMatch
+            Back to DoggMatch
           </Link>
         </div>
       </div>
@@ -80,8 +80,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#faf7f2" },
-      { property: "og:site_name", content: "DogMatch" },
+      { name: "theme-color", content: "#071A2F" },
+      { property: "og:site_name", content: "DoggMatch" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -98,6 +98,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32.png" },
+      { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16.png" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     ],
     scripts: [
@@ -106,7 +108,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "DogMatch",
+          name: "DoggMatch",
           description:
             "A personalised, explainable dog breed compatibility platform for real life.",
         }),

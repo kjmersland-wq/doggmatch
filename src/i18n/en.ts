@@ -4,7 +4,7 @@
  */
 export const en = {
   brand: {
-    name: "DogMatch",
+    name: "DoggMatch",
     tagline: "Find the dog that's right for your life.",
     secondary: "Better matches. Happier lives.",
   },
@@ -175,7 +175,7 @@ export const en = {
     privacy: "Privacy",
     terms: "Terms",
     rights: "All rights reserved.",
-    note: "DogMatch provides general lifestyle guidance only and does not offer veterinary or medical advice.",
+    note: "DoggMatch provides general lifestyle guidance only and does not offer veterinary or medical advice.",
   },
   states: {
     errorTitle: "We couldn't load that right now.",

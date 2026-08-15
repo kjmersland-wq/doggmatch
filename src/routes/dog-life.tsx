@@ -4,7 +4,7 @@ import { useT } from "@/i18n";
 import { Button, Eyebrow } from "@/components/dogmatch/ui";
 import dogLifeImage from "@/assets/dog-life.jpg";
 
-const title = "Dog Life — dog-friendly places wherever you live | DogMatch";
+const title = "Dog Life — dog-friendly places wherever you live | DoggMatch";
 const description =
   "Parks, walking routes, training, veterinarians, groomers and dog-friendly cafés, restaurants and hotels — searchable by city, town or postcode.";
 
