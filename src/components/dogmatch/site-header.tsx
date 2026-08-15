@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useT } from "@/i18n";
 import { cn } from "@/lib/utils";
 import { ButtonLink, Arrow } from "./ui";
+import { BrandLock } from "./brand-logo";
 
 const links = [
   { to: "/find-my-dog", key: "findMyDog" },
@@ -37,12 +38,8 @@ export function SiteHeader() {
       )}
     >
       <div className="container-page flex h-[72px] items-center justify-between gap-8">
-        <Link to="/" className="flex items-baseline gap-[2px]" aria-label={t.brand.name}>
-          <span className="font-display text-[1.35rem] font-semibold tracking-[-0.04em]">Dog</span>
-          <span className="font-display text-[1.35rem] font-semibold tracking-[-0.04em] text-primary">
-            Match
-          </span>
-          <span className="ml-[3px] h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+        <Link to="/" aria-label={t.brand.name}>
+          <BrandLock markClassName="h-9 w-9" wordmarkClassName="text-[1.35rem]" />
         </Link>
 
         <nav className="hidden items-center gap-9 lg:flex" aria-label="Primary">
