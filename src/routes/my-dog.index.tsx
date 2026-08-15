@@ -110,7 +110,7 @@ function MyDogHome() {
       </section>
 
       {/* --------------------------------------------------------- today */}
-      <Section>
+      <Section className="container-page">
         <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
           <Panel
             title="Today"
@@ -191,7 +191,7 @@ function MyDogHome() {
       </Section>
 
       {/* -------------------------------------------------------- the areas */}
-      <Section>
+      <Section className="container-page">
         <Eyebrow>Everyday care</Eyebrow>
         <h2 className="display-lg mt-5 max-w-2xl">The things that make the biggest difference</h2>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
@@ -229,7 +229,7 @@ function MyDogHome() {
       </Section>
 
       {/* --------------------------------------------------------- closing */}
-      <Section>
+      <Section className="container-page">
         <div className="rounded-[2rem] border border-border bg-surface p-10 md:p-14">
           <h2 className="display-md max-w-2xl">Training and care go together</h2>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">

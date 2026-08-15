@@ -68,7 +68,7 @@ function NutritionPage() {
         </div>
       </section>
 
-      <Section>
+      <Section className="container-page">
         <Panel title={dog ? `A starting point for ${dog.name}` : "A starting point"}>
           {portions ? (
             <>
@@ -114,7 +114,7 @@ function NutritionPage() {
         </Panel>
       </Section>
 
-      <Section>
+      <Section className="container-page">
         <Eyebrow>The basics</Eyebrow>
         <h2 className="display-lg mt-5 max-w-2xl">Getting food right, without overthinking it</h2>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -137,7 +137,7 @@ function NutritionPage() {
         </div>
       </Section>
 
-      <Section>
+      <Section className="container-page">
         <div className="grid gap-6 lg:grid-cols-2">
           <VetNote>
             This is a starting point, not a prescription. Puppies, pregnant dogs, dogs on a diet and

@@ -90,7 +90,7 @@ function FoodSafetyPage() {
         </div>
       </section>
 
-      <Section>
+      <Section className="container-page">
         <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-start">
           <div className="rounded-[1.5rem] border border-border bg-card px-6 md:px-8">
             {results.length === 0 ? (

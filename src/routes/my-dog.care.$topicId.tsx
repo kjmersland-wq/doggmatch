@@ -61,7 +61,7 @@ function CareTopicPage() {
         </div>
       </section>
 
-      <Section>
+      <Section className="container-page">
         <div className="grid gap-12 lg:grid-cols-[1.35fr_1fr] lg:items-start">
           <div>
             <div className="max-w-2xl space-y-5">
@@ -181,7 +181,7 @@ function CareTopicPage() {
         </div>
       </Section>
 
-      <Section>
+      <Section className="container-page">
         <Eyebrow>Keep going</Eyebrow>
         <h2 className="display-md mt-5">More everyday care</h2>
         <ul className="mt-8 flex flex-wrap gap-3">

@@ -51,7 +51,7 @@ function WeightPage() {
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{topic.promise}</p>
       </section>
 
-      <Section>
+      <Section className="container-page">
         <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
           <Panel title={dog ? `${dog.name}'s weight` : "Weight"}>
             {weights.length >= 2 ? (
@@ -127,7 +127,7 @@ function WeightPage() {
         </div>
       </Section>
 
-      <Section>
+      <Section className="container-page">
         <Eyebrow>The one-minute check</Eyebrow>
         <h2 className="display-lg mt-5 max-w-2xl">Your hands tell you more than the scales</h2>
         <div className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-start">
