@@ -79,14 +79,9 @@ function BreedPrepPage() {
           <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
             {cards.map((card) => (
               <li key={card.id} className="bg-background p-8">
-                <p className="eyebrow">{card.area}</p>
+                <p className="eyebrow">{card.title}</p>
                 <h3 className="display-md mt-4">{card.headline}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{card.body}</p>
-                {card.level !== undefined && (
-                  <div className="mt-6">
-                    <TraitMeter label="" value={card.level} />
-                  </div>
-                )}
               </li>
             ))}
           </ul>
@@ -116,7 +111,7 @@ function BreedPrepPage() {
               Get my home ready
               <Arrow />
             </ButtonLink>
-            <ButtonLink to="/breeds/$breedId" params={{ breedId: breed.id }} tone="outline" size="lg">
+            <ButtonLink to={`/breeds/${breed.id}`} tone="outline" size="lg">
               The full breed profile
             </ButtonLink>
             <ButtonLink to="/get-a-dog/costs" tone="ghost" size="lg">
