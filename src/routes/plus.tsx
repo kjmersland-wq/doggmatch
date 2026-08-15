@@ -379,6 +379,24 @@ function PlusPage() {
         </div>
       </Section>
 
+      {/* 4b — Central product message */}
+      <Section className="container-page pt-0">
+        <div className="rounded-[2rem] border border-border bg-surface p-8 md:p-14">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="display-lg">
+              Find your dog.
+              <br />
+              Then live life together.
+            </h2>
+            <p className="mt-7 text-lg leading-relaxed text-muted-foreground">
+              Finding the right dog is only the beginning. DoggMatch<span className="text-accent">+</span>{" "}
+              gives you one place to look after the everyday things that matter — from training and
+              feeding to health, travel, routines and the little moments in between.
+            </p>
+          </div>
+        </div>
+      </Section>
+
       {/* 5 — Training */}
       <Section className="bg-surface">
         <div className="container-page">
