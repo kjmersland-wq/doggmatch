@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AccountRouteImport } from './routes/account'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as DogLifeRouteImport } from './routes/dog-life'
 import { Route as FindMyDogRouteImport } from './routes/find-my-dog'
@@ -44,6 +45,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompareRoute = CompareRouteImport.update({
@@ -170,6 +176,7 @@ const TrainLessonsLessonIdRoute = TrainLessonsLessonIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
   '/compare': typeof CompareRoute
   '/dog-life': typeof DogLifeRoute
   '/find-my-dog': typeof FindMyDogRoute
@@ -198,6 +205,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
   '/compare': typeof CompareRoute
   '/dog-life': typeof DogLifeRoute
   '/find-my-dog': typeof FindMyDogRoute
@@ -225,6 +233,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
   '/compare': typeof CompareRoute
   '/dog-life': typeof DogLifeRoute
   '/find-my-dog': typeof FindMyDogRoute
@@ -255,6 +264,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/account'
     | '/compare'
     | '/dog-life'
     | '/find-my-dog'
@@ -283,6 +293,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/account'
     | '/compare'
     | '/dog-life'
     | '/find-my-dog'
@@ -309,6 +320,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/account'
     | '/compare'
     | '/dog-life'
     | '/find-my-dog'
@@ -338,6 +350,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccountRoute: typeof AccountRoute
   CompareRoute: typeof CompareRoute
   DogLifeRoute: typeof DogLifeRoute
   FindMyDogRoute: typeof FindMyDogRoute
@@ -362,6 +375,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/compare': {
@@ -586,6 +606,7 @@ const TrainRouteWithChildren = TrainRoute._addFileChildren(TrainRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccountRoute: AccountRoute,
   CompareRoute: CompareRoute,
   DogLifeRoute: DogLifeRoute,
   FindMyDogRoute: FindMyDogRoute,

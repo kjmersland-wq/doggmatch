@@ -15,6 +15,7 @@ import {
   type RoutineId,
 } from "@/lib/care/store";
 import { breedById } from "@/data/breeds";
+import { breedImages } from "@/data/breed-images";
 import { buildWeek } from "@/lib/care/week";
 import { useWeekOverride } from "@/lib/care/records";
 import { useProgress } from "@/lib/training/store";
@@ -52,6 +53,22 @@ const routineItems: { id: RoutineId; label: string; hint: string }[] = [
   { id: "quiet-time", label: "Quiet time", hint: "Nothing asked of them" },
 ];
 
+/** Every part of a dog's life, in one place. Each one points at what already exists. */
+const sections: { to: string; label: string; line: string }[] = [
+  { to: "/my-dog/week", label: "My week", line: "Walks, training, food and care, day by day" },
+  { to: "/train", label: "Training", line: "Today's short session and what you're working on" },
+  { to: "/my-dog/nutrition", label: "Food", line: "Portions, meals and switching food safely" },
+  { to: "/my-dog/care/everyday-check", label: "Health", line: "The quick once-over that catches things early" },
+  { to: "/my-dog/care/dental", label: "Dental", line: "Teeth and gums, in under a minute a day" },
+  { to: "/my-dog/care/coat", label: "Coat & care", line: "Brushing, bathing and knowing the coat type" },
+  { to: "/my-dog/care/paws", label: "Paws & nails", line: "Pads, nails and what winter does to them" },
+  { to: "/my-dog/weight", label: "Weight", line: "The hands-on check, and a simple record" },
+  { to: "/my-dog/care/wellbeing", label: "Activity", line: "Movement, sniffing and enough rest" },
+  { to: "/train/library", label: "Behaviour", line: "Pulling, jumping, barking — one lesson at a time" },
+  { to: "/dog-life", label: "Dog life", line: "Places to go and things to do nearby" },
+  { to: "/my-dog/print", label: "Documents", line: "Print the plan, the pack or a note for the sitter" },
+];
+
 function MyDogHome() {
   const dog = useMyDog();
   const profile = useCareProfile(dog?.id);
@@ -64,6 +81,15 @@ function MyDogHome() {
   const portions = estimatePortions(profile.weightKg, dog?.ageStage ?? "adult", profile);
   const trend = weightTrend(weights);
   const breed = dog?.breedId ? breedById[dog.breedId] : undefined;
+  const portrait = dog?.breedId ? breedImages[dog.breedId] : careImages.careHero;
+  const ageLabel =
+    dog?.ageStage === "puppy"
+      ? "Puppy"
+      : dog?.ageStage === "adolescent"
+        ? "Adolescent"
+        : dog?.ageStage === "senior"
+          ? "Senior"
+          : "Adult";
 
   return (
     <div className="pb-24">
@@ -73,9 +99,21 @@ function MyDogHome() {
           <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-16">
             <div className="animate-rise">
               <Eyebrow>My Dog</Eyebrow>
-              <h1 className="display-xl mt-6">
-                {dog ? `Looking after ${dog.name}` : "Looking after your dog, properly"}
-              </h1>
+              {dog ? (
+                <>
+                  <p className="mt-6 text-sm uppercase tracking-[0.18em] text-accent">
+                    {breed ? `${breed.name} · ` : ""}
+                    {ageLabel}
+                    {profile.weightKg ? ` · ${profile.weightKg} kg` : ""}
+                  </p>
+                  <h1 className="display-xl mt-3">{dog.name}</h1>
+                  <p className="mt-4 text-2xl leading-snug">
+                    Let's take good care of {dog.name}.
+                  </p>
+                </>
+              ) : (
+                <h1 className="display-xl mt-6">Looking after your dog, properly</h1>
+              )}
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
                 {dog
                   ? "Food, weight, teeth, coat, paws and the small daily things. Everything in one calm place."
@@ -90,33 +128,43 @@ function MyDogHome() {
                   Can my dog eat this?
                 </ButtonLink>
               </div>
-              {dog && (
-                <p className="mt-6 text-sm text-muted-foreground">
-                  {breed ? `${breed.name} · ` : ""}
-                  {dog.ageStage === "puppy"
-                    ? "Puppy"
-                    : dog.ageStage === "adolescent"
-                      ? "Adolescent"
-                      : dog.ageStage === "senior"
-                        ? "Senior"
-                        : "Adult"}
-                  {profile.weightKg ? ` · ${profile.weightKg} kg` : ""}
-                </p>
-              )}
               <div className="mt-6">
                 <DogSwitcher {...(dog ? { active: dog } : {})} />
               </div>
             </div>
             <div className="animate-rise overflow-hidden rounded-[2rem] border border-border">
               <img
-                src={careImages.careHero}
-                alt="A person sitting on the floor with their dog resting against them"
+                src={portrait}
+                alt={dog ? `${dog.name}, ${breed ? breed.name : "your dog"}` : "A person sitting on the floor with their dog resting against them"}
                 width={1400}
                 height={1000}
                 className="aspect-[7/5] w-full object-cover"
               />
             </div>
           </div>
+
+          {/* ------------------------------------------------- section map */}
+          <nav aria-label="My Dog sections" className="mt-14">
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {sections.map((s) => (
+                <Link
+                  key={s.to}
+                  to={s.to}
+                  className="group rounded-[1.2rem] border border-border bg-surface p-5 transition-colors hover:border-border-strong"
+                >
+                  <span className="flex items-center justify-between gap-3">
+                    <span className="text-[1.05rem] font-medium">{s.label}</span>
+                    <span className="text-accent opacity-0 transition-opacity group-hover:opacity-100">
+                      <Arrow />
+                    </span>
+                  </span>
+                  <span className="mt-1.5 block text-sm leading-relaxed text-muted-foreground">
+                    {s.line}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </nav>
         </div>
       </section>
 
