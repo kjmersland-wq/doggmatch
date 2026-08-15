@@ -756,7 +756,8 @@ function PlusPage() {
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
             <Card>
               <p className="eyebrow">Free</p>
-              <p className="mt-4 font-display text-xl tracking-tight">Find the dog that's right for me</p>
+              <p className="mt-4 font-display text-xl tracking-tight">For finding the right dog.</p>
+              <p className="mt-2 text-sm text-muted-foreground">“Find the dog that's right for me.”</p>
               <ul className="mt-7 space-y-3">
                 {freeList.map((f) => (
                   <li key={f} className="flex gap-3 text-[0.9375rem]">
@@ -768,7 +769,8 @@ function PlusPage() {
             </Card>
             <Card className="border-border-strong">
               <p className="eyebrow text-accent">DoggMatch+</p>
-              <p className="mt-4 font-display text-xl tracking-tight">Now help me give that dog a really good life</p>
+              <p className="mt-4 font-display text-xl tracking-tight">For life with your dog.</p>
+              <p className="mt-2 text-sm text-muted-foreground">“Now help me give that dog a really good life.”</p>
               <ul className="mt-7 grid gap-3 sm:grid-cols-2">
                 {plusList.map((p) => (
                   <li key={p} className="flex gap-3 text-[0.9375rem]">
