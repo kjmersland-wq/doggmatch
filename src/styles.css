@@ -278,3 +278,160 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ------------------------------------------------------------------ print
+   The DoggMatch printable design system. One set of rules shared by every
+   document, tuned for A4 on an ordinary home printer, colour or greyscale. */
+
+.doc-paper {
+  --doc-navy: #071a2f;
+  --doc-orange: #ff5a1f;
+  --doc-ivory: #f7f3ec;
+  --doc-grey: #66758a;
+  color: var(--doc-navy);
+  display: grid;
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.doc-page {
+  position: relative;
+  width: 210mm;
+  max-width: 100%;
+  min-height: 297mm;
+  padding: 18mm 16mm 22mm;
+  background: #fff;
+  border: 1px solid #e4ded4;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body, Inter, sans-serif);
+  font-size: 10.5pt;
+  line-height: 1.5;
+}
+
+.doc-cover { flex: 1; display: flex; flex-direction: column; }
+.doc-logo { margin-bottom: 28mm; }
+.doc-runlogo { opacity: 0.9; }
+.doc-kicker {
+  font-size: 8.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--doc-grey);
+}
+.doc-dogname {
+  font-family: var(--font-display, Manrope, sans-serif);
+  font-size: 34pt;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-top: 6mm;
+}
+.doc-breed { margin-top: 3mm; font-size: 13pt; color: var(--doc-grey); }
+.doc-photo {
+  margin-top: 10mm;
+  width: 100%;
+  max-height: 110mm;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.doc-subtitle { margin-top: auto; padding-top: 10mm; max-width: 120mm; color: var(--doc-grey); }
+
+.doc-runhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 4mm;
+  border-bottom: 2px solid var(--doc-orange);
+  font-size: 8.5pt;
+  color: var(--doc-grey);
+}
+
+.doc-body { flex: 1; padding-top: 8mm; }
+.doc-section { break-inside: avoid; margin-bottom: 9mm; }
+.doc-heading {
+  font-family: var(--font-display, Manrope, sans-serif);
+  font-size: 15pt;
+  letter-spacing: -0.02em;
+  border-bottom: 1px solid #dfd8cc;
+  padding-bottom: 2mm;
+}
+.doc-intro { margin-top: 3mm; color: var(--doc-grey); max-width: 150mm; }
+
+.doc-fields { margin-top: 4mm; display: grid; grid-template-columns: 1fr 1fr; gap: 4mm 8mm; }
+.doc-field-wide { grid-column: 1 / -1; }
+.doc-field dt { font-size: 8pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--doc-grey); }
+.doc-field dd { margin-top: 1.5mm; min-height: 6mm; border-bottom: 1px solid #d9d2c6; }
+.doc-value { font-size: 11pt; }
+.doc-blank { display: block; min-height: 5mm; }
+
+.doc-checklist { margin-top: 4mm; display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; list-style: none; }
+.doc-checklist-one { grid-template-columns: 1fr; }
+.doc-checklist li, .doc-week li { display: flex; align-items: center; gap: 3mm; }
+.doc-box {
+  display: inline-block;
+  width: 4mm;
+  height: 4mm;
+  border: 1px solid var(--doc-navy);
+  border-radius: 1px;
+  flex: none;
+}
+
+.doc-week, .doc-planner { margin-top: 4mm; width: 100%; border-collapse: collapse; }
+.doc-week th[scope="row"], .doc-planner th[scope="row"] {
+  width: 30mm;
+  text-align: left;
+  vertical-align: top;
+  padding: 3mm 4mm 3mm 0;
+  font-size: 9pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--doc-navy);
+}
+.doc-week td { padding: 3mm 0; border-top: 1px solid #e6e0d5; }
+.doc-week ul { list-style: none; display: grid; gap: 2mm; }
+.doc-planner th { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--doc-grey); text-align: left; padding-bottom: 2mm; }
+.doc-planner td { border: 1px solid #ded7cb; height: 16mm; }
+.doc-planner tr th[scope="row"] { border-top: 1px solid #ded7cb; }
+
+.doc-lines { margin-top: 4mm; }
+.doc-lines-label { font-size: 8pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--doc-grey); }
+.doc-line { display: block; border-bottom: 1px solid #d9d2c6; height: 8mm; }
+
+.doc-text { margin-top: 3mm; }
+.doc-note {
+  margin-top: 5mm;
+  padding: 4mm 5mm;
+  background: var(--doc-ivory);
+  border-left: 3px solid var(--doc-orange);
+  font-size: 9.5pt;
+  color: var(--doc-navy);
+}
+
+.doc-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 5mm;
+  border-top: 1px solid #e6e0d5;
+  font-size: 8pt;
+  color: var(--doc-grey);
+}
+
+@media print {
+  @page { size: A4; margin: 0; }
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .doc-paper { gap: 0; display: block; }
+  .doc-page {
+    border: 0;
+    border-radius: 0;
+    width: 100%;
+    min-height: 0;
+    height: 297mm;
+    break-after: page;
+    page-break-after: always;
+  }
+  .doc-page:last-child { break-after: auto; page-break-after: auto; }
+}
