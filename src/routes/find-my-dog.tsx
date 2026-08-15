@@ -83,7 +83,7 @@ function FindMyDogPage() {
           aria-label={t.quiz.progress}
         >
           <div
-            className="h-full rounded-full bg-primary transition-[width] duration-500 ease-out"
+            className="h-full rounded-full bg-accent transition-[width] duration-500 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -108,7 +108,7 @@ function FindMyDogPage() {
                 className={cn(
                   "flex min-h-16 cursor-pointer items-center gap-4 rounded-2xl border px-5 py-4 transition-all duration-300 ease-out",
                   isSelected
-                    ? "border-primary bg-primary-soft/40 shadow-[var(--shadow-soft)]"
+                    ? "border-accent bg-accent-soft/70 shadow-[var(--shadow-soft)]"
                     : "border-border bg-card hover:border-border-strong hover:bg-surface/60",
                 )}
               >
@@ -124,12 +124,12 @@ function FindMyDogPage() {
                   aria-hidden="true"
                   className={cn(
                     "grid h-5 w-5 shrink-0 place-items-center rounded-full border transition-colors",
-                    isSelected ? "border-primary bg-primary" : "border-border-strong",
+                    isSelected ? "border-accent bg-accent" : "border-border-strong",
                   )}
                 >
                   <span
                     className={cn(
-                      "h-1.5 w-1.5 rounded-full bg-primary-foreground transition-transform duration-300",
+                      "h-1.5 w-1.5 rounded-full bg-accent-foreground transition-transform duration-300",
                       isSelected ? "scale-100" : "scale-0",
                     )}
                   />
