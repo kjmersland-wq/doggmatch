@@ -14,7 +14,30 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      plus_waitlist: {
+        Row: {
+          consented_at: string
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+        }
+        Insert: {
+          consented_at?: string
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+        }
+        Update: {
+          consented_at?: string
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
