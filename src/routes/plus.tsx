@@ -523,7 +523,7 @@ function PlusPage() {
           title="Your week with your dog"
           body="Bring training, care, activity and everyday routines together, so nothing important quietly slips."
         />
-        <div className="mt-12 -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 md:mx-0 md:grid md:grid-cols-4 md:snap-none md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-7">
+        <div className="mt-12 -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-0 md:grid md:grid-cols-4 md:snap-none md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-7">
           {week.map((d) => (
             <div key={d.day} className="w-[62vw] shrink-0 snap-start md:w-auto">
               <Card className="h-full p-6">
