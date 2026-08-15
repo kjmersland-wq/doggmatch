@@ -20,6 +20,7 @@ import { Route as TrainRouteImport } from './routes/train'
 import { Route as BreedsIndexRouteImport } from './routes/breeds.index'
 import { Route as BreedsBreedIdRouteImport } from './routes/breeds.$breedId'
 import { Route as MyDogIndexRouteImport } from './routes/my-dog.index'
+import { Route as MyDogSetupRouteImport } from './routes/my-dog.setup'
 import { Route as TrainIndexRouteImport } from './routes/train.index'
 import { Route as TrainJourneyRouteImport } from './routes/train.journey'
 import { Route as TrainLibraryRouteImport } from './routes/train.library'
@@ -81,6 +82,11 @@ const MyDogIndexRoute = MyDogIndexRouteImport.update({
   path: '/',
   getParentRoute: () => MyDogRoute,
 } as any)
+const MyDogSetupRoute = MyDogSetupRouteImport.update({
+  id: '/setup',
+  path: '/setup',
+  getParentRoute: () => MyDogRoute,
+} as any)
 const TrainIndexRoute = TrainIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -117,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/my-dog': typeof MyDogRouteWithChildren
   '/train': typeof TrainRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/my-dog/setup': typeof MyDogSetupRoute
   '/train/journey': typeof TrainJourneyRoute
   '/train/library': typeof TrainLibraryRoute
   '/train/setup': typeof TrainSetupRoute
@@ -133,6 +140,7 @@ export interface FileRoutesByTo {
   '/find-my-dog': typeof FindMyDogRoute
   '/guides': typeof GuidesRoute
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/my-dog/setup': typeof MyDogSetupRoute
   '/train/journey': typeof TrainJourneyRoute
   '/train/library': typeof TrainLibraryRoute
   '/train/setup': typeof TrainSetupRoute
@@ -152,6 +160,7 @@ export interface FileRoutesById {
   '/my-dog': typeof MyDogRouteWithChildren
   '/train': typeof TrainRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/my-dog/setup': typeof MyDogSetupRoute
   '/train/journey': typeof TrainJourneyRoute
   '/train/library': typeof TrainLibraryRoute
   '/train/setup': typeof TrainSetupRoute
@@ -172,6 +181,7 @@ export interface FileRouteTypes {
     | '/my-dog'
     | '/train'
     | '/breeds/$breedId'
+    | '/my-dog/setup'
     | '/train/journey'
     | '/train/library'
     | '/train/setup'
@@ -188,6 +198,7 @@ export interface FileRouteTypes {
     | '/find-my-dog'
     | '/guides'
     | '/breeds/$breedId'
+    | '/my-dog/setup'
     | '/train/journey'
     | '/train/library'
     | '/train/setup'
@@ -206,6 +217,7 @@ export interface FileRouteTypes {
     | '/my-dog'
     | '/train'
     | '/breeds/$breedId'
+    | '/my-dog/setup'
     | '/train/journey'
     | '/train/library'
     | '/train/setup'
@@ -307,6 +319,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MyDogIndexRouteImport
       parentRoute: typeof MyDogRoute
     }
+    '/my-dog/setup': {
+      id: '/my-dog/setup'
+      path: '/setup'
+      fullPath: '/my-dog/setup'
+      preLoaderRoute: typeof MyDogSetupRouteImport
+      parentRoute: typeof MyDogRoute
+    }
     '/train/': {
       id: '/train/'
       path: '/'
@@ -346,10 +365,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface MyDogRouteChildren {
+  MyDogSetupRoute: typeof MyDogSetupRoute
   MyDogIndexRoute: typeof MyDogIndexRoute
 }
 
 const MyDogRouteChildren: MyDogRouteChildren = {
+  MyDogSetupRoute: MyDogSetupRoute,
   MyDogIndexRoute: MyDogIndexRoute,
 }
 
