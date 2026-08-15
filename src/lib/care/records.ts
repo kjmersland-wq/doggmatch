@@ -163,23 +163,28 @@ export const recordsStore = {
 };
 
 export function useDogDetails(dogId?: string): DogDetails {
-  return (dogId && useRecords().details[dogId]) || {};
+  const s = useRecords();
+  return (dogId && s.details[dogId]) || {};
 }
 
 export function useContacts(dogId?: string): ContactBook {
-  return (dogId && useRecords().contacts[dogId]) || {};
+  const s = useRecords();
+  return (dogId && s.contacts[dogId]) || {};
 }
 
 export function useImportantInfo(dogId?: string): ImportantInfo {
-  return (dogId && useRecords().info[dogId]) || {};
+  const s = useRecords();
+  return (dogId && s.info[dogId]) || {};
 }
 
 export function useVisits(dogId?: string): VetVisit[] {
-  return (dogId && useRecords().visits[dogId]) || [];
+  const s = useRecords();
+  return (dogId && s.visits[dogId]) || [];
 }
 
 export function useWeekOverride(dogId?: string): WeekOverride {
-  return (dogId && useRecords().week[dogId]) || { removed: [], added: [] };
+  const s = useRecords();
+  return (dogId && s.week[dogId]) || { removed: [], added: [] };
 }
 
 /* ------------------------------------------------------------ the forms */
