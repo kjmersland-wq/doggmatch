@@ -31,7 +31,7 @@ export function scoreLesson(
   if (status === "practising") score += 10;
 
   if (dog) {
-    if (dog.goals.some((g) => lesson.goals.includes(g))) {
+    if ((dog.goals ?? []).some((g) => lesson.goals.includes(g))) {
       score += 24;
       reason = "You said you'd like to work on this";
     }
