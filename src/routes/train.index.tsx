@@ -55,7 +55,7 @@ function TrainHome() {
                 {dog ? (
                   <ButtonLink
                     to="/train/lessons/$lessonId"
-                    params={{ lessonId: plan[0]?.lesson.id ?? "recall" }}
+                    params={{ lessonId: plan[0]?.lesson.id ?? "recall" } as never}
                     size="lg"
                   >
                     {t.train.startToday}

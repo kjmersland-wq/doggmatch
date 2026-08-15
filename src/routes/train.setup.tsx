@@ -67,10 +67,10 @@ function SetupPage() {
 
   function save() {
     trainingStore.saveDog({
-      id: existing?.id,
+      ...(existing?.id ? { id: existing.id } : {}),
       name: name.trim() || "your dog",
-      breedId: breedId || undefined,
-      breedOther: breedOther.trim() || undefined,
+      ...(breedId ? { breedId } : {}),
+      ...(breedOther.trim() ? { breedOther: breedOther.trim() } : {}),
       ageStage,
       experience,
       level,

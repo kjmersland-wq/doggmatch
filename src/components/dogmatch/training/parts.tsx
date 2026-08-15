@@ -29,8 +29,8 @@ export function LessonCard({
   note,
 }: {
   lesson: Lesson;
-  status?: SkillStatus;
-  note?: string;
+  status?: SkillStatus | undefined;
+  note?: string | undefined;
 }) {
   return (
     <Link
