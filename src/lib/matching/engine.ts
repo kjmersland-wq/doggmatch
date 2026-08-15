@@ -54,17 +54,17 @@ function num(value: string | undefined, fallback: number) {
 
 function scoreDimensions(breed: Breed, p: UserProfile): Record<DimensionKey, number> {
   const t = breed.traits;
-  const activity = num(p.activity, 2);
-  const alone = num(p.alone, 2);
-  const home = p.home ?? "house-garden";
+  const activity = num(p["activity"], 2);
+  const alone = num(p["alone"], 2);
+  const home = p["home"] ?? "house-garden";
   const apartmentish = home === "apartment" || home === "house";
-  const sizeTarget = SIZE_TARGET[p.size ?? "any"] ?? null;
-  const temperament = TEMPERAMENT_TARGET[p.temperament ?? "affectionate"];
+  const sizeTarget = SIZE_TARGET[p["size"] ?? "any"] ?? null;
+  const temperament = TEMPERAMENT_TARGET[p["temperament"] ?? "affectionate"] ?? TEMPERAMENT_TARGET["affectionate"]!;
 
   const lifestyle = avg([
     near(t.energy, activity + 1, 20),
     atMost(t.exerciseNeeds, activity + 1, 20),
-    p.experience === "first" ? atLeast(t.firstTimeSuitability, 4, 18) : 100,
+    p["experience"] === "first" ? atLeast(t.firstTimeSuitability, 4, 18) : 100,
     alone >= 6 ? atLeast(t.aloneTolerance, 4, 22) : alone >= 4 ? atLeast(t.aloneTolerance, 3, 18) : 100,
   ]);
 
@@ -78,12 +78,12 @@ function scoreDimensions(breed: Breed, p: UserProfile): Record<DimensionKey, num
   const activityScore = avg([
     near(t.exerciseNeeds, activity, 18),
     near(t.energy, activity, 18),
-    p.energyLimit === "no" ? atMost(t.energy, 2, 28) : p.energyLimit === "maybe" ? atMost(t.energy, 4, 18) : atLeast(t.energy, 3, 14),
-    p.physical === "light" ? atMost(t.strengthRequired, 1, 26) : p.physical === "moderate" ? atMost(t.strengthRequired, 3, 20) : 100,
+    p["energyLimit"] === "no" ? atMost(t.energy, 2, 28) : p["energyLimit"] === "maybe" ? atMost(t.energy, 4, 18) : atLeast(t.energy, 3, 14),
+    p["physical"] === "light" ? atMost(t.strengthRequired, 1, 26) : p["physical"] === "moderate" ? atMost(t.strengthRequired, 3, 20) : 100,
   ]);
 
-  const children = p.children ?? "none";
-  const pets = p.pets ?? "none";
+  const children = p["children"] ?? "none";
+  const pets = p["pets"] ?? "none";
   const temperamentScore = avg([
     near(t.energy, temperament.energy, 16),
     near(t.affection, temperament.affection, 16),
@@ -94,12 +94,12 @@ function scoreDimensions(breed: Breed, p: UserProfile): Record<DimensionKey, num
   ]);
 
   const trainability = avg([
-    p.experience === "first" ? atLeast(t.trainability, 4, 20) : atLeast(t.trainability, 3, 14),
+    p["experience"] === "first" ? atLeast(t.trainability, 4, 20) : atLeast(t.trainability, 3, 14),
     atLeast(t.learningAbility, 3, 12),
     activity <= 2 ? atMost(t.mentalStimulation, 3, 18) : 100,
   ]);
 
-  const companionshipGoal = p.companionship ?? "family";
+  const companionshipGoal = p["companionship"] ?? "family";
   const companionship = avg([
     companionshipGoal === "calm-company" ? avg([atMost(t.energy, 3, 18), atLeast(t.affection, 4, 18)]) : 100,
     companionshipGoal === "motivation" ? avg([atLeast(t.energy, 3, 16), atLeast(t.affection, 4, 16)]) : 100,
@@ -108,8 +108,8 @@ function scoreDimensions(breed: Breed, p: UserProfile): Record<DimensionKey, num
     atLeast(t.affection, 3, 12),
   ]);
 
-  const sheddingCeiling = p.shedding === "must-low" ? 1 : p.shedding === "prefer-low" ? 3 : 5;
-  const groomingCeiling = p.grooming === "minimal" ? 2 : p.grooming === "moderate" ? 3 : 5;
+  const sheddingCeiling = p["shedding"] === "must-low" ? 1 : p["shedding"] === "prefer-low" ? 3 : 5;
+  const groomingCeiling = p["grooming"] === "minimal" ? 2 : p["grooming"] === "moderate" ? 3 : 5;
   const maintenance = avg([
     atMost(t.shedding, sheddingCeiling, 20),
     atMost(t.grooming, groomingCeiling, 18),
@@ -134,35 +134,35 @@ function hardConstraints(breed: Breed, p: UserProfile): { warnings: string[]; ca
   const warnings: string[] = [];
   let cap = 100;
 
-  if (p.energyLimit === "no" && t.energy >= 4) {
+  if (p["energyLimit"] === "no" && t.energy >= 4) {
     warnings.push("You told us you need a calmer dog. This breed's energy level is genuinely high.");
     cap = Math.min(cap, 52);
   }
-  if (p.physical === "light" && t.strengthRequired >= 4) {
+  if (p["physical"] === "light" && t.strengthRequired >= 4) {
     warnings.push("This is a large, physically strong dog — difficult to manage if strength is a limitation.");
     cap = Math.min(cap, 55);
   }
-  if (p.shedding === "must-low" && t.shedding >= 4) {
+  if (p["shedding"] === "must-low" && t.shedding >= 4) {
     warnings.push("Heavy shedding. With a sensitivity in the household, this is a poor starting point.");
     cap = Math.min(cap, 50);
   }
-  if (p.children === "young" && t.goodWithChildren <= 3) {
+  if (p["children"] === "young" && t.goodWithChildren <= 3) {
     warnings.push("Not the most reliable choice around young children without experienced handling.");
     cap = Math.min(cap, 62);
   }
-  if (p.pets === "small" && t.goodWithPets <= 2) {
+  if (p["pets"] === "small" && t.goodWithPets <= 2) {
     warnings.push("Strong prey drive. Small animals in the same home would be a real risk.");
     cap = Math.min(cap, 45);
   }
-  if (p.experience === "first" && t.firstTimeSuitability <= 2) {
+  if (p["experience"] === "first" && t.firstTimeSuitability <= 2) {
     warnings.push("Demanding for a first dog — this breed rewards experience.");
     cap = Math.min(cap, 60);
   }
-  if (Number(p.alone ?? 0) >= 6 && t.aloneTolerance <= 2) {
+  if (Number(p["alone"] ?? 0) >= 6 && t.aloneTolerance <= 2) {
     warnings.push("Struggles with long hours alone. Six hours or more would need a real plan.");
     cap = Math.min(cap, 58);
   }
-  if (p.home === "apartment" && t.apartmentSuitability <= 1) {
+  if (p["home"] === "apartment" && t.apartmentSuitability <= 1) {
     warnings.push("Apartment life rarely works for this breed, even with long walks.");
     cap = Math.min(cap, 50);
   }
