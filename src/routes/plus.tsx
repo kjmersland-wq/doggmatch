@@ -222,18 +222,28 @@ const plusList = [
   "Everything in Free",
   "My Dog",
   "Complete training",
-  "Health & care tracking",
-  "Food & feeding tracking",
+  "Health & care",
+  "Food & feeding",
   "My Week",
   "Care calendar",
   "Advanced Dog Life",
   "Travel tools",
   "International travel checker",
   "Complete Dog Pack",
-  "Advanced PDF documents",
+  "Printable documents",
   "Multiple dogs",
-  "Advanced match report",
-  "Progress & history",
+  "A fuller match report",
+  "Progress over time",
+];
+
+const firstWeek = [
+  { day: "Day 1", title: "Create My Dog", line: "Give your dog a place of their own." },
+  { day: "Day 2", title: "Set up care", line: "Add feeding, dental, grooming and everyday routines." },
+  { day: "Day 3", title: "Start training", line: "Choose a programme and take the first small step." },
+  { day: "Day 4", title: "Build My Week", line: "Bring walks, training and care together." },
+  { day: "Day 5", title: "Explore Dog Life", line: "Find places and services that fit your life with your dog." },
+  { day: "Day 6", title: "Plan your next trip", line: "Get your travel checklist ready." },
+  { day: "Day 7", title: "Create your Dog Pack", line: "Keep the important things together, on screen or on paper." },
 ];
 
 /* ------------------------------------------------------------------- page */
