@@ -372,7 +372,7 @@ function Results({ results, onRestart }: { results: MatchResult[]; onRestart: ()
       </section>
 
       <div className="container-page mt-16 flex flex-wrap gap-3">
-        <ButtonLink to="/breeds/$breedId" params={{ breedId: best.breedId }} size="lg">
+        <ButtonLink to="/breeds/$breedId" params={{ breedId: best.breedId } as never} size="lg">
           {t.result.viewBreed}
           <Arrow />
         </ButtonLink>
