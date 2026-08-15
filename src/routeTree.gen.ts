@@ -22,6 +22,9 @@ import { Route as TrainRouteImport } from './routes/train'
 import { Route as BreedsIndexRouteImport } from './routes/breeds.index'
 import { Route as BreedsBreedIdRouteImport } from './routes/breeds.$breedId'
 import { Route as GetADogIndexRouteImport } from './routes/get-a-dog.index'
+import { Route as GetADogChooseRouteImport } from './routes/get-a-dog.choose'
+import { Route as GetADogCostsRouteImport } from './routes/get-a-dog.costs'
+import { Route as GetADogReadyRouteImport } from './routes/get-a-dog.ready'
 import { Route as MyDogIndexRouteImport } from './routes/my-dog.index'
 import { Route as MyDogContactsRouteImport } from './routes/my-dog.contacts'
 import { Route as MyDogFoodRouteImport } from './routes/my-dog.food'
@@ -102,6 +105,21 @@ const BreedsBreedIdRoute = BreedsBreedIdRouteImport.update({
 const GetADogIndexRoute = GetADogIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => GetADogRoute,
+} as any)
+const GetADogChooseRoute = GetADogChooseRouteImport.update({
+  id: '/choose',
+  path: '/choose',
+  getParentRoute: () => GetADogRoute,
+} as any)
+const GetADogCostsRoute = GetADogCostsRouteImport.update({
+  id: '/costs',
+  path: '/costs',
+  getParentRoute: () => GetADogRoute,
+} as any)
+const GetADogReadyRoute = GetADogReadyRouteImport.update({
+  id: '/ready',
+  path: '/ready',
   getParentRoute: () => GetADogRoute,
 } as any)
 const MyDogIndexRoute = MyDogIndexRouteImport.update({
@@ -197,6 +215,9 @@ export interface FileRoutesByFullPath {
   '/my-dog': typeof MyDogRouteWithChildren
   '/train': typeof TrainRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/get-a-dog/choose': typeof GetADogChooseRoute
+  '/get-a-dog/costs': typeof GetADogCostsRoute
+  '/get-a-dog/ready': typeof GetADogReadyRoute
   '/my-dog/contacts': typeof MyDogContactsRoute
   '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
@@ -225,6 +246,9 @@ export interface FileRoutesByTo {
   '/find-my-dog': typeof FindMyDogRoute
   '/guides': typeof GuidesRoute
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/get-a-dog/choose': typeof GetADogChooseRoute
+  '/get-a-dog/costs': typeof GetADogCostsRoute
+  '/get-a-dog/ready': typeof GetADogReadyRoute
   '/my-dog/contacts': typeof MyDogContactsRoute
   '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
@@ -257,6 +281,9 @@ export interface FileRoutesById {
   '/my-dog': typeof MyDogRouteWithChildren
   '/train': typeof TrainRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/get-a-dog/choose': typeof GetADogChooseRoute
+  '/get-a-dog/costs': typeof GetADogCostsRoute
+  '/get-a-dog/ready': typeof GetADogReadyRoute
   '/my-dog/contacts': typeof MyDogContactsRoute
   '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
@@ -290,6 +317,9 @@ export interface FileRouteTypes {
     | '/my-dog'
     | '/train'
     | '/breeds/$breedId'
+    | '/get-a-dog/choose'
+    | '/get-a-dog/costs'
+    | '/get-a-dog/ready'
     | '/my-dog/contacts'
     | '/my-dog/food'
     | '/my-dog/nutrition'
@@ -318,6 +348,9 @@ export interface FileRouteTypes {
     | '/find-my-dog'
     | '/guides'
     | '/breeds/$breedId'
+    | '/get-a-dog/choose'
+    | '/get-a-dog/costs'
+    | '/get-a-dog/ready'
     | '/my-dog/contacts'
     | '/my-dog/food'
     | '/my-dog/nutrition'
@@ -349,6 +382,9 @@ export interface FileRouteTypes {
     | '/my-dog'
     | '/train'
     | '/breeds/$breedId'
+    | '/get-a-dog/choose'
+    | '/get-a-dog/costs'
+    | '/get-a-dog/ready'
     | '/my-dog/contacts'
     | '/my-dog/food'
     | '/my-dog/nutrition'
@@ -477,6 +513,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GetADogIndexRouteImport
       parentRoute: typeof GetADogRoute
     }
+    '/get-a-dog/choose': {
+      id: '/get-a-dog/choose'
+      path: '/choose'
+      fullPath: '/get-a-dog/choose'
+      preLoaderRoute: typeof GetADogChooseRouteImport
+      parentRoute: typeof GetADogRoute
+    }
+    '/get-a-dog/costs': {
+      id: '/get-a-dog/costs'
+      path: '/costs'
+      fullPath: '/get-a-dog/costs'
+      preLoaderRoute: typeof GetADogCostsRouteImport
+      parentRoute: typeof GetADogRoute
+    }
+    '/get-a-dog/ready': {
+      id: '/get-a-dog/ready'
+      path: '/ready'
+      fullPath: '/get-a-dog/ready'
+      preLoaderRoute: typeof GetADogReadyRouteImport
+      parentRoute: typeof GetADogRoute
+    }
     '/my-dog/': {
       id: '/my-dog/'
       path: '/'
@@ -593,10 +650,16 @@ declare module '@tanstack/react-router' {
 }
 
 interface GetADogRouteChildren {
+  GetADogChooseRoute: typeof GetADogChooseRoute
+  GetADogCostsRoute: typeof GetADogCostsRoute
+  GetADogReadyRoute: typeof GetADogReadyRoute
   GetADogIndexRoute: typeof GetADogIndexRoute
 }
 
 const GetADogRouteChildren: GetADogRouteChildren = {
+  GetADogChooseRoute: GetADogChooseRoute,
+  GetADogCostsRoute: GetADogCostsRoute,
+  GetADogReadyRoute: GetADogReadyRoute,
   GetADogIndexRoute: GetADogIndexRoute,
 }
 
