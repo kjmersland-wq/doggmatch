@@ -831,7 +831,7 @@ function PlusPage() {
       </Section>
 
       {/* 18 + 19 — Price */}
-      <Section className="container-page pt-0">
+      <Section id="membership" className="container-page scroll-mt-24 pt-0">
         <div className="max-w-2xl">
           <Eyebrow>Membership</Eyebrow>
           <h2 className="display-lg mt-6">
@@ -854,7 +854,7 @@ function PlusPage() {
               type="button"
               disabled
               aria-disabled="true"
-              className="mt-auto inline-flex h-14 w-full items-center justify-center rounded-full border border-border-strong px-8 pt-8 text-base font-medium text-muted-foreground"
+              className="mt-8 inline-flex h-14 w-full items-center justify-center rounded-full border border-border-strong px-8 text-base font-medium text-muted-foreground"
             >
               Coming soon
             </button>
@@ -901,10 +901,13 @@ function PlusPage() {
               dog a really good life.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
-              <ButtonLink to="/my-dog" tone="accent" size="lg">
+              <a
+                href="#membership"
+                className="group inline-flex h-14 select-none items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-base font-medium text-accent-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)]"
+              >
                 DoggMatch+ coming soon
                 <Arrow />
-              </ButtonLink>
+              </a>
               <ButtonLink
                 to="/find-my-dog"
                 size="lg"
