@@ -11,7 +11,7 @@ import dogLifeImage from "@/assets/dog-life.jpg";
 
 const title = "DoggMatch — Find the dog that's right for your life";
 const description =
-  "A smarter way to discover the dog breed that fits your lifestyle, home, personality and everyday life. Personalised, explainable breed matching.";
+  "DoggMatch helps you discover the dog breeds most compatible with your lifestyle, home, personality and needs — a free, transparent match you can trace to a reason.";
 const ogImage =
   "https://project--133462b6-1f26-496e-a35b-0de87a08b8b1.lovable.app/og-image.jpg";
 
