@@ -107,7 +107,7 @@ function GetADogPage() {
               { img: puppyImage, alt: "A cocker spaniel puppy sitting beside a chewed slipper", label: "A puppy", body: "Sleepless months, and you shape almost everything." },
               { img: adultImage, alt: "A calm adult dog resting on a sofa in a sunlit flat", label: "An adult dog", body: "Much more of what you see is what you get." },
             ].map((card) => (
-              <Link key={card.label} to="/get-a-dog/choose" className="group block overflow-hidden rounded-[1.75rem] bg-background">
+              <Link key={card.label} to={"/get-a-dog/choose" as never} className="group block overflow-hidden rounded-[1.75rem] bg-background">
                 <img src={card.img} alt={card.alt} width={1200} height={1504} loading="lazy" className="aspect-[5/4] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.03]" />
                 <div className="p-8">
                   <h3 className="display-md">{card.label}</h3>

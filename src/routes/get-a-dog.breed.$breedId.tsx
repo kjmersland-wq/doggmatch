@@ -1,5 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { Arrow, ButtonLink, Section, TraitMeter } from "@/components/dogmatch/ui";
+import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { Notice, SectionHead } from "@/components/dogmatch/journey/parts";
 import { getBreed } from "@/data/breeds";
 import { breedContentEn } from "@/data/breed-content.en";
@@ -111,7 +111,7 @@ function BreedPrepPage() {
               Get my home ready
               <Arrow />
             </ButtonLink>
-            <ButtonLink to={`/breeds/${breed.id}`} tone="outline" size="lg">
+            <ButtonLink to={`/breeds/${breed.id}` as never} tone="outline" size="lg">
               The full breed profile
             </ButtonLink>
             <ButtonLink to="/get-a-dog/costs" tone="ghost" size="lg">
