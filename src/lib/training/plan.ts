@@ -1,6 +1,6 @@
 import { lessons } from "@/data/training/lessons";
 import type { Lesson, SkillStatus } from "@/data/training/types";
-import { breedsById } from "@/data/breeds";
+import { breedById } from "@/data/breeds";
 import type { DogProfile } from "./store";
 
 /**
@@ -51,7 +51,7 @@ export function scoreLesson(
 
     if (dog.breedId && lesson.breedRelevance?.includes(dog.breedId)) {
       score += 8;
-      const breed = breedsById[dog.breedId];
+      const breed = breedById[dog.breedId];
       if (breed) reason = `Often suits a ${breed.name}, though every dog is their own dog`;
     }
     if (status === "practising") reason = "You're in the middle of this one";
