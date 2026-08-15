@@ -150,7 +150,7 @@ function NutritionPage() {
               The real test isn't the number on the bag. It's how your dog looks and feels a month
               from now. Check monthly and adjust by about 10% at a time.
             </p>
-            <ButtonLink to="/my-dog/weight" tone="secondary" className="mt-6">
+            <ButtonLink to="/my-dog/weight" tone="outline" className="mt-6">
               Weight & shape
               <Arrow />
             </ButtonLink>

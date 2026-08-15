@@ -171,7 +171,7 @@ function CareTopicPage() {
                 <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
                   Add a few details and we'll tailor the notes on pages like this one.
                 </p>
-                <ButtonLink to="/my-dog/setup" tone="secondary" className="mt-5">
+                <ButtonLink to="/my-dog/setup" tone="outline" className="mt-5">
                   Set up my dog
                   <Arrow />
                 </ButtonLink>
@@ -189,7 +189,7 @@ function CareTopicPage() {
             .filter((t) => t.id !== topic.id)
             .map((t) => (
               <li key={t.id}>
-                <ButtonLink to="/my-dog/care/$topicId" params={{ topicId: t.id } as never} tone="secondary">
+                <ButtonLink to="/my-dog/care/$topicId" params={{ topicId: t.id } as never} tone="outline">
                   {t.title}
                 </ButtonLink>
               </li>

@@ -76,8 +76,7 @@ export function estimatePortions(
     dailyKcal,
     factor,
     factorReason: reasons.join(", "),
-    gramsPerDay,
-    gramsPerMeal: gramsPerDay ? Math.round(gramsPerDay / mealsPerDay) : undefined,
+    ...(gramsPerDay ? { gramsPerDay, gramsPerMeal: Math.round(gramsPerDay / mealsPerDay) } : {}),
     treatKcal: Math.round(dailyKcal * 0.1),
     mealsPerDay,
   };

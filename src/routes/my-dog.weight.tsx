@@ -171,7 +171,7 @@ function WeightPage() {
         <Sources sources={[...(topic.sources ?? [])]} />
 
         <div className="mt-10">
-          <ButtonLink to="/my-dog/nutrition" tone="secondary" size="lg">
+          <ButtonLink to="/my-dog/nutrition" tone="outline" size="lg">
             Work out food portions
             <Arrow />
           </ButtonLink>

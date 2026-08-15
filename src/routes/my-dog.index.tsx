@@ -78,7 +78,7 @@ function MyDogHome() {
                   {dog ? `${dog.name}'s details` : "Set up my dog"}
                   <Arrow />
                 </ButtonLink>
-                <ButtonLink to="/my-dog/food" tone="secondary" size="lg">
+                <ButtonLink to="/my-dog/food" tone="outline" size="lg">
                   Can my dog eat this?
                 </ButtonLink>
               </div>
@@ -172,10 +172,10 @@ function MyDogHome() {
                 />
               </div>
               <div className="mt-4 flex flex-wrap gap-3">
-                <ButtonLink to="/my-dog/weight" tone="secondary" size="md">
+                <ButtonLink to="/my-dog/weight" tone="outline" size="md">
                   Weight & shape
                 </ButtonLink>
-                <ButtonLink to="/my-dog/nutrition" tone="secondary" size="md">
+                <ButtonLink to="/my-dog/nutrition" tone="outline" size="md">
                   Food & portions
                 </ButtonLink>
               </div>
@@ -241,7 +241,7 @@ function MyDogHome() {
               Train Your Dog
               <Arrow />
             </ButtonLink>
-            <ButtonLink to="/guides" tone="secondary" size="lg">
+            <ButtonLink to="/guides" tone="outline" size="lg">
               Read the guides
             </ButtonLink>
           </div>
