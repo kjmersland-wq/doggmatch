@@ -15,8 +15,14 @@ import { Route as CompareRouteImport } from './routes/compare'
 import { Route as DogLifeRouteImport } from './routes/dog-life'
 import { Route as FindMyDogRouteImport } from './routes/find-my-dog'
 import { Route as GuidesRouteImport } from './routes/guides'
+import { Route as TrainRouteImport } from './routes/train'
 import { Route as BreedsIndexRouteImport } from './routes/breeds.index'
 import { Route as BreedsBreedIdRouteImport } from './routes/breeds.$breedId'
+import { Route as TrainIndexRouteImport } from './routes/train.index'
+import { Route as TrainJourneyRouteImport } from './routes/train.journey'
+import { Route as TrainLibraryRouteImport } from './routes/train.library'
+import { Route as TrainSetupRouteImport } from './routes/train.setup'
+import { Route as TrainLessonsLessonIdRouteImport } from './routes/train.lessons.$lessonId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -48,6 +54,11 @@ const GuidesRoute = GuidesRouteImport.update({
   path: '/guides',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainRoute = TrainRouteImport.update({
+  id: '/train',
+  path: '/train',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BreedsIndexRoute = BreedsIndexRouteImport.update({
   id: '/breeds/',
   path: '/breeds/',
@@ -58,6 +69,31 @@ const BreedsBreedIdRoute = BreedsBreedIdRouteImport.update({
   path: '/breeds/$breedId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainIndexRoute = TrainIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => TrainRoute,
+} as any)
+const TrainJourneyRoute = TrainJourneyRouteImport.update({
+  id: '/journey',
+  path: '/journey',
+  getParentRoute: () => TrainRoute,
+} as any)
+const TrainLibraryRoute = TrainLibraryRouteImport.update({
+  id: '/library',
+  path: '/library',
+  getParentRoute: () => TrainRoute,
+} as any)
+const TrainSetupRoute = TrainSetupRouteImport.update({
+  id: '/setup',
+  path: '/setup',
+  getParentRoute: () => TrainRoute,
+} as any)
+const TrainLessonsLessonIdRoute = TrainLessonsLessonIdRouteImport.update({
+  id: '/lessons/$lessonId',
+  path: '/lessons/$lessonId',
+  getParentRoute: () => TrainRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -66,8 +102,14 @@ export interface FileRoutesByFullPath {
   '/dog-life': typeof DogLifeRoute
   '/find-my-dog': typeof FindMyDogRoute
   '/guides': typeof GuidesRoute
+  '/train': typeof TrainRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/train/journey': typeof TrainJourneyRoute
+  '/train/library': typeof TrainLibraryRoute
+  '/train/setup': typeof TrainSetupRoute
   '/breeds/': typeof BreedsIndexRoute
+  '/train/': typeof TrainIndexRoute
+  '/train/lessons/$lessonId': typeof TrainLessonsLessonIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -77,7 +119,12 @@ export interface FileRoutesByTo {
   '/find-my-dog': typeof FindMyDogRoute
   '/guides': typeof GuidesRoute
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/train/journey': typeof TrainJourneyRoute
+  '/train/library': typeof TrainLibraryRoute
+  '/train/setup': typeof TrainSetupRoute
   '/breeds': typeof BreedsIndexRoute
+  '/train': typeof TrainIndexRoute
+  '/train/lessons/$lessonId': typeof TrainLessonsLessonIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -87,8 +134,14 @@ export interface FileRoutesById {
   '/dog-life': typeof DogLifeRoute
   '/find-my-dog': typeof FindMyDogRoute
   '/guides': typeof GuidesRoute
+  '/train': typeof TrainRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/train/journey': typeof TrainJourneyRoute
+  '/train/library': typeof TrainLibraryRoute
+  '/train/setup': typeof TrainSetupRoute
   '/breeds/': typeof BreedsIndexRoute
+  '/train/': typeof TrainIndexRoute
+  '/train/lessons/$lessonId': typeof TrainLessonsLessonIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -99,8 +152,14 @@ export interface FileRouteTypes {
     | '/dog-life'
     | '/find-my-dog'
     | '/guides'
+    | '/train'
     | '/breeds/$breedId'
+    | '/train/journey'
+    | '/train/library'
+    | '/train/setup'
     | '/breeds/'
+    | '/train/'
+    | '/train/lessons/$lessonId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -110,7 +169,12 @@ export interface FileRouteTypes {
     | '/find-my-dog'
     | '/guides'
     | '/breeds/$breedId'
+    | '/train/journey'
+    | '/train/library'
+    | '/train/setup'
     | '/breeds'
+    | '/train'
+    | '/train/lessons/$lessonId'
   id:
     | '__root__'
     | '/'
@@ -119,8 +183,14 @@ export interface FileRouteTypes {
     | '/dog-life'
     | '/find-my-dog'
     | '/guides'
+    | '/train'
     | '/breeds/$breedId'
+    | '/train/journey'
+    | '/train/library'
+    | '/train/setup'
     | '/breeds/'
+    | '/train/'
+    | '/train/lessons/$lessonId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -130,6 +200,7 @@ export interface RootRouteChildren {
   DogLifeRoute: typeof DogLifeRoute
   FindMyDogRoute: typeof FindMyDogRoute
   GuidesRoute: typeof GuidesRoute
+  TrainRoute: typeof TrainRouteWithChildren
   BreedsBreedIdRoute: typeof BreedsBreedIdRoute
   BreedsIndexRoute: typeof BreedsIndexRoute
 }
@@ -178,6 +249,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/train': {
+      id: '/train'
+      path: '/train'
+      fullPath: '/train'
+      preLoaderRoute: typeof TrainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/breeds/': {
       id: '/breeds/'
       path: '/breeds'
@@ -192,8 +270,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BreedsBreedIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/train/': {
+      id: '/train/'
+      path: '/'
+      fullPath: '/train/'
+      preLoaderRoute: typeof TrainIndexRouteImport
+      parentRoute: typeof TrainRoute
+    }
+    '/train/journey': {
+      id: '/train/journey'
+      path: '/journey'
+      fullPath: '/train/journey'
+      preLoaderRoute: typeof TrainJourneyRouteImport
+      parentRoute: typeof TrainRoute
+    }
+    '/train/library': {
+      id: '/train/library'
+      path: '/library'
+      fullPath: '/train/library'
+      preLoaderRoute: typeof TrainLibraryRouteImport
+      parentRoute: typeof TrainRoute
+    }
+    '/train/setup': {
+      id: '/train/setup'
+      path: '/setup'
+      fullPath: '/train/setup'
+      preLoaderRoute: typeof TrainSetupRouteImport
+      parentRoute: typeof TrainRoute
+    }
+    '/train/lessons/$lessonId': {
+      id: '/train/lessons/$lessonId'
+      path: '/lessons/$lessonId'
+      fullPath: '/train/lessons/$lessonId'
+      preLoaderRoute: typeof TrainLessonsLessonIdRouteImport
+      parentRoute: typeof TrainRoute
+    }
   }
 }
+
+interface TrainRouteChildren {
+  TrainJourneyRoute: typeof TrainJourneyRoute
+  TrainLibraryRoute: typeof TrainLibraryRoute
+  TrainSetupRoute: typeof TrainSetupRoute
+  TrainIndexRoute: typeof TrainIndexRoute
+  TrainLessonsLessonIdRoute: typeof TrainLessonsLessonIdRoute
+}
+
+const TrainRouteChildren: TrainRouteChildren = {
+  TrainJourneyRoute: TrainJourneyRoute,
+  TrainLibraryRoute: TrainLibraryRoute,
+  TrainSetupRoute: TrainSetupRoute,
+  TrainIndexRoute: TrainIndexRoute,
+  TrainLessonsLessonIdRoute: TrainLessonsLessonIdRoute,
+}
+
+const TrainRouteWithChildren = TrainRoute._addFileChildren(TrainRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -202,6 +333,7 @@ const rootRouteChildren: RootRouteChildren = {
   DogLifeRoute: DogLifeRoute,
   FindMyDogRoute: FindMyDogRoute,
   GuidesRoute: GuidesRoute,
+  TrainRoute: TrainRouteWithChildren,
   BreedsBreedIdRoute: BreedsBreedIdRoute,
   BreedsIndexRoute: BreedsIndexRoute,
 }
