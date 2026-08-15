@@ -120,7 +120,7 @@ export const getDogStore = {
       : [...current, itemId];
     write({ ...state, checked: { ...state.checked, [listId]: next } });
   },
-  setTrip(patch: Partial<GetDogState["trip"]>) {
+  setTrip(patch: { [K in keyof GetDogState["trip"]]?: GetDogState["trip"][K] | undefined }) {
     ensureLoaded();
     write({ ...state, trip: { ...state.trip, ...patch } });
   },
