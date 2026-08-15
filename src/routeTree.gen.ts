@@ -23,6 +23,8 @@ import { Route as MyDogIndexRouteImport } from './routes/my-dog.index'
 import { Route as MyDogContactsRouteImport } from './routes/my-dog.contacts'
 import { Route as MyDogFoodRouteImport } from './routes/my-dog.food'
 import { Route as MyDogNutritionRouteImport } from './routes/my-dog.nutrition'
+import { Route as MyDogPackRouteImport } from './routes/my-dog.pack'
+import { Route as MyDogPrintRouteImport } from './routes/my-dog.print'
 import { Route as MyDogSetupRouteImport } from './routes/my-dog.setup'
 import { Route as MyDogVetRouteImport } from './routes/my-dog.vet'
 import { Route as MyDogWeekRouteImport } from './routes/my-dog.week'
@@ -104,6 +106,16 @@ const MyDogNutritionRoute = MyDogNutritionRouteImport.update({
   path: '/nutrition',
   getParentRoute: () => MyDogRoute,
 } as any)
+const MyDogPackRoute = MyDogPackRouteImport.update({
+  id: '/pack',
+  path: '/pack',
+  getParentRoute: () => MyDogRoute,
+} as any)
+const MyDogPrintRoute = MyDogPrintRouteImport.update({
+  id: '/print',
+  path: '/print',
+  getParentRoute: () => MyDogRoute,
+} as any)
 const MyDogSetupRoute = MyDogSetupRouteImport.update({
   id: '/setup',
   path: '/setup',
@@ -168,6 +180,8 @@ export interface FileRoutesByFullPath {
   '/my-dog/contacts': typeof MyDogContactsRoute
   '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
+  '/my-dog/pack': typeof MyDogPackRoute
+  '/my-dog/print': typeof MyDogPrintRoute
   '/my-dog/setup': typeof MyDogSetupRoute
   '/my-dog/vet': typeof MyDogVetRoute
   '/my-dog/week': typeof MyDogWeekRoute
@@ -192,6 +206,8 @@ export interface FileRoutesByTo {
   '/my-dog/contacts': typeof MyDogContactsRoute
   '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
+  '/my-dog/pack': typeof MyDogPackRoute
+  '/my-dog/print': typeof MyDogPrintRoute
   '/my-dog/setup': typeof MyDogSetupRoute
   '/my-dog/vet': typeof MyDogVetRoute
   '/my-dog/week': typeof MyDogWeekRoute
@@ -219,6 +235,8 @@ export interface FileRoutesById {
   '/my-dog/contacts': typeof MyDogContactsRoute
   '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
+  '/my-dog/pack': typeof MyDogPackRoute
+  '/my-dog/print': typeof MyDogPrintRoute
   '/my-dog/setup': typeof MyDogSetupRoute
   '/my-dog/vet': typeof MyDogVetRoute
   '/my-dog/week': typeof MyDogWeekRoute
@@ -247,6 +265,8 @@ export interface FileRouteTypes {
     | '/my-dog/contacts'
     | '/my-dog/food'
     | '/my-dog/nutrition'
+    | '/my-dog/pack'
+    | '/my-dog/print'
     | '/my-dog/setup'
     | '/my-dog/vet'
     | '/my-dog/week'
@@ -271,6 +291,8 @@ export interface FileRouteTypes {
     | '/my-dog/contacts'
     | '/my-dog/food'
     | '/my-dog/nutrition'
+    | '/my-dog/pack'
+    | '/my-dog/print'
     | '/my-dog/setup'
     | '/my-dog/vet'
     | '/my-dog/week'
@@ -297,6 +319,8 @@ export interface FileRouteTypes {
     | '/my-dog/contacts'
     | '/my-dog/food'
     | '/my-dog/nutrition'
+    | '/my-dog/pack'
+    | '/my-dog/print'
     | '/my-dog/setup'
     | '/my-dog/vet'
     | '/my-dog/week'
@@ -424,6 +448,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MyDogNutritionRouteImport
       parentRoute: typeof MyDogRoute
     }
+    '/my-dog/pack': {
+      id: '/my-dog/pack'
+      path: '/pack'
+      fullPath: '/my-dog/pack'
+      preLoaderRoute: typeof MyDogPackRouteImport
+      parentRoute: typeof MyDogRoute
+    }
+    '/my-dog/print': {
+      id: '/my-dog/print'
+      path: '/print'
+      fullPath: '/my-dog/print'
+      preLoaderRoute: typeof MyDogPrintRouteImport
+      parentRoute: typeof MyDogRoute
+    }
     '/my-dog/setup': {
       id: '/my-dog/setup'
       path: '/setup'
@@ -501,6 +539,8 @@ interface MyDogRouteChildren {
   MyDogContactsRoute: typeof MyDogContactsRoute
   MyDogFoodRoute: typeof MyDogFoodRoute
   MyDogNutritionRoute: typeof MyDogNutritionRoute
+  MyDogPackRoute: typeof MyDogPackRoute
+  MyDogPrintRoute: typeof MyDogPrintRoute
   MyDogSetupRoute: typeof MyDogSetupRoute
   MyDogVetRoute: typeof MyDogVetRoute
   MyDogWeekRoute: typeof MyDogWeekRoute
@@ -513,6 +553,8 @@ const MyDogRouteChildren: MyDogRouteChildren = {
   MyDogContactsRoute: MyDogContactsRoute,
   MyDogFoodRoute: MyDogFoodRoute,
   MyDogNutritionRoute: MyDogNutritionRoute,
+  MyDogPackRoute: MyDogPackRoute,
+  MyDogPrintRoute: MyDogPrintRoute,
   MyDogSetupRoute: MyDogSetupRoute,
   MyDogVetRoute: MyDogVetRoute,
   MyDogWeekRoute: MyDogWeekRoute,
