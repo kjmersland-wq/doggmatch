@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CompareRouteImport } from './routes/compare'
+import { Route as DogLifeRouteImport } from './routes/dog-life'
 import { Route as FindMyDogRouteImport } from './routes/find-my-dog'
 import { Route as BreedsIndexRouteImport } from './routes/breeds.index'
 import { Route as BreedsBreedIdRouteImport } from './routes/breeds.$breedId'
@@ -17,6 +19,16 @@ import { Route as BreedsBreedIdRouteImport } from './routes/breeds.$breedId'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DogLifeRoute = DogLifeRouteImport.update({
+  id: '/dog-life',
+  path: '/dog-life',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FindMyDogRoute = FindMyDogRouteImport.update({
@@ -37,12 +49,16 @@ const BreedsBreedIdRoute = BreedsBreedIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/compare': typeof CompareRoute
+  '/dog-life': typeof DogLifeRoute
   '/find-my-dog': typeof FindMyDogRoute
   '/breeds/$breedId': typeof BreedsBreedIdRoute
   '/breeds/': typeof BreedsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/compare': typeof CompareRoute
+  '/dog-life': typeof DogLifeRoute
   '/find-my-dog': typeof FindMyDogRoute
   '/breeds/$breedId': typeof BreedsBreedIdRoute
   '/breeds': typeof BreedsIndexRoute
@@ -50,20 +66,43 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/compare': typeof CompareRoute
+  '/dog-life': typeof DogLifeRoute
   '/find-my-dog': typeof FindMyDogRoute
   '/breeds/$breedId': typeof BreedsBreedIdRoute
   '/breeds/': typeof BreedsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/find-my-dog' | '/breeds/$breedId' | '/breeds/'
+  fullPaths:
+    | '/'
+    | '/compare'
+    | '/dog-life'
+    | '/find-my-dog'
+    | '/breeds/$breedId'
+    | '/breeds/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/find-my-dog' | '/breeds/$breedId' | '/breeds'
-  id: '__root__' | '/' | '/find-my-dog' | '/breeds/$breedId' | '/breeds/'
+  to:
+    | '/'
+    | '/compare'
+    | '/dog-life'
+    | '/find-my-dog'
+    | '/breeds/$breedId'
+    | '/breeds'
+  id:
+    | '__root__'
+    | '/'
+    | '/compare'
+    | '/dog-life'
+    | '/find-my-dog'
+    | '/breeds/$breedId'
+    | '/breeds/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CompareRoute: typeof CompareRoute
+  DogLifeRoute: typeof DogLifeRoute
   FindMyDogRoute: typeof FindMyDogRoute
   BreedsBreedIdRoute: typeof BreedsBreedIdRoute
   BreedsIndexRoute: typeof BreedsIndexRoute
@@ -76,6 +115,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dog-life': {
+      id: '/dog-life'
+      path: '/dog-life'
+      fullPath: '/dog-life'
+      preLoaderRoute: typeof DogLifeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/find-my-dog': {
@@ -104,6 +157,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CompareRoute: CompareRoute,
+  DogLifeRoute: DogLifeRoute,
   FindMyDogRoute: FindMyDogRoute,
   BreedsBreedIdRoute: BreedsBreedIdRoute,
   BreedsIndexRoute: BreedsIndexRoute,
