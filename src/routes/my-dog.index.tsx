@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { CareTile, Panel, RoutineRow, Stat, TopicCard, VetNote } from "@/components/dogmatch/care/parts";
+import { CareCalendar, DogSwitcher, WeekStrip } from "@/components/dogmatch/care/hub";
 import { careImages, categoryImages } from "@/data/care/images";
 import { careTopics, getCareTopic } from "@/data/care/topics";
 import { estimatePortions, weightTrend } from "@/lib/care/portions";
@@ -14,6 +15,9 @@ import {
   type RoutineId,
 } from "@/lib/care/store";
 import { breedById } from "@/data/breeds";
+import { buildWeek } from "@/lib/care/week";
+import { useWeekOverride } from "@/lib/care/records";
+import { useProgress } from "@/lib/training/store";
 
 const title = "My Dog — Everyday health, food and care | DoggMatch";
 const description =
@@ -53,6 +57,10 @@ function MyDogHome() {
   const profile = useCareProfile(dog?.id);
   const weights = useWeights(dog?.id);
   const done = useTodayRoutine(dog?.id);
+  const progress = useProgress(dog?.id);
+  const override = useWeekOverride(dog?.id);
+  const week = buildWeek(dog, profile, progress, override);
+  const todayIndex = (new Date().getDay() + 6) % 7;
   const portions = estimatePortions(profile.weightKg, dog?.ageStage ?? "adult", profile);
   const trend = weightTrend(weights);
   const breed = dog?.breedId ? breedById[dog.breedId] : undefined;
@@ -95,6 +103,9 @@ function MyDogHome() {
                   {profile.weightKg ? ` · ${profile.weightKg} kg` : ""}
                 </p>
               )}
+              <div className="mt-6">
+                <DogSwitcher {...(dog ? { active: dog } : {})} />
+              </div>
             </div>
             <div className="animate-rise overflow-hidden rounded-[2rem] border border-border">
               <img
@@ -187,6 +198,64 @@ function MyDogHome() {
               they'd always rather hear from you early.
             </VetNote>
           </div>
+        </div>
+      </Section>
+
+      {/* ----------------------------------------------------------- week */}
+      <Section className="container-page">
+        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
+          <Panel
+            title={dog ? `${dog.name}'s week` : "Your week"}
+            action={
+              <Link to="/my-dog/week" className="text-sm text-accent underline-offset-4 hover:underline">
+                See the whole week
+              </Link>
+            }
+          >
+            <p className="-mt-2 mb-5 text-[0.9375rem] leading-relaxed text-muted-foreground">
+              The next few days, worked out from your dog's age, breed and how busy your days are.
+            </p>
+            <WeekStrip week={week} todayIndex={todayIndex} />
+          </Panel>
+
+          <Panel title="Coming round again">
+            <p className="-mt-2 mb-5 text-[0.9375rem] leading-relaxed text-muted-foreground">
+              A gentle nudge, never a telling-off. Tick something off once it's done.
+            </p>
+            <CareCalendar {...(dog ? { dog } : {})} />
+          </Panel>
+        </div>
+      </Section>
+
+      {/* ------------------------------------------------------ paper & people */}
+      <Section className="container-page">
+        <div className="grid gap-6 md:grid-cols-3">
+          <Panel title="Print & save">
+            <p className="-mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">
+              A profile card for the sitter, a feeding plan for the fridge, or the whole Dog Pack in
+              one go.
+            </p>
+            <ButtonLink to="/my-dog/print" tone="outline" size="md" className="mt-5">
+              Make something to print
+            </ButtonLink>
+          </Panel>
+          <Panel title="Contacts & information">
+            <p className="-mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">
+              Your vet's number, the microchip, the allergies — all the things you'd hate to be
+              hunting for in a hurry.
+            </p>
+            <ButtonLink to="/my-dog/contacts" tone="outline" size="md" className="mt-5">
+              Fill in the details
+            </ButtonLink>
+          </Panel>
+          <Panel title="Vet visits">
+            <p className="-mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">
+              Write down what you've noticed and what you want to ask, then take it with you.
+            </p>
+            <ButtonLink to="/my-dog/vet" tone="outline" size="md" className="mt-5">
+              Prepare for a visit
+            </ButtonLink>
+          </Panel>
         </div>
       </Section>
 
