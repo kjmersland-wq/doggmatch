@@ -434,6 +434,8 @@
     width: 100%;
     min-height: 0;
     height: 297mm;
+    overflow: hidden;
+    break-inside: avoid;
     break-after: page;
     page-break-after: always;
   }
