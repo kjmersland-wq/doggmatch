@@ -6,11 +6,13 @@ import { ButtonLink, Arrow } from "./ui";
 import { BrandLock } from "./brand-logo";
 
 const links = [
+  { to: "/get-a-dog", key: "getADog" },
   { to: "/find-my-dog", key: "findMyDog" },
   { to: "/breeds", key: "breeds" },
   { to: "/compare", key: "compare" },
   { to: "/dog-life", key: "dogLife" },
   { to: "/train", key: "train" },
+  { to: "/travel", key: "travel" },
   { to: "/my-dog", key: "myDog" },
   { to: "/guides", key: "guides" },
   { to: "/account", key: "account" },

@@ -12,6 +12,8 @@ export const en = {
     secondary: "Because the right dog is about more than breed.",
   },
   nav: {
+    getADog: "Get a Dog",
+    travel: "Travel",
     findMyDog: "Find My Dog",
     breeds: "Breeds",
     compare: "Compare",
