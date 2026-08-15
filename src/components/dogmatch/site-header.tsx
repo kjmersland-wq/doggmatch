@@ -10,6 +10,7 @@ const links = [
   { to: "/breeds", key: "breeds" },
   { to: "/compare", key: "compare" },
   { to: "/dog-life", key: "dogLife" },
+  { to: "/train", key: "train" },
   { to: "/guides", key: "guides" },
 ] as const;
 

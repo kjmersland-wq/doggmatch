@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Compass, Home, MapPin, Sparkles, User } from "lucide-react";
+import { Compass, GraduationCap, Home, MapPin, Sparkles } from "lucide-react";
 import { useT } from "@/i18n";
 
 export function MobileTabs() {
@@ -8,8 +8,8 @@ export function MobileTabs() {
     { to: "/", label: t.nav.home, Icon: Home },
     { to: "/find-my-dog", label: t.nav.match, Icon: Sparkles },
     { to: "/breeds", label: t.nav.explore, Icon: Compass },
+    { to: "/train", label: t.nav.trainShort, Icon: GraduationCap },
     { to: "/dog-life", label: t.nav.nearby, Icon: MapPin },
-    { to: "/about", label: "About", Icon: User },
   ];
 
   return (
