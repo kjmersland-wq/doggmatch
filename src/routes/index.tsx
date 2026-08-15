@@ -102,11 +102,16 @@ function HomePage() {
             </div>
             <figure className="absolute -bottom-8 left-4 hidden w-60 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-lift)] md:block lg:-left-10">
               <figcaption className="eyebrow">Sample match</figcaption>
-              <p className="mt-3 font-display text-lg leading-tight">Labrador Retriever</p>
+              <p className="mt-3 font-display text-lg leading-tight text-foreground">
+                Labrador Retriever
+              </p>
+              <p className="mt-2 font-display text-3xl font-semibold tabular-nums tracking-tight text-accent">
+                94<span className="text-xl align-top">%</span>
+              </p>
               <div className="mt-3 h-[3px] w-full overflow-hidden rounded-full bg-surface-strong">
-                <span className="block h-full w-[94%] rounded-full bg-primary" />
+                <span className="block h-full w-[94%] rounded-full bg-accent" />
               </div>
-              <p className="mt-2 text-xs text-muted-foreground">94% compatibility</p>
+              <p className="mt-2 text-xs text-muted-foreground">compatibility</p>
             </figure>
           </div>
         </div>
