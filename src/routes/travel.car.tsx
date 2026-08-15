@@ -48,7 +48,11 @@ function CarPage() {
       {/* --------------------------------------------------- Safe / unsafe */}
       <Section className="pt-16 md:pt-24">
         <div className="container-page">
-          <SectionHead eyebrow="Safe and unsafe" title={carSafety.title} body={carSafety.body} />
+          <SectionHead
+            eyebrow="Safe and unsafe"
+            title="How your dog should travel."
+            body={carSafety.note}
+          />
           <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1fr_0.8fr] lg:gap-12">
             <div className="rounded-[1.5rem] border border-border bg-card p-8">
               <p className="eyebrow">Safe</p>
@@ -115,12 +119,14 @@ function CarPage() {
         <div className="container-page grid gap-8 lg:grid-cols-2">
           <article className="rounded-[1.75rem] border border-border bg-card p-8 md:p-10">
             <p className="eyebrow">Car sickness</p>
-            <h2 className="display-md mt-4">{carSickness.title}</h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">{carSickness.body}</p>
+            <h2 className="display-md mt-4">Very common, and usually improves.</h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Signs to watch for: {carSickness.signs.join(", ").toLowerCase()}.
+            </p>
             <div className="mt-6">
-              <PointList items={carSickness.tips} />
+              <PointList items={carSickness.helps} />
             </div>
-            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">{carSickness.vet}</p>
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">{carSickness.note}</p>
           </article>
           <article className="rounded-[1.75rem] border border-border bg-card p-8 md:p-10">
             <p className="eyebrow">Long journeys</p>
@@ -143,8 +149,8 @@ function CarPage() {
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
             <div>
               <p className="eyebrow">Public transport</p>
-              <div className="mt-6 rounded-2xl border border-border bg-card p-7">
-                <PointList items={publicTransport} />
+              <div className="mt-6">
+                <CardGrid items={publicTransport} columns={2} />
               </div>
             </div>
             <div>

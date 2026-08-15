@@ -62,12 +62,16 @@ function OutdoorsPage() {
 
       <Section className="bg-surface pt-0">
         <div className="container-page pt-20 md:pt-28">
-          <SectionHead eyebrow="Weather" title={weather.title} body={weather.body} />
+          <SectionHead
+            eyebrow="Weather"
+            title="The weather decides more than the map does."
+            body={weather.note}
+          />
           <div className="mt-12 grid gap-8 md:grid-cols-2">
             <article className="rounded-[1.75rem] border border-border bg-background p-8 md:p-10">
               <h3 className="display-md">Heat</h3>
               <div className="mt-6">
-                <PointList items={weather.heat} tone="watch" />
+                <PointList items={weather.hot} tone="watch" />
               </div>
             </article>
             <article className="rounded-[1.75rem] border border-border bg-background p-8 md:p-10">
@@ -98,7 +102,11 @@ function OutdoorsPage() {
           <div>
             <SectionHead eyebrow="A holiday together" title="What to take." body="Tick it off as you pack. It saves on this device, so it'll still be here next time." />
             <div className="mt-8">
-              <Checklist listId="holiday" items={holidayChecklist} />
+              <Checklist
+                listId="holiday"
+                columns={1}
+                items={holidayChecklist.map((label, i) => ({ id: `h${i}`, label }))}
+              />
             </div>
           </div>
         </div>
