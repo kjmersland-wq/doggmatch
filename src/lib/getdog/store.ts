@@ -22,11 +22,11 @@ export interface GetDogState {
   checked: Record<string, string[]>;
   /** The trip being planned in Travel Abroad. */
   trip: {
-    from?: string;
-    to?: string;
-    date?: string;
-    transport?: string;
-    transit?: string[];
+    from?: string | undefined;
+    to?: string | undefined;
+    date?: string | undefined;
+    transport?: string | undefined;
+    transit?: string[] | undefined;
   };
 }
 
