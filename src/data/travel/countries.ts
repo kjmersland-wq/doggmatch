@@ -287,7 +287,7 @@ export const countries: Country[] = [
     code: "IE",
     name: "Ireland",
     eu: true,
-    sources: [source("Department of Agriculture, Food and the Marine", "https://www.gov.ie/en/publication/8religion-travelling-with-pets/", "Ireland", "2026-08-15")],
+    sources: [source("Department of Agriculture, Food and the Marine", "https://www.gov.ie/en/organisation/department-of-agriculture-food-and-the-marine/", "Ireland", "2026-08-15")],
     entry: {
       fromEu: {
         rules: [...euBase, tapeworm],
