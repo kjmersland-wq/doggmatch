@@ -422,11 +422,11 @@
 @media print {
   @page { size: A4; margin: 0; }
   body { background: #fff; }
+  /* Site chrome never belongs on paper; printables use plain divs. */
   .no-print,
-  body > header,
-  body > footer,
-  header[data-site-header],
-  footer[data-site-footer] { display: none !important; }
+  header,
+  footer,
+  nav { display: none !important; }
   .doc-paper { gap: 0; display: block; }
   .doc-page {
     border: 0;
