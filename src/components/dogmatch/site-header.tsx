@@ -89,6 +89,12 @@ export function SiteHeader() {
                 </button>
               );
             })}
+            <Link
+              to="/plus"
+              className="ml-1 flex items-center gap-1 rounded-full px-3.5 py-2 text-[0.9375rem] text-muted-foreground transition-colors hover:text-foreground"
+            >
+              DoggMatch<span className="font-semibold text-accent">+</span>
+            </Link>
           </nav>
 
           <div className="hidden items-center gap-2.5 lg:flex">
@@ -180,6 +186,14 @@ export function SiteHeader() {
               {t.nav.startMatching}
               <Arrow />
             </ButtonLink>
+
+            <Link
+              to="/plus"
+              onClick={() => setOpen(false)}
+              className="mt-3 flex h-12 w-full items-center justify-center rounded-full border border-border-strong text-[0.9375rem] font-medium"
+            >
+              DoggMatch<span className="font-semibold text-accent">+</span>
+            </Link>
 
             <nav className="mt-6 divide-y divide-border/70" aria-label="Mobile">
               {navGroups.map((g) => {
