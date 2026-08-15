@@ -19,6 +19,7 @@ import { Route as TrainRouteImport } from './routes/train'
 import { Route as BreedsIndexRouteImport } from './routes/breeds.index'
 import { Route as BreedsBreedIdRouteImport } from './routes/breeds.$breedId'
 import { Route as TrainIndexRouteImport } from './routes/train.index'
+import { Route as TrainSetupRouteImport } from './routes/train.setup'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -70,6 +71,11 @@ const TrainIndexRoute = TrainIndexRouteImport.update({
   path: '/',
   getParentRoute: () => TrainRoute,
 } as any)
+const TrainSetupRoute = TrainSetupRouteImport.update({
+  id: '/setup',
+  path: '/setup',
+  getParentRoute: () => TrainRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -80,6 +86,7 @@ export interface FileRoutesByFullPath {
   '/guides': typeof GuidesRoute
   '/train': typeof TrainRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/train/setup': typeof TrainSetupRoute
   '/breeds/': typeof BreedsIndexRoute
   '/train/': typeof TrainIndexRoute
 }
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/find-my-dog': typeof FindMyDogRoute
   '/guides': typeof GuidesRoute
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/train/setup': typeof TrainSetupRoute
   '/breeds': typeof BreedsIndexRoute
   '/train': typeof TrainIndexRoute
 }
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/guides': typeof GuidesRoute
   '/train': typeof TrainRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/train/setup': typeof TrainSetupRoute
   '/breeds/': typeof BreedsIndexRoute
   '/train/': typeof TrainIndexRoute
 }
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/guides'
     | '/train'
     | '/breeds/$breedId'
+    | '/train/setup'
     | '/breeds/'
     | '/train/'
   fileRoutesByTo: FileRoutesByTo
@@ -129,6 +139,7 @@ export interface FileRouteTypes {
     | '/find-my-dog'
     | '/guides'
     | '/breeds/$breedId'
+    | '/train/setup'
     | '/breeds'
     | '/train'
   id:
@@ -141,6 +152,7 @@ export interface FileRouteTypes {
     | '/guides'
     | '/train'
     | '/breeds/$breedId'
+    | '/train/setup'
     | '/breeds/'
     | '/train/'
   fileRoutesById: FileRoutesById
@@ -229,14 +241,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainIndexRouteImport
       parentRoute: typeof TrainRoute
     }
+    '/train/setup': {
+      id: '/train/setup'
+      path: '/setup'
+      fullPath: '/train/setup'
+      preLoaderRoute: typeof TrainSetupRouteImport
+      parentRoute: typeof TrainRoute
+    }
   }
 }
 
 interface TrainRouteChildren {
+  TrainSetupRoute: typeof TrainSetupRoute
   TrainIndexRoute: typeof TrainIndexRoute
 }
 
 const TrainRouteChildren: TrainRouteChildren = {
+  TrainSetupRoute: TrainSetupRoute,
   TrainIndexRoute: TrainIndexRoute,
 }
 
