@@ -6,9 +6,9 @@ import { breedContentEn } from "@/data/breed-content.en";
 import { breedImages } from "@/data/breed-images";
 import { Eyebrow } from "@/components/dogmatch/ui";
 
-const title = "Dog breeds — honest profiles and characteristics | DoggMatch";
+const title = "Dog breeds — an honest look at each one | DoggMatch";
 const description =
-  "Browse breed profiles with temperament, energy, grooming, trainability and the realities of daily life, written without marketing gloss.";
+  "What each breed is really like to live with — their energy, their coat, how they learn, and what an ordinary day with them looks like.";
 
 export const Route = createFileRoute("/breeds/")({
   head: () => ({

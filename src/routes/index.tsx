@@ -11,7 +11,7 @@ import dogLifeImage from "@/assets/dog-life.jpg";
 
 const title = "DoggMatch — Find the dog that's right for your life";
 const description =
-  "DoggMatch helps you discover the dog breeds most compatible with your lifestyle, home, personality and needs — a free, transparent match you can trace to a reason.";
+  "Tell us a little about your life, your home and your days, and we'll help you find the dogs that may suit you best. Free, honest, and we always show our reasoning.";
 const ogImage =
   "https://project--133462b6-1f26-496e-a35b-0de87a08b8b1.lovable.app/og-image.jpg";
 
@@ -101,7 +101,7 @@ function HomePage() {
               />
             </div>
             <figure className="absolute -bottom-8 left-4 hidden w-60 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-lift)] md:block lg:-left-10">
-              <figcaption className="eyebrow">Sample match</figcaption>
+              <figcaption className="eyebrow">What a match looks like</figcaption>
               <p className="mt-3 font-display text-lg leading-tight text-foreground">
                 Labrador Retriever
               </p>
@@ -111,7 +111,7 @@ function HomePage() {
               <div className="mt-3 h-[3px] w-full overflow-hidden rounded-full bg-surface-strong">
                 <span className="block h-full w-[94%] rounded-full bg-accent" />
               </div>
-              <p className="mt-2 text-xs text-muted-foreground">compatibility</p>
+              <p className="mt-2 text-xs text-muted-foreground">match</p>
             </figure>
           </div>
         </div>
