@@ -131,8 +131,8 @@ export function PlusWaitlist() {
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
               By joining, you're happy for us to keep your name and email so we can tell you when
               DoggMatch+ opens. Nothing else, and never passed on. See our{" "}
-              <Link to="/privacy" className="underline underline-offset-4 hover:text-foreground">
-                privacy notice
+              <Link to="/about" className="underline underline-offset-4 hover:text-foreground">
+                privacy notice on our About page
               </Link>
               .
             </p>
