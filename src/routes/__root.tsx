@@ -104,6 +104,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
+        children:
+          "(function(){try{var m=localStorage.getItem('doggmatch.theme');if(!m){m=window.matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';}if(m==='night'){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}}catch(e){}})();",
+      },
+      {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
