@@ -27,8 +27,10 @@ export function SiteFooter() {
           <FooterColumn title={t.footer.resources}>
             <FooterLink to="/guides">{t.footer.guides}</FooterLink>
             <FooterLink to="/guides">{t.footer.ownership}</FooterLink>
-            <FooterLink to="/guides">{t.footer.training}</FooterLink>
-            <FooterLink to="/guides">{t.footer.health}</FooterLink>
+            <FooterLink to="/train">{t.footer.training}</FooterLink>
+            <FooterLink to="/my-dog">{t.footer.health}</FooterLink>
+            <FooterLink to="/my-dog/nutrition">Food &amp; portions</FooterLink>
+            <FooterLink to="/my-dog/food">Can my dog eat this?</FooterLink>
           </FooterColumn>
 
           <FooterColumn title={t.footer.company}>

@@ -11,6 +11,7 @@ const links = [
   { to: "/compare", key: "compare" },
   { to: "/dog-life", key: "dogLife" },
   { to: "/train", key: "train" },
+  { to: "/my-dog", key: "myDog" },
   { to: "/guides", key: "guides" },
 ] as const;
 
