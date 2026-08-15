@@ -1,6 +1,6 @@
 {
-  "name": "DogMatch — Find the dog that's right for your life",
-  "short_name": "DogMatch",
+  "name": "DoggMatch — Find the dog that's right for your life",
+  "short_name": "DoggMatch",
   "description": "A personalised, explainable dog breed compatibility platform.",
   "start_url": "/",
   "scope": "/",

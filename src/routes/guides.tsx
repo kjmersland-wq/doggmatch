@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useT } from "@/i18n";
 import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
 
-const title = "Guides — choosing and living with a dog | DogMatch";
+const title = "Guides — choosing and living with a dog | DoggMatch";
 const description =
   "Plain-language guides on choosing a breed, apartment living, first-time ownership, shedding, training and everyday life with a dog.";
 

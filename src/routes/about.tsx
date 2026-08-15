@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useT } from "@/i18n";
 import { Arrow, ButtonLink, Eyebrow } from "@/components/dogmatch/ui";
 
-const title = "About DogMatch — transparent breed compatibility";
+const title = "About DoggMatch — transparent breed compatibility";
 const description =
-  "DogMatch is a free, privacy-first platform that matches people with dog breeds using a transparent, explainable scoring system rather than AI guesswork.";
+  "DoggMatch is a free, privacy-first platform that matches people with dog breeds using a transparent, explainable scoring system rather than AI guesswork.";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -31,7 +31,7 @@ function AboutPage() {
       <h1 className="display-lg mt-6">{t.brand.tagline}</h1>
       <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
         <p>
-          DogMatch exists because the decision to bring a dog into your life deserves better than a
+          DoggMatch exists because the decision to bring a dog into your life deserves better than a
           list of popular breeds. Choosing well protects both the person and the dog.
         </p>
         <p>

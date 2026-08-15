@@ -7,7 +7,7 @@ import { breedImages } from "@/data/breed-images";
 import { Eyebrow } from "@/components/dogmatch/ui";
 import { cn } from "@/lib/utils";
 
-const title = "Compare dog breeds side by side | DogMatch";
+const title = "Compare dog breeds side by side | DoggMatch";
 const description =
   "Compare up to three breeds across size, energy, trainability, shedding, grooming, apartment suitability, lifespan and cost of ownership.";
 

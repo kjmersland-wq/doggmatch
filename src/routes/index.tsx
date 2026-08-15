@@ -9,7 +9,7 @@ import heroImage from "@/assets/hero.jpg";
 import homeImage from "@/assets/editorial-home.jpg";
 import dogLifeImage from "@/assets/dog-life.jpg";
 
-const title = "DogMatch — Find the dog that's right for your life";
+const title = "DoggMatch — Find the dog that's right for your life";
 const description =
   "A smarter way to discover the dog breed that fits your lifestyle, home, personality and everyday life. Personalised, explainable breed matching.";
 const ogImage =
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: ogImage },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "DogMatch — the right dog, the right life" },
+      { property: "og:image:alt", content: "DoggMatch — the right dog, the right life" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: ogImage },

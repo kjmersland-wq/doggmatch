@@ -6,7 +6,7 @@ import { breedContentEn } from "@/data/breed-content.en";
 import { breedImages } from "@/data/breed-images";
 import { Eyebrow } from "@/components/dogmatch/ui";
 
-const title = "Dog breeds — honest profiles and characteristics | DogMatch";
+const title = "Dog breeds — honest profiles and characteristics | DoggMatch";
 const description =
   "Browse breed profiles with temperament, energy, grooming, trainability and the realities of daily life, written without marketing gloss.";
 

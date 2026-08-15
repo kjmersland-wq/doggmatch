@@ -9,7 +9,7 @@ import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/type
 import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "@/components/dogmatch/ui";
 import { cn } from "@/lib/utils";
 
-const title = "Find My Dog — Free breed compatibility match | DogMatch";
+const title = "Find My Dog — Free breed compatibility match | DoggMatch";
 const description =
   "Answer a few questions about your lifestyle, home and needs, and get an explainable compatibility result across breed characteristics.";
 
