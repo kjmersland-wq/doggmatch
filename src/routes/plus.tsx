@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Arrow, ButtonLink, Badge, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { SectionHead } from "@/components/dogmatch/journey/parts";
+import { PlusWaitlist } from "@/components/dogmatch/plus/waitlist";
 import { cn } from "@/lib/utils";
 import heroImage from "@/assets/plus-hero.jpg";
 import trainImage from "@/assets/train-recall.jpg";
@@ -244,6 +245,49 @@ const firstWeek = [
   { day: "Day 5", title: "Explore Dog Life", line: "Find places and services that fit your life with your dog." },
   { day: "Day 6", title: "Plan your next trip", line: "Get your travel checklist ready." },
   { day: "Day 7", title: "Create your Dog Pack", line: "Keep the important things together, on screen or on paper." },
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "What is DoggMatch+?",
+    a: "It's the membership side of DoggMatch. Free helps you find the right dog. DoggMatch+ helps you look after that dog day to day — training, food, health, routines, travel and documents, all in one place.",
+  },
+  {
+    q: "What do I get with DoggMatch+?",
+    a: "My Dog, the full training programmes, health and care, food and feeding, My Week, the care calendar, travel tools, the complete Dog Pack and printable documents — plus a fuller match report.",
+  },
+  {
+    q: "What stays free?",
+    a: "Everything you need to find the right dog. Is a dog right for me?, Find my dog, breed information, the getting-a-dog guides, basic Dog Life and our free guides stay free.",
+  },
+  {
+    q: "Can I use DoggMatch+ for more than one dog?",
+    a: "Yes. You can keep a separate profile for each dog and switch between them, so nothing gets muddled.",
+  },
+  {
+    q: "Can I print my dog's information?",
+    a: "Yes. The Dog Pack and the individual documents — health summary, feeding plan, weekly plan, contacts, travel pack — are all made to print cleanly on A4 or save as a PDF.",
+  },
+  {
+    q: "Can I use DoggMatch when travelling?",
+    a: "Yes. There's car travel, hiking and holiday guidance, a country-to-country checker for travelling abroad, and a travel pack you can take with you on paper.",
+  },
+  {
+    q: "Is DoggMatch veterinary advice?",
+    a: "No. We offer general guidance about life with a dog. For anything medical, or if you're worried about your dog, please talk to your vet.",
+  },
+  {
+    q: "Can I cancel my membership?",
+    a: "Membership hasn't opened yet, so there's nothing to cancel today. The full subscription details, including how to cancel, will be shown clearly before you ever pay anything.",
+  },
+  {
+    q: "Can I choose monthly or yearly membership?",
+    a: "Yes — €7.99 a month or €59.99 a year. Payment isn't open yet, so both options are simply a preview of what's coming.",
+  },
+  {
+    q: "What happens when I join?",
+    a: "You'll create My Dog, add a few details, and everything else on the site starts to fit around that dog. There's a gentle first week to walk you through it.",
+  },
 ];
 
 /* ------------------------------------------------------------------- page */
@@ -888,7 +932,53 @@ function PlusPage() {
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             We're putting the final pieces in place. Membership will open shortly.
           </p>
+          <a
+            href="#waitlist"
+            className="group mt-6 inline-flex h-14 select-none items-center justify-center gap-2.5 rounded-full border border-border-strong px-7 text-base font-medium text-foreground transition-colors duration-300 hover:bg-surface"
+          >
+            Be first to know when DoggMatch+ opens
+            <Arrow />
+          </a>
         </div>
+      </Section>
+
+      {/* 19b — Waitlist */}
+      <Section id="waitlist" className="container-page scroll-mt-24 pt-0">
+        <PlusWaitlist />
+      </Section>
+
+      {/* 19c — FAQ */}
+      <Section className="container-page pt-0">
+        <SectionHead
+          eyebrow="Questions"
+          title="The things people usually ask"
+          body="Short, honest answers. If there's something else you'd like to know, just write to us."
+        />
+        <div className="mt-12 overflow-hidden rounded-[1.75rem] border border-border">
+          {faqs.map((f) => (
+            <details key={f.q} className="group border-b border-border bg-background last:border-b-0">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-5 p-6 md:p-8">
+                <h3 className="font-display text-lg leading-snug tracking-tight md:text-xl">{f.q}</h3>
+                <span
+                  aria-hidden="true"
+                  className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-border-strong text-accent transition-transform duration-300 group-open:rotate-45"
+                >
+                  +
+                </span>
+              </summary>
+              <p className="px-6 pb-7 leading-relaxed text-muted-foreground md:px-8 md:pb-9 md:pr-16">
+                {f.a}
+              </p>
+            </details>
+          ))}
+        </div>
+        <p className="mt-8 text-[0.9375rem] text-muted-foreground">
+          Still wondering about something?{" "}
+          <Link to="/contact" className="underline underline-offset-4 hover:text-foreground">
+            Get in touch
+          </Link>
+          .
+        </p>
       </Section>
 
       {/* 20 — Final CTA */}
@@ -902,16 +992,16 @@ function PlusPage() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
-                href="#membership"
-                className="group inline-flex h-14 select-none items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-base font-medium text-accent-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)]"
+                href="#waitlist"
+                className="group inline-flex h-14 w-full select-none items-center justify-center gap-2.5 rounded-full bg-accent px-6 text-center text-[0.9375rem] font-medium text-accent-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)] sm:w-auto sm:px-8 sm:text-base"
               >
-                DoggMatch+ coming soon
+                Be first to know when DoggMatch+ opens
                 <Arrow />
               </a>
               <ButtonLink
                 to="/find-my-dog"
                 size="lg"
-                className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                className="w-full border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 sm:w-auto"
                 tone="ghost"
               >
                 Find My Dog
