@@ -932,7 +932,53 @@ function PlusPage() {
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             We're putting the final pieces in place. Membership will open shortly.
           </p>
+          <a
+            href="#waitlist"
+            className="group mt-6 inline-flex h-14 select-none items-center justify-center gap-2.5 rounded-full border border-border-strong px-7 text-base font-medium text-foreground transition-colors duration-300 hover:bg-surface"
+          >
+            Be first to know when DoggMatch+ opens
+            <Arrow />
+          </a>
         </div>
+      </Section>
+
+      {/* 19b — Waitlist */}
+      <Section id="waitlist" className="container-page scroll-mt-24 pt-0">
+        <PlusWaitlist />
+      </Section>
+
+      {/* 19c — FAQ */}
+      <Section className="container-page pt-0">
+        <SectionHead
+          eyebrow="Questions"
+          title="The things people usually ask"
+          body="Short, honest answers. If there's something else you'd like to know, just write to us."
+        />
+        <div className="mt-12 overflow-hidden rounded-[1.75rem] border border-border">
+          {faqs.map((f) => (
+            <details key={f.q} className="group border-b border-border bg-background last:border-b-0">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-5 p-6 md:p-8">
+                <h3 className="font-display text-lg leading-snug tracking-tight md:text-xl">{f.q}</h3>
+                <span
+                  aria-hidden="true"
+                  className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-border-strong text-accent transition-transform duration-300 group-open:rotate-45"
+                >
+                  +
+                </span>
+              </summary>
+              <p className="px-6 pb-7 leading-relaxed text-muted-foreground md:px-8 md:pb-9 md:pr-16">
+                {f.a}
+              </p>
+            </details>
+          ))}
+        </div>
+        <p className="mt-8 text-[0.9375rem] text-muted-foreground">
+          Still wondering about something?{" "}
+          <Link to="/contact" className="underline underline-offset-4 hover:text-foreground">
+            Get in touch
+          </Link>
+          .
+        </p>
       </Section>
 
       {/* 20 — Final CTA */}
@@ -946,16 +992,16 @@ function PlusPage() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
-                href="#membership"
-                className="group inline-flex h-14 select-none items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-base font-medium text-accent-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)]"
+                href="#waitlist"
+                className="group inline-flex h-14 w-full select-none items-center justify-center gap-2.5 rounded-full bg-accent px-6 text-center text-[0.9375rem] font-medium text-accent-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)] sm:w-auto sm:px-8 sm:text-base"
               >
-                DoggMatch+ coming soon
+                Be first to know when DoggMatch+ opens
                 <Arrow />
               </a>
               <ButtonLink
                 to="/find-my-dog"
                 size="lg"
-                className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                className="w-full border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 sm:w-auto"
                 tone="ghost"
               >
                 Find My Dog
