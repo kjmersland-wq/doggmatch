@@ -18,6 +18,7 @@ export function SiteFooter() {
           </div>
 
           <FooterColumn title={t.footer.discover}>
+            <FooterLink to="/plus">DoggMatch+</FooterLink>
             <FooterLink to="/get-a-dog">{t.nav.getADog}</FooterLink>
             <FooterLink to="/find-my-dog">{t.nav.findMyDog}</FooterLink>
             <FooterLink to="/breeds">{t.nav.breeds}</FooterLink>
