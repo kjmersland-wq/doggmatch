@@ -427,6 +427,14 @@
   header,
   footer,
   nav { display: none !important; }
+  /* The page shell must not offset the paper, or every sheet drifts down. */
+  .doc-print-root,
+  .doc-print-root > * {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    overflow: visible !important;
+  }
   .doc-paper { gap: 0; display: block; }
   .doc-page {
     border: 0;

@@ -48,7 +48,7 @@ function PackPage() {
   }, []);
 
   return (
-    <div className="pb-16">
+    <div className="doc-print-root pb-16">
       <div className="no-print container-page flex flex-wrap items-center justify-between gap-4 pt-28 md:pt-32">
         <Link
           to="/my-dog/print"
