@@ -20,9 +20,11 @@ import { Route as TrainRouteImport } from './routes/train'
 import { Route as BreedsIndexRouteImport } from './routes/breeds.index'
 import { Route as BreedsBreedIdRouteImport } from './routes/breeds.$breedId'
 import { Route as MyDogIndexRouteImport } from './routes/my-dog.index'
+import { Route as MyDogContactsRouteImport } from './routes/my-dog.contacts'
 import { Route as MyDogFoodRouteImport } from './routes/my-dog.food'
 import { Route as MyDogNutritionRouteImport } from './routes/my-dog.nutrition'
 import { Route as MyDogSetupRouteImport } from './routes/my-dog.setup'
+import { Route as MyDogVetRouteImport } from './routes/my-dog.vet'
 import { Route as MyDogWeekRouteImport } from './routes/my-dog.week'
 import { Route as MyDogWeightRouteImport } from './routes/my-dog.weight'
 import { Route as TrainIndexRouteImport } from './routes/train.index'
@@ -87,6 +89,11 @@ const MyDogIndexRoute = MyDogIndexRouteImport.update({
   path: '/',
   getParentRoute: () => MyDogRoute,
 } as any)
+const MyDogContactsRoute = MyDogContactsRouteImport.update({
+  id: '/contacts',
+  path: '/contacts',
+  getParentRoute: () => MyDogRoute,
+} as any)
 const MyDogFoodRoute = MyDogFoodRouteImport.update({
   id: '/food',
   path: '/food',
@@ -100,6 +107,11 @@ const MyDogNutritionRoute = MyDogNutritionRouteImport.update({
 const MyDogSetupRoute = MyDogSetupRouteImport.update({
   id: '/setup',
   path: '/setup',
+  getParentRoute: () => MyDogRoute,
+} as any)
+const MyDogVetRoute = MyDogVetRouteImport.update({
+  id: '/vet',
+  path: '/vet',
   getParentRoute: () => MyDogRoute,
 } as any)
 const MyDogWeekRoute = MyDogWeekRouteImport.update({
@@ -153,9 +165,11 @@ export interface FileRoutesByFullPath {
   '/my-dog': typeof MyDogRouteWithChildren
   '/train': typeof TrainRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/my-dog/contacts': typeof MyDogContactsRoute
   '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
   '/my-dog/setup': typeof MyDogSetupRoute
+  '/my-dog/vet': typeof MyDogVetRoute
   '/my-dog/week': typeof MyDogWeekRoute
   '/my-dog/weight': typeof MyDogWeightRoute
   '/train/journey': typeof TrainJourneyRoute
@@ -175,9 +189,11 @@ export interface FileRoutesByTo {
   '/find-my-dog': typeof FindMyDogRoute
   '/guides': typeof GuidesRoute
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/my-dog/contacts': typeof MyDogContactsRoute
   '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
   '/my-dog/setup': typeof MyDogSetupRoute
+  '/my-dog/vet': typeof MyDogVetRoute
   '/my-dog/week': typeof MyDogWeekRoute
   '/my-dog/weight': typeof MyDogWeightRoute
   '/train/journey': typeof TrainJourneyRoute
@@ -200,9 +216,11 @@ export interface FileRoutesById {
   '/my-dog': typeof MyDogRouteWithChildren
   '/train': typeof TrainRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/my-dog/contacts': typeof MyDogContactsRoute
   '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
   '/my-dog/setup': typeof MyDogSetupRoute
+  '/my-dog/vet': typeof MyDogVetRoute
   '/my-dog/week': typeof MyDogWeekRoute
   '/my-dog/weight': typeof MyDogWeightRoute
   '/train/journey': typeof TrainJourneyRoute
@@ -226,9 +244,11 @@ export interface FileRouteTypes {
     | '/my-dog'
     | '/train'
     | '/breeds/$breedId'
+    | '/my-dog/contacts'
     | '/my-dog/food'
     | '/my-dog/nutrition'
     | '/my-dog/setup'
+    | '/my-dog/vet'
     | '/my-dog/week'
     | '/my-dog/weight'
     | '/train/journey'
@@ -248,9 +268,11 @@ export interface FileRouteTypes {
     | '/find-my-dog'
     | '/guides'
     | '/breeds/$breedId'
+    | '/my-dog/contacts'
     | '/my-dog/food'
     | '/my-dog/nutrition'
     | '/my-dog/setup'
+    | '/my-dog/vet'
     | '/my-dog/week'
     | '/my-dog/weight'
     | '/train/journey'
@@ -272,9 +294,11 @@ export interface FileRouteTypes {
     | '/my-dog'
     | '/train'
     | '/breeds/$breedId'
+    | '/my-dog/contacts'
     | '/my-dog/food'
     | '/my-dog/nutrition'
     | '/my-dog/setup'
+    | '/my-dog/vet'
     | '/my-dog/week'
     | '/my-dog/weight'
     | '/train/journey'
@@ -379,6 +403,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MyDogIndexRouteImport
       parentRoute: typeof MyDogRoute
     }
+    '/my-dog/contacts': {
+      id: '/my-dog/contacts'
+      path: '/contacts'
+      fullPath: '/my-dog/contacts'
+      preLoaderRoute: typeof MyDogContactsRouteImport
+      parentRoute: typeof MyDogRoute
+    }
     '/my-dog/food': {
       id: '/my-dog/food'
       path: '/food'
@@ -398,6 +429,13 @@ declare module '@tanstack/react-router' {
       path: '/setup'
       fullPath: '/my-dog/setup'
       preLoaderRoute: typeof MyDogSetupRouteImport
+      parentRoute: typeof MyDogRoute
+    }
+    '/my-dog/vet': {
+      id: '/my-dog/vet'
+      path: '/vet'
+      fullPath: '/my-dog/vet'
+      preLoaderRoute: typeof MyDogVetRouteImport
       parentRoute: typeof MyDogRoute
     }
     '/my-dog/week': {
@@ -460,9 +498,11 @@ declare module '@tanstack/react-router' {
 }
 
 interface MyDogRouteChildren {
+  MyDogContactsRoute: typeof MyDogContactsRoute
   MyDogFoodRoute: typeof MyDogFoodRoute
   MyDogNutritionRoute: typeof MyDogNutritionRoute
   MyDogSetupRoute: typeof MyDogSetupRoute
+  MyDogVetRoute: typeof MyDogVetRoute
   MyDogWeekRoute: typeof MyDogWeekRoute
   MyDogWeightRoute: typeof MyDogWeightRoute
   MyDogIndexRoute: typeof MyDogIndexRoute
@@ -470,9 +510,11 @@ interface MyDogRouteChildren {
 }
 
 const MyDogRouteChildren: MyDogRouteChildren = {
+  MyDogContactsRoute: MyDogContactsRoute,
   MyDogFoodRoute: MyDogFoodRoute,
   MyDogNutritionRoute: MyDogNutritionRoute,
   MyDogSetupRoute: MyDogSetupRoute,
+  MyDogVetRoute: MyDogVetRoute,
   MyDogWeekRoute: MyDogWeekRoute,
   MyDogWeightRoute: MyDogWeightRoute,
   MyDogIndexRoute: MyDogIndexRoute,

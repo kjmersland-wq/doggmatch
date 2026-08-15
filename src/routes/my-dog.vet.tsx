@@ -77,7 +77,14 @@ function VetPage() {
                   type="number"
                   step="0.1"
                   value={draft.weightKg ?? ""}
-                  onChange={(e) => set({ weightKg: e.target.value ? Number(e.target.value) : undefined })}
+                  onChange={(e) =>
+                    setDraft((d) => {
+                      const next = { ...d };
+                      if (e.target.value) next.weightKg = Number(e.target.value);
+                      else delete next.weightKg;
+                      return next;
+                    })
+                  }
                   className={fieldClass}
                 />
               </label>
