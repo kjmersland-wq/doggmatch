@@ -230,10 +230,10 @@ export const documents: DocSpec[] = [
           {
             kind: "fields",
             fields: [
-              { label: "Owner", value: ctx.contacts.owner?.name },
-              { label: "Phone", value: ctx.contacts.owner?.phone },
-              { label: "Vet", value: ctx.contacts.vet?.clinic },
-              { label: "Vet phone", value: ctx.contacts.vet?.phone },
+              { label: "Owner", value: ctx.contacts["owner"]?.["name"] },
+              { label: "Phone", value: ctx.contacts["owner"]?.["phone"] },
+              { label: "Vet", value: ctx.contacts["vet"]?.["clinic"] },
+              { label: "Vet phone", value: ctx.contacts["vet"]?.["phone"] },
             ],
           },
         ],
