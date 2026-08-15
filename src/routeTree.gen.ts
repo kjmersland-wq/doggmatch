@@ -24,7 +24,9 @@ import { Route as BreedsBreedIdRouteImport } from './routes/breeds.$breedId'
 import { Route as GetADogIndexRouteImport } from './routes/get-a-dog.index'
 import { Route as GetADogChooseRouteImport } from './routes/get-a-dog.choose'
 import { Route as GetADogCostsRouteImport } from './routes/get-a-dog.costs'
+import { Route as GetADogPrepareRouteImport } from './routes/get-a-dog.prepare'
 import { Route as GetADogReadyRouteImport } from './routes/get-a-dog.ready'
+import { Route as GetADogWelcomeHomeRouteImport } from './routes/get-a-dog.welcome-home'
 import { Route as MyDogIndexRouteImport } from './routes/my-dog.index'
 import { Route as MyDogContactsRouteImport } from './routes/my-dog.contacts'
 import { Route as MyDogFoodRouteImport } from './routes/my-dog.food'
@@ -39,6 +41,7 @@ import { Route as TrainIndexRouteImport } from './routes/train.index'
 import { Route as TrainJourneyRouteImport } from './routes/train.journey'
 import { Route as TrainLibraryRouteImport } from './routes/train.library'
 import { Route as TrainSetupRouteImport } from './routes/train.setup'
+import { Route as GetADogBreedBreedIdRouteImport } from './routes/get-a-dog.breed.$breedId'
 import { Route as MyDogCareTopicIdRouteImport } from './routes/my-dog.care.$topicId'
 import { Route as TrainLessonsLessonIdRouteImport } from './routes/train.lessons.$lessonId'
 
@@ -117,9 +120,19 @@ const GetADogCostsRoute = GetADogCostsRouteImport.update({
   path: '/costs',
   getParentRoute: () => GetADogRoute,
 } as any)
+const GetADogPrepareRoute = GetADogPrepareRouteImport.update({
+  id: '/prepare',
+  path: '/prepare',
+  getParentRoute: () => GetADogRoute,
+} as any)
 const GetADogReadyRoute = GetADogReadyRouteImport.update({
   id: '/ready',
   path: '/ready',
+  getParentRoute: () => GetADogRoute,
+} as any)
+const GetADogWelcomeHomeRoute = GetADogWelcomeHomeRouteImport.update({
+  id: '/welcome-home',
+  path: '/welcome-home',
   getParentRoute: () => GetADogRoute,
 } as any)
 const MyDogIndexRoute = MyDogIndexRouteImport.update({
@@ -192,6 +205,11 @@ const TrainSetupRoute = TrainSetupRouteImport.update({
   path: '/setup',
   getParentRoute: () => TrainRoute,
 } as any)
+const GetADogBreedBreedIdRoute = GetADogBreedBreedIdRouteImport.update({
+  id: '/breed/$breedId',
+  path: '/breed/$breedId',
+  getParentRoute: () => GetADogRoute,
+} as any)
 const MyDogCareTopicIdRoute = MyDogCareTopicIdRouteImport.update({
   id: '/care/$topicId',
   path: '/care/$topicId',
@@ -217,7 +235,9 @@ export interface FileRoutesByFullPath {
   '/breeds/$breedId': typeof BreedsBreedIdRoute
   '/get-a-dog/choose': typeof GetADogChooseRoute
   '/get-a-dog/costs': typeof GetADogCostsRoute
+  '/get-a-dog/prepare': typeof GetADogPrepareRoute
   '/get-a-dog/ready': typeof GetADogReadyRoute
+  '/get-a-dog/welcome-home': typeof GetADogWelcomeHomeRoute
   '/my-dog/contacts': typeof MyDogContactsRoute
   '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
@@ -234,6 +254,7 @@ export interface FileRoutesByFullPath {
   '/get-a-dog/': typeof GetADogIndexRoute
   '/my-dog/': typeof MyDogIndexRoute
   '/train/': typeof TrainIndexRoute
+  '/get-a-dog/breed/$breedId': typeof GetADogBreedBreedIdRoute
   '/my-dog/care/$topicId': typeof MyDogCareTopicIdRoute
   '/train/lessons/$lessonId': typeof TrainLessonsLessonIdRoute
 }
@@ -248,7 +269,9 @@ export interface FileRoutesByTo {
   '/breeds/$breedId': typeof BreedsBreedIdRoute
   '/get-a-dog/choose': typeof GetADogChooseRoute
   '/get-a-dog/costs': typeof GetADogCostsRoute
+  '/get-a-dog/prepare': typeof GetADogPrepareRoute
   '/get-a-dog/ready': typeof GetADogReadyRoute
+  '/get-a-dog/welcome-home': typeof GetADogWelcomeHomeRoute
   '/my-dog/contacts': typeof MyDogContactsRoute
   '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
@@ -265,6 +288,7 @@ export interface FileRoutesByTo {
   '/get-a-dog': typeof GetADogIndexRoute
   '/my-dog': typeof MyDogIndexRoute
   '/train': typeof TrainIndexRoute
+  '/get-a-dog/breed/$breedId': typeof GetADogBreedBreedIdRoute
   '/my-dog/care/$topicId': typeof MyDogCareTopicIdRoute
   '/train/lessons/$lessonId': typeof TrainLessonsLessonIdRoute
 }
@@ -283,7 +307,9 @@ export interface FileRoutesById {
   '/breeds/$breedId': typeof BreedsBreedIdRoute
   '/get-a-dog/choose': typeof GetADogChooseRoute
   '/get-a-dog/costs': typeof GetADogCostsRoute
+  '/get-a-dog/prepare': typeof GetADogPrepareRoute
   '/get-a-dog/ready': typeof GetADogReadyRoute
+  '/get-a-dog/welcome-home': typeof GetADogWelcomeHomeRoute
   '/my-dog/contacts': typeof MyDogContactsRoute
   '/my-dog/food': typeof MyDogFoodRoute
   '/my-dog/nutrition': typeof MyDogNutritionRoute
@@ -300,6 +326,7 @@ export interface FileRoutesById {
   '/get-a-dog/': typeof GetADogIndexRoute
   '/my-dog/': typeof MyDogIndexRoute
   '/train/': typeof TrainIndexRoute
+  '/get-a-dog/breed/$breedId': typeof GetADogBreedBreedIdRoute
   '/my-dog/care/$topicId': typeof MyDogCareTopicIdRoute
   '/train/lessons/$lessonId': typeof TrainLessonsLessonIdRoute
 }
@@ -319,7 +346,9 @@ export interface FileRouteTypes {
     | '/breeds/$breedId'
     | '/get-a-dog/choose'
     | '/get-a-dog/costs'
+    | '/get-a-dog/prepare'
     | '/get-a-dog/ready'
+    | '/get-a-dog/welcome-home'
     | '/my-dog/contacts'
     | '/my-dog/food'
     | '/my-dog/nutrition'
@@ -336,6 +365,7 @@ export interface FileRouteTypes {
     | '/get-a-dog/'
     | '/my-dog/'
     | '/train/'
+    | '/get-a-dog/breed/$breedId'
     | '/my-dog/care/$topicId'
     | '/train/lessons/$lessonId'
   fileRoutesByTo: FileRoutesByTo
@@ -350,7 +380,9 @@ export interface FileRouteTypes {
     | '/breeds/$breedId'
     | '/get-a-dog/choose'
     | '/get-a-dog/costs'
+    | '/get-a-dog/prepare'
     | '/get-a-dog/ready'
+    | '/get-a-dog/welcome-home'
     | '/my-dog/contacts'
     | '/my-dog/food'
     | '/my-dog/nutrition'
@@ -367,6 +399,7 @@ export interface FileRouteTypes {
     | '/get-a-dog'
     | '/my-dog'
     | '/train'
+    | '/get-a-dog/breed/$breedId'
     | '/my-dog/care/$topicId'
     | '/train/lessons/$lessonId'
   id:
@@ -384,7 +417,9 @@ export interface FileRouteTypes {
     | '/breeds/$breedId'
     | '/get-a-dog/choose'
     | '/get-a-dog/costs'
+    | '/get-a-dog/prepare'
     | '/get-a-dog/ready'
+    | '/get-a-dog/welcome-home'
     | '/my-dog/contacts'
     | '/my-dog/food'
     | '/my-dog/nutrition'
@@ -401,6 +436,7 @@ export interface FileRouteTypes {
     | '/get-a-dog/'
     | '/my-dog/'
     | '/train/'
+    | '/get-a-dog/breed/$breedId'
     | '/my-dog/care/$topicId'
     | '/train/lessons/$lessonId'
   fileRoutesById: FileRoutesById
@@ -527,11 +563,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GetADogCostsRouteImport
       parentRoute: typeof GetADogRoute
     }
+    '/get-a-dog/prepare': {
+      id: '/get-a-dog/prepare'
+      path: '/prepare'
+      fullPath: '/get-a-dog/prepare'
+      preLoaderRoute: typeof GetADogPrepareRouteImport
+      parentRoute: typeof GetADogRoute
+    }
     '/get-a-dog/ready': {
       id: '/get-a-dog/ready'
       path: '/ready'
       fullPath: '/get-a-dog/ready'
       preLoaderRoute: typeof GetADogReadyRouteImport
+      parentRoute: typeof GetADogRoute
+    }
+    '/get-a-dog/welcome-home': {
+      id: '/get-a-dog/welcome-home'
+      path: '/welcome-home'
+      fullPath: '/get-a-dog/welcome-home'
+      preLoaderRoute: typeof GetADogWelcomeHomeRouteImport
       parentRoute: typeof GetADogRoute
     }
     '/my-dog/': {
@@ -632,6 +682,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainSetupRouteImport
       parentRoute: typeof TrainRoute
     }
+    '/get-a-dog/breed/$breedId': {
+      id: '/get-a-dog/breed/$breedId'
+      path: '/breed/$breedId'
+      fullPath: '/get-a-dog/breed/$breedId'
+      preLoaderRoute: typeof GetADogBreedBreedIdRouteImport
+      parentRoute: typeof GetADogRoute
+    }
     '/my-dog/care/$topicId': {
       id: '/my-dog/care/$topicId'
       path: '/care/$topicId'
@@ -652,15 +709,21 @@ declare module '@tanstack/react-router' {
 interface GetADogRouteChildren {
   GetADogChooseRoute: typeof GetADogChooseRoute
   GetADogCostsRoute: typeof GetADogCostsRoute
+  GetADogPrepareRoute: typeof GetADogPrepareRoute
   GetADogReadyRoute: typeof GetADogReadyRoute
+  GetADogWelcomeHomeRoute: typeof GetADogWelcomeHomeRoute
   GetADogIndexRoute: typeof GetADogIndexRoute
+  GetADogBreedBreedIdRoute: typeof GetADogBreedBreedIdRoute
 }
 
 const GetADogRouteChildren: GetADogRouteChildren = {
   GetADogChooseRoute: GetADogChooseRoute,
   GetADogCostsRoute: GetADogCostsRoute,
+  GetADogPrepareRoute: GetADogPrepareRoute,
   GetADogReadyRoute: GetADogReadyRoute,
+  GetADogWelcomeHomeRoute: GetADogWelcomeHomeRoute,
   GetADogIndexRoute: GetADogIndexRoute,
+  GetADogBreedBreedIdRoute: GetADogBreedBreedIdRoute,
 }
 
 const GetADogRouteWithChildren =
