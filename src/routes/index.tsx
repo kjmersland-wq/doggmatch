@@ -12,6 +12,8 @@ import dogLifeImage from "@/assets/dog-life.jpg";
 const title = "DogMatch — Find the dog that's right for your life";
 const description =
   "A smarter way to discover the dog breed that fits your lifestyle, home, personality and everyday life. Personalised, explainable breed matching.";
+const ogImage =
+  "https://project--133462b6-1f26-496e-a35b-0de87a08b8b1.lovable.app/og-image.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,8 +24,13 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
+      { property: "og:image", content: ogImage },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "DogMatch — the right dog, the right life" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      { name: "twitter:image", content: ogImage },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
