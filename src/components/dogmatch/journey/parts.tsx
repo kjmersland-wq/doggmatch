@@ -216,8 +216,8 @@ export function NextStep({
 }) {
   return (
     <Link
-      to={to}
-      {...(params ? { params } : {})}
+      to={to as never}
+      {...(params ? { params: params as never } : {})}
       className="group flex flex-wrap items-center justify-between gap-6 rounded-[1.75rem] border border-border bg-card p-8 transition-colors hover:border-border-strong md:p-10"
     >
       <div>
