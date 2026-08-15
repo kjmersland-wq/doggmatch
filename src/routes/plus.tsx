@@ -54,7 +54,7 @@ function Rail({ children, label }: { children: ReactNode; label: string }) {
   return (
     <div
       aria-label={label}
-      className="mt-12 -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3"
+      className="mt-12 -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3"
     >
       {children}
     </div>
@@ -222,25 +222,35 @@ const plusList = [
   "Everything in Free",
   "My Dog",
   "Complete training",
-  "Health & care tracking",
-  "Food & feeding tracking",
+  "Health & care",
+  "Food & feeding",
   "My Week",
   "Care calendar",
   "Advanced Dog Life",
   "Travel tools",
   "International travel checker",
   "Complete Dog Pack",
-  "Advanced PDF documents",
+  "Printable documents",
   "Multiple dogs",
-  "Advanced match report",
-  "Progress & history",
+  "A fuller match report",
+  "Progress over time",
+];
+
+const firstWeek = [
+  { day: "Day 1", title: "Create My Dog", line: "Give your dog a place of their own." },
+  { day: "Day 2", title: "Set up care", line: "Add feeding, dental, grooming and everyday routines." },
+  { day: "Day 3", title: "Start training", line: "Choose a programme and take the first small step." },
+  { day: "Day 4", title: "Build My Week", line: "Bring walks, training and care together." },
+  { day: "Day 5", title: "Explore Dog Life", line: "Find places and services that fit your life with your dog." },
+  { day: "Day 6", title: "Plan your next trip", line: "Get your travel checklist ready." },
+  { day: "Day 7", title: "Create your Dog Pack", line: "Keep the important things together, on screen or on paper." },
 ];
 
 /* ------------------------------------------------------------------- page */
 
 function PlusPage() {
   return (
-    <div className="pb-24">
+    <div className="overflow-x-clip pb-24">
       {/* 2 — Hero */}
       <section className="container-page pt-24 md:pt-32">
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
@@ -365,6 +375,24 @@ function PlusPage() {
                 <Arrow />
               </ButtonLink>
             </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* 4b — Central product message */}
+      <Section className="container-page pt-0">
+        <div className="rounded-[2rem] border border-border bg-surface p-8 md:p-14">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="display-lg">
+              Find your dog.
+              <br />
+              Then live life together.
+            </h2>
+            <p className="mt-7 text-lg leading-relaxed text-muted-foreground">
+              Finding the right dog is only the beginning. DoggMatch<span className="text-accent">+</span>{" "}
+              gives you one place to look after the everyday things that matter — from training and
+              feeding to health, travel, routines and the little moments in between.
+            </p>
           </div>
         </div>
       </Section>
@@ -495,7 +523,7 @@ function PlusPage() {
           title="Your week with your dog"
           body="Bring training, care, activity and everyday routines together, so nothing important quietly slips."
         />
-        <div className="mt-12 -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 md:mx-0 md:grid md:grid-cols-4 md:snap-none md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-7">
+        <div className="mt-12 -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-0 md:grid md:grid-cols-4 md:snap-none md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-7">
           {week.map((d) => (
             <div key={d.day} className="w-[62vw] shrink-0 snap-start md:w-auto">
               <Card className="h-full p-6">
@@ -728,7 +756,8 @@ function PlusPage() {
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
             <Card>
               <p className="eyebrow">Free</p>
-              <p className="mt-4 font-display text-xl tracking-tight">Find the dog that's right for me</p>
+              <p className="mt-4 font-display text-xl tracking-tight">For finding the right dog.</p>
+              <p className="mt-2 text-sm text-muted-foreground">“Find the dog that's right for me.”</p>
               <ul className="mt-7 space-y-3">
                 {freeList.map((f) => (
                   <li key={f} className="flex gap-3 text-[0.9375rem]">
@@ -740,7 +769,8 @@ function PlusPage() {
             </Card>
             <Card className="border-border-strong">
               <p className="eyebrow text-accent">DoggMatch+</p>
-              <p className="mt-4 font-display text-xl tracking-tight">Now help me give that dog a really good life</p>
+              <p className="mt-4 font-display text-xl tracking-tight">For life with your dog.</p>
+              <p className="mt-2 text-sm text-muted-foreground">“Now help me give that dog a really good life.”</p>
               <ul className="mt-7 grid gap-3 sm:grid-cols-2">
                 {plusList.map((p) => (
                   <li key={p} className="flex gap-3 text-[0.9375rem]">
@@ -771,9 +801,47 @@ function PlusPage() {
         </ul>
       </Section>
 
-      {/* 18 + 19 — Price */}
+      {/* 17b — Your first week */}
       <Section className="container-page pt-0">
-        <div className="grid gap-6 lg:grid-cols-2 lg:max-w-4xl">
+        <SectionHead
+          eyebrow="Your first week with DoggMatch+"
+          title="A simple start to life with DoggMatch+."
+          body="Nothing to rush. A little each day, and by the end of the week your dog has a home here."
+        />
+        <ol className="mt-12 grid gap-px overflow-hidden rounded-[1.75rem] border border-border bg-border md:grid-cols-2">
+          {firstWeek.map((d, i) => (
+            <li
+              key={d.day}
+              className={cn(
+                "flex gap-6 bg-background p-7 md:p-9",
+                i === firstWeek.length - 1 && "md:col-span-2",
+              )}
+            >
+              <span className="mt-1 grid h-11 w-11 shrink-0 place-items-center rounded-full border border-border-strong font-display text-sm tabular-nums text-accent">
+                {i + 1}
+              </span>
+              <div className="min-w-0">
+                <p className="eyebrow">{d.day}</p>
+                <h3 className="display-md mt-2">{d.title}</h3>
+                <p className="mt-2 leading-relaxed text-muted-foreground">{d.line}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      {/* 18 + 19 — Price */}
+      <Section id="membership" className="container-page scroll-mt-24 pt-0">
+        <div className="max-w-2xl">
+          <Eyebrow>Membership</Eyebrow>
+          <h2 className="display-lg mt-6">
+            DoggMatch<span className="text-accent">+</span>
+          </h2>
+          <p className="mt-5 leading-relaxed text-muted-foreground">
+            One membership, everything included. Choose the rhythm that suits you.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 lg:max-w-4xl lg:grid-cols-2">
           <Card className="flex flex-col">
             <p className="eyebrow">Monthly</p>
             <p className="mt-6 font-display text-4xl tracking-tight">
@@ -785,12 +853,13 @@ function PlusPage() {
             <button
               type="button"
               disabled
-              className="mt-8 inline-flex h-14 items-center justify-center rounded-full bg-primary px-8 text-base font-medium text-primary-foreground opacity-50"
+              aria-disabled="true"
+              className="mt-8 inline-flex h-14 w-full items-center justify-center rounded-full border border-border-strong px-8 text-base font-medium text-muted-foreground"
             >
               Coming soon
             </button>
           </Card>
-          <Card className="flex flex-col border-border-strong">
+          <Card className="relative flex flex-col border-border-strong bg-surface">
             <div className="flex items-center gap-3">
               <p className="eyebrow">Yearly</p>
               <Badge tone="accent">Best value</Badge>
@@ -798,22 +867,28 @@ function PlusPage() {
             <p className="mt-6 font-display text-4xl tracking-tight">
               €59.99 <span className="text-lg font-normal text-muted-foreground">/ year</span>
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Save with a yearly membership.
+            <p className="mt-4 font-display text-lg tracking-tight text-accent">
+              Just €5 a month when billed yearly
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Save €35.89 a year compared with paying monthly.
             </p>
             <button
               type="button"
               disabled
-              className="mt-8 inline-flex h-14 items-center justify-center rounded-full bg-primary px-8 text-base font-medium text-primary-foreground opacity-50"
+              aria-disabled="true"
+              className="mt-8 inline-flex h-14 w-full items-center justify-center rounded-full bg-primary px-6 text-[0.9375rem] font-medium text-primary-foreground opacity-80 sm:text-base"
             >
-              Coming soon
+              Join when DoggMatch+ opens
             </button>
           </Card>
         </div>
-        <p className="mt-6 text-sm text-muted-foreground">
-          Memberships aren't open yet. A free trial will be there when they are — nothing to pay,
-          nothing to cancel today.
-        </p>
+        <div className="mt-8 max-w-xl">
+          <p className="font-display text-lg tracking-tight">DoggMatch+ is coming soon.</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            We're putting the final pieces in place. Membership will open shortly.
+          </p>
+        </div>
       </Section>
 
       {/* 20 — Final CTA */}
@@ -822,21 +897,24 @@ function PlusPage() {
           <div className="max-w-2xl">
             <h2 className="display-lg">Your dog is more than a match.</h2>
             <p className="mt-6 text-lg leading-relaxed opacity-80">
-              DoggMatch helps you find the right dog. DoggMatch+ helps you build a great life
-              together.
+              DoggMatch helps you find the dog that's right for you. DoggMatch+ helps you give that
+              dog a really good life.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
-              <ButtonLink to="/my-dog" tone="accent" size="lg">
-                Start with My Dog
+              <a
+                href="#membership"
+                className="group inline-flex h-14 select-none items-center justify-center gap-2.5 rounded-full bg-accent px-8 text-base font-medium text-accent-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)]"
+              >
+                DoggMatch+ coming soon
                 <Arrow />
-              </ButtonLink>
+              </a>
               <ButtonLink
-                to="/breeds"
+                to="/find-my-dog"
                 size="lg"
                 className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
                 tone="ghost"
               >
-                Continue exploring
+                Find My Dog
               </ButtonLink>
             </div>
           </div>
