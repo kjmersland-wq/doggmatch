@@ -250,7 +250,7 @@ const firstWeek = [
 
 function PlusPage() {
   return (
-    <div className="pb-24">
+    <div className="overflow-x-clip pb-24">
       {/* 2 — Hero */}
       <section className="container-page pt-24 md:pt-32">
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
