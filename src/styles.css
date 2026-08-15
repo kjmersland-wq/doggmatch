@@ -421,7 +421,7 @@
 
 @media print {
   @page { size: A4; margin: 0; }
-  body { background: #fff; }
+  html, body, #root, main { margin: 0 !important; padding: 0 !important; background: #fff; }
   /* Site chrome never belongs on paper; printables use plain divs. */
   .no-print,
   header,
