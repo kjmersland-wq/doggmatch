@@ -9,7 +9,7 @@ export function MobileTabs() {
     { to: "/find-my-dog", label: t.nav.match, Icon: Sparkles },
     { to: "/breeds", label: t.nav.explore, Icon: Compass },
     { to: "/dog-life", label: t.nav.nearby, Icon: MapPin },
-    { to: "/about", label: "Profile", Icon: User },
+    { to: "/about", label: "About", Icon: User },
   ];
 
   return (
