@@ -13,7 +13,7 @@ import {
   useWeights,
   type RoutineId,
 } from "@/lib/care/store";
-import { breedsById } from "@/data/breeds";
+import { breedById } from "@/data/breeds";
 
 const title = "My Dog — Everyday health, food and care | DoggMatch";
 const description =
@@ -55,7 +55,7 @@ function MyDogHome() {
   const done = useTodayRoutine(dog?.id);
   const portions = estimatePortions(profile.weightKg, dog?.ageStage ?? "adult", profile);
   const trend = weightTrend(weights);
-  const breed = dog?.breedId ? breedsById[dog.breedId] : undefined;
+  const breed = dog?.breedId ? breedById[dog.breedId] : undefined;
 
   return (
     <div className="pb-24">
