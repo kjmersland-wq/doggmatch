@@ -13,6 +13,7 @@ const links = [
   { to: "/train", key: "train" },
   { to: "/my-dog", key: "myDog" },
   { to: "/guides", key: "guides" },
+  { to: "/account", key: "account" },
 ] as const;
 
 export function SiteHeader() {

@@ -18,6 +18,7 @@ export const en = {
     dogLife: "Dog Life",
     train: "Train Your Dog",
     myDog: "My Dog",
+    account: "My Account",
     guides: "Guides",
     startMatching: "Find My Dog",
     home: "Home",
