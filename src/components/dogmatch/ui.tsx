@@ -103,10 +103,10 @@ export function ScoreBar({ value, label }: { value: number; label: string }) {
   return (
     <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-4 gap-y-2">
       <span className="text-sm text-muted-foreground">{label}</span>
-      <span className="font-display text-sm tabular-nums text-foreground">{value}%</span>
+      <span className="font-display text-sm font-semibold tabular-nums text-foreground">{value}%</span>
       <div className="col-span-2 h-[3px] w-full overflow-hidden rounded-full bg-surface-strong">
         <div
-          className="h-full rounded-full bg-primary transition-[width] duration-[900ms] ease-out"
+          className="h-full rounded-full bg-accent transition-[width] duration-[900ms] ease-out"
           style={{ width: `${value}%` }}
         />
       </div>
@@ -146,7 +146,7 @@ export function ScoreRing({ value, size = 168 }: { value: number; size?: number 
           cy={size / 2}
           r={r}
           fill="none"
-          stroke="var(--color-primary)"
+          stroke="var(--color-accent)"
           strokeWidth={stroke}
           strokeLinecap="round"
           strokeDasharray={c}
@@ -155,8 +155,10 @@ export function ScoreRing({ value, size = 168 }: { value: number; size?: number 
         />
       </svg>
       <div className="absolute text-center">
-        <span className="font-display text-5xl font-medium tabular-nums tracking-tight">{value}</span>
-        <span className="font-display text-2xl align-top">%</span>
+        <span className="font-display text-5xl font-semibold tabular-nums tracking-tight text-accent">
+          {value}
+        </span>
+        <span className="font-display text-2xl align-top text-accent">%</span>
       </div>
     </div>
   );
