@@ -120,7 +120,7 @@ function VetPage() {
               >
                 Save this visit
               </Button>
-              <ButtonLink to="/my-dog/pack" search={{ docs: "vet" }} tone="outline" size="lg">
+              <ButtonLink to="/my-dog/pack" search={{ docs: "vet" } as never} tone="outline" size="lg">
                 Print it
                 <Arrow />
               </ButtonLink>
