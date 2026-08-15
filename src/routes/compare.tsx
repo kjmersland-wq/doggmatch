@@ -7,9 +7,9 @@ import { breedImages } from "@/data/breed-images";
 import { Eyebrow } from "@/components/dogmatch/ui";
 import { cn } from "@/lib/utils";
 
-const title = "Compare dog breeds side by side | DoggMatch";
+const title = "Compare dogs side by side | DoggMatch";
 const description =
-  "Compare up to three breeds across size, energy, trainability, shedding, grooming, apartment suitability, lifespan and cost of ownership.";
+  "Torn between a few dogs? Put up to three side by side and see where they really differ — energy, shedding, grooming, lifespan and yearly cost.";
 
 export const Route = createFileRoute("/compare")({
   head: () => ({
@@ -36,23 +36,23 @@ const ROWS: [string, (id: BreedId) => string][] = [
   ["Trainability", (id) => scale(t(id).trainability)],
   ["Learning ability", (id) => scale(t(id).learningAbility)],
   ["Sociability", (id) => scale(t(id).sociability)],
-  ["Companionship", (id) => scale(t(id).affection)],
+  ["Affection", (id) => scale(t(id).affection)],
   ["Shedding", (id) => scale(t(id).shedding)],
   ["Grooming", (id) => scale(t(id).grooming)],
   ["Barking", (id) => scale(t(id).barking)],
-  ["With children", (id) => scale(t(id).goodWithChildren)],
-  ["With other pets", (id) => scale(t(id).goodWithPets)],
-  ["Apartment suitability", (id) => scale(t(id).apartmentSuitability)],
-  ["First-time owners", (id) => scale(t(id).firstTimeSuitability)],
+  ["Around children", (id) => scale(t(id).goodWithChildren)],
+  ["Around other pets", (id) => scale(t(id).goodWithPets)],
+  ["Suits a flat", (id) => scale(t(id).apartmentSuitability)],
+  ["Good first dog", (id) => scale(t(id).firstTimeSuitability)],
   [
-    "Typical lifespan",
+    "Usually lives",
     (id) => {
       const b = breeds.find((x) => x.id === id)!;
       return `${b.lifespan[0]}–${b.lifespan[1]} years`;
     },
   ],
   [
-    "Estimated annual cost",
+    "Roughly, per year",
     (id) => {
       const b = breeds.find((x) => x.id === id)!;
       return `€${b.annualCost[0]}–${b.annualCost[1]}`;

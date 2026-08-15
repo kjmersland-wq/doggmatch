@@ -9,9 +9,9 @@ import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/type
 import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "@/components/dogmatch/ui";
 import { cn } from "@/lib/utils";
 
-const title = "Find My Dog — Free breed compatibility match | DoggMatch";
+const title = "Find My Dog — a free match, in about two minutes | DoggMatch";
 const description =
-  "Answer a few questions about your lifestyle, home and needs, and get an explainable compatibility result across breed characteristics.";
+  "Answer a few friendly questions about your days, your home and what you're hoping for, and we'll show you the dogs that may suit you best.";
 
 export const Route = createFileRoute("/find-my-dog")({
   head: () => ({
@@ -231,7 +231,7 @@ function Results({ results, onRestart }: { results: MatchResult[]; onRestart: ()
               <div className="max-w-[14rem]">
                 <p className="font-display text-lg leading-tight">{t.result.compatibility}</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Weighted across seven dimensions with your hard limits applied.
+                  Based on everything you told us, including the limits you said you couldn't stretch.
                 </p>
                 {best.status !== "recommended" && (
                   <span className="mt-4 inline-block">
@@ -362,10 +362,10 @@ function Results({ results, onRestart }: { results: MatchResult[]; onRestart: ()
           {t.result.essentialsBody}
         </p>
         <ul className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-          {["Bed & crate", "Collar & lead", "Food & feeding", "Insurance & care"].map((item) => (
+          {["A bed and a safe space", "Collar, lead and tag", "Food and mealtimes", "Insurance and vet care"].map((item) => (
             <li key={item} className="bg-background p-7">
               <p className="font-display text-lg leading-tight">{item}</p>
-              <p className="mt-2 text-sm text-muted-foreground">Sized for a {content.displayName}.</p>
+              <p className="mt-2 text-sm text-muted-foreground">Suited to a {content.displayName}.</p>
             </li>
           ))}
         </ul>

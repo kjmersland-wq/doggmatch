@@ -4,9 +4,9 @@ import { useT } from "@/i18n";
 import { Button, Eyebrow } from "@/components/dogmatch/ui";
 import dogLifeImage from "@/assets/dog-life.jpg";
 
-const title = "Dog Life — dog-friendly places wherever you live | DoggMatch";
+const title = "Dog Life — dog-friendly places where you live | DoggMatch";
 const description =
-  "Parks, walking routes, training, veterinarians, groomers and dog-friendly cafés, restaurants and hotels — searchable by city, town or postcode.";
+  "Parks, good walks, training classes, vets, groomers and places that welcome dogs. Just tell us where you live.";
 
 export const Route = createFileRoute("/dog-life")({
   head: () => ({
@@ -75,7 +75,7 @@ function DogLifePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-8 md:p-12">
             <p className="font-display text-2xl text-primary-foreground">
-              {submitted ? submitted : "Anywhere in the world"}
+              {submitted ? submitted : "Wherever you are"}
             </p>
             <p className="mt-2 max-w-md text-sm text-primary-foreground/80">
               {t.dogLife.comingSoon}
@@ -90,7 +90,7 @@ function DogLifePage() {
             <li key={category} className="bg-background p-7">
               <p className="font-display text-lg leading-tight tracking-tight">{category}</p>
               <p className="mt-2 text-sm text-muted-foreground">
-                {submitted ? `Coverage for ${submitted} is being prepared.` : t.dogLife.comingSoon}
+                {submitted ? `We're still gathering places around ${submitted}.` : t.dogLife.comingSoon}
               </p>
             </li>
           ))}

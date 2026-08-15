@@ -14,17 +14,17 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
     summary:
       "An open-hearted, food-motivated working dog that has become the default family companion for good reason — and that still needs a real job to be content.",
     strengths: [
-      "Highly social and people-oriented",
-      "Strong trainability and food motivation",
-      "Excellent companionship potential",
-      "Good fit for an active lifestyle",
-      "Usually adaptable to family life",
+      "Loves being around people",
+      "Learns quickly, especially for a treat",
+      "Wonderful company, day to day",
+      "Happy to join you on anything active",
+      "Usually settles well into family life",
     ],
     considerations: [
-      "High shedding all year round",
-      "Requires substantial daily exercise",
-      "Large and physically strong on the lead",
-      "Needs mental stimulation to avoid boredom",
+      "Sheds all year round",
+      "Needs a good amount of exercise every day",
+      "Big and strong on the lead",
+      "Gets bored without something to think about",
     ],
   },
   "golden-retriever": {
@@ -32,16 +32,16 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
     summary:
       "Gentle, biddable and endlessly patient. A Golden asks for company more than it asks for anything else.",
     strengths: [
-      "Exceptionally gentle with children",
-      "Very responsive to reward-based training",
-      "Sociable with people and other dogs",
-      "Enjoys outdoor life in cooler climates",
+      "Wonderfully gentle with children",
+      "Loves to learn when there's a reward in it",
+      "Friendly with people and other dogs",
+      "Happiest outdoors in cooler weather",
     ],
     considerations: [
-      "Heavy seasonal shedding",
-      "Coat needs regular brushing",
-      "Struggles in hot climates",
-      "Dislikes long hours alone",
+      "Sheds heavily a couple of times a year",
+      "Needs a regular brush",
+      "Finds hot weather hard",
+      "Doesn't like long hours on their own",
     ],
   },
   poodle: {
@@ -49,16 +49,16 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
     summary:
       "An athletic, unusually intelligent dog behind an elegant coat. Thrives on problem-solving and close partnership.",
     strengths: [
-      "Very low shedding coat",
-      "Outstanding learning ability",
-      "Adaptable to apartments with enough exercise",
+      "Sheds very little",
+      "Picks things up remarkably fast",
+      "Fine in a flat, as long as they get out enough",
       "Playful without being chaotic",
     ],
     considerations: [
-      "Professional grooming every 6–8 weeks",
-      "Needs daily mental work, not just walks",
-      "Can become anxious if left alone often",
-      "Grooming costs add up over a lifetime",
+      "A trip to the groomer every 6–8 weeks",
+      "Needs something to think about, not just walks",
+      "Can get anxious if left alone a lot",
+      "Grooming adds up over the years",
     ],
   },
   "french-bulldog": {
@@ -66,16 +66,16 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
     summary:
       "A compact, comic and deeply attached city companion with modest exercise needs and real health considerations.",
     strengths: [
-      "Excellent for apartment living",
-      "Low exercise requirement",
-      "Affectionate and people-focused",
-      "Quiet compared to most small breeds",
+      "Very happy in a flat",
+      "Doesn't need much exercise",
+      "Affectionate, and always near you",
+      "Quieter than most small dogs",
     ],
     considerations: [
-      "Breathing difficulties in heat and exertion",
-      "Higher lifetime veterinary costs",
-      "Dislikes being left alone",
-      "Choose breeders who prioritise health testing",
+      "Can struggle to breathe in heat or when working hard",
+      "Vet bills tend to be higher over a lifetime",
+      "Doesn't like being left alone",
+      "Worth choosing a breeder who health-tests carefully",
     ],
   },
   "border-collie": {
@@ -83,16 +83,16 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
     summary:
       "The most trainable dog most people should not own. Brilliant, intense, and unhappy without daily work.",
     strengths: [
-      "Extraordinary learning ability",
-      "Superb at sport, scentwork and problem-solving",
-      "Loyal and closely bonded",
-      "Thrives with genuinely active owners",
+      "Learns almost anything you teach",
+      "Brilliant at sport, scentwork and puzzles",
+      "Deeply attached to their person",
+      "At their best with genuinely active people",
     ],
     considerations: [
-      "Very high exercise and stimulation needs",
-      "Poor fit for apartments and quiet routines",
-      "Herding instinct can target children or bikes",
-      "Boredom turns quickly into problem behaviour",
+      "Needs a lot of exercise, and a lot to think about",
+      "Rarely happy in a flat or a quiet routine",
+      "May try to herd children or chase bikes",
+      "Boredom turns into trouble quickly",
     ],
   },
   "cavalier-king-charles-spaniel": {
@@ -100,16 +100,16 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
     summary:
       "A small, soft-natured companion that wants to be wherever you are. Calm company rather than a project.",
     strengths: [
-      "Gentle with children and older adults",
-      "Comfortable in small homes",
-      "Sociable with other dogs and pets",
-      "Modest exercise needs",
+      "Gentle with children and older people",
+      "Perfectly content in a small home",
+      "Gets on with other dogs and pets",
+      "Doesn't need long walks",
     ],
     considerations: [
-      "Known hereditary heart and neurological risks",
-      "Rarely happy alone for long periods",
-      "Regular ear and coat care",
-      "Health testing of parents is essential",
+      "Some known inherited heart and neurological problems",
+      "Rarely happy alone for long",
+      "Ears and coat need regular care",
+      "Always ask about health testing of the parents",
     ],
   },
   greyhound: {
@@ -117,16 +117,16 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
     summary:
       "A sprinter that sleeps most of the day. Quiet, clean and surprisingly well suited to calm homes.",
     strengths: [
-      "Very calm indoors",
-      "Low grooming and low barking",
-      "Short bursts of exercise are enough",
-      "Often available through rescue",
+      "Wonderfully calm indoors",
+      "Easy coat, and rarely barks",
+      "A couple of short bursts of running is plenty",
+      "Often looking for a home through rescue",
     ],
     considerations: [
-      "Strong prey drive around small animals",
-      "Off-lead freedom needs secure areas",
-      "Needs warmth and bedding in cold weather",
-      "Thin skin is easily injured",
+      "Strong urge to chase small animals",
+      "Off-lead time needs a securely fenced space",
+      "Feels the cold, so needs warmth and soft bedding",
+      "Thin skin, so cuts and scrapes happen easily",
     ],
   },
   "shiba-inu": {
@@ -134,16 +134,16 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
     summary:
       "Independent, fastidious and self-contained. A Shiba respects you rather than obeys you.",
     strengths: [
-      "Tolerates time alone better than most",
-      "Clean, almost cat-like habits",
-      "Compact and sturdy",
-      "Long life expectancy",
+      "Copes with time alone better than most",
+      "Clean, almost cat-like",
+      "Small but sturdy",
+      "Often lives a long life",
     ],
     considerations: [
-      "Independent and slow to recall",
-      "Heavy seasonal coat blow",
+      "Independent, and recall takes real work",
+      "Drops a huge amount of coat twice a year",
       "Often reserved with other dogs",
-      "Not an easy first dog",
+      "Not the easiest first dog",
     ],
   },
 };

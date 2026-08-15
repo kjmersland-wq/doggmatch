@@ -13,7 +13,7 @@ export function SiteFooter() {
           <div className="max-w-sm">
             <BrandLock markClassName="h-10 w-10" wordmarkClassName="text-2xl" />
             <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted-foreground">
-              {t.brand.secondary} A transparent compatibility platform for people choosing a dog.
+              {t.brand.secondary} A calm, honest place to work out which dog would suit your life.
             </p>
           </div>
 

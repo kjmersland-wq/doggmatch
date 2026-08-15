@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useT } from "@/i18n";
 import { Arrow, ButtonLink, Eyebrow } from "@/components/dogmatch/ui";
 
-const title = "About DoggMatch — transparent breed compatibility";
+const title = "About DoggMatch — a kinder way to choose a dog";
 const description =
-  "DoggMatch is a free, privacy-first platform that matches people with dog breeds using a transparent, explainable scoring system rather than AI guesswork.";
+  "DoggMatch is a free, honest way to work out which dog might suit your life. We always show our reasoning, and we ask for as little about you as we can.";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -31,17 +31,17 @@ function AboutPage() {
       <h1 className="display-lg mt-6">{t.brand.tagline}</h1>
       <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
         <p>
-          DoggMatch exists because the decision to bring a dog into your life deserves better than a
-          list of popular breeds. Choosing well protects both the person and the dog.
+          Bringing a dog home is a big decision, and it deserves more thought than a list of the
+          most popular breeds. Getting it right is better for you, and much better for the dog.
         </p>
         <p>
-          Our compatibility system is deterministic and explainable. Every score comes from your
-          answers weighed against documented breed characteristics — and every hard limit you set is
-          respected, even when it rules out a breed you like.
+          There's no guesswork here. Every match comes from what you've told us, held up against
+          what each breed usually needs. If you tell us something is a hard limit, we take you at
+          your word — even when that rules out a dog you had your heart set on.
         </p>
         <p>
-          We collect as little as possible. Location is optional until you ask for local
-          recommendations, and nothing you answer is required to be tied to an account.
+          We ask for as little as we can. You only share where you live if you want local
+          suggestions, and you never need an account to get your result.
         </p>
         <p className="text-base">{t.footer.note}</p>
       </div>
