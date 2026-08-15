@@ -20,9 +20,9 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-6">
       <div className="max-w-md text-center">
         <p className="eyebrow justify-center">404</p>
-        <h1 className="display-lg mt-5">That page has wandered off.</h1>
+        <h1 className="display-lg mt-5">This page seems to have wandered off.</h1>
         <p className="mt-4 text-muted-foreground">
-          Let's get you back to something useful.
+          No harm done — let's get you back on track.
         </p>
         <div className="mt-8">
           <Link
@@ -48,10 +48,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-6">
       <div className="max-w-md text-center">
         <h1 className="display-md">
-          We couldn't load that right now.
+          Something went wrong on our side.
         </h1>
         <p className="mt-3 text-muted-foreground">
-          Your match is safe — please try again.
+          Sorry about that. Your answers are safe — give it another go.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <button
@@ -110,7 +110,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "WebSite",
           name: "DoggMatch",
           description:
-            "A personalised, explainable dog breed compatibility platform for real life.",
+            "A friendly, honest way to work out which dog would really suit your life.",
         }),
       },
     ],

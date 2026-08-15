@@ -2,9 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useT } from "@/i18n";
 import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
 
-const title = "Guides — choosing and living with a dog | DoggMatch";
+const title = "Guides — choosing a dog, and living with one | DoggMatch";
 const description =
-  "Plain-language guides on choosing a breed, apartment living, first-time ownership, shedding, training and everyday life with a dog.";
+  "Straight, friendly answers on choosing a breed, living in a flat, your first dog, shedding, training and everyday life together.";
 
 export const Route = createFileRoute("/guides")({
   head: () => ({
@@ -25,28 +25,28 @@ export const Route = createFileRoute("/guides")({
 
 const guides = [
   {
-    title: "Best dogs for apartment living",
-    body: "Space matters less than noise, exercise and tolerance for being alone. What actually predicts a good apartment dog.",
+    title: "Dogs that do well in a flat",
+    body: "Space matters less than you'd think. Noise, exercise and how they cope alone matter far more.",
   },
   {
-    title: "Choosing a first dog",
-    body: "Trainability, recovery from mistakes and forgiving temperaments — the traits that make a first year manageable.",
+    title: "Choosing your first dog",
+    body: "Everyone makes mistakes in the first year. Some dogs forgive them more easily than others.",
   },
   {
-    title: "Living with shedding and sensitivity",
-    body: "What lower-shedding really means, and how households with allergies can approach the decision responsibly.",
+    title: "Shedding, and living with allergies",
+    body: "What lower-shedding actually means, and how to think it through if someone at home reacts to dogs.",
   },
   {
-    title: "Calm dogs for quieter lives",
-    body: "Low energy is not the same as low needs. How to recognise a genuinely calm companion.",
+    title: "Calm dogs for quieter homes",
+    body: "A quiet dog still needs plenty from you. Here's how to spot one that's genuinely easy-going.",
   },
   {
-    title: "Active dogs for active people",
-    body: "Matching a working breed to a real weekly routine rather than an aspirational one.",
+    title: "Dogs for people who like to move",
+    body: "Be honest about the week you actually have, not the one you'd like to have.",
   },
   {
-    title: "The true annual cost of a dog",
-    body: "Food, insurance, veterinary care, grooming and the costs people consistently underestimate.",
+    title: "What a dog really costs in a year",
+    body: "Food, insurance, the vet, the groomer — and the bits almost everyone forgets to budget for.",
   },
 ];
 
@@ -63,7 +63,7 @@ function GuidesPage() {
             <h2 className="display-md">{guide.title}</h2>
             <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">{guide.body}</p>
             <p className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
-              In preparation
+              Coming soon
             </p>
           </li>
         ))}

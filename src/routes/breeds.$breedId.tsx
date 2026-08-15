@@ -13,10 +13,10 @@ export const Route = createFileRoute("/breeds/$breedId")({
   },
   head: ({ params, loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Breed unavailable — DoggMatch" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "We can't find that breed — DoggMatch" }, { name: "robots", content: "noindex" }] };
     }
     const name = loaderData.content.displayName;
-    const title = `${name} — temperament, energy and daily life | DoggMatch`;
+    const title = `${name} — what they're really like to live with | DoggMatch`;
     const description = loaderData.content.summary;
     return {
       meta: [
@@ -120,7 +120,7 @@ function BreedDetail() {
 
       <section className="container-page grid gap-12 border-t border-border py-16 md:grid-cols-2 md:gap-16">
         <div>
-          <h2 className="display-md">Strengths</h2>
+          <h2 className="display-md">What people love about them</h2>
           <ul className="mt-7 space-y-4">
             {content.strengths.map((s) => (
               <li key={s} className="flex gap-3 text-[0.9375rem] leading-relaxed">
