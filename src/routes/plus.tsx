@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Arrow, ButtonLink, Badge, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { SectionHead } from "@/components/dogmatch/journey/parts";
+import { PlusWaitlist } from "@/components/dogmatch/plus/waitlist";
 import { cn } from "@/lib/utils";
 import heroImage from "@/assets/plus-hero.jpg";
 import trainImage from "@/assets/train-recall.jpg";
@@ -244,6 +245,49 @@ const firstWeek = [
   { day: "Day 5", title: "Explore Dog Life", line: "Find places and services that fit your life with your dog." },
   { day: "Day 6", title: "Plan your next trip", line: "Get your travel checklist ready." },
   { day: "Day 7", title: "Create your Dog Pack", line: "Keep the important things together, on screen or on paper." },
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "What is DoggMatch+?",
+    a: "It's the membership side of DoggMatch. Free helps you find the right dog. DoggMatch+ helps you look after that dog day to day — training, food, health, routines, travel and documents, all in one place.",
+  },
+  {
+    q: "What do I get with DoggMatch+?",
+    a: "My Dog, the full training programmes, health and care, food and feeding, My Week, the care calendar, travel tools, the complete Dog Pack and printable documents — plus a fuller match report.",
+  },
+  {
+    q: "What stays free?",
+    a: "Everything you need to find the right dog. Is a dog right for me?, Find my dog, breed information, the getting-a-dog guides, basic Dog Life and our free guides stay free.",
+  },
+  {
+    q: "Can I use DoggMatch+ for more than one dog?",
+    a: "Yes. You can keep a separate profile for each dog and switch between them, so nothing gets muddled.",
+  },
+  {
+    q: "Can I print my dog's information?",
+    a: "Yes. The Dog Pack and the individual documents — health summary, feeding plan, weekly plan, contacts, travel pack — are all made to print cleanly on A4 or save as a PDF.",
+  },
+  {
+    q: "Can I use DoggMatch when travelling?",
+    a: "Yes. There's car travel, hiking and holiday guidance, a country-to-country checker for travelling abroad, and a travel pack you can take with you on paper.",
+  },
+  {
+    q: "Is DoggMatch veterinary advice?",
+    a: "No. We offer general guidance about life with a dog. For anything medical, or if you're worried about your dog, please talk to your vet.",
+  },
+  {
+    q: "Can I cancel my membership?",
+    a: "Membership hasn't opened yet, so there's nothing to cancel today. The full subscription details, including how to cancel, will be shown clearly before you ever pay anything.",
+  },
+  {
+    q: "Can I choose monthly or yearly membership?",
+    a: "Yes — €7.99 a month or €59.99 a year. Payment isn't open yet, so both options are simply a preview of what's coming.",
+  },
+  {
+    q: "What happens when I join?",
+    a: "You'll create My Dog, add a few details, and everything else on the site starts to fit around that dog. There's a gentle first week to walk you through it.",
+  },
 ];
 
 /* ------------------------------------------------------------------- page */
