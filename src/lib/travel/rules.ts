@@ -80,9 +80,9 @@ export interface RouteCheck {
 }
 
 export function checkRoute(input: {
-  from?: string;
-  to?: string;
-  transit?: string[];
+  from?: string | undefined;
+  to?: string | undefined;
+  transit?: string[] | undefined;
 }): RouteCheck {
   const unknown: string[] = [];
   if (input.from && !countriesByCode[input.from]) unknown.push(input.from);

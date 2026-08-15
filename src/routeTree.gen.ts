@@ -43,6 +43,7 @@ import { Route as TrainJourneyRouteImport } from './routes/train.journey'
 import { Route as TrainLibraryRouteImport } from './routes/train.library'
 import { Route as TrainSetupRouteImport } from './routes/train.setup'
 import { Route as TravelIndexRouteImport } from './routes/travel.index'
+import { Route as TravelAbroadRouteImport } from './routes/travel.abroad'
 import { Route as TravelCarRouteImport } from './routes/travel.car'
 import { Route as TravelOutdoorsRouteImport } from './routes/travel.outdoors'
 import { Route as GetADogBreedBreedIdRouteImport } from './routes/get-a-dog.breed.$breedId'
@@ -219,6 +220,11 @@ const TravelIndexRoute = TravelIndexRouteImport.update({
   path: '/',
   getParentRoute: () => TravelRoute,
 } as any)
+const TravelAbroadRoute = TravelAbroadRouteImport.update({
+  id: '/abroad',
+  path: '/abroad',
+  getParentRoute: () => TravelRoute,
+} as any)
 const TravelCarRoute = TravelCarRouteImport.update({
   id: '/car',
   path: '/car',
@@ -275,6 +281,7 @@ export interface FileRoutesByFullPath {
   '/train/journey': typeof TrainJourneyRoute
   '/train/library': typeof TrainLibraryRoute
   '/train/setup': typeof TrainSetupRoute
+  '/travel/abroad': typeof TravelAbroadRoute
   '/travel/car': typeof TravelCarRoute
   '/travel/outdoors': typeof TravelOutdoorsRoute
   '/breeds/': typeof BreedsIndexRoute
@@ -312,6 +319,7 @@ export interface FileRoutesByTo {
   '/train/journey': typeof TrainJourneyRoute
   '/train/library': typeof TrainLibraryRoute
   '/train/setup': typeof TrainSetupRoute
+  '/travel/abroad': typeof TravelAbroadRoute
   '/travel/car': typeof TravelCarRoute
   '/travel/outdoors': typeof TravelOutdoorsRoute
   '/breeds': typeof BreedsIndexRoute
@@ -354,6 +362,7 @@ export interface FileRoutesById {
   '/train/journey': typeof TrainJourneyRoute
   '/train/library': typeof TrainLibraryRoute
   '/train/setup': typeof TrainSetupRoute
+  '/travel/abroad': typeof TravelAbroadRoute
   '/travel/car': typeof TravelCarRoute
   '/travel/outdoors': typeof TravelOutdoorsRoute
   '/breeds/': typeof BreedsIndexRoute
@@ -397,6 +406,7 @@ export interface FileRouteTypes {
     | '/train/journey'
     | '/train/library'
     | '/train/setup'
+    | '/travel/abroad'
     | '/travel/car'
     | '/travel/outdoors'
     | '/breeds/'
@@ -434,6 +444,7 @@ export interface FileRouteTypes {
     | '/train/journey'
     | '/train/library'
     | '/train/setup'
+    | '/travel/abroad'
     | '/travel/car'
     | '/travel/outdoors'
     | '/breeds'
@@ -475,6 +486,7 @@ export interface FileRouteTypes {
     | '/train/journey'
     | '/train/library'
     | '/train/setup'
+    | '/travel/abroad'
     | '/travel/car'
     | '/travel/outdoors'
     | '/breeds/'
@@ -743,6 +755,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TravelIndexRouteImport
       parentRoute: typeof TravelRoute
     }
+    '/travel/abroad': {
+      id: '/travel/abroad'
+      path: '/abroad'
+      fullPath: '/travel/abroad'
+      preLoaderRoute: typeof TravelAbroadRouteImport
+      parentRoute: typeof TravelRoute
+    }
     '/travel/car': {
       id: '/travel/car'
       path: '/car'
@@ -853,12 +872,14 @@ const TrainRouteChildren: TrainRouteChildren = {
 const TrainRouteWithChildren = TrainRoute._addFileChildren(TrainRouteChildren)
 
 interface TravelRouteChildren {
+  TravelAbroadRoute: typeof TravelAbroadRoute
   TravelCarRoute: typeof TravelCarRoute
   TravelOutdoorsRoute: typeof TravelOutdoorsRoute
   TravelIndexRoute: typeof TravelIndexRoute
 }
 
 const TravelRouteChildren: TravelRouteChildren = {
+  TravelAbroadRoute: TravelAbroadRoute,
   TravelCarRoute: TravelCarRoute,
   TravelOutdoorsRoute: TravelOutdoorsRoute,
   TravelIndexRoute: TravelIndexRoute,
