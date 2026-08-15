@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useT } from "@/i18n";
 import { Arrow, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
-import { LessonCard, levelLabels } from "@/components/dogmatch/training/parts";
+import { LessonCard } from "@/components/dogmatch/training/parts";
 import { trainingCategories } from "@/data/training/categories";
 import { categoryImages, trainingImages } from "@/data/training/images";
 import { lessons } from "@/data/training/lessons";
@@ -52,10 +52,21 @@ function TrainHome() {
                 {t.train.heroBody}
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
-                <ButtonLink to={dog ? "/train/lessons/$lessonId" : "/train/setup"} params={{ lessonId: plan[0]?.lesson.id ?? "recall" } as never} size="lg">
-                  {dog ? t.train.startToday : t.train.setupCta}
-                  <Arrow />
-                </ButtonLink>
+                {dog ? (
+                  <ButtonLink
+                    to="/train/lessons/$lessonId"
+                    params={{ lessonId: plan[0]?.lesson.id ?? "recall" }}
+                    size="lg"
+                  >
+                    {t.train.startToday}
+                    <Arrow />
+                  </ButtonLink>
+                ) : (
+                  <ButtonLink to="/train/setup" size="lg">
+                    {t.train.setupCta}
+                    <Arrow />
+                  </ButtonLink>
+                )}
                 <ButtonLink to="/train/library" tone="outline" size="lg">
                   {t.train.exploreCta}
                 </ButtonLink>
@@ -280,4 +291,3 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-export { levelLabels };
