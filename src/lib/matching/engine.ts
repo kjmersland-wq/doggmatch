@@ -135,35 +135,35 @@ function hardConstraints(breed: Breed, p: UserProfile): { warnings: string[]; ca
   let cap = 100;
 
   if (p["energyLimit"] === "no" && t.energy >= 4) {
-    warnings.push("You told us you need a calmer dog. This breed's energy level is genuinely high.");
+    warnings.push("You told us you'd need a calmer dog, and this one really does have a lot of energy.");
     cap = Math.min(cap, 52);
   }
   if (p["physical"] === "light" && t.strengthRequired >= 4) {
-    warnings.push("This is a large, physically strong dog — difficult to manage if strength is a limitation.");
+    warnings.push("This is a big, strong dog. That can be hard work on the lead if strength is an issue for you.");
     cap = Math.min(cap, 55);
   }
   if (p["shedding"] === "must-low" && t.shedding >= 4) {
-    warnings.push("Heavy shedding. With a sensitivity in the household, this is a poor starting point.");
+    warnings.push("They shed a lot. With someone at home who reacts to dogs, that's a difficult place to start.");
     cap = Math.min(cap, 50);
   }
   if (p["children"] === "young" && t.goodWithChildren <= 3) {
-    warnings.push("Not the most reliable choice around young children without experienced handling.");
+    warnings.push("With young children at home, this one usually needs an experienced hand.");
     cap = Math.min(cap, 62);
   }
   if (p["pets"] === "small" && t.goodWithPets <= 2) {
-    warnings.push("Strong prey drive. Small animals in the same home would be a real risk.");
+    warnings.push("They have a strong chase instinct, so small pets in the same home would be a real worry.");
     cap = Math.min(cap, 45);
   }
   if (p["experience"] === "first" && t.firstTimeSuitability <= 2) {
-    warnings.push("Demanding for a first dog — this breed rewards experience.");
+    warnings.push("A demanding choice for a first dog. They do best with someone who's done it before.");
     cap = Math.min(cap, 60);
   }
   if (Number(p["alone"] ?? 0) >= 6 && t.aloneTolerance <= 2) {
-    warnings.push("Struggles with long hours alone. Six hours or more would need a real plan.");
+    warnings.push("They find long days on their own hard. Six hours or more would need a proper plan.");
     cap = Math.min(cap, 58);
   }
   if (p["home"] === "apartment" && t.apartmentSuitability <= 1) {
-    warnings.push("Apartment life rarely works for this breed, even with long walks.");
+    warnings.push("Flat living rarely suits this breed, even with plenty of long walks.");
     cap = Math.min(cap, 50);
   }
 
