@@ -56,7 +56,7 @@ function CareTopicPage() {
             alt=""
             width={1400}
             height={800}
-            className="aspect-[16/9] w-full object-cover"
+            className="max-h-[460px] w-full object-cover"
           />
         </div>
       </section>
@@ -83,7 +83,7 @@ function CareTopicPage() {
                         loading="lazy"
                         width={1200}
                         height={800}
-                        className="aspect-[16/9] w-full object-cover"
+                        className="max-h-[460px] w-full object-cover"
                       />
                     )}
                     <div className="p-7">
