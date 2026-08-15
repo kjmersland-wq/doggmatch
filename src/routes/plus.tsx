@@ -54,7 +54,7 @@ function Rail({ children, label }: { children: ReactNode; label: string }) {
   return (
     <div
       aria-label={label}
-      className="mt-12 -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3"
+      className="mt-12 -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3"
     >
       {children}
     </div>
@@ -877,7 +877,7 @@ function PlusPage() {
               type="button"
               disabled
               aria-disabled="true"
-              className="mt-8 inline-flex h-14 w-full items-center justify-center rounded-full bg-primary px-8 text-base font-medium text-primary-foreground opacity-70"
+              className="mt-8 inline-flex h-14 w-full items-center justify-center rounded-full bg-primary px-6 text-[0.9375rem] font-medium text-primary-foreground opacity-80 sm:text-base"
             >
               Join when DoggMatch+ opens
             </button>
