@@ -149,4 +149,28 @@ export const questions: QuizQuestion[] = [
       { value: "family", label: "A dog for the whole family" },
     ],
   },
+  {
+    id: "allergy",
+    eyebrow: "Coat and allergies",
+    title: "Does anyone in your home have a dog allergy?",
+    help: "Some breeds shed less and hold their coat, which some people find easier. No dog is completely allergy-free, and tolerance varies from person to person.",
+    options: [
+      { value: "none", label: "No, nobody reacts to dogs" },
+      { value: "mild", label: "Mild reactions", hint: "A bit sniffly around some dogs" },
+      { value: "significant", label: "A significant allergy", hint: "We'd want proper allergy advice first" },
+      { value: "unsure", label: "We're not sure yet" },
+    ],
+  },
+  {
+    id: "wellbeing",
+    eyebrow: "Company and wellbeing",
+    title: "How much are you hoping for a calm, close companion to have around?",
+    help: "A dog is company, not care. We'll look at calmness, sociability and how people-oriented a breed tends to be.",
+    options: [
+      { value: "no", label: "Not something I'm looking for" },
+      { value: "some", label: "It would be nice" },
+      { value: "important", label: "Yes, that matters to me" },
+      { value: "very", label: "That's the main thing I want" },
+    ],
+  },
 ];
