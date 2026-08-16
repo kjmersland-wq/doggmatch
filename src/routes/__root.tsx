@@ -104,6 +104,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#071A2F" },
+      { title: "DoggMatch — Find the dog that's right for your life" },
+      {
+        name: "description",
+        content:
+          "A friendly, honest way to work out which dog would really suit your life. Free, transparent, and we always show our reasoning.",
+      },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
       { property: "og:site_name", content: "DoggMatch" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
