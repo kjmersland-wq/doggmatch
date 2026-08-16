@@ -170,6 +170,8 @@ export const en = {
     temperament: "Temperament",
     trainability: "Learning together",
     companionship: "Company",
+    allergy: "Allergy considerations",
+    wellbeing: "Companion & wellbeing",
     maintenance: "Care and grooming",
   },
   breeds: {
