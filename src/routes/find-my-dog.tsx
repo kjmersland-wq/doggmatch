@@ -7,17 +7,37 @@ const resultCopy = {
     scoreNote: "Based on everything you told us, including the limits you said you couldn't stretch.",
     essentials: ["A bed and a safe space", "Collar, lead and tag", "Food and mealtimes", "Insurance and vet care"],
     suited: "Suited to a {breed}.",
+    ownDogTitle: "And the dog you already have",
+    ownDogMixed:
+      "Scored from {name}'s own characteristics — size, energy, how much exercise they need, how they are with people — not from a breed label.",
+    ownDogPure:
+      "Scored from what we know about {name}, breed included.",
+    ownDogUnknown:
+      "You told us {name} is a mix with unknown parentage, so we haven't guessed at breeds. This is your dog, as you described them.",
+    ownDogFit: "Fit with the life you described",
+    ownDogEdit: "Add more about {name}",
   },
   no: {
     scoreNote: "Basert på alt du har fortalt oss, også grensene du sa du ikke kunne tøye.",
     essentials: ["En seng og et trygt sted", "Halsbånd, bånd og ID-brikke", "Mat og faste måltider", "Forsikring og veterinær"],
     suited: "Tilpasset en {breed}.",
+    ownDogTitle: "Og hunden du allerede har",
+    ownDogMixed:
+      "Regnet ut fra {name} sine egne egenskaper — størrelse, energi, mosjonsbehov, hvordan den er med folk — ikke fra en rasemerkelapp.",
+    ownDogPure:
+      "Regnet ut fra det vi vet om {name}, rasen inkludert.",
+    ownDogUnknown:
+      "Du har fortalt oss at {name} er en blanding med ukjent opphav, så vi gjetter ikke på raser. Dette er hunden din, slik du har beskrevet den.",
+    ownDogFit: "Passer med livet du beskrev",
+    ownDogEdit: "Fortell mer om {name}",
   },
 };
 import { quizQuestions } from "@/data/questions.locale";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { matchBreeds, explain } from "@/lib/matching/engine";
+import { matchOwnDog, resolveDogTraits, traitBasisNote } from "@/lib/dogs/profile";
+import { useActiveDog } from "@/lib/training/store";
 import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/types";
 import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "@/components/dogmatch/ui";
 import { cn } from "@/lib/utils";
@@ -76,7 +96,7 @@ function FindMyDogPage() {
   }
 
   if (phase === "revealing") return <Reveal onDone={() => setPhase("result")} />;
-  if (phase === "result") return <Results results={results} onRestart={restart} />;
+  if (phase === "result") return <Results results={results} profile={profile} onRestart={restart} />;
 
   return (
     <div className="container-page flex min-h-[calc(100vh-72px)] max-w-3xl flex-col py-10 md:py-16">
@@ -223,8 +243,19 @@ const DIMENSION_ORDER: DimensionKey[] = [
   "maintenance",
 ];
 
-function Results({ results, onRestart }: { results: MatchResult[]; onRestart: () => void }) {
+function Results({
+  results,
+  profile,
+  onRestart,
+}: {
+  results: MatchResult[];
+  profile: UserProfile;
+  onRestart: () => void;
+}) {
   const t = useT();
+  const ownDog = useActiveDog();
+  const ownTraits = resolveDogTraits(ownDog);
+  const ownFit = ownDog ? matchOwnDog(ownDog, profile) : undefined;
   const c = useCopy(resultCopy);
   const best = results[0]!;
   const content = breedContent()[best.breedId];
@@ -270,6 +301,44 @@ function Results({ results, onRestart }: { results: MatchResult[]; onRestart: ()
           </div>
         </div>
       </section>
+
+      {/* the dog you already have — scored from the dog itself, not a breed guess */}
+      {ownDog && ownFit && (
+        <section className="container-page mt-20 md:mt-28">
+          <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
+            <h2 className="display-md">{c.ownDogTitle}</h2>
+            <div className="mt-8 flex flex-wrap items-center gap-8">
+              <ScoreRing value={ownFit.score} />
+              <div className="max-w-md">
+                <p className="font-display text-lg leading-tight">{c.ownDogFit}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {interpolate(
+                    ownTraits.unknownMix ? c.ownDogUnknown : ownTraits.isMixed ? c.ownDogMixed : c.ownDogPure,
+                    { name: ownDog.name },
+                  )}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {traitBasisNote(ownTraits)}
+                </p>
+                <div className="mt-5">
+                  <ButtonLink to="/my-dog/setup" tone="outline">
+                    {interpolate(c.ownDogEdit, { name: ownDog.name })}
+                  </ButtonLink>
+                </div>
+              </div>
+            </div>
+            {ownFit.warnings.length > 0 && (
+              <ul className="mt-8 space-y-3">
+                {ownFit.warnings.map((w) => (
+                  <li key={w} className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                    {w}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* breakdown */}
       <section className="container-page mt-20 md:mt-28">
