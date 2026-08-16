@@ -7,6 +7,8 @@ import puppyImage from "@/assets/puppy.jpg";
 import adultImage from "@/assets/adult-dog.jpg";
 import breederImage from "@/assets/breeder.jpg";
 import adoptionImage from "@/assets/adoption.jpg";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Puppy or adult, breeder or rescue — choosing carefully | DoggMatch";
 const description =
@@ -24,7 +26,7 @@ export const Route = createFileRoute("/get-a-dog/choose")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/get-a-dog/choose" }],
+    links: seoLinks("/get-a-dog/choose"),
   }),
   component: ChoosePage,
 });
@@ -93,6 +95,7 @@ function ChoosePage() {
       <section className="container-page max-w-3xl pt-28 md:pt-36">
         <p className="eyebrow">{c.eyebrow}</p>
         <h1 className="display-xl mt-6">{puppyVsAdult.title}</h1>
+        <ShareBar className="mt-6" />
         <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{puppyVsAdult.body}</p>
       </section>
 

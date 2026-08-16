@@ -9,6 +9,7 @@ import { Arrow, ButtonLink, Eyebrow, Section, TraitMeter } from "@/components/do
 import heroImage from "@/assets/hero.jpg";
 import homeImage from "@/assets/editorial-home.jpg";
 import dogLifeImage from "@/assets/dog-life.jpg";
+import { seoLinks, abs } from "@/lib/seo";
 
 const title = "DoggMatch — Find the dog that's right for your life";
 const description =
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: abs("/") },
       { property: "og:image", content: ogImage },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
@@ -33,7 +34,7 @@ export const Route = createFileRoute("/")({
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: ogImage },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: seoLinks("/"),
   }),
   component: HomePage,
 });

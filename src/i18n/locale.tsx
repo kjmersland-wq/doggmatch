@@ -54,6 +54,19 @@ function readStored(): Locale | null {
   }
 }
 
+/**
+ * A shared link can carry the language it was read in (?lang=no), which is
+ * also what the hreflang alternates point at. An explicit link wins over a
+ * previously stored choice.
+ */
+function readFromUrl(): Locale | null {
+  if (typeof window === "undefined") return null;
+  const v = new URLSearchParams(window.location.search).get("lang");
+  if (v === "no" || v === "nb" || v === "nn") return "no";
+  if (v === "en") return "en";
+  return null;
+}
+
 function detect(): Locale {
   if (typeof navigator === "undefined") return "en";
   const l = (navigator.language || "").toLowerCase();
@@ -65,7 +78,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const next = readStored() ?? detect();
+    const next = readFromUrl() ?? readStored() ?? detect();
     currentLocale = next;
     setState(next);
     setReady(true);

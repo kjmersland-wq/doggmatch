@@ -8,6 +8,8 @@ import type { CategoryId, Level } from "@/data/training/types";
 import { useActiveDog, useProgress } from "@/lib/training/store";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Every training lesson — Train Your Dog | DoggMatch";
 const description =
@@ -25,7 +27,7 @@ export const Route = createFileRoute("/train/library")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/train/library" }],
+    links: seoLinks("/train/library"),
   }),
   component: LibraryPage,
 });
@@ -81,6 +83,7 @@ function LibraryPage() {
     <div className="container-page pt-28 pb-28 md:pt-36">
       <Eyebrow>{c.eyebrow}</Eyebrow>
       <h1 className="display-lg mt-5 max-w-2xl">{c.title}</h1>
+      <ShareBar className="mt-6" />
       <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">{c.intro}</p>
 
       <div className="mt-10 flex flex-wrap items-center gap-3">

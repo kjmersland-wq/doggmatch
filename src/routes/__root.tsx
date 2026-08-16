@@ -15,6 +15,7 @@ import { LocaleProvider, useCopy } from "@/i18n";
 import { SiteHeader } from "@/components/dogmatch/site-header";
 import { SiteFooter } from "@/components/dogmatch/site-footer";
 import { MobileTabs } from "@/components/dogmatch/mobile-tabs";
+import { CookieConsent } from "@/components/dogmatch/cookie-consent";
 
 const shellCopy = {
   en: {
@@ -135,8 +136,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "DoggMatch",
+          url: "https://www.doggmatch.com/",
+          inLanguage: ["en", "nb-NO"],
           description:
             "A friendly, honest way to work out which dog would really suit your life.",
+          publisher: {
+            "@type": "Organization",
+            name: "KM TECH LABS",
+            legalName: "KM TECH LABS",
+            url: "https://www.doggmatch.com/",
+            logo: "https://www.doggmatch.com/icon-192.png",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Kristiansand",
+              addressCountry: "NO",
+            },
+            identifier: "934 044 029",
+          },
         }),
       },
     ],
@@ -174,6 +190,7 @@ function RootComponent() {
         </main>
         <SiteFooter />
         <MobileTabs />
+        <CookieConsent />
       </LocaleProvider>
     </QueryClientProvider>
   );

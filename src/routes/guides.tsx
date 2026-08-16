@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useT, useCopy } from "@/i18n";
 import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
+import { seoLinks, abs } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Guides — choosing a dog, and living with one | DoggMatch";
 const description =
@@ -14,11 +16,11 @@ export const Route = createFileRoute("/guides")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/guides" },
+      { property: "og:url", content: abs("/guides") },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/guides" }],
+    links: seoLinks("/guides"),
   }),
   component: GuidesPage,
 });
@@ -91,6 +93,7 @@ function GuidesPage() {
     <div className="container-page py-14 md:py-20">
       <Eyebrow>{t.guides.title}</Eyebrow>
       <h1 className="display-lg mt-6 max-w-2xl">{t.guides.subtitle}</h1>
+      <ShareBar className="mt-6" />
 
       <ul className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
         {c.guides.map((guide) => (

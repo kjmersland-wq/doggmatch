@@ -8,6 +8,7 @@ import { AccountMembership } from "@/components/dogmatch/plus/membership";
 import { MemberBenefits } from "@/components/dogmatch/plus/benefits";
 import { useMembership } from "@/hooks/use-membership";
 import { useCopy } from "@/i18n";
+import { abs, noindexMeta } from "@/lib/seo";
 
 const title = "My Account — Your details and preferences | DoggMatch";
 const description =
@@ -16,6 +17,7 @@ const description =
 export const Route = createFileRoute("/account")({
   head: () => ({
     meta: [
+      ...noindexMeta,
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
@@ -25,7 +27,7 @@ export const Route = createFileRoute("/account")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/account" }],
+    links: [{ rel: "canonical", href: abs("/account") }],
   }),
   component: AccountPage,
 });

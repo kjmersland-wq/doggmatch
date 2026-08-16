@@ -8,6 +8,7 @@ import { recordsStore, useWeekOverride } from "@/lib/care/records";
 import { useCareProfile, useMyDog } from "@/lib/care/store";
 import { useProgress } from "@/lib/training/store";
 import { useCopy } from "@/i18n";
+import { seoLinks } from "@/lib/seo";
 
 const title = "My Dog Week — a simple week with your dog | DoggMatch";
 const description =
@@ -25,7 +26,7 @@ export const Route = createFileRoute("/my-dog/week")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/my-dog/week" }],
+    links: seoLinks("/my-dog/week"),
   }),
   component: WeekPage,
 });

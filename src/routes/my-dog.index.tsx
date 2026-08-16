@@ -26,6 +26,7 @@ import { breedImages } from "@/data/breed-images";
 import { buildWeek } from "@/lib/care/week";
 import { useWeekOverride } from "@/lib/care/records";
 import { useProgress } from "@/lib/training/store";
+import { seoLinks, abs } from "@/lib/seo";
 
 const title = "My Dog — Everyday health, food and care | DoggMatch";
 const description =
@@ -39,12 +40,12 @@ export const Route = createFileRoute("/my-dog/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/my-dog" },
+      { property: "og:url", content: abs("/my-dog") },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/my-dog" }],
+    links: seoLinks("/my-dog"),
   }),
   component: MyDogHome,
 });

@@ -24,6 +24,7 @@ import { Route as MyDogRouteImport } from './routes/my-dog'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PlusRouteImport } from './routes/plus'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TrainRouteImport } from './routes/train'
@@ -134,6 +135,11 @@ const PlusRoute = PlusRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SourcesRoute = SourcesRouteImport.update({
@@ -333,6 +339,7 @@ export interface FileRoutesByFullPath {
   '/partners': typeof PartnersRoute
   '/plus': typeof PlusRoute
   '/privacy': typeof PrivacyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
   '/terms': typeof TermsRoute
   '/train': typeof TrainRouteWithChildren
@@ -384,6 +391,7 @@ export interface FileRoutesByTo {
   '/partners': typeof PartnersRoute
   '/plus': typeof PlusRoute
   '/privacy': typeof PrivacyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
   '/terms': typeof TermsRoute
   '/breeds/$breedId': typeof BreedsBreedIdRoute
@@ -436,6 +444,7 @@ export interface FileRoutesById {
   '/partners': typeof PartnersRoute
   '/plus': typeof PlusRoute
   '/privacy': typeof PrivacyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
   '/terms': typeof TermsRoute
   '/train': typeof TrainRouteWithChildren
@@ -491,6 +500,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/plus'
     | '/privacy'
+    | '/sitemap.xml'
     | '/sources'
     | '/terms'
     | '/train'
@@ -542,6 +552,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/plus'
     | '/privacy'
+    | '/sitemap.xml'
     | '/sources'
     | '/terms'
     | '/breeds/$breedId'
@@ -593,6 +604,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/plus'
     | '/privacy'
+    | '/sitemap.xml'
     | '/sources'
     | '/terms'
     | '/train'
@@ -647,6 +659,7 @@ export interface RootRouteChildren {
   PartnersRoute: typeof PartnersRoute
   PlusRoute: typeof PlusRoute
   PrivacyRoute: typeof PrivacyRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SourcesRoute: typeof SourcesRoute
   TermsRoute: typeof TermsRoute
   TrainRoute: typeof TrainRouteWithChildren
@@ -763,6 +776,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sources': {
@@ -1124,6 +1144,7 @@ const rootRouteChildren: RootRouteChildren = {
   PartnersRoute: PartnersRoute,
   PlusRoute: PlusRoute,
   PrivacyRoute: PrivacyRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SourcesRoute: SourcesRoute,
   TermsRoute: TermsRoute,
   TrainRoute: TrainRouteWithChildren,

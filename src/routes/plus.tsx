@@ -14,6 +14,7 @@ import dogLifeImage from "@/assets/dog-life.jpg";
 import travelImage from "@/assets/travel-car.jpg";
 import lunaImage from "@/assets/breed-labrador-retriever.jpg";
 import maxImage from "@/assets/breed-cocker-spaniel.jpg";
+import { seoLinks, abs } from "@/lib/seo";
 
 const title = "DoggMatch+ | Premium Dog Life Membership";
 const description =
@@ -28,12 +29,12 @@ export const Route = createFileRoute("/plus")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: url },
+      { property: "og:url", content: abs(url) },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: url }],
+    links: seoLinks(url),
   }),
   component: PlusPage,
 });

@@ -48,6 +48,7 @@ import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/type
 import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "@/components/dogmatch/ui";
 import { MatchNotes } from "@/components/dogmatch/match-notes";
 import { cn } from "@/lib/utils";
+import { seoLinks, abs } from "@/lib/seo";
 
 const title = "Find My Dog — a free match, in about two minutes | DoggMatch";
 const description =
@@ -61,11 +62,11 @@ export const Route = createFileRoute("/find-my-dog")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/find-my-dog" },
+      { property: "og:url", content: abs("/find-my-dog") },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/find-my-dog" }],
+    links: seoLinks("/find-my-dog"),
   }),
   component: FindMyDogPage,
 });

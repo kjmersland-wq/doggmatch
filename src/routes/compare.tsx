@@ -7,6 +7,8 @@ import { breedImages } from "@/data/breed-images";
 import { combineBreedTraits } from "@/lib/dogs/profile";
 import { Eyebrow } from "@/components/dogmatch/ui";
 import { cn } from "@/lib/utils";
+import { seoLinks, abs } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Compare dogs side by side | DoggMatch";
 const description =
@@ -20,11 +22,11 @@ export const Route = createFileRoute("/compare")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/compare" },
+      { property: "og:url", content: abs("/compare") },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/compare" }],
+    links: seoLinks("/compare"),
   }),
   component: ComparePage,
 });
@@ -212,6 +214,7 @@ function ComparePage() {
     <div className="container-page py-14 md:py-20">
       <Eyebrow>{copy.nav.compare}</Eyebrow>
       <h1 className="display-lg mt-6 max-w-2xl">{copy.compare.subtitle}</h1>
+      <ShareBar className="mt-6" />
 
       <div className="mt-10 max-w-sm">
         <label htmlFor="breed-search" className="text-sm font-medium">

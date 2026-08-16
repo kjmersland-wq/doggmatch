@@ -6,6 +6,8 @@ import { breeds } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Eyebrow } from "@/components/dogmatch/ui";
+import { seoLinks, abs } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Dog breeds — an honest look at each one | DoggMatch";
 const description =
@@ -19,11 +21,11 @@ export const Route = createFileRoute("/breeds/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/breeds" },
+      { property: "og:url", content: abs("/breeds") },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/breeds" }],
+    links: seoLinks("/breeds"),
   }),
   component: BreedsPage,
 });
@@ -39,6 +41,7 @@ function BreedsPage() {
     <div className="container-page py-14 md:py-20">
       <Eyebrow>{t.nav.breeds}</Eyebrow>
       <h1 className="display-lg mt-6 max-w-2xl">{t.breeds.subtitle}</h1>
+      <ShareBar className="mt-6" />
 
       <div className="mt-10 max-w-sm">
         <label htmlFor="breed-search" className="sr-only">

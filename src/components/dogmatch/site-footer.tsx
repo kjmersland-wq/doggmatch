@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useCopy, useT } from "@/i18n";
 import { BrandLock } from "./brand-logo";
+import { CookieSettingsLink } from "@/components/dogmatch/cookie-consent";
 
 const copy = {
   en: {
@@ -61,6 +62,9 @@ export function SiteFooter() {
             <FooterLink to="/partners">{c.partner}</FooterLink>
             <FooterLink to="/privacy">{t.footer.privacy}</FooterLink>
             <FooterLink to="/terms">{t.footer.terms}</FooterLink>
+            <li>
+              <CookieSettingsLink className="text-left text-[0.9375rem] text-muted-foreground transition-colors hover:text-foreground" />
+            </li>
           </FooterColumn>
         </div>
 

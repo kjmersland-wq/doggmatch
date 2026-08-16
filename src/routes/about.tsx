@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useT, useCopy } from "@/i18n";
 import { Arrow, ButtonLink, Eyebrow } from "@/components/dogmatch/ui";
+import { seoLinks, abs } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "About DoggMatch — a kinder way to choose a dog";
 const description =
@@ -14,11 +16,11 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: abs("/about") },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: seoLinks("/about"),
   }),
   component: AboutPage,
 });
@@ -43,6 +45,7 @@ function AboutPage() {
     <div className="container-page max-w-3xl py-14 md:py-24">
       <Eyebrow>{t.footer.about}</Eyebrow>
       <h1 className="display-lg mt-6">{t.brand.tagline}</h1>
+      <ShareBar className="mt-6" />
       <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
         <p>{c.p1}</p>
         <p>{c.p2}</p>

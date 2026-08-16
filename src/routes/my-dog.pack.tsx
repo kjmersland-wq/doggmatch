@@ -6,6 +6,7 @@ import { DocPaper } from "@/components/dogmatch/print/doc";
 import { buildDocument, documentsById, packOrder } from "@/lib/print/documents";
 import { useDocContext } from "@/lib/print/context";
 import { useCopy } from "@/i18n";
+import { noindexMeta } from "@/lib/seo";
 
 const title = "Your printable pages | DoggMatch";
 const description = "A print-ready set of pages for your dog, made from what you've saved.";
@@ -16,6 +17,7 @@ export const Route = createFileRoute("/my-dog/pack")({
   }),
   head: () => ({
     meta: [
+      ...noindexMeta,
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },

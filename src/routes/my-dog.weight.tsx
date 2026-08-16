@@ -7,6 +7,8 @@ import { getCareTopic } from "@/data/care/topics";
 import { weightTrend } from "@/lib/care/portions";
 import { careStore, useCareProfile, useMyDog, useWeights } from "@/lib/care/store";
 import { useCopy } from "@/i18n";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Weight & shape — the check vets use | DoggMatch";
 const description =
@@ -24,7 +26,7 @@ export const Route = createFileRoute("/my-dog/weight")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/my-dog/weight" }],
+    links: seoLinks("/my-dog/weight"),
   }),
   component: WeightPage,
 });
@@ -109,6 +111,7 @@ function WeightPage() {
       <section className="container-page pt-28 md:pt-36">
         <Eyebrow>{c.eyebrow}</Eyebrow>
         <h1 className="display-xl mt-6 max-w-3xl">{topic.title}</h1>
+        <ShareBar className="mt-6" />
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{topic.promise}</p>
       </section>
 

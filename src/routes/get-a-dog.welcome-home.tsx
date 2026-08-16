@@ -4,6 +4,8 @@ import { CardGrid, Notice, SectionHead } from "@/components/dogmatch/journey/par
 import { getDogContent } from "@/data/getdog/content";
 import { useCopy } from "@/i18n";
 import welcomeImage from "@/assets/welcome-home.jpg";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Welcome home — the first day and the first week | DoggMatch";
 const description =
@@ -21,7 +23,7 @@ export const Route = createFileRoute("/get-a-dog/welcome-home")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/get-a-dog/welcome-home" }],
+    links: seoLinks("/get-a-dog/welcome-home"),
   }),
   component: WelcomeHomePage,
 });
@@ -93,6 +95,7 @@ function WelcomeHomePage() {
         <div className="mt-12 max-w-2xl">
           <p className="eyebrow">{c.eyebrow}</p>
           <h1 className="display-xl mt-6">{c.title}</h1>
+          <ShareBar className="mt-6" />
           <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
         </div>
       </section>

@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { BrandLock } from "@/components/dogmatch/brand-logo";
 import { checkMemberCard } from "@/lib/plus/member-card.functions";
 import { useCopy, useLocale } from "@/i18n";
+import { noindexMeta } from "@/lib/seo";
 
 const title = "Membership check | DoggMatch";
 const description = "Check that a DoggMatch+ member card is genuine and still valid.";
@@ -11,6 +12,7 @@ const description = "Check that a DoggMatch+ member card is genuine and still va
 export const Route = createFileRoute("/verify/$memberId")({
   head: () => ({
     meta: [
+      ...noindexMeta,
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },

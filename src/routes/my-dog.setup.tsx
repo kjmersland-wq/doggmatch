@@ -8,6 +8,7 @@ import { careStore, useCareProfile, type ActivityLevel, type BodyCondition, type
 import { suggestedMeals } from "@/lib/care/portions";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
+import { abs, noindexMeta } from "@/lib/seo";
 
 const title = "Your dog's details — My Dog | DoggMatch";
 const description =
@@ -16,6 +17,7 @@ const description =
 export const Route = createFileRoute("/my-dog/setup")({
   head: () => ({
     meta: [
+      ...noindexMeta,
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
@@ -26,7 +28,7 @@ export const Route = createFileRoute("/my-dog/setup")({
       { name: "twitter:description", content: description },
       { name: "robots", content: "noindex" },
     ],
-    links: [{ rel: "canonical", href: "/my-dog/setup" }],
+    links: [{ rel: "canonical", href: abs("/my-dog/setup") }],
   }),
   component: MyDogSetup,
 });

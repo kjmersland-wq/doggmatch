@@ -8,6 +8,8 @@ import { getLessons } from "@/data/training/lessons";
 import { todaysPlan, ageFocus } from "@/lib/training/plan";
 import { streakDays, today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
+import { seoLinks, abs } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const copy = {
   en: { welcomeUser: (name: string) => `Good to see you, ${name}'s human.` },
@@ -26,12 +28,12 @@ export const Route = createFileRoute("/train/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/train" },
+      { property: "og:url", content: abs("/train") },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/train" }],
+    links: seoLinks("/train"),
   }),
   component: TrainHome,
 });
@@ -55,6 +57,7 @@ function TrainHome() {
             <div className="animate-rise">
               <Eyebrow>{t.train.eyebrow}</Eyebrow>
               <h1 className="display-xl mt-6">{t.train.heroTitle}</h1>
+              <ShareBar className="mt-6" />
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
                 {t.train.heroBody}
               </p>

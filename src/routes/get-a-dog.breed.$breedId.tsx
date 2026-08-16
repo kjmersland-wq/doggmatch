@@ -8,6 +8,8 @@ import { costRange, prepCards } from "@/lib/getdog/prep";
 import { getDogStore } from "@/lib/getdog/store";
 import { useCopy } from "@/i18n";
 import { useEffect } from "react";
+import { seoLinks, abs, breadcrumbLd } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 export const Route = createFileRoute("/get-a-dog/breed/$breedId")({
   loader: ({ params }) => {
@@ -22,6 +24,7 @@ export const Route = createFileRoute("/get-a-dog/breed/$breedId")({
     const name = breedContent()[loaderData.breedId].displayName;
     const title = `Getting ready for a ${name} — what to know before you commit | DoggMatch`;
     const description = `What a ${name} will actually ask of you: exercise, training, grooming, being alone, cost and the first weeks — drawn from their real traits, not a sales pitch.`;
+    const path = `/get-a-dog/breed/${loaderData.breedId}`;
     return {
       meta: [
         { title },
@@ -29,9 +32,18 @@ export const Route = createFileRoute("/get-a-dog/breed/$breedId")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: abs(path) },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
+      ],
+      links: seoLinks(path),
+      scripts: [
+        breadcrumbLd([
+          { name: "DoggMatch", path: "/" },
+          { name: "Get a dog", path: "/get-a-dog" },
+          { name, path },
+        ]),
       ],
     };
   },
@@ -104,6 +116,7 @@ function BreedPrepPage() {
           <div className="max-w-xl">
             <p className="eyebrow">{c.eyebrow}</p>
             <h1 className="display-xl mt-6">{c.heading(content.displayName)}</h1>
+            <ShareBar className="mt-6" />
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{content.summary}</p>
             <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted-foreground">
               {c.intro}

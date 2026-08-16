@@ -7,6 +7,8 @@ import type { FoodSafety } from "@/data/care/types";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Can my dog eat this? — a calm, searchable answer | DoggMatch";
 const description =
@@ -24,7 +26,7 @@ export const Route = createFileRoute("/my-dog/food")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/my-dog/food" }],
+    links: seoLinks("/my-dog/food"),
   }),
   component: FoodSafetyPage,
 });
@@ -93,6 +95,7 @@ function FoodSafetyPage() {
       <section className="container-page pt-28 md:pt-36">
         <Eyebrow>{c.eyebrow}</Eyebrow>
         <h1 className="display-xl mt-6 max-w-3xl">{c.title}</h1>
+        <ShareBar className="mt-6" />
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
 
         <div className="mt-10 max-w-xl">

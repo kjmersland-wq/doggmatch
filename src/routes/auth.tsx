@@ -5,6 +5,7 @@ import { lovable } from "@/integrations/lovable";
 import { useAuth } from "@/hooks/use-auth";
 import { Arrow, Button, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { useCopy } from "@/i18n";
+import { abs, noindexMeta } from "@/lib/seo";
 
 const title = "Sign in — Your DoggMatch account | DoggMatch";
 const description =
@@ -19,6 +20,7 @@ export const Route = createFileRoute("/auth")({
       : {},
   head: () => ({
     meta: [
+      ...noindexMeta,
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
@@ -28,7 +30,7 @@ export const Route = createFileRoute("/auth")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/auth" }],
+    links: [{ rel: "canonical", href: abs("/auth") }],
   }),
   component: AuthPage,
 });
