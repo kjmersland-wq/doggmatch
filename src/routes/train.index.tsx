@@ -2,10 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCopy, useT } from "@/i18n";
 import { Arrow, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { LessonCard } from "@/components/dogmatch/training/parts";
-import { trainingCategories } from "@/data/training/categories";
+import { getTrainingCategories } from "@/data/training/categories";
 import { categoryImages, trainingImages } from "@/data/training/images";
 import { getLessons } from "@/data/training/lessons";
-import { todaysPlan, ageFocus } from "@/lib/training/plan";
+import { todaysPlan, getAgeFocus } from "@/lib/training/plan";
 import { streakDays, today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { seoLinks, abs } from "@/lib/seo";
@@ -45,6 +45,7 @@ function TrainHome() {
   const state = useTrainingState();
   const progress = useProgress(dog?.id);
   const plan = todaysPlan(dog, progress, today());
+  const ageFocus = getAgeFocus();
   const learned = Object.values(progress).filter((s) => s === "learned").length;
   const streak = streakDays(state.sessions);
 
@@ -202,7 +203,7 @@ function TrainHome() {
             </Link>
           </div>
           <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {trainingCategories.slice(0, 4).map((c) => (
+            {getTrainingCategories().slice(0, 4).map((c) => (
               <li key={c.id}>
                 <Link
                   to="/train/library"

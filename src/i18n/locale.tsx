@@ -18,9 +18,15 @@ const KEY = "doggmatch.locale";
  * Mirror of the active locale for plain (non-React) modules — data files and
  * helpers that need to pick copy outside a component render.
  */
-let currentLocale: Locale = "en";
+const globalStore = globalThis as unknown as { __doggmatchLocale?: Locale };
+globalStore.__doggmatchLocale ??= "en";
+
 export function getLocale(): Locale {
-  return currentLocale;
+  return globalStore.__doggmatchLocale ?? "en";
+}
+
+function setCurrentLocale(next: Locale) {
+  globalStore.__doggmatchLocale = next;
 }
 
 /**
@@ -29,7 +35,7 @@ export function getLocale(): Locale {
  * Norwegian branch don't have to match the English literal types), but the
  * result is typed from the English branch.
  */
-export function pick<A, B>(map: { en: A; no: B }, locale: Locale = currentLocale): A {
+export function pick<A, B>(map: { en: A; no: B }, locale: Locale = getLocale()): A {
   return ((locale === "no" ? map.no : map.en) ?? map.en) as unknown as A;
 }
 
@@ -77,22 +83,37 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   const [locale, setState] = useState<Locale>("en");
   const [ready, setReady] = useState(false);
 
+  // Keep the module mirror in sync during render, before any child reads it
+  // through `pick()`. Doing this in an effect is too late for the first
+  // post-hydration render, which is what makes data look English while the
+  // surrounding UI is already Norwegian.
+  setCurrentLocale(locale);
+
   useEffect(() => {
-    const next = readFromUrl() ?? readStored() ?? detect();
-    currentLocale = next;
+    const fromUrl = readFromUrl();
+    const next = fromUrl ?? readStored() ?? detect();
+    setCurrentLocale(next);
+    // A shared ?lang= link should keep its language while you browse on.
+    if (fromUrl) {
+      try {
+        localStorage.setItem(KEY, fromUrl);
+      } catch {
+        /* private mode */
+      }
+    }
     setState(next);
     setReady(true);
   }, []);
 
   useEffect(() => {
-    currentLocale = locale;
+    setCurrentLocale(locale);
     if (typeof document !== "undefined") {
       document.documentElement.lang = locale === "no" ? "nb" : "en";
     }
   }, [locale]);
 
   const setLocale = useCallback((next: Locale) => {
-    currentLocale = next;
+    setCurrentLocale(next);
     setState(next);
     try {
       localStorage.setItem(KEY, next);

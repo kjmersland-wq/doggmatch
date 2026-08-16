@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
 import { useEffect, useRef, useState } from "react";
-import { useT } from "@/i18n";
+import { useT, useCopy } from "@/i18n";
 import { breeds } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
@@ -16,6 +16,23 @@ const description =
   "Tell us a little about your life, your home and your days, and we'll help you find the dogs that may suit you best. Free, honest, and we always show our reasoning.";
 const ogImage =
   "https://project--133462b6-1f26-496e-a35b-0de87a08b8b1.lovable.app/og-image.jpg";
+
+const localCopy = {
+  en: {
+    matchLooks: "What a match looks like",
+    match: "match",
+    heroAlt: "A woman walking a golden retriever along a coastal path at sunrise",
+    terrierAlt: "A terrier resting in a sunlit apartment",
+    parkAlt: "A city park at dawn with winding walking paths",
+  },
+  no: {
+    matchLooks: "Slik ser en match ut",
+    match: "match",
+    heroAlt: "En kvinne g\u00e5r tur med en golden retriever langs kysten i soloppgang",
+    terrierAlt: "En terrier som hviler i en solfylt leilighet",
+    parkAlt: "En bypark i grålysningen med svingete turveier",
+  },
+} as const;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,6 +81,7 @@ function useParallax() {
 
 function HomePage() {
   const t = useT();
+  const c = useCopy(localCopy);
   const parallax = useParallax();
   const featured = breeds.slice(0, 4);
 
@@ -95,7 +113,7 @@ function HomePage() {
               <img
                 ref={parallax as never}
                 src={heroImage}
-                alt="A woman walking a golden retriever along a coastal path at sunrise"
+                alt={c.heroAlt}
                 width={1600}
                 height={1200}
                 fetchPriority="high"
@@ -103,7 +121,7 @@ function HomePage() {
               />
             </div>
             <figure className="absolute -bottom-8 left-4 hidden w-60 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-lift)] md:block lg:-left-10">
-              <figcaption className="eyebrow">What a match looks like</figcaption>
+              <figcaption className="eyebrow">{c.matchLooks}</figcaption>
               <p className="mt-3 font-display text-lg leading-tight text-foreground">
                 Labrador Retriever
               </p>
@@ -113,7 +131,7 @@ function HomePage() {
               <div className="mt-3 h-[3px] w-full overflow-hidden rounded-full bg-surface-strong">
                 <span className="block h-full w-[94%] rounded-full bg-accent" />
               </div>
-              <p className="mt-2 text-xs text-muted-foreground">match</p>
+              <p className="mt-2 text-xs text-muted-foreground">{c.match}</p>
             </figure>
           </div>
         </div>
@@ -141,7 +159,7 @@ function HomePage() {
               <div className="mt-10 hidden overflow-hidden rounded-[1.75rem] lg:block">
                 <img
                   src={homeImage}
-                  alt="A terrier resting in a sunlit apartment"
+                  alt={c.terrierAlt}
                   width={1200}
                   height={1504}
                   loading="lazy"
@@ -266,7 +284,7 @@ function HomePage() {
           <div className="relative overflow-hidden rounded-[2rem]">
             <img
               src={dogLifeImage}
-              alt="A city park at dawn with winding walking paths"
+              alt={c.parkAlt}
               width={1600}
               height={1008}
               loading="lazy"

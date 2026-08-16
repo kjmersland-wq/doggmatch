@@ -2,12 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Eyebrow } from "@/components/dogmatch/ui";
 import { LessonCard, levelLabel } from "@/components/dogmatch/training/parts";
-import { trainingCategories } from "@/data/training/categories";
+import { getTrainingCategories } from "@/data/training/categories";
 import { getLessons } from "@/data/training/lessons";
 import type { CategoryId, Level } from "@/data/training/types";
 import { useActiveDog, useProgress } from "@/lib/training/store";
 import { cn } from "@/lib/utils";
-import { useCopy } from "@/i18n";
+import { useCopy, useLocale } from "@/i18n";
 import { seoLinks } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
@@ -59,6 +59,7 @@ const copy = {
 
 function LibraryPage() {
   const c = useCopy(copy);
+  const { locale } = useLocale();
   const dog = useActiveDog();
   const progress = useProgress(dog?.id);
   const [query, setQuery] = useState("");
@@ -77,7 +78,7 @@ function LibraryPage() {
         l.goals.some((g) => g.includes(q))
       );
     });
-  }, [query, level, category]);
+  }, [query, level, category, locale]);
 
   return (
     <div className="container-page pt-28 pb-28 md:pt-36">
@@ -107,7 +108,7 @@ function LibraryPage() {
         <Chip on={category === "all"} onClick={() => setCategory("all")}>
           {c.everything}
         </Chip>
-        {trainingCategories.map((cat) => (
+        {getTrainingCategories().map((cat) => (
           <Chip key={cat.id} on={category === cat.id} onClick={() => setCategory(cat.id)}>
             {cat.title}
           </Chip>
@@ -127,7 +128,7 @@ function LibraryPage() {
       )}
 
       <div className="mt-24 space-y-16">
-        {trainingCategories.map((cat) => (
+        {getTrainingCategories().map((cat) => (
           <section key={cat.id} id={cat.id} className="scroll-mt-28">
             <h2 className="display-md">{cat.title}</h2>
             <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">{cat.blurb}</p>

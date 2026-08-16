@@ -2,11 +2,11 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { getLesson, getLessonsById } from "@/data/training/lessons";
 import { lessonHeroes, stepVisuals } from "@/data/training/images";
-import { trainingCategories } from "@/data/training/categories";
+import { getTrainingCategories } from "@/data/training/categories";
 import type { SkillStatus } from "@/data/training/types";
 import { Arrow, Badge, Button, ButtonLink, Eyebrow } from "@/components/dogmatch/ui";
 import {
-  levelLabels,
+  levelLabel,
   SessionTimer,
   StatusPicker,
   StepFigure,
@@ -22,6 +22,73 @@ import {
 import { cn } from "@/lib/utils";
 import { seoLinks } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
+import { useCopy } from "@/i18n";
+
+
+const copy = {
+  en: {
+    allLessons: "\u2190 All lessons",
+    training: "Training",
+    min: "min",
+    inProgress: "In progress",
+    youllNeed: "You'll need",
+    howTo: "How to do it",
+    step: "Step",
+    illustration: "Illustration",
+    buildingUp: "Building it up",
+    buildingUpLead:
+      "Move on when the step before feels easy. If it wobbles, go back one \u2014 that isn't failing, it's just how learning goes.",
+    howDidItGo: "How did it go?",
+    tellUsWhere: (name: string) =>
+      `Tell us where ${name} is with this. It's only for you \u2014 it keeps your journey honest and helps us suggest what's next.`,
+    feelings: ["That went really well", "Good enough for today", "We need more practice"] as const,
+    logged: "Logged. Nice work \u2014 that's another session together.",
+    noteLabel: "Anything you want to remember for next time?",
+    notePlaceholder: "Better in the hallway than the garden.",
+    noDogLead:
+      "Tell us about your dog and we'll keep track of what you've worked on, and suggest what to try next.",
+    tellUsAboutDog: "Tell us about your dog",
+    nextUp: "A good one to do next",
+    whileYouTrain: "While you train",
+    whileYouTrainLead: "Keep it short and finish on a good one.",
+    heroAlt: (title: string) => `${title} \u2014 a dog and their person practising together`,
+    notFoundTitle: "We couldn't find that lesson.",
+    notFoundBody:
+      "It may have moved. Have a look through the library \u2014 whatever you were after is probably in there.",
+    seeEvery: "See every lesson",
+  },
+  no: {
+    allLessons: "\u2190 Alle leksjoner",
+    training: "Trening",
+    min: "min",
+    inProgress: "P\u00e5g\u00e5r",
+    youllNeed: "Du trenger",
+    howTo: "Slik gj\u00f8r du det",
+    step: "Steg",
+    illustration: "Illustrasjon",
+    buildingUp: "Bygg det opp",
+    buildingUpLead:
+      "G\u00e5 videre n\u00e5r forrige steg sitter. Vakler det, g\u00e5 ett steg tilbake \u2014 det er ikke \u00e5 mislykkes, det er bare slik l\u00e6ring fungerer.",
+    howDidItGo: "Hvordan gikk det?",
+    tellUsWhere: (name: string) =>
+      `Fortell hvor ${name} er med dette. Det er bare for deg \u2014 det holder reisen \u00e6rlig og hjelper oss \u00e5 foresl\u00e5 hva som passer videre.`,
+    feelings: ["Det gikk veldig bra", "Bra nok for i dag", "Vi trenger mer \u00f8ving"] as const,
+    logged: "Lagret. Bra jobba \u2014 nok en \u00f8kt sammen.",
+    noteLabel: "Noe du vil huske til neste gang?",
+    notePlaceholder: "Bedre i gangen enn i hagen.",
+    noDogLead:
+      "Fortell oss om hunden din, s\u00e5 holder vi styr p\u00e5 hva dere har jobbet med og foresl\u00e5r hva dere kan pr\u00f8ve videre.",
+    tellUsAboutDog: "Fortell oss om hunden din",
+    nextUp: "En fin \u00e9n \u00e5 ta etterp\u00e5",
+    whileYouTrain: "Mens dere trener",
+    whileYouTrainLead: "Hold det kort og avslutt p\u00e5 noe bra.",
+    heroAlt: (title: string) => `${title} \u2014 en hund og eieren \u00f8ver sammen`,
+    notFoundTitle: "Vi fant ikke den leksjonen.",
+    notFoundBody:
+      "Den kan ha flyttet p\u00e5 seg. Ta en titt i biblioteket \u2014 det du var ute etter ligger nok der.",
+    seeEvery: "Se alle leksjoner",
+  },
+} as const;
 
 export const Route = createFileRoute("/train/lessons/$lessonId")({
   loader: ({ params }) => {
@@ -56,14 +123,18 @@ export const Route = createFileRoute("/train/lessons/$lessonId")({
 });
 
 function LessonPage() {
-  const { lesson } = Route.useLoaderData();
+  const { lessonId } = Route.useParams();
+  const { lesson: loaded } = Route.useLoaderData();
+  const c = useCopy(copy);
+  // Read the lesson during render so it follows the reader's language.
+  const lesson = getLesson(lessonId) ?? loaded;
   const dog = useActiveDog();
   const progress = useProgress(dog?.id);
   const state = useTrainingState();
   const status: SkillStatus = progress[lesson.id] ?? "not-started";
   const [note, setNote] = useState(state.notes[lesson.id] ?? "");
   const [logged, setLogged] = useState(false);
-  const category = trainingCategories.find((c) => c.id === lesson.category);
+  const category = getTrainingCategories().find((c) => c.id === lesson.category);
   const next = lesson.nextLessonId ? getLessonsById()[lesson.nextLessonId] : undefined;
 
   const howTo = {
@@ -95,31 +166,33 @@ function LessonPage() {
           to="/train/library"
           className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
         >
-          ← All lessons
+          {c.allLessons}
         </Link>
         <div className="mt-6 grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16">
           <div>
-            <Eyebrow>{category?.title ?? "Training"}</Eyebrow>
+            <Eyebrow>{category?.title ?? c.training}</Eyebrow>
             <h1 className="display-lg mt-5">{lesson.title}</h1>
             <ShareBar className="mt-6" />
             <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted-foreground">
               {lesson.promise}
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-2">
-              <Badge>{lesson.duration} min</Badge>
-              <Badge>{levelLabels[lesson.level]}</Badge>
-              {status !== "not-started" && <Badge tone="accent">In progress</Badge>}
+              <Badge>
+                {lesson.duration} {c.min}
+              </Badge>
+              <Badge>{levelLabel(lesson.level)}</Badge>
+              {status !== "not-started" && <Badge tone="accent">{c.inProgress}</Badge>}
             </div>
             {lesson.equipment.length > 0 && (
               <p className="mt-6 text-[0.9375rem] text-muted-foreground">
-                You'll need: {lesson.equipment.join(", ")}.
+                {c.youllNeed}: {lesson.equipment.join(", ")}.
               </p>
             )}
           </div>
           <div className="overflow-hidden rounded-[1.75rem]">
             <img
               src={lessonHeroes[lesson.id] ?? lessonHeroes["recall"]}
-              alt={`${lesson.title} — a dog and their person practising together`}
+              alt={c.heroAlt(lesson.title)}
               width={1600}
               height={1000}
               className="aspect-[16/10] w-full object-cover"
@@ -130,13 +203,13 @@ function LessonPage() {
 
       <div className="container-page mt-16 grid gap-16 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-20">
         <div>
-          <h2 className="display-md">How to do it</h2>
+          <h2 className="display-md">{c.howTo}</h2>
           <ol className="mt-10 space-y-14">
             {lesson.steps.map((step, i) => (
               <li key={step.title} className="grid gap-6 sm:grid-cols-[1fr_1fr] sm:items-center">
                 <div>
                   <span className="font-display text-sm tabular-nums text-accent">
-                    Step {String(i + 1).padStart(2, "0")}
+                    {c.step} {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mt-3 font-display text-2xl leading-tight tracking-tight">
                     {step.title}
@@ -146,7 +219,7 @@ function LessonPage() {
                 {step.visual && stepVisuals[step.visual] && (
                   <StepFigure
                     src={stepVisuals[step.visual]!}
-                    alt={`Illustration: ${step.title}`}
+                    alt={`${c.illustration}: ${step.title}`}
                   />
                 )}
               </li>
@@ -164,10 +237,9 @@ function LessonPage() {
 
           {lesson.stages && (
             <section className="mt-16">
-              <h2 className="display-md">Building it up</h2>
+              <h2 className="display-md">{c.buildingUp}</h2>
               <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">
-                Move on when the step before feels easy. If it wobbles, go back one — that isn't
-                failing, it's just how learning goes.
+                {c.buildingUpLead}
               </p>
               <ol className="mt-8 space-y-px overflow-hidden rounded-2xl border border-border bg-border">
                 {lesson.stages.map((s, i) => (
@@ -192,12 +264,11 @@ function LessonPage() {
           )}
 
           <section className="mt-16 rounded-[1.5rem] border border-border bg-card p-8">
-            <h2 className="display-md">How did it go?</h2>
+            <h2 className="display-md">{c.howDidItGo}</h2>
             {dog ? (
               <>
                 <p className="mt-3 leading-relaxed text-muted-foreground">
-                  Tell us where {dog.name} is with this. It's only for you — it keeps your journey
-                  honest and helps us suggest what's next.
+                  {c.tellUsWhere(dog.name)}
                 </p>
                 <div className="mt-6">
                   <StatusPicker
@@ -208,9 +279,9 @@ function LessonPage() {
                 <div className="mt-8 flex flex-wrap gap-2">
                   {(
                     [
-                      ["great", "That went really well"],
-                      ["good", "Good enough for today"],
-                      ["more-practice", "We need more practice"],
+                      ["great", c.feelings[0]],
+                      ["good", c.feelings[1]],
+                      ["more-practice", c.feelings[2]],
                     ] as const
                   ).map(([value, label]) => (
                     <Button key={value} tone="outline" onClick={() => log(value)}>
@@ -220,19 +291,19 @@ function LessonPage() {
                 </div>
                 {logged && (
                   <p className="mt-4 text-[0.9375rem] text-accent">
-                    Logged. Nice work — that's another session together.
+                    {c.logged}
                   </p>
                 )}
                 <label className="mt-8 block">
                   <span className="text-sm text-muted-foreground">
-                    Anything you want to remember for next time?
+                    {c.noteLabel}
                   </span>
                   <textarea
                     value={note}
                     onChange={(e) => setNote(e.target.value)}
                     onBlur={() => trainingStore.saveNote(lesson.id, note)}
                     rows={3}
-                    placeholder="Better in the hallway than the garden."
+                    placeholder={c.notePlaceholder}
                     className="mt-2 w-full rounded-2xl border border-border bg-background p-4 leading-relaxed outline-none transition-colors focus:border-accent"
                   />
                 </label>
@@ -240,12 +311,11 @@ function LessonPage() {
             ) : (
               <>
                 <p className="mt-3 leading-relaxed text-muted-foreground">
-                  Tell us about your dog and we'll keep track of what you've worked on, and suggest
-                  what to try next.
+                  {c.noDogLead}
                 </p>
                 <div className="mt-6">
                   <ButtonLink to="/train/setup">
-                    Tell us about your dog
+                    {c.tellUsAboutDog}
                     <Arrow />
                   </ButtonLink>
                 </div>
@@ -255,7 +325,7 @@ function LessonPage() {
 
           {next && (
             <div className="mt-12">
-              <p className="text-sm text-muted-foreground">A good one to do next</p>
+              <p className="text-sm text-muted-foreground">{c.nextUp}</p>
               <Link
                 to="/train/lessons/$lessonId"
                 params={{ lessonId: next.id }}
@@ -280,9 +350,9 @@ function LessonPage() {
 
         <aside className="lg:sticky lg:top-28 lg:self-start">
           <div className="rounded-[1.5rem] border border-border bg-surface p-7">
-            <h2 className="font-display text-lg leading-tight tracking-tight">While you train</h2>
+            <h2 className="font-display text-lg leading-tight tracking-tight">{c.whileYouTrain}</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Keep it short and finish on a good one.
+              {c.whileYouTrainLead}
             </p>
             <div className="mt-6">
               <SessionTimer minutes={lesson.duration} />
@@ -298,16 +368,16 @@ function LessonPage() {
 }
 
 function LessonNotFound() {
+  const c = useCopy(copy);
   return (
     <div className="container-page pt-40 pb-32 text-center">
-      <h1 className="display-lg">We couldn't find that lesson.</h1>
+      <h1 className="display-lg">{c.notFoundTitle}</h1>
       <p className="mx-auto mt-4 max-w-md leading-relaxed text-muted-foreground">
-        It may have moved. Have a look through the library — whatever you were after is probably in
-        there.
+        {c.notFoundBody}
       </p>
       <div className="mt-8 flex justify-center">
         <ButtonLink to="/train/library">
-          See every lesson
+          {c.seeEvery}
           <Arrow />
         </ButtonLink>
       </div>
