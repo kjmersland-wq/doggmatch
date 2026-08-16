@@ -227,7 +227,12 @@ function ComparePage() {
         />
       </div>
 
-      <p className="mt-6 text-sm text-muted-foreground">{q ? " " : c.quickPicksHint}</p>
+      {!q && (
+        <div className="mt-8">
+          <h2 className="text-sm font-medium">{c.quickPicks}</h2>
+          <p className="mt-1 max-w-xl text-sm text-muted-foreground">{c.quickPicksHint}</p>
+        </div>
+      )}
 
       <ul className="mt-3 flex flex-wrap gap-2">
         <li>
