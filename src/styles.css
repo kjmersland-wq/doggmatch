@@ -450,3 +450,137 @@
   }
   .doc-page:last-child { break-after: auto; page-break-after: auto; }
 }
+
+/* ---------------------------------------------------- Member card (85.6 × 54 mm) */
+
+.mc-sheet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8mm;
+}
+
+.mc-card {
+  position: relative;
+  width: 85.6mm;
+  height: 54mm;
+  padding: 5mm;
+  border-radius: 3.5mm;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px -18px rgb(7 26 47 / 0.55);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.mc-front {
+  background: var(--doc-ivory, #f7f3ec);
+  border: 0.4mm solid #e6e0d5;
+  color: var(--doc-navy, #071a2f);
+}
+
+.mc-back {
+  background: #fff;
+  border: 0.4mm solid #e6e0d5;
+  color: var(--doc-navy, #071a2f);
+}
+
+.mc-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3mm;
+}
+
+.mc-plus {
+  font-size: 7pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--doc-orange, #ff5a1f);
+  font-weight: 600;
+}
+
+.mc-middle {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+}
+
+.mc-photo {
+  width: 15mm;
+  height: 15mm;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 0.4mm solid #e6e0d5;
+}
+
+.mc-label {
+  font-size: 6pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--doc-grey, #66758a);
+}
+
+.mc-name {
+  font-size: 15pt;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 1mm;
+}
+
+.mc-bottom {
+  display: flex;
+  gap: 5mm;
+  justify-content: space-between;
+}
+
+.mc-mono {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 8.5pt;
+  margin-top: 0.8mm;
+}
+
+.mc-status { color: var(--doc-orange, #ff5a1f); font-weight: 600; }
+
+.mc-back-inner {
+  display: flex;
+  gap: 5mm;
+  align-items: center;
+}
+
+.mc-qr {
+  width: 26mm;
+  height: 26mm;
+  display: block;
+}
+
+.mc-back-title {
+  font-size: 10pt;
+  font-weight: 600;
+  margin-top: 1.5mm;
+}
+
+.mc-back-body {
+  font-size: 7.5pt;
+  line-height: 1.45;
+  color: var(--doc-grey, #66758a);
+  margin-top: 1mm;
+}
+
+.mc-fineprint {
+  font-size: 6pt;
+  color: var(--doc-grey, #66758a);
+}
+
+@media print {
+  .mc-print-root,
+  .mc-print-root > * {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+  .mc-sheet { gap: 10mm; padding: 15mm !important; }
+  .mc-card { box-shadow: none; break-inside: avoid; }
+}

@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      member_cards: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          id: string
+          member_id: string
+          plan: string | null
+          status: string
+          updated_at: string
+          user_id: string
+          valid_through: string | null
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          member_id: string
+          plan?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+          valid_through?: string | null
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          member_id?: string
+          plan?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+          valid_through?: string | null
+        }
+        Relationships: []
+      }
       plus_waitlist: {
         Row: {
           consented_at: string
