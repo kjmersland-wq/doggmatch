@@ -159,7 +159,7 @@ function ComparePage() {
                 <tr>
                   <th
                     scope="col"
-                    className="sticky left-0 z-10 w-40 bg-card pb-6 pr-6 align-bottom"
+                    className="sticky left-0 z-10 w-40 border-r border-border bg-card pb-6 pr-6 align-bottom"
                   />
                   {selected.map((id) => (
                     <th key={id} scope="col" className="pb-6 pr-6 align-bottom">
