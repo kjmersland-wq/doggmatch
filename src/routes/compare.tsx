@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { useT } from "@/i18n";
-import { breeds, type BreedId } from "@/data/breeds";
+import { breeds, breedById, type BreedId, type BreedTraits } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
+import { combineBreedTraits } from "@/lib/dogs/profile";
 import { Eyebrow } from "@/components/dogmatch/ui";
 import { cn } from "@/lib/utils";
 
@@ -29,6 +30,39 @@ export const Route = createFileRoute("/compare")({
 });
 
 type CompareCopy = ReturnType<typeof useT>["compare"];
+
+/** A column in the table: one breed, or a deterministic two-breed cross. */
+type Column =
+  | { kind: "breed"; id: BreedId }
+  | { kind: "mix"; ids: [BreedId, BreedId] };
+
+const columnKey = (c: Column) => (c.kind === "breed" ? c.id : `mix:${c.ids.join("+")}`);
+
+function columnName(c: Column, copy: CompareCopy) {
+  const names = breedContent();
+  return c.kind === "breed"
+    ? names[c.id].displayName
+    : `${names[c.ids[0]].displayName} × ${names[c.ids[1]].displayName}`;
+}
+
+/**
+ * Traits behind a column. A mix reuses the same deterministic cross logic the
+ * rest of DoggMatch uses — no separate maths, no guessing.
+ */
+function columnTraits(c: Column): BreedTraits {
+  if (c.kind === "breed") return breedById[c.id].traits;
+  return combineBreedTraits(c.ids) ?? breedById[c.ids[0]].traits;
+}
+
+/** Ranges span both parents, so a cross reads as the honest span it is. */
+function columnRange(c: Column, key: "lifespan" | "annualCost"): [number, number] {
+  const ids = c.kind === "breed" ? [c.id] : c.ids;
+  const values = ids.map((id) => breedById[id][key]);
+  return [
+    Math.min(...values.map((v) => v[0])),
+    Math.max(...values.map((v) => v[1])),
+  ];
+}
 
 function levelClass(value: number) {
   switch (value) {
@@ -88,44 +122,43 @@ function CompareLegend({ c }: { c: CompareCopy }) {
   );
 }
 
-function rows(c: CompareCopy): [string, (id: BreedId) => ReactNode][] {
-  const s = (v: number) => c.scale[v - 1] ?? "—";
-  const cell = (v: number) => <LevelDot value={v} label={s(v)} />;
+function rows(c: CompareCopy): [string, (col: Column) => ReactNode][] {
+  const s = (v: number) => c.scale[Math.round(v) - 1] ?? "—";
+  const dot = (key: keyof BreedTraits) => (col: Column) => {
+    const value = columnTraits(col)[key];
+    return <LevelDot value={Math.round(value)} label={s(value)} />;
+  };
   return [
-    [c.rows.size, (id) => cell(t(id).size)],
-    [c.rows.energy, (id) => cell(t(id).energy)],
-    [c.rows.exercise, (id) => cell(t(id).exerciseNeeds)],
-    [c.rows.mental, (id) => cell(t(id).mentalStimulation)],
-    [c.rows.trainability, (id) => cell(t(id).trainability)],
-    [c.rows.learning, (id) => cell(t(id).learningAbility)],
-    [c.rows.sociability, (id) => cell(t(id).sociability)],
-    [c.rows.affection, (id) => cell(t(id).affection)],
-    [c.rows.shedding, (id) => cell(t(id).shedding)],
-    [c.rows.grooming, (id) => cell(t(id).grooming)],
-    [c.rows.barking, (id) => cell(t(id).barking)],
-    [c.rows.children, (id) => cell(t(id).goodWithChildren)],
-    [c.rows.pets, (id) => cell(t(id).goodWithPets)],
-    [c.rows.flat, (id) => cell(t(id).apartmentSuitability)],
-    [c.rows.firstDog, (id) => cell(t(id).firstTimeSuitability)],
+    [c.rows.size, dot("size")],
+    [c.rows.energy, dot("energy")],
+    [c.rows.exercise, dot("exerciseNeeds")],
+    [c.rows.mental, dot("mentalStimulation")],
+    [c.rows.trainability, dot("trainability")],
+    [c.rows.learning, dot("learningAbility")],
+    [c.rows.sociability, dot("sociability")],
+    [c.rows.affection, dot("affection")],
+    [c.rows.shedding, dot("shedding")],
+    [c.rows.grooming, dot("grooming")],
+    [c.rows.barking, dot("barking")],
+    [c.rows.children, dot("goodWithChildren")],
+    [c.rows.pets, dot("goodWithPets")],
+    [c.rows.flat, dot("apartmentSuitability")],
+    [c.rows.firstDog, dot("firstTimeSuitability")],
     [
       c.rows.lifespan,
-      (id) => {
-        const b = breeds.find((x) => x.id === id)!;
-        return `${b.lifespan[0]}–${b.lifespan[1]} ${c.years}`;
+      (col) => {
+        const [lo, hi] = columnRange(col, "lifespan");
+        return `${lo}–${hi} ${c.years}`;
       },
     ],
     [
       c.rows.cost,
-      (id) => {
-        const b = breeds.find((x) => x.id === id)!;
-        return `€${b.annualCost[0]}–${b.annualCost[1]}`;
+      (col) => {
+        const [lo, hi] = columnRange(col, "annualCost");
+        return `€${lo}–${hi}`;
       },
     ],
   ];
-}
-
-function t(id: BreedId) {
-  return breeds.find((b) => b.id === id)!.traits;
 }
 
 function ComparePage() {
