@@ -46,25 +46,53 @@ function levelClass(value: number) {
   }
 }
 
-function LevelCell({ value, label }: { value: number; label: string }) {
+function LevelDot({
+  value,
+  label,
+  size = "md",
+}: {
+  value: number;
+  label: string;
+  size?: "sm" | "md";
+}) {
+  const sizeClass = size === "sm" ? "h-3 w-3" : "h-4 w-4";
   return (
-    <span className="inline-flex items-center gap-2.5">
-      <span
-        className={cn(
-          "h-2.5 w-2.5 shrink-0 rounded-full ring-2 ring-current/10",
-          levelClass(value),
-        )}
-        aria-hidden="true"
-        style={{ color: "currentColor" }}
-      />
-      <span>{label}</span>
-    </span>
+    <span
+      className={cn(
+        "inline-block shrink-0 rounded-full ring-2 ring-background",
+        sizeClass,
+        levelClass(value),
+      )}
+      aria-label={label}
+      title={label}
+    />
+  );
+}
+
+function CompareLegend({ c }: { c: CompareCopy }) {
+  const items: { value: number; label: string }[] = [
+    { value: 2, label: c.legend.low },
+    { value: 3, label: c.legend.medium },
+    { value: 4, label: c.legend.high },
+    { value: 5, label: c.legend.veryHigh },
+  ];
+
+  return (
+    <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 rounded-xl border border-border bg-card p-4 text-sm">
+      <span className="font-medium text-foreground">{c.legendTitle}</span>
+      {items.map((item) => (
+        <span key={item.label} className="inline-flex items-center gap-2 text-muted-foreground">
+          <LevelDot value={item.value} label={item.label} size="sm" />
+          <span>{item.label}</span>
+        </span>
+      ))}
+    </div>
   );
 }
 
 function rows(c: CompareCopy): [string, (id: BreedId) => ReactNode][] {
   const s = (v: number) => c.scale[v - 1] ?? "—";
-  const cell = (v: number) => <LevelCell value={v} label={s(v)} />;
+  const cell = (v: number) => <LevelDot value={v} label={s(v)} />;
   return [
     [c.rows.size, (id) => cell(t(id).size)],
     [c.rows.energy, (id) => cell(t(id).energy)],
