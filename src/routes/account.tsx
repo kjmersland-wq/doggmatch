@@ -5,6 +5,8 @@ import { DogSwitcher } from "@/components/dogmatch/care/hub";
 import { useMyDog } from "@/lib/care/store";
 import { useTrainingState } from "@/lib/training/store";
 import { AccountMembership } from "@/components/dogmatch/plus/membership";
+import { MemberBenefits } from "@/components/dogmatch/plus/benefits";
+import { useMembership } from "@/hooks/use-membership";
 
 const title = "My Account — Your details and preferences | DoggMatch";
 const description =
@@ -39,6 +41,7 @@ function Row({ label, value }: { label: string; value: string }) {
 function AccountPage() {
   const dog = useMyDog();
   const { dogs } = useTrainingState();
+  const { membership } = useMembership();
 
   return (
     <div className="pb-24">
