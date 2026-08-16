@@ -1,6 +1,6 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
-import { useT } from "@/i18n";
+import { useT, useLocale, pick } from "@/i18n";
 import { getBreed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
@@ -59,27 +59,33 @@ export const Route = createFileRoute("/breeds/$breedId")({
   component: BreedDetail,
 });
 
+const labels = {
+  size: { en: "Size", no: "Størrelse" },
+  energy: { en: "Energy", no: "Energi" },
+  exerciseNeeds: { en: "Exercise needs", no: "Mosjonsbehov" },
+  mentalStimulation: { en: "Mental stimulation", no: "Mental stimulering" },
+  trainability: { en: "Trainability", no: "Lærevillighet" },
+  sociability: { en: "Sociability", no: "Sosial med folk" },
+  affection: { en: "Affection", no: "Kosete" },
+  independence: { en: "Independence", no: "Selvstendighet" },
+  goodWithChildren: { en: "Good with children", no: "Passer med barn" },
+  goodWithDogs: { en: "Good with other dogs", no: "Passer med andre hunder" },
+  apartmentSuitability: { en: "Apartment suitability", no: "Passer i leilighet" },
+  aloneTolerance: { en: "Tolerance of being alone", no: "Tåler å være alene" },
+  shedding: { en: "Shedding", no: "Pelsfelling" },
+  grooming: { en: "Grooming", no: "Pelsstell" },
+  barking: { en: "Barking", no: "Bjeffing" },
+  firstTimeSuitability: { en: "First-time owner suitability", no: "Passer for førstegangseiere" },
+} as const;
+
 function BreedDetail() {
   const t = useT();
-  const { breed, content } = Route.useLoaderData();
-  const traitRows: [string, number][] = [
-    ["Size", breed.traits.size],
-    ["Energy", breed.traits.energy],
-    ["Exercise needs", breed.traits.exerciseNeeds],
-    ["Mental stimulation", breed.traits.mentalStimulation],
-    ["Trainability", breed.traits.trainability],
-    ["Sociability", breed.traits.sociability],
-    ["Affection", breed.traits.affection],
-    ["Independence", breed.traits.independence],
-    ["Good with children", breed.traits.goodWithChildren],
-    ["Good with other dogs", breed.traits.goodWithDogs],
-    ["Apartment suitability", breed.traits.apartmentSuitability],
-    ["Tolerance of being alone", breed.traits.aloneTolerance],
-    ["Shedding", breed.traits.shedding],
-    ["Grooming", breed.traits.grooming],
-    ["Barking", breed.traits.barking],
-    ["First-time owner suitability", breed.traits.firstTimeSuitability],
-  ];
+  const { breed } = Route.useLoaderData();
+  const content = breedContent()[breed.id];
+  const traitRows: [string, number][] = (Object.keys(labels) as (keyof typeof labels)[]).map((key) => [
+    pick(labels[key]),
+    breed.traits[key],
+  ]);
 
   return (
     <article className="pb-24">
