@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AccountRouteImport } from './routes/account'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DogLifeRouteImport } from './routes/dog-life'
@@ -24,6 +25,8 @@ import { Route as TrainRouteImport } from './routes/train'
 import { Route as TravelRouteImport } from './routes/travel'
 import { Route as BreedsIndexRouteImport } from './routes/breeds.index'
 import { Route as BreedsBreedIdRouteImport } from './routes/breeds.$breedId'
+import { Route as CheckoutCanceledRouteImport } from './routes/checkout.canceled'
+import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
 import { Route as GetADogIndexRouteImport } from './routes/get-a-dog.index'
 import { Route as GetADogChooseRouteImport } from './routes/get-a-dog.choose'
 import { Route as GetADogCostsRouteImport } from './routes/get-a-dog.costs'
@@ -65,6 +68,11 @@ const AboutRoute = AboutRouteImport.update({
 const AccountRoute = AccountRouteImport.update({
   id: '/account',
   path: '/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompareRoute = CompareRouteImport.update({
@@ -125,6 +133,16 @@ const BreedsIndexRoute = BreedsIndexRouteImport.update({
 const BreedsBreedIdRoute = BreedsBreedIdRouteImport.update({
   id: '/breeds/$breedId',
   path: '/breeds/$breedId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutCanceledRoute = CheckoutCanceledRouteImport.update({
+  id: '/checkout/canceled',
+  path: '/checkout/canceled',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutSuccessRoute = CheckoutSuccessRouteImport.update({
+  id: '/checkout/success',
+  path: '/checkout/success',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GetADogIndexRoute = GetADogIndexRouteImport.update({
@@ -267,6 +285,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/auth': typeof AuthRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/dog-life': typeof DogLifeRoute
@@ -278,6 +297,8 @@ export interface FileRoutesByFullPath {
   '/train': typeof TrainRouteWithChildren
   '/travel': typeof TravelRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/checkout/canceled': typeof CheckoutCanceledRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
   '/get-a-dog/choose': typeof GetADogChooseRoute
   '/get-a-dog/costs': typeof GetADogCostsRoute
   '/get-a-dog/prepare': typeof GetADogPrepareRoute
@@ -311,6 +332,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/auth': typeof AuthRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/dog-life': typeof DogLifeRoute
@@ -318,6 +340,8 @@ export interface FileRoutesByTo {
   '/guides': typeof GuidesRoute
   '/plus': typeof PlusRoute
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/checkout/canceled': typeof CheckoutCanceledRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
   '/get-a-dog/choose': typeof GetADogChooseRoute
   '/get-a-dog/costs': typeof GetADogCostsRoute
   '/get-a-dog/prepare': typeof GetADogPrepareRoute
@@ -352,6 +376,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/auth': typeof AuthRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/dog-life': typeof DogLifeRoute
@@ -363,6 +388,8 @@ export interface FileRoutesById {
   '/train': typeof TrainRouteWithChildren
   '/travel': typeof TravelRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
+  '/checkout/canceled': typeof CheckoutCanceledRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
   '/get-a-dog/choose': typeof GetADogChooseRoute
   '/get-a-dog/costs': typeof GetADogCostsRoute
   '/get-a-dog/prepare': typeof GetADogPrepareRoute
@@ -398,6 +425,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/account'
+    | '/auth'
     | '/compare'
     | '/contact'
     | '/dog-life'
@@ -409,6 +437,8 @@ export interface FileRouteTypes {
     | '/train'
     | '/travel'
     | '/breeds/$breedId'
+    | '/checkout/canceled'
+    | '/checkout/success'
     | '/get-a-dog/choose'
     | '/get-a-dog/costs'
     | '/get-a-dog/prepare'
@@ -442,6 +472,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/account'
+    | '/auth'
     | '/compare'
     | '/contact'
     | '/dog-life'
@@ -449,6 +480,8 @@ export interface FileRouteTypes {
     | '/guides'
     | '/plus'
     | '/breeds/$breedId'
+    | '/checkout/canceled'
+    | '/checkout/success'
     | '/get-a-dog/choose'
     | '/get-a-dog/costs'
     | '/get-a-dog/prepare'
@@ -482,6 +515,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/account'
+    | '/auth'
     | '/compare'
     | '/contact'
     | '/dog-life'
@@ -493,6 +527,8 @@ export interface FileRouteTypes {
     | '/train'
     | '/travel'
     | '/breeds/$breedId'
+    | '/checkout/canceled'
+    | '/checkout/success'
     | '/get-a-dog/choose'
     | '/get-a-dog/costs'
     | '/get-a-dog/prepare'
@@ -527,6 +563,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AccountRoute: typeof AccountRoute
+  AuthRoute: typeof AuthRoute
   CompareRoute: typeof CompareRoute
   ContactRoute: typeof ContactRoute
   DogLifeRoute: typeof DogLifeRoute
@@ -538,6 +575,8 @@ export interface RootRouteChildren {
   TrainRoute: typeof TrainRouteWithChildren
   TravelRoute: typeof TravelRouteWithChildren
   BreedsBreedIdRoute: typeof BreedsBreedIdRoute
+  CheckoutCanceledRoute: typeof CheckoutCanceledRoute
+  CheckoutSuccessRoute: typeof CheckoutSuccessRoute
   BreedsIndexRoute: typeof BreedsIndexRoute
 }
 
@@ -562,6 +601,13 @@ declare module '@tanstack/react-router' {
       path: '/account'
       fullPath: '/account'
       preLoaderRoute: typeof AccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/compare': {
@@ -646,6 +692,20 @@ declare module '@tanstack/react-router' {
       path: '/breeds/$breedId'
       fullPath: '/breeds/$breedId'
       preLoaderRoute: typeof BreedsBreedIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout/canceled': {
+      id: '/checkout/canceled'
+      path: '/checkout/canceled'
+      fullPath: '/checkout/canceled'
+      preLoaderRoute: typeof CheckoutCanceledRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout/success': {
+      id: '/checkout/success'
+      path: '/checkout/success'
+      fullPath: '/checkout/success'
+      preLoaderRoute: typeof CheckoutSuccessRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/get-a-dog/': {
@@ -932,6 +992,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AccountRoute: AccountRoute,
+  AuthRoute: AuthRoute,
   CompareRoute: CompareRoute,
   ContactRoute: ContactRoute,
   DogLifeRoute: DogLifeRoute,
@@ -943,6 +1004,8 @@ const rootRouteChildren: RootRouteChildren = {
   TrainRoute: TrainRouteWithChildren,
   TravelRoute: TravelRouteWithChildren,
   BreedsBreedIdRoute: BreedsBreedIdRoute,
+  CheckoutCanceledRoute: CheckoutCanceledRoute,
+  CheckoutSuccessRoute: CheckoutSuccessRoute,
   BreedsIndexRoute: BreedsIndexRoute,
 }
 export const routeTree = rootRouteImport

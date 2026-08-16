@@ -1,0 +1,76 @@
+import { useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
+import { createPlusCheckout } from "@/lib/plus/stripe.functions";
+import type { PlanId } from "@/lib/plus/plans";
+import { useMembership } from "@/hooks/use-membership";
+import { cn } from "@/lib/utils";
+
+type Props = {
+  plan: PlanId;
+  tone?: "primary" | "outline";
+  label?: string;
+  className?: string;
+};
+
+/** Takes someone from the pricing card straight into Stripe checkout. */
+export function JoinPlusButton({ plan, tone = "primary", label, className }: Props) {
+  const navigate = useNavigate();
+  const startCheckout = useServerFn(createPlusCheckout);
+  const { membership, signedIn, loading } = useMembership();
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const already = membership.subscribed;
+
+  async function onClick() {
+    setError(null);
+    if (!signedIn) {
+      void navigate({ to: "/auth", search: { next: "/plus" } });
+      return;
+    }
+    if (already) {
+      void navigate({ to: "/account" });
+      return;
+    }
+    setBusy(true);
+    try {
+      const { url } = await startCheckout({ data: { plan } });
+      window.location.href = url;
+    } catch {
+      setError("We couldn't open the payment page just then. Please try again.");
+      setBusy(false);
+    }
+  }
+
+  const text = busy
+    ? "Opening secure checkout…"
+    : already
+      ? "You're already a member"
+      : !signedIn
+        ? "Sign in to join"
+        : (label ?? "Join DoggMatch+");
+
+  return (
+    <div className={cn("mt-8", className)}>
+      <button
+        type="button"
+        onClick={onClick}
+        disabled={busy || loading}
+        className={cn(
+          "inline-flex h-14 w-full items-center justify-center rounded-full px-6 text-[0.9375rem] font-medium transition-colors sm:text-base disabled:opacity-70",
+          tone === "primary"
+            ? "bg-primary text-primary-foreground hover:bg-primary/90"
+            : "border border-border-strong text-foreground hover:bg-surface",
+        )}
+      >
+        {text}
+      </button>
+      {error && (
+        <p role="alert" className="mt-3 text-sm leading-relaxed text-accent">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}

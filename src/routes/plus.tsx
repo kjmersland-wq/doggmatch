@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Arrow, ButtonLink, Badge, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { SectionHead } from "@/components/dogmatch/journey/parts";
-import { PlusWaitlist } from "@/components/dogmatch/plus/waitlist";
+import { JoinPlusButton } from "@/components/dogmatch/plus/join";
 import { cn } from "@/lib/utils";
 import heroImage from "@/assets/plus-hero.jpg";
 import trainImage from "@/assets/train-recall.jpg";
@@ -278,11 +278,11 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Can I cancel my membership?",
-    a: "Membership hasn't opened yet, so there's nothing to cancel today. The full subscription details, including how to cancel, will be shown clearly before you ever pay anything.",
+    a: "Yes, whenever you like. Open your account page and you can change or cancel your membership yourself — it stays active until the end of the period you've already paid for.",
   },
   {
     q: "Can I choose monthly or yearly membership?",
-    a: "Yes — €7.99 a month or €59.99 a year. Payment isn't open yet, so both options are simply a preview of what's coming.",
+    a: "Yes — €7.99 a month, or €59.99 a year, which works out at about €5 a month. You can switch between them later from your account.",
   },
   {
     q: "What happens when I join?",
@@ -894,14 +894,9 @@ function PlusPage() {
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               Everything in DoggMatch+, month by month.
             </p>
-            <button
-              type="button"
-              disabled
-              aria-disabled="true"
-              className="mt-8 inline-flex h-14 w-full items-center justify-center rounded-full border border-border-strong px-8 text-base font-medium text-muted-foreground"
-            >
-              Coming soon
-            </button>
+            <div className="mt-auto">
+              <JoinPlusButton plan="monthly" tone="outline" label="Join monthly" />
+            </div>
           </Card>
           <Card className="relative flex flex-col border-border-strong bg-surface">
             <div className="flex items-center gap-3">
@@ -917,34 +912,18 @@ function PlusPage() {
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               Save €35.89 a year compared with paying monthly.
             </p>
-            <button
-              type="button"
-              disabled
-              aria-disabled="true"
-              className="mt-8 inline-flex h-14 w-full items-center justify-center rounded-full bg-primary px-6 text-[0.9375rem] font-medium text-primary-foreground opacity-80 sm:text-base"
-            >
-              Join when DoggMatch+ opens
-            </button>
+            <div className="mt-auto">
+              <JoinPlusButton plan="yearly" label="Join yearly — best value" />
+            </div>
           </Card>
         </div>
         <div className="mt-8 max-w-xl">
-          <p className="font-display text-lg tracking-tight">DoggMatch+ is coming soon.</p>
+          <p className="font-display text-lg tracking-tight">Membership is open.</p>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            We're putting the final pieces in place. Membership will open shortly.
+            Payment is handled securely by Stripe. You can change or cancel your membership yourself
+            at any time from your account.
           </p>
-          <a
-            href="#waitlist"
-            className="group mt-6 inline-flex h-14 select-none items-center justify-center gap-2.5 rounded-full border border-border-strong px-7 text-base font-medium text-foreground transition-colors duration-300 hover:bg-surface"
-          >
-            Be first to know when DoggMatch+ opens
-            <Arrow />
-          </a>
         </div>
-      </Section>
-
-      {/* 19b — Waitlist */}
-      <Section id="waitlist" className="container-page scroll-mt-24 pt-0">
-        <PlusWaitlist />
       </Section>
 
       {/* 19c — FAQ */}
@@ -992,10 +971,10 @@ function PlusPage() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
-                href="#waitlist"
+                href="#membership"
                 className="group inline-flex h-14 w-full select-none items-center justify-center gap-2.5 rounded-full bg-accent px-6 text-center text-[0.9375rem] font-medium text-accent-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)] sm:w-auto sm:px-8 sm:text-base"
               >
-                Be first to know when DoggMatch+ opens
+                Join DoggMatch+
                 <Arrow />
               </a>
               <ButtonLink
