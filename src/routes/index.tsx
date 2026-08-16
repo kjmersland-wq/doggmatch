@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
 import { useEffect, useRef, useState } from "react";
 import { useT } from "@/i18n";
 import { breeds } from "@/data/breeds";
-import { breedContentEn } from "@/data/breed-content.en";
+import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Arrow, ButtonLink, Eyebrow, Section, TraitMeter } from "@/components/dogmatch/ui";
 import heroImage from "@/assets/hero.jpg";
@@ -190,7 +191,7 @@ function HomePage() {
                   <div className="overflow-hidden rounded-[1.25rem] bg-background">
                     <img
                       src={breedImages[breed.id]}
-                      alt={breedContentEn[breed.id].displayName}
+                      alt={breedContent()[breed.id].displayName}
                       width={1024}
                       height={1280}
                       loading="lazy"
@@ -198,10 +199,10 @@ function HomePage() {
                     />
                   </div>
                   <h3 className="mt-4 font-display text-lg leading-tight tracking-tight">
-                    {breedContentEn[breed.id].displayName}
+                    {breedContent()[breed.id].displayName}
                   </h3>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    {breed.group} · {breed.origin}
+                    {breedGroupLabel(breed.group)} · {breedOriginLabel(breed.origin)}
                   </p>
                 </Link>
               </li>
@@ -231,14 +232,14 @@ function HomePage() {
                 <div key={b.id}>
                   <img
                     src={breedImages[b.id]}
-                    alt={breedContentEn[b.id].displayName}
+                    alt={breedContent()[b.id].displayName}
                     width={1024}
                     height={1280}
                     loading="lazy"
                     className="aspect-square w-full rounded-xl object-cover"
                   />
                   <p className="mt-3 font-display text-sm leading-tight">
-                    {breedContentEn[b.id].displayName}
+                    {breedContent()[b.id].displayName}
                   </p>
                 </div>
               ))}

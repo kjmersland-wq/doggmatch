@@ -1,5 +1,6 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/lib/theme";
+import { useCopy } from "@/i18n";
 import { cn } from "@/lib/utils";
 
 /**
@@ -8,6 +9,10 @@ import { cn } from "@/lib/utils";
  */
 export function ThemeToggle({ className, withLabel = false }: { className?: string; withLabel?: boolean }) {
   const { mode, toggle, ready } = useTheme();
+  const c = useCopy({
+    en: { night: "Night mode", day: "Day mode", toDay: "Switch to day mode", toNight: "Switch to night mode" },
+    no: { night: "Nattmodus", day: "Dagmodus", toDay: "Bytt til dagmodus", toNight: "Bytt til nattmodus" },
+  });
   const night = mode === "night";
 
   if (withLabel) {
@@ -23,7 +28,7 @@ export function ThemeToggle({ className, withLabel = false }: { className?: stri
       >
         <span className="flex items-center gap-2.5 text-foreground">
           {night ? <Moon className="h-4 w-4" aria-hidden /> : <Sun className="h-4 w-4" aria-hidden />}
-          {night ? "Night mode" : "Day mode"}
+          {night ? c.night : c.day}
         </span>
         <span
           className={cn(
@@ -47,8 +52,8 @@ export function ThemeToggle({ className, withLabel = false }: { className?: stri
       type="button"
       onClick={toggle}
       aria-pressed={night}
-      aria-label={night ? "Switch to day mode" : "Switch to night mode"}
-      title={night ? "Day mode" : "Night mode"}
+      aria-label={night ? c.toDay : c.toNight}
+      title={night ? c.day : c.night}
       className={cn(
         "grid h-10 w-10 place-items-center rounded-full border border-border-strong text-foreground transition-colors hover:bg-surface",
         className,

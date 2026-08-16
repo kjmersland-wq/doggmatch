@@ -11,25 +11,48 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { LocaleProvider, useCopy } from "@/i18n";
 import { SiteHeader } from "@/components/dogmatch/site-header";
 import { SiteFooter } from "@/components/dogmatch/site-footer";
 import { MobileTabs } from "@/components/dogmatch/mobile-tabs";
 
+const shellCopy = {
+  en: {
+    notFound: "This page seems to have wandered off.",
+    notFoundBody: "No harm done — let's get you back on track.",
+    back: "Back to DoggMatch",
+    errorTitle: "Something went wrong on our side.",
+    errorBody: "Sorry about that. Your answers are safe — give it another go.",
+    retry: "Try again",
+    home: "Go home",
+  },
+  no: {
+    notFound: "Denne siden ser ut til å ha stukket av.",
+    notFoundBody: "Ingen skade skjedd — la oss få deg på rett spor igjen.",
+    back: "Tilbake til DoggMatch",
+    errorTitle: "Noe gikk galt hos oss.",
+    errorBody: "Beklager det. Svarene dine er trygge — prøv en gang til.",
+    retry: "Prøv igjen",
+    home: "Til forsiden",
+  },
+};
+
 function NotFoundComponent() {
+  const c = useCopy(shellCopy);
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-6">
       <div className="max-w-md text-center">
         <p className="eyebrow justify-center">404</p>
-        <h1 className="display-lg mt-5">This page seems to have wandered off.</h1>
+        <h1 className="display-lg mt-5">{c.notFound}</h1>
         <p className="mt-4 text-muted-foreground">
-          No harm done — let's get you back on track.
+          {c.notFoundBody}
         </p>
         <div className="mt-8">
           <Link
             to="/"
             className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-7 text-sm font-medium text-primary-foreground transition-colors hover:opacity-90"
           >
-            Back to DoggMatch
+            {c.back}
           </Link>
         </div>
       </div>
@@ -40,6 +63,7 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
+  const c = useCopy(shellCopy);
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
@@ -47,11 +71,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-6">
       <div className="max-w-md text-center">
-        <h1 className="display-md">
-          Something went wrong on our side.
-        </h1>
+        <h1 className="display-md">{c.errorTitle}</h1>
         <p className="mt-3 text-muted-foreground">
-          Sorry about that. Your answers are safe — give it another go.
+          {c.errorBody}
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <button
@@ -61,13 +83,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-7 text-sm font-medium text-primary-foreground transition-colors hover:opacity-90"
           >
-            Try again
+            {c.retry}
           </button>
           <a
             href="/"
             className="inline-flex h-12 items-center justify-center rounded-full border border-border-strong px-7 text-sm font-medium text-foreground transition-colors hover:bg-surface"
           >
-            Go home
+            {c.home}
           </a>
         </div>
       </div>
@@ -144,13 +166,15 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SiteHeader />
-      <main id="main" className="pb-20 pt-[72px] print:p-0 lg:pb-0">
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-      </main>
-      <SiteFooter />
-      <MobileTabs />
+      <LocaleProvider>
+        <SiteHeader />
+        <main id="main" className="pb-20 pt-[72px] print:p-0 lg:pb-0">
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </main>
+        <SiteFooter />
+        <MobileTabs />
+      </LocaleProvider>
     </QueryClientProvider>
   );
 }

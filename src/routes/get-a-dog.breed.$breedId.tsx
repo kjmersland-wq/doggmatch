@@ -2,7 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { Notice, SectionHead } from "@/components/dogmatch/journey/parts";
 import { getBreed } from "@/data/breeds";
-import { breedContentEn } from "@/data/breed-content.en";
+import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { costRange, prepCards } from "@/lib/getdog/prep";
 import { getDogStore } from "@/lib/getdog/store";
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/get-a-dog/breed/$breedId")({
     if (!loaderData) {
       return { meta: [{ title: "Unavailable | DoggMatch" }, { name: "robots", content: "noindex" }] };
     }
-    const name = breedContentEn[loaderData.breedId].displayName;
+    const name = breedContent()[loaderData.breedId].displayName;
     const title = `Getting ready for a ${name} — what to know before you commit | DoggMatch`;
     const description = `What a ${name} will actually ask of you: exercise, training, grooming, being alone, cost and the first weeks — drawn from their real traits, not a sales pitch.`;
     return {
@@ -40,7 +40,7 @@ export const Route = createFileRoute("/get-a-dog/breed/$breedId")({
 function BreedPrepPage() {
   const { breedId } = Route.useLoaderData();
   const breed = getBreed(breedId)!;
-  const content = breedContentEn[breed.id];
+  const content = breedContent()[breed.id];
   const cards = prepCards(breed);
 
   useEffect(() => {

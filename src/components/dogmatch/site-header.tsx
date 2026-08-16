@@ -6,10 +6,12 @@ import { cn } from "@/lib/utils";
 import { ButtonLink, Arrow } from "./ui";
 import { BrandLock } from "./brand-logo";
 import { ThemeToggle } from "./theme-toggle";
-import { navGroups } from "./nav-structure";
+import { LanguageToggle } from "./language-toggle";
+import { useNavGroups } from "./nav-structure";
 
 export function SiteHeader() {
   const t = useT();
+  const navGroups = useNavGroups();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState<string | null>(null);
@@ -98,6 +100,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden items-center gap-2.5 lg:flex">
+            <LanguageToggle />
             <ThemeToggle />
             <Link
               to="/account"
@@ -113,6 +116,7 @@ export function SiteHeader() {
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
+            <LanguageToggle />
             <ThemeToggle />
             <button
               type="button"
@@ -242,6 +246,7 @@ export function SiteHeader() {
             </nav>
 
             <div className="mt-6 space-y-3 pb-24">
+              <LanguageToggle withLabel />
               <ThemeToggle withLabel />
               <Link
                 to="/account"

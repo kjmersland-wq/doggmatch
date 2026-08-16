@@ -1,8 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { useT, interpolate } from "@/i18n";
-import { questions } from "@/data/questions";
-import { breedContentEn } from "@/data/breed-content.en";
+import { useT, interpolate, useCopy } from "@/i18n";
+
+const resultCopy = {
+  en: {
+    scoreNote: "Based on everything you told us, including the limits you said you couldn't stretch.",
+    essentials: ["A bed and a safe space", "Collar, lead and tag", "Food and mealtimes", "Insurance and vet care"],
+    suited: "Suited to a {breed}.",
+  },
+  no: {
+    scoreNote: "Basert på alt du har fortalt oss, også grensene du sa du ikke kunne tøye.",
+    essentials: ["En seng og et trygt sted", "Halsbånd, bånd og ID-brikke", "Mat og faste måltider", "Forsikring og veterinær"],
+    suited: "Tilpasset en {breed}.",
+  },
+};
+import { quizQuestions } from "@/data/questions.locale";
+import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { matchBreeds, explain } from "@/lib/matching/engine";
 import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/types";
@@ -34,6 +47,7 @@ type Phase = "quiz" | "revealing" | "result";
 
 function FindMyDogPage() {
   const t = useT();
+  const questions = quizQuestions();
   const [step, setStep] = useState(0);
   const [profile, setProfile] = useState<UserProfile>({});
   const [phase, setPhase] = useState<Phase>("quiz");
@@ -211,8 +225,9 @@ const DIMENSION_ORDER: DimensionKey[] = [
 
 function Results({ results, onRestart }: { results: MatchResult[]; onRestart: () => void }) {
   const t = useT();
+  const c = useCopy(resultCopy);
   const best = results[0]!;
-  const content = breedContentEn[best.breedId];
+  const content = breedContent()[best.breedId];
   const detail = explain(best);
   const others = results.slice(1, 4);
 
@@ -231,7 +246,7 @@ function Results({ results, onRestart }: { results: MatchResult[]; onRestart: ()
               <div className="max-w-[14rem]">
                 <p className="font-display text-lg leading-tight">{t.result.compatibility}</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Based on everything you told us, including the limits you said you couldn't stretch.
+                  {c.scoreNote}
                 </p>
                 {best.status !== "recommended" && (
                   <span className="mt-4 inline-block">
@@ -311,7 +326,7 @@ function Results({ results, onRestart }: { results: MatchResult[]; onRestart: ()
                 <div className="overflow-hidden rounded-[1.25rem]">
                   <img
                     src={breedImages[r.breedId]}
-                    alt={breedContentEn[r.breedId].displayName}
+                    alt={breedContent()[r.breedId].displayName}
                     width={1024}
                     height={1280}
                     loading="lazy"
@@ -320,7 +335,7 @@ function Results({ results, onRestart }: { results: MatchResult[]; onRestart: ()
                 </div>
                 <div className="mt-4 flex items-baseline justify-between gap-3">
                   <h3 className="font-display text-lg leading-tight tracking-tight">
-                    {breedContentEn[r.breedId].displayName}
+                    {breedContent()[r.breedId].displayName}
                   </h3>
                   <span className="font-display text-sm tabular-nums text-muted-foreground">
                     {r.score}%
@@ -362,10 +377,12 @@ function Results({ results, onRestart }: { results: MatchResult[]; onRestart: ()
           {t.result.essentialsBody}
         </p>
         <ul className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-          {["A bed and a safe space", "Collar, lead and tag", "Food and mealtimes", "Insurance and vet care"].map((item) => (
+          {c.essentials.map((item) => (
             <li key={item} className="bg-background p-7">
               <p className="font-display text-lg leading-tight">{item}</p>
-              <p className="mt-2 text-sm text-muted-foreground">Suited to a {content.displayName}.</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {interpolate(c.suited, { breed: content.displayName })}
+              </p>
             </li>
           ))}
         </ul>

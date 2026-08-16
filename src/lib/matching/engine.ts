@@ -1,5 +1,6 @@
 import { breeds, type Breed } from "@/data/breeds";
-import { breedContentEn } from "@/data/breed-content.en";
+import { pick } from "@/i18n";
+import { breedContent } from "@/data/breed-content";
 import type { DimensionKey, MatchResult, UserProfile } from "./types";
 
 /**
@@ -135,35 +136,35 @@ function hardConstraints(breed: Breed, p: UserProfile): { warnings: string[]; ca
   let cap = 100;
 
   if (p["energyLimit"] === "no" && t.energy >= 4) {
-    warnings.push("You told us you'd need a calmer dog, and this one really does have a lot of energy.");
+    warnings.push(pick({ en: "You told us you'd need a calmer dog, and this one really does have a lot of energy.", no: "Du sa at du trenger en roligere hund, og denne har virkelig mye energi." }));
     cap = Math.min(cap, 52);
   }
   if (p["physical"] === "light" && t.strengthRequired >= 4) {
-    warnings.push("This is a big, strong dog. That can be hard work on the lead if strength is an issue for you.");
+    warnings.push(pick({ en: "This is a big, strong dog. That can be hard work on the lead if strength is an issue for you.", no: "Dette er en stor og sterk hund. Det kan bli tungt i bånd hvis styrke er en utfordring for deg." }));
     cap = Math.min(cap, 55);
   }
   if (p["shedding"] === "must-low" && t.shedding >= 4) {
-    warnings.push("They shed a lot. With someone at home who reacts to dogs, that's a difficult place to start.");
+    warnings.push(pick({ en: "They shed a lot. With someone at home who reacts to dogs, that's a difficult place to start.", no: "Den feller mye. Når noen hjemme reagerer på hund, er det et vanskelig utgangspunkt." }));
     cap = Math.min(cap, 50);
   }
   if (p["children"] === "young" && t.goodWithChildren <= 3) {
-    warnings.push("With young children at home, this one usually needs an experienced hand.");
+    warnings.push(pick({ en: "With young children at home, this one usually needs an experienced hand.", no: "Med små barn hjemme trenger denne som regel en erfaren eier." }));
     cap = Math.min(cap, 62);
   }
   if (p["pets"] === "small" && t.goodWithPets <= 2) {
-    warnings.push("They have a strong chase instinct, so small pets in the same home would be a real worry.");
+    warnings.push(pick({ en: "They have a strong chase instinct, so small pets in the same home would be a real worry.", no: "Den har sterk jaktlyst, så små dyr i samme hjem ville vært en reell bekymring." }));
     cap = Math.min(cap, 45);
   }
   if (p["experience"] === "first" && t.firstTimeSuitability <= 2) {
-    warnings.push("A demanding choice for a first dog. They do best with someone who's done it before.");
+    warnings.push(pick({ en: "A demanding choice for a first dog. They do best with someone who's done it before.", no: "Et krevende valg som første hund. Den trives best hos noen som har gjort det før." }));
     cap = Math.min(cap, 60);
   }
   if (Number(p["alone"] ?? 0) >= 6 && t.aloneTolerance <= 2) {
-    warnings.push("They find long days on their own hard. Six hours or more would need a proper plan.");
+    warnings.push(pick({ en: "They find long days on their own hard. Six hours or more would need a proper plan.", no: "Den synes lange dager alene er tungt. Seks timer eller mer krever en ordentlig plan." }));
     cap = Math.min(cap, 58);
   }
   if (p["home"] === "apartment" && t.apartmentSuitability <= 1) {
-    warnings.push("Flat living rarely suits this breed, even with plenty of long walks.");
+    warnings.push(pick({ en: "Flat living rarely suits this breed, even with plenty of long walks.", no: "Leilighetsliv passer sjelden for denne rasen, selv med mange lange turer." }));
     cap = Math.min(cap, 50);
   }
 
@@ -194,7 +195,7 @@ export function matchBreeds(profile: UserProfile): MatchResult[] {
 
 /** Explanation generator — strengths and honest trade-offs for the matched breed. */
 export function explain(result: MatchResult) {
-  const content = breedContentEn[result.breedId];
+  const content = breedContent()[result.breedId];
   return {
     summary: content.summary,
     strengths: content.strengths,

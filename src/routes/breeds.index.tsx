@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { breedGroupLabel } from "@/data/breed-meta";
 import { useState } from "react";
 import { useT } from "@/i18n";
 import { breeds } from "@/data/breeds";
-import { breedContentEn } from "@/data/breed-content.en";
+import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Eyebrow } from "@/components/dogmatch/ui";
 
@@ -31,7 +32,7 @@ function BreedsPage() {
   const t = useT();
   const [query, setQuery] = useState("");
   const filtered = breeds.filter((b) =>
-    breedContentEn[b.id].displayName.toLowerCase().includes(query.trim().toLowerCase()),
+    breedContent()[b.id].displayName.toLowerCase().includes(query.trim().toLowerCase()),
   );
 
   return (
@@ -63,7 +64,7 @@ function BreedsPage() {
                 <div className="overflow-hidden rounded-[1.25rem] bg-surface">
                   <img
                     src={breedImages[breed.id]}
-                    alt={breedContentEn[breed.id].displayName}
+                    alt={breedContent()[breed.id].displayName}
                     width={1024}
                     height={1280}
                     loading="lazy"
@@ -71,13 +72,13 @@ function BreedsPage() {
                   />
                 </div>
                 <h2 className="mt-5 font-display text-xl leading-tight tracking-tight">
-                  {breedContentEn[breed.id].displayName}
+                  {breedContent()[breed.id].displayName}
                 </h2>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  {breed.group} · {breed.lifespan[0]}–{breed.lifespan[1]} {t.breeds.years}
+                  {breedGroupLabel(breed.group)} · {breed.lifespan[0]}–{breed.lifespan[1]} {t.breeds.years}
                 </p>
                 <p className="mt-3 line-clamp-2 text-[0.9375rem] leading-relaxed text-muted-foreground">
-                  {breedContentEn[breed.id].summary}
+                  {breedContent()[breed.id].summary}
                 </p>
               </Link>
             </li>
