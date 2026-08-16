@@ -10,6 +10,8 @@ export type DimensionKey =
   | "temperament"
   | "trainability"
   | "companionship"
+  | "allergy"
+  | "wellbeing"
   | "maintenance";
 
 export interface MatchResult {
