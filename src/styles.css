@@ -799,12 +799,14 @@ html {
 
 @media print {
   @page brochureA5 { size: 148mm 210mm; margin: 0; }
-  .br-sheet { display: block; gap: 0; }
+  .br-sheet { display: block; gap: 0; zoom: 1 !important; transform: none !important; }
   .br-page {
     page: brochureA5;
     box-shadow: none;
     width: 148mm;
     height: 210mm;
+    max-width: 148mm;
+    overflow: hidden;
     break-inside: avoid;
     break-after: page;
     page-break-after: always;
