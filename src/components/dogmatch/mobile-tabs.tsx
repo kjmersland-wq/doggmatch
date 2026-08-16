@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { Compass, GraduationCap, Heart, Home, Sparkles } from "lucide-react";
 import { useCopy, useT } from "@/i18n";
 
@@ -8,6 +8,7 @@ const copy = {
 } as const;
 
 export function MobileTabs() {
+  const pathname = useLocation({ select: (l) => l.pathname });
   const t = useT();
   const c = useCopy(copy);
   const items = [
@@ -17,6 +18,8 @@ export function MobileTabs() {
     { to: "/train", label: t.nav.trainShort, Icon: GraduationCap },
     { to: "/my-dog", label: t.nav.myDogShort, Icon: Heart },
   ];
+
+  if (pathname.startsWith("/brochure")) return null;
 
   return (
     <nav
