@@ -1,3 +1,4 @@
+import { pick } from "@/i18n";
 import type { CareState } from "@/lib/care/store";
 import type { DogProfile } from "@/lib/training/store";
 import { resolveDogTraits } from "@/lib/dogs/profile";
@@ -28,12 +29,12 @@ export interface CareDue extends CareTask {
 export function careTasks(dog: DogProfile | undefined): CareTask[] {
   const grooming = resolveDogTraits(dog).traits.grooming;
   return [
-    { id: "dental", label: "Teeth", everyDays: 2, topicId: "dental" },
-    { id: "coat", label: "A proper brush", everyDays: grooming >= 4 ? 2 : grooming === 3 ? 4 : 7, topicId: "coat" },
-    { id: "paws", label: "Nails and paws", everyDays: 21, topicId: "paws" },
-    { id: "ears", label: "Ear check", everyDays: 14, topicId: "ears" },
-    { id: "everyday-check", label: "Nose-to-tail check", everyDays: 7, topicId: "everyday-check" },
-    { id: "weight", label: "Weigh-in", everyDays: 30, to: "/my-dog/weight" },
+    { id: "dental", label: pick({ en: "Teeth", no: "Tenner" }), everyDays: 2, topicId: "dental" },
+    { id: "coat", label: pick({ en: "A proper brush", no: "En skikkelig børsting" }), everyDays: grooming >= 4 ? 2 : grooming === 3 ? 4 : 7, topicId: "coat" },
+    { id: "paws", label: pick({ en: "Nails and paws", no: "Klør og poter" }), everyDays: 21, topicId: "paws" },
+    { id: "ears", label: pick({ en: "Ear check", no: "Sjekk ørene" }), everyDays: 14, topicId: "ears" },
+    { id: "everyday-check", label: pick({ en: "Nose-to-tail check", no: "Sjekk fra snute til hale" }), everyDays: 7, topicId: "everyday-check" },
+    { id: "weight", label: pick({ en: "Weigh-in", no: "Veiing" }), everyDays: 30, to: "/my-dog/weight" },
   ];
 }
 
@@ -47,7 +48,7 @@ export function careDue(
   state: CareState,
   now = new Date(),
 ): CareDue[] {
-  const name = dog?.name ?? "your dog";
+  const name = dog?.name ?? pick({ en: "your dog", no: "hunden din" });
   const done = (dog && state.lastDone[dog.id]) || {};
   return careTasks(dog).map((task) => {
     const last = task.id === "weight" ? lastWeightDay(dog, state) : done[task.id];
@@ -72,28 +73,56 @@ function line(task: CareTask, name: string, daysSince?: number): string {
   if (daysSince === undefined) {
     switch (task.id) {
       case "dental":
-        return `Whenever you're ready to start on ${name}'s teeth.`;
+        return pick({
+          en: `Whenever you're ready to start on ${name}'s teeth.`,
+          no: `Når du er klar til å begynne med tennene til ${name}.`,
+        });
       case "weight":
-        return `Pop ${name} on the scales when you get a chance.`;
+        return pick({
+          en: `Pop ${name} on the scales when you get a chance.`,
+          no: `Sett ${name} på vekta når du får sjansen.`,
+        });
       default:
-        return `Nothing noted yet — tick it off once you've done it.`;
+        return pick({
+          en: `Nothing noted yet — tick it off once you've done it.`,
+          no: `Ingenting notert ennå — huk av når du har gjort det.`,
+        });
     }
   }
   if (daysSince < task.everyDays) {
-    return daysSince === 0 ? "Done today. Lovely." : `Done ${daysSince} day${daysSince === 1 ? "" : "s"} ago.`;
+    if (daysSince === 0) return pick({ en: "Done today. Lovely.", no: "Gjort i dag. Fint." });
+    return pick({
+      en: `Done ${daysSince} day${daysSince === 1 ? "" : "s"} ago.`,
+      no: `Gjort for ${daysSince} ${daysSince === 1 ? "dag" : "dager"} siden.`,
+    });
   }
   switch (task.id) {
     case "paws":
-      return `${name}'s nails may be due for a trim.`;
+      return pick({
+        en: `${name}'s nails may be due for a trim.`,
+        no: `Klørne til ${name} trenger kanskje en klipp.`,
+      });
     case "dental":
-      return `It's been a few days since ${name}'s teeth.`;
+      return pick({
+        en: `It's been a few days since ${name}'s teeth.`,
+        no: `Det er noen dager siden tennene til ${name} ble pusset.`,
+      });
     case "coat":
-      return `${name} could probably do with a brush.`;
+      return pick({
+        en: `${name} could probably do with a brush.`,
+        no: `${name} har nok godt av en børsting.`,
+      });
     case "ears":
-      return `Worth a quick look in ${name}'s ears.`;
+      return pick({
+        en: `Worth a quick look in ${name}'s ears.`,
+        no: `Verdt en rask titt i ørene til ${name}.`,
+      });
     case "weight":
-      return `It's been about a month since ${name} was weighed.`;
+      return pick({
+        en: `It's been about a month since ${name} was weighed.`,
+        no: `Det er omtrent en måned siden ${name} ble veid.`,
+      });
     default:
-      return `Worth a few minutes when you have them.`;
+      return pick({ en: `Worth a few minutes when you have them.`, no: `Verdt noen minutter når du har dem.` });
   }
 }

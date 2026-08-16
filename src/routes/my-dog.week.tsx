@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { X } from "lucide-react";
 import { Arrow, Button, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { Panel, VetNote } from "@/components/dogmatch/care/parts";
-import { buildWeek, dayNames, kindLabel } from "@/lib/care/week";
+import { buildWeek, getDayNames, kindLabel } from "@/lib/care/week";
 import { recordsStore, useWeekOverride } from "@/lib/care/records";
 import { useCareProfile, useMyDog } from "@/lib/care/store";
 import { useProgress } from "@/lib/training/store";
@@ -202,7 +202,7 @@ function WeekPage() {
         </div>
       </Section>
 
-      <p className="container-page text-sm text-muted-foreground">{c.footer(dayNames.length)}</p>
+      <p className="container-page text-sm text-muted-foreground">{c.footer(getDayNames().length)}</p>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { pick } from "@/i18n";
 import type { SkillStatus } from "@/data/training/types";
 import type { DogProfile } from "@/lib/training/store";
 import { resolveDogTraits } from "@/lib/dogs/profile";
@@ -26,38 +27,61 @@ export interface WeekDay {
   items: WeekItem[];
 }
 
-export const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const DAY_NAMES = {
+  en: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+  no: ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"],
+};
 
-const kindLabels: Record<WeekKind, string> = {
-  walk: "Walk",
-  training: "Training",
-  food: "Food",
-  care: "Care",
-  play: "Play",
-  rest: "Rest",
-  own: "Yours",
+/** Day names in the reader's language. Read at call time, never cached. */
+export function getDayNames(): string[] {
+  return pick(DAY_NAMES);
+}
+
+const kindLabels: Record<WeekKind, { en: string; no: string }> = {
+  walk: { en: "Walk", no: "Tur" },
+  training: { en: "Training", no: "Trening" },
+  food: { en: "Food", no: "Mat" },
+  care: { en: "Care", no: "Stell" },
+  play: { en: "Play", no: "Lek" },
+  rest: { en: "Rest", no: "Hvile" },
+  own: { en: "Yours", no: "Ditt eget" },
 };
 
 export function kindLabel(kind: WeekKind): string {
-  return kindLabels[kind];
+  return pick(kindLabels[kind]);
 }
 
 function walkLine(dog: DogProfile | undefined, care: CareProfile): { label: string; detail: string } {
   const energy = resolveDogTraits(dog).traits.exerciseNeeds;
   const activity = care.activity ?? "moderate";
   if (dog?.ageStage === "puppy") {
-    return { label: "Two short walks", detail: "Short and sniffy — little legs tire quickly" };
+    return pick({
+      en: { label: "Two short walks", detail: "Short and sniffy — little legs tire quickly" },
+      no: { label: "To korte turer", detail: "Korte og med masse snusing — små bein blir fort slitne" },
+    });
   }
   if (dog?.ageStage === "senior") {
-    return { label: "A gentle walk", detail: "Their pace, not yours" };
+    return pick({
+      en: { label: "A gentle walk", detail: "Their pace, not yours" },
+      no: { label: "En rolig tur", detail: "I hundens tempo, ikke ditt" },
+    });
   }
   if (energy >= 4 && activity !== "gentle") {
-    return { label: "A long walk", detail: "This one needs a proper leg-stretch" };
+    return pick({
+      en: { label: "A long walk", detail: "This one needs a proper leg-stretch" },
+      no: { label: "En lang tur", detail: "Denne hunden trenger å få strukket på beina" },
+    });
   }
   if (energy <= 2 || activity === "gentle") {
-    return { label: "An easy walk", detail: "Steady, with time to sniff" };
+    return pick({
+      en: { label: "An easy walk", detail: "Steady, with time to sniff" },
+      no: { label: "En lett tur", detail: "Rolig, med tid til å snuse" },
+    });
   }
-  return { label: "A good walk", detail: "Half an hour or so, with sniffing time" };
+  return pick({
+    en: { label: "A good walk", detail: "Half an hour or so, with sniffing time" },
+    no: { label: "En god tur", detail: "En halvtimes tid, med tid til å snuse" },
+  });
 }
 
 function groomDays(dog: DogProfile | undefined): number[] {
@@ -79,15 +103,18 @@ export function buildWeek(
   const brushDays = groomDays(dog);
   const mental = resolveDogTraits(dog).traits.mentalStimulation;
 
-  const days: WeekDay[] = dayNames.map((name, index) => {
+  const days: WeekDay[] = getDayNames().map((name, index) => {
     const items: WeekItem[] = [];
 
     items.push({ id: `walk-${index}`, kind: "walk", label: walk.label, detail: walk.detail });
     items.push({
       id: `food-${index}`,
       kind: "food",
-      label: meals === 1 ? "One measured meal" : `${meals} measured meals`,
-      detail: "Weighed rather than guessed",
+      label:
+        meals === 1
+          ? pick({ en: "One measured meal", no: "Ett oppmålt måltid" })
+          : pick({ en: `${meals} measured meals`, no: `${meals} oppmålte måltider` }),
+      detail: pick({ en: "Weighed rather than guessed", no: "Veid, ikke gjettet" }),
     });
 
     // Training on most days, resting the mind on Sunday.
@@ -97,25 +124,25 @@ export function buildWeek(
         id: `train-${index}`,
         kind: "training",
         label: lesson.lesson.title,
-        detail: "Five minutes is plenty",
+        detail: pick({ en: "Five minutes is plenty", no: "Fem minutter holder lenge" }),
       });
     }
 
     if (index % 2 === 0) {
-      items.push({ id: `teeth-${index}`, kind: "care", label: "Teeth", detail: "Even thirty seconds helps" });
+      items.push({ id: `teeth-${index}`, kind: "care", label: pick({ en: "Teeth", no: "Tenner" }), detail: pick({ en: "Even thirty seconds helps", no: "Selv tretti sekunder hjelper" }) });
     }
     if (brushDays.includes(index)) {
-      items.push({ id: `brush-${index}`, kind: "care", label: "Brush", detail: "And a feel for lumps or mats" });
+      items.push({ id: `brush-${index}`, kind: "care", label: pick({ en: "Brush", no: "Børsting" }), detail: pick({ en: "And a feel for lumps or mats", no: "Og kjenn etter kuler eller floker" }) });
     }
     if (mental >= 4 && (index === 1 || index === 4)) {
-      items.push({ id: `game-${index}`, kind: "play", label: "A thinking game", detail: "Scatter feed, or hide a toy" });
+      items.push({ id: `game-${index}`, kind: "play", label: pick({ en: "A thinking game", no: "En tenkelek" }), detail: pick({ en: "Scatter feed, or hide a toy", no: "Strø ut fôret, eller gjem en leke" }) });
     }
     if (index === 6) {
-      items.push({ id: `rest-${index}`, kind: "rest", label: "A slow day", detail: "Nothing asked of them" });
-      items.push({ id: `check-${index}`, kind: "care", label: "Nose-to-tail check", detail: "Ears, eyes, paws, skin" });
+      items.push({ id: `rest-${index}`, kind: "rest", label: pick({ en: "A slow day", no: "En rolig dag" }), detail: pick({ en: "Nothing asked of them", no: "Ingenting kreves av hunden" }) });
+      items.push({ id: `check-${index}`, kind: "care", label: pick({ en: "Nose-to-tail check", no: "Sjekk fra snute til hale" }), detail: pick({ en: "Ears, eyes, paws, skin", no: "Ører, øyne, poter, hud" }) });
     }
     if (index === 0) {
-      items.push({ id: `weigh-${index}`, kind: "care", label: "Weigh-in (every few weeks)", detail: "Only takes a minute" });
+      items.push({ id: `weigh-${index}`, kind: "care", label: pick({ en: "Weigh-in (every few weeks)", no: "Veiing (med noen ukers mellomrom)" }), detail: pick({ en: "Only takes a minute", no: "Tar bare et minutt" }) });
     }
 
     return { index, name: name!, items };
