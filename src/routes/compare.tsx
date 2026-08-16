@@ -186,7 +186,7 @@ function ComparePage() {
                   >
                     <th
                       scope="row"
-                      className="sticky left-0 z-10 bg-card py-4 pr-6 text-sm font-normal whitespace-nowrap text-muted-foreground shadow-[2px_0_8px_-4px_var(--color-foreground)]/10"
+                      className="sticky left-0 z-10 border-r border-border bg-card py-4 pr-6 text-sm font-normal whitespace-nowrap text-muted-foreground"
                     >
                       {label}
                     </th>
