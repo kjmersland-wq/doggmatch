@@ -39,8 +39,8 @@ export function SiteFooter() {
           <FooterColumn title={t.footer.company}>
             <FooterLink to="/about">{t.footer.about}</FooterLink>
             <FooterLink to="/contact">{t.footer.contact}</FooterLink>
-            <FooterLink to="/about">{t.footer.privacy}</FooterLink>
-            <FooterLink to="/about">{t.footer.terms}</FooterLink>
+            <FooterLink to="/privacy">{t.footer.privacy}</FooterLink>
+            <FooterLink to="/terms">{t.footer.terms}</FooterLink>
           </FooterColumn>
         </div>
 
