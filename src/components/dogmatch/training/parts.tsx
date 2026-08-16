@@ -4,20 +4,65 @@ import type { Lesson, SkillStatus } from "@/data/training/types";
 import { lessonHeroes } from "@/data/training/images";
 import { Badge } from "@/components/dogmatch/ui";
 import { cn } from "@/lib/utils";
+import { useCopy, pick } from "@/i18n";
 
-export const levelLabels: Record<Lesson["level"], string> = {
-  beginner: "Beginner",
-  building: "Building confidence",
-  intermediate: "Intermediate",
-  advanced: "Advanced",
-};
+const copy = {
+  en: {
+    level: {
+      beginner: "Beginner",
+      building: "Building confidence",
+      intermediate: "Intermediate",
+      advanced: "Advanced",
+    } as Record<Lesson["level"], string>,
+    status: {
+      "not-started": "Not started",
+      practising: "Practising",
+      "getting-there": "Getting there",
+      learned: "Learned",
+    } as Record<SkillStatus, string>,
+    howGoing: "How is this going?",
+    pause: "Pause",
+    startTimer: "Start timer",
+    resume: "Resume",
+    reset: "Reset",
+    goodOne: "Good one",
+    rewardsGiven: "rewards given",
+  },
+  no: {
+    level: {
+      beginner: "Nybegynner",
+      building: "Bygger selvtillit",
+      intermediate: "Middels",
+      advanced: "Viderekommen",
+    } as Record<Lesson["level"], string>,
+    status: {
+      "not-started": "Ikke startet",
+      practising: "Øver på det",
+      "getting-there": "Nesten der",
+      learned: "Kan det",
+    } as Record<SkillStatus, string>,
+    howGoing: "Hvordan går det?",
+    pause: "Pause",
+    startTimer: "Start timer",
+    resume: "Fortsett",
+    reset: "Nullstill",
+    goodOne: "Bra jobba",
+    rewardsGiven: "belønninger gitt",
+  },
+} as const;
 
-export const statusLabels: Record<SkillStatus, string> = {
-  "not-started": "Not started",
-  practising: "Practising",
-  "getting-there": "Getting there",
-  learned: "Learned",
-};
+/** English fallback level labels, for use outside React render. */
+export const levelLabels: Record<Lesson["level"], string> = copy.en.level;
+/** English fallback status labels, for use outside React render. */
+export const statusLabels: Record<SkillStatus, string> = copy.en.status;
+
+export function levelLabel(level: Lesson["level"]): string {
+  return pick(copy).level[level];
+}
+
+export function statusLabel(status: SkillStatus): string {
+  return pick(copy).status[status];
+}
 
 const statusOrder: SkillStatus[] = ["not-started", "practising", "getting-there", "learned"];
 
@@ -32,6 +77,7 @@ export function LessonCard({
   status?: SkillStatus | undefined;
   note?: string | undefined;
 }) {
+  const c = useCopy(copy);
   return (
     <Link
       to="/train/lessons/$lessonId"
@@ -50,13 +96,13 @@ export function LessonCard({
       </div>
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-center gap-2">
-          {status !== "not-started" && <Badge tone="accent">{statusLabels[status]}</Badge>}
+          {status !== "not-started" && <Badge tone="accent">{c.status[status]}</Badge>}
         </div>
         <h3 className="mt-3 font-display text-xl leading-tight tracking-tight">{lesson.title}</h3>
         <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">{lesson.promise}</p>
         {note && <p className="mt-3 text-sm text-accent">{note}</p>}
         <p className="mt-auto pt-5 text-sm tabular-nums text-muted-foreground">
-          {lesson.duration} min · {levelLabels[lesson.level]}
+          {lesson.duration} min · {c.level[lesson.level]}
         </p>
       </div>
     </Link>
@@ -74,8 +120,9 @@ export function StatusPicker({
   onChange: (s: SkillStatus) => void;
   disabled?: boolean;
 }) {
+  const c = useCopy(copy);
   return (
-    <div className="flex flex-wrap gap-2" role="group" aria-label="How is this going?">
+    <div className="flex flex-wrap gap-2" role="group" aria-label={c.howGoing}>
       {statusOrder.map((s) => (
         <button
           key={s}
@@ -90,7 +137,7 @@ export function StatusPicker({
               : "border-border text-muted-foreground hover:border-border-strong hover:text-foreground",
           )}
         >
-          {statusLabels[s]}
+          {c.status[s]}
         </button>
       ))}
     </div>
@@ -110,6 +157,7 @@ export function StepFigure({ src, alt }: { src: string; alt: string }) {
 /* ------------------------------------------------------------- Small tools */
 
 export function SessionTimer({ minutes }: { minutes: number }) {
+  const c = useCopy(copy);
   const [remaining, setRemaining] = useState(minutes * 60);
   const [running, setRunning] = useState(false);
   const ref = useRef<number | null>(null);
@@ -137,7 +185,7 @@ export function SessionTimer({ minutes }: { minutes: number }) {
         onClick={() => setRunning((v) => !v)}
         className="min-h-11 rounded-full border border-border-strong px-5 text-sm transition-colors hover:bg-surface"
       >
-        {running ? "Pause" : remaining === minutes * 60 ? "Start timer" : "Resume"}
+        {running ? c.pause : remaining === minutes * 60 ? c.startTimer : c.resume}
       </button>
       <button
         type="button"
@@ -147,13 +195,14 @@ export function SessionTimer({ minutes }: { minutes: number }) {
         }}
         className="min-h-11 rounded-full px-4 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
-        Reset
+        {c.reset}
       </button>
     </div>
   );
 }
 
 export function TreatCounter() {
+  const c = useCopy(copy);
   const [count, setCount] = useState(0);
   return (
     <div className="flex items-center gap-3">
@@ -162,17 +211,17 @@ export function TreatCounter() {
         onClick={() => setCount((c) => c + 1)}
         className="min-h-11 rounded-full bg-primary px-5 text-sm text-primary-foreground transition-transform duration-300 active:scale-95"
       >
-        Good one
+        {c.goodOne}
       </button>
       <span className="font-display text-2xl tabular-nums">{count}</span>
-      <span className="text-sm text-muted-foreground">rewards given</span>
+      <span className="text-sm text-muted-foreground">{c.rewardsGiven}</span>
       {count > 0 && (
         <button
           type="button"
           onClick={() => setCount(0)}
           className="text-sm text-muted-foreground underline-offset-4 hover:underline"
         >
-          Reset
+          {c.reset}
         </button>
       )}
     </div>

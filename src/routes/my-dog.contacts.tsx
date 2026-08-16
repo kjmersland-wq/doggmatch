@@ -10,6 +10,7 @@ import {
   useImportantInfo,
 } from "@/lib/care/records";
 import { useMyDog } from "@/lib/care/store";
+import { useCopy } from "@/i18n";
 
 const title = "Important contacts & information | DoggMatch";
 const description =
@@ -35,6 +36,51 @@ export const Route = createFileRoute("/my-dog/contacts")({
 const inputClass =
   "mt-2 w-full rounded-[0.9rem] border border-border bg-background px-4 py-3 text-[0.9375rem] outline-none transition-colors focus:border-border-strong";
 
+const copy = {
+  en: {
+    eyebrow: "Contacts & information",
+    titleFor: (name: string) => `Everything about ${name}, in one place`,
+    titleFallback: "Everything in one place",
+    intro:
+      "Fill in what you know. It stays on this device, and you can print it whenever you need it — for the vet, a sitter, or the fridge door.",
+    printSave: "Print & save",
+    addDogNote: "Add your dog first and everything you type here will be kept with them.",
+    detailsTitle: "Your dog's details",
+    dob: "Date of birth",
+    colour: "Colour and markings",
+    microchip: "Microchip number",
+    insurance: "Insurance",
+    policy: "Policy number",
+    worthKnowing: "Worth knowing",
+    worthKnowingTitle: "The things you'd want someone else to know",
+    worthKnowingIntro:
+      "In your words. Nothing here is a diagnosis — it's simply what you've noticed living with your dog.",
+    vetNote:
+      "If you're worried about a change in your dog's health, your veterinarian is the best person to ask. What you write here just helps you remember it all when you get there.",
+  },
+  no: {
+    eyebrow: "Kontakter og informasjon",
+    titleFor: (name: string) => `Alt om ${name}, på ett sted`,
+    titleFallback: "Alt på ett sted",
+    intro:
+      "Fyll inn det du vet. Det blir liggende på denne enheten, og du kan skrive det ut når du trenger det — til veterinæren, hundepasseren eller kjøleskapsdøren.",
+    printSave: "Skriv ut og lagre",
+    addDogNote: "Legg til hunden din først, så blir alt du skriver her tatt vare på sammen med den.",
+    detailsTitle: "Detaljer om hunden din",
+    dob: "Fødselsdato",
+    colour: "Farge og tegninger",
+    microchip: "Chipnummer",
+    insurance: "Forsikring",
+    policy: "Polisenummer",
+    worthKnowing: "Verdt å vite",
+    worthKnowingTitle: "Det du vil at noen andre skal vite",
+    worthKnowingIntro:
+      "Med dine egne ord. Ingenting her er en diagnose — det er rett og slett det du har lagt merke til i hverdagen med hunden din.",
+    vetNote:
+      "Er du bekymret for en endring i hundens helse, er veterinæren den beste å spørre. Det du skriver her hjelper deg bare å huske alt når du kommer dit.",
+  },
+} as const;
+
 function Field({
   label,
   value,
@@ -55,6 +101,7 @@ function Field({
 }
 
 function ContactsPage() {
+  const c = useCopy(copy);
   const dog = useMyDog();
   const details = useDogDetails(dog?.id);
   const contacts = useContacts(dog?.id);
@@ -64,54 +111,49 @@ function ContactsPage() {
   return (
     <div className="pb-24">
       <section className="container-page pt-28 md:pt-36">
-        <Eyebrow>Contacts & information</Eyebrow>
+        <Eyebrow>{c.eyebrow}</Eyebrow>
         <h1 className="display-xl mt-6 max-w-3xl">
-          {dog ? `Everything about ${dog.name}, in one place` : "Everything in one place"}
+          {dog ? c.titleFor(dog.name) : c.titleFallback}
         </h1>
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-          Fill in what you know. It stays on this device, and you can print it whenever you need it —
-          for the vet, a sitter, or the fridge door.
-        </p>
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
         <div className="mt-9 flex flex-wrap gap-3">
           <ButtonLink to="/my-dog/print" size="lg">
-            Print & save
+            {c.printSave}
             <Arrow />
           </ButtonLink>
         </div>
         {!dog && (
-          <p className="mt-6 text-sm text-muted-foreground">
-            Add your dog first and everything you type here will be kept with them.
-          </p>
+          <p className="mt-6 text-sm text-muted-foreground">{c.addDogNote}</p>
         )}
       </section>
 
       <Section className="container-page">
         <div className="grid gap-6 lg:grid-cols-2">
-          <Panel title="Your dog's details">
+          <Panel title={c.detailsTitle}>
             <div className="grid gap-4 sm:grid-cols-2">
               <Field
-                label="Date of birth"
+                label={c.dob}
                 type="date"
                 value={details.dob ?? ""}
                 onChange={(v) => id && recordsStore.saveDetails(id, { dob: v })}
               />
               <Field
-                label="Colour and markings"
+                label={c.colour}
                 value={details.colour ?? ""}
                 onChange={(v) => id && recordsStore.saveDetails(id, { colour: v })}
               />
               <Field
-                label="Microchip number"
+                label={c.microchip}
                 value={details.microchip ?? ""}
                 onChange={(v) => id && recordsStore.saveDetails(id, { microchip: v })}
               />
               <Field
-                label="Insurance"
+                label={c.insurance}
                 value={details.insurer ?? ""}
                 onChange={(v) => id && recordsStore.saveDetails(id, { insurer: v })}
               />
               <Field
-                label="Policy number"
+                label={c.policy}
                 value={details.policy ?? ""}
                 onChange={(v) => id && recordsStore.saveDetails(id, { policy: v })}
               />
@@ -136,12 +178,9 @@ function ContactsPage() {
       </Section>
 
       <Section className="container-page">
-        <Eyebrow>Worth knowing</Eyebrow>
-        <h2 className="display-lg mt-5 max-w-2xl">The things you'd want someone else to know</h2>
-        <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-          In your words. Nothing here is a diagnosis — it's simply what you've noticed living with
-          your dog.
-        </p>
+        <Eyebrow>{c.worthKnowing}</Eyebrow>
+        <h2 className="display-lg mt-5 max-w-2xl">{c.worthKnowingTitle}</h2>
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.worthKnowingIntro}</p>
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           {infoFields.map((field) => (
             <Panel key={field.key} title={field.label}>
@@ -156,10 +195,7 @@ function ContactsPage() {
           ))}
         </div>
         <div className="mt-10 max-w-2xl">
-          <VetNote>
-            If you're worried about a change in your dog's health, your veterinarian is the best
-            person to ask. What you write here just helps you remember it all when you get there.
-          </VetNote>
+          <VetNote>{c.vetNote}</VetNote>
         </div>
       </Section>
     </div>

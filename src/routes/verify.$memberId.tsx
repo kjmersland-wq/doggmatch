@@ -3,6 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useQuery } from "@tanstack/react-query";
 import { BrandLock } from "@/components/dogmatch/brand-logo";
 import { checkMemberCard } from "@/lib/plus/member-card.functions";
+import { useCopy, useLocale } from "@/i18n";
 
 const title = "Membership check | DoggMatch";
 const description = "Check that a DoggMatch+ member card is genuine and still valid.";
@@ -24,7 +25,26 @@ export const Route = createFileRoute("/verify/$memberId")({
   component: VerifyPage,
 });
 
+const copy = {
+  en: {
+    checking: "Checking…",
+    active: "✓ Active member",
+    validUntil: "Valid until:",
+    ended: "Membership has ended",
+    notFound: "Card not found",
+  },
+  no: {
+    checking: "Sjekker …",
+    active: "✓ Aktivt medlem",
+    validUntil: "Gyldig til:",
+    ended: "Medlemskapet er avsluttet",
+    notFound: "Fant ikke kortet",
+  },
+} as const;
+
 function VerifyPage() {
+  const c = useCopy(copy);
+  const { locale } = useLocale();
   const { memberId } = Route.useParams();
   const check = useServerFn(checkMemberCard);
 
@@ -46,19 +66,19 @@ function VerifyPage() {
         </p>
 
         {isLoading ? (
-          <p className="mt-6 text-muted-foreground">Checking…</p>
+          <p className="mt-6 text-muted-foreground">{c.checking}</p>
         ) : valid ? (
           <>
-            <p className="mt-6 text-lg font-medium text-accent">✓ Active member</p>
+            <p className="mt-6 text-lg font-medium text-accent">{c.active}</p>
             {data?.found && data.validThrough && (
               <p className="mt-2 text-[0.9375rem] text-muted-foreground">
-                Valid until: {formatDate(data.validThrough)}
+                {c.validUntil} {formatDate(data.validThrough, locale)}
               </p>
             )}
           </>
         ) : (
           <p className="mt-6 text-lg font-medium text-muted-foreground">
-            {data?.found ? "Membership has ended" : "Card not found"}
+            {data?.found ? c.ended : c.notFound}
           </p>
         )}
       </div>
@@ -67,7 +87,7 @@ function VerifyPage() {
 }
 
 /** dd.mm.yyyy — the only detail we share publicly. */
-function formatDate(value: string) {
+function formatDate(value: string, _locale: "en" | "no") {
   const d = new Date(value);
   const pad = (n: number) => String(n).padStart(2, "0");
   return `${pad(d.getDate())}.${pad(d.getMonth() + 1)}.${d.getFullYear()}`;

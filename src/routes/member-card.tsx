@@ -9,6 +9,7 @@ import { getMyMemberCard } from "@/lib/plus/member-card.functions";
 import { useAuth } from "@/hooks/use-auth";
 import { useMyDog } from "@/lib/care/store";
 import { useDogDetails } from "@/lib/care/records";
+import { useCopy } from "@/i18n";
 
 const title = "Your DoggMatch+ member card | DoggMatch";
 const description = "View and print your personal DoggMatch+ member card in standard card size.";
@@ -30,7 +31,39 @@ export const Route = createFileRoute("/member-card")({
   component: MemberCardPage,
 });
 
+const copy = {
+  en: {
+    signInHeading: "Sign in to see your card",
+    signInBody: "Your member card lives with your DoggMatch+ membership, so we need to know it's you.",
+    signInLabel: "Sign in",
+    loadingHeading: "One moment…",
+    loadingBody: "Fetching your card.",
+    backToAccount: "Back to my account",
+    noCardHeading: "This card comes with DoggMatch+",
+    noCardBody: "Join DoggMatch+ and your personal member card is made for you straight away.",
+    seePlus: "See DoggMatch+",
+    printCard: "Print my member card",
+    printedNote:
+      "Printed at real card size — 85.6 × 54 mm. Print both sides on stiff paper, cut along the edge and fold, and it sits in a wallet like any other card.",
+  },
+  no: {
+    signInHeading: "Logg inn for å se kortet ditt",
+    signInBody: "Medlemskortet ditt hører sammen med DoggMatch+-medlemskapet, så vi må vite at det er deg.",
+    signInLabel: "Logg inn",
+    loadingHeading: "Ett øyeblikk …",
+    loadingBody: "Henter kortet ditt.",
+    backToAccount: "Tilbake til kontoen min",
+    noCardHeading: "Dette kortet følger med DoggMatch+",
+    noCardBody: "Bli DoggMatch+-medlem, så lages ditt eget medlemskort med det samme.",
+    seePlus: "Se DoggMatch+",
+    printCard: "Skriv ut medlemskortet mitt",
+    printedNote:
+      "Trykket i ekte kortstørrelse — 85,6 × 54 mm. Skriv ut begge sider på stivt papir, klipp langs kanten og brett, så ligger det i lommeboken som et hvilket som helst kort.",
+  },
+} as const;
+
 function MemberCardPage() {
+  const c = useCopy(copy);
   const { user, loading } = useAuth();
   const dog = useMyDog();
   const details = useDogDetails(dog?.id);
@@ -50,27 +83,17 @@ function MemberCardPage() {
 
   if (!loading && !user) {
     return (
-      <Empty
-        heading="Sign in to see your card"
-        body="Your member card lives with your DoggMatch+ membership, so we need to know it's you."
-        to="/auth"
-        label="Sign in"
-      />
+      <Empty heading={c.signInHeading} body={c.signInBody} to="/auth" label={c.signInLabel} />
     );
   }
 
   if (loading || isLoading) {
-    return <Empty heading="One moment…" body="Fetching your card." to="/account" label="Back to my account" />;
+    return <Empty heading={c.loadingHeading} body={c.loadingBody} to="/account" label={c.backToAccount} />;
   }
 
   if (!data) {
     return (
-      <Empty
-        heading="This card comes with DoggMatch+"
-        body="Join DoggMatch+ and your personal member card is made for you straight away."
-        to="/plus"
-        label="See DoggMatch+"
-      />
+      <Empty heading={c.noCardHeading} body={c.noCardBody} to="/plus" label={c.seePlus} />
     );
   }
 
@@ -82,17 +105,16 @@ function MemberCardPage() {
           className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to my account
+          {c.backToAccount}
         </Link>
         <Button size="md" onClick={() => window.print()}>
           <Printer className="h-4 w-4" />
-          Print my member card
+          {c.printCard}
         </Button>
       </div>
 
       <p className="no-print container-page mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
-        Printed at real card size — 85.6 × 54 mm. Print both sides on stiff paper, cut along the
-        edge and fold, and it sits in a wallet like any other card.
+        {c.printedNote}
       </p>
 
       <div className="container-page mt-10">

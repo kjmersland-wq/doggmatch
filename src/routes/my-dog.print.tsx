@@ -5,6 +5,7 @@ import { Arrow, Button, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { VetNote } from "@/components/dogmatch/care/parts";
 import { documents, packOrder } from "@/lib/print/documents";
 import { useMyDog } from "@/lib/care/store";
+import { useCopy } from "@/i18n";
 
 const title = "Print & save — your dog's paperwork | DoggMatch";
 const description =
@@ -27,7 +28,37 @@ export const Route = createFileRoute("/my-dog/print")({
   component: PrintPage,
 });
 
+const copy = {
+  en: {
+    eyebrow: "Print & save",
+    title: "Something you can hold",
+    introFor: (name: string) =>
+      `Everything you've written about ${name} can go on paper — for the fridge door, the sitter, or the folder you keep in a drawer.`,
+    dogFallback: "your dog",
+    wholePack: "Make the whole Dog Pack",
+    printChosen: (n: number) => `Print what I've chosen (${n})`,
+    includeAria: (title: string) => `Include ${title}`,
+    printJustThisOne: "Print just this one",
+    vetNote:
+      "Pages are filled in with whatever you've saved, and left blank where you haven't — so a fresh sheet still works with a pen. Everything stays on your device.",
+  },
+  no: {
+    eyebrow: "Skriv ut og lagre",
+    title: "Noe du kan holde i hånden",
+    introFor: (name: string) =>
+      `Alt du har skrevet om ${name} kan skrives ut på papir — til kjøleskapsdøren, hundepasseren, eller mappen du oppbevarer i en skuff.`,
+    dogFallback: "hunden din",
+    wholePack: "Lag hele hundepakken",
+    printChosen: (n: number) => `Skriv ut det jeg har valgt (${n})`,
+    includeAria: (title: string) => `Inkluder ${title}`,
+    printJustThisOne: "Skriv ut bare denne",
+    vetNote:
+      "Sidene fylles ut med det du har lagret, og står tomme der du ikke har fylt inn noe — så et ferskt ark fungerer fortsatt med en penn. Alt blir liggende på enheten din.",
+  },
+} as const;
+
 function PrintPage() {
+  const c = useCopy(copy);
   const dog = useMyDog();
   const navigate = useNavigate();
   const [picked, setPicked] = useState<string[]>(["profile"]);
@@ -41,16 +72,15 @@ function PrintPage() {
   return (
     <div className="pb-24">
       <section className="container-page pt-28 md:pt-36">
-        <Eyebrow>Print & save</Eyebrow>
-        <h1 className="display-xl mt-6 max-w-3xl">Something you can hold</h1>
+        <Eyebrow>{c.eyebrow}</Eyebrow>
+        <h1 className="display-xl mt-6 max-w-3xl">{c.title}</h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-          Everything you've written about {dog?.name ?? "your dog"} can go on paper — for the fridge
-          door, the sitter, or the folder you keep in a drawer.
+          {c.introFor(dog?.name ?? c.dogFallback)}
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
           <Button size="lg" onClick={() => open(packOrder)}>
             <Printer className="h-4 w-4" />
-            Make the whole Dog Pack
+            {c.wholePack}
             <Arrow />
           </Button>
           <Button
@@ -59,7 +89,7 @@ function PrintPage() {
             disabled={picked.length === 0}
             onClick={() => open(picked)}
           >
-            Print what I've chosen ({picked.length})
+            {c.printChosen(picked.length)}
           </Button>
         </div>
       </section>
@@ -81,7 +111,7 @@ function PrintPage() {
                     type="button"
                     role="switch"
                     aria-checked={on}
-                    aria-label={`Include ${doc.title}`}
+                    aria-label={c.includeAria(doc.title)}
                     onClick={() => toggle(doc.id)}
                     className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border transition-colors ${
                       on
@@ -100,7 +130,7 @@ function PrintPage() {
                   onClick={() => open([doc.id])}
                   className="mt-5 text-sm text-accent underline-offset-4 hover:underline"
                 >
-                  Print just this one
+                  {c.printJustThisOne}
                 </button>
               </div>
             );
@@ -108,10 +138,7 @@ function PrintPage() {
         </div>
 
         <div className="mt-10 max-w-2xl">
-          <VetNote>
-            Pages are filled in with whatever you've saved, and left blank where you haven't — so a
-            fresh sheet still works with a pen. Everything stays on your device.
-          </VetNote>
+          <VetNote>{c.vetNote}</VetNote>
         </div>
       </Section>
     </div>

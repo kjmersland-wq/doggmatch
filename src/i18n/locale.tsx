@@ -23,9 +23,14 @@ export function getLocale(): Locale {
   return currentLocale;
 }
 
-/** Picks the right variant of a bilingual value. Safe outside React. */
-export function pick<T>(map: { en: T; no: T }, locale: Locale = currentLocale): T {
-  return map[locale] ?? map.en;
+/**
+ * Picks the right variant of a bilingual value. Safe outside React.
+ * The two branches are inferred independently (so `as const` literals in the
+ * Norwegian branch don't have to match the English literal types), but the
+ * result is typed from the English branch.
+ */
+export function pick<A, B>(map: { en: A; no: B }, locale: Locale = currentLocale): A {
+  return ((locale === "no" ? map.no : map.en) ?? map.en) as unknown as A;
 }
 
 type LocaleContextValue = {
@@ -96,7 +101,7 @@ export function useLocale() {
  * The everyday helper for components:
  *   const c = useCopy({ en: { title: "Hello" }, no: { title: "Hei" } });
  */
-export function useCopy<T>(map: { en: T; no: T }): T {
+export function useCopy<A, B>(map: { en: A; no: B }): A {
   const { locale } = useLocale();
-  return map[locale] ?? map.en;
+  return ((locale === "no" ? map.no : map.en) ?? map.en) as unknown as A;
 }

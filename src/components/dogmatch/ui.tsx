@@ -1,6 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 import type { ComponentProps, ReactNode } from "react";
+import { useCopy } from "@/i18n";
+
+const copy = {
+  en: { of: "of" },
+  no: { of: "av" },
+} as const;
 
 /* ---------------------------------------------------------------- Button */
 
@@ -115,10 +121,11 @@ export function ScoreBar({ value, label }: { value: number; label: string }) {
 }
 
 export function TraitMeter({ label, value, max = 5 }: { label: string; value: number; max?: number }) {
+  const c = useCopy(copy);
   return (
     <div className="flex items-center justify-between gap-6 py-2.5">
       <span className="text-sm text-muted-foreground">{label}</span>
-      <span className="flex gap-1" role="img" aria-label={`${label}: ${value} of ${max}`}>
+      <span className="flex gap-1" role="img" aria-label={`${label}: ${value} ${c.of} ${max}`}>
         {Array.from({ length: max }).map((_, i) => (
           <span
             key={i}

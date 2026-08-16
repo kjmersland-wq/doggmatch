@@ -28,45 +28,45 @@ export const Route = createFileRoute("/compare")({
   component: ComparePage,
 });
 
-const ROWS: [string, (id: BreedId) => string][] = [
-  ["Size", (id) => scale(t(id).size)],
-  ["Energy", (id) => scale(t(id).energy)],
-  ["Exercise", (id) => scale(t(id).exerciseNeeds)],
-  ["Mental stimulation", (id) => scale(t(id).mentalStimulation)],
-  ["Trainability", (id) => scale(t(id).trainability)],
-  ["Learning ability", (id) => scale(t(id).learningAbility)],
-  ["Sociability", (id) => scale(t(id).sociability)],
-  ["Affection", (id) => scale(t(id).affection)],
-  ["Shedding", (id) => scale(t(id).shedding)],
-  ["Grooming", (id) => scale(t(id).grooming)],
-  ["Barking", (id) => scale(t(id).barking)],
-  ["Around children", (id) => scale(t(id).goodWithChildren)],
-  ["Around other pets", (id) => scale(t(id).goodWithPets)],
-  ["Suits a flat", (id) => scale(t(id).apartmentSuitability)],
-  ["Good first dog", (id) => scale(t(id).firstTimeSuitability)],
-  [
-    "Usually lives",
-    (id) => {
-      const b = breeds.find((x) => x.id === id)!;
-      return `${b.lifespan[0]}–${b.lifespan[1]} years`;
-    },
-  ],
-  [
-    "Roughly, per year",
-    (id) => {
-      const b = breeds.find((x) => x.id === id)!;
-      return `€${b.annualCost[0]}–${b.annualCost[1]}`;
-    },
-  ],
-];
+type CompareCopy = ReturnType<typeof useT>["compare"];
+
+function rows(c: CompareCopy): [string, (id: BreedId) => string][] {
+  const s = (v: number) => c.scale[v - 1] ?? "—";
+  return [
+    [c.rows.size, (id) => s(t(id).size)],
+    [c.rows.energy, (id) => s(t(id).energy)],
+    [c.rows.exercise, (id) => s(t(id).exerciseNeeds)],
+    [c.rows.mental, (id) => s(t(id).mentalStimulation)],
+    [c.rows.trainability, (id) => s(t(id).trainability)],
+    [c.rows.learning, (id) => s(t(id).learningAbility)],
+    [c.rows.sociability, (id) => s(t(id).sociability)],
+    [c.rows.affection, (id) => s(t(id).affection)],
+    [c.rows.shedding, (id) => s(t(id).shedding)],
+    [c.rows.grooming, (id) => s(t(id).grooming)],
+    [c.rows.barking, (id) => s(t(id).barking)],
+    [c.rows.children, (id) => s(t(id).goodWithChildren)],
+    [c.rows.pets, (id) => s(t(id).goodWithPets)],
+    [c.rows.flat, (id) => s(t(id).apartmentSuitability)],
+    [c.rows.firstDog, (id) => s(t(id).firstTimeSuitability)],
+    [
+      c.rows.lifespan,
+      (id) => {
+        const b = breeds.find((x) => x.id === id)!;
+        return `${b.lifespan[0]}–${b.lifespan[1]} ${c.years}`;
+      },
+    ],
+    [
+      c.rows.cost,
+      (id) => {
+        const b = breeds.find((x) => x.id === id)!;
+        return `€${b.annualCost[0]}–${b.annualCost[1]}`;
+      },
+    ],
+  ];
+}
 
 function t(id: BreedId) {
   return breeds.find((b) => b.id === id)!.traits;
-}
-
-const LABELS = ["Very low", "Low", "Moderate", "High", "Very high"];
-function scale(value: number) {
-  return LABELS[value - 1] ?? "—";
 }
 
 function ComparePage() {
@@ -142,7 +142,7 @@ function ComparePage() {
               </tr>
             </thead>
             <tbody>
-              {ROWS.map(([label, render]) => (
+              {rows(copy.compare).map(([label, render]) => (
                 <tr key={label} className="border-t border-border">
                   <th scope="row" className="py-4 pr-6 text-sm font-normal text-muted-foreground">
                     {label}

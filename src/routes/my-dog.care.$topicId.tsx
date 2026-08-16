@@ -4,6 +4,7 @@ import { Sources, VetNote } from "@/components/dogmatch/care/parts";
 import { careVisuals, categoryImages, topicImages } from "@/data/care/images";
 import { careTopics, getCareTopic } from "@/data/care/topics";
 import { useMyDog } from "@/lib/care/store";
+import { useCopy } from "@/i18n";
 
 export const Route = createFileRoute("/my-dog/care/$topicId")({
   loader: ({ params }) => {
@@ -35,8 +36,48 @@ export const Route = createFileRoute("/my-dog/care/$topicId")({
   component: CareTopicPage,
 });
 
+const copy = {
+  en: {
+    myDog: "My Dog",
+    step: "Step",
+    gentleWeekTitle: "A gentle first week",
+    gentleWeekBody: "Slow is faster here. Each day is a minute at most.",
+    forName: (name: string) => `For ${name}`,
+    forYourDog: "For your dog",
+    thingsWorthNoticing: "Things worth noticing",
+    makeAboutDog: "Make this about your dog",
+    makeAboutDogBody: "Add a few details and we'll tailor the notes on pages like this one.",
+    setUpMyDog: "Set up my dog",
+    keepGoing: "Keep going",
+    moreEverydayCare: "More everyday care",
+    notWrittenTitle: "We haven't written that one yet.",
+    notWrittenBody:
+      "Have a look at everything in My Dog instead — there's a good chance what you're after is there under another name.",
+    backToMyDog: "Back to My Dog",
+  },
+  no: {
+    myDog: "Min hund",
+    step: "Steg",
+    gentleWeekTitle: "En rolig første uke",
+    gentleWeekBody: "Rolig er raskere her. Hver dag tar høyst et minutt.",
+    forName: (name: string) => `For ${name}`,
+    forYourDog: "For hunden din",
+    thingsWorthNoticing: "Verdt å legge merke til",
+    makeAboutDog: "Gjør dette til noe om hunden din",
+    makeAboutDogBody: "Legg til noen detaljer, så tilpasser vi notatene på sider som denne.",
+    setUpMyDog: "Sett opp hunden min",
+    keepGoing: "Fortsett",
+    moreEverydayCare: "Mer om hverdagsstell",
+    notWrittenTitle: "Den har vi ikke skrevet ennå.",
+    notWrittenBody:
+      "Se heller gjennom alt i Min hund — det er stor sjanse for at det du leter etter finnes der under et annet navn.",
+    backToMyDog: "Tilbake til Min hund",
+  },
+} as const;
+
 function CareTopicPage() {
   const { topic } = Route.useLoaderData();
+  const c = useCopy(copy);
   const dog = useMyDog();
   const hero = topicImages[topic.id] ?? categoryImages[topic.category];
   const ageNote = dog?.ageStage ? topic.ageNotes?.[dog.ageStage] : undefined;
@@ -47,7 +88,7 @@ function CareTopicPage() {
   return (
     <div className="pb-24">
       <section className="container-page pt-28 md:pt-36">
-        <Eyebrow>My Dog</Eyebrow>
+        <Eyebrow>{c.myDog}</Eyebrow>
         <h1 className="display-xl mt-6 max-w-3xl">{topic.title}</h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{topic.promise}</p>
         <div className="mt-12 overflow-hidden rounded-[2rem] border border-border">
@@ -87,7 +128,7 @@ function CareTopicPage() {
                       />
                     )}
                     <div className="p-7">
-                      <p className="text-xs uppercase tracking-[0.14em] text-accent">Step {i + 1}</p>
+                      <p className="text-xs uppercase tracking-[0.14em] text-accent">{c.step} {i + 1}</p>
                       <h2 className="mt-3 font-display text-xl leading-tight tracking-tight">{step.title}</h2>
                       <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">{step.body}</p>
                     </div>
@@ -98,9 +139,9 @@ function CareTopicPage() {
 
             {topic.routine && (
               <div className="mt-12 rounded-[1.5rem] border border-border bg-surface p-7 md:p-9">
-                <h2 className="font-display text-xl tracking-tight">A gentle first week</h2>
+                <h2 className="font-display text-xl tracking-tight">{c.gentleWeekTitle}</h2>
                 <p className="mt-2 text-[0.9375rem] text-muted-foreground">
-                  Slow is faster here. Each day is a minute at most.
+                  {c.gentleWeekBody}
                 </p>
                 <ol className="mt-6 space-y-3">
                   {topic.routine.map((r) => (
@@ -142,7 +183,7 @@ function CareTopicPage() {
             {(ageNote || breedNote) && (
               <div className="rounded-[1.5rem] border border-accent/40 bg-accent-soft/50 p-7">
                 <p className="text-xs uppercase tracking-[0.14em] text-accent">
-                  {dog?.name ? `For ${dog.name}` : "For your dog"}
+                  {dog?.name ? c.forName(dog.name) : c.forYourDog}
                 </p>
                 {ageNote && <p className="mt-3 text-[0.9375rem] leading-relaxed">{ageNote}</p>}
                 {breedNote && <p className="mt-3 text-[0.9375rem] leading-relaxed">{breedNote}</p>}
@@ -151,7 +192,7 @@ function CareTopicPage() {
 
             {topic.watchFor && (
               <div className="rounded-[1.5rem] border border-border bg-card p-7">
-                <h2 className="font-display text-lg tracking-tight">Things worth noticing</h2>
+                <h2 className="font-display text-lg tracking-tight">{c.thingsWorthNoticing}</h2>
                 <ul className="mt-4 space-y-2">
                   {topic.watchFor.map((w) => (
                     <li key={w} className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
@@ -167,12 +208,12 @@ function CareTopicPage() {
 
             {!dog && (
               <div className="rounded-[1.5rem] border border-border bg-surface p-7">
-                <h2 className="font-display text-lg tracking-tight">Make this about your dog</h2>
+                <h2 className="font-display text-lg tracking-tight">{c.makeAboutDog}</h2>
                 <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
-                  Add a few details and we'll tailor the notes on pages like this one.
+                  {c.makeAboutDogBody}
                 </p>
                 <ButtonLink to="/my-dog/setup" tone="outline" className="mt-5">
-                  Set up my dog
+                  {c.setUpMyDog}
                   <Arrow />
                 </ButtonLink>
               </div>
@@ -182,10 +223,10 @@ function CareTopicPage() {
       </Section>
 
       <Section className="container-page">
-        <Eyebrow>Keep going</Eyebrow>
-        <h2 className="display-md mt-5">More everyday care</h2>
+        <Eyebrow>{c.keepGoing}</Eyebrow>
+        <h2 className="display-md mt-5">{c.moreEverydayCare}</h2>
         <ul className="mt-8 flex flex-wrap gap-3">
-          {careTopics
+          {careTopics()
             .filter((t) => t.id !== topic.id)
             .map((t) => (
               <li key={t.id}>
@@ -201,15 +242,15 @@ function CareTopicPage() {
 }
 
 function TopicNotFound() {
+  const c = useCopy(copy);
   return (
     <div className="container-page pt-32 pb-24">
-      <h1 className="display-lg">We haven't written that one yet.</h1>
+      <h1 className="display-lg">{c.notWrittenTitle}</h1>
       <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted-foreground">
-        Have a look at everything in My Dog instead — there's a good chance what you're after is
-        there under another name.
+        {c.notWrittenBody}
       </p>
       <ButtonLink to="/my-dog" className="mt-8" size="lg">
-        Back to My Dog
+        {c.backToMyDog}
         <Arrow />
       </ButtonLink>
     </div>

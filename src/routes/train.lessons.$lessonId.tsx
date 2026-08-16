@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
-import { getLesson, lessonsById } from "@/data/training/lessons";
+import { getLesson, getLessonsById } from "@/data/training/lessons";
 import { lessonHeroes, stepVisuals } from "@/data/training/images";
 import { trainingCategories } from "@/data/training/categories";
 import type { SkillStatus } from "@/data/training/types";
@@ -62,7 +62,7 @@ function LessonPage() {
   const [note, setNote] = useState(state.notes[lesson.id] ?? "");
   const [logged, setLogged] = useState(false);
   const category = trainingCategories.find((c) => c.id === lesson.category);
-  const next = lesson.nextLessonId ? lessonsById[lesson.nextLessonId] : undefined;
+  const next = lesson.nextLessonId ? getLessonsById()[lesson.nextLessonId] : undefined;
 
   const howTo = {
     "@context": "https://schema.org",

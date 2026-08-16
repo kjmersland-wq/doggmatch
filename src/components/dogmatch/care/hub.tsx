@@ -5,9 +5,16 @@ import { careStore, useCareState } from "@/lib/care/store";
 import { careDue } from "@/lib/care/calendar";
 import { kindLabel, type WeekDay } from "@/lib/care/week";
 import { trainingStore, useTrainingState, type DogProfile } from "@/lib/training/store";
+import { useCopy } from "@/i18n";
+
+const copy = {
+  en: { anotherDog: "Another dog", markDone: "Mark {label} as done", today: "Today" },
+  no: { anotherDog: "Legg til hund", markDone: "Merk {label} som gjort", today: "I dag" },
+} as const;
 
 /** Switch between the dogs you've added, without leaving the page. */
 export function DogSwitcher({ active }: { active?: DogProfile }) {
+  const c = useCopy(copy);
   const { dogs } = useTrainingState();
   if (dogs.length === 0) return null;
 
@@ -44,7 +51,7 @@ export function DogSwitcher({ active }: { active?: DogProfile }) {
         className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-border px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground"
       >
         <Plus className="h-3.5 w-3.5" />
-        Another dog
+        {c.anotherDog}
       </Link>
     </div>
   );
@@ -52,6 +59,7 @@ export function DogSwitcher({ active }: { active?: DogProfile }) {
 
 /** The gentle care calendar: what's coming round again, in plain words. */
 export function CareCalendar({ dog }: { dog?: DogProfile }) {
+  const c = useCopy(copy);
   const state = useCareState();
   const items = careDue(dog, state);
 
@@ -70,7 +78,7 @@ export function CareCalendar({ dog }: { dog?: DogProfile }) {
             <button
               type="button"
               onClick={() => careStore.markDone(dog.id, task.id)}
-              aria-label={`Mark ${task.label} as done`}
+              aria-label={c.markDone.replace("{label}", task.label)}
               className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border-strong text-muted-foreground transition-colors hover:border-accent hover:text-accent"
             >
               <Check className="h-4 w-4" />
@@ -84,13 +92,14 @@ export function CareCalendar({ dog }: { dog?: DogProfile }) {
 
 /** A compact read of the coming week, three days at a time. */
 export function WeekStrip({ week, todayIndex }: { week: WeekDay[]; todayIndex: number }) {
+  const c = useCopy(copy);
   const ordered = [...week.slice(todayIndex), ...week.slice(0, todayIndex)].slice(0, 3);
   return (
     <div className="grid gap-3 sm:grid-cols-3">
       {ordered.map((day, i) => (
         <div key={day.index} className="rounded-[1.2rem] border border-border bg-surface p-4">
           <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
-            {i === 0 ? "Today" : day.name}
+            {i === 0 ? c.today : day.name}
           </p>
           <ul className="mt-3 grid gap-2">
             {day.items.slice(0, 4).map((item) => (

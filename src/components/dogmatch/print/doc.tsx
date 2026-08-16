@@ -1,5 +1,11 @@
 import { BrandLock } from "@/components/dogmatch/brand-logo";
 import type { Block, DocSection } from "@/lib/print/types";
+import { useCopy } from "@/i18n";
+
+const copy = {
+  en: { writtenDown: "Written down" },
+  no: { writtenDown: "Skrevet ut" },
+} as const;
 
 /**
  * The DoggMatch page template every printable shares: a quiet cover, the same
@@ -69,12 +75,13 @@ export function DocPaper({
 }
 
 function Footer({ dogName, date, page, total }: { dogName: string; date: string; page: number; total: number }) {
+  const c = useCopy(copy);
   return (
     <footer className="doc-footer">
       <span>
         {dogName} · DoggMatch
       </span>
-      <span>Written down {date}</span>
+      <span>{c.writtenDown} {date}</span>
       <span>
         {page} / {total}
       </span>

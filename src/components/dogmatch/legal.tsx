@@ -1,5 +1,11 @@
 import type { ReactNode } from "react";
 import { Eyebrow } from "@/components/dogmatch/ui";
+import { useCopy } from "@/i18n";
+
+const copy = {
+  en: { lastUpdated: "Last updated: " },
+  no: { lastUpdated: "Sist oppdatert: " },
+} as const;
 
 export function LegalPage({
   eyebrow,
@@ -14,12 +20,13 @@ export function LegalPage({
   updated: string;
   children: ReactNode;
 }) {
+  const c = useCopy(copy);
   return (
     <div className="container-page max-w-3xl py-14 md:py-24">
       <Eyebrow>{eyebrow}</Eyebrow>
       <h1 className="display-lg mt-6">{title}</h1>
       <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{intro}</p>
-      <p className="mt-4 text-sm text-muted-foreground">Last updated: {updated}</p>
+      <p className="mt-4 text-sm text-muted-foreground">{c.lastUpdated}{updated}</p>
       <div className="mt-12 space-y-12">{children}</div>
     </div>
   );
@@ -36,7 +43,7 @@ export function LegalSection({ title, children }: { title: string; children: Rea
   );
 }
 
-export function LegalList({ items }: { items: ReactNode[] }) {
+export function LegalList({ items }: { items: readonly ReactNode[] }) {
   return (
     <ul className="space-y-3">
       {items.map((item, i) => (

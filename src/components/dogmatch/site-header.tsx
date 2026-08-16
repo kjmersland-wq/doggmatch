@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, UserRound } from "lucide-react";
-import { useT } from "@/i18n";
+import { useCopy, useT } from "@/i18n";
 import { cn } from "@/lib/utils";
 import { ButtonLink, Arrow } from "./ui";
 import { BrandLock } from "./brand-logo";
@@ -9,8 +9,14 @@ import { ThemeToggle } from "./theme-toggle";
 import { LanguageToggle } from "./language-toggle";
 import { useNavGroups } from "./nav-structure";
 
+const copy = {
+  en: { primaryNav: "Primary", mobileNav: "Mobile" },
+  no: { primaryNav: "Hovedmeny", mobileNav: "Mobilmeny" },
+} as const;
+
 export function SiteHeader() {
   const t = useT();
+  const c = useCopy(copy);
   const navGroups = useNavGroups();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -68,7 +74,7 @@ export function SiteHeader() {
             <BrandLock markClassName="h-9 w-9" wordmarkClassName="text-[1.35rem]" />
           </Link>
 
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-1 lg:flex" aria-label={c.primaryNav}>
             {navGroups.map((g) => {
               const active = menu === g.id;
               return (
@@ -199,7 +205,7 @@ export function SiteHeader() {
               DoggMatch<span className="font-semibold text-accent">+</span>
             </Link>
 
-            <nav className="mt-6 divide-y divide-border/70" aria-label="Mobile">
+            <nav className="mt-6 divide-y divide-border/70" aria-label={c.mobileNav}>
               {navGroups.map((g) => {
                 const expanded = mobileGroup === g.id;
                 return (

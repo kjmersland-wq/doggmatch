@@ -1,6 +1,12 @@
 import * as React from "react";
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useCopy } from "@/i18n";
+
+const copy = {
+  en: { previousSlide: "Previous slide", nextSlide: "Next slide" },
+  no: { previousSlide: "Forrige bilde", nextSlide: "Neste bilde" },
+} as const;
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -177,6 +183,7 @@ CarouselItem.displayName = "CarouselItem";
 const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
   ({ className, variant = "outline", size = "icon", ...props }, ref) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+    const c = useCopy(copy);
 
     return (
       <Button
@@ -195,7 +202,7 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
         {...props}
       >
         <ArrowLeft className="h-4 w-4" />
-        <span className="sr-only">Previous slide</span>
+        <span className="sr-only">{c.previousSlide}</span>
       </Button>
     );
   },
@@ -205,6 +212,7 @@ CarouselPrevious.displayName = "CarouselPrevious";
 const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
   ({ className, variant = "outline", size = "icon", ...props }, ref) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel();
+    const c = useCopy(copy);
 
     return (
       <Button
@@ -223,7 +231,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
         {...props}
       >
         <ArrowRight className="h-4 w-4" />
-        <span className="sr-only">Next slide</span>
+        <span className="sr-only">{c.nextSlide}</span>
       </Button>
     );
   },

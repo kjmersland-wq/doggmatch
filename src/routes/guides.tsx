@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useT } from "@/i18n";
+import { useT, useCopy } from "@/i18n";
 import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
 
 const title = "Guides — choosing a dog, and living with one | DoggMatch";
@@ -23,47 +23,82 @@ export const Route = createFileRoute("/guides")({
   component: GuidesPage,
 });
 
-const guides = [
-  {
-    title: "Dogs that do well in a flat",
-    body: "Space matters less than you'd think. Noise, exercise and how they cope alone matter far more.",
+const copy = {
+  en: {
+    comingSoon: "Coming soon",
+    guides: [
+      {
+        title: "Dogs that do well in a flat",
+        body: "Space matters less than you'd think. Noise, exercise and how they cope alone matter far more.",
+      },
+      {
+        title: "Choosing your first dog",
+        body: "Everyone makes mistakes in the first year. Some dogs forgive them more easily than others.",
+      },
+      {
+        title: "Shedding, and living with allergies",
+        body: "What lower-shedding actually means, and how to think it through if someone at home reacts to dogs.",
+      },
+      {
+        title: "Calm dogs for quieter homes",
+        body: "A quiet dog still needs plenty from you. Here's how to spot one that's genuinely easy-going.",
+      },
+      {
+        title: "Dogs for people who like to move",
+        body: "Be honest about the week you actually have, not the one you'd like to have.",
+      },
+      {
+        title: "What a dog really costs in a year",
+        body: "Food, insurance, the vet, the groomer — and the bits almost everyone forgets to budget for.",
+      },
+    ],
   },
-  {
-    title: "Choosing your first dog",
-    body: "Everyone makes mistakes in the first year. Some dogs forgive them more easily than others.",
+  no: {
+    comingSoon: "Kommer snart",
+    guides: [
+      {
+        title: "Hunder som trives i leilighet",
+        body: "Plass betyr mindre enn du skulle tro. Støy, mosjon og hvordan de takler å være alene betyr mye mer.",
+      },
+      {
+        title: "Å velge din første hund",
+        body: "Alle gjør feil det første året. Noen hunder tilgir dem lettere enn andre.",
+      },
+      {
+        title: "Pelsfelling, og å leve med allergier",
+        body: "Hva mindre felling faktisk betyr, og hvordan tenke det gjennom hvis noen hjemme reagerer på hunder.",
+      },
+      {
+        title: "Rolige hunder for stillere hjem",
+        body: "En rolig hund trenger fortsatt mye av deg. Slik gjenkjenner du en som virkelig er avslappet.",
+      },
+      {
+        title: "Hunder for folk som liker å være i bevegelse",
+        body: "Vær ærlig om uken du faktisk har, ikke den du skulle ønske du hadde.",
+      },
+      {
+        title: "Hva en hund egentlig koster i året",
+        body: "Mat, forsikring, veterinæren, groomeren — og de delene nesten alle glemmer å budsjettere for.",
+      },
+    ],
   },
-  {
-    title: "Shedding, and living with allergies",
-    body: "What lower-shedding actually means, and how to think it through if someone at home reacts to dogs.",
-  },
-  {
-    title: "Calm dogs for quieter homes",
-    body: "A quiet dog still needs plenty from you. Here's how to spot one that's genuinely easy-going.",
-  },
-  {
-    title: "Dogs for people who like to move",
-    body: "Be honest about the week you actually have, not the one you'd like to have.",
-  },
-  {
-    title: "What a dog really costs in a year",
-    body: "Food, insurance, the vet, the groomer — and the bits almost everyone forgets to budget for.",
-  },
-];
+} as const;
 
 function GuidesPage() {
   const t = useT();
+  const c = useCopy(copy);
   return (
     <div className="container-page py-14 md:py-20">
       <Eyebrow>{t.guides.title}</Eyebrow>
       <h1 className="display-lg mt-6 max-w-2xl">{t.guides.subtitle}</h1>
 
       <ul className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
-        {guides.map((guide) => (
+        {c.guides.map((guide) => (
           <li key={guide.title} className="group bg-background p-8 md:p-10">
             <h2 className="display-md">{guide.title}</h2>
             <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">{guide.body}</p>
             <p className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
-              Coming soon
+              {c.comingSoon}
             </p>
           </li>
         ))}

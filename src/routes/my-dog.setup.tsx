@@ -7,6 +7,7 @@ import { trainingStore, useActiveDog } from "@/lib/training/store";
 import { careStore, useCareProfile, type ActivityLevel, type BodyCondition, type FoodType } from "@/lib/care/store";
 import { suggestedMeals } from "@/lib/care/portions";
 import { cn } from "@/lib/utils";
+import { useCopy } from "@/i18n";
 
 const title = "Your dog's details — My Dog | DoggMatch";
 const description =
@@ -30,32 +31,128 @@ export const Route = createFileRoute("/my-dog/setup")({
   component: MyDogSetup,
 });
 
-const ageStages: Option<AgeStage>[] = [
-  { value: "puppy", label: "A puppy", hint: "Up to about six months" },
-  { value: "adolescent", label: "A teenager", hint: "Roughly six months to two years" },
-  { value: "adult", label: "Grown up", hint: "Somewhere in the middle years" },
-  { value: "senior", label: "Getting older", hint: "Slowing down a little" },
-];
-
-const activities: Option<ActivityLevel>[] = [
-  { value: "gentle", label: "Gentle", hint: "Short walks, plenty of napping" },
-  { value: "moderate", label: "Fairly normal", hint: "An hour or so a day" },
-  { value: "busy", label: "Always going", hint: "Long walks, running, sport" },
-];
-
-const foodTypes: Option<FoodType>[] = [
-  { value: "dry", label: "Dry food", hint: "Kibble" },
-  { value: "wet", label: "Wet food", hint: "Tins, trays or pouches" },
-  { value: "mixed", label: "A bit of both", hint: "Wet and dry together" },
-  { value: "raw", label: "Raw", hint: "Prepared or home-made raw" },
-  { value: "home", label: "Home-cooked", hint: "Cooked at home" },
-];
-
-const conditions: Option<BodyCondition>[] = [
-  { value: "thin", label: "A little thin", hint: "Ribs and hips stand out" },
-  { value: "ideal", label: "About right", hint: "Ribs easy to feel, clear waist" },
-  { value: "heavy", label: "A little heavy", hint: "Ribs hard to feel, no waist" },
-];
+const copy = {
+  en: {
+    eyebrow: "Your dog",
+    title: "A few details, and we'll do the maths.",
+    intro:
+      "Everything here stays on this device. Skip anything you don't know — you can always come back and fill it in later.",
+    ageStages: [
+      { value: "puppy", label: "A puppy", hint: "Up to about six months" },
+      { value: "adolescent", label: "A teenager", hint: "Roughly six months to two years" },
+      { value: "adult", label: "Grown up", hint: "Somewhere in the middle years" },
+      { value: "senior", label: "Getting older", hint: "Slowing down a little" },
+    ],
+    activities: [
+      { value: "gentle", label: "Gentle", hint: "Short walks, plenty of napping" },
+      { value: "moderate", label: "Fairly normal", hint: "An hour or so a day" },
+      { value: "busy", label: "Always going", hint: "Long walks, running, sport" },
+    ],
+    foodTypes: [
+      { value: "dry", label: "Dry food", hint: "Kibble" },
+      { value: "wet", label: "Wet food", hint: "Tins, trays or pouches" },
+      { value: "mixed", label: "A bit of both", hint: "Wet and dry together" },
+      { value: "raw", label: "Raw", hint: "Prepared or home-made raw" },
+      { value: "home", label: "Home-cooked", hint: "Cooked at home" },
+    ],
+    conditions: [
+      { value: "thin", label: "A little thin", hint: "Ribs and hips stand out" },
+      { value: "ideal", label: "About right", hint: "Ribs easy to feel, clear waist" },
+      { value: "heavy", label: "A little heavy", hint: "Ribs hard to feel, no waist" },
+    ],
+    nameLabel: "What's their name?",
+    namePlaceholder: "Luna",
+    breedLabel: "Do you know the breed?",
+    breedHint: "If they're a lovely mix, just tell us what you'd call them.",
+    notFromList: "Not from this list",
+    breedOtherPlaceholder: "Terrier mix",
+    ageLabel: "How old is your dog?",
+    neuteredLabel: "Have they been neutered or spayed?",
+    neuteredHint: "It changes how much food they need, so it's worth knowing.",
+    yes: "Yes",
+    noOrUnsure: "No, or not sure",
+    weightLabel: "Roughly what do they weigh?",
+    weightHint: "In kilograms. A rough figure is fine to start with.",
+    activityLabel: "How active are they?",
+    bodyLabel: "And how do they look right now?",
+    bodyHint: "Feel along their ribs and look down from above. There's a proper guide in Weight & shape.",
+    foodTypeLabel: "What do you feed?",
+    energyLabel: "Calories per 100g, if the bag says",
+    energyHint: "Usually printed as kcal/100g. Leave it blank and we'll use a typical figure for that kind of food.",
+    kcalPer100g: "kcal per 100g",
+    mealsLabel: "How many meals a day?",
+    vetLabel: "Your vet",
+    vetHint: "Kept here so you're not searching for it when you need it.",
+    practiceName: "Practice name",
+    phoneNumber: "Phone number",
+    outOfHours: "Out-of-hours number",
+    notesLabel: "Anything else worth remembering?",
+    notesHint: "Allergies, medication, things they can't have.",
+    notesPlaceholder: "Reacts to chicken. On joint supplements.",
+    notNow: "Not now",
+    save: "Save",
+  },
+  no: {
+    eyebrow: "Hunden din",
+    title: "Noen få detaljer, så tar vi oss av regnestykket.",
+    intro:
+      "Alt her blir liggende på denne enheten. Hopp over det du ikke vet — du kan alltid komme tilbake og fylle det inn senere.",
+    ageStages: [
+      { value: "puppy", label: "En valp", hint: "Opptil rundt seks måneder" },
+      { value: "adolescent", label: "En tenåring", hint: "Omtrent seks måneder til to år" },
+      { value: "adult", label: "Voksen", hint: "Et sted i de midterste årene" },
+      { value: "senior", label: "Blir eldre", hint: "Roer seg litt ned" },
+    ],
+    activities: [
+      { value: "gentle", label: "Rolig", hint: "Korte turer, mye lur" },
+      { value: "moderate", label: "Ganske normalt", hint: "En times tid om dagen" },
+      { value: "busy", label: "Alltid i gang", hint: "Lange turer, løping, sport" },
+    ],
+    foodTypes: [
+      { value: "dry", label: "Tørrfôr", hint: "Pellets" },
+      { value: "wet", label: "Våtfôr", hint: "Bokser, brett eller poser" },
+      { value: "mixed", label: "Litt av begge deler", hint: "Våtfôr og tørrfôr sammen" },
+      { value: "raw", label: "Rått", hint: "Ferdiglaget eller hjemmelaget rått fôr" },
+      { value: "home", label: "Hjemmelaget", hint: "Laget hjemme" },
+    ],
+    conditions: [
+      { value: "thin", label: "Litt tynn", hint: "Ribbein og hofter stikker ut" },
+      { value: "ideal", label: "Passe", hint: "Ribbein lett å kjenne, tydelig midje" },
+      { value: "heavy", label: "Litt lubben", hint: "Ribbein vanskelig å kjenne, ingen midje" },
+    ],
+    nameLabel: "Hva heter hunden?",
+    namePlaceholder: "Luna",
+    breedLabel: "Vet du hvilken rase?",
+    breedHint: "Er hunden en fin blanding, kan du bare skrive hva du pleier å kalle den.",
+    notFromList: "Ikke på denne listen",
+    breedOtherPlaceholder: "Terrierblanding",
+    ageLabel: "Hvor gammel er hunden din?",
+    neuteredLabel: "Er hunden kastrert eller sterilisert?",
+    neuteredHint: "Det endrer hvor mye mat den trenger, så det er verdt å vite.",
+    yes: "Ja",
+    noOrUnsure: "Nei, eller usikker",
+    weightLabel: "Omtrent hvor mye veier den?",
+    weightHint: "I kilo. Et omtrentlig tall er greit til å begynne med.",
+    activityLabel: "Hvor aktiv er hunden?",
+    bodyLabel: "Og hvordan ser den ut akkurat nå?",
+    bodyHint: "Kjenn langs ribbeina og se ovenfra. Det er en skikkelig guide under Vekt & hold.",
+    foodTypeLabel: "Hva fôrer du med?",
+    energyLabel: "Kalorier per 100 g, hvis posen sier det",
+    energyHint: "Står vanligvis som kcal/100 g. La stå tomt, så bruker vi et typisk tall for den typen fôr.",
+    kcalPer100g: "kcal per 100 g",
+    mealsLabel: "Hvor mange måltider om dagen?",
+    vetLabel: "Veterinæren din",
+    vetHint: "Lagret her så du slipper å lete etter det når du trenger det.",
+    practiceName: "Navn på klinikken",
+    phoneNumber: "Telefonnummer",
+    outOfHours: "Nummer utenom åpningstid",
+    notesLabel: "Noe annet verdt å huske på?",
+    notesHint: "Allergier, medisiner, ting den ikke tåler.",
+    notesPlaceholder: "Reagerer på kylling. Bruker leddtilskudd.",
+    notNow: "Ikke nå",
+    save: "Lagre",
+  },
+} as const;
 
 const defaultEnergy: Record<FoodType, number> = {
   dry: 360,
@@ -66,6 +163,7 @@ const defaultEnergy: Record<FoodType, number> = {
 };
 
 function MyDogSetup() {
+  const c = useCopy(copy);
   const navigate = useNavigate();
   const dog = useActiveDog();
   const profile = useCareProfile(dog?.id);
@@ -120,31 +218,28 @@ function MyDogSetup() {
 
   return (
     <div className="container-page max-w-3xl pt-28 pb-32 md:pt-36">
-      <Eyebrow>Your dog</Eyebrow>
-      <h1 className="display-lg mt-5">A few details, and we'll do the maths.</h1>
-      <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
-        Everything here stays on this device. Skip anything you don't know — you can always come
-        back and fill it in later.
-      </p>
+      <Eyebrow>{c.eyebrow}</Eyebrow>
+      <h1 className="display-lg mt-5">{c.title}</h1>
+      <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">{c.intro}</p>
 
       <div className="mt-12 space-y-12">
-        <Field label="What's their name?">
+        <Field label={c.nameLabel}>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Luna"
+            placeholder={c.namePlaceholder}
             className="h-14 w-full max-w-sm rounded-2xl border border-border bg-card px-5 text-[1.0625rem] outline-none transition-colors focus:border-accent"
           />
         </Field>
 
-        <Field label="Do you know the breed?" hint="If they're a lovely mix, just tell us what you'd call them.">
+        <Field label={c.breedLabel} hint={c.breedHint}>
           <div className="flex flex-wrap gap-3">
             <select
               value={breedId}
               onChange={(e) => setBreedId(e.target.value as BreedId | "")}
               className="h-14 rounded-2xl border border-border bg-card px-5 text-[1.0625rem] outline-none focus:border-accent"
             >
-              <option value="">Not from this list</option>
+              <option value="">{c.notFromList}</option>
               {breeds.map((b) => (
                 <option key={b.id} value={b.id}>
                   {b.name}
@@ -155,25 +250,25 @@ function MyDogSetup() {
               <input
                 value={breedOther}
                 onChange={(e) => setBreedOther(e.target.value)}
-                placeholder="Terrier mix"
+                placeholder={c.breedOtherPlaceholder}
                 className="h-14 w-full max-w-xs rounded-2xl border border-border bg-card px-5 text-[1.0625rem] outline-none transition-colors focus:border-accent"
               />
             )}
           </div>
         </Field>
 
-        <Field label="How old is your dog?">
-          <Choices options={ageStages} value={ageStage} onChange={setAgeStage} />
+        <Field label={c.ageLabel}>
+          <Choices options={c.ageStages} value={ageStage} onChange={setAgeStage} />
         </Field>
 
-        <Field label="Have they been neutered or spayed?" hint="It changes how much food they need, so it's worth knowing.">
+        <Field label={c.neuteredLabel} hint={c.neuteredHint}>
           <div className="flex flex-wrap gap-3">
-            <Toggle on={neutered} onClick={() => setNeutered(true)} label="Yes" />
-            <Toggle on={!neutered} onClick={() => setNeutered(false)} label="No, or not sure" />
+            <Toggle on={neutered} onClick={() => setNeutered(true)} label={c.yes} />
+            <Toggle on={!neutered} onClick={() => setNeutered(false)} label={c.noOrUnsure} />
           </div>
         </Field>
 
-        <Field label="Roughly what do they weigh?" hint="In kilograms. A rough figure is fine to start with.">
+        <Field label={c.weightLabel} hint={c.weightHint}>
           <input
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
@@ -183,25 +278,19 @@ function MyDogSetup() {
           />
         </Field>
 
-        <Field label="How active are they?">
-          <Choices options={activities} value={activity} onChange={setActivity} />
+        <Field label={c.activityLabel}>
+          <Choices options={c.activities} value={activity} onChange={setActivity} />
         </Field>
 
-        <Field
-          label="And how do they look right now?"
-          hint="Feel along their ribs and look down from above. There's a proper guide in Weight & shape."
-        >
-          <Choices options={conditions} value={bodyCondition} onChange={setBodyCondition} />
+        <Field label={c.bodyLabel} hint={c.bodyHint}>
+          <Choices options={c.conditions} value={bodyCondition} onChange={setBodyCondition} />
         </Field>
 
-        <Field label="What do you feed?">
-          <Choices options={foodTypes} value={foodType} onChange={setFoodType} />
+        <Field label={c.foodTypeLabel}>
+          <Choices options={c.foodTypes} value={foodType} onChange={setFoodType} />
         </Field>
 
-        <Field
-          label="Calories per 100g, if the bag says"
-          hint="Usually printed as kcal/100g. Leave it blank and we'll use a typical figure for that kind of food."
-        >
+        <Field label={c.energyLabel} hint={c.energyHint}>
           <div className="flex flex-wrap items-center gap-3">
             <input
               value={foodEnergy}
@@ -210,11 +299,11 @@ function MyDogSetup() {
               placeholder={String(defaultEnergy[foodType])}
               className="h-14 w-40 rounded-2xl border border-border bg-card px-5 text-[1.0625rem] tabular-nums outline-none transition-colors focus:border-accent"
             />
-            <span className="text-muted-foreground">kcal per 100g</span>
+            <span className="text-muted-foreground">{c.kcalPer100g}</span>
           </div>
         </Field>
 
-        <Field label="How many meals a day?">
+        <Field label={c.mealsLabel}>
           <div className="flex flex-wrap gap-3">
             {["1", "2", "3", "4"].map((n) => (
               <Toggle key={n} on={meals === n} onClick={() => setMeals(n)} label={n} />
@@ -222,37 +311,37 @@ function MyDogSetup() {
           </div>
         </Field>
 
-        <Field label="Your vet" hint="Kept here so you're not searching for it when you need it.">
+        <Field label={c.vetLabel} hint={c.vetHint}>
           <div className="grid gap-3 sm:grid-cols-2">
             <input
               value={vetName}
               onChange={(e) => setVetName(e.target.value)}
-              placeholder="Practice name"
+              placeholder={c.practiceName}
               className="h-14 rounded-2xl border border-border bg-card px-5 text-[1.0625rem] outline-none transition-colors focus:border-accent"
             />
             <input
               value={vetPhone}
               onChange={(e) => setVetPhone(e.target.value)}
-              placeholder="Phone number"
+              placeholder={c.phoneNumber}
               inputMode="tel"
               className="h-14 rounded-2xl border border-border bg-card px-5 text-[1.0625rem] outline-none transition-colors focus:border-accent"
             />
             <input
               value={emergencyPhone}
               onChange={(e) => setEmergencyPhone(e.target.value)}
-              placeholder="Out-of-hours number"
+              placeholder={c.outOfHours}
               inputMode="tel"
               className="h-14 rounded-2xl border border-border bg-card px-5 text-[1.0625rem] outline-none transition-colors focus:border-accent"
             />
           </div>
         </Field>
 
-        <Field label="Anything else worth remembering?" hint="Allergies, medication, things they can't have.">
+        <Field label={c.notesLabel} hint={c.notesHint}>
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             rows={4}
-            placeholder="Reacts to chicken. On joint supplements."
+            placeholder={c.notesPlaceholder}
             className="w-full rounded-2xl border border-border bg-card px-5 py-4 text-[1.0625rem] leading-relaxed outline-none transition-colors focus:border-accent"
           />
         </Field>
@@ -260,10 +349,10 @@ function MyDogSetup() {
 
       <div className="sticky bottom-20 mt-14 flex items-center gap-3 border-t border-border bg-background/90 py-5 backdrop-blur-xl lg:bottom-0">
         <Button tone="ghost" onClick={() => void navigate({ to: "/my-dog" })}>
-          Not now
+          {c.notNow}
         </Button>
         <Button size="lg" className="ml-auto" onClick={save}>
-          Save
+          {c.save}
           <Arrow />
         </Button>
       </div>
@@ -292,7 +381,7 @@ function Choices<T extends string>({
   value,
   onChange,
 }: {
-  options: Option<T>[];
+  options: readonly Option<T>[];
   value: T;
   onChange: (v: T) => void;
 }) {
