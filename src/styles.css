@@ -122,10 +122,10 @@
   --border-strong: oklch(0.845 0.018 81);
   --accent-soft: oklch(0.945 0.035 48);
   --primary-soft: oklch(0.930 0.018 253);
-  --level-low: oklch(0.68 0.19 145);
-  --level-medium: oklch(0.82 0.18 95);
-  --level-high: oklch(0.68 0.22 55);
-  --level-very-high: oklch(0.58 0.24 25);
+  --level-low: oklch(0.65 0.22 145);
+  --level-medium: oklch(0.78 0.20 95);
+  --level-high: oklch(0.60 0.24 25);
+  --level-very-high: oklch(0.55 0.24 25);
   --shadow-soft: 0 1px 2px oklch(0.215 0.049 253 / 0.06), 0 12px 28px -18px oklch(0.215 0.049 253 / 0.28);
   --shadow-lift: 0 2px 6px oklch(0.215 0.049 253 / 0.07), 0 28px 56px -28px oklch(0.215 0.049 253 / 0.32);
 
@@ -176,10 +176,10 @@
   --border-strong: oklch(1 0 0 / 22%);
   --accent-soft: oklch(0.330 0.080 45);
   --primary-soft: oklch(0.290 0.055 253);
-  --level-low: oklch(0.70 0.18 145);
-  --level-medium: oklch(0.80 0.16 95);
-  --level-high: oklch(0.70 0.20 55);
-  --level-very-high: oklch(0.60 0.22 25);
+  --level-low: oklch(0.65 0.20 145);
+  --level-medium: oklch(0.76 0.18 95);
+  --level-high: oklch(0.60 0.22 25);
+  --level-very-high: oklch(0.55 0.22 25);
   --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.4), 0 12px 28px -18px oklch(0 0 0 / 0.6);
   --shadow-lift: 0 2px 6px oklch(0 0 0 / 0.45), 0 28px 56px -28px oklch(0 0 0 / 0.65);
   --chart-1: oklch(0.965 0.010 82);
