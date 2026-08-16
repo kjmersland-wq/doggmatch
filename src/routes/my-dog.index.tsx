@@ -15,7 +15,13 @@ import {
   useWeights,
   type RoutineId,
 } from "@/lib/care/store";
-import { dogBreedLabel, resolveDogTraits, traitBasisNote } from "@/lib/dogs/profile";
+import {
+  crossContributionLines,
+  crossHeading,
+  dogBreedLabel,
+  resolveDogTraits,
+  traitBasisNote,
+} from "@/lib/dogs/profile";
 import { breedImages } from "@/data/breed-images";
 import { buildWeek } from "@/lib/care/week";
 import { useWeekOverride } from "@/lib/care/records";
@@ -278,6 +284,18 @@ function MyDogHome() {
                 <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
                   {traitBasisNote(traitProfile)}
                 </p>
+              )}
+              {dog && crossHeading(traitProfile) && (
+                <div className="mt-4 max-w-lg rounded-xl border border-border bg-card p-4">
+                  <p className="text-sm font-medium">{crossHeading(traitProfile)}</p>
+                  <ul className="mt-2 space-y-1">
+                    {crossContributionLines(traitProfile).map((line) => (
+                      <li key={line} className="text-sm leading-relaxed text-muted-foreground">
+                        {line}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               )}
               <div className="mt-9 flex flex-wrap gap-3">
                 <ButtonLink to="/my-dog/setup" size="lg">
