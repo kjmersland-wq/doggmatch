@@ -16,7 +16,7 @@ export function SourcesLink({ category, className }: { category?: string; classN
   return (
     <Link
       to="/sources"
-      hash={category}
+      {...(category ? { hash: category } : {})}
       aria-label={c.aria}
       className={cn(
         "inline-flex items-center gap-1.5 text-xs text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-accent",
