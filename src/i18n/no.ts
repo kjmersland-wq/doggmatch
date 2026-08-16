@@ -170,6 +170,8 @@ export const no: Dictionary = {
     temperament: "Temperament",
     trainability: "Å lære sammen",
     companionship: "Selskap",
+    allergy: "Allergihensyn",
+    wellbeing: "Følgesvenn og trivsel",
     maintenance: "Stell og pels",
   },
   breeds: {
