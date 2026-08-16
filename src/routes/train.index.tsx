@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useT } from "@/i18n";
+import { useCopy, useT } from "@/i18n";
 import { Arrow, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { LessonCard } from "@/components/dogmatch/training/parts";
 import { trainingCategories } from "@/data/training/categories";
@@ -7,6 +7,11 @@ import { categoryImages, trainingImages } from "@/data/training/images";
 import { getLessons } from "@/data/training/lessons";
 import { todaysPlan, ageFocus } from "@/lib/training/plan";
 import { streakDays, today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
+
+const copy = {
+  en: { welcomeUser: (name: string) => `Good to see you, ${name}'s human.` },
+  no: { welcomeUser: (name: string) => `Godt å se deg, ${name} sin menneske.` },
+} as const;
 
 const title = "Train Your Dog — Small sessions, clear steps | DoggMatch";
 const description =
@@ -32,6 +37,7 @@ export const Route = createFileRoute("/train/")({
 
 function TrainHome() {
   const t = useT();
+  const c = useCopy(copy);
   const dog = useActiveDog();
   const state = useTrainingState();
   const progress = useProgress(dog?.id);
@@ -93,7 +99,7 @@ function TrainHome() {
             <div>
               <Eyebrow>{t.train.todayEyebrow}</Eyebrow>
               <h2 className="display-md mt-5">
-                {dog ? `Good to see you, ${dog.name}'s human.` : t.train.todayTitleGuest}
+                {dog ? c.welcomeUser(dog.name) : t.train.todayTitleGuest}
               </h2>
               <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">
                 {dog ? t.train.todayBody : t.train.todayBodyGuest}

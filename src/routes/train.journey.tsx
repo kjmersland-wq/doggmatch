@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Eyebrow } from "@/components/dogmatch/ui";
-import { LessonCard, statusLabels } from "@/components/dogmatch/training/parts";
+import { LessonCard, statusLabel } from "@/components/dogmatch/training/parts";
 import { getLessons, getLessonsById } from "@/data/training/lessons";
 import type { SkillStatus } from "@/data/training/types";
 import { rankLessons } from "@/lib/training/plan";
 import { streakDays, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
+import { useCopy } from "@/i18n";
 
 const title = "Your training journey | DoggMatch";
 const description =
@@ -30,7 +31,45 @@ export const Route = createFileRoute("/train/journey")({
 
 const order: SkillStatus[] = ["learned", "getting-there", "practising", "not-started"];
 
+const copy = {
+  en: {
+    eyebrow: "Your journey",
+    titleWithDog: (name: string) => `You and ${name}, so far.`,
+    titleGuest: "Your journey together, once you start.",
+    guestBody: "Tell us about your dog and we'll keep track of what you've worked on. Nothing leaves this device.",
+    guestCta: "Tell us about your dog",
+    statSessions: "Sessions together",
+    statSkills: "Skills learned",
+    statStreak: "Days in a row",
+    standingTitle: "Where everything stands",
+    nothingYet: "Nothing here yet.",
+    recentTitle: "Recent sessions",
+    feelingGreat: "Went really well",
+    feelingGood: "Good enough",
+    feelingMore: "Needs more practice",
+    nextTitle: "What to try next",
+  },
+  no: {
+    eyebrow: "Reisen din",
+    titleWithDog: (name: string) => `Du og ${name}, så langt.`,
+    titleGuest: "Reisen sammen, så snart dere starter.",
+    guestBody: "Fortell oss om hunden din, så holder vi oversikt over det dere har jobbet med. Ingenting forlater denne enheten.",
+    guestCta: "Fortell oss om hunden din",
+    statSessions: "Økter sammen",
+    statSkills: "Ferdigheter lært",
+    statStreak: "Dager på rad",
+    standingTitle: "Slik står det til",
+    nothingYet: "Ingenting her ennå.",
+    recentTitle: "Siste økter",
+    feelingGreat: "Gikk veldig bra",
+    feelingGood: "Godt nok",
+    feelingMore: "Trenger mer øving",
+    nextTitle: "Hva dere kan prøve videre",
+  },
+} as const;
+
 function JourneyPage() {
+  const c = useCopy(copy);
   const dog = useActiveDog();
   const state = useTrainingState();
   const progress = useProgress(dog?.id);
@@ -46,20 +85,15 @@ function JourneyPage() {
 
   return (
     <div className="container-page pt-28 pb-28 md:pt-36">
-      <Eyebrow>Your journey</Eyebrow>
-      <h1 className="display-lg mt-5 max-w-2xl">
-        {dog ? `You and ${dog.name}, so far.` : "Your journey together, once you start."}
-      </h1>
+      <Eyebrow>{c.eyebrow}</Eyebrow>
+      <h1 className="display-lg mt-5 max-w-2xl">{dog ? c.titleWithDog(dog.name) : c.titleGuest}</h1>
 
       {!dog ? (
         <>
-          <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
-            Tell us about your dog and we'll keep track of what you've worked on. Nothing leaves this
-            device.
-          </p>
+          <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">{c.guestBody}</p>
           <div className="mt-8">
             <ButtonLink to="/train/setup" size="lg">
-              Tell us about your dog
+              {c.guestCta}
               <Arrow />
             </ButtonLink>
           </div>
@@ -67,25 +101,25 @@ function JourneyPage() {
       ) : (
         <>
           <div className="mt-10 grid gap-8 rounded-2xl border border-border bg-surface p-8 sm:grid-cols-3">
-            <Stat value={String(state.sessions.length)} label="Sessions together" />
+            <Stat value={String(state.sessions.length)} label={c.statSessions} />
             <Stat
               value={String(Object.values(progress).filter((s) => s === "learned").length)}
-              label="Skills learned"
+              label={c.statSkills}
             />
-            <Stat value={String(streakDays(state.sessions))} label="Days in a row" />
+            <Stat value={String(streakDays(state.sessions))} label={c.statStreak} />
           </div>
 
           <section className="mt-20">
-            <h2 className="display-md">Where everything stands</h2>
+            <h2 className="display-md">{c.standingTitle}</h2>
             <div className="mt-8 space-y-10">
               {grouped.map((g) => (
                 <div key={g.status}>
                   <h3 className="font-display text-lg tracking-tight">
-                    {statusLabels[g.status]}{" "}
+                    {statusLabel(g.status)}{" "}
                     <span className="text-muted-foreground">({g.items.length})</span>
                   </h3>
                   {g.items.length === 0 ? (
-                    <p className="mt-2 text-[0.9375rem] text-muted-foreground">Nothing here yet.</p>
+                    <p className="mt-2 text-[0.9375rem] text-muted-foreground">{c.nothingYet}</p>
                   ) : (
                     <ul className="mt-4 flex flex-wrap gap-2">
                       {g.items.map((l) => (
@@ -105,7 +139,7 @@ function JourneyPage() {
 
           {recent.length > 0 && (
             <section className="mt-20">
-              <h2 className="display-md">Recent sessions</h2>
+              <h2 className="display-md">{c.recentTitle}</h2>
               <ul className="mt-8 space-y-px overflow-hidden rounded-2xl border border-border bg-border">
                 {recent.map((s, i) => (
                   <li
@@ -117,11 +151,7 @@ function JourneyPage() {
                     </span>
                     <span className="text-sm text-muted-foreground">
                       {s.day} ·{" "}
-                      {s.feeling === "great"
-                        ? "Went really well"
-                        : s.feeling === "good"
-                          ? "Good enough"
-                          : "Needs more practice"}
+                      {s.feeling === "great" ? c.feelingGreat : s.feeling === "good" ? c.feelingGood : c.feelingMore}
                     </span>
                   </li>
                 ))}
@@ -130,7 +160,7 @@ function JourneyPage() {
           )}
 
           <section className="mt-20">
-            <h2 className="display-md">What to try next</h2>
+            <h2 className="display-md">{c.nextTitle}</h2>
             <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {nextUp.map((s) => (
                 <li key={s.lesson.id}>
