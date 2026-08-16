@@ -84,6 +84,12 @@ function AccountPage() {
         </div>
       </Section>
 
+      {membership.subscribed && (
+        <Section className="container-page">
+          <MemberBenefits />
+        </Section>
+      )}
+
       <Section className="container-page">
         <Panel title={dogs.length > 1 ? "Your dogs" : "Your dog"}>
           <p className="-mt-2 mb-5 text-[0.9375rem] leading-relaxed text-muted-foreground">
