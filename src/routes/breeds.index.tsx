@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { breedGroupLabel } from "@/data/breed-meta";
 import { useState } from "react";
 import { useT } from "@/i18n";
 import { breeds } from "@/data/breeds";
@@ -74,7 +75,7 @@ function BreedsPage() {
                   {breedContent()[breed.id].displayName}
                 </h2>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  {breed.group} · {breed.lifespan[0]}–{breed.lifespan[1]} {t.breeds.years}
+                  {breedGroupLabel(breed.group)} · {breed.lifespan[0]}–{breed.lifespan[1]} {t.breeds.years}
                 </p>
                 <p className="mt-3 line-clamp-2 text-[0.9375rem] leading-relaxed text-muted-foreground">
                   {breedContent()[breed.id].summary}

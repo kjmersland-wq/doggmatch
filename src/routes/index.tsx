@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
 import { useEffect, useRef, useState } from "react";
 import { useT } from "@/i18n";
 import { breeds } from "@/data/breeds";
@@ -201,7 +202,7 @@ function HomePage() {
                     {breedContent()[breed.id].displayName}
                   </h3>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    {breed.group} · {breed.origin}
+                    {breedGroupLabel(breed.group)} · {breedOriginLabel(breed.origin)}
                   </p>
                 </Link>
               </li>

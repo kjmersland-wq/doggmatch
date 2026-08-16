@@ -1,4 +1,5 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
+import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
 import { useT } from "@/i18n";
 import { getBreed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
@@ -84,7 +85,7 @@ function BreedDetail() {
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16">
           <div>
             <Eyebrow>
-              {breed.group} · {breed.origin}
+              {breedGroupLabel(breed.group)} · {breedOriginLabel(breed.origin)}
             </Eyebrow>
             <h1 className="display-xl mt-6">{content.displayName}</h1>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
