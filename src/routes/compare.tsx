@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { useT } from "@/i18n";
 import { breeds, type BreedId } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
@@ -30,24 +30,57 @@ export const Route = createFileRoute("/compare")({
 
 type CompareCopy = ReturnType<typeof useT>["compare"];
 
-function rows(c: CompareCopy): [string, (id: BreedId) => string][] {
+function levelClass(value: number) {
+  switch (value) {
+    case 1:
+    case 2:
+      return "bg-level-low";
+    case 3:
+      return "bg-level-medium";
+    case 4:
+      return "bg-level-high";
+    case 5:
+      return "bg-level-very-high";
+    default:
+      return "bg-muted-foreground";
+  }
+}
+
+function LevelCell({ value, label }: { value: number; label: string }) {
+  return (
+    <span className="inline-flex items-center gap-2.5">
+      <span
+        className={cn(
+          "h-2.5 w-2.5 shrink-0 rounded-full ring-2 ring-current/10",
+          levelClass(value),
+        )}
+        aria-hidden="true"
+        style={{ color: "currentColor" }}
+      />
+      <span>{label}</span>
+    </span>
+  );
+}
+
+function rows(c: CompareCopy): [string, (id: BreedId) => ReactNode][] {
   const s = (v: number) => c.scale[v - 1] ?? "—";
+  const cell = (v: number) => <LevelCell value={v} label={s(v)} />;
   return [
-    [c.rows.size, (id) => s(t(id).size)],
-    [c.rows.energy, (id) => s(t(id).energy)],
-    [c.rows.exercise, (id) => s(t(id).exerciseNeeds)],
-    [c.rows.mental, (id) => s(t(id).mentalStimulation)],
-    [c.rows.trainability, (id) => s(t(id).trainability)],
-    [c.rows.learning, (id) => s(t(id).learningAbility)],
-    [c.rows.sociability, (id) => s(t(id).sociability)],
-    [c.rows.affection, (id) => s(t(id).affection)],
-    [c.rows.shedding, (id) => s(t(id).shedding)],
-    [c.rows.grooming, (id) => s(t(id).grooming)],
-    [c.rows.barking, (id) => s(t(id).barking)],
-    [c.rows.children, (id) => s(t(id).goodWithChildren)],
-    [c.rows.pets, (id) => s(t(id).goodWithPets)],
-    [c.rows.flat, (id) => s(t(id).apartmentSuitability)],
-    [c.rows.firstDog, (id) => s(t(id).firstTimeSuitability)],
+    [c.rows.size, (id) => cell(t(id).size)],
+    [c.rows.energy, (id) => cell(t(id).energy)],
+    [c.rows.exercise, (id) => cell(t(id).exerciseNeeds)],
+    [c.rows.mental, (id) => cell(t(id).mentalStimulation)],
+    [c.rows.trainability, (id) => cell(t(id).trainability)],
+    [c.rows.learning, (id) => cell(t(id).learningAbility)],
+    [c.rows.sociability, (id) => cell(t(id).sociability)],
+    [c.rows.affection, (id) => cell(t(id).affection)],
+    [c.rows.shedding, (id) => cell(t(id).shedding)],
+    [c.rows.grooming, (id) => cell(t(id).grooming)],
+    [c.rows.barking, (id) => cell(t(id).barking)],
+    [c.rows.children, (id) => cell(t(id).goodWithChildren)],
+    [c.rows.pets, (id) => cell(t(id).goodWithPets)],
+    [c.rows.flat, (id) => cell(t(id).apartmentSuitability)],
+    [c.rows.firstDog, (id) => cell(t(id).firstTimeSuitability)],
     [
       c.rows.lifespan,
       (id) => {
@@ -118,44 +151,55 @@ function ComparePage() {
       {selected.length === 0 ? (
         <p className="mt-16 text-muted-foreground">{copy.compare.empty}</p>
       ) : (
-        <div className="mt-12 overflow-x-auto">
-          <table className="w-full min-w-[38rem] border-collapse text-left">
-            <caption className="sr-only">{copy.compare.title}</caption>
-            <thead>
-              <tr>
-                <th scope="col" className="w-40 align-bottom pb-6 pr-6" />
-                {selected.map((id) => (
-                  <th key={id} scope="col" className="pb-6 pr-6 align-bottom">
-                    <img
-                      src={breedImages[id]}
-                      alt={breedContent()[id].displayName}
-                      width={1024}
-                      height={1280}
-                      loading="lazy"
-                      className="aspect-square w-full max-w-36 rounded-xl object-cover"
-                    />
-                    <span className="mt-3 block font-display text-base font-medium leading-tight">
-                      {breedContent()[id].displayName}
-                    </span>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {rows(copy.compare).map(([label, render]) => (
-                <tr key={label} className="border-t border-border">
-                  <th scope="row" className="py-4 pr-6 text-sm font-normal text-muted-foreground">
-                    {label}
-                  </th>
+        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[38rem] border-collapse text-left">
+              <caption className="sr-only">{copy.compare.title}</caption>
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
+                    className="sticky left-0 z-10 w-40 border-r border-border bg-card pb-6 pr-6 align-bottom"
+                  />
                   {selected.map((id) => (
-                    <td key={id} className="py-4 pr-6 text-[0.9375rem]">
-                      {render(id)}
-                    </td>
+                    <th key={id} scope="col" className="pb-6 pr-6 align-bottom">
+                      <img
+                        src={breedImages[id]}
+                        alt={breedContent()[id].displayName}
+                        width={1024}
+                        height={1280}
+                        loading="lazy"
+                        className="aspect-square w-full max-w-36 rounded-xl object-cover"
+                      />
+                      <span className="mt-3 block font-display text-base font-medium leading-tight">
+                        {breedContent()[id].displayName}
+                      </span>
+                    </th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {rows(copy.compare).map(([label, render]) => (
+                  <tr
+                    key={label}
+                    className="border-t border-border transition-colors hover:bg-surface"
+                  >
+                    <th
+                      scope="row"
+                      className="sticky left-0 z-10 border-r border-border bg-card py-4 pr-6 text-sm font-normal whitespace-nowrap text-muted-foreground"
+                    >
+                      {label}
+                    </th>
+                    {selected.map((id) => (
+                      <td key={id} className="py-4 pr-6 text-[0.9375rem]">
+                        {render(id)}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 
