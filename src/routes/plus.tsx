@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Arrow, ButtonLink, Badge, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { SectionHead } from "@/components/dogmatch/journey/parts";
 import { PlusWaitlist } from "@/components/dogmatch/plus/waitlist";
+import { JoinPlusButton } from "@/components/dogmatch/plus/join";
 import { cn } from "@/lib/utils";
 import heroImage from "@/assets/plus-hero.jpg";
 import trainImage from "@/assets/train-recall.jpg";
@@ -894,14 +895,9 @@ function PlusPage() {
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               Everything in DoggMatch+, month by month.
             </p>
-            <button
-              type="button"
-              disabled
-              aria-disabled="true"
-              className="mt-8 inline-flex h-14 w-full items-center justify-center rounded-full border border-border-strong px-8 text-base font-medium text-muted-foreground"
-            >
-              Coming soon
-            </button>
+            <div className="mt-auto">
+              <JoinPlusButton plan="monthly" tone="outline" label="Join monthly" />
+            </div>
           </Card>
           <Card className="relative flex flex-col border-border-strong bg-surface">
             <div className="flex items-center gap-3">
@@ -917,28 +913,17 @@ function PlusPage() {
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               Save €35.89 a year compared with paying monthly.
             </p>
-            <button
-              type="button"
-              disabled
-              aria-disabled="true"
-              className="mt-8 inline-flex h-14 w-full items-center justify-center rounded-full bg-primary px-6 text-[0.9375rem] font-medium text-primary-foreground opacity-80 sm:text-base"
-            >
-              Join when DoggMatch+ opens
-            </button>
+            <div className="mt-auto">
+              <JoinPlusButton plan="yearly" label="Join yearly — best value" />
+            </div>
           </Card>
         </div>
         <div className="mt-8 max-w-xl">
-          <p className="font-display text-lg tracking-tight">DoggMatch+ is coming soon.</p>
+          <p className="font-display text-lg tracking-tight">Membership is open.</p>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            We're putting the final pieces in place. Membership will open shortly.
+            Payment is handled securely by Stripe. You can change or cancel your membership yourself
+            at any time from your account.
           </p>
-          <a
-            href="#waitlist"
-            className="group mt-6 inline-flex h-14 select-none items-center justify-center gap-2.5 rounded-full border border-border-strong px-7 text-base font-medium text-foreground transition-colors duration-300 hover:bg-surface"
-          >
-            Be first to know when DoggMatch+ opens
-            <Arrow />
-          </a>
         </div>
       </Section>
 
