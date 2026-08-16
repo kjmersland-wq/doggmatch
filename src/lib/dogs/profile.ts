@@ -8,31 +8,10 @@
 import { breedById, type BreedId, type BreedTraits } from "@/data/breeds";
 import { pick } from "@/i18n";
 import type { DogProfile } from "@/lib/training/store";
+import { OBSERVED_KEYS } from "./types";
 
-export type BreedType = "purebred" | "mixed";
-
-/** What the owner can observe themselves, 1–5. All optional. */
-export interface ObservedTraits {
-  size?: number;
-  energy?: number;
-  exerciseNeeds?: number;
-  trainability?: number;
-  sociability?: number;
-  grooming?: number;
-  shedding?: number;
-  barking?: number;
-}
-
-export const OBSERVED_KEYS = [
-  "size",
-  "energy",
-  "exerciseNeeds",
-  "trainability",
-  "sociability",
-  "grooming",
-  "shedding",
-  "barking",
-] as const satisfies readonly (keyof ObservedTraits)[];
+export { OBSERVED_KEYS } from "./types";
+export type { BreedType, ObservedTraits } from "./types";
 
 /** A neutral, average dog. Used when we genuinely know nothing else. */
 export const BASELINE_TRAITS: BreedTraits = {
