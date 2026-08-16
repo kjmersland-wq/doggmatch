@@ -83,6 +83,12 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   const [locale, setState] = useState<Locale>("en");
   const [ready, setReady] = useState(false);
 
+  // Keep the module mirror in sync during render, before any child reads it
+  // through `pick()`. Doing this in an effect is too late for the first
+  // post-hydration render, which is what makes data look English while the
+  // surrounding UI is already Norwegian.
+  setCurrentLocale(locale);
+
   useEffect(() => {
     const next = readFromUrl() ?? readStored() ?? detect();
     setCurrentLocale(next);
