@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { useT } from "@/i18n";
+import { useT, pick } from "@/i18n";
 import { Button, Eyebrow } from "@/components/dogmatch/ui";
 import dogLifeImage from "@/assets/dog-life.jpg";
 import { seoLinks, abs } from "@/lib/seo";
