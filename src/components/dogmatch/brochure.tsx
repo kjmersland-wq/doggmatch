@@ -180,7 +180,7 @@ export function BrochureSheet() {
           </div>
 
           <div className="br-tools">
-            {c.tools.slice(0, 6).map((t) => (
+            {c.tools.slice(0, 4).map((t) => (
               <div className="br-tool" key={t.title}>
                 <h3>{t.title}</h3>
               </div>

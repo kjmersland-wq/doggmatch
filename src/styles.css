@@ -770,21 +770,21 @@ html {
 .br-back-photo > img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .br-footnote { font-size: 8.5pt; line-height: 1.5; }
 
-.br-one .br-cover-photo { height: 62mm; }
-.br-one-body { flex: 1; display: flex; flex-direction: column; padding: 9mm 12mm 10mm; }
-.br-one .br-display { font-size: 21pt; }
+.br-one .br-cover-photo { height: 47mm; }
+.br-one-body { flex: 1; display: flex; flex-direction: column; padding: 7mm 11mm 7mm; }
+.br-one .br-display { font-size: 19pt; }
 .br-one .br-lead { margin-top: 3.5mm; font-size: 10pt; max-width: none; }
-.br-one .br-points { margin-top: 5mm; gap: 3.5mm; }
+.br-one .br-points { margin-top: 4mm; gap: 3mm; }
 .br-one .br-point h3 { font-size: 10.5pt; }
 .br-one .br-point p { margin-top: 0.8mm; font-size: 8.8pt; line-height: 1.4; }
 .br-one .br-tools { margin-top: 5mm; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
 .br-one .br-tool { padding: 1.8mm 0; }
 .br-one .br-tool h3 { font-size: 9.5pt; }
-.br-one .br-cta { margin-top: auto; padding-top: 6mm; }
-.br-one .br-qr img { width: 28mm; height: 28mm; }
+.br-one .br-cta { margin-top: auto; padding-top: 4mm; }
+.br-one .br-qr img { width: 24mm; height: 24mm; }
 .br-one .br-button { font-size: 10pt; padding: 3mm 6mm; }
 .br-one .br-url { font-size: 11pt; }
-.br-one-note { margin-top: 5mm; font-size: 7.5pt; }
+.br-one-note { margin-top: 3.5mm; font-size: 7.5pt; }
 
 @media print {
   @page brochureA5 { size: 148mm 210mm; margin: 0; }
