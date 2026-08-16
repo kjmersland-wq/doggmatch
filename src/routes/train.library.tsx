@@ -7,7 +7,7 @@ import { getLessons } from "@/data/training/lessons";
 import type { CategoryId, Level } from "@/data/training/types";
 import { useActiveDog, useProgress } from "@/lib/training/store";
 import { cn } from "@/lib/utils";
-import { useCopy } from "@/i18n";
+import { useCopy, useLocale } from "@/i18n";
 import { seoLinks } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
@@ -59,6 +59,7 @@ const copy = {
 
 function LibraryPage() {
   const c = useCopy(copy);
+  const { locale } = useLocale();
   const dog = useActiveDog();
   const progress = useProgress(dog?.id);
   const [query, setQuery] = useState("");
@@ -77,7 +78,7 @@ function LibraryPage() {
         l.goals.some((g) => g.includes(q))
       );
     });
-  }, [query, level, category]);
+  }, [query, level, category, locale]);
 
   return (
     <div className="container-page pt-28 pb-28 md:pt-36">
