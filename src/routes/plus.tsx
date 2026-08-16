@@ -890,7 +890,7 @@ function PlusPage() {
                 {c.myDogSections.map((s) => (
                   <li key={s.label} className="bg-background">
                     <Link
-                      to={s.to}
+                      to={s.to as never}
                       className="block h-full p-4 transition-colors hover:bg-surface"
                     >
                       <span className="text-[0.9375rem] font-medium">{s.label}</span>
