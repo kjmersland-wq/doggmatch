@@ -261,6 +261,7 @@ function Results({
   onRestart: () => void;
 }) {
   const t = useT();
+  const t = useT();
   const ownDog = useActiveDog();
   const ownTraits = resolveDogTraits(ownDog);
   const ownFit = ownDog ? matchOwnDog(ownDog, profile) : undefined;
