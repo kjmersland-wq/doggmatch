@@ -300,8 +300,8 @@ function handoverSections(ctx: DocContext): DocSection[] {
 export const documents: DocSpec[] = [
   {
     id: "profile",
-    title: pick({ en: "Dog profile card", no: "Profilkort for hunden" }),
-    blurb: pick({ en: "One page with the essentials. Handy for sitters, boarding and travelling.", no: "Én side med det viktigste. Praktisk for hundepassere, hundepensjonat og reise." }),
+    get title() { return pick({ en: "Dog profile card", no: "Profilkort for hunden" }); },
+    get blurb() { return pick({ en: "One page with the essentials. Handy for sitters, boarding and travelling.", no: "Én side med det viktigste. Praktisk for hundepassere, hundepensjonat og reise." }); },
     build: (ctx) => [
       { heading: pick({ en: "My dog", no: "Min hund" }), blocks: [dogFields(ctx)] },
       {
@@ -322,44 +322,44 @@ export const documents: DocSpec[] = [
   },
   {
     id: "contacts",
-    title: pick({ en: "Important contacts", no: "Viktige kontakter" }),
-    blurb: pick({ en: "The people who help look after your dog, all on one sheet.", no: "Alle som hjelper til med å passe hunden din, på ett ark." }),
+    get title() { return pick({ en: "Important contacts", no: "Viktige kontakter" }); },
+    get blurb() { return pick({ en: "The people who help look after your dog, all on one sheet.", no: "Alle som hjelper til med å passe hunden din, på ett ark." }); },
     build: (ctx) => [{ heading: pick({ en: "My dog", no: "Min hund" }), blocks: [dogFields(ctx)] }, ...contactBlocks(ctx)],
   },
   {
     id: "food",
-    title: pick({ en: "Food & feeding plan", no: "Mat- og fôringsplan" }),
-    blurb: pick({ en: "What your dog eats, roughly how much, and a simple week to tick off.", no: "Hva hunden din spiser, omtrent hvor mye, og en enkel uke å krysse av." }),
+    get title() { return pick({ en: "Food & feeding plan", no: "Mat- og fôringsplan" }); },
+    get blurb() { return pick({ en: "What your dog eats, roughly how much, and a simple week to tick off.", no: "Hva hunden din spiser, omtrent hvor mye, og en enkel uke å krysse av." }); },
     build: (ctx) => [feedingSection(ctx)],
   },
   {
     id: "health",
-    title: pick({ en: "Health summary", no: "Helseoversikt" }),
-    blurb: pick({ en: "Weight, medication and the things you'd want to remember.", no: "Vekt, medisiner og tingene du vil huske." }),
+    get title() { return pick({ en: "Health summary", no: "Helseoversikt" }); },
+    get blurb() { return pick({ en: "Weight, medication and the things you'd want to remember.", no: "Vekt, medisiner og tingene du vil huske." }); },
     build: (ctx) => [healthSection(ctx)],
   },
   {
     id: "grooming",
-    title: pick({ en: "Grooming checklist", no: "Stellsjekkliste" }),
-    blurb: pick({ en: "Teeth, coat, nails, ears — the everyday care rhythm.", no: "Tenner, pels, klør, ører — den daglige stellrytmen." }),
+    get title() { return pick({ en: "Grooming checklist", no: "Stellsjekkliste" }); },
+    get blurb() { return pick({ en: "Teeth, coat, nails, ears — the everyday care rhythm.", no: "Tenner, pels, klør, ører — den daglige stellrytmen." }); },
     build: (ctx) => [groomingSection(ctx)],
   },
   {
     id: "training",
-    title: pick({ en: "Training plan", no: "Treningsplan" }),
-    blurb: pick({ en: "This week's skills, with room to write how each session went.", no: "Ukens ferdigheter, med plass til å skrive hvordan hver økt gikk." }),
+    get title() { return pick({ en: "Training plan", no: "Treningsplan" }); },
+    get blurb() { return pick({ en: "This week's skills, with room to write how each session went.", no: "Ukens ferdigheter, med plass til å skrive hvordan hver økt gikk." }); },
     build: (ctx) => [trainingSection(ctx)],
   },
   {
     id: "week",
-    title: pick({ en: "Weekly dog plan", no: "Ukentlig hundeplan" }),
-    blurb: pick({ en: "Your week at a glance — walks, training, food and care.", no: "Uken din på ett blikk — turer, trening, mat og stell." }),
+    get title() { return pick({ en: "Weekly dog plan", no: "Ukentlig hundeplan" }); },
+    get blurb() { return pick({ en: "Your week at a glance — walks, training, food and care.", no: "Uken din på ett blikk — turer, trening, mat og stell." }); },
     build: (ctx) => [weekSection(ctx)],
   },
   {
     id: "planner",
-    title: pick({ en: "Blank weekly planner", no: "Tom ukeplanlegger" }),
-    blurb: pick({ en: "Morning, afternoon, evening. Made for the fridge door.", no: "Morgen, ettermiddag, kveld. Laget for kjøleskapsdøren." }),
+    get title() { return pick({ en: "Blank weekly planner", no: "Tom ukeplanlegger" }); },
+    get blurb() { return pick({ en: "Morning, afternoon, evening. Made for the fridge door.", no: "Morgen, ettermiddag, kveld. Laget for kjøleskapsdøren." }); },
     build: (ctx) => [
       {
         heading: pick({ en: "Our week", no: "Vår uke" }),
@@ -376,20 +376,20 @@ export const documents: DocSpec[] = [
   },
   {
     id: "vet",
-    title: pick({ en: "Vet visit notes", no: "Notater fra veterinærbesøk" }),
-    blurb: pick({ en: "Questions to ask and space for what you're told. Take it with you.", no: "Spørsmål å stille og plass til det du får vite. Ta det med deg." }),
+    get title() { return pick({ en: "Vet visit notes", no: "Notater fra veterinærbesøk" }); },
+    get blurb() { return pick({ en: "Questions to ask and space for what you're told. Take it with you.", no: "Spørsmål å stille og plass til det du får vite. Ta det med deg." }); },
     build: (ctx) => [vetSection(ctx)],
   },
   {
     id: "info",
-    title: pick({ en: "Important information", no: "Viktig informasjon" }),
-    blurb: pick({ en: "Allergies, medication, fears, favourites and special instructions.", no: "Allergier, medisiner, frykt, favoritter og spesielle instrukser." }),
+    get title() { return pick({ en: "Important information", no: "Viktig informasjon" }); },
+    get blurb() { return pick({ en: "Allergies, medication, fears, favourites and special instructions.", no: "Allergier, medisiner, frykt, favoritter og spesielle instrukser." }); },
     build: (ctx) => [infoSection(ctx)],
   },
   {
     id: "handover",
-    title: pick({ en: "Caring for my dog", no: "Å passe hunden min" }),
-    blurb: pick({ en: "For family, a friend, a sitter or boarding. Everything they'd need.", no: "For familie, en venn, hundepasser eller pensjonat. Alt de trenger." }),
+    get title() { return pick({ en: "Caring for my dog", no: "Å passe hunden min" }); },
+    get blurb() { return pick({ en: "For family, a friend, a sitter or boarding. Everything they'd need.", no: "For familie, en venn, hundepasser eller pensjonat. Alt de trenger." }); },
     build: handoverSections,
   },
 ];
