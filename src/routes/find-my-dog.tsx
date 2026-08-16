@@ -36,7 +36,13 @@ import { quizQuestions } from "@/data/questions.locale";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { matchBreeds, explain } from "@/lib/matching/engine";
-import { matchOwnDog, resolveDogTraits, traitBasisNote } from "@/lib/dogs/profile";
+import {
+  crossContributionLines,
+  crossHeading,
+  matchOwnDog,
+  resolveDogTraits,
+  traitBasisNote,
+} from "@/lib/dogs/profile";
 import { useActiveDog } from "@/lib/training/store";
 import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/types";
 import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "@/components/dogmatch/ui";
@@ -320,6 +326,18 @@ function Results({
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {traitBasisNote(ownTraits)}
                 </p>
+                {crossHeading(ownTraits) && (
+                  <div className="mt-4 rounded-xl border border-border bg-background p-4">
+                    <p className="text-sm font-medium">{crossHeading(ownTraits)}</p>
+                    <ul className="mt-2 space-y-1">
+                      {crossContributionLines(ownTraits).map((line) => (
+                        <li key={line} className="text-sm leading-relaxed text-muted-foreground">
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 <div className="mt-5">
                   <ButtonLink to="/my-dog/setup" tone="outline">
                     {interpolate(c.ownDogEdit, { name: ownDog.name })}
