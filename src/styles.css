@@ -71,6 +71,10 @@
   --color-ivory: var(--ivory);
   --color-sand: var(--sand);
   --color-clay: var(--clay);
+  --color-level-low: var(--level-low);
+  --color-level-medium: var(--level-medium);
+  --color-level-high: var(--level-high);
+  --color-level-very-high: var(--level-very-high);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
 }
