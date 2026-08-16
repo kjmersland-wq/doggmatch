@@ -622,3 +622,167 @@ html {
   .mc-sheet { gap: 10mm; padding: 15mm !important; }
   .mc-card { box-shadow: none; break-inside: avoid; }
 }
+
+/* ------------------------------------------------- A5 brochure (148 × 210 mm)
+   A print-first, four page leaflet for shops, groomers, trainers and vets.
+   Editorial rhythm, large type, one accent colour used sparingly. */
+
+.br-sheet {
+  --br-navy: #071a2f;
+  --br-orange: #ff5a1f;
+  --br-ivory: #f7f3ec;
+  --br-grey: #66758a;
+  display: grid;
+  gap: 10mm;
+  justify-items: center;
+}
+
+.br-page {
+  position: relative;
+  width: 148mm;
+  height: 210mm;
+  max-width: 100%;
+  overflow: hidden;
+  background: #fff;
+  color: var(--br-navy);
+  font-family: var(--font-body, Inter, sans-serif);
+  font-size: 10.5pt;
+  line-height: 1.55;
+  box-shadow: 0 12px 40px -18px rgba(7, 26, 47, 0.45);
+  display: flex;
+  flex-direction: column;
+}
+
+.br-page-navy { background: var(--br-navy); color: #fff; }
+.br-page-ivory { background: var(--br-ivory); }
+
+/* Inner safety area: 14 mm from the trim on every side. */
+.br-pad { padding: 14mm; }
+.br-grow { flex: 1; }
+
+.br-cover-photo { position: relative; height: 108mm; }
+.br-cover-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.br-cover-badge {
+  position: absolute;
+  top: 10mm;
+  left: 10mm;
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  padding: 3mm 5mm;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+}
+.br-cover-body { flex: 1; display: flex; flex-direction: column; padding: 11mm 14mm 12mm; }
+
+.br-eyebrow {
+  font-size: 8.5pt;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--br-orange);
+}
+.br-eyebrow-quiet { color: var(--br-grey); }
+
+.br-display {
+  font-family: var(--font-display, Manrope, sans-serif);
+  font-weight: 600;
+  font-size: 26pt;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  margin-top: 5mm;
+  max-width: 105mm;
+}
+.br-display-lg { font-size: 30pt; }
+.br-h2 {
+  font-family: var(--font-display, Manrope, sans-serif);
+  font-weight: 600;
+  font-size: 16pt;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+.br-lead { margin-top: 5mm; font-size: 11.5pt; line-height: 1.55; max-width: 108mm; }
+.br-muted { color: var(--br-grey); }
+.br-page-navy .br-muted { color: #b9c4d2; }
+
+.br-rule { height: 1px; background: #dfd8cc; margin: 8mm 0; border: 0; }
+.br-page-navy .br-rule { background: rgba(255, 255, 255, 0.22); }
+.br-rule-accent { height: 2px; width: 18mm; background: var(--br-orange); border: 0; margin: 0; }
+
+.br-cta {
+  margin-top: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8mm;
+}
+.br-cta-text { display: flex; flex-direction: column; gap: 2.5mm; }
+.br-button {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 3.5mm 7mm;
+  border-radius: 999px;
+  background: var(--br-orange);
+  color: #fff;
+  font-weight: 600;
+  font-size: 11pt;
+  letter-spacing: -0.01em;
+}
+.br-url { font-family: var(--font-display, Manrope, sans-serif); font-weight: 600; font-size: 12pt; letter-spacing: -0.02em; }
+
+.br-qr { text-align: center; }
+.br-qr img { display: block; width: 26mm; height: 26mm; }
+.br-qr-lg img { width: 42mm; height: 42mm; }
+.br-qr figcaption { margin-top: 2mm; font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--br-grey); }
+.br-page-navy .br-qr img { padding: 3mm; background: #fff; border-radius: 3mm; }
+.br-page-navy .br-qr figcaption { color: #b9c4d2; }
+
+.br-points { margin-top: 8mm; display: grid; gap: 6mm; }
+.br-point { display: grid; grid-template-columns: 9mm 1fr; gap: 4mm; align-items: start; }
+.br-point-no {
+  font-family: var(--font-display, Manrope, sans-serif);
+  font-weight: 600;
+  font-size: 11pt;
+  color: var(--br-orange);
+  padding-top: 0.5mm;
+}
+.br-point h3 { font-family: var(--font-display, Manrope, sans-serif); font-weight: 600; font-size: 12pt; letter-spacing: -0.02em; }
+.br-point p { margin-top: 1.5mm; font-size: 10pt; color: var(--br-grey); }
+
+.br-band { position: relative; height: 46mm; }
+.br-band img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.br-tools { margin-top: 7mm; display: grid; grid-template-columns: 1fr 1fr; gap: 0 10mm; }
+.br-tool { padding: 3.5mm 0; border-top: 1px solid #ded7cb; }
+.br-tool h3 { font-family: var(--font-display, Manrope, sans-serif); font-weight: 600; font-size: 11.5pt; letter-spacing: -0.02em; }
+.br-tool p { margin-top: 1mm; font-size: 9.5pt; line-height: 1.45; color: var(--br-grey); }
+
+.br-plus {
+  margin-top: 9mm;
+  padding: 7mm;
+  background: var(--br-navy);
+  color: #fff;
+}
+.br-plus h3 { font-family: var(--font-display, Manrope, sans-serif); font-weight: 600; font-size: 14pt; letter-spacing: -0.02em; }
+.br-plus p { margin-top: 3mm; font-size: 10pt; color: #c3ccd8; max-width: 100mm; }
+
+.br-back-photo { height: 72mm; }
+.br-back-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.br-footnote { font-size: 8.5pt; line-height: 1.5; }
+
+@media print {
+  @page brochureA5 { size: 148mm 210mm; margin: 0; }
+  .br-sheet { display: block; gap: 0; }
+  .br-page {
+    page: brochureA5;
+    box-shadow: none;
+    width: 148mm;
+    height: 210mm;
+    break-inside: avoid;
+    break-after: page;
+    page-break-after: always;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .br-page:last-child { break-after: auto; page-break-after: auto; }
+}
