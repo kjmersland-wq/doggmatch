@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Arrow, ButtonLink, Badge, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { SectionHead } from "@/components/dogmatch/journey/parts";
-import { PlusWaitlist } from "@/components/dogmatch/plus/waitlist";
 import { JoinPlusButton } from "@/components/dogmatch/plus/join";
 import { cn } from "@/lib/utils";
 import heroImage from "@/assets/plus-hero.jpg";
