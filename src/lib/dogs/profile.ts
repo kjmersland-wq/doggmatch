@@ -9,6 +9,8 @@ import { breedById, type BreedId, type BreedTraits } from "@/data/breeds";
 import { pick } from "@/i18n";
 import type { DogProfile } from "@/lib/training/store";
 import { OBSERVED_KEYS } from "./types";
+import { matchDogTraits, type DogFit } from "@/lib/matching/engine";
+import type { UserProfile } from "@/lib/matching/types";
 
 export { OBSERVED_KEYS } from "./types";
 export type { BreedType, ObservedTraits } from "./types";
@@ -174,4 +176,13 @@ export function traitBasisNote(profile: DogTraitProfile): string {
         no: "Vi vet ikke så mye om hunden din ennå, så dette er et forsiktig gjennomsnitt. Legg inn noen detaljer, så blir det mye mer nyttig.",
       });
   }
+}
+
+/** Fit between this dog — mix or not — and the answers from the compatibility quiz. */
+export function matchOwnDog(dog: DogProfile | undefined, profile: UserProfile): DogFit & { basis: TraitBasis } {
+  const resolved = resolveDogTraits(dog);
+  const fit = matchDogTraits(resolved.traits, profile, {
+    individual: resolved.basis !== "breed",
+  });
+  return { ...fit, basis: resolved.basis };
 }
