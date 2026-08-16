@@ -776,10 +776,10 @@ function PlusPage() {
         </div>
       </Section>
 
-      {/* 15 — Journey */}
       {/* 14b — Member card and benefits */}
       <MemberCardShowcase />
 
+      {/* 15 — Journey */}
       <Section className="container-page pt-0">
         <SectionHead eyebrow="The whole journey" title="From first thought to a long life together" />
         <ol className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-5">
