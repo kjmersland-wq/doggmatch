@@ -7,6 +7,8 @@ import heroImage from "@/assets/travel-hike.jpg";
 import carImage from "@/assets/travel-car.jpg";
 import abroadImage from "@/assets/travel-abroad.jpg";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Travel and adventures with your dog — car, trail and abroad | DoggMatch";
 const description =
@@ -24,7 +26,7 @@ export const Route = createFileRoute("/travel/")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/travel" }],
+    links: seoLinks("/travel"),
   }),
   component: TravelPage,
 });
@@ -112,6 +114,7 @@ function TravelPage() {
           <div className="animate-rise max-w-xl pb-2">
             <Eyebrow>{c.eyebrow}</Eyebrow>
             <h1 className="display-xl mt-7">{c.heroTitle}</h1>
+            <ShareBar className="mt-6" />
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{c.heroBody}</p>
             <div className="mt-10 flex flex-wrap gap-3">
               <ButtonLink to="/travel/abroad" size="lg">

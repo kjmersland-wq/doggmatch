@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ButtonLink, Arrow, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { useCopy } from "@/i18n";
+import { noindexMeta } from "@/lib/seo";
 
 const title = "Payment stopped | DoggMatch";
 const description = "No payment was taken. You can join DoggMatch+ whenever the time feels right.";
@@ -8,6 +9,7 @@ const description = "No payment was taken. You can join DoggMatch+ whenever the 
 export const Route = createFileRoute("/checkout/canceled")({
   head: () => ({
     meta: [
+      ...noindexMeta,
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },

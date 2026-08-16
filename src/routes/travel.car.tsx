@@ -5,6 +5,8 @@ import { CardGrid, Notice, PointList, SectionHead, StepList } from "@/components
 import { getCarSafety, getCarSickness, getCarSteps, getLongJourney, getNervousDog, getPublicTransport, getAirTravel } from "@/data/travel/content";
 import carImage from "@/assets/travel-car.jpg";
 import safetyIllus from "@/assets/illus-car-safety.jpg";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Travelling by car with your dog — safely | DoggMatch";
 const description =
@@ -22,7 +24,7 @@ export const Route = createFileRoute("/travel/car")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/travel/car" }],
+    links: seoLinks("/travel/car"),
   }),
   component: CarPage,
 });
@@ -113,6 +115,7 @@ function CarPage() {
           <div className="max-w-xl">
             <p className="eyebrow">{c.eyebrow}</p>
             <h1 className="display-xl mt-6">{c.title}</h1>
+            <ShareBar className="mt-6" />
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
           </div>
           <div className="overflow-hidden rounded-[2rem] bg-surface">

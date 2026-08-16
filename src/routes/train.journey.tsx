@@ -6,6 +6,7 @@ import type { SkillStatus } from "@/data/training/types";
 import { rankLessons } from "@/lib/training/plan";
 import { streakDays, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
 import { useCopy } from "@/i18n";
+import { seoLinks } from "@/lib/seo";
 
 const title = "Your training journey | DoggMatch";
 const description =
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/train/journey")({
       { name: "twitter:description", content: description },
       { name: "robots", content: "noindex" },
     ],
-    links: [{ rel: "canonical", href: "/train/journey" }],
+    links: seoLinks("/train/journey"),
   }),
   component: JourneyPage,
 });

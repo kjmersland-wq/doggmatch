@@ -7,6 +7,8 @@ import { knownBreedIds } from "@/lib/dogs/profile";
 import { useMyDog } from "@/lib/care/store";
 import { useCopy } from "@/i18n";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 export const Route = createFileRoute("/my-dog/care/$topicId")({
   loader: ({ params }) => {
@@ -31,7 +33,7 @@ export const Route = createFileRoute("/my-dog/care/$topicId")({
         { name: "twitter:title", content: t },
         { name: "twitter:description", content: topic.promise },
       ],
-      links: [{ rel: "canonical", href: `/my-dog/care/${topic.id}` }],
+      links: seoLinks(`/my-dog/care/${topic.id}`),
     };
   },
   notFoundComponent: TopicNotFound,
@@ -93,6 +95,7 @@ function CareTopicPage() {
       <section className="container-page pt-28 md:pt-36">
         <Eyebrow>{c.myDog}</Eyebrow>
         <h1 className="display-xl mt-6 max-w-3xl">{topic.title}</h1>
+        <ShareBar className="mt-6" />
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{topic.promise}</p>
         <div className="mt-12 overflow-hidden rounded-[2rem] border border-border">
           <img

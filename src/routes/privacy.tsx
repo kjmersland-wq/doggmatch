@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { LegalList, LegalPage, LegalSection } from "@/components/dogmatch/legal";
 import { useCopy } from "@/i18n";
+import { seoLinks, abs } from "@/lib/seo";
 
 const title = "Privacy — how DoggMatch handles your data";
 const description =
@@ -14,12 +15,12 @@ export const Route = createFileRoute("/privacy")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/privacy" },
+      { property: "og:url", content: abs("/privacy") },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/privacy" }],
+    links: seoLinks("/privacy"),
   }),
   component: PrivacyPage,
 });

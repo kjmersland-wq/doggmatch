@@ -10,6 +10,8 @@ import { getDogStore, useGetDog } from "@/lib/getdog/store";
 import { cn } from "@/lib/utils";
 import abroadImage from "@/assets/travel-abroad.jpg";
 import illus from "@/assets/illus-travel-abroad.jpg";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Travelling abroad with your dog — country to country | DoggMatch";
 const description =
@@ -27,7 +29,7 @@ export const Route = createFileRoute("/travel/abroad")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/travel/abroad" }],
+    links: seoLinks("/travel/abroad"),
   }),
   component: AbroadPage,
 });
@@ -148,6 +150,7 @@ function AbroadPage() {
           <div className="max-w-xl">
             <p className="eyebrow">{c.eyebrow}</p>
             <h1 className="display-xl mt-6">{c.title}</h1>
+            <ShareBar className="mt-6" />
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
           </div>
           <div className="overflow-hidden rounded-[2rem] bg-surface">

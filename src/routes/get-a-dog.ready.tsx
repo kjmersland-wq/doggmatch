@@ -7,6 +7,7 @@ import { scoreReadiness } from "@/lib/getdog/readiness";
 import { getDogStore, useGetDog } from "@/lib/getdog/store";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
+import { seoLinks } from "@/lib/seo";
 
 const title = "Is a dog right for your life? A calm readiness check | DoggMatch";
 const description =
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/get-a-dog/ready")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/get-a-dog/ready" }],
+    links: seoLinks("/get-a-dog/ready"),
   }),
   component: ReadyPage,
 });

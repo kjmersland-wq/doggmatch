@@ -7,6 +7,8 @@ import { breedContent } from "@/data/breed-content";
 import { costRange } from "@/lib/getdog/prep";
 import { useGetDog } from "@/lib/getdog/store";
 import { useCopy } from "@/i18n";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "What will a dog really cost? Before they arrive, and every month | DoggMatch";
 const description =
@@ -24,7 +26,7 @@ export const Route = createFileRoute("/get-a-dog/costs")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/get-a-dog/costs" }],
+    links: seoLinks("/get-a-dog/costs"),
   }),
   component: CostsPage,
 });
@@ -73,6 +75,7 @@ function CostsPage() {
       <section className="container-page max-w-3xl pt-28 md:pt-36">
         <p className="eyebrow">{c.eyebrow}</p>
         <h1 className="display-xl mt-6">{c.title}</h1>
+        <ShareBar className="mt-6" />
         <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
       </section>
 

@@ -6,6 +6,7 @@ import { Button, Eyebrow, Arrow } from "@/components/dogmatch/ui";
 import { sendContactMessage } from "@/lib/contact/contact.functions";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
+import { seoLinks, abs } from "@/lib/seo";
 
 const title = "Contact DoggMatch";
 const description =
@@ -19,11 +20,11 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: abs("/contact") },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: seoLinks("/contact"),
   }),
   component: ContactPage,
 });

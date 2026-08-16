@@ -15,6 +15,7 @@ import { LocaleProvider, useCopy } from "@/i18n";
 import { SiteHeader } from "@/components/dogmatch/site-header";
 import { SiteFooter } from "@/components/dogmatch/site-footer";
 import { MobileTabs } from "@/components/dogmatch/mobile-tabs";
+import { CookieConsent } from "@/components/dogmatch/cookie-consent";
 
 const shellCopy = {
   en: {
@@ -103,6 +104,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#071A2F" },
+      { title: "DoggMatch — Find the dog that's right for your life" },
+      {
+        name: "description",
+        content:
+          "A friendly, honest way to work out which dog would really suit your life. Free, transparent, and we always show our reasoning.",
+      },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
       { property: "og:site_name", content: "DoggMatch" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -135,8 +143,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "DoggMatch",
+          url: "https://www.doggmatch.com/",
+          inLanguage: ["en", "nb-NO"],
           description:
             "A friendly, honest way to work out which dog would really suit your life.",
+          publisher: {
+            "@type": "Organization",
+            name: "KM TECH LABS",
+            legalName: "KM TECH LABS",
+            url: "https://www.doggmatch.com/",
+            logo: "https://www.doggmatch.com/icon-192.png",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Kristiansand",
+              addressCountry: "NO",
+            },
+            identifier: "934 044 029",
+          },
         }),
       },
     ],
@@ -165,8 +188,26 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
+    <RootBody queryClient={queryClient} />
+  );
+}
+
+/** Keyboard users get straight to the content, ahead of the navigation. */
+function SkipLink() {
+  const c = useCopy({ en: { skip: "Skip to content" }, no: { skip: "Hopp til innhold" } });
+  return (
+    <a href="#main" className="skip-link">
+      {c.skip}
+    </a>
+  );
+}
+
+function RootBody({ queryClient }: { queryClient: QueryClient }) {
+
+  return (
     <QueryClientProvider client={queryClient}>
       <LocaleProvider>
+        <SkipLink />
         <SiteHeader />
         <main id="main" className="pb-20 pt-[72px] print:p-0 lg:pb-0">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
@@ -174,6 +215,7 @@ function RootComponent() {
         </main>
         <SiteFooter />
         <MobileTabs />
+        <CookieConsent />
       </LocaleProvider>
     </QueryClientProvider>
   );

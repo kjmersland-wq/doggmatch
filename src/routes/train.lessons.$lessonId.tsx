@@ -20,6 +20,8 @@ import {
   useTrainingState,
 } from "@/lib/training/store";
 import { cn } from "@/lib/utils";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 export const Route = createFileRoute("/train/lessons/$lessonId")({
   loader: ({ params }) => {
@@ -46,7 +48,7 @@ export const Route = createFileRoute("/train/lessons/$lessonId")({
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: lesson.promise },
       ],
-      links: [{ rel: "canonical", href: `/train/lessons/${lesson.id}` }],
+      links: seoLinks(`/train/lessons/${lesson.id}`),
     };
   },
   notFoundComponent: LessonNotFound,
@@ -99,6 +101,7 @@ function LessonPage() {
           <div>
             <Eyebrow>{category?.title ?? "Training"}</Eyebrow>
             <h1 className="display-lg mt-5">{lesson.title}</h1>
+            <ShareBar className="mt-6" />
             <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted-foreground">
               {lesson.promise}
             </p>

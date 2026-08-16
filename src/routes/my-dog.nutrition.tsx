@@ -7,6 +7,8 @@ import { estimatePortions } from "@/lib/care/portions";
 import { useCareProfile, useMyDog } from "@/lib/care/store";
 import { useCopy } from "@/i18n";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Food & portions — how much to feed your dog | DoggMatch";
 const description =
@@ -24,7 +26,7 @@ export const Route = createFileRoute("/my-dog/nutrition")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/my-dog/nutrition" }],
+    links: seoLinks("/my-dog/nutrition"),
     scripts: [
       {
         type: "application/ld+json",
@@ -119,6 +121,7 @@ function NutritionPage() {
           <div className="animate-rise">
             <Eyebrow>{c.eyebrow}</Eyebrow>
             <h1 className="display-xl mt-6">{c.title}</h1>
+            <ShareBar className="mt-6" />
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
           </div>
           <div className="animate-rise overflow-hidden rounded-[2rem] border border-border">

@@ -8,6 +8,7 @@ import { Arrow, Button, Eyebrow } from "@/components/dogmatch/ui";
 import { trainingStore, useActiveDog } from "@/lib/training/store";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
+import { abs, noindexMeta } from "@/lib/seo";
 
 const title = "Tell us about your dog — Training | DoggMatch";
 const description =
@@ -16,6 +17,7 @@ const description =
 export const Route = createFileRoute("/train/setup")({
   head: () => ({
     meta: [
+      ...noindexMeta,
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
@@ -26,7 +28,7 @@ export const Route = createFileRoute("/train/setup")({
       { name: "twitter:description", content: description },
       { name: "robots", content: "noindex" },
     ],
-    links: [{ rel: "canonical", href: "/train/setup" }],
+    links: [{ rel: "canonical", href: abs("/train/setup") }],
   }),
   component: SetupPage,
 });

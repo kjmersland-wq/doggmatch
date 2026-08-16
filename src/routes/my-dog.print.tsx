@@ -6,6 +6,7 @@ import { VetNote } from "@/components/dogmatch/care/parts";
 import { documents, packOrder } from "@/lib/print/documents";
 import { useMyDog } from "@/lib/care/store";
 import { useCopy } from "@/i18n";
+import { abs, noindexMeta } from "@/lib/seo";
 
 const title = "Print & save — your dog's paperwork | DoggMatch";
 const description =
@@ -14,6 +15,7 @@ const description =
 export const Route = createFileRoute("/my-dog/print")({
   head: () => ({
     meta: [
+      ...noindexMeta,
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
@@ -23,7 +25,7 @@ export const Route = createFileRoute("/my-dog/print")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/my-dog/print" }],
+    links: [{ rel: "canonical", href: abs("/my-dog/print") }],
   }),
   component: PrintPage,
 });

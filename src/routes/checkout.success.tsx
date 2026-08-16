@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ButtonLink, Arrow, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { useMembership } from "@/hooks/use-membership";
 import { useCopy } from "@/i18n";
+import { noindexMeta } from "@/lib/seo";
 
 const title = "Welcome to DoggMatch+ | DoggMatch";
 const description = "Your DoggMatch+ membership is active. Everything is ready for you and your dog.";
@@ -10,6 +11,7 @@ const description = "Your DoggMatch+ membership is active. Everything is ready f
 export const Route = createFileRoute("/checkout/success")({
   head: () => ({
     meta: [
+      ...noindexMeta,
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },

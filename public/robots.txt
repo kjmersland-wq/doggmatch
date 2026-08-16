@@ -1,4 +1,16 @@
 User-agent: *
 Allow: /
 
-Sitemap: /sitemap.xml
+Disallow: /account
+Disallow: /auth
+Disallow: /checkout/
+Disallow: /member-card
+Disallow: /verify/
+Disallow: /my-dog/print
+Disallow: /my-dog/pack
+Disallow: /my-dog/contacts
+Disallow: /my-dog/vet
+Disallow: /my-dog/setup
+Disallow: /train/setup
+
+Sitemap: https://www.doggmatch.com/sitemap.xml

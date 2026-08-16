@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useT } from "@/i18n";
 import { Button, Eyebrow } from "@/components/dogmatch/ui";
 import dogLifeImage from "@/assets/dog-life.jpg";
+import { seoLinks, abs } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Dog Life — dog-friendly places where you live | DoggMatch";
 const description =
@@ -16,11 +18,11 @@ export const Route = createFileRoute("/dog-life")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/dog-life" },
+      { property: "og:url", content: abs("/dog-life") },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/dog-life" }],
+    links: seoLinks("/dog-life"),
   }),
   component: DogLifePage,
 });
@@ -35,6 +37,7 @@ function DogLifePage() {
       <section className="container-page py-14 md:py-20">
         <Eyebrow>{t.home.lifeEyebrow}</Eyebrow>
         <h1 className="display-lg mt-6 max-w-2xl">{t.dogLife.title}</h1>
+        <ShareBar className="mt-6" />
         <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">{t.dogLife.subtitle}</p>
 
         <form

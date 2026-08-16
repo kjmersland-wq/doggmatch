@@ -10,6 +10,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { useMyDog } from "@/lib/care/store";
 import { useDogDetails } from "@/lib/care/records";
 import { useCopy } from "@/i18n";
+import { noindexMeta } from "@/lib/seo";
 
 const title = "Your DoggMatch+ member card | DoggMatch";
 const description = "View and print your personal DoggMatch+ member card in standard card size.";
@@ -17,6 +18,7 @@ const description = "View and print your personal DoggMatch+ member card in stan
 export const Route = createFileRoute("/member-card")({
   head: () => ({
     meta: [
+      ...noindexMeta,
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },

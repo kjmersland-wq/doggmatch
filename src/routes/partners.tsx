@@ -25,6 +25,8 @@ import partnerVet from "@/assets/partner-vet.jpg";
 import partnerTraining from "@/assets/partner-training.jpg";
 import partnerOutdoors from "@/assets/partner-outdoors.jpg";
 import partnerMoment from "@/assets/partner-moment.jpg";
+import { seoLinks, abs } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Become a DoggMatch Partner";
 const description =
@@ -38,12 +40,12 @@ export const Route = createFileRoute("/partners")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/partners" },
+      { property: "og:url", content: abs("/partners") },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/partners" }],
+    links: seoLinks("/partners"),
   }),
   component: PartnersPage,
 });
@@ -236,6 +238,7 @@ function Hero() {
         <div>
           <Eyebrow>{c.eyebrow}</Eyebrow>
           <h1 className="display-lg mt-6 text-balance">{c.title}</h1>
+          <ShareBar className="mt-6" />
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.body}</p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a

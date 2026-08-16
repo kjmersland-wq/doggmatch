@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCopy } from "@/i18n";
 import { Eyebrow } from "@/components/dogmatch/ui";
 import { lastReviewedAll, resolvedSourceCategories } from "@/data/sources/registry";
+import { seoLinks, abs } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Sources & methodology — DoggMatch";
 const description =
@@ -15,12 +17,12 @@ export const Route = createFileRoute("/sources")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/sources" },
+      { property: "og:url", content: abs("/sources") },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/sources" }],
+    links: seoLinks("/sources"),
   }),
   component: SourcesPage,
 });
@@ -138,6 +140,7 @@ function SourcesPage() {
     <div className="container-page max-w-4xl py-14 md:py-24">
       <Eyebrow>{c.eyebrow}</Eyebrow>
       <h1 className="display-lg mt-6">{c.h1}</h1>
+      <ShareBar className="mt-6" />
       <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
       <p className="mt-4 text-sm text-muted-foreground">
         {c.reviewed}: {lastReviewedAll()}

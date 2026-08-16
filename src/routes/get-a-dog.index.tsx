@@ -7,6 +7,8 @@ import heroImage from "@/assets/get-a-dog-hero.jpg";
 import puppyImage from "@/assets/puppy.jpg";
 import adultImage from "@/assets/adult-dog.jpg";
 import welcomeImage from "@/assets/welcome-home.jpg";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Get a dog — the whole journey, from thinking about it to bringing them home | DoggMatch";
 const description =
@@ -24,7 +26,7 @@ export const Route = createFileRoute("/get-a-dog/")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/get-a-dog" }],
+    links: seoLinks("/get-a-dog"),
   }),
   component: GetADogPage,
 });
@@ -107,6 +109,7 @@ function GetADogPage() {
           <div className="animate-rise max-w-xl">
             <Eyebrow>{c.eyebrow}</Eyebrow>
             <h1 className="display-xl mt-7">{c.heroTitle}</h1>
+            <ShareBar className="mt-6" />
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{c.heroBody}</p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <ButtonLink to="/get-a-dog/ready" size="lg">

@@ -11,6 +11,7 @@ import {
 } from "@/lib/care/records";
 import { useMyDog } from "@/lib/care/store";
 import { useCopy } from "@/i18n";
+import { abs, noindexMeta } from "@/lib/seo";
 
 const title = "Important contacts & information | DoggMatch";
 const description =
@@ -19,6 +20,7 @@ const description =
 export const Route = createFileRoute("/my-dog/contacts")({
   head: () => ({
     meta: [
+      ...noindexMeta,
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
@@ -28,7 +30,7 @@ export const Route = createFileRoute("/my-dog/contacts")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/my-dog/contacts" }],
+    links: [{ rel: "canonical", href: abs("/my-dog/contacts") }],
   }),
   component: ContactsPage,
 });

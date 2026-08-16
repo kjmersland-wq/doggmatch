@@ -6,6 +6,8 @@ import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Arrow, ButtonLink, Eyebrow, TraitMeter } from "@/components/dogmatch/ui";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
+import { seoLinks, abs, breadcrumbLd, jsonLd } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 export const Route = createFileRoute("/breeds/$breedId")({
   loader: ({ params }) => {
@@ -20,6 +22,7 @@ export const Route = createFileRoute("/breeds/$breedId")({
     const name = loaderData.content.displayName;
     const title = `${name} — what they're really like to live with | DoggMatch`;
     const description = loaderData.content.summary;
+    const image = abs(breedImages[loaderData.breed.id] ?? "/og-image.jpg");
     return {
       meta: [
         { title },
@@ -27,23 +30,29 @@ export const Route = createFileRoute("/breeds/$breedId")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: `/breeds/${params.breedId}` },
+        { property: "og:url", content: abs(`/breeds/${params.breedId}`) },
+        { property: "og:image", content: image },
+        { property: "og:image:alt", content: `${name} — DoggMatch breed profile` },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
+        { name: "twitter:image", content: image },
       ],
-      links: [{ rel: "canonical", href: `/breeds/${params.breedId}` }],
+      links: seoLinks(`/breeds/${params.breedId}`),
       scripts: [
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Breeds", item: "/breeds" },
-              { "@type": "ListItem", position: 2, name, item: `/breeds/${params.breedId}` },
-            ],
-          }),
-        },
+        breadcrumbLd([
+          { name: "DoggMatch", path: "/" },
+          { name: "Breeds", path: "/breeds" },
+          { name, path: `/breeds/${params.breedId}` },
+        ]),
+        jsonLd({
+          "@type": "Article",
+          headline: title,
+          description,
+          image,
+          about: { "@type": "Thing", name },
+          isPartOf: { "@type": "WebSite", name: "DoggMatch", url: abs("/") },
+          mainEntityOfPage: abs(`/breeds/${params.breedId}`),
+        }),
       ],
     };
   },
@@ -89,6 +98,7 @@ function BreedDetail() {
               {breedGroupLabel(breed.group)} · {breedOriginLabel(breed.origin)}
             </Eyebrow>
             <h1 className="display-xl mt-6">{content.displayName}</h1>
+            <ShareBar className="mt-6" />
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
               {content.summary}
             </p>

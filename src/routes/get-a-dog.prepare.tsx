@@ -5,6 +5,8 @@ import { getDogContent } from "@/data/getdog/content";
 import { useGetDog } from "@/lib/getdog/store";
 import { useCopy } from "@/i18n";
 import homePrepImage from "@/assets/illus-home-prep.jpg";
+import { seoLinks } from "@/lib/seo";
+import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Get ready — your home, your days and the arrival checklist | DoggMatch";
 const description =
@@ -22,7 +24,7 @@ export const Route = createFileRoute("/get-a-dog/prepare")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
     ],
-    links: [{ rel: "canonical", href: "/get-a-dog/prepare" }],
+    links: seoLinks("/get-a-dog/prepare"),
   }),
   component: PreparePage,
 });
@@ -121,6 +123,7 @@ function PreparePage() {
       <section className="container-page max-w-3xl pt-28 md:pt-36">
         <p className="eyebrow">{c.eyebrow}</p>
         <h1 className="display-xl mt-6">{c.title}</h1>
+        <ShareBar className="mt-6" />
         <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
       </section>
 
