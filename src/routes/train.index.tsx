@@ -5,7 +5,7 @@ import { LessonCard } from "@/components/dogmatch/training/parts";
 import { getTrainingCategories } from "@/data/training/categories";
 import { categoryImages, trainingImages } from "@/data/training/images";
 import { getLessons } from "@/data/training/lessons";
-import { todaysPlan, ageFocus } from "@/lib/training/plan";
+import { todaysPlan, getAgeFocus } from "@/lib/training/plan";
 import { streakDays, today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { seoLinks, abs } from "@/lib/seo";
