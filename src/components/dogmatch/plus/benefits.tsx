@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { activeBenefits, benefitCategories } from "@/data/plus/benefits";
 import { Panel } from "@/components/dogmatch/care/parts";
 
@@ -28,6 +29,13 @@ export function MemberBenefits() {
               </li>
             ))}
           </ul>
+          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+            Run a dog-related business?{" "}
+            <Link to="/partners" className="text-accent underline-offset-4 hover:underline">
+              Become a DoggMatch Partner
+            </Link>
+            .
+          </p>
         </div>
       ) : (
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
