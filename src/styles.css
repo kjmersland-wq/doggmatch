@@ -749,17 +749,17 @@ html {
 .br-point h3 { font-family: var(--font-display, Manrope, sans-serif); font-weight: 600; font-size: 12pt; letter-spacing: -0.02em; }
 .br-point p { margin-top: 1.5mm; font-size: 10pt; color: var(--br-grey); }
 
-.br-band { position: relative; height: 46mm; }
+.br-band { position: relative; height: 38mm; }
 .br-band > img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.br-tools { margin-top: 7mm; display: grid; grid-template-columns: 1fr 1fr; gap: 0 10mm; }
-.br-tool { padding: 3.5mm 0; border-top: 1px solid #ded7cb; }
+.br-tools { margin-top: 5mm; display: grid; grid-template-columns: 1fr 1fr; gap: 0 10mm; }
+.br-tool { padding: 2.6mm 0; border-top: 1px solid #ded7cb; }
 .br-tool h3 { font-family: var(--font-display, Manrope, sans-serif); font-weight: 600; font-size: 11.5pt; letter-spacing: -0.02em; }
-.br-tool p { margin-top: 1mm; font-size: 9.5pt; line-height: 1.45; color: var(--br-grey); }
+.br-tool p { margin-top: 0.8mm; font-size: 9pt; line-height: 1.4; color: var(--br-grey); }
 
 .br-plus {
-  margin-top: 9mm;
-  padding: 7mm;
+  margin-top: auto;
+  padding: 6mm;
   background: var(--br-navy);
   color: #fff;
 }
