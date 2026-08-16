@@ -123,8 +123,11 @@ export const Route = createFileRoute("/train/lessons/$lessonId")({
 });
 
 function LessonPage() {
-  const { lesson } = Route.useLoaderData();
+  const { lessonId } = Route.useParams();
+  const { lesson: loaded } = Route.useLoaderData();
   const c = useCopy(copy);
+  // Read the lesson during render so it follows the reader's language.
+  const lesson = getLesson(lessonId) ?? loaded;
   const dog = useActiveDog();
   const progress = useProgress(dog?.id);
   const state = useTrainingState();
