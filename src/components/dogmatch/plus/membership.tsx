@@ -6,7 +6,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { useMembership } from "@/hooks/use-membership";
 import { openBillingPortal } from "@/lib/plus/stripe.functions";
 import { Panel } from "@/components/dogmatch/care/parts";
-import { Button } from "@/components/dogmatch/ui";
+import { Button, ButtonLink } from "@/components/dogmatch/ui";
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
@@ -102,9 +102,12 @@ export function AccountMembership() {
                 ? "Your membership is set to end, and you'll keep everything until then."
                 : "Thank you for being a member. You can change or cancel this yourself at any time."}
             </p>
-            <Button tone="outline" onClick={manage} disabled={busy} className="mt-5">
-              {busy ? "One moment…" : "Manage my membership"}
-            </Button>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <ButtonLink to="/member-card">Print my member card</ButtonLink>
+              <Button tone="outline" onClick={manage} disabled={busy}>
+                {busy ? "One moment…" : "Manage my membership"}
+              </Button>
+            </div>
           </>
         ) : (
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
