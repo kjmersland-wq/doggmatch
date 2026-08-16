@@ -1,11 +1,13 @@
-import { Globe } from "lucide-react";
 import { useLocale, type Locale } from "@/i18n";
 import { cn } from "@/lib/utils";
 
-const LABELS: Record<Locale, string> = { en: "English", no: "Norsk" };
 const SHORT: Record<Locale, string> = { en: "EN", no: "NO" };
+const ARIA_LABEL: Record<Locale, string> = {
+  en: "Switch language",
+  no: "Bytt språk",
+};
 
-/** English or Norwegian. Remembered on this device. */
+/** English or Norwegian. Remembered on this device. Horizontal, compact pill. */
 export function LanguageToggle({
   className,
   withLabel = false,
@@ -14,39 +16,38 @@ export function LanguageToggle({
   withLabel?: boolean;
 }) {
   const { locale, setLocale } = useLocale();
-  const next: Locale = locale === "no" ? "en" : "no";
 
-  if (withLabel) {
-    return (
-      <button
-        type="button"
-        onClick={() => setLocale(next)}
-        className={cn(
-          "flex w-full items-center justify-between rounded-2xl border border-border-strong px-4 py-3 text-sm",
-          className,
-        )}
-      >
-        <span className="flex items-center gap-2.5 text-foreground">
-          <Globe className="h-4 w-4" aria-hidden />
-          {LABELS[locale]}
-        </span>
-        <span className="text-muted-foreground">{LABELS[next]}</span>
-      </button>
-    );
-  }
+  const options: Locale[] = ["en", "no"];
 
   return (
-    <button
-      type="button"
-      onClick={() => setLocale(next)}
-      aria-label={locale === "no" ? "Switch to English" : "Bytt til norsk"}
-      title={LABELS[next]}
+    <div
+      role="group"
+      aria-label={ARIA_LABEL[locale]}
       className={cn(
-        "grid h-10 min-w-10 place-items-center rounded-full border border-border-strong px-3 text-[0.8125rem] font-medium text-foreground transition-colors hover:bg-surface",
+        "inline-flex items-center rounded-full border border-border/60 bg-surface/50 p-0.5 backdrop-blur-sm",
         className,
       )}
     >
-      {SHORT[locale]}
-    </button>
+      {options.map((code) => {
+        const active = locale === code;
+        return (
+          <button
+            key={code}
+            type="button"
+            onClick={() => setLocale(code)}
+            aria-pressed={active}
+            className={cn(
+              "relative rounded-full px-2.5 py-1.5 text-[0.75rem] font-medium leading-none tracking-wide transition-all",
+              active
+                ? "bg-background text-foreground shadow-sm"
+                : "text-muted-foreground hover:text-foreground",
+              withLabel && "px-3.5 py-2 text-[0.8125rem]",
+            )}
+          >
+            {SHORT[code]}
+          </button>
+        );
+      })}
+    </div>
   );
 }
