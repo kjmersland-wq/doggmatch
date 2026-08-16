@@ -3,6 +3,7 @@ import { Arrow, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { Sources, VetNote } from "@/components/dogmatch/care/parts";
 import { careVisuals, categoryImages, topicImages } from "@/data/care/images";
 import { careTopics, getCareTopic } from "@/data/care/topics";
+import { knownBreedIds } from "@/lib/dogs/profile";
 import { useMyDog } from "@/lib/care/store";
 import { useCopy } from "@/i18n";
 
@@ -81,8 +82,9 @@ function CareTopicPage() {
   const dog = useMyDog();
   const hero = topicImages[topic.id] ?? categoryImages[topic.category];
   const ageNote = dog?.ageStage ? topic.ageNotes?.[dog.ageStage] : undefined;
-  const breedNote = dog?.breedId
-    ? topic.breedNotes?.find((b) => b.breeds.includes(dog.breedId!))?.note
+  const dogBreedIds = knownBreedIds(dog);
+  const breedNote = dogBreedIds.length
+    ? topic.breedNotes?.find((b) => b.breeds.some((id) => dogBreedIds.includes(id)))?.note
     : undefined;
 
   return (

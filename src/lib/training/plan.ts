@@ -1,6 +1,8 @@
 import { getLessons } from "@/data/training/lessons";
 import type { Lesson, SkillStatus } from "@/data/training/types";
 import { breedById } from "@/data/breeds";
+import { isMixedDog, knownBreedIds } from "@/lib/dogs/profile";
+import { pick } from "@/i18n";
 import type { DogProfile } from "./store";
 
 /**
@@ -49,10 +51,22 @@ export function scoreLesson(
 
     if (dog.experience === "first-dog" && lesson.level === "beginner") score += 5;
 
-    if (dog.breedId && lesson.breedRelevance?.includes(dog.breedId)) {
-      score += 8;
-      const breed = breedById[dog.breedId];
-      if (breed) reason = `Often suits a ${breed.name}, though every dog is their own dog`;
+    const relevantBreed = knownBreedIds(dog).find((id) => lesson.breedRelevance?.includes(id));
+    if (relevantBreed) {
+      // A mix only gets part of the nudge — the breeds behind it are background, not a label.
+      score += isMixedDog(dog) ? 4 : 8;
+      const breed = breedById[relevantBreed];
+      if (breed) {
+        reason = isMixedDog(dog)
+          ? pick({
+              en: `Often useful with ${breed.name} in the mix, though every dog is their own dog`,
+              no: `Ofte nyttig når det er ${breed.name} i blandingen, men hver hund er sin egen`,
+            })
+          : pick({
+              en: `Often suits a ${breed.name}, though every dog is their own dog`,
+              no: `Passer ofte en ${breed.name}, men hver hund er sin egen`,
+            });
+      }
     }
     if (status === "practising") reason = "You're in the middle of this one";
   }

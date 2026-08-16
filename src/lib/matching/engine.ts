@@ -1,4 +1,4 @@
-import { breeds, type Breed } from "@/data/breeds";
+import { breeds, type Breed, type BreedTraits } from "@/data/breeds";
 import { pick } from "@/i18n";
 import { breedContent } from "@/data/breed-content";
 import type { DimensionKey, MatchResult, UserProfile } from "./types";
@@ -53,8 +53,7 @@ function num(value: string | undefined, fallback: number) {
   return Number.isFinite(parsed) ? parsed : fallback;
 }
 
-function scoreDimensions(breed: Breed, p: UserProfile): Record<DimensionKey, number> {
-  const t = breed.traits;
+function scoreDimensions(t: BreedTraits, p: UserProfile): Record<DimensionKey, number> {
   const activity = num(p["activity"], 2);
   const alone = num(p["alone"], 2);
   const home = p["home"] ?? "house-garden";
@@ -130,8 +129,7 @@ function scoreDimensions(breed: Breed, p: UserProfile): Record<DimensionKey, num
 }
 
 /** Hard constraints. These cap the final score regardless of how well everything else fits. */
-function hardConstraints(breed: Breed, p: UserProfile): { warnings: string[]; cap: number } {
-  const t = breed.traits;
+function hardConstraints(t: BreedTraits, p: UserProfile): { warnings: string[]; cap: number } {
   const warnings: string[] = [];
   let cap = 100;
 
@@ -171,11 +169,48 @@ function hardConstraints(breed: Breed, p: UserProfile): { warnings: string[]; ca
   return { warnings, cap };
 }
 
+
+/** Weighted total for any set of traits — same maths as the breed ranking. */
+function weighted(dimensions: Record<DimensionKey, number>): number {
+  const weightedTotal = (Object.keys(dimensions) as DimensionKey[]).reduce(
+    (sum, key) => sum + dimensions[key] * DIMENSION_WEIGHTS[key],
+    0,
+  );
+  const weightSum = Object.values(DIMENSION_WEIGHTS).reduce((a, b) => a + b, 0);
+  return weightedTotal / weightSum;
+}
+
+export interface DogFit {
+  score: number;
+  dimensions: Record<DimensionKey, number>;
+  warnings: string[];
+  status: MatchResult["status"];
+  /** True when the score rests on the dog itself rather than a breed. */
+  individual: boolean;
+}
+
+/**
+ * How well one specific dog — pure breed or mix — fits a life.
+ * Scored from the dog's own characteristics, never from a guessed breed.
+ */
+export function matchDogTraits(
+  traits: BreedTraits,
+  profile: UserProfile,
+  options: { individual?: boolean } = {},
+): DogFit {
+  const dimensions = scoreDimensions(traits, profile);
+  const { warnings, cap } = hardConstraints(traits, profile);
+  const score = Math.round(Math.min(weighted(dimensions), cap));
+  const status: MatchResult["status"] =
+    cap <= 55 ? "not-recommended" : warnings.length > 0 ? "caution" : "recommended";
+  return { score, dimensions, warnings, status, individual: options.individual ?? false };
+}
+
 export function matchBreeds(profile: UserProfile): MatchResult[] {
   return breeds
     .map((breed) => {
-      const dimensions = scoreDimensions(breed, profile);
-      const { warnings, cap } = hardConstraints(breed, profile);
+      const dimensions = scoreDimensions(breed.traits, profile);
+      const { warnings, cap } = hardConstraints(breed.traits, profile);
 
       const weightedTotal = (Object.keys(dimensions) as DimensionKey[]).reduce(
         (sum, key) => sum + dimensions[key] * DIMENSION_WEIGHTS[key],

@@ -15,7 +15,7 @@ import {
   useWeights,
   type RoutineId,
 } from "@/lib/care/store";
-import { breedById } from "@/data/breeds";
+import { dogBreedLabel, resolveDogTraits, traitBasisNote } from "@/lib/dogs/profile";
 import { breedImages } from "@/data/breed-images";
 import { buildWeek } from "@/lib/care/week";
 import { useWeekOverride } from "@/lib/care/records";
@@ -244,8 +244,10 @@ function MyDogHome() {
   const todayIndex = (new Date().getDay() + 6) % 7;
   const portions = estimatePortions(profile.weightKg, dog?.ageStage ?? "adult", profile);
   const trend = weightTrend(weights);
-  const breed = dog?.breedId ? breedById[dog.breedId] : undefined;
-  const portrait = dog?.breedId ? breedImages[dog.breedId] : careImages.careHero;
+  const traitProfile = resolveDogTraits(dog);
+  const breedLine = dogBreedLabel(dog);
+  const portraitBreed = traitProfile.breedIds[0];
+  const portrait = portraitBreed ? breedImages[portraitBreed] : careImages.careHero;
   const ageLabel = dog?.ageStage ? c.ageStages[dog.ageStage] : c.ageStages.adult;
 
   return (
@@ -259,7 +261,7 @@ function MyDogHome() {
               {dog ? (
                 <>
                   <p className="mt-6 text-sm uppercase tracking-[0.18em] text-accent">
-                    {breed ? `${breed.name} · ` : ""}
+                    {breedLine ? `${breedLine} · ` : ""}
                     {ageLabel}
                     {profile.weightKg ? ` · ${profile.weightKg} kg` : ""}
                   </p>
@@ -272,6 +274,11 @@ function MyDogHome() {
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
                 {dog ? c.heroTextDog : c.heroTextNoDog}
               </p>
+              {dog && traitProfile.isMixed && (
+                <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
+                  {traitBasisNote(traitProfile)}
+                </p>
+              )}
               <div className="mt-9 flex flex-wrap gap-3">
                 <ButtonLink to="/my-dog/setup" size="lg">
                   {dog ? fmt(c.dogDetails, { name: dog.name }) : c.setupCta}
@@ -290,7 +297,7 @@ function MyDogHome() {
                 src={portrait}
                 alt={
                   dog
-                    ? fmt(c.portraitAltDog, { name: dog.name, breed: breed ? breed.name : c.portraitAltFallbackBreed })
+                    ? fmt(c.portraitAltDog, { name: dog.name, breed: breedLine || c.portraitAltFallbackBreed })
                     : c.portraitAltNoDog
                 }
                 width={1400}

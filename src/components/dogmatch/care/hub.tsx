@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Check, Plus } from "lucide-react";
 import { breedImages } from "@/data/breed-images";
+import { knownBreedIds } from "@/lib/dogs/profile";
 import { careStore, useCareState } from "@/lib/care/store";
 import { careDue } from "@/lib/care/calendar";
 import { kindLabel, type WeekDay } from "@/lib/care/week";
@@ -22,7 +23,8 @@ export function DogSwitcher({ active }: { active?: DogProfile }) {
     <div className="flex flex-wrap items-center gap-2">
       {dogs.map((dog) => {
         const on = dog.id === active?.id;
-        const photo = dog.breedId ? breedImages[dog.breedId] : undefined;
+        const photoBreed = knownBreedIds(dog)[0];
+        const photo = photoBreed ? breedImages[photoBreed] : undefined;
         return (
           <button
             key={dog.id}

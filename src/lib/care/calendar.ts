@@ -1,6 +1,6 @@
 import type { CareState } from "@/lib/care/store";
 import type { DogProfile } from "@/lib/training/store";
-import { breedById } from "@/data/breeds";
+import { resolveDogTraits } from "@/lib/dogs/profile";
 
 /**
  * A gentle nudge, not a nagging list. Every interval below is a rough rhythm
@@ -26,7 +26,7 @@ export interface CareDue extends CareTask {
 }
 
 export function careTasks(dog: DogProfile | undefined): CareTask[] {
-  const grooming = dog?.breedId ? (breedById[dog.breedId]?.traits.grooming ?? 3) : 3;
+  const grooming = resolveDogTraits(dog).traits.grooming;
   return [
     { id: "dental", label: "Teeth", everyDays: 2, topicId: "dental" },
     { id: "coat", label: "A proper brush", everyDays: grooming >= 4 ? 2 : grooming === 3 ? 4 : 7, topicId: "coat" },

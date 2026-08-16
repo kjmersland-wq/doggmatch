@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { breeds, type BreedId } from "@/data/breeds";
+import { BreedPicker, selectionFromDog, selectionToDog, type BreedSelection } from "@/components/dogmatch/breed-picker";
 import type { AgeStage } from "@/data/care/types";
 import { Arrow, Button, Eyebrow } from "@/components/dogmatch/ui";
 import { trainingStore, useActiveDog } from "@/lib/training/store";
@@ -62,10 +62,6 @@ const copy = {
     ],
     nameLabel: "What's their name?",
     namePlaceholder: "Luna",
-    breedLabel: "Do you know the breed?",
-    breedHint: "If they're a lovely mix, just tell us what you'd call them.",
-    notFromList: "Not from this list",
-    breedOtherPlaceholder: "Terrier mix",
     ageLabel: "How old is your dog?",
     neuteredLabel: "Have they been neutered or spayed?",
     neuteredHint: "It changes how much food they need, so it's worth knowing.",
@@ -122,10 +118,6 @@ const copy = {
     ],
     nameLabel: "Hva heter hunden?",
     namePlaceholder: "Luna",
-    breedLabel: "Vet du hvilken rase?",
-    breedHint: "Er hunden en fin blanding, kan du bare skrive hva du pleier å kalle den.",
-    notFromList: "Ikke på denne listen",
-    breedOtherPlaceholder: "Terrierblanding",
     ageLabel: "Hvor gammel er hunden din?",
     neuteredLabel: "Er hunden kastrert eller sterilisert?",
     neuteredHint: "Det endrer hvor mye mat den trenger, så det er verdt å vite.",
@@ -169,8 +161,7 @@ function MyDogSetup() {
   const profile = useCareProfile(dog?.id);
 
   const [name, setName] = useState(dog?.name ?? "");
-  const [breedId, setBreedId] = useState<BreedId | "">(dog?.breedId ?? "");
-  const [breedOther, setBreedOther] = useState(dog?.breedOther ?? "");
+  const [breedSel, setBreedSel] = useState<BreedSelection>(() => selectionFromDog(dog));
   const [ageStage, setAgeStage] = useState<AgeStage>((dog?.ageStage as AgeStage) ?? "adult");
   const [neutered, setNeutered] = useState(profile.neutered ?? false);
   const [weight, setWeight] = useState(profile.weightKg ? String(profile.weightKg) : "");
@@ -188,8 +179,7 @@ function MyDogSetup() {
     const id = trainingStore.saveDog({
       ...(dog?.id ? { id: dog.id } : {}),
       name: name.trim() || "your dog",
-      ...(breedId ? { breedId } : {}),
-      ...(breedOther.trim() ? { breedOther: breedOther.trim() } : {}),
+      ...selectionToDog(breedSel),
       ageStage,
       experience: dog?.experience ?? "some",
       level: dog?.level ?? "beginner",
@@ -232,30 +222,7 @@ function MyDogSetup() {
           />
         </Field>
 
-        <Field label={c.breedLabel} hint={c.breedHint}>
-          <div className="flex flex-wrap gap-3">
-            <select
-              value={breedId}
-              onChange={(e) => setBreedId(e.target.value as BreedId | "")}
-              className="h-14 rounded-2xl border border-border bg-card px-5 text-[1.0625rem] outline-none focus:border-accent"
-            >
-              <option value="">{c.notFromList}</option>
-              {breeds.map((b) => (
-                <option key={b.id} value={b.id}>
-                  {b.name}
-                </option>
-              ))}
-            </select>
-            {!breedId && (
-              <input
-                value={breedOther}
-                onChange={(e) => setBreedOther(e.target.value)}
-                placeholder={c.breedOtherPlaceholder}
-                className="h-14 w-full max-w-xs rounded-2xl border border-border bg-card px-5 text-[1.0625rem] outline-none transition-colors focus:border-accent"
-              />
-            )}
-          </div>
-        </Field>
+        <BreedPicker value={breedSel} onChange={setBreedSel} Field={Field} />
 
         <Field label={c.ageLabel}>
           <Choices options={c.ageStages} value={ageStage} onChange={setAgeStage} />
