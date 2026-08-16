@@ -163,20 +163,49 @@ function rows(c: CompareCopy): [string, (col: Column) => ReactNode][] {
 
 function ComparePage() {
   const copy = useT();
-  const [selected, setSelected] = useState<BreedId[]>([
-    "labrador-retriever",
-    "golden-retriever",
-    "poodle",
+  const c = copy.compare;
+  const names = breedContent();
+  const [selected, setSelected] = useState<Column[]>([
+    { kind: "breed", id: "labrador-retriever" },
+    { kind: "breed", id: "golden-retriever" },
+    { kind: "breed", id: "poodle" },
   ]);
+  const [query, setQuery] = useState("");
+  const [mixOpen, setMixOpen] = useState(false);
+  const [mixA, setMixA] = useState<BreedId | "">("");
+  const [mixB, setMixB] = useState<BreedId | "">("");
 
-  function toggle(id: BreedId) {
-    setSelected((current) =>
-      current.includes(id)
-        ? current.filter((x) => x !== id)
-        : current.length >= 3
-          ? [...current.slice(1), id]
-          : [...current, id],
-    );
+  const q = query.trim().toLowerCase();
+  const visibleBreeds = useMemo(
+    () =>
+      q
+        ? breeds.filter(
+            (b) =>
+              names[b.id].displayName.toLowerCase().includes(q) ||
+              b.name.toLowerCase().includes(q),
+          )
+        : breeds,
+    [q, names],
+  );
+
+  const hasMixColumn = selected.some((col) => col.kind === "mix");
+
+  function addColumn(next: Column) {
+    setSelected((current) => {
+      const key = columnKey(next);
+      if (current.some((col) => columnKey(col) === key)) {
+        return current.filter((col) => columnKey(col) !== key);
+      }
+      return current.length >= 3 ? [...current.slice(1), next] : [...current, next];
+    });
+  }
+
+  function addMix() {
+    if (!mixA || !mixB || mixA === mixB) return;
+    addColumn({ kind: "mix", ids: [mixA, mixB] });
+    setMixOpen(false);
+    setMixA("");
+    setMixB("");
   }
 
   return (
@@ -184,15 +213,46 @@ function ComparePage() {
       <Eyebrow>{copy.nav.compare}</Eyebrow>
       <h1 className="display-lg mt-6 max-w-2xl">{copy.compare.subtitle}</h1>
 
-      <ul className="mt-10 flex flex-wrap gap-2">
-        {breeds.map((b) => {
-          const active = selected.includes(b.id);
+      <div className="mt-10 max-w-sm">
+        <label htmlFor="breed-search" className="text-sm font-medium">
+          {c.searchLabel}
+        </label>
+        <input
+          id="breed-search"
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder={c.searchPlaceholder}
+          className="mt-2 h-12 w-full rounded-2xl border border-border bg-card px-5 text-[1rem] outline-none transition-colors focus:border-accent"
+        />
+      </div>
+
+      <p className="mt-6 text-sm text-muted-foreground">{q ? " " : c.quickPicksHint}</p>
+
+      <ul className="mt-3 flex flex-wrap gap-2">
+        <li>
+          <button
+            type="button"
+            aria-pressed={mixOpen || hasMixColumn}
+            onClick={() => setMixOpen((v) => !v)}
+            className={cn(
+              "min-h-11 rounded-full border px-4 text-sm transition-colors",
+              mixOpen || hasMixColumn
+                ? "border-accent bg-accent text-accent-foreground"
+                : "border-border-strong hover:bg-surface",
+            )}
+          >
+            🐾 {c.mix.chip}
+          </button>
+        </li>
+        {visibleBreeds.map((b) => {
+          const active = selected.some((col) => col.kind === "breed" && col.id === b.id);
           return (
             <li key={b.id}>
               <button
                 type="button"
                 aria-pressed={active}
-                onClick={() => toggle(b.id)}
+                onClick={() => addColumn({ kind: "breed", id: b.id })}
                 className={cn(
                   "min-h-11 rounded-full border px-4 text-sm transition-colors",
                   active
@@ -200,12 +260,62 @@ function ComparePage() {
                     : "border-border-strong hover:bg-surface",
                 )}
               >
-                {breedContent()[b.id].displayName}
+                {names[b.id].displayName}
               </button>
             </li>
           );
         })}
       </ul>
+
+      {q && visibleBreeds.length === 0 && (
+        <p className="mt-4 text-sm text-muted-foreground">{c.searchEmpty}</p>
+      )}
+
+      {mixOpen && (
+        <div className="mt-6 max-w-2xl rounded-2xl border border-border bg-card p-6 shadow-soft">
+          <h2 className="font-display text-lg leading-tight">{c.mix.title}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.mix.hint}</p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            {([
+              [c.mix.parentA, mixA, setMixA] as const,
+              [c.mix.parentB, mixB, setMixB] as const,
+            ]).map(([label, value, set]) => (
+              <label key={label} className="flex-1 min-w-52 text-sm">
+                <span className="block text-muted-foreground">{label}</span>
+                <select
+                  value={value}
+                  onChange={(e) => set(e.target.value as BreedId | "")}
+                  className="mt-2 h-12 w-full rounded-2xl border border-border bg-card px-4 text-[0.95rem] outline-none focus:border-accent"
+                >
+                  <option value="">{c.mix.choose}</option>
+                  {breeds.map((b) => (
+                    <option key={b.id} value={b.id}>
+                      {names[b.id].displayName}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ))}
+          </div>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={addMix}
+              disabled={!mixA || !mixB || mixA === mixB}
+              className="min-h-11 rounded-full bg-primary px-5 text-sm text-primary-foreground transition-opacity disabled:opacity-40"
+            >
+              {c.mix.add}
+            </button>
+            <button
+              type="button"
+              onClick={() => setMixOpen(false)}
+              className="min-h-11 rounded-full border border-border-strong px-5 text-sm hover:bg-surface"
+            >
+              {c.mix.cancel}
+            </button>
+          </div>
+        </div>
+      )}
 
       {selected.length === 0 ? (
         <p className="mt-16 text-muted-foreground">{copy.compare.empty}</p>
@@ -222,18 +332,39 @@ function ComparePage() {
                       scope="col"
                       className="sticky left-0 z-10 w-40 border-r border-border bg-card pb-6 pr-6 align-bottom"
                     />
-                    {selected.map((id) => (
-                      <th key={id} scope="col" className="pb-6 pr-6 align-bottom">
-                        <img
-                          src={breedImages[id]}
-                          alt={breedContent()[id].displayName}
-                          width={1024}
-                          height={1280}
-                          loading="lazy"
-                          className="aspect-square w-full max-w-36 rounded-xl object-cover"
-                        />
-                        <span className="mt-3 block font-display text-base font-medium leading-tight">
-                          {breedContent()[id].displayName}
+                    {selected.map((col) => (
+                      <th key={columnKey(col)} scope="col" className="pb-6 pr-6 align-bottom">
+                        {col.kind === "breed" ? (
+                          <img
+                            src={breedImages[col.id]}
+                            alt={names[col.id].displayName}
+                            width={1024}
+                            height={1280}
+                            loading="lazy"
+                            className="aspect-square w-full max-w-36 rounded-xl object-cover"
+                          />
+                        ) : (
+                          <span className="flex aspect-square w-full max-w-36 gap-px overflow-hidden rounded-xl">
+                            {col.ids.map((id) => (
+                              <img
+                                key={id}
+                                src={breedImages[id]}
+                                alt={names[id].displayName}
+                                width={1024}
+                                height={1280}
+                                loading="lazy"
+                                className="h-full w-1/2 object-cover"
+                              />
+                            ))}
+                          </span>
+                        )}
+                        {col.kind === "mix" && (
+                          <span className="mt-3 block text-xs font-medium tracking-wide text-accent uppercase">
+                            🐾 {c.mix.columnLabel}
+                          </span>
+                        )}
+                        <span className="mt-1 block max-w-36 font-display text-base font-medium leading-tight text-balance">
+                          {columnName(col, c)}
                         </span>
                       </th>
                     ))}
@@ -251,9 +382,9 @@ function ComparePage() {
                       >
                         {label}
                       </th>
-                      {selected.map((id) => (
-                        <td key={id} className="py-4 pr-6 text-[0.9375rem]">
-                          {render(id)}
+                      {selected.map((col) => (
+                        <td key={columnKey(col)} className="py-4 pr-6 text-[0.9375rem]">
+                          {render(col)}
                         </td>
                       ))}
                     </tr>
@@ -262,6 +393,11 @@ function ComparePage() {
               </table>
             </div>
           </div>
+          {hasMixColumn && (
+            <p className="mt-6 max-w-2xl rounded-2xl border border-border bg-surface p-5 text-sm leading-relaxed text-muted-foreground">
+              {c.mix.note}
+            </p>
+          )}
         </>
       )}
 
