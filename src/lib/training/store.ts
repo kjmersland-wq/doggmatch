@@ -1,11 +1,20 @@
 import { useCallback, useSyncExternalStore } from "react";
 import type { AgeStage, GoalId, Level, SkillStatus } from "@/data/training/types";
 import type { BreedId } from "@/data/breeds";
+import type { BreedType, ObservedTraits } from "@/lib/dogs/types";
 
 export interface DogProfile {
   id: string;
   name: string;
+  /** "purebred" (default when absent) or "mixed". */
+  breedType?: BreedType;
   breedId?: BreedId;
+  /** Known breeds in a mix. Empty or absent when the mix is unknown. */
+  mixBreedIds?: BreedId[];
+  /** Owner explicitly told us the mix is unknown. */
+  mixUnknown?: boolean;
+  /** What the owner has observed about this individual dog, 1–5. */
+  observed?: ObservedTraits;
   breedOther?: string;
   ageStage: AgeStage;
   sex?: "female" | "male";
