@@ -1,9 +1,25 @@
 import { Link } from "@tanstack/react-router";
-import { useT } from "@/i18n";
+import { useCopy, useT } from "@/i18n";
 import { BrandLock } from "./brand-logo";
+
+const copy = {
+  en: {
+    blurb: "A calm, honest place to work out which dog would suit your life.",
+    food: "Food & portions",
+    canEat: "Can my dog eat this?",
+    partner: "Partner with us",
+  },
+  no: {
+    blurb: "Et rolig og ærlig sted å finne ut hvilken hund som ville passet livet ditt.",
+    food: "Fôr og porsjoner",
+    canEat: "Kan hunden spise dette?",
+    partner: "Bli partner",
+  },
+};
 
 export function SiteFooter() {
   const t = useT();
+  const c = useCopy(copy);
   const year = new Date().getFullYear();
 
   return (
@@ -13,7 +29,7 @@ export function SiteFooter() {
           <div className="max-w-sm">
             <BrandLock markClassName="h-10 w-10" wordmarkClassName="text-2xl" />
             <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted-foreground">
-              {t.brand.secondary} A calm, honest place to work out which dog would suit your life.
+              {t.brand.secondary} {c.blurb}
             </p>
           </div>
 
@@ -32,14 +48,14 @@ export function SiteFooter() {
             <FooterLink to="/guides">{t.footer.ownership}</FooterLink>
             <FooterLink to="/train">{t.footer.training}</FooterLink>
             <FooterLink to="/my-dog">{t.footer.health}</FooterLink>
-            <FooterLink to="/my-dog/nutrition">Food &amp; portions</FooterLink>
-            <FooterLink to="/my-dog/food">Can my dog eat this?</FooterLink>
+            <FooterLink to="/my-dog/nutrition">{c.food}</FooterLink>
+            <FooterLink to="/my-dog/food">{c.canEat}</FooterLink>
           </FooterColumn>
 
           <FooterColumn title={t.footer.company}>
             <FooterLink to="/about">{t.footer.about}</FooterLink>
             <FooterLink to="/contact">{t.footer.contact}</FooterLink>
-            <FooterLink to="/partners">Partner with us</FooterLink>
+            <FooterLink to="/partners">{c.partner}</FooterLink>
             <FooterLink to="/privacy">{t.footer.privacy}</FooterLink>
             <FooterLink to="/terms">{t.footer.terms}</FooterLink>
           </FooterColumn>

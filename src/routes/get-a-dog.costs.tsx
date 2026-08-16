@@ -3,7 +3,7 @@ import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { Notice, SectionHead } from "@/components/dogmatch/journey/parts";
 import { costGroups } from "@/data/getdog/content.en";
 import { breedById } from "@/data/breeds";
-import { breedContentEn } from "@/data/breed-content.en";
+import { breedContent } from "@/data/breed-content";
 import { costRange } from "@/lib/getdog/prep";
 import { useGetDog } from "@/lib/getdog/store";
 
@@ -47,7 +47,7 @@ function CostsPage() {
         <section className="container-page mt-12 max-w-3xl">
           <div className="rounded-[1.75rem] border border-border bg-surface p-8 md:p-10">
             <p className="eyebrow">Your match</p>
-            <h2 className="display-md mt-3">{breedContentEn[breed.id].displayName}</h2>
+            <h2 className="display-md mt-3">{breedContent()[breed.id].displayName}</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
               Indicative running cost, per year, once they're settled:{" "}
               <span className="font-display text-foreground">{costRange(breed)}</span>. That's a broad range from

@@ -1,7 +1,7 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { useT } from "@/i18n";
 import { getBreed } from "@/data/breeds";
-import { breedContentEn } from "@/data/breed-content.en";
+import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Arrow, ButtonLink, Eyebrow, TraitMeter } from "@/components/dogmatch/ui";
 
@@ -9,7 +9,7 @@ export const Route = createFileRoute("/breeds/$breedId")({
   loader: ({ params }) => {
     const breed = getBreed(params.breedId);
     if (!breed) throw notFound();
-    return { breed, content: breedContentEn[breed.id] };
+    return { breed, content: breedContent()[breed.id] };
   },
   head: ({ params, loaderData }) => {
     if (!loaderData) {

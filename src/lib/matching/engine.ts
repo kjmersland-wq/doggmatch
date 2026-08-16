@@ -1,5 +1,5 @@
 import { breeds, type Breed } from "@/data/breeds";
-import { breedContentEn } from "@/data/breed-content.en";
+import { breedContent } from "@/data/breed-content";
 import type { DimensionKey, MatchResult, UserProfile } from "./types";
 
 /**
@@ -194,7 +194,7 @@ export function matchBreeds(profile: UserProfile): MatchResult[] {
 
 /** Explanation generator — strengths and honest trade-offs for the matched breed. */
 export function explain(result: MatchResult) {
-  const content = breedContentEn[result.breedId];
+  const content = breedContent()[result.breedId];
   return {
     summary: content.summary,
     strengths: content.strengths,

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useT } from "@/i18n";
 import { breeds, type BreedId } from "@/data/breeds";
-import { breedContentEn } from "@/data/breed-content.en";
+import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Eyebrow } from "@/components/dogmatch/ui";
 import { cn } from "@/lib/utils";
@@ -108,7 +108,7 @@ function ComparePage() {
                     : "border-border-strong hover:bg-surface",
                 )}
               >
-                {breedContentEn[b.id].displayName}
+                {breedContent()[b.id].displayName}
               </button>
             </li>
           );
@@ -128,14 +128,14 @@ function ComparePage() {
                   <th key={id} scope="col" className="pb-6 pr-6 align-bottom">
                     <img
                       src={breedImages[id]}
-                      alt={breedContentEn[id].displayName}
+                      alt={breedContent()[id].displayName}
                       width={1024}
                       height={1280}
                       loading="lazy"
                       className="aspect-square w-full max-w-36 rounded-xl object-cover"
                     />
                     <span className="mt-3 block font-display text-base font-medium leading-tight">
-                      {breedContentEn[id].displayName}
+                      {breedContent()[id].displayName}
                     </span>
                   </th>
                 ))}

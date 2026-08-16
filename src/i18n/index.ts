@@ -1,10 +1,13 @@
 import { en, type Dictionary } from "./en";
+import { no } from "./no";
+import { useLocale, type Locale } from "./locale";
 
-export const SOURCE_LOCALE = "en";
-export const SUPPORTED_LOCALES = ["en"] as const;
-export type Locale = (typeof SUPPORTED_LOCALES)[number];
+export { LocaleProvider, useLocale, useCopy, pick, getLocale, SUPPORTED_LOCALES } from "./locale";
+export type { Locale } from "./locale";
 
-const dictionaries: Record<Locale, Dictionary> = { en };
+export const SOURCE_LOCALE: Locale = "en";
+
+const dictionaries: Record<Locale, Dictionary> = { en, no };
 
 export function getDictionary(locale: Locale = SOURCE_LOCALE): Dictionary {
   return dictionaries[locale] ?? en;
@@ -17,7 +20,8 @@ export function interpolate(template: string, values: Record<string, string | nu
   );
 }
 
-/** Single access point for UI copy — swap the locale here when more languages land. */
-export function useT() {
-  return getDictionary(SOURCE_LOCALE);
+/** Single access point for UI copy, in whichever language the reader chose. */
+export function useT(): Dictionary {
+  const { locale } = useLocale();
+  return getDictionary(locale);
 }

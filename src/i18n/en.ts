@@ -246,4 +246,11 @@ export const en = {
     "Some breeds shed less than others, which people with allergies sometimes find easier to live with. But no dog is completely allergy-free, and reactions vary from person to person.",
 } as const;
 
-export type Dictionary = typeof en;
+/** Widens the literal types so other locales can fill the same shape. */
+type DeepWiden<T> = T extends string
+  ? string
+  : T extends readonly (infer U)[]
+    ? readonly DeepWiden<U>[]
+    : { -readonly [K in keyof T]: DeepWiden<T[K]> };
+
+export type Dictionary = DeepWiden<typeof en>;
