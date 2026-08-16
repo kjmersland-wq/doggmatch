@@ -782,13 +782,13 @@ html {
 
 .br-one .br-cover-photo { height: 42mm; }
 .br-one .br-cover-photo > img { object-position: 50% 30%; }
-.br-one-body { flex: 1; display: flex; flex-direction: column; padding: 7mm 11mm 7mm; }
+.br-one-body { flex: 1; display: flex; flex-direction: column; padding: 6mm 11mm 6mm; }
 .br-one .br-display { font-size: 19pt; }
 .br-one .br-lead { margin-top: 3.5mm; font-size: 10.5pt; max-width: none; color: var(--br-navy); }
-.br-one .br-points { margin-top: 4mm; gap: 2.6mm; }
+.br-one .br-points { margin-top: 3.4mm; gap: 2.2mm; }
 .br-one .br-point h3 { font-size: 10.5pt; }
 .br-one .br-point p { margin-top: 0.8mm; font-size: 9.4pt; line-height: 1.42; }
-.br-one .br-tools { margin-top: 5mm; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+.br-one .br-tools { margin-top: 4mm; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
 .br-one .br-tool { padding: 1.8mm 0; }
 .br-one .br-tool h3 { font-size: 10pt; }
 .br-one .br-cta { margin-top: auto; padding-top: 4mm; }
