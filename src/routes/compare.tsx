@@ -151,44 +151,55 @@ function ComparePage() {
       {selected.length === 0 ? (
         <p className="mt-16 text-muted-foreground">{copy.compare.empty}</p>
       ) : (
-        <div className="mt-12 overflow-x-auto">
-          <table className="w-full min-w-[38rem] border-collapse text-left">
-            <caption className="sr-only">{copy.compare.title}</caption>
-            <thead>
-              <tr>
-                <th scope="col" className="w-40 align-bottom pb-6 pr-6" />
-                {selected.map((id) => (
-                  <th key={id} scope="col" className="pb-6 pr-6 align-bottom">
-                    <img
-                      src={breedImages[id]}
-                      alt={breedContent()[id].displayName}
-                      width={1024}
-                      height={1280}
-                      loading="lazy"
-                      className="aspect-square w-full max-w-36 rounded-xl object-cover"
-                    />
-                    <span className="mt-3 block font-display text-base font-medium leading-tight">
-                      {breedContent()[id].displayName}
-                    </span>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {rows(copy.compare).map(([label, render]) => (
-                <tr key={label} className="border-t border-border">
-                  <th scope="row" className="py-4 pr-6 text-sm font-normal text-muted-foreground">
-                    {label}
-                  </th>
+        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[38rem] border-collapse text-left">
+              <caption className="sr-only">{copy.compare.title}</caption>
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
+                    className="sticky left-0 z-10 w-40 bg-card pb-6 pr-6 align-bottom"
+                  />
                   {selected.map((id) => (
-                    <td key={id} className="py-4 pr-6 text-[0.9375rem]">
-                      {render(id)}
-                    </td>
+                    <th key={id} scope="col" className="pb-6 pr-6 align-bottom">
+                      <img
+                        src={breedImages[id]}
+                        alt={breedContent()[id].displayName}
+                        width={1024}
+                        height={1280}
+                        loading="lazy"
+                        className="aspect-square w-full max-w-36 rounded-xl object-cover"
+                      />
+                      <span className="mt-3 block font-display text-base font-medium leading-tight">
+                        {breedContent()[id].displayName}
+                      </span>
+                    </th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {rows(copy.compare).map(([label, render]) => (
+                  <tr
+                    key={label}
+                    className="border-t border-border transition-colors hover:bg-surface"
+                  >
+                    <th
+                      scope="row"
+                      className="sticky left-0 z-10 bg-card py-4 pr-6 text-sm font-normal whitespace-nowrap text-muted-foreground shadow-[2px_0_8px_-4px_var(--color-foreground)]/10"
+                    >
+                      {label}
+                    </th>
+                    {selected.map((id) => (
+                      <td key={id} className="py-4 pr-6 text-[0.9375rem]">
+                        {render(id)}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 
