@@ -770,11 +770,11 @@ html {
 .br-back-photo > img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .br-footnote { font-size: 8.5pt; line-height: 1.5; }
 
-.br-one .br-cover-photo { height: 47mm; }
+.br-one .br-cover-photo { height: 42mm; }
 .br-one-body { flex: 1; display: flex; flex-direction: column; padding: 7mm 11mm 7mm; }
 .br-one .br-display { font-size: 19pt; }
 .br-one .br-lead { margin-top: 3.5mm; font-size: 10pt; max-width: none; }
-.br-one .br-points { margin-top: 4mm; gap: 3mm; }
+.br-one .br-points { margin-top: 4mm; gap: 2.6mm; }
 .br-one .br-point h3 { font-size: 10.5pt; }
 .br-one .br-point p { margin-top: 0.8mm; font-size: 8.8pt; line-height: 1.4; }
 .br-one .br-tools { margin-top: 5mm; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
