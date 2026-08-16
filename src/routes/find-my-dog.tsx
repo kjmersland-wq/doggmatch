@@ -246,6 +246,8 @@ const DIMENSION_ORDER: DimensionKey[] = [
   "temperament",
   "trainability",
   "companionship",
+  "allergy",
+  "wellbeing",
   "maintenance",
 ];
 
