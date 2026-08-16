@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCopy, useT } from "@/i18n";
 import { Arrow, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { LessonCard } from "@/components/dogmatch/training/parts";
-import { trainingCategories } from "@/data/training/categories";
+import { getTrainingCategories } from "@/data/training/categories";
 import { categoryImages, trainingImages } from "@/data/training/images";
 import { getLessons } from "@/data/training/lessons";
 import { todaysPlan, ageFocus } from "@/lib/training/plan";
@@ -202,7 +202,7 @@ function TrainHome() {
             </Link>
           </div>
           <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {trainingCategories.slice(0, 4).map((c) => (
+            {getTrainingCategories().slice(0, 4).map((c) => (
               <li key={c.id}>
                 <Link
                   to="/train/library"

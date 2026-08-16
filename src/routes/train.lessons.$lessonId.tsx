@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { getLesson, getLessonsById } from "@/data/training/lessons";
 import { lessonHeroes, stepVisuals } from "@/data/training/images";
-import { trainingCategories } from "@/data/training/categories";
+import { getTrainingCategories } from "@/data/training/categories";
 import type { SkillStatus } from "@/data/training/types";
 import { Arrow, Badge, Button, ButtonLink, Eyebrow } from "@/components/dogmatch/ui";
 import {
@@ -131,7 +131,7 @@ function LessonPage() {
   const status: SkillStatus = progress[lesson.id] ?? "not-started";
   const [note, setNote] = useState(state.notes[lesson.id] ?? "");
   const [logged, setLogged] = useState(false);
-  const category = trainingCategories.find((c) => c.id === lesson.category);
+  const category = getTrainingCategories().find((c) => c.id === lesson.category);
   const next = lesson.nextLessonId ? getLessonsById()[lesson.nextLessonId] : undefined;
 
   const howTo = {

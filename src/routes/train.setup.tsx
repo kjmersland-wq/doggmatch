@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { BreedPicker, selectionFromDog, selectionToDog, type BreedSelection } from "@/components/dogmatch/breed-picker";
-import { trainingGoals } from "@/data/training/categories";
+import { getTrainingGoals } from "@/data/training/categories";
 import type { AgeStage, GoalId, Level } from "@/data/training/types";
 import type { BreedId } from "@/data/breeds";
 import { Arrow, Button, Eyebrow } from "@/components/dogmatch/ui";
@@ -164,7 +164,7 @@ function SetupPage() {
 
         <Field label={c.goalsLabel} hint={c.goalsHint}>
           <div className="flex flex-wrap gap-3">
-            {trainingGoals.map((g) => {
+            {getTrainingGoals().map((g) => {
               const on = goals.includes(g.id);
               return (
                 <button
