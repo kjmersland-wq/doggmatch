@@ -138,7 +138,7 @@ function BreedDetail() {
 
       <section className="container-page grid gap-12 border-t border-border py-16 md:grid-cols-2 md:gap-16">
         <div>
-          <h2 className="display-md">What people love about them</h2>
+          <h2 className="display-md">{pick({ en: "What people love about them", no: "Det folk er glad i hos dem" })}</h2>
           <ul className="mt-7 space-y-4">
             {content.strengths.map((s) => (
               <li key={s} className="flex gap-3 text-[0.9375rem] leading-relaxed">
