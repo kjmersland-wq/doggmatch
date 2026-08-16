@@ -22,6 +22,8 @@ import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as MemberCardRouteImport } from './routes/member-card'
 import { Route as MyDogRouteImport } from './routes/my-dog'
 import { Route as PlusRouteImport } from './routes/plus'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TrainRouteImport } from './routes/train'
 import { Route as TravelRouteImport } from './routes/travel'
 import { Route as BreedsIndexRouteImport } from './routes/breeds.index'
@@ -120,6 +122,16 @@ const MyDogRoute = MyDogRouteImport.update({
 const PlusRoute = PlusRouteImport.update({
   id: '/plus',
   path: '/plus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrainRoute = TrainRouteImport.update({
@@ -307,6 +319,8 @@ export interface FileRoutesByFullPath {
   '/member-card': typeof MemberCardRoute
   '/my-dog': typeof MyDogRouteWithChildren
   '/plus': typeof PlusRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/train': typeof TrainRouteWithChildren
   '/travel': typeof TravelRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
@@ -354,6 +368,8 @@ export interface FileRoutesByTo {
   '/guides': typeof GuidesRoute
   '/member-card': typeof MemberCardRoute
   '/plus': typeof PlusRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/breeds/$breedId': typeof BreedsBreedIdRoute
   '/checkout/canceled': typeof CheckoutCanceledRoute
   '/checkout/success': typeof CheckoutSuccessRoute
@@ -402,6 +418,8 @@ export interface FileRoutesById {
   '/member-card': typeof MemberCardRoute
   '/my-dog': typeof MyDogRouteWithChildren
   '/plus': typeof PlusRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/train': typeof TrainRouteWithChildren
   '/travel': typeof TravelRouteWithChildren
   '/breeds/$breedId': typeof BreedsBreedIdRoute
@@ -453,6 +471,8 @@ export interface FileRouteTypes {
     | '/member-card'
     | '/my-dog'
     | '/plus'
+    | '/privacy'
+    | '/terms'
     | '/train'
     | '/travel'
     | '/breeds/$breedId'
@@ -500,6 +520,8 @@ export interface FileRouteTypes {
     | '/guides'
     | '/member-card'
     | '/plus'
+    | '/privacy'
+    | '/terms'
     | '/breeds/$breedId'
     | '/checkout/canceled'
     | '/checkout/success'
@@ -547,6 +569,8 @@ export interface FileRouteTypes {
     | '/member-card'
     | '/my-dog'
     | '/plus'
+    | '/privacy'
+    | '/terms'
     | '/train'
     | '/travel'
     | '/breeds/$breedId'
@@ -597,6 +621,8 @@ export interface RootRouteChildren {
   MemberCardRoute: typeof MemberCardRoute
   MyDogRoute: typeof MyDogRouteWithChildren
   PlusRoute: typeof PlusRoute
+  PrivacyRoute: typeof PrivacyRoute
+  TermsRoute: typeof TermsRoute
   TrainRoute: typeof TrainRouteWithChildren
   TravelRoute: typeof TravelRouteWithChildren
   BreedsBreedIdRoute: typeof BreedsBreedIdRoute
@@ -697,6 +723,20 @@ declare module '@tanstack/react-router' {
       path: '/plus'
       fullPath: '/plus'
       preLoaderRoute: typeof PlusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/train': {
@@ -1042,6 +1082,8 @@ const rootRouteChildren: RootRouteChildren = {
   MemberCardRoute: MemberCardRoute,
   MyDogRoute: MyDogRouteWithChildren,
   PlusRoute: PlusRoute,
+  PrivacyRoute: PrivacyRoute,
+  TermsRoute: TermsRoute,
   TrainRoute: TrainRouteWithChildren,
   TravelRoute: TravelRouteWithChildren,
   BreedsBreedIdRoute: BreedsBreedIdRoute,
