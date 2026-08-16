@@ -80,8 +80,10 @@ const copy = {
 } as const;
 
 function CareTopicPage() {
-  const { topic } = Route.useLoaderData();
+  const { topic: loaded } = Route.useLoaderData();
   const c = useCopy(copy);
+  // Read the topic at render time so it follows the reader's language.
+  const topic = getCareTopic(loaded.id) ?? loaded;
   const dog = useMyDog();
   const hero = topicImages[topic.id] ?? categoryImages[topic.category];
   const ageNote = dog?.ageStage ? topic.ageNotes?.[dog.ageStage] : undefined;
