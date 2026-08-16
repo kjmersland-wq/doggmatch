@@ -1,6 +1,7 @@
 import { breedById } from "@/data/breeds";
 import type { SkillStatus } from "@/data/training/types";
 import type { DogProfile } from "@/lib/training/store";
+import { resolveDogTraits } from "@/lib/dogs/profile";
 import { rankLessons } from "@/lib/training/plan";
 import type { CareProfile } from "@/lib/care/store";
 import type { WeekOverride } from "@/lib/care/records";
@@ -43,7 +44,7 @@ export function kindLabel(kind: WeekKind): string {
 }
 
 function walkLine(dog: DogProfile | undefined, care: CareProfile): { label: string; detail: string } {
-  const energy = dog?.breedId ? (breedById[dog.breedId]?.traits.exerciseNeeds ?? 3) : 3;
+  const energy = resolveDogTraits(dog).traits.exerciseNeeds;
   const activity = care.activity ?? "moderate";
   if (dog?.ageStage === "puppy") {
     return { label: "Two short walks", detail: "Short and sniffy — little legs tire quickly" };
@@ -61,7 +62,7 @@ function walkLine(dog: DogProfile | undefined, care: CareProfile): { label: stri
 }
 
 function groomDays(dog: DogProfile | undefined): number[] {
-  const grooming = dog?.breedId ? (breedById[dog.breedId]?.traits.grooming ?? 3) : 3;
+  const grooming = resolveDogTraits(dog).traits.grooming;
   if (grooming >= 4) return [0, 2, 4, 6];
   if (grooming === 3) return [1, 4];
   return [3];
@@ -77,7 +78,7 @@ export function buildWeek(
   const meals = care.mealsPerDay ?? (dog?.ageStage === "puppy" ? 3 : 2);
   const ranked = rankLessons(dog, progress).slice(0, 5);
   const brushDays = groomDays(dog);
-  const mental = dog?.breedId ? (breedById[dog.breedId]?.traits.mentalStimulation ?? 3) : 3;
+  const mental = resolveDogTraits(dog).traits.mentalStimulation;
 
   const days: WeekDay[] = dayNames.map((name, index) => {
     const items: WeekItem[] = [];
