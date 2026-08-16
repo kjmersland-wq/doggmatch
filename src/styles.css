@@ -638,6 +638,15 @@ html {
   justify-items: center;
 }
 
+/* On screen the A5 page is only ~560 px wide, which reads tiny on a laptop.
+   Zoom the preview up (print output is untouched — this is screen only). */
+@media screen and (min-width: 700px) {
+  .br-sheet { zoom: 1.35; }
+}
+@media screen and (min-width: 1100px) {
+  .br-sheet { zoom: 1.6; }
+}
+
 .br-page {
   position: relative;
   width: 148mm;
