@@ -927,11 +927,6 @@ function PlusPage() {
         </div>
       </Section>
 
-      {/* 19b — Waitlist */}
-      <Section id="waitlist" className="container-page scroll-mt-24 pt-0">
-        <PlusWaitlist />
-      </Section>
-
       {/* 19c — FAQ */}
       <Section className="container-page pt-0">
         <SectionHead
@@ -977,10 +972,10 @@ function PlusPage() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
-                href="#waitlist"
+                href="#membership"
                 className="group inline-flex h-14 w-full select-none items-center justify-center gap-2.5 rounded-full bg-accent px-6 text-center text-[0.9375rem] font-medium text-accent-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)] sm:w-auto sm:px-8 sm:text-base"
               >
-                Be first to know when DoggMatch+ opens
+                Join DoggMatch+
                 <Arrow />
               </a>
               <ButtonLink
