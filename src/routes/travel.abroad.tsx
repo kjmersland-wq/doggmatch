@@ -3,7 +3,8 @@ import { useMemo } from "react";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { Notice, PointList, SectionHead } from "@/components/dogmatch/journey/parts";
 import { getCountries, getTransportModes, getTravelTimeline, type Rule } from "@/data/travel/countries";
-import { beforeYouLeave } from "@/data/travel/content.en";
+import { getBeforeYouLeave } from "@/data/travel/content";
+import { useCopy } from "@/i18n";
 import { checkRoute, type Leg } from "@/lib/travel/rules";
 import { getDogStore, useGetDog } from "@/lib/getdog/store";
 import { cn } from "@/lib/utils";
@@ -178,7 +179,7 @@ function AbroadPage() {
           <div>
             <SectionHead eyebrow="Before you leave" title="The last check at the door." />
             <div className="mt-8 rounded-2xl border border-border bg-card p-7">
-              <PointList items={beforeYouLeave} />
+              <PointList items={getBeforeYouLeave()} />
             </div>
           </div>
           <div className="rounded-[1.75rem] border border-border bg-card p-8 md:p-10">
