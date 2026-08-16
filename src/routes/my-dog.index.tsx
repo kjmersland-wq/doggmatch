@@ -16,7 +16,6 @@ import {
   type RoutineId,
 } from "@/lib/care/store";
 import { dogBreedLabel, resolveDogTraits, traitBasisNote } from "@/lib/dogs/profile";
-import { breedById } from "@/data/breeds";
 import { breedImages } from "@/data/breed-images";
 import { buildWeek } from "@/lib/care/week";
 import { useWeekOverride } from "@/lib/care/records";
@@ -248,7 +247,6 @@ function MyDogHome() {
   const traitProfile = resolveDogTraits(dog);
   const breedLine = dogBreedLabel(dog);
   const portraitBreed = traitProfile.breedIds[0];
-  const breed = portraitBreed ? breedById[portraitBreed] : undefined;
   const portrait = portraitBreed ? breedImages[portraitBreed] : careImages.careHero;
   const ageLabel = dog?.ageStage ? c.ageStages[dog.ageStage] : c.ageStages.adult;
 
