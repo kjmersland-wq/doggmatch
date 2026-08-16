@@ -38,9 +38,8 @@ function levelClass(value: number) {
     case 3:
       return "bg-level-medium";
     case 4:
-      return "bg-level-high";
     case 5:
-      return "bg-level-very-high";
+      return "bg-level-high";
     default:
       return "bg-muted-foreground";
   }
@@ -73,8 +72,7 @@ function CompareLegend({ c }: { c: CompareCopy }) {
   const items: { value: number; label: string }[] = [
     { value: 2, label: c.legend.low },
     { value: 3, label: c.legend.medium },
-    { value: 4, label: c.legend.high },
-    { value: 5, label: c.legend.veryHigh },
+    { value: 5, label: c.legend.high },
   ];
 
   return (

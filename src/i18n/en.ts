@@ -194,8 +194,7 @@ export const en = {
     legend: {
       low: "Low — usually easier to live with",
       medium: "Moderate",
-      high: "High — needs more time or space",
-      veryHigh: "Very high — biggest commitment",
+      high: "High or very high — biggest commitment",
     },
     rows: {
       size: "Size",

@@ -194,8 +194,7 @@ export const no: Dictionary = {
     legend: {
       low: "Lavt — som regel lettere å leve med",
       medium: "Middels",
-      high: "Høyt — trenger mer tid eller plass",
-      veryHigh: "Svært høyt — størst forpliktelse",
+      high: "Høyt eller svært høyt — størst forpliktelse",
     },
     rows: {
       size: "Størrelse",
