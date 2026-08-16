@@ -90,8 +90,17 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   setCurrentLocale(locale);
 
   useEffect(() => {
-    const next = readFromUrl() ?? readStored() ?? detect();
+    const fromUrl = readFromUrl();
+    const next = fromUrl ?? readStored() ?? detect();
     setCurrentLocale(next);
+    // A shared ?lang= link should keep its language while you browse on.
+    if (fromUrl) {
+      try {
+        localStorage.setItem(KEY, fromUrl);
+      } catch {
+        /* private mode */
+      }
+    }
     setState(next);
     setReady(true);
   }, []);
