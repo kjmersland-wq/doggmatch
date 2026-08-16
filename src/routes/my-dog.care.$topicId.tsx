@@ -185,7 +185,7 @@ function CareTopicPage() {
         <Eyebrow>Keep going</Eyebrow>
         <h2 className="display-md mt-5">More everyday care</h2>
         <ul className="mt-8 flex flex-wrap gap-3">
-          {careTopics
+          {careTopics()
             .filter((t) => t.id !== topic.id)
             .map((t) => (
               <li key={t.id}>

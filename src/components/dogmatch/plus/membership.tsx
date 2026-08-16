@@ -7,6 +7,7 @@ import { useMembership } from "@/hooks/use-membership";
 import { openBillingPortal } from "@/lib/plus/stripe.functions";
 import { Panel } from "@/components/dogmatch/care/parts";
 import { Button, ButtonLink } from "@/components/dogmatch/ui";
+import { useCopy, useLocale } from "@/i18n";
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
@@ -17,8 +18,69 @@ function Row({ label, value }: { label: string; value: string }) {
   );
 }
 
+const copy = {
+  en: {
+    you: "You",
+    email: "Email",
+    notSignedIn: "Not signed in",
+    language: "Language",
+    languageValue: "English",
+    signedInBody: "You're signed in. Everything you've filled in about your dog is still saved on this device.",
+    signOut: "Sign out",
+    guestBody: "You don't need an account to use DoggMatch. You only need one for DoggMatch+.",
+    signIn: "Sign in",
+    membership: "Membership",
+    plan: "Plan",
+    checking: "Checking…",
+    planYearly: "DoggMatch+ yearly",
+    planMonthly: "DoggMatch+ monthly",
+    free: "Free",
+    ends: "Ends",
+    renews: "Renews",
+    dash: "—",
+    endingBody: "Your membership is set to end, and you'll keep everything until then.",
+    activeBody: "Thank you for being a member. You can change or cancel this yourself at any time.",
+    printCard: "Print my member card",
+    manage: "Manage my membership",
+    manageBusy: "One moment…",
+    freeBodyPrefix: "Everything you can see today is free.",
+    freeBodySuffix: "adds the tools for daily life with your dog.",
+    portalError: "We couldn't open your billing page just then. Please try again.",
+  },
+  no: {
+    you: "Deg",
+    email: "E-post",
+    notSignedIn: "Ikke logget inn",
+    language: "Språk",
+    languageValue: "Norsk",
+    signedInBody: "Du er logget inn. Alt du har fylt inn om hunden din er fortsatt lagret på denne enheten.",
+    signOut: "Logg ut",
+    guestBody: "Du trenger ikke konto for å bruke DoggMatch. Du trenger bare en for DoggMatch+.",
+    signIn: "Logg inn",
+    membership: "Medlemskap",
+    plan: "Plan",
+    checking: "Sjekker …",
+    planYearly: "DoggMatch+ årlig",
+    planMonthly: "DoggMatch+ månedlig",
+    free: "Gratis",
+    ends: "Avsluttes",
+    renews: "Fornyes",
+    dash: "—",
+    endingBody: "Medlemskapet ditt er satt til å avsluttes, og du beholder alt fram til da.",
+    activeBody: "Takk for at du er medlem. Du kan endre eller si opp dette selv når som helst.",
+    printCard: "Skriv ut medlemskortet mitt",
+    manage: "Administrer medlemskapet mitt",
+    manageBusy: "Ett øyeblikk …",
+    freeBodyPrefix: "Alt du kan se i dag er gratis.",
+    freeBodySuffix: "gir deg verktøyene for hverdagen med hunden din.",
+    portalError: "Vi klarte ikke å åpne fakturasiden din akkurat nå. Prøv gjerne igjen.",
+  },
+} as const;
+
 /** Who you are, and where your DoggMatch+ membership stands. */
 export function AccountMembership() {
+  const c = useCopy(copy);
+  const { locale } = useLocale();
   const navigate = useNavigate();
   const { user } = useAuth();
   const { membership, loading } = useMembership();
@@ -33,7 +95,7 @@ export function AccountMembership() {
       const { url } = await toPortal();
       window.location.href = url;
     } catch {
-      setError("We couldn't open your billing page just then. Please try again.");
+      setError(c.portalError);
       setBusy(false);
     }
   }
@@ -44,78 +106,71 @@ export function AccountMembership() {
   }
 
   const renews = membership.renewsAt
-    ? new Date(membership.renewsAt).toLocaleDateString("en-GB", {
+    ? new Date(membership.renewsAt).toLocaleDateString(locale === "no" ? "nb-NO" : "en-GB", {
         day: "numeric",
         month: "long",
         year: "numeric",
       })
-    : "—";
+    : c.dash;
 
   return (
     <>
-      <Panel title="You">
-        <Row label="Email" value={user?.email ?? "Not signed in"} />
-        <Row label="Language" value="English" />
+      <Panel title={c.you}>
+        <Row label={c.email} value={user?.email ?? c.notSignedIn} />
+        <Row label={c.language} value={c.languageValue} />
         {user ? (
           <>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              You're signed in. Everything you've filled in about your dog is still saved on this
-              device.
-            </p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{c.signedInBody}</p>
             <Button tone="outline" onClick={signOut} className="mt-5">
-              Sign out
+              {c.signOut}
             </Button>
           </>
         ) : (
           <>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              You don't need an account to use DoggMatch. You only need one for DoggMatch+.
-            </p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{c.guestBody}</p>
             <Button onClick={() => void navigate({ to: "/auth" })} className="mt-5">
-              Sign in
+              {c.signIn}
             </Button>
           </>
         )}
       </Panel>
 
-      <Panel title="Membership">
+      <Panel title={c.membership}>
         <Row
-          label="Plan"
+          label={c.plan}
           value={
             loading
-              ? "Checking…"
+              ? c.checking
               : membership.subscribed
                 ? membership.plan === "yearly"
-                  ? "DoggMatch+ yearly"
-                  : "DoggMatch+ monthly"
-                : "Free"
+                  ? c.planYearly
+                  : c.planMonthly
+                : c.free
           }
         />
         <Row
-          label={membership.cancelsAtPeriodEnd ? "Ends" : "Renews"}
-          value={membership.subscribed ? renews : "—"}
+          label={membership.cancelsAtPeriodEnd ? c.ends : c.renews}
+          value={membership.subscribed ? renews : c.dash}
         />
         {membership.subscribed ? (
           <>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              {membership.cancelsAtPeriodEnd
-                ? "Your membership is set to end, and you'll keep everything until then."
-                : "Thank you for being a member. You can change or cancel this yourself at any time."}
+              {membership.cancelsAtPeriodEnd ? c.endingBody : c.activeBody}
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
-              <ButtonLink to="/member-card">Print my member card</ButtonLink>
+              <ButtonLink to="/member-card">{c.printCard}</ButtonLink>
               <Button tone="outline" onClick={manage} disabled={busy}>
-                {busy ? "One moment…" : "Manage my membership"}
+                {busy ? c.manageBusy : c.manage}
               </Button>
             </div>
           </>
         ) : (
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Everything you can see today is free.{" "}
+            {c.freeBodyPrefix}{" "}
             <Link to="/plus" className="text-accent underline-offset-4 hover:underline">
               DoggMatch+
             </Link>{" "}
-            adds the tools for daily life with your dog.
+            {c.freeBodySuffix}
           </p>
         )}
         {error && (

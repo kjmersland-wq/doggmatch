@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
 import { useAuth } from "@/hooks/use-auth";
 import { Arrow, Button, Eyebrow, Section } from "@/components/dogmatch/ui";
+import { useCopy } from "@/i18n";
 
 const title = "Sign in — Your DoggMatch account | DoggMatch";
 const description =
@@ -35,7 +36,57 @@ export const Route = createFileRoute("/auth")({
 const fieldClass =
   "mt-2 h-14 w-full rounded-2xl border border-border bg-background px-5 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-border-strong";
 
+const copy = {
+  en: {
+    eyebrow: "Your account",
+    welcomeBack: "Welcome back",
+    letsSetUp: "Let's get you set up",
+    intro:
+      "You only need an account for DoggMatch+ and anything we keep for you. Everything else on DoggMatch stays free and open.",
+    google: "Continue with Google",
+    orWithEmail: "or with email",
+    emailLabel: "Email address",
+    emailPlaceholder: "you@example.com",
+    passwordLabel: "Password",
+    passwordPlaceholder: "At least 8 characters",
+    signingIn: "One moment…",
+    signIn: "Sign in",
+    createAccount: "Create my account",
+    noAccount: "No account yet?",
+    haveAccount: "Already have an account?",
+    createOne: "Create one",
+    signInInstead: "Sign in instead",
+    signUpNotice: "Almost there — check your inbox and confirm your email address.",
+    genericError: "Something went wrong. Please try again.",
+    googleError: "We couldn't sign you in with Google just then. Please try again.",
+  },
+  no: {
+    eyebrow: "Kontoen din",
+    welcomeBack: "Velkommen tilbake",
+    letsSetUp: "La oss sette deg opp",
+    intro:
+      "Du trenger bare en konto for DoggMatch+ og alt vi lagrer for deg. Alt annet på DoggMatch er fortsatt gratis og åpent.",
+    google: "Fortsett med Google",
+    orWithEmail: "eller med e-post",
+    emailLabel: "E-postadresse",
+    emailPlaceholder: "du@eksempel.no",
+    passwordLabel: "Passord",
+    passwordPlaceholder: "Minst 8 tegn",
+    signingIn: "Ett øyeblikk …",
+    signIn: "Logg inn",
+    createAccount: "Opprett kontoen min",
+    noAccount: "Har du ikke konto ennå?",
+    haveAccount: "Har du allerede konto?",
+    createOne: "Opprett en",
+    signInInstead: "Logg inn i stedet",
+    signUpNotice: "Nesten der — sjekk innboksen din og bekreft e-postadressen.",
+    genericError: "Noe gikk galt. Prøv gjerne igjen.",
+    googleError: "Vi klarte ikke å logge deg inn med Google akkurat nå. Prøv gjerne igjen.",
+  },
+} as const;
+
 function AuthPage() {
+  const c = useCopy(copy);
   const { user, loading } = useAuth();
   const navigate = useNavigate();
   const search = useSearch({ from: "/auth" });
@@ -66,13 +117,13 @@ function AuthPage() {
           options: { emailRedirectTo: `${window.location.origin}${next}` },
         });
         if (error) throw error;
-        setNotice("Almost there — check your inbox and confirm your email address.");
+        setNotice(c.signUpNotice);
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
       }
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+      setMessage(error instanceof Error ? error.message : c.genericError);
     } finally {
       setBusy(false);
     }
@@ -83,20 +134,17 @@ function AuthPage() {
     const result = await lovable.auth.signInWithOAuth("google", {
       redirect_uri: window.location.origin,
     });
-    if (result?.error) setMessage("We couldn't sign you in with Google just then. Please try again.");
+    if (result?.error) setMessage(c.googleError);
   }
 
   return (
     <div className="pb-24">
       <section className="container-page pt-28 md:pt-36">
-        <Eyebrow>Your account</Eyebrow>
+        <Eyebrow>{c.eyebrow}</Eyebrow>
         <h1 className="display-xl mt-6 max-w-2xl">
-          {mode === "signin" ? "Welcome back" : "Let's get you set up"}
+          {mode === "signin" ? c.welcomeBack : c.letsSetUp}
         </h1>
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-          You only need an account for DoggMatch+ and anything we keep for you. Everything else on
-          DoggMatch stays free and open.
-        </p>
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
       </section>
 
       <Section className="container-page">
@@ -106,18 +154,18 @@ function AuthPage() {
             onClick={onGoogle}
             className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-full border border-border-strong px-6 text-base font-medium transition-colors hover:bg-background"
           >
-            Continue with Google
+            {c.google}
           </button>
 
           <div className="my-7 flex items-center gap-4 text-sm text-muted-foreground">
             <span className="h-px flex-1 bg-border" />
-            or with email
+            {c.orWithEmail}
             <span className="h-px flex-1 bg-border" />
           </div>
 
           <form onSubmit={onSubmit} noValidate>
             <label htmlFor="auth-email" className="text-[0.9375rem] font-medium">
-              Email address
+              {c.emailLabel}
             </label>
             <input
               id="auth-email"
@@ -127,12 +175,12 @@ function AuthPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className={fieldClass}
-              placeholder="you@example.com"
+              placeholder={c.emailPlaceholder}
             />
 
             <div className="mt-5">
               <label htmlFor="auth-password" className="text-[0.9375rem] font-medium">
-                Password
+                {c.passwordLabel}
               </label>
               <input
                 id="auth-password"
@@ -143,12 +191,12 @@ function AuthPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className={fieldClass}
-                placeholder="At least 8 characters"
+                placeholder={c.passwordPlaceholder}
               />
             </div>
 
             <Button type="submit" size="lg" disabled={busy} className="mt-7 w-full">
-              {busy ? "One moment…" : mode === "signin" ? "Sign in" : "Create my account"}
+              {busy ? c.signingIn : mode === "signin" ? c.signIn : c.createAccount}
               {!busy && <Arrow />}
             </Button>
           </form>
@@ -165,7 +213,7 @@ function AuthPage() {
           )}
 
           <p className="mt-6 text-sm text-muted-foreground">
-            {mode === "signin" ? "No account yet?" : "Already have an account?"}{" "}
+            {mode === "signin" ? c.noAccount : c.haveAccount}{" "}
             <button
               type="button"
               onClick={() => {
@@ -175,7 +223,7 @@ function AuthPage() {
               }}
               className="underline underline-offset-4 hover:text-foreground"
             >
-              {mode === "signin" ? "Create one" : "Sign in instead"}
+              {mode === "signin" ? c.createOne : c.signInInstead}
             </button>
           </p>
         </div>

@@ -2,10 +2,11 @@ import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, Button, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { Notice, SectionHead } from "@/components/dogmatch/journey/parts";
-import { readinessQuestions } from "@/data/getdog/readiness.en";
+import { getReadinessData } from "@/data/getdog/readiness";
 import { scoreReadiness } from "@/lib/getdog/readiness";
 import { getDogStore, useGetDog } from "@/lib/getdog/store";
 import { cn } from "@/lib/utils";
+import { useCopy } from "@/i18n";
 
 const title = "Is a dog right for your life? A calm readiness check | DoggMatch";
 const description =
@@ -28,7 +29,60 @@ export const Route = createFileRoute("/get-a-dog/ready")({
   component: ReadyPage,
 });
 
+const copy = {
+  en: {
+    eyebrow: "Is a dog right for your life?",
+    of: "of",
+    progress: "Progress",
+    back: "Back",
+    seeWhatIThink: "See what I think",
+    continueBtn: "Continue",
+    noPassMark: "There's no pass mark here, and no wrong answer.",
+    answersOnDevice: "Your answers stay on this device.",
+    resultEyebrow: "What we think",
+    basedOn: "Based on",
+    resultNote: "answers. This isn't a score — it just decides which of three honest answers we give you.",
+    notesTitle: "A few things worth sorting out first",
+    notesBody:
+      "None of these are reasons not to have a dog. They're the things that are much easier to arrange now than later.",
+    weveKept: "We've kept the",
+    answersHelp: "answers that help with matching, so Find My Dog won't ask you any of them again.",
+    findMyDog: "Find My Dog",
+    puppyOrAdult: "Puppy or adult?",
+    changeAnswers: "Change my answers",
+    oneMoreThing: "One more thing",
+    oneMoreThingBody:
+      "Nothing here is a judgement, and nothing is stored anywhere but this device. If now isn't the right time, a dog will still be there when it is.",
+  },
+  no: {
+    eyebrow: "Er en hund riktig for livet ditt?",
+    of: "av",
+    progress: "Fremdrift",
+    back: "Tilbake",
+    seeWhatIThink: "Se hva vi tenker",
+    continueBtn: "Fortsett",
+    noPassMark: "Det finnes ingen ståkarakter her, og ingen svar er feil.",
+    answersOnDevice: "Svarene dine blir liggende på denne enheten.",
+    resultEyebrow: "Det vi tenker",
+    basedOn: "Basert på",
+    resultNote: "svar. Dette er ikke en poengsum — det avgjør bare hvilket av tre ærlige svar vi gir deg.",
+    notesTitle: "Noen ting som er verdt å ordne først",
+    notesBody:
+      "Ingen av disse er grunner til å ikke ha hund. Det er ting som er langt lettere å ordne nå enn senere.",
+    weveKept: "Vi har tatt vare på de",
+    answersHelp: "svarene som hjelper med matching, så Finn min hund ikke spør om dem igjen.",
+    findMyDog: "Finn min hund",
+    puppyOrAdult: "Valp eller voksen?",
+    changeAnswers: "Endre svarene mine",
+    oneMoreThing: "Én ting til",
+    oneMoreThingBody:
+      "Ingenting her er en dom, og ingenting lagres andre steder enn på denne enheten. Hvis nå ikke er riktig tidspunkt, vil en hund fortsatt være der når det er.",
+  },
+} as const;
+
 function ReadyPage() {
+  const c = useCopy(copy);
+  const { readinessQuestions } = getReadinessData();
   const saved = useGetDog();
   const [answers, setAnswers] = useState<Record<string, string>>(saved.readiness);
   const [step, setStep] = useState(0);
@@ -71,9 +125,9 @@ function ReadyPage() {
     <div className="container-page flex min-h-[calc(100vh-72px)] max-w-3xl flex-col py-24 md:py-28">
       <div>
         <div className="flex items-baseline justify-between">
-          <Eyebrow>Is a dog right for your life?</Eyebrow>
+          <Eyebrow>{c.eyebrow}</Eyebrow>
           <p className="text-sm tabular-nums text-muted-foreground">
-            {step + 1} of {total}
+            {step + 1} {c.of} {total}
           </p>
         </div>
         <div
@@ -82,7 +136,7 @@ function ReadyPage() {
           aria-valuenow={progress}
           aria-valuemin={0}
           aria-valuemax={100}
-          aria-label="Progress"
+          aria-label={c.progress}
         >
           <div className="h-full rounded-full bg-accent transition-[width] duration-500 ease-out" style={{ width: `${progress}%` }} />
         </div>
@@ -143,16 +197,16 @@ function ReadyPage() {
 
       <div className="sticky bottom-20 mt-12 flex items-center gap-3 border-t border-border bg-background/90 py-5 backdrop-blur-xl lg:bottom-0">
         <Button tone="ghost" onClick={() => (step === 0 ? window.history.back() : setStep(step - 1))}>
-          Back
+          {c.back}
         </Button>
         <Button size="lg" className="ml-auto" disabled={!selected} onClick={next}>
-          {step + 1 === total ? "See what I think" : "Continue"}
+          {step + 1 === total ? c.seeWhatIThink : c.continueBtn}
           <Arrow />
         </Button>
       </div>
 
       <p className="mt-6 text-sm text-muted-foreground">
-        There's no pass mark here, and no wrong answer. {result.answered > 0 && "Your answers stay on this device."}
+        {c.noPassMark} {result.answered > 0 && c.answersOnDevice}
       </p>
     </div>
   );
@@ -161,6 +215,7 @@ function ReadyPage() {
 /* ------------------------------------------------------------- The result */
 
 function Result({ onRedo }: { onRedo: () => void }) {
+  const c = useCopy(copy);
   const saved = useGetDog();
   const result = scoreReadiness(saved.readiness);
   const { outcome } = result;
@@ -168,7 +223,7 @@ function Result({ onRedo }: { onRedo: () => void }) {
   return (
     <div className="pb-24">
       <section className="container-page max-w-3xl pt-28 md:pt-36">
-        <Eyebrow>What we think</Eyebrow>
+        <Eyebrow>{c.resultEyebrow}</Eyebrow>
         <h1 className="display-xl mt-7">{outcome.title}</h1>
         <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{outcome.body}</p>
 
@@ -176,14 +231,14 @@ function Result({ onRedo }: { onRedo: () => void }) {
           <div className="h-full rounded-full bg-accent transition-[width] duration-[1200ms] ease-out" style={{ width: `${result.percent}%` }} />
         </div>
         <p className="mt-3 text-sm text-muted-foreground">
-          Based on {result.answered} of {result.total} answers. This isn't a score — it just decides which of three honest answers we give you.
+          {c.basedOn} {result.answered} {c.of} {result.total} {c.resultNote}
         </p>
       </section>
 
       {result.notes.length > 0 && (
         <Section className="pt-16 md:pt-20">
           <div className="container-page max-w-3xl">
-            <SectionHead title="A few things worth sorting out first" body="None of these are reasons not to have a dog. They're the things that are much easier to arrange now than later." />
+            <SectionHead title={c.notesTitle} body={c.notesBody} />
             <ul className="mt-10 space-y-4">
               {result.notes.map((note) => (
                 <li key={note} className="rounded-2xl border border-border bg-card p-6 text-[0.9375rem] leading-relaxed">
@@ -200,27 +255,24 @@ function Result({ onRedo }: { onRedo: () => void }) {
           <div className="rounded-[1.75rem] border border-border bg-surface p-8 md:p-12">
             <h2 className="display-md">{outcome.encouragement}</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              We've kept the {Object.keys(result.profile).length} answers that help with matching, so Find My Dog won't ask you any of them again.
+              {c.weveKept} {Object.keys(result.profile).length} {c.answersHelp}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink to="/find-my-dog" size="lg">
-                Find My Dog
+                {c.findMyDog}
                 <Arrow />
               </ButtonLink>
               <ButtonLink to="/get-a-dog/choose" tone="outline" size="lg">
-                Puppy or adult?
+                {c.puppyOrAdult}
               </ButtonLink>
               <Button tone="ghost" size="lg" onClick={onRedo}>
-                Change my answers
+                {c.changeAnswers}
               </Button>
             </div>
           </div>
 
           <div className="mt-8">
-            <Notice title="One more thing">
-              Nothing here is a judgement, and nothing is stored anywhere but this device. If now isn't
-              the right time, a dog will still be there when it is.
-            </Notice>
+            <Notice title={c.oneMoreThing}>{c.oneMoreThingBody}</Notice>
           </div>
         </div>
       </Section>

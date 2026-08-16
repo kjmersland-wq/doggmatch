@@ -1,9 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import { Compass, GraduationCap, Heart, Home, Sparkles } from "lucide-react";
-import { useT } from "@/i18n";
+import { useCopy, useT } from "@/i18n";
+
+const copy = {
+  en: { mobileNav: "Mobile" },
+  no: { mobileNav: "Mobilnavigasjon" },
+} as const;
 
 export function MobileTabs() {
   const t = useT();
+  const c = useCopy(copy);
   const items = [
     { to: "/", label: t.nav.home, Icon: Home },
     { to: "/find-my-dog", label: t.nav.match, Icon: Sparkles },
@@ -14,7 +20,7 @@ export function MobileTabs() {
 
   return (
     <nav
-      aria-label="Mobile"
+      aria-label={c.mobileNav}
       className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden"
     >
       <ul className="grid grid-cols-5">

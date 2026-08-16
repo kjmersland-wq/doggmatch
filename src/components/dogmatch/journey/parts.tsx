@@ -3,6 +3,12 @@ import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
 import { useGetDog, getDogStore } from "@/lib/getdog/store";
+import { useCopy } from "@/i18n";
+
+const copy = {
+  en: { continue: "Continue" },
+  no: { continue: "Fortsett" },
+} as const;
 
 /* ------------------------------------------------------------------ Hero */
 
@@ -117,7 +123,7 @@ export function PointList({
   items,
   tone = "good",
 }: {
-  items: string[];
+  items: readonly string[];
   tone?: "good" | "watch";
 }) {
   return (
@@ -214,6 +220,7 @@ export function NextStep({
   to: string;
   params?: Record<string, string>;
 }) {
+  const c = useCopy(copy);
   return (
     <Link
       to={to as never}
@@ -225,7 +232,7 @@ export function NextStep({
         <p className="display-md mt-3">{title}</p>
       </div>
       <span className="inline-flex items-center gap-2 text-[0.9375rem] font-medium">
-        Continue
+        {c.continue}
         <Arrow />
       </span>
     </Link>

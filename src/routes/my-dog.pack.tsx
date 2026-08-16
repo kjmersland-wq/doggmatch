@@ -5,6 +5,7 @@ import { Button } from "@/components/dogmatch/ui";
 import { DocPaper } from "@/components/dogmatch/print/doc";
 import { buildDocument, documentsById, packOrder } from "@/lib/print/documents";
 import { useDocContext } from "@/lib/print/context";
+import { useCopy } from "@/i18n";
 
 const title = "Your printable pages | DoggMatch";
 const description = "A print-ready set of pages for your dog, made from what you've saved.";
@@ -29,7 +30,35 @@ export const Route = createFileRoute("/my-dog/pack")({
   component: PackPage,
 });
 
+const copy = {
+  en: {
+    backLink: "Choose different pages",
+    printOrSave: "Print or save as PDF",
+    printHint:
+      'This is exactly how it will print. Choose "Save as PDF" in the print dialog if you\'d rather keep it on your phone.',
+    wholePackTitle: "The DoggMatch Dog Pack",
+    dogPack: "Dog pack",
+    dogNameFallback: "My dog",
+    subtitleWhole:
+      "Everything worth having on paper — who your dog is, what they eat, how your week runs, and who to call.",
+    subtitlePart: "Printed from DoggMatch. Fill in anything that's blank by hand.",
+  },
+  no: {
+    backLink: "Velg andre sider",
+    printOrSave: "Skriv ut eller lagre som PDF",
+    printHint:
+      'Slik vil dette se ut på papir. Velg «Lagre som PDF» i utskriftsdialogen hvis du heller vil ha det på telefonen.',
+    wholePackTitle: "Den komplette DoggMatch-hundepakken",
+    dogPack: "Hundepakke",
+    dogNameFallback: "Hunden min",
+    subtitleWhole:
+      "Alt som er verdt å ha på papir — hvem hunden din er, hva den spiser, hvordan uken din går, og hvem du skal ringe.",
+    subtitlePart: "Skrevet ut fra DoggMatch. Fyll inn det som er tomt for hånd.",
+  },
+} as const;
+
 function PackPage() {
+  const c = useCopy(copy);
   const { docs } = Route.useSearch();
   const ctx = useDocContext();
 
@@ -37,10 +66,10 @@ function PackPage() {
   const sections = buildDocument(ids.length ? ids : ["profile"], ctx);
   const whole = ids.length >= packOrder.length - 1;
   const docTitle = whole
-    ? "The DoggMatch Dog Pack"
+    ? c.wholePackTitle
     : ids.length === 1
-      ? (documentsById[ids[0]!]?.title ?? "Dog pack")
-      : "Dog pack";
+      ? (documentsById[ids[0]!]?.title ?? c.dogPack)
+      : c.dogPack;
 
   useEffect(() => {
     document.body.classList.add("bg-background");
@@ -55,30 +84,25 @@ function PackPage() {
           className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
-          Choose different pages
+          {c.backLink}
         </Link>
         <Button size="md" onClick={() => window.print()}>
           <Printer className="h-4 w-4" />
-          Print or save as PDF
+          {c.printOrSave}
         </Button>
       </div>
 
       <p className="no-print container-page mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
-        This is exactly how it will print. Choose "Save as PDF" in the print dialog if you'd rather
-        keep it on your phone.
+        {c.printHint}
       </p>
 
       <div className="container-page mt-10 overflow-x-auto">
         <DocPaper
           title={docTitle}
-          dogName={ctx.dog?.name ?? "My dog"}
+          dogName={ctx.dog?.name ?? c.dogNameFallback}
           {...(ctx.breedName ? { breedName: ctx.breedName } : {})}
           {...(ctx.details.photo ? { photo: ctx.details.photo } : {})}
-          subtitle={
-            whole
-              ? "Everything worth having on paper — who your dog is, what they eat, how your week runs, and who to call."
-              : "Printed from DoggMatch. Fill in anything that's blank by hand."
-          }
+          subtitle={whole ? c.subtitleWhole : c.subtitlePart}
           sections={sections}
           date={ctx.today}
         />

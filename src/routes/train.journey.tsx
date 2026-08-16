@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Eyebrow } from "@/components/dogmatch/ui";
 import { LessonCard, statusLabels } from "@/components/dogmatch/training/parts";
-import { lessons, lessonsById } from "@/data/training/lessons";
+import { getLessons, getLessonsById } from "@/data/training/lessons";
 import type { SkillStatus } from "@/data/training/types";
 import { rankLessons } from "@/lib/training/plan";
 import { streakDays, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
@@ -41,7 +41,7 @@ function JourneyPage() {
 
   const grouped = order.map((status) => ({
     status,
-    items: lessons.filter((l) => (progress[l.id] ?? "not-started") === status),
+    items: getLessons().filter((l) => (progress[l.id] ?? "not-started") === status),
   }));
 
   return (
@@ -113,7 +113,7 @@ function JourneyPage() {
                     className="flex flex-wrap items-center justify-between gap-3 bg-background p-6"
                   >
                     <span className="font-display text-lg tracking-tight">
-                      {lessonsById[s.lessonId]?.title ?? s.lessonId}
+                      {getLessonsById()[s.lessonId]?.title ?? s.lessonId}
                     </span>
                     <span className="text-sm text-muted-foreground">
                       {s.day} ·{" "}

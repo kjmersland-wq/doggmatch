@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { Notice, PointList, SectionHead } from "@/components/dogmatch/journey/parts";
-import { countries, transportModes, travelTimeline, type Rule } from "@/data/travel/countries";
+import { getCountries, getTransportModes, getTravelTimeline, type Rule } from "@/data/travel/countries";
 import { beforeYouLeave } from "@/data/travel/content.en";
 import { checkRoute, type Leg } from "@/lib/travel/rules";
 import { getDogStore, useGetDog } from "@/lib/getdog/store";
@@ -91,7 +91,7 @@ function AbroadPage() {
             <div className="mt-8">
               <p className="eyebrow">How are you travelling?</p>
               <div className="mt-4 flex flex-wrap gap-2">
-                {transportModes.map((mode) => {
+                {getTransportModes().map((mode) => {
                   const on = trip.transport === mode.id;
                   return (
                     <button
@@ -110,7 +110,7 @@ function AbroadPage() {
               </div>
               {trip.transport && (
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  {transportModes.find((m) => m.id === trip.transport)?.note}
+                  {getTransportModes().find((m) => m.id === trip.transport)?.note}
                 </p>
               )}
             </div>
@@ -157,7 +157,7 @@ function AbroadPage() {
                 body="The most common reason a trip falls through is a waiting period nobody knew about. Nothing here is difficult — it just takes longer than you'd think."
               />
               <ol className="mt-10 space-y-px overflow-hidden rounded-2xl border border-border bg-border">
-                {travelTimeline.map((row) => (
+                {getTravelTimeline().map((row) => (
                   <li key={row.when} className="flex flex-wrap items-baseline gap-x-6 gap-y-1 bg-background p-6">
                     <span className="font-display text-[0.9375rem] text-accent">{row.when}</span>
                     <span className="flex-1 text-[0.9375rem] text-muted-foreground">{row.what}</span>
@@ -240,7 +240,7 @@ function Select({
       className="h-12 w-full rounded-xl border border-border bg-background px-4 text-[0.9375rem] outline-none transition-colors focus:border-accent"
     >
       <option value="">{placeholder}</option>
-      {countries.map((c) => (
+      {getCountries().map((c) => (
         <option key={c.code} value={c.code}>
           {c.name}
         </option>

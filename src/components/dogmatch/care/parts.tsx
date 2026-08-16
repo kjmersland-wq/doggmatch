@@ -4,6 +4,24 @@ import { Check } from "lucide-react";
 import type { CareTopic, FoodItem, FoodSafety } from "@/data/care/types";
 import { topicImages, categoryImages } from "@/data/care/images";
 import { cn } from "@/lib/utils";
+import { useCopy, pick } from "@/i18n";
+
+const copy = {
+  en: {
+    safety: { safe: "Fine in small amounts", care: "Be careful", avoid: "Don't give this" } as Record<FoodSafety, string>,
+    howMuch: "How much: ",
+    weightChartAlt: "Weight over time",
+    worthKnowing: "Worth knowing",
+    basedOn: "Based on guidance from",
+  },
+  no: {
+    safety: { safe: "Greit i små mengder", care: "Vær forsiktig", avoid: "Ikke gi dette" } as Record<FoodSafety, string>,
+    howMuch: "Hvor mye: ",
+    weightChartAlt: "Vekt over tid",
+    worthKnowing: "Verdt å vite",
+    basedOn: "Basert på råd fra",
+  },
+} as const;
 
 /* ---------------------------------------------------------------- Cards */
 
@@ -139,6 +157,7 @@ export function RoutineRow({
 /* ------------------------------------------------------------ Weight chart */
 
 export function WeightChart({ entries }: { entries: { day: string; kg: number }[] }) {
+  const c = useCopy(copy);
   if (entries.length < 2) return null;
   const values = entries.map((e) => e.kg);
   const min = Math.min(...values);
@@ -159,7 +178,7 @@ export function WeightChart({ entries }: { entries: { day: string; kg: number }[
 
   return (
     <figure className="rounded-[1.25rem] border border-border bg-surface p-5">
-      <svg viewBox={`0 0 ${w} ${h}`} className="h-44 w-full" role="img" aria-label="Weight over time">
+      <svg viewBox={`0 0 ${w} ${h}`} className="h-44 w-full" role="img" aria-label={c.weightChartAlt}>
         <path d={area} className="fill-accent/10" />
         <path d={line} className="fill-none stroke-accent" strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round" />
         {points.map((p) => (
@@ -176,11 +195,12 @@ export function WeightChart({ entries }: { entries: { day: string; kg: number }[
 
 /* ---------------------------------------------------------------- Food */
 
-export const safetyLabels: Record<FoodSafety, string> = {
-  safe: "Fine in small amounts",
-  care: "Be careful",
-  avoid: "Don't give this",
-};
+/** Localized safety copy, for use outside React render. */
+export function safetyLabel(safety: FoodSafety): string {
+  return pick(copy).safety[safety];
+}
+
+export const safetyLabels: Record<FoodSafety, string> = copy.en.safety;
 
 export function SafetyDot({ safety }: { safety: FoodSafety }) {
   return (
@@ -205,6 +225,7 @@ export function FoodRow({
   open: boolean;
   onToggle: () => void;
 }) {
+  const c = useCopy(copy);
   return (
     <li className="border-b border-border last:border-0">
       <button
@@ -221,7 +242,7 @@ export function FoodRow({
             item.safety === "avoid" ? "text-destructive" : "text-muted-foreground",
           )}
         >
-          {safetyLabels[item.safety]}
+          {c.safety[item.safety]}
         </span>
       </button>
       {open && (
@@ -229,7 +250,7 @@ export function FoodRow({
           <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">{item.body}</p>
           {item.serving && (
             <p className="mt-2 text-sm text-muted-foreground">
-              <span className="text-foreground">How much: </span>
+              <span className="text-foreground">{c.howMuch}</span>
               {item.serving}
             </p>
           )}
@@ -252,19 +273,21 @@ export function FoodRow({
 /* ------------------------------------------------------------- Reassurance */
 
 export function VetNote({ children }: { children: ReactNode }) {
+  const c = useCopy(copy);
   return (
     <aside className="rounded-[1.25rem] border border-border-strong bg-surface p-6">
-      <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">Worth knowing</p>
+      <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">{c.worthKnowing}</p>
       <p className="mt-3 text-[0.9375rem] leading-relaxed">{children}</p>
     </aside>
   );
 }
 
 export function Sources({ sources }: { sources?: { label: string; org: string }[] }) {
+  const c = useCopy(copy);
   if (!sources?.length) return null;
   return (
     <div className="mt-10 border-t border-border pt-6">
-      <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">Based on guidance from</p>
+      <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">{c.basedOn}</p>
       <ul className="mt-3 space-y-1 text-sm text-muted-foreground">
         {sources.map((s) => (
           <li key={s.org}>

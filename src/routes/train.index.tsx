@@ -4,7 +4,7 @@ import { Arrow, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { LessonCard } from "@/components/dogmatch/training/parts";
 import { trainingCategories } from "@/data/training/categories";
 import { categoryImages, trainingImages } from "@/data/training/images";
-import { lessons } from "@/data/training/lessons";
+import { getLessons } from "@/data/training/lessons";
 import { todaysPlan, ageFocus } from "@/lib/training/plan";
 import { streakDays, today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
 
@@ -222,7 +222,7 @@ function TrainHome() {
           <Eyebrow>{t.train.pickedEyebrow}</Eyebrow>
           <h2 className="display-md mt-5 max-w-lg">{t.train.pickedTitle}</h2>
           <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {lessons.slice(0, 3).map((l) => (
+            {getLessons().slice(0, 3).map((l) => (
               <li key={l.id}>
                 <LessonCard lesson={l} status={progress[l.id]} />
               </li>

@@ -1,4 +1,5 @@
-import { readinessQuestions, readinessOutcomes, type ReadinessOutcome } from "@/data/getdog/readiness.en";
+import { getReadinessData } from "@/data/getdog/readiness";
+import type { ReadinessOutcome } from "@/data/getdog/readiness.en";
 import type { UserProfile } from "@/lib/matching/types";
 
 /**
@@ -19,6 +20,7 @@ export interface ReadinessResult {
 }
 
 export function scoreReadiness(answers: Record<string, string>): ReadinessResult {
+  const { readinessQuestions, readinessOutcomes } = getReadinessData();
   let score = 0;
   let max = 0;
   const notes: string[] = [];

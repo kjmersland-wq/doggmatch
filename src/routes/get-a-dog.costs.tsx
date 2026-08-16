@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { Notice, SectionHead } from "@/components/dogmatch/journey/parts";
-import { costGroups } from "@/data/getdog/content.en";
+import { getDogContent } from "@/data/getdog/content";
 import { breedById } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { costRange } from "@/lib/getdog/prep";
 import { useGetDog } from "@/lib/getdog/store";
+import { useCopy } from "@/i18n";
 
 const title = "What will a dog really cost? Before they arrive, and every month | DoggMatch";
 const description =
@@ -28,30 +29,61 @@ export const Route = createFileRoute("/get-a-dog/costs")({
   component: CostsPage,
 });
 
+const copy = {
+  en: {
+    eyebrow: "The commitment",
+    title: "What will a dog really cost?",
+    intro:
+      "Money is the least romantic part of this, and the part most likely to hurt later. Here's the shape of it, honestly. Actual prices differ enormously by country, city and dog.",
+    yourMatch: "Your match",
+    runningCostPrefix: "Indicative running cost, per year, once they're settled:",
+    runningCostSuffix:
+      "That's a broad range from our breed library, not a quote — food, insurance and grooming prices vary a great deal by country.",
+    noticeTitle: "Where the numbers come from",
+    noticeBody:
+      "Every breed page shows an indicative yearly cost range for that breed, and Compare puts two or three of them side by side. We'd rather show you a wide, honest range than a precise number that turns out to be wrong where you live.",
+    compareCta: "Compare costs side by side",
+    prepareCta: "Get your home ready",
+  },
+  no: {
+    eyebrow: "Forpliktelsen",
+    title: "Hva koster en hund egentlig?",
+    intro:
+      "Penger er den minst romantiske delen av dette, og den delen som oftest gjør vondt senere. Her er det, ærlig fortalt. De faktiske prisene varierer enormt etter land, by og hund.",
+    yourMatch: "Din match",
+    runningCostPrefix: "Anslått løpende kostnad per år, når hunden har slått seg til:",
+    runningCostSuffix:
+      "Det er et bredt spenn fra rasebiblioteket vårt, ikke et tilbud — priser på mat, forsikring og stell varierer mye fra land til land.",
+    noticeTitle: "Hvor tallene kommer fra",
+    noticeBody:
+      "Hver raseside viser et anslått årlig kostnadsspenn for den rasen, og Sammenlign setter to eller tre av dem side om side. Vi vil heller vise deg et bredt, ærlig spenn enn et presist tall som viser seg å være feil der du bor.",
+    compareCta: "Sammenlign kostnader side om side",
+    prepareCta: "Gjør hjemmet ditt klart",
+  },
+} as const;
+
 function CostsPage() {
+  const c = useCopy(copy);
+  const { costGroups } = getDogContent();
   const saved = useGetDog();
   const breed = saved.interestedIn ? breedById[saved.interestedIn] : undefined;
 
   return (
     <div className="pb-24">
       <section className="container-page max-w-3xl pt-28 md:pt-36">
-        <p className="eyebrow">The commitment</p>
-        <h1 className="display-xl mt-6">What will a dog really cost?</h1>
-        <p className="mt-7 text-lg leading-relaxed text-muted-foreground">
-          Money is the least romantic part of this, and the part most likely to hurt later. Here's the
-          shape of it, honestly. Actual prices differ enormously by country, city and dog.
-        </p>
+        <p className="eyebrow">{c.eyebrow}</p>
+        <h1 className="display-xl mt-6">{c.title}</h1>
+        <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
       </section>
 
       {breed && (
         <section className="container-page mt-12 max-w-3xl">
           <div className="rounded-[1.75rem] border border-border bg-surface p-8 md:p-10">
-            <p className="eyebrow">Your match</p>
+            <p className="eyebrow">{c.yourMatch}</p>
             <h2 className="display-md mt-3">{breedContent()[breed.id].displayName}</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              Indicative running cost, per year, once they're settled:{" "}
-              <span className="font-display text-foreground">{costRange(breed)}</span>. That's a broad range from
-              our breed library, not a quote — food, insurance and grooming prices vary a great deal by country.
+              {c.runningCostPrefix}{" "}
+              <span className="font-display text-foreground">{costRange(breed)}</span>. {c.runningCostSuffix}
             </p>
           </div>
         </section>
@@ -78,19 +110,15 @@ function CostsPage() {
       </Section>
 
       <div className="container-page max-w-3xl">
-        <Notice title="Where the numbers come from">
-          Every breed page shows an indicative yearly cost range for that breed, and Compare puts two or
-          three of them side by side. We'd rather show you a wide, honest range than a precise number
-          that turns out to be wrong where you live.
-        </Notice>
+        <Notice title={c.noticeTitle}>{c.noticeBody}</Notice>
 
         <div className="mt-10 flex flex-wrap gap-3">
           <ButtonLink to="/compare" size="lg">
-            Compare costs side by side
+            {c.compareCta}
             <Arrow />
           </ButtonLink>
           <ButtonLink to="/get-a-dog/prepare" tone="outline" size="lg">
-            Get your home ready
+            {c.prepareCta}
           </ButtonLink>
         </div>
       </div>

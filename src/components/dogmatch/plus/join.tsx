@@ -5,6 +5,7 @@ import { createPlusCheckout } from "@/lib/plus/stripe.functions";
 import type { PlanId } from "@/lib/plus/plans";
 import { useMembership } from "@/hooks/use-membership";
 import { cn } from "@/lib/utils";
+import { useCopy } from "@/i18n";
 
 type Props = {
   plan: PlanId;
@@ -13,8 +14,26 @@ type Props = {
   className?: string;
 };
 
+const copy = {
+  en: {
+    opening: "Opening secure checkout…",
+    already: "You're already a member",
+    signInToJoin: "Sign in to join",
+    join: "Join DoggMatch+",
+    error: "We couldn't open the payment page just then. Please try again.",
+  },
+  no: {
+    opening: "Åpner sikker betaling …",
+    already: "Du er allerede medlem",
+    signInToJoin: "Logg inn for å bli medlem",
+    join: "Bli DoggMatch+-medlem",
+    error: "Vi klarte ikke å åpne betalingssiden akkurat nå. Prøv gjerne igjen.",
+  },
+} as const;
+
 /** Takes someone from the pricing card straight into Stripe checkout. */
 export function JoinPlusButton({ plan, tone = "primary", label, className }: Props) {
+  const c = useCopy(copy);
   const navigate = useNavigate();
   const startCheckout = useServerFn(createPlusCheckout);
   const { membership, signedIn, loading } = useMembership();
@@ -38,18 +57,18 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
       const { url } = await startCheckout({ data: { plan } });
       window.location.href = url;
     } catch {
-      setError("We couldn't open the payment page just then. Please try again.");
+      setError(c.error);
       setBusy(false);
     }
   }
 
   const text = busy
-    ? "Opening secure checkout…"
+    ? c.opening
     : already
-      ? "You're already a member"
+      ? c.already
       : !signedIn
-        ? "Sign in to join"
-        : (label ?? "Join DoggMatch+");
+        ? c.signInToJoin
+        : (label ?? c.join);
 
   return (
     <div className={cn("mt-8", className)}>

@@ -5,6 +5,7 @@ import { Check, Mail } from "lucide-react";
 import { Button, Eyebrow, Arrow } from "@/components/dogmatch/ui";
 import { sendContactMessage } from "@/lib/contact/contact.functions";
 import { cn } from "@/lib/utils";
+import { useCopy } from "@/i18n";
 
 const title = "Contact DoggMatch";
 const description =
@@ -27,21 +28,95 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const reasons = [
-  "General question",
-  "Dog matching",
-  "Training",
-  "Health & Nutrition",
-  "My Dog",
-  "Technical problem",
-  "Partnership",
-  "Other",
-];
+const reasonKeys = [
+  "general",
+  "matching",
+  "training",
+  "health",
+  "myDog",
+  "technical",
+  "partnership",
+  "other",
+] as const;
 
 const fieldClass =
   "w-full rounded-2xl border border-border-strong bg-background px-4 py-3.5 text-base text-foreground placeholder:text-muted-foreground/70 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40";
 
+const copy = {
+  en: {
+    eyebrow: "Contact",
+    heading: "We'd love to hear from you.",
+    intro:
+      "A question about finding the right dog, training, food, health or travelling together — or something that isn't working as it should. Write to us and a real person will answer.",
+    doneHeading: "Thank you. Your message has been sent.",
+    doneBody:
+      "We'll get back to you as soon as we can. Keep an eye on your inbox — we've sent you a short note confirming it arrived.",
+    writeAnother: "Write another message",
+    nameLabel: "Your name",
+    namePlaceholder: "Kari Nordmann",
+    emailLabel: "Your email",
+    emailPlaceholder: "you@example.com",
+    subjectLabel: "Subject",
+    subjectPlaceholder: "What's it about?",
+    reasonLabel: "What's it about?",
+    reasonHint: "Optional",
+    reasonPlaceholder: "Choose one, if you like",
+    reasons: {
+      general: "General question",
+      matching: "Dog matching",
+      training: "Training",
+      health: "Health & Nutrition",
+      myDog: "My Dog",
+      technical: "Technical problem",
+      partnership: "Partnership",
+      other: "Other",
+    },
+    messageLabel: "Your message",
+    messagePlaceholder: "Tell us as much or as little as you like.",
+    send: "Send Message",
+    sending: "Sending…",
+    onlyUse: "We only use your details to answer you. Nothing else.",
+    sendError: "Sorry, we couldn't send your message right now. Please try again in a moment.",
+  },
+  no: {
+    eyebrow: "Kontakt",
+    heading: "Vi vil gjerne høre fra deg.",
+    intro:
+      "Et spørsmål om å finne riktig hund, trening, mat, helse eller reise sammen — eller noe som ikke virker som det skal. Skriv til oss, så svarer et ekte menneske.",
+    doneHeading: "Takk. Meldingen din er sendt.",
+    doneBody:
+      "Vi svarer så snart vi kan. Følg med i innboksen din — vi har sendt deg en kort bekreftelse på at den kom fram.",
+    writeAnother: "Skriv en ny melding",
+    nameLabel: "Navnet ditt",
+    namePlaceholder: "Kari Nordmann",
+    emailLabel: "E-posten din",
+    emailPlaceholder: "du@eksempel.no",
+    subjectLabel: "Emne",
+    subjectPlaceholder: "Hva gjelder det?",
+    reasonLabel: "Hva gjelder det?",
+    reasonHint: "Valgfritt",
+    reasonPlaceholder: "Velg gjerne ett",
+    reasons: {
+      general: "Generelt spørsmål",
+      matching: "Hundematching",
+      training: "Trening",
+      health: "Helse og ernæring",
+      myDog: "Min hund",
+      technical: "Teknisk problem",
+      partnership: "Samarbeid",
+      other: "Annet",
+    },
+    messageLabel: "Meldingen din",
+    messagePlaceholder: "Fortell oss så mye eller så lite du vil.",
+    send: "Send melding",
+    sending: "Sender …",
+    onlyUse: "Vi bruker opplysningene dine bare til å svare deg. Ikke noe annet.",
+    sendError: "Beklager, vi klarte ikke å sende meldingen din akkurat nå. Prøv gjerne igjen om litt.",
+  },
+} as const;
+
 function ContactPage() {
+  const c = useCopy(copy);
   const send = useServerFn(sendContactMessage);
   const formRef = useRef<HTMLFormElement>(null);
   const [busy, setBusy] = useState(false);
@@ -76,7 +151,7 @@ function ContactPage() {
         setFormError(res.message);
       }
     } catch {
-      setFormError("Sorry, we couldn't send your message right now. Please try again in a moment.");
+      setFormError(c.sendError);
     } finally {
       setBusy(false);
     }
@@ -84,12 +159,9 @@ function ContactPage() {
 
   return (
     <div className="container-page max-w-3xl py-14 md:py-24">
-      <Eyebrow>Contact</Eyebrow>
-      <h1 className="display-lg mt-6">We'd love to hear from you.</h1>
-      <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-        A question about finding the right dog, training, food, health or travelling together —
-        or something that isn't working as it should. Write to us and a real person will answer.
-      </p>
+      <Eyebrow>{c.eyebrow}</Eyebrow>
+      <h1 className="display-lg mt-6">{c.heading}</h1>
+      <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
 
       {done ? (
         <div className="animate-fade mt-10 rounded-3xl border border-border bg-surface p-8 md:p-10">
@@ -97,19 +169,16 @@ function ContactPage() {
             <Check className="h-6 w-6" strokeWidth={2} aria-hidden />
           </span>
           <h2 className="mt-6 font-display text-2xl tracking-tight text-foreground">
-            Thank you. Your message has been sent.
+            {c.doneHeading}
           </h2>
-          <p className="mt-3 text-muted-foreground">
-            We'll get back to you as soon as we can. Keep an eye on your inbox — we've sent you a
-            short note confirming it arrived.
-          </p>
+          <p className="mt-3 text-muted-foreground">{c.doneBody}</p>
           <Button
             tone="outline"
             className="mt-7"
             onClick={() => setDone(false)}
             type="button"
           >
-            Write another message
+            {c.writeAnother}
             <Arrow />
           </Button>
         </div>
@@ -124,21 +193,21 @@ function ContactPage() {
             </p>
           )}
 
-          <Field label="Your name" id="name" error={errors["name"]}>
+          <Field label={c.nameLabel} id="name" error={errors["name"]}>
             <input
               id="name"
               name="name"
               autoComplete="name"
               required
               maxLength={100}
-              placeholder="Kari Nordmann"
+              placeholder={c.namePlaceholder}
               aria-invalid={!!errors["name"]}
               aria-describedby={errors["name"] ? "name-error" : undefined}
               className={fieldClass}
             />
           </Field>
 
-          <Field label="Your email" id="email" error={errors["email"]}>
+          <Field label={c.emailLabel} id="email" error={errors["email"]}>
             <input
               id="email"
               name="email"
@@ -147,45 +216,45 @@ function ContactPage() {
               autoComplete="email"
               required
               maxLength={255}
-              placeholder="you@example.com"
+              placeholder={c.emailPlaceholder}
               aria-invalid={!!errors["email"]}
               aria-describedby={errors["email"] ? "email-error" : undefined}
               className={fieldClass}
             />
           </Field>
 
-          <Field label="Subject" id="subject" error={errors["subject"]}>
+          <Field label={c.subjectLabel} id="subject" error={errors["subject"]}>
             <input
               id="subject"
               name="subject"
               required
               maxLength={150}
-              placeholder="What's it about?"
+              placeholder={c.subjectPlaceholder}
               aria-invalid={!!errors["subject"]}
               aria-describedby={errors["subject"] ? "subject-error" : undefined}
               className={fieldClass}
             />
           </Field>
 
-          <Field label="What's it about?" id="reason" hint="Optional" error={errors["reason"]}>
+          <Field label={c.reasonLabel} id="reason" hint={c.reasonHint} error={errors["reason"]}>
             <select id="reason" name="reason" defaultValue="" className={cn(fieldClass, "appearance-none")}>
-              <option value="">Choose one, if you like</option>
-              {reasons.map((r) => (
-                <option key={r} value={r}>
-                  {r}
+              <option value="">{c.reasonPlaceholder}</option>
+              {reasonKeys.map((r) => (
+                <option key={r} value={c.reasons[r]}>
+                  {c.reasons[r]}
                 </option>
               ))}
             </select>
           </Field>
 
-          <Field label="Your message" id="message" error={errors["message"]}>
+          <Field label={c.messageLabel} id="message" error={errors["message"]}>
             <textarea
               id="message"
               name="message"
               required
               rows={7}
               maxLength={4000}
-              placeholder="Tell us as much or as little as you like."
+              placeholder={c.messagePlaceholder}
               aria-invalid={!!errors["message"]}
               aria-describedby={errors["message"] ? "message-error" : undefined}
               className={cn(fieldClass, "resize-y leading-relaxed")}
@@ -201,11 +270,9 @@ function ContactPage() {
           <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
             <Button type="submit" size="lg" disabled={busy} className="w-full sm:w-auto">
               <Mail className="h-4 w-4" aria-hidden />
-              {busy ? "Sending…" : "Send Message"}
+              {busy ? c.sending : c.send}
             </Button>
-            <p className="text-sm text-muted-foreground">
-              We only use your details to answer you. Nothing else.
-            </p>
+            <p className="text-sm text-muted-foreground">{c.onlyUse}</p>
           </div>
         </form>
       )}

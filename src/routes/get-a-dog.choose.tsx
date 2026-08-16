@@ -1,13 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { CardGrid, Checklist, Notice, PointList, SectionHead } from "@/components/dogmatch/journey/parts";
-import {
-  adoptionConsiderations,
-  breederQuestions,
-  breederRedFlags,
-  puppyVsAdult,
-  sources,
-} from "@/data/getdog/content.en";
+import { getDogContent } from "@/data/getdog/content";
+import { useCopy } from "@/i18n";
 import puppyImage from "@/assets/puppy.jpg";
 import adultImage from "@/assets/adult-dog.jpg";
 import breederImage from "@/assets/breeder.jpg";
@@ -34,11 +29,69 @@ export const Route = createFileRoute("/get-a-dog/choose")({
   component: ChoosePage,
 });
 
+const copy = {
+  en: {
+    eyebrow: "Choose carefully",
+    puppyAlt: "A cocker spaniel puppy sitting beside a chewed slipper",
+    adultAlt: "A calm adult dog resting on a sofa in a sunlit flat",
+    whatsGood: "What's good",
+    whatsHard: "What's hard",
+    whereFrom: "Where from",
+    breederAlt: "A mother dog resting with her puppies on a blanket in a family living room",
+    rescueAlt: "A woman crouching to greet an adult rescue dog at a shelter",
+    whatsGoodAbout: "What's good about it",
+    worthLookingInto: "Worth looking into",
+    meetingBreederEyebrow: "Meeting a breeder",
+    meetingBreederTitle: "What to ask, and what to notice.",
+    meetingBreederBody:
+      "Tick these off as you go. A good breeder will be pleased you asked — most of them wish more people did.",
+    questionsWorthAsking: "Questions worth asking",
+    thingsGivePause: "Things that give us pause",
+    pauseBody:
+      "None of these prove anything on their own. Two or three together are usually a reason to take your time, or walk away — and it's always fine to walk away.",
+    adoptionEyebrow: "Adoption",
+    adoptionTitle: "Thinking about adoption?",
+    adoptionBody:
+      "Rescue dogs aren't damaged goods. Most are perfectly ordinary dogs whose people ran out of time, money or health. Here's what's worth talking through.",
+    costsCta: "What will a dog really cost?",
+    findMyDog: "Find My Dog",
+  },
+  no: {
+    eyebrow: "Velg med omhu",
+    puppyAlt: "En cocker spaniel-valp som sitter ved siden av en tygget tøffel",
+    adultAlt: "En rolig voksen hund som hviler i en sofa i en solfylt leilighet",
+    whatsGood: "Hva som er bra",
+    whatsHard: "Hva som er tøft",
+    whereFrom: "Hvor fra",
+    breederAlt: "En mor-hund som hviler med valpene sine på et teppe i en familiestue",
+    rescueAlt: "En kvinne som huker seg ned for å hilse på en voksen omplasseringshund på et internat",
+    whatsGoodAbout: "Hva som er bra med det",
+    worthLookingInto: "Verdt å undersøke",
+    meetingBreederEyebrow: "Å møte en oppdretter",
+    meetingBreederTitle: "Hva du bør spørre om, og hva du bør legge merke til.",
+    meetingBreederBody:
+      "Kryss av etter hvert som du går gjennom dem. En god oppdretter blir glad for at du spurte — de fleste skulle ønske flere gjorde det.",
+    questionsWorthAsking: "Spørsmål verdt å stille",
+    thingsGivePause: "Ting som gjør oss usikre",
+    pauseBody:
+      "Ingen av disse beviser noe alene. To eller tre sammen er som regel en grunn til å ta det med ro, eller gå videre — og det er alltid greit å gå videre.",
+    adoptionEyebrow: "Omplassering",
+    adoptionTitle: "Går du og tenker på omplassering?",
+    adoptionBody:
+      "Omplasseringshunder er ikke skadevare. De fleste er helt vanlige hunder hvis mennesker gikk tom for tid, penger eller helse. Her er det som er verdt å snakke gjennom.",
+    costsCta: "Hva koster en hund egentlig?",
+    findMyDog: "Finn min hund",
+  },
+} as const;
+
 function ChoosePage() {
+  const c = useCopy(copy);
+  const { adoptionConsiderations, breederQuestions, breederRedFlags, puppyVsAdult, sources } = getDogContent();
+
   return (
     <div className="pb-24">
       <section className="container-page max-w-3xl pt-28 md:pt-36">
-        <p className="eyebrow">Choose carefully</p>
+        <p className="eyebrow">{c.eyebrow}</p>
         <h1 className="display-xl mt-6">{puppyVsAdult.title}</h1>
         <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{puppyVsAdult.body}</p>
       </section>
@@ -47,19 +100,19 @@ function ChoosePage() {
       <Section className="pt-16 md:pt-20">
         <div className="container-page grid gap-8 md:grid-cols-2">
           {[
-            { data: puppyVsAdult.puppy, img: puppyImage, alt: "A cocker spaniel puppy sitting beside a chewed slipper" },
-            { data: puppyVsAdult.adult, img: adultImage, alt: "A calm adult dog resting on a sofa in a sunlit flat" },
+            { data: puppyVsAdult.puppy, img: puppyImage, alt: c.puppyAlt },
+            { data: puppyVsAdult.adult, img: adultImage, alt: c.adultAlt },
           ].map(({ data, img, alt }) => (
             <article key={data.title} className="overflow-hidden rounded-[1.75rem] border border-border bg-card">
               <img src={img} alt={alt} width={1200} height={1504} loading="lazy" className="aspect-[5/4] w-full object-cover" />
               <div className="p-8 md:p-10">
                 <h2 className="display-md">{data.title}</h2>
                 <p className="mt-3 leading-relaxed text-muted-foreground">{data.lead}</p>
-                <p className="eyebrow mt-8">What's good</p>
+                <p className="eyebrow mt-8">{c.whatsGood}</p>
                 <div className="mt-4">
                   <PointList items={data.good} />
                 </div>
-                <p className="eyebrow mt-8">What's hard</p>
+                <p className="eyebrow mt-8">{c.whatsHard}</p>
                 <div className="mt-4">
                   <PointList items={data.hard} tone="watch" />
                 </div>
@@ -75,22 +128,22 @@ function ChoosePage() {
       {/* --------------------------------------------------------- Sources */}
       <Section className="bg-surface">
         <div className="container-page">
-          <SectionHead eyebrow="Where from" title={sources.title} body={sources.body} />
+          <SectionHead eyebrow={c.whereFrom} title={sources.title} body={sources.body} />
 
           <div className="mt-12 grid gap-8 md:grid-cols-2">
             {[
-              { data: sources.breeder, img: breederImage, alt: "A mother dog resting with her puppies on a blanket in a family living room" },
-              { data: sources.rescue, img: adoptionImage, alt: "A woman crouching to greet an adult rescue dog at a shelter" },
+              { data: sources.breeder, img: breederImage, alt: c.breederAlt },
+              { data: sources.rescue, img: adoptionImage, alt: c.rescueAlt },
             ].map(({ data, img, alt }) => (
               <article key={data.title} className="overflow-hidden rounded-[1.75rem] border border-border bg-background">
                 <img src={img} alt={alt} width={1408} height={1056} loading="lazy" className="aspect-[4/3] w-full object-cover" />
                 <div className="p-8 md:p-10">
                   <h3 className="display-md">{data.title}</h3>
-                  <p className="eyebrow mt-6">What's good about it</p>
+                  <p className="eyebrow mt-6">{c.whatsGoodAbout}</p>
                   <div className="mt-4">
                     <PointList items={data.good} />
                   </div>
-                  <p className="eyebrow mt-8">Worth looking into</p>
+                  <p className="eyebrow mt-8">{c.worthLookingInto}</p>
                   <div className="mt-4">
                     <PointList items={data.check} tone="watch" />
                   </div>
@@ -105,13 +158,13 @@ function ChoosePage() {
       <Section>
         <div className="container-page">
           <SectionHead
-            eyebrow="Meeting a breeder"
-            title="What to ask, and what to notice."
-            body="Tick these off as you go. A good breeder will be pleased you asked — most of them wish more people did."
+            eyebrow={c.meetingBreederEyebrow}
+            title={c.meetingBreederTitle}
+            body={c.meetingBreederBody}
           />
           <div className="mt-12 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
             <div>
-              <p className="eyebrow">Questions worth asking</p>
+              <p className="eyebrow">{c.questionsWorthAsking}</p>
               <div className="mt-6">
                 <Checklist
                   listId="breeder"
@@ -121,11 +174,8 @@ function ChoosePage() {
               </div>
             </div>
             <div>
-              <p className="eyebrow">Things that give us pause</p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                None of these prove anything on their own. Two or three together are usually a reason to
-                take your time, or walk away — and it's always fine to walk away.
-              </p>
+              <p className="eyebrow">{c.thingsGivePause}</p>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{c.pauseBody}</p>
               <div className="mt-6 rounded-2xl border border-border bg-card p-7">
                 <PointList items={breederRedFlags} tone="watch" />
               </div>
@@ -137,11 +187,7 @@ function ChoosePage() {
       {/* -------------------------------------------------------- Adoption */}
       <Section className="bg-surface pt-0">
         <div className="container-page pt-20 md:pt-28">
-          <SectionHead
-            eyebrow="Adoption"
-            title="Thinking about adoption?"
-            body="Rescue dogs aren't damaged goods. Most are perfectly ordinary dogs whose people ran out of time, money or health. Here's what's worth talking through."
-          />
+          <SectionHead eyebrow={c.adoptionEyebrow} title={c.adoptionTitle} body={c.adoptionBody} />
           <div className="mt-12">
             <CardGrid items={adoptionConsiderations} />
           </div>
@@ -150,11 +196,11 @@ function ChoosePage() {
 
       <div className="container-page mt-4 flex flex-wrap gap-3">
         <ButtonLink to="/get-a-dog/costs" size="lg">
-          What will a dog really cost?
+          {c.costsCta}
           <Arrow />
         </ButtonLink>
         <ButtonLink to="/find-my-dog" tone="outline" size="lg">
-          Find My Dog
+          {c.findMyDog}
         </ButtonLink>
       </div>
     </div>

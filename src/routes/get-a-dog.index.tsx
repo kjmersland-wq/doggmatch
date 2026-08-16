@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { SectionHead } from "@/components/dogmatch/journey/parts";
-import { journey } from "@/data/getdog/content.en";
+import { getDogContent } from "@/data/getdog/content";
+import { useCopy } from "@/i18n";
 import heroImage from "@/assets/get-a-dog-hero.jpg";
 import puppyImage from "@/assets/puppy.jpg";
 import adultImage from "@/assets/adult-dog.jpg";
@@ -28,36 +29,101 @@ export const Route = createFileRoute("/get-a-dog/")({
   component: GetADogPage,
 });
 
+const copy = {
+  en: {
+    eyebrow: "Get a dog",
+    heroTitle: "Thinking about getting a dog?",
+    heroBody:
+      "A dog can change your everyday life in wonderful ways. It can also be a big commitment. Let's make sure you're ready for the right one.",
+    ctaReady: "Am I Ready?",
+    ctaFind: "Find My Dog",
+    heroFootnote: "Free, all of it. No account, and nothing kept anywhere but this device.",
+    heroAlt: "An older man sitting on his front steps with his arm around a scruffy mixed-breed dog",
+    journeyEyebrow: "The journey",
+    journeyTitle: "One decision, taken one step at a time.",
+    journeyBody:
+      "Getting a dog is exciting. It's also a big decision. Here's the whole path, in the order it usually happens — start anywhere, and come back whenever you like.",
+    open: "Open",
+    choiceEyebrow: "A first big choice",
+    choiceTitle: "Puppy, or a dog who's already grown up?",
+    choiceBody:
+      "Two quite different first years. Neither is better — the right one depends far more on your life than on the dog.",
+    puppyAlt: "A cocker spaniel puppy sitting beside a chewed slipper",
+    puppyLabel: "A puppy",
+    puppyBody: "Sleepless months, and you shape almost everything.",
+    adultAlt: "A calm adult dog resting on a sofa in a sunlit flat",
+    adultLabel: "An adult dog",
+    adultBody: "Much more of what you see is what you get.",
+    compare: "Compare them properly",
+    welcomeAlt: "A family sitting quietly on the floor as a newly arrived dog sniffs its new bed",
+    welcomeEyebrow: "The end of this journey",
+    welcomeTitle: "And the beginning of the far longer one.",
+    welcomeBody:
+      "When your dog comes home, everything you've told us moves across into My Dog — food, training, health, walks and paperwork, all in one place.",
+    welcomeCta: "See the first week",
+  },
+  no: {
+    eyebrow: "Skaff hund",
+    heroTitle: "Går du og tenker på å skaffe hund?",
+    heroBody:
+      "En hund kan gjøre hverdagen din bedre på fantastiske måter. Det er også en stor forpliktelse. La oss sørge for at du er klar for den rette.",
+    ctaReady: "Er jeg klar?",
+    ctaFind: "Finn min hund",
+    heroFootnote: "Alt sammen gratis. Ingen konto, og ingenting lagres andre steder enn på denne enheten.",
+    heroAlt: "En eldre mann som sitter på trappen med armen rundt en raggete blandingshund",
+    journeyEyebrow: "Reisen",
+    journeyTitle: "Én beslutning, tatt ett steg av gangen.",
+    journeyBody:
+      "Å skaffe hund er spennende. Det er også en stor avgjørelse. Her er hele veien, i den rekkefølgen den vanligvis skjer — start hvor som helst, og kom tilbake når du vil.",
+    open: "Åpne",
+    choiceEyebrow: "Et første, stort valg",
+    choiceTitle: "Valp, eller en hund som allerede er voksen?",
+    choiceBody:
+      "To ganske forskjellige første år. Ingen av delene er best — hva som passer avhenger langt mer av livet ditt enn av hunden.",
+    puppyAlt: "En cocker spaniel-valp som sitter ved siden av en tygget tøffel",
+    puppyLabel: "En valp",
+    puppyBody: "Søvnløse måneder, og du former nesten alt selv.",
+    adultAlt: "En rolig voksen hund som hviler i en sofa i en solfylt leilighet",
+    adultLabel: "En voksen hund",
+    adultBody: "Mye mer av det du ser, er det du får.",
+    compare: "Sammenlign dem ordentlig",
+    welcomeAlt: "En familie som sitter stille på gulvet mens en nyankommet hund snuser på sengen sin",
+    welcomeEyebrow: "Slutten på denne reisen",
+    welcomeTitle: "Og begynnelsen på den langt lengre.",
+    welcomeBody:
+      "Når hunden din kommer hjem, flyttes alt du har fortalt oss over i Min hund — mat, trening, helse, turer og papirer, samlet ett sted.",
+    welcomeCta: "Se den første uken",
+  },
+} as const;
+
 function GetADogPage() {
+  const c = useCopy(copy);
+  const { journey } = getDogContent();
+
   return (
     <div className="pb-24">
       <section className="container-page pt-24 md:pt-32">
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
           <div className="animate-rise max-w-xl">
-            <Eyebrow>Get a dog</Eyebrow>
-            <h1 className="display-xl mt-7">Thinking about getting a dog?</h1>
-            <p className="mt-7 text-lg leading-relaxed text-muted-foreground">
-              A dog can change your everyday life in wonderful ways. It can also be a big commitment.
-              Let's make sure you're ready for the right one.
-            </p>
+            <Eyebrow>{c.eyebrow}</Eyebrow>
+            <h1 className="display-xl mt-7">{c.heroTitle}</h1>
+            <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{c.heroBody}</p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <ButtonLink to="/get-a-dog/ready" size="lg">
-                Am I Ready?
+                {c.ctaReady}
                 <Arrow />
               </ButtonLink>
               <ButtonLink to="/find-my-dog" tone="outline" size="lg">
-                Find My Dog
+                {c.ctaFind}
               </ButtonLink>
             </div>
-            <p className="mt-6 text-sm text-muted-foreground">
-              Free, all of it. No account, and nothing kept anywhere but this device.
-            </p>
+            <p className="mt-6 text-sm text-muted-foreground">{c.heroFootnote}</p>
           </div>
 
           <div className="overflow-hidden rounded-[2rem] bg-surface">
             <img
               src={heroImage}
-              alt="An older man sitting on his front steps with his arm around a scruffy mixed-breed dog"
+              alt={c.heroAlt}
               width={1600}
               height={1104}
               fetchPriority="high"
@@ -70,11 +136,7 @@ function GetADogPage() {
       {/* -------------------------------------------------------- The flow */}
       <Section>
         <div className="container-page">
-          <SectionHead
-            eyebrow="The journey"
-            title="One decision, taken one step at a time."
-            body="Getting a dog is exciting. It's also a big decision. Here's the whole path, in the order it usually happens — start anywhere, and come back whenever you like."
-          />
+          <SectionHead eyebrow={c.journeyEyebrow} title={c.journeyTitle} body={c.journeyBody} />
 
           <ol className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
             {journey.map((step) => (
@@ -84,7 +146,7 @@ function GetADogPage() {
                   <h3 className="display-md mt-4">{step.title}</h3>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
                   <span className="mt-6 inline-flex items-center gap-2 text-[0.9375rem] font-medium">
-                    Open
+                    {c.open}
                     <Arrow />
                   </span>
                 </Link>
@@ -97,15 +159,11 @@ function GetADogPage() {
       {/* ------------------------------------------------- Puppy or adult */}
       <Section className="bg-surface pt-0">
         <div className="container-page pt-20 md:pt-28">
-          <SectionHead
-            eyebrow="A first big choice"
-            title="Puppy, or a dog who's already grown up?"
-            body="Two quite different first years. Neither is better — the right one depends far more on your life than on the dog."
-          />
+          <SectionHead eyebrow={c.choiceEyebrow} title={c.choiceTitle} body={c.choiceBody} />
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {[
-              { img: puppyImage, alt: "A cocker spaniel puppy sitting beside a chewed slipper", label: "A puppy", body: "Sleepless months, and you shape almost everything." },
-              { img: adultImage, alt: "A calm adult dog resting on a sofa in a sunlit flat", label: "An adult dog", body: "Much more of what you see is what you get." },
+              { img: puppyImage, alt: c.puppyAlt, label: c.puppyLabel, body: c.puppyBody },
+              { img: adultImage, alt: c.adultAlt, label: c.adultLabel, body: c.adultBody },
             ].map((card) => (
               <Link key={card.label} to={"/get-a-dog/choose" as never} className="group block overflow-hidden rounded-[1.75rem] bg-background">
                 <img src={card.img} alt={card.alt} width={1200} height={1504} loading="lazy" className="aspect-[5/4] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.03]" />
@@ -113,7 +171,7 @@ function GetADogPage() {
                   <h3 className="display-md">{card.label}</h3>
                   <p className="mt-3 text-muted-foreground">{card.body}</p>
                   <span className="mt-6 inline-flex items-center gap-2 text-[0.9375rem] font-medium">
-                    Compare them properly
+                    {c.compare}
                     <Arrow />
                   </span>
                 </div>
@@ -129,7 +187,7 @@ function GetADogPage() {
           <div className="relative overflow-hidden rounded-[2rem]">
             <img
               src={welcomeImage}
-              alt="A family sitting quietly on the floor as a newly arrived dog sniffs its new bed"
+              alt={c.welcomeAlt}
               width={1600}
               height={1008}
               loading="lazy"
@@ -137,17 +195,12 @@ function GetADogPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-8 md:p-14">
-              <p className="eyebrow text-primary-foreground/70">The end of this journey</p>
-              <h2 className="display-lg mt-4 max-w-xl text-primary-foreground">
-                And the beginning of the far longer one.
-              </h2>
-              <p className="mt-4 max-w-lg leading-relaxed text-primary-foreground/80">
-                When your dog comes home, everything you've told us moves across into My Dog —
-                food, training, health, walks and paperwork, all in one place.
-              </p>
+              <p className="eyebrow text-primary-foreground/70">{c.welcomeEyebrow}</p>
+              <h2 className="display-lg mt-4 max-w-xl text-primary-foreground">{c.welcomeTitle}</h2>
+              <p className="mt-4 max-w-lg leading-relaxed text-primary-foreground/80">{c.welcomeBody}</p>
               <div className="mt-8">
                 <ButtonLink to="/get-a-dog/welcome-home" tone="accent" size="lg">
-                  See the first week
+                  {c.welcomeCta}
                   <Arrow />
                 </ButtonLink>
               </div>

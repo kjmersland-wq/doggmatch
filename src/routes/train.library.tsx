@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { Eyebrow } from "@/components/dogmatch/ui";
 import { LessonCard, levelLabels } from "@/components/dogmatch/training/parts";
 import { trainingCategories } from "@/data/training/categories";
-import { lessons } from "@/data/training/lessons";
+import { getLessons } from "@/data/training/lessons";
 import type { CategoryId, Level } from "@/data/training/types";
 import { useActiveDog, useProgress } from "@/lib/training/store";
 import { cn } from "@/lib/utils";
@@ -40,7 +40,7 @@ function LibraryPage() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return lessons.filter((l) => {
+    return getLessons().filter((l) => {
       if (level !== "all" && l.level !== level) return false;
       if (category !== "all" && l.category !== category) return false;
       if (!q) return true;

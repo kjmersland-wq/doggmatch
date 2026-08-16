@@ -7,6 +7,7 @@ import { buildWeek, dayNames, kindLabel } from "@/lib/care/week";
 import { recordsStore, useWeekOverride } from "@/lib/care/records";
 import { useCareProfile, useMyDog } from "@/lib/care/store";
 import { useProgress } from "@/lib/training/store";
+import { useCopy } from "@/i18n";
 
 const title = "My Dog Week — a simple week with your dog | DoggMatch";
 const description =
@@ -29,7 +30,53 @@ export const Route = createFileRoute("/my-dog/week")({
   component: WeekPage,
 });
 
+const copy = {
+  en: {
+    eyebrow: "My Dog Week",
+    titleFor: (name: string) => `${name}'s week`,
+    titleFallback: "A week with your dog",
+    intro:
+      "Here's what you may want to remember this week. It's put together from what you've told us about your dog — nothing is fixed, so take out anything that doesn't suit your days.",
+    printWeek: "Print this week",
+    putBack: "Put the suggestions back",
+    today: "Today",
+    removeAria: (label: string, day: string) => `Remove ${label} from ${day}`,
+    addPlaceholder: "Puppy class, long walk…",
+    add: "Add",
+    addOwn: "Add something of your own",
+    genericNotePrefix: "This week is generic until you tell us about your dog.",
+    addDog: "Add your dog",
+    genericNoteSuffix: "and it'll fit them properly.",
+    vetNote:
+      "Days like these are a rhythm, not a rulebook. Some weeks are busier than others, and a missed walk or a skipped brush isn't a failure — it's just life with a dog.",
+    footer: (n: number) =>
+      `Suggestions for ${n} days, worked out from your dog's details — never from a guess or a model.`,
+  },
+  no: {
+    eyebrow: "Min hundeuke",
+    titleFor: (name: string) => `${name}s uke`,
+    titleFallback: "En uke med hunden din",
+    intro:
+      "Her er det du kanskje vil huske denne uken. Det er satt sammen ut fra det du har fortalt oss om hunden din — ingenting er fastlåst, så fjern det som ikke passer dagene dine.",
+    printWeek: "Skriv ut denne uken",
+    putBack: "Legg tilbake forslagene",
+    today: "I dag",
+    removeAria: (label: string, day: string) => `Fjern ${label} fra ${day}`,
+    addPlaceholder: "Valpekurs, lang tur…",
+    add: "Legg til",
+    addOwn: "Legg til noe eget",
+    genericNotePrefix: "Denne uken er generisk til du forteller oss om hunden din.",
+    addDog: "Legg til hunden din",
+    genericNoteSuffix: "så tilpasser den seg.",
+    vetNote:
+      "Dager som disse er en rytme, ikke en regelbok. Noen uker er travlere enn andre, og en tur som uteblir eller en børsting som ikke blir noe av er ikke en fiasko — det er bare livet med hund.",
+    footer: (n: number) =>
+      `Forslag for ${n} dager, regnet ut fra hundens detaljer — aldri fra en gjetning eller en modell.`,
+  },
+} as const;
+
 function WeekPage() {
+  const c = useCopy(copy);
   const dog = useMyDog();
   const care = useCareProfile(dog?.id);
   const progress = useProgress(dog?.id);
@@ -43,22 +90,19 @@ function WeekPage() {
   return (
     <div className="pb-24">
       <section className="container-page pt-28 md:pt-36">
-        <Eyebrow>My Dog Week</Eyebrow>
+        <Eyebrow>{c.eyebrow}</Eyebrow>
         <h1 className="display-xl mt-6 max-w-3xl">
-          {dog ? `${dog.name}'s week` : "A week with your dog"}
+          {dog ? c.titleFor(dog.name) : c.titleFallback}
         </h1>
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-          Here's what you may want to remember this week. It's put together from what you've told us
-          about your dog — nothing is fixed, so take out anything that doesn't suit your days.
-        </p>
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
         <div className="mt-9 flex flex-wrap gap-3">
           <ButtonLink to="/my-dog/print" size="lg">
-            Print this week
+            {c.printWeek}
             <Arrow />
           </ButtonLink>
           {(override.removed.length > 0 || override.added.length > 0) && dog && (
             <Button tone="outline" size="lg" onClick={() => recordsStore.restoreWeek(dog.id)}>
-              Put the suggestions back
+              {c.putBack}
             </Button>
           )}
         </div>
@@ -73,7 +117,7 @@ function WeekPage() {
               className={day.index === todayIndex ? "border-accent/50" : ""}
               action={
                 day.index === todayIndex ? (
-                  <span className="text-sm text-accent">Today</span>
+                  <span className="text-sm text-accent">{c.today}</span>
                 ) : undefined
               }
             >
@@ -95,7 +139,7 @@ function WeekPage() {
                     {dog && (
                       <button
                         type="button"
-                        aria-label={`Remove ${item.label} from ${day.name}`}
+                        aria-label={c.removeAria(item.label, day.name)}
                         onClick={() => recordsStore.removeWeekItem(dog.id, item.id)}
                         className="shrink-0 rounded-full p-1 text-muted-foreground transition-colors hover:text-foreground"
                       >
@@ -120,11 +164,11 @@ function WeekPage() {
                     autoFocus
                     value={text}
                     onChange={(e) => setText(e.target.value)}
-                    placeholder="Puppy class, long walk…"
+                    placeholder={c.addPlaceholder}
                     className="w-full rounded-full border border-border bg-background px-4 py-2 text-[0.9375rem] outline-none focus:border-border-strong"
                   />
                   <Button type="submit" size="md">
-                    Add
+                    {c.add}
                   </Button>
                 </form>
               ) : (
@@ -134,7 +178,7 @@ function WeekPage() {
                     onClick={() => setAdding(day.index)}
                     className="mt-4 text-sm text-accent underline-offset-4 hover:underline"
                   >
-                    Add something of your own
+                    {c.addOwn}
                   </button>
                 )
               )}
@@ -144,26 +188,20 @@ function WeekPage() {
 
         {!dog && (
           <p className="mt-8 text-sm text-muted-foreground">
-            This week is generic until you tell us about your dog.{" "}
+            {c.genericNotePrefix}{" "}
             <a href="/my-dog/setup" className="text-accent underline-offset-4 hover:underline">
-              Add your dog
+              {c.addDog}
             </a>{" "}
-            and it'll fit them properly.
+            {c.genericNoteSuffix}
           </p>
         )}
 
         <div className="mt-10 max-w-2xl">
-          <VetNote>
-            Days like these are a rhythm, not a rulebook. Some weeks are busier than others, and a
-            missed walk or a skipped brush isn't a failure — it's just life with a dog.
-          </VetNote>
+          <VetNote>{c.vetNote}</VetNote>
         </div>
       </Section>
 
-      <p className="container-page text-sm text-muted-foreground">
-        Suggestions for {dayNames.length} days, worked out from your dog's details — never from a
-        guess or a model.
-      </p>
+      <p className="container-page text-sm text-muted-foreground">{c.footer(dayNames.length)}</p>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { lessons } from "@/data/training/lessons";
+import { getLessons } from "@/data/training/lessons";
 import type { Lesson, SkillStatus } from "@/data/training/types";
 import { breedById } from "@/data/breeds";
 import type { DogProfile } from "./store";
@@ -64,7 +64,7 @@ export function rankLessons(
   dog: DogProfile | undefined,
   progress: Record<string, SkillStatus>,
 ): ScoredLesson[] {
-  return lessons
+  return getLessons()
     .map((l) => scoreLesson(l, dog, progress))
     .sort((a, b) => b.score - a.score || a.lesson.id.localeCompare(b.lesson.id));
 }
