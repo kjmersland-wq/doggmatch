@@ -6,6 +6,7 @@ import { foodItems } from "@/data/care/nutrition";
 import type { FoodSafety } from "@/data/care/types";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
+import { SourcesLink } from "@/components/dogmatch/sources-link";
 
 const title = "Can my dog eat this? — a calm, searchable answer | DoggMatch";
 const description =
@@ -153,6 +154,9 @@ function FoodSafetyPage() {
               <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{c.noteBody}</p>
             </div>
           </div>
+        </div>
+        <div className="mt-8">
+          <SourcesLink category="nutrition" />
         </div>
       </Section>
     </div>

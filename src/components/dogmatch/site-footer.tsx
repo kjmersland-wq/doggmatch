@@ -8,12 +8,14 @@ const copy = {
     food: "Food & portions",
     canEat: "Can my dog eat this?",
     partner: "Partner with us",
+    sources: "Sources & methodology",
   },
   no: {
     blurb: "Et rolig og ærlig sted å finne ut hvilken hund som ville passet livet ditt.",
     food: "Fôr og porsjoner",
     canEat: "Kan hunden spise dette?",
     partner: "Bli partner",
+    sources: "Kilder og metode",
   },
 };
 
@@ -50,6 +52,7 @@ export function SiteFooter() {
             <FooterLink to="/my-dog">{t.footer.health}</FooterLink>
             <FooterLink to="/my-dog/nutrition">{c.food}</FooterLink>
             <FooterLink to="/my-dog/food">{c.canEat}</FooterLink>
+            <FooterLink to="/sources">{c.sources}</FooterLink>
           </FooterColumn>
 
           <FooterColumn title={t.footer.company}>

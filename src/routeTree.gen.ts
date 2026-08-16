@@ -24,6 +24,7 @@ import { Route as MyDogRouteImport } from './routes/my-dog'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PlusRouteImport } from './routes/plus'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TrainRouteImport } from './routes/train'
 import { Route as TravelRouteImport } from './routes/travel'
@@ -133,6 +134,11 @@ const PlusRoute = PlusRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcesRoute = SourcesRouteImport.update({
+  id: '/sources',
+  path: '/sources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -327,6 +333,7 @@ export interface FileRoutesByFullPath {
   '/partners': typeof PartnersRoute
   '/plus': typeof PlusRoute
   '/privacy': typeof PrivacyRoute
+  '/sources': typeof SourcesRoute
   '/terms': typeof TermsRoute
   '/train': typeof TrainRouteWithChildren
   '/travel': typeof TravelRouteWithChildren
@@ -377,6 +384,7 @@ export interface FileRoutesByTo {
   '/partners': typeof PartnersRoute
   '/plus': typeof PlusRoute
   '/privacy': typeof PrivacyRoute
+  '/sources': typeof SourcesRoute
   '/terms': typeof TermsRoute
   '/breeds/$breedId': typeof BreedsBreedIdRoute
   '/checkout/canceled': typeof CheckoutCanceledRoute
@@ -428,6 +436,7 @@ export interface FileRoutesById {
   '/partners': typeof PartnersRoute
   '/plus': typeof PlusRoute
   '/privacy': typeof PrivacyRoute
+  '/sources': typeof SourcesRoute
   '/terms': typeof TermsRoute
   '/train': typeof TrainRouteWithChildren
   '/travel': typeof TravelRouteWithChildren
@@ -482,6 +491,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/plus'
     | '/privacy'
+    | '/sources'
     | '/terms'
     | '/train'
     | '/travel'
@@ -532,6 +542,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/plus'
     | '/privacy'
+    | '/sources'
     | '/terms'
     | '/breeds/$breedId'
     | '/checkout/canceled'
@@ -582,6 +593,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/plus'
     | '/privacy'
+    | '/sources'
     | '/terms'
     | '/train'
     | '/travel'
@@ -635,6 +647,7 @@ export interface RootRouteChildren {
   PartnersRoute: typeof PartnersRoute
   PlusRoute: typeof PlusRoute
   PrivacyRoute: typeof PrivacyRoute
+  SourcesRoute: typeof SourcesRoute
   TermsRoute: typeof TermsRoute
   TrainRoute: typeof TrainRouteWithChildren
   TravelRoute: typeof TravelRouteWithChildren
@@ -750,6 +763,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sources': {
+      id: '/sources'
+      path: '/sources'
+      fullPath: '/sources'
+      preLoaderRoute: typeof SourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -1104,6 +1124,7 @@ const rootRouteChildren: RootRouteChildren = {
   PartnersRoute: PartnersRoute,
   PlusRoute: PlusRoute,
   PrivacyRoute: PrivacyRoute,
+  SourcesRoute: SourcesRoute,
   TermsRoute: TermsRoute,
   TrainRoute: TrainRouteWithChildren,
   TravelRoute: TravelRouteWithChildren,

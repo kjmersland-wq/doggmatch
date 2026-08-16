@@ -7,6 +7,7 @@ import { categoryImages, trainingImages } from "@/data/training/images";
 import { getLessons } from "@/data/training/lessons";
 import { todaysPlan, ageFocus } from "@/lib/training/plan";
 import { streakDays, today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
+import { SourcesLink } from "@/components/dogmatch/sources-link";
 
 const copy = {
   en: { welcomeUser: (name: string) => `Good to see you, ${name}'s human.` },
@@ -281,6 +282,9 @@ function TrainHome() {
             <h2 className="display-md">{t.train.safetyTitle}</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">{t.train.safetyBody}</p>
             <p className="mt-4 leading-relaxed text-muted-foreground">{t.train.safetyBody2}</p>
+            <div className="mt-6">
+              <SourcesLink category="behaviour" />
+            </div>
           </div>
         </div>
       </Section>

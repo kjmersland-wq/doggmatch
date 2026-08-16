@@ -5,6 +5,7 @@ import { getBreed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Arrow, ButtonLink, Eyebrow, TraitMeter } from "@/components/dogmatch/ui";
+import { SourcesLink } from "@/components/dogmatch/sources-link";
 
 export const Route = createFileRoute("/breeds/$breedId")({
   loader: ({ params }) => {
@@ -160,6 +161,9 @@ function BreedDetail() {
         <p className="mt-8 max-w-xl text-sm leading-relaxed text-muted-foreground">
           {t.allergyNote}
         </p>
+        <div className="mt-6">
+          <SourcesLink category="breeds" />
+        </div>
       </section>
 
       <div className="container-page flex flex-wrap gap-3">
