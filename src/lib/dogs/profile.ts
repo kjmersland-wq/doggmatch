@@ -123,7 +123,7 @@ const LEAD_WEIGHT = 0.6;
  * the more cautious one does, and the rest lands in between. The average is
  * still in the mix, so neither parent is ignored.
  */
-function combineBreedTraits(ids: BreedId[]): BreedTraits | undefined {
+export function combineBreedTraits(ids: BreedId[]): BreedTraits | undefined {
   const list = ids.map((id) => breedById[id]).filter(Boolean);
   if (list.length === 0) return undefined;
   const keys = Object.keys(BASELINE_TRAITS) as (keyof BreedTraits)[];
@@ -147,7 +147,7 @@ function combineBreedTraits(ids: BreedId[]): BreedTraits | undefined {
 }
 
 /** Which parent visibly pulls which traits — used to show the cross honestly. */
-function crossContributions(ids: BreedId[]): CrossContribution[] {
+export function crossContributions(ids: BreedId[]): CrossContribution[] {
   if (ids.length < 2) return [];
   const list = ids.map((id) => breedById[id]).filter(Boolean);
   if (list.length < 2) return [];
