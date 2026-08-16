@@ -25,7 +25,7 @@ function useQr(text: string) {
 
 function formatDate(value: string | null) {
   if (!value) return "—";
-  return new Date(value).toLocaleDateString(undefined, { month: "short", year: "numeric" });
+  return new Date(value).toLocaleDateString("en-GB", { month: "short", year: "numeric" });
 }
 
 /** Front of the card: who you are, and that you're a member. */

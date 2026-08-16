@@ -37,6 +37,6 @@ export function useDocContext(): DocContext {
     skills: rankLessons(dog, progress)
       .slice(0, 3)
       .map((s) => s.lesson),
-    today: new Date().toLocaleDateString(undefined, { day: "numeric", month: "long", year: "numeric" }),
+    today: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }),
   };
 }

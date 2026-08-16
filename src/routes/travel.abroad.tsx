@@ -118,7 +118,7 @@ function AbroadPage() {
             {trip.date && (
               <p className="mt-8 text-sm text-muted-foreground">
                 Some steps have waiting periods measured in weeks, so the date matters. Work backwards
-                from {new Date(trip.date).toLocaleDateString(undefined, { day: "numeric", month: "long", year: "numeric" })} using the timeline below.
+                from {new Date(trip.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })} using the timeline below.
               </p>
             )}
           </div>

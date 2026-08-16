@@ -44,7 +44,7 @@ export function AccountMembership() {
   }
 
   const renews = membership.renewsAt
-    ? new Date(membership.renewsAt).toLocaleDateString(undefined, {
+    ? new Date(membership.renewsAt).toLocaleDateString("en-GB", {
         day: "numeric",
         month: "long",
         year: "numeric",
