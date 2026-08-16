@@ -4,6 +4,7 @@ import { Panel } from "@/components/dogmatch/care/parts";
 import { DogSwitcher } from "@/components/dogmatch/care/hub";
 import { useMyDog } from "@/lib/care/store";
 import { useTrainingState } from "@/lib/training/store";
+import { AccountMembership } from "@/components/dogmatch/plus/membership";
 
 const title = "My Account — Your details and preferences | DoggMatch";
 const description =
@@ -56,24 +57,7 @@ function AccountPage() {
 
       <Section className="container-page">
         <div className="grid gap-6 lg:grid-cols-2">
-          <Panel title="You">
-            <Row label="Name" value="Not added yet" />
-            <Row label="Email" value="Not added yet" />
-            <Row label="Language" value="English" />
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              You don't need an account to use DoggMatch. Everything you've filled in is saved on
-              this device, and nowhere else.
-            </p>
-          </Panel>
-
-          <Panel title="Subscription & payment">
-            <Row label="Plan" value="Free" />
-            <Row label="Payment method" value="None on file" />
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Everything you can see today is free. If that ever changes, we'll tell you plainly
-              before anything is charged.
-            </p>
-          </Panel>
+          <AccountMembership />
 
           <Panel title="Preferences">
             <Row label="Units" value="Metric (kg, km)" />
