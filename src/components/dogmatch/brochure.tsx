@@ -228,7 +228,7 @@ export function BrochureSheet() {
       {/* 4 — Back cover */}
       <article className="br-page br-page-navy">
         <div className="br-back-photo">
-          <img src={backPhoto} alt="" width={1024} height={1024} loading="lazy" />
+          <img src={backPhoto} alt="" width={1024} height={768} loading="lazy" />
         </div>
         <div className="br-pad br-grow" style={{ display: "flex", flexDirection: "column" }}>
           <h2 className="br-h2">{c.backTitle}</h2>
