@@ -146,4 +146,28 @@ export const questionsNo: QuizQuestion[] = [
       { value: "family", label: "En hund for hele familien" },
     ],
   },
+  {
+    id: "allergy",
+    eyebrow: "Pels og allergi",
+    title: "Er det noen hjemme hos deg som har hundeallergi?",
+    help: "Noen raser feller mindre og holder på pelsen, og det opplever enkelte som lettere. Ingen hund er helt allergivennlig, og toleransen varierer fra person til person.",
+    options: [
+      { value: "none", label: "Nei, ingen reagerer på hund" },
+      { value: "mild", label: "Milde reaksjoner", hint: "Litt tett i nesen rundt enkelte hunder" },
+      { value: "significant", label: "En betydelig allergi", hint: "Vi ville hatt skikkelig allergiråd først" },
+      { value: "unsure", label: "Vi vet ikke sikkert ennå" },
+    ],
+  },
+  {
+    id: "wellbeing",
+    eyebrow: "Selskap og trivsel",
+    title: "Hvor mye ønsker du deg en rolig og nær følgesvenn å ha rundt deg?",
+    help: "En hund er selskap, ikke behandling. Vi ser på ro, sosialitet og hvor menneskeorientert en rase pleier å være.",
+    options: [
+      { value: "no", label: "Det er ikke det jeg ser etter" },
+      { value: "some", label: "Det hadde vært hyggelig" },
+      { value: "important", label: "Ja, det betyr noe for meg" },
+      { value: "very", label: "Det er det viktigste for meg" },
+    ],
+  },
 ];

@@ -170,6 +170,8 @@ export const no: Dictionary = {
     temperament: "Temperament",
     trainability: "Å lære sammen",
     companionship: "Selskap",
+    allergy: "Allergihensyn",
+    wellbeing: "Følgesvenn og trivsel",
     maintenance: "Stell og pels",
   },
   breeds: {
@@ -271,4 +273,28 @@ export const no: Dictionary = {
   },
   allergyNote:
     "Noen raser feller mindre enn andre, og det opplever mange med allergi som lettere å leve med. Men ingen hund er helt allergivennlig, og reaksjoner varierer fra person til person.",
+  matchNotes: {
+    title: "To ting til som vi har vektlagt",
+    allergyTitle: "Allergihensyn",
+    allergy: {
+      none: "Du fortalte oss at ingen hjemme reagerer på hund, så dette har verken løftet eller senket noen rase. Pels og felling teller fortsatt under stell og pels.",
+      mild: "Siden noen reagerer litt rundt hund, har vi lent oss mot raser som feller og sikler mindre. Det er et mildere utgangspunkt, ikke en garanti.",
+      significant:
+        "Med en betydelig allergi hjemme har vi vektet tungt mot pelstyper som feller lite og som holdes klippet og børstet. Se på dette som et utgangspunkt, og få skikkelige allergiråd før du bestemmer deg for en hund.",
+      unsure:
+        "Siden dere ikke vet sikkert ennå, har vi gitt et lite dytt mot hunder som feller mindre. Det er lurt å tilbringe tid sammen med rasen du vurderer før dere bestemmer dere.",
+    },
+    allergyDisclaimer:
+      "Ingen rase er hypoallergen. Allergener kommer fra hud, spytt og urin, ikke bare pels, og to personer kan reagere helt ulikt på samme hund. Har noen hjemme hos deg en betydelig allergi, snakk med lege eller allergispesialist først.",
+    wellbeingTitle: "Følgesvenn og trivsel",
+    wellbeing: {
+      no: "Du la ikke vekt på dette, så det har ikke flyttet resultatet ditt. Temperament og selskap teller fortsatt med i scoren.",
+      some: "Vi har gitt et mildt løft til raser som pleier å være kjærlige, sosiale og lette å lære opp.",
+      important:
+        "Vi har sett etter raser med godt potensial for et rolig liv som følgesvenn: jevn energi, menneskeorientert, sosial og kjapp til å skjønne hva du ber om.",
+      very: "Dette har formet resultatet ditt mest. Vi har favorisert raser som potensielt passer godt som nære, rolige følgesvenner — kjærlige, sosiale, ikke for selvstendige og ikke for bjeffete.",
+    },
+    wellbeingDisclaimer:
+      "Dette beskriver hvordan en rase pleier å oppføre seg, ikke noe mer. En hund kan ikke behandle depresjon, angst eller andre medisinske tilstander, og ingen hund er service- eller terapihund på grunn av rasen sin — det krever vurdering og trening av den enkelte hunden. Står du i noe tungt, snakk gjerne med helsepersonell også.",
+  },
 };

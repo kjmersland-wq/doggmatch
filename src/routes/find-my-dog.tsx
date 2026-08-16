@@ -46,6 +46,7 @@ import {
 import { useActiveDog } from "@/lib/training/store";
 import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/types";
 import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "@/components/dogmatch/ui";
+import { MatchNotes } from "@/components/dogmatch/match-notes";
 import { cn } from "@/lib/utils";
 
 const title = "Find My Dog — a free match, in about two minutes | DoggMatch";
@@ -246,6 +247,8 @@ const DIMENSION_ORDER: DimensionKey[] = [
   "temperament",
   "trainability",
   "companionship",
+  "allergy",
+  "wellbeing",
   "maintenance",
 ];
 
@@ -366,6 +369,7 @@ function Results({
             <ScoreBar key={key} label={t.dimensions[key]} value={best.dimensions[key]} />
           ))}
         </div>
+        <MatchNotes profile={profile} />
       </section>
 
       {/* why + considerations */}

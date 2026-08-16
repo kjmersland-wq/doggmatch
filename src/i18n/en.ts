@@ -170,6 +170,8 @@ export const en = {
     temperament: "Temperament",
     trainability: "Learning together",
     companionship: "Company",
+    allergy: "Allergy considerations",
+    wellbeing: "Companion & wellbeing",
     maintenance: "Care and grooming",
   },
   breeds: {
@@ -271,6 +273,30 @@ export const en = {
   },
   allergyNote:
     "Some breeds shed less than others, which people with allergies sometimes find easier to live with. But no dog is completely allergy-free, and reactions vary from person to person.",
+  matchNotes: {
+    title: "Two more things we weighed",
+    allergyTitle: "Allergy considerations",
+    allergy: {
+      none: "You told us nobody at home reacts to dogs, so this didn't push any breed up or down. Coat and shedding still show up under care and grooming.",
+      mild: "Because someone reacts a little around dogs, we leaned towards breeds that shed less and drool less. That's a gentler starting point, not a guarantee.",
+      significant:
+        "With a significant allergy at home, we leaned hard towards lower-shedding coats that are kept trimmed and brushed. Please treat this as a starting point and get proper allergy advice before you commit to a dog.",
+      unsure:
+        "Since you're not sure yet, we gave a small nudge towards lower-shedding dogs. It's worth spending time around the breed you're considering before you decide.",
+    },
+    allergyDisclaimer:
+      "No breed is hypoallergenic. Allergens come from skin, saliva and urine, not just hair, and two people can react very differently to the same dog. If anyone in your home has a significant allergy, speak to a doctor or allergy specialist first.",
+    wellbeingTitle: "Companion & wellbeing",
+    wellbeing: {
+      no: "You didn't put weight on this, so it hasn't shifted your result. Temperament and company are still part of the score.",
+      some: "We gave a gentle lift to breeds that tend to be affectionate, sociable and easy to teach.",
+      important:
+        "We looked for breeds with strong potential for a calm companion lifestyle: steady energy, people-oriented, sociable and quick to learn what you ask of them.",
+      very: "This shaped your result the most. We favoured breeds that are potentially well suited as close, calm companions — affectionate, sociable, not too independent and not too noisy.",
+    },
+    wellbeingDisclaimer:
+      "This describes how a breed tends to behave, nothing more. A dog cannot treat depression, anxiety or any medical condition, and no dog is an assistance or therapy dog because of its breed — that takes assessment and training of the individual dog. If you're going through something hard, please talk to a health professional too.",
+  },
 } as const;
 
 /** Widens the literal types so other locales can fill the same shape. */

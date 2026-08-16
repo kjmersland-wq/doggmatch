@@ -189,6 +189,48 @@ export const sourceCategories: SourceCategory[] = [
         what: { en: "Airline rules for carriers and flying with dogs.", no: "Flyselskapenes regler for transportbur og flyreise med hund." } },
     ],
   },
+  {
+    id: "allergy",
+    title: { en: "Allergy considerations", no: "Allergihensyn" },
+    blurb: {
+      en: "What dog allergy actually is, why no breed is hypoallergenic, and when to get medical advice. We use shedding and coat upkeep only as supporting signals.",
+      no: "Hva hundeallergi faktisk er, hvorfor ingen rase er hypoallergen, og når man bør søke medisinsk råd. Vi bruker felling og pelsstell bare som støttesignaler.",
+    },
+    usedOn: { en: "Find My Dog, matching results, breed pages", no: "Finn hunden min, matcheresultat, rasesider" },
+    sources: [
+      { id: "aaaai-pet", org: "American Academy of Allergy, Asthma & Immunology (AAAAI)", url: "https://www.aaaai.org/tools-for-the-public/conditions-library/allergies/pet-allergy", kind: "science", lastReviewed: REVIEWED,
+        what: { en: "What causes pet allergy and why 'hypoallergenic' breeds are a myth.", no: "Hva som forårsaker dyreallergi, og hvorfor «hypoallergene» raser er en myte." } },
+      { id: "eaaci", org: "European Academy of Allergy and Clinical Immunology (EAACI)", url: "https://www.eaaci.org/resources/patients/", kind: "science", lastReviewed: REVIEWED,
+        what: { en: "European clinical guidance and patient information on allergy.", no: "Europeisk klinisk veiledning og pasientinformasjon om allergi." } },
+      { id: "nhs-allergy", org: "NHS — Allergies", url: "https://www.nhs.uk/conditions/allergies/", kind: "authority", lastReviewed: REVIEWED,
+        what: { en: "When to see a doctor, testing and managing allergy at home.", no: "Når du bør oppsøke lege, testing og håndtering av allergi hjemme." } },
+      { id: "naaf", org: "Norges Astma- og Allergiforbund (NAAF)", url: "https://www.naaf.no/", kind: "authority", lastReviewed: REVIEWED,
+        what: { en: "Norwegian allergy advice, including pets in the home.", no: "Norske allergiråd, blant annet om kjæledyr i hjemmet." } },
+      { id: "vredegoor", org: "Vredegoor et al., J Allergy Clin Immunol (2012)", url: "https://pubmed.ncbi.nlm.nih.gov/22728082/", kind: "science", lastReviewed: REVIEWED,
+        what: { en: "Peer-reviewed study finding no reduced Can f 1 allergen levels in 'hypoallergenic' breeds.", no: "Fagfellevurdert studie som ikke fant lavere Can f 1-allergennivå hos «hypoallergene» raser." } },
+    ],
+  },
+  {
+    id: "wellbeing",
+    title: { en: "Companion life and wellbeing", no: "Livet som følgesvenn og trivsel" },
+    blurb: {
+      en: "How breed temperament relates to calm, sociable companionship — and the firm line between company and clinical care. We never present a dog as treatment, and breed alone never makes an assistance or therapy dog.",
+      no: "Hvordan rasetemperament henger sammen med rolig, sosialt samvær — og den tydelige grensen mellom selskap og behandling. Vi presenterer aldri en hund som behandling, og rase alene gjør ingen hund til service- eller terapihund.",
+    },
+    usedOn: { en: "Find My Dog, matching results, breed pages", no: "Finn hunden min, matcheresultat, rasesider" },
+    sources: [
+      { id: "habri", org: "Human Animal Bond Research Institute (HABRI)", url: "https://habri.org/research/", kind: "science", lastReviewed: REVIEWED,
+        what: { en: "Peer-reviewed research on human–animal interaction and wellbeing.", no: "Fagfellevurdert forskning på samspill mellom menneske og dyr og trivsel." } },
+      { id: "avma-bond", org: "AVMA — Human-Animal Interaction and the Bond", url: "https://www.avma.org/resources-tools/animal-health-welfare/human-animal-interaction-and-human-animal-bond", kind: "veterinary", lastReviewed: REVIEWED,
+        what: { en: "Veterinary position on the human–animal bond and its limits.", no: "Veterinær posisjon om båndet mellom menneske og dyr, og grensene for det." } },
+      { id: "iaadp", org: "Assistance Dogs International", url: "https://assistancedogsinternational.org/", kind: "welfare", lastReviewed: REVIEWED,
+        what: { en: "What actually makes an assistance dog: individual assessment and training, never breed.", no: "Hva som faktisk gjør en hund til servicehund: individuell vurdering og trening, aldri rase." } },
+      { id: "avsab-wellbeing", org: "AVSAB", url: "https://avsab.org/resources/position-statements/", kind: "veterinary", lastReviewed: REVIEWED,
+        what: { en: "Behaviour, socialisation and what a calm, well-adjusted dog needs.", no: "Atferd, sosialisering og hva en rolig, trygg hund trenger." } },
+      { id: "who-mental", org: "World Health Organization — Mental health", url: "https://www.who.int/health-topics/mental-health", kind: "authority", lastReviewed: REVIEWED,
+        what: { en: "Why mental health conditions need professional care, not a pet as a substitute.", no: "Hvorfor psykiske helseplager trenger profesjonell hjelp, ikke et kjæledyr som erstatning." } },
+    ],
+  },
 ];
 
 /** Locale-aware flattened view, handy for rendering. */

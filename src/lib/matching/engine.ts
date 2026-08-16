@@ -34,6 +34,8 @@ const DIMENSION_WEIGHTS: Record<DimensionKey, number> = {
   temperament: 1,
   trainability: 0.9,
   companionship: 1.1,
+  allergy: 0.9,
+  wellbeing: 1,
   maintenance: 0.95,
 };
 
@@ -117,6 +119,54 @@ function scoreDimensions(t: BreedTraits, p: UserProfile): Record<DimensionKey, n
     atMost(t.drooling, 3, 10),
   ]);
 
+  /**
+   * Allergy considerations.
+   * Shedding, coat upkeep and drooling are supporting signals only: they say
+   * something about how much hair and saliva ends up in the home. No breed is
+   * allergy-free, and individual tolerance varies, so this never gates a breed
+   * in on its own — it only reflects the odds of an easier start.
+   */
+  const allergyLevel = p["allergy"] ?? "none";
+  const allergy =
+    allergyLevel === "significant"
+      ? avg([
+          atMost(t.shedding, 2, 26),
+          atLeast(t.grooming, 3, 12),
+          atMost(t.drooling, 2, 16),
+        ])
+      : allergyLevel === "mild"
+        ? avg([atMost(t.shedding, 3, 18), atMost(t.drooling, 3, 12)])
+        : allergyLevel === "unsure"
+          ? avg([atMost(t.shedding, 3, 12), atMost(t.drooling, 3, 8)])
+          : 100;
+
+  /**
+   * Companion & wellbeing.
+   * Calmness, sociability, human orientation, trainability and activity level.
+   * This describes potential suitability for a calm companion lifestyle — never
+   * a therapy role, and never a treatment for any medical condition.
+   */
+  const wellbeingGoal = p["wellbeing"] ?? "no";
+  const wellbeingBase = avg([
+    atLeast(t.affection, 4, 14),
+    atLeast(t.sociability, 3, 12),
+    atLeast(t.trainability, 3, 12),
+  ]);
+  const wellbeingCalm = avg([
+    atMost(t.energy, 3, 16),
+    atMost(t.barking, 3, 12),
+    atMost(t.mentalStimulation, 4, 12),
+    atLeast(t.learningAbility, 3, 10),
+  ]);
+  const wellbeing =
+    wellbeingGoal === "very"
+      ? avg([wellbeingBase, wellbeingCalm, atLeast(t.affection, 5, 14), atMost(t.independence, 3, 12)])
+      : wellbeingGoal === "important"
+        ? avg([wellbeingBase, wellbeingCalm])
+        : wellbeingGoal === "some"
+          ? avg([wellbeingBase, 100])
+          : 100;
+
   return {
     lifestyle: Math.round(lifestyle),
     home: Math.round(homeScore),
@@ -124,6 +174,8 @@ function scoreDimensions(t: BreedTraits, p: UserProfile): Record<DimensionKey, n
     temperament: Math.round(temperamentScore),
     trainability: Math.round(trainability),
     companionship: Math.round(companionship),
+    allergy: Math.round(allergy),
+    wellbeing: Math.round(wellbeing),
     maintenance: Math.round(maintenance),
   };
 }
@@ -164,6 +216,13 @@ function hardConstraints(t: BreedTraits, p: UserProfile): { warnings: string[]; 
   if (p["home"] === "apartment" && t.apartmentSuitability <= 1) {
     warnings.push(pick({ en: "Flat living rarely suits this breed, even with plenty of long walks.", no: "Leilighetsliv passer sjelden for denne rasen, selv med mange lange turer." }));
     cap = Math.min(cap, 50);
+  }
+  if (p["allergy"] === "significant" && t.shedding >= 4) {
+    warnings.push(pick({
+      en: "With a significant allergy at home, a heavy-shedding dog is a hard place to start. Speak to an allergy specialist before you decide.",
+      no: "Med en betydelig allergi hjemme er en hund som feller mye et vanskelig utgangspunkt. Snakk med en allergispesialist før du bestemmer deg.",
+    }));
+    cap = Math.min(cap, 48);
   }
 
   return { warnings, cap };
