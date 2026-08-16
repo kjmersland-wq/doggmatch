@@ -278,11 +278,11 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Can I cancel my membership?",
-    a: "Membership hasn't opened yet, so there's nothing to cancel today. The full subscription details, including how to cancel, will be shown clearly before you ever pay anything.",
+    a: "Yes, whenever you like. Open your account page and you can change or cancel your membership yourself — it stays active until the end of the period you've already paid for.",
   },
   {
     q: "Can I choose monthly or yearly membership?",
-    a: "Yes — €7.99 a month or €59.99 a year. Payment isn't open yet, so both options are simply a preview of what's coming.",
+    a: "Yes — €7.99 a month, or €59.99 a year, which works out at about €5 a month. You can switch between them later from your account.",
   },
   {
     q: "What happens when I join?",
