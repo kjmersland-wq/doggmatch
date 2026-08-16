@@ -276,6 +276,11 @@ function MyDogHome() {
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
                 {dog ? c.heroTextDog : c.heroTextNoDog}
               </p>
+              {dog && traitProfile.isMixed && (
+                <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
+                  {traitBasisNote(traitProfile)}
+                </p>
+              )}
               <div className="mt-9 flex flex-wrap gap-3">
                 <ButtonLink to="/my-dog/setup" size="lg">
                   {dog ? fmt(c.dogDetails, { name: dog.name }) : c.setupCta}
