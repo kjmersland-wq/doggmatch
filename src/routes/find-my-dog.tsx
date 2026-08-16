@@ -368,6 +368,7 @@ function Results({
             <ScoreBar key={key} label={t.dimensions[key]} value={best.dimensions[key]} />
           ))}
         </div>
+        <MatchNotes profile={profile} />
       </section>
 
       {/* why + considerations */}
