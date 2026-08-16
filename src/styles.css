@@ -771,6 +771,7 @@ html {
 .br-footnote { font-size: 8.5pt; line-height: 1.5; }
 
 .br-one .br-cover-photo { height: 42mm; }
+.br-one .br-cover-photo > img { object-position: 50% 30%; }
 .br-one-body { flex: 1; display: flex; flex-direction: column; padding: 7mm 11mm 7mm; }
 .br-one .br-display { font-size: 19pt; }
 .br-one .br-lead { margin-top: 3.5mm; font-size: 10pt; max-width: none; }
