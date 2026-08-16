@@ -190,6 +190,13 @@ export const en = {
     remove: "Remove",
     empty: "Pick a breed to get started.",
     scale: ["Very low", "Low", "Moderate", "High", "Very high"],
+    legendTitle: "What the colours mean",
+    legend: {
+      low: "Low — usually easier to live with",
+      medium: "Moderate",
+      high: "High — needs more time or space",
+      veryHigh: "Very high — biggest commitment",
+    },
     rows: {
       size: "Size",
       energy: "Energy",

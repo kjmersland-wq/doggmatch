@@ -190,6 +190,13 @@ export const no: Dictionary = {
     remove: "Fjern",
     empty: "Velg en rase for å komme i gang.",
     scale: ["Svært lavt", "Lavt", "Middels", "Høyt", "Svært høyt"],
+    legendTitle: "Hva fargene betyr",
+    legend: {
+      low: "Lavt — som regel lettere å leve med",
+      medium: "Middels",
+      high: "Høyt — trenger mer tid eller plass",
+      veryHigh: "Svært høyt — størst forpliktelse",
+    },
     rows: {
       size: "Størrelse",
       energy: "Energi",
