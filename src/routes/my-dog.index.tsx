@@ -15,6 +15,7 @@ import {
   useWeights,
   type RoutineId,
 } from "@/lib/care/store";
+import { dogBreedLabel, resolveDogTraits, traitBasisNote } from "@/lib/dogs/profile";
 import { breedById } from "@/data/breeds";
 import { breedImages } from "@/data/breed-images";
 import { buildWeek } from "@/lib/care/week";
@@ -244,8 +245,11 @@ function MyDogHome() {
   const todayIndex = (new Date().getDay() + 6) % 7;
   const portions = estimatePortions(profile.weightKg, dog?.ageStage ?? "adult", profile);
   const trend = weightTrend(weights);
-  const breed = dog?.breedId ? breedById[dog.breedId] : undefined;
-  const portrait = dog?.breedId ? breedImages[dog.breedId] : careImages.careHero;
+  const traitProfile = resolveDogTraits(dog);
+  const breedLine = dogBreedLabel(dog);
+  const portraitBreed = traitProfile.breedIds[0];
+  const breed = portraitBreed ? breedById[portraitBreed] : undefined;
+  const portrait = portraitBreed ? breedImages[portraitBreed] : careImages.careHero;
   const ageLabel = dog?.ageStage ? c.ageStages[dog.ageStage] : c.ageStages.adult;
 
   return (
@@ -259,7 +263,7 @@ function MyDogHome() {
               {dog ? (
                 <>
                   <p className="mt-6 text-sm uppercase tracking-[0.18em] text-accent">
-                    {breed ? `${breed.name} · ` : ""}
+                    {breedLine ? `${breedLine} · ` : ""}
                     {ageLabel}
                     {profile.weightKg ? ` · ${profile.weightKg} kg` : ""}
                   </p>
@@ -290,7 +294,7 @@ function MyDogHome() {
                 src={portrait}
                 alt={
                   dog
-                    ? fmt(c.portraitAltDog, { name: dog.name, breed: breed ? breed.name : c.portraitAltFallbackBreed })
+                    ? fmt(c.portraitAltDog, { name: dog.name, breed: breedLine || c.portraitAltFallbackBreed })
                     : c.portraitAltNoDog
                 }
                 width={1400}

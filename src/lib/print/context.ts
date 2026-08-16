@@ -1,4 +1,5 @@
 import { breedById } from "@/data/breeds";
+import { dogBreedLabel, knownBreedIds } from "@/lib/dogs/profile";
 import { estimatePortions } from "@/lib/care/portions";
 import { useCareProfile, useMyDog, useWeights } from "@/lib/care/store";
 import { useContacts, useDogDetails, useImportantInfo, useVisits, useWeekOverride } from "@/lib/care/records";
@@ -19,13 +20,14 @@ export function useDocContext(): DocContext {
   const override = useWeekOverride(dog?.id);
   const progress = useProgress(dog?.id);
 
-  const breed = dog?.breedId ? breedById[dog.breedId] : undefined;
+  const primaryBreedId = knownBreedIds(dog)[0];
+  const breed = primaryBreedId ? breedById[primaryBreedId] : undefined;
   const portions = estimatePortions(care.weightKg, dog?.ageStage ?? "adult", care);
 
   return {
     ...(dog ? { dog } : {}),
     ...(breed ? { breed } : {}),
-    breedName: breed?.name ?? dog?.breedOther ?? "",
+    breedName: dogBreedLabel(dog),
     details,
     care,
     contacts,

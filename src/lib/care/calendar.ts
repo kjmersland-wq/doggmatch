@@ -1,7 +1,6 @@
 import type { CareState } from "@/lib/care/store";
 import type { DogProfile } from "@/lib/training/store";
 import { resolveDogTraits } from "@/lib/dogs/profile";
-import { breedById } from "@/data/breeds";
 
 /**
  * A gentle nudge, not a nagging list. Every interval below is a rough rhythm

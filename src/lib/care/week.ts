@@ -1,4 +1,3 @@
-import { breedById } from "@/data/breeds";
 import type { SkillStatus } from "@/data/training/types";
 import type { DogProfile } from "@/lib/training/store";
 import { resolveDogTraits } from "@/lib/dogs/profile";
