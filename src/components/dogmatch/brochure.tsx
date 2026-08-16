@@ -237,7 +237,12 @@ export function BrochureSheet() {
           </p>
           <div className="br-cta">
             <div className="br-cta-text">
-              <BrandLock markClassName="h-7 w-7" wordmarkClassName="text-lg text-white" />
+              <span style={{ display: "flex", alignItems: "center", gap: "2.5mm" }}>
+                <BrandMark className="h-7 w-7" />
+                <span className="font-display" style={{ fontWeight: 600, fontSize: "13pt", letterSpacing: "-0.03em" }}>
+                  Dogg<span style={{ color: "#ff5a1f" }}>Match</span>
+                </span>
+              </span>
               <span className="br-url">{c.url}</span>
               <span className="br-footnote br-muted">{c.madeBy}</span>
             </div>
@@ -257,5 +262,3 @@ export function BrochureSheet() {
 export function useBrochureCopy() {
   return useCopy(copy);
 }
-
-export { BrandMark };
