@@ -183,6 +183,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LocaleProvider>
+        <SkipLink />
         <SiteHeader />
         <main id="main" className="pb-20 pt-[72px] print:p-0 lg:pb-0">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
