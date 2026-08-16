@@ -24,8 +24,9 @@ export function scoreLesson(
   dog: DogProfile | undefined,
   progress: Record<string, SkillStatus>,
 ): ScoredLesson {
+  const t = planCopy();
   let score = 10;
-  let reason = "A good place to start";
+  let reason = t.startingPoint;
 
   const status = progress[lesson.id] ?? "not-started";
   if (status === "learned") score -= 30;
@@ -35,11 +36,11 @@ export function scoreLesson(
   if (dog) {
     if ((dog.goals ?? []).some((g) => lesson.goals.includes(g))) {
       score += 24;
-      reason = "You said you'd like to work on this";
+      reason = t.yourGoal;
     }
     if (lesson.ageStages.includes(dog.ageStage)) {
       score += 10;
-      if (reason === "A good place to start") reason = ageReason(dog.ageStage);
+      if (reason === t.startingPoint) reason = ageReason(dog.ageStage);
     } else {
       score -= 14;
     }
@@ -68,7 +69,7 @@ export function scoreLesson(
             });
       }
     }
-    if (status === "practising") reason = "You're in the middle of this one";
+    if (status === "practising") reason = t.inProgress;
   }
 
   return { lesson, score, reason };
@@ -102,19 +103,41 @@ function dayIndex(day: string): number {
 }
 
 function ageReason(stage: DogProfile["ageStage"]): string {
-  switch (stage) {
-    case "puppy":
-      return "Worth doing early, while everything is new";
-    case "adolescent":
-      return "The age where this one really pays off";
-    case "senior":
-      return "Gentle, and lovely for an older dog";
-    default:
-      return "Useful at any age";
-  }
+  const t = planCopy();
+  return t.age[stage] ?? t.age.adult;
 }
 
-export const ageFocus: Record<DogProfile["ageStage"], { title: string; body: string; points: string[] }> = {
+/** Reasons shown next to today's suggestions, in the reader's language. */
+function planCopy() {
+  return pick({
+    en: {
+      startingPoint: "A good place to start",
+      yourGoal: "You said you'd like to work on this",
+      inProgress: "You're in the middle of this one",
+      age: {
+        puppy: "Worth doing early, while everything is new",
+        adolescent: "The age where this one really pays off",
+        adult: "Useful at any age",
+        senior: "Gentle, and lovely for an older dog",
+      } as Record<DogProfile["ageStage"], string>,
+    },
+    no: {
+      startingPoint: "Et fint sted å begynne",
+      yourGoal: "Du sa at dere har lyst til å jobbe med dette",
+      inProgress: "Denne står dere midt oppi nå",
+      age: {
+        puppy: "Verdt å ta tidlig, mens alt er nytt",
+        adolescent: "Alderen der denne virkelig lønner seg",
+        adult: "Nyttig i alle aldre",
+        senior: "Rolig, og fin for en eldre hund",
+      } as Record<DogProfile["ageStage"], string>,
+    },
+  });
+}
+
+type AgeFocus = Record<DogProfile["ageStage"], { title: string; body: string; points: string[] }>;
+
+const ageFocusEn: AgeFocus = {
   puppy: {
     title: "Puppyhood",
     body: "Everything is new, and most of what you do now is simply showing your puppy that the world is a friendly place.",
@@ -136,3 +159,31 @@ export const ageFocus: Record<DogProfile["ageStage"], { title: string; body: str
     points: ["Gentle brain games", "Clear communication", "Activities that suit their body", "Keeping familiar skills alive"],
   },
 };
+
+const ageFocusNo: AgeFocus = {
+  puppy: {
+    title: "Valpetiden",
+    body: "Alt er nytt, og det meste du gjør nå handler rett og slett om å vise valpen at verden er et vennlig sted.",
+    points: ["Trygghet", "Møte verden rolig", "Lære å snakke sammen", "Renslighet", "Bli håndtert", "Søvn og ro"],
+  },
+  adolescent: {
+    title: "Ungdomsmånedene",
+    body: "Ting som fungerte forrige måned kan slutte å virke en stund. Det går over. Forutsigbarhet og tålmodighet bærer dere gjennom.",
+    points: ["Vente og styre seg", "Jobbe med forstyrrelser rundt", "Innkalling, om og om igjen", "Gå pent i bånd", "Være konsekvent"],
+  },
+  adult: {
+    title: "De voksne årene",
+    body: "Nå handler det om å gjøre gode vaner pålitelige, og holde livet interessant.",
+    points: ["Pålitelighet", "Hverdagsmanerer", "Nye ting for moro skyld", "Berikelse"],
+  },
+  senior: {
+    title: "De eldre årene",
+    body: "Eldre hunder elsker fortsatt å lære. Hold det kort, rolig og skånsomt for stive ledd.",
+    points: ["Rolige hjernespill", "Tydelig kommunikasjon", "Aktiviteter som passer kroppen", "Holde kjente ferdigheter ved like"],
+  },
+};
+
+/** Age guidance in the reader's language — call inside render. */
+export function getAgeFocus(): AgeFocus {
+  return pick({ en: ageFocusEn, no: ageFocusNo });
+}
