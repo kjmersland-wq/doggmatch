@@ -631,7 +631,8 @@ html {
   --br-navy: #071a2f;
   --br-orange: #ff5a1f;
   --br-ivory: #f7f3ec;
-  --br-grey: #66758a;
+  /* Print ink: dark enough for strong contrast on plain A5 paper. */
+  --br-grey: #24354a;
   display: grid;
   gap: 10mm;
   justify-items: center;
@@ -703,7 +704,7 @@ html {
 }
 .br-lead { margin-top: 5mm; font-size: 11.5pt; line-height: 1.55; max-width: 108mm; }
 .br-muted { color: var(--br-grey); }
-.br-page-navy .br-muted { color: #b9c4d2; }
+.br-page-navy .br-muted { color: #e3e9f1; }
 
 .br-rule { height: 1px; background: #dfd8cc; margin: 8mm 0; border: 0; }
 .br-page-navy .br-rule { background: rgba(255, 255, 255, 0.22); }
@@ -733,9 +734,9 @@ html {
 .br-qr { text-align: center; }
 .br-qr img { display: block; width: 26mm; height: 26mm; }
 .br-qr-lg img { width: 42mm; height: 42mm; }
-.br-qr figcaption { margin-top: 2mm; font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--br-grey); }
+.br-qr figcaption { margin-top: 2mm; font-size: 8pt; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--br-navy); }
 .br-page-navy .br-qr img { padding: 3mm; background: #fff; border-radius: 3mm; }
-.br-page-navy .br-qr figcaption { color: #b9c4d2; }
+.br-page-navy .br-qr figcaption { color: #e3e9f1; }
 
 .br-points { margin-top: 8mm; display: grid; gap: 6mm; }
 .br-point { display: grid; grid-template-columns: 9mm 1fr; gap: 4mm; align-items: start; }
@@ -755,7 +756,7 @@ html {
 .br-tools { margin-top: 5mm; display: grid; grid-template-columns: 1fr 1fr; gap: 0 10mm; }
 .br-tool { padding: 2.6mm 0; border-top: 1px solid #ded7cb; }
 .br-tool h3 { font-family: var(--font-display, Manrope, sans-serif); font-weight: 600; font-size: 11.5pt; letter-spacing: -0.02em; }
-.br-tool p { margin-top: 0.8mm; font-size: 9pt; line-height: 1.4; color: var(--br-grey); }
+.br-tool p { margin-top: 0.8mm; font-size: 9.5pt; line-height: 1.4; color: var(--br-grey); }
 
 .br-plus {
   margin-top: auto;
@@ -764,7 +765,7 @@ html {
   color: #fff;
 }
 .br-plus h3 { font-family: var(--font-display, Manrope, sans-serif); font-weight: 600; font-size: 14pt; letter-spacing: -0.02em; }
-.br-plus p { margin-top: 3mm; font-size: 10pt; color: #c3ccd8; max-width: 100mm; }
+.br-plus p { margin-top: 3mm; font-size: 10pt; color: #e3e9f1; max-width: 100mm; }
 
 .br-back-photo { height: 72mm; }
 .br-back-photo > img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -774,18 +775,18 @@ html {
 .br-one .br-cover-photo > img { object-position: 50% 30%; }
 .br-one-body { flex: 1; display: flex; flex-direction: column; padding: 7mm 11mm 7mm; }
 .br-one .br-display { font-size: 19pt; }
-.br-one .br-lead { margin-top: 3.5mm; font-size: 10pt; max-width: none; }
+.br-one .br-lead { margin-top: 3.5mm; font-size: 10.5pt; max-width: none; color: var(--br-navy); }
 .br-one .br-points { margin-top: 4mm; gap: 2.6mm; }
 .br-one .br-point h3 { font-size: 10.5pt; }
-.br-one .br-point p { margin-top: 0.8mm; font-size: 8.8pt; line-height: 1.4; }
+.br-one .br-point p { margin-top: 0.8mm; font-size: 9.4pt; line-height: 1.42; }
 .br-one .br-tools { margin-top: 5mm; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
 .br-one .br-tool { padding: 1.8mm 0; }
-.br-one .br-tool h3 { font-size: 9.5pt; }
+.br-one .br-tool h3 { font-size: 10pt; }
 .br-one .br-cta { margin-top: auto; padding-top: 4mm; }
 .br-one .br-qr img { width: 24mm; height: 24mm; }
 .br-one .br-button { font-size: 10pt; padding: 3mm 6mm; }
 .br-one .br-url { font-size: 11pt; }
-.br-one-note { margin-top: 3.5mm; font-size: 7.5pt; }
+.br-one-note { margin-top: 3.5mm; font-size: 8.2pt; color: var(--br-grey); }
 
 @media print {
   @page brochureA5 { size: 148mm 210mm; margin: 0; }
