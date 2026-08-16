@@ -176,6 +176,10 @@
   --border-strong: oklch(1 0 0 / 22%);
   --accent-soft: oklch(0.330 0.080 45);
   --primary-soft: oklch(0.290 0.055 253);
+  --level-low: oklch(0.68 0.10 145);
+  --level-medium: oklch(0.76 0.11 95);
+  --level-high: oklch(0.66 0.15 55);
+  --level-very-high: oklch(0.56 0.17 25);
   --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.4), 0 12px 28px -18px oklch(0 0 0 / 0.6);
   --shadow-lift: 0 2px 6px oklch(0 0 0 / 0.45), 0 28px 56px -28px oklch(0 0 0 / 0.65);
   --chart-1: oklch(0.965 0.010 82);
