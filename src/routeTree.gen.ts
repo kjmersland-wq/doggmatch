@@ -21,6 +21,7 @@ import { Route as GetADogRouteImport } from './routes/get-a-dog'
 import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as MemberCardRouteImport } from './routes/member-card'
 import { Route as MyDogRouteImport } from './routes/my-dog'
+import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PlusRouteImport } from './routes/plus'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -117,6 +118,11 @@ const MemberCardRoute = MemberCardRouteImport.update({
 const MyDogRoute = MyDogRouteImport.update({
   id: '/my-dog',
   path: '/my-dog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlusRoute = PlusRouteImport.update({
@@ -318,6 +324,7 @@ export interface FileRoutesByFullPath {
   '/guides': typeof GuidesRoute
   '/member-card': typeof MemberCardRoute
   '/my-dog': typeof MyDogRouteWithChildren
+  '/partners': typeof PartnersRoute
   '/plus': typeof PlusRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -367,6 +374,7 @@ export interface FileRoutesByTo {
   '/find-my-dog': typeof FindMyDogRoute
   '/guides': typeof GuidesRoute
   '/member-card': typeof MemberCardRoute
+  '/partners': typeof PartnersRoute
   '/plus': typeof PlusRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -417,6 +425,7 @@ export interface FileRoutesById {
   '/guides': typeof GuidesRoute
   '/member-card': typeof MemberCardRoute
   '/my-dog': typeof MyDogRouteWithChildren
+  '/partners': typeof PartnersRoute
   '/plus': typeof PlusRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -470,6 +479,7 @@ export interface FileRouteTypes {
     | '/guides'
     | '/member-card'
     | '/my-dog'
+    | '/partners'
     | '/plus'
     | '/privacy'
     | '/terms'
@@ -519,6 +529,7 @@ export interface FileRouteTypes {
     | '/find-my-dog'
     | '/guides'
     | '/member-card'
+    | '/partners'
     | '/plus'
     | '/privacy'
     | '/terms'
@@ -568,6 +579,7 @@ export interface FileRouteTypes {
     | '/guides'
     | '/member-card'
     | '/my-dog'
+    | '/partners'
     | '/plus'
     | '/privacy'
     | '/terms'
@@ -620,6 +632,7 @@ export interface RootRouteChildren {
   GuidesRoute: typeof GuidesRoute
   MemberCardRoute: typeof MemberCardRoute
   MyDogRoute: typeof MyDogRouteWithChildren
+  PartnersRoute: typeof PartnersRoute
   PlusRoute: typeof PlusRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
@@ -716,6 +729,13 @@ declare module '@tanstack/react-router' {
       path: '/my-dog'
       fullPath: '/my-dog'
       preLoaderRoute: typeof MyDogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/plus': {
@@ -1081,6 +1101,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuidesRoute: GuidesRoute,
   MemberCardRoute: MemberCardRoute,
   MyDogRoute: MyDogRouteWithChildren,
+  PartnersRoute: PartnersRoute,
   PlusRoute: PlusRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
