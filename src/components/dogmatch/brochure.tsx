@@ -3,11 +3,9 @@ import QRCode from "qrcode";
 import { BrandLock, BrandMark } from "@/components/dogmatch/brand-logo";
 import { useCopy } from "@/i18n";
 import coverPhoto from "@/assets/brochure-cover.jpg";
-import insidePhoto from "@/assets/brochure-inside.jpg";
-import backPhoto from "@/assets/brochure-back.jpg";
 
 /**
- * The DoggMatch A5 leaflet (148 × 210 mm, four pages) made for counters in
+ * The DoggMatch A5 flyer (148 × 210 mm, single page) made for counters in
  * pet shops, groomers, trainers and vet clinics. Print-first: large type,
  * generous margins, one accent colour, and nothing that needs a screen.
  */
@@ -69,7 +67,7 @@ const copy = {
     madeBy: "Made in Kristiansand, Norway by KM TECH LABS",
     printTitle: "A5 brochure",
     printLead:
-      "Four A5 pages (148 × 210 mm), print-ready. Print to PDF with margins set to none and background graphics on. Ask the printer for 3 mm bleed.",
+      "One A5 page (148 × 210 mm), print-ready. Print to PDF with margins set to none and background graphics on. Ask the printer for 3 mm bleed.",
     printBtn: "Print / save as PDF",
     qrAlt: "QR code to doggmatch.com",
   },
@@ -127,7 +125,7 @@ const copy = {
     madeBy: "Laget i Kristiansand, Norge av KM TECH LABS",
     printTitle: "A5-brosjyre",
     printLead:
-      "Fire A5-sider (148 × 210 mm), klar for trykk. Skriv ut til PDF med marger satt til ingen og bakgrunnsgrafikk på. Be trykkeriet om 3 mm utfall.",
+      "Én A5-side (148 × 210 mm), klar for trykk. Skriv ut til PDF med marger satt til ingen og bakgrunnsgrafikk på. Be trykkeriet om 3 mm utfall.",
     printBtn: "Skriv ut / lagre som PDF",
     qrAlt: "QR-kode til doggmatch.com",
   },
@@ -156,103 +154,55 @@ export function BrochureSheet() {
 
   return (
     <div className="br-sheet">
-      {/* 1 — Cover */}
-      <article className="br-page">
+      <article className="br-page br-one">
         <div className="br-cover-photo">
           <img src={coverPhoto} alt="" width={1024} height={1408} />
           <div className="br-cover-badge">
-            <BrandLock markClassName="h-7 w-7" wordmarkClassName="text-lg" />
+            <BrandLock markClassName="h-6 w-6" wordmarkClassName="text-base" />
           </div>
         </div>
-        <div className="br-cover-body">
+
+        <div className="br-one-body">
           <p className="br-eyebrow">{c.badge}</p>
-          <h1 className="br-display br-display-lg">{c.headline}</h1>
+          <h1 className="br-display">{c.headline}</h1>
           <p className="br-lead br-muted">{c.coverLead}</p>
-          <div className="br-cta">
-            <div className="br-cta-text">
-              <span className="br-button">{c.cta}</span>
-              <span className="br-url">{c.url}</span>
-            </div>
-            <figure className="br-qr">
-              {qr && <img src={qr} alt={c.qrAlt} width={26} height={26} />}
-              <figcaption>{c.scan}</figcaption>
-            </figure>
-          </div>
-        </div>
-      </article>
 
-      {/* 2 — How it works */}
-      <article className="br-page br-page-ivory br-pad">
-        <p className="br-eyebrow">{c.howEyebrow}</p>
-        <h2 className="br-display">{c.howTitle}</h2>
-        <hr className="br-rule" />
-        <p className="br-lead">{c.howLead}</p>
-        <div className="br-points">
-          {c.points.map((p, i) => (
-            <div className="br-point" key={p.title}>
-              <span className="br-point-no">{String(i + 1).padStart(2, "0")}</span>
-              <div>
-                <h3>{p.title}</h3>
-                <p>{p.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="br-grow" />
-        <p className="br-eyebrow br-eyebrow-quiet">{c.url}</p>
-      </article>
-
-      {/* 3 — What's inside */}
-      <article className="br-page">
-        <div className="br-band">
-          <img src={insidePhoto} alt="" width={1408} height={880} loading="lazy" />
-        </div>
-        <div className="br-pad br-grow" style={{ display: "flex", flexDirection: "column" }}>
-          <p className="br-eyebrow">{c.toolsEyebrow}</p>
-          <h2 className="br-display">{c.toolsTitle}</h2>
-          <div className="br-tools">
-            {c.tools.map((t) => (
-              <div className="br-tool" key={t.title}>
-                <h3>{t.title}</h3>
-                <p>{t.body}</p>
+          <div className="br-points">
+            {c.points.slice(0, 3).map((p, i) => (
+              <div className="br-point" key={p.title}>
+                <span className="br-point-no">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{p.title}</h3>
+                  <p>{p.body}</p>
+                </div>
               </div>
             ))}
           </div>
-          <div className="br-plus">
-            <h3>{c.plusTitle}</h3>
-            <p>{c.plusBody}</p>
-          </div>
-        </div>
-      </article>
 
-      {/* 4 — Back cover */}
-      <article className="br-page br-page-navy">
-        <div className="br-back-photo">
-          <img src={backPhoto} alt="" width={1024} height={768} loading="lazy" />
-        </div>
-        <div className="br-pad br-grow" style={{ display: "flex", flexDirection: "column" }}>
-          <h2 className="br-h2">{c.backTitle}</h2>
-          <p className="br-lead br-muted" style={{ fontSize: "10.5pt" }}>
-            {c.backBody}
-          </p>
+          <div className="br-tools">
+            {c.tools.slice(0, 6).map((t) => (
+              <div className="br-tool" key={t.title}>
+                <h3>{t.title}</h3>
+              </div>
+            ))}
+          </div>
+
           <div className="br-cta">
             <div className="br-cta-text">
+              <span className="br-button">{c.cta}</span>
               <span style={{ display: "flex", alignItems: "center", gap: "2.5mm" }}>
-                <BrandMark className="h-7 w-7" />
-                <span className="font-display" style={{ fontWeight: 600, fontSize: "13pt", letterSpacing: "-0.03em" }}>
-                  Dogg<span style={{ color: "#ff5a1f" }}>Match</span>
-                </span>
+                <BrandMark className="h-6 w-6" />
+                <span className="br-url">{c.url}</span>
               </span>
-              <span className="br-url">{c.url}</span>
               <span className="br-footnote br-muted">{c.madeBy}</span>
             </div>
             <figure className="br-qr br-qr-lg">
-              {qr && <img src={qr} alt={c.qrAlt} width={42} height={42} />}
-              <figcaption>{c.scanBack}</figcaption>
+              {qr && <img src={qr} alt={c.qrAlt} width={34} height={34} />}
+              <figcaption>{c.scan}</figcaption>
             </figure>
           </div>
-          <hr className="br-rule" />
-          <p className="br-footnote br-muted">{c.backNote}</p>
+
+          <p className="br-footnote br-muted br-one-note">{c.backNote}</p>
         </div>
       </article>
     </div>
