@@ -45,6 +45,7 @@ function TrainHome() {
   const state = useTrainingState();
   const progress = useProgress(dog?.id);
   const plan = todaysPlan(dog, progress, today());
+  const ageFocus = getAgeFocus();
   const learned = Object.values(progress).filter((s) => s === "learned").length;
   const streak = streakDays(state.sessions);
 
