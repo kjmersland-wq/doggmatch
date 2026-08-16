@@ -6,6 +6,7 @@ import { nutritionSections } from "@/data/care/nutrition";
 import { estimatePortions } from "@/lib/care/portions";
 import { useCareProfile, useMyDog } from "@/lib/care/store";
 import { useCopy } from "@/i18n";
+import { SourcesLink } from "@/components/dogmatch/sources-link";
 
 const title = "Food & portions — how much to feed your dog | DoggMatch";
 const description =
@@ -205,6 +206,9 @@ function NutritionPage() {
               <Arrow />
             </ButtonLink>
           </div>
+        </div>
+        <div className="container-page mt-8">
+          <SourcesLink category="nutrition" />
         </div>
       </Section>
     </div>

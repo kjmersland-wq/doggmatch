@@ -6,6 +6,7 @@ import { careTopics, getCareTopic } from "@/data/care/topics";
 import { knownBreedIds } from "@/lib/dogs/profile";
 import { useMyDog } from "@/lib/care/store";
 import { useCopy } from "@/i18n";
+import { SourcesLink } from "@/components/dogmatch/sources-link";
 
 export const Route = createFileRoute("/my-dog/care/$topicId")({
   loader: ({ params }) => {
@@ -238,6 +239,9 @@ function CareTopicPage() {
               </li>
             ))}
         </ul>
+        <div className="mt-8">
+          <SourcesLink category="health" />
+        </div>
       </Section>
     </div>
   );

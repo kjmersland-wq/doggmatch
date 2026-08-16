@@ -6,6 +6,7 @@ import { getTravelWithDifferentDogs } from "@/data/travel/content";
 import heroImage from "@/assets/travel-hike.jpg";
 import carImage from "@/assets/travel-car.jpg";
 import abroadImage from "@/assets/travel-abroad.jpg";
+import { SourcesLink } from "@/components/dogmatch/sources-link";
 
 const title = "Travel and adventures with your dog — car, trail and abroad | DoggMatch";
 const description =
@@ -167,6 +168,9 @@ function TravelPage() {
           />
           <div className="mt-12">
             <CardGrid items={getTravelWithDifferentDogs()} />
+          </div>
+          <div className="mt-10">
+            <SourcesLink category="travel" />
           </div>
         </div>
       </Section>
