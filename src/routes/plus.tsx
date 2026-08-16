@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Arrow, ButtonLink, Badge, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { SectionHead } from "@/components/dogmatch/journey/parts";
 import { JoinPlusButton } from "@/components/dogmatch/plus/join";
+import { MemberCardShowcase } from "@/components/dogmatch/plus/card-showcase";
 import { cn } from "@/lib/utils";
 import heroImage from "@/assets/plus-hero.jpg";
 import trainImage from "@/assets/train-recall.jpg";
@@ -774,6 +775,9 @@ function PlusPage() {
           </div>
         </div>
       </Section>
+
+      {/* 14b — Member card and benefits */}
+      <MemberCardShowcase />
 
       {/* 15 — Journey */}
       <Section className="container-page pt-0">

@@ -36,51 +36,39 @@ function VerifyPage() {
   const valid = data?.found && data.status === "active";
 
   return (
-    <div className="container-page pt-32 pb-32">
-      <BrandLock />
-      <h1 className="display-xl mt-8 max-w-2xl">
-        {isLoading
-          ? "Checking…"
-          : valid
-            ? "Yes — this is a member"
-            : data?.found
-              ? "This membership has ended"
-              : "We can't find that card"}
-      </h1>
-
-      {!isLoading && (
-        <div className="mt-8 max-w-md rounded-[1.5rem] border border-border bg-card p-6 md:p-8">
-          <Line label="Member ID" value={data?.found ? data.memberId : memberId} />
-          {data?.found && <Line label="Name" value={data.name} />}
-          <Line
-            label="Status"
-            value={data?.found ? (valid ? "Active DoggMatch+ member" : "Ended") : "Not found"}
-          />
-          {data?.found && data.validThrough && (
-            <Line
-              label="Valid through"
-              value={new Date(data.validThrough).toLocaleDateString(undefined, {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}
-            />
-          )}
+    <div className="container-page flex min-h-[70vh] flex-col items-center justify-center pt-28 pb-24 text-center">
+      <div className="w-full max-w-sm rounded-[1.75rem] border border-border bg-card p-8 md:p-10">
+        <div className="flex justify-center">
+          <BrandLock />
         </div>
-      )}
+        <p className="mt-6 font-display text-2xl tracking-tight">
+          DoggMatch<span className="text-accent">+</span>
+        </p>
 
-      <p className="mt-8 max-w-xl text-sm leading-relaxed text-muted-foreground">
-        We only show what's needed to confirm a card. Nothing else about the member is shared here.
-      </p>
+        {isLoading ? (
+          <p className="mt-6 text-muted-foreground">Checking…</p>
+        ) : valid ? (
+          <>
+            <p className="mt-6 text-lg font-medium text-accent">✓ Active member</p>
+            {data?.found && data.validThrough && (
+              <p className="mt-2 text-[0.9375rem] text-muted-foreground">
+                Valid until: {formatDate(data.validThrough)}
+              </p>
+            )}
+          </>
+        ) : (
+          <p className="mt-6 text-lg font-medium text-muted-foreground">
+            {data?.found ? "Membership has ended" : "Card not found"}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
 
-function Line({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex items-baseline justify-between gap-6 border-b border-border/60 py-3 last:border-0">
-      <span className="text-sm text-muted-foreground">{label}</span>
-      <span className="text-right text-[0.9375rem]">{value}</span>
-    </div>
-  );
+/** dd.mm.yyyy — the only detail we share publicly. */
+function formatDate(value: string) {
+  const d = new Date(value);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${pad(d.getDate())}.${pad(d.getMonth() + 1)}.${d.getFullYear()}`;
 }
