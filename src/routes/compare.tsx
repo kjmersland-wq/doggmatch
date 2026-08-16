@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { useT } from "@/i18n";
 import { breeds, type BreedId } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
