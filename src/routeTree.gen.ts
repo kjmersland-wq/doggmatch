@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BrochureRouteImport } from './routes/brochure'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DogLifeRouteImport } from './routes/dog-life'
@@ -80,6 +81,11 @@ const AccountRoute = AccountRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrochureRoute = BrochureRouteImport.update({
+  id: '/brochure',
+  path: '/brochure',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompareRoute = CompareRouteImport.update({
@@ -328,6 +334,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/brochure': typeof BrochureRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/dog-life': typeof DogLifeRoute
@@ -382,6 +389,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/brochure': typeof BrochureRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/dog-life': typeof DogLifeRoute
@@ -433,6 +441,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/brochure': typeof BrochureRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/dog-life': typeof DogLifeRoute
@@ -489,6 +498,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/auth'
+    | '/brochure'
     | '/compare'
     | '/contact'
     | '/dog-life'
@@ -543,6 +553,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/auth'
+    | '/brochure'
     | '/compare'
     | '/contact'
     | '/dog-life'
@@ -593,6 +604,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/auth'
+    | '/brochure'
     | '/compare'
     | '/contact'
     | '/dog-life'
@@ -648,6 +660,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AccountRoute: typeof AccountRoute
   AuthRoute: typeof AuthRoute
+  BrochureRoute: typeof BrochureRoute
   CompareRoute: typeof CompareRoute
   ContactRoute: typeof ContactRoute
   DogLifeRoute: typeof DogLifeRoute
@@ -699,6 +712,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/brochure': {
+      id: '/brochure'
+      path: '/brochure'
+      fullPath: '/brochure'
+      preLoaderRoute: typeof BrochureRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/compare': {
@@ -1133,6 +1153,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AccountRoute: AccountRoute,
   AuthRoute: AuthRoute,
+  BrochureRoute: BrochureRoute,
   CompareRoute: CompareRoute,
   ContactRoute: ContactRoute,
   DogLifeRoute: DogLifeRoute,
