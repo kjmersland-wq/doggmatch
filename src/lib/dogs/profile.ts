@@ -296,8 +296,8 @@ export function traitBasisNote(profile: DogTraitProfile): string {
       });
     case "mix-known":
       return pick({
-        en: "Based mostly on your own dog, with the breeds in the mix as background. A mix is never an exact copy of the breeds behind it.",
-        no: "Bygger mest på din egen hund, med rasene i blandingen som bakgrunn. En blanding blir aldri en nøyaktig kopi av rasene bak den.",
+        en: "Built mostly on your own dog, combined with what each breed in the mix tends to bring — the more demanding side sets the bar for needs, the more careful side for what we'd promise. A mix is never an exact copy of the breeds behind it.",
+        no: "Bygger mest på din egen hund, kombinert med det hver rase i blandingen pleier å bidra med — den mest krevende siden setter nivået for behov, den mest forsiktige for hva vi tør love. En blanding blir aldri en nøyaktig kopi av rasene bak den.",
       });
     case "individual":
       return pick({
