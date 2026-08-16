@@ -33,8 +33,9 @@ function TermsPage() {
     >
       <LegalSection title="Who we are">
         <p>
-          DoggMatch is built and run by KM TECH LABS, Kristiansand, Norway. When we say "we" or "us"
-          below, that's who we mean. When we say "you", we mean whoever is using the site.
+          DoggMatch is built and run by KM TECH LABS, org.nr. 934 044 029, Kristiansand, Norway.
+          When we say "we" or "us" below, that's who we mean. When we say "you", we mean whoever is
+          using the site.
         </p>
       </LegalSection>
 
