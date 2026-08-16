@@ -181,6 +181,23 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
+    <RootBody queryClient={queryClient} />
+  );
+}
+
+/** Keyboard users get straight to the content, ahead of the navigation. */
+function SkipLink() {
+  const c = useCopy({ en: { skip: "Skip to content" }, no: { skip: "Hopp til innhold" } });
+  return (
+    <a href="#main" className="skip-link">
+      {c.skip}
+    </a>
+  );
+}
+
+function RootBody({ queryClient }: { queryClient: QueryClient }) {
+
+  return (
     <QueryClientProvider client={queryClient}>
       <LocaleProvider>
         <SkipLink />
