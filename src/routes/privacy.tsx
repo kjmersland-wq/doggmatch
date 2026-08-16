@@ -33,9 +33,9 @@ function PrivacyPage() {
     >
       <LegalSection title="Who is responsible for your data">
         <p>
-          DoggMatch is built and run by KM TECH LABS in Kristiansand, Norway. KM TECH LABS is the
-          data controller for personal data processed through this website, and decides why and how
-          that data is used.
+          DoggMatch is built and run by KM TECH LABS, org.nr. 934 044 029, in Kristiansand, Norway.
+          KM TECH LABS is the data controller for personal data processed through this website, and
+          decides why and how that data is used.
         </p>
         <p>
           Norway is part of the EEA, so the EU General Data Protection Regulation (GDPR) applies to

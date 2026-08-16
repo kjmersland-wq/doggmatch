@@ -54,8 +54,8 @@ export function SiteFooter() {
 
           <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
             {t.footer.builtBy}{" "}
-            <span className="font-medium tracking-[0.02em] text-foreground">KM TECH LABS</span>{" "}
-            {t.footer.builtIn}
+            <span className="font-medium tracking-[0.02em] text-foreground">KM TECH LABS</span>,
+            org.nr. 934 044 029, {t.footer.builtIn}
           </p>
         </div>
       </div>
