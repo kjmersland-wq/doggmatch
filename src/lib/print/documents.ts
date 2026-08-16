@@ -55,12 +55,12 @@ function dogFields(ctx: DocContext): Block {
 
 function contactBlocks(ctx: DocContext): DocSection[] {
   return contactGroups.map((group) => ({
-    heading: pick(group.title),
+    heading: group.title,
     blocks: [
       {
         kind: "fields",
         fields: group.fields.map((f) => ({
-          label: pick(f.label),
+          label: f.label,
           value: ctx.contacts[group.id]?.[f.key],
         })),
       } as Block,
@@ -77,7 +77,7 @@ function infoSection(ctx: DocContext): DocSection {
     }),
     blocks: infoFields.map((field) => ({
       kind: "fields",
-      fields: [{ label: pick(field.label), value: ctx.info[field.key], wide: true }],
+      fields: [{ label: field.label, value: ctx.info[field.key], wide: true }],
     })),
   };
 }
