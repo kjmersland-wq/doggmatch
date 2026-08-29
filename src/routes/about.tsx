@@ -1,27 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useT, useCopy } from "@/i18n";
 import { Arrow, ButtonLink, Eyebrow } from "@/components/dogmatch/ui";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "About DoggMatch — a kinder way to choose a dog";
 const description =
   "DoggMatch is a free, honest way to work out which dog might suit your life. We always show our reasoning, and we ask for as little about you as we can.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Om DoggMatch — en snillere måte å velge hund på",
+    description:
+      "DoggMatch er en gratis og ærlig måte å finne ut hvilken hund som kan passe livet ditt. Vi viser alltid hvordan vi tenker, og spør om minst mulig om deg.",
+  },
+  pl: {
+    title: "O DoggMatch — łagodniejszy sposób wybierania psa",
+    description:
+      "DoggMatch to darmowy i uczciwy sposób, by ustalić, jaki pies może pasować do Twojego życia. Zawsze pokazujemy, jak liczymy, i pytamy o Ciebie tak mało, jak się da.",
+  },
+};
+
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/about") },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/about"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/about", seoCopy),
   component: AboutPage,
 });
 

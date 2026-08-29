@@ -7,27 +7,29 @@ import heroImage from "@/assets/get-a-dog-hero.jpg";
 import puppyImage from "@/assets/puppy.jpg";
 import adultImage from "@/assets/adult-dog.jpg";
 import welcomeImage from "@/assets/welcome-home.jpg";
-import { seoLinks } from "@/lib/seo";
+import { seoLinks, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Get a dog — the whole journey, from thinking about it to bringing them home | DoggMatch";
 const description =
   "Thinking about getting a dog? Work out whether now is the right time, find the dogs that suit your life, choose carefully, understand the costs and get your home ready.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Skaffe hund — hele veien, fra tanken til de er hjemme | DoggMatch",
+    description:
+      "Vurderer du å skaffe hund? Finn ut om tiden er riktig nå, finn hundene som passer livet ditt, velg med omhu, forstå kostnadene og gjør hjemmet klart.",
+  },
+  pl: {
+    title: "Zanim weźmiesz psa — cała droga, od pomysłu po powrót do domu | DoggMatch",
+    description:
+      "Myślisz o psie? Sprawdź, czy to dobry moment, znajdź psy pasujące do Twojego życia, wybieraj rozważnie, poznaj koszty i przygotuj dom.",
+  },
+};
+
 export const Route = createFileRoute("/get-a-dog/")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/get-a-dog"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/get-a-dog", seoCopy),
   component: GetADogPage,
 });
 

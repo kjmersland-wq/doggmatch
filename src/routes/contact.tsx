@@ -6,26 +6,28 @@ import { Button, Eyebrow, Arrow } from "@/components/dogmatch/ui";
 import { sendContactMessage } from "@/lib/contact/contact.functions";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 
 const title = "Contact DoggMatch";
 const description =
   "Get in touch with DoggMatch. We're here to help with questions about finding the right dog, training, health, travel and life with your dog.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Kontakt DoggMatch",
+    description:
+      "Ta kontakt med DoggMatch. Vi hjelper gjerne med spørsmål om å finne riktig hund, trening, helse, reiser og livet med hund.",
+  },
+  pl: {
+    title: "Kontakt z DoggMatch",
+    description:
+      "Napisz do nas. Chętnie pomożemy w pytaniach o wybór właściwego psa, szkolenie, zdrowie, podróże i życie z psem.",
+  },
+};
+
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/contact") },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/contact"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/contact", seoCopy),
   component: ContactPage,
 });
 

@@ -14,28 +14,29 @@ import dogLifeImage from "@/assets/dog-life.jpg";
 import travelImage from "@/assets/travel-car.jpg";
 import lunaImage from "@/assets/breed-labrador-retriever.jpg";
 import maxImage from "@/assets/breed-cocker-spaniel.jpg";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 
 const title = "DoggMatch+ | Premium Dog Life Membership";
 const description =
   "DoggMatch+ brings your dog's training, health, nutrition, care, travel and everyday life together in one beautiful place.";
 const url = "https://www.doggmatch.com/plus";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "DoggMatch+ | Medlemskap for hverdagen med hund",
+    description:
+      "DoggMatch+ samler hundens trening, helse, ernæring, stell, reiser og hverdag på ett fint sted.",
+  },
+  pl: {
+    title: "DoggMatch+ | Członkostwo dla codziennego życia z psem",
+    description:
+      "DoggMatch+ zbiera szkolenie, zdrowie, żywienie, pielęgnację, podróże i codzienność Twojego psa w jednym pięknym miejscu.",
+  },
+};
+
 export const Route = createFileRoute("/plus")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs(url) },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks(url),
-  }),
+  head: (ctx) => localizedHead(ctx, "/plus", seoCopy),
   component: PlusPage,
 });
 

@@ -3,27 +3,29 @@ import { useState } from "react";
 import { useT, pick } from "@/i18n";
 import { Button, Eyebrow } from "@/components/dogmatch/ui";
 import dogLifeImage from "@/assets/dog-life.jpg";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Dog Life — dog-friendly places where you live | DoggMatch";
 const description =
   "Parks, good walks, training classes, vets, groomers and places that welcome dogs. Just tell us where you live.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Hundeliv — hundevennlige steder der du bor | DoggMatch",
+    description:
+      "Parker, fine turer, hundekurs, veterinærer, hundefrisører og steder som tar godt imot hunder. Bare fortell oss hvor du bor.",
+  },
+  pl: {
+    title: "Psie życie — miejsca przyjazne psom w Twojej okolicy | DoggMatch",
+    description:
+      "Parki, dobre spacery, szkolenia, weterynarze, groomerzy i miejsca, które lubią psy. Wystarczy, że powiesz nam, gdzie mieszkasz.",
+  },
+};
+
 export const Route = createFileRoute("/dog-life")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/dog-life") },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/dog-life"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/dog-life", seoCopy),
   component: DogLifePage,
 });
 

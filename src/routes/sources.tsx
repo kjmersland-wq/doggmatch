@@ -2,28 +2,29 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCopy } from "@/i18n";
 import { Eyebrow } from "@/components/dogmatch/ui";
 import { lastReviewedAll, resolvedSourceCategories } from "@/data/sources/registry";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Sources & methodology — DoggMatch";
 const description =
   "Where DoggMatch's information comes from: veterinary bodies, kennel organisations, authorities and welfare charities — and exactly how our matching maths works.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Kilder og metode — DoggMatch",
+    description:
+      "Hvor informasjonen i DoggMatch kommer fra: veterinærfaglige organer, kennelorganisasjoner, myndigheter og dyrevernorganisasjoner — og nøyaktig hvordan matchingen regnes ut.",
+  },
+  pl: {
+    title: "Źródła i metodyka — DoggMatch",
+    description:
+      "Skąd pochodzą informacje w DoggMatch: organizacje weterynaryjne, związki kynologiczne, urzędy i organizacje ochrony zwierząt — oraz dokładnie to, jak liczy się dopasowanie.",
+  },
+};
+
 export const Route = createFileRoute("/sources")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/sources") },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/sources"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/sources", seoCopy),
   component: SourcesPage,
 });
 

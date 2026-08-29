@@ -25,28 +25,29 @@ import partnerVet from "@/assets/partner-vet.jpg";
 import partnerTraining from "@/assets/partner-training.jpg";
 import partnerOutdoors from "@/assets/partner-outdoors.jpg";
 import partnerMoment from "@/assets/partner-moment.jpg";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Become a DoggMatch Partner";
 const description =
   "Offer an exclusive discount or benefit to DoggMatch+ members. No listing fee, no commission — just your business in front of dog owners who are already looking.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Bli DoggMatch-partner",
+    description:
+      "Gi DoggMatch+-medlemmer en eksklusiv rabatt eller fordel. Ingen listepris, ingen provisjon — bare bedriften din foran hundeeiere som allerede leter.",
+  },
+  pl: {
+    title: "Zostań partnerem DoggMatch",
+    description:
+      "Zaproponuj członkom DoggMatch+ wyjątkowy rabat lub korzyść. Bez opłat za wpis, bez prowizji — po prostu Twoja firma przed oczami opiekunów psów, którzy już szukają.",
+  },
+};
+
 export const Route = createFileRoute("/partners")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/partners") },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/partners"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/partners", seoCopy),
   component: PartnersPage,
 });
 

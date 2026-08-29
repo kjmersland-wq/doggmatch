@@ -11,7 +11,7 @@ import { useMatchProfile } from "@/lib/matching/store";
 import { Eyebrow } from "@/components/dogmatch/ui";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { cn } from "@/lib/utils";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const personalCopy = {
@@ -51,20 +51,22 @@ const title = "Compare dogs side by side | DoggMatch";
 const description =
   "Torn between a few dogs? Put up to three side by side and see where they really differ — energy, shedding, grooming, lifespan and yearly cost.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Sammenlign hunder side om side | DoggMatch",
+    description:
+      "Vanskelig å velge mellom noen hunder? Sett opptil tre ved siden av hverandre og se hvor de faktisk skiller seg — energi, pelsfelling, stell, levealder og årlige kostnader.",
+  },
+  pl: {
+    title: "Porównaj psy obok siebie | DoggMatch",
+    description:
+      "Wahasz się między kilkoma psami? Zestaw do trzech obok siebie i zobacz, czym naprawdę się różnią — energia, linienie, pielęgnacja, długość życia i roczne koszty.",
+  },
+};
+
 export const Route = createFileRoute("/compare")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/compare") },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/compare"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/compare", seoCopy),
   component: ComparePage,
 });
 
