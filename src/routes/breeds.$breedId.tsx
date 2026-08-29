@@ -112,6 +112,8 @@ const labels = {
 
 function BreedDetail() {
   const t = useT();
+  const c = useCopy(pageCopy);
+  const profile = useMatchProfile();
   const { breed } = Route.useLoaderData();
   const content = breedContent()[breed.id];
   const traitRows: [string, number][] = (Object.keys(labels) as (keyof typeof labels)[]).map((key) => [
