@@ -31,6 +31,28 @@ const SECTION_IDS = [
   "find-your-dog",
 ] as const;
 
+/** Trait names in the comparison preview, so the whole card reads in one language. */
+const traitCopy = {
+  en: {
+    energy: "Energy",
+    trainability: "Trainability",
+    shedding: "Shedding",
+    apartmentSuitability: "Apartment",
+  },
+  no: {
+    energy: "Energi",
+    trainability: "Lærevillighet",
+    shedding: "Pelsfelling",
+    apartmentSuitability: "Leilighet",
+  },
+  pl: {
+    energy: "Energia",
+    trainability: "Podatność na szkolenie",
+    shedding: "Linienie",
+    apartmentSuitability: "Mieszkanie",
+  },
+} as const;
+
 const localCopy = {
   en: {
     matchLooks: "What a match looks like",
@@ -229,6 +251,7 @@ function useParallax() {
 function HomePage() {
   const t = useT();
   const c = useCopy(localCopy);
+  const traits = useCopy(traitCopy);
   const parallax = useParallax();
   const featured = breeds.slice(0, 4);
 
@@ -434,7 +457,7 @@ function HomePage() {
               {(["energy", "trainability", "shedding", "apartmentSuitability"] as const).map((key) => (
                 <div key={key} className="grid grid-cols-2 gap-4">
                   <TraitMeter
-                    label={key === "apartmentSuitability" ? "Apartment" : key.charAt(0).toUpperCase() + key.slice(1)}
+                    label={traits[key]}
                     value={breeds[0]!.traits[key]}
                   />
                   <TraitMeter label="" value={breeds[1]!.traits[key]} />
