@@ -21,6 +21,13 @@ const copy = {
     worthKnowing: "Verdt å vite",
     basedOn: "Basert på råd fra",
   },
+  pl: {
+    safety: { safe: "W porządku w małych ilościach", care: "Zachowaj ostrożność", avoid: "Nie podawaj tego" } as Record<FoodSafety, string>,
+    howMuch: "Ile: ",
+    weightChartAlt: "Waga w czasie",
+    worthKnowing: "Warto wiedzieć",
+    basedOn: "Na podstawie wskazówek od",
+  },
 } as const;
 
 /* ---------------------------------------------------------------- Cards */

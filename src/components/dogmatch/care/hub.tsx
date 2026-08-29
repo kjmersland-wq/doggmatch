@@ -11,6 +11,7 @@ import { useCopy } from "@/i18n";
 const copy = {
   en: { anotherDog: "Another dog", markDone: "Mark {label} as done", today: "Today" },
   no: { anotherDog: "Legg til hund", markDone: "Merk {label} som gjort", today: "I dag" },
+  pl: { anotherDog: "Dodaj kolejnego psa", markDone: "Oznacz {label} jako zrobione", today: "Dziś" },
 } as const;
 
 /** Switch between the dogs you've added, without leaving the page. */

@@ -102,6 +102,41 @@ const copy = {
     differentTitle: "Hvem du reiser med endrer alt.",
     differentBody: "En valp, en gammel hund, en rase med flatt ansikt og en sprek voksen hund trenger ganske ulike planer for samme reise.",
   },
+  pl: {
+    eyebrow: "Podróże i przygody",
+    heroTitle: "Wybieracie się gdzieś razem?",
+    heroBody:
+      "Połowa udanej podróży to bezpieczne dotarcie na miejsce. Druga połowa to wiedza, że twój pies naprawdę się cieszy — i wiedza, kiedy zawrócić.",
+    checkJourney: "Sprawdź moją podróż",
+    carSafety: "Bezpieczeństwo w samochodzie",
+    open: "Otwórz",
+    sections: [
+      {
+        to: "/travel/car",
+        label: "W samochodzie",
+        title: "Bezpieczne dotarcie na miejsce.",
+        body: "Jak prawidłowo zabezpieczyć psa, pierwsze przejazdy dla niespokojnego psa, choroba lokomocyjna, długie trasy — i dlaczego zaparkowane latem auto jest tak niebezpieczne.",
+        alt: "Pies zabezpieczony w transporterze w bagażniku kombi",
+      },
+      {
+        to: "/travel/outdoors",
+        label: "Na zewnątrz",
+        title: "Spacery, szlaki i pogoda.",
+        body: "Stopniowe wydłużanie wędrówek, upał i zimno, łapy na gorącym asfalcie i żwirze, bezpieczeństwo nad wodą oraz miejsca, w których psy są naprawdę mile widziane.",
+        alt: "Kobieta i jej pies odpoczywają na górskim szlaku o złotej godzinie",
+      },
+      {
+        to: "/travel/abroad",
+        label: "Przekraczanie granic",
+        title: "Podróż za granicę.",
+        body: "Powiedz nam, dokąd i kiedy jedziecie. Pokażemy, co zwykle jest wymagane — chip, szczepienie przeciw wściekliźnie, paszport, odrobaczanie — i wskażemy oficjalne źródło z ostatecznym słowem.",
+        alt: "Pies czekający spokojnie obok walizki w przestronnej hali odlotów",
+      },
+    ],
+    differentEyebrow: "Nie każdy pies podróżuje tak samo",
+    differentTitle: "To, z kim podróżujesz, zmienia wszystko.",
+    differentBody: "Szczeniak, starszy pies, rasa płaskonosa i sprawny dorosły pies potrzebują zupełnie innych planów na tę samą podróż.",
+  },
 } as const;
 
 function TravelPage() {

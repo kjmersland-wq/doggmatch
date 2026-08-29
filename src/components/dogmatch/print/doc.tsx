@@ -5,6 +5,7 @@ import { useCopy } from "@/i18n";
 const copy = {
   en: { writtenDown: "Written down" },
   no: { writtenDown: "Skrevet ut" },
+  pl: { writtenDown: "Zapisano" },
 } as const;
 
 /**

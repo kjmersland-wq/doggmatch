@@ -62,6 +62,21 @@ const copy = {
     compareCta: "Sammenlign kostnader side om side",
     prepareCta: "Gjør hjemmet ditt klart",
   },
+  pl: {
+    eyebrow: "Zobowiązanie",
+    title: "Ile naprawdę kosztuje pies?",
+    intro:
+      "Pieniądze to najmniej romantyczna część tego wszystkiego i ta, która najczęściej boli później. Oto, jak to wygląda, szczerze. Rzeczywiste ceny bardzo różnią się w zależności od kraju, miasta i psa.",
+    yourMatch: "Twoje dopasowanie",
+    runningCostPrefix: "Orientacyjny koszt utrzymania rocznie, gdy pies się już zadomowi:",
+    runningCostSuffix:
+      "To szeroki przedział z naszej biblioteki ras, a nie wycena — ceny jedzenia, ubezpieczenia i pielęgnacji różnią się bardzo w zależności od kraju.",
+    noticeTitle: "Skąd biorą się te liczby",
+    noticeBody:
+      "Każda strona rasy pokazuje orientacyjny roczny przedział kosztów dla tej rasy, a Porównywarka zestawia dwie lub trzy z nich obok siebie. Wolimy pokazać Ci szeroki, uczciwy przedział niż dokładną liczbę, która okaże się błędna tam, gdzie mieszkasz.",
+    compareCta: "Porównaj koszty obok siebie",
+    prepareCta: "Przygotuj swój dom",
+  },
 } as const;
 
 function CostsPage() {
