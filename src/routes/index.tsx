@@ -429,6 +429,22 @@ function HomePage() {
         </div>
       </Section>
 
+      {/* -------------------------------------------------------------- FAQ */}
+      <Section id="faq" className="pt-0">
+        <div className="container-page">
+          <Eyebrow>{c.faqEyebrow}</Eyebrow>
+          <h2 className="display-lg mt-6 max-w-lg">{c.faqTitle}</h2>
+          <dl className="mt-12 grid gap-x-14 gap-y-10 md:grid-cols-2">
+            {c.faq.map((item) => (
+              <div key={item.q}>
+                <dt className="font-display text-lg leading-tight tracking-tight">{item.q}</dt>
+                <dd className="mt-3 max-w-md leading-relaxed text-muted-foreground">{item.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </Section>
+
       {/* ---------------------------------------------------------- Closing */}
       <Section id="find-your-dog" className="border-t border-border pt-16 md:pt-24">
         <div className="container-page max-w-3xl text-center">
