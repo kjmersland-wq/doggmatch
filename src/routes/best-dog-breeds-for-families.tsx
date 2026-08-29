@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useT, useCopy } from "@/i18n";
+import { useCopy } from "@/i18n";
 import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
 import { localizedHead, seoLinks } from "@/lib/seo";
 import { breeds, type BreedId } from "@/data/breeds";
@@ -165,10 +165,9 @@ function LevelDot({ level, label }: { level: number; label: string }) {
 }
 
 function FamilyBreedsPage() {
-  const t = useT();
   const c = useCopy(copy);
   const content = breedContent();
-  const lang = t.locale as "en" | "no" | "pl";
+
 
   return (
     <article className="mx-auto max-w-3xl px-5 py-16 sm:py-24">
@@ -279,7 +278,7 @@ function FamilyBreedsPage() {
           })}
         </div>
         <p className="mt-6 text-sm leading-relaxed text-muted-foreground">{c.allergyNote}</p>
-        <SectionShare path={PATH} section="family-shortlist" />
+        <SectionShare anchor="family-shortlist" title={c.listTitle} />
       </section>
 
       <section className="mt-14 rounded-3xl bg-primary p-8 text-primary-foreground sm:p-10">
@@ -302,14 +301,4 @@ function FamilyBreedsPage() {
       </section>
     </article>
   );
-}
-
-export function familyBreedsJsonLd(lang: string) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: "Best dog breeds for families",
-    inLanguage: lang,
-    isPartOf: { "@type": "WebSite", name: "DoggMatch" },
-  };
 }
