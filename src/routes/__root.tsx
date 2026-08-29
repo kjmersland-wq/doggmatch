@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LocaleProvider, useCopy } from "@/i18n";
+import { localeFromParam } from "@/i18n/locale";
 import { SiteHeader } from "@/components/dogmatch/site-header";
 import { SiteFooter } from "@/components/dogmatch/site-footer";
 import { MobileTabs } from "@/components/dogmatch/mobile-tabs";
@@ -212,10 +213,16 @@ function SkipLink() {
 }
 
 function RootBody({ queryClient }: { queryClient: QueryClient }) {
+  // ?lang= is part of the shareable URL, so the server can render the page in
+  // that language too — no English flash, no hydration mismatch.
+  const langParam = useRouterState({
+    select: (s) => (s.location.search as { lang?: string } | undefined)?.lang,
+  });
+  const initialLocale = localeFromParam(langParam) ?? undefined;
 
   return (
     <QueryClientProvider client={queryClient}>
-      <LocaleProvider>
+      <LocaleProvider initialLocale={initialLocale}>
         <SkipLink />
         <SiteHeader />
         <main id="main" className="pb-20 pt-[72px] print:p-0 lg:pb-0">
