@@ -31,6 +31,7 @@ const copy = {
   en: {
     intro:
       "Seven things people ask us most often, answered the way we'd answer a friend — no hedging, no sales pitch.",
+    familyGuideLink: "See our full guide to the best dog breeds for families",
     guides: [
       {
         id: "family-dogs",
@@ -121,6 +122,7 @@ const copy = {
   no: {
     intro:
       "Sju spørsmål vi får oftest, besvart slik vi ville svart en venn — uten forbehold og uten salgsprat.",
+    familyGuideLink: "Se hele guiden vår til de beste hunderasene for familier",
     guides: [
       {
         id: "family-dogs",
@@ -211,6 +213,7 @@ const copy = {
   pl: {
     intro:
       "Siedem pytań, które słyszymy najczęściej — odpowiadamy tak, jak odpowiedzielibyśmy znajomemu: bez wykrętów i bez sprzedaży.",
+    familyGuideLink: "Zobacz nasz pełny przewodnik po najlepszych rasach psów dla rodzin",
     guides: [
       {
         id: "family-dogs",
