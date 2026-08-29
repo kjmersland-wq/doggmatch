@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { useCopy, useLocale } from "@/i18n";
 import { SITE_URL } from "@/lib/seo";
@@ -59,7 +59,7 @@ function useShareUrl(path?: string, anchor?: string) {
   return href;
 }
 
-type Target = { id: string; label: string; href: string; brand: string; icon: JSX.Element };
+type Target = { id: string; label: string; href: string; brand: string; icon: ReactNode };
 
 function useTargets(url: string, shareTitle: string, shareText: string): Target[] {
   const c = useCopy(copy);
