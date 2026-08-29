@@ -2,10 +2,11 @@ import type { Lesson } from "./types";
 import { pick } from "@/i18n";
 import { lessons as lessonsEn } from "./lessons.en";
 import { lessons as lessonsNo } from "./lessons.no";
+import { lessons as lessonsPl } from "./lessons.pl";
 
 /** Locale-aware lesson list — call inside render so it re-picks on locale change. */
 export function getLessons(): Lesson[] {
-  return pick({ en: lessonsEn, no: lessonsNo });
+  return pick({ en: lessonsEn, no: lessonsNo, pl: lessonsPl });
 }
 
 export function getLessonsById(): Record<string, Lesson> {
