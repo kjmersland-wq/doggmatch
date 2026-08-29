@@ -3,11 +3,15 @@ import { Check, ChevronDown } from "lucide-react";
 import { useLocale, type Locale } from "@/i18n";
 import { cn } from "@/lib/utils";
 
-/** Real Unicode flag emoji, the two-letter code and the native language name. */
+/**
+ * Languages with their flag country code (flagcdn) and native name.
+ * Flags are served as crisp images rather than emoji so they render
+ * identically on every device.
+ */
 const LANGS: { code: Locale; flag: string; short: string; label: string }[] = [
-  { code: "en", flag: "🇬🇧", short: "GB", label: "English" },
-  { code: "no", flag: "🇳🇴", short: "NO", label: "Norsk" },
-  { code: "pl", flag: "🇵🇱", short: "PL", label: "Polski" },
+  { code: "en", flag: "gb", short: "GB", label: "English" },
+  { code: "no", flag: "no", short: "NO", label: "Norsk" },
+  { code: "pl", flag: "pl", short: "PL", label: "Polski" },
 ];
 
 const ARIA_LABEL: Record<Locale, string> = {
@@ -22,9 +26,24 @@ const MENU_LABEL: Record<Locale, string> = {
   pl: "Języki",
 };
 
+function Flag({ country, className }: { country: string; className?: string }) {
+  return (
+    <img
+      src={`https://flagcdn.com/w80/${country}.png`}
+      srcSet={`https://flagcdn.com/w160/${country}.png 2x`}
+      alt=""
+      aria-hidden
+      width={24}
+      height={18}
+      loading="lazy"
+      className={cn("h-[18px] w-6 rounded-[4px] object-cover ring-1 ring-white/20", className)}
+    />
+  );
+}
+
 /**
- * Compact flag + code language dropdown. Keyboard accessible, works the same
- * in the desktop header and the mobile drawer.
+ * Flag + code language dropdown on a deep-navy panel. Keyboard accessible,
+ * works the same in the desktop header and the mobile drawer.
  */
 export function LanguageToggle({
   className,
@@ -87,14 +106,12 @@ export function LanguageToggle({
         aria-haspopup="menu"
         aria-label={`${ARIA_LABEL[locale]} — ${current.label}`}
         className={cn(
-          "flex h-10 items-center gap-1.5 rounded-full border border-border/60 bg-surface/50 px-3 text-[0.8125rem] font-medium leading-none text-foreground backdrop-blur-sm transition-colors hover:bg-surface",
+          "flex h-10 items-center gap-2 rounded-full border border-border/60 bg-surface/50 px-3 text-[0.8125rem] font-semibold leading-none text-foreground backdrop-blur-sm transition-colors hover:bg-surface",
           withLabel && "w-full justify-between",
         )}
       >
-        <span className="flex items-center gap-1.5">
-          <span aria-hidden className="text-base leading-none">
-            {current.flag}
-          </span>
+        <span className="flex items-center gap-2">
+          <Flag country={current.flag} className="ring-black/10" />
           <span className="tracking-wide">{withLabel ? current.label : current.short}</span>
         </span>
         <ChevronDown
@@ -109,8 +126,8 @@ export function LanguageToggle({
           aria-label={MENU_LABEL[locale]}
           onKeyDown={onListKeyDown}
           className={cn(
-            "absolute z-50 mt-2 min-w-[9.5rem] rounded-2xl border border-border/70 bg-background p-1.5 shadow-lg",
-            withLabel ? "left-0 bottom-full mb-2 mt-0 w-full" : "right-0 top-full",
+            "absolute z-50 min-w-[11rem] rounded-2xl bg-navy-deep p-1.5 shadow-2xl shadow-navy-deep/40 ring-1 ring-white/10",
+            withLabel ? "left-0 bottom-full mb-2 w-full" : "right-0 top-full mt-2",
           )}
         >
           {LANGS.map((l) => {
@@ -123,18 +140,18 @@ export function LanguageToggle({
                 aria-checked={active}
                 onClick={() => choose(l.code)}
                 className={cn(
-                  "flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2 text-left text-[0.9375rem] transition-colors",
+                  "flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left transition-colors",
                   active
-                    ? "bg-surface font-medium text-foreground"
-                    : "text-muted-foreground hover:bg-surface/60 hover:text-foreground",
+                    ? "bg-white/10 text-white"
+                    : "text-white/70 hover:bg-white/5 hover:text-white",
                 )}
               >
-                <span className="flex items-center gap-2">
-                  <span aria-hidden className="text-base leading-none">
-                    {l.flag}
+                <span className="flex items-center gap-2.5">
+                  <Flag country={l.flag} />
+                  <span className="text-[0.9375rem] font-semibold tracking-wide">{l.short}</span>
+                  <span className={cn("text-[0.8125rem]", active ? "text-white/80" : "text-white/50")}>
+                    {l.label}
                   </span>
-                  <span className="font-medium tracking-wide">{l.short}</span>
-                  <span className="text-[0.8125rem] text-muted-foreground">{l.label}</span>
                 </span>
                 {active && <Check className="h-4 w-4 shrink-0 text-accent" aria-hidden />}
               </button>
