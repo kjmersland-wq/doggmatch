@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
 import { useEffect, useRef, useState } from "react";
-import { useT, useCopy } from "@/i18n";
+import { Check, Copy } from "lucide-react";
+import { useT, useCopy, useLocale } from "@/i18n";
 import { breeds } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
