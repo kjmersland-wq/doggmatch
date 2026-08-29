@@ -44,9 +44,14 @@ import {
   traitBasisNote,
 } from "@/lib/dogs/profile";
 import { useActiveDog } from "@/lib/training/store";
+import { breedById } from "@/data/breeds";
+import { saveMatchProfile } from "@/lib/matching/store";
+import { scoreReading } from "@/lib/matching/insights";
 import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/types";
 import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "@/components/dogmatch/ui";
 import { MatchNotes } from "@/components/dogmatch/match-notes";
+import { FitPanel } from "@/components/dogmatch/fit-panel";
+import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { cn } from "@/lib/utils";
 import { seoLinks, abs } from "@/lib/seo";
 
