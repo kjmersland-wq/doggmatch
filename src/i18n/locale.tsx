@@ -100,7 +100,7 @@ function detect(): Locale {
   return "en";
 }
 
-export function LocaleProvider({ children, initialLocale }: { children: ReactNode; initialLocale?: Locale }) {
+export function LocaleProvider({ children, initialLocale }: { children: ReactNode; initialLocale?: Locale | undefined }) {
   // The language in the URL is known on the server as well, so the first
   // paint already matches what the reader asked for.
   const [locale, setState] = useState<Locale>(initialLocale ?? "en");
