@@ -182,6 +182,81 @@ function BreedDetail() {
         </div>
       </section>
 
+      {/* what living with them actually looks like */}
+      <section className="container-page border-t border-border py-16">
+        <h2 className="display-md">{c.dayTitle}</h2>
+        <ol className="mt-8 grid max-w-3xl gap-5">
+          {typicalDay(breed.traits).map((line, i) => (
+            <li key={line} className="flex gap-4">
+              <span aria-hidden="true" className="font-display text-sm tabular-nums text-muted-foreground">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className="text-[0.9375rem] leading-relaxed">{line}</span>
+            </li>
+          ))}
+        </ol>
+
+        <h3 className="display-md mt-14">{c.commitmentTitle}</h3>
+        <dl className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {commitmentFacts(breed).map((fact) => (
+            <div key={fact.label} className="bg-card p-6">
+              <dt className="eyebrow">{fact.label}</dt>
+              <dd className="mt-2 font-display text-base leading-snug">{fact.value}</dd>
+              {fact.detail && (
+                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{fact.detail}</dd>
+              )}
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section className="container-page grid gap-12 border-t border-border py-16 md:grid-cols-2 md:gap-16">
+        <div>
+          <h2 className="display-md">{c.suitedTitle}</h2>
+          <ul className="mt-7 space-y-4">
+            {bestSuitedFor(breed.traits).map((line) => (
+              <li key={line} className="flex gap-3 text-[0.9375rem] leading-relaxed">
+                <span aria-hidden="true" className="text-primary">
+                  ✓
+                </span>
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 className="display-md">{c.considerTitle}</h2>
+          <ul className="mt-7 space-y-4">
+            {thingsToConsider(breed.traits).map((line) => (
+              <li key={line} className="flex gap-3 text-[0.9375rem] leading-relaxed">
+                <span aria-hidden="true" className="text-accent">
+                  !
+                </span>
+                {line}
+              </li>
+            ))}
+          </ul>
+          <h3 className="mt-10 font-display text-lg leading-tight tracking-tight">{c.healthTitle}</h3>
+          <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+            {healthNote(breed.traits)}
+          </p>
+        </div>
+      </section>
+
+      {/* how they sit against the reader's own answers */}
+      {profile && (
+        <section className="container-page border-t border-border py-16">
+          <h2 className="display-md">{c.yourFitTitle}</h2>
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">{c.yourFitNote}</p>
+          <FitPanel
+            className="mt-8"
+            traits={breed.traits}
+            profile={profile}
+            score={matchDogTraits(breed.traits, profile).score}
+          />
+        </section>
+      )}
+
       <div className="container-page flex flex-wrap gap-3">
         <ButtonLink to="/find-my-dog" size="lg">
           {t.nav.startMatching}
@@ -191,6 +266,8 @@ function BreedDetail() {
           {t.nav.compare}
         </ButtonLink>
       </div>
+
+      <JourneyLinks exclude={["/breeds"]} />
     </article>
   );
 }
