@@ -3,27 +3,29 @@ import { useState } from "react";
 import { useT, pick } from "@/i18n";
 import { Button, Eyebrow } from "@/components/dogmatch/ui";
 import dogLifeImage from "@/assets/dog-life.jpg";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Dog Life — dog-friendly places where you live | DoggMatch";
 const description =
   "Parks, good walks, training classes, vets, groomers and places that welcome dogs. Just tell us where you live.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Hundeliv — hundevennlige steder der du bor | DoggMatch",
+    description:
+      "Parker, fine turer, hundekurs, veterinærer, hundefrisører og steder som tar godt imot hunder. Bare fortell oss hvor du bor.",
+  },
+  pl: {
+    title: "Psie życie — miejsca przyjazne psom w Twojej okolicy | DoggMatch",
+    description:
+      "Parki, dobre spacery, szkolenia, weterynarze, groomerzy i miejsca, które lubią psy. Wystarczy, że powiesz nam, gdzie mieszkasz.",
+  },
+};
+
 export const Route = createFileRoute("/dog-life")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/dog-life") },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/dog-life"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/dog-life", seoCopy),
   component: DogLifePage,
 });
 
@@ -78,7 +80,7 @@ function DogLifePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-8 md:p-12">
             <p className="font-display text-2xl text-primary-foreground">
-              {submitted ? submitted : pick({ en: "Wherever you are", no: "Uansett hvor du er" })}
+              {submitted ? submitted : pick({ en: "Wherever you are", no: "Uansett hvor du er", pl: "Gdziekolwiek jesteś" })}
             </p>
             <p className="mt-2 max-w-md text-sm text-primary-foreground/80">
               {t.dogLife.comingSoon}
@@ -97,6 +99,7 @@ function DogLifePage() {
                   ? pick({
                       en: `We're still gathering places around ${submitted}.`,
                       no: `Vi samler fortsatt steder rundt ${submitted}.`,
+                      pl: `Wciąż zbieramy miejsca w okolicy ${submitted}.`,
                     })
                   : t.dogLife.comingSoon}
               </p>

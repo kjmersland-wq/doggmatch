@@ -72,18 +72,24 @@ function readStored(): Locale | null {
   }
 }
 
-/**
- * A shared link can carry the language it was read in (?lang=pl), which is
- * also what the hreflang alternates point at. An explicit link wins over a
- * previously stored choice.
- */
-function readFromUrl(): Locale | null {
-  if (typeof window === "undefined") return null;
-  const v = (new URLSearchParams(window.location.search).get("lang") || "").toLowerCase();
-  if (v === "no" || v === "nb" || v === "nn") return "no";
+/** Normalises whatever a ?lang= value looks like into a locale we support. */
+export function localeFromParam(value: unknown): Locale | null {
+  const v = String(value ?? "").toLowerCase();
+  if (v === "no" || v === "nb" || v === "nn" || v === "nb-no") return "no";
   if (v === "pl" || v === "pl-pl") return "pl";
   if (v === "en") return "en";
   return null;
+}
+
+/**
+ * A shared link can carry the language it was read in (?lang=pl), which is
+ * also what the hreflang alternates point at. An explicit link wins over a
+ * previously stored choice — and because the server can read it too, the
+ * page is rendered in that language straight away.
+ */
+function readFromUrl(): Locale | null {
+  if (typeof window === "undefined") return null;
+  return localeFromParam(new URLSearchParams(window.location.search).get("lang"));
 }
 
 function detect(): Locale {
@@ -94,8 +100,10 @@ function detect(): Locale {
   return "en";
 }
 
-export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setState] = useState<Locale>("en");
+export function LocaleProvider({ children, initialLocale }: { children: ReactNode; initialLocale?: Locale | undefined }) {
+  // The language in the URL is known on the server as well, so the first
+  // paint already matches what the reader asked for.
+  const [locale, setState] = useState<Locale>(initialLocale ?? "en");
   const [ready, setReady] = useState(false);
 
   // Keep the module mirror in sync during render, before any child reads it
@@ -119,6 +127,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     setState(next);
     setReady(true);
   }, []);
+
 
   useEffect(() => {
     setCurrentLocale(locale);

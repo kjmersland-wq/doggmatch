@@ -84,3 +84,57 @@ export function jsonLd(data: Record<string, unknown>) {
     children: JSON.stringify({ "@context": "https://schema.org", ...data }),
   };
 }
+
+/** Title + description for one language. */
+export type SeoCopy = { title: string; description: string };
+
+type HeadCtx = { match?: { search?: unknown } };
+
+/** The language a request asked for (?lang=), readable inside `head()`. */
+export function headLocale(ctx: HeadCtx): "en" | "no" | "pl" {
+  const raw = String((ctx?.match?.search as { lang?: string } | undefined)?.lang ?? "").toLowerCase();
+  if (raw === "no" || raw === "nb" || raw === "nn" || raw === "nb-no") return "no";
+  if (raw === "pl" || raw === "pl-pl") return "pl";
+  return "en";
+}
+
+/**
+ * Meta + links for a public page, written in the language the URL asks for.
+ * The canonical points at that language's URL and every language lists all
+ * three alternates, so EN, NO and PL stay reciprocal.
+ */
+export function localizedHead(
+  ctx: HeadCtx,
+  path: string,
+  copy: { en: SeoCopy; no?: SeoCopy; pl?: SeoCopy },
+  options?: { image?: string; type?: string },
+) {
+  const locale = headLocale(ctx);
+  const { title, description } = (locale === "no" ? copy.no : locale === "pl" ? copy.pl : copy.en) ?? copy.en;
+  const url = langUrl(path, locale);
+  const image = options?.image ?? DEFAULT_OG_IMAGE;
+  const ogLocale = locale === "no" ? "nb_NO" : locale === "pl" ? "pl_PL" : "en_GB";
+  return {
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: options?.type ?? "website" },
+      { property: "og:url", content: url },
+      { property: "og:locale", content: ogLocale },
+      { property: "og:image", content: image },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: image },
+    ],
+    links: [
+      { rel: "canonical", href: url },
+      { rel: "alternate", hrefLang: "en", href: abs(path) },
+      { rel: "alternate", hrefLang: "nb-NO", href: noUrl(path) },
+      { rel: "alternate", hrefLang: "pl-PL", href: plUrl(path) },
+      { rel: "alternate", hrefLang: "x-default", href: abs(path) },
+    ],
+  };
+}

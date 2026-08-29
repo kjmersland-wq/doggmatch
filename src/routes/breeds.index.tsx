@@ -6,27 +6,29 @@ import { breeds } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Eyebrow } from "@/components/dogmatch/ui";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Dog breeds — an honest look at each one | DoggMatch";
 const description =
   "What each breed is really like to live with — their energy, their coat, how they learn, and what an ordinary day with them looks like.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Hunderaser — et ærlig blikk på hver enkelt | DoggMatch",
+    description:
+      "Hvordan hver rase egentlig er å leve med — energien, pelsen, hvordan de lærer, og hvordan en helt vanlig dag med dem ser ut.",
+  },
+  pl: {
+    title: "Rasy psów — szczere spojrzenie na każdą z nich | DoggMatch",
+    description:
+      "Jak naprawdę żyje się z każdą rasą — energia, sierść, sposób uczenia się i to, jak wygląda z nimi zwykły dzień.",
+  },
+};
+
 export const Route = createFileRoute("/breeds/")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/breeds") },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/breeds"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/breeds", seoCopy),
   component: BreedsPage,
 });
 

@@ -7,27 +7,29 @@ import heroImage from "@/assets/travel-hike.jpg";
 import carImage from "@/assets/travel-car.jpg";
 import abroadImage from "@/assets/travel-abroad.jpg";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
-import { seoLinks } from "@/lib/seo";
+import { seoLinks, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Travel and adventures with your dog — car, trail and abroad | DoggMatch";
 const description =
   "Getting there safely and having a good time when you arrive: car safety, first journeys, hot weather, paws, hiking, dog-friendly places, and travelling between countries.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Reiser og turer med hunden — bil, sti og utenlands | DoggMatch",
+    description:
+      "Trygt fram og fine dager når dere kommer: bilsikkerhet, første turer, varmt vær, poter, fjelltur, hundevennlige steder og reiser mellom land.",
+  },
+  pl: {
+    title: "Podróże i wyprawy z psem — auto, szlak i zagranica | DoggMatch",
+    description:
+      "Bezpieczna droga i dobry czas na miejscu: bezpieczeństwo w aucie, pierwsze wyjazdy, upały, łapy, wędrówki, miejsca przyjazne psom i podróże między krajami.",
+  },
+};
+
 export const Route = createFileRoute("/travel/")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/travel"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/travel", seoCopy),
   component: TravelPage,
 });
 

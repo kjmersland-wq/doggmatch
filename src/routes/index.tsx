@@ -9,7 +9,7 @@ import { Arrow, ButtonLink, Eyebrow, Section, TraitMeter } from "@/components/do
 import heroImage from "@/assets/hero.jpg";
 import homeImage from "@/assets/editorial-home.jpg";
 import dogLifeImage from "@/assets/dog-life.jpg";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 
 const title = "DoggMatch — Find the dog that's right for your life";
 const description =
@@ -167,25 +167,22 @@ const localCopy = {
   },
 } as const;
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "DoggMatch — finn hunden som passer livet ditt",
+    description:
+      "Fortell oss litt om livet ditt, hjemmet ditt og dagene dine, så hjelper vi deg å finne hundene som kan passe best. Gratis, ærlig, og vi viser alltid hvordan vi tenker.",
+  },
+  pl: {
+    title: "DoggMatch — znajdź psa, który pasuje do Twojego życia",
+    description:
+      "Opowiedz nam trochę o swoim życiu, domu i codziennych dniach, a pomożemy Ci znaleźć psy, które mogą pasować najlepiej. Za darmo, uczciwie i zawsze pokazujemy, jak liczymy.",
+  },
+};
+
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/") },
-      { property: "og:image", content: ogImage },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "DoggMatch — the right dog, the right life" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-      { name: "twitter:image", content: ogImage },
-    ],
-    links: seoLinks("/"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/", seoCopy, { image: ogImage }),
   component: HomePage,
 });
 

@@ -67,26 +67,28 @@ import { MatchNotes } from "@/components/dogmatch/match-notes";
 import { FitPanel } from "@/components/dogmatch/fit-panel";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { cn } from "@/lib/utils";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 
 const title = "Find My Dog — a free match, in about two minutes | DoggMatch";
 const description =
   "Answer a few friendly questions about your days, your home and what you're hoping for, and we'll show you the dogs that may suit you best.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Finn min hund — gratis match på cirka to minutter | DoggMatch",
+    description:
+      "Svar på noen vennlige spørsmål om dagene dine, hjemmet ditt og hva du håper på, så viser vi deg hundene som kan passe deg best.",
+  },
+  pl: {
+    title: "Znajdź mojego psa — darmowe dopasowanie w około dwie minuty | DoggMatch",
+    description:
+      "Odpowiedz na kilka przyjaznych pytań o swoje dni, dom i oczekiwania, a pokażemy Ci psy, które mogą pasować Ci najlepiej.",
+  },
+};
+
 export const Route = createFileRoute("/find-my-dog")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/find-my-dog") },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/find-my-dog"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/find-my-dog", seoCopy),
   component: FindMyDogPage,
 });
 

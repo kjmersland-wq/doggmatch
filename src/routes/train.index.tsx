@@ -8,7 +8,7 @@ import { getLessons } from "@/data/training/lessons";
 import { todaysPlan, getAgeFocus } from "@/lib/training/plan";
 import { streakDays, today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const copy = {
@@ -21,21 +21,22 @@ const title = "Train Your Dog — Small sessions, clear steps | DoggMatch";
 const description =
   "Kind, reward-based training you can actually do at home. Short sessions, clear steps and pictures that show you exactly what to do.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Tren hunden din — korte økter, tydelige steg | DoggMatch",
+    description:
+      "Vennlig, belønningsbasert trening du faktisk får til hjemme. Korte økter, tydelige steg og bilder som viser deg nøyaktig hva du skal gjøre.",
+  },
+  pl: {
+    title: "Szkolenie psa — krótkie sesje, jasne kroki | DoggMatch",
+    description:
+      "Łagodne szkolenie oparte na nagrodach, które naprawdę zrobisz w domu. Krótkie sesje, jasne kroki i zdjęcia pokazujące dokładnie, co robić.",
+  },
+};
+
 export const Route = createFileRoute("/train/")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/train") },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/train"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/train", seoCopy),
   component: TrainHome,
 });
 

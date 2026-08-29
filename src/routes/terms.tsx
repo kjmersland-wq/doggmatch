@@ -1,27 +1,28 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { LegalList, LegalPage, LegalSection } from "@/components/dogmatch/legal";
 import { useCopy } from "@/i18n";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 
 const title = "Terms of Service — DoggMatch";
 const description =
   "The terms for using DoggMatch and DoggMatch+: what the service is, how membership and billing work, your right to cancel, and the limits of our advice.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Vilkår for bruk — DoggMatch",
+    description:
+      "Vilkårene for å bruke DoggMatch og DoggMatch+: hva tjenesten er, hvordan medlemskap og betaling fungerer, angreretten din, og grensene for rådene våre.",
+  },
+  pl: {
+    title: "Regulamin — DoggMatch",
+    description:
+      "Zasady korzystania z DoggMatch i DoggMatch+: czym jest serwis, jak działa członkostwo i płatności, prawo do odstąpienia oraz granice naszych porad.",
+  },
+};
+
 export const Route = createFileRoute("/terms")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/terms") },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/terms"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/terms", seoCopy),
   component: TermsPage,
 });
 

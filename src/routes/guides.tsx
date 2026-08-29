@@ -1,27 +1,29 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useT, useCopy } from "@/i18n";
 import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar, SectionShare } from "@/components/dogmatch/share";
 
 const title = "Guides — choosing a dog, and living with one | DoggMatch";
 const description =
   "Straight, friendly answers on choosing a breed, living in a flat, your first dog, shedding, training and everyday life together.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Guider — å velge hund, og å leve med en | DoggMatch",
+    description:
+      "Ærlige, vennlige svar om å velge rase, å bo i leilighet, første hund, pelsfelling, trening og hverdagen sammen.",
+  },
+  pl: {
+    title: "Poradniki — jak wybrać psa i jak z nim żyć | DoggMatch",
+    description:
+      "Proste, przyjazne odpowiedzi na pytania o wybór rasy, życie w mieszkaniu, pierwszego psa, linienie, szkolenie i wspólną codzienność.",
+  },
+};
+
 export const Route = createFileRoute("/guides")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/guides") },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/guides"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/guides", seoCopy),
   component: GuidesPage,
 });
 

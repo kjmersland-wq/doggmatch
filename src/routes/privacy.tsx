@@ -1,27 +1,28 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { LegalList, LegalPage, LegalSection } from "@/components/dogmatch/legal";
 import { useCopy } from "@/i18n";
-import { seoLinks, abs } from "@/lib/seo";
+import { seoLinks, abs, localizedHead } from "@/lib/seo";
 
 const title = "Privacy — how DoggMatch handles your data";
 const description =
   "How DoggMatch collects, stores and protects your personal data, your rights under the GDPR, and who we share information with.";
 
+const seoCopy = {
+  en: { title, description },
+  no: {
+    title: "Personvern — slik behandler DoggMatch dataene dine",
+    description:
+      "Hvordan DoggMatch samler inn, lagrer og beskytter personopplysningene dine, rettighetene dine etter GDPR, og hvem vi deler informasjon med.",
+  },
+  pl: {
+    title: "Prywatność — jak DoggMatch obchodzi się z Twoimi danymi",
+    description:
+      "Jak DoggMatch zbiera, przechowuje i chroni Twoje dane osobowe, jakie masz prawa według RODO i z kim dzielimy się informacjami.",
+  },
+};
+
 export const Route = createFileRoute("/privacy")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/privacy") },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/privacy"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/privacy", seoCopy),
   component: PrivacyPage,
 });
 
