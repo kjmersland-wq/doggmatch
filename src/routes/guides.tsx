@@ -327,6 +327,15 @@ function GuidesPage() {
               ))}
             </ul>
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{guide.close}</p>
+            {guide.id === "family-dogs" && (
+              <Link
+                to="/best-dog-breeds-for-families"
+                className="group mt-5 inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+              >
+                {c.familyGuideLink}
+                <Arrow />
+              </Link>
+            )}
           </li>
         ))}
       </ul>
