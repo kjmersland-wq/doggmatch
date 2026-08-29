@@ -277,6 +277,11 @@ function Results({
   const detail = explain(best);
   const others = results.slice(1, 4);
 
+  // Kept on this device so Compare and the breed pages can speak to the same life.
+  useEffect(() => {
+    saveMatchProfile(profile);
+  }, [profile]);
+
   return (
     <div className="pb-24">
       <section className="container-page pt-10 md:pt-16">
