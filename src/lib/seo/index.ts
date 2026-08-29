@@ -10,7 +10,18 @@
 
 export const SITE_URL = "https://www.doggmatch.com";
 export const SITE_NAME = "DoggMatch";
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-en.jpg`;
+
+/** Share cards are written in the reader's language, so previews match the page. */
+export const OG_IMAGE_BY_LOCALE: Record<"en" | "no" | "pl", string> = {
+  en: `${SITE_URL}/og-en.jpg`,
+  no: `${SITE_URL}/og-no.jpg`,
+  pl: `${SITE_URL}/og-pl.jpg`,
+};
+
+export function ogImage(locale: "en" | "no" | "pl"): string {
+  return OG_IMAGE_BY_LOCALE[locale] ?? DEFAULT_OG_IMAGE;
+}
 
 /** Absolute URL for an app path ("/breeds/labrador" -> full https URL). */
 export function abs(path: string): string {
@@ -112,7 +123,7 @@ export function localizedHead(
   const locale = headLocale(ctx);
   const { title, description } = (locale === "no" ? copy.no : locale === "pl" ? copy.pl : copy.en) ?? copy.en;
   const url = langUrl(path, locale);
-  const image = options?.image ?? DEFAULT_OG_IMAGE;
+  const image = options?.image ?? ogImage(locale);
   const ogLocale = locale === "no" ? "nb_NO" : locale === "pl" ? "pl_PL" : "en_GB";
   return {
     meta: [
@@ -124,6 +135,9 @@ export function localizedHead(
       { property: "og:url", content: url },
       { property: "og:locale", content: ogLocale },
       { property: "og:image", content: image },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: title },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },

@@ -15,8 +15,6 @@ import { seoLinks, abs, localizedHead } from "@/lib/seo";
 const title = "DoggMatch — Find the dog that's right for your life";
 const description =
   "Tell us a little about your life, your home and your days, and we'll help you find the dogs that may suit you best. Free, honest, and we always show our reasoning.";
-const ogImage =
-  "https://project--133462b6-1f26-496e-a35b-0de87a08b8b1.lovable.app/og-image.jpg";
 
 /**
  * Section ids are language-independent so a shared link lands in the right
@@ -201,7 +199,7 @@ const seoCopy = {
 };
 
 export const Route = createFileRoute("/")({
-  head: (ctx) => localizedHead(ctx, "/", seoCopy, { image: ogImage }),
+  head: (ctx) => localizedHead(ctx, "/", seoCopy),
   component: HomePage,
 });
 

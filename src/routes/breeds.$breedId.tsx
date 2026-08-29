@@ -63,7 +63,7 @@ export const Route = createFileRoute("/breeds/$breedId")({
     const name = loaderData.content.displayName;
     const title = `${name} — what they're really like to live with | DoggMatch`;
     const description = loaderData.content.summary;
-    const image = abs(breedImages[loaderData.breed.id] ?? "/og-image.jpg");
+    const image = abs(breedImages[loaderData.breed.id] ?? "/og-en.jpg");
     return {
       meta: [
         { title },
