@@ -304,6 +304,145 @@ const copy = {
       },
     },
   },
+  pl: {
+    eyebrow: "Prywatność",
+    title: "Twoje dane, traktowane z troską",
+    intro:
+      "Prosimy o jak najmniej danych, jasno mówimy, co z nimi robimy, i możesz w każdej chwili poprosić nas o ich usunięcie. Ta strona wyjaśnia to wszystko zwykłym językiem.",
+    updated: "16 sierpnia 2026",
+    contactPage: "stronę kontaktową",
+    sections: {
+      responsible: {
+        title: "Kto odpowiada za twoje dane",
+        p1:
+          "DoggMatch jest budowany i prowadzony przez KM TECH LABS, nr org. 934 044 029, w Kristiansand, w Norwegii. KM TECH LABS jest administratorem danych osobowych przetwarzanych za pośrednictwem tej strony i decyduje, dlaczego i jak te dane są wykorzystywane.",
+        p2:
+          "Norwegia jest częścią EOG, więc unijne ogólne rozporządzenie o ochronie danych (RODO) obowiązuje nas w pełni, wraz z norweską ustawą o danych osobowych (personopplysningsloven). Naszym organem nadzorczym jest norweski Urząd Ochrony Danych Osobowych (Datatilsynet).",
+        p3Before: "Najprostszym sposobem skontaktowania się z nami w sprawie czegokolwiek na tej stronie jest",
+        p3After: ".",
+      },
+      collect: {
+        title: "Co zbieramy i dlaczego",
+        p1:
+          "Większość funkcji DoggMatch działa bez konta i bez zapisywania przez nas czegokolwiek na twój temat. Twoje odpowiedzi z quizu, profile psów, postępy w szkoleniu i notatki o opiece są przechowywane w lokalnej pamięci twojej przeglądarki na twoim urządzeniu — nie na naszych serwerach.",
+        items: [
+          {
+            strong: "Odpowiedzi z quizu i profile psów.",
+            rest:
+              " Przechowywane lokalnie na twoim urządzeniu, żebyś mógł do nich wrócić. Nigdy ich nie widzimy. Wyczyszczenie danych przeglądarki je usuwa.",
+          },
+          {
+            strong: "Dane konta.",
+            rest:
+              " Jeśli zakładasz konto, przechowujemy twój adres e-mail i tożsamość logowania. Podstawa prawna: wykonanie umowy (art. 6 ust. 1 lit. b RODO).",
+          },
+          {
+            strong: "Dane członkostwa.",
+            rest:
+              " Dla DoggMatch+ przechowujemy status subskrypcji, plan, ID członka i datę ważności. Podstawa prawna: wykonanie umowy.",
+          },
+          {
+            strong: "Dane płatnicze.",
+            rest:
+              " Dane karty są obsługiwane w całości przez Stripe. Nigdy nie widzimy ani nie przechowujemy numeru twojej karty. Zachowujemy jedynie odniesienie do subskrypcji potrzebne do wiedzy, czy członkostwo jest aktywne.",
+          },
+          {
+            strong: "Wiadomości, które do nas wysyłasz.",
+            rest:
+              " Twoje imię, e-mail, temat i wiadomość, abyśmy mogli odpowiedzieć. Podstawa prawna: prawnie uzasadniony interes w udzieleniu odpowiedzi (art. 6 ust. 1 lit. f RODO).",
+          },
+          {
+            strong: "Dane techniczne.",
+            rest:
+              " Standardowe logi serwera, takie jak adres IP i typ przeglądarki, przechowywane krótko dla bezpieczeństwa, zapobiegania nadużyciom i rozwiązywania problemów. Podstawa prawna: prawnie uzasadniony interes w utrzymaniu bezpieczeństwa usługi.",
+          },
+        ],
+      },
+      notDo: {
+        title: "Czego nie robimy",
+        items: [
+          "Nie sprzedajemy ani nie wynajmujemy nikomu twoich danych osobowych.",
+          "Nie używamy trackerów reklamowych ani reklamowych plików cookie firm trzecich.",
+          "Nie budujemy profili behawioralnych na potrzeby marketingu.",
+          "Nie podejmujemy zautomatyzowanych decyzji o skutkach prawnych ani podobnie istotnych. Wynik dopasowania to przejrzyste obliczenie, którego uzasadnienie możesz zobaczyć, i nie wywołuje ono żadnych skutków prawnych.",
+        ],
+      },
+      cookies: {
+        title: "Pliki cookie i lokalna pamięć",
+        p1:
+          "Używamy wyłącznie tego, co jest absolutnie niezbędne do działania strony: sesji logowania, twojego wyboru jasnego/ciemnego motywu, twojego języka oraz opisanych powyżej danych lokalnych. Zgodnie z dyrektywą ePrivacy i norweską ustawą ekomlov, tego rodzaju niezbędne przechowywanie danych nie wymaga zgody, dlatego nie widzisz baneru cookie. Jeśli kiedykolwiek dodamy pliki cookie analityczne lub marketingowe, najpierw cię o to zapytamy.",
+      },
+      processors: {
+        title: "Kto przetwarza dane w naszym imieniu",
+        p1:
+          "Korzystamy z niewielkiej liczby starannie wybranych dostawców, z których każdy jest związany umową powierzenia przetwarzania danych na podstawie art. 28 RODO:",
+        items: [
+          {
+            strong: "Hosting, baza danych i uwierzytelnianie.",
+            rest: " Obsługuje nasze serwery, przechowuje dane konta i członkostwa oraz obsługuje logowanie.",
+          },
+          {
+            strong: "Stripe.",
+            rest: " Płatności i rozliczenia subskrypcji, jako niezależny administrator danych płatniczych.",
+          },
+          {
+            strong: "Google.",
+            rest: " Tylko jeśli wybierzesz logowanie przez Google, i tylko na potrzeby tego logowania.",
+          },
+          {
+            strong: "Dostarczanie e-maili.",
+            rest: " Używane do wysyłania i odbierania wiadomości, które do nas piszesz.",
+          },
+        ],
+      },
+      transfers: {
+        title: "Gdzie przechowywane są twoje dane i przekazywanie ich poza EOG",
+        p1:
+          "Przechowujemy dane osobowe na serwerach w UE/EOG, gdziekolwiek to możliwe. Niektórzy z naszych dostawców mają siedzibę w Stanach Zjednoczonych. Tam, gdzie dane opuszczają EOG, przekazanie opiera się na standardowych klauzulach umownych Komisji Europejskiej, a tam, gdzie to ma zastosowanie, na ramach EU–US Data Privacy Framework, wraz z dodatkowymi zabezpieczeniami technicznymi, takimi jak szyfrowanie podczas przesyłania i przechowywania.",
+      },
+      retention: {
+        title: "Jak długo przechowujemy dane",
+        items: [
+          "Dane lokalne na twoim urządzeniu: do momentu ich wyczyszczenia. Są twoje, na twoim urządzeniu.",
+          "Dane konta i członkostwa: przez cały czas istnienia konta, a następnie usuwane lub anonimizowane w ciągu 90 dni od jego zamknięcia.",
+          "Wiadomości kontaktowe: do 24 miesięcy, abyśmy mieli kontekst, jeśli napiszesz ponownie.",
+          "Zapisy płatności i faktur: przechowywane przez 5 lat, zgodnie z wymogami norweskiej ustawy o rachunkowości (bokføringsloven). Podstawa prawna: obowiązek prawny (art. 6 ust. 1 lit. c RODO).",
+          "Logi bezpieczeństwa: zwykle 90 dni lub mniej.",
+        ],
+      },
+      protect: {
+        title: "Jak to chronimy",
+        p1:
+          "Dane są szyfrowane podczas przesyłania (TLS) i w spoczynku u naszego dostawcy hostingu. Dostęp do bazy danych jest ograniczony regułami bezpieczeństwa na poziomie wiersza, więc konto może dotrzeć wyłącznie do własnych danych. Dostęp do systemów produkcyjnych mają wyłącznie osoby, które rzeczywiście go potrzebują. Jeśli naruszenie kiedykolwiek narazi twoje prawa na ryzyko, powiadomimy Datatilsynet w ciągu 72 godzin i poinformujemy cię bezpośrednio tam, gdzie wymaga tego prawo.",
+      },
+      rights: {
+        title: "Twoje prawa",
+        intro: "Zgodnie z RODO możesz poprosić nas o:",
+        items: [
+          "Poinformowanie cię, jakie dane o tobie posiadamy, i przekazanie ich kopii (art. 15).",
+          "Poprawienie tego, co jest błędne (art. 16).",
+          "Usunięcie twoich danych (art. 17).",
+          "Ograniczenie sposobu ich wykorzystywania (art. 18).",
+          "Przesłanie ich do ciebie lub innego dostawcy w formacie umożliwiającym przenoszenie (art. 20).",
+          "Zaprzestanie przetwarzania opartego na prawnie uzasadnionym interesie (art. 21).",
+          "Wycofanie zgody w dowolnym momencie, tam gdzie przetwarzanie opiera się na zgodzie (art. 7).",
+        ],
+        p2Before: "Napisz do nas przez",
+        p2Mid:
+          "a odpowiemy w ciągu 30 dni, bezpłatnie. Jeśli nie jesteś zadowolony z naszego sposobu rozpatrzenia sprawy, możesz złożyć skargę do Datatilsynet lub do organu ochrony danych w twoim kraju.",
+      },
+      children: {
+        title: "Dzieci",
+        p1:
+          "DoggMatch nie jest przeznaczony dla dzieci. Musisz mieć co najmniej 16 lat, aby założyć konto. Jeśli uważasz, że dziecko przekazało nam dane osobowe, poinformuj nas, a je usuniemy.",
+      },
+      changes: {
+        title: "Zmiany w niniejszej informacji",
+        p1:
+          "Jeśli zmienimy tu coś istotnego, zaktualizujemy datę na górze tej strony i poinformujemy posiadaczy kont e-mailem, gdy zmiana ich dotyczy.",
+      },
+    },
+  },
 } as const;
 
 function PrivacyPage() {

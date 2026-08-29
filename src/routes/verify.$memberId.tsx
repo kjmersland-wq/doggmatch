@@ -3,7 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useQuery } from "@tanstack/react-query";
 import { BrandLock } from "@/components/dogmatch/brand-logo";
 import { checkMemberCard } from "@/lib/plus/member-card.functions";
-import { useCopy, useLocale } from "@/i18n";
+import { useCopy, useLocale, type Locale } from "@/i18n";
 import { noindexMeta } from "@/lib/seo";
 
 const title = "Membership check | DoggMatch";
@@ -89,7 +89,7 @@ function VerifyPage() {
 }
 
 /** dd.mm.yyyy — the only detail we share publicly. */
-function formatDate(value: string, _locale: "en" | "no") {
+function formatDate(value: string, _locale: Locale) {
   const d = new Date(value);
   const pad = (n: number) => String(n).padStart(2, "0");
   return `${pad(d.getDate())}.${pad(d.getMonth() + 1)}.${d.getFullYear()}`;

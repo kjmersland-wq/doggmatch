@@ -62,6 +62,26 @@ const alwaysRecommendedCopy = {
       detail: "Sjekk om forsikringen din gjelder på reise, og hva den dekker på reisemålet.",
     },
   ],
+  pl: [
+    {
+      id: "vet-check",
+      level: "recommended" as const,
+      title: "Kontrola u weterynarza przed wyjazdem",
+      detail: "Krótka wizyta przed dłuższą podróżą naprawdę się opłaca, zwłaszcza w przypadku szczeniaka, starszego psa albo psa przyjmującego leki. To weterynarz najlepiej oceni, czy podróż będzie dla niego odpowiednia.",
+    },
+    {
+      id: "transport-rules",
+      level: "recommended" as const,
+      title: "Własne zasady przewoźnika",
+      detail: "Linie lotnicze, promy i przewoźnicy kolejowi ustalają własne warunki, niezależnie od wymogów urzędowych. Potwierdź je bezpośrednio u przewoźnika.",
+    },
+    {
+      id: "insurance",
+      level: "recommended" as const,
+      title: "Ubezpieczenie ważne za granicą",
+      detail: "Sprawdź, czy Twoja polisa obowiązuje w podróży i co dokładnie obejmuje w miejscu docelowym.",
+    },
+  ],
 };
 
 const alwaysGoodCopy = {
@@ -76,6 +96,12 @@ const alwaysGoodCopy = {
     { id: "contacts", level: "good-to-have" as const, title: "Nødkontakter", detail: "Din egen veterinær, noen hjemme, og opplysninger om mikrochip-registeret." },
     { id: "photo", level: "good-to-have" as const, title: "Et ferskt bilde av hunden", detail: "Det ene du kommer til å ønske du hadde hvis hunden skulle slite seg et ukjent sted." },
     { id: "familiar", level: "good-to-have" as const, title: "Noe som lukter hjemme", detail: "Et teppe eller et leketøy gjør at et fremmed rom føles trygt mye raskere." },
+  ],
+  pl: [
+    { id: "vet-at-destination", level: "good-to-have" as const, title: "Weterynarz w miejscu docelowym", detail: "Znajdź go jeszcze przed wyjazdem i zapisz numer w telefonie." },
+    { id: "contacts", level: "good-to-have" as const, title: "Kontakty na wypadek nagłej sytuacji", detail: "Twój własny weterynarz, ktoś bliski w domu oraz dane rejestru mikroczipów." },
+    { id: "photo", level: "good-to-have" as const, title: "Aktualne zdjęcie psa", detail: "Jedyna rzecz, której zabraknie Ci najbardziej, gdyby pies zerwał się ze smyczy w nieznanym miejscu." },
+    { id: "familiar", level: "good-to-have" as const, title: "Coś, co pachnie domem", detail: "Koc albo zabawka sprawiają, że obce miejsce szybciej staje się oswojone." },
   ],
 };
 

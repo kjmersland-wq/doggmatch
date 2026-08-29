@@ -39,6 +39,15 @@ const pageCopy = {
     yourFitTitle: "Hvordan denne hunden passer livet ditt",
     yourFitNote: "Lest opp mot svarene du ga i Finn min hund, lagret på denne enheten.",
   },
+  pl: {
+    dayTitle: "Typowy dzień razem",
+    commitmentTitle: "Czego od ciebie wymaga",
+    suitedTitle: "Najlepiej pasuje dla",
+    considerTitle: "Ważne rzeczy do przemyślenia",
+    healthTitle: "Kwestie zdrowotne",
+    yourFitTitle: "Jak ten pies pasuje do twojego życia",
+    yourFitNote: "Odczytane na tle odpowiedzi, które podałeś w Znajdź mojego psa, zapisanych na tym urządzeniu.",
+  },
 };
 
 export const Route = createFileRoute("/breeds/$breedId")({
@@ -92,22 +101,22 @@ export const Route = createFileRoute("/breeds/$breedId")({
 });
 
 const labels = {
-  size: { en: "Size", no: "Størrelse" },
-  energy: { en: "Energy", no: "Energi" },
-  exerciseNeeds: { en: "Exercise needs", no: "Mosjonsbehov" },
-  mentalStimulation: { en: "Mental stimulation", no: "Mental stimulering" },
-  trainability: { en: "Trainability", no: "Lærevillighet" },
-  sociability: { en: "Sociability", no: "Sosial med folk" },
-  affection: { en: "Affection", no: "Kosete" },
-  independence: { en: "Independence", no: "Selvstendighet" },
-  goodWithChildren: { en: "Good with children", no: "Passer med barn" },
-  goodWithDogs: { en: "Good with other dogs", no: "Passer med andre hunder" },
-  apartmentSuitability: { en: "Apartment suitability", no: "Passer i leilighet" },
-  aloneTolerance: { en: "Tolerance of being alone", no: "Tåler å være alene" },
-  shedding: { en: "Shedding", no: "Pelsfelling" },
-  grooming: { en: "Grooming", no: "Pelsstell" },
-  barking: { en: "Barking", no: "Bjeffing" },
-  firstTimeSuitability: { en: "First-time owner suitability", no: "Passer for førstegangseiere" },
+  size: { en: "Size", no: "Størrelse" , pl: "Rozmiar" },
+  energy: { en: "Energy", no: "Energi" , pl: "Energia" },
+  exerciseNeeds: { en: "Exercise needs", no: "Mosjonsbehov" , pl: "Potrzeby ruchowe" },
+  mentalStimulation: { en: "Mental stimulation", no: "Mental stimulering" , pl: "Stymulacja umysłowa" },
+  trainability: { en: "Trainability", no: "Lærevillighet" , pl: "Podatność na szkolenie" },
+  sociability: { en: "Sociability", no: "Sosial med folk" , pl: "Towarzyskość z ludźmi" },
+  affection: { en: "Affection", no: "Kosete" , pl: "Czułość" },
+  independence: { en: "Independence", no: "Selvstendighet" , pl: "Niezależność" },
+  goodWithChildren: { en: "Good with children", no: "Passer med barn" , pl: "Dobrze z dziećmi" },
+  goodWithDogs: { en: "Good with other dogs", no: "Passer med andre hunder" , pl: "Dobrze z innymi psami" },
+  apartmentSuitability: { en: "Apartment suitability", no: "Passer i leilighet" , pl: "Do mieszkania" },
+  aloneTolerance: { en: "Tolerance of being alone", no: "Tåler å være alene" , pl: "Tolerancja samotności" },
+  shedding: { en: "Shedding", no: "Pelsfelling" , pl: "Linienie" },
+  grooming: { en: "Grooming", no: "Pelsstell" , pl: "Pielęgnacja sierści" },
+  barking: { en: "Barking", no: "Bjeffing" , pl: "Szczekanie" },
+  firstTimeSuitability: { en: "First-time owner suitability", no: "Passer for førstegangseiere", pl: "Odpowiedni dla początkujących" },
 } as const;
 
 function BreedDetail() {
@@ -172,7 +181,7 @@ function BreedDetail() {
 
       <section className="container-page grid gap-12 border-t border-border py-16 md:grid-cols-2 md:gap-16">
         <div>
-          <h2 className="display-md">{pick({ en: "What people love about them", no: "Det folk er glad i hos dem" })}</h2>
+          <h2 className="display-md">{pick({ en: "What people love about them", no: "Det folk er glad i hos dem", pl: "Co ludzie w nich kochają" })}</h2>
           <ul className="mt-7 space-y-4">
             {content.strengths.map((s) => (
               <li key={s} className="flex gap-3 text-[0.9375rem] leading-relaxed">

@@ -131,6 +131,54 @@ const copy = {
     checkItHere: "Sjekk det her",
     lastCheckedPrefix: "Vi sjekket dette sist",
   },
+  pl: {
+    eyebrow: "Przekraczanie granic",
+    title: "Podróż za granicę z psem.",
+    intro:
+      "Wymagania zależą całkowicie od tego, skąd wyjeżdżasz i dokąd się wybierasz. Podaj nam trasę, a pokażemy, co zwykle jest potrzebne — i gdzie to porządnie potwierdzić.",
+    heroAlt: "Pies spokojnie czekający przy walizce w przestronnej hali odlotów",
+    journeyEyebrow: "Twoja podróż",
+    fromLabel: "Podróżujesz z",
+    toLabel: "Podróżujesz do",
+    dateLabel: "Kiedy wyjeżdżacie?",
+    countryPlaceholder: "Wybierz kraj",
+    transportEyebrow: "Jak podróżujecie?",
+    datePrefix: "Niektóre kroki mają okresy oczekiwania liczone w tygodniach, więc data ma znaczenie. Licz wstecz od",
+    dateSuffix: "korzystając z osi czasu poniżej.",
+    dateLocale: "pl-PL",
+    going: "W drogę",
+    comingHome: "Powrót",
+    noRulesTitle: "Nie mamy jeszcze zweryfikowanych zasad dla tej trasy",
+    noRulesBody:
+      "Zamiast zgadywać, wskażemy ci oficjalny urząd w kraju, do którego się wybierasz. Ich wytyczne są jedyną wersją, która liczy się na granicy.",
+    timingEyebrow: "Czas",
+    timingTitle: "Zacznij wcześniej, niż wydaje ci się to konieczne.",
+    timingBody:
+      "Najczęstszym powodem, dla którego podróż się nie udaje, jest okres oczekiwania, o którym nikt nie wiedział. Nic tu nie jest trudne — po prostu trwa dłużej, niż mogłoby się wydawać.",
+    timelineAlt: "Ilustracja paszportu dla zwierząt, czytnika mikroczipów i dokumentów podróży",
+    beforeYouLeaveEyebrow: "Zanim wyjedziecie",
+    beforeYouLeaveTitle: "Ostatnie sprawdzenie przy drzwiach.",
+    onPaperEyebrow: "Na papierze",
+    packTitle: "Pakiet podróżny dla psa.",
+    packBody:
+      "Wszystko, co chcesz mieć przy sobie na granicy lub w poczekalni u zagranicznego weterynarza: dane twojego psa, numer mikroczipa, szczepienia, leki, karmienie, kontakty alarmowe i listę kontrolną na tę podróż — na papierze, działa nawet, gdy telefon zawiedzie.",
+    printCta: "Wydrukuj mój pakiet podróżny",
+    myDogCta: "Mój pies",
+    finalNoticeTitle: "Traktuj to jako punkt wyjścia",
+    finalNoticeBody:
+      "Zasady podróżowania ze zwierzętami się zmieniają i różnią się w zależności od dokładnego kraju wyjazdu oraz kraju wjazdu. Wszystko tutaj wskazuje na oficjalny urząd jako ostateczne źródło informacji — zawsze potwierdź to u nich oraz u swojego weterynarza, zanim zarezerwujecie podróż.",
+    withinEu: "W ramach unijnego systemu podróży ze zwierzętami",
+    outsideEu: "Wjazd lub wyjazd poza system",
+    unknownLeg:
+      "Nie mamy zweryfikowanych zasad dla tego kierunku, więc nie będziemy zgadywać. Oficjalne źródło poniżej jest tym, które się liczy.",
+    required: "Wymagane",
+    recommended: "Zdecydowanie zalecane",
+    goodToHave: "Warto mieć",
+    quarantine: "Kwarantanna",
+    minimumAge: "Minimalny wiek",
+    checkItHere: "Sprawdź to tutaj",
+    lastCheckedPrefix: "Ostatnio sprawdziliśmy to",
+  },
 } as const;
 
 function AbroadPage() {

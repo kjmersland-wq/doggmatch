@@ -106,6 +106,37 @@ const copy = {
       "Den virkelige testen er ikke tallet på posen. Det er hvordan hunden din ser ut og har det om en måned. Sjekk månedlig og juster med rundt 10 % om gangen.",
     weightCta: "Vekt og hold",
   },
+  pl: {
+    eyebrow: "Jedzenie",
+    title: "Ile powinienem karmić?",
+    intro:
+      "Nikt nie poda ci dokładnej liczby, a każdy, kto twierdzi inaczej, też tylko zgaduje. Możemy za to dać ci rozsądny punkt wyjścia, a potem pomóc go dostosować.",
+    heroAlt: "Miska z jedzeniem dla psa odmierzana w kuchni",
+    startingPointFor: (name: string) => `Punkt wyjścia dla ${name}`,
+    startingPoint: "Punkt wyjścia",
+    statDay: "Dziennie",
+    statFoodDay: "Jedzenie dziennie",
+    statFoodDayHintWeighed: "Zważone, nie na oko",
+    statFoodDayHintMissing: "Dodaj kcal/100g z opakowania",
+    statPerMeal: "Na posiłek",
+    statPerMealHint: (n: number) => `W ${n} posiłkach`,
+    howWeGotThereTitle: "Jak to policzyliśmy",
+    howWeGotThereP1: (weightKg: number, restingKcal: number, factor: number, reason: string) =>
+      `Zaczynamy od energii spoczynkowej, jakiej potrzebuje pies o wadze ${weightKg} kg — ${restingKcal} kcal — korzystając ze standardowego wzoru stosowanego przez weterynarzy (70 × waga^0,75). Następnie mnożymy przez ${factor} ze względu na: ${reason}. Żadnej czarnej skrzynki, żadnego zgadywania, którego nie widzisz.`,
+    howWeGotThereP2: (treatKcal: number) =>
+      `Ogranicz przysmaki do około ${treatKcal} kcal dziennie — mniej więcej dziesiątej części całości — i odejmij tę ilość od posiłków, zamiast dodawać ją na wierzch.`,
+    noPortionsBody:
+      "Podaj wagę swojego psa, a my wyliczymy dzienną porcję, pokażemy ci obliczenia stojące za nią i przeliczymy ją na gramy karmy, którą faktycznie podajesz.",
+    addDetailsCta: "Dodaj dane swojego psa",
+    basicsEyebrow: "Podstawy",
+    basicsTitle: "Jak dobrze karmić, bez przesadnego kombinowania",
+    vetNote:
+      "To punkt wyjścia, nie recepta. Szczenięta, suki w ciąży, psy na diecie i psy z problemami zdrowotnymi potrzebują czegoś bardziej konkretnego — to temat na rozmowę z weterynarzem, i warto ją odbyć.",
+    watchShapeTitle: "Potem obserwuj sylwetkę",
+    watchShapeBody:
+      "Prawdziwym testem nie jest liczba na opakowaniu. Liczy się to, jak twój pies wygląda i czuje się za miesiąc. Sprawdzaj co miesiąc i koryguj o około 10% naraz.",
+    weightCta: "Waga i sylwetka",
+  },
 } as const;
 
 function NutritionPage() {

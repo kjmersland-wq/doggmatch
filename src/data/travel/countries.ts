@@ -8,6 +8,7 @@
 import { pick } from "@/i18n";
 import { countries as countriesEn, transportModes as transportModesEn, travelTimeline as travelTimelineEn } from "./countries.en";
 import { countries as countriesNo, transportModes as transportModesNo, travelTimeline as travelTimelineNo } from "./countries.no";
+import { countries as countriesPl, transportModes as transportModesPl, travelTimeline as travelTimelinePl } from "./countries.pl";
 
 export interface OfficialSource {
   name: string;
@@ -52,7 +53,7 @@ export interface RuleSet {
 
 /** Locale-aware country list — call inside render so it re-picks on locale change. */
 export function getCountries(): Country[] {
-  return pick({ en: countriesEn, no: countriesNo });
+  return pick({ en: countriesEn, no: countriesNo, pl: countriesPl });
 }
 
 export function getCountriesByCode(): Record<string, Country> {
@@ -60,9 +61,9 @@ export function getCountriesByCode(): Record<string, Country> {
 }
 
 export function getTransportModes() {
-  return pick({ en: transportModesEn, no: transportModesNo });
+  return pick({ en: transportModesEn, no: transportModesNo, pl: transportModesPl });
 }
 
 export function getTravelTimeline() {
-  return pick({ en: travelTimelineEn, no: travelTimelineNo });
+  return pick({ en: travelTimelineEn, no: travelTimelineNo, pl: travelTimelinePl });
 }

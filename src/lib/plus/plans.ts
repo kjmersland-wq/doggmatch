@@ -16,9 +16,9 @@ export const PLUS_PLANS: Record<PlanId, { priceId: string; productId: string; la
   },
 };
 
-const planLabels: Record<PlanId, { en: string; no: string }> = {
-  monthly: { en: "Monthly", no: "Månedlig" },
-  yearly: { en: "Yearly", no: "Årlig" },
+const planLabels: Record<PlanId, { en: string; no: string; pl: string }> = {
+  monthly: { en: "Monthly", no: "Månedlig", pl: "Miesięczny" },
+  yearly: { en: "Yearly", no: "Årlig", pl: "Roczny" },
 };
 
 /** Bilingual, locale-aware label for a plan (safe outside React too). */

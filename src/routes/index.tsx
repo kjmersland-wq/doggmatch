@@ -121,6 +121,50 @@ const localCopy = {
       },
     ],
   },
+  pl: {
+    matchLooks: "Tak wygląda dopasowanie",
+    match: "dopasowanie",
+    heroAlt: "Kobieta spacerująca z golden retrieverem wzdłuż wybrzeża o wschodzie słońca",
+    terrierAlt: "Terier odpoczywający w słonecznym mieszkaniu",
+    parkAlt: "Miejski park o świcie z krętymi alejkami spacerowymi",
+    jumpLabel: "Przejdź do wybranej części tej strony",
+    jumpTitle: "Na tej stronie",
+    anchors: {
+      "why-doggmatch": "Dlaczego DoggMatch",
+      "how-it-works": "Jak to działa",
+      "dog-breeds": "Poznaj rasy psów",
+      "compare-breeds": "Porównaj rasy",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "Życie z psem w Twojej okolicy",
+      faq: "Najczęstsze pytania",
+      "find-your-dog": "Znajdź swojego psa",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "Trochę więcej wsparcia, gdy pies już jest w domu",
+    plusBody:
+      "Trening krok po kroku na każdy tydzień, karmienie i waga w jednym miejscu, dokumenty podróżne w porządku i wszystko gotowe do wydrukowania na lodówkę albo do weterynarza.",
+    plusCta: "Zobacz, co zawiera DoggMatch+",
+    faqEyebrow: "Warto wiedzieć",
+    faqTitle: "Pytania, które nam zadajecie",
+    faq: [
+      {
+        q: "Czy dopasowanie robi sztuczna inteligencja?",
+        a: "Nie. To stały zestaw zasad, które sami napisaliśmy. Te same odpowiedzi zawsze dają te same psy, a przy każdym wyniku pokazujemy, skąd się wziął.",
+      },
+      {
+        q: "Czy znalezienie mojego psa coś kosztuje?",
+        a: "Nie. Pytania, wyniki i wszystkie strony ras są bezpłatne. DoggMatch+ dotyczy tylko narzędzi, z których korzystasz, gdy pies już zamieszka z Tobą.",
+      },
+      {
+        q: "A jeśli najlepiej pasuje mi pies mieszaniec?",
+        a: "Mieszańce są jak najbardziej mile widziane. Możesz złożyć psa z dwóch ras, a my ocenimy psa, jakiego masz przed sobą, a nie samą etykietkę.",
+      },
+      {
+        q: "Czy mogę zaufać informacjom o rasach?",
+        a: "Trzymamy nasze źródła jawnie. Każda strona rasy, treningu i zdrowia linkuje do organizacji i badań, na których się opieramy.",
+      },
+    ],
+  },
 } as const;
 
 export const Route = createFileRoute("/")({

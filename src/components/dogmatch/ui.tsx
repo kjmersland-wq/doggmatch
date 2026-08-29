@@ -6,6 +6,7 @@ import { useCopy } from "@/i18n";
 const copy = {
   en: { of: "of" },
   no: { of: "av" },
+  pl: { of: "z" },
 } as const;
 
 /* ---------------------------------------------------------------- Button */
