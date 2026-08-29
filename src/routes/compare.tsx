@@ -1,14 +1,41 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState, type ReactNode } from "react";
-import { useT } from "@/i18n";
+import { useT, useCopy } from "@/i18n";
 import { breeds, breedById, type BreedId, type BreedTraits } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { combineBreedTraits } from "@/lib/dogs/profile";
+import { matchDogTraits } from "@/lib/matching/engine";
+import { matchInsights, scoreReading } from "@/lib/matching/insights";
+import { useMatchProfile } from "@/lib/matching/store";
 import { Eyebrow } from "@/components/dogmatch/ui";
+import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { cn } from "@/lib/utils";
 import { seoLinks, abs } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
+
+const personalCopy = {
+  en: {
+    title: "Which of these fits your life best?",
+    prompt:
+      "Answer the Find My Dog questions and this table will read itself against your own days — not just breed statistics.",
+    promptCta: "Answer the questions",
+    based: "Based on the answers you gave in Find My Dog, kept on this device.",
+    bestLabel: "Best fit of the three",
+    watch: "Worth thinking about",
+    fine: "Nothing here worked against you.",
+  },
+  no: {
+    title: "Hvilken av disse passer livet ditt best?",
+    prompt:
+      "Svar på spørsmålene i Finn min hund, så leser denne tabellen seg selv opp mot dine egne dager — ikke bare rasestatistikk.",
+    promptCta: "Svar på spørsmålene",
+    based: "Basert på svarene du ga i Finn min hund, lagret på denne enheten.",
+    bestLabel: "Passer best av disse",
+    watch: "Verdt å tenke på",
+    fine: "Ingenting her talte imot deg.",
+  },
+};
 
 const title = "Compare dogs side by side | DoggMatch";
 const description =
