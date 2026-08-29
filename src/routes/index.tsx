@@ -17,6 +17,21 @@ const description =
 const ogImage =
   "https://project--133462b6-1f26-496e-a35b-0de87a08b8b1.lovable.app/og-image.jpg";
 
+/**
+ * Section ids are language-independent so a shared link lands in the right
+ * place whichever language the reader has chosen; only the wording changes.
+ */
+const SECTION_IDS = [
+  "why-doggmatch",
+  "how-it-works",
+  "dog-breeds",
+  "compare-breeds",
+  "doggmatch-plus",
+  "dog-life",
+  "faq",
+  "find-your-dog",
+] as const;
+
 const localCopy = {
   en: {
     matchLooks: "What a match looks like",
@@ -24,6 +39,43 @@ const localCopy = {
     heroAlt: "A woman walking a golden retriever along a coastal path at sunrise",
     terrierAlt: "A terrier resting in a sunlit apartment",
     parkAlt: "A city park at dawn with winding walking paths",
+    jumpLabel: "Jump to a section of this page",
+    jumpTitle: "On this page",
+    anchors: {
+      "why-doggmatch": "Why DoggMatch",
+      "how-it-works": "How it works",
+      "dog-breeds": "Explore dog breeds",
+      "compare-breeds": "Compare breeds",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "Dog life near you",
+      faq: "Questions people ask",
+      "find-your-dog": "Find your dog",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "A little more help, once the dog is home",
+    plusBody:
+      "Training you can follow week by week, food and weight kept in one place, travel paperwork sorted, and everything printable for the fridge or the vet.",
+    plusCta: "See what's inside DoggMatch+",
+    faqEyebrow: "Good to know",
+    faqTitle: "Questions people ask us",
+    faq: [
+      {
+        q: "Is the matching done by AI?",
+        a: "No. It's a fixed set of rules we wrote ourselves. The same answers always give the same dogs, and we show you the reasoning behind every score.",
+      },
+      {
+        q: "Does it cost anything to find my dog?",
+        a: "No. The questions, the results and every breed page are free. DoggMatch+ is only for the tools you use after the dog moves in.",
+      },
+      {
+        q: "What if a mixed breed is right for me?",
+        a: "Mixes are welcome. You can build one from two breeds and we'll score the dog in front of you rather than a label.",
+      },
+      {
+        q: "Can I trust the breed information?",
+        a: "We keep our sources open. Every breed, training and health page links to the bodies and research we lean on.",
+      },
+    ],
   },
   no: {
     matchLooks: "Slik ser en match ut",
@@ -31,6 +83,43 @@ const localCopy = {
     heroAlt: "En kvinne g\u00e5r tur med en golden retriever langs kysten i soloppgang",
     terrierAlt: "En terrier som hviler i en solfylt leilighet",
     parkAlt: "En bypark i grålysningen med svingete turveier",
+    jumpLabel: "Hopp til en del av denne siden",
+    jumpTitle: "På denne siden",
+    anchors: {
+      "why-doggmatch": "Hvorfor DoggMatch",
+      "how-it-works": "Slik fungerer det",
+      "dog-breeds": "Bli kjent med rasene",
+      "compare-breeds": "Sammenlign raser",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "Hundeliv der du bor",
+      faq: "Spørsmål vi ofte får",
+      "find-your-dog": "Finn hunden din",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "Litt mer hjelp når hunden først er hjemme",
+    plusBody:
+      "Trening du kan følge uke for uke, fôr og vekt samlet på ett sted, reisepapirene i orden, og alt kan skrives ut til kjøleskapet eller veterinæren.",
+    plusCta: "Se hva som ligger i DoggMatch+",
+    faqEyebrow: "Godt å vite",
+    faqTitle: "Spørsmål vi ofte får",
+    faq: [
+      {
+        q: "Er det KI som gjør matchingen?",
+        a: "Nei. Det er faste regler vi har skrevet selv. De samme svarene gir alltid de samme hundene, og vi viser deg begrunnelsen bak hver score.",
+      },
+      {
+        q: "Koster det noe å finne hunden min?",
+        a: "Nei. Spørsmålene, resultatet og alle rasesidene er gratis. DoggMatch+ gjelder bare verktøyene du bruker etter at hunden har flyttet inn.",
+      },
+      {
+        q: "Hva om en blandingshund passer best for meg?",
+        a: "Blandinger er hjertelig velkomne. Du kan sette sammen to raser, så vurderer vi hunden foran deg — ikke et stempel.",
+      },
+      {
+        q: "Kan jeg stole på raseinformasjonen?",
+        a: "Vi holder kildene åpne. Hver rase-, trenings- og helseside lenker til fagmiljøene og forskningen vi støtter oss på.",
+      },
+    ],
   },
 } as const;
 
@@ -137,8 +226,25 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ------------------------------------------- Anchors for this page */}
+      <nav aria-label={c.jumpLabel} className="container-page mt-16 md:mt-20">
+        <h2 className="eyebrow">{c.jumpTitle}</h2>
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {SECTION_IDS.map((id) => (
+            <li key={id}>
+              <a
+                href={`#${id}`}
+                className="inline-flex min-h-11 items-center rounded-full border border-border bg-surface px-4 text-sm transition-colors hover:border-primary hover:text-primary"
+              >
+                {c.anchors[id]}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
       {/* ---------------------------------------------------- Value strip */}
-      <section className="container-page mt-24 md:mt-32">
+      <section id="why-doggmatch" aria-label={c.anchors["why-doggmatch"]} className="container-page mt-16 md:mt-20">
         <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {t.home.valueStrip.map((item) => (
             <div key={item.title} className="bg-background p-7">
@@ -150,7 +256,7 @@ function HomePage() {
       </section>
 
       {/* ------------------------------------------------------ How it works */}
-      <Section>
+      <Section id="how-it-works">
         <div className="container-page">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
             <div className="lg:sticky lg:top-28 lg:self-start">
@@ -182,7 +288,7 @@ function HomePage() {
       </Section>
 
       {/* --------------------------------------------------- Breed preview */}
-      <Section className="bg-surface">
+      <Section id="dog-breeds" className="bg-surface">
         <div className="container-page">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-lg">
@@ -231,7 +337,7 @@ function HomePage() {
       </Section>
 
       {/* ------------------------------------------------------- Comparison */}
-      <Section>
+      <Section id="compare-breeds">
         <div className="container-page grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-20">
           <div className="max-w-lg">
             <Eyebrow>{t.home.compareEyebrow}</Eyebrow>
@@ -278,8 +384,23 @@ function HomePage() {
         </div>
       </Section>
 
+      {/* ---------------------------------------------------- DoggMatch+ */}
+      <Section id="doggmatch-plus" className="pt-0">
+        <div className="container-page max-w-3xl">
+          <Eyebrow>{c.plusEyebrow}</Eyebrow>
+          <h2 className="display-lg mt-6">{c.plusTitle}</h2>
+          <p className="mt-5 leading-relaxed text-muted-foreground">{c.plusBody}</p>
+          <div className="mt-9">
+            <ButtonLink to="/plus" tone="outline" size="lg">
+              {c.plusCta}
+              <Arrow />
+            </ButtonLink>
+          </div>
+        </div>
+      </Section>
+
       {/* --------------------------------------------------------- Dog Life */}
-      <Section className="pt-0">
+      <Section id="dog-life" className="pt-0">
         <div className="container-page">
           <div className="relative overflow-hidden rounded-[2rem]">
             <img
@@ -308,8 +429,24 @@ function HomePage() {
         </div>
       </Section>
 
+      {/* -------------------------------------------------------------- FAQ */}
+      <Section id="faq" className="pt-0">
+        <div className="container-page">
+          <Eyebrow>{c.faqEyebrow}</Eyebrow>
+          <h2 className="display-lg mt-6 max-w-lg">{c.faqTitle}</h2>
+          <dl className="mt-12 grid gap-x-14 gap-y-10 md:grid-cols-2">
+            {c.faq.map((item) => (
+              <div key={item.q}>
+                <dt className="font-display text-lg leading-tight tracking-tight">{item.q}</dt>
+                <dd className="mt-3 max-w-md leading-relaxed text-muted-foreground">{item.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </Section>
+
       {/* ---------------------------------------------------------- Closing */}
-      <Section className="border-t border-border pt-16 md:pt-24">
+      <Section id="find-your-dog" className="border-t border-border pt-16 md:pt-24">
         <div className="container-page max-w-3xl text-center">
           <h2 className="display-lg">{t.home.closingTitle}</h2>
           <p className="mt-5 text-lg text-muted-foreground">{t.home.closingBody}</p>
