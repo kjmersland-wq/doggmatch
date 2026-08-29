@@ -296,6 +296,7 @@ function Results({
               <ScoreRing value={best.score} />
               <div className="max-w-[14rem]">
                 <p className="font-display text-lg leading-tight">{t.result.compatibility}</p>
+                <p className="mt-2 text-[0.9375rem] leading-relaxed">{scoreReading(best.score)}</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {c.scoreNote}
                 </p>
