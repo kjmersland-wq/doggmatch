@@ -251,6 +251,7 @@ function useParallax() {
 function HomePage() {
   const t = useT();
   const c = useCopy(localCopy);
+  const traits = useCopy(traitCopy);
   const parallax = useParallax();
   const featured = breeds.slice(0, 4);
 
@@ -456,7 +457,7 @@ function HomePage() {
               {(["energy", "trainability", "shedding", "apartmentSuitability"] as const).map((key) => (
                 <div key={key} className="grid grid-cols-2 gap-4">
                   <TraitMeter
-                    label={key === "apartmentSuitability" ? "Apartment" : key.charAt(0).toUpperCase() + key.slice(1)}
+                    label={traits[key]}
                     value={breeds[0]!.traits[key]}
                   />
                   <TraitMeter label="" value={breeds[1]!.traits[key]} />
