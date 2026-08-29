@@ -226,8 +226,25 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ------------------------------------------- Anchors for this page */}
+      <nav aria-label={c.jumpLabel} className="container-page mt-16 md:mt-20">
+        <h2 className="eyebrow">{c.jumpTitle}</h2>
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {SECTION_IDS.map((id) => (
+            <li key={id}>
+              <a
+                href={`#${id}`}
+                className="inline-flex min-h-11 items-center rounded-full border border-border bg-surface px-4 text-sm transition-colors hover:border-primary hover:text-primary"
+              >
+                {c.anchors[id]}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
       {/* ---------------------------------------------------- Value strip */}
-      <section className="container-page mt-24 md:mt-32">
+      <section id="why-doggmatch" aria-label={c.anchors["why-doggmatch"]} className="container-page mt-16 md:mt-20">
         <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {t.home.valueStrip.map((item) => (
             <div key={item.title} className="bg-background p-7">
