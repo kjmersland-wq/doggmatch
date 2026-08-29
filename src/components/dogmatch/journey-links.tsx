@@ -1,0 +1,64 @@
+import { Link } from "@tanstack/react-router";
+import { useCopy } from "@/i18n";
+
+/**
+ * The thread that runs through DoggMatch: find, understand, prepare, live with.
+ * Dropped at the foot of the main public pages so no page is a dead end.
+ */
+
+const copy = {
+  en: {
+    title: "Where to go next",
+    intro: "DoggMatch follows the whole journey — from working out which dog suits you, to the ordinary days years later.",
+    steps: [
+      { to: "/find-my-dog", label: "Find my dog", hint: "A few questions about your days" },
+      { to: "/breeds", label: "Breed library", hint: "What each dog is like to live with" },
+      { to: "/compare", label: "Compare dogs", hint: "Side by side, on what matters" },
+      { to: "/get-a-dog", label: "Getting a dog", hint: "Readiness, costs and choosing well" },
+      { to: "/my-dog", label: "My dog", hint: "Routines, food, weight and care" },
+      { to: "/train", label: "Training", hint: "Short, kind lessons that build up" },
+      { to: "/travel", label: "Travel", hint: "Crossing borders and long car days" },
+      { to: "/dog-life", label: "Dog life", hint: "Everyday life together, wherever you are" },
+    ],
+  },
+  no: {
+    title: "Hvor du kan gå videre",
+    intro: "DoggMatch følger hele reisen — fra å finne ut hvilken hund som passer deg, til de helt vanlige dagene mange år senere.",
+    steps: [
+      { to: "/find-my-dog", label: "Finn min hund", hint: "Noen spørsmål om dagene dine" },
+      { to: "/breeds", label: "Rasebiblioteket", hint: "Hvordan hver hund er å leve med" },
+      { to: "/compare", label: "Sammenlign hunder", hint: "Side om side, på det som betyr noe" },
+      { to: "/get-a-dog", label: "Skaffe hund", hint: "Beredskap, kostnader og gode valg" },
+      { to: "/my-dog", label: "Min hund", hint: "Rutiner, fôr, vekt og stell" },
+      { to: "/train", label: "Trening", hint: "Korte, vennlige leksjoner som bygger seg opp" },
+      { to: "/travel", label: "Reise", hint: "Over grenser og lange bilturer" },
+      { to: "/dog-life", label: "Hundeliv", hint: "Hverdagen sammen, uansett hvor du er" },
+    ],
+  },
+} as const;
+
+export function JourneyLinks({ exclude = [] }: { exclude?: string[] }) {
+  const c = useCopy(copy);
+  const steps = c.steps.filter((s) => !exclude.includes(s.to));
+
+  return (
+    <nav aria-label={c.title} className="container-page mt-20 border-t border-border pt-12 md:mt-28">
+      <h2 className="display-md">{c.title}</h2>
+      <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">{c.intro}</p>
+      <ul className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+        {steps.map((step) => (
+          <li key={step.to} className="bg-card">
+            <Link to={step.to} className="block h-full p-6 transition-colors hover:bg-surface">
+              <span className="block font-display text-base leading-tight tracking-tight">
+                {step.label}
+              </span>
+              <span className="mt-2 block text-sm leading-relaxed text-muted-foreground">
+                {step.hint}
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
