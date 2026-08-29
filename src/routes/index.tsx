@@ -17,6 +17,21 @@ const description =
 const ogImage =
   "https://project--133462b6-1f26-496e-a35b-0de87a08b8b1.lovable.app/og-image.jpg";
 
+/**
+ * Section ids are language-independent so a shared link lands in the right
+ * place whichever language the reader has chosen; only the wording changes.
+ */
+const SECTION_IDS = [
+  "why-doggmatch",
+  "how-it-works",
+  "dog-breeds",
+  "compare-breeds",
+  "doggmatch-plus",
+  "dog-life",
+  "faq",
+  "find-your-dog",
+] as const;
+
 const localCopy = {
   en: {
     matchLooks: "What a match looks like",
@@ -24,6 +39,43 @@ const localCopy = {
     heroAlt: "A woman walking a golden retriever along a coastal path at sunrise",
     terrierAlt: "A terrier resting in a sunlit apartment",
     parkAlt: "A city park at dawn with winding walking paths",
+    jumpLabel: "Jump to a section of this page",
+    jumpTitle: "On this page",
+    anchors: {
+      "why-doggmatch": "Why DoggMatch",
+      "how-it-works": "How it works",
+      "dog-breeds": "Explore dog breeds",
+      "compare-breeds": "Compare breeds",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "Dog life near you",
+      faq: "Questions people ask",
+      "find-your-dog": "Find your dog",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "A little more help, once the dog is home",
+    plusBody:
+      "Training you can follow week by week, food and weight kept in one place, travel paperwork sorted, and everything printable for the fridge or the vet.",
+    plusCta: "See what's inside DoggMatch+",
+    faqEyebrow: "Good to know",
+    faqTitle: "Questions people ask us",
+    faq: [
+      {
+        q: "Is the matching done by AI?",
+        a: "No. It's a fixed set of rules we wrote ourselves. The same answers always give the same dogs, and we show you the reasoning behind every score.",
+      },
+      {
+        q: "Does it cost anything to find my dog?",
+        a: "No. The questions, the results and every breed page are free. DoggMatch+ is only for the tools you use after the dog moves in.",
+      },
+      {
+        q: "What if a mixed breed is right for me?",
+        a: "Mixes are welcome. You can build one from two breeds and we'll score the dog in front of you rather than a label.",
+      },
+      {
+        q: "Can I trust the breed information?",
+        a: "We keep our sources open. Every breed, training and health page links to the bodies and research we lean on.",
+      },
+    ],
   },
   no: {
     matchLooks: "Slik ser en match ut",
@@ -31,6 +83,43 @@ const localCopy = {
     heroAlt: "En kvinne g\u00e5r tur med en golden retriever langs kysten i soloppgang",
     terrierAlt: "En terrier som hviler i en solfylt leilighet",
     parkAlt: "En bypark i grålysningen med svingete turveier",
+    jumpLabel: "Hopp til en del av denne siden",
+    jumpTitle: "På denne siden",
+    anchors: {
+      "why-doggmatch": "Hvorfor DoggMatch",
+      "how-it-works": "Slik fungerer det",
+      "dog-breeds": "Bli kjent med rasene",
+      "compare-breeds": "Sammenlign raser",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "Hundeliv der du bor",
+      faq: "Spørsmål vi ofte får",
+      "find-your-dog": "Finn hunden din",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "Litt mer hjelp når hunden først er hjemme",
+    plusBody:
+      "Trening du kan følge uke for uke, fôr og vekt samlet på ett sted, reisepapirene i orden, og alt kan skrives ut til kjøleskapet eller veterinæren.",
+    plusCta: "Se hva som ligger i DoggMatch+",
+    faqEyebrow: "Godt å vite",
+    faqTitle: "Spørsmål vi ofte får",
+    faq: [
+      {
+        q: "Er det KI som gjør matchingen?",
+        a: "Nei. Det er faste regler vi har skrevet selv. De samme svarene gir alltid de samme hundene, og vi viser deg begrunnelsen bak hver score.",
+      },
+      {
+        q: "Koster det noe å finne hunden min?",
+        a: "Nei. Spørsmålene, resultatet og alle rasesidene er gratis. DoggMatch+ gjelder bare verktøyene du bruker etter at hunden har flyttet inn.",
+      },
+      {
+        q: "Hva om en blandingshund passer best for meg?",
+        a: "Blandinger er hjertelig velkomne. Du kan sette sammen to raser, så vurderer vi hunden foran deg — ikke et stempel.",
+      },
+      {
+        q: "Kan jeg stole på raseinformasjonen?",
+        a: "Vi holder kildene åpne. Hver rase-, trenings- og helseside lenker til fagmiljøene og forskningen vi støtter oss på.",
+      },
+    ],
   },
 } as const;
 
