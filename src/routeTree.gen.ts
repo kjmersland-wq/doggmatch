@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BestDogBreedsForFamiliesRouteImport } from './routes/best-dog-breeds-for-families'
 import { Route as BrochureRouteImport } from './routes/brochure'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -83,6 +84,12 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BestDogBreedsForFamiliesRoute =
+  BestDogBreedsForFamiliesRouteImport.update({
+    id: '/best-dog-breeds-for-families',
+    path: '/best-dog-breeds-for-families',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const BrochureRoute = BrochureRouteImport.update({
   id: '/brochure',
   path: '/brochure',
@@ -334,6 +341,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/best-dog-breeds-for-families': typeof BestDogBreedsForFamiliesRoute
   '/brochure': typeof BrochureRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
@@ -389,6 +397,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/best-dog-breeds-for-families': typeof BestDogBreedsForFamiliesRoute
   '/brochure': typeof BrochureRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
@@ -441,6 +450,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/best-dog-breeds-for-families': typeof BestDogBreedsForFamiliesRoute
   '/brochure': typeof BrochureRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
@@ -498,6 +508,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/auth'
+    | '/best-dog-breeds-for-families'
     | '/brochure'
     | '/compare'
     | '/contact'
@@ -553,6 +564,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/auth'
+    | '/best-dog-breeds-for-families'
     | '/brochure'
     | '/compare'
     | '/contact'
@@ -604,6 +616,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/auth'
+    | '/best-dog-breeds-for-families'
     | '/brochure'
     | '/compare'
     | '/contact'
@@ -660,6 +673,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AccountRoute: typeof AccountRoute
   AuthRoute: typeof AuthRoute
+  BestDogBreedsForFamiliesRoute: typeof BestDogBreedsForFamiliesRoute
   BrochureRoute: typeof BrochureRoute
   CompareRoute: typeof CompareRoute
   ContactRoute: typeof ContactRoute
@@ -712,6 +726,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/best-dog-breeds-for-families': {
+      id: '/best-dog-breeds-for-families'
+      path: '/best-dog-breeds-for-families'
+      fullPath: '/best-dog-breeds-for-families'
+      preLoaderRoute: typeof BestDogBreedsForFamiliesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/brochure': {
@@ -1153,6 +1174,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AccountRoute: AccountRoute,
   AuthRoute: AuthRoute,
+  BestDogBreedsForFamiliesRoute: BestDogBreedsForFamiliesRoute,
   BrochureRoute: BrochureRoute,
   CompareRoute: CompareRoute,
   ContactRoute: ContactRoute,
