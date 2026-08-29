@@ -8,6 +8,7 @@ import { useCopy } from "@/i18n";
 const copy = {
   en: { continue: "Continue" },
   no: { continue: "Fortsett" },
+  pl: { continue: "Kontynuuj" },
 } as const;
 
 /* ------------------------------------------------------------------ Hero */

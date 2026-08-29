@@ -70,20 +70,25 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const urls = collect().map((e) => {
+        const urls = collect().flatMap((e) => {
           const loc = `${BASE_URL}${e.path}`;
-          return [
-            `  <url>`,
-            `    <loc>${loc}</loc>`,
+          const alternates = [
             `    <xhtml:link rel="alternate" hreflang="en" href="${loc}"/>`,
             `    <xhtml:link rel="alternate" hreflang="nb-NO" href="${loc}?lang=no"/>`,
+            `    <xhtml:link rel="alternate" hreflang="pl-PL" href="${loc}?lang=pl"/>`,
             `    <xhtml:link rel="alternate" hreflang="x-default" href="${loc}"/>`,
+          ];
+          // Each language reading is its own indexable URL.
+          return ["", "?lang=no", "?lang=pl"].map((suffix) => [
+            `  <url>`,
+            `    <loc>${loc}${suffix}</loc>`,
+            ...alternates,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,
           ]
             .filter(Boolean)
-            .join("\n");
+            .join("\n"));
         });
 
         const xml = [

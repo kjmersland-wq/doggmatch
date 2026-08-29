@@ -62,6 +62,20 @@ const copy = {
     printedNote:
       "Trykket i ekte kortstørrelse — 85,6 × 54 mm. Skriv ut begge sider på stivt papir, klipp langs kanten og brett, så ligger det i lommeboken som et hvilket som helst kort.",
   },
+  pl: {
+    signInHeading: "Zaloguj się, aby zobaczyć swoją kartę",
+    signInBody: "Karta członkowska jest powiązana z Twoim członkostwem DoggMatch+, więc musimy potwierdzić, że to Ty.",
+    signInLabel: "Zaloguj się",
+    loadingHeading: "Chwileczkę…",
+    loadingBody: "Pobieramy Twoją kartę.",
+    backToAccount: "Wróć do mojego konta",
+    noCardHeading: "Ta karta jest częścią DoggMatch+",
+    noCardBody: "Dołącz do DoggMatch+, a Twoja osobista karta członkowska zostanie od razu przygotowana.",
+    seePlus: "Zobacz DoggMatch+",
+    printCard: "Wydrukuj moją kartę członkowską",
+    printedNote:
+      "Wydrukowana w rzeczywistym rozmiarze karty — 85,6 × 54 mm. Wydrukuj obie strony na sztywnym papierze, wytnij wzdłuż krawędzi i złóż — zmieści się w portfelu jak każda inna karta.",
+  },
 } as const;
 
 function MemberCardPage() {

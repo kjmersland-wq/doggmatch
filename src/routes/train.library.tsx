@@ -55,6 +55,16 @@ const copy = {
     everything: "Alt",
     empty: "Ingenting her matcher det ennå. Prøv et annet ord, eller nullstill filtrene.",
   },
+  pl: {
+    eyebrow: "Biblioteka",
+    title: "Wszystkie lekcje, w jednym spokojnym miejscu.",
+    intro: "Zacznij, gdziekolwiek chcesz. Każda lekcja jest krótka i możesz wracać do niej tyle razy, ile chcesz.",
+    searchPlaceholder: "Nad czym chciałbyś popracować?",
+    searchAria: "Szukaj lekcji",
+    allLevels: "Wszystkie poziomy",
+    everything: "Wszystko",
+    empty: "Nic tu jeszcze nie pasuje. Spróbuj innego słowa albo wyczyść filtry.",
+  },
 } as const;
 
 function LibraryPage() {

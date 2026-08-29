@@ -31,6 +31,20 @@ const resultCopy = {
     ownDogFit: "Passer med livet du beskrev",
     ownDogEdit: "Fortell mer om {name}",
   },
+  pl: {
+    scoreNote: "Na podstawie wszystkiego, co nam powiedziałeś/aś, w tym granic, których — jak zaznaczyłeś/aś — nie chcesz przekraczać.",
+    essentials: ["Legowisko i bezpieczne miejsce", "Obroża, smycz i zawieszka", "Jedzenie i stałe pory posiłków", "Ubezpieczenie i opieka weterynaryjna"],
+    suited: "Dopasowane do {breed}.",
+    ownDogTitle: "A co z psem, którego już masz",
+    ownDogMixed:
+      "Ocenione na podstawie własnych cech {name} — rozmiaru, energii, potrzeby ruchu, relacji z ludźmi — a nie etykietki rasy.",
+    ownDogPure:
+      "Ocenione na podstawie tego, co wiemy o {name}, łącznie z rasą.",
+    ownDogUnknown:
+      "Powiedziałeś/aś nam, że {name} to mieszaniec o nieznanym pochodzeniu, więc nie zgadujemy ras. To Twój pies, taki, jakim go opisałeś/aś.",
+    ownDogFit: "Dopasowanie do życia, które opisałeś/aś",
+    ownDogEdit: "Dodaj więcej informacji o {name}",
+  },
 };
 import { quizQuestions } from "@/data/questions.locale";
 import { breedContent } from "@/data/breed-content";

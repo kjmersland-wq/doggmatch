@@ -81,6 +81,27 @@ const copy = {
     vetNote:
       "Er du bekymret for en endring i hundens helse, er veterinæren den beste å spørre. Det du skriver her hjelper deg bare å huske alt når du kommer dit.",
   },
+  pl: {
+    eyebrow: "Kontakty i informacje",
+    titleFor: (name: string) => `Wszystko o ${name} w jednym miejscu`,
+    titleFallback: "Wszystko w jednym miejscu",
+    intro:
+      "Uzupełnij to, co wiesz. Zostaje to na tym urządzeniu i możesz to wydrukować, kiedy tylko potrzebujesz — dla weterynarza, opiekuna albo na drzwi lodówki.",
+    printSave: "Wydrukuj i zapisz",
+    addDogNote: "Dodaj najpierw swojego psa, a wszystko, co tu wpiszesz, zostanie zapisane razem z nim.",
+    detailsTitle: "Dane twojego psa",
+    dob: "Data urodzenia",
+    colour: "Umaszczenie i znaki szczególne",
+    microchip: "Numer chipa",
+    insurance: "Ubezpieczenie",
+    policy: "Numer polisy",
+    worthKnowing: "Warto wiedzieć",
+    worthKnowingTitle: "To, co chciałbyś, aby wiedział ktoś inny",
+    worthKnowingIntro:
+      "Własnymi słowami. Nic z tego nie jest diagnozą — to po prostu twoje spostrzeżenia z życia z psem.",
+    vetNote:
+      "Jeśli martwisz się o zmianę w zdrowiu twojego psa, najlepiej zapytać weterynarza. To, co tu napiszesz, po prostu pomoże ci wszystko zapamiętać, gdy tam trafisz.",
+  },
 } as const;
 
 function Field({

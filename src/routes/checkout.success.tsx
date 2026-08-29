@@ -41,6 +41,13 @@ const copy = {
     goToMyDog: "Gå til Min hund",
     seeMembership: "Se medlemskapet mitt",
   },
+  pl: {
+    eyebrow: "Dziękujemy",
+    heading: "Jesteś z nami. Witaj w DoggMatch",
+    body: "Twoje członkostwo jest aktywne, a potwierdzenie już zmierza do Ciebie e-mailem. Zadbajmy razem dobrze o Twojego psa.",
+    goToMyDog: "Przejdź do Mój pies",
+    seeMembership: "Zobacz moje członkostwo",
+  },
 } as const;
 
 function SuccessPage() {

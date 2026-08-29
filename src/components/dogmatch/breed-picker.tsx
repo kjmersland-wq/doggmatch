@@ -120,6 +120,35 @@ const copy = {
       barking: { label: "Hvor pratsom", low: "Stille", high: "Svært pratsom" },
     },
   },
+  pl: {
+    typeLabel: "Czy twój pies jest rasowy, czy to mieszaniec?",
+    typeHint: "Obie odpowiedzi są w porządku — przy mieszańcu po prostu bardziej opieramy się na twoim psie niż na książce o rasach.",
+    purebred: "Jedna rasa",
+    mixed: "Mieszaniec",
+    breedLabel: "Jaka rasa?",
+    notFromList: "Nie ma jej na liście",
+    breedOtherPlaceholder: "Terier",
+    mixBreedsLabel: "Znasz rasy, które wchodzą w skład mieszanki?",
+    mixBreedsHint: "Wybierz tyle, ile wiesz. Traktujemy to tylko jako tło — nie udajemy, że wiemy dokładnie, kim jest twój pies.",
+    unknownMix: "Nieznana mieszanka",
+    unknownMixHint: "Nikt nie wie i to zupełnie w porządku. Wszystko nadal działa.",
+    mixOtherLabel: "Jak go nazywacie?",
+    mixOtherPlaceholder: "Mieszaniec teriera ze schroniska",
+    observedLabel: "Jak opisałbyś swojego psa?",
+    observedHint:
+      "Tego używamy w pierwszej kolejności — twojego własnego psa, a nie średniej dla rasy. Pomiń to, czego nie jesteś pewien.",
+    skip: "Nie wiem",
+    scales: {
+      size: { label: "Rozmiar", low: "Malutki", high: "Ogromny" },
+      energy: { label: "Energia", low: "Bardzo spokojny", high: "Nigdy nie ustaje" },
+      exerciseNeeds: { label: "Potrzeba ruchu", low: "Krótkie spacery", high: "Godziny dziennie" },
+      trainability: { label: "Jak łatwo się uczy", low: "Potrzebuje czasu", high: "Łapie w lot" },
+      sociability: { label: "Z ludźmi i psami", low: "Powściągliwy", high: "Kocha wszystkich" },
+      grooming: { label: "Pielęgnacja sierści", low: "Umyj i gotowe", high: "Codzienne szczotkowanie" },
+      shedding: { label: "Linienie", low: "Prawie wcale", high: "Sierść wszędzie" },
+      barking: { label: "Jak głośny", low: "Cichy", high: "Bardzo głośny" },
+    },
+  },
 } as const;
 
 interface Props {

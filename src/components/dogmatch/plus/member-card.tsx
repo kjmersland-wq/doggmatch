@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 import { BrandLock, BrandMark } from "@/components/dogmatch/brand-logo";
 import type { MemberCard } from "@/lib/plus/member-card.functions";
-import { useCopy, useLocale } from "@/i18n";
+import { useCopy, useLocale, INTL_LOCALE, type Locale } from "@/i18n";
 
 /** The verification link the code on the back points at. */
 export function verifyUrl(memberId: string) {
@@ -24,9 +24,9 @@ function useQr(text: string) {
   return src;
 }
 
-function formatDate(value: string | null, locale: "en" | "no") {
+function formatDate(value: string | null, locale: Locale) {
   if (!value) return "—";
-  return new Date(value).toLocaleDateString(locale === "no" ? "nb-NO" : "en-GB", {
+  return new Date(value).toLocaleDateString(INTL_LOCALE[locale], {
     month: "short",
     year: "numeric",
   });
@@ -58,6 +58,19 @@ const copy = {
     backBody: "Skann koden, eller gå til doggmatch.com/verify og skriv inn medlems-ID-en under.",
     fineprint: "Dette kortet tilhører personen navngitt på forsiden. Det er ikke et betalingskort.",
     verifyAlt: (id: string) => `Verifiseringskode for ${id}`,
+  },
+  pl: {
+    plusMember: "+ Członek",
+    member: "Członek",
+    memberId: "ID członka",
+    status: "Status",
+    active: "Aktywne",
+    ended: "Zakończone",
+    validThrough: "Ważne do",
+    checkThisCard: "Sprawdź tę kartę",
+    backBody: "Zeskanuj kod lub wejdź na doggmatch.com/verify i wpisz poniższe ID członka.",
+    fineprint: "Ta karta należy do osoby wskazanej na przodzie. To nie jest karta płatnicza.",
+    verifyAlt: (id: string) => `Kod weryfikacyjny dla ${id}`,
   },
 } as const;
 

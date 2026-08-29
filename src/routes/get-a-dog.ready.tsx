@@ -79,6 +79,30 @@ const copy = {
     oneMoreThingBody:
       "Ingenting her er en dom, og ingenting lagres andre steder enn på denne enheten. Hvis nå ikke er riktig tidspunkt, vil en hund fortsatt være der når det er.",
   },
+  pl: {
+    eyebrow: "Czy pies pasuje do Twojego życia?",
+    of: "z",
+    progress: "Postęp",
+    back: "Wstecz",
+    seeWhatIThink: "Zobacz, co o tym myślimy",
+    continueBtn: "Dalej",
+    noPassMark: "Nie ma tu progu zaliczenia ani złej odpowiedzi.",
+    answersOnDevice: "Twoje odpowiedzi zostają na tym urządzeniu.",
+    resultEyebrow: "Co o tym myślimy",
+    basedOn: "Na podstawie",
+    resultNote: "odpowiedzi. To nie jest wynik punktowy — decyduje jedynie, którą z trzech szczerych odpowiedzi Ci damy.",
+    notesTitle: "Kilka spraw warto ogarnąć wcześniej",
+    notesBody:
+      "Żadna z nich nie jest powodem, by nie mieć psa. To po prostu rzeczy, które dużo łatwiej ustalić teraz niż później.",
+    weveKept: "Zachowaliśmy",
+    answersHelp: "odpowiedzi, które pomagają w dopasowaniu, więc Znajdź mojego psa nie zapyta o nie ponownie.",
+    findMyDog: "Znajdź mojego psa",
+    puppyOrAdult: "Szczeniak czy dorosły?",
+    changeAnswers: "Zmień moje odpowiedzi",
+    oneMoreThing: "Jeszcze jedno",
+    oneMoreThingBody:
+      "Nic tu nie jest oceną, i nic nie jest przechowywane nigdzie poza tym urządzeniem. Jeśli teraz to nie jest odpowiedni moment, pies wciąż będzie na Ciebie czekał, gdy nadejdzie właściwy czas.",
+  },
 } as const;
 
 function ReadyPage() {

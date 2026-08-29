@@ -73,6 +73,28 @@ const copy = {
     abroadCta: "Reise til utlandet",
     placesCta: "Finn hundevennlige steder",
   },
+  pl: {
+    eyebrow: "Na zewnątrz",
+    title: "Przygody, które naprawdę mu się spodobają.",
+    intro: "Psy niemal zawsze będą kontynuować marsz dla ciebie, długo po tym, jak powinny się zatrzymać. Dlatego to ty musisz ocenić sytuację.",
+    beforeEyebrow: "Przed dużym spacerem",
+    beforeTitle: "Odrobina przygotowania.",
+    hikingEyebrow: "Wędrówki",
+    hikingTitle: "Co decyduje o tym, jak daleko dojdziecie.",
+    weatherEyebrow: "Pogoda",
+    weatherTitle: "Pogoda decyduje bardziej niż mapa.",
+    heat: "Upał",
+    cold: "Zimno",
+    heatstrokeTitle: "Udar cieplny to stan nagły",
+    heatstrokeBody: "Ciężkie dyszenie, które nie ustępuje, jaskrawoczerwone dziąsła, ślinienie się, chwianie, wymioty lub zapaść. Zaprowadź psa w cień, podaj wodę, schładzaj letnią — nie lodowatą — wodą i natychmiast zadzwoń do weterynarza.",
+    pawsEyebrow: "Łapy",
+    pawsTitle: "Sprawdzaj je po każdym dużym dniu.",
+    holidayEyebrow: "Wspólny wyjazd",
+    holidayTitle: "Co zabrać ze sobą.",
+    holidayBody: "Odhaczaj podczas pakowania. Zapisuje się to na tym urządzeniu, więc będzie tu też następnym razem.",
+    abroadCta: "Podróż za granicę",
+    placesCta: "Znajdź miejsca przyjazne psom",
+  },
 } as const;
 
 function OutdoorsPage() {

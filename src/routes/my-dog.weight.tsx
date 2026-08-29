@@ -88,6 +88,34 @@ const copy = {
       "Sett ovenfra: en mild innsnevring bak ribbeina er det du ser etter. Bygning endrer hvordan dette ser ut — en Greyhound og en Labrador i god form ser helt forskjellige ut.",
     workOutPortions: "Regn ut matporsjoner",
   },
+  pl: {
+    eyebrow: "Waga i sylwetka",
+    weightFor: (name: string) => `Waga ${name}`,
+    weight: "Waga",
+    noEntries: "Dodawaj wagę mniej więcej raz w miesiącu. Wystarczą dwa wpisy, żeby zaczął się rysować trend.",
+    weightAria: "Waga w kilogramach",
+    kg: "kg",
+    saveToday: "Zapisz dzisiejszą wagę",
+    addDogNote: "Dodaj najpierw swojego psa, a zapamiętamy każdy wpis.",
+    remove: "Usuń",
+    latest: "Ostatnia",
+    noEntriesShort: "Brak wpisów",
+    overDays: (n: number) => `Przez ${n} dni`,
+    change: "Zmiana",
+    holdingSteady: "Stabilna",
+    sincePercent: (percent: number) => `${percent > 0 ? "+" : ""}${percent}% od pierwszego wpisu`,
+    addTwoWeights: "Dodaj dwie wagi, żeby to zobaczyć",
+    weightVetNote:
+      "Zmiana o więcej niż około 10% w dowolną stronę, której nie planowałeś, warta jest wzmianki u weterynarza. Zwłaszcza nagła utrata wagi.",
+    checkEyebrow: "Sprawdzenie na minutę",
+    checkTitle: "Twoje ręce powiedzą więcej niż waga",
+    step: (n: number) => `Krok ${n}`,
+    figureAlt:
+      "Trzy sylwetki psa widziane z góry: zbyt szczupły, w sam raz z wyraźną talią i zbyt ciężki",
+    figCaption:
+      "Widziane z góry: delikatne zwężenie za żebrami to właśnie to, czego szukasz. Budowa ciała zmienia, jak to wygląda — chart i labrador w świetnej formie wyglądają zupełnie inaczej.",
+    workOutPortions: "Wylicz porcje jedzenia",
+  },
 } as const;
 
 function WeightPage() {

@@ -84,6 +84,32 @@ const copy = {
     costsCta: "Hva koster en hund egentlig?",
     findMyDog: "Finn min hund",
   },
+  pl: {
+    eyebrow: "Wybieraj z rozwagą",
+    puppyAlt: "Szczeniak cocker spaniela siedzący obok pogryzionego kapcia",
+    adultAlt: "Spokojny dorosły pies odpoczywający na kanapie w słonecznym mieszkaniu",
+    whatsGood: "Co jest dobre",
+    whatsHard: "Co jest trudne",
+    whereFrom: "Skąd wziąć psa",
+    breederAlt: "Suka odpoczywająca ze szczeniakami na kocu w rodzinnym salonie",
+    rescueAlt: "Kobieta kucająca, by przywitać się z dorosłym psem ze schroniska",
+    whatsGoodAbout: "Co jest w tym dobrego",
+    worthLookingInto: "Warto sprawdzić",
+    meetingBreederEyebrow: "Spotkanie z hodowcą",
+    meetingBreederTitle: "O co zapytać, i na co zwrócić uwagę.",
+    meetingBreederBody:
+      "Odhaczaj po kolei. Dobry hodowca ucieszy się, że pytasz — większość z nich chciałaby, żeby więcej osób to robiło.",
+    questionsWorthAsking: "Pytania warte zadania",
+    thingsGivePause: "Rzeczy, które budzą naszą czujność",
+    pauseBody:
+      "Żadna z nich sama w sobie niczego nie dowodzi. Dwie lub trzy razem to zwykle powód, by zwolnić tempo albo się wycofać — a wycofanie się zawsze jest w porządku.",
+    adoptionEyebrow: "Adopcja",
+    adoptionTitle: "Myślisz o adopcji?",
+    adoptionBody:
+      "Psy ze schronisk nie są uszkodzonym towarem. Większość to zupełnie zwyczajne psy, których ludziom zabrakło czasu, pieniędzy lub zdrowia. Oto, co warto sobie przemyśleć.",
+    costsCta: "Ile naprawdę kosztuje pies?",
+    findMyDog: "Znajdź mojego psa",
+  },
 } as const;
 
 function ChoosePage() {

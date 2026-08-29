@@ -79,6 +79,29 @@ const copy = {
     vetNote:
       "Denne informasjonen skrives inn av deg for å organisere dine observasjoner og spørsmål til et veterinærbesøk. Veterinæren din er den som kan undersøke hunden din og gi deg råd.",
   },
+  pl: {
+    eyebrow: "Wizyty u weterynarza",
+    titleFor: (name: string) => `Wizyta ${name} u weterynarza`,
+    titleFallback: "Wizyta twojego psa u weterynarza",
+    intro:
+      "Łatwo zapomnieć o połowie tego, co chciałeś powiedzieć, gdy już jesteś w gabinecie. Zapisz to tutaj, wydrukuj i zabierz ze sobą.",
+    beforeWeGo: "Zanim pojedziemy",
+    date: "Data",
+    weight: "Waga (kg)",
+    reason: "Powód wizyty",
+    questions: "Co chcę zapytać",
+    notes: "Co usłyszeliśmy",
+    followUp: "Dalsze kroki",
+    next: "Kolejna wizyta",
+    saveVisit: "Zapisz tę wizytę",
+    printIt: "Wydrukuj",
+    addDogNote: "Dodaj najpierw swojego psa, jeśli chcesz zachować to na później.",
+    visitsSavedTitle: "Zapisane wizyty",
+    noVisits: "Nic jeszcze nie zapisano. Po wizycie zachowaj tu notatki — dobrze mieć do czego wrócić.",
+    remove: "Usuń",
+    vetNote:
+      "Te informacje wpisujesz sam, aby uporządkować swoje obserwacje i pytania przed wizytą u weterynarza. To weterynarz może zbadać twojego psa i udzielić ci porady.",
+  },
 } as const;
 
 function VetPage() {

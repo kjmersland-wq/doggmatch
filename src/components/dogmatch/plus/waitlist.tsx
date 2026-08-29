@@ -44,6 +44,23 @@ const copy = {
     consentLink: "personvernerklæringen på Om oss-siden",
     error: "Noe gikk galt hos oss. Prøv gjerne igjen.",
   },
+  pl: {
+    eyebrow: "Lista oczekujących",
+    title: "Dowiedz się jako pierwszy, kiedy otworzymy DoggMatch+.",
+    body: "Zostaw imię i e-mail, a wyślemy ci jedną spokojną wiadomość, gdy członkostwo zostanie otwarte. Żadnego newslettera, żadnego zamieszania — w każdej chwili możesz poprosić nas o usunięcie.",
+    doneTitle: "Jesteś na liście.",
+    doneBody: "Damy ci znać, gdy DoggMatch+ będzie gotowy.",
+    firstName: "Imię",
+    firstNamePlaceholder: "Kasia",
+    email: "Adres e-mail",
+    emailPlaceholder: "ty@przyklad.pl",
+    submit: "Dołącz do listy oczekujących",
+    submitBusy: "Chwileczkę…",
+    consentPrefix:
+      "Dołączając, zgadzasz się, że zachowamy twoje imię i e-mail, aby powiadomić cię o otwarciu DoggMatch+. Nic więcej i nigdy nie przekazujemy tego dalej. Zobacz naszą",
+    consentLink: "politykę prywatności na stronie O nas",
+    error: "Coś poszło nie tak po naszej stronie. Spróbuj ponownie.",
+  },
 } as const;
 
 export function PlusWaitlist() {

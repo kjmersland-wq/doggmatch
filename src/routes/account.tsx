@@ -88,6 +88,29 @@ const copy = {
     addAnother: "Legg til en hund til",
     addYours: "Legg til hunden din",
   },
+  pl: {
+    eyebrow: "Moje konto",
+    heading: "Twoja strona sprawy",
+    introPrefix: "Ta strona dotyczy Ciebie — Twoich danych, Twojego języka, tego, co chcesz od nas słyszeć. Wszystko o Twoim psie znajdziesz w",
+    myDogLink: "Mój pies",
+    preferences: "Preferencje",
+    units: "Jednostki",
+    unitsValue: "Metryczne (kg, km)",
+    reminders: "Przypomnienia",
+    off: "Wyłączone",
+    emailFromUs: "Wiadomości od nas",
+    preferencesNote: "Wolimy nic nie wysyłać, niż wysłać coś, o co nie prosiłeś.",
+    privacy: "Prywatność",
+    privacyBody:
+      "Dane Twojego psa, waga, postępy w treningu i notatki pozostają w tej przeglądarce. Nic nie jest wysyłane, sprzedawane ani udostępniane. Wyczyszczenie danych przeglądarki usunie je również — więc jeśli coś jest ważne, wydrukuj i zachowaj kopię.",
+    printSave: "Drukuj i zachowaj",
+    yourDogs: "Twoje psy",
+    yourDog: "Twój pies",
+    switchBody: "Przełączaj się między nimi tutaj albo dodaj kolejnego. Każdy pies ma własne dane o jedzeniu, zdrowiu, treningu i dokumentach.",
+    noDogBody: "Nie dodałeś jeszcze psa. To zajmuje tylko chwilę, a wszystko inne wynika z tego kroku.",
+    addAnother: "Dodaj kolejnego psa",
+    addYours: "Dodaj swojego psa",
+  },
 } as const;
 
 function AccountPage() {

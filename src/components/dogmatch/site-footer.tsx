@@ -18,6 +18,13 @@ const copy = {
     partner: "Bli partner",
     sources: "Kilder og metode",
   },
+  pl: {
+    blurb: "Spokojne i szczere miejsce, by odkryć, jaki pies pasowałby do twojego życia.",
+    food: "Jedzenie i porcje",
+    canEat: "Czy mój pies może to zjeść?",
+    partner: "Zostań partnerem",
+    sources: "Źródła i metodologia",
+  },
 };
 
 export function SiteFooter() {

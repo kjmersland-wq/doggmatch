@@ -14,6 +14,7 @@ import { ShareBar } from "@/components/dogmatch/share";
 const copy = {
   en: { welcomeUser: (name: string) => `Good to see you, ${name}'s human.` },
   no: { welcomeUser: (name: string) => `Godt å se deg, ${name} sin menneske.` },
+  pl: { welcomeUser: (name: string) => `Miło cię widzieć, człowieku ${name}.` },
 } as const;
 
 const title = "Train Your Dog — Small sessions, clear steps | DoggMatch";

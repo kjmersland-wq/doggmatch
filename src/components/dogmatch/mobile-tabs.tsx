@@ -5,6 +5,7 @@ import { useCopy, useT } from "@/i18n";
 const copy = {
   en: { mobileNav: "Mobile" },
   no: { mobileNav: "Mobilnavigasjon" },
+  pl: { mobileNav: "Nawigacja mobilna" },
 } as const;
 
 export function MobileTabs() {

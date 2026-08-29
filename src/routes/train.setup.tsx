@@ -98,6 +98,38 @@ const copy = {
       { value: "advanced" as const, label: "Vi trener mye", hint: "Ser etter noe mer" },
     ],
   },
+  pl: {
+    eyebrow: "Twój pies",
+    title: "Opowiedz nam trochę o swoim psie.",
+    intro:
+      "Tylko po to, by zaproponowany trening naprawdę pasował do Was dwojga. Zostaje na tym urządzeniu, a wszystko możesz zmienić później.",
+    nameLabel: "Jak się nazywa?",
+    namePlaceholder: "Luna",
+    ageLabel: "Ile lat ma Twój pies?",
+    experienceLabel: "Ile treningu miałeś już za sobą?",
+    levelLabel: "A na jakim etapie jesteście teraz?",
+    goalsLabel: "Nad czym najbardziej chcielibyście razem popracować?",
+    goalsHint: "Wybierz tyle, ile chcesz. Nic nie jest wiążące.",
+    notNow: "Nie teraz",
+    save: "Zapisz i zacznij trening",
+    ageStages: [
+      { value: "puppy" as const, label: "Szczeniak", hint: "Do około szóstego miesiąca" },
+      { value: "adolescent" as const, label: "Nastolatek", hint: "Mniej więcej od sześciu miesięcy do dwóch lat" },
+      { value: "adult" as const, label: "Dorosły", hint: "Gdzieś w środkowych latach" },
+      { value: "senior" as const, label: "Coraz starszy", hint: "Trochę zwalnia tempo" },
+    ],
+    experiences: [
+      { value: "first-dog" as const, label: "To mój pierwszy pies", hint: "Zaczniemy od podstaw" },
+      { value: "some" as const, label: "Miałem już psa wcześniej", hint: "Znasz się na przysmakach" },
+      { value: "lots" as const, label: "Trenowałem już sporo", hint: "Chętnie pójdziemy dalej" },
+    ],
+    levels: [
+      { value: "beginner" as const, label: "Dopiero zaczynamy", hint: "Prawie wszystko jest nowe" },
+      { value: "building" as const, label: "Niektóre rzeczy zaczynają działać", hint: "Niektóre dni są lepsze od innych" },
+      { value: "intermediate" as const, label: "Podstawy są solidne", hint: "Gotowi na rozpraszacze" },
+      { value: "advanced" as const, label: "Trenujemy dużo", hint: "Szukamy czegoś więcej" },
+    ],
+  },
 } as const;
 
 function SetupPage() {

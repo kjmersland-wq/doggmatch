@@ -29,14 +29,14 @@ export interface Benefit {
   active?: boolean;
 }
 
-const benefitCategoryLabels: Record<BenefitCategory, { en: string; no: string }> = {
-  equipment: { en: "Equipment", no: "Utstyr" },
-  food: { en: "Food & treats", no: "Mat og godbiter" },
-  grooming: { en: "Grooming", no: "Stell og pels" },
-  training: { en: "Training", no: "Trening" },
-  insurance: { en: "Insurance", no: "Forsikring" },
-  vet: { en: "Vet care", no: "Veterinær" },
-  travel: { en: "Travel", no: "Reise" },
+const benefitCategoryLabels: Record<BenefitCategory, { en: string; no: string; pl: string }> = {
+  equipment: { en: "Equipment", no: "Utstyr", pl: "Wyposażenie" },
+  food: { en: "Food & treats", no: "Mat og godbiter", pl: "Jedzenie i przysmaki" },
+  grooming: { en: "Grooming", no: "Stell og pels", pl: "Pielęgnacja" },
+  training: { en: "Training", no: "Trening", pl: "Szkolenie" },
+  insurance: { en: "Insurance", no: "Forsikring", pl: "Ubezpieczenie" },
+  vet: { en: "Vet care", no: "Veterinær", pl: "Opieka weterynaryjna" },
+  travel: { en: "Travel", no: "Reise", pl: "Podróże" },
 };
 
 /** Bilingual, locale-aware benefit categories. Call from render — reads the live locale. */

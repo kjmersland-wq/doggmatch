@@ -77,6 +77,24 @@ const copy = {
       "Se heller gjennom alt i Min hund — det er stor sjanse for at det du leter etter finnes der under et annet navn.",
     backToMyDog: "Tilbake til Min hund",
   },
+  pl: {
+    myDog: "Mój pies",
+    step: "Krok",
+    gentleWeekTitle: "Spokojny pierwszy tydzień",
+    gentleWeekBody: "Tutaj powoli znaczy szybciej. Każdy dzień to najwyżej minuta.",
+    forName: (name: string) => `Dla ${name}`,
+    forYourDog: "Dla twojego psa",
+    thingsWorthNoticing: "Na co warto zwrócić uwagę",
+    makeAboutDog: "Dopasuj to do swojego psa",
+    makeAboutDogBody: "Dodaj kilka szczegółów, a dopasujemy notatki na stronach takich jak ta.",
+    setUpMyDog: "Ustaw mojego psa",
+    keepGoing: "Idź dalej",
+    moreEverydayCare: "Więcej o codziennej pielęgnacji",
+    notWrittenTitle: "Tego jeszcze nie napisaliśmy.",
+    notWrittenBody:
+      "Zajrzyj do wszystkiego, co znajdziesz w Mój pies — jest spora szansa, że to, czego szukasz, jest tam pod inną nazwą.",
+    backToMyDog: "Wróć do Mój pies",
+  },
 } as const;
 
 function CareTopicPage() {

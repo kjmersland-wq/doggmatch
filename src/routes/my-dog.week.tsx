@@ -74,6 +74,27 @@ const copy = {
     footer: (n: number) =>
       `Forslag for ${n} dager, regnet ut fra hundens detaljer — aldri fra en gjetning eller en modell.`,
   },
+  pl: {
+    eyebrow: "Mój tydzień z psem",
+    titleFor: (name: string) => `Tydzień ${name}`,
+    titleFallback: "Tydzień z twoim psem",
+    intro:
+      "Oto, co warto zapamiętać w tym tygodniu. To zestawienie oparte na tym, co powiedziałeś nam o swoim psie — nic nie jest sztywne, więc usuń wszystko, co nie pasuje do twoich dni.",
+    printWeek: "Wydrukuj ten tydzień",
+    putBack: "Przywróć sugestie",
+    today: "Dziś",
+    removeAria: (label: string, day: string) => `Usuń ${label} z dnia ${day}`,
+    addPlaceholder: "Szkolenie szczeniaka, długi spacer…",
+    add: "Dodaj",
+    addOwn: "Dodaj coś od siebie",
+    genericNotePrefix: "Ten tydzień jest ogólny, dopóki nie opowiesz nam o swoim psie.",
+    addDog: "Dodaj swojego psa",
+    genericNoteSuffix: "a wtedy dopasujemy go do niego.",
+    vetNote:
+      "Takie dni to rytm, nie regulamin. Niektóre tygodnie są bardziej zajęte niż inne, a pominięty spacer czy szczotkowanie to nie porażka — to po prostu życie z psem.",
+    footer: (n: number) =>
+      `Sugestie na ${n} dni, wyliczone na podstawie danych twojego psa — nigdy z domysłu ani z modelu.`,
+  },
 } as const;
 
 function WeekPage() {

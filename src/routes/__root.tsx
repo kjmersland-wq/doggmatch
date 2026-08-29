@@ -36,6 +36,15 @@ const shellCopy = {
     retry: "Prøv igjen",
     home: "Til forsiden",
   },
+  pl: {
+    notFound: "Wygląda na to, że ta strona gdzieś się zawieruszyła.",
+    notFoundBody: "Nic straconego — wracamy na właściwy trop.",
+    back: "Wróć do DoggMatch",
+    errorTitle: "Coś poszło nie tak po naszej stronie.",
+    errorBody: "Przepraszamy za to. Twoje odpowiedzi są bezpieczne — spróbuj jeszcze raz.",
+    retry: "Spróbuj ponownie",
+    home: "Strona główna",
+  },
 };
 
 function NotFoundComponent() {
@@ -194,7 +203,7 @@ function RootComponent() {
 
 /** Keyboard users get straight to the content, ahead of the navigation. */
 function SkipLink() {
-  const c = useCopy({ en: { skip: "Skip to content" }, no: { skip: "Hopp til innhold" } });
+  const c = useCopy({ en: { skip: "Skip to content" }, no: { skip: "Hopp til innhold" }, pl: { skip: "Przejdź do treści" } });
   return (
     <a href="#main" className="skip-link">
       {c.skip}

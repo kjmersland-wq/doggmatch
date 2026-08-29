@@ -96,6 +96,41 @@ const copy = {
       },
     ],
   },
+  pl: {
+    comingSoon: "Wkrótce",
+    guides: [
+      {
+        id: "flat-living",
+        title: "Psy, które dobrze radzą sobie w mieszkaniu",
+        body: "Przestrzeń liczy się mniej, niż mogłoby się wydawać. Hałas, ruch i to, jak pies radzi sobie sam, mają dużo większe znaczenie.",
+      },
+      {
+        id: "first-dog",
+        title: "Wybór pierwszego psa",
+        body: "Każdy popełnia błędy w pierwszym roku. Niektóre psy wybaczają je łatwiej niż inne.",
+      },
+      {
+        id: "shedding-allergies",
+        title: "Linienie i życie z alergią",
+        body: "Co tak naprawdę oznacza mniejsze linienie i jak to przemyśleć, jeśli ktoś w domu reaguje na psy.",
+      },
+      {
+        id: "calm-dogs",
+        title: "Spokojne psy do cichszych domów",
+        body: "Spokojny pies wciąż potrzebuje od ciebie bardzo wiele. Oto jak rozpoznać takiego, który naprawdę jest łagodnego usposobienia.",
+      },
+      {
+        id: "active-life",
+        title: "Psy dla osób, które lubią ruch",
+        body: "Bądź szczery co do tygodnia, jaki naprawdę masz, a nie tego, jaki chciałbyś mieć.",
+      },
+      {
+        id: "yearly-cost",
+        title: "Ile pies naprawdę kosztuje w ciągu roku",
+        body: "Jedzenie, ubezpieczenie, weterynarz, groomer — i te pozycje, o których prawie każdy zapomina w budżecie.",
+      },
+    ],
+  },
 } as const;
 
 function GuidesPage() {

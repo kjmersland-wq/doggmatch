@@ -49,6 +49,27 @@ const copy = {
     goodOne: "Bra jobba",
     rewardsGiven: "belønninger gitt",
   },
+  pl: {
+    level: {
+      beginner: "Początkujący",
+      building: "Budowanie pewności siebie",
+      intermediate: "Średnio zaawansowany",
+      advanced: "Zaawansowany",
+    } as Record<Lesson["level"], string>,
+    status: {
+      "not-started": "Nierozpoczęte",
+      practising: "W trakcie ćwiczeń",
+      "getting-there": "Coraz bliżej",
+      learned: "Opanowane",
+    } as Record<SkillStatus, string>,
+    howGoing: "Jak idzie?",
+    pause: "Pauza",
+    startTimer: "Uruchom stoper",
+    resume: "Wznów",
+    reset: "Zresetuj",
+    goodOne: "Brawo",
+    rewardsGiven: "przyznanych nagród",
+  },
 } as const;
 
 /** English fallback level labels, for use outside React render. */

@@ -8,11 +8,18 @@ import {
   type ReactNode,
 } from "react";
 
-export type Locale = "en" | "no";
+export type Locale = "en" | "no" | "pl";
 
-export const SUPPORTED_LOCALES: Locale[] = ["en", "no"];
+export const SUPPORTED_LOCALES: Locale[] = ["en", "no", "pl"];
+
+/** The ?lang= value and <html lang> we use for each language. */
+export const HTML_LANG: Record<Locale, string> = { en: "en", no: "nb", pl: "pl" };
 
 const KEY = "doggmatch.locale";
+
+function isLocale(v: unknown): v is Locale {
+  return v === "en" || v === "no" || v === "pl";
+}
 
 /**
  * Mirror of the active locale for plain (non-React) modules — data files and
@@ -30,13 +37,18 @@ function setCurrentLocale(next: Locale) {
 }
 
 /**
- * Picks the right variant of a bilingual value. Safe outside React.
- * The two branches are inferred independently (so `as const` literals in the
- * Norwegian branch don't have to match the English literal types), but the
- * result is typed from the English branch.
+ * A copy map. English is the source language and always required; the other
+ * languages are optional so a page still renders while a translation lands.
  */
-export function pick<A, B>(map: { en: A; no: B }, locale: Locale = getLocale()): A {
-  return ((locale === "no" ? map.no : map.en) ?? map.en) as unknown as A;
+export type CopyMap<A> = { en: A; no?: unknown; pl?: unknown };
+
+/**
+ * Picks the right variant of a localised value. Safe outside React.
+ * Falls back to English whenever a language is missing.
+ */
+export function pick<A>(map: CopyMap<A>, locale: Locale = getLocale()): A {
+  const value = locale === "pl" ? map.pl : locale === "no" ? map.no : map.en;
+  return ((value ?? map.en) as unknown) as A;
 }
 
 type LocaleContextValue = {
@@ -54,21 +66,22 @@ const LocaleContext = createContext<LocaleContextValue>({
 function readStored(): Locale | null {
   try {
     const v = localStorage.getItem(KEY);
-    return v === "en" || v === "no" ? v : null;
+    return isLocale(v) ? v : null;
   } catch {
     return null;
   }
 }
 
 /**
- * A shared link can carry the language it was read in (?lang=no), which is
+ * A shared link can carry the language it was read in (?lang=pl), which is
  * also what the hreflang alternates point at. An explicit link wins over a
  * previously stored choice.
  */
 function readFromUrl(): Locale | null {
   if (typeof window === "undefined") return null;
-  const v = new URLSearchParams(window.location.search).get("lang");
+  const v = (new URLSearchParams(window.location.search).get("lang") || "").toLowerCase();
   if (v === "no" || v === "nb" || v === "nn") return "no";
+  if (v === "pl" || v === "pl-pl") return "pl";
   if (v === "en") return "en";
   return null;
 }
@@ -76,7 +89,9 @@ function readFromUrl(): Locale | null {
 function detect(): Locale {
   if (typeof navigator === "undefined") return "en";
   const l = (navigator.language || "").toLowerCase();
-  return l.startsWith("nb") || l.startsWith("nn") || l.startsWith("no") ? "no" : "en";
+  if (l.startsWith("nb") || l.startsWith("nn") || l.startsWith("no")) return "no";
+  if (l.startsWith("pl")) return "pl";
+  return "en";
 }
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
@@ -86,7 +101,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   // Keep the module mirror in sync during render, before any child reads it
   // through `pick()`. Doing this in an effect is too late for the first
   // post-hydration render, which is what makes data look English while the
-  // surrounding UI is already Norwegian.
+  // surrounding UI is already in another language.
   setCurrentLocale(locale);
 
   useEffect(() => {
@@ -108,7 +123,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     setCurrentLocale(locale);
     if (typeof document !== "undefined") {
-      document.documentElement.lang = locale === "no" ? "nb" : "en";
+      document.documentElement.lang = HTML_LANG[locale];
     }
   }, [locale]);
 
@@ -119,6 +134,13 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
       localStorage.setItem(KEY, next);
     } catch {
       /* private mode — the choice just won't stick */
+    }
+    // Keep the address bar honest: the language is part of the shareable URL.
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      if (next === "en") url.searchParams.delete("lang");
+      else url.searchParams.set("lang", next);
+      window.history.replaceState(window.history.state, "", url.toString());
     }
   }, []);
 
@@ -133,9 +155,9 @@ export function useLocale() {
 
 /**
  * The everyday helper for components:
- *   const c = useCopy({ en: { title: "Hello" }, no: { title: "Hei" } });
+ *   const c = useCopy({ en: {...}, no: {...}, pl: {...} });
  */
-export function useCopy<A, B>(map: { en: A; no: B }): A {
+export function useCopy<A>(map: CopyMap<A>): A {
   const { locale } = useLocale();
-  return ((locale === "no" ? map.no : map.en) ?? map.en) as unknown as A;
+  return pick(map, locale);
 }

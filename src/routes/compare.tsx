@@ -35,6 +35,16 @@ const personalCopy = {
     watch: "Verdt å tenke på",
     fine: "Ingenting her talte imot deg.",
   },
+  pl: {
+    title: "Który z nich najlepiej pasuje do Twojego życia?",
+    prompt:
+      "Odpowiedz na pytania w Znajdź mojego psa, a ta tabela sama odniesie się do Twoich codziennych dni — nie tylko do statystyk rasy.",
+    promptCta: "Odpowiedz na pytania",
+    based: "Na podstawie odpowiedzi, które podałeś/aś w Znajdź mojego psa, zapisanych na tym urządzeniu.",
+    bestLabel: "Najlepiej dopasowany z trójki",
+    watch: "Warto się zastanowić",
+    fine: "Nic tutaj nie działało na Twoją niekorzyść.",
+  },
 };
 
 const title = "Compare dogs side by side | DoggMatch";

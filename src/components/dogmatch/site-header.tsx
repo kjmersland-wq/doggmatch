@@ -12,6 +12,7 @@ import { useNavGroups } from "./nav-structure";
 const copy = {
   en: { primaryNav: "Primary", mobileNav: "Mobile" },
   no: { primaryNav: "Hovedmeny", mobileNav: "Mobilmeny" },
+  pl: { primaryNav: "Menu główne", mobileNav: "Menu mobilne" },
 } as const;
 
 export function SiteHeader() {

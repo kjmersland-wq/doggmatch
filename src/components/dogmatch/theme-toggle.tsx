@@ -12,6 +12,7 @@ export function ThemeToggle({ className, withLabel = false }: { className?: stri
   const c = useCopy({
     en: { night: "Night mode", day: "Day mode", toDay: "Switch to day mode", toNight: "Switch to night mode" },
     no: { night: "Nattmodus", day: "Dagmodus", toDay: "Bytt til dagmodus", toNight: "Bytt til nattmodus" },
+    pl: { night: "Tryb nocny", day: "Tryb dzienny", toDay: "Przełącz na tryb dzienny", toNight: "Przełącz na tryb nocny" },
   });
   const night = mode === "night";
 

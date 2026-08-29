@@ -19,20 +19,35 @@ export function abs(path: string): string {
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+/** The same page read in another language (English is the bare URL). */
+export function langUrl(path: string, lang: "en" | "no" | "pl"): string {
+  const url = abs(path);
+  if (lang === "en") return url;
+  return url.includes("?") ? `${url}&lang=${lang}` : `${url}?lang=${lang}`;
+}
+
 /** The Norwegian reading of a page. */
 export function noUrl(path: string): string {
-  const url = abs(path);
-  return url.includes("?") ? `${url}&lang=no` : `${url}?lang=no`;
+  return langUrl(path, "no");
+}
+
+/** The Polish reading of a page. */
+export function plUrl(path: string): string {
+  return langUrl(path, "pl");
 }
 
 type LinkTag = { rel: string; href: string; hrefLang?: string };
 
-/** Canonical + hreflang set for a public page. */
+/**
+ * Canonical + a reciprocal hreflang set for a public page. Every language
+ * lists all three, so EN, NO and PL point at one another.
+ */
 export function seoLinks(path: string): LinkTag[] {
   return [
     { rel: "canonical", href: abs(path) },
     { rel: "alternate", hrefLang: "en", href: abs(path) },
     { rel: "alternate", hrefLang: "nb-NO", href: noUrl(path) },
+    { rel: "alternate", hrefLang: "pl-PL", href: plUrl(path) },
     { rel: "alternate", hrefLang: "x-default", href: abs(path) },
   ];
 }

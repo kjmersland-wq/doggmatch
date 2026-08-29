@@ -132,7 +132,71 @@ const no: NavGroup[] = [
   },
 ];
 
-export const navGroupsByLocale = { en, no };
+const pl: NavGroup[] = [
+  {
+    id: "get-a-dog",
+    label: "Zdobądź psa",
+    blurb: "Zastanawiasz się nad tym? Zacznij tutaj i nie spiesz się.",
+    items: [
+      { to: "/get-a-dog", label: "Cała droga", hint: "Od pierwszej myśli do pierwszej nocy" },
+      { to: "/get-a-dog/ready", label: "Czy jestem gotowy?", hint: "Szczere spojrzenie na twoją codzienność" },
+      { to: "/find-my-dog", label: "Znajdź mojego psa", hint: "Dwie minuty, bez zakładania konta" },
+      { to: "/get-a-dog/choose", label: "Dobry wybór", hint: "Szczeniak czy dorosły, hodowla czy schronisko" },
+      { to: "/get-a-dog/costs", label: "Ile to kosztuje", hint: "Przed, co miesiąc i te niespodzianki" },
+      { to: "/get-a-dog/prepare", label: "Przygotowania", hint: "Twój dom, twoje dni, twoja lista" },
+      { to: "/get-a-dog/welcome-home", label: "Witaj w domu", hint: "Pierwszy dzień i pierwszy tydzień" },
+    ],
+  },
+  {
+    id: "breeds",
+    label: "Rasy",
+    blurb: "Każda rasa opisana szczerze — to, co piękne, i to, co trudne.",
+    items: [
+      { to: "/breeds", label: "Wszystkie rasy", hint: "Przeglądaj i filtruj" },
+      { to: "/compare", label: "Porównaj dwie", hint: "Obok siebie, bez upiększeń" },
+      { to: "/dog-life", label: "Życie z psem w twojej okolicy", hint: "Spacery, pogoda i codzienne miejsca" },
+      { to: "/guides", label: "Poradniki", hint: "Spokojna lektura o życiu z psem" },
+    ],
+  },
+  {
+    id: "my-dog",
+    label: "Mój pies",
+    blurb: "Miejsce dla codzienności twojego psa.",
+    items: [
+      { to: "/my-dog", label: "Dziś", hint: "Co warto dziś zrobić" },
+      { to: "/my-dog/week", label: "Mój tydzień", hint: "Spokojny rytm tygodnia" },
+      { to: "/my-dog/nutrition", label: "Jedzenie i porcje", hint: "Ile mniej więcej" },
+      { to: "/my-dog/food", label: "Czy mój pies może to zjeść?", hint: "Bezpieczne, ostrożnie, unikać" },
+      { to: "/my-dog/weight", label: "Waga i kondycja", hint: "Śledź to z troską" },
+      { to: "/my-dog/vet", label: "Weterynarz i kontakty", hint: "Wizyty i numery telefonów" },
+      { to: "/my-dog/print", label: "Drukuj i zapisuj", hint: "Kartka, którą powiesisz na lodówce" },
+    ],
+  },
+  {
+    id: "train",
+    label: "Trening",
+    blurb: "Krótkie, łagodne sesje, które naprawdę da się zrobić samemu.",
+    items: [
+      { to: "/train", label: "Dzisiejsza sesja", hint: "Pięć minut w zupełności wystarczy" },
+      { to: "/train/library", label: "Biblioteka lekcji", hint: "Krok po kroku, ze zdjęciami" },
+      { to: "/train/journey", label: "Wasza droga", hint: "Jak daleko już zaszliście" },
+      { to: "/train/setup", label: "Dane twojego psa", hint: "Wiek, rasa i nad czym pracujecie" },
+    ],
+  },
+  {
+    id: "travel",
+    label: "Podróże",
+    blurb: "Podróże samochodem, wędrówki i przekraczanie granic — bezpiecznie.",
+    items: [
+      { to: "/travel", label: "Podróże i przygody", hint: "Dokąd się wybieracie" },
+      { to: "/travel/car", label: "W samochodzie", hint: "Bezpieczny montaż i choroba lokomocyjna" },
+      { to: "/travel/outdoors", label: "Na dworze", hint: "Wędrówki, łapy, upał i zimno" },
+      { to: "/travel/abroad", label: "Podróże za granicę", hint: "Sprawdzarka kraj po kraju" },
+    ],
+  },
+];
+
+export const navGroupsByLocale = { en, no, pl };
 
 /** The navigation in the reader's language. */
 export function useNavGroups(): NavGroup[] {

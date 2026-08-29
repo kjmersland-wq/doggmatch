@@ -57,6 +57,18 @@ const copy = {
       "Alt som er verdt å ha på papir — hvem hunden din er, hva den spiser, hvordan uken din går, og hvem du skal ringe.",
     subtitlePart: "Skrevet ut fra DoggMatch. Fyll inn det som er tomt for hånd.",
   },
+  pl: {
+    backLink: "Wybierz inne strony",
+    printOrSave: "Wydrukuj lub zapisz jako PDF",
+    printHint:
+      'Tak dokładnie będzie to wyglądać na wydruku. Wybierz „Zapisz jako PDF” w oknie drukowania, jeśli wolisz mieć to na telefonie.',
+    wholePackTitle: "Kompletny pakiet DoggMatch dla psa",
+    dogPack: "Pakiet dla psa",
+    dogNameFallback: "Mój pies",
+    subtitleWhole:
+      "Wszystko, co warto mieć na papierze — kim jest twój pies, co je, jak wygląda twój tydzień i do kogo dzwonić.",
+    subtitlePart: "Wydrukowano z DoggMatch. Puste pola uzupełnij ręcznie.",
+  },
 } as const;
 
 function PackPage() {
