@@ -509,5 +509,9 @@ function ComparePage() {
         {copy.allergyNote}
       </p>
     </div>
+    <div className="pb-20">
+      <JourneyLinks exclude={["/compare"]} />
+    </div>
+    </>
   );
 }
