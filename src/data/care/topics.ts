@@ -1,11 +1,12 @@
 import { pick } from "@/i18n";
 import { careTopicsEn } from "./topics.en";
 import { careTopicsNo } from "./topics.no";
+import { careTopicsPl } from "./topics.pl";
 import type { CareTopic } from "./types";
 
 /** Locale-aware care topics. */
 export function careTopics(): CareTopic[] {
-  return pick({ en: careTopicsEn, no: careTopicsNo });
+  return pick({ en: careTopicsEn, no: careTopicsNo, pl: careTopicsPl });
 }
 
 export function careTopicsById(): Record<string, CareTopic> {
