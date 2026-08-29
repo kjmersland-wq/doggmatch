@@ -155,7 +155,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "WebSite",
           name: "DoggMatch",
           url: "https://www.doggmatch.com/",
-          inLanguage: ["en", "nb-NO"],
+          inLanguage: ["en", "nb-NO", "pl-PL"],
           description:
             "A friendly, honest way to work out which dog would really suit your life.",
           publisher: {
