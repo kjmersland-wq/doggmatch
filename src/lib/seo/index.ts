@@ -10,7 +10,18 @@
 
 export const SITE_URL = "https://www.doggmatch.com";
 export const SITE_NAME = "DoggMatch";
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-en.jpg`;
+
+/** Share cards are written in the reader's language, so previews match the page. */
+export const OG_IMAGE_BY_LOCALE: Record<"en" | "no" | "pl", string> = {
+  en: `${SITE_URL}/og-en.jpg`,
+  no: `${SITE_URL}/og-no.jpg`,
+  pl: `${SITE_URL}/og-pl.jpg`,
+};
+
+export function ogImage(locale: "en" | "no" | "pl"): string {
+  return OG_IMAGE_BY_LOCALE[locale] ?? DEFAULT_OG_IMAGE;
+}
 
 /** Absolute URL for an app path ("/breeds/labrador" -> full https URL). */
 export function abs(path: string): string {
