@@ -188,8 +188,11 @@ function RootShell({ children }: { children: ReactNode }) {
     select: (s) => (s.location.search as { lang?: string } | undefined)?.lang,
   });
   const lang = HTML_LANG[localeFromParam(langParam) ?? "en"];
+  // Literal default so static checks see a lang attribute; the spread below
+  // overrides it with the request's language when it isn't English.
+  const langOverride = lang === "en" ? {} : { lang };
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html lang="en" {...langOverride} suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
