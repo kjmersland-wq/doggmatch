@@ -123,7 +123,7 @@ export function localizedHead(
   const locale = headLocale(ctx);
   const { title, description } = (locale === "no" ? copy.no : locale === "pl" ? copy.pl : copy.en) ?? copy.en;
   const url = langUrl(path, locale);
-  const image = options?.image ?? DEFAULT_OG_IMAGE;
+  const image = options?.image ?? ogImage(locale);
   const ogLocale = locale === "no" ? "nb_NO" : locale === "pl" ? "pl_PL" : "en_GB";
   return {
     meta: [
