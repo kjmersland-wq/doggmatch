@@ -20,6 +20,7 @@ function collect(): SitemapEntry[] {
     { path: "/breeds", changefreq: "weekly", priority: "0.9" },
     { path: "/compare", changefreq: "monthly", priority: "0.8" },
     { path: "/guides", changefreq: "monthly", priority: "0.8" },
+    { path: "/best-dog-breeds-for-families", changefreq: "monthly", priority: "0.8" },
     { path: "/dog-life", changefreq: "monthly", priority: "0.6" },
     { path: "/get-a-dog", changefreq: "monthly", priority: "0.8" },
     { path: "/get-a-dog/ready", changefreq: "monthly", priority: "0.7" },
