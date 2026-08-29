@@ -151,6 +151,73 @@ function CompareLegend({ c }: { c: CompareCopy }) {
   );
 }
 
+/**
+ * The same table, read against the reader's own answers. Only appears once
+ * they've been through Find My Dog — otherwise it quietly invites them to.
+ */
+function PersonalFit({ columns, names }: { columns: Column[]; names: Record<BreedId, { displayName: string }> }) {
+  const p = useCopy(personalCopy);
+  const profile = useMatchProfile();
+
+  if (!profile) {
+    return (
+      <div className="mt-8 max-w-2xl rounded-2xl border border-border bg-surface p-6">
+        <h2 className="font-display text-lg leading-tight tracking-tight">{p.title}</h2>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.prompt}</p>
+        <Link
+          to="/find-my-dog"
+          className="mt-4 inline-flex h-11 items-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+        >
+          {p.promptCta}
+        </Link>
+      </div>
+    );
+  }
+
+  const scored = columns.map((col) => {
+    const traits = columnTraits(col);
+    const fit = matchDogTraits(traits, profile, { individual: col.kind === "mix" });
+    const { tradeoffs } = matchInsights(traits, profile);
+    const label =
+      col.kind === "breed"
+        ? names[col.id].displayName
+        : `${names[col.ids[0]].displayName} × ${names[col.ids[1]].displayName}`;
+    return { key: columnKey(col), label, fit, tradeoff: tradeoffs[0]?.text };
+  });
+  const top = Math.max(...scored.map((s) => s.fit.score));
+
+  return (
+    <section className="mt-8">
+      <h2 className="display-md">{p.title}</h2>
+      <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">{p.based}</p>
+      <ul className="mt-6 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-3">
+        {scored.map((item) => (
+          <li key={item.key} className="bg-card p-6">
+            <div className="flex items-baseline justify-between gap-3">
+              <h3 className="font-display text-base leading-tight tracking-tight">{item.label}</h3>
+              <span className="font-display text-sm tabular-nums text-muted-foreground">
+                {item.fit.score}%
+              </span>
+            </div>
+            {item.fit.score === top && (
+              <p className="mt-2 text-xs font-medium tracking-wide text-accent uppercase">
+                {p.bestLabel}
+              </p>
+            )}
+            <p className="mt-3 text-[0.9375rem] leading-relaxed">{scoreReading(item.fit.score)}</p>
+            <p className="mt-3 border-l-2 border-accent/60 pl-3 text-sm leading-relaxed text-muted-foreground">
+              <span className="block font-medium text-foreground">{p.watch}</span>
+              {item.tradeoff ?? p.fine}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+
+
 function rows(c: CompareCopy): [string, (col: Column) => ReactNode][] {
   const s = (v: number) => c.scale[Math.round(v) - 1] ?? "—";
   const dot = (key: keyof BreedTraits) => (col: Column) => {
