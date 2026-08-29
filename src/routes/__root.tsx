@@ -182,8 +182,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const langParam = useRouterState({
+    select: (s) => (s.location.search as { lang?: string } | undefined)?.lang,
+  });
+  const lang = HTML_LANG[localeFromParam(langParam) ?? "en"];
   return (
-    <html lang="en">
+    <html lang={lang} suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
@@ -194,6 +198,7 @@ function RootShell({ children }: { children: ReactNode }) {
     </html>
   );
 }
+
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
