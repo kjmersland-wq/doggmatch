@@ -423,6 +423,7 @@ function ComparePage() {
         <p className="mt-16 text-muted-foreground">{copy.compare.empty}</p>
       ) : (
         <>
+          <PersonalFit columns={selected} names={names} />
           <CompareLegend c={copy.compare} />
           <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
             <div className="overflow-x-auto">
