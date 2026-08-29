@@ -303,6 +303,9 @@ function HomePage() {
         </ul>
       </nav>
 
+      {/* ------------------------- Shareable link for each language version */}
+      <LanguageShare c={c} />
+
       {/* ---------------------------------------------------- Value strip */}
       <section id="why-doggmatch" aria-label={c.anchors["why-doggmatch"]} className="container-page mt-16 md:mt-20">
         <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
