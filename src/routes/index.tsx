@@ -384,6 +384,21 @@ function HomePage() {
         </div>
       </Section>
 
+      {/* ---------------------------------------------------- DoggMatch+ */}
+      <Section id="doggmatch-plus" className="pt-0">
+        <div className="container-page max-w-3xl">
+          <Eyebrow>{c.plusEyebrow}</Eyebrow>
+          <h2 className="display-lg mt-6">{c.plusTitle}</h2>
+          <p className="mt-5 leading-relaxed text-muted-foreground">{c.plusBody}</p>
+          <div className="mt-9">
+            <ButtonLink to="/plus" tone="outline" size="lg">
+              {c.plusCta}
+              <Arrow />
+            </ButtonLink>
+          </div>
+        </div>
+      </Section>
+
       {/* --------------------------------------------------------- Dog Life */}
       <Section id="dog-life" className="pt-0">
         <div className="container-page">
