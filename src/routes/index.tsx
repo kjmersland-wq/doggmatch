@@ -41,6 +41,12 @@ const localCopy = {
     parkAlt: "A city park at dawn with winding walking paths",
     jumpLabel: "Jump to a section of this page",
     jumpTitle: "On this page",
+    shareLabel: "Share DoggMatch in a language",
+    shareTitle: "Read DoggMatch in your language",
+    shareBody:
+      "Each link opens DoggMatch directly in that language — copy it and send it to someone who'd rather read it their way.",
+    shareCopy: "Copy link",
+    shareCopied: "Copied",
     anchors: {
       "why-doggmatch": "Why DoggMatch",
       "how-it-works": "How it works",
@@ -85,6 +91,12 @@ const localCopy = {
     parkAlt: "En bypark i grålysningen med svingete turveier",
     jumpLabel: "Hopp til en del av denne siden",
     jumpTitle: "På denne siden",
+    shareLabel: "Del DoggMatch på et språk",
+    shareTitle: "Les DoggMatch på ditt eget språk",
+    shareBody:
+      "Hver lenke åpner DoggMatch direkte på det språket — kopier den og send den til noen som heller vil lese på sin måte.",
+    shareCopy: "Kopier lenke",
+    shareCopied: "Kopiert",
     anchors: {
       "why-doggmatch": "Hvorfor DoggMatch",
       "how-it-works": "Slik fungerer det",
@@ -129,6 +141,12 @@ const localCopy = {
     parkAlt: "Miejski park o świcie z krętymi alejkami spacerowymi",
     jumpLabel: "Przejdź do wybranej części tej strony",
     jumpTitle: "Na tej stronie",
+    shareLabel: "Udostępnij DoggMatch w wybranym języku",
+    shareTitle: "Czytaj DoggMatch w swoim języku",
+    shareBody:
+      "Każdy link otwiera DoggMatch od razu w danym języku — skopiuj go i wyślij osobie, która woli czytać po swojemu.",
+    shareCopy: "Kopiuj link",
+    shareCopied: "Skopiowano",
     anchors: {
       "why-doggmatch": "Dlaczego DoggMatch",
       "how-it-works": "Jak to działa",
