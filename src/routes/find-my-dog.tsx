@@ -506,6 +506,8 @@ function Results({
           {t.result.restart}
         </Button>
       </div>
+
+      <JourneyLinks exclude={["/find-my-dog"]} />
     </div>
   );
 }
