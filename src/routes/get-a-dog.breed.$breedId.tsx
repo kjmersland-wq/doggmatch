@@ -96,6 +96,28 @@ const copy = {
     profileCta: "Hele raseprofilen",
     costsCta: "Kostnader i sin helhet",
   },
+  pl: {
+    eyebrow: "Jestem zainteresowany — co powinienem wiedzieć?",
+    heading: (name: string) => `Przygotuj się na ${name}.`,
+    intro:
+      "Wszystko poniżej pochodzi z cech tej rasy w naszej bibliotece — czego będzie od Ciebie wymagać " +
+      "tydzień po tygodniu, w tym rzeczy, o których ludzie chcieliby wiedzieć wcześniej.",
+    askEyebrow: "Czego ten pies będzie od Ciebie wymagał",
+    askTitle: "Szczerze, tydzień po tygodniu.",
+    moneyEyebrow: "Pieniądze",
+    moneyTitle: (name: string) => `Ile zwykle kosztuje ${name}`,
+    moneyBody:
+      "Rocznie, gdy pies się już zadomowi — jedzenie, ubezpieczenie, rutynowa opieka weterynaryjna i pielęgnacja. " +
+      "Celowo szeroki przedział: ceny bardzo różnią się w zależności od kraju i miasta, i to nie jest wycena.",
+    noticeTitle: "Zanim powiesz tak",
+    noticeBody:
+      "Spotkaj się z psem więcej niż raz, jeśli tylko możesz, w zwykły dzień, a nie wyjątkowy. " +
+      "Zapytaj, jaki jest o szóstej rano i o dziesiątej wieczorem. Szczera odpowiedź na to pytanie " +
+      "powie Ci więcej niż jakikolwiek opis rasy, łącznie z tym.",
+    prepareCta: "Przygotuj mój dom",
+    profileCta: "Pełny profil rasy",
+    costsCta: "Koszty w pełnym zakresie",
+  },
 } as const;
 
 function BreedPrepPage() {
