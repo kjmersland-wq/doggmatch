@@ -1,13 +1,45 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
-import { useT, pick } from "@/i18n";
+import { useT, pick, useCopy } from "@/i18n";
 import { getBreed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
+import {
+  bestSuitedFor,
+  commitmentFacts,
+  healthNote,
+  thingsToConsider,
+  typicalDay,
+} from "@/lib/breeds/everyday";
+import { matchDogTraits } from "@/lib/matching/engine";
+import { useMatchProfile } from "@/lib/matching/store";
 import { Arrow, ButtonLink, Eyebrow, TraitMeter } from "@/components/dogmatch/ui";
+import { FitPanel } from "@/components/dogmatch/fit-panel";
+import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { seoLinks, abs, breadcrumbLd, jsonLd } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
+
+const pageCopy = {
+  en: {
+    dayTitle: "A typical day together",
+    commitmentTitle: "What they ask of you",
+    suitedTitle: "Best suited for",
+    considerTitle: "Important things to consider",
+    healthTitle: "Health considerations",
+    yourFitTitle: "How this dog fits your life",
+    yourFitNote: "Read against the answers you gave in Find My Dog, kept on this device.",
+  },
+  no: {
+    dayTitle: "En typisk dag sammen",
+    commitmentTitle: "Hva den krever av deg",
+    suitedTitle: "Passer best for",
+    considerTitle: "Viktige ting å tenke gjennom",
+    healthTitle: "Helsehensyn",
+    yourFitTitle: "Hvordan denne hunden passer livet ditt",
+    yourFitNote: "Lest opp mot svarene du ga i Finn min hund, lagret på denne enheten.",
+  },
+};
 
 export const Route = createFileRoute("/breeds/$breedId")({
   loader: ({ params }) => {
