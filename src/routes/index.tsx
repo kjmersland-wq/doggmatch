@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
 import { useEffect, useRef, useState } from "react";
-import { useT, useCopy } from "@/i18n";
+import { Check, Copy } from "lucide-react";
+import { useT, useCopy, useLocale } from "@/i18n";
 import { breeds } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
@@ -41,6 +42,12 @@ const localCopy = {
     parkAlt: "A city park at dawn with winding walking paths",
     jumpLabel: "Jump to a section of this page",
     jumpTitle: "On this page",
+    shareLabel: "Share DoggMatch in a language",
+    shareTitle: "Read DoggMatch in your language",
+    shareBody:
+      "Each link opens DoggMatch directly in that language — copy it and send it to someone who'd rather read it their way.",
+    shareCopy: "Copy link",
+    shareCopied: "Copied",
     anchors: {
       "why-doggmatch": "Why DoggMatch",
       "how-it-works": "How it works",
@@ -85,6 +92,12 @@ const localCopy = {
     parkAlt: "En bypark i grålysningen med svingete turveier",
     jumpLabel: "Hopp til en del av denne siden",
     jumpTitle: "På denne siden",
+    shareLabel: "Del DoggMatch på et språk",
+    shareTitle: "Les DoggMatch på ditt eget språk",
+    shareBody:
+      "Hver lenke åpner DoggMatch direkte på det språket — kopier den og send den til noen som heller vil lese på sin måte.",
+    shareCopy: "Kopier lenke",
+    shareCopied: "Kopiert",
     anchors: {
       "why-doggmatch": "Hvorfor DoggMatch",
       "how-it-works": "Slik fungerer det",
@@ -129,6 +142,12 @@ const localCopy = {
     parkAlt: "Miejski park o świcie z krętymi alejkami spacerowymi",
     jumpLabel: "Przejdź do wybranej części tej strony",
     jumpTitle: "Na tej stronie",
+    shareLabel: "Udostępnij DoggMatch w wybranym języku",
+    shareTitle: "Czytaj DoggMatch w swoim języku",
+    shareBody:
+      "Każdy link otwiera DoggMatch od razu w danym języku — skopiuj go i wyślij osobie, która woli czytać po swojemu.",
+    shareCopy: "Kopiuj link",
+    shareCopied: "Skopiowano",
     anchors: {
       "why-doggmatch": "Dlaczego DoggMatch",
       "how-it-works": "Jak to działa",
@@ -283,6 +302,9 @@ function HomePage() {
           ))}
         </ul>
       </nav>
+
+      {/* ------------------------- Shareable link for each language version */}
+      <LanguageShare c={c} />
 
       {/* ---------------------------------------------------- Value strip */}
       <section id="why-doggmatch" aria-label={c.anchors["why-doggmatch"]} className="container-page mt-16 md:mt-20">
@@ -500,5 +522,90 @@ function HomePage() {
         </div>
       </Section>
     </>
+  );
+}
+
+/**
+ * Visible, shareable links that open the homepage directly in each language.
+ * Every card is a real anchor (?lang=xx) with a copy button, so the exact
+ * language version can be shared straight from the page.
+ */
+const SHARE_LANGS = [
+  { code: "en", flag: "gb", short: "GB", label: "English" },
+  { code: "no", flag: "no", short: "NO", label: "Norsk" },
+  { code: "pl", flag: "pl", short: "PL", label: "Polski" },
+] as const;
+
+function LanguageShare({ c }: { c: (typeof localCopy)["en"] }) {
+  const { locale } = useLocale();
+  const [copied, setCopied] = useState<string | null>(null);
+
+  const copyLink = async (code: string) => {
+    const url = abs(`/?lang=${code}`);
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      window.prompt(url, url);
+    }
+    setCopied(code);
+    window.setTimeout(() => setCopied((v) => (v === code ? null : v)), 2000);
+  };
+
+  return (
+    <section aria-label={c.shareLabel} className="container-page mt-8">
+      <div className="rounded-2xl border border-border bg-surface/60 p-6 md:p-8">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-md">
+            <h2 className="font-display text-xl tracking-tight text-foreground">{c.shareTitle}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.shareBody}</p>
+          </div>
+          <ul className="grid flex-1 gap-2 sm:grid-cols-3 md:max-w-xl">
+            {SHARE_LANGS.map((l) => {
+              const isCurrent = locale === l.code;
+              const isCopied = copied === l.code;
+              return (
+                <li key={l.code}>
+                  <div className="flex items-center gap-2 rounded-xl border border-border bg-background p-2 pr-1.5">
+                    <a
+                      href={`/?lang=${l.code}`}
+                      hrefLang={l.code === "no" ? "nb" : l.code}
+                      className="flex min-w-0 flex-1 items-center gap-2 rounded-lg px-1.5 py-1 transition-colors hover:text-primary"
+                      aria-label={`${l.label} — /?lang=${l.code}`}
+                    >
+                      <img
+                        src={`https://flagcdn.com/w80/${l.flag}.png`}
+                        srcSet={`https://flagcdn.com/w160/${l.flag}.png 2x`}
+                        alt=""
+                        aria-hidden
+                        width={20}
+                        height={15}
+                        loading="lazy"
+                        className="h-[15px] w-5 rounded-[3px] object-cover ring-1 ring-black/10"
+                      />
+                      <span className="truncate text-sm font-medium">
+                        {l.label}
+                        {isCurrent && <span className="sr-only"> ({c.shareCopied})</span>}
+                      </span>
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => copyLink(l.code)}
+                      aria-label={`${c.shareCopy}: ${l.label}`}
+                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-surface hover:text-primary"
+                    >
+                      {isCopied ? (
+                        <Check className="h-4 w-4 text-accent" aria-hidden />
+                      ) : (
+                        <Copy className="h-4 w-4" aria-hidden />
+                      )}
+                    </button>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </section>
   );
 }
