@@ -26,6 +26,17 @@ const copy = {
     code: "Kode:",
     goTo: "Gå til",
   },
+  pl: {
+    title: "Korzyści dla członków",
+    intro:
+      "Małe, przydatne oszczędności od ludzi, których chętnie polecilibyśmy znajomemu — sklepy, groomerzy, trenerzy, ubezpieczyciele. Wolimy pięć dobrych ofert niż pięćdziesiąt zapomnianych.",
+    emptyBody:
+      "Nic tu jeszcze nie ma. Rozmawiamy teraz z pierwszymi partnerami i gdy tylko oferta będzie warta twojego czasu, pojawi się tutaj — bez potrzeby podawania e-maila.",
+    partnerCta: "Prowadzisz biznes związany z psami?",
+    partnerLink: "Zostań partnerem DoggMatch",
+    code: "Kod:",
+    goTo: "Przejdź do",
+  },
 } as const;
 
 /** Partner offers for members. Empty until the first partners are in place. */

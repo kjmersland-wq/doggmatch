@@ -29,6 +29,13 @@ const copy = {
     join: "Bli DoggMatch+-medlem",
     error: "Vi klarte ikke å åpne betalingssiden akkurat nå. Prøv gjerne igjen.",
   },
+  pl: {
+    opening: "Otwieranie bezpiecznej płatności…",
+    already: "Jesteś już członkiem",
+    signInToJoin: "Zaloguj się, by dołączyć",
+    join: "Dołącz do DoggMatch+",
+    error: "Nie udało się teraz otworzyć strony płatności. Spróbuj ponownie.",
+  },
 } as const;
 
 /** Takes someone from the pricing card straight into Stripe checkout. */

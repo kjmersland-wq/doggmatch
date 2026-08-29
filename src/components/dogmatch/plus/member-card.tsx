@@ -59,6 +59,19 @@ const copy = {
     fineprint: "Dette kortet tilhører personen navngitt på forsiden. Det er ikke et betalingskort.",
     verifyAlt: (id: string) => `Verifiseringskode for ${id}`,
   },
+  pl: {
+    plusMember: "+ Członek",
+    member: "Członek",
+    memberId: "ID członka",
+    status: "Status",
+    active: "Aktywne",
+    ended: "Zakończone",
+    validThrough: "Ważne do",
+    checkThisCard: "Sprawdź tę kartę",
+    backBody: "Zeskanuj kod lub wejdź na doggmatch.com/verify i wpisz poniższe ID członka.",
+    fineprint: "Ta karta należy do osoby wskazanej na przodzie. To nie jest karta płatnicza.",
+    verifyAlt: (id: string) => `Kod weryfikacyjny dla ${id}`,
+  },
 } as const;
 
 /** Front of the card: who you are, and that you're a member. */

@@ -49,6 +49,23 @@ const copy = {
     discountsBody:
       "Vi snakker med de første partnerne nå, og medlemsrabatter kommer trolig snart. Når et tilbud er genuint verdt tiden din, dukker det ganske enkelt opp på kontosiden din — ingen e-post, ingen ståhei.",
   },
+  pl: {
+    eyebrow: "Jako członek otrzymujesz",
+    title: "Kartę członkowską, którą naprawdę możesz trzymać w ręku",
+    body: "Każdy członek otrzymuje osobistą kartę DoggMatch+. Wydrukuj ją w prawdziwym rozmiarze karty, trzymaj w portfelu, a każdy może zeskanować kod z tyłu, by sprawdzić, że jest prawdziwa.",
+    caption: "Przykładowa karta. Imię, ID i daty są zmyślone.",
+    features: [
+      ["Twoje imię i unikalny numer ID", "Coś w stylu DM-4F7K-92QX — tylko twoje."],
+      ["Status i data ważności", "Żeby zawsze było jasne, że członkostwo jest aktywne."],
+      ["Twoje zdjęcie, jeśli je mamy", "Pobrane z twojego konta lub profilu psa."],
+      ["Kod z tyłu karty", "Zeskanuj go, a prosta strona potwierdzi, że karta jest prawdziwa."],
+      ["Wydrukowana w 85,6 × 54 mm", "Dokładnie w rozmiarze karty bankowej, na sztywnym papierze."],
+    ],
+    comingSoon: "Wkrótce",
+    discountsTitle: "Zniżki dla członków",
+    discountsBody:
+      "Rozmawiamy teraz z pierwszymi partnerami i zniżki dla członków najprawdopodobniej pojawią się już wkrótce. Gdy oferta będzie naprawdę warta twojego czasu, po prostu pojawi się na stronie konta — bez e-maili, bez zamieszania.",
+  },
 } as const;
 
 /** Shows the member card and the partner offers we're working on. */

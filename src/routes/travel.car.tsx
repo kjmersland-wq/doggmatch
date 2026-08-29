@@ -102,6 +102,42 @@ const copy = {
     walksCta: "Turer, stier og vær",
     abroadCta: "Reise til utlandet",
   },
+  pl: {
+    eyebrow: "W samochodzie",
+    title: "Bezpieczne dotarcie na miejsce.",
+    intro:
+      "Niezabezpieczony pies jest niebezpieczny — dla siebie i dla wszystkich innych w samochodzie. To też najłatwiejsza rzecz na tej stronie do naprawienia.",
+    safeUnsafeEyebrow: "Bezpiecznie i niebezpiecznie",
+    safeUnsafeTitle: "Jak powinien podróżować twój pies.",
+    safe: "Bezpiecznie",
+    notSafe: "Niebezpiecznie",
+    safetyAlt: "Ilustracja porównująca psa zabezpieczonego w transporterze z niezabezpieczonym psem na siedzeniu samochodu",
+    hotCarEyebrow: "Koniecznie to przeczytaj",
+    hotCarTitle: "Nigdy nie zostawiaj psa w zaparkowanym samochodzie w ciepłą pogodę.",
+    hotCarBody1:
+      "Samochód nagrzewa się znacznie szybciej, niż większość ludzi się spodziewa, a pies nie potrafi schłodzić się tak jak my. Cień się przesuwa. Uchylone okno niewiele pomaga. Nawet w łagodny dzień wnętrze może stać się niebezpieczne w kilka minut.",
+    hotCarBody2:
+      "Jeśli widzisz psa w rozpaczliwym stanie w zamkniętym samochodzie — ciężko dyszącego, ślinionego, chwiejącego się, niereagującego — zadzwoń pod lokalny numer alarmowy. Zawsze lepiej się pomylić, niż zareagować za późno.",
+    firstJourneysEyebrow: "Pierwsze przejazdy",
+    firstJourneysTitle: "Zacznij od czegoś mniejszego, niż myślisz.",
+    firstJourneysBody:
+      "Większość psów, które nienawidzą samochodu, nauczyła się tego podczas jednej długiej, przerażającej podróży. Odwrócenie tego trwa dużo dłużej niż łagodne wprowadzenie od samego początku.",
+    ifNervous: "Jeśli twój pies jest niespokojny",
+    sicknessEyebrow: "Choroba lokomocyjna",
+    sicknessTitle: "Bardzo częsta i zwykle mija z czasem.",
+    signsToWatch: "Objawy, na które warto zwrócić uwagę:",
+    longJourneysEyebrow: "Długie trasy",
+    longJourneysTitle: "Przerwy, woda i cierpliwość.",
+    otherEyebrow: "Pociągi, autobusy, statki i samoloty",
+    otherTitle: "Wszystko inne, co się porusza.",
+    otherBody: "Każdy przewoźnik ma własne zasady i one się zmieniają. Zawsze potwierdź je bezpośrednio przed rezerwacją.",
+    publicTransport: "Transport publiczny",
+    flying: "Podróż samolotem",
+    flyingNotice:
+      "Lot samolotem jest naprawdę trudny dla niektórych psów, a część linii lotniczych w ogóle nie przewozi ras płaskonosych ze względu na ryzyko. Jeśli można zamiast tego pojechać samochodem lub popłynąć promem, zwykle jest to łagodniejsze rozwiązanie.",
+    walksCta: "Spacery, szlaki i pogoda",
+    abroadCta: "Podróż za granicę",
+  },
 } as const;
 
 function CarPage() {
