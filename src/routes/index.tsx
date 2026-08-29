@@ -31,6 +31,28 @@ const SECTION_IDS = [
   "find-your-dog",
 ] as const;
 
+/** Trait names in the comparison preview, so the whole card reads in one language. */
+const traitCopy = {
+  en: {
+    energy: "Energy",
+    trainability: "Trainability",
+    shedding: "Shedding",
+    apartmentSuitability: "Apartment",
+  },
+  no: {
+    energy: "Energi",
+    trainability: "Lærevillighet",
+    shedding: "Pelsfelling",
+    apartmentSuitability: "Leilighet",
+  },
+  pl: {
+    energy: "Energia",
+    trainability: "Podatność na szkolenie",
+    shedding: "Linienie",
+    apartmentSuitability: "Mieszkanie",
+  },
+} as const;
+
 const localCopy = {
   en: {
     matchLooks: "What a match looks like",
