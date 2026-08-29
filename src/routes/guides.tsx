@@ -30,8 +30,20 @@ export const Route = createFileRoute("/guides")({
 const copy = {
   en: {
     intro:
-      "Six things people ask us most often, answered the way we'd answer a friend — no hedging, no sales pitch.",
+      "Seven things people ask us most often, answered the way we'd answer a friend — no hedging, no sales pitch.",
     guides: [
+      {
+        id: "family-dogs",
+        title: "Good dogs for families with children",
+        body: "Kids and dogs can be wonderful together — as long as the dog suits your family's actual week, and the kids learn a few simple rules.",
+        points: [
+          "Look for a steady, forgiving temperament first. A dog who shrugs off a clumsy pat is far more important than the breed's reputation alone.",
+          "Size cuts both ways: a huge dog can knock a toddler over by accident, and a tiny one can get hurt by rough play. Medium and steady is often easiest.",
+          "Puppies and toddlers together is two jobs at once. Many families have a calmer start with a dog who's a year or two old.",
+          "The rules matter more than the breed: no bothering a dog who's eating, sleeping or in its bed — and an adult always in the room with young children.",
+        ],
+        close: "Labrador, golden retriever, cavalier King Charles spaniel and many gentle crossbreeds do well here — the quiz weighs family life in every match.",
+      },
       {
         id: "flat-living",
         title: "Dogs that do well in a flat",
@@ -108,8 +120,20 @@ const copy = {
   },
   no: {
     intro:
-      "Seks spørsmål vi får oftest, besvart slik vi ville svart en venn — uten forbehold og uten salgsprat.",
+      "Sju spørsmål vi får oftest, besvart slik vi ville svart en venn — uten forbehold og uten salgsprat.",
     guides: [
+      {
+        id: "family-dogs",
+        title: "Gode hunder for familier med barn",
+        body: "Barn og hunder kan være helt herlige sammen — så lenge hunden passer familiens faktiske uke, og barna lærer noen enkle regler.",
+        points: [
+          "Se etter et rolig, tilgivende gemytt først. En hund som rister av seg en klønete klem er viktigere enn rasens rykte alene.",
+          "Størrelse skjærer begge veier: en stor hund kan vælte en smårolling ved et uhell, og en liten kan bli skadet av røff lek. Middels og trygg er ofte enklest.",
+          "Valp og småbarn samtidig er to jobber på en gang. Mange familier får en roligere start med en hund som er et år eller to.",
+          "Reglene betyr mer enn rasen: ikke forstyrr en hund som spiser, sover eller ligger på plassen sin — og en voksen er alltid i rommet med små barn.",
+        ],
+        close: "Labrador, golden retriever, cavalier king charles spaniel og mange blidere blandinger fungerer godt her — testen veier familielivet med i hvert forslag.",
+      },
       {
         id: "flat-living",
         title: "Hunder som trives i leilighet",
@@ -186,8 +210,20 @@ const copy = {
   },
   pl: {
     intro:
-      "Sześć pytań, które słyszymy najczęściej — odpowiadamy tak, jak odpowiedzielibyśmy znajomemu: bez wykrętów i bez sprzedaży.",
+      "Siedem pytań, które słyszymy najczęściej — odpowiadamy tak, jak odpowiedzielibyśmy znajomemu: bez wykrętów i bez sprzedaży.",
     guides: [
+      {
+        id: "family-dogs",
+        title: "Dobre psy dla rodzin z dziećmi",
+        body: "Dzieci i psy mogą tworzyć wspaniały duet — pod warunkiem że pies pasuje do waszego prawdziwego tygodnia, a dzieci poznają kilka prostych zasad.",
+        points: [
+          "Najpierw szukaj stabilnego, wyrozumiałego charakteru. Pies, który bez urazy znosi niezdarną pieszczotę, liczy się bardziej niż sama reputacja rasy.",
+          "Rozmiar działa w dwie strony: duży pies może niechcący przewrócić malucha, a mały może ucierpieć w szorstkiej zabawie. Średni i spokojny bywa najprostszy.",
+          "Szczeniak i małe dziecko jednocześnie to dwa zadania naraz. Wielu rodzinom łatwiej zacząć z psem, który ma rok czy dwa.",
+          "Zasady znaczą więcej niż rasa: nie przeszkadzamy psu, który je, śpi lub leży w swoim miejscu — a dorosły jest zawsze w pokoju z małymi dziećmi.",
+        ],
+        close: "Labrador, golden retriever, cavalier king charles spaniel i wiele łagodnych mieszańców sprawdza się tu dobrze — test uwzględnia życie rodzinne w każdym dopasowaniu.",
+      },
       {
         id: "flat-living",
         title: "Psy, które dobrze radzą sobie w mieszkaniu",
