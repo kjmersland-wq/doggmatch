@@ -305,6 +305,7 @@ function ComparePage() {
   }
 
   return (
+    <>
     <div className="container-page py-14 md:py-20">
       <Eyebrow>{copy.nav.compare}</Eyebrow>
       <h1 className="display-lg mt-6 max-w-2xl">{copy.compare.subtitle}</h1>
