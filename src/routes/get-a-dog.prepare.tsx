@@ -110,6 +110,46 @@ const copy = {
       "Kjøp mindre enn du tror. En seng, skåler, mat, en sele, et bånd og et id-merke tar deg fint gjennom den første uken. Du finner ut hva hunden din faktisk liker snart nok.",
     welcomeCta: "De første dagene hjemme",
   },
+  pl: {
+    eyebrow: "Przygotuj się",
+    title: "Przygotowanie wszystkiego.",
+    intro:
+      "Twój dom, Twoje dni i praktyczne sprawy, które dużo łatwiej ogarnąć teraz niż w środku pierwszego tygodnia z nowym psem.",
+    homeEyebrow: "Twój dom",
+    homeTitle: "Niemal każdy dom może być dobrym domem.",
+    homeBody:
+      "Psy dbają o metry kwadratowe dużo mniej, niż ludziom się wydaje. To, co jest w zasięgu dziesięciu minut od Twoich drzwi, liczy się dużo bardziej.",
+    worthChecking: "Warto sprawdzić",
+    lifeEyebrow: "Twoja codzienność",
+    lifeTitle: "Jak wygląda dla Ciebie zwykły tydzień?",
+    lifeBody: "Pies musi pasować do tygodnia, który naprawdę masz, a nie do tego, który chciałbyś mieć. Znajdź się poniżej.",
+    allergiesEyebrow: "Alergie",
+    allergiesTitle: "To, co możemy uczciwie powiedzieć.",
+    allergiesBody1:
+      "Niektóre rasy zwykle mniej linieją niż inne, a osoby z alergiami czasem uważają je za łatwiejsze do życia. Ale żaden pies nie jest w pełni bezpieczny dla alergików. Białka, na które reagują ludzie, znajdują się w ślinie i skórze, nie tylko w sierści, a reakcje bardzo różnią się między osobami.",
+    allergiesBody2:
+      "Jeśli ktoś w Twoim domu ma alergie, spędź naprawdę dużo czasu z konkretnym psem, zanim się zdecydujesz — kilka spotkań, nie jedno — i porozmawiaj ze swoim lekarzem. To powie Ci dużo więcej niż jakakolwiek lista ras, łącznie z naszą.",
+    aloneEyebrow: "Czas w samotności",
+    aloneTitle: "Jak długo to za długo?",
+    aloneBody:
+      "Większość dorosłych psów radzi sobie komfortowo trzy lub cztery godziny w samotności, gdy się już tego nauczą. Szczeniak na początku tego nie potrafi — potrzebuje kogoś przy sobie przez większość dnia w pierwszych miesiącach, a zostawanie samemu to umiejętność, której uczysz stopniowo.",
+    alonePoints: [
+      "Ćwicz krótkie nieobecności już od pierwszego tygodnia, zanim pojawi się taka potrzeba",
+      "Ktoś, kto wyprowadzi psa w środku dnia, lub sąsiad, zamienia trudny dzień w łatwy",
+      "Kilka dni w tygodniu w przedszkolu dla psów pasuje jednym psom, a przytłacza inne",
+      "Pies, który wpada w panikę, gdy zostaje sam, potrzebuje pomocy wcześnie — to rzadko poprawia się samo",
+    ],
+    checklistEyebrow: "Zanim pies przyjedzie",
+    checklistTitle: "Lista rzeczy na przyjazd.",
+    checklistBody:
+      "Odhaczaj po kolei, w miarę jak je zdobywasz. Zapisuje się na bieżąco, na tym urządzeniu, więc możesz wrócić do niej w sklepie.",
+    homePrepAlt: "Ilustrowany układ legowiska, misek, smyczy, szelek i zabawek dla psa",
+    printCta: "Wydrukuj moją listę na przyjazd",
+    noteTitle: "Jedna uczciwa uwaga",
+    noteBody:
+      "Kup mniej, niż myślisz. Legowisko, miski, jedzenie, szelki, smycz i znaczek z danymi w zupełności wystarczą na pierwszy tydzień. Szybko dowiesz się, co Twój pies naprawdę lubi.",
+    welcomeCta: "Pierwsze dni w domu",
+  },
 } as const;
 
 function PreparePage() {

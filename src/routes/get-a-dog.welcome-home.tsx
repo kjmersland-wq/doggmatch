@@ -73,6 +73,28 @@ const copy = {
     createCta: "Opprett hunden min",
     packCta: "Den utskriftsvennlige hundepakken",
   },
+  pl: {
+    imgAlt: "Rodzina siedząca spokojnie na podłodze, gdy nowo przybyły pies obwąchuje swoje nowe legowisko",
+    eyebrow: "Witaj w domu",
+    title: "Dzień, w którym pies przyjeżdża.",
+    intro:
+      "Ciszej, niż sobie wyobrażasz, i wolniej, niż byś chciał. To dokładnie tak, jak powinno być. Nowy pies pierwszego dnia potrzebuje bardzo niewiele poza spokojem, wodą i własnym kącikiem.",
+    firstDayEyebrow: "Pierwszy dzień",
+    firstDayTitle: "Sześć rzeczy, i nic więcej.",
+    firstWeekEyebrow: "Pierwszy tydzień",
+    firstWeekTitle: "Potem, powoli, rytm.",
+    firstWeekBody:
+      "Większości psów potrzeba dwóch lub trzech tygodni, by pokazać, kim naprawdę są. Nie oceniaj niczego w pierwszych dniach — ani apetytu, ani nawyków toaletowych, ani charakteru.",
+    vetTitle: "Kiedy zadzwonić do weterynarza",
+    vetBody:
+      "Odmawianie jedzenia przez ponad dzień, powtarzające się wymioty lub biegunka, utrudniony oddech, apatia, która nie mija, albo jakikolwiek objaw bólu. Nowe psy są często rozdrażnione — ale rozpoznasz chorobę, gdy ją zobaczysz, i pytanie nigdy nie jest stratą niczyjego czasu.",
+    andThen: "A potem",
+    myDogTitle: "Tutaj zaczyna się Mój pies.",
+    myDogBody:
+      "Wszystko od teraz — jedzenie i porcje, sesje treningowe, waga, wizyty u weterynarza, spacery i cały tydzień — mieszka w jednym miejscu, zbudowanym wokół Twojego rzeczywistego psa. Załóż jego profil, a wszystko, co już nam powiedziałeś, przejdzie razem z Tobą.",
+    createCta: "Utwórz profil mojego psa",
+    packCta: "Drukowalny Pakiet Psa",
+  },
 } as const;
 
 function WelcomeHomePage() {
