@@ -256,7 +256,7 @@ function HomePage() {
       </section>
 
       {/* ------------------------------------------------------ How it works */}
-      <Section>
+      <Section id="how-it-works">
         <div className="container-page">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
             <div className="lg:sticky lg:top-28 lg:self-start">
@@ -288,7 +288,7 @@ function HomePage() {
       </Section>
 
       {/* --------------------------------------------------- Breed preview */}
-      <Section className="bg-surface">
+      <Section id="dog-breeds" className="bg-surface">
         <div className="container-page">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-lg">
@@ -337,7 +337,7 @@ function HomePage() {
       </Section>
 
       {/* ------------------------------------------------------- Comparison */}
-      <Section>
+      <Section id="compare-breeds">
         <div className="container-page grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-20">
           <div className="max-w-lg">
             <Eyebrow>{t.home.compareEyebrow}</Eyebrow>
@@ -385,7 +385,7 @@ function HomePage() {
       </Section>
 
       {/* --------------------------------------------------------- Dog Life */}
-      <Section className="pt-0">
+      <Section id="dog-life" className="pt-0">
         <div className="container-page">
           <div className="relative overflow-hidden rounded-[2rem]">
             <img
@@ -415,7 +415,7 @@ function HomePage() {
       </Section>
 
       {/* ---------------------------------------------------------- Closing */}
-      <Section className="border-t border-border pt-16 md:pt-24">
+      <Section id="find-your-dog" className="border-t border-border pt-16 md:pt-24">
         <div className="container-page max-w-3xl text-center">
           <h2 className="display-lg">{t.home.closingTitle}</h2>
           <p className="mt-5 text-lg text-muted-foreground">{t.home.closingBody}</p>
