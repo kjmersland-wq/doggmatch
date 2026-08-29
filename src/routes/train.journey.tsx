@@ -67,6 +67,23 @@ const copy = {
     feelingMore: "Trenger mer øving",
     nextTitle: "Hva dere kan prøve videre",
   },
+  pl: {
+    eyebrow: "Twoja podróż",
+    titleWithDog: (name: string) => `Ty i ${name}, jak dotąd.`,
+    titleGuest: "Wasza wspólna podróż, gdy tylko zaczniecie.",
+    guestBody: "Opowiedz nam o swoim psie, a będziemy śledzić, nad czym pracowaliście. Nic nie opuszcza tego urządzenia.",
+    guestCta: "Opowiedz nam o swoim psie",
+    statSessions: "Sesje razem",
+    statSkills: "Poznane umiejętności",
+    statStreak: "Dni z rzędu",
+    standingTitle: "Jak wygląda sytuacja",
+    nothingYet: "Nic tu jeszcze nie ma.",
+    recentTitle: "Ostatnie sesje",
+    feelingGreat: "Poszło naprawdę dobrze",
+    feelingGood: "Wystarczająco dobrze",
+    feelingMore: "Potrzeba więcej ćwiczeń",
+    nextTitle: "Co warto spróbować dalej",
+  },
 } as const;
 
 function JourneyPage() {

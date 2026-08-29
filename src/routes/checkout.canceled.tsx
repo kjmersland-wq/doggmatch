@@ -39,6 +39,13 @@ const copy = {
     backToPlus: "Tilbake til DoggMatch+",
     goToMyDog: "Gå til Min hund",
   },
+  pl: {
+    eyebrow: "Płatność nie została pobrana",
+    heading: "To zupełnie w porządku.",
+    body: "Nic nie zostało obciążone. DoggMatch+ będzie tu czekać, gdy będziesz gotowy, a wszystko, z czego korzystałeś, pozostaje bez zmian.",
+    backToPlus: "Wróć do DoggMatch+",
+    goToMyDog: "Przejdź do Mój pies",
+  },
 } as const;
 
 function CanceledPage() {

@@ -88,6 +88,37 @@ const copy = {
       "Den kan ha flyttet p\u00e5 seg. Ta en titt i biblioteket \u2014 det du var ute etter ligger nok der.",
     seeEvery: "Se alle leksjoner",
   },
+  pl: {
+    allLessons: "\u2190 Wszystkie lekcje",
+    training: "Szkolenie",
+    min: "min",
+    inProgress: "W trakcie",
+    youllNeed: "Będziesz potrzebować",
+    howTo: "Jak to zrobić",
+    step: "Krok",
+    illustration: "Ilustracja",
+    buildingUp: "Budowanie umiejętności",
+    buildingUpLead:
+      "Przejdź dalej, gdy poprzedni krok jest już łatwy. Jeśli się chwieje, wróć o krok \u2014 to nie porażka, tak po prostu wygląda nauka.",
+    howDidItGo: "Jak poszło?",
+    tellUsWhere: (name: string) =>
+      `Powiedz nam, na jakim etapie jest ${name}. To tylko dla ciebie \u2014 dzięki temu twoja droga pozostaje szczera i pomaga nam zaproponować kolejny krok.`,
+    feelings: ["Poszło naprawdę dobrze", "Wystarczająco dobrze jak na dziś", "Potrzebujemy więcej ćwiczeń"] as const,
+    logged: "Zapisano. Świetna robota \u2014 to kolejna wspólna sesja.",
+    noteLabel: "Coś, co warto zapamiętać na następny raz?",
+    notePlaceholder: "Lepiej w korytarzu niż w ogrodzie.",
+    noDogLead:
+      "Powiedz nam o swoim psie, a będziemy śledzić, nad czym pracowaliście, i zaproponujemy, co spróbować dalej.",
+    tellUsAboutDog: "Opowiedz nam o swoim psie",
+    nextUp: "Dobra lekcja na kolejny krok",
+    whileYouTrain: "Podczas treningu",
+    whileYouTrainLead: "Trzymaj się krótko i zakończ na dobrej nucie.",
+    heroAlt: (title: string) => `${title} \u2014 pies i jego opiekun ćwiczą razem`,
+    notFoundTitle: "Nie mogliśmy znaleźć tej lekcji.",
+    notFoundBody:
+      "Mogła zostać przeniesiona. Zajrzyj do biblioteki \u2014 to, czego szukasz, prawdopodobnie tam jest.",
+    seeEvery: "Zobacz wszystkie lekcje",
+  },
 } as const;
 
 export const Route = createFileRoute("/train/lessons/$lessonId")({

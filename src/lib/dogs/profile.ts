@@ -230,23 +230,23 @@ export function resolveDogTraits(dog?: DogProfile): DogTraitProfile {
   };
 }
 
-const TRAIT_LABELS: Partial<Record<keyof BreedTraits, { en: string; no: string }>> = {
-  energy: { en: "energy", no: "energi" },
-  exerciseNeeds: { en: "exercise needs", no: "mosjonsbehov" },
-  mentalStimulation: { en: "mental stimulation", no: "mental stimulering" },
-  grooming: { en: "coat care", no: "pelsstell" },
-  shedding: { en: "shedding", no: "pelsfelling" },
-  barking: { en: "barking", no: "bjeffing" },
-  drooling: { en: "drooling", no: "sikling" },
-  strengthRequired: { en: "strength on the lead", no: "styrke i bånd" },
-  apartmentSuitability: { en: "flat living", no: "leilighetsliv" },
-  aloneTolerance: { en: "time alone", no: "å være alene" },
-  firstTimeSuitability: { en: "first-time owners", no: "førstegangseiere" },
-  goodWithChildren: { en: "life with children", no: "livet med barn" },
-  goodWithDogs: { en: "other dogs", no: "andre hunder" },
-  goodWithPets: { en: "other pets", no: "andre dyr" },
-  heatTolerance: { en: "warm weather", no: "varme dager" },
-  coldTolerance: { en: "cold weather", no: "kulde" },
+const TRAIT_LABELS: Partial<Record<keyof BreedTraits, { en: string; no: string; pl: string }>> = {
+  energy: { en: "energy", no: "energi", pl: "energia" },
+  exerciseNeeds: { en: "exercise needs", no: "mosjonsbehov", pl: "potrzeba ruchu" },
+  mentalStimulation: { en: "mental stimulation", no: "mental stimulering", pl: "stymulacja umysłowa" },
+  grooming: { en: "coat care", no: "pelsstell", pl: "pielęgnacja sierści" },
+  shedding: { en: "shedding", no: "pelsfelling", pl: "linienie" },
+  barking: { en: "barking", no: "bjeffing", pl: "szczekanie" },
+  drooling: { en: "drooling", no: "sikling", pl: "ślinienie się" },
+  strengthRequired: { en: "strength on the lead", no: "styrke i bånd", pl: "siła na smyczy" },
+  apartmentSuitability: { en: "flat living", no: "leilighetsliv", pl: "życie w mieszkaniu" },
+  aloneTolerance: { en: "time alone", no: "å være alene", pl: "przebywanie samemu" },
+  firstTimeSuitability: { en: "first-time owners", no: "førstegangseiere", pl: "początkujący opiekunowie" },
+  goodWithChildren: { en: "life with children", no: "livet med barn", pl: "życie z dziećmi" },
+  goodWithDogs: { en: "other dogs", no: "andre hunder", pl: "inne psy" },
+  goodWithPets: { en: "other pets", no: "andre dyr", pl: "inne zwierzęta" },
+  heatTolerance: { en: "warm weather", no: "varme dager", pl: "upalne dni" },
+  coldTolerance: { en: "cold weather", no: "kulde", pl: "zimno" },
 };
 
 export function traitLabel(key: keyof BreedTraits): string {
@@ -261,6 +261,7 @@ export function crossContributionLines(profile: DogTraitProfile): string[] {
     return pick({
       en: `${c.breedName} shows most in ${traits}.`,
       no: `${c.breedName} merkes mest på ${traits}.`,
+      pl: `${c.breedName} widać najbardziej w: ${traits}.`,
     });
   });
 }
@@ -269,18 +270,18 @@ export function crossContributionLines(profile: DogTraitProfile): string[] {
 export function crossHeading(profile: DogTraitProfile): string | undefined {
   if (!profile.isMixed || profile.breedIds.length < 2) return undefined;
   const names = profile.breedIds.map((id) => breedById[id]?.name).filter(Boolean).join(" × ");
-  return pick({ en: `Known cross: ${names}`, no: `Kjent krysning: ${names}` });
+  return pick({ en: `Known cross: ${names}`, no: `Kjent krysning: ${names}`, pl: `Znana krzyżówka: ${names}` });
 }
 
 /** Human label for the dog's breed line: "Mixed breed · Labrador × Poodle". */
 export function dogBreedLabel(dog?: DogProfile): string {
   if (!dog) return "";
-  const mixedWord = pick({ en: "Mixed breed", no: "Blandingshund" });
+  const mixedWord = pick({ en: "Mixed breed", no: "Blandingshund", pl: "Kundelek" });
   if (isMixedDog(dog)) {
     const names = knownBreedIds(dog).map((id) => breedById[id]!.name);
     if (names.length > 0) return `${mixedWord} · ${names.join(" × ")}`;
     if (dog.breedOther?.trim()) return `${mixedWord} · ${dog.breedOther.trim()}`;
-    return `${mixedWord} · ${pick({ en: "unknown mix", no: "ukjent blanding" })}`;
+    return `${mixedWord} · ${pick({ en: "unknown mix", no: "ukjent blanding", pl: "nieznana mieszanka" })}`;
   }
   if (dog.breedId && breedById[dog.breedId]) return breedById[dog.breedId]!.name;
   return dog.breedOther?.trim() ?? "";
@@ -293,21 +294,25 @@ export function traitBasisNote(profile: DogTraitProfile): string {
       return pick({
         en: "Based on the breed, adjusted by what you've told us about your own dog.",
         no: "Basert på rasen, justert etter det du har fortalt oss om din egen hund.",
+        pl: "Na podstawie rasy, dopasowane do tego, co powiedziałeś nam o swoim psie.",
       });
     case "mix-known":
       return pick({
         en: "Built mostly on your own dog, combined with what each breed in the mix tends to bring — the more demanding side sets the bar for needs, the more careful side for what we'd promise. A mix is never an exact copy of the breeds behind it.",
         no: "Bygger mest på din egen hund, kombinert med det hver rase i blandingen pleier å bidra med — den mest krevende siden setter nivået for behov, den mest forsiktige for hva vi tør love. En blanding blir aldri en nøyaktig kopi av rasene bak den.",
+        pl: "Opiera się głównie na Twoim psie, w połączeniu z tym, co zwykle wnosi każda rasa w mieszance — bardziej wymagająca strona wyznacza poziom potrzeb, a ta ostrożniejsza to, co możemy obiecać. Mieszaniec nigdy nie jest dokładną kopią ras, z których pochodzi.",
       });
     case "individual":
       return pick({
         en: "Built entirely from what you've told us about your dog — no breed guesswork.",
         no: "Bygget helt på det du har fortalt oss om hunden din — ingen gjetting på rase.",
+        pl: "Oparte całkowicie na tym, co powiedziałeś nam o swoim psie — żadnego zgadywania rasy.",
       });
     default:
       return pick({
         en: "We don't know much about your dog yet, so this is a careful average. Add a few details and it gets a lot more useful.",
         no: "Vi vet ikke så mye om hunden din ennå, så dette er et forsiktig gjennomsnitt. Legg inn noen detaljer, så blir det mye mer nyttig.",
+        pl: "Nie wiemy jeszcze wiele o Twoim psie, więc to ostrożna średnia. Dodaj kilka szczegółów, a stanie się dużo bardziej przydatna.",
       });
   }
 }

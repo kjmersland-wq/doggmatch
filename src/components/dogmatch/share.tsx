@@ -34,6 +34,18 @@ const copy = {
     messenger: "Messenger",
     shareSection: "Del denne delen",
   },
+  pl: {
+    share: "Udostępnij",
+    shareThis: "Udostępnij to",
+    close: "Zamknij",
+    copy: "Kopiuj link",
+    copied: "Link skopiowany",
+    email: "E-mail",
+    facebook: "Facebook",
+    whatsapp: "WhatsApp",
+    messenger: "Messenger",
+    shareSection: "Udostępnij tę sekcję",
+  },
 } as const;
 
 function useShareUrl(path?: string, anchor?: string) {

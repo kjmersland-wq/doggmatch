@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 const copy = {
   en: { label: "Sources & methodology", aria: "Read where this information comes from" },
   no: { label: "Kilder og metode", aria: "Les hvor denne informasjonen kommer fra" },
+  pl: { label: "Źródła i metodologia", aria: "Sprawdź, skąd pochodzą te informacje" },
 } as const;
 
 /**

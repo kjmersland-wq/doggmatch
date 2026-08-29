@@ -42,6 +42,13 @@ const copy = {
     ended: "Medlemskapet er avsluttet",
     notFound: "Fant ikke kortet",
   },
+  pl: {
+    checking: "Sprawdzanie…",
+    active: "✓ Aktywny członek",
+    validUntil: "Ważne do:",
+    ended: "Członkostwo wygasło",
+    notFound: "Nie znaleziono karty",
+  },
 } as const;
 
 function VerifyPage() {

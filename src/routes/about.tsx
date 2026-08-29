@@ -36,6 +36,11 @@ const copy = {
     p2: "Her er det ingen gjetting. Hver match kommer fra det du har fortalt oss, holdt opp mot det hver rase vanligvis trenger. Sier du at noe er en absolutt grense, tar vi deg på ordet — selv når det utelukker en hund du hadde satt deg fore.",
     p3: "Vi ber om så lite som mulig. Du deler bare hvor du bor hvis du vil ha lokale forslag, og du trenger aldri en konto for å få resultatet ditt.",
   },
+  pl: {
+    p1: "Zabranie psa do domu to poważna decyzja i zasługuje na więcej przemyśleń niż lista najpopularniejszych ras. Dobry wybór jest lepszy dla Ciebie i o wiele lepszy dla psa.",
+    p2: "Nie ma tu zgadywania. Każde dopasowanie wynika z tego, co nam powiedziałeś, zestawionego z tym, czego zwykle potrzebuje dana rasa. Jeśli mówisz nam, że coś jest absolutną granicą, wierzymy Ci na słowo — nawet jeśli wyklucza to psa, na którym Ci zależało.",
+    p3: "Prosimy o jak najmniej informacji. Podajesz miejsce zamieszkania tylko wtedy, gdy chcesz lokalnych podpowiedzi, a konto nigdy nie jest potrzebne, by uzyskać wynik.",
+  },
 } as const;
 
 function AboutPage() {

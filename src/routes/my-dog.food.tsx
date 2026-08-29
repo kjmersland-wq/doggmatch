@@ -74,6 +74,27 @@ const copy = {
     noteBody:
       "Hunder er forskjellige. Noe som er greit for de fleste kan likevel gi din hund problemer, og mengde betyr noe — en smule av noe fettrikt er ikke det samme som et halvt pakke. Godbiter av alle slag bør holdes under omtrent en tidel av det hunden spiser på en dag.",
   },
+  pl: {
+    eyebrow: "Bezpieczeństwo jedzenia",
+    title: "Czy mój pies może to zjeść?",
+    intro:
+      "Coś wylądowało na podłodze i twój pies dotarł tam pierwszy. Wpisz co to było, a otrzymasz jasną odpowiedź, bez paniki.",
+    searchPlaceholder: "Winogrona, ser, masło orzechowe…",
+    searchAria: "Szukaj produktów",
+    filters: [
+      { value: "all" as const, label: "Wszystko" },
+      { value: "safe" as const, label: "Dobre w małych ilościach" },
+      { value: "care" as const, label: "Uważaj" },
+      { value: "avoid" as const, label: "Nie podawaj" },
+    ],
+    empty:
+      "Tego jeszcze nie opisaliśmy. Jeśli twój pies już to zjadł i nie jesteś pewien, zadzwoń do weterynarza — dokładnie po to tam są.",
+    vetNote:
+      "Jeśli twój pies zjadł coś z listy „nie podawaj”, nie czekaj, aż zobaczysz efekty. Zadzwoń do weterynarza lub na infolinię ds. zatruć zwierząt i powiedz, co to było, mniej więcej ile i kiedy.",
+    noteTitle: "Uwaga o listach takich jak ta",
+    noteBody:
+      "Psy się różnią. Coś, co jest w porządku dla większości, może zaszkodzić twojemu psu, a ilość ma znaczenie — okruszek czegoś tłustego to nie to samo co pół opakowania. Wszelkie przysmaki powinny stanowić mniej niż jedną dziesiątą tego, co pies zjada w ciągu dnia.",
+  },
 } as const;
 
 function FoodSafetyPage() {

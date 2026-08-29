@@ -186,41 +186,42 @@ function hardConstraints(t: BreedTraits, p: UserProfile): { warnings: string[]; 
   let cap = 100;
 
   if (p["energyLimit"] === "no" && t.energy >= 4) {
-    warnings.push(pick({ en: "You told us you'd need a calmer dog, and this one really does have a lot of energy.", no: "Du sa at du trenger en roligere hund, og denne har virkelig mye energi." }));
+    warnings.push(pick({ en: "You told us you'd need a calmer dog, and this one really does have a lot of energy.", no: "Du sa at du trenger en roligere hund, og denne har virkelig mye energi.", pl: "Napisałeś, że potrzebujesz spokojniejszego psa, a ten naprawdę ma sporo energii." }));
     cap = Math.min(cap, 52);
   }
   if (p["physical"] === "light" && t.strengthRequired >= 4) {
-    warnings.push(pick({ en: "This is a big, strong dog. That can be hard work on the lead if strength is an issue for you.", no: "Dette er en stor og sterk hund. Det kan bli tungt i bånd hvis styrke er en utfordring for deg." }));
+    warnings.push(pick({ en: "This is a big, strong dog. That can be hard work on the lead if strength is an issue for you.", no: "Dette er en stor og sterk hund. Det kan bli tungt i bånd hvis styrke er en utfordring for deg.", pl: "To duży i silny pies. Trzymanie go na smyczy może być trudne, jeśli siła fizyczna jest dla Ciebie wyzwaniem." }));
     cap = Math.min(cap, 55);
   }
   if (p["shedding"] === "must-low" && t.shedding >= 4) {
-    warnings.push(pick({ en: "They shed a lot. With someone at home who reacts to dogs, that's a difficult place to start.", no: "Den feller mye. Når noen hjemme reagerer på hund, er det et vanskelig utgangspunkt." }));
+    warnings.push(pick({ en: "They shed a lot. With someone at home who reacts to dogs, that's a difficult place to start.", no: "Den feller mye. Når noen hjemme reagerer på hund, er det et vanskelig utgangspunkt.", pl: "Ten pies mocno linieje. Jeśli ktoś w domu reaguje na psy, to trudny punkt wyjścia." }));
     cap = Math.min(cap, 50);
   }
   if (p["children"] === "young" && t.goodWithChildren <= 3) {
-    warnings.push(pick({ en: "With young children at home, this one usually needs an experienced hand.", no: "Med små barn hjemme trenger denne som regel en erfaren eier." }));
+    warnings.push(pick({ en: "With young children at home, this one usually needs an experienced hand.", no: "Med små barn hjemme trenger denne som regel en erfaren eier.", pl: "Z małymi dziećmi w domu ten pies zwykle potrzebuje doświadczonej ręki." }));
     cap = Math.min(cap, 62);
   }
   if (p["pets"] === "small" && t.goodWithPets <= 2) {
-    warnings.push(pick({ en: "They have a strong chase instinct, so small pets in the same home would be a real worry.", no: "Den har sterk jaktlyst, så små dyr i samme hjem ville vært en reell bekymring." }));
+    warnings.push(pick({ en: "They have a strong chase instinct, so small pets in the same home would be a real worry.", no: "Den har sterk jaktlyst, så små dyr i samme hjem ville vært en reell bekymring.", pl: "Ten pies ma silny instynkt łowiecki, więc małe zwierzęta w tym samym domu byłyby realnym ryzykiem." }));
     cap = Math.min(cap, 45);
   }
   if (p["experience"] === "first" && t.firstTimeSuitability <= 2) {
-    warnings.push(pick({ en: "A demanding choice for a first dog. They do best with someone who's done it before.", no: "Et krevende valg som første hund. Den trives best hos noen som har gjort det før." }));
+    warnings.push(pick({ en: "A demanding choice for a first dog. They do best with someone who's done it before.", no: "Et krevende valg som første hund. Den trives best hos noen som har gjort det før.", pl: "Wymagający wybór na pierwszego psa. Najlepiej czuje się przy kimś, kto ma już doświadczenie." }));
     cap = Math.min(cap, 60);
   }
   if (Number(p["alone"] ?? 0) >= 6 && t.aloneTolerance <= 2) {
-    warnings.push(pick({ en: "They find long days on their own hard. Six hours or more would need a proper plan.", no: "Den synes lange dager alene er tungt. Seks timer eller mer krever en ordentlig plan." }));
+    warnings.push(pick({ en: "They find long days on their own hard. Six hours or more would need a proper plan.", no: "Den synes lange dager alene er tungt. Seks timer eller mer krever en ordentlig plan.", pl: "Długie dni w samotności są dla niego trudne. Sześć godzin lub więcej wymagałoby przemyślanego planu." }));
     cap = Math.min(cap, 58);
   }
   if (p["home"] === "apartment" && t.apartmentSuitability <= 1) {
-    warnings.push(pick({ en: "Flat living rarely suits this breed, even with plenty of long walks.", no: "Leilighetsliv passer sjelden for denne rasen, selv med mange lange turer." }));
+    warnings.push(pick({ en: "Flat living rarely suits this breed, even with plenty of long walks.", no: "Leilighetsliv passer sjelden for denne rasen, selv med mange lange turer.", pl: "Życie w mieszkaniu rzadko pasuje tej rasie, nawet przy wielu długich spacerach." }));
     cap = Math.min(cap, 50);
   }
   if (p["allergy"] === "significant" && t.shedding >= 4) {
     warnings.push(pick({
       en: "With a significant allergy at home, a heavy-shedding dog is a hard place to start. Speak to an allergy specialist before you decide.",
       no: "Med en betydelig allergi hjemme er en hund som feller mye et vanskelig utgangspunkt. Snakk med en allergispesialist før du bestemmer deg.",
+      pl: "Przy poważnej alergii w domu, pies, który mocno linieje, to trudny punkt wyjścia. Porozmawiaj ze specjalistą od alergii, zanim podejmiesz decyzję.",
     }));
     cap = Math.min(cap, 48);
   }

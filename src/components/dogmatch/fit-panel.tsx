@@ -22,6 +22,15 @@ const copy = {
     honesty:
       "Dette er et resultat om livsstilskompatibilitet, ikke en vitenskapelig måling. Det sammenligner det du fortalte oss med det denne hunden vanligvis trenger — enkelthunder varierer.",
   },
+  pl: {
+    fitsTitle: "Dlaczego ten pies może pasować do twojego życia",
+    tradeTitle: "Rzeczy, które warto solidnie przemyśleć",
+    fromLabel: "Twoja odpowiedź",
+    none: "Nic tutaj nie przemawiało przeciwko tobie — ale poznaj psa, zanim zdecydujesz.",
+    noneFits: "Bardzo niewiele tu pasowało do twoich odpowiedzi.",
+    honesty:
+      "To wynik zgodności stylu życia, a nie pomiar naukowy. Porównuje to, co nam powiedziałeś, z tym, czego zwykle potrzebuje ten pies — poszczególne psy się różnią.",
+  },
 };
 
 /**

@@ -57,6 +57,19 @@ const copy = {
     vetNote:
       "Sidene fylles ut med det du har lagret, og står tomme der du ikke har fylt inn noe — så et ferskt ark fungerer fortsatt med en penn. Alt blir liggende på enheten din.",
   },
+  pl: {
+    eyebrow: "Wydrukuj i zapisz",
+    title: "Coś, co możesz trzymać w ręce",
+    introFor: (name: string) =>
+      `Wszystko, co napisałeś o ${name}, można wydrukować — na drzwi lodówki, dla opiekuna albo do teczki w szufladzie.`,
+    dogFallback: "twoim psie",
+    wholePack: "Utwórz cały pakiet dla psa",
+    printChosen: (n: number) => `Wydrukuj wybrane (${n})`,
+    includeAria: (title: string) => `Uwzględnij ${title}`,
+    printJustThisOne: "Wydrukuj tylko to",
+    vetNote:
+      "Strony uzupełniane są tym, co zapisałeś, a tam, gdzie niczego nie wpisałeś, zostają puste — więc świeża kartka wciąż da się uzupełnić długopisem. Wszystko pozostaje na twoim urządzeniu.",
+  },
 } as const;
 
 function PrintPage() {

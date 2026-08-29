@@ -114,6 +114,41 @@ const copy = {
     onlyUse: "Vi bruker opplysningene dine bare til å svare deg. Ikke noe annet.",
     sendError: "Beklager, vi klarte ikke å sende meldingen din akkurat nå. Prøv gjerne igjen om litt.",
   },
+  pl: {
+    eyebrow: "Kontakt",
+    heading: "Chętnie cię wysłuchamy.",
+    intro:
+      "Pytanie dotyczące znalezienia odpowiedniego psa, szkolenia, jedzenia, zdrowia lub wspólnego podróżowania — albo coś, co nie działa tak, jak powinno. Napisz do nas, a odpowie ci prawdziwa osoba.",
+    doneHeading: "Dziękujemy. Twoja wiadomość została wysłana.",
+    doneBody:
+      "Odpowiemy najszybciej, jak to możliwe. Sprawdzaj swoją skrzynkę — wysłaliśmy krótką wiadomość potwierdzającą, że dotarła.",
+    writeAnother: "Napisz kolejną wiadomość",
+    nameLabel: "Twoje imię",
+    namePlaceholder: "Anna Kowalska",
+    emailLabel: "Twój e-mail",
+    emailPlaceholder: "ty@przyklad.pl",
+    subjectLabel: "Temat",
+    subjectPlaceholder: "Czego to dotyczy?",
+    reasonLabel: "Czego to dotyczy?",
+    reasonHint: "Opcjonalnie",
+    reasonPlaceholder: "Wybierz, jeśli chcesz",
+    reasons: {
+      general: "Ogólne pytanie",
+      matching: "Dopasowanie psa",
+      training: "Szkolenie",
+      health: "Zdrowie i żywienie",
+      myDog: "Mój pies",
+      technical: "Problem techniczny",
+      partnership: "Współpraca",
+      other: "Inne",
+    },
+    messageLabel: "Twoja wiadomość",
+    messagePlaceholder: "Napisz tyle, ile chcesz.",
+    send: "Wyślij wiadomość",
+    sending: "Wysyłanie…",
+    onlyUse: "Używamy twoich danych wyłącznie po to, by ci odpowiedzieć. Nic więcej.",
+    sendError: "Przepraszamy, nie udało nam się teraz wysłać twojej wiadomości. Spróbuj ponownie za chwilę.",
+  },
 } as const;
 
 function ContactPage() {

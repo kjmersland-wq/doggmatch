@@ -96,6 +96,38 @@ const copy = {
       "Når hunden din kommer hjem, flyttes alt du har fortalt oss over i Min hund — mat, trening, helse, turer og papirer, samlet ett sted.",
     welcomeCta: "Se den første uken",
   },
+  pl: {
+    eyebrow: "Zdobądź psa",
+    heroTitle: "Zastanawiasz się nad zabraniem psa do domu?",
+    heroBody:
+      "Pies potrafi wspaniale odmienić Twoją codzienność. Może też być dużym zobowiązaniem. Upewnijmy się, że jesteś gotowy na tego właściwego.",
+    ctaReady: "Czy jestem gotowy?",
+    ctaFind: "Znajdź mojego psa",
+    heroFootnote: "Wszystko za darmo. Bez konta, i nic nie jest przechowywane nigdzie poza tym urządzeniem.",
+    heroAlt: "Starszy mężczyzna siedzący na schodach z ręką wokół kudłatego psa mieszańca",
+    journeyEyebrow: "Podróż",
+    journeyTitle: "Jedna decyzja, podejmowana krok po kroku.",
+    journeyBody:
+      "Zabranie psa do domu to ekscytująca sprawa. To też ważna decyzja. Oto cała droga, w kolejności, w jakiej zwykle przebiega — zacznij, gdziekolwiek chcesz, i wracaj, kiedy tylko masz ochotę.",
+    open: "Otwórz",
+    choiceEyebrow: "Pierwszy duży wybór",
+    choiceTitle: "Szczeniak, czy pies, który jest już dorosły?",
+    choiceBody:
+      "Dwa zupełnie inne pierwsze lata. Żadne z nich nie jest lepsze — to, co pasuje, zależy dużo bardziej od Twojego życia niż od psa.",
+    puppyAlt: "Szczeniak cocker spaniela siedzący obok pogryzionego kapcia",
+    puppyLabel: "Szczeniak",
+    puppyBody: "Nieprzespane miesiące, i to Ty kształtujesz niemal wszystko.",
+    adultAlt: "Spokojny dorosły pies odpoczywający na kanapie w słonecznym mieszkaniu",
+    adultLabel: "Dorosły pies",
+    adultBody: "O wiele więcej z tego, co widzisz, to naprawdę to, co dostajesz.",
+    compare: "Porównaj je dokładnie",
+    welcomeAlt: "Rodzina siedząca spokojnie na podłodze, gdy nowo przybyły pies obwąchuje swoje nowe legowisko",
+    welcomeEyebrow: "Koniec tej podróży",
+    welcomeTitle: "I początek tej znacznie dłuższej.",
+    welcomeBody:
+      "Gdy Twój pies trafi do domu, wszystko, co nam powiedziałeś, przechodzi do Mój pies — jedzenie, trening, zdrowie, spacery i dokumenty, wszystko w jednym miejscu.",
+    welcomeCta: "Zobacz pierwszy tydzień",
+  },
 } as const;
 
 function GetADogPage() {

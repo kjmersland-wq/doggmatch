@@ -39,6 +39,23 @@ const copy = {
     settings: "Innstillinger for informasjonskapsler",
     always: "Alltid på",
   },
+  pl: {
+    title: "Kilka słów o plikach cookie",
+    body: "Zachowujemy to, co niezbędne — twój język, motyw, notatki o twoim psie, logowanie i bezpieczne płatności. To potrzebne, żeby strona działała. Wszystko, co służy do mierzenia sposobu korzystania z DoggMatch, albo do marketingu, dzieje się tylko wtedy, gdy się na to zgodzisz.",
+    acceptAll: "Zaakceptuj wszystkie",
+    necessaryOnly: "Tylko niezbędne",
+    customise: "Wybieram sam",
+    save: "Zapisz mój wybór",
+    necessary: "Niezbędne",
+    necessaryBody: "Język, motyw, własne strony twojego psa, logowanie i płatność. Zawsze włączone — bez nich strona nie zadziała.",
+    analytics: "Analityka",
+    analyticsBody: "Anonimowe, zbiorcze dane o tym, które strony naprawdę pomagają ludziom. Wyłączone, chyba że je włączysz.",
+    marketing: "Marketing",
+    marketingBody: "Służy do sprawdzenia, czy reklama przyprowadziła kogoś na stronę. Wyłączone, chyba że je włączysz.",
+    privacy: "Przeczytaj naszą politykę prywatności",
+    settings: "Ustawienia plików cookie",
+    always: "Zawsze włączone",
+  },
 } as const;
 
 function Toggle({

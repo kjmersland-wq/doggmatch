@@ -85,6 +85,29 @@ const copy = {
     genericError: "Noe gikk galt. Prøv gjerne igjen.",
     googleError: "Vi klarte ikke å logge deg inn med Google akkurat nå. Prøv gjerne igjen.",
   },
+  pl: {
+    eyebrow: "Twoje konto",
+    welcomeBack: "Witaj z powrotem",
+    letsSetUp: "Załóżmy Ci konto",
+    intro:
+      "Konto potrzebne jest tylko do DoggMatch+ i tego, co przechowujemy dla Ciebie. Reszta DoggMatch pozostaje bezpłatna i otwarta dla wszystkich.",
+    google: "Kontynuuj z Google",
+    orWithEmail: "lub przez e-mail",
+    emailLabel: "Adres e-mail",
+    emailPlaceholder: "ty@przyklad.pl",
+    passwordLabel: "Hasło",
+    passwordPlaceholder: "Co najmniej 8 znaków",
+    signingIn: "Chwileczkę…",
+    signIn: "Zaloguj się",
+    createAccount: "Utwórz moje konto",
+    noAccount: "Nie masz jeszcze konta?",
+    haveAccount: "Masz już konto?",
+    createOne: "Utwórz je",
+    signInInstead: "Zaloguj się zamiast tego",
+    signUpNotice: "Już prawie gotowe — sprawdź swoją skrzynkę i potwierdź adres e-mail.",
+    genericError: "Coś poszło nie tak. Spróbuj ponownie.",
+    googleError: "Nie udało się zalogować przez Google. Spróbuj ponownie.",
+  },
 } as const;
 
 function AuthPage() {

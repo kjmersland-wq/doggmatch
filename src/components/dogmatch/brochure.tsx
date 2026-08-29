@@ -129,6 +129,64 @@ const copy = {
     printBtn: "Skriv ut / lagre som PDF",
     qrAlt: "QR-kode til doggmatch.com",
   },
+  pl: {
+    badge: "Znajdź swojego psa",
+    headline: "Znajdź psa, który pasuje do twojego życia.",
+    coverLead:
+      "Spokojny i szczery sposób, by odkryć, jaki rodzaj psa pasuje do twojego domu, twoich dni i ludzi wokół ciebie.",
+    cta: "Wypróbuj DoggMatch — za darmo",
+    url: "doggmatch.com",
+    scan: "Zeskanuj, by zacząć",
+    scanBack: "Zeskanuj aparatem telefonu",
+    howEyebrow: "Jak to działa",
+    howTitle: "Ty odpowiadasz. My pokazujemy nasze wyliczenia.",
+    howLead:
+      "Opowiadasz o swojej codzienności — poziomie aktywności, doświadczeniu, rodzinie i dzieciach, czasie na trening, pielęgnacji, rozmiarze, alergiach w domu i kilku innych ważnych sprawach. Potem otrzymujesz rasy, które zwykle pasują do życia takiego jak twoje, wraz z uzasadnieniem dla każdej z nich.",
+    points: [
+      {
+        title: "Żadna sztuczna inteligencja o niczym nie decyduje",
+        body: "Wynik pochodzi ze stałego, przejrzystego algorytmu. Te same odpowiedzi dają ten sam wynik, za każdym razem.",
+      },
+      {
+        title: "Widzisz, dlaczego",
+        body: "Każde dopasowanie jest wyjaśnione punkt po punkcie — również tam, gdzie dana rasa pasuje do ciebie gorzej.",
+      },
+      {
+        title: "Rasy czyste i mieszańce",
+        body: "Znane krzyżówki łączą cechy obojga rodziców — pokazywane jako wskazówka, nigdy jako gwarancja.",
+      },
+      {
+        title: "Przydatne, gdy pies już z tobą mieszka",
+        body: "Narzędzia do treningu, zdrowia, jedzenia i podróży, które zostają z tobą długo po dokonaniu wyboru.",
+      },
+    ],
+    toolsEyebrow: "Co znajdziesz w środku",
+    toolsTitle: "Wszystko w jednym spokojnym miejscu.",
+    tools: [
+      { title: "Znajdź swojego psa", body: "Pytania o twoją codzienność, na które odpowiesz w kilka minut." },
+      { title: "Porównaj rasy", body: "Obok siebie, w kwestiach, które naprawdę zmieniają codzienność." },
+      { title: "Mieszańce", body: "Połącz dwie rasy rodziców i zobacz prawdopodobny środek." },
+      { title: "Trening", body: "Krótkie, łagodne lekcje budowane w sensownej kolejności." },
+      { title: "Zdrowie i dobrostan", body: "Sierść, zęby, łapy, waga — sprawdzone bez paniki." },
+      { title: "Jedzenie i żywienie", body: "Wskazówki dotyczące porcji i jasna lista tego, czego psy nie powinny jeść." },
+      { title: "Podróże", body: "Przepisy kraj po kraju, bezpieczeństwo w samochodzie i dni na dworze." },
+      { title: "Mój pies", body: "Własna kartoteka twojego psa: waga, wizyty u weterynarza, kontakty, nadchodzący tydzień." },
+    ],
+    plusTitle: "DoggMatch+",
+    plusBody:
+      "Opcjonalne członkostwo dla tych, którzy chcą więcej: dodatkowe narzędzia, strony do wydruku na lodówkę lub do weterynarza, osobista karta członkowska oraz korzyści od partnerów w miarę ich pojawiania się.",
+    backTitle: "Poświęć pięć minut. To decyzja na najbliższe piętnaście lat.",
+    backBody:
+      "Bezpłatny do wypróbowania, nic do instalowania. Odpowiedz na pytania na telefonie i zobacz, co pasuje do twojego życia — z widocznym uzasadnieniem, po polsku lub angielsku.",
+    backNote:
+      "DoggMatch to wskazówki, a nie porada weterynaryjna ani medyczna. W sprawach zdrowia zawsze rozmawiaj z weterynarzem, a w kwestii alergii skorzystaj z porady specjalisty.",
+    madeBy: "Stworzone w Kristiansand w Norwegii przez KM TECH LABS",
+    printTitle: "Broszura A5",
+    printLead:
+      "Jedna strona A5 (148 × 210 mm), gotowa do druku. Wydrukuj do PDF z marginesami ustawionymi na brak i włączoną grafiką tła. Poproś drukarnię o 3 mm spadu.",
+    printBtn: "Drukuj / zapisz jako PDF",
+    qrAlt: "Kod QR do doggmatch.com",
+  },
 } as const;
 
 function useQr(text: string, size = 640) {

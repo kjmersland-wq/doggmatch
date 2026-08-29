@@ -35,6 +35,20 @@ const copy = {
       { to: "/dog-life", label: "Hundeliv", hint: "Hverdagen sammen, uansett hvor du er" },
     ],
   },
+  pl: {
+    title: "Dokąd pójść dalej",
+    intro: "DoggMatch towarzyszy przez całą drogę — od odkrycia, jaki pies do ciebie pasuje, po zwyczajne dni wiele lat później.",
+    steps: [
+      { to: "/find-my-dog", label: "Znajdź mojego psa", hint: "Kilka pytań o twoje dni" },
+      { to: "/breeds", label: "Biblioteka ras", hint: "Jak żyje się z każdym psem" },
+      { to: "/compare", label: "Porównaj psy", hint: "Obok siebie, w tym, co ważne" },
+      { to: "/get-a-dog", label: "Zdobądź psa", hint: "Gotowość, koszty i dobre wybory" },
+      { to: "/my-dog", label: "Mój pies", hint: "Rutyny, jedzenie, waga i pielęgnacja" },
+      { to: "/train", label: "Trening", hint: "Krótkie, łagodne lekcje, które się rozwijają" },
+      { to: "/travel", label: "Podróże", hint: "Przekraczanie granic i długie trasy samochodem" },
+      { to: "/dog-life", label: "Życie z psem", hint: "Codzienność razem, gdziekolwiek jesteś" },
+    ],
+  },
 } as const;
 
 export function JourneyLinks({ exclude = [] }: { exclude?: string[] }) {

@@ -5,6 +5,7 @@ import { useCopy } from "@/i18n";
 const copy = {
   en: { lastUpdated: "Last updated: " },
   no: { lastUpdated: "Sist oppdatert: " },
+  pl: { lastUpdated: "Ostatnia aktualizacja: " },
 } as const;
 
 export function LegalPage({
