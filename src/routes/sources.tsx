@@ -130,6 +130,57 @@ const copy = {
       "Finner du en påstand uten dekning, eller en kilde som har flyttet eller endret seg, si fra — så retter vi det. Rettelser er alltid velkomne.",
     contact: "Send oss en rettelse",
   },
+  pl: {
+    eyebrow: "Przejrzystość",
+    h1: "Skąd bierzemy nasze informacje",
+    intro:
+      "Wolimy pokazać naszą pracę domową, niż brzmieć mądrze. Wszystko, co faktograficzne w DoggMatch, pochodzi od nazwanych organizacji, które możesz sprawdzić sama lub sam, a wszystko, co obliczamy sami, to zwykła arytmetyka, którą chętnie wyjaśnimy.",
+    reviewed: "Cały rejestr ostatnio sprawdzony",
+    twoKinds: "Dwa różne rodzaje informacji",
+    externalTitle: "Wiedza od innych",
+    externalBody:
+      "Standardy ras, wytyczne dotyczące zdrowia i żywienia, zasady dobrostanu i wymogi graniczne pochodzą od organizacji weterynaryjnych, opublikowanych badań, organów rządowych, uznanych klubów kynologicznych i sprawdzonych organizacji zajmujących się dobrostanem zwierząt. Są wymienione poniżej, według tematu, z linkiem do strony, którą przeczytaliśmy, i datą ostatniego sprawdzenia.",
+    ownTitle: "Obliczenia, które są nasze",
+    ownBody:
+      "Procenty dopasowania, szacunki porcji, rytmy tygodniowe i wyniki gotowości powstają dzięki naszemu własnemu, deterministycznemu kodowi. Te same odpowiedzi zawsze dają ten sam wynik — nie ma tu żadnego zgadywania po drodze, a żadne dane osobowe nie opuszczają Twojego urządzenia, by je policzyć.",
+    methodTitle: "Jak naprawdę działa dopasowywanie",
+    steps: [
+      {
+        t: "Opisujesz swoje codzienne życie",
+        b: "Dom, godziny spędzane samodzielnie przez psa, aktywność, dzieci, inne zwierzęta, doświadczenie, pielęgnacja i granice dotyczące linienia.",
+      },
+      {
+        t: "Twarde ograniczenia są respektowane w pierwszej kolejności",
+        b: "Jeśli mówisz nam, że coś jest realnym ograniczeniem, każdy pies, który w to koliduje, ma ustalony pułap — nie może wspiąć się na listę, dobrze wypadając gdzie indziej.",
+      },
+      {
+        t: "Siedem obszarów jest ocenianych i ważonych",
+        b: "Styl życia, dom, aktywność, temperament, podatność na trening, towarzystwo i pielęgnacja. Każdy to liczba w skali do 100, potem łączona ze stałymi wagami.",
+      },
+      {
+        t: "Widzisz uzasadnienie, nie tylko liczbę",
+        b: "Każdy wynik pokazuje, co pasuje, co nie i dlaczego — dzięki czemu możesz się z nami nie zgadzać w sposób świadomy.",
+      },
+    ],
+    limitsTitle: "Czym jest procent dopasowania — i czym nie jest",
+    limits:
+      "Procent DoggMatch to algorytmiczna ocena kompatybilności, oparta na uporządkowanych danych o rasach i odpowiedziach, które nam podałaś/podałeś. To nie jest naukowa prognoza, nie jest miarą konkretnego psa i nie niesie żadnej pewności. Psy to indywidua; dwa psy tej samej rasy mogą żyć zupełnie inaczej. Dla psa, którego już znasz, oceniamy jego własne, zaobserwowane cechy, a nie założenia dotyczące rasy.",
+    vetTitle: "Nie jesteśmy Twoim weterynarzem",
+    vetBody:
+      "DoggMatch oferuje ogólną wiedzę o życiu z psem. Nie stawia diagnoz, nie leczy ani nie przepisuje, i nigdy nie zastępuje porady wykwalifikowanego weterynarza, behawiorysty weterynaryjnego czy trenera, który poznał Twojego psa. Jeśli coś Cię niepokoi, zadzwoń do weterynarza — a w nagłym przypadku jedź prosto tam.",
+    borderTitle: "Zasady podróżowania się zmieniają",
+    borderBody:
+      "Wymogi graniczne i importowe ustalają rządy i mogą się zmieniać z niewielkim wyprzedzeniem. Podajemy link do odpowiedniego urzędu dla każdego kraju i mówimy wprost, gdy nie mamy zweryfikowanej zasady dla danej trasy, zamiast zgadywać.",
+    registryTitle: "Rejestr źródeł",
+    registryBody:
+      "Uporządkowany według tematu. Każdy wpis linkuje do oryginalnego źródła. Nowe źródła i daty przeglądu są dodawane tutaj w miarę rozwoju strony.",
+    usedOn: "Wykorzystywane w",
+    reviewedShort: "Sprawdzono",
+    addTitle: "Zauważyłaś/zauważyłeś coś, co jest błędne?",
+    addBody:
+      "Jeśli znajdziesz twierdzenie, które nie jest poparte, albo źródło, które się przeniosło lub zmieniło, daj nam znać, a poprawimy to. Poprawki są zawsze mile widziane.",
+    contact: "Wyślij nam poprawkę",
+  },
 } as const;
 
 function SourcesPage() {

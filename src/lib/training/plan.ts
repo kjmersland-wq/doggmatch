@@ -62,10 +62,12 @@ export function scoreLesson(
           ? pick({
               en: `Often useful with ${breed.name} in the mix, though every dog is their own dog`,
               no: `Ofte nyttig når det er ${breed.name} i blandingen, men hver hund er sin egen`,
+              pl: `Często przydatne, gdy w mieszance jest ${breed.name}, choć każdy pies jest inny`,
             })
           : pick({
               en: `Often suits a ${breed.name}, though every dog is their own dog`,
               no: `Passer ofte en ${breed.name}, men hver hund er sin egen`,
+              pl: `Często pasuje do ${breed.name}, choć każdy pies jest inny`,
             });
       }
     }
@@ -132,6 +134,17 @@ function planCopy() {
         senior: "Rolig, og fin for en eldre hund",
       } as Record<DogProfile["ageStage"], string>,
     },
+    pl: {
+      startingPoint: "Dobre miejsce, by zacząć",
+      yourGoal: "Wspomnieliście, że chcielibyście nad tym popracować",
+      inProgress: "Jesteście w trakcie tego właśnie teraz",
+      age: {
+        puppy: "Warto zająć się tym wcześnie, gdy wszystko jest nowe",
+        adolescent: "Wiek, w którym to naprawdę się opłaca",
+        adult: "Przydatne w każdym wieku",
+        senior: "Łagodne i miłe dla starszego psa",
+      } as Record<DogProfile["ageStage"], string>,
+    },
   });
 }
 
@@ -183,7 +196,30 @@ const ageFocusNo: AgeFocus = {
   },
 };
 
+const ageFocusPl: AgeFocus = {
+  puppy: {
+    title: "Czas szczenięcy",
+    body: "Wszystko jest nowe, a większość tego, co robisz teraz, to po prostu pokazywanie szczeniakowi, że świat jest przyjaznym miejscem.",
+    points: ["Pewność siebie", "Łagodne poznawanie świata", "Uczenie się wzajemnego porozumiewania", "Nauka czystości", "Oswajanie z dotykiem", "Sen i spokój"],
+  },
+  adolescent: {
+    title: "Miesiące dorastania",
+    body: "To, co działało w zeszłym miesiącu, może przez jakiś czas przestać działać. To mija. Konsekwencja i cierpliwość pomogą przez to przejść.",
+    points: ["Czekanie i samokontrola", "Praca przy rozproszeniach", "Przywoływanie, wciąż od nowa", "Ładne chodzenie na smyczy", "Zachowanie konsekwencji"],
+  },
+  adult: {
+    title: "Lata dorosłości",
+    body: "Teraz chodzi o to, by dobre nawyki stały się pewne, i by życie pozostawało ciekawe.",
+    points: ["Niezawodność", "Codzienne maniery", "Nowe umiejętności dla przyjemności", "Wzbogacanie dnia"],
+  },
+  senior: {
+    title: "Lata seniora",
+    body: "Starsze psy nadal uwielbiają się uczyć. Trzymaj się krótkich, łagodnych sesji, oszczędzających sztywne stawy.",
+    points: ["Łagodne zagadki umysłowe", "Jasna komunikacja", "Aktywności dopasowane do ciała", "Podtrzymywanie znanych umiejętności"],
+  },
+};
+
 /** Age guidance in the reader's language — call inside render. */
 export function getAgeFocus(): AgeFocus {
-  return pick({ en: ageFocusEn, no: ageFocusNo });
+  return pick({ en: ageFocusEn, no: ageFocusNo, pl: ageFocusPl });
 }
