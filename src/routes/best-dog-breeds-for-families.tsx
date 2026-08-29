@@ -233,7 +233,7 @@ function FamilyBreedsPage() {
                     <dd>
                       <LevelDot
                         level={breed.traits.goodWithChildren}
-                        label={c.levelLabels[breed.traits.goodWithChildren - 1]}
+                        label={c.levelLabels[breed.traits.goodWithChildren - 1] ?? ""}
                       />
                     </dd>
                   </div>
@@ -242,7 +242,7 @@ function FamilyBreedsPage() {
                     <dd>
                       <LevelDot
                         level={breed.traits.firstTimeSuitability}
-                        label={c.levelLabels[breed.traits.firstTimeSuitability - 1]}
+                        label={c.levelLabels[breed.traits.firstTimeSuitability - 1] ?? ""}
                       />
                     </dd>
                   </div>
@@ -251,7 +251,7 @@ function FamilyBreedsPage() {
                     <dd>
                       <LevelDot
                         level={breed.traits.shedding}
-                        label={c.levelLabels[breed.traits.shedding - 1]}
+                        label={c.levelLabels[breed.traits.shedding - 1] ?? ""}
                       />
                     </dd>
                   </div>
@@ -260,7 +260,7 @@ function FamilyBreedsPage() {
                     <dd>
                       <LevelDot
                         level={breed.traits.energy}
-                        label={c.levelLabels[breed.traits.energy - 1]}
+                        label={c.levelLabels[breed.traits.energy - 1] ?? ""}
                       />
                     </dd>
                   </div>
