@@ -93,6 +93,7 @@ export function typicalDay(t: BreedTraits): string[] {
     pick({
       en: "Happy to sleep through the middle of the day once the morning has been earned.",
       no: "Sover gjerne gjennom midten av dagen når morgenen er tjent inn.",
+      pl: "Chętnie prześpi środek dnia, gdy poranek zostanie należycie odpracowany.",
     }),
   );
   const mind = band(
@@ -110,6 +111,7 @@ export function typicalDay(t: BreedTraits): string[] {
     pick({
       en: "Needs something to think about every day. Without it, walks alone won't be enough.",
       no: "Trenger noe å tenke på hver dag. Uten det holder ikke turer alene.",
+      pl: "Potrzebuje czegoś do przemyślenia każdego dnia. Bez tego same spacery nie wystarczą.",
     }),
   );
   const evening = pick({
