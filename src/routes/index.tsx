@@ -524,3 +524,88 @@ function HomePage() {
     </>
   );
 }
+
+/**
+ * Visible, shareable links that open the homepage directly in each language.
+ * Every card is a real anchor (?lang=xx) with a copy button, so the exact
+ * language version can be shared straight from the page.
+ */
+const SHARE_LANGS = [
+  { code: "en", flag: "gb", short: "GB", label: "English" },
+  { code: "no", flag: "no", short: "NO", label: "Norsk" },
+  { code: "pl", flag: "pl", short: "PL", label: "Polski" },
+] as const;
+
+function LanguageShare({ c }: { c: (typeof localCopy)["en"] }) {
+  const { locale } = useLocale();
+  const [copied, setCopied] = useState<string | null>(null);
+
+  const copyLink = async (code: string) => {
+    const url = abs(`/?lang=${code}`);
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      window.prompt(url, url);
+    }
+    setCopied(code);
+    window.setTimeout(() => setCopied((v) => (v === code ? null : v)), 2000);
+  };
+
+  return (
+    <section aria-label={c.shareLabel} className="container-page mt-8">
+      <div className="rounded-2xl border border-border bg-surface/60 p-6 md:p-8">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-md">
+            <h2 className="font-display text-xl tracking-tight text-foreground">{c.shareTitle}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.shareBody}</p>
+          </div>
+          <ul className="grid flex-1 gap-2 sm:grid-cols-3 md:max-w-xl">
+            {SHARE_LANGS.map((l) => {
+              const isCurrent = locale === l.code;
+              const isCopied = copied === l.code;
+              return (
+                <li key={l.code}>
+                  <div className="flex items-center gap-2 rounded-xl border border-border bg-background p-2 pr-1.5">
+                    <a
+                      href={`/?lang=${l.code}`}
+                      hrefLang={l.code === "no" ? "nb" : l.code}
+                      className="flex min-w-0 flex-1 items-center gap-2 rounded-lg px-1.5 py-1 transition-colors hover:text-primary"
+                      aria-label={`${l.label} — /?lang=${l.code}`}
+                    >
+                      <img
+                        src={`https://flagcdn.com/w80/${l.flag}.png`}
+                        srcSet={`https://flagcdn.com/w160/${l.flag}.png 2x`}
+                        alt=""
+                        aria-hidden
+                        width={20}
+                        height={15}
+                        loading="lazy"
+                        className="h-[15px] w-5 rounded-[3px] object-cover ring-1 ring-black/10"
+                      />
+                      <span className="truncate text-sm font-medium">
+                        {l.label}
+                        {isCurrent && <span className="sr-only"> ({c.shareCopied})</span>}
+                      </span>
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => copyLink(l.code)}
+                      aria-label={`${c.shareCopy}: ${l.label}`}
+                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-surface hover:text-primary"
+                    >
+                      {isCopied ? (
+                        <Check className="h-4 w-4 text-accent" aria-hidden />
+                      ) : (
+                        <Copy className="h-4 w-4" aria-hidden />
+                      )}
+                    </button>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
