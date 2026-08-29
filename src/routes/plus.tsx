@@ -969,7 +969,7 @@ const copy = {
       },
       {
         q: "Czy mogę wybrać członkostwo miesięczne lub roczne?",
-        a: "Tak — 34,99 zł miesięcznie albo 259,99 zł rocznie, co wychodzi na około 22 zł miesięcznie. Możesz później przełączać się między nimi z poziomu konta.",
+        a: "Tak — 7,99 € miesięcznie albo 59,99 € rocznie, co wychodzi na około 5 € miesięcznie. Możesz później przełączać się między nimi z poziomu konta.",
       },
       {
         q: "Co się dzieje, gdy dołączam?",
