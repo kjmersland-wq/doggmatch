@@ -383,6 +383,13 @@ function Results({
         <MatchNotes profile={profile} />
       </section>
 
+      {/* fit and trade-offs, tied line by line to the answers given */}
+      <section className="container-page mt-20 md:mt-28">
+        <FitPanel traits={breedById[best.breedId].traits} profile={profile} score={best.score} />
+      </section>
+
+
+
       {/* why + considerations */}
       <section className="container-page mt-20 grid gap-10 md:mt-28 md:grid-cols-2 md:gap-14">
         <div>
