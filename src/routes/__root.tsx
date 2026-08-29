@@ -116,6 +116,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#071A2F" },
+      { name: "google-site-verification", content: "jghla50W5K9mWZC2Qq-8_zhGyp4aBg4y1e6hEyHJHxw" },
       { title: "DoggMatch — breed matching, training and everyday dog care" },
       {
         name: "description",
