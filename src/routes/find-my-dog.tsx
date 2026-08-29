@@ -44,9 +44,14 @@ import {
   traitBasisNote,
 } from "@/lib/dogs/profile";
 import { useActiveDog } from "@/lib/training/store";
+import { breedById } from "@/data/breeds";
+import { saveMatchProfile } from "@/lib/matching/store";
+import { scoreReading } from "@/lib/matching/insights";
 import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/types";
 import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "@/components/dogmatch/ui";
 import { MatchNotes } from "@/components/dogmatch/match-notes";
+import { FitPanel } from "@/components/dogmatch/fit-panel";
+import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { cn } from "@/lib/utils";
 import { seoLinks, abs } from "@/lib/seo";
 
@@ -272,6 +277,11 @@ function Results({
   const detail = explain(best);
   const others = results.slice(1, 4);
 
+  // Kept on this device so Compare and the breed pages can speak to the same life.
+  useEffect(() => {
+    saveMatchProfile(profile);
+  }, [profile]);
+
   return (
     <div className="pb-24">
       <section className="container-page pt-10 md:pt-16">
@@ -286,6 +296,7 @@ function Results({
               <ScoreRing value={best.score} />
               <div className="max-w-[14rem]">
                 <p className="font-display text-lg leading-tight">{t.result.compatibility}</p>
+                <p className="mt-2 text-[0.9375rem] leading-relaxed">{scoreReading(best.score)}</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {c.scoreNote}
                 </p>
@@ -372,6 +383,13 @@ function Results({
         </div>
         <MatchNotes profile={profile} />
       </section>
+
+      {/* fit and trade-offs, tied line by line to the answers given */}
+      <section className="container-page mt-20 md:mt-28">
+        <FitPanel traits={breedById[best.breedId].traits} profile={profile} score={best.score} />
+      </section>
+
+
 
       {/* why + considerations */}
       <section className="container-page mt-20 grid gap-10 md:mt-28 md:grid-cols-2 md:gap-14">
@@ -489,6 +507,8 @@ function Results({
           {t.result.restart}
         </Button>
       </div>
+
+      <JourneyLinks exclude={["/find-my-dog"]} />
     </div>
   );
 }

@@ -1,13 +1,45 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
-import { useT, pick } from "@/i18n";
+import { useT, pick, useCopy } from "@/i18n";
 import { getBreed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
+import {
+  bestSuitedFor,
+  commitmentFacts,
+  healthNote,
+  thingsToConsider,
+  typicalDay,
+} from "@/lib/breeds/everyday";
+import { matchDogTraits } from "@/lib/matching/engine";
+import { useMatchProfile } from "@/lib/matching/store";
 import { Arrow, ButtonLink, Eyebrow, TraitMeter } from "@/components/dogmatch/ui";
+import { FitPanel } from "@/components/dogmatch/fit-panel";
+import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { seoLinks, abs, breadcrumbLd, jsonLd } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
+
+const pageCopy = {
+  en: {
+    dayTitle: "A typical day together",
+    commitmentTitle: "What they ask of you",
+    suitedTitle: "Best suited for",
+    considerTitle: "Important things to consider",
+    healthTitle: "Health considerations",
+    yourFitTitle: "How this dog fits your life",
+    yourFitNote: "Read against the answers you gave in Find My Dog, kept on this device.",
+  },
+  no: {
+    dayTitle: "En typisk dag sammen",
+    commitmentTitle: "Hva den krever av deg",
+    suitedTitle: "Passer best for",
+    considerTitle: "Viktige ting å tenke gjennom",
+    healthTitle: "Helsehensyn",
+    yourFitTitle: "Hvordan denne hunden passer livet ditt",
+    yourFitNote: "Lest opp mot svarene du ga i Finn min hund, lagret på denne enheten.",
+  },
+};
 
 export const Route = createFileRoute("/breeds/$breedId")({
   loader: ({ params }) => {
@@ -80,6 +112,8 @@ const labels = {
 
 function BreedDetail() {
   const t = useT();
+  const c = useCopy(pageCopy);
+  const profile = useMatchProfile();
   const { breed } = Route.useLoaderData();
   const content = breedContent()[breed.id];
   const traitRows: [string, number][] = (Object.keys(labels) as (keyof typeof labels)[]).map((key) => [
@@ -182,6 +216,81 @@ function BreedDetail() {
         </div>
       </section>
 
+      {/* what living with them actually looks like */}
+      <section className="container-page border-t border-border py-16">
+        <h2 className="display-md">{c.dayTitle}</h2>
+        <ol className="mt-8 grid max-w-3xl gap-5">
+          {typicalDay(breed.traits).map((line, i) => (
+            <li key={line} className="flex gap-4">
+              <span aria-hidden="true" className="font-display text-sm tabular-nums text-muted-foreground">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className="text-[0.9375rem] leading-relaxed">{line}</span>
+            </li>
+          ))}
+        </ol>
+
+        <h3 className="display-md mt-14">{c.commitmentTitle}</h3>
+        <dl className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {commitmentFacts(breed).map((fact) => (
+            <div key={fact.label} className="bg-card p-6">
+              <dt className="eyebrow">{fact.label}</dt>
+              <dd className="mt-2 font-display text-base leading-snug">{fact.value}</dd>
+              {fact.detail && (
+                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{fact.detail}</dd>
+              )}
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section className="container-page grid gap-12 border-t border-border py-16 md:grid-cols-2 md:gap-16">
+        <div>
+          <h2 className="display-md">{c.suitedTitle}</h2>
+          <ul className="mt-7 space-y-4">
+            {bestSuitedFor(breed.traits).map((line) => (
+              <li key={line} className="flex gap-3 text-[0.9375rem] leading-relaxed">
+                <span aria-hidden="true" className="text-primary">
+                  ✓
+                </span>
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 className="display-md">{c.considerTitle}</h2>
+          <ul className="mt-7 space-y-4">
+            {thingsToConsider(breed.traits).map((line) => (
+              <li key={line} className="flex gap-3 text-[0.9375rem] leading-relaxed">
+                <span aria-hidden="true" className="text-accent">
+                  !
+                </span>
+                {line}
+              </li>
+            ))}
+          </ul>
+          <h3 className="mt-10 font-display text-lg leading-tight tracking-tight">{c.healthTitle}</h3>
+          <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+            {healthNote(breed.traits)}
+          </p>
+        </div>
+      </section>
+
+      {/* how they sit against the reader's own answers */}
+      {profile && (
+        <section className="container-page border-t border-border py-16">
+          <h2 className="display-md">{c.yourFitTitle}</h2>
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">{c.yourFitNote}</p>
+          <FitPanel
+            className="mt-8"
+            traits={breed.traits}
+            profile={profile}
+            score={matchDogTraits(breed.traits, profile).score}
+          />
+        </section>
+      )}
+
       <div className="container-page flex flex-wrap gap-3">
         <ButtonLink to="/find-my-dog" size="lg">
           {t.nav.startMatching}
@@ -191,6 +300,8 @@ function BreedDetail() {
           {t.nav.compare}
         </ButtonLink>
       </div>
+
+      <JourneyLinks exclude={["/breeds"]} />
     </article>
   );
 }
