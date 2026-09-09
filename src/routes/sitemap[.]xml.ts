@@ -6,17 +6,40 @@ import { getLessons } from "@/data/training/lessons";
 
 const BASE_URL = "https://www.doggmatch.com";
 
+/**
+ * Path prefixes that are never indexable (private, personal, or a payment
+ * flow — see public/robots.txt). Checked defensively below so a path added
+ * to `collect()` by mistake can never reach the sitemap.
+ */
+const PRIVATE_PREFIXES = [
+  "/account",
+  "/auth",
+  "/checkout",
+  "/member-card",
+  "/verify",
+  "/my-dog/print",
+  "/my-dog/pack",
+  "/my-dog/contacts",
+  "/my-dog/vet",
+  "/my-dog/setup",
+  "/train/setup",
+  "/train/journey",
+  "/brochure",
+];
+
 interface SitemapEntry {
   path: string;
   changefreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
   priority?: string;
 }
 
+const FEATURED_BREED_IDS = new Set(breeds.slice(0, 4).map((b) => b.id));
+
 /** Every public, indexable page. Private/personal areas are deliberately absent. */
 function collect(): SitemapEntry[] {
   const staticPaths: SitemapEntry[] = [
     { path: "/", changefreq: "weekly", priority: "1.0" },
-    { path: "/find-my-dog", changefreq: "monthly", priority: "0.9" },
+    { path: "/find-my-dog", changefreq: "weekly", priority: "0.95" },
     { path: "/breeds", changefreq: "weekly", priority: "0.9" },
     { path: "/compare", changefreq: "monthly", priority: "0.8" },
     { path: "/guides", changefreq: "monthly", priority: "0.8" },
@@ -30,7 +53,6 @@ function collect(): SitemapEntry[] {
     { path: "/get-a-dog/welcome-home", changefreq: "monthly", priority: "0.7" },
     { path: "/train", changefreq: "monthly", priority: "0.8" },
     { path: "/train/library", changefreq: "monthly", priority: "0.7" },
-    { path: "/train/journey", changefreq: "monthly", priority: "0.6" },
     { path: "/my-dog", changefreq: "monthly", priority: "0.7" },
     { path: "/my-dog/nutrition", changefreq: "monthly", priority: "0.7" },
     { path: "/my-dog/food", changefreq: "monthly", priority: "0.7" },
@@ -50,7 +72,11 @@ function collect(): SitemapEntry[] {
   ];
 
   const breedPages = breeds.flatMap((b) => [
-    { path: `/breeds/${b.id}`, changefreq: "monthly" as const, priority: "0.8" },
+    {
+      path: `/breeds/${b.id}`,
+      changefreq: "monthly" as const,
+      priority: FEATURED_BREED_IDS.has(b.id) ? "0.9" : "0.8",
+    },
     { path: `/get-a-dog/breed/${b.id}`, changefreq: "monthly" as const, priority: "0.6" },
   ]);
   const carePages = careTopics().map((t) => ({
@@ -64,7 +90,17 @@ function collect(): SitemapEntry[] {
     priority: "0.7",
   }));
 
-  return [...staticPaths, ...breedPages, ...carePages, ...lessonPages];
+  const all = [...staticPaths, ...breedPages, ...carePages, ...lessonPages];
+
+  // Defence in depth: never let a private path or a duplicate reach the sitemap,
+  // however it got into the list above.
+  const seen = new Set<string>();
+  return all.filter((e) => {
+    if (PRIVATE_PREFIXES.some((prefix) => e.path === prefix || e.path.startsWith(`${prefix}/`))) return false;
+    if (seen.has(e.path)) return false;
+    seen.add(e.path);
+    return true;
+  });
 }
 
 export const Route = createFileRoute("/sitemap.xml")({

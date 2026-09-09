@@ -1,16 +1,47 @@
 User-agent: *
 Allow: /
 
+# Private, personal or checkout routes — listed for each language prefix,
+# since a Disallow only matches paths starting with that exact string and
+# does not cascade from /account to /no/account or /pl/account.
 Disallow: /account
+Disallow: /no/account
+Disallow: /pl/account
 Disallow: /auth
+Disallow: /no/auth
+Disallow: /pl/auth
 Disallow: /checkout/
+Disallow: /no/checkout/
+Disallow: /pl/checkout/
 Disallow: /member-card
+Disallow: /no/member-card
+Disallow: /pl/member-card
 Disallow: /verify/
+Disallow: /no/verify/
+Disallow: /pl/verify/
 Disallow: /my-dog/print
+Disallow: /no/my-dog/print
+Disallow: /pl/my-dog/print
 Disallow: /my-dog/pack
+Disallow: /no/my-dog/pack
+Disallow: /pl/my-dog/pack
 Disallow: /my-dog/contacts
+Disallow: /no/my-dog/contacts
+Disallow: /pl/my-dog/contacts
 Disallow: /my-dog/vet
+Disallow: /no/my-dog/vet
+Disallow: /pl/my-dog/vet
 Disallow: /my-dog/setup
+Disallow: /no/my-dog/setup
+Disallow: /pl/my-dog/setup
 Disallow: /train/setup
+Disallow: /no/train/setup
+Disallow: /pl/train/setup
+Disallow: /train/journey
+Disallow: /no/train/journey
+Disallow: /pl/train/journey
+Disallow: /brochure
+Disallow: /no/brochure
+Disallow: /pl/brochure
 
 Sitemap: https://www.doggmatch.com/sitemap.xml

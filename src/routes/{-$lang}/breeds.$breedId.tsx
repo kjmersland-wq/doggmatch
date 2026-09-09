@@ -18,6 +18,7 @@ import { Arrow, ButtonLink, Eyebrow, TraitMeter } from "@/components/dogmatch/ui
 import { FitPanel } from "@/components/dogmatch/fit-panel";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
+import { relatedBreeds } from "@/lib/breeds/related";
 import { abs, breadcrumbLd, jsonLd, headLocale, langUrl, noUrl, plUrl } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
@@ -30,6 +31,7 @@ const pageCopy = {
     healthTitle: "Health considerations",
     yourFitTitle: "How this dog fits your life",
     yourFitNote: "Read against the answers you gave in Find My Dog, kept on this device.",
+    relatedTitle: "Similar breeds worth a look",
   },
   no: {
     dayTitle: "En typisk dag sammen",
@@ -39,6 +41,7 @@ const pageCopy = {
     healthTitle: "Helsehensyn",
     yourFitTitle: "Hvordan denne hunden passer livet ditt",
     yourFitNote: "Lest opp mot svarene du ga i Finn min hund, lagret på denne enheten.",
+    relatedTitle: "Lignende raser, verdt en titt",
   },
   pl: {
     dayTitle: "Typowy dzień razem",
@@ -48,6 +51,7 @@ const pageCopy = {
     healthTitle: "Kwestie zdrowotne",
     yourFitTitle: "Jak ten pies pasuje do twojego życia",
     yourFitNote: "Odczytane na tle odpowiedzi, które podałeś w Znajdź mojego psa, zapisanych na tym urządzeniu.",
+    relatedTitle: "Podobne rasy, warte spojrzenia",
   },
 };
 
@@ -100,9 +104,19 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
           headline: title,
           description,
           image,
-          about: { "@type": "Thing", name },
+          about: {
+            "@type": "Thing",
+            name,
+            additionalProperty: (
+              ["size", "energy", "shedding", "apartmentSuitability", "trainability", "firstTimeSuitability"] as const
+            ).map((key) => ({
+              "@type": "PropertyValue",
+              name: pick(labels[key], locale),
+              value: `${loaderData.breed.traits[key]}/5`,
+            })),
+          },
           isPartOf: { "@type": "WebSite", name: "DoggMatch", url: abs("/") },
-          mainEntityOfPage: abs(`/breeds/${params.breedId}`),
+          mainEntityOfPage: langUrl(path, locale),
         }),
       ],
     };
@@ -139,6 +153,7 @@ function BreedDetail() {
     pick(labels[key]),
     breed.traits[key],
   ]);
+  const related = relatedBreeds(breed.id, 4);
 
   return (
     <article className="pb-24">
@@ -309,6 +324,33 @@ function BreedDetail() {
           />
         </section>
       )}
+
+      {/* onward links for readers comparing breeds, and for Googlebot to reach every breed page without going back to the index */}
+      <section className="container-page border-t border-border py-16">
+        <h2 className="display-md">{c.relatedTitle}</h2>
+        <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {related.map((r) => (
+            <li key={r.id}>
+              <Link to={withLangPrefix("/breeds/$breedId")} params={{ breedId: r.id }} className="group block">
+                <div className="overflow-hidden rounded-[1.25rem]">
+                  <img
+                    src={breedImages[r.id]}
+                    alt={breedContent()[r.id].displayName}
+                    width={1024}
+                    height={1280}
+                    loading="lazy"
+                    className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
+                  />
+                </div>
+                <h3 className="mt-4 font-display text-lg leading-tight tracking-tight">
+                  {breedContent()[r.id].displayName}
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground">{breedGroupLabel(r.group)}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <div className="container-page flex flex-wrap gap-3">
         <ButtonLink to={withLangPrefix("/find-my-dog")} size="lg">

@@ -21,7 +21,7 @@ import {
   useTrainingState,
 } from "@/lib/training/store";
 import { cn } from "@/lib/utils";
-import { seoLinks } from "@/lib/seo";
+import { seoLinks, breadcrumbLd } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { useCopy } from "@/i18n";
 
@@ -148,6 +148,14 @@ export const Route = createFileRoute("/{-$lang}/train/lessons/$lessonId")({
         { name: "twitter:description", content: lesson.promise },
       ],
       links: seoLinks(`/train/lessons/${lesson.id}`),
+      scripts: [
+        breadcrumbLd([
+          { name: "DoggMatch", path: "/" },
+          { name: "Train Your Dog", path: "/train" },
+          { name: "Library", path: "/train/library" },
+          { name: lesson.title, path: `/train/lessons/${lesson.id}` },
+        ]),
+      ],
     };
   },
   notFoundComponent: LessonNotFound,
