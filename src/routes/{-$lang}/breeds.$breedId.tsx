@@ -18,7 +18,7 @@ import { Arrow, ButtonLink, Eyebrow, TraitMeter } from "@/components/dogmatch/ui
 import { FitPanel } from "@/components/dogmatch/fit-panel";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
-import { seoLinks, abs, breadcrumbLd, jsonLd } from "@/lib/seo";
+import { abs, breadcrumbLd, jsonLd, headLocale, langUrl, noUrl, plUrl } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const pageCopy = {
@@ -57,10 +57,13 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
     if (!breed) throw notFound();
     return { breed, content: breedContent()[breed.id] };
   },
-  head: ({ params, loaderData }) => {
+  head: (ctx) => {
+    const { params, loaderData } = ctx;
     if (!loaderData) {
       return { meta: [{ title: "We can't find that breed — DoggMatch" }, { name: "robots", content: "noindex" }] };
     }
+    const path = `/breeds/${params.breedId}`;
+    const locale = headLocale(ctx);
     const name = loaderData.content.displayName;
     const title = `${name} — what they're really like to live with | DoggMatch`;
     const description = loaderData.content.summary;
@@ -72,14 +75,20 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: abs(`/breeds/${params.breedId}`) },
+        { property: "og:url", content: langUrl(path, locale) },
         { property: "og:image", content: image },
         { property: "og:image:alt", content: `${name} — DoggMatch breed profile` },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
         { name: "twitter:image", content: image },
       ],
-      links: seoLinks(`/breeds/${params.breedId}`),
+      links: [
+        { rel: "canonical", href: langUrl(path, locale) },
+        { rel: "alternate", hrefLang: "en", href: abs(path) },
+        { rel: "alternate", hrefLang: "nb-NO", href: noUrl(path) },
+        { rel: "alternate", hrefLang: "pl-PL", href: plUrl(path) },
+        { rel: "alternate", hrefLang: "x-default", href: abs(path) },
+      ],
       scripts: [
         breadcrumbLd([
           { name: "DoggMatch", path: "/" },
