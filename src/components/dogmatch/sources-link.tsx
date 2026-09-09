@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useCopy } from "@/i18n";
 import { cn } from "@/lib/utils";
+import { withLangPrefix } from "@/lib/localized-path";
 
 const copy = {
   en: { label: "Sources & methodology", aria: "Read where this information comes from" },
@@ -16,7 +17,7 @@ export function SourcesLink({ category, className }: { category?: string; classN
   const c = useCopy(copy);
   return (
     <Link
-      to="/sources"
+      to={withLangPrefix("/sources")}
       {...(category ? { hash: category } : {})}
       aria-label={c.aria}
       className={cn(

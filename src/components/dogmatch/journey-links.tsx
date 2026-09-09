@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useCopy } from "@/i18n";
+import { withLangPrefix } from "@/lib/localized-path";
 
 /**
  * The thread that runs through DoggMatch: find, understand, prepare, live with.
@@ -62,7 +63,7 @@ export function JourneyLinks({ exclude = [] }: { exclude?: string[] }) {
       <ul className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
         {steps.map((step) => (
           <li key={step.to} className="bg-card">
-            <Link to={step.to} className="block h-full p-6 transition-colors hover:bg-surface">
+            <Link to={withLangPrefix(step.to)} className="block h-full p-6 transition-colors hover:bg-surface">
               <span className="block font-display text-base leading-tight tracking-tight">
                 {step.label}
               </span>

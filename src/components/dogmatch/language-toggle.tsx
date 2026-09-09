@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Check, ChevronDown } from "lucide-react";
+import { useNavigate } from "@tanstack/react-router";
 import { useLocale, type Locale } from "@/i18n";
 import { cn } from "@/lib/utils";
 
@@ -52,7 +53,8 @@ export function LanguageToggle({
   className?: string;
   withLabel?: boolean;
 }) {
-  const { locale, setLocale } = useLocale();
+  const { locale } = useLocale();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -78,7 +80,15 @@ export function LanguageToggle({
   }, [open]);
 
   const choose = (code: Locale) => {
-    setLocale(code);
+    // Same page, same params — only the /no or /pl segment changes. GB
+    // clears it, so the page falls back to the bare, unprefixed English path.
+    void navigate({
+      to: ".",
+      params: ((prev: Record<string, unknown>) => ({
+        ...prev,
+        lang: code === "en" ? undefined : code,
+      })) as never,
+    });
     setOpen(false);
     buttonRef.current?.focus();
   };

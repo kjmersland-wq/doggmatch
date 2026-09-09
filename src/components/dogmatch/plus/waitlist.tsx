@@ -5,6 +5,7 @@ import { joinPlusWaitlist } from "@/lib/plus/waitlist.functions";
 import type { WaitlistResult } from "@/lib/plus/waitlist.functions";
 import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
 import { useCopy } from "@/i18n";
+import { withLangPrefix } from "@/lib/localized-path";
 
 const fieldClass =
   "mt-2 h-14 w-full rounded-2xl border border-border bg-background px-5 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-border-strong";
@@ -181,7 +182,7 @@ export function PlusWaitlist() {
 
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
               {c.consentPrefix}{" "}
-              <Link to="/about" className="underline underline-offset-4 hover:text-foreground">
+              <Link to={withLangPrefix("/about")} className="underline underline-offset-4 hover:text-foreground">
                 {c.consentLink}
               </Link>
               .

@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useCopy, useT } from "@/i18n";
 import { BrandLock } from "./brand-logo";
 import { CookieSettingsLink } from "@/components/dogmatch/cookie-consent";
+import { withLangPrefix } from "@/lib/localized-path";
 
 const copy = {
   en: {
@@ -44,31 +45,31 @@ export function SiteFooter() {
           </div>
 
           <FooterColumn title={t.footer.discover}>
-            <FooterLink to="/plus">DoggMatch+</FooterLink>
-            <FooterLink to="/get-a-dog">{t.nav.getADog}</FooterLink>
-            <FooterLink to="/find-my-dog">{t.nav.findMyDog}</FooterLink>
-            <FooterLink to="/breeds">{t.nav.breeds}</FooterLink>
-            <FooterLink to="/compare">{t.nav.compare}</FooterLink>
-            <FooterLink to="/dog-life">{t.nav.dogLife}</FooterLink>
-            <FooterLink to="/travel">{t.nav.travel}</FooterLink>
+            <FooterLink to={withLangPrefix("/plus")}>DoggMatch+</FooterLink>
+            <FooterLink to={withLangPrefix("/get-a-dog")}>{t.nav.getADog}</FooterLink>
+            <FooterLink to={withLangPrefix("/find-my-dog")}>{t.nav.findMyDog}</FooterLink>
+            <FooterLink to={withLangPrefix("/breeds")}>{t.nav.breeds}</FooterLink>
+            <FooterLink to={withLangPrefix("/compare")}>{t.nav.compare}</FooterLink>
+            <FooterLink to={withLangPrefix("/dog-life")}>{t.nav.dogLife}</FooterLink>
+            <FooterLink to={withLangPrefix("/travel")}>{t.nav.travel}</FooterLink>
           </FooterColumn>
 
           <FooterColumn title={t.footer.resources}>
-            <FooterLink to="/guides">{t.footer.guides}</FooterLink>
-            <FooterLink to="/guides">{t.footer.ownership}</FooterLink>
-            <FooterLink to="/train">{t.footer.training}</FooterLink>
-            <FooterLink to="/my-dog">{t.footer.health}</FooterLink>
-            <FooterLink to="/my-dog/nutrition">{c.food}</FooterLink>
-            <FooterLink to="/my-dog/food">{c.canEat}</FooterLink>
-            <FooterLink to="/sources">{c.sources}</FooterLink>
+            <FooterLink to={withLangPrefix("/guides")}>{t.footer.guides}</FooterLink>
+            <FooterLink to={withLangPrefix("/guides")}>{t.footer.ownership}</FooterLink>
+            <FooterLink to={withLangPrefix("/train")}>{t.footer.training}</FooterLink>
+            <FooterLink to={withLangPrefix("/my-dog")}>{t.footer.health}</FooterLink>
+            <FooterLink to={withLangPrefix("/my-dog/nutrition")}>{c.food}</FooterLink>
+            <FooterLink to={withLangPrefix("/my-dog/food")}>{c.canEat}</FooterLink>
+            <FooterLink to={withLangPrefix("/sources")}>{c.sources}</FooterLink>
           </FooterColumn>
 
           <FooterColumn title={t.footer.company}>
-            <FooterLink to="/about">{t.footer.about}</FooterLink>
-            <FooterLink to="/contact">{t.footer.contact}</FooterLink>
-            <FooterLink to="/partners">{c.partner}</FooterLink>
-            <FooterLink to="/privacy">{t.footer.privacy}</FooterLink>
-            <FooterLink to="/terms">{t.footer.terms}</FooterLink>
+            <FooterLink to={withLangPrefix("/about")}>{t.footer.about}</FooterLink>
+            <FooterLink to={withLangPrefix("/contact")}>{t.footer.contact}</FooterLink>
+            <FooterLink to={withLangPrefix("/partners")}>{c.partner}</FooterLink>
+            <FooterLink to={withLangPrefix("/privacy")}>{t.footer.privacy}</FooterLink>
+            <FooterLink to={withLangPrefix("/terms")}>{t.footer.terms}</FooterLink>
             <li>
               <CookieSettingsLink className="text-left text-[0.9375rem] text-muted-foreground transition-colors hover:text-foreground" />
             </li>

@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { activeBenefits, benefitCategories } from "@/data/plus/benefits";
 import { Panel } from "@/components/dogmatch/care/parts";
 import { useCopy } from "@/i18n";
+import { withLangPrefix } from "@/lib/localized-path";
 
 const copy = {
   en: {
@@ -64,7 +65,7 @@ export function MemberBenefits() {
           </ul>
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
             {c.partnerCta}{" "}
-            <Link to="/partners" className="text-accent underline-offset-4 hover:underline">
+            <Link to={withLangPrefix("/partners")} className="text-accent underline-offset-4 hover:underline">
               {c.partnerLink}
             </Link>
             .

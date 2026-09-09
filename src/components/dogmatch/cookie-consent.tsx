@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { useConsent } from "@/lib/consent";
 import { useCopy } from "@/i18n";
 import { Button } from "@/components/dogmatch/ui";
+import { withLangPrefix } from "@/lib/localized-path";
 
 const copy = {
   en: {
@@ -148,7 +149,7 @@ export function CookieConsent() {
               {c.customise}
             </Button>
           )}
-          <Link to="/privacy" className="text-sm text-muted-foreground underline underline-offset-4">
+          <Link to={withLangPrefix("/privacy")} className="text-sm text-muted-foreground underline underline-offset-4">
             {c.privacy}
           </Link>
         </div>

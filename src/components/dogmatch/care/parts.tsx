@@ -5,6 +5,7 @@ import type { CareTopic, FoodItem, FoodSafety } from "@/data/care/types";
 import { topicImages, categoryImages } from "@/data/care/images";
 import { cn } from "@/lib/utils";
 import { useCopy, pick } from "@/i18n";
+import { withLangPrefix } from "@/lib/localized-path";
 
 const copy = {
   en: {
@@ -75,7 +76,7 @@ export function CareTile({
 export function TopicCard({ topic, meta }: { topic: CareTopic; meta?: string }) {
   return (
     <CareTile
-      to="/my-dog/care/$topicId"
+      to={withLangPrefix("/my-dog/care/$topicId")}
       params={{ topicId: topic.id }}
       image={topicImages[topic.id] ?? categoryImages[topic.category]}
       title={topic.title}

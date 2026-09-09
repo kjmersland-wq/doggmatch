@@ -7,6 +7,7 @@ import { careDue } from "@/lib/care/calendar";
 import { kindLabel, type WeekDay } from "@/lib/care/week";
 import { trainingStore, useTrainingState, type DogProfile } from "@/lib/training/store";
 import { useCopy } from "@/i18n";
+import { withLangPrefix } from "@/lib/localized-path";
 
 const copy = {
   en: { anotherDog: "Another dog", markDone: "Mark {label} as done", today: "Today" },
@@ -50,7 +51,7 @@ export function DogSwitcher({ active }: { active?: DogProfile }) {
         );
       })}
       <Link
-        to="/my-dog/setup"
+        to={withLangPrefix("/my-dog/setup")}
         className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-border px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground"
       >
         <Plus className="h-3.5 w-3.5" />

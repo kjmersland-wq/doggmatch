@@ -6,6 +6,7 @@ import type { PlanId } from "@/lib/plus/plans";
 import { useMembership } from "@/hooks/use-membership";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
+import { withLangPrefix } from "@/lib/localized-path";
 
 type Props = {
   plan: PlanId;
@@ -52,11 +53,11 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
   async function onClick() {
     setError(null);
     if (!signedIn) {
-      void navigate({ to: "/auth", search: { next: "/plus" } });
+      void navigate({ to: withLangPrefix("/auth"), search: { next: "/plus" } });
       return;
     }
     if (already) {
-      void navigate({ to: "/account" });
+      void navigate({ to: withLangPrefix("/account") });
       return;
     }
     setBusy(true);

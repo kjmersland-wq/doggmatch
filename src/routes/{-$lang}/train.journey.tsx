@@ -1,0 +1,204 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { Arrow, ButtonLink, Eyebrow } from "@/components/dogmatch/ui";
+import { LessonCard, statusLabel } from "@/components/dogmatch/training/parts";
+import { getLessons, getLessonsById } from "@/data/training/lessons";
+import type { SkillStatus } from "@/data/training/types";
+import { rankLessons } from "@/lib/training/plan";
+import { streakDays, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
+import { useCopy } from "@/i18n";
+import { seoLinks } from "@/lib/seo";
+import { withLangPrefix } from "@/lib/localized-path";
+
+const title = "Your training journey | DoggMatch";
+const description =
+  "Everything you and your dog have worked on, in one place — what's going well, what needs practice, and what to try next.";
+
+export const Route = createFileRoute("/{-$lang}/train/journey")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "robots", content: "noindex" },
+    ],
+    links: seoLinks("/train/journey"),
+  }),
+  component: JourneyPage,
+});
+
+const order: SkillStatus[] = ["learned", "getting-there", "practising", "not-started"];
+
+const copy = {
+  en: {
+    eyebrow: "Your journey",
+    titleWithDog: (name: string) => `You and ${name}, so far.`,
+    titleGuest: "Your journey together, once you start.",
+    guestBody: "Tell us about your dog and we'll keep track of what you've worked on. Nothing leaves this device.",
+    guestCta: "Tell us about your dog",
+    statSessions: "Sessions together",
+    statSkills: "Skills learned",
+    statStreak: "Days in a row",
+    standingTitle: "Where everything stands",
+    nothingYet: "Nothing here yet.",
+    recentTitle: "Recent sessions",
+    feelingGreat: "Went really well",
+    feelingGood: "Good enough",
+    feelingMore: "Needs more practice",
+    nextTitle: "What to try next",
+  },
+  no: {
+    eyebrow: "Reisen din",
+    titleWithDog: (name: string) => `Du og ${name}, så langt.`,
+    titleGuest: "Reisen sammen, så snart dere starter.",
+    guestBody: "Fortell oss om hunden din, så holder vi oversikt over det dere har jobbet med. Ingenting forlater denne enheten.",
+    guestCta: "Fortell oss om hunden din",
+    statSessions: "Økter sammen",
+    statSkills: "Ferdigheter lært",
+    statStreak: "Dager på rad",
+    standingTitle: "Slik står det til",
+    nothingYet: "Ingenting her ennå.",
+    recentTitle: "Siste økter",
+    feelingGreat: "Gikk veldig bra",
+    feelingGood: "Godt nok",
+    feelingMore: "Trenger mer øving",
+    nextTitle: "Hva dere kan prøve videre",
+  },
+  pl: {
+    eyebrow: "Twoja podróż",
+    titleWithDog: (name: string) => `Ty i ${name}, jak dotąd.`,
+    titleGuest: "Wasza wspólna podróż, gdy tylko zaczniecie.",
+    guestBody: "Opowiedz nam o swoim psie, a będziemy śledzić, nad czym pracowaliście. Nic nie opuszcza tego urządzenia.",
+    guestCta: "Opowiedz nam o swoim psie",
+    statSessions: "Sesje razem",
+    statSkills: "Poznane umiejętności",
+    statStreak: "Dni z rzędu",
+    standingTitle: "Jak wygląda sytuacja",
+    nothingYet: "Nic tu jeszcze nie ma.",
+    recentTitle: "Ostatnie sesje",
+    feelingGreat: "Poszło naprawdę dobrze",
+    feelingGood: "Wystarczająco dobrze",
+    feelingMore: "Potrzeba więcej ćwiczeń",
+    nextTitle: "Co warto spróbować dalej",
+  },
+} as const;
+
+function JourneyPage() {
+  const c = useCopy(copy);
+  const dog = useActiveDog();
+  const state = useTrainingState();
+  const progress = useProgress(dog?.id);
+  const recent = [...state.sessions].reverse().slice(0, 8);
+  const nextUp = rankLessons(dog, progress)
+    .filter((s) => (progress[s.lesson.id] ?? "not-started") !== "learned")
+    .slice(0, 3);
+
+  const grouped = order.map((status) => ({
+    status,
+    items: getLessons().filter((l) => (progress[l.id] ?? "not-started") === status),
+  }));
+
+  return (
+    <div className="container-page pt-28 pb-28 md:pt-36">
+      <Eyebrow>{c.eyebrow}</Eyebrow>
+      <h1 className="display-lg mt-5 max-w-2xl">{dog ? c.titleWithDog(dog.name) : c.titleGuest}</h1>
+
+      {!dog ? (
+        <>
+          <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">{c.guestBody}</p>
+          <div className="mt-8">
+            <ButtonLink to={withLangPrefix("/train/setup")} size="lg">
+              {c.guestCta}
+              <Arrow />
+            </ButtonLink>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="mt-10 grid gap-8 rounded-2xl border border-border bg-surface p-8 sm:grid-cols-3">
+            <Stat value={String(state.sessions.length)} label={c.statSessions} />
+            <Stat
+              value={String(Object.values(progress).filter((s) => s === "learned").length)}
+              label={c.statSkills}
+            />
+            <Stat value={String(streakDays(state.sessions))} label={c.statStreak} />
+          </div>
+
+          <section className="mt-20">
+            <h2 className="display-md">{c.standingTitle}</h2>
+            <div className="mt-8 space-y-10">
+              {grouped.map((g) => (
+                <div key={g.status}>
+                  <h3 className="font-display text-lg tracking-tight">
+                    {statusLabel(g.status)}{" "}
+                    <span className="text-muted-foreground">({g.items.length})</span>
+                  </h3>
+                  {g.items.length === 0 ? (
+                    <p className="mt-2 text-[0.9375rem] text-muted-foreground">{c.nothingYet}</p>
+                  ) : (
+                    <ul className="mt-4 flex flex-wrap gap-2">
+                      {g.items.map((l) => (
+                        <li
+                          key={l.id}
+                          className="rounded-full border border-border px-4 py-2 text-sm text-muted-foreground"
+                        >
+                          {l.title}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {recent.length > 0 && (
+            <section className="mt-20">
+              <h2 className="display-md">{c.recentTitle}</h2>
+              <ul className="mt-8 space-y-px overflow-hidden rounded-2xl border border-border bg-border">
+                {recent.map((s, i) => (
+                  <li
+                    key={`${s.lessonId}-${s.day}-${i}`}
+                    className="flex flex-wrap items-center justify-between gap-3 bg-background p-6"
+                  >
+                    <span className="font-display text-lg tracking-tight">
+                      {getLessonsById()[s.lessonId]?.title ?? s.lessonId}
+                    </span>
+                    <span className="text-sm text-muted-foreground">
+                      {s.day} ·{" "}
+                      {s.feeling === "great" ? c.feelingGreat : s.feeling === "good" ? c.feelingGood : c.feelingMore}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          <section className="mt-20">
+            <h2 className="display-md">{c.nextTitle}</h2>
+            <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {nextUp.map((s) => (
+                <li key={s.lesson.id}>
+                  <LessonCard lesson={s.lesson} status={progress[s.lesson.id]} note={s.reason} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        </>
+      )}
+    </div>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <p className="font-display text-4xl tabular-nums tracking-tight text-accent">{value}</p>
+      <p className="mt-2 text-sm text-muted-foreground">{label}</p>
+    </div>
+  );
+}

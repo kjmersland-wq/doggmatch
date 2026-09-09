@@ -8,6 +8,7 @@ import { openBillingPortal } from "@/lib/plus/stripe.functions";
 import { Panel } from "@/components/dogmatch/care/parts";
 import { Button, ButtonLink } from "@/components/dogmatch/ui";
 import { useCopy, useLocale } from "@/i18n";
+import { withLangPrefix } from "@/lib/localized-path";
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
@@ -130,7 +131,7 @@ export function AccountMembership() {
 
   async function signOut() {
     await supabase.auth.signOut();
-    void navigate({ to: "/" });
+    void navigate({ to: withLangPrefix("/") });
   }
 
   const renews = membership.renewsAt
@@ -156,7 +157,7 @@ export function AccountMembership() {
         ) : (
           <>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{c.guestBody}</p>
-            <Button onClick={() => void navigate({ to: "/auth" })} className="mt-5">
+            <Button onClick={() => void navigate({ to: withLangPrefix("/auth") })} className="mt-5">
               {c.signIn}
             </Button>
           </>
@@ -186,7 +187,7 @@ export function AccountMembership() {
               {membership.cancelsAtPeriodEnd ? c.endingBody : c.activeBody}
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
-              <ButtonLink to="/member-card">{c.printCard}</ButtonLink>
+              <ButtonLink to={withLangPrefix("/member-card")}>{c.printCard}</ButtonLink>
               <Button tone="outline" onClick={manage} disabled={busy}>
                 {busy ? c.manageBusy : c.manage}
               </Button>
@@ -195,7 +196,7 @@ export function AccountMembership() {
         ) : (
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             {c.freeBodyPrefix}{" "}
-            <Link to="/plus" className="text-accent underline-offset-4 hover:underline">
+            <Link to={withLangPrefix("/plus")} className="text-accent underline-offset-4 hover:underline">
               DoggMatch+
             </Link>{" "}
             {c.freeBodySuffix}

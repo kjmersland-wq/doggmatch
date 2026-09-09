@@ -8,6 +8,7 @@ import { BrandLock } from "./brand-logo";
 import { ThemeToggle } from "./theme-toggle";
 import { LanguageToggle } from "./language-toggle";
 import { useNavGroups } from "./nav-structure";
+import { withLangPrefix } from "@/lib/localized-path";
 
 const copy = {
   en: { primaryNav: "Primary", mobileNav: "Mobile" },
@@ -71,7 +72,7 @@ export function SiteHeader() {
     >
       <div ref={barRef} className="relative">
         <div className="container-page flex h-[72px] items-center justify-between gap-6">
-          <Link to="/" aria-label={t.brand.name} className="shrink-0">
+          <Link to={withLangPrefix("/")} aria-label={t.brand.name} className="shrink-0">
             <BrandLock markClassName="h-9 w-9" wordmarkClassName="text-[1.35rem]" />
           </Link>
 
@@ -99,7 +100,7 @@ export function SiteHeader() {
               );
             })}
             <Link
-              to="/plus"
+              to={withLangPrefix("/plus")}
               className="ml-1 flex items-center gap-1 rounded-full px-3.5 py-2 text-[0.9375rem] text-muted-foreground transition-colors hover:text-foreground"
             >
               DoggMatch<span className="font-semibold text-accent">+</span>
@@ -110,13 +111,13 @@ export function SiteHeader() {
             <LanguageToggle />
             <ThemeToggle />
             <Link
-              to="/account"
+              to={withLangPrefix("/account")}
               aria-label={t.nav.account}
               className="grid h-10 w-10 place-items-center rounded-full border border-border-strong text-foreground transition-colors hover:bg-surface"
             >
               <UserRound className="h-[18px] w-[18px]" strokeWidth={1.6} aria-hidden />
             </Link>
-            <ButtonLink to="/find-my-dog" tone="primary" size="md">
+            <ButtonLink to={withLangPrefix("/find-my-dog")} tone="primary" size="md">
               {t.nav.startMatching}
               <Arrow />
             </ButtonLink>
@@ -193,13 +194,13 @@ export function SiteHeader() {
       {open && (
         <div className="animate-fade h-[calc(100dvh-72px)] overflow-y-auto border-t border-border bg-background lg:hidden">
           <div className="container-page py-5">
-            <ButtonLink to="/find-my-dog" size="lg" className="w-full">
+            <ButtonLink to={withLangPrefix("/find-my-dog")} size="lg" className="w-full">
               {t.nav.startMatching}
               <Arrow />
             </ButtonLink>
 
             <Link
-              to="/plus"
+              to={withLangPrefix("/plus")}
               onClick={() => setOpen(false)}
               className="mt-3 flex h-12 w-full items-center justify-center rounded-full border border-border-strong text-[0.9375rem] font-medium"
             >
@@ -256,7 +257,7 @@ export function SiteHeader() {
               <LanguageToggle withLabel />
               <ThemeToggle withLabel />
               <Link
-                to="/account"
+                to={withLangPrefix("/account")}
                 className="flex items-center gap-2.5 rounded-2xl border border-border-strong px-4 py-3 text-sm text-foreground"
               >
                 <UserRound className="h-4 w-4" aria-hidden />

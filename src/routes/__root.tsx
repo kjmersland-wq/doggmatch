@@ -4,7 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
-  useRouterState,
+  useParams,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -19,6 +19,7 @@ import { SiteFooter } from "@/components/dogmatch/site-footer";
 import { MobileTabs } from "@/components/dogmatch/mobile-tabs";
 import { CookieConsent } from "@/components/dogmatch/cookie-consent";
 import { ShareStrip } from "@/components/dogmatch/share";
+import { withLangPrefix } from "@/lib/localized-path";
 
 const shellCopy = {
   en: {
@@ -62,7 +63,7 @@ function NotFoundComponent() {
         </p>
         <div className="mt-8">
           <Link
-            to="/"
+            to={withLangPrefix("/")}
             className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-7 text-sm font-medium text-primary-foreground transition-colors hover:opacity-90"
           >
             {c.back}
@@ -184,9 +185,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
-  const langParam = useRouterState({
-    select: (s) => (s.location.search as { lang?: string } | undefined)?.lang,
-  });
+  const langParam = useParams({ strict: false, select: (p) => (p as { lang?: string }).lang });
   const lang = HTML_LANG[localeFromParam(langParam) ?? "en"];
   // Literal default so static checks see a lang attribute; the spread below
   // overrides it with the request's language when it isn't English.
@@ -224,11 +223,9 @@ function SkipLink() {
 }
 
 function RootBody({ queryClient }: { queryClient: QueryClient }) {
-  // ?lang= is part of the shareable URL, so the server can render the page in
-  // that language too — no English flash, no hydration mismatch.
-  const langParam = useRouterState({
-    select: (s) => (s.location.search as { lang?: string } | undefined)?.lang,
-  });
+  // The language is the /no or /pl path segment, known on the server as well,
+  // so the first paint already matches what the URL asks for.
+  const langParam = useParams({ strict: false, select: (p) => (p as { lang?: string }).lang });
   const initialLocale = localeFromParam(langParam) ?? undefined;
 
   return (

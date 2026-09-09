@@ -5,6 +5,7 @@ import { lessonHeroes } from "@/data/training/images";
 import { Badge } from "@/components/dogmatch/ui";
 import { cn } from "@/lib/utils";
 import { useCopy, pick } from "@/i18n";
+import { withLangPrefix } from "@/lib/localized-path";
 
 const copy = {
   en: {
@@ -101,7 +102,7 @@ export function LessonCard({
   const c = useCopy(copy);
   return (
     <Link
-      to="/train/lessons/$lessonId"
+      to={withLangPrefix("/train/lessons/$lessonId")}
       params={{ lessonId: lesson.id }}
       className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border bg-card transition-all duration-300 hover:-translate-y-[2px] hover:border-border-strong hover:shadow-[var(--shadow-soft)]"
     >

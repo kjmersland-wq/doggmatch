@@ -9,816 +9,727 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as AccountRouteImport } from './routes/account'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as BestDogBreedsForFamiliesRouteImport } from './routes/best-dog-breeds-for-families'
-import { Route as BrochureRouteImport } from './routes/brochure'
-import { Route as CompareRouteImport } from './routes/compare'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as DogLifeRouteImport } from './routes/dog-life'
-import { Route as FindMyDogRouteImport } from './routes/find-my-dog'
-import { Route as GetADogRouteImport } from './routes/get-a-dog'
-import { Route as GuidesRouteImport } from './routes/guides'
-import { Route as MemberCardRouteImport } from './routes/member-card'
-import { Route as MyDogRouteImport } from './routes/my-dog'
-import { Route as PartnersRouteImport } from './routes/partners'
-import { Route as PlusRouteImport } from './routes/plus'
-import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SourcesRouteImport } from './routes/sources'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as TrainRouteImport } from './routes/train'
-import { Route as TravelRouteImport } from './routes/travel'
-import { Route as BreedsIndexRouteImport } from './routes/breeds.index'
-import { Route as BreedsBreedIdRouteImport } from './routes/breeds.$breedId'
-import { Route as CheckoutCanceledRouteImport } from './routes/checkout.canceled'
-import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
-import { Route as GetADogIndexRouteImport } from './routes/get-a-dog.index'
-import { Route as GetADogChooseRouteImport } from './routes/get-a-dog.choose'
-import { Route as GetADogCostsRouteImport } from './routes/get-a-dog.costs'
-import { Route as GetADogPrepareRouteImport } from './routes/get-a-dog.prepare'
-import { Route as GetADogReadyRouteImport } from './routes/get-a-dog.ready'
-import { Route as GetADogWelcomeHomeRouteImport } from './routes/get-a-dog.welcome-home'
-import { Route as MyDogIndexRouteImport } from './routes/my-dog.index'
-import { Route as MyDogContactsRouteImport } from './routes/my-dog.contacts'
-import { Route as MyDogFoodRouteImport } from './routes/my-dog.food'
-import { Route as MyDogNutritionRouteImport } from './routes/my-dog.nutrition'
-import { Route as MyDogPackRouteImport } from './routes/my-dog.pack'
-import { Route as MyDogPrintRouteImport } from './routes/my-dog.print'
-import { Route as MyDogSetupRouteImport } from './routes/my-dog.setup'
-import { Route as MyDogVetRouteImport } from './routes/my-dog.vet'
-import { Route as MyDogWeekRouteImport } from './routes/my-dog.week'
-import { Route as MyDogWeightRouteImport } from './routes/my-dog.weight'
-import { Route as TrainIndexRouteImport } from './routes/train.index'
-import { Route as TrainJourneyRouteImport } from './routes/train.journey'
-import { Route as TrainLibraryRouteImport } from './routes/train.library'
-import { Route as TrainSetupRouteImport } from './routes/train.setup'
-import { Route as TravelIndexRouteImport } from './routes/travel.index'
-import { Route as TravelAbroadRouteImport } from './routes/travel.abroad'
-import { Route as TravelCarRouteImport } from './routes/travel.car'
-import { Route as TravelOutdoorsRouteImport } from './routes/travel.outdoors'
-import { Route as VerifyMemberIdRouteImport } from './routes/verify.$memberId'
-import { Route as GetADogBreedBreedIdRouteImport } from './routes/get-a-dog.breed.$breedId'
-import { Route as MyDogCareTopicIdRouteImport } from './routes/my-dog.care.$topicId'
-import { Route as TrainLessonsLessonIdRouteImport } from './routes/train.lessons.$lessonId'
+import { Route as Char123LangChar125RouteImport } from './routes/{-$lang}'
+import { Route as Char123LangChar125IndexRouteImport } from './routes/{-$lang}/index'
+import { Route as Char123LangChar125AboutRouteImport } from './routes/{-$lang}/about'
+import { Route as Char123LangChar125AccountRouteImport } from './routes/{-$lang}/account'
+import { Route as Char123LangChar125AuthRouteImport } from './routes/{-$lang}/auth'
+import { Route as Char123LangChar125BestDogBreedsForFamiliesRouteImport } from './routes/{-$lang}/best-dog-breeds-for-families'
+import { Route as Char123LangChar125BrochureRouteImport } from './routes/{-$lang}/brochure'
+import { Route as Char123LangChar125CompareRouteImport } from './routes/{-$lang}/compare'
+import { Route as Char123LangChar125ContactRouteImport } from './routes/{-$lang}/contact'
+import { Route as Char123LangChar125DogLifeRouteImport } from './routes/{-$lang}/dog-life'
+import { Route as Char123LangChar125FindMyDogRouteImport } from './routes/{-$lang}/find-my-dog'
+import { Route as Char123LangChar125GetADogRouteImport } from './routes/{-$lang}/get-a-dog'
+import { Route as Char123LangChar125GuidesRouteImport } from './routes/{-$lang}/guides'
+import { Route as Char123LangChar125MemberCardRouteImport } from './routes/{-$lang}/member-card'
+import { Route as Char123LangChar125MyDogRouteImport } from './routes/{-$lang}/my-dog'
+import { Route as Char123LangChar125PartnersRouteImport } from './routes/{-$lang}/partners'
+import { Route as Char123LangChar125PlusRouteImport } from './routes/{-$lang}/plus'
+import { Route as Char123LangChar125PrivacyRouteImport } from './routes/{-$lang}/privacy'
+import { Route as Char123LangChar125SourcesRouteImport } from './routes/{-$lang}/sources'
+import { Route as Char123LangChar125TermsRouteImport } from './routes/{-$lang}/terms'
+import { Route as Char123LangChar125TrainRouteImport } from './routes/{-$lang}/train'
+import { Route as Char123LangChar125TravelRouteImport } from './routes/{-$lang}/travel'
+import { Route as Char123LangChar125BreedsIndexRouteImport } from './routes/{-$lang}/breeds.index'
+import { Route as Char123LangChar125BreedsBreedIdRouteImport } from './routes/{-$lang}/breeds.$breedId'
+import { Route as Char123LangChar125CheckoutCanceledRouteImport } from './routes/{-$lang}/checkout.canceled'
+import { Route as Char123LangChar125CheckoutSuccessRouteImport } from './routes/{-$lang}/checkout.success'
+import { Route as Char123LangChar125GetADogIndexRouteImport } from './routes/{-$lang}/get-a-dog.index'
+import { Route as Char123LangChar125GetADogChooseRouteImport } from './routes/{-$lang}/get-a-dog.choose'
+import { Route as Char123LangChar125GetADogCostsRouteImport } from './routes/{-$lang}/get-a-dog.costs'
+import { Route as Char123LangChar125GetADogPrepareRouteImport } from './routes/{-$lang}/get-a-dog.prepare'
+import { Route as Char123LangChar125GetADogReadyRouteImport } from './routes/{-$lang}/get-a-dog.ready'
+import { Route as Char123LangChar125GetADogWelcomeHomeRouteImport } from './routes/{-$lang}/get-a-dog.welcome-home'
+import { Route as Char123LangChar125MyDogIndexRouteImport } from './routes/{-$lang}/my-dog.index'
+import { Route as Char123LangChar125MyDogContactsRouteImport } from './routes/{-$lang}/my-dog.contacts'
+import { Route as Char123LangChar125MyDogFoodRouteImport } from './routes/{-$lang}/my-dog.food'
+import { Route as Char123LangChar125MyDogNutritionRouteImport } from './routes/{-$lang}/my-dog.nutrition'
+import { Route as Char123LangChar125MyDogPackRouteImport } from './routes/{-$lang}/my-dog.pack'
+import { Route as Char123LangChar125MyDogPrintRouteImport } from './routes/{-$lang}/my-dog.print'
+import { Route as Char123LangChar125MyDogSetupRouteImport } from './routes/{-$lang}/my-dog.setup'
+import { Route as Char123LangChar125MyDogVetRouteImport } from './routes/{-$lang}/my-dog.vet'
+import { Route as Char123LangChar125MyDogWeekRouteImport } from './routes/{-$lang}/my-dog.week'
+import { Route as Char123LangChar125MyDogWeightRouteImport } from './routes/{-$lang}/my-dog.weight'
+import { Route as Char123LangChar125TrainIndexRouteImport } from './routes/{-$lang}/train.index'
+import { Route as Char123LangChar125TrainJourneyRouteImport } from './routes/{-$lang}/train.journey'
+import { Route as Char123LangChar125TrainLibraryRouteImport } from './routes/{-$lang}/train.library'
+import { Route as Char123LangChar125TrainSetupRouteImport } from './routes/{-$lang}/train.setup'
+import { Route as Char123LangChar125TravelIndexRouteImport } from './routes/{-$lang}/travel.index'
+import { Route as Char123LangChar125TravelAbroadRouteImport } from './routes/{-$lang}/travel.abroad'
+import { Route as Char123LangChar125TravelCarRouteImport } from './routes/{-$lang}/travel.car'
+import { Route as Char123LangChar125TravelOutdoorsRouteImport } from './routes/{-$lang}/travel.outdoors'
+import { Route as Char123LangChar125VerifyMemberIdRouteImport } from './routes/{-$lang}/verify.$memberId'
+import { Route as Char123LangChar125GetADogBreedBreedIdRouteImport } from './routes/{-$lang}/get-a-dog.breed.$breedId'
+import { Route as Char123LangChar125MyDogCareTopicIdRouteImport } from './routes/{-$lang}/my-dog.care.$topicId'
+import { Route as Char123LangChar125TrainLessonsLessonIdRouteImport } from './routes/{-$lang}/train.lessons.$lessonId'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AccountRoute = AccountRouteImport.update({
-  id: '/account',
-  path: '/account',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BestDogBreedsForFamiliesRoute =
-  BestDogBreedsForFamiliesRouteImport.update({
-    id: '/best-dog-breeds-for-families',
-    path: '/best-dog-breeds-for-families',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const BrochureRoute = BrochureRouteImport.update({
-  id: '/brochure',
-  path: '/brochure',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CompareRoute = CompareRouteImport.update({
-  id: '/compare',
-  path: '/compare',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DogLifeRoute = DogLifeRouteImport.update({
-  id: '/dog-life',
-  path: '/dog-life',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FindMyDogRoute = FindMyDogRouteImport.update({
-  id: '/find-my-dog',
-  path: '/find-my-dog',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GetADogRoute = GetADogRouteImport.update({
-  id: '/get-a-dog',
-  path: '/get-a-dog',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GuidesRoute = GuidesRouteImport.update({
-  id: '/guides',
-  path: '/guides',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MemberCardRoute = MemberCardRouteImport.update({
-  id: '/member-card',
-  path: '/member-card',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MyDogRoute = MyDogRouteImport.update({
-  id: '/my-dog',
-  path: '/my-dog',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PartnersRoute = PartnersRouteImport.update({
-  id: '/partners',
-  path: '/partners',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PlusRoute = PlusRouteImport.update({
-  id: '/plus',
-  path: '/plus',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SourcesRoute = SourcesRouteImport.update({
-  id: '/sources',
-  path: '/sources',
+const Char123LangChar125Route = Char123LangChar125RouteImport.update({
+  id: '/{-$lang}',
+  path: '/{-$lang}',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TermsRoute = TermsRouteImport.update({
+const Char123LangChar125IndexRoute = Char123LangChar125IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => Char123LangChar125Route,
+} as any)
+const Char123LangChar125AboutRoute = Char123LangChar125AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => Char123LangChar125Route,
+} as any)
+const Char123LangChar125AccountRoute =
+  Char123LangChar125AccountRouteImport.update({
+    id: '/account',
+    path: '/account',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125AuthRoute = Char123LangChar125AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => Char123LangChar125Route,
+} as any)
+const Char123LangChar125BestDogBreedsForFamiliesRoute =
+  Char123LangChar125BestDogBreedsForFamiliesRouteImport.update({
+    id: '/best-dog-breeds-for-families',
+    path: '/best-dog-breeds-for-families',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125BrochureRoute =
+  Char123LangChar125BrochureRouteImport.update({
+    id: '/brochure',
+    path: '/brochure',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125CompareRoute =
+  Char123LangChar125CompareRouteImport.update({
+    id: '/compare',
+    path: '/compare',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125ContactRoute =
+  Char123LangChar125ContactRouteImport.update({
+    id: '/contact',
+    path: '/contact',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125DogLifeRoute =
+  Char123LangChar125DogLifeRouteImport.update({
+    id: '/dog-life',
+    path: '/dog-life',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125FindMyDogRoute =
+  Char123LangChar125FindMyDogRouteImport.update({
+    id: '/find-my-dog',
+    path: '/find-my-dog',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125GetADogRoute =
+  Char123LangChar125GetADogRouteImport.update({
+    id: '/get-a-dog',
+    path: '/get-a-dog',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125GuidesRoute =
+  Char123LangChar125GuidesRouteImport.update({
+    id: '/guides',
+    path: '/guides',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125MemberCardRoute =
+  Char123LangChar125MemberCardRouteImport.update({
+    id: '/member-card',
+    path: '/member-card',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125MyDogRoute = Char123LangChar125MyDogRouteImport.update({
+  id: '/my-dog',
+  path: '/my-dog',
+  getParentRoute: () => Char123LangChar125Route,
+} as any)
+const Char123LangChar125PartnersRoute =
+  Char123LangChar125PartnersRouteImport.update({
+    id: '/partners',
+    path: '/partners',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125PlusRoute = Char123LangChar125PlusRouteImport.update({
+  id: '/plus',
+  path: '/plus',
+  getParentRoute: () => Char123LangChar125Route,
+} as any)
+const Char123LangChar125PrivacyRoute =
+  Char123LangChar125PrivacyRouteImport.update({
+    id: '/privacy',
+    path: '/privacy',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125SourcesRoute =
+  Char123LangChar125SourcesRouteImport.update({
+    id: '/sources',
+    path: '/sources',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125TermsRoute = Char123LangChar125TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => Char123LangChar125Route,
 } as any)
-const TrainRoute = TrainRouteImport.update({
+const Char123LangChar125TrainRoute = Char123LangChar125TrainRouteImport.update({
   id: '/train',
   path: '/train',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => Char123LangChar125Route,
 } as any)
-const TravelRoute = TravelRouteImport.update({
-  id: '/travel',
-  path: '/travel',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BreedsIndexRoute = BreedsIndexRouteImport.update({
-  id: '/breeds/',
-  path: '/breeds/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BreedsBreedIdRoute = BreedsBreedIdRouteImport.update({
-  id: '/breeds/$breedId',
-  path: '/breeds/$breedId',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CheckoutCanceledRoute = CheckoutCanceledRouteImport.update({
-  id: '/checkout/canceled',
-  path: '/checkout/canceled',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CheckoutSuccessRoute = CheckoutSuccessRouteImport.update({
-  id: '/checkout/success',
-  path: '/checkout/success',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GetADogIndexRoute = GetADogIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => GetADogRoute,
-} as any)
-const GetADogChooseRoute = GetADogChooseRouteImport.update({
-  id: '/choose',
-  path: '/choose',
-  getParentRoute: () => GetADogRoute,
-} as any)
-const GetADogCostsRoute = GetADogCostsRouteImport.update({
-  id: '/costs',
-  path: '/costs',
-  getParentRoute: () => GetADogRoute,
-} as any)
-const GetADogPrepareRoute = GetADogPrepareRouteImport.update({
-  id: '/prepare',
-  path: '/prepare',
-  getParentRoute: () => GetADogRoute,
-} as any)
-const GetADogReadyRoute = GetADogReadyRouteImport.update({
-  id: '/ready',
-  path: '/ready',
-  getParentRoute: () => GetADogRoute,
-} as any)
-const GetADogWelcomeHomeRoute = GetADogWelcomeHomeRouteImport.update({
-  id: '/welcome-home',
-  path: '/welcome-home',
-  getParentRoute: () => GetADogRoute,
-} as any)
-const MyDogIndexRoute = MyDogIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => MyDogRoute,
-} as any)
-const MyDogContactsRoute = MyDogContactsRouteImport.update({
-  id: '/contacts',
-  path: '/contacts',
-  getParentRoute: () => MyDogRoute,
-} as any)
-const MyDogFoodRoute = MyDogFoodRouteImport.update({
-  id: '/food',
-  path: '/food',
-  getParentRoute: () => MyDogRoute,
-} as any)
-const MyDogNutritionRoute = MyDogNutritionRouteImport.update({
-  id: '/nutrition',
-  path: '/nutrition',
-  getParentRoute: () => MyDogRoute,
-} as any)
-const MyDogPackRoute = MyDogPackRouteImport.update({
-  id: '/pack',
-  path: '/pack',
-  getParentRoute: () => MyDogRoute,
-} as any)
-const MyDogPrintRoute = MyDogPrintRouteImport.update({
-  id: '/print',
-  path: '/print',
-  getParentRoute: () => MyDogRoute,
-} as any)
-const MyDogSetupRoute = MyDogSetupRouteImport.update({
-  id: '/setup',
-  path: '/setup',
-  getParentRoute: () => MyDogRoute,
-} as any)
-const MyDogVetRoute = MyDogVetRouteImport.update({
-  id: '/vet',
-  path: '/vet',
-  getParentRoute: () => MyDogRoute,
-} as any)
-const MyDogWeekRoute = MyDogWeekRouteImport.update({
-  id: '/week',
-  path: '/week',
-  getParentRoute: () => MyDogRoute,
-} as any)
-const MyDogWeightRoute = MyDogWeightRouteImport.update({
-  id: '/weight',
-  path: '/weight',
-  getParentRoute: () => MyDogRoute,
-} as any)
-const TrainIndexRoute = TrainIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => TrainRoute,
-} as any)
-const TrainJourneyRoute = TrainJourneyRouteImport.update({
-  id: '/journey',
-  path: '/journey',
-  getParentRoute: () => TrainRoute,
-} as any)
-const TrainLibraryRoute = TrainLibraryRouteImport.update({
-  id: '/library',
-  path: '/library',
-  getParentRoute: () => TrainRoute,
-} as any)
-const TrainSetupRoute = TrainSetupRouteImport.update({
-  id: '/setup',
-  path: '/setup',
-  getParentRoute: () => TrainRoute,
-} as any)
-const TravelIndexRoute = TravelIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => TravelRoute,
-} as any)
-const TravelAbroadRoute = TravelAbroadRouteImport.update({
-  id: '/abroad',
-  path: '/abroad',
-  getParentRoute: () => TravelRoute,
-} as any)
-const TravelCarRoute = TravelCarRouteImport.update({
-  id: '/car',
-  path: '/car',
-  getParentRoute: () => TravelRoute,
-} as any)
-const TravelOutdoorsRoute = TravelOutdoorsRouteImport.update({
-  id: '/outdoors',
-  path: '/outdoors',
-  getParentRoute: () => TravelRoute,
-} as any)
-const VerifyMemberIdRoute = VerifyMemberIdRouteImport.update({
-  id: '/verify/$memberId',
-  path: '/verify/$memberId',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GetADogBreedBreedIdRoute = GetADogBreedBreedIdRouteImport.update({
-  id: '/breed/$breedId',
-  path: '/breed/$breedId',
-  getParentRoute: () => GetADogRoute,
-} as any)
-const MyDogCareTopicIdRoute = MyDogCareTopicIdRouteImport.update({
-  id: '/care/$topicId',
-  path: '/care/$topicId',
-  getParentRoute: () => MyDogRoute,
-} as any)
-const TrainLessonsLessonIdRoute = TrainLessonsLessonIdRouteImport.update({
-  id: '/lessons/$lessonId',
-  path: '/lessons/$lessonId',
-  getParentRoute: () => TrainRoute,
-} as any)
+const Char123LangChar125TravelRoute =
+  Char123LangChar125TravelRouteImport.update({
+    id: '/travel',
+    path: '/travel',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125BreedsIndexRoute =
+  Char123LangChar125BreedsIndexRouteImport.update({
+    id: '/breeds/',
+    path: '/breeds/',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125BreedsBreedIdRoute =
+  Char123LangChar125BreedsBreedIdRouteImport.update({
+    id: '/breeds/$breedId',
+    path: '/breeds/$breedId',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125CheckoutCanceledRoute =
+  Char123LangChar125CheckoutCanceledRouteImport.update({
+    id: '/checkout/canceled',
+    path: '/checkout/canceled',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125CheckoutSuccessRoute =
+  Char123LangChar125CheckoutSuccessRouteImport.update({
+    id: '/checkout/success',
+    path: '/checkout/success',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125GetADogIndexRoute =
+  Char123LangChar125GetADogIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => Char123LangChar125GetADogRoute,
+  } as any)
+const Char123LangChar125GetADogChooseRoute =
+  Char123LangChar125GetADogChooseRouteImport.update({
+    id: '/choose',
+    path: '/choose',
+    getParentRoute: () => Char123LangChar125GetADogRoute,
+  } as any)
+const Char123LangChar125GetADogCostsRoute =
+  Char123LangChar125GetADogCostsRouteImport.update({
+    id: '/costs',
+    path: '/costs',
+    getParentRoute: () => Char123LangChar125GetADogRoute,
+  } as any)
+const Char123LangChar125GetADogPrepareRoute =
+  Char123LangChar125GetADogPrepareRouteImport.update({
+    id: '/prepare',
+    path: '/prepare',
+    getParentRoute: () => Char123LangChar125GetADogRoute,
+  } as any)
+const Char123LangChar125GetADogReadyRoute =
+  Char123LangChar125GetADogReadyRouteImport.update({
+    id: '/ready',
+    path: '/ready',
+    getParentRoute: () => Char123LangChar125GetADogRoute,
+  } as any)
+const Char123LangChar125GetADogWelcomeHomeRoute =
+  Char123LangChar125GetADogWelcomeHomeRouteImport.update({
+    id: '/welcome-home',
+    path: '/welcome-home',
+    getParentRoute: () => Char123LangChar125GetADogRoute,
+  } as any)
+const Char123LangChar125MyDogIndexRoute =
+  Char123LangChar125MyDogIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
+const Char123LangChar125MyDogContactsRoute =
+  Char123LangChar125MyDogContactsRouteImport.update({
+    id: '/contacts',
+    path: '/contacts',
+    getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
+const Char123LangChar125MyDogFoodRoute =
+  Char123LangChar125MyDogFoodRouteImport.update({
+    id: '/food',
+    path: '/food',
+    getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
+const Char123LangChar125MyDogNutritionRoute =
+  Char123LangChar125MyDogNutritionRouteImport.update({
+    id: '/nutrition',
+    path: '/nutrition',
+    getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
+const Char123LangChar125MyDogPackRoute =
+  Char123LangChar125MyDogPackRouteImport.update({
+    id: '/pack',
+    path: '/pack',
+    getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
+const Char123LangChar125MyDogPrintRoute =
+  Char123LangChar125MyDogPrintRouteImport.update({
+    id: '/print',
+    path: '/print',
+    getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
+const Char123LangChar125MyDogSetupRoute =
+  Char123LangChar125MyDogSetupRouteImport.update({
+    id: '/setup',
+    path: '/setup',
+    getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
+const Char123LangChar125MyDogVetRoute =
+  Char123LangChar125MyDogVetRouteImport.update({
+    id: '/vet',
+    path: '/vet',
+    getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
+const Char123LangChar125MyDogWeekRoute =
+  Char123LangChar125MyDogWeekRouteImport.update({
+    id: '/week',
+    path: '/week',
+    getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
+const Char123LangChar125MyDogWeightRoute =
+  Char123LangChar125MyDogWeightRouteImport.update({
+    id: '/weight',
+    path: '/weight',
+    getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
+const Char123LangChar125TrainIndexRoute =
+  Char123LangChar125TrainIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => Char123LangChar125TrainRoute,
+  } as any)
+const Char123LangChar125TrainJourneyRoute =
+  Char123LangChar125TrainJourneyRouteImport.update({
+    id: '/journey',
+    path: '/journey',
+    getParentRoute: () => Char123LangChar125TrainRoute,
+  } as any)
+const Char123LangChar125TrainLibraryRoute =
+  Char123LangChar125TrainLibraryRouteImport.update({
+    id: '/library',
+    path: '/library',
+    getParentRoute: () => Char123LangChar125TrainRoute,
+  } as any)
+const Char123LangChar125TrainSetupRoute =
+  Char123LangChar125TrainSetupRouteImport.update({
+    id: '/setup',
+    path: '/setup',
+    getParentRoute: () => Char123LangChar125TrainRoute,
+  } as any)
+const Char123LangChar125TravelIndexRoute =
+  Char123LangChar125TravelIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => Char123LangChar125TravelRoute,
+  } as any)
+const Char123LangChar125TravelAbroadRoute =
+  Char123LangChar125TravelAbroadRouteImport.update({
+    id: '/abroad',
+    path: '/abroad',
+    getParentRoute: () => Char123LangChar125TravelRoute,
+  } as any)
+const Char123LangChar125TravelCarRoute =
+  Char123LangChar125TravelCarRouteImport.update({
+    id: '/car',
+    path: '/car',
+    getParentRoute: () => Char123LangChar125TravelRoute,
+  } as any)
+const Char123LangChar125TravelOutdoorsRoute =
+  Char123LangChar125TravelOutdoorsRouteImport.update({
+    id: '/outdoors',
+    path: '/outdoors',
+    getParentRoute: () => Char123LangChar125TravelRoute,
+  } as any)
+const Char123LangChar125VerifyMemberIdRoute =
+  Char123LangChar125VerifyMemberIdRouteImport.update({
+    id: '/verify/$memberId',
+    path: '/verify/$memberId',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125GetADogBreedBreedIdRoute =
+  Char123LangChar125GetADogBreedBreedIdRouteImport.update({
+    id: '/breed/$breedId',
+    path: '/breed/$breedId',
+    getParentRoute: () => Char123LangChar125GetADogRoute,
+  } as any)
+const Char123LangChar125MyDogCareTopicIdRoute =
+  Char123LangChar125MyDogCareTopicIdRouteImport.update({
+    id: '/care/$topicId',
+    path: '/care/$topicId',
+    getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
+const Char123LangChar125TrainLessonsLessonIdRoute =
+  Char123LangChar125TrainLessonsLessonIdRouteImport.update({
+    id: '/lessons/$lessonId',
+    path: '/lessons/$lessonId',
+    getParentRoute: () => Char123LangChar125TrainRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/account': typeof AccountRoute
-  '/auth': typeof AuthRoute
-  '/best-dog-breeds-for-families': typeof BestDogBreedsForFamiliesRoute
-  '/brochure': typeof BrochureRoute
-  '/compare': typeof CompareRoute
-  '/contact': typeof ContactRoute
-  '/dog-life': typeof DogLifeRoute
-  '/find-my-dog': typeof FindMyDogRoute
-  '/get-a-dog': typeof GetADogRouteWithChildren
-  '/guides': typeof GuidesRoute
-  '/member-card': typeof MemberCardRoute
-  '/my-dog': typeof MyDogRouteWithChildren
-  '/partners': typeof PartnersRoute
-  '/plus': typeof PlusRoute
-  '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/sources': typeof SourcesRoute
-  '/terms': typeof TermsRoute
-  '/train': typeof TrainRouteWithChildren
-  '/travel': typeof TravelRouteWithChildren
-  '/breeds/$breedId': typeof BreedsBreedIdRoute
-  '/checkout/canceled': typeof CheckoutCanceledRoute
-  '/checkout/success': typeof CheckoutSuccessRoute
-  '/get-a-dog/choose': typeof GetADogChooseRoute
-  '/get-a-dog/costs': typeof GetADogCostsRoute
-  '/get-a-dog/prepare': typeof GetADogPrepareRoute
-  '/get-a-dog/ready': typeof GetADogReadyRoute
-  '/get-a-dog/welcome-home': typeof GetADogWelcomeHomeRoute
-  '/my-dog/contacts': typeof MyDogContactsRoute
-  '/my-dog/food': typeof MyDogFoodRoute
-  '/my-dog/nutrition': typeof MyDogNutritionRoute
-  '/my-dog/pack': typeof MyDogPackRoute
-  '/my-dog/print': typeof MyDogPrintRoute
-  '/my-dog/setup': typeof MyDogSetupRoute
-  '/my-dog/vet': typeof MyDogVetRoute
-  '/my-dog/week': typeof MyDogWeekRoute
-  '/my-dog/weight': typeof MyDogWeightRoute
-  '/train/journey': typeof TrainJourneyRoute
-  '/train/library': typeof TrainLibraryRoute
-  '/train/setup': typeof TrainSetupRoute
-  '/travel/abroad': typeof TravelAbroadRoute
-  '/travel/car': typeof TravelCarRoute
-  '/travel/outdoors': typeof TravelOutdoorsRoute
-  '/verify/$memberId': typeof VerifyMemberIdRoute
-  '/breeds/': typeof BreedsIndexRoute
-  '/get-a-dog/': typeof GetADogIndexRoute
-  '/my-dog/': typeof MyDogIndexRoute
-  '/train/': typeof TrainIndexRoute
-  '/travel/': typeof TravelIndexRoute
-  '/get-a-dog/breed/$breedId': typeof GetADogBreedBreedIdRoute
-  '/my-dog/care/$topicId': typeof MyDogCareTopicIdRoute
-  '/train/lessons/$lessonId': typeof TrainLessonsLessonIdRoute
+  '/{-$lang}': typeof Char123LangChar125RouteWithChildren
+  '/{-$lang}/about': typeof Char123LangChar125AboutRoute
+  '/{-$lang}/account': typeof Char123LangChar125AccountRoute
+  '/{-$lang}/auth': typeof Char123LangChar125AuthRoute
+  '/{-$lang}/best-dog-breeds-for-families': typeof Char123LangChar125BestDogBreedsForFamiliesRoute
+  '/{-$lang}/brochure': typeof Char123LangChar125BrochureRoute
+  '/{-$lang}/compare': typeof Char123LangChar125CompareRoute
+  '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
+  '/{-$lang}/dog-life': typeof Char123LangChar125DogLifeRoute
+  '/{-$lang}/find-my-dog': typeof Char123LangChar125FindMyDogRoute
+  '/{-$lang}/get-a-dog': typeof Char123LangChar125GetADogRouteWithChildren
+  '/{-$lang}/guides': typeof Char123LangChar125GuidesRoute
+  '/{-$lang}/member-card': typeof Char123LangChar125MemberCardRoute
+  '/{-$lang}/my-dog': typeof Char123LangChar125MyDogRouteWithChildren
+  '/{-$lang}/partners': typeof Char123LangChar125PartnersRoute
+  '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
+  '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
+  '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
+  '/{-$lang}/terms': typeof Char123LangChar125TermsRoute
+  '/{-$lang}/train': typeof Char123LangChar125TrainRouteWithChildren
+  '/{-$lang}/travel': typeof Char123LangChar125TravelRouteWithChildren
+  '/{-$lang}/': typeof Char123LangChar125IndexRoute
+  '/{-$lang}/breeds/$breedId': typeof Char123LangChar125BreedsBreedIdRoute
+  '/{-$lang}/checkout/canceled': typeof Char123LangChar125CheckoutCanceledRoute
+  '/{-$lang}/checkout/success': typeof Char123LangChar125CheckoutSuccessRoute
+  '/{-$lang}/get-a-dog/choose': typeof Char123LangChar125GetADogChooseRoute
+  '/{-$lang}/get-a-dog/costs': typeof Char123LangChar125GetADogCostsRoute
+  '/{-$lang}/get-a-dog/prepare': typeof Char123LangChar125GetADogPrepareRoute
+  '/{-$lang}/get-a-dog/ready': typeof Char123LangChar125GetADogReadyRoute
+  '/{-$lang}/get-a-dog/welcome-home': typeof Char123LangChar125GetADogWelcomeHomeRoute
+  '/{-$lang}/my-dog/contacts': typeof Char123LangChar125MyDogContactsRoute
+  '/{-$lang}/my-dog/food': typeof Char123LangChar125MyDogFoodRoute
+  '/{-$lang}/my-dog/nutrition': typeof Char123LangChar125MyDogNutritionRoute
+  '/{-$lang}/my-dog/pack': typeof Char123LangChar125MyDogPackRoute
+  '/{-$lang}/my-dog/print': typeof Char123LangChar125MyDogPrintRoute
+  '/{-$lang}/my-dog/setup': typeof Char123LangChar125MyDogSetupRoute
+  '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
+  '/{-$lang}/my-dog/week': typeof Char123LangChar125MyDogWeekRoute
+  '/{-$lang}/my-dog/weight': typeof Char123LangChar125MyDogWeightRoute
+  '/{-$lang}/train/journey': typeof Char123LangChar125TrainJourneyRoute
+  '/{-$lang}/train/library': typeof Char123LangChar125TrainLibraryRoute
+  '/{-$lang}/train/setup': typeof Char123LangChar125TrainSetupRoute
+  '/{-$lang}/travel/abroad': typeof Char123LangChar125TravelAbroadRoute
+  '/{-$lang}/travel/car': typeof Char123LangChar125TravelCarRoute
+  '/{-$lang}/travel/outdoors': typeof Char123LangChar125TravelOutdoorsRoute
+  '/{-$lang}/verify/$memberId': typeof Char123LangChar125VerifyMemberIdRoute
+  '/{-$lang}/breeds/': typeof Char123LangChar125BreedsIndexRoute
+  '/{-$lang}/get-a-dog/': typeof Char123LangChar125GetADogIndexRoute
+  '/{-$lang}/my-dog/': typeof Char123LangChar125MyDogIndexRoute
+  '/{-$lang}/train/': typeof Char123LangChar125TrainIndexRoute
+  '/{-$lang}/travel/': typeof Char123LangChar125TravelIndexRoute
+  '/{-$lang}/get-a-dog/breed/$breedId': typeof Char123LangChar125GetADogBreedBreedIdRoute
+  '/{-$lang}/my-dog/care/$topicId': typeof Char123LangChar125MyDogCareTopicIdRoute
+  '/{-$lang}/train/lessons/$lessonId': typeof Char123LangChar125TrainLessonsLessonIdRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/account': typeof AccountRoute
-  '/auth': typeof AuthRoute
-  '/best-dog-breeds-for-families': typeof BestDogBreedsForFamiliesRoute
-  '/brochure': typeof BrochureRoute
-  '/compare': typeof CompareRoute
-  '/contact': typeof ContactRoute
-  '/dog-life': typeof DogLifeRoute
-  '/find-my-dog': typeof FindMyDogRoute
-  '/guides': typeof GuidesRoute
-  '/member-card': typeof MemberCardRoute
-  '/partners': typeof PartnersRoute
-  '/plus': typeof PlusRoute
-  '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/sources': typeof SourcesRoute
-  '/terms': typeof TermsRoute
-  '/breeds/$breedId': typeof BreedsBreedIdRoute
-  '/checkout/canceled': typeof CheckoutCanceledRoute
-  '/checkout/success': typeof CheckoutSuccessRoute
-  '/get-a-dog/choose': typeof GetADogChooseRoute
-  '/get-a-dog/costs': typeof GetADogCostsRoute
-  '/get-a-dog/prepare': typeof GetADogPrepareRoute
-  '/get-a-dog/ready': typeof GetADogReadyRoute
-  '/get-a-dog/welcome-home': typeof GetADogWelcomeHomeRoute
-  '/my-dog/contacts': typeof MyDogContactsRoute
-  '/my-dog/food': typeof MyDogFoodRoute
-  '/my-dog/nutrition': typeof MyDogNutritionRoute
-  '/my-dog/pack': typeof MyDogPackRoute
-  '/my-dog/print': typeof MyDogPrintRoute
-  '/my-dog/setup': typeof MyDogSetupRoute
-  '/my-dog/vet': typeof MyDogVetRoute
-  '/my-dog/week': typeof MyDogWeekRoute
-  '/my-dog/weight': typeof MyDogWeightRoute
-  '/train/journey': typeof TrainJourneyRoute
-  '/train/library': typeof TrainLibraryRoute
-  '/train/setup': typeof TrainSetupRoute
-  '/travel/abroad': typeof TravelAbroadRoute
-  '/travel/car': typeof TravelCarRoute
-  '/travel/outdoors': typeof TravelOutdoorsRoute
-  '/verify/$memberId': typeof VerifyMemberIdRoute
-  '/breeds': typeof BreedsIndexRoute
-  '/get-a-dog': typeof GetADogIndexRoute
-  '/my-dog': typeof MyDogIndexRoute
-  '/train': typeof TrainIndexRoute
-  '/travel': typeof TravelIndexRoute
-  '/get-a-dog/breed/$breedId': typeof GetADogBreedBreedIdRoute
-  '/my-dog/care/$topicId': typeof MyDogCareTopicIdRoute
-  '/train/lessons/$lessonId': typeof TrainLessonsLessonIdRoute
+  '/{-$lang}/about': typeof Char123LangChar125AboutRoute
+  '/{-$lang}/account': typeof Char123LangChar125AccountRoute
+  '/{-$lang}/auth': typeof Char123LangChar125AuthRoute
+  '/{-$lang}/best-dog-breeds-for-families': typeof Char123LangChar125BestDogBreedsForFamiliesRoute
+  '/{-$lang}/brochure': typeof Char123LangChar125BrochureRoute
+  '/{-$lang}/compare': typeof Char123LangChar125CompareRoute
+  '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
+  '/{-$lang}/dog-life': typeof Char123LangChar125DogLifeRoute
+  '/{-$lang}/find-my-dog': typeof Char123LangChar125FindMyDogRoute
+  '/{-$lang}/guides': typeof Char123LangChar125GuidesRoute
+  '/{-$lang}/member-card': typeof Char123LangChar125MemberCardRoute
+  '/{-$lang}/partners': typeof Char123LangChar125PartnersRoute
+  '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
+  '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
+  '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
+  '/{-$lang}/terms': typeof Char123LangChar125TermsRoute
+  '/{-$lang}': typeof Char123LangChar125IndexRoute
+  '/{-$lang}/breeds/$breedId': typeof Char123LangChar125BreedsBreedIdRoute
+  '/{-$lang}/checkout/canceled': typeof Char123LangChar125CheckoutCanceledRoute
+  '/{-$lang}/checkout/success': typeof Char123LangChar125CheckoutSuccessRoute
+  '/{-$lang}/get-a-dog/choose': typeof Char123LangChar125GetADogChooseRoute
+  '/{-$lang}/get-a-dog/costs': typeof Char123LangChar125GetADogCostsRoute
+  '/{-$lang}/get-a-dog/prepare': typeof Char123LangChar125GetADogPrepareRoute
+  '/{-$lang}/get-a-dog/ready': typeof Char123LangChar125GetADogReadyRoute
+  '/{-$lang}/get-a-dog/welcome-home': typeof Char123LangChar125GetADogWelcomeHomeRoute
+  '/{-$lang}/my-dog/contacts': typeof Char123LangChar125MyDogContactsRoute
+  '/{-$lang}/my-dog/food': typeof Char123LangChar125MyDogFoodRoute
+  '/{-$lang}/my-dog/nutrition': typeof Char123LangChar125MyDogNutritionRoute
+  '/{-$lang}/my-dog/pack': typeof Char123LangChar125MyDogPackRoute
+  '/{-$lang}/my-dog/print': typeof Char123LangChar125MyDogPrintRoute
+  '/{-$lang}/my-dog/setup': typeof Char123LangChar125MyDogSetupRoute
+  '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
+  '/{-$lang}/my-dog/week': typeof Char123LangChar125MyDogWeekRoute
+  '/{-$lang}/my-dog/weight': typeof Char123LangChar125MyDogWeightRoute
+  '/{-$lang}/train/journey': typeof Char123LangChar125TrainJourneyRoute
+  '/{-$lang}/train/library': typeof Char123LangChar125TrainLibraryRoute
+  '/{-$lang}/train/setup': typeof Char123LangChar125TrainSetupRoute
+  '/{-$lang}/travel/abroad': typeof Char123LangChar125TravelAbroadRoute
+  '/{-$lang}/travel/car': typeof Char123LangChar125TravelCarRoute
+  '/{-$lang}/travel/outdoors': typeof Char123LangChar125TravelOutdoorsRoute
+  '/{-$lang}/verify/$memberId': typeof Char123LangChar125VerifyMemberIdRoute
+  '/{-$lang}/breeds': typeof Char123LangChar125BreedsIndexRoute
+  '/{-$lang}/get-a-dog': typeof Char123LangChar125GetADogIndexRoute
+  '/{-$lang}/my-dog': typeof Char123LangChar125MyDogIndexRoute
+  '/{-$lang}/train': typeof Char123LangChar125TrainIndexRoute
+  '/{-$lang}/travel': typeof Char123LangChar125TravelIndexRoute
+  '/{-$lang}/get-a-dog/breed/$breedId': typeof Char123LangChar125GetADogBreedBreedIdRoute
+  '/{-$lang}/my-dog/care/$topicId': typeof Char123LangChar125MyDogCareTopicIdRoute
+  '/{-$lang}/train/lessons/$lessonId': typeof Char123LangChar125TrainLessonsLessonIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/account': typeof AccountRoute
-  '/auth': typeof AuthRoute
-  '/best-dog-breeds-for-families': typeof BestDogBreedsForFamiliesRoute
-  '/brochure': typeof BrochureRoute
-  '/compare': typeof CompareRoute
-  '/contact': typeof ContactRoute
-  '/dog-life': typeof DogLifeRoute
-  '/find-my-dog': typeof FindMyDogRoute
-  '/get-a-dog': typeof GetADogRouteWithChildren
-  '/guides': typeof GuidesRoute
-  '/member-card': typeof MemberCardRoute
-  '/my-dog': typeof MyDogRouteWithChildren
-  '/partners': typeof PartnersRoute
-  '/plus': typeof PlusRoute
-  '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/sources': typeof SourcesRoute
-  '/terms': typeof TermsRoute
-  '/train': typeof TrainRouteWithChildren
-  '/travel': typeof TravelRouteWithChildren
-  '/breeds/$breedId': typeof BreedsBreedIdRoute
-  '/checkout/canceled': typeof CheckoutCanceledRoute
-  '/checkout/success': typeof CheckoutSuccessRoute
-  '/get-a-dog/choose': typeof GetADogChooseRoute
-  '/get-a-dog/costs': typeof GetADogCostsRoute
-  '/get-a-dog/prepare': typeof GetADogPrepareRoute
-  '/get-a-dog/ready': typeof GetADogReadyRoute
-  '/get-a-dog/welcome-home': typeof GetADogWelcomeHomeRoute
-  '/my-dog/contacts': typeof MyDogContactsRoute
-  '/my-dog/food': typeof MyDogFoodRoute
-  '/my-dog/nutrition': typeof MyDogNutritionRoute
-  '/my-dog/pack': typeof MyDogPackRoute
-  '/my-dog/print': typeof MyDogPrintRoute
-  '/my-dog/setup': typeof MyDogSetupRoute
-  '/my-dog/vet': typeof MyDogVetRoute
-  '/my-dog/week': typeof MyDogWeekRoute
-  '/my-dog/weight': typeof MyDogWeightRoute
-  '/train/journey': typeof TrainJourneyRoute
-  '/train/library': typeof TrainLibraryRoute
-  '/train/setup': typeof TrainSetupRoute
-  '/travel/abroad': typeof TravelAbroadRoute
-  '/travel/car': typeof TravelCarRoute
-  '/travel/outdoors': typeof TravelOutdoorsRoute
-  '/verify/$memberId': typeof VerifyMemberIdRoute
-  '/breeds/': typeof BreedsIndexRoute
-  '/get-a-dog/': typeof GetADogIndexRoute
-  '/my-dog/': typeof MyDogIndexRoute
-  '/train/': typeof TrainIndexRoute
-  '/travel/': typeof TravelIndexRoute
-  '/get-a-dog/breed/$breedId': typeof GetADogBreedBreedIdRoute
-  '/my-dog/care/$topicId': typeof MyDogCareTopicIdRoute
-  '/train/lessons/$lessonId': typeof TrainLessonsLessonIdRoute
+  '/{-$lang}': typeof Char123LangChar125RouteWithChildren
+  '/{-$lang}/about': typeof Char123LangChar125AboutRoute
+  '/{-$lang}/account': typeof Char123LangChar125AccountRoute
+  '/{-$lang}/auth': typeof Char123LangChar125AuthRoute
+  '/{-$lang}/best-dog-breeds-for-families': typeof Char123LangChar125BestDogBreedsForFamiliesRoute
+  '/{-$lang}/brochure': typeof Char123LangChar125BrochureRoute
+  '/{-$lang}/compare': typeof Char123LangChar125CompareRoute
+  '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
+  '/{-$lang}/dog-life': typeof Char123LangChar125DogLifeRoute
+  '/{-$lang}/find-my-dog': typeof Char123LangChar125FindMyDogRoute
+  '/{-$lang}/get-a-dog': typeof Char123LangChar125GetADogRouteWithChildren
+  '/{-$lang}/guides': typeof Char123LangChar125GuidesRoute
+  '/{-$lang}/member-card': typeof Char123LangChar125MemberCardRoute
+  '/{-$lang}/my-dog': typeof Char123LangChar125MyDogRouteWithChildren
+  '/{-$lang}/partners': typeof Char123LangChar125PartnersRoute
+  '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
+  '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
+  '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
+  '/{-$lang}/terms': typeof Char123LangChar125TermsRoute
+  '/{-$lang}/train': typeof Char123LangChar125TrainRouteWithChildren
+  '/{-$lang}/travel': typeof Char123LangChar125TravelRouteWithChildren
+  '/{-$lang}/': typeof Char123LangChar125IndexRoute
+  '/{-$lang}/breeds/$breedId': typeof Char123LangChar125BreedsBreedIdRoute
+  '/{-$lang}/checkout/canceled': typeof Char123LangChar125CheckoutCanceledRoute
+  '/{-$lang}/checkout/success': typeof Char123LangChar125CheckoutSuccessRoute
+  '/{-$lang}/get-a-dog/choose': typeof Char123LangChar125GetADogChooseRoute
+  '/{-$lang}/get-a-dog/costs': typeof Char123LangChar125GetADogCostsRoute
+  '/{-$lang}/get-a-dog/prepare': typeof Char123LangChar125GetADogPrepareRoute
+  '/{-$lang}/get-a-dog/ready': typeof Char123LangChar125GetADogReadyRoute
+  '/{-$lang}/get-a-dog/welcome-home': typeof Char123LangChar125GetADogWelcomeHomeRoute
+  '/{-$lang}/my-dog/contacts': typeof Char123LangChar125MyDogContactsRoute
+  '/{-$lang}/my-dog/food': typeof Char123LangChar125MyDogFoodRoute
+  '/{-$lang}/my-dog/nutrition': typeof Char123LangChar125MyDogNutritionRoute
+  '/{-$lang}/my-dog/pack': typeof Char123LangChar125MyDogPackRoute
+  '/{-$lang}/my-dog/print': typeof Char123LangChar125MyDogPrintRoute
+  '/{-$lang}/my-dog/setup': typeof Char123LangChar125MyDogSetupRoute
+  '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
+  '/{-$lang}/my-dog/week': typeof Char123LangChar125MyDogWeekRoute
+  '/{-$lang}/my-dog/weight': typeof Char123LangChar125MyDogWeightRoute
+  '/{-$lang}/train/journey': typeof Char123LangChar125TrainJourneyRoute
+  '/{-$lang}/train/library': typeof Char123LangChar125TrainLibraryRoute
+  '/{-$lang}/train/setup': typeof Char123LangChar125TrainSetupRoute
+  '/{-$lang}/travel/abroad': typeof Char123LangChar125TravelAbroadRoute
+  '/{-$lang}/travel/car': typeof Char123LangChar125TravelCarRoute
+  '/{-$lang}/travel/outdoors': typeof Char123LangChar125TravelOutdoorsRoute
+  '/{-$lang}/verify/$memberId': typeof Char123LangChar125VerifyMemberIdRoute
+  '/{-$lang}/breeds/': typeof Char123LangChar125BreedsIndexRoute
+  '/{-$lang}/get-a-dog/': typeof Char123LangChar125GetADogIndexRoute
+  '/{-$lang}/my-dog/': typeof Char123LangChar125MyDogIndexRoute
+  '/{-$lang}/train/': typeof Char123LangChar125TrainIndexRoute
+  '/{-$lang}/travel/': typeof Char123LangChar125TravelIndexRoute
+  '/{-$lang}/get-a-dog/breed/$breedId': typeof Char123LangChar125GetADogBreedBreedIdRoute
+  '/{-$lang}/my-dog/care/$topicId': typeof Char123LangChar125MyDogCareTopicIdRoute
+  '/{-$lang}/train/lessons/$lessonId': typeof Char123LangChar125TrainLessonsLessonIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/about'
-    | '/account'
-    | '/auth'
-    | '/best-dog-breeds-for-families'
-    | '/brochure'
-    | '/compare'
-    | '/contact'
-    | '/dog-life'
-    | '/find-my-dog'
-    | '/get-a-dog'
-    | '/guides'
-    | '/member-card'
-    | '/my-dog'
-    | '/partners'
-    | '/plus'
-    | '/privacy'
     | '/sitemap.xml'
-    | '/sources'
-    | '/terms'
-    | '/train'
-    | '/travel'
-    | '/breeds/$breedId'
-    | '/checkout/canceled'
-    | '/checkout/success'
-    | '/get-a-dog/choose'
-    | '/get-a-dog/costs'
-    | '/get-a-dog/prepare'
-    | '/get-a-dog/ready'
-    | '/get-a-dog/welcome-home'
-    | '/my-dog/contacts'
-    | '/my-dog/food'
-    | '/my-dog/nutrition'
-    | '/my-dog/pack'
-    | '/my-dog/print'
-    | '/my-dog/setup'
-    | '/my-dog/vet'
-    | '/my-dog/week'
-    | '/my-dog/weight'
-    | '/train/journey'
-    | '/train/library'
-    | '/train/setup'
-    | '/travel/abroad'
-    | '/travel/car'
-    | '/travel/outdoors'
-    | '/verify/$memberId'
-    | '/breeds/'
-    | '/get-a-dog/'
-    | '/my-dog/'
-    | '/train/'
-    | '/travel/'
-    | '/get-a-dog/breed/$breedId'
-    | '/my-dog/care/$topicId'
-    | '/train/lessons/$lessonId'
+    | '/{-$lang}'
+    | '/{-$lang}/about'
+    | '/{-$lang}/account'
+    | '/{-$lang}/auth'
+    | '/{-$lang}/best-dog-breeds-for-families'
+    | '/{-$lang}/brochure'
+    | '/{-$lang}/compare'
+    | '/{-$lang}/contact'
+    | '/{-$lang}/dog-life'
+    | '/{-$lang}/find-my-dog'
+    | '/{-$lang}/get-a-dog'
+    | '/{-$lang}/guides'
+    | '/{-$lang}/member-card'
+    | '/{-$lang}/my-dog'
+    | '/{-$lang}/partners'
+    | '/{-$lang}/plus'
+    | '/{-$lang}/privacy'
+    | '/{-$lang}/sources'
+    | '/{-$lang}/terms'
+    | '/{-$lang}/train'
+    | '/{-$lang}/travel'
+    | '/{-$lang}/'
+    | '/{-$lang}/breeds/$breedId'
+    | '/{-$lang}/checkout/canceled'
+    | '/{-$lang}/checkout/success'
+    | '/{-$lang}/get-a-dog/choose'
+    | '/{-$lang}/get-a-dog/costs'
+    | '/{-$lang}/get-a-dog/prepare'
+    | '/{-$lang}/get-a-dog/ready'
+    | '/{-$lang}/get-a-dog/welcome-home'
+    | '/{-$lang}/my-dog/contacts'
+    | '/{-$lang}/my-dog/food'
+    | '/{-$lang}/my-dog/nutrition'
+    | '/{-$lang}/my-dog/pack'
+    | '/{-$lang}/my-dog/print'
+    | '/{-$lang}/my-dog/setup'
+    | '/{-$lang}/my-dog/vet'
+    | '/{-$lang}/my-dog/week'
+    | '/{-$lang}/my-dog/weight'
+    | '/{-$lang}/train/journey'
+    | '/{-$lang}/train/library'
+    | '/{-$lang}/train/setup'
+    | '/{-$lang}/travel/abroad'
+    | '/{-$lang}/travel/car'
+    | '/{-$lang}/travel/outdoors'
+    | '/{-$lang}/verify/$memberId'
+    | '/{-$lang}/breeds/'
+    | '/{-$lang}/get-a-dog/'
+    | '/{-$lang}/my-dog/'
+    | '/{-$lang}/train/'
+    | '/{-$lang}/travel/'
+    | '/{-$lang}/get-a-dog/breed/$breedId'
+    | '/{-$lang}/my-dog/care/$topicId'
+    | '/{-$lang}/train/lessons/$lessonId'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/about'
-    | '/account'
-    | '/auth'
-    | '/best-dog-breeds-for-families'
-    | '/brochure'
-    | '/compare'
-    | '/contact'
-    | '/dog-life'
-    | '/find-my-dog'
-    | '/guides'
-    | '/member-card'
-    | '/partners'
-    | '/plus'
-    | '/privacy'
     | '/sitemap.xml'
-    | '/sources'
-    | '/terms'
-    | '/breeds/$breedId'
-    | '/checkout/canceled'
-    | '/checkout/success'
-    | '/get-a-dog/choose'
-    | '/get-a-dog/costs'
-    | '/get-a-dog/prepare'
-    | '/get-a-dog/ready'
-    | '/get-a-dog/welcome-home'
-    | '/my-dog/contacts'
-    | '/my-dog/food'
-    | '/my-dog/nutrition'
-    | '/my-dog/pack'
-    | '/my-dog/print'
-    | '/my-dog/setup'
-    | '/my-dog/vet'
-    | '/my-dog/week'
-    | '/my-dog/weight'
-    | '/train/journey'
-    | '/train/library'
-    | '/train/setup'
-    | '/travel/abroad'
-    | '/travel/car'
-    | '/travel/outdoors'
-    | '/verify/$memberId'
-    | '/breeds'
-    | '/get-a-dog'
-    | '/my-dog'
-    | '/train'
-    | '/travel'
-    | '/get-a-dog/breed/$breedId'
-    | '/my-dog/care/$topicId'
-    | '/train/lessons/$lessonId'
+    | '/{-$lang}/about'
+    | '/{-$lang}/account'
+    | '/{-$lang}/auth'
+    | '/{-$lang}/best-dog-breeds-for-families'
+    | '/{-$lang}/brochure'
+    | '/{-$lang}/compare'
+    | '/{-$lang}/contact'
+    | '/{-$lang}/dog-life'
+    | '/{-$lang}/find-my-dog'
+    | '/{-$lang}/guides'
+    | '/{-$lang}/member-card'
+    | '/{-$lang}/partners'
+    | '/{-$lang}/plus'
+    | '/{-$lang}/privacy'
+    | '/{-$lang}/sources'
+    | '/{-$lang}/terms'
+    | '/{-$lang}'
+    | '/{-$lang}/breeds/$breedId'
+    | '/{-$lang}/checkout/canceled'
+    | '/{-$lang}/checkout/success'
+    | '/{-$lang}/get-a-dog/choose'
+    | '/{-$lang}/get-a-dog/costs'
+    | '/{-$lang}/get-a-dog/prepare'
+    | '/{-$lang}/get-a-dog/ready'
+    | '/{-$lang}/get-a-dog/welcome-home'
+    | '/{-$lang}/my-dog/contacts'
+    | '/{-$lang}/my-dog/food'
+    | '/{-$lang}/my-dog/nutrition'
+    | '/{-$lang}/my-dog/pack'
+    | '/{-$lang}/my-dog/print'
+    | '/{-$lang}/my-dog/setup'
+    | '/{-$lang}/my-dog/vet'
+    | '/{-$lang}/my-dog/week'
+    | '/{-$lang}/my-dog/weight'
+    | '/{-$lang}/train/journey'
+    | '/{-$lang}/train/library'
+    | '/{-$lang}/train/setup'
+    | '/{-$lang}/travel/abroad'
+    | '/{-$lang}/travel/car'
+    | '/{-$lang}/travel/outdoors'
+    | '/{-$lang}/verify/$memberId'
+    | '/{-$lang}/breeds'
+    | '/{-$lang}/get-a-dog'
+    | '/{-$lang}/my-dog'
+    | '/{-$lang}/train'
+    | '/{-$lang}/travel'
+    | '/{-$lang}/get-a-dog/breed/$breedId'
+    | '/{-$lang}/my-dog/care/$topicId'
+    | '/{-$lang}/train/lessons/$lessonId'
   id:
     | '__root__'
-    | '/'
-    | '/about'
-    | '/account'
-    | '/auth'
-    | '/best-dog-breeds-for-families'
-    | '/brochure'
-    | '/compare'
-    | '/contact'
-    | '/dog-life'
-    | '/find-my-dog'
-    | '/get-a-dog'
-    | '/guides'
-    | '/member-card'
-    | '/my-dog'
-    | '/partners'
-    | '/plus'
-    | '/privacy'
     | '/sitemap.xml'
-    | '/sources'
-    | '/terms'
-    | '/train'
-    | '/travel'
-    | '/breeds/$breedId'
-    | '/checkout/canceled'
-    | '/checkout/success'
-    | '/get-a-dog/choose'
-    | '/get-a-dog/costs'
-    | '/get-a-dog/prepare'
-    | '/get-a-dog/ready'
-    | '/get-a-dog/welcome-home'
-    | '/my-dog/contacts'
-    | '/my-dog/food'
-    | '/my-dog/nutrition'
-    | '/my-dog/pack'
-    | '/my-dog/print'
-    | '/my-dog/setup'
-    | '/my-dog/vet'
-    | '/my-dog/week'
-    | '/my-dog/weight'
-    | '/train/journey'
-    | '/train/library'
-    | '/train/setup'
-    | '/travel/abroad'
-    | '/travel/car'
-    | '/travel/outdoors'
-    | '/verify/$memberId'
-    | '/breeds/'
-    | '/get-a-dog/'
-    | '/my-dog/'
-    | '/train/'
-    | '/travel/'
-    | '/get-a-dog/breed/$breedId'
-    | '/my-dog/care/$topicId'
-    | '/train/lessons/$lessonId'
+    | '/{-$lang}'
+    | '/{-$lang}/about'
+    | '/{-$lang}/account'
+    | '/{-$lang}/auth'
+    | '/{-$lang}/best-dog-breeds-for-families'
+    | '/{-$lang}/brochure'
+    | '/{-$lang}/compare'
+    | '/{-$lang}/contact'
+    | '/{-$lang}/dog-life'
+    | '/{-$lang}/find-my-dog'
+    | '/{-$lang}/get-a-dog'
+    | '/{-$lang}/guides'
+    | '/{-$lang}/member-card'
+    | '/{-$lang}/my-dog'
+    | '/{-$lang}/partners'
+    | '/{-$lang}/plus'
+    | '/{-$lang}/privacy'
+    | '/{-$lang}/sources'
+    | '/{-$lang}/terms'
+    | '/{-$lang}/train'
+    | '/{-$lang}/travel'
+    | '/{-$lang}/'
+    | '/{-$lang}/breeds/$breedId'
+    | '/{-$lang}/checkout/canceled'
+    | '/{-$lang}/checkout/success'
+    | '/{-$lang}/get-a-dog/choose'
+    | '/{-$lang}/get-a-dog/costs'
+    | '/{-$lang}/get-a-dog/prepare'
+    | '/{-$lang}/get-a-dog/ready'
+    | '/{-$lang}/get-a-dog/welcome-home'
+    | '/{-$lang}/my-dog/contacts'
+    | '/{-$lang}/my-dog/food'
+    | '/{-$lang}/my-dog/nutrition'
+    | '/{-$lang}/my-dog/pack'
+    | '/{-$lang}/my-dog/print'
+    | '/{-$lang}/my-dog/setup'
+    | '/{-$lang}/my-dog/vet'
+    | '/{-$lang}/my-dog/week'
+    | '/{-$lang}/my-dog/weight'
+    | '/{-$lang}/train/journey'
+    | '/{-$lang}/train/library'
+    | '/{-$lang}/train/setup'
+    | '/{-$lang}/travel/abroad'
+    | '/{-$lang}/travel/car'
+    | '/{-$lang}/travel/outdoors'
+    | '/{-$lang}/verify/$memberId'
+    | '/{-$lang}/breeds/'
+    | '/{-$lang}/get-a-dog/'
+    | '/{-$lang}/my-dog/'
+    | '/{-$lang}/train/'
+    | '/{-$lang}/travel/'
+    | '/{-$lang}/get-a-dog/breed/$breedId'
+    | '/{-$lang}/my-dog/care/$topicId'
+    | '/{-$lang}/train/lessons/$lessonId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  AccountRoute: typeof AccountRoute
-  AuthRoute: typeof AuthRoute
-  BestDogBreedsForFamiliesRoute: typeof BestDogBreedsForFamiliesRoute
-  BrochureRoute: typeof BrochureRoute
-  CompareRoute: typeof CompareRoute
-  ContactRoute: typeof ContactRoute
-  DogLifeRoute: typeof DogLifeRoute
-  FindMyDogRoute: typeof FindMyDogRoute
-  GetADogRoute: typeof GetADogRouteWithChildren
-  GuidesRoute: typeof GuidesRoute
-  MemberCardRoute: typeof MemberCardRoute
-  MyDogRoute: typeof MyDogRouteWithChildren
-  PartnersRoute: typeof PartnersRoute
-  PlusRoute: typeof PlusRoute
-  PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  SourcesRoute: typeof SourcesRoute
-  TermsRoute: typeof TermsRoute
-  TrainRoute: typeof TrainRouteWithChildren
-  TravelRoute: typeof TravelRouteWithChildren
-  BreedsBreedIdRoute: typeof BreedsBreedIdRoute
-  CheckoutCanceledRoute: typeof CheckoutCanceledRoute
-  CheckoutSuccessRoute: typeof CheckoutSuccessRoute
-  VerifyMemberIdRoute: typeof VerifyMemberIdRoute
-  BreedsIndexRoute: typeof BreedsIndexRoute
+  Char123LangChar125Route: typeof Char123LangChar125RouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/account': {
-      id: '/account'
-      path: '/account'
-      fullPath: '/account'
-      preLoaderRoute: typeof AccountRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/best-dog-breeds-for-families': {
-      id: '/best-dog-breeds-for-families'
-      path: '/best-dog-breeds-for-families'
-      fullPath: '/best-dog-breeds-for-families'
-      preLoaderRoute: typeof BestDogBreedsForFamiliesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/brochure': {
-      id: '/brochure'
-      path: '/brochure'
-      fullPath: '/brochure'
-      preLoaderRoute: typeof BrochureRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/compare': {
-      id: '/compare'
-      path: '/compare'
-      fullPath: '/compare'
-      preLoaderRoute: typeof CompareRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dog-life': {
-      id: '/dog-life'
-      path: '/dog-life'
-      fullPath: '/dog-life'
-      preLoaderRoute: typeof DogLifeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/find-my-dog': {
-      id: '/find-my-dog'
-      path: '/find-my-dog'
-      fullPath: '/find-my-dog'
-      preLoaderRoute: typeof FindMyDogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/get-a-dog': {
-      id: '/get-a-dog'
-      path: '/get-a-dog'
-      fullPath: '/get-a-dog'
-      preLoaderRoute: typeof GetADogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/guides': {
-      id: '/guides'
-      path: '/guides'
-      fullPath: '/guides'
-      preLoaderRoute: typeof GuidesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/member-card': {
-      id: '/member-card'
-      path: '/member-card'
-      fullPath: '/member-card'
-      preLoaderRoute: typeof MemberCardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/my-dog': {
-      id: '/my-dog'
-      path: '/my-dog'
-      fullPath: '/my-dog'
-      preLoaderRoute: typeof MyDogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/partners': {
-      id: '/partners'
-      path: '/partners'
-      fullPath: '/partners'
-      preLoaderRoute: typeof PartnersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/plus': {
-      id: '/plus'
-      path: '/plus'
-      fullPath: '/plus'
-      preLoaderRoute: typeof PlusRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -826,377 +737,563 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sources': {
-      id: '/sources'
+    '/{-$lang}': {
+      id: '/{-$lang}'
+      path: '/{-$lang}'
+      fullPath: '/{-$lang}'
+      preLoaderRoute: typeof Char123LangChar125RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/{-$lang}/': {
+      id: '/{-$lang}/'
+      path: '/'
+      fullPath: '/{-$lang}/'
+      preLoaderRoute: typeof Char123LangChar125IndexRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/about': {
+      id: '/{-$lang}/about'
+      path: '/about'
+      fullPath: '/{-$lang}/about'
+      preLoaderRoute: typeof Char123LangChar125AboutRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/account': {
+      id: '/{-$lang}/account'
+      path: '/account'
+      fullPath: '/{-$lang}/account'
+      preLoaderRoute: typeof Char123LangChar125AccountRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/auth': {
+      id: '/{-$lang}/auth'
+      path: '/auth'
+      fullPath: '/{-$lang}/auth'
+      preLoaderRoute: typeof Char123LangChar125AuthRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/best-dog-breeds-for-families': {
+      id: '/{-$lang}/best-dog-breeds-for-families'
+      path: '/best-dog-breeds-for-families'
+      fullPath: '/{-$lang}/best-dog-breeds-for-families'
+      preLoaderRoute: typeof Char123LangChar125BestDogBreedsForFamiliesRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/brochure': {
+      id: '/{-$lang}/brochure'
+      path: '/brochure'
+      fullPath: '/{-$lang}/brochure'
+      preLoaderRoute: typeof Char123LangChar125BrochureRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/compare': {
+      id: '/{-$lang}/compare'
+      path: '/compare'
+      fullPath: '/{-$lang}/compare'
+      preLoaderRoute: typeof Char123LangChar125CompareRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/contact': {
+      id: '/{-$lang}/contact'
+      path: '/contact'
+      fullPath: '/{-$lang}/contact'
+      preLoaderRoute: typeof Char123LangChar125ContactRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/dog-life': {
+      id: '/{-$lang}/dog-life'
+      path: '/dog-life'
+      fullPath: '/{-$lang}/dog-life'
+      preLoaderRoute: typeof Char123LangChar125DogLifeRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/find-my-dog': {
+      id: '/{-$lang}/find-my-dog'
+      path: '/find-my-dog'
+      fullPath: '/{-$lang}/find-my-dog'
+      preLoaderRoute: typeof Char123LangChar125FindMyDogRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/get-a-dog': {
+      id: '/{-$lang}/get-a-dog'
+      path: '/get-a-dog'
+      fullPath: '/{-$lang}/get-a-dog'
+      preLoaderRoute: typeof Char123LangChar125GetADogRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/guides': {
+      id: '/{-$lang}/guides'
+      path: '/guides'
+      fullPath: '/{-$lang}/guides'
+      preLoaderRoute: typeof Char123LangChar125GuidesRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/member-card': {
+      id: '/{-$lang}/member-card'
+      path: '/member-card'
+      fullPath: '/{-$lang}/member-card'
+      preLoaderRoute: typeof Char123LangChar125MemberCardRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/my-dog': {
+      id: '/{-$lang}/my-dog'
+      path: '/my-dog'
+      fullPath: '/{-$lang}/my-dog'
+      preLoaderRoute: typeof Char123LangChar125MyDogRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/partners': {
+      id: '/{-$lang}/partners'
+      path: '/partners'
+      fullPath: '/{-$lang}/partners'
+      preLoaderRoute: typeof Char123LangChar125PartnersRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/plus': {
+      id: '/{-$lang}/plus'
+      path: '/plus'
+      fullPath: '/{-$lang}/plus'
+      preLoaderRoute: typeof Char123LangChar125PlusRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/privacy': {
+      id: '/{-$lang}/privacy'
+      path: '/privacy'
+      fullPath: '/{-$lang}/privacy'
+      preLoaderRoute: typeof Char123LangChar125PrivacyRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/sources': {
+      id: '/{-$lang}/sources'
       path: '/sources'
-      fullPath: '/sources'
-      preLoaderRoute: typeof SourcesRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/sources'
+      preLoaderRoute: typeof Char123LangChar125SourcesRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/terms': {
-      id: '/terms'
+    '/{-$lang}/terms': {
+      id: '/{-$lang}/terms'
       path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/terms'
+      preLoaderRoute: typeof Char123LangChar125TermsRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/train': {
-      id: '/train'
+    '/{-$lang}/train': {
+      id: '/{-$lang}/train'
       path: '/train'
-      fullPath: '/train'
-      preLoaderRoute: typeof TrainRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/train'
+      preLoaderRoute: typeof Char123LangChar125TrainRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/travel': {
-      id: '/travel'
+    '/{-$lang}/travel': {
+      id: '/{-$lang}/travel'
       path: '/travel'
-      fullPath: '/travel'
-      preLoaderRoute: typeof TravelRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/travel'
+      preLoaderRoute: typeof Char123LangChar125TravelRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/breeds/': {
-      id: '/breeds/'
+    '/{-$lang}/breeds/': {
+      id: '/{-$lang}/breeds/'
       path: '/breeds'
-      fullPath: '/breeds/'
-      preLoaderRoute: typeof BreedsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/breeds/'
+      preLoaderRoute: typeof Char123LangChar125BreedsIndexRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/breeds/$breedId': {
-      id: '/breeds/$breedId'
+    '/{-$lang}/breeds/$breedId': {
+      id: '/{-$lang}/breeds/$breedId'
       path: '/breeds/$breedId'
-      fullPath: '/breeds/$breedId'
-      preLoaderRoute: typeof BreedsBreedIdRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/breeds/$breedId'
+      preLoaderRoute: typeof Char123LangChar125BreedsBreedIdRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/checkout/canceled': {
-      id: '/checkout/canceled'
+    '/{-$lang}/checkout/canceled': {
+      id: '/{-$lang}/checkout/canceled'
       path: '/checkout/canceled'
-      fullPath: '/checkout/canceled'
-      preLoaderRoute: typeof CheckoutCanceledRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/checkout/canceled'
+      preLoaderRoute: typeof Char123LangChar125CheckoutCanceledRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/checkout/success': {
-      id: '/checkout/success'
+    '/{-$lang}/checkout/success': {
+      id: '/{-$lang}/checkout/success'
       path: '/checkout/success'
-      fullPath: '/checkout/success'
-      preLoaderRoute: typeof CheckoutSuccessRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/checkout/success'
+      preLoaderRoute: typeof Char123LangChar125CheckoutSuccessRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/get-a-dog/': {
-      id: '/get-a-dog/'
+    '/{-$lang}/get-a-dog/': {
+      id: '/{-$lang}/get-a-dog/'
       path: '/'
-      fullPath: '/get-a-dog/'
-      preLoaderRoute: typeof GetADogIndexRouteImport
-      parentRoute: typeof GetADogRoute
+      fullPath: '/{-$lang}/get-a-dog/'
+      preLoaderRoute: typeof Char123LangChar125GetADogIndexRouteImport
+      parentRoute: typeof Char123LangChar125GetADogRoute
     }
-    '/get-a-dog/choose': {
-      id: '/get-a-dog/choose'
+    '/{-$lang}/get-a-dog/choose': {
+      id: '/{-$lang}/get-a-dog/choose'
       path: '/choose'
-      fullPath: '/get-a-dog/choose'
-      preLoaderRoute: typeof GetADogChooseRouteImport
-      parentRoute: typeof GetADogRoute
+      fullPath: '/{-$lang}/get-a-dog/choose'
+      preLoaderRoute: typeof Char123LangChar125GetADogChooseRouteImport
+      parentRoute: typeof Char123LangChar125GetADogRoute
     }
-    '/get-a-dog/costs': {
-      id: '/get-a-dog/costs'
+    '/{-$lang}/get-a-dog/costs': {
+      id: '/{-$lang}/get-a-dog/costs'
       path: '/costs'
-      fullPath: '/get-a-dog/costs'
-      preLoaderRoute: typeof GetADogCostsRouteImport
-      parentRoute: typeof GetADogRoute
+      fullPath: '/{-$lang}/get-a-dog/costs'
+      preLoaderRoute: typeof Char123LangChar125GetADogCostsRouteImport
+      parentRoute: typeof Char123LangChar125GetADogRoute
     }
-    '/get-a-dog/prepare': {
-      id: '/get-a-dog/prepare'
+    '/{-$lang}/get-a-dog/prepare': {
+      id: '/{-$lang}/get-a-dog/prepare'
       path: '/prepare'
-      fullPath: '/get-a-dog/prepare'
-      preLoaderRoute: typeof GetADogPrepareRouteImport
-      parentRoute: typeof GetADogRoute
+      fullPath: '/{-$lang}/get-a-dog/prepare'
+      preLoaderRoute: typeof Char123LangChar125GetADogPrepareRouteImport
+      parentRoute: typeof Char123LangChar125GetADogRoute
     }
-    '/get-a-dog/ready': {
-      id: '/get-a-dog/ready'
+    '/{-$lang}/get-a-dog/ready': {
+      id: '/{-$lang}/get-a-dog/ready'
       path: '/ready'
-      fullPath: '/get-a-dog/ready'
-      preLoaderRoute: typeof GetADogReadyRouteImport
-      parentRoute: typeof GetADogRoute
+      fullPath: '/{-$lang}/get-a-dog/ready'
+      preLoaderRoute: typeof Char123LangChar125GetADogReadyRouteImport
+      parentRoute: typeof Char123LangChar125GetADogRoute
     }
-    '/get-a-dog/welcome-home': {
-      id: '/get-a-dog/welcome-home'
+    '/{-$lang}/get-a-dog/welcome-home': {
+      id: '/{-$lang}/get-a-dog/welcome-home'
       path: '/welcome-home'
-      fullPath: '/get-a-dog/welcome-home'
-      preLoaderRoute: typeof GetADogWelcomeHomeRouteImport
-      parentRoute: typeof GetADogRoute
+      fullPath: '/{-$lang}/get-a-dog/welcome-home'
+      preLoaderRoute: typeof Char123LangChar125GetADogWelcomeHomeRouteImport
+      parentRoute: typeof Char123LangChar125GetADogRoute
     }
-    '/my-dog/': {
-      id: '/my-dog/'
+    '/{-$lang}/my-dog/': {
+      id: '/{-$lang}/my-dog/'
       path: '/'
-      fullPath: '/my-dog/'
-      preLoaderRoute: typeof MyDogIndexRouteImport
-      parentRoute: typeof MyDogRoute
+      fullPath: '/{-$lang}/my-dog/'
+      preLoaderRoute: typeof Char123LangChar125MyDogIndexRouteImport
+      parentRoute: typeof Char123LangChar125MyDogRoute
     }
-    '/my-dog/contacts': {
-      id: '/my-dog/contacts'
+    '/{-$lang}/my-dog/contacts': {
+      id: '/{-$lang}/my-dog/contacts'
       path: '/contacts'
-      fullPath: '/my-dog/contacts'
-      preLoaderRoute: typeof MyDogContactsRouteImport
-      parentRoute: typeof MyDogRoute
+      fullPath: '/{-$lang}/my-dog/contacts'
+      preLoaderRoute: typeof Char123LangChar125MyDogContactsRouteImport
+      parentRoute: typeof Char123LangChar125MyDogRoute
     }
-    '/my-dog/food': {
-      id: '/my-dog/food'
+    '/{-$lang}/my-dog/food': {
+      id: '/{-$lang}/my-dog/food'
       path: '/food'
-      fullPath: '/my-dog/food'
-      preLoaderRoute: typeof MyDogFoodRouteImport
-      parentRoute: typeof MyDogRoute
+      fullPath: '/{-$lang}/my-dog/food'
+      preLoaderRoute: typeof Char123LangChar125MyDogFoodRouteImport
+      parentRoute: typeof Char123LangChar125MyDogRoute
     }
-    '/my-dog/nutrition': {
-      id: '/my-dog/nutrition'
+    '/{-$lang}/my-dog/nutrition': {
+      id: '/{-$lang}/my-dog/nutrition'
       path: '/nutrition'
-      fullPath: '/my-dog/nutrition'
-      preLoaderRoute: typeof MyDogNutritionRouteImport
-      parentRoute: typeof MyDogRoute
+      fullPath: '/{-$lang}/my-dog/nutrition'
+      preLoaderRoute: typeof Char123LangChar125MyDogNutritionRouteImport
+      parentRoute: typeof Char123LangChar125MyDogRoute
     }
-    '/my-dog/pack': {
-      id: '/my-dog/pack'
+    '/{-$lang}/my-dog/pack': {
+      id: '/{-$lang}/my-dog/pack'
       path: '/pack'
-      fullPath: '/my-dog/pack'
-      preLoaderRoute: typeof MyDogPackRouteImport
-      parentRoute: typeof MyDogRoute
+      fullPath: '/{-$lang}/my-dog/pack'
+      preLoaderRoute: typeof Char123LangChar125MyDogPackRouteImport
+      parentRoute: typeof Char123LangChar125MyDogRoute
     }
-    '/my-dog/print': {
-      id: '/my-dog/print'
+    '/{-$lang}/my-dog/print': {
+      id: '/{-$lang}/my-dog/print'
       path: '/print'
-      fullPath: '/my-dog/print'
-      preLoaderRoute: typeof MyDogPrintRouteImport
-      parentRoute: typeof MyDogRoute
+      fullPath: '/{-$lang}/my-dog/print'
+      preLoaderRoute: typeof Char123LangChar125MyDogPrintRouteImport
+      parentRoute: typeof Char123LangChar125MyDogRoute
     }
-    '/my-dog/setup': {
-      id: '/my-dog/setup'
+    '/{-$lang}/my-dog/setup': {
+      id: '/{-$lang}/my-dog/setup'
       path: '/setup'
-      fullPath: '/my-dog/setup'
-      preLoaderRoute: typeof MyDogSetupRouteImport
-      parentRoute: typeof MyDogRoute
+      fullPath: '/{-$lang}/my-dog/setup'
+      preLoaderRoute: typeof Char123LangChar125MyDogSetupRouteImport
+      parentRoute: typeof Char123LangChar125MyDogRoute
     }
-    '/my-dog/vet': {
-      id: '/my-dog/vet'
+    '/{-$lang}/my-dog/vet': {
+      id: '/{-$lang}/my-dog/vet'
       path: '/vet'
-      fullPath: '/my-dog/vet'
-      preLoaderRoute: typeof MyDogVetRouteImport
-      parentRoute: typeof MyDogRoute
+      fullPath: '/{-$lang}/my-dog/vet'
+      preLoaderRoute: typeof Char123LangChar125MyDogVetRouteImport
+      parentRoute: typeof Char123LangChar125MyDogRoute
     }
-    '/my-dog/week': {
-      id: '/my-dog/week'
+    '/{-$lang}/my-dog/week': {
+      id: '/{-$lang}/my-dog/week'
       path: '/week'
-      fullPath: '/my-dog/week'
-      preLoaderRoute: typeof MyDogWeekRouteImport
-      parentRoute: typeof MyDogRoute
+      fullPath: '/{-$lang}/my-dog/week'
+      preLoaderRoute: typeof Char123LangChar125MyDogWeekRouteImport
+      parentRoute: typeof Char123LangChar125MyDogRoute
     }
-    '/my-dog/weight': {
-      id: '/my-dog/weight'
+    '/{-$lang}/my-dog/weight': {
+      id: '/{-$lang}/my-dog/weight'
       path: '/weight'
-      fullPath: '/my-dog/weight'
-      preLoaderRoute: typeof MyDogWeightRouteImport
-      parentRoute: typeof MyDogRoute
+      fullPath: '/{-$lang}/my-dog/weight'
+      preLoaderRoute: typeof Char123LangChar125MyDogWeightRouteImport
+      parentRoute: typeof Char123LangChar125MyDogRoute
     }
-    '/train/': {
-      id: '/train/'
+    '/{-$lang}/train/': {
+      id: '/{-$lang}/train/'
       path: '/'
-      fullPath: '/train/'
-      preLoaderRoute: typeof TrainIndexRouteImport
-      parentRoute: typeof TrainRoute
+      fullPath: '/{-$lang}/train/'
+      preLoaderRoute: typeof Char123LangChar125TrainIndexRouteImport
+      parentRoute: typeof Char123LangChar125TrainRoute
     }
-    '/train/journey': {
-      id: '/train/journey'
+    '/{-$lang}/train/journey': {
+      id: '/{-$lang}/train/journey'
       path: '/journey'
-      fullPath: '/train/journey'
-      preLoaderRoute: typeof TrainJourneyRouteImport
-      parentRoute: typeof TrainRoute
+      fullPath: '/{-$lang}/train/journey'
+      preLoaderRoute: typeof Char123LangChar125TrainJourneyRouteImport
+      parentRoute: typeof Char123LangChar125TrainRoute
     }
-    '/train/library': {
-      id: '/train/library'
+    '/{-$lang}/train/library': {
+      id: '/{-$lang}/train/library'
       path: '/library'
-      fullPath: '/train/library'
-      preLoaderRoute: typeof TrainLibraryRouteImport
-      parentRoute: typeof TrainRoute
+      fullPath: '/{-$lang}/train/library'
+      preLoaderRoute: typeof Char123LangChar125TrainLibraryRouteImport
+      parentRoute: typeof Char123LangChar125TrainRoute
     }
-    '/train/setup': {
-      id: '/train/setup'
+    '/{-$lang}/train/setup': {
+      id: '/{-$lang}/train/setup'
       path: '/setup'
-      fullPath: '/train/setup'
-      preLoaderRoute: typeof TrainSetupRouteImport
-      parentRoute: typeof TrainRoute
+      fullPath: '/{-$lang}/train/setup'
+      preLoaderRoute: typeof Char123LangChar125TrainSetupRouteImport
+      parentRoute: typeof Char123LangChar125TrainRoute
     }
-    '/travel/': {
-      id: '/travel/'
+    '/{-$lang}/travel/': {
+      id: '/{-$lang}/travel/'
       path: '/'
-      fullPath: '/travel/'
-      preLoaderRoute: typeof TravelIndexRouteImport
-      parentRoute: typeof TravelRoute
+      fullPath: '/{-$lang}/travel/'
+      preLoaderRoute: typeof Char123LangChar125TravelIndexRouteImport
+      parentRoute: typeof Char123LangChar125TravelRoute
     }
-    '/travel/abroad': {
-      id: '/travel/abroad'
+    '/{-$lang}/travel/abroad': {
+      id: '/{-$lang}/travel/abroad'
       path: '/abroad'
-      fullPath: '/travel/abroad'
-      preLoaderRoute: typeof TravelAbroadRouteImport
-      parentRoute: typeof TravelRoute
+      fullPath: '/{-$lang}/travel/abroad'
+      preLoaderRoute: typeof Char123LangChar125TravelAbroadRouteImport
+      parentRoute: typeof Char123LangChar125TravelRoute
     }
-    '/travel/car': {
-      id: '/travel/car'
+    '/{-$lang}/travel/car': {
+      id: '/{-$lang}/travel/car'
       path: '/car'
-      fullPath: '/travel/car'
-      preLoaderRoute: typeof TravelCarRouteImport
-      parentRoute: typeof TravelRoute
+      fullPath: '/{-$lang}/travel/car'
+      preLoaderRoute: typeof Char123LangChar125TravelCarRouteImport
+      parentRoute: typeof Char123LangChar125TravelRoute
     }
-    '/travel/outdoors': {
-      id: '/travel/outdoors'
+    '/{-$lang}/travel/outdoors': {
+      id: '/{-$lang}/travel/outdoors'
       path: '/outdoors'
-      fullPath: '/travel/outdoors'
-      preLoaderRoute: typeof TravelOutdoorsRouteImport
-      parentRoute: typeof TravelRoute
+      fullPath: '/{-$lang}/travel/outdoors'
+      preLoaderRoute: typeof Char123LangChar125TravelOutdoorsRouteImport
+      parentRoute: typeof Char123LangChar125TravelRoute
     }
-    '/verify/$memberId': {
-      id: '/verify/$memberId'
+    '/{-$lang}/verify/$memberId': {
+      id: '/{-$lang}/verify/$memberId'
       path: '/verify/$memberId'
-      fullPath: '/verify/$memberId'
-      preLoaderRoute: typeof VerifyMemberIdRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/verify/$memberId'
+      preLoaderRoute: typeof Char123LangChar125VerifyMemberIdRouteImport
+      parentRoute: typeof Char123LangChar125Route
     }
-    '/get-a-dog/breed/$breedId': {
-      id: '/get-a-dog/breed/$breedId'
+    '/{-$lang}/get-a-dog/breed/$breedId': {
+      id: '/{-$lang}/get-a-dog/breed/$breedId'
       path: '/breed/$breedId'
-      fullPath: '/get-a-dog/breed/$breedId'
-      preLoaderRoute: typeof GetADogBreedBreedIdRouteImport
-      parentRoute: typeof GetADogRoute
+      fullPath: '/{-$lang}/get-a-dog/breed/$breedId'
+      preLoaderRoute: typeof Char123LangChar125GetADogBreedBreedIdRouteImport
+      parentRoute: typeof Char123LangChar125GetADogRoute
     }
-    '/my-dog/care/$topicId': {
-      id: '/my-dog/care/$topicId'
+    '/{-$lang}/my-dog/care/$topicId': {
+      id: '/{-$lang}/my-dog/care/$topicId'
       path: '/care/$topicId'
-      fullPath: '/my-dog/care/$topicId'
-      preLoaderRoute: typeof MyDogCareTopicIdRouteImport
-      parentRoute: typeof MyDogRoute
+      fullPath: '/{-$lang}/my-dog/care/$topicId'
+      preLoaderRoute: typeof Char123LangChar125MyDogCareTopicIdRouteImport
+      parentRoute: typeof Char123LangChar125MyDogRoute
     }
-    '/train/lessons/$lessonId': {
-      id: '/train/lessons/$lessonId'
+    '/{-$lang}/train/lessons/$lessonId': {
+      id: '/{-$lang}/train/lessons/$lessonId'
       path: '/lessons/$lessonId'
-      fullPath: '/train/lessons/$lessonId'
-      preLoaderRoute: typeof TrainLessonsLessonIdRouteImport
-      parentRoute: typeof TrainRoute
+      fullPath: '/{-$lang}/train/lessons/$lessonId'
+      preLoaderRoute: typeof Char123LangChar125TrainLessonsLessonIdRouteImport
+      parentRoute: typeof Char123LangChar125TrainRoute
     }
   }
 }
 
-interface GetADogRouteChildren {
-  GetADogChooseRoute: typeof GetADogChooseRoute
-  GetADogCostsRoute: typeof GetADogCostsRoute
-  GetADogPrepareRoute: typeof GetADogPrepareRoute
-  GetADogReadyRoute: typeof GetADogReadyRoute
-  GetADogWelcomeHomeRoute: typeof GetADogWelcomeHomeRoute
-  GetADogIndexRoute: typeof GetADogIndexRoute
-  GetADogBreedBreedIdRoute: typeof GetADogBreedBreedIdRoute
+interface Char123LangChar125GetADogRouteChildren {
+  Char123LangChar125GetADogChooseRoute: typeof Char123LangChar125GetADogChooseRoute
+  Char123LangChar125GetADogCostsRoute: typeof Char123LangChar125GetADogCostsRoute
+  Char123LangChar125GetADogPrepareRoute: typeof Char123LangChar125GetADogPrepareRoute
+  Char123LangChar125GetADogReadyRoute: typeof Char123LangChar125GetADogReadyRoute
+  Char123LangChar125GetADogWelcomeHomeRoute: typeof Char123LangChar125GetADogWelcomeHomeRoute
+  Char123LangChar125GetADogIndexRoute: typeof Char123LangChar125GetADogIndexRoute
+  Char123LangChar125GetADogBreedBreedIdRoute: typeof Char123LangChar125GetADogBreedBreedIdRoute
 }
 
-const GetADogRouteChildren: GetADogRouteChildren = {
-  GetADogChooseRoute: GetADogChooseRoute,
-  GetADogCostsRoute: GetADogCostsRoute,
-  GetADogPrepareRoute: GetADogPrepareRoute,
-  GetADogReadyRoute: GetADogReadyRoute,
-  GetADogWelcomeHomeRoute: GetADogWelcomeHomeRoute,
-  GetADogIndexRoute: GetADogIndexRoute,
-  GetADogBreedBreedIdRoute: GetADogBreedBreedIdRoute,
+const Char123LangChar125GetADogRouteChildren: Char123LangChar125GetADogRouteChildren =
+  {
+    Char123LangChar125GetADogChooseRoute: Char123LangChar125GetADogChooseRoute,
+    Char123LangChar125GetADogCostsRoute: Char123LangChar125GetADogCostsRoute,
+    Char123LangChar125GetADogPrepareRoute:
+      Char123LangChar125GetADogPrepareRoute,
+    Char123LangChar125GetADogReadyRoute: Char123LangChar125GetADogReadyRoute,
+    Char123LangChar125GetADogWelcomeHomeRoute:
+      Char123LangChar125GetADogWelcomeHomeRoute,
+    Char123LangChar125GetADogIndexRoute: Char123LangChar125GetADogIndexRoute,
+    Char123LangChar125GetADogBreedBreedIdRoute:
+      Char123LangChar125GetADogBreedBreedIdRoute,
+  }
+
+const Char123LangChar125GetADogRouteWithChildren =
+  Char123LangChar125GetADogRoute._addFileChildren(
+    Char123LangChar125GetADogRouteChildren,
+  )
+
+interface Char123LangChar125MyDogRouteChildren {
+  Char123LangChar125MyDogContactsRoute: typeof Char123LangChar125MyDogContactsRoute
+  Char123LangChar125MyDogFoodRoute: typeof Char123LangChar125MyDogFoodRoute
+  Char123LangChar125MyDogNutritionRoute: typeof Char123LangChar125MyDogNutritionRoute
+  Char123LangChar125MyDogPackRoute: typeof Char123LangChar125MyDogPackRoute
+  Char123LangChar125MyDogPrintRoute: typeof Char123LangChar125MyDogPrintRoute
+  Char123LangChar125MyDogSetupRoute: typeof Char123LangChar125MyDogSetupRoute
+  Char123LangChar125MyDogVetRoute: typeof Char123LangChar125MyDogVetRoute
+  Char123LangChar125MyDogWeekRoute: typeof Char123LangChar125MyDogWeekRoute
+  Char123LangChar125MyDogWeightRoute: typeof Char123LangChar125MyDogWeightRoute
+  Char123LangChar125MyDogIndexRoute: typeof Char123LangChar125MyDogIndexRoute
+  Char123LangChar125MyDogCareTopicIdRoute: typeof Char123LangChar125MyDogCareTopicIdRoute
 }
 
-const GetADogRouteWithChildren =
-  GetADogRoute._addFileChildren(GetADogRouteChildren)
+const Char123LangChar125MyDogRouteChildren: Char123LangChar125MyDogRouteChildren =
+  {
+    Char123LangChar125MyDogContactsRoute: Char123LangChar125MyDogContactsRoute,
+    Char123LangChar125MyDogFoodRoute: Char123LangChar125MyDogFoodRoute,
+    Char123LangChar125MyDogNutritionRoute:
+      Char123LangChar125MyDogNutritionRoute,
+    Char123LangChar125MyDogPackRoute: Char123LangChar125MyDogPackRoute,
+    Char123LangChar125MyDogPrintRoute: Char123LangChar125MyDogPrintRoute,
+    Char123LangChar125MyDogSetupRoute: Char123LangChar125MyDogSetupRoute,
+    Char123LangChar125MyDogVetRoute: Char123LangChar125MyDogVetRoute,
+    Char123LangChar125MyDogWeekRoute: Char123LangChar125MyDogWeekRoute,
+    Char123LangChar125MyDogWeightRoute: Char123LangChar125MyDogWeightRoute,
+    Char123LangChar125MyDogIndexRoute: Char123LangChar125MyDogIndexRoute,
+    Char123LangChar125MyDogCareTopicIdRoute:
+      Char123LangChar125MyDogCareTopicIdRoute,
+  }
 
-interface MyDogRouteChildren {
-  MyDogContactsRoute: typeof MyDogContactsRoute
-  MyDogFoodRoute: typeof MyDogFoodRoute
-  MyDogNutritionRoute: typeof MyDogNutritionRoute
-  MyDogPackRoute: typeof MyDogPackRoute
-  MyDogPrintRoute: typeof MyDogPrintRoute
-  MyDogSetupRoute: typeof MyDogSetupRoute
-  MyDogVetRoute: typeof MyDogVetRoute
-  MyDogWeekRoute: typeof MyDogWeekRoute
-  MyDogWeightRoute: typeof MyDogWeightRoute
-  MyDogIndexRoute: typeof MyDogIndexRoute
-  MyDogCareTopicIdRoute: typeof MyDogCareTopicIdRoute
+const Char123LangChar125MyDogRouteWithChildren =
+  Char123LangChar125MyDogRoute._addFileChildren(
+    Char123LangChar125MyDogRouteChildren,
+  )
+
+interface Char123LangChar125TrainRouteChildren {
+  Char123LangChar125TrainJourneyRoute: typeof Char123LangChar125TrainJourneyRoute
+  Char123LangChar125TrainLibraryRoute: typeof Char123LangChar125TrainLibraryRoute
+  Char123LangChar125TrainSetupRoute: typeof Char123LangChar125TrainSetupRoute
+  Char123LangChar125TrainIndexRoute: typeof Char123LangChar125TrainIndexRoute
+  Char123LangChar125TrainLessonsLessonIdRoute: typeof Char123LangChar125TrainLessonsLessonIdRoute
 }
 
-const MyDogRouteChildren: MyDogRouteChildren = {
-  MyDogContactsRoute: MyDogContactsRoute,
-  MyDogFoodRoute: MyDogFoodRoute,
-  MyDogNutritionRoute: MyDogNutritionRoute,
-  MyDogPackRoute: MyDogPackRoute,
-  MyDogPrintRoute: MyDogPrintRoute,
-  MyDogSetupRoute: MyDogSetupRoute,
-  MyDogVetRoute: MyDogVetRoute,
-  MyDogWeekRoute: MyDogWeekRoute,
-  MyDogWeightRoute: MyDogWeightRoute,
-  MyDogIndexRoute: MyDogIndexRoute,
-  MyDogCareTopicIdRoute: MyDogCareTopicIdRoute,
+const Char123LangChar125TrainRouteChildren: Char123LangChar125TrainRouteChildren =
+  {
+    Char123LangChar125TrainJourneyRoute: Char123LangChar125TrainJourneyRoute,
+    Char123LangChar125TrainLibraryRoute: Char123LangChar125TrainLibraryRoute,
+    Char123LangChar125TrainSetupRoute: Char123LangChar125TrainSetupRoute,
+    Char123LangChar125TrainIndexRoute: Char123LangChar125TrainIndexRoute,
+    Char123LangChar125TrainLessonsLessonIdRoute:
+      Char123LangChar125TrainLessonsLessonIdRoute,
+  }
+
+const Char123LangChar125TrainRouteWithChildren =
+  Char123LangChar125TrainRoute._addFileChildren(
+    Char123LangChar125TrainRouteChildren,
+  )
+
+interface Char123LangChar125TravelRouteChildren {
+  Char123LangChar125TravelAbroadRoute: typeof Char123LangChar125TravelAbroadRoute
+  Char123LangChar125TravelCarRoute: typeof Char123LangChar125TravelCarRoute
+  Char123LangChar125TravelOutdoorsRoute: typeof Char123LangChar125TravelOutdoorsRoute
+  Char123LangChar125TravelIndexRoute: typeof Char123LangChar125TravelIndexRoute
 }
 
-const MyDogRouteWithChildren = MyDogRoute._addFileChildren(MyDogRouteChildren)
+const Char123LangChar125TravelRouteChildren: Char123LangChar125TravelRouteChildren =
+  {
+    Char123LangChar125TravelAbroadRoute: Char123LangChar125TravelAbroadRoute,
+    Char123LangChar125TravelCarRoute: Char123LangChar125TravelCarRoute,
+    Char123LangChar125TravelOutdoorsRoute:
+      Char123LangChar125TravelOutdoorsRoute,
+    Char123LangChar125TravelIndexRoute: Char123LangChar125TravelIndexRoute,
+  }
 
-interface TrainRouteChildren {
-  TrainJourneyRoute: typeof TrainJourneyRoute
-  TrainLibraryRoute: typeof TrainLibraryRoute
-  TrainSetupRoute: typeof TrainSetupRoute
-  TrainIndexRoute: typeof TrainIndexRoute
-  TrainLessonsLessonIdRoute: typeof TrainLessonsLessonIdRoute
+const Char123LangChar125TravelRouteWithChildren =
+  Char123LangChar125TravelRoute._addFileChildren(
+    Char123LangChar125TravelRouteChildren,
+  )
+
+interface Char123LangChar125RouteChildren {
+  Char123LangChar125AboutRoute: typeof Char123LangChar125AboutRoute
+  Char123LangChar125AccountRoute: typeof Char123LangChar125AccountRoute
+  Char123LangChar125AuthRoute: typeof Char123LangChar125AuthRoute
+  Char123LangChar125BestDogBreedsForFamiliesRoute: typeof Char123LangChar125BestDogBreedsForFamiliesRoute
+  Char123LangChar125BrochureRoute: typeof Char123LangChar125BrochureRoute
+  Char123LangChar125CompareRoute: typeof Char123LangChar125CompareRoute
+  Char123LangChar125ContactRoute: typeof Char123LangChar125ContactRoute
+  Char123LangChar125DogLifeRoute: typeof Char123LangChar125DogLifeRoute
+  Char123LangChar125FindMyDogRoute: typeof Char123LangChar125FindMyDogRoute
+  Char123LangChar125GetADogRoute: typeof Char123LangChar125GetADogRouteWithChildren
+  Char123LangChar125GuidesRoute: typeof Char123LangChar125GuidesRoute
+  Char123LangChar125MemberCardRoute: typeof Char123LangChar125MemberCardRoute
+  Char123LangChar125MyDogRoute: typeof Char123LangChar125MyDogRouteWithChildren
+  Char123LangChar125PartnersRoute: typeof Char123LangChar125PartnersRoute
+  Char123LangChar125PlusRoute: typeof Char123LangChar125PlusRoute
+  Char123LangChar125PrivacyRoute: typeof Char123LangChar125PrivacyRoute
+  Char123LangChar125SourcesRoute: typeof Char123LangChar125SourcesRoute
+  Char123LangChar125TermsRoute: typeof Char123LangChar125TermsRoute
+  Char123LangChar125TrainRoute: typeof Char123LangChar125TrainRouteWithChildren
+  Char123LangChar125TravelRoute: typeof Char123LangChar125TravelRouteWithChildren
+  Char123LangChar125IndexRoute: typeof Char123LangChar125IndexRoute
+  Char123LangChar125BreedsBreedIdRoute: typeof Char123LangChar125BreedsBreedIdRoute
+  Char123LangChar125CheckoutCanceledRoute: typeof Char123LangChar125CheckoutCanceledRoute
+  Char123LangChar125CheckoutSuccessRoute: typeof Char123LangChar125CheckoutSuccessRoute
+  Char123LangChar125VerifyMemberIdRoute: typeof Char123LangChar125VerifyMemberIdRoute
+  Char123LangChar125BreedsIndexRoute: typeof Char123LangChar125BreedsIndexRoute
 }
 
-const TrainRouteChildren: TrainRouteChildren = {
-  TrainJourneyRoute: TrainJourneyRoute,
-  TrainLibraryRoute: TrainLibraryRoute,
-  TrainSetupRoute: TrainSetupRoute,
-  TrainIndexRoute: TrainIndexRoute,
-  TrainLessonsLessonIdRoute: TrainLessonsLessonIdRoute,
+const Char123LangChar125RouteChildren: Char123LangChar125RouteChildren = {
+  Char123LangChar125AboutRoute: Char123LangChar125AboutRoute,
+  Char123LangChar125AccountRoute: Char123LangChar125AccountRoute,
+  Char123LangChar125AuthRoute: Char123LangChar125AuthRoute,
+  Char123LangChar125BestDogBreedsForFamiliesRoute:
+    Char123LangChar125BestDogBreedsForFamiliesRoute,
+  Char123LangChar125BrochureRoute: Char123LangChar125BrochureRoute,
+  Char123LangChar125CompareRoute: Char123LangChar125CompareRoute,
+  Char123LangChar125ContactRoute: Char123LangChar125ContactRoute,
+  Char123LangChar125DogLifeRoute: Char123LangChar125DogLifeRoute,
+  Char123LangChar125FindMyDogRoute: Char123LangChar125FindMyDogRoute,
+  Char123LangChar125GetADogRoute: Char123LangChar125GetADogRouteWithChildren,
+  Char123LangChar125GuidesRoute: Char123LangChar125GuidesRoute,
+  Char123LangChar125MemberCardRoute: Char123LangChar125MemberCardRoute,
+  Char123LangChar125MyDogRoute: Char123LangChar125MyDogRouteWithChildren,
+  Char123LangChar125PartnersRoute: Char123LangChar125PartnersRoute,
+  Char123LangChar125PlusRoute: Char123LangChar125PlusRoute,
+  Char123LangChar125PrivacyRoute: Char123LangChar125PrivacyRoute,
+  Char123LangChar125SourcesRoute: Char123LangChar125SourcesRoute,
+  Char123LangChar125TermsRoute: Char123LangChar125TermsRoute,
+  Char123LangChar125TrainRoute: Char123LangChar125TrainRouteWithChildren,
+  Char123LangChar125TravelRoute: Char123LangChar125TravelRouteWithChildren,
+  Char123LangChar125IndexRoute: Char123LangChar125IndexRoute,
+  Char123LangChar125BreedsBreedIdRoute: Char123LangChar125BreedsBreedIdRoute,
+  Char123LangChar125CheckoutCanceledRoute:
+    Char123LangChar125CheckoutCanceledRoute,
+  Char123LangChar125CheckoutSuccessRoute:
+    Char123LangChar125CheckoutSuccessRoute,
+  Char123LangChar125VerifyMemberIdRoute: Char123LangChar125VerifyMemberIdRoute,
+  Char123LangChar125BreedsIndexRoute: Char123LangChar125BreedsIndexRoute,
 }
 
-const TrainRouteWithChildren = TrainRoute._addFileChildren(TrainRouteChildren)
-
-interface TravelRouteChildren {
-  TravelAbroadRoute: typeof TravelAbroadRoute
-  TravelCarRoute: typeof TravelCarRoute
-  TravelOutdoorsRoute: typeof TravelOutdoorsRoute
-  TravelIndexRoute: typeof TravelIndexRoute
-}
-
-const TravelRouteChildren: TravelRouteChildren = {
-  TravelAbroadRoute: TravelAbroadRoute,
-  TravelCarRoute: TravelCarRoute,
-  TravelOutdoorsRoute: TravelOutdoorsRoute,
-  TravelIndexRoute: TravelIndexRoute,
-}
-
-const TravelRouteWithChildren =
-  TravelRoute._addFileChildren(TravelRouteChildren)
+const Char123LangChar125RouteWithChildren =
+  Char123LangChar125Route._addFileChildren(Char123LangChar125RouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  AccountRoute: AccountRoute,
-  AuthRoute: AuthRoute,
-  BestDogBreedsForFamiliesRoute: BestDogBreedsForFamiliesRoute,
-  BrochureRoute: BrochureRoute,
-  CompareRoute: CompareRoute,
-  ContactRoute: ContactRoute,
-  DogLifeRoute: DogLifeRoute,
-  FindMyDogRoute: FindMyDogRoute,
-  GetADogRoute: GetADogRouteWithChildren,
-  GuidesRoute: GuidesRoute,
-  MemberCardRoute: MemberCardRoute,
-  MyDogRoute: MyDogRouteWithChildren,
-  PartnersRoute: PartnersRoute,
-  PlusRoute: PlusRoute,
-  PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  SourcesRoute: SourcesRoute,
-  TermsRoute: TermsRoute,
-  TrainRoute: TrainRouteWithChildren,
-  TravelRoute: TravelRouteWithChildren,
-  BreedsBreedIdRoute: BreedsBreedIdRoute,
-  CheckoutCanceledRoute: CheckoutCanceledRoute,
-  CheckoutSuccessRoute: CheckoutSuccessRoute,
-  VerifyMemberIdRoute: VerifyMemberIdRoute,
-  BreedsIndexRoute: BreedsIndexRoute,
+  Char123LangChar125Route: Char123LangChar125RouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

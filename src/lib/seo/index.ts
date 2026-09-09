@@ -2,10 +2,9 @@
  * Central SEO helpers for DoggMatch.
  *
  * One source of truth for the canonical origin, absolute URLs, hreflang
- * pairs (EN / NO) and the small JSON-LD builders used across routes.
- * Language is a client preference stored per visitor, and the Norwegian
- * reading of a page is addressable with ?lang=no — so that is what the
- * hreflang alternates point at.
+ * pairs (EN / NO / PL) and the small JSON-LD builders used across routes.
+ * The language lives in the path — / is English, /no and /pl are the other
+ * readings — so that is what canonical and the hreflang alternates point at.
  */
 
 export const SITE_URL = "https://www.doggmatch.com";
@@ -30,11 +29,10 @@ export function abs(path: string): string {
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
-/** The same page read in another language (English is the bare URL). */
+/** The same page read in another language (English is the bare, unprefixed path). */
 export function langUrl(path: string, lang: "en" | "no" | "pl"): string {
-  const url = abs(path);
-  if (lang === "en") return url;
-  return url.includes("?") ? `${url}&lang=${lang}` : `${url}?lang=${lang}`;
+  if (lang === "en") return abs(path);
+  return abs(`/${lang}${path === "/" ? "" : path}`);
 }
 
 /** The Norwegian reading of a page. */
@@ -99,11 +97,11 @@ export function jsonLd(data: Record<string, unknown>) {
 /** Title + description for one language. */
 export type SeoCopy = { title: string; description: string };
 
-type HeadCtx = { match?: { search?: unknown } };
+type HeadCtx = { params: { lang?: string | undefined } };
 
-/** The language a request asked for (?lang=), readable inside `head()`. */
+/** The language a request asked for (the /no, /pl path segment), readable inside `head()`. */
 export function headLocale(ctx: HeadCtx): "en" | "no" | "pl" {
-  const raw = String((ctx?.match?.search as { lang?: string } | undefined)?.lang ?? "").toLowerCase();
+  const raw = String(ctx?.params?.lang ?? "").toLowerCase();
   if (raw === "no" || raw === "nb" || raw === "nn" || raw === "nb-no") return "no";
   if (raw === "pl" || raw === "pl-pl") return "pl";
   return "en";
