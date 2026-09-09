@@ -293,6 +293,10 @@ function Results({
   const detail = explain(best);
   const others = results.slice(1, 4);
 
+  /** How forgiving a breed tends to be of first-timer training mistakes, from its firstTimeSuitability trait. */
+  const beginnerLevel = (score: number) =>
+    score >= 4 ? t.result.beginnerHigh : score <= 2 ? t.result.beginnerLow : t.result.beginnerModerate;
+
   // Kept on this device so Compare and the breed pages can speak to the same life.
   useEffect(() => {
     saveMatchProfile(profile);
@@ -316,13 +320,16 @@ function Results({
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {c.scoreNote}
                 </p>
-                {best.status !== "recommended" && (
-                  <span className="mt-4 inline-block">
+                <div className="mt-4 flex flex-wrap items-center gap-2">
+                  <Badge tone="neutral">
+                    {t.result.beginnerFriendlinessLabel}: {beginnerLevel(breedById[best.breedId].traits.firstTimeSuitability)}
+                  </Badge>
+                  {best.status !== "recommended" && (
                     <Badge tone="accent">
                       {best.status === "not-recommended" ? t.result.notRecommended : t.result.mismatchTitle}
                     </Badge>
-                  </span>
-                )}
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -466,6 +473,11 @@ function Results({
                   <span className="font-display text-sm tabular-nums text-muted-foreground">
                     {r.score}%
                   </span>
+                </div>
+                <div className="mt-2">
+                  <Badge tone="neutral">
+                    {t.result.beginnerFriendlinessLabel}: {beginnerLevel(breedById[r.breedId].traits.firstTimeSuitability)}
+                  </Badge>
                 </div>
                 {r.status !== "recommended" && (
                   <p className="mt-2 text-sm text-accent">{r.warnings[0]}</p>

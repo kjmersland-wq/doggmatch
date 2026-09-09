@@ -162,6 +162,10 @@ export const pl: Dictionary = {
     essentialsTitle: "Przygotowania do {breed}",
     essentialsBody:
       "Kilka rzeczy, które warto załatwić, zanim pies zamieszka w domu. Wspominamy o nich dopiero, gdy masz już swój wynik.",
+    beginnerFriendlinessLabel: "Przyjazność dla początkujących",
+    beginnerHigh: "Wysoka",
+    beginnerModerate: "Średnia",
+    beginnerLow: "Niska",
   },
   dimensions: {
     lifestyle: "Codzienność",

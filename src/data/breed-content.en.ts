@@ -21,10 +21,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Usually settles well into family life",
     ],
     considerations: [
-      "Sheds all year round",
-      "Needs a good amount of exercise every day",
-      "Big and strong on the lead",
-      "Gets bored without something to think about",
+      "Sheds year-round — you'll want a decent hoover",
+      "Needs a proper walk every single day, not just at weekends",
+      "Big and strong on the lead until they're taught otherwise",
+      "Bored quickly without a job, and a bored Lab finds mischief",
     ],
   },
   "golden-retriever": {
@@ -38,10 +38,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Happiest outdoors in cooler weather",
     ],
     considerations: [
-      "Sheds heavily a couple of times a year",
-      "Needs a regular brush",
-      "Finds hot weather hard",
-      "Doesn't like long hours on their own",
+      "Sheds heavily twice a year — expect tumbleweeds of fur",
+      "Needs a proper brush most weeks or the coat gets matted",
+      "Struggles in hot weather, so summer walks want early starts",
+      "Genuinely dislikes being left for long stretches",
     ],
   },
   poodle: {
@@ -55,10 +55,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Playful without being chaotic",
     ],
     considerations: [
-      "A trip to the groomer every 6–8 weeks",
-      "Needs something to think about, not just walks",
-      "Can get anxious if left alone a lot",
-      "Grooming adds up over the years",
+      "A trip to the groomer every 6–8 weeks, and it isn't cheap",
+      "Needs puzzles and training, not just miles on the lead",
+      "Can get genuinely anxious if left alone too often",
+      "Grooming costs add up steadily over the years",
     ],
   },
   "french-bulldog": {
@@ -72,10 +72,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Quieter than most small dogs",
     ],
     considerations: [
-      "Can struggle to breathe in heat or when working hard",
-      "Vet bills tend to be higher over a lifetime",
-      "Doesn't like being left alone",
-      "Worth choosing a breeder who health-tests carefully",
+      "Can struggle to breathe in heat or after any real effort",
+      "Vet bills tend to run higher over a lifetime",
+      "Doesn't cope well left alone for a full working day",
+      "Worth insisting on a breeder who health-tests properly",
     ],
   },
   "border-collie": {
@@ -89,10 +89,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "At their best with genuinely active people",
     ],
     considerations: [
-      "Needs a lot of exercise, and a lot to think about",
-      "Rarely happy in a flat or a quiet routine",
-      "May try to herd children or chase bikes",
-      "Boredom turns into trouble quickly",
+      "Needs serious daily exercise and something to think about too",
+      "Rarely settles happily in a flat or a quiet routine",
+      "May try to herd children, cyclists or the cat",
+      "An under-stimulated Collie turns that brain to trouble fast",
     ],
   },
   "cavalier-king-charles-spaniel": {
@@ -106,10 +106,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Doesn't need long walks",
     ],
     considerations: [
-      "Some known inherited heart and neurological problems",
-      "Rarely happy alone for long",
-      "Ears and coat need regular care",
-      "Always ask about health testing of the parents",
+      "Some well-known inherited heart and neurological conditions",
+      "Rarely happy left alone for long — a proper velcro dog",
+      "Ears and coat need regular checking and care",
+      "Always ask to see health testing on both parents",
     ],
   },
   greyhound: {
@@ -123,10 +123,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Often looking for a home through rescue",
     ],
     considerations: [
-      "Strong urge to chase small animals",
-      "Off-lead time needs a securely fenced space",
-      "Feels the cold, so needs warmth and soft bedding",
-      "Thin skin, so cuts and scrapes happen easily",
+      "A strong urge to chase anything small and fast",
+      "Off-lead time needs a properly, securely fenced space",
+      "Feels the cold badly, so a coat and soft bedding are non-negotiable",
+      "Thin skin means cuts and scrapes happen more easily than you'd think",
     ],
   },
   "shiba-inu": {
@@ -140,10 +140,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Often lives a long life",
     ],
     considerations: [
-      "Independent, and recall takes real work",
-      "Drops a huge amount of coat twice a year",
-      "Often reserved with other dogs",
-      "Not the easiest first dog",
+      "Independent by nature — recall takes real, patient work",
+      "Blows a huge amount of coat twice a year, everywhere",
+      "Often reserved or standoffish with other dogs",
+      "Not the most forgiving first dog if you're new to training",
     ],
   },
   "german-shepherd": {
@@ -157,10 +157,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "At their best with a daily job",
     ],
     considerations: [
-      "Sheds all year, and heavily twice a year",
-      "Needs an hour or more of real work each day",
-      "Can be wary of strangers without early practice",
-      "Hips and elbows are worth asking a breeder about",
+      "Sheds year-round, then heavily twice a year on top",
+      "Needs an hour or more of real work each day, not just a stroll",
+      "Can be wary of strangers without early, deliberate socialising",
+      "Worth asking any breeder about hip and elbow health testing",
     ],
   },
   "dachshund": {
@@ -174,10 +174,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Good company, always underfoot",
     ],
     considerations: [
-      "Backs are fragile — no stairs or sofa jumps",
-      "Likes the sound of their own voice",
-      "Digs in and argues about training",
-      "Puts on weight easily",
+      "Backs are genuinely fragile — no stairs or jumping off the sofa",
+      "Likes the sound of their own voice, often at the doorbell",
+      "Can be stubborn about training — expect to negotiate",
+      "Puts on weight easily, which is hard on that long back",
     ],
   },
   "beagle": {
@@ -191,10 +191,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Short coat, simple to keep",
     ],
     considerations: [
-      "Recall is hard work — the nose usually wins",
-      "Bays and howls when bored",
-      "Will eat anything left out",
-      "Needs a secure garden",
+      "Recall is hard work — the nose usually wins the argument",
+      "Bays and howls when bored or left alone too long",
+      "Will eat absolutely anything left within reach",
+      "Needs a genuinely secure garden, not just a low fence",
     ],
   },
   "cocker-spaniel": {
@@ -204,14 +204,14 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
     strengths: [
       "Affectionate and keen to please",
       "Loves scentwork and games",
-      "Manages town or country",
+      "Manages town or country living",
       "Good size for most homes",
     ],
     considerations: [
-      "Ears need checking and cleaning often",
-      "Coat mats without regular brushing",
-      "Gets restless without something to do",
-      "Doesn't like long hours alone",
+      "Ears need checking and cleaning often, or infections follow",
+      "Coat mats quickly without a regular, proper brush",
+      "Gets fidgety and restless without a job to do",
+      "Doesn't cope well with long hours alone",
     ],
   },
   "chihuahua": {
@@ -221,14 +221,14 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
     strengths: [
       "Perfect for a flat",
       "Very little exercise needed",
-      "Long-lived, often into their teens",
+      "Long-lived, often well into their teens",
       "Travels easily",
     ],
     considerations: [
-      "Fragile — not a dog for rough handling",
-      "Barks at anything unfamiliar",
-      "Feels the cold badly",
-      "Needs real socialising to stay relaxed",
+      "Genuinely fragile — not a dog for boisterous handling",
+      "Tends to bark at anything unfamiliar, delivery drivers included",
+      "Feels the cold badly and needs a coat in winter",
+      "Needs real, deliberate socialising to stay relaxed and not snappy",
     ],
   },
   "miniature-schnauzer": {
@@ -242,10 +242,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Sturdy for a small dog",
     ],
     considerations: [
-      "Clipping every 6–8 weeks",
-      "Barks at the door, the post, the wind",
-      "Not keen on small pets",
-      "Prone to weight gain",
+      "Clipping every 6–8 weeks, which adds up in cost",
+      "Tends to bark at the door, the post and the wind",
+      "Not always keen on smaller pets in the house",
+      "Prone to putting on weight, so portions matter",
     ],
   },
   "bernese-mountain-dog": {
@@ -259,10 +259,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Kind-natured and steady",
     ],
     considerations: [
-      "Shorter lives than most breeds",
-      "A lot of coat, all over the house",
-      "Costs more to feed, insure and treat",
-      "Struggles badly in heat",
+      "A shorter lifespan than most breeds — an honest heartbreak to weigh up",
+      "A lot of coat, all over the house, most of the year",
+      "Costs noticeably more to feed, insure and treat",
+      "Struggles badly once the weather turns warm",
     ],
   },
   "australian-shepherd": {
@@ -276,10 +276,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Handsome and hardy outdoors",
     ],
     considerations: [
-      "Needs hours of activity, every day",
-      "Herds children, bikes and joggers",
-      "Bored quickly, and noisy about it",
-      "Rarely suited to a flat",
+      "Needs hours of real activity, every single day",
+      "Will herd children, bikes and joggers if under-exercised",
+      "Gets bored quickly, and noisy about it when they are",
+      "Rarely a good fit for flat living",
     ],
   },
   "jack-russell-terrier": {
@@ -293,9 +293,9 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Copes with time alone better than most",
     ],
     considerations: [
-      "Chases anything small and quick",
-      "Digs, and means it",
-      "Can be scrappy with other dogs",
+      "Chases anything small and quick, squirrels included",
+      "Digs, and means it — your lawn is not safe",
+      "Can be scrappy with other dogs, especially unfamiliar ones",
       "Needs far more exercise than their size suggests",
     ],
   },
@@ -310,10 +310,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Clean, with little doggy smell",
     ],
     considerations: [
-      "Escapes gardens and doesn't come back",
-      "Recall is a lifelong project",
-      "Blows coat twice a year, everywhere",
-      "Suffers in warm climates",
+      "Escapes gardens with real determination and doesn't reliably come back",
+      "Recall is a lifelong project, not a weekend fix",
+      "Blows their coat twice a year — everywhere, for weeks",
+      "Genuinely suffers in warm climates or a hot summer",
     ],
   },
   "boxer": {
@@ -327,10 +327,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Learns well with kind, upbeat training",
     ],
     considerations: [
-      "Bouncy and strong — jumps up",
-      "Overheats quickly with a short nose",
-      "Some serious health conditions in the breed",
-      "Slobbers",
+      "Bouncy and strong — jumping up needs early training",
+      "Overheats quickly given that short nose",
+      "Some serious inherited health conditions in the breed",
+      "A confirmed slobberer — keep a cloth handy",
     ],
   },
   "rottweiler": {
@@ -344,10 +344,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Easy coat",
     ],
     considerations: [
-      "Very strong — training must be solid",
-      "Needs careful socialising from day one",
-      "Insurance and food cost more",
-      "Some places restrict the breed",
+      "Very strong — lead training has to be solid from the start",
+      "Needs careful, deliberate socialising from day one",
+      "Insurance and food cost noticeably more",
+      "Some places and insurers restrict the breed — worth checking first",
     ],
   },
   "whippet": {
@@ -361,10 +361,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Gentle and quiet",
     ],
     considerations: [
-      "Chases anything that runs",
-      "Needs fenced space for off-lead time",
-      "Feels the cold — coats and blankets",
-      "Thin skin tears easily",
+      "Chases anything that runs, cats and joggers included",
+      "Needs securely fenced space for any off-lead time",
+      "Feels the cold — a coat isn't optional in winter",
+      "Thin skin tears more easily than you'd expect",
     ],
   },
   "shih-tzu": {
@@ -378,10 +378,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Doesn't need long walks",
     ],
     considerations: [
-      "Daily brushing, or clip it short",
-      "Short nose means heat is dangerous",
-      "Eyes need watching and wiping",
-      "Housetraining can take patience",
+      "Daily brushing, or a short clip to keep on top of it",
+      "That short nose makes heat genuinely dangerous",
+      "Eyes need daily watching and wiping",
+      "Housetraining can take real patience",
     ],
   },
   "pug": {
@@ -395,10 +395,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Little exercise needed",
     ],
     considerations: [
-      "Breathing problems are common",
-      "Heat can be dangerous",
-      "Puts on weight very easily",
-      "Wrinkles and eyes need daily care",
+      "Breathing problems are common in the breed",
+      "Heat can turn dangerous surprisingly fast",
+      "Puts on weight very easily — portions matter a lot",
+      "Wrinkles and eyes need proper daily care",
     ],
   },
   "bichon-frise": {
@@ -412,10 +412,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Learns quickly and loves praise",
     ],
     considerations: [
-      "Groomer every 4–6 weeks",
-      "Really doesn't cope with being left alone",
-      "Skin and ears need attention",
-      "Housetraining takes consistency",
+      "A groomer visit every 4–6 weeks, and it isn't optional",
+      "Really doesn't cope with being left alone for long",
+      "Skin and ears need regular attention",
+      "Housetraining needs real consistency to stick",
     ],
   },
   "staffordshire-bull-terrier": {
@@ -429,10 +429,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Eager to please",
     ],
     considerations: [
-      "Can be difficult with other dogs",
-      "Strong for their size on the lead",
-      "Chews through soft toys and beds",
-      "Restricted or misjudged in some places",
+      "Can be difficult around other dogs without careful early handling",
+      "Surprisingly strong for their size on the lead",
+      "Chews through soft toys and beds with real enthusiasm",
+      "Unfairly restricted or misjudged in some places — worth knowing before you commit",
     ],
   },
   "vizsla": {
@@ -446,10 +446,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Almost no grooming",
     ],
     considerations: [
-      "Cannot be left alone for long",
-      "Needs an hour or two of hard exercise daily",
-      "Sensitive to harsh voices",
-      "Feels the cold on winter walks",
+      "Struggles badly if left alone for full working days",
+      "Needs an hour or two of proper hard exercise daily",
+      "Sensitive to a raised voice — kind training only",
+      "Feels the cold sharply on winter walks",
     ],
   },
   "samoyed": {
@@ -463,10 +463,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Rarely aggressive",
     ],
     considerations: [
-      "Sheds an astonishing amount",
-      "Brushing several times a week",
-      "Talks, howls and complains",
-      "Overheats easily in summer",
+      "Sheds an honestly astonishing amount",
+      "Needs brushing several times a week to keep on top of it",
+      "Talks, howls and voices an opinion regularly",
+      "Overheats easily once summer arrives",
     ],
   },
   "yorkshire-terrier": {
@@ -480,10 +480,10 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Often lives a long life",
     ],
     considerations: [
-      "Coat needs daily care or a short clip",
-      "Barks at everything",
-      "Delicate — easily hurt underfoot",
-      "Housetraining can be slow",
+      "Coat needs daily care, or a short clip to keep it simple",
+      "Tends to bark at everything, delivery drivers included",
+      "Delicate underfoot — easy to hurt without meaning to",
+      "Housetraining can be slower than you'd expect",
     ],
   },
 };

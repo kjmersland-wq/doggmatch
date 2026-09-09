@@ -11,10 +11,10 @@ export const questions: QuizQuestion[] = [
     title: "How active are you on a normal day?",
     help: "Think about an ordinary week, not your best one.",
     options: [
-      { value: "1", label: "Fairly quiet", hint: "Short walks, gentle routines" },
-      { value: "2", label: "Reasonably active", hint: "A daily walk, and a bit more now and then" },
-      { value: "3", label: "Quite active", hint: "Long walks, and weekends outdoors" },
-      { value: "4", label: "Always on the go", hint: "Running, hiking or sport most days" },
+      { value: "1", label: "Fairly quiet", hint: "A gentle wander round the block, most days" },
+      { value: "2", label: "Reasonably active", hint: "A 45-minute stroll around the park on a wet Tuesday" },
+      { value: "3", label: "Quite active", hint: "An hour or more most days, and proper effort at weekends" },
+      { value: "4", label: "Always on the go", hint: "A proper two-hour hike, whatever the weather" },
     ],
   },
   {
@@ -32,17 +32,19 @@ export const questions: QuizQuestion[] = [
     id: "alone",
     eyebrow: "Your day",
     title: "How long would your dog usually be on their own?",
+    help: "Count the whole day realistically — commuting and office days included, not just the hours you're at your desk.",
     options: [
       { value: "0", label: "Hardly ever alone", hint: "Someone's nearly always home" },
-      { value: "2", label: "Up to three hours" },
-      { value: "4", label: "Three to five hours" },
-      { value: "6", label: "Six hours or more" },
+      { value: "2", label: "Up to three hours", hint: "A short commute either side of home working, or a morning out" },
+      { value: "4", label: "Three to five hours", hint: "A typical office day with a lunchtime dash home" },
+      { value: "6", label: "Six hours or more", hint: "A full commute and a full office day, door to door" },
     ],
   },
   {
     id: "experience",
     eyebrow: "Experience",
     title: "Have you had a dog before?",
+    help: "Never had a dog before? Don't fret. We weigh things like training leeway, patience and separation tolerance, so you won't end up out of your depth.",
     options: [
       { value: "first", label: "This would be my first" },
       { value: "some", label: "A little", hint: "Grew up with dogs, or helped look after one" },

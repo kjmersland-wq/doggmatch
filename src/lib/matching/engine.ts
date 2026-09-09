@@ -206,7 +206,7 @@ function hardConstraints(t: BreedTraits, p: UserProfile): { warnings: string[]; 
     cap = Math.min(cap, 45);
   }
   if (p["experience"] === "first" && t.firstTimeSuitability <= 2) {
-    warnings.push(pick({ en: "A demanding choice for a first dog. They do best with someone who's done it before.", no: "Et krevende valg som første hund. Den trives best hos noen som har gjort det før.", pl: "Wymagający wybór na pierwszego psa. Najlepiej czuje się przy kimś, kto ma już doświadczenie." }));
+    warnings.push(pick({ en: "Beginner friendliness: low. This one forgives fewer first-timer mistakes, and does best with someone who's raised a dog before.", no: "Et krevende valg som første hund. Den trives best hos noen som har gjort det før.", pl: "Wymagający wybór na pierwszego psa. Najlepiej czuje się przy kimś, kto ma już doświadczenie." }));
     cap = Math.min(cap, 60);
   }
   if (Number(p["alone"] ?? 0) >= 6 && t.aloneTolerance <= 2) {

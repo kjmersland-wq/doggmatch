@@ -162,6 +162,10 @@ export const no: Dictionary = {
     essentialsTitle: "Bli klar til en {breed}",
     essentialsBody:
       "Noen ting det er lurt å ordne før hunden flytter inn. Vi nevner dem først når du har fått resultatet ditt.",
+    beginnerFriendlinessLabel: "Nybegynnervennlighet",
+    beginnerHigh: "Høy",
+    beginnerModerate: "Middels",
+    beginnerLow: "Lav",
   },
   dimensions: {
     lifestyle: "Hverdagen",
