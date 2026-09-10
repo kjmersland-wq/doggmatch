@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 import {
   Check,
   Handshake,
+  ArrowRight,
+  BadgePercent,
   QrCode,
   ShoppingBag,
   Scissors,
@@ -18,19 +20,20 @@ import { Button, Eyebrow, Section, Arrow } from "@/components/dogmatch/ui";
 import { partnersContent } from "@/data/partners/content";
 import { sendPartnerEnquiry } from "@/lib/partners/partner.functions";
 import { cn } from "@/lib/utils";
-import { useCopy } from "@/i18n";
+import { useCopy, useLocale } from "@/i18n";
 import partnerHero from "@/assets/partner-hero.jpg";
 import partnerGrooming from "@/assets/partner-grooming.jpg";
 import partnerVet from "@/assets/partner-vet.jpg";
 import partnerTraining from "@/assets/partner-training.jpg";
 import partnerOutdoors from "@/assets/partner-outdoors.jpg";
 import partnerMoment from "@/assets/partner-moment.jpg";
+import partnerCustomerDoggMatch from "@/assets/partner-customer-doggmatch.jpg";
 import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Become a DoggMatch Partner";
 const description =
-  "Offer an exclusive discount or benefit to DoggMatch+ members. No listing fee, no commission — just your business in front of dog owners who are already looking.";
+  "Choose your own DoggMatch+ member benefit, while your customers receive 25% off their first year. No listing fee and no commission.";
 
 const seoCopy = {
   en: { title, description },
@@ -66,23 +69,23 @@ const copy = {
   en: {
     hero: {
       eyebrow: "Partners",
-      title: "Put your business in front of people who've just got a dog.",
-      body: "DoggMatch helps people choose the right dog and then live well with them. Our members are buying beds, booking groomers, finding a vet and planning their first trip away. As a partner, you're the one they find — with an offer that makes them come to you.",
+      title: "Become a DoggMatch Partner",
+      body: "DoggMatch helps people find the right dog and then live well with them. Our members are already looking for beds, groomers, trainers, vets and places to stay. As a partner, you get in front of them — with an offer you fully control.",
       cta: "Become a DoggMatch Partner",
-      note: "No listing fee. No commission. A real person replies.",
+      note: "We're looking for partners we'd happily recommend to a friend.",
       imgAlt: "A dog owner and her golden retriever browsing the shelves of an independent pet shop",
       caption: "The moment a member walks into your shop is the whole point.",
     },
     why: {
       eyebrow: "What you get",
-      title: "Six honest reasons to be listed with us.",
+      title: "A partnership that gives something both ways.",
       groomingAlt: "A groomer gently brushing a small terrier in a bright salon",
       vetAlt: "A veterinarian listening to a labrador's heart while the owner sits nearby",
     },
     categories: {
       eyebrow: "Who we're looking for",
-      title: "Eight kinds of business our members ask about most.",
-      body: "If your work touches a dog's everyday life and you'd be happy for us to send a friend to you, you belong here.",
+      title: "Good dog businesses, large and small.",
+      body: "Independent shops, kennels, breeders, trainers and established teams are equally welcome. If your work makes everyday life with a dog better, we'd be glad to hear from you.",
       outdoorsAlt: "A hiker on a coastal trail at sunrise with his australian shepherd",
       trainingAlt: "A trainer kneeling beside a border collie during an outdoor class",
     },
@@ -290,11 +293,30 @@ const copy = {
   },
 } as const;
 
+const englishPartnerCopy = {
+  hero: {
+    reciprocal: "In return, your own customers get 25% off DoggMatch+ for their first year. No listing fee. No commission. You decide what you offer our members.",
+    secondaryCta: "Let's talk",
+  },
+  mutual: {
+    eyebrow: "A two-way benefit",
+    title: "Simple for you. Useful for your customers.",
+    body: "You decide what benefit you want to give our members. In return, we give your customers 25% off DoggMatch+ for their first year.",
+    customerTitle: "For your customer",
+    customerSteps: ["You share your unique partner code", "They join DoggMatch+", "They receive 25% off their first year"],
+    memberTitle: "For a DoggMatch+ member",
+    memberSteps: ["They show their QR member card", "You check it in a few seconds", "They receive the benefit you chose"],
+    imageAlt: "A pet shop owner showing DoggMatch on her phone to a happy customer with his golden retriever",
+    caption: "You keep control of your offer. We take care of your customers' first-year discount.",
+  },
+} as const;
+
 function PartnersPage() {
   return (
     <div>
       <Hero />
       <Why />
+      <MutualBenefit />
       <Categories />
       <Verification />
       <How />
@@ -308,6 +330,8 @@ function PartnersPage() {
 
 function Hero() {
   const c = useCopy(copy).hero;
+  const { locale } = useLocale();
+  const isEnglish = locale === "en";
   return (
     <section className="container-page pt-12 pb-6 md:pt-20">
       <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
@@ -316,16 +340,26 @@ function Hero() {
           <h1 className="display-lg mt-6 text-balance">{c.title}</h1>
           <ShareBar className="mt-6" />
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.body}</p>
-          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+          {isEnglish && (
+            <p className="mt-5 max-w-xl text-lg font-medium leading-relaxed text-foreground">
+              {englishPartnerCopy.hero.reciprocal}
+            </p>
+          )}
+          <div className="mt-9 flex flex-wrap items-center gap-4">
             <a
               href="#enquiry"
-              className="group inline-flex h-14 items-center justify-center gap-2.5 rounded-full bg-primary px-8 text-base font-medium text-primary-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)]"
+              className="group inline-flex h-14 shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-primary px-8 text-base font-medium text-primary-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)]"
             >
               {c.cta}
               <Arrow />
             </a>
-            <p className="text-sm text-muted-foreground">{c.note}</p>
+            {isEnglish && (
+              <a href="#enquiry" className="inline-flex h-14 shrink-0 items-center whitespace-nowrap rounded-full border border-border-strong px-6 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent">
+                {englishPartnerCopy.hero.secondaryCta}
+              </a>
+            )}
           </div>
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">{c.note}</p>
         </div>
 
         <figure className="relative">
@@ -342,6 +376,66 @@ function Hero() {
         </figure>
       </div>
     </section>
+  );
+}
+
+/* ------------------------------------------------------- Mutual benefit */
+
+function MutualBenefit() {
+  const { locale } = useLocale();
+  if (locale !== "en") return null;
+
+  const c = englishPartnerCopy.mutual;
+  const flows = [
+    { title: c.customerTitle, icon: BadgePercent, steps: c.customerSteps },
+    { title: c.memberTitle, icon: QrCode, steps: c.memberSteps },
+  ] as const;
+
+  return (
+    <Section className="border-y border-border bg-surface">
+      <div className="container-page">
+        <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+          <div>
+            <Eyebrow>{c.eyebrow}</Eyebrow>
+            <h2 className="display-md mt-6 max-w-xl text-balance">{c.title}</h2>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.body}</p>
+
+            <div className="mt-9 grid gap-4">
+              {flows.map(({ title: flowTitle, icon: Icon, steps }) => (
+                <div key={flowTitle} className="rounded-3xl border border-border bg-background p-6 md:p-7">
+                  <div className="flex items-center gap-3">
+                    <span className="grid h-10 w-10 place-items-center rounded-full bg-accent/10 text-accent">
+                      <Icon className="h-5 w-5" aria-hidden />
+                    </span>
+                    <h3 className="font-display text-xl tracking-tight">{flowTitle}</h3>
+                  </div>
+                  <ol className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-center">
+                    {steps.map((step, index) => (
+                      <li key={step} className="contents">
+                        <span className="text-sm leading-relaxed text-muted-foreground">{step}</span>
+                        {index < steps.length - 1 && <ArrowRight className="hidden h-4 w-4 text-accent sm:block" aria-hidden />}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <figure>
+            <img
+              src={partnerCustomerDoggMatch}
+              alt={c.imageAlt}
+              loading="lazy"
+              width={1600}
+              height={1072}
+              className="aspect-[4/3] w-full rounded-[2rem] border border-border object-cover"
+            />
+            <figcaption className="mt-4 text-sm leading-relaxed text-muted-foreground">{c.caption}</figcaption>
+          </figure>
+        </div>
+      </div>
+    </Section>
   );
 }
 
