@@ -73,8 +73,8 @@ const copy = {
       body: "DoggMatch helps people find the right dog and then live well with them. Our members are already looking for beds, groomers, trainers, vets and places to stay. As a partner, you get in front of them — with an offer you fully control.",
       cta: "Become a DoggMatch Partner",
       note: "We're looking for partners we'd happily recommend to a friend.",
-      imgAlt: "An independent pet shop owner showing DoggMatch to a happy customer with his golden retriever",
-      caption: "A useful introduction, from a business people trust.",
+      imgAlt: "A dog owner and her golden retriever browsing the shelves of an independent pet shop",
+      caption: "The moment a member walks into your shop is the whole point.",
     },
     why: {
       eyebrow: "What you get",
@@ -365,10 +365,10 @@ function Hero() {
         <figure className="relative">
           <div className="overflow-hidden rounded-[2rem] border border-border">
             <img
-              src={isEnglish ? partnerCustomerDoggMatch : partnerHero}
+              src={partnerHero}
               alt={c.imgAlt}
               width={1600}
-              height={isEnglish ? 1067 : 1104}
+              height={1104}
               className="h-full w-full object-cover"
             />
           </div>
@@ -428,7 +428,7 @@ function MutualBenefit() {
               alt={c.imageAlt}
               loading="lazy"
               width={1600}
-              height={1067}
+              height={1072}
               className="aspect-[4/3] w-full rounded-[2rem] border border-border object-cover"
             />
             <figcaption className="mt-4 text-sm leading-relaxed text-muted-foreground">{c.caption}</figcaption>
