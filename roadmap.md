@@ -1,9 +1,7 @@
 # Roadmap
 
-- [x] Update only the English partners page copy and structure from the supplied brief.
-- [x] Add a premium partner-customer DoggMatch image only to the English partners page.
-- [x] Verify English changes do not affect Norwegian or Polish partner pages.
+- [x] Use the English partners page as the structural and visual source for all languages.
+- [x] Show the same premium partner-customer image on English, Norwegian, and Polish pages.
+- [x] Keep the text localized independently for English, Norwegian, and Polish.
 - [x] Verify the updated page and build.
 - [ ] Publish the updated site.
-
-- [x] Keep partner-page images and illustrations identical across English, Norwegian, and Polish.
