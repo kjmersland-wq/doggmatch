@@ -1,6 +1,6 @@
-# DoggMatch bilingual conventions (EN / NO)
+# DoggMatch multilingual conventions (EN / NO / PL)
 
-The site is switchable between English (`en`) and Norwegian (`no`).
+English at `/` is the source version. Norwegian (`/no`) and Polish (`/pl`) mirror its structure, images, illustrations, and visual order while localizing text.
 Infrastructure already exists — DO NOT invent a second system.
 
 ## Helpers (from `@/i18n`)
@@ -30,7 +30,8 @@ function Page() {
 }
 ```
 
-Both branches MUST have exactly the same keys and shape (same array lengths too).
+All language branches MUST have exactly the same keys and shape (same array lengths too).
+Every image and illustration introduced on the English source page MUST also appear in the same context on `/no` and `/pl`; only its alt text and caption change by language.
 Keep aria-labels, placeholders, validation text, empty states, toasts and errors in it.
 Do NOT touch `head()` metadata — SSR has no locale; leave meta in English.
 

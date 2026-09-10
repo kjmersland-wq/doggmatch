@@ -293,21 +293,57 @@ const copy = {
   },
 } as const;
 
-const englishPartnerCopy = {
-  hero: {
-    reciprocal: "In return, your own customers get 25% off DoggMatch+ for their first year. No listing fee. No commission. You decide what you offer our members.",
-    secondaryCta: "Let's talk",
+const partnerFeatureCopy = {
+  en: {
+    hero: {
+      reciprocal: "In return, your own customers get 25% off DoggMatch+ for their first year. No listing fee. No commission. You decide what you offer our members.",
+      secondaryCta: "Let's talk",
+    },
+    mutual: {
+      eyebrow: "A two-way benefit",
+      title: "Simple for you. Useful for your customers.",
+      body: "You decide what benefit you want to give our members. In return, we give your customers 25% off DoggMatch+ for their first year.",
+      customerTitle: "For your customer",
+      customerSteps: ["You share your unique partner code", "They join DoggMatch+", "They receive 25% off their first year"],
+      memberTitle: "For a DoggMatch+ member",
+      memberSteps: ["They show their QR member card", "You check it in a few seconds", "They receive the benefit you chose"],
+      imageAlt: "A pet shop owner showing DoggMatch on her phone to a happy customer with his golden retriever",
+      caption: "You keep control of your offer. We take care of your customers' first-year discount.",
+    },
   },
-  mutual: {
-    eyebrow: "A two-way benefit",
-    title: "Simple for you. Useful for your customers.",
-    body: "You decide what benefit you want to give our members. In return, we give your customers 25% off DoggMatch+ for their first year.",
-    customerTitle: "For your customer",
-    customerSteps: ["You share your unique partner code", "They join DoggMatch+", "They receive 25% off their first year"],
-    memberTitle: "For a DoggMatch+ member",
-    memberSteps: ["They show their QR member card", "You check it in a few seconds", "They receive the benefit you chose"],
-    imageAlt: "A pet shop owner showing DoggMatch on her phone to a happy customer with his golden retriever",
-    caption: "You keep control of your offer. We take care of your customers' first-year discount.",
+  no: {
+    hero: {
+      reciprocal: "Til gjengjeld får dine egne kunder 25 % rabatt på DoggMatch+ det første året. Ingen oppføringsavgift. Ingen provisjon. Du bestemmer hva du tilbyr medlemmene våre.",
+      secondaryCta: "La oss snakke sammen",
+    },
+    mutual: {
+      eyebrow: "En fordel begge veier",
+      title: "Enkelt for deg. Nyttig for kundene dine.",
+      body: "Du bestemmer hvilken fordel du vil gi medlemmene våre. Til gjengjeld gir vi kundene dine 25 % rabatt på DoggMatch+ det første året.",
+      customerTitle: "For kunden din",
+      customerSteps: ["Du deler din unike partnerkode", "Kunden blir med i DoggMatch+", "Kunden får 25 % rabatt det første året"],
+      memberTitle: "For et DoggMatch+-medlem",
+      memberSteps: ["Medlemmet viser QR-kortet sitt", "Du sjekker det på noen sekunder", "Medlemmet får fordelen du har valgt"],
+      imageAlt: "En dyrebutikkeier viser DoggMatch på telefonen til en fornøyd kunde med en golden retriever",
+      caption: "Du beholder kontrollen over tilbudet ditt. Vi tar oss av kundenes rabatt det første året.",
+    },
+  },
+  pl: {
+    hero: {
+      reciprocal: "W zamian twoi klienci otrzymują 25% zniżki na DoggMatch+ przez pierwszy rok. Bez opłaty za wpis. Bez prowizji. Ty decydujesz, co oferujesz naszym członkom.",
+      secondaryCta: "Porozmawiajmy",
+    },
+    mutual: {
+      eyebrow: "Korzyść dla obu stron",
+      title: "Proste dla ciebie. Przydatne dla twoich klientów.",
+      body: "Ty decydujesz, jaką korzyść zaoferujesz naszym członkom. W zamian dajemy twoim klientom 25% zniżki na DoggMatch+ przez pierwszy rok.",
+      customerTitle: "Dla twojego klienta",
+      customerSteps: ["Udostępniasz swój unikalny kod partnera", "Klient dołącza do DoggMatch+", "Otrzymuje 25% zniżki na pierwszy rok"],
+      memberTitle: "Dla członka DoggMatch+",
+      memberSteps: ["Pokazuje kartę członkowską z kodem QR", "Sprawdzasz ją w kilka sekund", "Otrzymuje wybraną przez ciebie korzyść"],
+      imageAlt: "Właścicielka sklepu zoologicznego pokazuje DoggMatch na telefonie zadowolonemu klientowi z golden retrieverem",
+      caption: "Zachowujesz kontrolę nad swoją ofertą. My zajmujemy się zniżką dla twoich klientów na pierwszy rok.",
+    },
   },
 } as const;
 
@@ -330,8 +366,7 @@ function PartnersPage() {
 
 function Hero() {
   const c = useCopy(copy).hero;
-  const { locale } = useLocale();
-  const isEnglish = locale === "en";
+  const feature = useCopy(partnerFeatureCopy).hero;
   return (
     <section className="container-page pt-12 pb-6 md:pt-20">
       <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
@@ -340,11 +375,9 @@ function Hero() {
           <h1 className="display-lg mt-6 text-balance">{c.title}</h1>
           <ShareBar className="mt-6" />
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.body}</p>
-          {isEnglish && (
-            <p className="mt-5 max-w-xl text-lg font-medium leading-relaxed text-foreground">
-              {englishPartnerCopy.hero.reciprocal}
-            </p>
-          )}
+          <p className="mt-5 max-w-xl text-lg font-medium leading-relaxed text-foreground">
+            {feature.reciprocal}
+          </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <a
               href="#enquiry"
@@ -353,11 +386,9 @@ function Hero() {
               {c.cta}
               <Arrow />
             </a>
-            {isEnglish && (
-              <a href="#enquiry" className="inline-flex h-14 shrink-0 items-center whitespace-nowrap rounded-full border border-border-strong px-6 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent">
-                {englishPartnerCopy.hero.secondaryCta}
-              </a>
-            )}
+            <a href="#enquiry" className="inline-flex h-14 shrink-0 items-center whitespace-nowrap rounded-full border border-border-strong px-6 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent">
+              {feature.secondaryCta}
+            </a>
           </div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">{c.note}</p>
         </div>
@@ -382,10 +413,7 @@ function Hero() {
 /* ------------------------------------------------------- Mutual benefit */
 
 function MutualBenefit() {
-  const { locale } = useLocale();
-  if (locale !== "en") return null;
-
-  const c = englishPartnerCopy.mutual;
+  const c = useCopy(partnerFeatureCopy).mutual;
   const flows = [
     { title: c.customerTitle, icon: BadgePercent, steps: c.customerSteps },
     { title: c.memberTitle, icon: QrCode, steps: c.memberSteps },
