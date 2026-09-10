@@ -6,4 +6,4 @@
 - [x] Verify the updated page and build.
 - [ ] Publish the updated site.
 
-- [ ] Keep partner-page images and illustrations identical across English, Norwegian, and Polish.
+- [x] Keep partner-page images and illustrations identical across English, Norwegian, and Polish.
