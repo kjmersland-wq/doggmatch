@@ -5,3 +5,5 @@
 - [x] Verify English changes do not affect Norwegian or Polish partner pages.
 - [x] Verify the updated page and build.
 - [ ] Publish the updated site.
+
+- [ ] Keep partner-page images and illustrations identical across English, Norwegian, and Polish.
