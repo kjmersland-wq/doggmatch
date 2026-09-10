@@ -33,7 +33,7 @@ import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Become a DoggMatch Partner";
 const description =
-  "Offer an exclusive discount or benefit to DoggMatch+ members. No listing fee, no commission — just your business in front of dog owners who are already looking.";
+  "Choose your own DoggMatch+ member benefit, while your customers receive 25% off their first year. No listing fee and no commission.";
 
 const seoCopy = {
   en: { title, description },
@@ -345,21 +345,21 @@ function Hero() {
               {englishPartnerCopy.hero.reciprocal}
             </p>
           )}
-          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <div className="mt-9 flex flex-wrap items-center gap-4">
             <a
               href="#enquiry"
-              className="group inline-flex h-14 items-center justify-center gap-2.5 rounded-full bg-primary px-8 text-base font-medium text-primary-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)]"
+              className="group inline-flex h-14 shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-primary px-8 text-base font-medium text-primary-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)]"
             >
               {c.cta}
               <Arrow />
             </a>
             {isEnglish && (
-              <a href="#enquiry" className="text-sm font-medium text-foreground underline decoration-border-strong underline-offset-4 transition-colors hover:text-accent">
+              <a href="#enquiry" className="inline-flex h-14 shrink-0 items-center whitespace-nowrap rounded-full border border-border-strong px-6 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent">
                 {englishPartnerCopy.hero.secondaryCta}
               </a>
             )}
-            <p className="text-sm text-muted-foreground">{c.note}</p>
           </div>
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">{c.note}</p>
         </div>
 
         <figure className="relative">
