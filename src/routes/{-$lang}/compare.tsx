@@ -321,8 +321,10 @@ function ComparePage() {
     <>
     <div className="container-page py-14 md:py-20">
       <Eyebrow>{copy.nav.compare}</Eyebrow>
-      <h1 className="display-lg mt-6 max-w-2xl">{copy.compare.subtitle}</h1>
-      <ShareBar className="mt-6" />
+      <div className="mt-6 flex items-start justify-between gap-4">
+        <h1 className="display-lg max-w-2xl">{copy.compare.subtitle}</h1>
+        <ShareBar compact className="mt-1 shrink-0" />
+      </div>
 
       <div className="mt-10 max-w-sm">
         <label htmlFor="breed-search" className="text-sm font-medium">

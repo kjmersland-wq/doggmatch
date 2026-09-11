@@ -19,8 +19,6 @@ const copy = {
     copied: "Link copied",
     email: "E-mail",
     shareSection: "Share this section",
-    stripTitle: "Liked this? Pass it on",
-    stripBody: "Send this page to someone who's thinking about getting a dog — it opens in the language you're reading now.",
   },
   no: {
     share: "Del",
@@ -30,8 +28,6 @@ const copy = {
     copied: "Lenke kopiert",
     email: "E-post",
     shareSection: "Del denne delen",
-    stripTitle: "Likte du dette? Send det videre",
-    stripBody: "Send siden til noen som går og tenker på å skaffe hund — den åpnes på språket du leser nå.",
   },
   pl: {
     share: "Udostępnij",
@@ -41,8 +37,6 @@ const copy = {
     copied: "Link skopiowany",
     email: "E-mail",
     shareSection: "Udostępnij tę sekcję",
-    stripTitle: "Podobało się? Podaj dalej",
-    stripBody: "Wyślij tę stronę komuś, kto myśli o psie — otworzy się w języku, w którym teraz czytasz.",
   },
 } as const;
 
@@ -250,15 +244,18 @@ export function ShareBar({ title, text, path, anchor, className, compact, label 
 }
 
 /**
- * The site-wide share row: every page ends with the full set of social
- * buttons, so a reader never has to hunt for a way to pass it on.
+ * A quiet, inline row for the end of long-form content: a muted label plus a
+ * handful of low-contrast icon buttons (no popover), so sharing never reads
+ * as a promotional interruption.
  */
-export function ShareStrip({ className }: { className?: string }) {
+export function InlineShare({ title, text, path, label, className }: ShareProps) {
   const c = useCopy(copy);
-  const url = useShareUrl();
+  const url = useShareUrl(path);
   const [copied, setCopied] = useState(false);
-  const shareTitle = typeof document !== "undefined" ? document.title : "DoggMatch";
-  const targets = useTargets(url, shareTitle, shareTitle);
+  const shareTitle = title ?? (typeof document !== "undefined" ? document.title : "DoggMatch");
+  const shareText = text ?? shareTitle;
+  const allTargets = useTargets(url, shareTitle, shareText);
+  const targets = allTargets.filter((tgt) => tgt.id === "whatsapp" || tgt.id === "facebook" || tgt.id === "email");
 
   const onCopy = useCallback(async () => {
     try {
@@ -266,51 +263,38 @@ export function ShareStrip({ className }: { className?: string }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2200);
     } catch {
-      /* clipboard blocked */
+      /* clipboard blocked — the icons are still there */
     }
   }, [url]);
 
   return (
-    <section
-      aria-label={c.shareThis}
-      className={cn("border-t border-border bg-surface print:hidden", className)}
-    >
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 md:flex-row md:items-center md:justify-between">
-        <div className="max-w-md">
-          <h2 className="font-display text-lg font-semibold text-foreground">{c.stripTitle}</h2>
-          <p className="mt-1.5 text-sm text-muted-foreground">{c.stripBody}</p>
-        </div>
-        <ul className="flex flex-wrap items-center gap-2.5">
-          {targets.map((tgt) => (
-            <li key={tgt.id}>
-              <a
-                href={tgt.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={tgt.label}
-                title={tgt.label}
-                className="flex h-11 w-11 items-center justify-center rounded-full text-white transition-transform duration-200 hover:-translate-y-0.5 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                style={{ backgroundColor: tgt.brand }}
-              >
-                <span aria-hidden="true">{tgt.icon}</span>
-              </a>
-            </li>
-          ))}
-          <li>
-            <button
-              type="button"
-              onClick={onCopy}
-              aria-label={c.copy}
-              title={copied ? c.copied : c.copy}
-              className="flex h-11 items-center gap-2 rounded-full border border-border-strong px-4 text-sm font-medium text-foreground transition-colors hover:bg-background"
-            >
-              <LinkIcon />
-              <span>{copied ? c.copied : c.copy}</span>
-            </button>
-          </li>
-        </ul>
+    <div className={cn("flex flex-wrap items-center gap-3 print:hidden", className)}>
+      <span className="text-sm text-muted-foreground">{label ?? c.shareThis}</span>
+      <div className="flex items-center gap-1">
+        {targets.map((tgt) => (
+          <a
+            key={tgt.id}
+            href={tgt.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={tgt.label}
+            title={tgt.label}
+            className="grid h-9 w-9 place-items-center rounded-full text-foreground/80 transition-colors hover:bg-surface hover:text-foreground"
+          >
+            {tgt.icon}
+          </a>
+        ))}
+        <button
+          type="button"
+          onClick={onCopy}
+          aria-label={c.copy}
+          title={copied ? c.copied : c.copy}
+          className="grid h-9 w-9 place-items-center rounded-full text-foreground/80 transition-colors hover:bg-surface hover:text-foreground"
+        >
+          <LinkIcon />
+        </button>
       </div>
-    </section>
+    </div>
   );
 }
 

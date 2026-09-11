@@ -2,7 +2,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { useT, useCopy } from "@/i18n";
 import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
 import { seoLinks, abs, localizedHead } from "@/lib/seo";
-import { ShareBar, SectionShare } from "@/components/dogmatch/share";
+import { InlineShare, SectionShare } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
 const title = "Guides — choosing a dog, and living with one | DoggMatch";
@@ -33,6 +33,7 @@ const copy = {
     intro:
       "Seven things people ask us most often, answered the way we'd answer a friend — no hedging, no sales pitch.",
     familyGuideLink: "See our full guide to the best dog breeds for families",
+    shareLabel: "Share this guide",
     guides: [
       {
         id: "family-dogs",
@@ -124,6 +125,7 @@ const copy = {
     intro:
       "Sju spørsmål vi får oftest, besvart slik vi ville svart en venn — uten forbehold og uten salgsprat.",
     familyGuideLink: "Se hele guiden vår til de beste hunderasene for familier",
+    shareLabel: "Del denne guiden",
     guides: [
       {
         id: "family-dogs",
@@ -215,6 +217,7 @@ const copy = {
     intro:
       "Siedem pytań, które słyszymy najczęściej — odpowiadamy tak, jak odpowiedzielibyśmy znajomemu: bez wykrętów i bez sprzedaży.",
     familyGuideLink: "Zobacz nasz pełny przewodnik po najlepszych rasach psów dla rodzin",
+    shareLabel: "Udostępnij ten poradnik",
     guides: [
       {
         id: "family-dogs",
@@ -312,7 +315,6 @@ function GuidesPage() {
       <Eyebrow>{t.guides.title}</Eyebrow>
       <h1 className="display-lg mt-6 max-w-2xl">{t.guides.subtitle}</h1>
       <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">{c.intro}</p>
-      <ShareBar className="mt-6" />
 
       <ul className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
         {c.guides.map((guide) => (
@@ -344,7 +346,9 @@ function GuidesPage() {
         ))}
       </ul>
 
-      <div className="mt-14">
+      <InlineShare label={c.shareLabel} className="mt-14" />
+
+      <div className="mt-8">
         <Link to={withLangPrefix("/find-my-dog")} className="group inline-flex items-center gap-2 font-medium">
           {t.nav.startMatching}
           <Arrow />

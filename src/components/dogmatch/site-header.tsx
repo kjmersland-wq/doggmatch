@@ -7,6 +7,7 @@ import { ButtonLink, Arrow } from "./ui";
 import { BrandLock } from "./brand-logo";
 
 import { LanguageToggle } from "./language-toggle";
+import { CookieSettingsLink } from "./cookie-consent";
 import { useNavGroups } from "./nav-structure";
 import { withLangPrefix } from "@/lib/localized-path";
 
@@ -16,16 +17,43 @@ const copy = {
   pl: { primaryNav: "Menu główne", mobileNav: "Menu mobilne" },
 } as const;
 
+const drawerCopy = {
+  en: {
+    findMyDog: "Find My Dog (Quiz)",
+    breedExplorer: "Breed Explorer",
+    compareBreeds: "Compare Breeds",
+    takeBreedMatcher: "Take the Breed Matcher",
+  },
+  no: {
+    findMyDog: "Finn min hund (quiz)",
+    breedExplorer: "Utforsk raser",
+    compareBreeds: "Sammenlign raser",
+    takeBreedMatcher: "Ta rasetesten",
+  },
+  pl: {
+    findMyDog: "Znajdź mojego psa (quiz)",
+    breedExplorer: "Eksplorator ras",
+    compareBreeds: "Porównaj rasy",
+    takeBreedMatcher: "Rozpocznij test dopasowania",
+  },
+} as const;
+
 export function SiteHeader() {
   const t = useT();
   const c = useCopy(copy);
+  const dc = useCopy(drawerCopy);
   const navGroups = useNavGroups();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState<string | null>(null);
-  const [mobileGroup, setMobileGroup] = useState<string | null>(navGroups[0]?.id ?? null);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const barRef = useRef<HTMLDivElement>(null);
+
+  const primaryLinks = [
+    { to: withLangPrefix("/find-my-dog"), label: dc.findMyDog },
+    { to: withLangPrefix("/breeds"), label: dc.breedExplorer },
+    { to: withLangPrefix("/compare"), label: dc.compareBreeds },
+  ];
 
   useEffect(() => {
     setOpen(false);
@@ -190,76 +218,55 @@ export function SiteHeader() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="animate-fade h-[calc(100dvh-72px)] overflow-y-auto border-t border-border bg-background lg:hidden">
-          <div className="container-page py-5">
-            <ButtonLink to={withLangPrefix("/find-my-dog")} size="lg" className="w-full">
-              {t.nav.startMatching}
-              <Arrow />
-            </ButtonLink>
-
-            <Link
-              to={withLangPrefix("/plus")}
-              onClick={() => setOpen(false)}
-              className="mt-3 flex h-12 w-full items-center justify-center rounded-full border border-border-strong text-[0.9375rem] font-medium"
-            >
-              DoggMatch<span className="font-semibold text-accent">+</span>
-            </Link>
-
-            <nav className="mt-6 divide-y divide-border/70" aria-label={c.mobileNav}>
-              {navGroups.map((g) => {
-                const expanded = mobileGroup === g.id;
-                return (
-                  <div key={g.id} className="py-1">
-                    <button
-                      type="button"
-                      aria-expanded={expanded}
-                      onClick={() => setMobileGroup(expanded ? null : g.id)}
-                      className="flex w-full items-center justify-between py-4 text-left"
-                    >
-                      <span className="font-display text-xl tracking-tight text-foreground">
-                        {g.label}
-                      </span>
-                      <ChevronDown
-                        className={cn(
-                          "h-4 w-4 text-muted-foreground transition-transform",
-                          expanded && "rotate-180",
-                        )}
-                        aria-hidden
-                      />
-                    </button>
-                    {expanded && (
-                      <ul className="pb-3">
-                        {g.items.map((item) => (
-                          <li key={item.to}>
-                            <Link
-                              to={item.to}
-                              className="block rounded-2xl px-3 py-3 transition-colors active:bg-surface"
-                            >
-                              <span className="block text-[0.9375rem] font-medium text-foreground">
-                                {item.label}
-                              </span>
-                              <span className="mt-0.5 block text-[0.8125rem] text-muted-foreground">
-                                {item.hint}
-                              </span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                );
-              })}
+        <div className="animate-drawer flex h-[calc(100dvh-72px)] flex-col overflow-y-auto border-t border-border bg-background lg:hidden">
+          <div className="container-page flex flex-1 flex-col pb-24 pt-6">
+            <nav className="flex flex-col divide-y divide-border/60" aria-label={c.mobileNav}>
+              {primaryLinks.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-[52px] items-center rounded-2xl px-3 py-4 font-display text-xl tracking-tight text-foreground transition-colors active:bg-surface"
+                  activeProps={{ className: "text-accent" }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link
+                to={withLangPrefix("/plus")}
+                onClick={() => setOpen(false)}
+                className="flex min-h-[52px] items-center rounded-2xl px-3 py-4 font-display text-xl tracking-tight text-foreground transition-colors active:bg-surface"
+                activeProps={{ className: "text-accent" }}
+              >
+                DoggMatch<span className="font-semibold text-accent">+</span>
+              </Link>
             </nav>
 
-            <div className="mt-6 space-y-3 pb-24">
-              <LanguageToggle withLabel />
-              <Link
-                to={withLangPrefix("/account")}
-                className="flex items-center gap-2.5 rounded-2xl border border-border-strong px-4 py-3 text-sm text-foreground"
+            <div className="mt-auto flex flex-col gap-4 pt-10">
+              <ButtonLink
+                to={withLangPrefix("/find-my-dog")}
+                tone="accent"
+                size="lg"
+                className="w-full"
+                onClick={() => setOpen(false)}
               >
-                <UserRound className="h-4 w-4" aria-hidden />
-                {t.nav.account}
-              </Link>
+                {dc.takeBreedMatcher}
+                <Arrow />
+              </ButtonLink>
+
+              <LanguageToggle withLabel />
+
+              <div className="flex items-center justify-center gap-x-5 gap-y-2 pb-6 text-[0.8125rem] text-muted-foreground">
+                <Link
+                  to={withLangPrefix("/account")}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-1.5 transition-colors hover:text-foreground"
+                >
+                  <UserRound className="h-3.5 w-3.5" aria-hidden />
+                  {t.nav.account}
+                </Link>
+                <CookieSettingsLink className="transition-colors hover:text-foreground" />
+              </div>
             </div>
           </div>
         </div>

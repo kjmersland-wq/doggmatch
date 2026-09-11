@@ -270,6 +270,10 @@
   .animate-fade {
     animation: dm-fade 0.6s ease both;
   }
+
+  .animate-drawer {
+    animation: dm-fade 0.28s ease-out both;
+  }
 }
 
 @keyframes dm-rise {

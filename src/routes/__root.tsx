@@ -18,7 +18,6 @@ import { SiteHeader } from "@/components/dogmatch/site-header";
 import { SiteFooter } from "@/components/dogmatch/site-footer";
 import { MobileTabs } from "@/components/dogmatch/mobile-tabs";
 import { CookieConsent } from "@/components/dogmatch/cookie-consent";
-import { ShareStrip } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
 const shellCopy = {
@@ -239,7 +238,6 @@ function RootBody({ queryClient }: { queryClient: QueryClient }) {
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
         </main>
-        <ShareStrip />
         <SiteFooter />
         <MobileTabs />
         <CookieConsent />
