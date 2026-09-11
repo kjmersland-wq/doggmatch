@@ -3,6 +3,7 @@ import type {} from "@tanstack/react-start";
 import { breeds } from "@/data/breeds";
 import { careTopics } from "@/data/care/topics";
 import { getLessons } from "@/data/training/lessons";
+import { foodIds } from "@/lib/food";
 
 const BASE_URL = "https://www.doggmatch.com";
 
@@ -56,6 +57,7 @@ function collect(): SitemapEntry[] {
     { path: "/my-dog", changefreq: "monthly", priority: "0.7" },
     { path: "/my-dog/nutrition", changefreq: "monthly", priority: "0.7" },
     { path: "/my-dog/food", changefreq: "monthly", priority: "0.7" },
+    { path: "/can-dogs-eat", changefreq: "weekly", priority: "0.9" },
     { path: "/my-dog/weight", changefreq: "monthly", priority: "0.6" },
     { path: "/my-dog/week", changefreq: "monthly", priority: "0.6" },
     { path: "/travel", changefreq: "monthly", priority: "0.8" },
@@ -90,7 +92,13 @@ function collect(): SitemapEntry[] {
     priority: "0.7",
   }));
 
-  const all = [...staticPaths, ...breedPages, ...carePages, ...lessonPages];
+  const foodPages = foodIds.map((id) => ({
+    path: `/can-dogs-eat/${id}`,
+    changefreq: "monthly" as const,
+    priority: "0.7",
+  }));
+
+  const all = [...staticPaths, ...breedPages, ...carePages, ...lessonPages, ...foodPages];
 
   // Defence in depth: never let a private path or a duplicate reach the sitemap,
   // however it got into the list above.

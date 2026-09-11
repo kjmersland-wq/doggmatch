@@ -14,6 +14,7 @@ const copy = {
     weightChartAlt: "Weight over time",
     worthKnowing: "Worth knowing",
     basedOn: "Based on guidance from",
+    readFull: "Read the full answer",
   },
   no: {
     safety: { safe: "Greit i små mengder", care: "Vær forsiktig", avoid: "Ikke gi dette" } as Record<FoodSafety, string>,
@@ -21,6 +22,7 @@ const copy = {
     weightChartAlt: "Vekt over tid",
     worthKnowing: "Verdt å vite",
     basedOn: "Basert på råd fra",
+    readFull: "Les hele svaret",
   },
   pl: {
     safety: { safe: "W porządku w małych ilościach", care: "Zachowaj ostrożność", avoid: "Nie podawaj tego" } as Record<FoodSafety, string>,
@@ -28,6 +30,7 @@ const copy = {
     weightChartAlt: "Waga w czasie",
     worthKnowing: "Warto wiedzieć",
     basedOn: "Na podstawie wskazówek od",
+    readFull: "Przeczytaj pełną odpowiedź",
   },
 } as const;
 
@@ -272,6 +275,13 @@ export function FoodRow({
               {item.source.label} — {item.source.org}
             </p>
           )}
+          <Link
+            to={withLangPrefix("/can-dogs-eat/$foodId")}
+            params={{ foodId: item.id }}
+            className="mt-4 inline-flex text-sm text-accent underline decoration-border underline-offset-4 transition-colors hover:decoration-accent"
+          >
+            {c.readFull}
+          </Link>
         </div>
       )}
     </li>
