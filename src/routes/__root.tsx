@@ -148,8 +148,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
+        // DoggMatch is always night mode — keep the class in place even if a
+        // stale stored preference lingers in someone's browser.
         children:
-          "(function(){try{var m=localStorage.getItem('doggmatch.theme');if(!m){m=window.matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';}if(m==='night'){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}}catch(e){}})();",
+          "document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';try{localStorage.removeItem('doggmatch.theme');}catch(e){}",
       },
       {
         type: "application/ld+json",
@@ -191,7 +193,7 @@ function RootShell({ children }: { children: ReactNode }) {
   // overrides it with the request's language when it isn't English.
   const langOverride = lang === "en" ? {} : { lang };
   return (
-    <html lang="en" {...langOverride} suppressHydrationWarning>
+    <html lang="en" {...langOverride} className="dark" style={{ colorScheme: "dark" }} suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
