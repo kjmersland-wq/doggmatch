@@ -5,7 +5,7 @@ import { useCopy, useT } from "@/i18n";
 import { cn } from "@/lib/utils";
 import { ButtonLink, Arrow } from "./ui";
 import { BrandLock } from "./brand-logo";
-import { ThemeToggle } from "./theme-toggle";
+
 import { LanguageToggle } from "./language-toggle";
 import { useNavGroups } from "./nav-structure";
 import { withLangPrefix } from "@/lib/localized-path";
@@ -109,7 +109,6 @@ export function SiteHeader() {
 
           <div className="hidden items-center gap-2.5 lg:flex">
             <LanguageToggle />
-            <ThemeToggle />
             <Link
               to={withLangPrefix("/account")}
               aria-label={t.nav.account}
@@ -125,7 +124,6 @@ export function SiteHeader() {
 
           <div className="flex items-center gap-2 lg:hidden">
             <LanguageToggle />
-            <ThemeToggle />
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
@@ -255,7 +253,6 @@ export function SiteHeader() {
 
             <div className="mt-6 space-y-3 pb-24">
               <LanguageToggle withLabel />
-              <ThemeToggle withLabel />
               <Link
                 to={withLangPrefix("/account")}
                 className="flex items-center gap-2.5 rounded-2xl border border-border-strong px-4 py-3 text-sm text-foreground"
