@@ -95,8 +95,55 @@ export const Route = createFileRoute("/{-$lang}/find-my-dog")({
 
 type Phase = "quiz" | "revealing" | "result";
 
+/**
+ * The four high-stakes questions where a reader can mark their answer as
+ * non-negotiable, so a breed that fails it is dropped from the results
+ * entirely rather than merely scored down. See `isHardLimit` in the engine.
+ */
+const HARD_LIMIT_QUESTIONS = new Set(["home", "alone", "shedding", "allergy"]);
+
+/** Sensible, neutral answers applied when a reader skips a non-critical question. */
+const SKIP_DEFAULTS: Record<string, string> = { size: "any", pets: "none" };
+
+const flowCopy = {
+  en: {
+    statusPhrases: [
+      "Screening against 9 lifestyle dimensions…",
+      "Calculating constraint overlap…",
+      "Weighing trait compatibility…",
+      "Cross-referencing breed traits…",
+      "Deterministic scoring — no AI guesswork…",
+    ],
+    hardLimitLabel: "Set as Non-Negotiable (Hard Limit)",
+    hardLimitNote: "Breeds exceeding this boundary will be strictly eliminated from recommendations.",
+  },
+  no: {
+    statusPhrases: [
+      "Vurderer opp mot 9 livsstilsdimensjoner…",
+      "Beregner overlapp mellom grenser…",
+      "Vekter egenskapskompatibilitet…",
+      "Sammenligner med rasenes egenskaper…",
+      "Deterministisk beregning — ingen KI-gjetting…",
+    ],
+    hardLimitLabel: "Sett som ufravikelig grense",
+    hardLimitNote: "Raser som går utover denne grensen blir utelukket helt fra forslagene.",
+  },
+  pl: {
+    statusPhrases: [
+      "Sprawdzanie względem 9 wymiarów stylu życia…",
+      "Obliczanie nakładania się ograniczeń…",
+      "Ważenie zgodności cech…",
+      "Porównywanie z cechami ras…",
+      "Deterministyczne wyliczenia — bez zgadywania AI…",
+    ],
+    hardLimitLabel: "Ustaw jako granicę nie do negocjacji",
+    hardLimitNote: "Rasy przekraczające tę granicę zostaną całkowicie wykluczone z rekomendacji.",
+  },
+} as const;
+
 function FindMyDogPage() {
   const t = useT();
+  const fc = useCopy(flowCopy);
   const questions = quizQuestions();
   const [step, setStep] = useState(0);
   const [profile, setProfile] = useState<UserProfile>({});
@@ -106,6 +153,9 @@ function FindMyDogPage() {
   const total = questions.length;
   const selected = profile[question.id];
   const progress = Math.round(((step + (selected ? 1 : 0)) / total) * 100);
+  const statusPhrase = fc.statusPhrases[step % fc.statusPhrases.length];
+  const isHardLimitEligible = HARD_LIMIT_QUESTIONS.has(question.id);
+  const hardLimitOn = profile[`${question.id}HardLimit`] === "true";
 
   const results = useMemo(() => (phase === "result" ? matchBreeds(profile) : []), [phase, profile]);
 
@@ -113,9 +163,19 @@ function FindMyDogPage() {
     setProfile((p) => ({ ...p, [question.id]: value }));
   }
 
+  function setHardLimit(on: boolean) {
+    setProfile((p) => ({ ...p, [`${question.id}HardLimit`]: on ? "true" : "false" }));
+  }
+
   function next() {
     if (step + 1 < total) setStep(step + 1);
     else setPhase("revealing");
+  }
+
+  function skip() {
+    const fallback = SKIP_DEFAULTS[question.id];
+    if (fallback) choose(fallback);
+    next();
   }
 
   function restart() {
@@ -151,6 +211,13 @@ function FindMyDogPage() {
             style={{ width: `${progress}%` }}
           />
         </div>
+        <p
+          aria-live="polite"
+          className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-surface px-3 py-1 text-xs text-muted-foreground"
+        >
+          <span className="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-accent" aria-hidden="true" />
+          {statusPhrase}
+        </p>
       </div>
 
       <div key={question.id} className="animate-rise mt-12 flex-1 md:mt-16">
@@ -210,6 +277,34 @@ function FindMyDogPage() {
             );
           })}
         </fieldset>
+
+        {isHardLimitEligible && (
+          <div className="mt-6 rounded-2xl border border-border bg-surface/60 px-5 py-4">
+            <label className="flex cursor-pointer items-center justify-between gap-4">
+              <span className="text-sm font-medium text-foreground">{fc.hardLimitLabel}</span>
+              <button
+                type="button"
+                role="switch"
+                aria-checked={hardLimitOn}
+                onClick={() => setHardLimit(!hardLimitOn)}
+                className={cn(
+                  "h-6 w-11 shrink-0 rounded-full transition-colors",
+                  hardLimitOn ? "bg-accent" : "bg-border-strong",
+                )}
+              >
+                <span
+                  className={cn(
+                    "block h-5 w-5 rounded-full bg-background transition-transform duration-300",
+                    hardLimitOn ? "translate-x-[22px]" : "translate-x-[2px]",
+                  )}
+                />
+              </button>
+            </label>
+            {hardLimitOn && (
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{fc.hardLimitNote}</p>
+            )}
+          </div>
+        )}
       </div>
 
       <div className="sticky bottom-20 mt-12 flex items-center gap-3 border-t border-border bg-background/90 py-5 backdrop-blur-xl lg:bottom-0">
@@ -220,9 +315,13 @@ function FindMyDogPage() {
           {t.quiz.back}
         </Button>
         {question.optional && !selected && (
-          <Button tone="outline" onClick={next}>
+          <button
+            type="button"
+            onClick={skip}
+            className="text-sm font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+          >
             {t.quiz.skip}
-          </Button>
+          </button>
         )}
         <Button size="lg" className="ml-auto" disabled={!selected} onClick={next}>
           {step + 1 === total ? t.quiz.seeResult : t.quiz.continue}

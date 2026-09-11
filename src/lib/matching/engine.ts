@@ -180,10 +180,14 @@ function scoreDimensions(t: BreedTraits, p: UserProfile): Record<DimensionKey, n
   };
 }
 
-/** Hard constraints. These cap the final score regardless of how well everything else fits. */
-function hardConstraints(t: BreedTraits, p: UserProfile): { warnings: string[]; cap: number } {
+/** A reader-set "non-negotiable" toggle on one of the four hard-limit-eligible questions. */
+const isHardLimit = (p: UserProfile, key: string) => p[`${key}HardLimit`] === "true";
+
+/** Hard constraints. These cap the final score regardless of how well everything else fits — and, for a question the reader has flagged as a hard limit, eliminate the breed from `matchBreeds` outright. */
+function hardConstraints(t: BreedTraits, p: UserProfile): { warnings: string[]; cap: number; eliminated: boolean } {
   const warnings: string[] = [];
   let cap = 100;
+  let eliminated = false;
 
   if (p["energyLimit"] === "no" && t.energy >= 4) {
     warnings.push(pick({ en: "You told us you'd need a calmer dog, and this one really does have a lot of energy.", no: "Du sa at du trenger en roligere hund, og denne har virkelig mye energi.", pl: "Napisałeś, że potrzebujesz spokojniejszego psa, a ten naprawdę ma sporo energii." }));
@@ -196,6 +200,7 @@ function hardConstraints(t: BreedTraits, p: UserProfile): { warnings: string[]; 
   if (p["shedding"] === "must-low" && t.shedding >= 4) {
     warnings.push(pick({ en: "They shed a lot. With someone at home who reacts to dogs, that's a difficult place to start.", no: "Den feller mye. Når noen hjemme reagerer på hund, er det et vanskelig utgangspunkt.", pl: "Ten pies mocno linieje. Jeśli ktoś w domu reaguje na psy, to trudny punkt wyjścia." }));
     cap = Math.min(cap, 50);
+    if (isHardLimit(p, "shedding")) eliminated = true;
   }
   if (p["children"] === "young" && t.goodWithChildren <= 3) {
     warnings.push(pick({ en: "With young children at home, this one usually needs an experienced hand.", no: "Med små barn hjemme trenger denne som regel en erfaren eier.", pl: "Z małymi dziećmi w domu ten pies zwykle potrzebuje doświadczonej ręki." }));
@@ -212,10 +217,12 @@ function hardConstraints(t: BreedTraits, p: UserProfile): { warnings: string[]; 
   if (Number(p["alone"] ?? 0) >= 6 && t.aloneTolerance <= 2) {
     warnings.push(pick({ en: "They find long days on their own hard. Six hours or more would need a proper plan.", no: "Den synes lange dager alene er tungt. Seks timer eller mer krever en ordentlig plan.", pl: "Długie dni w samotności są dla niego trudne. Sześć godzin lub więcej wymagałoby przemyślanego planu." }));
     cap = Math.min(cap, 58);
+    if (isHardLimit(p, "alone")) eliminated = true;
   }
   if (p["home"] === "apartment" && t.apartmentSuitability <= 1) {
     warnings.push(pick({ en: "Flat living rarely suits this breed, even with plenty of long walks.", no: "Leilighetsliv passer sjelden for denne rasen, selv med mange lange turer.", pl: "Życie w mieszkaniu rzadko pasuje tej rasie, nawet przy wielu długich spacerach." }));
     cap = Math.min(cap, 50);
+    if (isHardLimit(p, "home")) eliminated = true;
   }
   if (p["allergy"] === "significant" && t.shedding >= 4) {
     warnings.push(pick({
@@ -224,9 +231,10 @@ function hardConstraints(t: BreedTraits, p: UserProfile): { warnings: string[]; 
       pl: "Przy poważnej alergii w domu, pies, który mocno linieje, to trudny punkt wyjścia. Porozmawiaj ze specjalistą od alergii, zanim podejmiesz decyzję.",
     }));
     cap = Math.min(cap, 48);
+    if (isHardLimit(p, "allergy")) eliminated = true;
   }
 
-  return { warnings, cap };
+  return { warnings, cap, eliminated };
 }
 
 
@@ -266,26 +274,35 @@ export function matchDogTraits(
   return { score, dimensions, warnings, status, individual: options.individual ?? false };
 }
 
+/**
+ * Ranks every breed against a profile. A breed that fails a question the
+ * reader has explicitly flagged as a hard limit is dropped from the list
+ * entirely, rather than merely capped — unless that would eliminate every
+ * breed, in which case the limits are relaxed back to soft caps so the
+ * reader always sees a result rather than an empty page.
+ */
 export function matchBreeds(profile: UserProfile): MatchResult[] {
-  return breeds
-    .map((breed) => {
-      const dimensions = scoreDimensions(breed.traits, profile);
-      const { warnings, cap } = hardConstraints(breed.traits, profile);
+  const scored = breeds.map((breed) => {
+    const dimensions = scoreDimensions(breed.traits, profile);
+    const { warnings, cap, eliminated } = hardConstraints(breed.traits, profile);
 
-      const weightedTotal = (Object.keys(dimensions) as DimensionKey[]).reduce(
-        (sum, key) => sum + dimensions[key] * DIMENSION_WEIGHTS[key],
-        0,
-      );
-      const weightSum = Object.values(DIMENSION_WEIGHTS).reduce((a, b) => a + b, 0);
-      const base = weightedTotal / weightSum;
-      const score = Math.round(Math.min(base, cap));
+    const weightedTotal = (Object.keys(dimensions) as DimensionKey[]).reduce(
+      (sum, key) => sum + dimensions[key] * DIMENSION_WEIGHTS[key],
+      0,
+    );
+    const weightSum = Object.values(DIMENSION_WEIGHTS).reduce((a, b) => a + b, 0);
+    const base = weightedTotal / weightSum;
+    const score = Math.round(Math.min(base, cap));
 
-      const status: MatchResult["status"] =
-        cap <= 55 ? "not-recommended" : warnings.length > 0 ? "caution" : "recommended";
+    const status: MatchResult["status"] =
+      cap <= 55 ? "not-recommended" : warnings.length > 0 ? "caution" : "recommended";
 
-      return { breed, breedId: breed.id, score, dimensions, warnings, status };
-    })
-    .sort((a, b) => b.score - a.score);
+    return { result: { breed, breedId: breed.id, score, dimensions, warnings, status }, eliminated };
+  });
+
+  const survivors = scored.filter((s) => !s.eliminated).map((s) => s.result);
+  const pool = survivors.length > 0 ? survivors : scored.map((s) => s.result);
+  return pool.sort((a, b) => b.score - a.score);
 }
 
 /** Explanation generator — strengths and honest trade-offs for the matched breed. */
