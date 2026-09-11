@@ -6,17 +6,26 @@ import markSrc from "@/assets/doggmatch-mark.png";
  * paired with the navy/orange wordmark. One mark, used everywhere.
  */
 export function BrandMark({ className, alt = "" }: { className?: string | undefined; alt?: string | undefined }) {
+  // The dog emblem is deep navy, so it sits on a small ivory disc — otherwise
+  // it disappears against the dark navy header and dark mode surfaces.
   return (
-    <img
-      src={markSrc}
-      alt={alt}
-      aria-hidden={alt === "" ? true : undefined}
-      width={512}
-      height={512}
-      className={cn("h-9 w-9 shrink-0 object-contain", className)}
-      loading="eager"
-      decoding="async"
-    />
+    <span
+      className={cn(
+        "grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ivory",
+        className,
+      )}
+    >
+      <img
+        src={markSrc}
+        alt={alt}
+        aria-hidden={alt === "" ? true : undefined}
+        width={512}
+        height={512}
+        className="h-[86%] w-[86%] object-contain"
+        loading="eager"
+        decoding="async"
+      />
+    </span>
   );
 }
 
