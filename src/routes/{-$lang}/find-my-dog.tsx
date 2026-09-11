@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { useT, interpolate, useCopy } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
 
@@ -17,6 +18,30 @@ const resultCopy = {
       "You told us {name} is a mix with unknown parentage, so we haven't guessed at breeds. This is your dog, as you described them.",
     ownDogFit: "Fit with the life you described",
     ownDogEdit: "Add more about {name}",
+    fitsTitle: "Why This Fits You",
+    fitsNone: "Nothing stood out clearly here — but every dog is worth meeting in person.",
+    tradeTitle: "Trade-offs & Watch-outs",
+    tradeNone: "Nothing here worked against you, going by your answers.",
+    breakdownHonesty:
+      "This is a lifestyle compatibility reading, not a scientific measurement — it compares what you told us with what this breed usually needs.",
+    thirtyDaysTitle: "Your First 30 Days with a {breed}",
+    budgetTitle: "Estimated setup budget",
+    budgetGear: "Initial gear — bed, crate, lead, bowls, toys",
+    budgetGearRange: "€150–350",
+    budgetVet: "First vet visit, vaccinations & microchipping",
+    budgetVetRange: "€80–180",
+    budgetInsurance: "First month of pet insurance",
+    budgetInsuranceRange: "€15–40",
+    budgetNote: "A general starting point — actual costs vary by country, breeder and vet practice.",
+    checklistTitle: "Home-prep checklist",
+    checklistItems: [
+      "Set up one calm, enclosed room as a safe space before they arrive",
+      "Lock away household chemicals, medication and anything chokable",
+      "Tuck away or cover loose cables and cords",
+      "Fit a stair-gate or barrier if you have stairs, a pool or a pond",
+      "Store food, chocolate and anything toxic to dogs well out of reach",
+    ],
+    plusLinkLabel: "Track daily schedules & routines in DoggMatch+",
   },
   no: {
     scoreNote: "Basert på alt du har fortalt oss, også grensene du sa du ikke kunne tøye.",
@@ -31,6 +56,30 @@ const resultCopy = {
       "Du har fortalt oss at {name} er en blanding med ukjent opphav, så vi gjetter ikke på raser. Dette er hunden din, slik du har beskrevet den.",
     ownDogFit: "Passer med livet du beskrev",
     ownDogEdit: "Fortell mer om {name}",
+    fitsTitle: "Hvorfor dette passer deg",
+    fitsNone: "Ingenting pekte seg tydelig ut her — men møt gjerne hunden i virkeligheten.",
+    tradeTitle: "Avveininger å være obs på",
+    tradeNone: "Ingenting her talte imot deg, ut fra svarene dine.",
+    breakdownHonesty:
+      "Dette er en lesning av livsstilskompatibilitet, ikke en vitenskapelig måling — den sammenligner det du fortalte oss med det denne rasen vanligvis trenger.",
+    thirtyDaysTitle: "De første 30 dagene med en {breed}",
+    budgetTitle: "Anslått oppstartsbudsjett",
+    budgetGear: "Startutstyr — seng, bur, bånd, boller, leker",
+    budgetGearRange: "150–350 €",
+    budgetVet: "Første veterinærbesøk, vaksiner og ID-merking",
+    budgetVetRange: "80–180 €",
+    budgetInsurance: "Første måned med forsikring",
+    budgetInsuranceRange: "15–40 €",
+    budgetNote: "Et generelt utgangspunkt — faktiske kostnader varierer med land, oppdretter og veterinær.",
+    checklistTitle: "Sjekkliste for hjemmet",
+    checklistItems: [
+      "Sett i stand ett rolig, avgrenset rom som trygt sted før hunden kommer",
+      "Lås inn husholdningskjemikalier, medisiner og alt som kan svelges",
+      "Gjem eller dekk til løse ledninger og kabler",
+      "Sett opp grind eller sperre ved trapper, basseng eller dam",
+      "Oppbevar mat, sjokolade og alt giftig for hunder utilgjengelig",
+    ],
+    plusLinkLabel: "Følg daglige rutiner og planer i DoggMatch+",
   },
   pl: {
     scoreNote: "Na podstawie wszystkiego, co nam powiedziałeś/aś, w tym granic, których — jak zaznaczyłeś/aś — nie chcesz przekraczać.",
@@ -45,6 +94,30 @@ const resultCopy = {
       "Powiedziałeś/aś nam, że {name} to mieszaniec o nieznanym pochodzeniu, więc nie zgadujemy ras. To Twój pies, taki, jakim go opisałeś/aś.",
     ownDogFit: "Dopasowanie do życia, które opisałeś/aś",
     ownDogEdit: "Dodaj więcej informacji o {name}",
+    fitsTitle: "Dlaczego to do Ciebie pasuje",
+    fitsNone: "Nic tu wyraźnie się nie wyróżniło — ale warto poznać psa osobiście.",
+    tradeTitle: "Kompromisy i na co uważać",
+    tradeNone: "Nic tutaj nie przemawiało przeciwko tobie, sądząc po twoich odpowiedziach.",
+    breakdownHonesty:
+      "To odczyt zgodności stylu życia, a nie pomiar naukowy — porównuje to, co nam powiedziałeś/aś, z tym, czego zwykle potrzebuje ta rasa.",
+    thirtyDaysTitle: "Pierwsze 30 dni z {breed}",
+    budgetTitle: "Szacowany budżet startowy",
+    budgetGear: "Podstawowy sprzęt — legowisko, kojec, smycz, miski, zabawki",
+    budgetGearRange: "150–350 €",
+    budgetVet: "Pierwsza wizyta u weterynarza, szczepienia i czipowanie",
+    budgetVetRange: "80–180 €",
+    budgetInsurance: "Pierwszy miesiąc ubezpieczenia",
+    budgetInsuranceRange: "15–40 €",
+    budgetNote: "Ogólny punkt wyjścia — rzeczywiste koszty zależą od kraju, hodowcy i weterynarza.",
+    checklistTitle: "Lista przygotowań w domu",
+    checklistItems: [
+      "Przygotuj jeden spokojny, zamknięty pokój jako bezpieczną strefę, zanim pies się pojawi",
+      "Zamknij środki chemiczne, leki i wszystko, co można połknąć",
+      "Schowaj lub zabezpiecz luźne kable i przewody",
+      "Zamontuj bramkę lub barierę przy schodach, basenie lub oczku wodnym",
+      "Trzymaj jedzenie, czekoladę i wszystko toksyczne dla psów poza zasięgiem",
+    ],
+    plusLinkLabel: "Śledź codzienne plany i rutyny w DoggMatch+",
   },
 };
 import { quizQuestions } from "@/data/questions.locale";
@@ -61,11 +134,11 @@ import {
 import { useActiveDog } from "@/lib/training/store";
 import { breedById } from "@/data/breeds";
 import { saveMatchProfile } from "@/lib/matching/store";
-import { scoreReading } from "@/lib/matching/insights";
+import { matchInsights, scoreReading } from "@/lib/matching/insights";
+import type { BreedTraits } from "@/data/breeds";
 import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/types";
 import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "@/components/dogmatch/ui";
 import { MatchNotes } from "@/components/dogmatch/match-notes";
-import { FitPanel } from "@/components/dogmatch/fit-panel";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { cn } from "@/lib/utils";
 import { seoLinks, abs, localizedHead } from "@/lib/seo";
@@ -374,6 +447,154 @@ const DIMENSION_ORDER: DimensionKey[] = [
   "maintenance",
 ];
 
+function CheckIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function CautionIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 4 2 20h20L12 4Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+      <path d="M12 10v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="12" cy="17.3" r="0.9" fill="currentColor" />
+    </svg>
+  );
+}
+
+/**
+ * The honest, dual-column read on one breed: what lines up with the reader's
+ * own answers, and what genuinely doesn't — each capped to a few lines so it
+ * stays a calm read rather than an exhaustive audit.
+ */
+function MatchBreakdown({
+  traits,
+  profile,
+  score,
+}: {
+  traits: BreedTraits;
+  profile: UserProfile;
+  score: number;
+}) {
+  const c = useCopy(resultCopy);
+  const { fits, tradeoffs } = matchInsights(traits, profile);
+  const shownFits = fits.slice(0, 3);
+  const shownTradeoffs = tradeoffs.slice(0, 3);
+
+  return (
+    <div>
+      <p className="max-w-xl text-lg leading-relaxed">{scoreReading(score)}</p>
+      <div className="mt-6 grid gap-6 md:grid-cols-2">
+        <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
+          <h3 className="display-md">{c.fitsTitle}</h3>
+          <ul className="mt-6 space-y-4">
+            {shownFits.length === 0 && (
+              <li className="text-[0.9375rem] leading-relaxed text-muted-foreground">{c.fitsNone}</li>
+            )}
+            {shownFits.map((item) => (
+              <li key={item.from} className="flex gap-3">
+                <span
+                  aria-hidden="true"
+                  className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-level-low/15 text-level-low"
+                >
+                  <CheckIcon />
+                </span>
+                <span className="text-[0.9375rem] leading-relaxed">{item.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
+          <h3 className="display-md">{c.tradeTitle}</h3>
+          <ul className="mt-6 space-y-4">
+            {shownTradeoffs.length === 0 && (
+              <li className="text-[0.9375rem] leading-relaxed text-muted-foreground">{c.tradeNone}</li>
+            )}
+            {shownTradeoffs.map((item) => (
+              <li key={item.from} className="flex gap-3">
+                <span
+                  aria-hidden="true"
+                  className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-level-medium/15 text-level-medium"
+                >
+                  <CautionIcon />
+                </span>
+                <span className="text-[0.9375rem] leading-relaxed">{item.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <p className="mt-5 max-w-2xl border-l-2 border-border pl-4 text-sm leading-relaxed text-muted-foreground">
+        {c.breakdownHonesty}
+      </p>
+    </div>
+  );
+}
+
+/** A collapsed-by-default drawer with the concrete first steps for one breed. */
+function FirstThirtyDays({ breedName }: { breedName: string }) {
+  const c = useCopy(resultCopy);
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="rounded-2xl border border-border bg-card">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between gap-4 p-6 text-left md:p-8"
+      >
+        <span className="font-display text-xl tracking-tight">
+          {interpolate(c.thirtyDaysTitle, { breed: breedName })}
+        </span>
+        <ChevronDown
+          className={cn("h-5 w-5 shrink-0 text-muted-foreground transition-transform", open && "rotate-180")}
+          aria-hidden="true"
+        />
+      </button>
+      {open && (
+        <div className="animate-fade border-t border-border p-6 pt-6 md:p-8 md:pt-6">
+          <h4 className="eyebrow">{c.budgetTitle}</h4>
+          <ul className="mt-4 space-y-3">
+            <li className="flex items-baseline justify-between gap-4 text-[0.9375rem]">
+              <span>{c.budgetGear}</span>
+              <span className="shrink-0 font-display tabular-nums text-muted-foreground">{c.budgetGearRange}</span>
+            </li>
+            <li className="flex items-baseline justify-between gap-4 text-[0.9375rem]">
+              <span>{c.budgetVet}</span>
+              <span className="shrink-0 font-display tabular-nums text-muted-foreground">{c.budgetVetRange}</span>
+            </li>
+            <li className="flex items-baseline justify-between gap-4 text-[0.9375rem]">
+              <span>{c.budgetInsurance}</span>
+              <span className="shrink-0 font-display tabular-nums text-muted-foreground">
+                {c.budgetInsuranceRange}
+              </span>
+            </li>
+          </ul>
+          <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{c.budgetNote}</p>
+
+          <h4 className="eyebrow mt-8">{c.checklistTitle}</h4>
+          <ul className="mt-4 space-y-2.5">
+            {c.checklistItems.map((item) => (
+              <li key={item} className="flex gap-3 text-[0.9375rem] leading-relaxed">
+                <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <ButtonLink to={withLangPrefix("/plus")} tone="outline" className="mt-8">
+            {c.plusLinkLabel}
+          </ButtonLink>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Results({
   results,
   profile,
@@ -446,6 +667,11 @@ function Results({
         </div>
       </section>
 
+      {/* actionable next step, right beneath the top match */}
+      <section className="container-page mt-12 md:mt-16">
+        <FirstThirtyDays breedName={content.displayName} />
+      </section>
+
       {/* the dog you already have — scored from the dog itself, not a breed guess */}
       {ownDog && ownFit && (
         <section className="container-page mt-20 md:mt-28">
@@ -509,7 +735,7 @@ function Results({
 
       {/* fit and trade-offs, tied line by line to the answers given */}
       <section className="container-page mt-20 md:mt-28">
-        <FitPanel traits={breedById[best.breedId].traits} profile={profile} score={best.score} />
+        <MatchBreakdown traits={breedById[best.breedId].traits} profile={profile} score={best.score} />
       </section>
 
 
