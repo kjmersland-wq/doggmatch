@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
+import { withLangPrefix } from "@/lib/localized-path";
 import { useMemo, useState } from "react";
 import { Eyebrow, Section } from "@/components/dogmatch/ui";
 import { FoodRow, VetNote } from "@/components/dogmatch/care/parts";
@@ -37,6 +38,7 @@ const copy = {
     title: "Can my dog eat this?",
     intro:
       "Something's landed on the floor and your dog got there first. Type it in and you'll get a straight answer, without the panic.",
+    azLink: "Browse every food, A–Z",
     searchPlaceholder: "Grapes, cheese, peanut butter…",
     searchAria: "Search foods",
     filters: [
@@ -58,6 +60,7 @@ const copy = {
     title: "Kan hunden min spise dette?",
     intro:
       "Noe har havnet på gulvet, og hunden din kom først. Skriv det inn, så får du et rett svar, uten panikk.",
+    azLink: "Bla gjennom alle matvarer, A–Å",
     searchPlaceholder: "Druer, ost, peanøttsmør…",
     searchAria: "Søk etter mat",
     filters: [
@@ -79,6 +82,7 @@ const copy = {
     title: "Czy mój pies może to zjeść?",
     intro:
       "Coś wylądowało na podłodze i twój pies dotarł tam pierwszy. Wpisz co to było, a otrzymasz jasną odpowiedź, bez paniki.",
+    azLink: "Przeglądaj wszystkie produkty, A–Z",
     searchPlaceholder: "Winogrona, ser, masło orzechowe…",
     searchAria: "Szukaj produktów",
     filters: [
@@ -118,6 +122,12 @@ function FoodSafetyPage() {
         <h1 className="display-xl mt-6 max-w-3xl">{c.title}</h1>
         <ShareBar className="mt-6" />
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
+        <Link
+          to={withLangPrefix("/can-dogs-eat")}
+          className="mt-4 inline-flex text-sm text-accent underline decoration-border underline-offset-4 hover:decoration-accent"
+        >
+          {c.azLink}
+        </Link>
 
         <div className="mt-10 max-w-xl">
           <input
