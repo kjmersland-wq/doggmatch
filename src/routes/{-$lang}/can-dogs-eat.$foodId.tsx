@@ -1,6 +1,6 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { Eyebrow, Section } from "@/components/dogmatch/ui";
-import { SafetyDot, VetNote } from "@/components/dogmatch/care/parts";
+import { SafetyDot } from "@/components/dogmatch/care/parts";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { ShareBar } from "@/components/dogmatch/share";
 import { useCopy, useLocale } from "@/i18n";

@@ -1,5 +1,4 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { createFileRoute as _unused } from "@tanstack/react-router";
 import { Eyebrow, Section } from "@/components/dogmatch/ui";
 import { SafetyDot, VetNote } from "@/components/dogmatch/care/parts";
 import { SourcesLink } from "@/components/dogmatch/sources-link";

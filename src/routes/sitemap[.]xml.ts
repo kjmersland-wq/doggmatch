@@ -56,6 +56,7 @@ function collect(): SitemapEntry[] {
     { path: "/my-dog", changefreq: "monthly", priority: "0.7" },
     { path: "/my-dog/nutrition", changefreq: "monthly", priority: "0.7" },
     { path: "/my-dog/food", changefreq: "monthly", priority: "0.7" },
+    { path: "/can-dogs-eat", changefreq: "weekly", priority: "0.9" },
     { path: "/my-dog/weight", changefreq: "monthly", priority: "0.6" },
     { path: "/my-dog/week", changefreq: "monthly", priority: "0.6" },
     { path: "/travel", changefreq: "monthly", priority: "0.8" },

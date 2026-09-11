@@ -34,6 +34,8 @@ import { Route as Char123LangChar125TrainRouteImport } from './routes/{-$lang}/t
 import { Route as Char123LangChar125TravelRouteImport } from './routes/{-$lang}/travel'
 import { Route as Char123LangChar125BreedsIndexRouteImport } from './routes/{-$lang}/breeds.index'
 import { Route as Char123LangChar125BreedsBreedIdRouteImport } from './routes/{-$lang}/breeds.$breedId'
+import { Route as Char123LangChar125CanDogsEatIndexRouteImport } from './routes/{-$lang}/can-dogs-eat.index'
+import { Route as Char123LangChar125CanDogsEatFoodIdRouteImport } from './routes/{-$lang}/can-dogs-eat.$foodId'
 import { Route as Char123LangChar125CheckoutCanceledRouteImport } from './routes/{-$lang}/checkout.canceled'
 import { Route as Char123LangChar125CheckoutSuccessRouteImport } from './routes/{-$lang}/checkout.success'
 import { Route as Char123LangChar125GetADogIndexRouteImport } from './routes/{-$lang}/get-a-dog.index'
@@ -204,6 +206,18 @@ const Char123LangChar125BreedsBreedIdRoute =
   Char123LangChar125BreedsBreedIdRouteImport.update({
     id: '/breeds/$breedId',
     path: '/breeds/$breedId',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125CanDogsEatIndexRoute =
+  Char123LangChar125CanDogsEatIndexRouteImport.update({
+    id: '/can-dogs-eat/',
+    path: '/can-dogs-eat/',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125CanDogsEatFoodIdRoute =
+  Char123LangChar125CanDogsEatFoodIdRouteImport.update({
+    id: '/can-dogs-eat/$foodId',
+    path: '/can-dogs-eat/$foodId',
     getParentRoute: () => Char123LangChar125Route,
   } as any)
 const Char123LangChar125CheckoutCanceledRoute =
@@ -412,6 +426,7 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/travel': typeof Char123LangChar125TravelRouteWithChildren
   '/{-$lang}/': typeof Char123LangChar125IndexRoute
   '/{-$lang}/breeds/$breedId': typeof Char123LangChar125BreedsBreedIdRoute
+  '/{-$lang}/can-dogs-eat/$foodId': typeof Char123LangChar125CanDogsEatFoodIdRoute
   '/{-$lang}/checkout/canceled': typeof Char123LangChar125CheckoutCanceledRoute
   '/{-$lang}/checkout/success': typeof Char123LangChar125CheckoutSuccessRoute
   '/{-$lang}/get-a-dog/choose': typeof Char123LangChar125GetADogChooseRoute
@@ -436,6 +451,7 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/travel/outdoors': typeof Char123LangChar125TravelOutdoorsRoute
   '/{-$lang}/verify/$memberId': typeof Char123LangChar125VerifyMemberIdRoute
   '/{-$lang}/breeds/': typeof Char123LangChar125BreedsIndexRoute
+  '/{-$lang}/can-dogs-eat/': typeof Char123LangChar125CanDogsEatIndexRoute
   '/{-$lang}/get-a-dog/': typeof Char123LangChar125GetADogIndexRoute
   '/{-$lang}/my-dog/': typeof Char123LangChar125MyDogIndexRoute
   '/{-$lang}/train/': typeof Char123LangChar125TrainIndexRoute
@@ -464,6 +480,7 @@ export interface FileRoutesByTo {
   '/{-$lang}/terms': typeof Char123LangChar125TermsRoute
   '/{-$lang}': typeof Char123LangChar125IndexRoute
   '/{-$lang}/breeds/$breedId': typeof Char123LangChar125BreedsBreedIdRoute
+  '/{-$lang}/can-dogs-eat/$foodId': typeof Char123LangChar125CanDogsEatFoodIdRoute
   '/{-$lang}/checkout/canceled': typeof Char123LangChar125CheckoutCanceledRoute
   '/{-$lang}/checkout/success': typeof Char123LangChar125CheckoutSuccessRoute
   '/{-$lang}/get-a-dog/choose': typeof Char123LangChar125GetADogChooseRoute
@@ -488,6 +505,7 @@ export interface FileRoutesByTo {
   '/{-$lang}/travel/outdoors': typeof Char123LangChar125TravelOutdoorsRoute
   '/{-$lang}/verify/$memberId': typeof Char123LangChar125VerifyMemberIdRoute
   '/{-$lang}/breeds': typeof Char123LangChar125BreedsIndexRoute
+  '/{-$lang}/can-dogs-eat': typeof Char123LangChar125CanDogsEatIndexRoute
   '/{-$lang}/get-a-dog': typeof Char123LangChar125GetADogIndexRoute
   '/{-$lang}/my-dog': typeof Char123LangChar125MyDogIndexRoute
   '/{-$lang}/train': typeof Char123LangChar125TrainIndexRoute
@@ -522,6 +540,7 @@ export interface FileRoutesById {
   '/{-$lang}/travel': typeof Char123LangChar125TravelRouteWithChildren
   '/{-$lang}/': typeof Char123LangChar125IndexRoute
   '/{-$lang}/breeds/$breedId': typeof Char123LangChar125BreedsBreedIdRoute
+  '/{-$lang}/can-dogs-eat/$foodId': typeof Char123LangChar125CanDogsEatFoodIdRoute
   '/{-$lang}/checkout/canceled': typeof Char123LangChar125CheckoutCanceledRoute
   '/{-$lang}/checkout/success': typeof Char123LangChar125CheckoutSuccessRoute
   '/{-$lang}/get-a-dog/choose': typeof Char123LangChar125GetADogChooseRoute
@@ -546,6 +565,7 @@ export interface FileRoutesById {
   '/{-$lang}/travel/outdoors': typeof Char123LangChar125TravelOutdoorsRoute
   '/{-$lang}/verify/$memberId': typeof Char123LangChar125VerifyMemberIdRoute
   '/{-$lang}/breeds/': typeof Char123LangChar125BreedsIndexRoute
+  '/{-$lang}/can-dogs-eat/': typeof Char123LangChar125CanDogsEatIndexRoute
   '/{-$lang}/get-a-dog/': typeof Char123LangChar125GetADogIndexRoute
   '/{-$lang}/my-dog/': typeof Char123LangChar125MyDogIndexRoute
   '/{-$lang}/train/': typeof Char123LangChar125TrainIndexRoute
@@ -581,6 +601,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/travel'
     | '/{-$lang}/'
     | '/{-$lang}/breeds/$breedId'
+    | '/{-$lang}/can-dogs-eat/$foodId'
     | '/{-$lang}/checkout/canceled'
     | '/{-$lang}/checkout/success'
     | '/{-$lang}/get-a-dog/choose'
@@ -605,6 +626,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/travel/outdoors'
     | '/{-$lang}/verify/$memberId'
     | '/{-$lang}/breeds/'
+    | '/{-$lang}/can-dogs-eat/'
     | '/{-$lang}/get-a-dog/'
     | '/{-$lang}/my-dog/'
     | '/{-$lang}/train/'
@@ -633,6 +655,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/terms'
     | '/{-$lang}'
     | '/{-$lang}/breeds/$breedId'
+    | '/{-$lang}/can-dogs-eat/$foodId'
     | '/{-$lang}/checkout/canceled'
     | '/{-$lang}/checkout/success'
     | '/{-$lang}/get-a-dog/choose'
@@ -657,6 +680,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/travel/outdoors'
     | '/{-$lang}/verify/$memberId'
     | '/{-$lang}/breeds'
+    | '/{-$lang}/can-dogs-eat'
     | '/{-$lang}/get-a-dog'
     | '/{-$lang}/my-dog'
     | '/{-$lang}/train'
@@ -690,6 +714,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/travel'
     | '/{-$lang}/'
     | '/{-$lang}/breeds/$breedId'
+    | '/{-$lang}/can-dogs-eat/$foodId'
     | '/{-$lang}/checkout/canceled'
     | '/{-$lang}/checkout/success'
     | '/{-$lang}/get-a-dog/choose'
@@ -714,6 +739,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/travel/outdoors'
     | '/{-$lang}/verify/$memberId'
     | '/{-$lang}/breeds/'
+    | '/{-$lang}/can-dogs-eat/'
     | '/{-$lang}/get-a-dog/'
     | '/{-$lang}/my-dog/'
     | '/{-$lang}/train/'
@@ -903,6 +929,20 @@ declare module '@tanstack/react-router' {
       path: '/breeds/$breedId'
       fullPath: '/{-$lang}/breeds/$breedId'
       preLoaderRoute: typeof Char123LangChar125BreedsBreedIdRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/can-dogs-eat/': {
+      id: '/{-$lang}/can-dogs-eat/'
+      path: '/can-dogs-eat'
+      fullPath: '/{-$lang}/can-dogs-eat/'
+      preLoaderRoute: typeof Char123LangChar125CanDogsEatIndexRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/can-dogs-eat/$foodId': {
+      id: '/{-$lang}/can-dogs-eat/$foodId'
+      path: '/can-dogs-eat/$foodId'
+      fullPath: '/{-$lang}/can-dogs-eat/$foodId'
+      preLoaderRoute: typeof Char123LangChar125CanDogsEatFoodIdRouteImport
       parentRoute: typeof Char123LangChar125Route
     }
     '/{-$lang}/checkout/canceled': {
@@ -1250,10 +1290,12 @@ interface Char123LangChar125RouteChildren {
   Char123LangChar125TravelRoute: typeof Char123LangChar125TravelRouteWithChildren
   Char123LangChar125IndexRoute: typeof Char123LangChar125IndexRoute
   Char123LangChar125BreedsBreedIdRoute: typeof Char123LangChar125BreedsBreedIdRoute
+  Char123LangChar125CanDogsEatFoodIdRoute: typeof Char123LangChar125CanDogsEatFoodIdRoute
   Char123LangChar125CheckoutCanceledRoute: typeof Char123LangChar125CheckoutCanceledRoute
   Char123LangChar125CheckoutSuccessRoute: typeof Char123LangChar125CheckoutSuccessRoute
   Char123LangChar125VerifyMemberIdRoute: typeof Char123LangChar125VerifyMemberIdRoute
   Char123LangChar125BreedsIndexRoute: typeof Char123LangChar125BreedsIndexRoute
+  Char123LangChar125CanDogsEatIndexRoute: typeof Char123LangChar125CanDogsEatIndexRoute
 }
 
 const Char123LangChar125RouteChildren: Char123LangChar125RouteChildren = {
@@ -1280,12 +1322,16 @@ const Char123LangChar125RouteChildren: Char123LangChar125RouteChildren = {
   Char123LangChar125TravelRoute: Char123LangChar125TravelRouteWithChildren,
   Char123LangChar125IndexRoute: Char123LangChar125IndexRoute,
   Char123LangChar125BreedsBreedIdRoute: Char123LangChar125BreedsBreedIdRoute,
+  Char123LangChar125CanDogsEatFoodIdRoute:
+    Char123LangChar125CanDogsEatFoodIdRoute,
   Char123LangChar125CheckoutCanceledRoute:
     Char123LangChar125CheckoutCanceledRoute,
   Char123LangChar125CheckoutSuccessRoute:
     Char123LangChar125CheckoutSuccessRoute,
   Char123LangChar125VerifyMemberIdRoute: Char123LangChar125VerifyMemberIdRoute,
   Char123LangChar125BreedsIndexRoute: Char123LangChar125BreedsIndexRoute,
+  Char123LangChar125CanDogsEatIndexRoute:
+    Char123LangChar125CanDogsEatIndexRoute,
 }
 
 const Char123LangChar125RouteWithChildren =
