@@ -23,6 +23,13 @@ export function exerciseMinutes(t: BreedTraits): [number, number] {
   return [base, Math.round(base * 1.5)];
 }
 
+/** A single, rounded "hours a day" figure for the commitment badge — the midpoint of `exerciseMinutes`, to the nearest half hour. */
+export function dailyCommitmentHours(t: BreedTraits): number {
+  const [lo, hi] = exerciseMinutes(t);
+  const hours = (lo + hi) / 2 / 60;
+  return Math.max(0.5, Math.round(hours * 2) / 2);
+}
+
 /** Weekly hands-on time: walks, training, coat care, play. */
 export function weeklyHours(t: BreedTraits): [number, number] {
   const [lo, hi] = exerciseMinutes(t);

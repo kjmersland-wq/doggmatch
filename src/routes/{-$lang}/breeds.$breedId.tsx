@@ -1,6 +1,6 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
-import { useT, pick, useCopy } from "@/i18n";
+import { useT, pick, useCopy, interpolate } from "@/i18n";
 import { getBreed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
@@ -8,6 +8,8 @@ import { withLangPrefix } from "@/lib/localized-path";
 import {
   bestSuitedFor,
   commitmentFacts,
+  dailyCommitmentHours,
+  groomingCadence,
   healthNote,
   thingsToConsider,
   typicalDay,
@@ -32,6 +34,15 @@ const pageCopy = {
     yourFitTitle: "How this dog fits your life",
     yourFitNote: "Read against the answers you gave in Find My Dog, kept on this device.",
     relatedTitle: "Similar breeds worth a look",
+    timeMorning: "07:00",
+    timeMidday: "12:00",
+    timeEvening: "17:30",
+    timeNight: "21:00",
+    milestoneMorningTitle: "Morning Routine",
+    milestoneMiddayTitle: "Midday & Independence",
+    milestoneEveningTitle: "Evening Energy Burn",
+    milestoneNightTitle: "Decompression & Care",
+    commitmentBadge: "Estimated daily active commitment: ~{hours} hours",
   },
   no: {
     dayTitle: "En typisk dag sammen",
@@ -42,6 +53,15 @@ const pageCopy = {
     yourFitTitle: "Hvordan denne hunden passer livet ditt",
     yourFitNote: "Lest opp mot svarene du ga i Finn min hund, lagret på denne enheten.",
     relatedTitle: "Lignende raser, verdt en titt",
+    timeMorning: "07:00",
+    timeMidday: "12:00",
+    timeEvening: "17:30",
+    timeNight: "21:00",
+    milestoneMorningTitle: "Morgenrutine",
+    milestoneMiddayTitle: "Midt på dagen og alenetid",
+    milestoneEveningTitle: "Kveldens energiuttak",
+    milestoneNightTitle: "Nedtrapping og pleie",
+    commitmentBadge: "Anslått daglig aktiv innsats: ~{hours} timer",
   },
   pl: {
     dayTitle: "Typowy dzień razem",
@@ -52,6 +72,15 @@ const pageCopy = {
     yourFitTitle: "Jak ten pies pasuje do twojego życia",
     yourFitNote: "Odczytane na tle odpowiedzi, które podałeś w Znajdź mojego psa, zapisanych na tym urządzeniu.",
     relatedTitle: "Podobne rasy, warte spojrzenia",
+    timeMorning: "07:00",
+    timeMidday: "12:00",
+    timeEvening: "17:30",
+    timeNight: "21:00",
+    milestoneMorningTitle: "Poranna rutyna",
+    milestoneMiddayTitle: "Południe i samodzielność",
+    milestoneEveningTitle: "Wieczorne rozładowanie energii",
+    milestoneNightTitle: "Wyciszenie i pielęgnacja",
+    commitmentBadge: "Szacowane dzienne zaangażowanie: ~{hours} godz.",
   },
 };
 
@@ -155,6 +184,15 @@ function BreedDetail() {
   ]);
   const related = relatedBreeds(breed.id, 4);
 
+  const day = typicalDay(breed.traits);
+  const dailyHours = dailyCommitmentHours(breed.traits);
+  const dailyMilestones = [
+    { time: c.timeMorning, title: c.milestoneMorningTitle, body: `${day[0]} ${day[2]}` },
+    { time: c.timeMidday, title: c.milestoneMiddayTitle, body: day[1]! },
+    { time: c.timeEvening, title: c.milestoneEveningTitle, body: day[3]! },
+    { time: c.timeNight, title: c.milestoneNightTitle, body: groomingCadence(breed.traits) },
+  ];
+
   return (
     <article className="pb-24">
       <div className="container-page py-12 md:py-16">
@@ -255,16 +293,28 @@ function BreedDetail() {
       {/* what living with them actually looks like */}
       <section className="container-page border-t border-border py-16">
         <h2 className="display-md">{c.dayTitle}</h2>
-        <ol className="mt-8 grid max-w-3xl gap-5">
-          {typicalDay(breed.traits).map((line, i) => (
-            <li key={line} className="flex gap-4">
-              <span aria-hidden="true" className="font-display text-sm tabular-nums text-muted-foreground">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span className="text-[0.9375rem] leading-relaxed">{line}</span>
+        <ol className="mt-10 max-w-2xl">
+          {dailyMilestones.map((m, i) => (
+            <li key={m.time} className="relative flex gap-6 pb-10 last:pb-0">
+              <div className="flex shrink-0 flex-col items-center">
+                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-border-strong bg-card font-display text-xs tabular-nums text-muted-foreground">
+                  {m.time}
+                </span>
+                {i < dailyMilestones.length - 1 && (
+                  <span aria-hidden="true" className="mt-1 w-px flex-1 bg-border" />
+                )}
+              </div>
+              <div className="pt-2">
+                <h3 className="font-display text-lg tracking-tight">{m.title}</h3>
+                <p className="mt-2 max-w-md text-[0.9375rem] leading-relaxed text-foreground/90">{m.body}</p>
+              </div>
             </li>
           ))}
         </ol>
+
+        <p className="mt-2 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted-foreground">
+          {interpolate(c.commitmentBadge, { hours: String(dailyHours) })}
+        </p>
 
         <h3 className="display-md mt-14">{c.commitmentTitle}</h3>
         <dl className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
