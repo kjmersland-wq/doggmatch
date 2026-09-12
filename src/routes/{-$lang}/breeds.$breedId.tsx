@@ -398,6 +398,7 @@ const labels = {
 function BreedDetail() {
   const t = useT();
   const c = useCopy(pageCopy);
+  const descriptor = useCopy(breedDescriptor);
   const profile = useMatchProfile();
   const { breed } = Route.useLoaderData();
   const content = breedContent()[breed.id];
