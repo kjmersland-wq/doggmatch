@@ -86,7 +86,7 @@ export function nlUrl(path: string): string {
   return langUrl(path, "nl");
 }
 
-type LinkTag = { rel: string; href: string; hrefLang?: string };
+type LinkTag = { rel: string; href: string; hreflang?: string };
 
 /**
  * Canonical + a reciprocal hreflang set for a public page. Every language
@@ -95,16 +95,16 @@ type LinkTag = { rel: string; href: string; hrefLang?: string };
 export function seoLinks(path: string): LinkTag[] {
   return [
     { rel: "canonical", href: abs(path) },
-    { rel: "alternate", hrefLang: "en", href: abs(path) },
-    { rel: "alternate", hrefLang: "nb-NO", href: noUrl(path) },
-    { rel: "alternate", hrefLang: "pl-PL", href: plUrl(path) },
-    { rel: "alternate", hrefLang: "da-DK", href: dkUrl(path) },
-    { rel: "alternate", hrefLang: "sv-SE", href: seUrl(path) },
-    { rel: "alternate", hrefLang: "fi-FI", href: fiUrl(path) },
-    { rel: "alternate", hrefLang: "de-DE", href: deUrl(path) },
-    { rel: "alternate", hrefLang: "fr-FR", href: frUrl(path) },
-    { rel: "alternate", hrefLang: "nl-NL", href: nlUrl(path) },
-    { rel: "alternate", hrefLang: "x-default", href: abs(path) },
+    { rel: "alternate", hreflang: "en", href: abs(path) },
+    { rel: "alternate", hreflang: "nb-NO", href: noUrl(path) },
+    { rel: "alternate", hreflang: "pl-PL", href: plUrl(path) },
+    { rel: "alternate", hreflang: "da-DK", href: dkUrl(path) },
+    { rel: "alternate", hreflang: "sv-SE", href: seUrl(path) },
+    { rel: "alternate", hreflang: "fi-FI", href: fiUrl(path) },
+    { rel: "alternate", hreflang: "de-DE", href: deUrl(path) },
+    { rel: "alternate", hreflang: "fr-FR", href: frUrl(path) },
+    { rel: "alternate", hreflang: "nl-NL", href: nlUrl(path) },
+    { rel: "alternate", hreflang: "x-default", href: abs(path) },
   ];
 }
 
