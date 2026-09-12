@@ -187,7 +187,7 @@ const pageCopy = {
     detailAlt: "Lähikuva turkista — {breed}",
     portraitWideAlt: "{breed}, muotokuva",
   },
-}  de: {
+de: {
     dayTitle: "Ein typischer gemeinsamer Tag",
     commitmentTitle: "Was sie von dir verlangen",
     suitedTitle: "Am besten geeignet für",

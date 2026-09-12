@@ -159,6 +159,69 @@ const copy = {
     footer: (n: number) =>
       `Ehdotuksia ${n} päivälle, laskettuna koirasi tietojen perusteella — ei koskaan arvauksesta tai mallista.`,
   },
+  de: {
+    eyebrow: "Meine Hundewoche",
+    titleFor: (name: string) => `${name}s Woche`,
+    titleFallback: "Eine Woche mit deinem Hund",
+    intro:
+      "Hier ist, was du diese Woche vielleicht im Kopf behalten möchtest. Es basiert auf dem, was du uns über deinen Hund erzählt hast — nichts ist fest vorgegeben, also entferne alles, was nicht zu deinen Tagen passt.",
+    printWeek: "Diese Woche drucken",
+    putBack: "Vorschläge wiederherstellen",
+    today: "Heute",
+    removeAria: (label: string, day: string) => `${label} von ${day} entfernen`,
+    addPlaceholder: "Welpenkurs, langer Spaziergang…",
+    add: "Hinzufügen",
+    addOwn: "Etwas Eigenes hinzufügen",
+    genericNotePrefix: "Diese Woche ist allgemein, bis du uns von deinem Hund erzählst.",
+    addDog: "Füge deinen Hund hinzu",
+    genericNoteSuffix: "dann passt sie sich an.",
+    vetNote:
+      "Solche Tage sind ein Rhythmus, kein Regelwerk. Manche Wochen sind voller als andere, und ein ausgelassener Spaziergang oder eine ausgefallene Bürstenrunde ist kein Versagen — das ist einfach das Leben mit einem Hund.",
+    footer: (n: number) =>
+      `Vorschläge für ${n} Tage, berechnet aus den Angaben zu deinem Hund — nie aus einer Vermutung oder einem Modell.`,
+  },
+  fr: {
+    eyebrow: "Ma semaine avec mon chien",
+    titleFor: (name: string) => `La semaine de ${name}`,
+    titleFallback: "Une semaine avec votre chien",
+    intro:
+      "Voici ce que vous pourriez vouloir retenir cette semaine. C'est construit à partir de ce que vous nous avez dit sur votre chien — rien n'est figé, alors retirez tout ce qui ne convient pas à vos journées.",
+    printWeek: "Imprimer cette semaine",
+    putBack: "Remettre les suggestions",
+    today: "Aujourd'hui",
+    removeAria: (label: string, day: string) => `Retirer ${label} de ${day}`,
+    addPlaceholder: "Cours pour chiot, longue promenade…",
+    add: "Ajouter",
+    addOwn: "Ajouter quelque chose de personnel",
+    genericNotePrefix: "Cette semaine est générique tant que vous ne nous parlez pas de votre chien.",
+    addDog: "Ajoutez votre chien",
+    genericNoteSuffix: "et elle s'adaptera à lui.",
+    vetNote:
+      "Des journées comme celles-ci sont un rythme, pas un règlement. Certaines semaines sont plus chargées que d'autres, et une promenade manquée ou un brossage sauté n'est pas un échec — c'est simplement la vie avec un chien.",
+    footer: (n: number) =>
+      `Suggestions pour ${n} jours, calculées à partir des informations de votre chien — jamais à partir d'une supposition ou d'un modèle.`,
+  },
+  nl: {
+    eyebrow: "Mijn hondenweek",
+    titleFor: (name: string) => `De week van ${name}`,
+    titleFallback: "Een week met je hond",
+    intro:
+      "Hier is wat je deze week misschien wilt onthouden. Het is samengesteld op basis van wat je ons over je hond hebt verteld — niets ligt vast, dus haal weg wat niet bij jouw dagen past.",
+    printWeek: "Print deze week",
+    putBack: "Zet de suggesties terug",
+    today: "Vandaag",
+    removeAria: (label: string, day: string) => `Verwijder ${label} van ${day}`,
+    addPlaceholder: "Puppycursus, lange wandeling…",
+    add: "Toevoegen",
+    addOwn: "Voeg iets van jezelf toe",
+    genericNotePrefix: "Deze week is generiek totdat je ons over je hond vertelt.",
+    addDog: "Voeg je hond toe",
+    genericNoteSuffix: "dan wordt hij hierop afgestemd.",
+    vetNote:
+      "Dagen zoals deze zijn een ritme, geen regelboek. Sommige weken zijn drukker dan andere, en een gemiste wandeling of overgeslagen borstelbeurt is geen mislukking — dat is gewoon het leven met een hond.",
+    footer: (n: number) =>
+      `Suggesties voor ${n} dagen, berekend op basis van de gegevens van je hond — nooit op basis van een gok of een model.`,
+  },
 } as const;
 
 function WeekPage() {

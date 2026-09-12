@@ -66,6 +66,9 @@ export function scoreLesson(
               dk: `Ofte nyttigt, når der er ${breed.name} i blandingen, men hver hund er sin egen`,
               se: `Ofta bra när det finns ${breed.name} i blandningen, men varje hund är sin egen`,
               fi: `Usein hyödyllinen, kun sekoituksessa on ${breed.name}, mutta jokainen koira on omanlaisensa`,
+              de: `Oft nützlich, wenn ${breed.name} in der Mischung steckt, auch wenn jeder Hund für sich einzigartig ist`,
+              fr: `Souvent utile quand il y a du ${breed.name} dans le mélange, même si chaque chien est unique`,
+              nl: `Vaak nuttig als er ${breed.name} in de mix zit, al is elke hond zijn eigen hond`,
             })
           : pick({
               en: `Often suits a ${breed.name}, though every dog is their own dog`,
@@ -74,6 +77,9 @@ export function scoreLesson(
               dk: `Passer ofte en ${breed.name}, men hver hund er sin egen`,
               se: `Passar ofta en ${breed.name}, men varje hund är sin egen`,
               fi: `Sopii usein rodulle ${breed.name}, mutta jokainen koira on omanlaisensa`,
+              de: `Passt oft zu einem ${breed.name}, auch wenn jeder Hund für sich einzigartig ist`,
+              fr: `Convient souvent à un ${breed.name}, même si chaque chien est unique`,
+              nl: `Past vaak bij een ${breed.name}, al is elke hond zijn eigen hond`,
             });
       }
     }
@@ -182,6 +188,39 @@ function planCopy() {
         adolescent: "Ikävaihe, jossa tästä on eniten hyötyä",
         adult: "Hyödyllinen missä iässä tahansa",
         senior: "Rauhallinen ja mukava vanhemmalle koiralle",
+      } as Record<DogProfile["ageStage"], string>,
+    },
+    de: {
+      startingPoint: "Ein guter Ausgangspunkt",
+      yourGoal: "Ihr habt gesagt, daran möchtet ihr arbeiten",
+      inProgress: "Daran seid ihr gerade dran",
+      age: {
+        puppy: "Lohnt sich früh, solange alles neu ist",
+        adolescent: "Das Alter, in dem sich das wirklich auszahlt",
+        adult: "Nützlich in jedem Alter",
+        senior: "Sanft, und schön für einen älteren Hund",
+      } as Record<DogProfile["ageStage"], string>,
+    },
+    fr: {
+      startingPoint: "Un bon point de départ",
+      yourGoal: "Vous avez dit vouloir travailler ça",
+      inProgress: "Vous êtes en plein dedans",
+      age: {
+        puppy: "Vaut la peine tôt, pendant que tout est nouveau",
+        adolescent: "L'âge où cela porte vraiment ses fruits",
+        adult: "Utile à tout âge",
+        senior: "Doux, et agréable pour un chien plus âgé",
+      } as Record<DogProfile["ageStage"], string>,
+    },
+    nl: {
+      startingPoint: "Een goed startpunt",
+      yourGoal: "Je zei dat je hieraan wilde werken",
+      inProgress: "Hier zit je middenin",
+      age: {
+        puppy: "De moeite waard vroeg te doen, terwijl alles nieuw is",
+        adolescent: "De leeftijd waarop dit echt loont",
+        adult: "Nuttig op elke leeftijd",
+        senior: "Rustig, en fijn voor een oudere hond",
       } as Record<DogProfile["ageStage"], string>,
     },
   });
@@ -327,7 +366,76 @@ const ageFocusFi: AgeFocus = {
   },
 };
 
+const ageFocusDe: AgeFocus = {
+  puppy: {
+    title: "Die Welpenzeit",
+    body: "Alles ist neu, und das meiste, was du jetzt tust, zeigt deinem Welpen einfach, dass die Welt ein freundlicher Ort ist.",
+    points: ["Selbstvertrauen", "Die Welt sanft kennenlernen", "Miteinander sprechen lernen", "Stubenreinheit", "Sich anfassen lassen", "Schlaf und Ruhe"],
+  },
+  adolescent: {
+    title: "Die Flegeljahre",
+    body: "Was letzten Monat funktioniert hat, klappt vielleicht eine Weile nicht mehr. Das geht vorbei. Konsequenz und Geduld tragen euch hindurch.",
+    points: ["Warten und Selbstbeherrschung", "Üben mit Ablenkungen", "Rückruf, immer wieder", "Schön an der Leine gehen", "Konsequent bleiben"],
+  },
+  adult: {
+    title: "Die erwachsenen Jahre",
+    body: "Jetzt geht es darum, gute Gewohnheiten zuverlässig zu machen und das Leben interessant zu halten.",
+    points: ["Zuverlässigkeit", "Alltagsmanieren", "Neue Fähigkeiten zum Spaß", "Beschäftigung"],
+  },
+  senior: {
+    title: "Die älteren Jahre",
+    body: "Ältere Hunde lieben es immer noch zu lernen. Halte es kurz, sanft und schonend für steife Gelenke.",
+    points: ["Sanfte Denkspiele", "Klare Kommunikation", "Aktivitäten, die zum Körper passen", "Bekannte Fähigkeiten am Leben halten"],
+  },
+};
+
+const ageFocusFr: AgeFocus = {
+  puppy: {
+    title: "La période chiot",
+    body: "Tout est nouveau, et l'essentiel de ce que vous faites maintenant consiste simplement à montrer à votre chiot que le monde est un endroit accueillant.",
+    points: ["Confiance", "Découvrir le monde en douceur", "Apprendre à se comprendre", "Propreté", "Se laisser manipuler", "Sommeil et calme"],
+  },
+  adolescent: {
+    title: "Les mois d'adolescence",
+    body: "Ce qui fonctionnait le mois dernier peut cesser de fonctionner pendant un temps. Cela passe. La cohérence et la patience vous portent.",
+    points: ["Attendre et se maîtriser", "Travailler avec des distractions", "Le rappel, encore et encore", "Marcher calmement en laisse", "Rester cohérent"],
+  },
+  adult: {
+    title: "Les années adultes",
+    body: "Il s'agit maintenant de rendre les bonnes habitudes fiables, et de garder la vie intéressante.",
+    points: ["Fiabilité", "Bonnes manières au quotidien", "Nouvelles compétences pour le plaisir", "Enrichissement"],
+  },
+  senior: {
+    title: "Les années seniors",
+    body: "Les chiens plus âgés aiment toujours apprendre. Restez court, doux et bienveillant envers des articulations raides.",
+    points: ["Jeux de réflexion doux", "Communication claire", "Activités adaptées à son corps", "Entretenir les compétences déjà acquises"],
+  },
+};
+
+const ageFocusNl: AgeFocus = {
+  puppy: {
+    title: "De puppytijd",
+    body: "Alles is nieuw, en het meeste wat je nu doet, laat je puppy simpelweg zien dat de wereld een vriendelijke plek is.",
+    points: ["Zelfvertrouwen", "Rustig kennismaken met de wereld", "Leren met elkaar te communiceren", "Zindelijkheid", "Laten aanraken", "Slaap en rust"],
+  },
+  adolescent: {
+    title: "De puberteitsmaanden",
+    body: "Wat vorige maand werkte, kan een tijdje ophouden te werken. Het gaat over. Consistentie en geduld dragen jullie erdoorheen.",
+    points: ["Wachten en zelfbeheersing", "Werken met afleiding", "Terugroepen, steeds opnieuw", "Netjes aan de lijn lopen", "Consequent blijven"],
+  },
+  adult: {
+    title: "De volwassen jaren",
+    body: "Nu draait het om goede gewoontes betrouwbaar maken, en het leven interessant houden.",
+    points: ["Betrouwbaarheid", "Dagelijkse manieren", "Nieuwe vaardigheden voor de lol", "Verrijking"],
+  },
+  senior: {
+    title: "De oudere jaren",
+    body: "Oudere honden vinden leren nog steeds heerlijk. Houd het kort, zacht en vriendelijk voor stijve gewrichten.",
+    points: ["Rustige denkspelletjes", "Duidelijke communicatie", "Activiteiten die bij het lichaam passen", "Bekende vaardigheden levend houden"],
+  },
+};
+
 /** Age guidance in the reader's language — call inside render. */
 export function getAgeFocus(): AgeFocus {
-  return pick({ en: ageFocusEn, no: ageFocusNo, pl: ageFocusPl, dk: ageFocusDk, se: ageFocusSe, fi: ageFocusFi });
+  return pick({ en: ageFocusEn, no: ageFocusNo, pl: ageFocusPl, dk: ageFocusDk, se: ageFocusSe, fi: ageFocusFi, de: ageFocusDe, fr: ageFocusFr, nl: ageFocusNl });
 }
