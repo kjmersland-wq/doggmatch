@@ -559,42 +559,42 @@ const seoCopy = {
   no: {
     title: "DoggMatch — finn hunden som passer livet ditt",
     description:
-      "Fortell oss litt om livet ditt, hjemmet ditt og dagene dine, så hjelper vi deg å finne hundene som kan passe best. Gratis, ærlig, og vi viser alltid hvordan vi tenker.",
+      "Fortell oss om livet ditt, hjemmet og dagene dine, så finner vi hundene som passer best. Gratis, ærlig, og vi viser alltid hvordan vi tenker.",
   },
   pl: {
-    title: "DoggMatch — znajdź psa, który pasuje do Twojego życia",
+    title: "DoggMatch — znajdź psa pasującego do Twojego życia",
     description:
-      "Opowiedz nam trochę o swoim życiu, domu i codziennych dniach, a pomożemy Ci znaleźć psy, które mogą pasować najlepiej. Za darmo, uczciwie i zawsze pokazujemy, jak liczymy.",
+      "Opowiedz o swoim życiu, domu i codzienności, a znajdziemy psy, które pasują najlepiej. Za darmo, uczciwie i zawsze pokazujemy, jak liczymy.",
   },
   dk: {
     title: "DoggMatch — find hunden, der passer til dit liv",
     description:
-      "Fortæl os lidt om dit liv, dit hjem og dine dage, så hjælper vi dig med at finde de hunde, der kan passe bedst. Gratis, ærligt, og vi viser altid, hvordan vi tænker.",
+      "Fortæl om dit liv, dit hjem og dine dage, så finder vi de hunde, der passer bedst. Gratis, ærligt, og vi viser altid, hvordan vi tænker.",
   },
   se: {
     title: "DoggMatch — hitta hunden som passar ditt liv",
     description:
-      "Berätta lite om ditt liv, ditt hem och dina dagar, så hjälper vi dig hitta de hundar som kan passa bäst. Gratis, ärligt, och vi visar alltid hur vi tänker.",
+      "Berätta om ditt liv, ditt hem och dina dagar, så hittar vi hundarna som passar bäst. Gratis, ärligt, och vi visar alltid hur vi tänker.",
   },
   fi: {
     title: "DoggMatch — löydä elämääsi sopiva koira",
     description:
-      "Kerro meille vähän elämästäsi, kodistasi ja päivistäsi, niin autamme sinua löytämään koirat, jotka voisivat sopia sinulle parhaiten. Ilmaista, rehellistä, ja näytämme aina, miten päättelemme asiat.",
+      "Kerro elämästäsi, kodistasi ja arjestasi, niin löydämme koirat, jotka sopivat sinulle parhaiten. Ilmaista, rehellistä, ja näytämme aina perustelut.",
   },
   de: {
-    title: "DoggMatch — Finde den Hund, der zu deinem Leben passt",
+    title: "DoggMatch — finde den Hund, der zu dir passt",
     description:
-      "Erzähl uns ein wenig über dein Leben, dein Zuhause und deinen Alltag, und wir helfen dir, die Hunde zu finden, die am besten zu dir passen könnten. Kostenlos, ehrlich, und wir zeigen dir immer, wie wir zu unserem Ergebnis kommen.",
+      "Erzähl uns von deinem Leben, deinem Zuhause und deinem Alltag, und wir finden die Hunde, die zu dir passen. Kostenlos, ehrlich und immer nachvollziehbar.",
   },
   fr: {
-    title: "DoggMatch — Trouvez le chien qui correspond à votre vie",
+    title: "DoggMatch — trouvez le chien fait pour votre vie",
     description:
-      "Parlez-nous un peu de votre vie, de votre logement et de vos journées, et nous vous aiderons à trouver les chiens qui pourraient le mieux vous convenir. Gratuit, honnête, et nous montrons toujours notre raisonnement.",
+      "Parlez-nous de votre vie, de votre logement et de vos journées, et nous trouvons les chiens qui vous conviennent. Gratuit, honnête et toujours transparent.",
   },
   nl: {
-    title: "DoggMatch — Vind de hond die bij jouw leven past",
+    title: "DoggMatch — vind de hond die bij je leven past",
     description:
-      "Vertel ons iets over je leven, je huis en je dagen, en wij helpen je de honden te vinden die het beste bij je zouden kunnen passen. Gratis, eerlijk, en we laten altijd zien hoe we tot onze conclusie komen.",
+      "Vertel over je leven, je huis en je dagen, dan vinden wij de honden die het beste bij je passen. Gratis, eerlijk en we laten altijd ons denkwerk zien.",
   },
 };
 
