@@ -7,7 +7,7 @@ import { useMembership } from "@/hooks/use-membership";
 import { openBillingPortal } from "@/lib/plus/stripe.functions";
 import { Panel } from "@/components/dogmatch/care/parts";
 import { Button, ButtonLink } from "@/components/dogmatch/ui";
-import { useCopy, useLocale } from "@/i18n";
+import { useCopy, useLocale, INTL_LOCALE } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
 
 function Row({ label, value }: { label: string; value: string }) {
@@ -104,6 +104,90 @@ const copy = {
     freeBodySuffix: "dodaje narzędzia do codziennego życia z psem.",
     portalError: "Nie udało się teraz otworzyć strony rozliczeń. Spróbuj ponownie.",
   },
+  dk: {
+    you: "Dig",
+    email: "E-mail",
+    notSignedIn: "Ikke logget ind",
+    language: "Sprog",
+    languageValue: "Dansk",
+    signedInBody: "Du er logget ind. Alt, du har udfyldt om din hund, er stadig gemt på denne enhed.",
+    signOut: "Log ud",
+    guestBody: "Du behøver ikke en konto for at bruge DoggMatch. Du skal kun bruge en til DoggMatch+.",
+    signIn: "Log ind",
+    membership: "Medlemskab",
+    plan: "Plan",
+    checking: "Tjekker …",
+    planYearly: "DoggMatch+ årligt",
+    planMonthly: "DoggMatch+ månedligt",
+    free: "Gratis",
+    ends: "Ophører",
+    renews: "Fornyes",
+    dash: "—",
+    endingBody: "Dit medlemskab er sat til at ophøre, og du beholder alt indtil da.",
+    activeBody: "Tak, fordi du er medlem. Du kan selv ændre eller opsige det når som helst.",
+    printCard: "Print mit medlemskort",
+    manage: "Administrer mit medlemskab",
+    manageBusy: "Et øjeblik …",
+    freeBodyPrefix: "Alt, du kan se i dag, er gratis.",
+    freeBodySuffix: "tilføjer værktøjerne til hverdagen med din hund.",
+    portalError: "Vi kunne ikke åbne din faktureringsside lige nu. Prøv venligst igen.",
+  },
+  se: {
+    you: "Du",
+    email: "E-post",
+    notSignedIn: "Inte inloggad",
+    language: "Språk",
+    languageValue: "Svenska",
+    signedInBody: "Du är inloggad. Allt du har fyllt i om din hund finns fortfarande sparat på den här enheten.",
+    signOut: "Logga ut",
+    guestBody: "Du behöver inget konto för att använda DoggMatch. Du behöver bara ett för DoggMatch+.",
+    signIn: "Logga in",
+    membership: "Medlemskap",
+    plan: "Plan",
+    checking: "Kontrollerar …",
+    planYearly: "DoggMatch+ årsvis",
+    planMonthly: "DoggMatch+ månadsvis",
+    free: "Gratis",
+    ends: "Upphör",
+    renews: "Förnyas",
+    dash: "—",
+    endingBody: "Ditt medlemskap är inställt på att upphöra, och du behåller allt fram till dess.",
+    activeBody: "Tack för att du är medlem. Du kan själv ändra eller säga upp det när som helst.",
+    printCard: "Skriv ut mitt medlemskort",
+    manage: "Hantera mitt medlemskap",
+    manageBusy: "Ett ögonblick …",
+    freeBodyPrefix: "Allt du kan se idag är gratis.",
+    freeBodySuffix: "lägger till verktygen för vardagen med din hund.",
+    portalError: "Vi kunde inte öppna din faktureringssida just nu. Försök gärna igen.",
+  },
+  fi: {
+    you: "Sinä",
+    email: "Sähköposti",
+    notSignedIn: "Ei kirjautunut sisään",
+    language: "Kieli",
+    languageValue: "Suomi",
+    signedInBody: "Olet kirjautunut sisään. Kaikki koirastasi antamasi tiedot on yhä tallennettu tälle laitteelle.",
+    signOut: "Kirjaudu ulos",
+    guestBody: "DoggMatchin käyttöön ei tarvita tiliä. Tarvitset sen vain DoggMatch+:aa varten.",
+    signIn: "Kirjaudu sisään",
+    membership: "Jäsenyys",
+    plan: "Paketti",
+    checking: "Tarkistetaan…",
+    planYearly: "DoggMatch+ vuosittain",
+    planMonthly: "DoggMatch+ kuukausittain",
+    free: "Ilmainen",
+    ends: "Päättyy",
+    renews: "Uusiutuu",
+    dash: "—",
+    endingBody: "Jäsenyytesi on määrätty päättymään, ja säilytät kaiken siihen asti.",
+    activeBody: "Kiitos, että olet jäsen. Voit muuttaa tai peruuttaa sen itse milloin tahansa.",
+    printCard: "Tulosta jäsenkorttini",
+    manage: "Hallinnoi jäsenyyttäni",
+    manageBusy: "Hetkinen…",
+    freeBodyPrefix: "Kaikki, mitä näet tänään, on ilmaista.",
+    freeBodySuffix: "tuo työkalut koirasi kanssa elettävään arkeen.",
+    portalError: "Emme juuri nyt saaneet avattua laskutussivuasi. Yritä uudelleen.",
+  },
 } as const;
 
 /** Who you are, and where your DoggMatch+ membership stands. */
@@ -135,7 +219,7 @@ export function AccountMembership() {
   }
 
   const renews = membership.renewsAt
-    ? new Date(membership.renewsAt).toLocaleDateString(locale === "no" ? "nb-NO" : "en-GB", {
+    ? new Date(membership.renewsAt).toLocaleDateString(INTL_LOCALE[locale], {
         day: "numeric",
         month: "long",
         year: "numeric",

@@ -65,6 +65,36 @@ const copy = {
     everything: "Wszystko",
     empty: "Nic tu jeszcze nie pasuje. Spróbuj innego słowa albo wyczyść filtry.",
   },
+  dk: {
+    eyebrow: "Biblioteket",
+    title: "Alle lektioner, ét roligt sted.",
+    intro: "Start hvor som helst. Hver lektion er kort, og du kan vende tilbage til den, så mange gange du vil.",
+    searchPlaceholder: "Hvad vil du gerne øve på?",
+    searchAria: "Søg i lektioner",
+    allLevels: "Alle niveauer",
+    everything: "Alt",
+    empty: "Der er ikke noget her, der matcher endnu. Prøv et andet ord, eller ryd filtrene.",
+  },
+  se: {
+    eyebrow: "Biblioteket",
+    title: "Alla lektioner, på ett lugnt ställe.",
+    intro: "Börja var du vill. Varje lektion är kort, och du kan gå tillbaka till den så många gånger du vill.",
+    searchPlaceholder: "Vad vill du träna på?",
+    searchAria: "Sök bland lektioner",
+    allLevels: "Alla nivåer",
+    everything: "Allt",
+    empty: "Inget matchar det där ännu. Prova ett annat ord, eller rensa filtren.",
+  },
+  fi: {
+    eyebrow: "Kirjasto",
+    title: "Kaikki oppitunnit, yhdessä rauhallisessa paikassa.",
+    intro: "Aloita mistä vain. Jokainen oppitunti on lyhyt, ja voit palata siihen niin monta kertaa kuin haluat.",
+    searchPlaceholder: "Mitä haluaisit harjoitella?",
+    searchAria: "Hae oppitunteja",
+    allLevels: "Kaikki tasot",
+    everything: "Kaikki",
+    empty: "Mikään ei vielä vastaa tätä. Kokeile toista sanaa tai tyhjennä suodattimet.",
+  },
 } as const;
 
 function LibraryPage() {

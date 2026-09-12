@@ -38,6 +38,33 @@ const copy = {
     email: "E-mail",
     shareSection: "Udostępnij tę sekcję",
   },
+  dk: {
+    share: "Del",
+    shareThis: "Del denne side",
+    close: "Luk",
+    copy: "Kopiér link",
+    copied: "Link kopieret",
+    email: "E-mail",
+    shareSection: "Del dette afsnit",
+  },
+  se: {
+    share: "Dela",
+    shareThis: "Dela den här sidan",
+    close: "Stäng",
+    copy: "Kopiera länk",
+    copied: "Länk kopierad",
+    email: "E-post",
+    shareSection: "Dela det här avsnittet",
+  },
+  fi: {
+    share: "Jaa",
+    shareThis: "Jaa tämä sivu",
+    close: "Sulje",
+    copy: "Kopioi linkki",
+    copied: "Linkki kopioitu",
+    email: "Sähköposti",
+    shareSection: "Jaa tämä osio",
+  },
 } as const;
 
 function useShareUrl(path?: string, anchor?: string) {

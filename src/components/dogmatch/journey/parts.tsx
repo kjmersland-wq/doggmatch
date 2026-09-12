@@ -9,6 +9,9 @@ const copy = {
   en: { continue: "Continue" },
   no: { continue: "Fortsett" },
   pl: { continue: "Kontynuuj" },
+  dk: { continue: "Fortsæt" },
+  se: { continue: "Fortsätt" },
+  fi: { continue: "Jatka" },
 } as const;
 
 /* ------------------------------------------------------------------ Hero */

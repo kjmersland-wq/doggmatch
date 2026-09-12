@@ -5,6 +5,9 @@ import { useCopy } from "@/i18n";
 const copy = {
   en: { previous: "Previous", next: "Next", morePages: "More pages" },
   no: { previous: "Forrige", next: "Neste", morePages: "Flere sider" },
+  dk: { previous: "Forrige", next: "Næste", morePages: "Flere sider" },
+  se: { previous: "Föregående", next: "Nästa", morePages: "Fler sidor" },
+  fi: { previous: "Edellinen", next: "Seuraava", morePages: "Lisää sivuja" },
 } as const;
 
 import { cn } from "@/lib/utils";

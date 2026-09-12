@@ -66,6 +66,57 @@ const copy = {
     discountsBody:
       "Rozmawiamy teraz z pierwszymi partnerami i zniżki dla członków najprawdopodobniej pojawią się już wkrótce. Gdy oferta będzie naprawdę warta twojego czasu, po prostu pojawi się na stronie konta — bez e-maili, bez zamieszania.",
   },
+  dk: {
+    eyebrow: "Som medlem får du",
+    title: "Et medlemskort, du rent faktisk kan holde i hånden",
+    body: "Alle medlemmer får deres eget DoggMatch+-kort. Print det i ægte kortstørrelse, hav det i tegnebogen, og alle kan scanne koden på bagsiden for at se, at det er ægte.",
+    caption: "Eksempelkort. Navn, ID og datoer er opdigtet.",
+    features: [
+      ["Dit navn og et unikt medlems-ID", "Noget i stil med DM-4F7K-92QX — kun dit eget."],
+      ["Status og gyldig-til-dato", "Så det altid er tydeligt, at medlemskabet er aktivt."],
+      ["Dit foto, når vi har et", "Hentet fra din konto eller din hunds profil."],
+      ["En kode på bagsiden", "Scan den, og en enkel side bekræfter, at kortet er ægte."],
+      ["Trykt i 85,6 × 54 mm", "Præcis størrelsen på et betalingskort, på stift papir."],
+    ],
+    comingSoon: "Kommer snart",
+    discountsTitle: "Medlemsrabatter",
+    discountsBody:
+      "Vi taler med de første partnere lige nu, og medlemsrabatter lander højst sandsynligt snart. Når et tilbud er reelt værd din tid, dukker det ganske enkelt op på din kontoside — ingen e-mail, ingen ballade.",
+  },
+  se: {
+    eyebrow: "Som medlem får du",
+    title: "Ett medlemskort du faktiskt kan hålla i handen",
+    body: "Alla medlemmar får ett eget DoggMatch+-kort. Skriv ut det i verklig kortstorlek, ha det i plånboken, och vem som helst kan skanna koden på baksidan för att se att det är äkta.",
+    caption: "Exempelkort. Namn, ID och datum är påhittade.",
+    features: [
+      ["Ditt namn och ett unikt medlems-ID", "Något i stil med DM-4F7K-92QX — bara ditt."],
+      ["Status och giltigt-till-datum", "Så det alltid är tydligt att medlemskapet är aktivt."],
+      ["Ditt foto när vi har ett", "Hämtat från ditt konto eller din hunds profil."],
+      ["En kod på baksidan", "Skanna den, så bekräftar en enkel sida att kortet är äkta."],
+      ["Tryckt i 85,6 × 54 mm", "Exakt samma storlek som ett bankkort, på styvt papper."],
+    ],
+    comingSoon: "Kommer snart",
+    discountsTitle: "Medlemsrabatter",
+    discountsBody:
+      "Vi pratar med de första partnerna just nu, och medlemsrabatter kommer sannolikt snart. När ett erbjudande verkligen är värt din tid dyker det helt enkelt upp på din kontosida — inga mejl, inget krångel.",
+  },
+  fi: {
+    eyebrow: "Jäsenenä saat",
+    title: "Jäsenkortin, jota voit oikeasti pidellä kädessäsi",
+    body: "Jokainen jäsen saa oman DoggMatch+-korttinsa. Tulosta se oikeassa korttikoossa, pidä sitä lompakossa, ja kuka tahansa voi skannata takana olevan koodin nähdäkseen, että se on aito.",
+    caption: "Esimerkkikortti. Nimi, ID ja päivämäärät ovat keksittyjä.",
+    features: [
+      ["Nimesi ja yksilöllinen jäsentunnus", "Jotain tyyliin DM-4F7K-92QX — vain sinun."],
+      ["Tila ja voimassaolopäivä", "Jotta jäsenyyden voimassaolo on aina selvää."],
+      ["Valokuvasi, kun meillä on sellainen", "Otettu tililtäsi tai koirasi profiilista."],
+      ["Koodi kortin takana", "Skannaa se, ja yksinkertainen sivu vahvistaa kortin aitouden."],
+      ["Painettu koossa 85,6 × 54 mm", "Täsmälleen pankkikortin kokoinen, jäykälle paperille."],
+    ],
+    comingSoon: "Tulossa pian",
+    discountsTitle: "Jäsenalennukset",
+    discountsBody:
+      "Neuvottelemme parhaillaan ensimmäisten kumppaneiden kanssa, ja jäsenalennukset ovat todennäköisesti tulossa pian. Kun tarjous on aidosti aikasi arvoinen, se ilmestyy yksinkertaisesti tilisivullesi — ei sähköposteja, ei häslinkiä.",
+  },
 } as const;
 
 /** Shows the member card and the partner offers we're working on. */

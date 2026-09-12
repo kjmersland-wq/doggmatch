@@ -187,6 +187,180 @@ const copy = {
     printBtn: "Drukuj / zapisz jako PDF",
     qrAlt: "Kod QR do doggmatch.com",
   },
+  dk: {
+    badge: "Find din hund",
+    headline: "Find hunden, der passer til dit liv.",
+    coverLead:
+      "En rolig og ærlig måde at finde ud af, hvilken slags hund der passer til dit hjem, dine dage og menneskene omkring dig.",
+    cta: "Prøv DoggMatch — gratis",
+    url: "doggmatch.com",
+    scan: "Scan for at starte",
+    scanBack: "Scan med kameraet på din telefon",
+    howEyebrow: "Sådan virker det",
+    howTitle: "Du svarer. Vi viser vores arbejde.",
+    howLead:
+      "Du fortæller os om din hverdag — aktivitetsniveau, erfaring, familie og børn, tid til træning, pelspleje, størrelse, allergier i husstanden og et par andre ting, der betyder noget. Så får du racer, der plejer at passe til et liv som dit, og begrundelsen bag hver enkelt.",
+    points: [
+      {
+        title: "Ingen AI bestemmer noget",
+        body: "Resultatet kommer fra en fast, gennemsigtig algoritme. Samme svar, samme resultat, hver gang.",
+      },
+      {
+        title: "Du kan se hvorfor",
+        body: "Hvert match forklares dimension for dimension, også der hvor en race passer dårligere til dig.",
+      },
+      {
+        title: "Racerene og blandingshunde",
+        body: "Kendte krydsninger kombinerer begge forældres egenskaber — vist som vejledning, aldrig en garanti.",
+      },
+      {
+        title: "Nyttigt, når du har fået hund",
+        body: "Værktøjer til træning, sundhed, mad og rejser, som bliver hos dig længe efter valget er truffet.",
+      },
+    ],
+    toolsEyebrow: "Det får du",
+    toolsTitle: "Alt samlet ét roligt sted.",
+    tools: [
+      { title: "Find din hund", body: "Kompatibilitetsspørgsmålene, besvaret på få minutter." },
+      { title: "Sammenlign racer", body: "Side om side, på det der faktisk ændrer hverdagen." },
+      { title: "Blandingshunde", body: "Kombinér to forældreracer og se den sandsynlige mellemting." },
+      { title: "Træning", body: "Korte, venlige lektioner bygget op i en fornuftig rækkefølge." },
+      { title: "Sundhed og trivsel", body: "Pels, tænder, poter, vægt — tjekket uden panik." },
+      { title: "Mad og ernæring", body: "Vejledning om portioner og en klar liste over, hvad hunde ikke bør spise." },
+      { title: "Rejser", body: "Regler fra land til land, sikkerhed i bilen og dage udendørs." },
+      { title: "Min hund", body: "Din hunds egen journal: vægt, dyrlægebesøg, kontakter, ugen der kommer." },
+    ],
+    plusTitle: "DoggMatch+",
+    plusBody:
+      "Et valgfrit medlemskab til dig, der vil have mere: ekstra værktøjer, udskriftsvenlige sider til køleskabet eller dyrlægen, et personligt medlemskort og fordele hos partnere, efterhånden som de kommer til.",
+    backTitle: "Brug fem minutter. Det er en beslutning for de næste femten år.",
+    backBody:
+      "Gratis at prøve, intet at installere. Svar på spørgsmålene på din telefon, og se hvad der passer til dit liv — med begrundelsen synlig, på engelsk eller norsk.",
+    backNote:
+      "DoggMatch er vejledning, ikke dyrlæge- eller lægefaglig rådgivning. Tal altid med en dyrlæge om sundhed, og søg professionel rådgivning om allergi.",
+    madeBy: "Lavet i Kristiansand, Norge af KM TECH LABS",
+    printTitle: "A5-brochure",
+    printLead:
+      "Én A5-side (148 × 210 mm), klar til print. Udskriv til PDF med margener sat til ingen, og baggrundsgrafik slået til. Bed trykkeriet om 3 mm beskæring.",
+    printBtn: "Udskriv / gem som PDF",
+    qrAlt: "QR-kode til doggmatch.com",
+  },
+  se: {
+    badge: "Hitta din hund",
+    headline: "Hitta hunden som passar ditt liv.",
+    coverLead:
+      "Ett lugnt och ärligt sätt att ta reda på vilken typ av hund som passar ditt hem, dina dagar och människorna omkring dig.",
+    cta: "Prova DoggMatch — gratis",
+    url: "doggmatch.com",
+    scan: "Skanna för att starta",
+    scanBack: "Skanna med kameran i din telefon",
+    howEyebrow: "Så fungerar det",
+    howTitle: "Du svarar. Vi visar våra uträkningar.",
+    howLead:
+      "Du berättar om din vardag — aktivitetsnivå, erfarenhet, familj och barn, tid för träning, pälsvård, storlek, allergier i hushållet och några andra saker som spelar roll. Sedan får du raser som brukar passa ett liv som ditt, och anledningarna bakom varje förslag.",
+    points: [
+      {
+        title: "Ingen AI bestämmer något",
+        body: "Resultatet kommer från en fast, transparent algoritm. Samma svar ger samma resultat, varje gång.",
+      },
+      {
+        title: "Du ser varför",
+        body: "Varje matchning förklaras dimension för dimension, även där en ras passar dig sämre.",
+      },
+      {
+        title: "Rasrena hundar och blandraser",
+        body: "Kända korsningar kombinerar båda föräldrarnas egenskaper — visas som vägledning, aldrig som garanti.",
+      },
+      {
+        title: "Användbart när hunden väl finns hos dig",
+        body: "Verktyg för träning, hälsa, mat och resor som stannar kvar långt efter att valet är gjort.",
+      },
+    ],
+    toolsEyebrow: "Det här ingår",
+    toolsTitle: "Allt samlat på ett lugnt ställe.",
+    tools: [
+      { title: "Hitta din hund", body: "Kompatibilitetsfrågorna, besvarade på några minuter." },
+      { title: "Jämför raser", body: "Sida vid sida, i det som faktiskt förändrar vardagen." },
+      { title: "Blandraser", body: "Kombinera två föräldraraser och se den sannolika mellannivån." },
+      { title: "Träning", body: "Korta, snälla lektioner byggda i en klok ordning." },
+      { title: "Hälsa och välmående", body: "Päls, tänder, tassar, vikt — kontrollerat utan panik." },
+      { title: "Mat och näring", body: "Vägledning om portioner och en tydlig lista över vad hundar inte bör äta." },
+      { title: "Resor", body: "Regler land för land, säkerhet i bilen och dagar utomhus." },
+      { title: "Min hund", body: "Din hunds egen journal: vikt, veterinärbesök, kontakter, veckan som kommer." },
+    ],
+    plusTitle: "DoggMatch+",
+    plusBody:
+      "Ett valfritt medlemskap för dig som vill ha mer: extra verktyg, utskriftsvänliga sidor för kylskåpet eller veterinären, ett personligt medlemskort och förmåner hos partners allteftersom de tillkommer.",
+    backTitle: "Ta fem minuter. Det är ett beslut för de kommande femton åren.",
+    backBody:
+      "Gratis att prova, inget att installera. Svara på frågorna i telefonen och se vad som passar ditt liv — med resonemanget synligt, på engelska eller norska.",
+    backNote:
+      "DoggMatch är vägledning, inte veterinärmedicinsk eller medicinsk rådgivning. Prata alltid med en veterinär om hälsofrågor, och sök professionell rådgivning vid allergi.",
+    madeBy: "Gjord i Kristiansand, Norge av KM TECH LABS",
+    printTitle: "A5-broschyr",
+    printLead:
+      "En A5-sida (148 × 210 mm), klar för tryck. Skriv ut till PDF med marginaler satta till inga och bakgrundsgrafik påslagen. Be tryckeriet om 3 mm utfall.",
+    printBtn: "Skriv ut / spara som PDF",
+    qrAlt: "QR-kod till doggmatch.com",
+  },
+  fi: {
+    badge: "Löydä koirasi",
+    headline: "Löydä koira, joka sopii elämääsi.",
+    coverLead:
+      "Rauhallinen ja rehellinen tapa selvittää, minkälainen koira sopisi kotiisi, arkeesi ja ihmisiin ympärilläsi.",
+    cta: "Kokeile DoggMatchia — ilmaiseksi",
+    url: "doggmatch.com",
+    scan: "Skannaa aloittaaksesi",
+    scanBack: "Skannaa puhelimen kameralla",
+    howEyebrow: "Näin se toimii",
+    howTitle: "Sinä vastaat. Me näytämme laskelmamme.",
+    howLead:
+      "Kerrot meille arjestasi — aktiivisuustasosi, kokemuksesi, perheesi ja lapsesi, ajan jonka voit käyttää koulutukseen, turkinhoidon, koon, kotitalouden allergiat ja muutaman muun tärkeän asian. Sen jälkeen saat rodut, jotka yleensä sopivat kaltaisellesi elämälle, sekä perustelut kunkin taustalla.",
+    points: [
+      {
+        title: "Mikään tekoäly ei päätä mitään",
+        body: "Tulos syntyy kiinteästä, läpinäkyvästä algoritmista. Samat vastaukset antavat aina saman tuloksen.",
+      },
+      {
+        title: "Näet, miksi",
+        body: "Jokainen osuma selitetään ulottuvuus kerrallaan, myös silloin kun rotu sopii sinulle huonommin.",
+      },
+      {
+        title: "Rotukoirat ja sekarotuiset",
+        body: "Tunnetut risteytykset yhdistävät molempien vanhempien ominaisuudet — näytetään suuntaa antavana, ei koskaan takeena.",
+      },
+      {
+        title: "Hyödyllinen vielä koiran saavuttua",
+        body: "Työkalut koulutukseen, terveyteen, ruokintaan ja matkustamiseen, jotka pysyvät mukana kauan valinnan jälkeen.",
+      },
+    ],
+    toolsEyebrow: "Tämä sisältyy",
+    toolsTitle: "Kaikki yhdessä rauhallisessa paikassa.",
+    tools: [
+      { title: "Löydä koirasi", body: "Yhteensopivuuskysymykset, joihin vastaat muutamassa minuutissa." },
+      { title: "Vertaile rotuja", body: "Rinnakkain, niissä asioissa, jotka oikeasti vaikuttavat arkeen." },
+      { title: "Sekarotuiset", body: "Yhdistä kaksi vanhempien rotua ja katso todennäköinen välimuoto." },
+      { title: "Koulutus", body: "Lyhyitä, ystävällisiä oppitunteja, jotka etenevät järkevässä järjestyksessä." },
+      { title: "Terveys ja hyvinvointi", body: "Turkki, hampaat, tassut, paino — tarkistettuna ilman paniikkia." },
+      { title: "Ruoka ja ravitsemus", body: "Annosohjeet ja selkeä lista siitä, mitä koirien ei pitäisi syödä." },
+      { title: "Matkustaminen", body: "Maasta toiseen vaihtuvat säännöt, turvallisuus autossa ja päivät ulkona." },
+      { title: "Oma koirani", body: "Koirasi oma seurantatieto: paino, eläinlääkärikäynnit, yhteystiedot, tuleva viikko." },
+    ],
+    plusTitle: "DoggMatch+",
+    plusBody:
+      "Valinnainen jäsenyys niille, jotka haluavat enemmän: lisätyökaluja, tulostettavia sivuja jääkaappiin tai eläinlääkärille, henkilökohtainen jäsenkortti ja kumppanietuja sitä mukaa kun niitä tulee.",
+    backTitle: "Käytä viisi minuuttia. Tämä on päätös seuraaviksi viideksitoista vuodeksi.",
+    backBody:
+      "Ilmainen kokeilla, ei mitään asennettavaa. Vastaa kysymyksiin puhelimella ja katso, mikä sopii elämääsi — perustelut näkyvissä, englanniksi tai norjaksi.",
+    backNote:
+      "DoggMatch tarjoaa opastusta, ei eläinlääkärin tai lääketieteellistä neuvontaa. Terveysasioissa keskustele aina eläinlääkärin kanssa, ja allergioissa hae ammattilaisen apua.",
+    madeBy: "Tehty Kristiansandissa, Norjassa, KM TECH LABSin toimesta",
+    printTitle: "A5-esite",
+    printLead:
+      "Yksi A5-sivu (148 × 210 mm), painovalmis. Tulosta PDF-tiedostoksi marginaalit nollaan asetettuna ja taustagrafiikat päällä. Pyydä painotalolta 3 mm leikkuuvara.",
+    printBtn: "Tulosta / tallenna PDF:nä",
+    qrAlt: "QR-koodi osoitteeseen doggmatch.com",
+  },
 } as const;
 
 function useQr(text: string, size = 640) {

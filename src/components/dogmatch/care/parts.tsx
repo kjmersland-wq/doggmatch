@@ -32,6 +32,30 @@ const copy = {
     basedOn: "Na podstawie wskazówek od",
     readFull: "Przeczytaj pełną odpowiedź",
   },
+  dk: {
+    safety: { safe: "Fint i små mængder", care: "Vær forsigtig", avoid: "Giv ikke dette" } as Record<FoodSafety, string>,
+    howMuch: "Hvor meget: ",
+    weightChartAlt: "Vægt over tid",
+    worthKnowing: "Værd at vide",
+    basedOn: "Baseret på råd fra",
+    readFull: "Læs hele svaret",
+  },
+  se: {
+    safety: { safe: "Okej i små mängder", care: "Var försiktig", avoid: "Ge inte detta" } as Record<FoodSafety, string>,
+    howMuch: "Hur mycket: ",
+    weightChartAlt: "Vikt över tid",
+    worthKnowing: "Bra att veta",
+    basedOn: "Baserat på råd från",
+    readFull: "Läs hela svaret",
+  },
+  fi: {
+    safety: { safe: "Sopii pieninä määrinä", care: "Ole varovainen", avoid: "Älä anna tätä" } as Record<FoodSafety, string>,
+    howMuch: "Kuinka paljon: ",
+    weightChartAlt: "Paino ajan myötä",
+    worthKnowing: "Hyvä tietää",
+    basedOn: "Perustuu ohjeisiin lähteestä",
+    readFull: "Lue koko vastaus",
+  },
 } as const;
 
 /* ---------------------------------------------------------------- Cards */

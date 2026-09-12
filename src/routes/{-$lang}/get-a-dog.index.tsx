@@ -27,6 +27,21 @@ const seoCopy = {
     description:
       "Myślisz o psie? Sprawdź, czy to dobry moment, znajdź psy pasujące do Twojego życia, wybieraj rozważnie, poznaj koszty i przygotuj dom.",
   },
+  dk: {
+    title: "Skaf hund — hele vejen, fra tanken til de er hjemme | DoggMatch",
+    description:
+      "Overvejer du at skaffe en hund? Find ud af om tidspunktet er rigtigt, find hundene der passer til dit liv, vælg med omtanke, forstå omkostningerne, og gør hjemmet klar.",
+  },
+  se: {
+    title: "Skaffa hund — hela vägen, från tanken till de är hemma | DoggMatch",
+    description:
+      "Funderar du på att skaffa hund? Ta reda på om tiden är rätt, hitta hundarna som passar ditt liv, välj med omsorg, förstå kostnaderna och gör hemmet redo.",
+  },
+  fi: {
+    title: "Koiran hankinta — koko matka, ajatuksesta kotiin tuloon | DoggMatch",
+    description:
+      "Harkitsetko koiran hankintaa? Selvitä, onko ajankohta oikea, löydä elämääsi sopivat koirat, valitse harkiten, ymmärrä kustannukset ja valmistele kotisi.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/get-a-dog/")({
@@ -130,6 +145,102 @@ const copy = {
     welcomeBody:
       "Gdy Twój pies trafi do domu, wszystko, co nam powiedziałeś, przechodzi do Mój pies — jedzenie, trening, zdrowie, spacery i dokumenty, wszystko w jednym miejscu.",
     welcomeCta: "Zobacz pierwszy tydzień",
+  },
+  dk: {
+    eyebrow: "Skaf hund",
+    heroTitle: "Går du og overvejer at skaffe en hund?",
+    heroBody:
+      "En hund kan gøre din hverdag bedre på fantastiske måder. Det er også en stor forpligtelse. Lad os sikre, at du er klar til den rigtige.",
+    ctaReady: "Er jeg klar?",
+    ctaFind: "Find min hund",
+    heroFootnote: "Det hele er gratis. Ingen konto, og intet gemmes andre steder end på denne enhed.",
+    heroAlt: "En ældre mand siddende på sin trappesten med armen om en langhåret blandingshund",
+    journeyEyebrow: "Rejsen",
+    journeyTitle: "Én beslutning, taget ét skridt ad gangen.",
+    journeyBody:
+      "At skaffe en hund er spændende. Det er også en stor beslutning. Her er hele vejen, i den rækkefølge det plejer at ske — start hvor som helst, og kom tilbage når du har lyst.",
+    open: "Åbn",
+    choiceEyebrow: "Et første, stort valg",
+    choiceTitle: "Hvalp, eller en hund der allerede er voksen?",
+    choiceBody:
+      "To ret forskellige første år. Ingen af delene er bedre — det rigtige valg afhænger langt mere af dit liv end af hunden.",
+    puppyAlt: "En cocker spaniel-hvalp siddende ved siden af en tygget hjemmesko",
+    puppyLabel: "En hvalp",
+    puppyBody: "Søvnløse måneder, og du former næsten alt selv.",
+    adultAlt: "En rolig voksen hund der hviler på en sofa i en solbeskinnet lejlighed",
+    adultLabel: "En voksen hund",
+    adultBody: "Meget mere af det du ser, er det du får.",
+    compare: "Sammenlign dem ordentligt",
+    welcomeAlt: "En familie der sidder stille på gulvet, mens en nyankommet hund snuser til sin nye seng",
+    welcomeEyebrow: "Slutningen på denne rejse",
+    welcomeTitle: "Og begyndelsen på den langt længere.",
+    welcomeBody:
+      "Når din hund kommer hjem, flytter alt det du har fortalt os over i Min Hund — mad, træning, sundhed, gåture og papirer, samlet ét sted.",
+    welcomeCta: "Se den første uge",
+  },
+  se: {
+    eyebrow: "Skaffa hund",
+    heroTitle: "Funderar du på att skaffa hund?",
+    heroBody:
+      "En hund kan förändra din vardag på fantastiska sätt. Det är också ett stort åtagande. Låt oss se till att du är redo för den rätta.",
+    ctaReady: "Är jag redo?",
+    ctaFind: "Hitta min hund",
+    heroFootnote: "Allt är gratis. Inget konto, och inget sparas någon annanstans än på den här enheten.",
+    heroAlt: "En äldre man som sitter på sin trappa med armen om en raggig blandhund",
+    journeyEyebrow: "Resan",
+    journeyTitle: "Ett beslut, taget ett steg i taget.",
+    journeyBody:
+      "Att skaffa hund är spännande. Det är också ett stort beslut. Här är hela vägen, i den ordning det brukar ske — börja var som helst, och kom tillbaka när du vill.",
+    open: "Öppna",
+    choiceEyebrow: "Ett första, stort val",
+    choiceTitle: "Valp, eller en hund som redan är vuxen?",
+    choiceBody:
+      "Två ganska olika första år. Inget alternativ är bättre — vad som passar beror mycket mer på ditt liv än på hunden.",
+    puppyAlt: "En cocker spaniel-valp som sitter bredvid en tuggad toffel",
+    puppyLabel: "En valp",
+    puppyBody: "Sömnlösa månader, och du formar nästan allt själv.",
+    adultAlt: "En lugn vuxen hund som vilar i en soffa i en solig lägenhet",
+    adultLabel: "En vuxen hund",
+    adultBody: "Mycket mer av det du ser är det du får.",
+    compare: "Jämför dem ordentligt",
+    welcomeAlt: "En familj som sitter tyst på golvet medan en nyanländ hund undersöker sin nya bädd",
+    welcomeEyebrow: "Slutet på den här resan",
+    welcomeTitle: "Och början på den betydligt längre.",
+    welcomeBody:
+      "När din hund kommer hem flyttas allt du har berättat för oss över till Min Hund — mat, träning, hälsa, promenader och papper, samlat på ett ställe.",
+    welcomeCta: "Se den första veckan",
+  },
+  fi: {
+    eyebrow: "Hanki koira",
+    heroTitle: "Harkitsetko koiran hankkimista?",
+    heroBody:
+      "Koira voi muuttaa arkesi upealla tavalla. Se on myös iso sitoumus. Varmistetaan, että olet valmis juuri oikeaan koiraan.",
+    ctaReady: "Olenko valmis?",
+    ctaFind: "Löydä koirani",
+    heroFootnote: "Kaikki tämä on ilmaista. Ei tiliä, eikä mitään tallenneta muualle kuin tälle laitteelle.",
+    heroAlt: "Vanhempi mies istumassa kotinsa portailla käsi sekarotuisen, pörröisen koiran ympärillä",
+    journeyEyebrow: "Matka",
+    journeyTitle: "Yksi päätös, askel kerrallaan.",
+    journeyBody:
+      "Koiran hankkiminen on jännittävää. Se on myös iso päätös. Tässä koko matka siinä järjestyksessä kuin se yleensä etenee — aloita mistä vain ja palaa takaisin, milloin haluat.",
+    open: "Avaa",
+    choiceEyebrow: "Ensimmäinen iso valinta",
+    choiceTitle: "Pentu vai jo aikuinen koira?",
+    choiceBody:
+      "Kaksi melko erilaista ensimmäistä vuotta. Kumpikaan ei ole parempi — oikea valinta riippuu paljon enemmän elämästäsi kuin koirasta.",
+    puppyAlt: "Cockerspanielin pentu istumassa pureskellun tohvelin vieressä",
+    puppyLabel: "Pentu",
+    puppyBody: "Unettomia kuukausia, ja muovaat lähes kaiken itse.",
+    adultAlt: "Rauhallinen aikuinen koira lepäämässä sohvalla aurinkoisessa asunnossa",
+    adultLabel: "Aikuinen koira",
+    adultBody: "Paljon enemmän sitä, mitä näet, on sitä, mitä saat.",
+    compare: "Vertaa niitä kunnolla",
+    welcomeAlt: "Perhe istumassa hiljaa lattialla, kun juuri saapunut koira haistelee uutta petiään",
+    welcomeEyebrow: "Tämän matkan loppu",
+    welcomeTitle: "Ja alku paljon pidemmälle matkalle.",
+    welcomeBody:
+      "Kun koirasi tulee kotiin, kaikki kertomasi siirtyy Oma koira -osioon — ruokinta, koulutus, terveys, lenkit ja paperityöt, kaikki yhdessä paikassa.",
+    welcomeCta: "Katso ensimmäinen viikko",
   },
 } as const;
 

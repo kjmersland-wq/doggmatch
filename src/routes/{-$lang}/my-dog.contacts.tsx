@@ -103,6 +103,69 @@ const copy = {
     vetNote:
       "Jeśli martwisz się o zmianę w zdrowiu twojego psa, najlepiej zapytać weterynarza. To, co tu napiszesz, po prostu pomoże ci wszystko zapamiętać, gdy tam trafisz.",
   },
+  dk: {
+    eyebrow: "Kontakter og information",
+    titleFor: (name: string) => `Alt om ${name}, ét sted`,
+    titleFallback: "Alt ét sted",
+    intro:
+      "Udfyld det, du ved. Det bliver på denne enhed, og du kan udskrive det, når du har brug for det — til dyrlægen, en hundepasser eller køleskabsdøren.",
+    printSave: "Udskriv og gem",
+    addDogNote: "Tilføj først din hund, så gemmes alt, du skriver her, sammen med den.",
+    detailsTitle: "Din hunds detaljer",
+    dob: "Fødselsdato",
+    colour: "Farve og tegninger",
+    microchip: "Chipnummer",
+    insurance: "Forsikring",
+    policy: "Policenummer",
+    worthKnowing: "Værd at vide",
+    worthKnowingTitle: "Det du gerne vil have, andre ved",
+    worthKnowingIntro:
+      "Med dine egne ord. Intet her er en diagnose — det er ganske enkelt det, du har lagt mærke til i hverdagen med din hund.",
+    vetNote:
+      "Er du bekymret for en ændring i din hunds helbred, er din dyrlæge den bedste at spørge. Det, du skriver her, hjælper dig blot med at huske det hele, når du kommer derhen.",
+  },
+  se: {
+    eyebrow: "Kontakter och information",
+    titleFor: (name: string) => `Allt om ${name}, på ett ställe`,
+    titleFallback: "Allt på ett ställe",
+    intro:
+      "Fyll i det du vet. Det stannar på den här enheten, och du kan skriva ut det när du behöver det — till veterinären, en hundvakt eller kylskåpsdörren.",
+    printSave: "Skriv ut och spara",
+    addDogNote: "Lägg till din hund först, så sparas allt du skriver här tillsammans med den.",
+    detailsTitle: "Din hunds uppgifter",
+    dob: "Födelsedatum",
+    colour: "Färg och tecken",
+    microchip: "Chipnummer",
+    insurance: "Försäkring",
+    policy: "Försäkringsnummer",
+    worthKnowing: "Bra att veta",
+    worthKnowingTitle: "Det du vill att någon annan ska veta",
+    worthKnowingIntro:
+      "Med dina egna ord. Inget här är en diagnos — det är helt enkelt det du har lagt märke till i vardagen med din hund.",
+    vetNote:
+      "Är du orolig för en förändring i din hunds hälsa är din veterinär bäst att fråga. Det du skriver här hjälper dig bara att komma ihåg allt när du väl är där.",
+  },
+  fi: {
+    eyebrow: "Yhteystiedot ja tiedot",
+    titleFor: (name: string) => `Kaikki koirasta ${name} yhdessä paikassa`,
+    titleFallback: "Kaikki yhdessä paikassa",
+    intro:
+      "Täytä se, minkä tiedät. Se pysyy tällä laitteella, ja voit tulostaa sen aina tarvittaessa — eläinlääkärille, koiranvahdille tai jääkaapin oveen.",
+    printSave: "Tulosta ja tallenna",
+    addDogNote: "Lisää koirasi ensin, niin kaikki tähän kirjoittamasi tallentuu sen tietoihin.",
+    detailsTitle: "Koirasi tiedot",
+    dob: "Syntymäaika",
+    colour: "Väri ja merkit",
+    microchip: "Mikrosirun numero",
+    insurance: "Vakuutus",
+    policy: "Vakuutusnumero",
+    worthKnowing: "Hyvä tietää",
+    worthKnowingTitle: "Asiat, jotka haluaisit muiden tietävän",
+    worthKnowingIntro:
+      "Omin sanoin. Mikään tässä ei ole diagnoosi — se on yksinkertaisesti sitä, mitä olet huomannut arjessa koirasi kanssa.",
+    vetNote:
+      "Jos olet huolissasi muutoksesta koirasi terveydessä, eläinlääkäri on paras henkilö kysyä. Se, mitä kirjoitat tähän, auttaa vain sinua muistamaan kaiken, kun pääset sinne.",
+  },
 } as const;
 
 function Field({

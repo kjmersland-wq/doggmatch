@@ -99,6 +99,72 @@ const copy = {
     noteBody:
       "Psy się różnią. Coś, co jest w porządku dla większości, może zaszkodzić twojemu psu, a ilość ma znaczenie — okruszek czegoś tłustego to nie to samo co pół opakowania. Wszelkie przysmaki powinny stanowić mniej niż jedną dziesiątą tego, co pies zjada w ciągu dnia.",
   },
+  dk: {
+    eyebrow: "Fødevaresikkerhed",
+    title: "Kan min hund spise dette?",
+    intro:
+      "Noget er landet på gulvet, og din hund nåede først derhen. Skriv det ind, så får du et klart svar, uden panik.",
+    azLink: "Gennemse alle fødevarer, A–Å",
+    searchPlaceholder: "Druer, ost, jordnøddesmør…",
+    searchAria: "Søg efter mad",
+    filters: [
+      { value: "all" as const, label: "Alt" },
+      { value: "safe" as const, label: "Fint i små mængder" },
+      { value: "care" as const, label: "Vær forsigtig" },
+      { value: "avoid" as const, label: "Giv ikke" },
+    ],
+    empty:
+      "Den har vi ikke skrevet op endnu. Har din hund allerede spist det, og du er usikker, så ring til dyrlægen — det er præcis den slags opkald, de er der for.",
+    vetNote:
+      "Har din hund spist noget fra \"giv ikke\"-listen, så vent ikke med at se, hvad der sker. Ring til dyrlægen eller en dyregiftlinje og fortæl, hvad det var, cirka hvor meget, og hvornår.",
+    noteTitle: "En note om lister som denne",
+    noteBody:
+      "Hunde er forskellige. Noget der er fint for de fleste, kan stadig give din hund problemer, og mængde betyder noget — en krumme af noget fedt er ikke det samme som en halv pakke. Godbidder af enhver slags bør holdes under omkring en tiendedel af det, din hund spiser på en dag.",
+  },
+  se: {
+    eyebrow: "Matsäkerhet",
+    title: "Kan min hund äta det här?",
+    intro:
+      "Något har hamnat på golvet och din hund kom dit först. Skriv in det, så får du ett rakt svar, utan panik.",
+    azLink: "Bläddra bland alla livsmedel, A–Ö",
+    searchPlaceholder: "Vindruvor, ost, jordnötssmör…",
+    searchAria: "Sök livsmedel",
+    filters: [
+      { value: "all" as const, label: "Allt" },
+      { value: "safe" as const, label: "Okej i små mängder" },
+      { value: "care" as const, label: "Var försiktig" },
+      { value: "avoid" as const, label: "Ge inte" },
+    ],
+    empty:
+      "Den har vi inte skrivit om än. Har din hund redan ätit det och du är osäker, ring veterinären — det är precis den typen av samtal de finns till för.",
+    vetNote:
+      "Har din hund ätit något från listan \"ge inte\", vänta inte och se vad som händer. Ring veterinären eller en djurgiftlinje och berätta vad det var, ungefär hur mycket, och när.",
+    noteTitle: "En kommentar om listor som denna",
+    noteBody:
+      "Hundar är olika. Något som är okej för de flesta kan ändå ge din hund problem, och mängden spelar roll — en smula av något fett är inte samma sak som ett halvt paket. Godis av alla slag bör hållas under ungefär en tiondel av vad hunden äter på en dag.",
+  },
+  fi: {
+    eyebrow: "Ruokaturvallisuus",
+    title: "Voiko koirani syödä tätä?",
+    intro:
+      "Jotain on pudonnut lattialle, ja koirasi ehti sinne ensin. Kirjoita se, niin saat suoran vastauksen ilman paniikkia.",
+    azLink: "Selaa kaikkia ruoka-aineita, A–Ö",
+    searchPlaceholder: "Viinirypäleet, juusto, maapähkinävoi…",
+    searchAria: "Hae ruoka-aineita",
+    filters: [
+      { value: "all" as const, label: "Kaikki" },
+      { value: "safe" as const, label: "Sopii pieninä määrinä" },
+      { value: "care" as const, label: "Ole varovainen" },
+      { value: "avoid" as const, label: "Älä anna" },
+    ],
+    empty:
+      "Sitä emme ole vielä kirjoittaneet auki. Jos koirasi on jo syönyt sitä etkä ole varma, soita eläinlääkärille — juuri sitä varten he ovat olemassa.",
+    vetNote:
+      "Jos koirasi on syönyt jotain \"älä anna\" -listalta, älä jää odottamaan mitä tapahtuu. Soita eläinlääkärille tai eläinten myrkytyspäivystykseen ja kerro, mitä se oli, suunnilleen kuinka paljon ja milloin.",
+    noteTitle: "Huomio tällaisista listoista",
+    noteBody:
+      "Koirat ovat erilaisia. Jokin, mikä sopii useimmille, voi silti aiheuttaa ongelmia omallesi, ja määrällä on väliä — murunen jotain rasvaista ei ole sama asia kuin puoli pakettia. Kaikenlaisten herkkujen tulisi jäädä alle kymmenesosaan siitä, mitä koira syö päivässä.",
+  },
 } as const;
 
 function FoodSafetyPage() {

@@ -47,6 +47,27 @@ const copy = {
     backToPlus: "Wróć do DoggMatch+",
     goToMyDog: "Przejdź do Mój pies",
   },
+  dk: {
+    eyebrow: "Ingen betaling gennemført",
+    heading: "Det er helt fint.",
+    body: "Der blev ikke trukket noget. DoggMatch+ er her, når du er klar, og alt du brugte er præcis, som det var.",
+    backToPlus: "Tilbage til DoggMatch+",
+    goToMyDog: "Gå til Min hund",
+  },
+  se: {
+    eyebrow: "Ingen betalning genomförd",
+    heading: "Det är helt okej.",
+    body: "Inget drogs från ditt kort. DoggMatch+ finns kvar när du är redo, och allt du använde är precis som det var.",
+    backToPlus: "Tillbaka till DoggMatch+",
+    goToMyDog: "Gå till Min hund",
+  },
+  fi: {
+    eyebrow: "Maksua ei veloitettu",
+    heading: "Se on ihan ok.",
+    body: "Mitään ei veloitettu. DoggMatch+ on täällä, kun olet valmis, ja kaikki käyttämäsi pysyy täsmälleen ennallaan.",
+    backToPlus: "Takaisin DoggMatch+:aan",
+    goToMyDog: "Siirry Oma koirani -osioon",
+  },
 } as const;
 
 function CanceledPage() {

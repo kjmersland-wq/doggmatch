@@ -20,6 +20,21 @@ const seoCopy = {
     description:
       "Zasady korzystania z DoggMatch i DoggMatch+: czym jest serwis, jak działa członkostwo i płatności, prawo do odstąpienia oraz granice naszych porad.",
   },
+  dk: {
+    title: "Servicevilkår — DoggMatch",
+    description:
+      "Vilkårene for at bruge DoggMatch og DoggMatch+: hvad tjenesten er, hvordan medlemskab og fakturering fungerer, din fortrydelsesret, og grænserne for vores råd.",
+  },
+  se: {
+    title: "Användarvillkor — DoggMatch",
+    description:
+      "Villkoren för att använda DoggMatch och DoggMatch+: vad tjänsten är, hur medlemskap och fakturering fungerar, din ångerrätt, och gränserna för våra råd.",
+  },
+  fi: {
+    title: "Käyttöehdot — DoggMatch",
+    description:
+      "DoggMatchin ja DoggMatch+:n käyttöehdot: mikä palvelu on, miten jäsenyys ja laskutus toimivat, peruuttamisoikeutesi ja neuvojemme rajat.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/terms")({
@@ -304,6 +319,285 @@ const copy = {
           "Niniejsze warunki podlegają prawu norweskiemu, z sądem Kristiansand tingrett jako właściwym sądem zwyczajnym. Jeśli jesteś konsumentem, zachowujesz ochronę wynikającą z bezwzględnie obowiązujących przepisów kraju, w którym mieszkasz, i możesz tam wnieść sprawę.",
         p2Before: "Możesz też złożyć skargę do norweskiego Urzędu Ochrony Konsumentów (Forbrukertilsynet)/Forbrukerrådet lub skorzystać z internetowej platformy rozstrzygania sporów Komisji Europejskiej. Wolelibyśmy jednak, żebyś po prostu",
         p2After: "najpierw do nas napisał — większość spraw da się łatwo rozwiązać.",
+      },
+    },
+  },
+  dk: {
+    eyebrow: "Vilkår",
+    title: "Vilkårene, i klart sprog",
+    intro:
+      "Det her er vilkårene, du accepterer, når du bruger DoggMatch. Vi har forsøgt at skrive dem, som vi ville forklare dem til dig ansigt til ansigt, uden at gemme noget i det med småt.",
+    updated: "16. august 2026",
+    contactPage: "kontaktsiden",
+    privacyNotice: "privatlivspolitik",
+    writeToUs: "skriv til os",
+    sections: {
+      whoWeAre: {
+        title: "Hvem vi er",
+        p1:
+          "DoggMatch er bygget og drevet af KM TECH LABS, CVR-nr. 934 044 029, Kristiansand, Norge. Når vi siger \"vi\" eller \"os\" nedenfor, er det dem, vi mener. Når vi siger \"du\", mener vi den, der bruger siden.",
+      },
+      whatItIs: {
+        title: "Hvad DoggMatch er",
+        p1:
+          "DoggMatch hjælper dig med at finde ud af, hvilken hund der kan passe til dit liv, og hjælper dig med at passe på den hund, du allerede har. Alt, hvad vi viser dig, kommer fra en gennemsigtig beregning baseret på det, du fortæller os, og hvad hver race typisk har brug for. Det er generel vejledning, ikke en professionel vurdering.",
+      },
+      notAdvice: {
+        title: "Vigtigt: dette er ikke veterinær- eller juridisk rådgivning",
+        p1:
+          "Vores materiale om sundhed, ernæring, træning og rejser er generel information. Hver hund er forskellig. Tal altid med din dyrlæge om alt medicinsk, og tjek altid de officielle regler for de lande, du rejser til og fra — grænse- og indførselskrav ændrer sig, og kun myndighederne kan bekræfte, hvad der gælder for dig. Du er selv ansvarlig for beslutninger, du træffer om din hund.",
+      },
+      account: {
+        title: "Din konto",
+        p1:
+          "Det meste af DoggMatch fungerer uden en konto. Opretter du en, så hold dine login-oplysninger for dig selv, giv os korrekte oplysninger, og fortæl os det, hvis du tror, nogen andre er kommet ind på din konto. Du skal være mindst 16 år. Du kan lukke din konto, når du vil.",
+      },
+      membership: {
+        title: "DoggMatch+ medlemskab og fakturering",
+        items: [
+          "DoggMatch+ koster 7,99 € om måneden eller 59,99 € om året. Priserne inkluderer moms, hvor det gælder.",
+          "Betalinger håndteres af Stripe. Vi ser aldrig dine kortoplysninger.",
+          "Medlemskabet fornyes automatisk ved udgangen af hver periode, indtil du opsiger det.",
+          "Du kan opsige når som helst fra din konto. Dit medlemskab forbliver derefter aktivt ud den periode, du allerede har betalt for, og fornyes ikke derefter.",
+          "Hvis vi ændrer prisen, fortæller vi dig det mindst 30 dage før det påvirker dig, og du kan opsige, før det træder i kraft.",
+          "Hvis en betaling mislykkes, kan vi sætte medlemskabsfunktioner på pause, indtil den går igennem.",
+        ],
+      },
+      withdraw: {
+        title: "Din fortrydelsesret (EU/EØS-forbrugere)",
+        p1Before:
+          "Som forbruger i EU/EØS har du 14 dage til at fortryde et køb, i henhold til forbrugerrettighedsdirektivet og den norske fortrydelseslov (angrerettloven). For at bruge den, så sig bare til os gennem",
+        p1After: "inden for 14 dage efter, du abonnerede, så refunderer vi dig.",
+        p2:
+          "Fordi DoggMatch+ giver dig øjeblikkelig adgang til digitalt indhold, accepterer du, at vi begynder at levere med det samme. Hvis du derefter fortryder inden for de 14 dage, kan vi trække et rimeligt beløb fra for den del af perioden, du allerede har brugt.",
+      },
+      use: {
+        title: "Sådan må du bruge siden",
+        intro: "Undlad venligst at:",
+        items: [
+          "Scrape, kopiere eller videresælge vores indhold, racedata eller matchresultater.",
+          "Forsøge at bryde, overbelaste eller omgå tjenestens sikkerhed.",
+          "Bruge siden til noget ulovligt, eller uploade noget skadeligt.",
+          "Fremstille DoggMatch-resultater som professionel veterinær- eller avlsrådgivning.",
+        ],
+      },
+      content: {
+        title: "Indhold og ejerskab",
+        p1:
+          "Navnet DoggMatch, logoet, designet, det skrevne materiale, raceindholdet og matchlogikken tilhører KM TECH LABS og er beskyttet af ophavsret og varemærkeret. Du må bruge dem til din egen personlige, ikke-kommercielle brug — herunder at udskrive dine egne dokumenter og medlemskort. Alt, du skaber i DoggMatch, såsom dine hundeprofiler og noter, forbliver dit.",
+      },
+      availability: {
+        title: "Tilgængelighed",
+        p1:
+          "Vi arbejder hårdt for at holde DoggMatch oppe, men vi lover ikke, at det aldrig vil være utilgængeligt. Vi kan opdatere, ændre eller nedlægge funktioner. Hvis vi nogensinde lukker en betalt funktion, du abonnerer på, refunderer vi den ubrugte del af din periode.",
+      },
+      liability: {
+        title: "Ansvar",
+        p1:
+          "Intet her begrænser dine lovbestemte forbrugerrettigheder, og intet begrænser vores ansvar for død, personskade, grov uagtsomhed eller forsæt. Ud over det, og i det omfang loven tillader det, er vi ikke ansvarlige for indirekte tab eller følgeskader, og vores samlede ansvar er begrænset til det, du har betalt os i de 12 måneder før kravet.",
+      },
+      privacy: {
+        title: "Privatliv",
+        p1Before: "Hvordan vi håndterer dine personoplysninger er forklaret i vores",
+        p1After: ", som følger GDPR.",
+      },
+      changes: {
+        title: "Ændringer af disse vilkår",
+        p1:
+          "Hvis vi ændrer disse vilkår på en måde, der betyder noget for dig, giver vi medlemmer besked via e-mail mindst 30 dage i forvejen. Fortsætter du med at bruge DoggMatch derefter, betyder det, at du accepterer de nye vilkår.",
+      },
+      law: {
+        title: "Lovvalg og tvister",
+        p1:
+          "Disse vilkår er underlagt norsk ret, med Kristiansand tingrett som ordinært værneting. Er du forbruger, beholder du beskyttelsen af ufravigelig lovgivning i det land, du bor i, og du kan anlægge sag der.",
+        p2Before: "Du kan også indgive en klage til det norske Forbrugertilsyn (Forbrukertilsynet)/Forbrukerrådet, eller bruge EU-Kommissionens onlineplatform for tvistbilæggelse. Vi vil meget hellere have, at du bare",
+        p2After: "til os først — de fleste ting er nemme at ordne.",
+      },
+    },
+  },
+  se: {
+    eyebrow: "Villkor",
+    title: "Villkoren, i klarspråk",
+    intro:
+      "Det här är villkoren du godkänner när du använder DoggMatch. Vi har försökt skriva dem som vi skulle förklara dem för dig personligen, utan att gömma något i det finstilta.",
+    updated: "16 augusti 2026",
+    contactPage: "kontaktsidan",
+    privacyNotice: "integritetspolicy",
+    writeToUs: "skriv till oss",
+    sections: {
+      whoWeAre: {
+        title: "Vilka vi är",
+        p1:
+          "DoggMatch byggs och drivs av KM TECH LABS, org.nr 934 044 029, Kristiansand, Norge. När vi säger \"vi\" eller \"oss\" nedan menar vi dem. När vi säger \"du\" menar vi den som använder sidan.",
+      },
+      whatItIs: {
+        title: "Vad DoggMatch är",
+        p1:
+          "DoggMatch hjälper dig att ta reda på vilken hund som kan passa ditt liv, och hjälper dig att ta hand om hunden du redan har. Allt vi visar dig kommer från en transparent beräkning baserad på vad du berättar för oss och vad varje ras vanligtvis behöver. Det är allmän vägledning, inte en professionell bedömning.",
+      },
+      notAdvice: {
+        title: "Viktigt: det här är inte veterinär- eller juridisk rådgivning",
+        p1:
+          "Vårt material om hälsa, näring, träning och resor är allmän information. Varje hund är olik. Prata alltid med din veterinär om allt medicinskt, och kontrollera alltid de officiella reglerna för länderna du reser till och från — gräns- och importkrav ändras, och bara myndigheterna kan bekräfta vad som gäller för dig. Du ansvarar själv för beslut du fattar om din hund.",
+      },
+      account: {
+        title: "Ditt konto",
+        p1:
+          "Det mesta av DoggMatch fungerar utan konto. Om du skapar ett, håll dina inloggningsuppgifter för dig själv, ge oss korrekt information, och meddela oss om du tror att någon annan har kommit åt ditt konto. Du måste vara minst 16 år. Du kan stänga ditt konto när du vill.",
+      },
+      membership: {
+        title: "DoggMatch+ medlemskap och fakturering",
+        items: [
+          "DoggMatch+ kostar 7,99 € per månad eller 59,99 € per år. Priserna inkluderar moms där det gäller.",
+          "Betalningar hanteras av Stripe. Vi ser aldrig dina kortuppgifter.",
+          "Medlemskapet förnyas automatiskt vid slutet av varje period tills du säger upp det.",
+          "Du kan säga upp när som helst från ditt konto. Ditt medlemskap förblir då aktivt ut den period du redan har betalat för, och förnyas inte därefter.",
+          "Om vi ändrar priset meddelar vi dig minst 30 dagar innan det påverkar dig, och du kan säga upp innan det träder i kraft.",
+          "Om en betalning misslyckas kan vi pausa medlemskapsfunktioner tills den går igenom.",
+        ],
+      },
+      withdraw: {
+        title: "Din ångerrätt (EU/EES-konsumenter)",
+        p1Before:
+          "Som konsument inom EU/EES har du 14 dagar att ångra ett köp, enligt konsumenträttighetsdirektivet och den norska ångerrättslagen (angrerettloven). För att använda den, säg bara till oss genom",
+        p1After: "inom 14 dagar efter att du prenumererade, så återbetalar vi dig.",
+        p2:
+          "Eftersom DoggMatch+ ger dig omedelbar tillgång till digitalt innehåll godkänner du att vi börjar leverera direkt. Om du sedan ångrar dig inom 14 dagar kan vi dra av ett skäligt belopp för den del av perioden du redan har använt.",
+      },
+      use: {
+        title: "Hur du får använda sidan",
+        intro: "Vänligen avstå från att:",
+        items: [
+          "Skrapa, kopiera eller sälja vidare vårt innehåll, rasdata eller matchresultat.",
+          "Försöka bryta, överbelasta eller kringgå tjänstens säkerhet.",
+          "Använda sidan till något olagligt, eller ladda upp något skadligt.",
+          "Framställa DoggMatch-resultat som professionell veterinär- eller avelsrådgivning.",
+        ],
+      },
+      content: {
+        title: "Innehåll och ägarskap",
+        p1:
+          "Namnet DoggMatch, logotypen, designen, det skrivna materialet, rasinnehållet och matchningslogiken tillhör KM TECH LABS och skyddas av upphovsrätt och varumärkesrätt. Du får använda dem för din egen personliga, icke-kommersiella användning — inklusive att skriva ut dina egna dokument och medlemskort. Allt du skapar i DoggMatch, som dina hundprofiler och anteckningar, förblir ditt.",
+      },
+      availability: {
+        title: "Tillgänglighet",
+        p1:
+          "Vi arbetar hårt för att hålla DoggMatch igång, men vi lovar inte att det aldrig blir otillgängligt. Vi kan uppdatera, ändra eller avveckla funktioner. Om vi någonsin stänger ner en betald funktion du prenumererar på, återbetalar vi den oanvända delen av din period.",
+      },
+      liability: {
+        title: "Ansvar",
+        p1:
+          "Inget här begränsar dina lagstadgade konsumenträttigheter, och inget begränsar vårt ansvar för dödsfall, personskada, grov vårdslöshet eller uppsåt. Utöver det, och i den mån lagen tillåter, ansvarar vi inte för indirekta skador eller följdskador, och vårt totala ansvar är begränsat till vad du har betalat oss under de 12 månaderna före kravet.",
+      },
+      privacy: {
+        title: "Integritet",
+        p1Before: "Hur vi hanterar dina personuppgifter förklaras i vår",
+        p1After: ", som följer GDPR.",
+      },
+      changes: {
+        title: "Ändringar av dessa villkor",
+        p1:
+          "Om vi ändrar dessa villkor på ett sätt som spelar roll för dig meddelar vi medlemmar via e-post minst 30 dagar i förväg. Att fortsätta använda DoggMatch därefter innebär att du godkänner de nya villkoren.",
+      },
+      law: {
+        title: "Lagval och tvister",
+        p1:
+          "Dessa villkor styrs av norsk lag, med Kristiansand tingrett som ordinarie forum. Är du konsument behåller du skyddet av tvingande lagstiftning i landet du bor i, och du kan väcka talan där.",
+        p2Before: "Du kan också klaga till den norska Konsumentmyndigheten (Forbrukertilsynet)/Forbrukerrådet, eller använda EU-kommissionens plattform för onlinetvistlösning. Vi föredrar mycket hellre att du bara",
+        p2After: "till oss först — det mesta går lätt att lösa.",
+      },
+    },
+  },
+  fi: {
+    eyebrow: "Käyttöehdot",
+    title: "Ehdot selkokielellä",
+    intro:
+      "Nämä ovat ehdot, jotka hyväksyt käyttäessäsi DoggMatchia. Olemme yrittäneet kirjoittaa ne niin kuin selittäisimme ne sinulle kasvokkain, piilottamatta mitään pieneen präntätekstiin.",
+    updated: "16. elokuuta 2026",
+    contactPage: "yhteydenottosivun",
+    privacyNotice: "tietosuojaselosteessamme",
+    writeToUs: "kirjoita meille",
+    sections: {
+      whoWeAre: {
+        title: "Keitä olemme",
+        p1:
+          "DoggMatchin rakentaa ja sitä ylläpitää KM TECH LABS, y-tunnus 934 044 029, Kristiansand, Norja. Kun sanomme jäljempänä \"me\" tai \"meidän\", tarkoitamme heitä. Kun sanomme \"sinä\", tarkoitamme sivustoa käyttävää henkilöä.",
+      },
+      whatItIs: {
+        title: "Mikä DoggMatch on",
+        p1:
+          "DoggMatch auttaa sinua selvittämään, mikä koira voisi sopia elämääsi, ja auttaa sinua huolehtimaan jo omistamastasi koirasta. Kaikki näyttämämme perustuu läpinäkyvään laskelmaan, joka pohjautuu kertomiisi tietoihin ja siihen, mitä kukin rotu tyypillisesti tarvitsee. Se on yleistä ohjeistusta, ei ammatillista arviota.",
+      },
+      notAdvice: {
+        title: "Tärkeää: tämä ei ole eläinlääketieteellistä tai oikeudellista neuvontaa",
+        p1:
+          "Terveys-, ravitsemus-, koulutus- ja matkustusaineistomme on yleistä tietoa. Jokainen koira on erilainen. Keskustele aina eläinlääkärisi kanssa kaikesta lääketieteellisestä, ja tarkista aina niiden maiden viralliset säännöt, joihin ja joista matkustat — raja- ja tuontivaatimukset muuttuvat, ja vain viranomaiset voivat vahvistaa, mitä sinuun sovelletaan. Olet itse vastuussa koiraasi koskevista päätöksistäsi.",
+      },
+      account: {
+        title: "Tilisi",
+        p1:
+          "Suurin osa DoggMatchista toimii ilman tiliä. Jos luot sellaisen, pidä kirjautumistietosi itselläsi, anna meille oikeat tiedot, ja kerro meille, jos epäilet jonkun muun päässeen tilillesi. Sinun on oltava vähintään 16-vuotias. Voit sulkea tilisi milloin tahansa.",
+      },
+      membership: {
+        title: "DoggMatch+ -jäsenyys ja laskutus",
+        items: [
+          "DoggMatch+ maksaa 7,99 € kuukaudessa tai 59,99 € vuodessa. Hinnat sisältävät alv:n siellä, missä se on sovellettavissa.",
+          "Maksut hoitaa Stripe. Emme koskaan näe korttitietojasi.",
+          "Jäsenyys uusiutuu automaattisesti jokaisen jakson lopussa, kunnes peruutat sen.",
+          "Voit peruuttaa milloin tahansa tililtäsi. Jäsenyytesi pysyy tämän jälkeen voimassa jo maksamasi jakson loppuun, eikä se uusiudu sen jälkeen.",
+          "Jos muutamme hintaa, kerromme siitä vähintään 30 päivää ennen kuin se vaikuttaa sinuun, ja voit peruuttaa ennen kuin se astuu voimaan.",
+          "Jos maksu epäonnistuu, saatamme keskeyttää jäsenyyden ominaisuudet, kunnes se onnistuu.",
+        ],
+      },
+      withdraw: {
+        title: "Peruuttamisoikeutesi (EU/ETA-kuluttajat)",
+        p1Before:
+          "EU:n/ETA-alueen kuluttajana sinulla on 14 päivää aikaa peruuttaa ostos kuluttajansuojadirektiivin ja Norjan peruuttamislain (angrerettloven) mukaisesti. Käyttääksesi tätä oikeutta, kerro meille asiasta",
+        p1After: "14 päivän kuluessa tilaamisesta, niin palautamme rahasi.",
+        p2:
+          "Koska DoggMatch+ antaa sinulle välittömän pääsyn digitaaliseen sisältöön, hyväksyt, että aloitamme toimituksen heti. Jos sitten peruutat 14 päivän kuluessa, saatamme vähentää kohtuullisen summan siitä osasta jaksoa, jonka olet jo käyttänyt.",
+      },
+      use: {
+        title: "Miten saat käyttää sivustoa",
+        intro: "Älä ystävällisesti:",
+        items: [
+          "Kaavi, kopioi tai jälleenmyy sisältöämme, rotutietojamme tai täsmäystuloksiamme.",
+          "Yritä murtaa, ylikuormittaa tai kiertää palvelun turvallisuutta.",
+          "Käytä sivustoa mihinkään laittomaan, tai lataa mitään haitallista.",
+          "Esitä DoggMatchin tuloksia ammatillisena eläinlääketieteellisenä tai jalostusneuvontana.",
+        ],
+      },
+      content: {
+        title: "Sisältö ja omistajuus",
+        p1:
+          "DoggMatch-nimi, logo, ulkoasu, kirjoitettu materiaali, rotusisältö ja täsmäyslogiikka kuuluvat KM TECH LABSille ja ovat tekijänoikeuden ja tavaramerkkioikeuden suojaamia. Voit käyttää niitä omaan henkilökohtaiseen, ei-kaupalliseen käyttöösi — mukaan lukien omien asiakirjojesi ja jäsenkorttisi tulostaminen. Kaikki DoggMatchissa luomasi, kuten koiraprofiilisi ja muistiinpanosi, pysyy sinun omanasi.",
+      },
+      availability: {
+        title: "Saatavuus",
+        p1:
+          "Teemme kovasti töitä pitääksemme DoggMatchin toiminnassa, mutta emme lupaa, ettei se koskaan olisi poissa käytöstä. Saatamme päivittää, muuttaa tai lopettaa ominaisuuksia. Jos joskus lopetamme maksullisen ominaisuuden, johon olet tilannut, palautamme jaksosi käyttämättömän osan.",
+      },
+      liability: {
+        title: "Vastuu",
+        p1:
+          "Mikään tässä ei rajoita lakisääteisiä kuluttajanoikeuksiasi, eikä mikään rajoita vastuutamme kuolemasta, henkilövahingosta, törkeästä huolimattomuudesta tai tahallisuudesta. Sen lisäksi, ja lain sallimissa rajoissa, emme ole vastuussa välillisistä tai seurannaisvahingoista, ja kokonaisvastuumme rajoittuu siihen, mitä olet maksanut meille vaatimusta edeltäneiden 12 kuukauden aikana.",
+      },
+      privacy: {
+        title: "Tietosuoja",
+        p1Before: "Miten käsittelemme henkilötietojasi, selitetään",
+        p1After: ", joka noudattaa GDPR:ää.",
+      },
+      changes: {
+        title: "Muutokset näihin ehtoihin",
+        p1:
+          "Jos muutamme näitä ehtoja tavalla, joka on sinulle merkityksellinen, kerromme jäsenille siitä sähköpostitse vähintään 30 päivää etukäteen. DoggMatchin käytön jatkaminen tämän jälkeen tarkoittaa, että hyväksyt uudet ehdot.",
+      },
+      law: {
+        title: "Sovellettava laki ja riidat",
+        p1:
+          "Näihin ehtoihin sovelletaan Norjan lakia, ja Kristiansandin käräjäoikeus (tingrett) on tavanomainen oikeuspaikka. Jos olet kuluttaja, säilytät asuinmaasi pakottavan lainsäädännön suojan, ja voit nostaa kanteen siellä.",
+        p2Before: "Voit myös viedä valituksen Norjan kuluttajaviranomaiselle (Forbrukertilsynet)/Forbrukerrådetille, tai käyttää Euroopan komission verkkovälitteistä riidanratkaisualustaa. Toivoisimme kuitenkin paljon mieluummin, että",
+        p2After: " meille ensin — useimmat asiat on helppo selvittää.",
       },
     },
   },

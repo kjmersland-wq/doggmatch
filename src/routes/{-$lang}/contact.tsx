@@ -24,6 +24,21 @@ const seoCopy = {
     description:
       "Napisz do nas. Chętnie pomożemy w pytaniach o wybór właściwego psa, szkolenie, zdrowie, podróże i życie z psem.",
   },
+  dk: {
+    title: "Kontakt DoggMatch",
+    description:
+      "Skriv til DoggMatch. Vi hjælper gerne med spørgsmål om at finde den rette hund, træning, sundhed, rejser og livet med hund.",
+  },
+  se: {
+    title: "Kontakta DoggMatch",
+    description:
+      "Hör av dig till DoggMatch. Vi hjälper gärna till med frågor om att hitta rätt hund, träning, hälsa, resor och livet med hund.",
+  },
+  fi: {
+    title: "Ota yhteyttä DoggMatchiin",
+    description:
+      "Ota yhteyttä DoggMatchiin. Autamme mielellämme oikean koiran löytämisessä, koulutuksessa, terveydessä, matkustamisessa ja koiran kanssa elämisessä.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/contact")({
@@ -150,6 +165,111 @@ const copy = {
     sending: "Wysyłanie…",
     onlyUse: "Używamy twoich danych wyłącznie po to, by ci odpowiedzieć. Nic więcej.",
     sendError: "Przepraszamy, nie udało nam się teraz wysłać twojej wiadomości. Spróbuj ponownie za chwilę.",
+  },
+  dk: {
+    eyebrow: "Kontakt",
+    heading: "Vi vil meget gerne høre fra dig.",
+    intro:
+      "Et spørgsmål om at finde den rette hund, træning, mad, sundhed eller rejser sammen — eller noget, der ikke virker, som det skal. Skriv til os, og et rigtigt menneske svarer.",
+    doneHeading: "Tak. Din besked er sendt.",
+    doneBody:
+      "Vi vender tilbage så hurtigt som muligt. Hold øje med din indbakke — vi har sendt dig en kort bekræftelse på, at den er kommet frem.",
+    writeAnother: "Skriv en ny besked",
+    nameLabel: "Dit navn",
+    namePlaceholder: "Karina Nielsen",
+    emailLabel: "Din e-mail",
+    emailPlaceholder: "dig@eksempel.dk",
+    subjectLabel: "Emne",
+    subjectPlaceholder: "Hvad handler det om?",
+    reasonLabel: "Hvad handler det om?",
+    reasonHint: "Valgfrit",
+    reasonPlaceholder: "Vælg gerne en, hvis du vil",
+    reasons: {
+      general: "Generelt spørgsmål",
+      matching: "Hundematch",
+      training: "Træning",
+      health: "Sundhed og ernæring",
+      myDog: "Min hund",
+      technical: "Teknisk problem",
+      partnership: "Samarbejde",
+      other: "Andet",
+    },
+    messageLabel: "Din besked",
+    messagePlaceholder: "Fortæl os så meget eller så lidt, du har lyst til.",
+    send: "Send besked",
+    sending: "Sender…",
+    onlyUse: "Vi bruger kun dine oplysninger til at svare dig. Ikke til andet.",
+    sendError: "Beklager, vi kunne ikke sende din besked lige nu. Prøv venligst igen om et øjeblik.",
+  },
+  se: {
+    eyebrow: "Kontakt",
+    heading: "Vi vill gärna höra från dig.",
+    intro:
+      "En fråga om att hitta rätt hund, träning, mat, hälsa eller att resa tillsammans — eller något som inte fungerar som det ska. Skriv till oss, så svarar en riktig person.",
+    doneHeading: "Tack. Ditt meddelande har skickats.",
+    doneBody:
+      "Vi återkommer så snart vi kan. Håll utkik i din inkorg — vi har skickat en kort bekräftelse på att det kom fram.",
+    writeAnother: "Skriv ett nytt meddelande",
+    nameLabel: "Ditt namn",
+    namePlaceholder: "Karin Andersson",
+    emailLabel: "Din e-post",
+    emailPlaceholder: "du@exempel.se",
+    subjectLabel: "Ämne",
+    subjectPlaceholder: "Vad gäller det?",
+    reasonLabel: "Vad gäller det?",
+    reasonHint: "Valfritt",
+    reasonPlaceholder: "Välj gärna ett, om du vill",
+    reasons: {
+      general: "Allmän fråga",
+      matching: "Matchning av hund",
+      training: "Träning",
+      health: "Hälsa och kost",
+      myDog: "Min hund",
+      technical: "Tekniskt problem",
+      partnership: "Samarbete",
+      other: "Annat",
+    },
+    messageLabel: "Ditt meddelande",
+    messagePlaceholder: "Berätta så mycket eller så lite du vill.",
+    send: "Skicka meddelande",
+    sending: "Skickar…",
+    onlyUse: "Vi använder bara dina uppgifter för att svara dig. Inget annat.",
+    sendError: "Tyvärr kunde vi inte skicka ditt meddelande just nu. Försök gärna igen om en liten stund.",
+  },
+  fi: {
+    eyebrow: "Yhteystiedot",
+    heading: "Kuulisimme mielellämme sinusta.",
+    intro:
+      "Kysymys oikean koiran löytämisestä, koulutuksesta, ruokinnasta, terveydestä tai yhdessä matkustamisesta — tai jokin, joka ei toimi niin kuin pitäisi. Kirjoita meille, niin oikea ihminen vastaa.",
+    doneHeading: "Kiitos. Viestisi on lähetetty.",
+    doneBody:
+      "Vastaamme niin pian kuin mahdollista. Pidä silmällä sähköpostiasi — lähetimme sinulle lyhyen vahvistuksen viestin perillepääsystä.",
+    writeAnother: "Kirjoita uusi viesti",
+    nameLabel: "Nimesi",
+    namePlaceholder: "Kaisa Korhonen",
+    emailLabel: "Sähköpostisi",
+    emailPlaceholder: "sina@esimerkki.fi",
+    subjectLabel: "Aihe",
+    subjectPlaceholder: "Mitä asia koskee?",
+    reasonLabel: "Mitä asia koskee?",
+    reasonHint: "Valinnainen",
+    reasonPlaceholder: "Valitse halutessasi yksi",
+    reasons: {
+      general: "Yleinen kysymys",
+      matching: "Koiran sovittaminen",
+      training: "Koulutus",
+      health: "Terveys ja ravitsemus",
+      myDog: "Oma koirani",
+      technical: "Tekninen ongelma",
+      partnership: "Yhteistyö",
+      other: "Muu",
+    },
+    messageLabel: "Viestisi",
+    messagePlaceholder: "Kerro niin paljon tai niin vähän kuin haluat.",
+    send: "Lähetä viesti",
+    sending: "Lähetetään…",
+    onlyUse: "Käytämme tietojasi vain vastataksemme sinulle. Emme mihinkään muuhun.",
+    sendError: "Valitettavasti viestiäsi ei juuri nyt voitu lähettää. Yritä hetken kuluttua uudelleen.",
   },
 } as const;
 

@@ -6,6 +6,9 @@ const copy = {
   en: { writtenDown: "Written down" },
   no: { writtenDown: "Skrevet ut" },
   pl: { writtenDown: "Zapisano" },
+  dk: { writtenDown: "Skrevet" },
+  se: { writtenDown: "Skrivet" },
+  fi: { writtenDown: "Kirjoitettu" },
 } as const;
 
 /**

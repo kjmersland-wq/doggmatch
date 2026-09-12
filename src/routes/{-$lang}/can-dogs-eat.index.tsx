@@ -24,6 +24,21 @@ const seo = {
     description:
       "Spokojna odpowiedź A–Z dla każdego produktu: w porządku w małych ilościach, uważaj albo nie podawaj.",
   },
+  dk: {
+    title: "Må hunde spise det? A–Å fødevareliste for hunde | DoggMatch",
+    description:
+      "Et roligt A–Å-svar for hver fødevare: fint i små mængder, vær forsigtig, eller giv ikke hunden dette.",
+  },
+  se: {
+    title: "Kan hundar äta det? A–Ö-lista över livsmedel | DoggMatch",
+    description:
+      "Ett lugnt A–Ö-svar för varje livsmedel: okej i små mängder, var försiktig, eller ge inte din hund detta.",
+  },
+  fi: {
+    title: "Voiko koira syödä sitä? A–Ö-ruokalista koirille | DoggMatch",
+    description:
+      "Rauhallinen A–Ö-vastaus jokaiselle ruoka-aineelle: pieninä määrinä sopii, ole varovainen, tai älä anna tätä koiralle.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/can-dogs-eat/")({
@@ -80,6 +95,36 @@ const copy = {
       "Jeśli pies zjadł coś z listy „nie podawaj”, nie czekaj na objawy. Zadzwoń do weterynarza i powiedz, co to było, ile mniej więcej i kiedy.",
     searchHint: "Wolisz szukać? Skorzystaj z wyszukiwarki produktów.",
     searchLink: "Otwórz listę z wyszukiwarką",
+  },
+  dk: {
+    eyebrow: "Fødevaresikkerhed",
+    title: "Må hunde spise det?",
+    intro: "Én side per fødevare, så du får et klart svar med det samme. Vælg det, hunden fik fat i.",
+    counted: (n: number) => `${n} fødevarer besvaret indtil videre`,
+    vetNote:
+      "Har hunden spist noget fra listen „giv ikke hunden dette“, så vent ikke på symptomer. Ring til din dyrlæge eller en dyregiftlinje, og fortæl hvad det var, cirka hvor meget, og hvornår.",
+    searchHint: "Vil du hellere søge? Brug den søgbare fødevareliste.",
+    searchLink: "Åbn den søgbare liste",
+  },
+  se: {
+    eyebrow: "Matsäkerhet",
+    title: "Kan hundar äta det?",
+    intro: "En sida per livsmedel, så du får ett tydligt svar direkt. Välj det din hund kom åt.",
+    counted: (n: number) => `${n} livsmedel besvarade hittills`,
+    vetNote:
+      "Har hunden ätit något från listan ”ge inte din hund detta”, vänta inte på symtom. Ring veterinären eller en giftinformationscentral och berätta vad det var, ungefär hur mycket och när.",
+    searchHint: "Föredrar du att söka? Använd den sökbara livsmedelslistan.",
+    searchLink: "Öppna den sökbara listan",
+  },
+  fi: {
+    eyebrow: "Ruokaturvallisuus",
+    title: "Voiko koira syödä sitä?",
+    intro: "Yksi sivu jokaista ruoka-ainetta kohti, jotta saat suoran vastauksen heti. Valitse se, mitä koirasi sai käsiinsä.",
+    counted: (n: number) => `${n} ruoka-ainetta käsitelty tähän mennessä`,
+    vetNote:
+      "Jos koira on syönyt jotain ”älä anna tätä koiralle” -listalta, älä odota oireita. Soita eläinlääkärille tai myrkytystietokeskukseen ja kerro, mitä se oli, suunnilleen kuinka paljon ja milloin.",
+    searchHint: "Haluatko mieluummin hakea? Käytä haettavaa ruokalistaa.",
+    searchLink: "Avaa haettava lista",
   },
 } as const;
 

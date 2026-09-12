@@ -63,11 +63,17 @@ export function scoreLesson(
               en: `Often useful with ${breed.name} in the mix, though every dog is their own dog`,
               no: `Ofte nyttig når det er ${breed.name} i blandingen, men hver hund er sin egen`,
               pl: `Często przydatne, gdy w mieszance jest ${breed.name}, choć każdy pies jest inny`,
+              dk: `Ofte nyttigt, når der er ${breed.name} i blandingen, men hver hund er sin egen`,
+              se: `Ofta bra när det finns ${breed.name} i blandningen, men varje hund är sin egen`,
+              fi: `Usein hyödyllinen, kun sekoituksessa on ${breed.name}, mutta jokainen koira on omanlaisensa`,
             })
           : pick({
               en: `Often suits a ${breed.name}, though every dog is their own dog`,
               no: `Passer ofte en ${breed.name}, men hver hund er sin egen`,
               pl: `Często pasuje do ${breed.name}, choć każdy pies jest inny`,
+              dk: `Passer ofte en ${breed.name}, men hver hund er sin egen`,
+              se: `Passar ofta en ${breed.name}, men varje hund är sin egen`,
+              fi: `Sopii usein rodulle ${breed.name}, mutta jokainen koira on omanlaisensa`,
             });
       }
     }
@@ -145,6 +151,39 @@ function planCopy() {
         senior: "Łagodne i miłe dla starszego psa",
       } as Record<DogProfile["ageStage"], string>,
     },
+    dk: {
+      startingPoint: "Et godt sted at starte",
+      yourGoal: "I sagde, at I gerne ville arbejde med det her",
+      inProgress: "Det her er I midt i lige nu",
+      age: {
+        puppy: "Værd at gøre tidligt, mens alt er nyt",
+        adolescent: "Alderen hvor det her virkelig betaler sig",
+        adult: "Nyttigt i alle aldre",
+        senior: "Roligt, og dejligt for en ældre hund",
+      } as Record<DogProfile["ageStage"], string>,
+    },
+    se: {
+      startingPoint: "Ett bra ställe att börja på",
+      yourGoal: "Ni sa att ni ville jobba med det här",
+      inProgress: "Det här håller ni på med just nu",
+      age: {
+        puppy: "Värt att göra tidigt, medan allt är nytt",
+        adolescent: "Åldern där det här verkligen lönar sig",
+        adult: "Användbart i alla åldrar",
+        senior: "Lugnt, och skönt för en äldre hund",
+      } as Record<DogProfile["ageStage"], string>,
+    },
+    fi: {
+      startingPoint: "Hyvä paikka aloittaa",
+      yourGoal: "Kerroit haluavasi harjoitella juuri tätä",
+      inProgress: "Tätä harjoittelette parhaillaan",
+      age: {
+        puppy: "Kannattaa aloittaa varhain, kun kaikki on vielä uutta",
+        adolescent: "Ikävaihe, jossa tästä on eniten hyötyä",
+        adult: "Hyödyllinen missä iässä tahansa",
+        senior: "Rauhallinen ja mukava vanhemmalle koiralle",
+      } as Record<DogProfile["ageStage"], string>,
+    },
   });
 }
 
@@ -219,7 +258,76 @@ const ageFocusPl: AgeFocus = {
   },
 };
 
+const ageFocusDk: AgeFocus = {
+  puppy: {
+    title: "Hvalpetiden",
+    body: "Alt er nyt, og det meste af det, du gør nu, handler simpelthen om at vise din hvalp, at verden er et venligt sted.",
+    points: ["Tryghed", "At møde verden roligt", "At lære at tale sammen", "Renlighedstræning", "At blive håndteret", "Søvn og ro"],
+  },
+  adolescent: {
+    title: "Teenageperioden",
+    body: "Ting, der virkede sidste måned, kan holde op med at virke et stykke tid. Det går over. Konsekvens og tålmodighed bærer jer igennem.",
+    points: ["At vente og styre sig selv", "At arbejde med forstyrrelser omkring", "Indkald, igen og igen", "At gå pænt i snor", "At være konsekvent"],
+  },
+  adult: {
+    title: "De voksne år",
+    body: "Nu handler det om at gøre gode vaner pålidelige og holde livet interessant.",
+    points: ["Pålidelighed", "Hverdagsmanerer", "Nye færdigheder for sjov", "Berigelse"],
+  },
+  senior: {
+    title: "De ældre år",
+    body: "Ældre hunde elsker stadig at lære. Hold det kort, roligt og skånsomt for stive led.",
+    points: ["Rolige hjernelege", "Tydelig kommunikation", "Aktiviteter der passer til kroppen", "At holde kendte færdigheder ved lige"],
+  },
+};
+
+const ageFocusSe: AgeFocus = {
+  puppy: {
+    title: "Valptiden",
+    body: "Allt är nytt, och det mesta du gör nu handlar helt enkelt om att visa din valp att världen är en vänlig plats.",
+    points: ["Trygghet", "Att möta världen lugnt", "Att lära sig prata med varandra", "Renlighetsträning", "Att bli hanterad", "Sömn och lugn"],
+  },
+  adolescent: {
+    title: "Tonårsmånaderna",
+    body: "Sådant som fungerade förra månaden kan sluta fungera ett tag. Det går över. Konsekvens och tålamod bär er igenom.",
+    points: ["Att vänta och styra sig själv", "Att jobba med distraktioner runt omkring", "Inkallning, om och om igen", "Att gå fint i koppel", "Att vara konsekvent"],
+  },
+  adult: {
+    title: "De vuxna åren",
+    body: "Nu handlar det om att göra bra vanor pålitliga, och hålla livet intressant.",
+    points: ["Pålitlighet", "Vardagsmanér", "Nya färdigheter för skojs skull", "Berikning"],
+  },
+  senior: {
+    title: "De äldre åren",
+    body: "Äldre hundar älskar fortfarande att lära sig. Håll det kort, lugnt och skonsamt för stela leder.",
+    points: ["Lugna hjärnlekar", "Tydlig kommunikation", "Aktiviteter som passar kroppen", "Att hålla kända färdigheter vid liv"],
+  },
+};
+
+const ageFocusFi: AgeFocus = {
+  puppy: {
+    title: "Pentuaika",
+    body: "Kaikki on uutta, ja suurin osa siitä, mitä teet nyt, on yksinkertaisesti sen näyttämistä pennulle, että maailma on ystävällinen paikka.",
+    points: ["Itseluottamus", "Maailmaan tutustuminen rauhassa", "Keskinäisen kommunikoinnin opettelu", "Siisteyskasvatus", "Käsittelyyn totuttelu", "Uni ja rauhoittuminen"],
+  },
+  adolescent: {
+    title: "Murrosikäkuukaudet",
+    body: "Se, mikä toimi viime kuussa, saattaa lakata toimimasta hetkeksi. Se menee ohi. Johdonmukaisuus ja kärsivällisyys vievät teidät läpi.",
+    points: ["Odottaminen ja itsehillintä", "Työskentely häiriötekijöiden keskellä", "Takaisinkutsu, yhä uudelleen", "Kaunis kävely hihnassa", "Johdonmukaisena pysyminen"],
+  },
+  adult: {
+    title: "Aikuisvuodet",
+    body: "Nyt on kyse hyvien tapojen vakiinnuttamisesta ja elämän pitämisestä mielenkiintoisena.",
+    points: ["Luotettavuus", "Arjen käytöstavat", "Uusia taitoja huvin vuoksi", "Virikkeellisyys"],
+  },
+  senior: {
+    title: "Vanhat vuodet",
+    body: "Vanhemmatkin koirat rakastavat oppimista. Pidä harjoitukset lyhyinä, rauhallisina ja jäykille nivelille sopivina.",
+    points: ["Rauhalliset aivopelit", "Selkeä viestintä", "Keholle sopivat aktiviteetit", "Tuttujen taitojen ylläpito"],
+  },
+};
+
 /** Age guidance in the reader's language — call inside render. */
 export function getAgeFocus(): AgeFocus {
-  return pick({ en: ageFocusEn, no: ageFocusNo, pl: ageFocusPl });
+  return pick({ en: ageFocusEn, no: ageFocusNo, pl: ageFocusPl, dk: ageFocusDk, se: ageFocusSe, fi: ageFocusFi });
 }

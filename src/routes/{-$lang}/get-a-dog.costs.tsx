@@ -78,6 +78,51 @@ const copy = {
     compareCta: "Porównaj koszty obok siebie",
     prepareCta: "Przygotuj swój dom",
   },
+  dk: {
+    eyebrow: "Forpligtelsen",
+    title: "Hvad koster en hund egentlig?",
+    intro:
+      "Penge er den mindst romantiske del af det her, og den del der oftest gør ondt senere. Her er billedet af det, ærligt talt. De faktiske priser varierer enormt efter land, by og hund.",
+    yourMatch: "Dit match",
+    runningCostPrefix: "Vejledende løbende omkostning, per år, når hunden har sat sig til rette:",
+    runningCostSuffix:
+      "Det er et bredt spænd fra vores racebibliotek, ikke et tilbud — priser på mad, forsikring og pleje varierer meget fra land til land.",
+    noticeTitle: "Hvor tallene kommer fra",
+    noticeBody:
+      "Hver raceside viser et vejledende årligt omkostningsspænd for den race, og Sammenlign sætter to eller tre af dem side om side. Vi vil hellere vise dig et bredt, ærligt spænd end et præcist tal, der viser sig at være forkert der, hvor du bor.",
+    compareCta: "Sammenlign omkostninger side om side",
+    prepareCta: "Gør dit hjem klar",
+  },
+  se: {
+    eyebrow: "Åtagandet",
+    title: "Vad kostar en hund egentligen?",
+    intro:
+      "Pengar är den minst romantiska delen av det här, och den del som oftast gör ont senare. Här är läget, ärligt talat. De faktiska priserna varierar enormt beroende på land, stad och hund.",
+    yourMatch: "Din matchning",
+    runningCostPrefix: "Ungefärlig löpande kostnad, per år, när hunden har kommit till ro:",
+    runningCostSuffix:
+      "Det är ett brett spann från vårt rasbibliotek, inte en offert — priser på mat, försäkring och skötsel varierar mycket mellan länder.",
+    noticeTitle: "Var siffrorna kommer ifrån",
+    noticeBody:
+      "Varje rassida visar ett ungefärligt årligt kostnadsspann för den rasen, och Jämför lägger två eller tre av dem sida vid sida. Vi vill hellre visa dig ett brett, ärligt spann än en exakt siffra som visar sig vara fel där du bor.",
+    compareCta: "Jämför kostnader sida vid sida",
+    prepareCta: "Gör ditt hem redo",
+  },
+  fi: {
+    eyebrow: "Sitoumus",
+    title: "Mitä koira todella maksaa?",
+    intro:
+      "Raha on tämän vähiten romanttinen osa, ja se osa, joka useimmiten sattuu myöhemmin. Tässä on tilanne rehellisesti kerrottuna. Todelliset hinnat vaihtelevat valtavasti maan, kaupungin ja koiran mukaan.",
+    yourMatch: "Sinun osumasi",
+    runningCostPrefix: "Suuntaa antava vuosittainen ylläpitokustannus, kun koira on asettunut arkeen:",
+    runningCostSuffix:
+      "Tämä on laaja haarukka rotukirjastostamme, ei tarjous — ruoan, vakuutuksen ja hoidon hinnat vaihtelevat paljon maittain.",
+    noticeTitle: "Mistä luvut tulevat",
+    noticeBody:
+      "Jokainen rotusivu näyttää suuntaa antavan vuosittaisen kustannushaarukan kyseiselle rodulle, ja Vertailu asettaa kaksi tai kolme niistä rinnakkain. Näytämme mieluummin laajan, rehellisen haarukan kuin tarkan luvun, joka osoittautuu vääräksi juuri sinun asuinpaikassasi.",
+    compareCta: "Vertaile kustannuksia rinnakkain",
+    prepareCta: "Valmistele kotisi",
+  },
 } as const;
 
 function CostsPage() {

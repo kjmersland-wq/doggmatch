@@ -71,6 +71,45 @@ const copy = {
     vetNote:
       "Strony uzupełniane są tym, co zapisałeś, a tam, gdzie niczego nie wpisałeś, zostają puste — więc świeża kartka wciąż da się uzupełnić długopisem. Wszystko pozostaje na twoim urządzeniu.",
   },
+  dk: {
+    eyebrow: "Udskriv og gem",
+    title: "Noget du kan holde i hånden",
+    introFor: (name: string) =>
+      `Alt du har skrevet om ${name} kan komme på papir — til køleskabsdøren, hundepasseren, eller mappen du gemmer i en skuffe.`,
+    dogFallback: "din hund",
+    wholePack: "Lav hele hundepakken",
+    printChosen: (n: number) => `Udskriv det, jeg har valgt (${n})`,
+    includeAria: (title: string) => `Inkluder ${title}`,
+    printJustThisOne: "Udskriv kun denne",
+    vetNote:
+      "Siderne udfyldes med det, du har gemt, og står tomme der, hvor du ikke har — så et frisk ark stadig virker med en kuglepen. Alt bliver på din enhed.",
+  },
+  se: {
+    eyebrow: "Skriv ut och spara",
+    title: "Något du kan hålla i handen",
+    introFor: (name: string) =>
+      `Allt du har skrivit om ${name} kan skrivas ut på papper — till kylskåpsdörren, hundvakten, eller mappen du förvarar i en låda.`,
+    dogFallback: "din hund",
+    wholePack: "Skapa hela hundpaketet",
+    printChosen: (n: number) => `Skriv ut det jag har valt (${n})`,
+    includeAria: (title: string) => `Inkludera ${title}`,
+    printJustThisOne: "Skriv bara ut den här",
+    vetNote:
+      "Sidorna fylls i med det du har sparat, och lämnas tomma där du inte har — så ett nytt papper fortfarande fungerar med en penna. Allt stannar på din enhet.",
+  },
+  fi: {
+    eyebrow: "Tulosta ja tallenna",
+    title: "Jotain, mitä voit pitää kädessäsi",
+    introFor: (name: string) =>
+      `Kaiken, mitä olet kirjoittanut ${name}sta, voi tulostaa paperille — jääkaapin oveen, koiranhoitajalle tai laatikossa säilytettävään kansioon.`,
+    dogFallback: "koirastasi",
+    wholePack: "Tee koko koirapaketti",
+    printChosen: (n: number) => `Tulosta valitsemani (${n})`,
+    includeAria: (title: string) => `Sisällytä ${title}`,
+    printJustThisOne: "Tulosta vain tämä",
+    vetNote:
+      "Sivut täytetään sillä, mitä olet tallentanut, ja jätetään tyhjiksi siltä osin kuin et ole — joten tuore arkki toimii silti kynällä täytettynä. Kaikki pysyy laitteellasi.",
+  },
 } as const;
 
 function PrintPage() {

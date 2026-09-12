@@ -119,6 +119,72 @@ const copy = {
     profileCta: "Pełny profil rasy",
     costsCta: "Koszty w pełnym zakresie",
   },
+  dk: {
+    eyebrow: "Jeg er interesseret — hvad bør jeg vide?",
+    heading: (name: string) => `Gør dig klar til en ${name}.`,
+    intro:
+      "Alt nedenfor kommer fra denne races egne egenskaber i vores bibliotek — hvad den vil bede dig om " +
+      "uge efter uge, inklusive det folk skulle ønske de vidste på forhånd.",
+    askEyebrow: "Det denne hund vil bede dig om",
+    askTitle: "Ærligt talt, uge efter uge.",
+    moneyEyebrow: "Pengene",
+    moneyTitle: (name: string) => `Hvad en ${name} plejer at koste`,
+    moneyBody:
+      "Per år, når hunden har sat sig til rette — mad, forsikring, rutinemæssigt dyrlægebesøg og pleje. " +
+      "Bevidst bredt: priserne varierer enormt fra land til land og by til by, og dette er ikke et tilbud.",
+    noticeTitle: "Før du siger ja",
+    noticeBody:
+      "Mød hunden mere end én gang, hvis du overhovedet kan, på en almindelig dag frem for en særlig. " +
+      "Spørg, hvordan den er klokken seks om morgenen og klokken ti om aftenen. Det ærlige svar på det " +
+      "spørgsmål fortæller dig mere end nogen racebeskrivelse, denne inklusive.",
+    prepareCta: "Gør mit hjem klar",
+    profileCta: "Hele raceprofilen",
+    costsCta: "Omkostninger i fuld længde",
+  },
+  se: {
+    eyebrow: "Jag är intresserad — vad bör jag veta?",
+    heading: (name: string) => `Att göra sig redo för en ${name}.`,
+    intro:
+      "Allt nedan kommer från den här rasens egna egenskaper i vårt bibliotek — vad den kommer be dig om " +
+      "vecka efter vecka, inklusive det folk önskar de visste i förväg.",
+    askEyebrow: "Vad den här hunden kommer be dig om",
+    askTitle: "Ärligt talat, vecka efter vecka.",
+    moneyEyebrow: "Pengarna",
+    moneyTitle: (name: string) => `Vad en ${name} brukar kosta`,
+    moneyBody:
+      "Per år, när hunden har kommit till ro — mat, försäkring, rutinmässig veterinärvård och skötsel. " +
+      "Medvetet brett: priserna varierar enormt mellan länder och städer, och det här är ingen offert.",
+    noticeTitle: "Innan du säger ja",
+    noticeBody:
+      "Träffa hunden mer än en gång om du överhuvudtaget kan, en vanlig dag snarare än en speciell. " +
+      "Fråga hur den är klockan sex på morgonen och klockan tio på kvällen. Det ärliga svaret på den " +
+      "frågan säger dig mer än någon rasbeskrivning, den här inkluderad.",
+    prepareCta: "Gör mitt hem redo",
+    profileCta: "Hela rasprofilen",
+    costsCta: "Kostnader i sin helhet",
+  },
+  fi: {
+    eyebrow: "Olen kiinnostunut — mitä minun pitäisi tietää?",
+    heading: (name: string) => `Valmistaudu ${name}an.`,
+    intro:
+      "Kaikki alla tuleva perustuu tämän rodun omiin ominaisuuksiin kirjastossamme — mitä se pyytää sinulta " +
+      "viikko toisensa jälkeen, mukaan lukien asiat, joita ihmiset toivoisivat tienneensä etukäteen.",
+    askEyebrow: "Mitä tämä koira pyytää sinulta",
+    askTitle: "Rehellisesti, viikko toisensa jälkeen.",
+    moneyEyebrow: "Raha",
+    moneyTitle: (name: string) => `Mitä ${name} yleensä maksaa`,
+    moneyBody:
+      "Vuodessa, kun koira on asettunut arkeen — ruoka, vakuutus, rutiinieläinlääkärikäynnit ja hoito. " +
+      "Tarkoituksella laaja: hinnat vaihtelevat valtavasti maan ja kaupungin mukaan, eikä tämä ole tarjous.",
+    noticeTitle: "Ennen kuin sanot kyllä",
+    noticeBody:
+      "Tapaa koira useammin kuin kerran, jos suinkin voit, tavallisena päivänä erikoisen sijaan. " +
+      "Kysy, millainen se on kello kuusi aamulla ja kello kymmenen illalla. Rehellinen vastaus siihen " +
+      "kysymykseen kertoo sinulle enemmän kuin mikään rotukuvaus, tämä mukaan lukien.",
+    prepareCta: "Valmistele kotini",
+    profileCta: "Koko rotuprofiili",
+    costsCta: "Kustannukset kokonaisuudessaan",
+  },
 } as const;
 
 function BreedPrepPage() {

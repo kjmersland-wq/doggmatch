@@ -58,11 +58,11 @@ const resultCopy = {
     ownDogEdit: "Fortell mer om {name}",
     fitsTitle: "Hvorfor dette passer deg",
     fitsNone: "Ingenting pekte seg tydelig ut her — men møt gjerne hunden i virkeligheten.",
-    tradeTitle: "Avveininger å være obs på",
+    tradeTitle: "Ting du bør være forberedt på",
     tradeNone: "Ingenting her talte imot deg, ut fra svarene dine.",
     breakdownHonesty:
       "Dette er en lesning av livsstilskompatibilitet, ikke en vitenskapelig måling — den sammenligner det du fortalte oss med det denne rasen vanligvis trenger.",
-    thirtyDaysTitle: "De første 30 dagene med en {breed}",
+    thirtyDaysTitle: "De første 30 dagene sammen med en {breed}",
     budgetTitle: "Anslått oppstartsbudsjett",
     budgetGear: "Startutstyr — seng, bur, bånd, boller, leker",
     budgetGearRange: "150–350 €",
@@ -96,11 +96,11 @@ const resultCopy = {
     ownDogEdit: "Dodaj więcej informacji o {name}",
     fitsTitle: "Dlaczego to do Ciebie pasuje",
     fitsNone: "Nic tu wyraźnie się nie wyróżniło — ale warto poznać psa osobiście.",
-    tradeTitle: "Kompromisy i na co uważać",
+    tradeTitle: "Wyzwania i kompromisy",
     tradeNone: "Nic tutaj nie przemawiało przeciwko tobie, sądząc po twoich odpowiedziach.",
     breakdownHonesty:
       "To odczyt zgodności stylu życia, a nie pomiar naukowy — porównuje to, co nam powiedziałeś/aś, z tym, czego zwykle potrzebuje ta rasa.",
-    thirtyDaysTitle: "Pierwsze 30 dni z {breed}",
+    thirtyDaysTitle: "Wasze pierwsze 30 dni razem z {breed}",
     budgetTitle: "Szacowany budżet startowy",
     budgetGear: "Podstawowy sprzęt — legowisko, kojec, smycz, miski, zabawki",
     budgetGearRange: "150–350 €",
@@ -118,6 +118,120 @@ const resultCopy = {
       "Trzymaj jedzenie, czekoladę i wszystko toksyczne dla psów poza zasięgiem",
     ],
     plusLinkLabel: "Śledź codzienne plany i rutyny w DoggMatch+",
+  },
+  dk: {
+    scoreNote: "Baseret på alt du har fortalt os, også de grænser du sagde du ikke kunne rykke.",
+    essentials: ["En seng og et trygt sted", "Halsbånd, snor og tag", "Mad og faste måltider", "Forsikring og dyrlæge"],
+    suited: "Passer til en {breed}.",
+    ownDogTitle: "Og hunden du allerede har",
+    ownDogMixed:
+      "Vurderet ud fra {name}s egne egenskaber — størrelse, energi, hvor meget motion de har brug for, hvordan de er med mennesker — ikke ud fra en racebetegnelse.",
+    ownDogPure:
+      "Vurderet ud fra det, vi ved om {name}, racen inklusive.",
+    ownDogUnknown:
+      "Du har fortalt os, at {name} er en blanding med ukendt herkomst, så vi har ikke gættet på racer. Det her er din hund, sådan som du har beskrevet den.",
+    ownDogFit: "Match med det liv, du beskrev",
+    ownDogEdit: "Fortæl mere om {name}",
+    fitsTitle: "Hvorfor det her passer dig",
+    fitsNone: "Ikke noget stak tydeligt frem her — men enhver hund er værd at møde personligt.",
+    tradeTitle: "Ting du skal være forberedt på",
+    tradeNone: "Ikke noget her talte imod dig, ud fra dine svar.",
+    breakdownHonesty:
+      "Det her er en livsstilskompatibilitet, ikke en videnskabelig måling — den sammenligner det, du fortalte os, med det, denne race typisk har brug for.",
+    thirtyDaysTitle: "De første 30 dage sammen med en {breed}",
+    budgetTitle: "Anslået startbudget",
+    budgetGear: "Startudstyr — seng, bur, snor, skåle, legetøj",
+    budgetGearRange: "150–350 €",
+    budgetVet: "Første dyrlægebesøg, vaccinationer og chipmærkning",
+    budgetVetRange: "80–180 €",
+    budgetInsurance: "Første måned med forsikring",
+    budgetInsuranceRange: "15–40 €",
+    budgetNote: "Et generelt udgangspunkt — de reelle omkostninger varierer med land, opdrætter og dyrlæge.",
+    checklistTitle: "Tjekliste til hjemmet",
+    checklistItems: [
+      "Indret ét roligt, afgrænset rum som et trygt sted, inden hunden ankommer",
+      "Lås husholdningskemikalier, medicin og alt, der kan sluges, væk",
+      "Gem eller dæk løse ledninger og kabler",
+      "Sæt en trappespærre eller barriere op, hvis du har trapper, en pool eller en dam",
+      "Opbevar mad, chokolade og alt giftigt for hunde utilgængeligt",
+    ],
+    plusLinkLabel: "Følg daglige rutiner og planer i DoggMatch+",
+  },
+  se: {
+    scoreNote: "Baserat på allt du har berättat för oss, även de gränser du sa att du inte kunde tänja på.",
+    essentials: ["En säng och en trygg plats", "Halsband, koppel och bricka", "Mat och fasta måltider", "Försäkring och veterinärvård"],
+    suited: "Passar en {breed}.",
+    ownDogTitle: "Och hunden du redan har",
+    ownDogMixed:
+      "Beräknat utifrån {name}s egna egenskaper — storlek, energi, hur mycket motion de behöver, hur de är med människor — inte utifrån en rasetikett.",
+    ownDogPure:
+      "Beräknat utifrån det vi vet om {name}, rasen inkluderad.",
+    ownDogUnknown:
+      "Du har berättat för oss att {name} är en blandning med okänt ursprung, så vi har inte gissat på raser. Det här är din hund, precis som du har beskrivit den.",
+    ownDogFit: "Matchning med det liv du beskrev",
+    ownDogEdit: "Berätta mer om {name}",
+    fitsTitle: "Varför det här passar dig",
+    fitsNone: "Inget stack ut tydligt här — men alla hundar är värda att träffa på riktigt.",
+    tradeTitle: "Viktiga avvägningar",
+    tradeNone: "Inget här talade emot dig, utifrån dina svar.",
+    breakdownHonesty:
+      "Det här är en livsstilskompatibilitet, inte ett vetenskapligt mått — den jämför det du berättat för oss med det den här rasen vanligtvis behöver.",
+    thirtyDaysTitle: "De första 30 dagarna tillsammans med en {breed}",
+    budgetTitle: "Uppskattad startbudget",
+    budgetGear: "Startutrustning — säng, bur, koppel, skålar, leksaker",
+    budgetGearRange: "150–350 €",
+    budgetVet: "Första veterinärbesöket, vaccinationer och id-märkning",
+    budgetVetRange: "80–180 €",
+    budgetInsurance: "Första månadens försäkring",
+    budgetInsuranceRange: "15–40 €",
+    budgetNote: "En generell utgångspunkt — de faktiska kostnaderna varierar med land, uppfödare och veterinär.",
+    checklistTitle: "Checklista för hemmet",
+    checklistItems: [
+      "Ordna ett lugnt, avgränsat rum som trygg plats innan hunden kommer hem",
+      "Lås in kemikalier, mediciner och allt som kan sväljas",
+      "Göm eller täck över lösa sladdar och kablar",
+      "Sätt upp en trappgrind eller barriär om du har trappor, en pool eller en damm",
+      "Förvara mat, choklad och allt som är giftigt för hundar utom räckhåll",
+    ],
+    plusLinkLabel: "Följ dagliga rutiner och scheman i DoggMatch+",
+  },
+  fi: {
+    scoreNote: "Perustuu kaikkeen, mitä olet meille kertonut, myös rajoihin, joita et sanonut voivasi venyttää.",
+    essentials: ["Peti ja turvallinen paikka", "Kaulapanta, hihna ja tunnistelaatta", "Ruoka ja säännölliset ruoka-ajat", "Vakuutus ja eläinlääkärikäynnit"],
+    suited: "Sopii tälle rodulle: {breed}.",
+    ownDogTitle: "Entä koira, joka sinulla jo on",
+    ownDogMixed:
+      "Arvioitu {name}n omien ominaisuuksien perusteella — koon, energian, liikuntatarpeen ja ihmisten kanssa toimimisen — ei rotuleiman perusteella.",
+    ownDogPure:
+      "Arvioitu sen perusteella, mitä tiedämme {name}sta, rotu mukaan lukien.",
+    ownDogUnknown:
+      "Kerroit meille, että {name} on sekarotuinen tuntemattomasta taustasta, joten emme ole arvailleet rotuja. Tämä on sinun koirasi, sellaisena kuin sinä sen kuvasit.",
+    ownDogFit: "Sopivuus kuvailemaasi elämään",
+    ownDogEdit: "Kerro lisää {name}sta",
+    fitsTitle: "Miksi tämä sopii sinulle",
+    fitsNone: "Mikään ei noussut tässä selvästi esiin — mutta jokainen koira kannattaa tavata kasvokkain.",
+    tradeTitle: "Huomioitavat asiat",
+    tradeNone: "Mikään tässä ei puhunut sinua vastaan, vastaustesi perusteella.",
+    breakdownHonesty:
+      "Tämä on elämäntyylin yhteensopivuuden arvio, ei tieteellinen mittaus — se vertaa kertomaasi siihen, mitä tämä rotu yleensä tarvitsee.",
+    thirtyDaysTitle: "Ensimmäiset 30 yhteistä päivää — {breed}",
+    budgetTitle: "Arvioitu aloitusbudjetti",
+    budgetGear: "Perusvarusteet — peti, häkki, hihna, ruokakupit, lelut",
+    budgetGearRange: "150–350 €",
+    budgetVet: "Ensimmäinen eläinlääkärikäynti, rokotukset ja mikrosirutus",
+    budgetVetRange: "80–180 €",
+    budgetInsurance: "Ensimmäinen kuukausi vakuutusta",
+    budgetInsuranceRange: "15–40 €",
+    budgetNote: "Yleinen lähtökohta — todelliset kustannukset vaihtelevat maan, kasvattajan ja eläinlääkärin mukaan.",
+    checklistTitle: "Kodin valmistelun tarkistuslista",
+    checklistItems: [
+      "Järjestä yksi rauhallinen, rajattu huone turvapaikaksi ennen koiran saapumista",
+      "Lukitse pois kotitalouskemikaalit, lääkkeet ja kaikki nieltävissä oleva",
+      "Piilota tai suojaa löysät johdot ja kaapelit",
+      "Asenna porttiaita tai este, jos kotonasi on portaita, uima-allas tai lampi",
+      "Säilytä ruoka, suklaa ja kaikki koirille myrkyllinen hyvin ulottumattomissa",
+    ],
+    plusLinkLabel: "Seuraa päivittäisiä rutiineja ja aikatauluja DoggMatch+:ssa",
   },
 };
 import { quizQuestions } from "@/data/questions.locale";
@@ -158,6 +272,21 @@ const seoCopy = {
     title: "Znajdź mojego psa — darmowe dopasowanie w około dwie minuty | DoggMatch",
     description:
       "Odpowiedz na kilka przyjaznych pytań o swoje dni, dom i oczekiwania, a pokażemy Ci psy, które mogą pasować Ci najlepiej.",
+  },
+  dk: {
+    title: "Find min hund — gratis match på cirka to minutter | DoggMatch",
+    description:
+      "Svar på nogle venlige spørgsmål om dine dage, dit hjem og hvad du håber på, så viser vi dig de hunde, der kan passe dig bedst.",
+  },
+  se: {
+    title: "Hitta min hund — gratis match på cirka två minuter | DoggMatch",
+    description:
+      "Svara på några vänliga frågor om dina dagar, ditt hem och vad du hoppas på, så visar vi dig hundarna som kan passa dig bäst.",
+  },
+  fi: {
+    title: "Löydä koirani — ilmainen täsmäys noin kahdessa minuutissa | DoggMatch",
+    description:
+      "Vastaa muutamaan ystävälliseen kysymykseen päivistäsi, kodistasi ja toiveistasi, niin näytämme sinulle koirat, jotka voisivat sopia sinulle parhaiten.",
   },
 };
 
@@ -209,8 +338,41 @@ const flowCopy = {
       "Porównywanie z cechami ras…",
       "Deterministyczne wyliczenia — bez zgadywania AI…",
     ],
-    hardLimitLabel: "Ustaw jako granicę nie do negocjacji",
-    hardLimitNote: "Rasy przekraczające tę granicę zostaną całkowicie wykluczone z rekomendacji.",
+    hardLimitLabel: "Ustaw jako warunek bezwzględny",
+    hardLimitNote: "Rasy, które nie spełniają tego warunku, zostaną całkowicie wykluczone z rekomendacji.",
+  },
+  dk: {
+    statusPhrases: [
+      "Screener mod 9 livsstilsdimensioner…",
+      "Beregner overlap mellem krav…",
+      "Vejer egenskabskompatibilitet…",
+      "Sammenligner med racernes egenskaber…",
+      "Deterministisk beregning — ingen AI-gætteri…",
+    ],
+    hardLimitLabel: "Sæt som ufravigeligt krav",
+    hardLimitNote: "Racer, der ikke opfylder dette krav, bliver udelukket helt fra anbefalingerne.",
+  },
+  se: {
+    statusPhrases: [
+      "Screenar mot 9 livsstilsdimensioner…",
+      "Beräknar överlapp mellan krav…",
+      "Väger egenskapskompatibilitet…",
+      "Jämför med rasernas egenskaper…",
+      "Deterministisk beräkning — inga AI-gissningar…",
+    ],
+    hardLimitLabel: "Ange som ofrånkomligt krav",
+    hardLimitNote: "Raser som inte uppfyller det här kravet utesluts helt från rekommendationerna.",
+  },
+  fi: {
+    statusPhrases: [
+      "Tarkistetaan 9 elämäntyylin ulottuvuutta vasten…",
+      "Lasketaan ehtojen päällekkäisyyttä…",
+      "Punnitaan ominaisuuksien yhteensopivuutta…",
+      "Verrataan rotujen ominaisuuksiin…",
+      "Deterministinen laskenta — ei tekoälyn arvailua…",
+    ],
+    hardLimitLabel: "Aseta ehdottomaksi kriteeriksi",
+    hardLimitNote: "Rodut, jotka eivät täytä tätä kriteeriä, suljetaan kokonaan pois suosituksista.",
   },
 } as const;
 

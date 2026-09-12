@@ -7,6 +7,9 @@ const copy = {
   en: { label: "Sources & methodology", aria: "Read where this information comes from" },
   no: { label: "Kilder og metode", aria: "Les hvor denne informasjonen kommer fra" },
   pl: { label: "Źródła i metodologia", aria: "Sprawdź, skąd pochodzą te informacje" },
+  dk: { label: "Kilder og metode", aria: "Læs, hvor denne information kommer fra" },
+  se: { label: "Källor och metod", aria: "Läs var den här informationen kommer ifrån" },
+  fi: { label: "Lähteet ja menetelmä", aria: "Lue, mistä nämä tiedot ovat peräisin" },
 } as const;
 
 /**

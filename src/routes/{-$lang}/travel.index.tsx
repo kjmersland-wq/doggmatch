@@ -27,6 +27,21 @@ const seoCopy = {
     description:
       "Bezpieczna droga i dobry czas na miejscu: bezpieczeństwo w aucie, pierwsze wyjazdy, upały, łapy, wędrówki, miejsca przyjazne psom i podróże między krajami.",
   },
+  dk: {
+    title: "Rejser og eventyr med hunden — bil, sti og udlandet | DoggMatch",
+    description:
+      "Trygt frem og gode dage, når I når frem: bilsikkerhed, første ture, varmt vejr, poter, vandreture, hundevenlige steder og rejser mellem lande.",
+  },
+  se: {
+    title: "Resor och äventyr med hunden — bil, led och utomlands | DoggMatch",
+    description:
+      "Tryggt fram och bra dagar när ni kommer fram: bilsäkerhet, första resorna, varmt väder, tassar, vandring, hundvänliga platser och resor mellan länder.",
+  },
+  fi: {
+    title: "Matkat ja seikkailut koiran kanssa — auto, polku ja ulkomaat | DoggMatch",
+    description:
+      "Turvallisesti perille ja hyviä hetkiä kohteessa: turvallisuus autossa, ensimmäiset matkat, kuuma sää, tassut, vaellus, koirille ystävälliset paikat ja matkustaminen maiden välillä.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/travel/")({

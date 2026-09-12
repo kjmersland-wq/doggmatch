@@ -21,6 +21,21 @@ const seoCopy = {
     description:
       "DoggMatch to darmowy i uczciwy sposób, by ustalić, jaki pies może pasować do Twojego życia. Zawsze pokazujemy, jak liczymy, i pytamy o Ciebie tak mało, jak się da.",
   },
+  dk: {
+    title: "Om DoggMatch — en mildere måde at vælge hund på",
+    description:
+      "DoggMatch er en gratis og ærlig måde at finde ud af, hvilken hund der kan passe til dit liv. Vi viser altid, hvordan vi tænker, og spørger om så lidt om dig som muligt.",
+  },
+  se: {
+    title: "Om DoggMatch — ett snällare sätt att välja hund",
+    description:
+      "DoggMatch är ett gratis och ärligt sätt att ta reda på vilken hund som kan passa ditt liv. Vi visar alltid hur vi tänker, och frågar om dig så lite som möjligt.",
+  },
+  fi: {
+    title: "Tietoa DoggMatchista — lempeämpi tapa valita koira",
+    description:
+      "DoggMatch on ilmainen ja rehellinen tapa selvittää, mikä koira voisi sopia elämääsi. Näytämme aina, miten päättelemme asiat, ja kysymme sinusta mahdollisimman vähän.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/about")({
@@ -43,6 +58,21 @@ const copy = {
     p1: "Zabranie psa do domu to poważna decyzja i zasługuje na więcej przemyśleń niż lista najpopularniejszych ras. Dobry wybór jest lepszy dla Ciebie i o wiele lepszy dla psa.",
     p2: "Nie ma tu zgadywania. Każde dopasowanie wynika z tego, co nam powiedziałeś, zestawionego z tym, czego zwykle potrzebuje dana rasa. Jeśli mówisz nam, że coś jest absolutną granicą, wierzymy Ci na słowo — nawet jeśli wyklucza to psa, na którym Ci zależało.",
     p3: "Prosimy o jak najmniej informacji. Podajesz miejsce zamieszkania tylko wtedy, gdy chcesz lokalnych podpowiedzi, a konto nigdy nie jest potrzebne, by uzyskać wynik.",
+  },
+  dk: {
+    p1: "At tage en hund hjem er en stor beslutning, og den fortjener mere omtanke end en liste over de mest populære racer. At få det rigtigt er bedre for dig — og meget bedre for hunden.",
+    p2: "Her er ingen gætterier. Hvert match bygger på det, du har fortalt os, holdt op mod det, den enkelte race normalt har brug for. Siger du, at noget er et ufravigeligt krav, tager vi dig på ordet — også når det udelukker en hund, du havde sat dit hjerte til.",
+    p3: "Vi beder om så lidt som muligt. Du deler kun, hvor du bor, hvis du vil have lokale forslag, og du skal aldrig oprette en konto for at få dit resultat.",
+  },
+  se: {
+    p1: "Att skaffa hund är ett stort beslut, och det förtjänar mer eftertanke än en lista över de mest populära raserna. Att få det rätt är bättre för dig — och mycket bättre för hunden.",
+    p2: "Här finns inga gissningar. Varje matchning bygger på det du har berättat för oss, jämfört med vad varje ras vanligtvis behöver. Säger du att något är ett ofrånkomligt krav tar vi dig på orden — även när det utesluter en hund du hade fäst dig vid.",
+    p3: "Vi frågar om så lite som möjligt. Du delar bara var du bor om du vill ha lokala förslag, och du behöver aldrig ett konto för att få ditt resultat.",
+  },
+  fi: {
+    p1: "Koiran hankkiminen on iso päätös, ja se ansaitsee enemmän harkintaa kuin listan suosituimmista roduista. Oikea valinta on parempi sinulle — ja paljon parempi koiralle.",
+    p2: "Täällä ei arvailla. Jokainen ehdotus perustuu siihen, mitä olet kertonut meille, verrattuna siihen, mitä kukin rotu yleensä tarvitsee. Jos kerrot meille, että jokin on ehdoton vaatimus, uskomme sanaasi — vaikka se sulkisi pois koiran, johon olit jo mieltynyt.",
+    p3: "Kysymme sinusta mahdollisimman vähän. Kerrot asuinpaikkasi vain, jos haluat paikallisia vinkkejä, eikä tulosta varten tarvita koskaan tiliä.",
   },
 } as const;
 

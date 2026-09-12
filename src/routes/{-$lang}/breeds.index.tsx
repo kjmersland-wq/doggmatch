@@ -26,6 +26,21 @@ const seoCopy = {
     description:
       "Jak naprawdę żyje się z każdą rasą — energia, sierść, sposób uczenia się i to, jak wygląda z nimi zwykły dzień.",
   },
+  dk: {
+    title: "Hunderacer — et ærligt blik på hver eneste en | DoggMatch",
+    description:
+      "Hvordan hver race egentlig er at leve med — energien, pelsen, hvordan de lærer, og hvordan en helt almindelig dag med dem ser ud.",
+  },
+  se: {
+    title: "Hundraser — en ärlig blick på var och en | DoggMatch",
+    description:
+      "Hur varje ras egentligen är att leva med — energin, pälsen, hur de lär sig, och hur en helt vanlig dag med dem ser ut.",
+  },
+  fi: {
+    title: "Koirarodut — rehellinen katsaus jokaiseen | DoggMatch",
+    description:
+      "Millaista jokaisen rodun kanssa oikeasti on elää — niiden energia, turkki, oppiminen ja millainen tavallinen päivä niiden kanssa näyttää.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/breeds/")({
@@ -41,13 +56,28 @@ const pageCopy = {
   },
   no: {
     intro:
-      "Vår deterministiske matchemotor bygger på en modell som dekker over 250 raser. Under finner du de {count} vi har publisert så langt — alle screenet på samme måte, og med en fullstendig, verifisert redaksjonell profil i stedet for et tynt egenskapsark.",
+      "Vår deterministiske matchemotor bygger på en modell som dekker over 250 raser. Under finner du de {count} vi har publisert så langt — alle vurdert på samme måte, og med en fullstendig, verifisert redaksjonell profil i stedet for et tynt egenskapsark.",
     deepDiveBadge: "Redaksjonell dybdeprofil",
   },
   pl: {
     intro:
       "Nasz deterministyczny silnik dopasowania opiera się na modelu obejmującym ponad 250 ras. Poniżej znajdziesz {count} ras, które opublikowaliśmy do tej pory — każda sprawdzona w ten sam sposób i opisana w pełnym, zweryfikowanym profilu redakcyjnym, a nie na skróconej karcie cech.",
     deepDiveBadge: "Pogłębiony profil redakcyjny",
+  },
+  dk: {
+    intro:
+      "Vores deterministiske matchemotor bygger på en model, der dækker over 250 racer. Nedenfor finder du de {count}, vi har udgivet indtil videre — alle vurderet på samme måde, og med en fuld, verificeret redaktionel profil frem for et tyndt egenskabsark.",
+    deepDiveBadge: "Redaktionel dybdeprofil",
+  },
+  se: {
+    intro:
+      "Vår deterministiska matchmotor bygger på en modell som täcker över 250 raser. Nedan hittar du de {count} vi har publicerat hittills — alla bedömda på samma sätt, och med en fullständig, verifierad redaktionell profil i stället för ett tunt egenskapsblad.",
+    deepDiveBadge: "Redaktionell djupprofil",
+  },
+  fi: {
+    intro:
+      "Deterministinen täsmäysmoottorimme perustuu malliin, joka kattaa yli 250 rotua. Alta löydät ne {count} rotua, jotka olemme toistaiseksi julkaisseet — jokainen arvioitu samalla tavalla ja varustettu täydellä, varmennetulla toimituksellisella profiililla ohuen ominaisuuslistan sijaan.",
+    deepDiveBadge: "Toimituksellinen syväsukellus",
   },
 } as const;
 

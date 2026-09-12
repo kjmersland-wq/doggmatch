@@ -15,6 +15,9 @@ const copy = {
   en: { primaryNav: "Primary", mobileNav: "Mobile" },
   no: { primaryNav: "Hovedmeny", mobileNav: "Mobilmeny" },
   pl: { primaryNav: "Menu główne", mobileNav: "Menu mobilne" },
+  dk: { primaryNav: "Hovedmenu", mobileNav: "Mobilmenu" },
+  se: { primaryNav: "Huvudmeny", mobileNav: "Mobilmeny" },
+  fi: { primaryNav: "Päävalikko", mobileNav: "Mobiilivalikko" },
 } as const;
 
 const drawerCopy = {
@@ -32,9 +35,27 @@ const drawerCopy = {
   },
   pl: {
     findMyDog: "Znajdź mojego psa (quiz)",
-    breedExplorer: "Eksplorator ras",
+    breedExplorer: "Przeglądaj rasy",
     compareBreeds: "Porównaj rasy",
     takeBreedMatcher: "Rozpocznij test dopasowania",
+  },
+  dk: {
+    findMyDog: "Find min hund (quiz)",
+    breedExplorer: "Udforsk racer",
+    compareBreeds: "Sammenlign racer",
+    takeBreedMatcher: "Tag racetesten",
+  },
+  se: {
+    findMyDog: "Hitta min hund (quiz)",
+    breedExplorer: "Utforska raser",
+    compareBreeds: "Jämför raser",
+    takeBreedMatcher: "Gör rastestet",
+  },
+  fi: {
+    findMyDog: "Löydä koirani (kysely)",
+    breedExplorer: "Tutustu rotuihin",
+    compareBreeds: "Vertaile rotuja",
+    takeBreedMatcher: "Tee rotutesti",
   },
 } as const;
 

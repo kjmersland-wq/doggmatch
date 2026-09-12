@@ -13,15 +13,33 @@ const copy = {
   },
   no: {
     label: "Om informasjonskapsler",
-    body: "Vi respekterer plassen din. DoggMatch bruker kun nødvendige informasjonskapsler for å lagre treffpreferansene dine og sikre trygge økter — ingen annonsesporing.",
+    body: "Vi bryr oss om personvernet ditt. DoggMatch bruker bare de informasjonskapslene som trengs for å lagre treffpreferansene dine og sikre trygge økter — ingen annonsesporing.",
     essentialOnly: "Kun nødvendige",
     acceptAll: "Godta alle",
   },
   pl: {
     label: "Informacja o plikach cookie",
-    body: "Szanujemy Twoją przestrzeń. DoggMatch używa wyłącznie niezbędnych plików cookie, aby zapisać Twoje preferencje dopasowania i zapewnić bezpieczne sesje — bez śledzenia reklamowego.",
+    body: "Szanujemy Twoją prywatność. DoggMatch korzysta wyłącznie z niezbędnych plików cookie, aby zapisać Twoje preferencje dopasowania i zapewnić bezpieczne sesje — bez śledzenia reklamowego.",
     essentialOnly: "Tylko niezbędne",
     acceptAll: "Zaakceptuj wszystkie",
+  },
+  dk: {
+    label: "Om cookies",
+    body: "Vi passer på dit privatliv. DoggMatch bruger kun de cookies, der er nødvendige for at gemme dine matchpræferencer og sikre trygge sessioner — ingen annoncesporing.",
+    essentialOnly: "Kun nødvendige",
+    acceptAll: "Accepter alle",
+  },
+  se: {
+    label: "Om cookies",
+    body: "Vi värnar om din integritet. DoggMatch använder bara de cookies som behövs för att spara dina matchpreferenser och säkerställa trygga sessioner — ingen annonsspårning.",
+    essentialOnly: "Endast nödvändiga",
+    acceptAll: "Acceptera alla",
+  },
+  fi: {
+    label: "Evästeistä",
+    body: "Välitämme yksityisyydestäsi. DoggMatch käyttää vain välttämättömiä evästeitä tallentaakseen täsmäysasetuksesi ja varmistaakseen turvalliset istunnot — ei mainosseurantaa.",
+    essentialOnly: "Vain välttämättömät",
+    acceptAll: "Hyväksy kaikki",
   },
 } as const;
 
@@ -78,6 +96,9 @@ export function CookieSettingsLink({ className }: { className?: string }) {
     en: { settings: "Cookie settings" },
     no: { settings: "Innstillinger for informasjonskapsler" },
     pl: { settings: "Ustawienia plików cookie" },
+    dk: { settings: "Cookieindstillinger" },
+    se: { settings: "Cookie-inställningar" },
+    fi: { settings: "Evästeasetukset" },
   } as const);
   const { reopen } = useConsent();
   return (

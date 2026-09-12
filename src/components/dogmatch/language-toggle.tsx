@@ -13,18 +13,27 @@ const LANGS: { code: Locale; flag: string; short: string; label: string }[] = [
   { code: "en", flag: "gb", short: "GB", label: "English" },
   { code: "no", flag: "no", short: "NO", label: "Norsk" },
   { code: "pl", flag: "pl", short: "PL", label: "Polski" },
+  { code: "dk", flag: "dk", short: "DK", label: "Dansk" },
+  { code: "se", flag: "se", short: "SE", label: "Svenska" },
+  { code: "fi", flag: "fi", short: "FI", label: "Suomi" },
 ];
 
 const ARIA_LABEL: Record<Locale, string> = {
   en: "Choose language",
   no: "Velg språk",
   pl: "Wybierz język",
+  dk: "Vælg sprog",
+  se: "Välj språk",
+  fi: "Valitse kieli",
 };
 
 const MENU_LABEL: Record<Locale, string> = {
   en: "Languages",
   no: "Språk",
   pl: "Języki",
+  dk: "Sprog",
+  se: "Språk",
+  fi: "Kielet",
 };
 
 function Flag({ country, className }: { country: string; className?: string }) {

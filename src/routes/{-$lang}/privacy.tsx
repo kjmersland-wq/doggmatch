@@ -20,6 +20,21 @@ const seoCopy = {
     description:
       "Jak DoggMatch zbiera, przechowuje i chroni Twoje dane osobowe, jakie masz prawa według RODO i z kim dzielimy się informacjami.",
   },
+  dk: {
+    title: "Privatliv — sådan håndterer DoggMatch dine data",
+    description:
+      "Hvordan DoggMatch indsamler, opbevarer og beskytter dine personoplysninger, dine rettigheder under GDPR, og hvem vi deler information med.",
+  },
+  se: {
+    title: "Integritet — så här hanterar DoggMatch dina uppgifter",
+    description:
+      "Hur DoggMatch samlar in, lagrar och skyddar dina personuppgifter, dina rättigheter enligt GDPR, och vem vi delar information med.",
+  },
+  fi: {
+    title: "Tietosuoja — näin DoggMatch käsittelee tietojasi",
+    description:
+      "Miten DoggMatch kerää, tallentaa ja suojaa henkilötietojasi, oikeutesi GDPR:n mukaan, ja kenen kanssa jaamme tietoja.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/privacy")({
@@ -442,6 +457,423 @@ const copy = {
         title: "Zmiany w niniejszej informacji",
         p1:
           "Jeśli zmienimy tu coś istotnego, zaktualizujemy datę na górze tej strony i poinformujemy posiadaczy kont e-mailem, gdy zmiana ich dotyczy.",
+      },
+    },
+  },
+  dk: {
+    eyebrow: "Privatliv",
+    title: "Dine data, behandlet med omhu",
+    intro:
+      "Vi beder om så lidt som muligt, vi fortæller dig ligeud, hvad vi bruger det til, og du kan bede os om at slette det når som helst. Denne side forklarer alt det i almindeligt sprog.",
+    updated: "16. august 2026",
+    contactPage: "kontaktsiden",
+    sections: {
+      responsible: {
+        title: "Hvem er ansvarlig for dine data",
+        p1:
+          "DoggMatch er bygget og drevet af KM TECH LABS, CVR-nr. 934 044 029, i Kristiansand, Norge. KM TECH LABS er dataansvarlig for personoplysninger, der behandles gennem denne hjemmeside, og bestemmer hvorfor og hvordan disse data bruges.",
+        p2:
+          "Norge er en del af EØS, så EU's generelle forordning om databeskyttelse (GDPR) gælder fuldt ud for os, sammen med den norske persondatalov (personopplysningsloven). Vores tilsynsmyndighed er det norske Datatilsyn (Datatilsynet).",
+        p3Before: "Den nemmeste måde at kontakte os på om noget som helst på denne side er gennem vores",
+        p3After: ".",
+      },
+      collect: {
+        title: "Hvad vi indsamler, og hvorfor",
+        p1:
+          "Det meste af DoggMatch fungerer uden en konto og uden at vi gemmer noget om dig. Dine quizsvar, dine hundeprofiler, dine træningsfremskridt og dine plejenoter opbevares i din egen browsers lokale lager på din enhed — ikke på vores servere.",
+        items: [
+          {
+            strong: "Quizsvar og hundeprofiler.",
+            rest:
+              " Gemmes lokalt på din enhed, så du kan vende tilbage til dem. Vi ser dem aldrig. Rydder du browserdata, forsvinder de.",
+          },
+          {
+            strong: "Kontooplysninger.",
+            rest:
+              " Opretter du en konto, gemmer vi din e-mailadresse og login-identitet. Retsgrundlag: opfyldelse af en kontrakt (GDPR art. 6, stk. 1, litra b).",
+          },
+          {
+            strong: "Medlemskabsoplysninger.",
+            rest:
+              " For DoggMatch+ gemmer vi din abonnementsstatus, plan, medlems-id og gyldighedsdato. Retsgrundlag: opfyldelse af en kontrakt.",
+          },
+          {
+            strong: "Betalingsoplysninger.",
+            rest:
+              " Kortdata håndteres udelukkende af Stripe. Vi ser eller gemmer aldrig dit kortnummer. Vi beholder kun den abonnementsreference, vi har brug for, for at vide om dit medlemskab er aktivt.",
+          },
+          {
+            strong: "Beskeder du sender os.",
+            rest:
+              " Dit navn, e-mail, emne og besked, så vi kan svare dig. Retsgrundlag: legitim interesse i at svare dig (GDPR art. 6, stk. 1, litra f).",
+          },
+          {
+            strong: "Tekniske data.",
+            rest:
+              " Standard serverlogfiler som IP-adresse og browsertype, gemt kortvarigt af hensyn til sikkerhed, misbrugsforebyggelse og fejlfinding. Retsgrundlag: legitim interesse i at holde tjenesten sikker.",
+          },
+        ],
+      },
+      notDo: {
+        title: "Hvad vi ikke gør",
+        items: [
+          "Vi sælger eller udlejer ikke dine personoplysninger til nogen.",
+          "Vi bruger ikke annoncesporing eller tredjeparts marketingcookies.",
+          "Vi opbygger ikke adfærdsprofiler af dig til markedsføring.",
+          "Vi træffer ikke automatiske afgørelser med retlig eller tilsvarende betydelig virkning. Dit matchresultat er en gennemsigtig beregning, hvor du kan se begrundelsen, og det har ingen retlige konsekvenser.",
+        ],
+      },
+      cookies: {
+        title: "Cookies og lokal lagring",
+        p1:
+          "Vi bruger kun det, der er strengt nødvendigt for at få siden til at fungere: en login-session, din lys/mørk-præference, dit sprog, og de lokale data beskrevet ovenfor. Under ePrivacy-direktivet og den norske ekomlov kræver denne slags strengt nødvendige lagring ikke samtykke, hvilket er derfor du ikke ser et cookie-banner. Hvis vi nogensinde tilføjer analyse- eller marketingcookies, spørger vi dig først.",
+      },
+      processors: {
+        title: "Hvem behandler data på vores vegne",
+        p1:
+          "Vi bruger et lille antal omhyggeligt udvalgte udbydere, hver bundet af en databehandleraftale under GDPR art. 28:",
+        items: [
+          {
+            strong: "Hosting, database og autentificering.",
+            rest: " Driver vores servere, gemmer konto- og medlemskabsdata, og håndterer login.",
+          },
+          {
+            strong: "Stripe.",
+            rest: " Betalinger og abonnementsfakturering, som selvstændig dataansvarlig for betalingsdata.",
+          },
+          {
+            strong: "Google.",
+            rest: " Kun hvis du vælger at logge ind med Google, og kun til det login.",
+          },
+          {
+            strong: "E-mail-levering.",
+            rest: " Bruges til at sende og modtage de beskeder, du skriver til os.",
+          },
+        ],
+      },
+      transfers: {
+        title: "Hvor dine data opbevares, og overførsler uden for EØS",
+        p1:
+          "Vi opbevarer personoplysninger på servere inden for EU/EØS, hvor vi kan. Nogle af vores udbydere er baseret i USA. Hvor data forlader EØS, bygger overførslen på EU-Kommissionens standardkontraktbestemmelser, og hvor det er relevant, EU-USA Data Privacy Framework, sammen med yderligere tekniske sikkerhedsforanstaltninger som kryptering under overførsel og i hvile.",
+      },
+      retention: {
+        title: "Hvor længe vi opbevarer ting",
+        items: [
+          "Lokale data på din enhed: indtil du rydder dem. De er dine, på din maskine.",
+          "Konto- og medlemskabsdata: så længe din konto findes, derefter slettet eller anonymiseret inden for 90 dage efter du lukker den.",
+          "Kontaktbeskeder: op til 24 måneder, så vi har kontekst, hvis du skriver igen.",
+          "Betalings- og fakturaoplysninger: opbevares i 5 år, som norsk bogføringslov (bokføringsloven) kræver. Retsgrundlag: retlig forpligtelse (GDPR art. 6, stk. 1, litra c).",
+          "Sikkerhedslogfiler: normalt 90 dage eller mindre.",
+        ],
+      },
+      protect: {
+        title: "Hvordan vi beskytter det",
+        p1:
+          "Data krypteres under overførsel (TLS) og i hvile hos vores hostingudbyder. Databaseadgang er begrænset af rækkeniveau-sikkerhedsregler, så en konto kun nogensinde kan nå sine egne data. Adgang til produktionssystemer er begrænset til dem, der reelt har brug for det. Hvis et brud nogensinde bringer dine rettigheder i fare, underretter vi Datatilsynet inden for 72 timer og fortæller dig det direkte, hvor loven kræver det.",
+      },
+      rights: {
+        title: "Dine rettigheder",
+        intro: "Under GDPR kan du bede os om at:",
+        items: [
+          "Fortælle dig, hvad vi har om dig, og give dig en kopi (art. 15).",
+          "Rette alt, der er forkert (art. 16).",
+          "Slette dine data (art. 17).",
+          "Begrænse, hvordan vi bruger det (art. 18).",
+          "Sende det til dig eller en anden udbyder i et bærbart format (art. 20).",
+          "Stoppe behandling baseret på legitim interesse (art. 21).",
+          "Trække samtykke tilbage når som helst, hvor behandlingen er baseret på samtykke (art. 7).",
+        ],
+        p2Before: "Skriv til os gennem",
+        p2Mid:
+          "og vi svarer inden for 30 dage, gratis. Er du ikke tilfreds med, hvordan vi håndterede det, kan du klage til Datatilsynet eller til databeskyttelsesmyndigheden i dit eget land.",
+      },
+      children: {
+        title: "Børn",
+        p1:
+          "DoggMatch er ikke beregnet til børn. Du skal være mindst 16 år for at oprette en konto. Hvis du tror, et barn har givet os personoplysninger, så sig til, og vi fjerner det.",
+      },
+      changes: {
+        title: "Ændringer af denne meddelelse",
+        p1:
+          "Hvis vi ændrer noget væsentligt her, opdaterer vi datoen øverst på denne side og fortæller kontoindehavere det via e-mail, når ændringen påvirker dem.",
+      },
+    },
+  },
+  se: {
+    eyebrow: "Integritet",
+    title: "Dina uppgifter, hanterade med omsorg",
+    intro:
+      "Vi ber om så lite som möjligt, vi berättar rakt på sak vad vi använder det till, och du kan be oss radera det när som helst. Den här sidan förklarar allt det på vanlig svenska.",
+    updated: "16 augusti 2026",
+    contactPage: "kontaktsidan",
+    sections: {
+      responsible: {
+        title: "Vem som ansvarar för dina uppgifter",
+        p1:
+          "DoggMatch byggs och drivs av KM TECH LABS, org.nr 934 044 029, i Kristiansand, Norge. KM TECH LABS är personuppgiftsansvarig för personuppgifter som behandlas genom denna webbplats, och bestämmer varför och hur dessa uppgifter används.",
+        p2:
+          "Norge är en del av EES, så EU:s allmänna dataskyddsförordning (GDPR) gäller fullt ut för oss, tillsammans med den norska personuppgiftslagen (personopplysningsloven). Vår tillsynsmyndighet är den norska Datainspektionen (Datatilsynet).",
+        p3Before: "Det enklaste sättet att nå oss om något på den här sidan är genom vår",
+        p3After: ".",
+      },
+      collect: {
+        title: "Vad vi samlar in, och varför",
+        p1:
+          "Det mesta av DoggMatch fungerar utan konto och utan att vi lagrar något om dig. Dina quizsvar, dina hundprofiler, dina träningsframsteg och dina omsorgsanteckningar sparas i din egen webbläsares lokala lagring på din enhet — inte på våra servrar.",
+        items: [
+          {
+            strong: "Quizsvar och hundprofiler.",
+            rest:
+              " Sparas lokalt på din enhet så att du kan komma tillbaka till dem. Vi ser dem aldrig. Rensar du webbläsardata försvinner de.",
+          },
+          {
+            strong: "Kontouppgifter.",
+            rest:
+              " Om du skapar ett konto sparar vi din e-postadress och inloggningsidentitet. Rättslig grund: fullgörande av avtal (GDPR art. 6.1 b).",
+          },
+          {
+            strong: "Medlemskapsuppgifter.",
+            rest:
+              " För DoggMatch+ sparar vi din prenumerationsstatus, plan, medlems-ID och giltighetsdatum. Rättslig grund: fullgörande av avtal.",
+          },
+          {
+            strong: "Betalningsuppgifter.",
+            rest:
+              " Kortdata hanteras helt av Stripe. Vi ser eller sparar aldrig ditt kortnummer. Vi behåller endast den prenumerationsreferens vi behöver för att veta om ditt medlemskap är aktivt.",
+          },
+          {
+            strong: "Meddelanden du skickar till oss.",
+            rest:
+              " Ditt namn, e-post, ämne och meddelande, så att vi kan svara dig. Rättslig grund: berättigat intresse av att svara dig (GDPR art. 6.1 f).",
+          },
+          {
+            strong: "Teknisk data.",
+            rest:
+              " Standardserverloggar som IP-adress och webbläsartyp, sparade kortvarigt för säkerhet, missbruksförebyggande och felsökning. Rättslig grund: berättigat intresse av att hålla tjänsten säker.",
+          },
+        ],
+      },
+      notDo: {
+        title: "Vad vi inte gör",
+        items: [
+          "Vi säljer eller hyr inte ut dina personuppgifter till någon.",
+          "Vi använder inte annonsspårning eller tredjepartscookies för marknadsföring.",
+          "Vi bygger inte beteendeprofiler av dig för marknadsföring.",
+          "Vi fattar inte automatiserade beslut med rättslig eller liknande betydande verkan. Ditt matchresultat är en transparent beräkning där du kan se resonemanget, och det har inga rättsliga konsekvenser.",
+        ],
+      },
+      cookies: {
+        title: "Cookies och lokal lagring",
+        p1:
+          "Vi använder bara det som är absolut nödvändigt för att sidan ska fungera: en inloggningssession, ditt ljus/mörk-val, ditt språk, och de lokala data som beskrivs ovan. Enligt ePrivacy-direktivet och den norska ekomlagen kräver den här sortens strikt nödvändiga lagring inget samtycke, vilket är varför du inte ser en cookiebanner. Om vi någonsin lägger till analys- eller marknadsföringscookies frågar vi dig först.",
+      },
+      processors: {
+        title: "Vem som behandlar data å våra vägnar",
+        p1:
+          "Vi använder ett litet antal noggrant utvalda leverantörer, var och en bunden av ett personuppgiftsbiträdesavtal enligt GDPR art. 28:",
+        items: [
+          {
+            strong: "Hosting, databas och autentisering.",
+            rest: " Driver våra servrar, lagrar konto- och medlemskapsuppgifter, och hanterar inloggning.",
+          },
+          {
+            strong: "Stripe.",
+            rest: " Betalningar och prenumerationsfakturering, som självständigt personuppgiftsansvarig för betalningsdata.",
+          },
+          {
+            strong: "Google.",
+            rest: " Endast om du väljer att logga in med Google, och endast för den inloggningen.",
+          },
+          {
+            strong: "E-postleverans.",
+            rest: " Används för att skicka och ta emot meddelandena du skriver till oss.",
+          },
+        ],
+      },
+      transfers: {
+        title: "Var dina uppgifter lagras, och överföringar utanför EES",
+        p1:
+          "Vi lagrar personuppgifter på servrar inom EU/EES där vi kan. Några av våra leverantörer finns i USA. Där data lämnar EES bygger överföringen på EU-kommissionens standardavtalsklausuler, och där det är tillämpligt EU-USA Data Privacy Framework, tillsammans med ytterligare tekniska skyddsåtgärder som kryptering under överföring och i vila.",
+      },
+      retention: {
+        title: "Hur länge vi behåller saker",
+        items: [
+          "Lokal data på din enhet: tills du rensar den. Den är din, på din maskin.",
+          "Konto- och medlemskapsdata: så länge ditt konto finns, sedan raderad eller anonymiserad inom 90 dagar efter att du stänger det.",
+          "Kontaktmeddelanden: upp till 24 månader, så vi har sammanhang om du skriver igen.",
+          "Betalnings- och fakturaposter: sparas i 5 år, enligt norsk bokföringslag (bokføringsloven). Rättslig grund: rättslig förpliktelse (GDPR art. 6.1 c).",
+          "Säkerhetsloggar: normalt 90 dagar eller mindre.",
+        ],
+      },
+      protect: {
+        title: "Hur vi skyddar det",
+        p1:
+          "Data krypteras under överföring (TLS) och i vila hos vår hostingleverantör. Databasåtkomst begränsas av radnivåsäkerhetsregler, så ett konto kan bara nå sina egna uppgifter. Åtkomst till produktionssystem är begränsad till dem som verkligen behöver det. Om ett intrång någonsin äventyrar dina rättigheter meddelar vi Datatilsynet inom 72 timmar och berättar det direkt för dig där lagen kräver det.",
+      },
+      rights: {
+        title: "Dina rättigheter",
+        intro: "Enligt GDPR kan du be oss att:",
+        items: [
+          "Berätta vad vi har om dig, och ge dig en kopia (art. 15).",
+          "Rätta det som är fel (art. 16).",
+          "Radera dina uppgifter (art. 17).",
+          "Begränsa hur vi använder det (art. 18).",
+          "Skicka det till dig eller en annan leverantör i ett portabelt format (art. 20).",
+          "Sluta behandla baserat på berättigat intresse (art. 21).",
+          "Återkalla samtycke när som helst, där behandlingen bygger på samtycke (art. 7).",
+        ],
+        p2Before: "Skriv till oss genom",
+        p2Mid:
+          "så svarar vi inom 30 dagar, kostnadsfritt. Om du inte är nöjd med hur vi hanterade det kan du klaga till Datatilsynet eller till dataskyddsmyndigheten i ditt eget land.",
+      },
+      children: {
+        title: "Barn",
+        p1:
+          "DoggMatch är inte avsett för barn. Du måste vara minst 16 år för att skapa ett konto. Om du tror att ett barn har gett oss personuppgifter, säg till så tar vi bort det.",
+      },
+      changes: {
+        title: "Ändringar i detta meddelande",
+        p1:
+          "Om vi ändrar något väsentligt här uppdaterar vi datumet högst upp på den här sidan, och meddelar kontoinnehavare via e-post när ändringen påverkar dem.",
+      },
+    },
+  },
+  fi: {
+    eyebrow: "Tietosuoja",
+    title: "Tietosi, käsiteltynä huolella",
+    intro:
+      "Pyydämme mahdollisimman vähän tietoja, kerromme suoraan, mihin niitä käytämme, ja voit pyytää meitä poistamaan ne milloin tahansa. Tämä sivu selittää kaiken sen tavallisella kielellä.",
+    updated: "16. elokuuta 2026",
+    contactPage: "yhteydenottosivun",
+    sections: {
+      responsible: {
+        title: "Kuka vastaa tiedoistasi",
+        p1:
+          "DoggMatchin rakentaa ja sitä ylläpitää KM TECH LABS, y-tunnus 934 044 029, Kristiansandissa, Norjassa. KM TECH LABS on tämän verkkosivuston kautta käsiteltävien henkilötietojen rekisterinpitäjä ja päättää, miksi ja miten näitä tietoja käytetään.",
+        p2:
+          "Norja kuuluu ETA-alueeseen, joten EU:n yleinen tietosuoja-asetus (GDPR) koskee meitä täysimääräisesti, yhdessä Norjan henkilötietolain (personopplysningsloven) kanssa. Valvova viranomaisemme on Norjan tietosuojaviranomainen (Datatilsynet).",
+        p3Before: "Helpoin tapa ottaa meihin yhteyttä mistä tahansa tällä sivulla on",
+        p3After: ".",
+      },
+      collect: {
+        title: "Mitä keräämme ja miksi",
+        p1:
+          "Suurin osa DoggMatchista toimii ilman tiliä ja ilman että tallennamme mitään sinusta. Kyselyvastauksesi, koiraprofiilisi, koulutuksen edistymisesi ja hoitomuistiinpanosi säilyvät oman selaimesi paikallisessa tallennustilassa laitteellasi — ei palvelimillamme.",
+        items: [
+          {
+            strong: "Kyselyvastaukset ja koiraprofiilit.",
+            rest:
+              " Tallennetaan paikallisesti laitteellesi, jotta voit palata niihin. Emme koskaan näe niitä. Selaimen tietojen tyhjentäminen poistaa ne.",
+          },
+          {
+            strong: "Tilitiedot.",
+            rest:
+              " Jos luot tilin, tallennamme sähköpostiosoitteesi ja kirjautumistunnisteesi. Oikeusperuste: sopimuksen täyttäminen (GDPR 6 art. 1 kohta b alakohta).",
+          },
+          {
+            strong: "Jäsenyystiedot.",
+            rest:
+              " DoggMatch+:aa varten tallennamme tilauksesi tilan, suunnitelman, jäsentunnuksen ja voimassaolopäivän. Oikeusperuste: sopimuksen täyttäminen.",
+          },
+          {
+            strong: "Maksutiedot.",
+            rest:
+              " Korttitiedot käsittelee kokonaan Stripe. Emme koskaan näe tai tallenna korttinumeroasi. Säilytämme vain tilausviitteen, jonka tarvitsemme tietääksemme, onko jäsenyytesi aktiivinen.",
+          },
+          {
+            strong: "Meille lähettämäsi viestit.",
+            rest:
+              " Nimesi, sähköpostisi, aiheen ja viestin, jotta voimme vastata sinulle. Oikeusperuste: oikeutettu etu vastata sinulle (GDPR 6 art. 1 kohta f alakohta).",
+          },
+          {
+            strong: "Tekniset tiedot.",
+            rest:
+              " Vakiomuotoiset palvelinlokit, kuten IP-osoite ja selaintyyppi, säilytettynä lyhyesti turvallisuutta, väärinkäytösten estämistä ja vianmääritystä varten. Oikeusperuste: oikeutettu etu pitää palvelu turvallisena.",
+          },
+        ],
+      },
+      notDo: {
+        title: "Mitä emme tee",
+        items: [
+          "Emme myy tai vuokraa henkilötietojasi kenellekään.",
+          "Emme käytä mainosseurantaa tai kolmansien osapuolten markkinointievästeitä.",
+          "Emme rakenna käyttäytymisprofiileja sinusta markkinointia varten.",
+          "Emme tee automatisoituja päätöksiä, joilla on oikeudellisia tai vastaavia merkittäviä vaikutuksia. Täsmäystuloksesi on läpinäkyvä laskelma, jonka perustelut näet, eikä sillä ole oikeudellisia seurauksia.",
+        ],
+      },
+      cookies: {
+        title: "Evästeet ja paikallinen tallennus",
+        p1:
+          "Käytämme vain sitä, mikä on ehdottoman välttämätöntä sivuston toiminnalle: kirjautumisistuntoa, vaalea/tumma-valintaasi, kieltäsi, ja edellä kuvattuja paikallisia tietoja. ePrivacy-direktiivin ja Norjan sähköisen viestinnän lain (ekomlov) mukaan tällainen ehdottoman välttämätön tallennus ei vaadi suostumusta, minkä vuoksi et näe evästebanneria. Jos joskus lisäämme analytiikka- tai markkinointievästeitä, kysymme siitä ensin.",
+      },
+      processors: {
+        title: "Kuka käsittelee tietoja puolestamme",
+        p1:
+          "Käytämme pientä joukkoa huolellisesti valittuja palveluntarjoajia, joista jokainen on sidottu tietojenkäsittelysopimukseen GDPR:n 28 artiklan mukaisesti:",
+        items: [
+          {
+            strong: "Hosting, tietokanta ja todennus.",
+            rest: " Pyörittää palvelimiamme, tallentaa tili- ja jäsenyystietoja ja hoitaa kirjautumisen.",
+          },
+          {
+            strong: "Stripe.",
+            rest: " Maksut ja tilauslaskutus, itsenäisenä rekisterinpitäjänä maksutiedoille.",
+          },
+          {
+            strong: "Google.",
+            rest: " Vain jos valitset kirjautua Googlella, ja vain kyseistä kirjautumista varten.",
+          },
+          {
+            strong: "Sähköpostin toimitus.",
+            rest: " Käytetään lähettämään ja vastaanottamaan meille kirjoittamiasi viestejä.",
+          },
+        ],
+      },
+      transfers: {
+        title: "Missä tietosi säilytetään, ja siirrot ETA-alueen ulkopuolelle",
+        p1:
+          "Säilytämme henkilötietoja EU:n/ETA-alueen sisällä sijaitsevilla palvelimilla aina kun mahdollista. Osa palveluntarjoajistamme sijaitsee Yhdysvalloissa. Kun tietoja siirretään ETA-alueen ulkopuolelle, siirto perustuu Euroopan komission vakiosopimuslausekkeisiin ja soveltuvin osin EU:n ja Yhdysvaltojen tietosuojakehykseen, yhdessä lisäteknisten suojatoimien, kuten siirron ja tallennuksen aikaisen salauksen, kanssa.",
+      },
+      retention: {
+        title: "Kuinka kauan säilytämme tietoja",
+        items: [
+          "Paikalliset tiedot laitteellasi: kunnes tyhjennät ne. Ne ovat sinun, omalla laitteellasi.",
+          "Tili- ja jäsenyystiedot: niin kauan kuin tilisi on olemassa, sitten poistettuna tai anonymisoituna 90 päivän kuluessa tilin sulkemisesta.",
+          "Yhteydenottoviestit: enintään 24 kuukautta, jotta meillä on asiayhteys, jos kirjoitat uudelleen.",
+          "Maksu- ja laskutustiedot: säilytetään 5 vuotta Norjan kirjanpitolain (bokføringsloven) vaatimalla tavalla. Oikeusperuste: lakisääteinen velvoite (GDPR 6 art. 1 kohta c alakohta).",
+          "Turvallisuuslokit: yleensä 90 päivää tai vähemmän.",
+        ],
+      },
+      protect: {
+        title: "Miten suojaamme sitä",
+        p1:
+          "Tiedot salataan siirron aikana (TLS) ja levossa hosting-palveluntarjoajamme toimesta. Tietokantaan pääsyä rajoittavat rivitason suojaussäännöt, joten tili voi tavoittaa vain omat tietonsa. Pääsy tuotantojärjestelmiin on rajattu niille, jotka aidosti tarvitsevat sitä. Jos tietoturvaloukkaus koskaan vaarantaa oikeutesi, ilmoitamme siitä Datatilsynetille 72 tunnin kuluessa ja kerromme siitä sinulle suoraan, jos laki sitä edellyttää.",
+      },
+      rights: {
+        title: "Oikeutesi",
+        intro: "GDPR:n mukaan voit pyytää meitä:",
+        items: [
+          "Kertomaan, mitä tietoja meillä on sinusta, ja antamaan sinulle niistä kopion (15 art.).",
+          "Korjaamaan kaiken, mikä on väärin (16 art.).",
+          "Poistamaan tietosi (17 art.).",
+          "Rajoittamaan, miten käytämme niitä (18 art.).",
+          "Lähettämään ne sinulle tai toiselle palveluntarjoajalle siirrettävässä muodossa (20 art.).",
+          "Lopettamaan oikeutettuun etuun perustuvan käsittelyn (21 art.).",
+          "Peruuttamaan suostumuksen milloin tahansa, kun käsittely perustuu suostumukseen (7 art.).",
+        ],
+        p2Before: "Kirjoita meille",
+        p2Mid:
+          "kautta, niin vastaamme 30 päivän kuluessa, veloituksetta. Jos et ole tyytyväinen siihen, miten käsittelimme asian, voit valittaa Datatilsynetille tai oman maasi tietosuojaviranomaiselle.",
+      },
+      children: {
+        title: "Lapset",
+        p1:
+          "DoggMatch ei ole tarkoitettu lapsille. Sinun on oltava vähintään 16-vuotias luodaksesi tilin. Jos uskot lapsen antaneen meille henkilötietoja, kerro meille, niin poistamme ne.",
+      },
+      changes: {
+        title: "Muutokset tähän ilmoitukseen",
+        p1:
+          "Jos muutamme täällä jotain merkittävää, päivitämme tämän sivun yläreunassa olevan päivämäärän ja kerromme siitä tilinhaltijoille sähköpostitse, kun muutos koskee heitä.",
       },
     },
   },

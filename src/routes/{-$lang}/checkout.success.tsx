@@ -49,6 +49,27 @@ const copy = {
     goToMyDog: "Przejdź do Mój pies",
     seeMembership: "Zobacz moje członkostwo",
   },
+  dk: {
+    eyebrow: "Tak skal du have",
+    heading: "Du er med. Velkommen til DoggMatch",
+    body: "Dit medlemskab er aktivt, og din kvittering er på vej på e-mail. Lad os passe godt på din hund sammen.",
+    goToMyDog: "Gå til Min hund",
+    seeMembership: "Se mit medlemskab",
+  },
+  se: {
+    eyebrow: "Tack så mycket",
+    heading: "Du är med. Välkommen till DoggMatch",
+    body: "Ditt medlemskap är aktivt, och ditt kvitto är på väg via e-post. Nu tar vi hand om din hund tillsammans.",
+    goToMyDog: "Gå till Min hund",
+    seeMembership: "Se mitt medlemskap",
+  },
+  fi: {
+    eyebrow: "Kiitos",
+    heading: "Olet mukana. Tervetuloa DoggMatchiin",
+    body: "Jäsenyytesi on aktiivinen, ja kuittisi on tulossa sähköpostitse. Pidetään yhdessä hyvää huolta koirastasi.",
+    goToMyDog: "Siirry Oma koirani -osioon",
+    seeMembership: "Katso jäsenyyteni",
+  },
 } as const;
 
 function SuccessPage() {

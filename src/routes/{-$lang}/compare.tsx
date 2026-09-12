@@ -46,6 +46,36 @@ const personalCopy = {
     watch: "Warto się zastanowić",
     fine: "Nic tutaj nie działało na Twoją niekorzyść.",
   },
+  dk: {
+    title: "Hvilken af disse passer bedst til dit liv?",
+    prompt:
+      "Svar på spørgsmålene i Find min hund, så læser denne tabel sig selv op mod dine egne dage — ikke bare racestatistik.",
+    promptCta: "Svar på spørgsmålene",
+    based: "Baseret på de svar du gav i Find min hund, gemt på denne enhed.",
+    bestLabel: "Passer bedst af de tre",
+    watch: "Værd at overveje",
+    fine: "Intet her talte imod dig.",
+  },
+  se: {
+    title: "Vilken av dessa passar ditt liv bäst?",
+    prompt:
+      "Svara på frågorna i Hitta min hund, så läser den här tabellen sig själv mot dina egna dagar — inte bara rasstatistik.",
+    promptCta: "Svara på frågorna",
+    based: "Baserat på svaren du gav i Hitta min hund, sparade på den här enheten.",
+    bestLabel: "Passar bäst av de tre",
+    watch: "Värt att fundera på",
+    fine: "Inget här talade emot dig.",
+  },
+  fi: {
+    title: "Mikä näistä sopii parhaiten elämääsi?",
+    prompt:
+      "Vastaa Löydä koirani -kyselyn kysymyksiin, niin tämä taulukko peilaa itsensä omiin päiviisi — ei vain rotutilastoihin.",
+    promptCta: "Vastaa kysymyksiin",
+    based: "Perustuu vastauksiin, jotka annoit Löydä koirani -kyselyssä, tallennettuna tälle laitteelle.",
+    bestLabel: "Sopii parhaiten näistä kolmesta",
+    watch: "Kannattaa miettiä",
+    fine: "Mikään tässä ei puhunut sinua vastaan.",
+  },
 };
 
 const title = "Compare dogs side by side | DoggMatch";

@@ -49,6 +49,27 @@ const copy = {
     ended: "Członkostwo wygasło",
     notFound: "Nie znaleziono karty",
   },
+  dk: {
+    checking: "Tjekker …",
+    active: "✓ Aktivt medlem",
+    validUntil: "Gyldig til:",
+    ended: "Medlemskabet er afsluttet",
+    notFound: "Kort ikke fundet",
+  },
+  se: {
+    checking: "Kontrollerar …",
+    active: "✓ Aktiv medlem",
+    validUntil: "Giltigt till:",
+    ended: "Medlemskapet har upphört",
+    notFound: "Kortet hittades inte",
+  },
+  fi: {
+    checking: "Tarkistetaan…",
+    active: "✓ Aktiivinen jäsen",
+    validUntil: "Voimassa:",
+    ended: "Jäsenyys on päättynyt",
+    notFound: "Korttia ei löytynyt",
+  },
 } as const;
 
 function VerifyPage() {

@@ -77,6 +77,48 @@ const copy = {
     printedNote:
       "Wydrukowana w rzeczywistym rozmiarze karty — 85,6 × 54 mm. Wydrukuj obie strony na sztywnym papierze, wytnij wzdłuż krawędzi i złóż — zmieści się w portfelu jak każda inna karta.",
   },
+  dk: {
+    signInHeading: "Log ind for at se dit kort",
+    signInBody: "Dit medlemskort hører sammen med dit DoggMatch+-medlemskab, så vi skal vide, det er dig.",
+    signInLabel: "Log ind",
+    loadingHeading: "Et øjeblik …",
+    loadingBody: "Henter dit kort.",
+    backToAccount: "Tilbage til min konto",
+    noCardHeading: "Dette kort følger med DoggMatch+",
+    noCardBody: "Bliv DoggMatch+-medlem, så bliver dit personlige medlemskort lavet med det samme.",
+    seePlus: "Se DoggMatch+",
+    printCard: "Print mit medlemskort",
+    printedNote:
+      "Printet i ægte kortstørrelse — 85,6 × 54 mm. Print begge sider på stift papir, klip langs kanten og fold, så ligger det i tegnebogen som ethvert andet kort.",
+  },
+  se: {
+    signInHeading: "Logga in för att se ditt kort",
+    signInBody: "Ditt medlemskort hör ihop med ditt DoggMatch+-medlemskap, så vi måste veta att det är du.",
+    signInLabel: "Logga in",
+    loadingHeading: "Ett ögonblick …",
+    loadingBody: "Hämtar ditt kort.",
+    backToAccount: "Tillbaka till mitt konto",
+    noCardHeading: "Det här kortet ingår i DoggMatch+",
+    noCardBody: "Bli DoggMatch+-medlem så skapas ditt personliga medlemskort direkt.",
+    seePlus: "Se DoggMatch+",
+    printCard: "Skriv ut mitt medlemskort",
+    printedNote:
+      "Utskrivet i verklig kortstorlek — 85,6 × 54 mm. Skriv ut båda sidorna på styvt papper, klipp längs kanten och vik, så ligger det i plånboken som vilket kort som helst.",
+  },
+  fi: {
+    signInHeading: "Kirjaudu sisään nähdäksesi korttisi",
+    signInBody: "Jäsenkorttisi kuuluu DoggMatch+-jäsenyyteesi, joten meidän on varmistettava, että kyseessä olet sinä.",
+    signInLabel: "Kirjaudu sisään",
+    loadingHeading: "Hetkinen…",
+    loadingBody: "Haetaan korttiasi.",
+    backToAccount: "Takaisin tililleni",
+    noCardHeading: "Tämä kortti kuuluu DoggMatch+:aan",
+    noCardBody: "Liity DoggMatch+:aan, niin henkilökohtainen jäsenkorttisi tehdään heti.",
+    seePlus: "Katso DoggMatch+",
+    printCard: "Tulosta jäsenkorttini",
+    printedNote:
+      "Tulostettu oikeassa korttikoossa — 85,6 × 54 mm. Tulosta molemmat puolet jäykälle paperille, leikkaa reunaa pitkin ja taita, niin se mahtuu lompakkoon kuin mikä tahansa muu kortti.",
+  },
 } as const;
 
 function MemberCardPage() {

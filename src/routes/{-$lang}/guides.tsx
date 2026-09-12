@@ -21,6 +21,21 @@ const seoCopy = {
     description:
       "Proste, przyjazne odpowiedzi na pytania o wybór rasy, życie w mieszkaniu, pierwszego psa, linienie, szkolenie i wspólną codzienność.",
   },
+  dk: {
+    title: "Guides — at vælge en hund, og leve med en | DoggMatch",
+    description:
+      "Ærlige, venlige svar om at vælge race, at bo i lejlighed, den første hund, fældning, træning og hverdagen sammen.",
+  },
+  se: {
+    title: "Guider — att välja hund, och leva med en | DoggMatch",
+    description:
+      "Ärliga, vänliga svar om att välja ras, bo i lägenhet, den första hunden, fällning, träning och vardagen tillsammans.",
+  },
+  fi: {
+    title: "Oppaat — koiran valinta ja arki sen kanssa | DoggMatch",
+    description:
+      "Suoria, ystävällisiä vastauksia rodun valintaan, kerrostaloelämään, ensimmäiseen koiraan, karvanlähtöön, koulutukseen ja yhteiseen arkeen.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/guides")({
@@ -302,6 +317,282 @@ const copy = {
           "Zapominane koszty: groomer, hotel lub opiekun na wakacje, szkolenia i zapas na rok, w którym coś pójdzie nie tak.",
         ],
         close: "Strony kosztów każdej rasy pokazują roczny widełkowy budżet z podziałem na jedzenie, zdrowie, pielęgnację i resztę.",
+      },
+    ],
+  },
+  dk: {
+    intro:
+      "Syv ting folk spørger os om oftest, besvaret som vi ville svare en ven — uden forbehold og uden salgstale.",
+    familyGuideLink: "Se vores fulde guide til de bedste hunderacer for familier",
+    shareLabel: "Del denne guide",
+    guides: [
+      {
+        id: "family-dogs",
+        title: "Gode hunde til familier med børn",
+        body: "Børn og hunde kan være helt fantastiske sammen — så længe hunden passer til familiens virkelige hverdag, og børnene lærer nogle enkle regler.",
+        points: [
+          "Kig efter et roligt, tilgivende sind først. En hund, der ryster en klodset klap i nakken af sig, betyder mere end racens ry alene.",
+          "Størrelse tæller begge veje: en stor hund kan vælte en lille en ved et uheld, og en lille en kan komme til skade i vild leg. Mellemstor og stabil er ofte nemmest.",
+          "Hvalp og småbørn på samme tid er to opgaver ad gangen. Mange familier får en roligere start med en hund på et års tid eller to.",
+          "Reglerne betyder mere end racen: ingen forstyrrer en hund, der spiser, sover eller ligger på sin plads — og en voksen er altid i rummet med små børn.",
+        ],
+        close: "Labrador, golden retriever, cavalier king charles spaniel og mange milde blandingshunde klarer sig godt her — testen vejer familielivet ind i hvert forslag.",
+      },
+      {
+        id: "flat-living",
+        title: "Hunde der trives i lejlighed",
+        body: "Plads betyder mindre, end man skulle tro. Støj, motion og evnen til at være alene betyder langt mere.",
+        points: [
+          "Gøen er det, der ender med at betyde mest. En hund, der melder hvert fodtrin i opgangen, bliver tung at bo med, uanset hvor lille den er.",
+          "To ordentlige gåture om dagen slår en have. Haven er et sted at rode rundt; turen er der, hvor hunden tømmer hovedet.",
+          "Elevator og trapper hører med. En stor hund du en dag skal bære, og en hvalp der ikke bør tage trapper i månedsvis, er værd at tænke på nu.",
+          "At være alene læres, det er ikke medfødt. Start med minutter, ikke timer, og byg det roligt op i de første uger.",
+        ],
+        close: "Greyhounds, mange spaniels og en del små terriere bor godt i lejlighed. Vagtsomme, højtråbende racer har det ofte sværere.",
+      },
+      {
+        id: "first-dog",
+        title: "At vælge sin første hund",
+        body: "Alle laver fejl det første år. Nogle hunde tilgiver dem lettere end andre.",
+        points: [
+          "Vælg tilgivende frem for imponerende. En hund, der ryster din usikkerhed af sig, lærer dig mere end en, der straffer den.",
+          "Se efter middel energi, ikke lav. Meget rolige hunde er tit ældre eller kortsnudede; meget energiske hunde skal bruges til noget, du måske ikke har.",
+          "Mød forældrene hvis du kan, eller selve den voksne hund hvis du omplacerer. Sindet viser sig i familien, ikke på billedet.",
+          "Book det første dyrlægebesøg, det første hold og to rolige uger derhjemme, før hunden ankommer.",
+        ],
+        close: "Er du i tvivl, så tag testen — den viser hvilke hunde der passer til din uge, og begrundelsen bag hver score.",
+      },
+      {
+        id: "shedding-allergies",
+        title: "Fældning, og at leve med allergi",
+        body: "Hvad mindre fældning egentlig betyder, og hvordan du tænker det igennem, hvis nogen derhjemme reagerer på hunde.",
+        points: [
+          "Ingen hund er hypoallergen. Det, der udløser reaktionen, er et protein i spyt, hudflager og urin — ikke selve hårene.",
+          "Pels der fælder mindre holder på det protein i stedet for at sprede det. Det hjælper nogle og gør ingen forskel for andre.",
+          "Lidt fældning betyder som regel mere pleje: en puddelpels skal klippes professionelt hver 6.-8. uge, hele livet.",
+          "Test det, før du bestemmer dig. Tilbring nogle timer med voksne hunde af racen, mere end én gang, og tal med en læge før du vælger.",
+        ],
+        close: "Vi viser fældning og pelspleje på hver raceside, og testen spørger om allergi derhjemme, så resultatet tager hensyn til det.",
+      },
+      {
+        id: "calm-dogs",
+        title: "Rolige hunde til stille hjem",
+        body: "En rolig hund kræver stadig meget af dig. Sådan genkender du en, der virkelig er afslappet.",
+        points: [
+          "Kig efter en hund der løfter hovedet ved en lyd i stedet for at kaste sig mod døren.",
+          "Rolig indendørs og rolig udendørs er to forskellige ting. Mange mynder sover hele dagen og har alligevel brug for at løbe stærkt.",
+          "Alder betyder mere end race. En fireårig fra omplacering viser dig præcis, hvem den er; en hvalp er et gæt i to år.",
+          "Giv hunden et sted at koble af — en seng væk fra hoveddøren gør mere for roen end nok så meget træning.",
+        ],
+        close: "Greyhound, cavalier king charles spaniel, berner sennenhund og ældre omplaceringshunde af mange racer passer godt i stille hjem.",
+      },
+      {
+        id: "active-life",
+        title: "Hunde til dig, der kan lide at bevæge dig",
+        body: "Vær ærlig om den uge, du faktisk har — ikke den, du gerne ville have.",
+        points: [
+          "Regn med din værste uge, ikke din bedste. Regn, deadlines og sygdom er, når en energisk hund bliver svær.",
+          "Hovedarbejde slider mere på en hund end distance. Tyve minutter med sporarbejde slår endnu en kilometer de fleste aftener.",
+          "Led skal beskyttes. Ingen lange løbeture på hårdt underlag før vækstzonerne er lukket — som regel 12-18 måneder, senere for store racer.",
+          "Varme er den reelle grænse. Kortsnudede racer og tyk underuld mærker det, længe før du gør.",
+        ],
+        close: "Border collie, vizsla, labrador og mange brugsblandinger trives her — så længe ugen er ægte.",
+      },
+      {
+        id: "yearly-cost",
+        title: "Hvad en hund reelt koster om året",
+        body: "Foder, forsikring, dyrlægen, groomeren — og de poster, næsten alle glemmer at budgettere med.",
+        points: [
+          "Foder følger størrelsen: en lille hund koster måske 200 kr om måneden, en stor tre gange så meget.",
+          "Forsikring stiger med alderen og varierer meget mellem racer. Hent et reelt tilbud på den race, du overvejer, inden du bestemmer dig.",
+          "Rutinemæssig sundhed — vaccine, orm, flåt, tandeftersyn — er en forudsigelig årlig post, ikke en overraskelse.",
+          "De glemte poster: pelspleje, hundepension eller passer i ferien, hold, og en buffer til året, hvor noget går galt.",
+        ],
+        close: "Racens omkostningsside viser et årligt spænd delt op i foder, sundhed, pleje og resten.",
+      },
+    ],
+  },
+  se: {
+    intro:
+      "Sju saker folk frågar oss om oftast, besvarade som vi skulle svara en vän — utan förbehåll och utan säljprat.",
+    familyGuideLink: "Se vår fullständiga guide till de bästa hundraserna för familjer",
+    shareLabel: "Dela den här guiden",
+    guides: [
+      {
+        id: "family-dogs",
+        title: "Bra hundar för familjer med barn",
+        body: "Barn och hundar kan vara underbara tillsammans — så länge hunden passar familjens verkliga vecka, och barnen lär sig några enkla regler.",
+        points: [
+          "Leta efter ett stabilt, förlåtande temperament först. En hund som skakar av sig en klumpig klapp betyder mer än rasens rykte i sig.",
+          "Storlek går åt båda hållen: en stor hund kan råka välta en liten, och en liten kan skadas i vild lek. Medelstor och trygg är ofta enklast.",
+          "Valp och småbarn samtidigt är två jobb på en gång. Många familjer får en lugnare start med en hund som är ett eller två år.",
+          "Reglerna betyder mer än rasen: ingen stör en hund som äter, sover eller ligger på sin plats — och en vuxen är alltid i rummet med små barn.",
+        ],
+        close: "Labrador, golden retriever, cavalier king charles spaniel och många snälla blandraser fungerar bra här — testet väger in familjelivet i varje förslag.",
+      },
+      {
+        id: "flat-living",
+        title: "Hundar som trivs i lägenhet",
+        body: "Utrymme spelar mindre roll än man kan tro. Ljud, motion och hur de hanterar att vara ensamma spelar mycket större roll.",
+        points: [
+          "Skällande är det som till slut betyder mest. En hund som meddelar varje steg i trappuppgången blir tung att bo med, hur liten den än är.",
+          "Två ordentliga promenader om dagen slår en trädgård. Trädgården är ett ställe att pyssla i; promenaden är där hunden tömmer huvudet.",
+          "Hiss och trappor hör till. En stor hund du en dag kan behöva bära, och en valp som inte bör gå i trappor på flera månader, är värt att tänka på nu.",
+          "Att vara ensam är något hunden lär sig, inget den föds med. Börja med minuter, inte timmar, och bygg upp det lugnt de första veckorna.",
+        ],
+        close: "Greyhound, många spanielraser och en del små terriers bor gott i lägenhet. Vaksamma, högljudda raser har det ofta svårare.",
+      },
+      {
+        id: "first-dog",
+        title: "Att välja sin första hund",
+        body: "Alla gör misstag det första året. Vissa hundar förlåter dem lättare än andra.",
+        points: [
+          "Välj förlåtande framför imponerande. En hund som skakar av sig din osäkerhet lär dig mer än en som straffar den.",
+          "Sikta på medelenergi, inte låg. Väldigt lugna hundar är ofta äldre eller kortnosiga; väldigt energiska hundar behöver ett jobb du kanske inte har.",
+          "Träffa föräldrarna om du kan, eller själva den vuxna hunden om du adopterar om. Temperamentet syns i familjen, inte på bilden.",
+          "Boka första veterinärbesöket, den första kursen och två lugna veckor hemma innan hunden kommer.",
+        ],
+        close: "Är du osäker, gör testet — det visar vilka hundar som passar din vecka, och resonemanget bakom varje poäng.",
+      },
+      {
+        id: "shedding-allergies",
+        title: "Fällning, och att leva med allergi",
+        body: "Vad mindre fällning egentligen betyder, och hur du tänker igenom det om någon hemma reagerar på hundar.",
+        points: [
+          "Ingen hund är hypoallergen. Det som utlöser reaktionen är ett protein i saliv, hudflagor och urin — inte pälsen i sig.",
+          "Päls som fäller mindre håller kvar det proteinet istället för att sprida det. Det hjälper vissa och gör ingen skillnad för andra.",
+          "Lite fällning betyder oftast mer skötsel: en pudelpäls måste klippas professionellt var 6:e till 8:e vecka, hela livet.",
+          "Testa innan du bestämmer dig. Tillbringa några timmar med vuxna hundar av rasen, mer än en gång, och prata med läkare innan du väljer.",
+        ],
+        close: "Vi visar fällning och pälsvård på varje rassida, och testet frågar om allergi hemma så att resultatet tar hänsyn till det.",
+      },
+      {
+        id: "calm-dogs",
+        title: "Lugna hundar för tystare hem",
+        body: "En lugn hund behöver ändå mycket av dig. Så här känner du igen en som verkligen är avslappnad.",
+        points: [
+          "Leta efter en hund som lyfter huvudet vid ett ljud istället för att kasta sig mot dörren.",
+          "Lugn inomhus och lugn utomhus är två olika saker. Många vinthundar sover hela dagen och behöver ändå få springa av sig ordentligt.",
+          "Ålder säger mer än ras. En fyraåring från omplacering visar dig exakt vem den är; en valp är en gissning i två år.",
+          "Ge hunden en plats att koppla av på — en bädd bort från ytterdörren gör mer för lugnet än mängder av träning.",
+        ],
+        close: "Greyhound, cavalier king charles spaniel, berner sennenhund och äldre omplaceringshundar av många raser passar bra i tysta hem.",
+      },
+      {
+        id: "active-life",
+        title: "Hundar för dig som gillar att röra på dig",
+        body: "Var ärlig om den vecka du faktiskt har, inte den du önskar att du hade.",
+        points: [
+          "Räkna med din sämsta vecka, inte din bästa. Regn, deadlines och sjukdom är när en energisk hund blir jobbig.",
+          "Huvudarbete tröttar ut en hund snabbare än distans. Tjugo minuter med söklek slår ytterligare en kilometer de flesta kvällar.",
+          "Leder måste skyddas. Inga långa löprundor på hårt underlag innan tillväxtzonerna slutits — oftast 12-18 månader, senare för stora raser.",
+          "Värme är den verkliga gränsen. Kortnosiga raser och tjock underull känner av det långt innan du gör det.",
+        ],
+        close: "Border collie, vizsla, labrador och många brukskorsningar trivs här — så länge veckan är verklig.",
+      },
+      {
+        id: "yearly-cost",
+        title: "Vad en hund verkligen kostar per år",
+        body: "Foder, försäkring, veterinären, hundfrisören — och de poster nästan alla glömmer att budgetera för.",
+        points: [
+          "Foder följer storleken: en liten hund kan kosta runt 250 kr i månaden, en stor tre gånger så mycket.",
+          "Försäkringen stiger med åldern och varierar kraftigt mellan raser. Hämta en riktig offert för rasen du funderar på innan du bestämmer dig.",
+          "Rutinmässig vård — vaccin, mask, fästingmedel, tandkontroll — är en förutsägbar årlig post, ingen överraskning.",
+          "De glömda kostnaderna: pälsvård, hundpensionat eller hundvakt på semestern, kurser, och en buffert för året något går fel.",
+        ],
+        close: "Kostnadssidorna för varje ras visar ett årligt spann uppdelat i foder, hälsa, skötsel och resten.",
+      },
+    ],
+  },
+  fi: {
+    intro:
+      "Seitsemän asiaa, joita meiltä kysytään useimmin, vastattuna niin kuin vastaisimme ystävälle — ilman varauksia ja ilman myyntipuhetta.",
+    familyGuideLink: "Katso koko oppaamme parhaista koiraroduista perheille",
+    shareLabel: "Jaa tämä opas",
+    guides: [
+      {
+        id: "family-dogs",
+        title: "Hyviä koiria lapsiperheille",
+        body: "Lapset ja koirat voivat olla ihana yhdistelmä — kunhan koira sopii perheen todelliseen arkeen ja lapset opettelevat muutaman yksinkertaisen säännön.",
+        points: [
+          "Etsi ensin vakaata, anteeksiantavaa luonnetta. Koira, joka ravistaa kömpelön silityksen harteiltaan, on tärkeämpi kuin rodun maine yksinään.",
+          "Koko vaikuttaa molempiin suuntiin: iso koira voi kaataa taaperon vahingossa, ja pieni voi loukkaantua rajussa leikissä. Keskikokoinen ja tasapainoinen on usein helpoin valinta.",
+          "Pentu ja pikkulapsi samaan aikaan on kaksi työtä yhtä aikaa. Monelle perheelle alku sujuu rauhallisemmin vuoden tai parin ikäisen koiran kanssa.",
+          "Säännöt merkitsevät enemmän kuin rotu: koiraa ei häiritä sen syödessä, nukkuessa tai maatessa omalla paikallaan — ja aikuinen on aina huoneessa pienten lasten kanssa.",
+        ],
+        close: "Labradorinnoutaja, kultainennoutaja, cavalier kingcharlesinspanieli ja moni lempeä sekarotuinen pärjäävät tässä hyvin — testi ottaa perhe-elämän huomioon jokaisessa ehdotuksessa.",
+      },
+      {
+        id: "flat-living",
+        title: "Koirat, jotka viihtyvät kerrostalossa",
+        body: "Tila merkitsee vähemmän kuin luulisi. Äänekkyys, liikunta ja yksinolokyky merkitsevät paljon enemmän.",
+        points: [
+          "Haukkuminen on lopulta se, mikä eniten merkitsee. Koira, joka ilmoittaa jokaisesta askeleesta rappukäytävässä, on raskas naapuri, vaikka olisi kuinka pieni.",
+          "Kaksi kunnon lenkkiä päivässä voittaa pihan. Piha on paikka, jossa jaloitellaan; lenkki on se, missä koiran pää tyhjenee.",
+          "Hissi ja portaat kuuluvat asiaan. Iso koira, jota saatat joskus joutua kantamaan, ja pentu, jonka ei pitäisi kulkea portaita kuukausiin, kannattaa miettiä jo nyt.",
+          "Yksinolo opitaan, sitä ei ole valmiiksi. Aloita minuuteista, ei tunneista, ja kasvata sitä rauhassa ensimmäisten viikkojen aikana.",
+        ],
+        close: "Vinttikoirat, monet spanielit ja useat pienet terrierit asuvat hyvin kerrostalossa. Valppaat, äänekkäät rodut pärjäävät useammin huonommin.",
+      },
+      {
+        id: "first-dog",
+        title: "Ensimmäisen koiran valinta",
+        body: "Kaikki tekevät virheitä ensimmäisenä vuonna. Jotkin koirat antavat ne anteeksi helpommin kuin toiset.",
+        points: [
+          "Valitse anteeksiantava, ei vaikuttava. Koira, joka ravistaa epäjohdonmukaisuutesi harteiltaan, opettaa sinua enemmän kuin sellainen, joka rankaisee siitä.",
+          "Tavoittele keskitasoista energiaa, älä matalaa. Hyvin rauhalliset koirat ovat usein iäkkäämpiä tai lyhytkuonoisia; hyvin energiset koirat tarvitsevat tehtävän, jota sinulla ei ehkä ole.",
+          "Tapaa vanhemmat, jos mahdollista, tai itse aikuinen koira, jos otat uudelleensijoitettavan. Luonne näkyy perheessä, ei kuvassa.",
+          "Varaa ensimmäinen eläinlääkärikäynti, ensimmäinen kurssi ja kaksi rauhallista viikkoa kotona ennen koiran saapumista.",
+        ],
+        close: "Jos olet epävarma, tee testi — se kertoo, mitkä koirat sopivat viikkoosi, ja perustelut jokaisen tuloksen takana.",
+      },
+      {
+        id: "shedding-allergies",
+        title: "Karvanlähtö ja eläminen allergian kanssa",
+        body: "Mitä vähäisempi karvanlähtö oikeasti tarkoittaa, ja miten ajatella asiaa, jos joku kotona reagoi koiriin.",
+        points: [
+          "Yksikään koira ei ole täysin allergeeniton. Reaktion aiheuttaa proteiini syljessä, ihohilseessä ja virtsassa — ei itse karva.",
+          "Vähemmän karvaa irrottava turkki pidättää sen proteiinin sen sijaan, että levittäisi sitä. Se auttaa joitakin eikä vaikuta toisiin lainkaan.",
+          "Vähäinen karvanlähtö tarkoittaa yleensä enemmän hoitoa: villakoiraturkki pitää trimmata ammattilaisella 6-8 viikon välein koko elämän ajan.",
+          "Testaa asia ennen kuin päätät. Vietä muutama tunti rodun aikuisten koirien kanssa useammin kuin kerran, ja keskustele lääkärin kanssa ennen valintaa.",
+        ],
+        close: "Näytämme karvanlähdön ja turkinhoidon jokaisella rotusivulla, ja testi kysyy kotona olevasta allergiasta, jotta tulos ottaa sen huomioon.",
+      },
+      {
+        id: "calm-dogs",
+        title: "Rauhalliset koirat hiljaisempiin koteihin",
+        body: "Rauhallinenkin koira tarvitsee sinulta paljon. Näin tunnistat koiran, joka on aidosti rento.",
+        points: [
+          "Etsi koiraa, joka nostaa päätään äänen kuullessaan sen sijaan, että syöksyisi ovelle.",
+          "Rauhallisuus sisällä ja rauhallisuus ulkona ovat kaksi eri asiaa. Moni vinttikoira nukkuu koko päivän ja tarvitsee silti kunnon juoksulenkin.",
+          "Ikä kertoo enemmän kuin rotu. Nelivuotias uudelleensijoitettava koira näyttää tarkalleen, kuka se on; pentu on arvaus parin vuoden ajan.",
+          "Anna koiralle paikka rauhoittua — makuupaikka kaukana ulko-ovesta tekee rauhallisuuden eteen enemmän kuin mikään koulutus.",
+        ],
+        close: "Vinttikoira, cavalier kingcharlesinspanieli, sveitsinpaimenkoira ja monen rodun iäkkäämmät uudelleensijoitettavat koirat sopivat hyvin hiljaisiin koteihin.",
+      },
+      {
+        id: "active-life",
+        title: "Koirat sinulle, joka pidät liikkumisesta",
+        body: "Ole rehellinen sen viikon suhteen, joka sinulla oikeasti on — älä sen, jonka toivoisit olevan.",
+        points: [
+          "Laske huonoin viikkosi, älä paras. Sade, määräajat ja sairaus ovat hetkiä, jolloin energinen koira käy vaikeaksi.",
+          "Pään käyttäminen väsyttää koiraa nopeammin kuin matka. Kaksikymmentä minuuttia hajutyötä voittaa ylimääräisen kilometrin useimpina iltoina.",
+          "Niveliä pitää suojella. Ei pitkiä juoksulenkkejä kovalla alustalla ennen kuin kasvulevyt ovat sulkeutuneet — yleensä 12-18 kuukautta, isommilla roduilla myöhemmin.",
+          "Kuumuus on todellinen raja. Lyhytkuonoiset rodut ja paksu aluskarva tuntevat sen kauan ennen sinua.",
+        ],
+        close: "Bordercollie, unkarinvizsla, labradorinnoutaja ja moni käyttösekarotuinen viihtyy tässä — kunhan viikko on todellinen.",
+      },
+      {
+        id: "yearly-cost",
+        title: "Mitä koira todella maksaa vuodessa",
+        body: "Ruoka, vakuutus, eläinlääkäri, trimmaaja — ja ne erät, jotka melkein kaikki unohtavat budjetoida.",
+        points: [
+          "Ruoka mukailee kokoa: pieni koira voi maksaa noin 25 € kuussa, iso jopa kolme kertaa sen verran.",
+          "Vakuutus nousee iän myötä ja vaihtelee suuresti rodun mukaan. Pyydä todellinen tarjous harkitsemastasi rodusta ennen päätöstä.",
+          "Rutiininomainen terveydenhoito — rokotukset, madotus, punkkisuoja, hampaiden tarkistus — on ennustettava vuosittainen erä, ei yllätys.",
+          "Unohdetut kulut: turkinhoito, hoitola tai lemmikinhoitaja loman ajaksi, kurssit ja puskuri sille vuodelle, jolloin jokin menee pieleen.",
+        ],
+        close: "Jokaisen rodun kustannussivu näyttää vuosittaisen vaihteluvälin jaettuna ruokaan, terveyteen, hoitoon ja muuhun.",
       },
     ],
   },

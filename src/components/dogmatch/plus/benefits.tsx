@@ -38,6 +38,39 @@ const copy = {
     code: "Kod:",
     goTo: "Przejdź do",
   },
+  dk: {
+    title: "Medlemsfordele",
+    intro:
+      "Små, nyttige besparelser fra folk, vi gerne ville sende en ven til — butikker, groomere, trænere, forsikringsselskaber. Vi vil hellere have fem gode end halvtreds glemte.",
+    emptyBody:
+      "Der er intet her endnu. Vi taler med de første partnere lige nu, og så snart et tilbud er noget værd, dukker det op her — ingen e-mail nødvendig.",
+    partnerCta: "Driver du en hundevirksomhed?",
+    partnerLink: "Bliv DoggMatch-partner",
+    code: "Kode:",
+    goTo: "Gå til",
+  },
+  se: {
+    title: "Medlemsförmåner",
+    intro:
+      "Små, användbara rabatter från folk vi gärna skulle skicka en vän till — butiker, groomers, hundtränare, försäkringsbolag. Vi vill hellre ha fem bra än femtio bortglömda.",
+    emptyBody:
+      "Inget här ännu. Vi pratar med de första partnerna just nu, och så fort ett erbjudande är värt din tid dyker det upp här — inget mejl behövs.",
+    partnerCta: "Driver du ett hundrelaterat företag?",
+    partnerLink: "Bli DoggMatch-partner",
+    code: "Kod:",
+    goTo: "Gå till",
+  },
+  fi: {
+    title: "Jäsenedut",
+    intro:
+      "Pieniä, käytännöllisiä säästöjä yrityksiltä, jotka suosittelisimme mielellämme kaverillekin — kaupat, trimmaajat, kouluttajat, vakuutusyhtiöt. Otamme mieluummin viisi hyvää etua kuin viisikymmentä unohdettua.",
+    emptyBody:
+      "Täällä ei ole vielä mitään. Neuvottelemme parhaillaan ensimmäisten kumppaneiden kanssa, ja heti kun tarjous on aikasi arvoinen, se ilmestyy tänne — ei sähköpostia tarvita.",
+    partnerCta: "Pyöritätkö koiriin liittyvää yritystä?",
+    partnerLink: "Ryhdy DoggMatch-kumppaniksi",
+    code: "Koodi:",
+    goTo: "Siirry",
+  },
 } as const;
 
 /** Partner offers for members. Empty until the first partners are in place. */

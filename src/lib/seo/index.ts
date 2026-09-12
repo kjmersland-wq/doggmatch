@@ -2,23 +2,31 @@
  * Central SEO helpers for DoggMatch.
  *
  * One source of truth for the canonical origin, absolute URLs, hreflang
- * pairs (EN / NO / PL) and the small JSON-LD builders used across routes.
- * The language lives in the path — / is English, /no and /pl are the other
- * readings — so that is what canonical and the hreflang alternates point at.
+ * pairs (EN / NO / PL / DK / SE / FI) and the small JSON-LD builders used
+ * across routes. The language lives in the path — / is English, /no, /pl,
+ * /dk, /se and /fi are the other readings — so that is what canonical and
+ * the hreflang alternates point at.
  */
 
 export const SITE_URL = "https://www.doggmatch.com";
 export const SITE_NAME = "DoggMatch";
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-en.jpg`;
 
+export type Locale = "en" | "no" | "pl" | "dk" | "se" | "fi";
+
 /** Share cards are written in the reader's language, so previews match the page. */
-export const OG_IMAGE_BY_LOCALE: Record<"en" | "no" | "pl", string> = {
+export const OG_IMAGE_BY_LOCALE: Record<Locale, string> = {
   en: `${SITE_URL}/og-en.jpg`,
   no: `${SITE_URL}/og-no.jpg`,
   pl: `${SITE_URL}/og-pl.jpg`,
+  // No dedicated share-card art yet for these three — fall back to the
+  // English card rather than reference an image that doesn't exist.
+  dk: DEFAULT_OG_IMAGE,
+  se: DEFAULT_OG_IMAGE,
+  fi: DEFAULT_OG_IMAGE,
 };
 
-export function ogImage(locale: "en" | "no" | "pl"): string {
+export function ogImage(locale: Locale): string {
   return OG_IMAGE_BY_LOCALE[locale] ?? DEFAULT_OG_IMAGE;
 }
 
@@ -30,7 +38,7 @@ export function abs(path: string): string {
 }
 
 /** The same page read in another language (English is the bare, unprefixed path). */
-export function langUrl(path: string, lang: "en" | "no" | "pl"): string {
+export function langUrl(path: string, lang: Locale): string {
   if (lang === "en") return abs(path);
   return abs(`/${lang}${path === "/" ? "" : path}`);
 }
@@ -45,11 +53,26 @@ export function plUrl(path: string): string {
   return langUrl(path, "pl");
 }
 
+/** The Danish reading of a page. */
+export function dkUrl(path: string): string {
+  return langUrl(path, "dk");
+}
+
+/** The Swedish reading of a page. */
+export function seUrl(path: string): string {
+  return langUrl(path, "se");
+}
+
+/** The Finnish reading of a page. */
+export function fiUrl(path: string): string {
+  return langUrl(path, "fi");
+}
+
 type LinkTag = { rel: string; href: string; hrefLang?: string };
 
 /**
  * Canonical + a reciprocal hreflang set for a public page. Every language
- * lists all three, so EN, NO and PL point at one another.
+ * lists all six, so EN, NO, PL, DK, SE and FI point at one another.
  */
 export function seoLinks(path: string): LinkTag[] {
   return [
@@ -57,6 +80,9 @@ export function seoLinks(path: string): LinkTag[] {
     { rel: "alternate", hrefLang: "en", href: abs(path) },
     { rel: "alternate", hrefLang: "nb-NO", href: noUrl(path) },
     { rel: "alternate", hrefLang: "pl-PL", href: plUrl(path) },
+    { rel: "alternate", hrefLang: "da-DK", href: dkUrl(path) },
+    { rel: "alternate", hrefLang: "sv-SE", href: seUrl(path) },
+    { rel: "alternate", hrefLang: "fi-FI", href: fiUrl(path) },
     { rel: "alternate", hrefLang: "x-default", href: abs(path) },
   ];
 }
@@ -99,30 +125,50 @@ export type SeoCopy = { title: string; description: string };
 
 type HeadCtx = { params: { lang?: string | undefined } };
 
-/** The language a request asked for (the /no, /pl path segment), readable inside `head()`. */
-export function headLocale(ctx: HeadCtx): "en" | "no" | "pl" {
+/** The language a request asked for (the /no, /pl, /dk, /se, /fi path segment), readable inside `head()`. */
+export function headLocale(ctx: HeadCtx): Locale {
   const raw = String(ctx?.params?.lang ?? "").toLowerCase();
   if (raw === "no" || raw === "nb" || raw === "nn" || raw === "nb-no") return "no";
   if (raw === "pl" || raw === "pl-pl") return "pl";
+  if (raw === "dk" || raw === "da" || raw === "da-dk") return "dk";
+  if (raw === "se" || raw === "sv" || raw === "sv-se") return "se";
+  if (raw === "fi" || raw === "fi-fi") return "fi";
   return "en";
 }
+
+const OG_LOCALE: Record<Locale, string> = {
+  en: "en_GB",
+  no: "nb_NO",
+  pl: "pl_PL",
+  dk: "da_DK",
+  se: "sv_SE",
+  fi: "fi_FI",
+};
 
 /**
  * Meta + links for a public page, written in the language the URL asks for.
  * The canonical points at that language's URL and every language lists all
- * three alternates, so EN, NO and PL stay reciprocal.
+ * six alternates, so EN, NO, PL, DK, SE and FI stay reciprocal.
  */
 export function localizedHead(
   ctx: HeadCtx,
   path: string,
-  copy: { en: SeoCopy; no?: SeoCopy; pl?: SeoCopy },
+  copy: { en: SeoCopy; no?: SeoCopy; pl?: SeoCopy; dk?: SeoCopy; se?: SeoCopy; fi?: SeoCopy },
   options?: { image?: string; type?: string },
 ) {
   const locale = headLocale(ctx);
-  const { title, description } = (locale === "no" ? copy.no : locale === "pl" ? copy.pl : copy.en) ?? copy.en;
+  const byLocale: Record<Locale, SeoCopy | undefined> = {
+    en: copy.en,
+    no: copy.no,
+    pl: copy.pl,
+    dk: copy.dk,
+    se: copy.se,
+    fi: copy.fi,
+  };
+  const { title, description } = byLocale[locale] ?? copy.en;
   const url = langUrl(path, locale);
   const image = options?.image ?? ogImage(locale);
-  const ogLocale = locale === "no" ? "nb_NO" : locale === "pl" ? "pl_PL" : "en_GB";
+  const ogLocale = OG_LOCALE[locale];
   return {
     meta: [
       { title },
@@ -141,12 +187,6 @@ export function localizedHead(
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: image },
     ],
-    links: [
-      { rel: "canonical", href: url },
-      { rel: "alternate", hrefLang: "en", href: abs(path) },
-      { rel: "alternate", hrefLang: "nb-NO", href: noUrl(path) },
-      { rel: "alternate", hrefLang: "pl-PL", href: plUrl(path) },
-      { rel: "alternate", hrefLang: "x-default", href: abs(path) },
-    ],
+    links: seoLinks(path).map((l) => (l.rel === "canonical" ? { rel: "canonical", href: url } : l)),
   };
 }

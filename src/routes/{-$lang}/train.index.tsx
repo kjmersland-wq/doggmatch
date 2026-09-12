@@ -16,6 +16,9 @@ const copy = {
   en: { welcomeUser: (name: string) => `Good to see you, ${name}'s human.` },
   no: { welcomeUser: (name: string) => `Godt å se deg, ${name} sin menneske.` },
   pl: { welcomeUser: (name: string) => `Miło cię widzieć, człowieku ${name}.` },
+  dk: { welcomeUser: (name: string) => `Godt at se dig, ${name}s menneske.` },
+  se: { welcomeUser: (name: string) => `Kul att se dig, ${name}s människa.` },
+  fi: { welcomeUser: (name: string) => `Kiva nähdä sinut taas – ${name} odottaa jo!` },
 } as const;
 
 const title = "Train Your Dog — Small sessions, clear steps | DoggMatch";
@@ -33,6 +36,21 @@ const seoCopy = {
     title: "Szkolenie psa — krótkie sesje, jasne kroki | DoggMatch",
     description:
       "Łagodne szkolenie oparte na nagrodach, które naprawdę zrobisz w domu. Krótkie sesje, jasne kroki i zdjęcia pokazujące dokładnie, co robić.",
+  },
+  dk: {
+    title: "Træn din hund — korte sessioner, tydelige trin | DoggMatch",
+    description:
+      "Venlig, belønningsbaseret træning du faktisk kan gøre derhjemme. Korte sessioner, tydelige trin og billeder, der viser dig præcis, hvad du skal gøre.",
+  },
+  se: {
+    title: "Träna din hund — korta pass, tydliga steg | DoggMatch",
+    description:
+      "Snäll, belöningsbaserad träning du faktiskt orkar göra hemma. Korta pass, tydliga steg och bilder som visar precis vad du ska göra.",
+  },
+  fi: {
+    title: "Kouluta koiraasi — lyhyitä harjoituksia, selkeitä askeleita | DoggMatch",
+    description:
+      "Ystävällistä, palkitsevaa koulutusta, jota oikeasti ehtii tehdä kotona. Lyhyitä harjoituksia, selkeitä askeleita ja kuvia, jotka näyttävät tarkalleen, mitä tehdä.",
   },
 };
 

@@ -37,6 +37,27 @@ const copy = {
     join: "Dołącz do DoggMatch+",
     error: "Nie udało się teraz otworzyć strony płatności. Spróbuj ponownie.",
   },
+  dk: {
+    opening: "Åbner sikker betaling …",
+    already: "Du er allerede medlem",
+    signInToJoin: "Log ind for at blive medlem",
+    join: "Bliv DoggMatch+-medlem",
+    error: "Vi kunne ikke åbne betalingssiden lige nu. Prøv venligst igen.",
+  },
+  se: {
+    opening: "Öppnar säker betalning …",
+    already: "Du är redan medlem",
+    signInToJoin: "Logga in för att gå med",
+    join: "Bli DoggMatch+-medlem",
+    error: "Vi kunde inte öppna betalsidan just nu. Försök gärna igen.",
+  },
+  fi: {
+    opening: "Avataan turvallista maksua…",
+    already: "Olet jo jäsen",
+    signInToJoin: "Kirjaudu sisään liittyäksesi",
+    join: "Liity DoggMatch+:aan",
+    error: "Emme juuri nyt saaneet avattua maksusivua. Yritä uudelleen.",
+  },
 } as const;
 
 /** Takes someone from the pricing card straight into Stripe checkout. */

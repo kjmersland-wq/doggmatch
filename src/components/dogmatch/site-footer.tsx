@@ -26,6 +26,27 @@ const copy = {
     partner: "Zostań partnerem",
     sources: "Źródła i metodologia",
   },
+  dk: {
+    blurb: "Et roligt og ærligt sted at finde ud af, hvilken hund der ville passe til dit liv.",
+    food: "Foder og portioner",
+    canEat: "Kan min hund spise dette?",
+    partner: "Bliv partner",
+    sources: "Kilder og metode",
+  },
+  se: {
+    blurb: "En lugn och ärlig plats att ta reda på vilken hund som skulle passa ditt liv.",
+    food: "Foder och portioner",
+    canEat: "Kan min hund äta det här?",
+    partner: "Bli partner",
+    sources: "Källor och metod",
+  },
+  fi: {
+    blurb: "Rauhallinen ja rehellinen paikka selvittää, mikä koira sopisi elämääsi.",
+    food: "Ruokinta ja annokset",
+    canEat: "Voiko koirani syödä tätä?",
+    partner: "Ryhdy kumppaniksi",
+    sources: "Lähteet ja menetelmä",
+  },
 };
 
 export function SiteFooter() {

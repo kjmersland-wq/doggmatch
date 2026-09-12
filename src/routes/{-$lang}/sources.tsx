@@ -21,6 +21,21 @@ const seoCopy = {
     description:
       "Skąd pochodzą informacje w DoggMatch: organizacje weterynaryjne, związki kynologiczne, urzędy i organizacje ochrony zwierząt — oraz dokładnie to, jak liczy się dopasowanie.",
   },
+  dk: {
+    title: "Kilder og metode — DoggMatch",
+    description:
+      "Hvor informationen i DoggMatch kommer fra: veterinærfaglige organer, kennelorganisationer, myndigheder og dyreværnsorganisationer — og præcis hvordan matchningen regnes ud.",
+  },
+  se: {
+    title: "Källor och metod — DoggMatch",
+    description:
+      "Var informationen i DoggMatch kommer ifrån: veterinärmedicinska organ, kennelorganisationer, myndigheter och djurskyddsorganisationer — och exakt hur matchningen räknas ut.",
+  },
+  fi: {
+    title: "Lähteet ja menetelmä — DoggMatch",
+    description:
+      "Mistä DoggMatchin tiedot ovat peräisin: eläinlääketieteelliset järjestöt, kennelliitot, viranomaiset ja eläinsuojelujärjestöt — ja tarkalleen, miten täsmäys lasketaan.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/sources")({
@@ -100,7 +115,7 @@ const copy = {
       "Rasestandarder, helse- og ernæringsveiledning, velferdsregler og grensekrav kommer fra veterinærorganisasjoner, publisert forskning, offentlige myndigheter, anerkjente kennelklubber og etablerte dyrevernorganisasjoner. De står oppført nedenfor, sortert etter tema, med lenke til siden vi leste og datoen vi sist sjekket den.",
     ownTitle: "Beregninger som er våre egne",
     ownBody:
-      "Matchprosenter, porsjonsanslag, ukerytmer og readiness-poeng lages av vår egen deterministiske kode. De samme svarene gir alltid det samme resultatet — ingen AI som gjetter underveis, og ingen personopplysninger forlater enheten din for å regne det ut.",
+      "Matchprosenter, porsjonsanslag, ukerytmer og readiness-poeng lages av vår egen deterministiske kode. De samme svarene gir alltid det samme resultatet — ingen gjetting, ingen skjult AI, bare transparente og faste regler. Ingen personopplysninger forlater enheten din for å regne det ut.",
     methodTitle: "Slik fungerer matchingen faktisk",
     stageWord: "Steg",
     stages: [
@@ -109,8 +124,8 @@ const copy = {
         b: "Bolig, timer alene, aktivitetsnivå, erfaring og forhold i hjemmet som barn, andre dyr, pelsfelling og allergier.",
       },
       {
-        t: "Fjerning av absolutte grenser",
-        b: "Alvorlig allergi, dårlig match med leilighet og lange dager alene sjekkes først. Merk noen av disse som en absolutt grense selv, og en rase som bryter den, fjernes helt fra resultatene dine — ikke bare nedjustert.",
+        t: "Eliminering av absolutte krav",
+        b: "Alvorlig allergi, dårlig match med leilighet og lange dager alene sjekkes først. Merk noen av disse som et absolutt krav selv, og en rase som ikke oppfyller det, fjernes helt fra resultatene dine — ikke bare nedjustert.",
       },
       {
         t: "Deterministisk scoring på flere vektorer",
@@ -121,10 +136,10 @@ const copy = {
         b: "Du ser nøyaktig hva som stemte med svarene dine og hva som ikke gjorde det, side om side — aldri bare ett lukket tall.",
       },
     ],
-    calloutEyebrow: "En absolutt grense i praksis",
+    calloutEyebrow: "Et absolutt krav i praksis",
     calloutTitle: "Hvorfor en border collie kan bli utelukket ved 6+ timer alene",
     calloutBody:
-      "En border collie scorer som regel strålende på aktivitet og lærevillighet — men tåler dårlig å være alene. Merk «timer alene» som en absolutt grense, og en lang dag alene utelukker den helt, uansett hvor godt den gjør det andre steder.",
+      "En border collie scorer som regel strålende på aktivitet og lærevillighet — men tåler dårlig å være alene. Merk «timer alene» som et absolutt krav, og en lang dag alene utelukker den helt, uansett hvor godt den gjør det andre steder.",
     calloutTrait1: "Høy score på aktivitet",
     calloutTrait2: "Høy score på lærevillighet",
     calloutEliminated: "Fortsatt utelukket",
@@ -159,7 +174,7 @@ const copy = {
       "Standardy ras, wytyczne dotyczące zdrowia i żywienia, zasady dobrostanu i wymogi graniczne pochodzą od organizacji weterynaryjnych, opublikowanych badań, organów rządowych, uznanych klubów kynologicznych i sprawdzonych organizacji zajmujących się dobrostanem zwierząt. Są wymienione poniżej, według tematu, z linkiem do strony, którą przeczytaliśmy, i datą ostatniego sprawdzenia.",
     ownTitle: "Obliczenia, które są nasze",
     ownBody:
-      "Procenty dopasowania, szacunki porcji, rytmy tygodniowe i wyniki gotowości powstają dzięki naszemu własnemu, deterministycznemu kodowi. Te same odpowiedzi zawsze dają ten sam wynik — nie ma tu żadnego zgadywania po drodze, a żadne dane osobowe nie opuszczają Twojego urządzenia, by je policzyć.",
+      "Procenty dopasowania, szacunki porcji, rytmy tygodniowe i wyniki gotowości powstają dzięki naszemu własnemu, deterministycznemu kodowi. Te same odpowiedzi zawsze dają ten sam wynik — bez zgadywania i czarnych skrzynek AI, tylko przejrzyste, jasne zasady dopasowania. Żadne dane osobowe nie opuszczają Twojego urządzenia, by je policzyć.",
     methodTitle: "Jak naprawdę działa dopasowywanie",
     stageWord: "Etap",
     stages: [
@@ -168,8 +183,8 @@ const copy = {
         b: "Przestrzeń życiowa, godziny spędzane samodzielnie przez psa, poziom aktywności, doświadczenie oraz szczegóły domowe, takie jak dzieci, inne zwierzęta, linienie i alergie.",
       },
       {
-        t: "Eliminacja twardych ograniczeń",
-        b: "Poważne alergie, niedopasowanie do mieszkania i długie dni w samotności są sprawdzane najpierw. Oznacz dowolne z nich jako twardą granicę, a rasa, która ją przekracza, zostaje całkowicie usunięta z wyników — a nie tylko obniżona w ocenie.",
+        t: "Eliminacja warunków bezwzględnych",
+        b: "Poważne alergie, niedopasowanie do mieszkania i długie dni w samotności są sprawdzane najpierw. Oznacz dowolne z nich jako warunek bezwzględny, a rasa, która go nie spełnia, zostaje całkowicie usunięta z wyników — a nie tylko obniżona w ocenie.",
       },
       {
         t: "Deterministyczne wielowymiarowe punktowanie",
@@ -180,10 +195,10 @@ const copy = {
         b: "Widzisz dokładnie, co pasowało do Twoich odpowiedzi, a co nie, obok siebie — nigdy tylko jedną zamkniętą liczbę.",
       },
     ],
-    calloutEyebrow: "Twarda granica w praktyce",
+    calloutEyebrow: "Warunek bezwzględny w praktyce",
     calloutTitle: "Dlaczego border collie może zostać wyeliminowany przy 6+ godzinach samotności",
     calloutBody:
-      "Border collie zwykle świetnie wypada pod względem aktywności i podatności na trening — ale słabo znosi samotność. Oznacz „godziny samodzielnie” jako twardą granicę, a długi dzień w samotności całkowicie go wyklucza, niezależnie od tego, jak dobrze wypada gdzie indziej.",
+      "Border collie zwykle świetnie wypada pod względem aktywności i podatności na trening — ale słabo znosi samotność. Oznacz „godziny samodzielnie” jako warunek bezwzględny, a długi dzień w samotności całkowicie go wyklucza, niezależnie od tego, jak dobrze wypada gdzie indziej.",
     calloutTrait1: "Wysoka ocena aktywności",
     calloutTrait2: "Wysoka ocena podatności na trening",
     calloutEliminated: "Nadal wyeliminowany",
@@ -205,6 +220,183 @@ const copy = {
     addBody:
       "Jeśli znajdziesz twierdzenie, które nie jest poparte, albo źródło, które się przeniosło lub zmieniło, daj nam znać, a poprawimy to. Poprawki są zawsze mile widziane.",
     contact: "Wyślij nam poprawkę",
+  },
+  dk: {
+    eyebrow: "Åbenhed",
+    h1: "Hvor vores information kommer fra",
+    intro:
+      "Vi viser hellere regnestykket end at lyde kloge. Alt faktabaseret på DoggMatch kommer fra navngivne organisationer, du selv kan tjekke, og alt vi selv regner ud, er enkel matematik, vi gerne forklarer.",
+    reviewed: "Hele kilderegistret sidst gennemgået",
+    twoKinds: "To forskellige typer information",
+    externalTitle: "Viden fra andre",
+    externalBody:
+      "Racestandarder, sundheds- og ernæringsvejledning, velfærdsregler og grænsekrav kommer fra veterinærorganisationer, publiceret forskning, offentlige myndigheder, anerkendte kennelklubber og etablerede dyreværnsorganisationer. De er listet nedenfor, efter emne, med et link til siden vi læste, og datoen vi sidst tjekkede den.",
+    ownTitle: "Beregninger der er vores egne",
+    ownBody:
+      "Matchprocenter, portionsestimater, ugerytmer og readiness-point produceres af vores egen deterministiske kode. De samme svar giver altid det samme resultat — ingen gætterier, ingen hemmelig AI, kun gennemskuelige, faste regler. Ingen personlige oplysninger forlader din enhed for at regne det ud.",
+    methodTitle: "Sådan fungerer matchningen faktisk",
+    stageWord: "Trin",
+    stages: [
+      {
+        t: "Dine livsstilsoplysninger",
+        b: "Boligforhold, timer alene, aktivitetsniveau, erfaring og forhold derhjemme som børn, andre dyr, fældning og allergier.",
+      },
+      {
+        t: "Eliminering af absolutte grænser",
+        b: "Alvorlig allergi, dårligt match med lejlighed og lange dage alene tjekkes først. Marker en af disse som en absolut grænse selv, og en race, der ikke opfylder den, fjernes helt fra dine resultater — ikke bare nedjusteret.",
+      },
+      {
+        t: "Deterministisk scoring på flere vektorer",
+        b: "Hver tilbageværende race scores på alle 9 reelle dimensioner — livsstil, hjem, aktivitet, temperament, trænbarhed, selskab, allergi, trivsel og pleje — og sættes derefter sammen med faste vægte.",
+      },
+      {
+        t: "Gennemskuelig rapport om match og afvejninger",
+        b: "Du ser præcis, hvad der stemte overens med dine svar, og hvad der ikke gjorde, side om side — aldrig bare ét lukket tal.",
+      },
+    ],
+    calloutEyebrow: "En absolut grænse i praksis",
+    calloutTitle: "Hvorfor en border collie kan blive udelukket ved 6+ timer alene",
+    calloutBody:
+      "En border collie scorer som regel strålende på aktivitet og trænbarhed — men tåler dårligt at være alene. Marker \"timer alene\" som en absolut grænse, og en lang dag alene udelukker den helt, uanset hvor godt den klarer sig andre steder.",
+    calloutTrait1: "Høj score på aktivitet",
+    calloutTrait2: "Høj score på trænbarhed",
+    calloutEliminated: "Stadig udelukket",
+    limitsTitle: "Hvad en matchprocent er — og ikke er",
+    limits:
+      "En DoggMatch-procent er en algoritmisk vurdering af kompatibilitet, baseret på strukturerede racedata og de svar du gav os. Den er ikke en videnskabelig forudsigelse, ikke et mål på en bestemt hund, og den hævder ingen sikkerhed. Hunde er individer; to hunde af samme race kan leve meget forskelligt. For en hund du allerede kender, scorer vi hundens egne observerede egenskaber i stedet for antagelser om racen.",
+    vetTitle: "Vi er ikke din dyrlæge",
+    vetBody:
+      "DoggMatch tilbyder generel oplysning om livet med hund. Vi stiller ingen diagnose, behandler ikke og udskriver ikke recepter, og vi erstatter aldrig råd fra en kvalificeret dyrlæge, adfærdsspecialist eller træner, der har mødt din hund. Er du bekymret, så ring til dyrlægen — og ved akut sygdom, tag direkte derhen.",
+    borderTitle: "Rejseregler ændrer sig",
+    borderBody:
+      "Grænse- og indførselskrav fastsættes af myndighederne og kan ændres med kort varsel. Vi linker til myndigheden for hvert land og siger klart fra, når vi ikke har en verificeret regel for en rejserute — i stedet for at gætte.",
+    registryTitle: "Kilderegistret",
+    registryBody:
+      "Sorteret efter emne. Hver post linker til den oprindelige kilde. Nye kilder og gennemgangsdatoer tilføjes her, efterhånden som siden vokser.",
+    usedOn: "Bruges på",
+    reviewedShort: "Tjekket",
+    addTitle: "Har du fundet noget, der er forkert?",
+    addBody:
+      "Finder du en påstand uden belæg, eller en kilde der har flyttet sig eller ændret sig, så sig til — så retter vi det. Rettelser er altid velkomne.",
+    contact: "Send os en rettelse",
+  },
+  se: {
+    eyebrow: "Öppenhet",
+    h1: "Var vår information kommer ifrån",
+    intro:
+      "Vi visar hellre uträkningen än att låta smarta. Allt faktabaserat på DoggMatch kommer från namngivna organisationer du kan kontrollera själv, och allt vi räknar ut själva är enkel matematik vi gärna förklarar.",
+    reviewed: "Hela källregistret senast granskat",
+    twoKinds: "Två olika typer av information",
+    externalTitle: "Kunskap från andra",
+    externalBody:
+      "Rasstandarder, hälso- och näringsvägledning, välfärdsregler och gränskrav kommer från veterinärorganisationer, publicerad forskning, statliga myndigheter, erkända kennelklubbar och etablerade djurskyddsorganisationer. De listas nedan, efter ämne, med en länk till sidan vi läste och datumet vi senast kontrollerade den.",
+    ownTitle: "Beräkningar som är våra egna",
+    ownBody:
+      "Matchprocent, portionsuppskattningar, veckorytmer och readiness-poäng tas fram av vår egen deterministiska kod. Samma svar ger alltid samma resultat — inga gissningar eller dold AI, bara transparenta, tydliga regler. Ingen personlig information lämnar din enhet för att räkna ut det.",
+    methodTitle: "Så här fungerar matchningen faktiskt",
+    stageWord: "Steg",
+    stages: [
+      {
+        t: "Din livsstilsinformation",
+        b: "Boendeform, timmar ensam, aktivitetsnivå, erfarenhet och förhållanden hemma som barn, andra djur, fällning och allergier.",
+      },
+      {
+        t: "Eliminering av absoluta gränser",
+        b: "Allvarlig allergi, dåligt matchande lägenhet och långa dagar ensam kontrolleras först. Markera någon av dessa som en absolut gräns själv, och en ras som inte uppfyller den tas bort helt från dina resultat — inte bara nedgraderad.",
+      },
+      {
+        t: "Deterministisk poängsättning på flera vektorer",
+        b: "Varje kvarvarande ras poängsätts på alla 9 verkliga dimensioner — livsstil, hem, aktivitet, temperament, träningsvillighet, sällskap, allergi, välbefinnande och skötsel — och kombineras sedan med fasta vikter.",
+      },
+      {
+        t: "Transparent rapport om matchning och avvägningar",
+        b: "Du ser exakt vad som stämde överens med dina svar och vad som inte gjorde det, sida vid sida — aldrig bara ett enda stängt tal.",
+      },
+    ],
+    calloutEyebrow: "En absolut gräns i praktiken",
+    calloutTitle: "Varför en border collie kan uteslutas vid 6+ timmar ensam",
+    calloutBody:
+      "En border collie brukar prestera lysande på aktivitet och träningsvillighet — men har låg tolerans för att lämnas ensam. Markera \"timmar ensam\" som en absolut gräns, och en lång dag ensam utesluter den helt, oavsett hur bra den presterar på andra håll.",
+    calloutTrait1: "Hög poäng på aktivitet",
+    calloutTrait2: "Hög poäng på träningsvillighet",
+    calloutEliminated: "Fortfarande utesluten",
+    limitsTitle: "Vad en matchprocent är — och inte är",
+    limits:
+      "En DoggMatch-procent är en algoritmisk bedömning av kompatibilitet, baserad på strukturerad rasdata och svaren du gav oss. Den är inte en vetenskaplig förutsägelse, inte ett mått på en specifik hund, och den hävdar ingen säkerhet. Hundar är individer; två hundar av samma ras kan leva mycket olika. För en hund du redan känner poängsätter vi hundens egna observerade egenskaper i stället för antaganden om rasen.",
+    vetTitle: "Vi är inte din veterinär",
+    vetBody:
+      "DoggMatch erbjuder allmän kunskap om livet med hund. Vi ställer ingen diagnos, behandlar inte och skriver inte ut recept, och vi ersätter aldrig råd från en kvalificerad veterinär, veterinärbeteendespecialist eller tränare som har träffat din hund. Om något oroar dig, ring veterinären — och vid akut sjukdom, åk dit direkt.",
+    borderTitle: "Reseregler förändras",
+    borderBody:
+      "Gräns- och importkrav fastställs av myndigheter och kan ändras med kort varsel. Vi länkar till myndigheten för varje land och säger tydligt ifrån när vi inte har en verifierad regel för en resväg — i stället för att gissa.",
+    registryTitle: "Källregistret",
+    registryBody:
+      "Sorterat efter ämne. Varje post länkar till originalkällan. Nya källor och granskningsdatum läggs till här allteftersom sidan växer.",
+    usedOn: "Används på",
+    reviewedShort: "Kontrollerat",
+    addTitle: "Har du hittat något som är fel?",
+    addBody:
+      "Om du hittar ett påstående som saknar stöd, eller en källa som har flyttat eller ändrats, säg till — så rättar vi det. Rättelser är alltid välkomna.",
+    contact: "Skicka oss en rättelse",
+  },
+  fi: {
+    eyebrow: "Läpinäkyvyys",
+    h1: "Mistä tietomme ovat peräisin",
+    intro:
+      "Näytämme mieluummin laskutapamme kuin kuulostamme fiksuilta. Kaikki DoggMatchin faktatieto tulee nimetyiltä organisaatioilta, jotka voit itse tarkistaa, ja kaiken, mitä laskemme itse, on yksinkertaista matematiikkaa, jonka selitämme mielellämme.",
+    reviewed: "Koko lähderekisteri viimeksi tarkistettu",
+    twoKinds: "Kaksi erilaista tietolajia",
+    externalTitle: "Muilta saatu tieto",
+    externalBody:
+      "Rotustandardit, terveys- ja ravitsemusohjeet, hyvinvointisäännöt ja rajavaatimukset tulevat eläinlääketieteellisiltä järjestöiltä, julkaistusta tutkimuksesta, viranomaisilta, tunnustetuilta kennelliitoilta ja vakiintuneilta eläinsuojelujärjestöiltä. Ne on listattu alla aiheittain, linkillä sivulle, jota luimme, ja päivämäärällä, jolloin viimeksi tarkistimme sen.",
+    ownTitle: "Omat laskelmamme",
+    ownBody:
+      "Täsmäysprosentit, annosarviot, viikkorytmit ja valmiuspisteet tuottaa oma deterministinen koodimme. Samat vastaukset antavat aina saman tuloksen — ei arvailua tai salaista tekoälyä, vain läpinäkyviä, selkeitä sääntöjä. Mitkään henkilötiedot eivät poistu laitteeltasi niiden laskemiseksi.",
+    methodTitle: "Näin täsmäys oikeasti toimii",
+    stageWord: "Vaihe",
+    stages: [
+      {
+        t: "Elämäntyylitietosi",
+        b: "Asumismuoto, tunnit yksin, aktiivisuustaso, kokemus ja kotitalouden tiedot, kuten lapset, muut lemmikit, karvanlähtö ja allergiat.",
+      },
+      {
+        t: "Ehdottomien kriteerien eliminointi",
+        b: "Vakava allergia, kerrostaloon sopimattomuus ja pitkät yksinäolopäivät tarkistetaan ensin. Merkitse jokin näistä itse ehdottomaksi kriteeriksi, ja rotu, joka ei täytä sitä, poistetaan kokonaan tuloksistasi — ei vain lasketa pisteitä.",
+      },
+      {
+        t: "Deterministinen monivektoripisteytys",
+        b: "Jokainen jäljellä oleva rotu pisteytetään kaikissa 9 todellisessa ulottuvuudessa — elämäntyyli, koti, aktiivisuus, temperamentti, koulutettavuus, seura, allergia, hyvinvointi ja hoito — ja yhdistetään sitten kiinteillä painoarvoilla.",
+      },
+      {
+        t: "Läpinäkyvä raportti sopivuudesta ja kompromisseista",
+        b: "Näet tarkalleen, mikä vastasi vastauksiasi ja mikä ei, rinnakkain — ei koskaan vain yhtä suljettua lukua.",
+      },
+    ],
+    calloutEyebrow: "Ehdoton vaatimus käytännössä",
+    calloutTitle: "Miksi bordercollie voidaan sulkea pois, jos koira olisi yksin 6+ tuntia",
+    calloutBody:
+      "Bordercollie pärjää yleensä loistavasti aktiivisuudessa ja koulutettavuudessa — mutta sen kyky sietää yksinoloa on heikko. Merkitse \"tunnit yksin\" ehdottomaksi kriteeriksi, ja pitkä yksinäolopäivä sulkee sen kokonaan pois, riippumatta siitä, kuinka hyvin se pärjää muualla.",
+    calloutTrait1: "Korkea aktiivisuuspisteytys",
+    calloutTrait2: "Korkea koulutettavuuspisteytys",
+    calloutEliminated: "Silti suljettu pois",
+    limitsTitle: "Mikä täsmäysprosentti on — ja mikä se ei ole",
+    limits:
+      "DoggMatch-prosentti on algoritminen yhteensopivuusarvio, joka perustuu jäsenneltyyn rotutietoon ja antamiisi vastauksiin. Se ei ole tieteellinen ennuste, ei minkään yksittäisen koiran mitta, eikä se väitä mitään varmuudesta. Koirat ovat yksilöitä; kaksi samaa rotua olevaa koiraa voi elää hyvin eri tavoin. Koirasta, jonka jo tunnet, arvioimme koiran omia havaittuja ominaisuuksia rotua koskevien oletusten sijaan.",
+    vetTitle: "Emme ole eläinlääkärisi",
+    vetBody:
+      "DoggMatch tarjoaa yleistä tietoa koiran kanssa elämisestä. Emme diagnosoi, hoida tai määrää lääkkeitä, emmekä koskaan korvaa pätevän eläinlääkärin, eläinlääketieteellisen käyttäytymisasiantuntijan tai kouluttajan neuvoja, joka on tavannut koirasi. Jos jokin huolestuttaa sinua, soita eläinlääkärille — ja hätätapauksessa mene suoraan sinne.",
+    borderTitle: "Matkustussäännöt muuttuvat",
+    borderBody:
+      "Raja- ja tuontivaatimukset asettavat viranomaiset, ja ne voivat muuttua lyhyellä varoitusajalla. Linkitämme kunkin maan viranomaiseen ja kerromme suoraan, kun meillä ei ole vahvistettua sääntöä jollekin reitille — arvailun sijaan.",
+    registryTitle: "Lähderekisteri",
+    registryBody:
+      "Järjestetty aiheittain. Jokainen merkintä linkittää alkuperäiseen lähteeseen. Uusia lähteitä ja tarkistuspäivämääriä lisätään tänne sivun kasvaessa.",
+    usedOn: "Käytetty sivulla",
+    reviewedShort: "Tarkistettu",
+    addTitle: "Huomasitko jotain väärää?",
+    addBody:
+      "Jos löydät väitteen, jota ei ole tuettu, tai lähteen, joka on siirtynyt tai muuttunut, kerro meille — korjaamme sen. Korjaukset ovat aina tervetulleita.",
+    contact: "Lähetä meille korjaus",
   },
 } as const;
 

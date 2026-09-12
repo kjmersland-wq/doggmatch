@@ -91,8 +91,8 @@ const copy = {
     eyebrow: "Se det i praksis",
     title: "Tre liv, matchet",
     intro:
-      "Ikke kundeuttalelser — samme deterministiske motor, kjørt direkte mot tre vanlige situasjoner, så du kan se nøyaktig hvordan den tenker før du prøver selv.",
-    badge: "Utregnet eksempel",
+      "Ikke kundeuttalelser — samme deterministiske motor, brukt direkte på tre vanlige situasjoner, så du kan se nøyaktig hvordan den tenker før du prøver selv.",
+    badge: "Reelt eksempel",
     scenarios: {
       apartmentAlone: { context: "Leilighet, alene 6+ timer på en vanlig arbeidsdag" },
       familyShedding: { context: "Hus med hage, små barn, vil ha lite pelsfelling" },
@@ -103,12 +103,48 @@ const copy = {
     eyebrow: "Zobacz, jak to działa",
     title: "Trzy życia, dopasowane",
     intro:
-      "To nie opinie klientów — ten sam deterministyczny silnik, uruchomiony na żywo dla trzech typowych sytuacji, żebyś zobaczył/a dokładnie, jak wnioskuje, zanim spróbujesz sam/sama.",
-    badge: "Przykład obliczony",
+      "To nie opinie klientów — ten sam deterministyczny silnik, użyty na żywo w trzech typowych sytuacjach, żebyś zobaczył/a dokładnie, jak wnioskuje, zanim spróbujesz sam/sama.",
+    badge: "Praktyczny przykład",
     scenarios: {
-      apartmentAlone: { context: "Mieszkanie, samotnie 6+ godzin w dzień roboczy" },
-      familyShedding: { context: "Dom z ogrodem, małe dzieci, zależy na małym linieniu" },
+      apartmentAlone: { context: "Mieszkanie, pies zostaje sam na 6+ godzin w dzień roboczy" },
+      familyShedding: { context: "Dom z ogrodem, małe dzieci, priorytetem jest małe linienie" },
       firstTimeOutdoor: { context: "Pierwszy pies, dom z ogrodem, szuka aktywnego towarzysza" },
+    },
+  },
+  dk: {
+    eyebrow: "Se det i praksis",
+    title: "Tre liv, matchet",
+    intro:
+      "Ikke kundeudtalelser — samme deterministiske motor, brugt direkte på tre almindelige situationer, så du kan se præcis, hvordan den tænker, før du selv prøver.",
+    badge: "Reelt eksempel",
+    scenarios: {
+      apartmentAlone: { context: "Lejlighed, hunden er alene 6+ timer på en hverdag" },
+      familyShedding: { context: "Hus med have, små børn, prioriterer lidt fældning" },
+      firstTimeOutdoor: { context: "Første hund, hus med have, ønsker en aktiv følgesvend" },
+    },
+  },
+  se: {
+    eyebrow: "Se det i praktiken",
+    title: "Tre liv, matchade",
+    intro:
+      "Inga kundomdömen — samma deterministiska motor, använd direkt på tre vanliga situationer, så att du kan se exakt hur den resonerar innan du testar själv.",
+    badge: "Exempel ur verkligheten",
+    scenarios: {
+      apartmentAlone: { context: "Lägenhet, hunden är ensam 6+ timmar en vardag" },
+      familyShedding: { context: "Hus med trädgård, små barn, prioriterar lite fällning" },
+      firstTimeOutdoor: { context: "Första hunden, hus med trädgård, vill ha en aktiv följeslagare" },
+    },
+  },
+  fi: {
+    eyebrow: "Katso, miten se toimii",
+    title: "Kolme elämäntilannetta, kolme täsmäystä",
+    intro:
+      "Ei asiakaskertomuksia — sama deterministinen moottori, ajettuna suoraan kolmen tavallisen elämäntilanteen läpi, jotta näet tarkalleen, miten se päättelee, ennen kuin kokeilet itse.",
+    badge: "Käytännön esimerkki",
+    scenarios: {
+      apartmentAlone: { context: "Kerrostaloasunto, koira yksin 6+ tuntia arkipäivänä" },
+      familyShedding: { context: "Talo pihalla, pieniä lapsia, vähäinen karvanlähtö tärkeää" },
+      firstTimeOutdoor: { context: "Ensimmäinen koira, talo pihalla, toivoo aktiivista seuralaista" },
     },
   },
 } as const;

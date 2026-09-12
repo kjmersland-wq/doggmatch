@@ -48,6 +48,33 @@ const shellCopy = {
     retry: "Spróbuj ponownie",
     home: "Strona główna",
   },
+  dk: {
+    notFound: "Den her side ser ud til at være løbet bort.",
+    notFoundBody: "Ingen skade sket — lad os få dig tilbage på sporet.",
+    back: "Tilbage til DoggMatch",
+    errorTitle: "Noget gik galt hos os.",
+    errorBody: "Beklager det. Dine svar er trygge — prøv igen.",
+    retry: "Prøv igen",
+    home: "Til forsiden",
+  },
+  se: {
+    notFound: "Den här sidan verkar ha strulat bort.",
+    notFoundBody: "Ingen skada skedd — vi hjälper dig tillbaka på rätt spår.",
+    back: "Tillbaka till DoggMatch",
+    errorTitle: "Något gick fel hos oss.",
+    errorBody: "Förlåt för det. Dina svar är trygga — försök igen.",
+    retry: "Försök igen",
+    home: "Till startsidan",
+  },
+  fi: {
+    notFound: "Tämä sivu näyttää eksyneen.",
+    notFoundBody: "Ei hätää — palataan takaisin oikealle polulle.",
+    back: "Takaisin DoggMatchiin",
+    errorTitle: "Jokin meni pieleen meidän päässämme.",
+    errorBody: "Pahoittelut siitä. Vastauksesi ovat tallessa — kokeile uudelleen.",
+    retry: "Yritä uudelleen",
+    home: "Etusivulle",
+  },
 };
 
 function NotFoundComponent() {
@@ -215,7 +242,14 @@ function RootComponent() {
 
 /** Keyboard users get straight to the content, ahead of the navigation. */
 function SkipLink() {
-  const c = useCopy({ en: { skip: "Skip to content" }, no: { skip: "Hopp til innhold" }, pl: { skip: "Przejdź do treści" } });
+  const c = useCopy({
+    en: { skip: "Skip to content" },
+    no: { skip: "Hopp til innhold" },
+    pl: { skip: "Przejdź do treści" },
+    dk: { skip: "Spring til indhold" },
+    se: { skip: "Hoppa till innehåll" },
+    fi: { skip: "Siirry sisältöön" },
+  });
   return (
     <a href="#main" className="skip-link">
       {c.skip}

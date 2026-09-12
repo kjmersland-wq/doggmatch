@@ -22,6 +22,21 @@ const seoCopy = {
     description:
       "Parki, dobre spacery, szkolenia, weterynarze, groomerzy i miejsca, które lubią psy. Wystarczy, że powiesz nam, gdzie mieszkasz.",
   },
+  dk: {
+    title: "Hundeliv — hundevenlige steder, hvor du bor | DoggMatch",
+    description:
+      "Parker, gode gåture, hundekurser, dyrlæger, hundefrisører og steder, der tager godt imod hunde. Bare fortæl os, hvor du bor.",
+  },
+  se: {
+    title: "Hundliv — hundvänliga platser där du bor | DoggMatch",
+    description:
+      "Parker, fina promenader, hundkurser, veterinärer, hundfrisörer och ställen som gillar hundar. Berätta bara var du bor.",
+  },
+  fi: {
+    title: "Koiraelämä — koiraystävälliset paikat kotikaupungissasi | DoggMatch",
+    description:
+      "Puistoja, hyviä lenkkejä, koirakursseja, eläinlääkäreitä, trimmaajia ja paikkoja, jotka ottavat koirat mielellään vastaan. Kerro vain, missä asut.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/dog-life")({
@@ -88,6 +103,63 @@ const tipCopy = {
     notReady: (place: string) =>
       `Nie mamy jeszcze zweryfikowanych miejsc dla ${place}. Daj znać, a zajmiemy się tym wcześniej — lista poniżej sprawdza się wszędzie.`,
   },
+  dk: {
+    lead: "Vi bygger de lokale oversigter by for by. Indtil din er klar, er det her, vi selv ville kigge efter — den samme tjekliste, vi selv bruger.",
+    tips: [
+      "Indhegnet, med et separat område til små hunde, og aldrig så fyldt at din hund ikke kan trække sig ud af en situation.",
+      "Runder på 30-45 minutter med blødt underlag og skygge. Skift rute — nye dufte trætter en hund mere end nye kilometer.",
+      "Tjek de lokale regler og årstiden; i foråret betyder redefugle på jorden snor de fleste steder.",
+      "Spørg hvilke metoder de bruger. Belønningsbaseret, små hold, og du bør få lov at overvære en time, før du melder dig til.",
+      "Bliv registreret, før du får brug for det, og hæng den nærmeste døgnåbne dyreklinik op på køleskabet.",
+      "Bed om at se, hvordan de håndterer en nervøs hund. En god hundefrisør laver gerne et kort første besøg helt uden klipning.",
+      "Forsikring, referencer og et møde på hundens præmisser. Spørg hvor mange hunde de lufter ad gangen.",
+      "En vandskål udenfor er et godt tegn; en skål og en godbid bag disken er et endnu bedre.",
+      "Ring i forvejen — hundevenligt betyder ofte kun terrassen, og det mærkes i februar.",
+      "Tjek sæsonens hundeforbud, strøm og advarsler om blågrønalger, før hunden får lov at svømme.",
+      "Et sted der bestiller dit foder hjem og kender de racespecifikke ting, slår den billigste hyldevare.",
+    ],
+    searching: (place: string) => `Kigger nærmere på ${place}`,
+    notReady: (place: string) =>
+      `Vi har endnu ikke verificerede steder for ${place}. Sig til, så prioriterer vi det — tjeklisten herunder virker alle vegne i mellemtiden.`,
+  },
+  se: {
+    lead: "Vi bygger de lokala listorna stad för stad. Tills din är klar är det här vad vi själva skulle leta efter — samma checklista som vi själva använder.",
+    tips: [
+      "Inhägnat, med ett eget område för små hundar, och aldrig så fullt att din hund inte kan dra sig undan.",
+      "Rundor på 30-45 minuter med mjukt underlag och skugga. Variera rutten — nya dofter tröttar ut en hund mer än nya kilometer.",
+      "Kolla lokala regler och säsong; markhäckande fåglar betyder koppeltvång på våren nästan överallt.",
+      "Fråga vilka metoder de använder. Belöningsbaserat, små grupper, och du bör få se en lektion innan du bokar.",
+      "Registrera dig innan du behöver det, och sätt upp närmaste jourhavande djurklinik på kylskåpet.",
+      "Be att få se hur de hanterar en nervös hund. En bra hundfrisör gör gärna ett kort första besök helt utan klippning.",
+      "Försäkring, referenser och ett möte på hundens villkor. Fråga hur många hundar de rastar samtidigt.",
+      "En vattenskål utomhus är ett gott tecken; en skål och ett godis bakom disken är ett ännu bättre.",
+      "Ring i förväg — hundvänligt betyder ofta bara uteserveringen, och det märks i februari.",
+      "Kolla säsongens badförbud för hundar, strömmar och varningar om blågröna alger innan hunden får simma.",
+      "Ett ställe som beställer hem ditt foder och kan det rasspecifika slår det billigaste hyllpriset.",
+    ],
+    searching: (place: string) => `Tittar runt i ${place}`,
+    notReady: (place: string) =>
+      `Vi har inga verifierade ställen för ${place} än. Säg till, så prioriterar vi det — checklistan nedan fungerar överallt under tiden.`,
+  },
+  fi: {
+    lead: "Rakennamme paikallisia listoja kaupunki kerrallaan. Kunnes omasi on valmis, tässä on se, mitä itse etsisimme — sama tarkistuslista, jota käytämme itsekin.",
+    tips: [
+      "Aidattu, erillinen alue pienille koirille, eikä koskaan niin täynnä, ettei koirasi voisi poistua tilanteesta.",
+      "20–45 minuutin lenkkejä pehmeällä alustalla ja varjossa. Vaihtele reittiä — uudet hajut väsyttävät koiraa enemmän kuin uudet kilometrit.",
+      "Tarkista paikalliset säännöt ja vuodenaika; maassa pesivät linnut tarkoittavat kytkentäpakkoa keväällä lähes kaikkialla.",
+      "Kysy, mitä menetelmiä he käyttävät. Palkintoperustainen, pienet ryhmät, ja sinun pitäisi saada seurata tuntia ennen ilmoittautumista.",
+      "Rekisteröidy ennen kuin tarvitset sitä, ja kirjoita lähin päivystävä eläinklinikka ylös jääkaapin oveen.",
+      "Pyydä näkemään, miten he kohtelevat arkaa koiraa. Hyvä trimmaaja tekee mielellään lyhyen ensikäynnin ilman leikkausta.",
+      "Vakuutus, suosittelijat ja tapaaminen koiran ehdoilla. Kysy, montako koiraa he ulkoiluttavat kerralla.",
+      "Vesikuppi ulkona on hyvä merkki; kuppi ja herkku tiskin takana on vielä parempi.",
+      "Soita etukäteen — koiraystävällinen tarkoittaa usein vain terassia, ja se huomaa helmikuussa.",
+      "Tarkista kauden uimakiellot koirilta, virtaukset ja sinilevävaroitukset ennen kuin koira pääsee uimaan.",
+      "Paikka, joka tilaa ruokasi kotiin ja tuntee rotukohtaiset asiat, voittaa halvimman hyllyhinnan.",
+    ],
+    searching: (place: string) => `Katsotaan, mitä löytyy alueelta ${place}`,
+    notReady: (place: string) =>
+      `Meillä ei ole vielä varmennettuja paikkoja alueelle ${place}. Kerro meille, niin priorisoimme sen — alla oleva tarkistuslista toimii sitä ennen kaikkialla.`,
+  },
 } as const;
 
 function DogLifePage() {
@@ -144,7 +216,14 @@ function DogLifePage() {
             <p className="font-display text-2xl text-primary-foreground">
               {submitted
                 ? c.searching(submitted)
-                : pick({ en: "Wherever you are", no: "Uansett hvor du er", pl: "Gdziekolwiek jesteś" })}
+                : pick({
+                    en: "Wherever you are",
+                    no: "Uansett hvor du er",
+                    pl: "Gdziekolwiek jesteś",
+                    dk: "Uanset hvor du er",
+                    se: "Var du än är",
+                    fi: "Missä ikinä oletkin",
+                  })}
             </p>
             <p className="mt-2 max-w-md text-sm text-primary-foreground/80">
               {submitted ? c.notReady(submitted) : c.lead}

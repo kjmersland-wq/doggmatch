@@ -12,7 +12,7 @@ import { foodItemsPl } from "@/data/care/nutrition.pl";
 import type { FoodItem } from "@/data/care/types";
 import type { Locale } from "@/i18n";
 
-const byLocale: Record<Locale, FoodItem[]> = {
+const byLocale: Partial<Record<Locale, FoodItem[]>> = {
   en: foodItemsEn,
   no: foodItemsNo,
   pl: foodItemsPl,

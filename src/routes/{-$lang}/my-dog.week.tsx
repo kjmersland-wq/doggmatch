@@ -96,6 +96,69 @@ const copy = {
     footer: (n: number) =>
       `Sugestie na ${n} dni, wyliczone na podstawie danych twojego psa — nigdy z domysłu ani z modelu.`,
   },
+  dk: {
+    eyebrow: "Min hundeuge",
+    titleFor: (name: string) => `${name}s uge`,
+    titleFallback: "En uge med din hund",
+    intro:
+      "Her er det, du måske vil huske denne uge. Det er sat sammen ud fra det, du har fortalt os om din hund — intet er fastlåst, så fjern det, der ikke passer til dine dage.",
+    printWeek: "Udskriv denne uge",
+    putBack: "Sæt forslagene tilbage",
+    today: "I dag",
+    removeAria: (label: string, day: string) => `Fjern ${label} fra ${day}`,
+    addPlaceholder: "Hvalpekursus, lang tur…",
+    add: "Tilføj",
+    addOwn: "Tilføj noget selv",
+    genericNotePrefix: "Denne uge er generisk, indtil du fortæller os om din hund.",
+    addDog: "Tilføj din hund",
+    genericNoteSuffix: "så tilpasser den sig.",
+    vetNote:
+      "Dage som disse er en rytme, ikke en regelbog. Nogle uger er mere travle end andre, og en udeblevet tur eller en sprunget børstning er ikke et nederlag — det er bare livet med hund.",
+    footer: (n: number) =>
+      `Forslag til ${n} dage, beregnet ud fra din hunds detaljer — aldrig ud fra et gæt eller en model.`,
+  },
+  se: {
+    eyebrow: "Min hundvecka",
+    titleFor: (name: string) => `${name}s vecka`,
+    titleFallback: "En vecka med din hund",
+    intro:
+      "Här är det du kanske vill komma ihåg den här veckan. Det är sammanställt utifrån vad du har berättat om din hund — inget är låst, så ta bort det som inte passar dina dagar.",
+    printWeek: "Skriv ut den här veckan",
+    putBack: "Lägg tillbaka förslagen",
+    today: "Idag",
+    removeAria: (label: string, day: string) => `Ta bort ${label} från ${day}`,
+    addPlaceholder: "Valpkurs, lång promenad…",
+    add: "Lägg till",
+    addOwn: "Lägg till något eget",
+    genericNotePrefix: "Den här veckan är generisk tills du berättar om din hund för oss.",
+    addDog: "Lägg till din hund",
+    genericNoteSuffix: "så anpassas den efter den.",
+    vetNote:
+      "Dagar som dessa är en rytm, inte en regelbok. Vissa veckor är mer hektiska än andra, och en uteblven promenad eller en missad borstning är inget misslyckande — det är bara livet med hund.",
+    footer: (n: number) =>
+      `Förslag för ${n} dagar, uträknade utifrån din hunds uppgifter — aldrig från en gissning eller en modell.`,
+  },
+  fi: {
+    eyebrow: "Oma koiraviikko",
+    titleFor: (name: string) => `Viikko koiran ${name} kanssa`,
+    titleFallback: "Viikko koirasi kanssa",
+    intro:
+      "Tässä on, mitä kannattaa muistaa tällä viikolla. Se on koottu sen perusteella, mitä olet kertonut meille koirastasi — mikään ei ole kiveen hakattu, joten poista se, mikä ei sovi arkeesi.",
+    printWeek: "Tulosta tämä viikko",
+    putBack: "Palauta ehdotukset",
+    today: "Tänään",
+    removeAria: (label: string, day: string) => `Poista ${label} päivästä ${day}`,
+    addPlaceholder: "Pentukoulu, pitkä lenkki…",
+    add: "Lisää",
+    addOwn: "Lisää jotain omaa",
+    genericNotePrefix: "Tämä viikko on yleinen, kunnes kerrot meille koirastasi.",
+    addDog: "Lisää koirasi",
+    genericNoteSuffix: "niin se sovitetaan hänelle sopivaksi.",
+    vetNote:
+      "Tällaiset päivät ovat rytmi, ei sääntökirja. Jotkut viikot ovat kiireisempiä kuin toiset, eikä väliin jäänyt lenkki tai harjaus ole epäonnistuminen — se on vain elämää koiran kanssa.",
+    footer: (n: number) =>
+      `Ehdotuksia ${n} päivälle, laskettuna koirasi tietojen perusteella — ei koskaan arvauksesta tai mallista.`,
+  },
 } as const;
 
 function WeekPage() {

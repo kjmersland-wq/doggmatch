@@ -7,7 +7,7 @@ import { useCopy, useLocale } from "@/i18n";
 import type { FoodSafety } from "@/data/care/types";
 import { withLangPrefix } from "@/lib/localized-path";
 import { foodExists, foodFor, relatedFoods } from "@/lib/food";
-import { abs, breadcrumbLd, headLocale, jsonLd, langUrl, noUrl, plUrl } from "@/lib/seo";
+import { abs, breadcrumbLd, dkUrl, fiUrl, headLocale, jsonLd, langUrl, noUrl, plUrl, seUrl } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 /** "Can dogs eat X?" — the phrase people actually type, in each language. */
@@ -15,6 +15,9 @@ const question = {
   en: (name: string) => `Can dogs eat ${name.toLowerCase()}?`,
   no: (name: string) => `Kan hunder spise ${name.toLowerCase()}?`,
   pl: (name: string) => `Czy psy mogą jeść ${name.toLowerCase()}?`,
+  dk: (name: string) => `Må hunde spise ${name.toLowerCase()}?`,
+  se: (name: string) => `Kan hundar äta ${name.toLowerCase()}?`,
+  fi: (name: string) => `Voiko koira syödä ${name.toLowerCase()}?`,
 };
 
 const verdict = {
@@ -33,7 +36,22 @@ const verdict = {
     care: "Tak, ale ostrożnie",
     avoid: "Nie — nie podawaj tego",
   },
-} as const satisfies Record<"en" | "no" | "pl", Record<FoodSafety, string>>;
+  dk: {
+    safe: "Ja — fint i små mængder",
+    care: "Ja, men vær forsigtig",
+    avoid: "Nej — giv ikke hunden dette",
+  },
+  se: {
+    safe: "Ja — okej i små mängder",
+    care: "Ja, men var försiktig",
+    avoid: "Nej — ge inte din hund detta",
+  },
+  fi: {
+    safe: "Kyllä — pieninä määrinä sopii",
+    care: "Kyllä, mutta varovasti",
+    avoid: "Ei — älä anna tätä koiralle",
+  },
+} as const satisfies Record<"en" | "no" | "pl" | "dk" | "se" | "fi", Record<FoodSafety, string>>;
 
 export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
   loader: ({ params }) => {
@@ -68,6 +86,9 @@ export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
         { rel: "alternate", hrefLang: "en", href: abs(path) },
         { rel: "alternate", hrefLang: "nb-NO", href: noUrl(path) },
         { rel: "alternate", hrefLang: "pl-PL", href: plUrl(path) },
+        { rel: "alternate", hrefLang: "da-DK", href: dkUrl(path) },
+        { rel: "alternate", hrefLang: "sv-SE", href: seUrl(path) },
+        { rel: "alternate", hrefLang: "fi-FI", href: fiUrl(path) },
         { rel: "alternate", hrefLang: "x-default", href: abs(path) },
       ],
       scripts: [
@@ -130,6 +151,39 @@ const copy = {
     honest:
       "Psy się różnią, a ilość ma znaczenie. Przysmaki powinny stanowić mniej niż jedną dziesiątą dziennej porcji. W razie wątpliwości zadzwoń do weterynarza.",
     honestTitle: "Szczerze o tym",
+  },
+  dk: {
+    eyebrow: "Fødevaresikkerhed",
+    howMuch: "Hvor meget",
+    watchOut: "Hvis hunden allerede har spist det",
+    basedOn: "Baseret på rådgivning fra",
+    relatedTitle: "Andre fødevarer folk spørger om",
+    backLink: "Se alle fødevarer, A–Å",
+    honest:
+      "Hunde er forskellige, og mængden betyder noget — en krumme af noget kraftigt er ikke det samme som en halv pose. Godbidder bør holde sig under en tiendedel af det, hunden spiser på en dag. Er du i tvivl, tager din dyrlæge langt hellere telefonen.",
+    honestTitle: "Helt ærligt om det her",
+  },
+  se: {
+    eyebrow: "Matsäkerhet",
+    howMuch: "Hur mycket",
+    watchOut: "Om hunden redan har ätit det",
+    basedOn: "Baserat på rådgivning från",
+    relatedTitle: "Andra livsmedel folk undrar över",
+    backLink: "Se alla livsmedel, A–Ö",
+    honest:
+      "Hundar är olika, och mängden spelar roll — en smula av något kraftigt är inte samma sak som en halv påse. Godis av alla slag bör hållas under en tiondel av det hunden äter under en dag. Är du osäker tar veterinären hellre ett samtal för mycket än för lite.",
+    honestTitle: "Helt ärligt om det här",
+  },
+  fi: {
+    eyebrow: "Ruokaturvallisuus",
+    howMuch: "Kuinka paljon",
+    watchOut: "Jos koira on jo syönyt sitä",
+    basedOn: "Perustuu ohjeisiin lähteestä",
+    relatedTitle: "Muita ruokia, joista kysytään usein",
+    backLink: "Katso kaikki ruoka-aineet, A–Ö",
+    honest:
+      "Koirat ovat yksilöitä, ja määrällä on väliä — murunen jotain raskasta ei ole sama asia kuin puoli pussillista. Herkkujen osuus koiran päivittäisestä ruoasta kannattaa pitää alle kymmenesosassa. Jos olet epävarma, eläinlääkäri ottaa mieluummin vastaan turhankin puhelun.",
+    honestTitle: "Rehellisesti tästä aiheesta",
   },
 } as const;
 

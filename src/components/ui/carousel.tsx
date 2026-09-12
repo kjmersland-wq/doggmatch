@@ -6,6 +6,9 @@ import { useCopy } from "@/i18n";
 const copy = {
   en: { previousSlide: "Previous slide", nextSlide: "Next slide" },
   no: { previousSlide: "Forrige bilde", nextSlide: "Neste bilde" },
+  dk: { previousSlide: "Forrige billede", nextSlide: "Næste billede" },
+  se: { previousSlide: "Föregående bild", nextSlide: "Nästa bild" },
+  fi: { previousSlide: "Edellinen kuva", nextSlide: "Seuraava kuva" },
 } as const;
 
 import { cn } from "@/lib/utils";

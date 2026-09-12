@@ -22,6 +22,9 @@ import { useCopy } from "@/i18n";
 const sidebarCopy = {
   en: { toggle: "Toggle Sidebar" },
   no: { toggle: "Vis/skjul sidepanel" },
+  dk: { toggle: "Vis/skjul sidepanel" },
+  se: { toggle: "Visa/dölj sidopanel" },
+  fi: { toggle: "Näytä/piilota sivupaneeli" },
 } as const;
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";

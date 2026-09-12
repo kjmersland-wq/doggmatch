@@ -138,6 +138,99 @@ const copy = {
       "Prawdziwym testem nie jest liczba na opakowaniu. Liczy się to, jak twój pies wygląda i czuje się za miesiąc. Sprawdzaj co miesiąc i koryguj o około 10% naraz.",
     weightCta: "Waga i sylwetka",
   },
+  dk: {
+    eyebrow: "Mad",
+    title: "Hvor meget bør jeg fodre?",
+    intro:
+      "Ingen kan give dig et præcist tal, og alle der siger andet, gætter også. Det vi kan gøre, er at give dig et fornuftigt udgangspunkt og derefter hjælpe dig med at justere.",
+    heroAlt: "En skål hundemad bliver målt af i et køkken",
+    startingPointFor: (name: string) => `Et udgangspunkt for ${name}`,
+    startingPoint: "Et udgangspunkt",
+    statDay: "Pr. dag",
+    statFoodDay: "Mad om dagen",
+    statFoodDayHintWeighed: "Vejet, ikke øst op",
+    statFoodDayHintMissing: "Tilføj kcal/100 g fra posen",
+    statPerMeal: "Pr. måltid",
+    statPerMealHint: (n: number) => `Fordelt på ${n} måltider`,
+    howWeGotThereTitle: "Sådan regnede vi det ud",
+    howWeGotThereP1: (weightKg: number, restingKcal: number, factor: number, reason: string) =>
+      `Vi starter med hvileenergien en hund på ${weightKg} kg har brug for — ${restingKcal} kcal — med formlen dyrlæger bruger (70 × vægt^0,75). Så ganger vi med ${factor} for ${reason}. Ingen sort boks, ingen gætterier du ikke kan se.`,
+    howWeGotThereP2: (treatKcal: number) =>
+      `Hold godbidder til omkring ${treatKcal} kcal om dagen — cirka en tiendedel af det samlede — og træk det fra måltiderne i stedet for at lægge det oveni.`,
+    noPortionsBody:
+      "Tilføj din hunds vægt, så regner vi en daglig mængde ud, viser dig regnestykket bag, og omregner det til gram af den mad, du rent faktisk fodrer med.",
+    addDetailsCta: "Tilføj din hunds oplysninger",
+    basicsEyebrow: "Det grundlæggende",
+    basicsTitle: "At få maden rigtig, uden at overtænke det",
+    vetNote:
+      "Det her er et udgangspunkt, ikke en recept. Hvalpe, drægtige tæver, hunde på diæt og hunde med en helbredstilstand har alle brug for noget mere specifikt — det er en samtale med din dyrlæge, og en værdifuld en.",
+    watchShapeTitle: "Hold så øje med formen",
+    watchShapeBody:
+      "Den rigtige test er ikke tallet på posen. Det er, hvordan din hund ser ud og har det om en måned. Tjek månedligt og juster med omkring 10 % ad gangen.",
+    weightCta: "Vægt og hold",
+  },
+  se: {
+    eyebrow: "Mat",
+    title: "Hur mycket bör jag mata?",
+    intro:
+      "Ingen kan ge dig ett exakt tal, och alla som säger annat gissar också. Det vi kan göra är att ge dig en förnuftig utgångspunkt och sedan hjälpa dig att justera.",
+    heroAlt: "En skål hundmat mäts upp i ett kök",
+    startingPointFor: (name: string) => `En utgångspunkt för ${name}`,
+    startingPoint: "En utgångspunkt",
+    statDay: "Per dag",
+    statFoodDay: "Mat per dag",
+    statFoodDayHintWeighed: "Vägd, inte uppmätt på känn",
+    statFoodDayHintMissing: "Lägg till kcal/100 g från påsen",
+    statPerMeal: "Per måltid",
+    statPerMealHint: (n: number) => `Fördelat på ${n} måltider`,
+    howWeGotThereTitle: "Så räknade vi ut det",
+    howWeGotThereP1: (weightKg: number, restingKcal: number, factor: number, reason: string) =>
+      `Vi börjar med viloenergin en hund på ${weightKg} kg behöver — ${restingKcal} kcal — med formeln veterinärer använder (70 × vikt^0,75). Sedan multiplicerar vi med ${factor} för ${reason}. Ingen svart låda, inga gissningar du inte kan se.`,
+    howWeGotThereP2: (treatKcal: number) =>
+      `Håll godis till runt ${treatKcal} kcal per dag — ungefär en tiondel av totalen — och dra av det från måltiderna i stället för att lägga till det ovanpå.`,
+    noPortionsBody:
+      "Lägg till din hunds vikt, så räknar vi ut en daglig mängd, visar dig matematiken bakom, och omvandlar det till gram av maten du faktiskt matar med.",
+    addDetailsCta: "Lägg till din hunds uppgifter",
+    basicsEyebrow: "Grunderna",
+    basicsTitle: "Att få maten rätt, utan att övertänka det",
+    vetNote:
+      "Det här är en utgångspunkt, inte ett recept. Valpar, dräktiga tikar, hundar på diet och hundar med ett hälsotillstånd behöver alla något mer specifikt — det är ett samtal med din veterinär, och ett värdefullt sådant.",
+    watchShapeTitle: "Håll sedan koll på formen",
+    watchShapeBody:
+      "Det verkliga testet är inte talet på påsen. Det är hur din hund ser ut och mår om en månad. Kolla månadsvis och justera med ungefär 10 % åt gången.",
+    weightCta: "Vikt och hull",
+  },
+  fi: {
+    eyebrow: "Ruoka",
+    title: "Kuinka paljon minun pitäisi ruokkia?",
+    intro:
+      "Kukaan ei voi antaa sinulle tarkkaa lukua, ja jokainen, joka väittää toisin, myös arvailee. Voimme antaa sinulle järkevän lähtökohdan ja auttaa sinua sitten säätämään sitä.",
+    heroAlt: "Kulhollinen koiranruokaa mitataan keittiössä",
+    startingPointFor: (name: string) => `Lähtökohta koiralle ${name}`,
+    startingPoint: "Lähtökohta",
+    statDay: "Päivässä",
+    statFoodDay: "Ruokaa päivässä",
+    statFoodDayHintWeighed: "Punnittu, ei silmämääräisesti",
+    statFoodDayHintMissing: "Lisää kcal/100 g pussista",
+    statPerMeal: "Per ateria",
+    statPerMealHint: (n: number) => `Jaettuna ${n} ateriaan`,
+    howWeGotThereTitle: "Näin laskimme sen",
+    howWeGotThereP1: (weightKg: number, restingKcal: number, factor: number, reason: string) =>
+      `Aloitamme lepoenergiasta, jota ${weightKg} kg painava koira tarvitsee — ${restingKcal} kcal — käyttäen eläinlääkäreiden vakiokaavaa (70 × paino^0,75). Sitten kerromme kertoimella ${factor} syystä: ${reason}. Ei mustaa laatikkoa, ei arvailua, jota et näe.`,
+    howWeGotThereP2: (treatKcal: number) =>
+      `Pidä herkut noin ${treatKcal} kcal:ssa päivässä — suunnilleen kymmenesosassa kokonaismäärästä — ja vähennä se aterioista sen sijaan, että lisäät sen päälle.`,
+    noPortionsBody:
+      "Lisää koirasi paino, niin laskemme päivittäisen määrän, näytämme sen taustalla olevan laskennan ja muunnamme sen grammoiksi ruokaa, jota oikeasti annat.",
+    addDetailsCta: "Lisää koirasi tiedot",
+    basicsEyebrow: "Perusasiat",
+    basicsTitle: "Ruokinnan saaminen kohdalleen, ilman liikaa miettimistä",
+    vetNote:
+      "Tämä on lähtökohta, ei resepti. Pennut, tiineet nartut, dieetillä olevat koirat ja terveysongelmaiset koirat tarvitsevat kaikki jotain tarkempaa — se on keskustelu eläinlääkärisi kanssa, ja kannattava sellainen.",
+    watchShapeTitle: "Pidä sitten silmällä muotoa",
+    watchShapeBody:
+      "Todellinen testi ei ole pussissa oleva luku. Se on, miltä koirasi näyttää ja tuntuu kuukauden kuluttua. Tarkista kuukausittain ja säädä noin 10 % kerrallaan.",
+    weightCta: "Paino ja kunto",
+  },
 } as const;
 
 function NutritionPage() {

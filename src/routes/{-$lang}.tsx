@@ -1,15 +1,15 @@
 import { createFileRoute, notFound, redirect, Outlet } from "@tanstack/react-router";
 
 /**
- * The only two path prefixes that exist. Bare paths (no prefix) are English.
+ * The only path prefixes that exist. Bare paths (no prefix) are English.
  * Anything else in this position — /de, /xx, a stray typo — is a real 404,
  * not a silent fall-through to English.
  */
-const LANG_PREFIXES = ["no", "pl"] as const;
+const LANG_PREFIXES = ["no", "pl", "dk", "se", "fi"] as const;
 type LangPrefix = (typeof LANG_PREFIXES)[number];
 
 function isLangPrefix(value: unknown): value is LangPrefix {
-  return value === "no" || value === "pl";
+  return LANG_PREFIXES.includes(value as LangPrefix);
 }
 
 export const Route = createFileRoute("/{-$lang}")({

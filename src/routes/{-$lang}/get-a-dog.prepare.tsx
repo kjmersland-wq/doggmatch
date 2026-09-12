@@ -151,6 +151,126 @@ const copy = {
       "Kup mniej, niż myślisz. Legowisko, miski, jedzenie, szelki, smycz i znaczek z danymi w zupełności wystarczą na pierwszy tydzień. Szybko dowiesz się, co Twój pies naprawdę lubi.",
     welcomeCta: "Pierwsze dni w domu",
   },
+  dk: {
+    eyebrow: "Gør dig klar",
+    title: "Gør alt klar.",
+    intro:
+      "Dit hjem, dine dage, og de praktiske ting der er langt lettere at ordne nu end midt i den første uge med en ny hund.",
+    homeEyebrow: "Dit hjem",
+    homeTitle: "Næsten ethvert hjem kan være et godt hjem.",
+    homeBody:
+      "Hunde bekymrer sig meget mindre om kvadratmeter, end folk tror. Det der ligger inden for ti minutter fra din dør, betyder langt mere.",
+    worthChecking: "Værd at tjekke",
+    lifeEyebrow: "Din hverdag",
+    lifeTitle: "Hvordan ser en helt almindelig uge ud for dig?",
+    lifeBody: "Hunden skal passe ind i den uge du faktisk har, ikke den du ønsker du havde. Genkend dig selv nedenfor.",
+    allergiesEyebrow: "Allergier",
+    allergiesTitle: "Det vi ærligt kan sige.",
+    allergiesBody1:
+      "Nogle racer fælder mindre end andre, og folk med allergi synes nogle gange det er lettere at leve med dem. Men ingen hund er helt allergivenlig. Proteinerne folk reagerer på findes i spyt og hud såvel som i pels, og reaktioner varierer enormt fra person til person.",
+    allergiesBody2:
+      "Hvis nogen i dit hjem har allergi, så brug rigtig tid sammen med den bestemte hund, før du beslutter dig — flere besøg, ikke bare ét — og tal med din læge. Det fortæller dig langt mere end nogen raceliste, inklusive vores.",
+    aloneEyebrow: "Tid alene",
+    aloneTitle: "Hvor længe er for længe?",
+    aloneBody:
+      "De fleste voksne hunde klarer tre eller fire timer alene uden problemer, når de først har lært det. En hvalp kan ikke det i starten — den har brug for nogen der det meste af dagen de første måneder, og det at blive alene er en færdighed du lærer den gradvist.",
+    alonePoints: [
+      "Øv korte fravær helt fra første uge, før der er noget behov for det",
+      "En, der lufter hunden midt på dagen, eller en nabo, gør en svær dag let",
+      "Et par dage om ugen i pasning passer nogle hunde og overvælder andre",
+      "En hund der går i panik, når den bliver forladt, har brug for hjælp tidligt — det bliver sjældent bedre af sig selv",
+    ],
+    checklistEyebrow: "Før hunden kommer hjem",
+    checklistTitle: "Ankomstlisten.",
+    checklistBody:
+      "Kryds af, efterhånden som du skaffer tingene. Den gemmes undervejs, på denne enhed, så du kan vende tilbage til den i en butik.",
+    homePrepAlt: "En illustreret oversigt over hundeseng, skåle, snor, sele og legetøj",
+    printCta: "Udskriv min ankomstliste",
+    noteTitle: "Én ærlig bemærkning",
+    noteBody:
+      "Køb mindre, end du tror. En seng, skåle, mad, en sele, en snor og et id-mærke bringer dig fint gennem den første uge. Du finder hurtigt ud af, hvad din hund egentlig kan lide.",
+    welcomeCta: "De første dage hjemme",
+  },
+  se: {
+    eyebrow: "Gör dig redo",
+    title: "Att göra allt klart.",
+    intro:
+      "Ditt hem, dina dagar, och de praktiska sakerna som är mycket lättare att ordna nu än mitt i den första veckan med en ny hund.",
+    homeEyebrow: "Ditt hem",
+    homeTitle: "Nästan vilket hem som helst kan vara ett bra hem.",
+    homeBody:
+      "Hundar bryr sig mycket mindre om kvadratmeter än folk tror. Det som ligger inom tio minuter från din dörr betyder mycket mer.",
+    worthChecking: "Värt att kolla upp",
+    lifeEyebrow: "Din vardag",
+    lifeTitle: "Hur ser en helt vanlig vecka ut för dig?",
+    lifeBody: "Hunden måste passa in i veckan du faktiskt har, inte den du önskar att du hade. Känn igen dig själv nedan.",
+    allergiesEyebrow: "Allergier",
+    allergiesTitle: "Det vi ärligt kan säga.",
+    allergiesBody1:
+      "Vissa raser brukar fälla mindre än andra, och personer med allergi tycker ibland att det är lättare att leva med dem. Men ingen hund är helt allergivänlig. Proteinerna folk reagerar på finns i saliv och hud såväl som i päls, och reaktioner varierar enormt mellan personer.",
+    allergiesBody2:
+      "Om någon i ditt hem har allergi, spendera ordentligt med tid med den specifika hunden innan du bestämmer dig — flera besök, inte bara ett — och prata med din läkare. Det säger dig mycket mer än någon raslista, inklusive vår.",
+    aloneEyebrow: "Tid ensam",
+    aloneTitle: "Hur länge är för länge?",
+    aloneBody:
+      "De flesta vuxna hundar klarar tre eller fyra timmar ensamma utan problem när de väl har lärt sig det. En valp klarar inte det till att börja med — den behöver någon där större delen av dagen de första månaderna, och att vänja sig vid att vara ensam är en färdighet du lär den gradvis.",
+    alonePoints: [
+      "Öva korta frånvaron redan från första veckan, innan det finns något behov av det",
+      "Någon som rastar mitt på dagen, eller en granne, gör en svår dag lätt",
+      "Ett par dagar i veckan på hunddagis passar vissa hundar och överväldigar andra",
+      "En hund som får panik när den lämnas behöver hjälp tidigt — det blir sällan bättre av sig själv",
+    ],
+    checklistEyebrow: "Innan hunden kommer hem",
+    checklistTitle: "Ankomstlistan.",
+    checklistBody:
+      "Bocka av allt eftersom du skaffar det. Den sparas löpande, på den här enheten, så du kan gå tillbaka till den i en butik.",
+    homePrepAlt: "En illustrerad översikt över hundbädd, skålar, koppel, sele och leksaker",
+    printCta: "Skriv ut min ankomstlista",
+    noteTitle: "En ärlig kommentar",
+    noteBody:
+      "Köp mindre än du tror. En bädd, skålar, mat, en sele, ett koppel och en id-bricka tar dig fint genom den första veckan. Du lär dig snart vad din hund faktiskt gillar.",
+    welcomeCta: "De första dagarna hemma",
+  },
+  fi: {
+    eyebrow: "Valmistaudu",
+    title: "Kaiken valmisteleminen.",
+    intro:
+      "Kotisi, päiväsi ja käytännön asiat, jotka on paljon helpompi hoitaa nyt kuin kesken uuden koiran ensimmäisen viikon.",
+    homeEyebrow: "Kotisi",
+    homeTitle: "Lähes mikä tahansa koti voi olla hyvä koti.",
+    homeBody:
+      "Koirat välittävät neliömetreistä paljon vähemmän kuin ihmiset luulevat. Se, mikä on kymmenen minuutin päässä ovestasi, merkitsee paljon enemmän.",
+    worthChecking: "Kannattaa tarkistaa",
+    lifeEyebrow: "Arkesi",
+    lifeTitle: "Miltä tavallinen viikko sinulla näyttää?",
+    lifeBody: "Koiran on sovittava siihen viikkoon, joka sinulla oikeasti on, ei siihen, jonka toivoisit olevan. Tunnista itsesi alta.",
+    allergiesEyebrow: "Allergiat",
+    allergiesTitle: "Mitä voimme rehellisesti sanoa.",
+    allergiesBody1:
+      "Jotkin rodut karvaavat yleensä vähemmän kuin toiset, ja allergiset ihmiset kokevat ne joskus helpommiksi elää. Mutta yksikään koira ei ole täysin allergiaystävällinen. Proteiinit, joille ihmiset reagoivat, ovat syljessä ja ihossa yhtä lailla kuin karvassa, ja reaktiot vaihtelevat valtavasti ihmisestä toiseen.",
+    allergiesBody2:
+      "Jos jollakulla kotonasi on allergia, vietä kunnolla aikaa juuri sen koiran kanssa ennen päätöstä — useampi tapaaminen, ei vain yksi — ja puhu lääkärisi kanssa. Se kertoo paljon enemmän kuin mikään rotulista, mukaan lukien meidän.",
+    aloneEyebrow: "Yksinoloaika",
+    aloneTitle: "Kuinka pitkä on liian pitkä?",
+    aloneBody:
+      "Useimmat aikuiset koirat pärjäävät mukavasti kolme tai neljä tuntia yksin, kun ne ovat sen kerran oppineet. Pentu ei pysty siihen aluksi — se tarvitsee jonkun paikalle suurimman osan päivästä ensimmäisten kuukausien ajan, ja yksinolo on taito, jonka opetat vähitellen.",
+    alonePoints: [
+      "Harjoittele lyhyitä poissaoloja jo ensimmäisestä viikosta lähtien, ennen kuin siihen on mitään tarvetta",
+      "Keskipäivän ulkoiluttaja tai naapuri muuttaa vaikean päivän helpoksi",
+      "Pari päivää viikossa koirapäiväkodissa sopii joillekin koirille ja kuormittaa toisia",
+      "Koira, joka menee paniikkiin jäädessään yksin, tarvitsee apua ajoissa — se harvoin paranee itsestään",
+    ],
+    checklistEyebrow: "Ennen koiran saapumista",
+    checklistTitle: "Saapumislista.",
+    checklistBody:
+      "Rastita asiat sitä mukaa kuin hankit ne. Se tallentuu matkan varrella tälle laitteelle, joten voit palata siihen vaikka kaupassa.",
+    homePrepAlt: "Kuvitettu asetelma koiranpedistä, ruokakupeista, hihnasta, valjaista ja leluista",
+    printCta: "Tulosta saapumislistani",
+    noteTitle: "Yksi rehellinen huomio",
+    noteBody:
+      "Osta vähemmän kuin luulet tarvitsevasi. Peti, kupit, ruoka, valjaat, hihna ja tunnistelaatta riittävät hyvin ensimmäiseen viikkoon. Opit pian, mistä koirasi oikeasti pitää.",
+    welcomeCta: "Ensimmäiset päivät kotona",
+  },
 } as const;
 
 function PreparePage() {

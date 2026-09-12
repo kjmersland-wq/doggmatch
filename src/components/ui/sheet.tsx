@@ -9,6 +9,9 @@ import { useCopy } from "@/i18n";
 const copy = {
   en: { close: "Close" },
   no: { close: "Lukk" },
+  dk: { close: "Luk" },
+  se: { close: "Stäng" },
+  fi: { close: "Sulje" },
 } as const;
 
 import { cn } from "@/lib/utils";

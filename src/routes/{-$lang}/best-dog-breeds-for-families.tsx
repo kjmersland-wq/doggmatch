@@ -25,6 +25,21 @@ const seoCopy = {
     description:
       "Najlepsze rasy psów dla rodzin z dziećmi, wybrane ze względu na łagodne usposobienie, a nie opinię — z uczciwymi zaletami i wadami każdej z nich.",
   },
+  dk: {
+    title: "Bedste hunderacer til familier — en ærlig liste | DoggMatch",
+    description:
+      "De bedste hunderacer til familier med børn, valgt for stabilt temperament frem for ry — med de ærlige fordele og ulemper ved hver enkelt, i klart sprog.",
+  },
+  se: {
+    title: "Bästa hundraserna för familjer — en ärlig lista | DoggMatch",
+    description:
+      "De bästa hundraserna för familjer med barn, valda för stabilt temperament snarare än rykte — med de ärliga för- och nackdelarna för var och en, i klarspråk.",
+  },
+  fi: {
+    title: "Parhaat koirarodut lapsiperheille — rehellinen lista | DoggMatch",
+    description:
+      "Parhaat koirarodut lapsiperheille, valittu vakaan luonteen perusteella maineen sijaan — jokaisen rehellisin hyvin ja huonoin puolin, selkokielellä.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/best-dog-breeds-for-families")({
@@ -137,6 +152,111 @@ const copy = {
     quizCta: "Wypełnij quiz dopasowania",
     compareCta: "Porównaj rasy obok siebie",
     levelLabels: ["Bardzo niski", "Niski", "Umiarkowany", "Wysoki", "Bardzo wysoki"],
+  },
+  dk: {
+    eyebrow: "At vælge en hund",
+    h1: "De bedste hunderacer til familier",
+    intro:
+      "Spørg ti mennesker om den bedste familiehund, og du får ti svar — som regel hunden, de selv voksede op med. Så her er vores ærlige version: racerne nedenfor er stabile, overbærende og trives virkelig med børn. Men den enkelte hund betyder mere end racenavnet på papiret, og ingen race gør børn og hunde trygge sammen af sig selv. Den del er op til os voksne.",
+    whatMattersTitle: "Det, der faktisk betyder noget",
+    whatMatters: [
+      "Et stabilt, overbærende temperament slår enhver ry. Du vil have en hund, der ryster en klodset klap, et uventet kram og en leg der bliver taget midt i tygningen, af sig.",
+      "Størrelse går begge veje. En stor, glad hund kan vælte en toddler ved et uheld; en meget lille en kan komme til skade ved rå leg. Mellemstor og stabil er ofte det letteste sted at starte.",
+      "Energien skal passe til familiens virkelige uge, ikke de bedste hensigter. En race, der har brug for to timers løb om dagen, er vidunderlig — hvis nogen rent faktisk har de to timer.",
+      "Hvalp og småbørn på samme tid er to fuldtidsjob. Mange familier får en langt roligere start med en hund, der allerede er et år eller to.",
+    ],
+    rulesTitle: "Reglerne der betyder mere end racen",
+    rules: [
+      "Forstyr aldrig en hund, der spiser, sover eller ligger i sin seng.",
+      "En voksen er altid i rummet, når små børn og hunde er sammen.",
+      "Børn lærer at læse hunden — et bortvendt hoved eller et gab betyder \"giv mig plads\".",
+    ],
+    listTitle: "Vores familieliste",
+    listIntro:
+      "Otte racer, der konsekvent scorer godt med børn i vores data, med de ærlige fordele og ulemper. Blandingshunde med disse forældre klarer sig ofte lige så godt.",
+    childrenLabel: "Med børn",
+    firstTimeLabel: "Førstegangsejere",
+    sheddingLabel: "Fældning",
+    energyLabel: "Energi",
+    readProfile: "Læs hele profilen",
+    allergyNote:
+      "Et hurtigt ord om allergier: ingen hund er helt allergivenlig. Nogle fælder mindre og spreder mindre hudskæl i huset, hvilket hjælper mange familier — men brug tid med den faktiske hund, før du beslutter dig.",
+    quizTitle: "Din familie er den anden halvdel af matchet",
+    quizBody:
+      "Den bedste race på papiret skal stadig passe til jeres uge — jeres hjem, jeres tid, jeres børns alder. Vores quiz vejer det hele og viser dig begrundelsen bag hvert match.",
+    quizCta: "Tag kompatibilitetsquizzen",
+    compareCta: "Sammenlign racer side om side",
+    levelLabels: ["Meget lav", "Lav", "Moderat", "Høj", "Meget høj"],
+  },
+  se: {
+    eyebrow: "Att välja hund",
+    h1: "De bästa hundraserna för familjer",
+    intro:
+      "Fråga tio personer om den bästa familjehunden, och du får tio svar — oftast hunden de själva växte upp med. Så här är vår ärliga version: raserna nedan är stabila, överseende och trivs verkligen med barn. Men den enskilda hunden betyder mer än rasnamnet på papperet, och ingen ras gör barn och hundar trygga tillsammans på egen hand. Den delen är upp till oss vuxna.",
+    whatMattersTitle: "Det som faktiskt spelar roll",
+    whatMatters: [
+      "Ett stabilt, överseende temperament slår vilket rykte som helst. Du vill ha en hund som skakar av sig en klumpig klapp, en oväntad kram, en leksak som tas mitt i tuggandet.",
+      "Storlek går åt båda hållen. En stor, glad hund kan råka välta en småbarn; en väldigt liten kan skadas av grov lek. Mellanstor och stabil är ofta det enklaste stället att börja.",
+      "Energin ska matcha familjens verkliga vecka, inte de bästa föresatserna. En ras som behöver två timmars löpning om dagen är underbar — om någon faktiskt har de två timmarna.",
+      "Valp och småbarn samtidigt är två heltidsjobb. Många familjer får en betydligt lugnare start med en hund som redan är ett eller två år gammal.",
+    ],
+    rulesTitle: "Reglerna som spelar större roll än rasen",
+    rules: [
+      "Stör aldrig en hund som äter, sover eller ligger i sin bädd.",
+      "En vuxen är alltid i rummet när små barn och hundar är tillsammans.",
+      "Barn lär sig läsa hunden — ett bortvänt huvud eller en gäspning betyder \"ge mig utrymme\".",
+    ],
+    listTitle: "Vår familjelista",
+    listIntro:
+      "Åtta raser som konsekvent presterar bra med barn i vår data, med de ärliga för- och nackdelarna. Blandraser med dessa föräldrar klarar sig ofta lika bra.",
+    childrenLabel: "Med barn",
+    firstTimeLabel: "Förstagångsägare",
+    sheddingLabel: "Fällning",
+    energyLabel: "Energi",
+    readProfile: "Läs hela profilen",
+    allergyNote:
+      "Ett kort ord om allergier: ingen hund är helt allergivänlig. Vissa fäller mindre och sprider mindre hudflagor i hemmet, vilket hjälper många familjer — men tillbringa tid med den faktiska hunden innan du bestämmer dig.",
+    quizTitle: "Din familj är andra halvan av matchningen",
+    quizBody:
+      "Den bästa rasen på papper måste ändå passa er vecka — ert hem, er tid, era barns åldrar. Vårt quiz väger allt och visar dig resonemanget bakom varje matchning.",
+    quizCta: "Gör kompatibilitetstestet",
+    compareCta: "Jämför raser sida vid sida",
+    levelLabels: ["Mycket låg", "Låg", "Måttlig", "Hög", "Mycket hög"],
+  },
+  fi: {
+    eyebrow: "Koiran valitseminen",
+    h1: "Parhaat koirarodut lapsiperheille",
+    intro:
+      "Kysy kymmeneltä ihmiseltä paras perhekoira, ja saat kymmenen vastausta — yleensä sen koiran, jonka kanssa he itse kasvoivat. Tässä siis meidän rehellinen versiomme: alla olevat rodut ovat vakaita, ymmärtäväisiä ja viihtyvät aidosti lasten kanssa. Mutta yksittäinen koira merkitsee enemmän kuin rotunimi paperissa, eikä mikään rotu tee lapsista ja koirista turvallisia yhdessä yksinään. Se osuus on meidän aikuisten vastuulla.",
+    whatMattersTitle: "Mikä oikeasti merkitsee",
+    whatMatters: [
+      "Vakaa, ymmärtäväinen luonne voittaa minkä tahansa maineen. Haluat koiran, joka ei välitä kömpelöstä taputuksesta, yllättävästä halauksesta tai kesken pureskelun napatusta lelusta.",
+      "Koko vaikuttaa molempiin suuntiin. Iso, iloinen koira voi vahingossa kaataa taaperon; hyvin pieni voi loukkaantua rajusta leikistä. Keskikokoinen ja vakaa on usein helpoin lähtökohta.",
+      "Energian tulisi vastata perheen todellista viikkoa, ei parhaita aikeita. Rotu, joka tarvitsee kaksi tuntia juoksua päivässä, on ihana — jos jollakulla oikeasti on ne kaksi tuntia.",
+      "Pentu ja taapero samaan aikaan on kaksi kokopäivätyötä. Monilla perheillä alku on paljon rauhallisempi koiran kanssa, joka on jo vuoden tai kaksi vanha.",
+    ],
+    rulesTitle: "Säännöt, jotka merkitsevät rotua enemmän",
+    rules: [
+      "Älä koskaan häiritse koiraa, joka syö, nukkuu tai on omalla petipaikallaan.",
+      "Aikuinen on aina huoneessa, kun pienet lapset ja koirat ovat yhdessä.",
+      "Lapset oppivat lukemaan koiraa — poiskäännetty pää tai haukottelu tarkoittaa \"anna minulle tilaa\".",
+    ],
+    listTitle: "Perhelistamme",
+    listIntro:
+      "Kahdeksan rotua, jotka pärjäävät johdonmukaisesti hyvin lasten kanssa tiedoissamme, rehellisin hyvin ja huonoin puolin. Näiden vanhempien sekarotuiset pärjäävät usein yhtä hyvin.",
+    childrenLabel: "Lasten kanssa",
+    firstTimeLabel: "Ensikertalaisille",
+    sheddingLabel: "Karvanlähtö",
+    energyLabel: "Energia",
+    readProfile: "Lue koko profiili",
+    allergyNote:
+      "Pieni sana allergioista: yksikään koira ei ole täysin allergiaystävällinen. Jotkin karvaavat vähemmän ja levittävät vähemmän hilsettä kotiin, mikä auttaa monia perheitä — mutta vietä aikaa oikean koiran kanssa ennen päätöstä.",
+    quizTitle: "Perheesi on täsmäyksen toinen puoli",
+    quizBody:
+      "Paperilla parhaankin rodun täytyy silti sopia viikkoonne — kotiinne, aikaanne, lastenne ikään. Kyselymme punnitsee kaiken tämän ja näyttää perustelut jokaisen täsmäyksen takana.",
+    quizCta: "Tee yhteensopivuuskysely",
+    compareCta: "Vertaile rotuja rinnakkain",
+    levelLabels: ["Erittäin matala", "Matala", "Kohtalainen", "Korkea", "Erittäin korkea"],
   },
 };
 

@@ -96,6 +96,72 @@ const copy = {
     createCta: "Utwórz profil mojego psa",
     packCta: "Drukowalny Pakiet Psa",
   },
+  dk: {
+    imgAlt: "En familie der sidder stille på gulvet, mens en nyankommet hund snuser til sin nye seng",
+    eyebrow: "Velkommen hjem",
+    title: "Dagen den kommer.",
+    intro:
+      "Roligere end du forestiller dig, og langsommere end du måske vil. Det er helt rigtigt. En ny hund har brug for meget lidt den første dag, ud over ro, vand og et sted der er dens eget.",
+    firstDayEyebrow: "Den første dag",
+    firstDayTitle: "Seks ting, og ikke mere.",
+    firstWeekEyebrow: "Den første uge",
+    firstWeekTitle: "Så, forsigtigt, en rytme.",
+    firstWeekBody:
+      "De fleste hunde har brug for to eller tre uger til at vise dig, hvem de virkelig er. Døm ikke noget i de første dage — hverken appetitten, toiletvanerne eller karakteren.",
+    vetTitle: "Hvornår du bør ringe til dyrlægen",
+    vetBody:
+      "Nægter at spise i mere end en dag, gentagne opkastninger eller diarré, besværet vejrtrækning, sløvhed der ikke letter, eller tegn på smerte. Nye hunde er ofte urolige — men du genkender sygdom, når du ser den, og det er aldrig spild af tid at spørge.",
+    andThen: "Og så",
+    myDogTitle: "Her begynder Min Hund.",
+    myDogBody:
+      "Alt herfra — mad og portioner, træningssessioner, vægt, dyrlægebesøg, gåture og hele ugen — samles ét sted, bygget omkring din faktiske hund. Opret dens profil, så følger alt det, du allerede har fortalt os, med.",
+    createCta: "Opret min hund",
+    packCta: "Den udskrivbare hundepakke",
+  },
+  se: {
+    imgAlt: "En familj som sitter tyst på golvet medan en nyanländ hund undersöker sin nya bädd",
+    eyebrow: "Välkommen hem",
+    title: "Dagen den kommer.",
+    intro:
+      "Lugnare än du föreställer dig, och långsammare än du kanske vill. Det är precis rätt. En ny hund behöver väldigt lite den första dagen, förutom lugn, vatten och en egen plats.",
+    firstDayEyebrow: "Den första dagen",
+    firstDayTitle: "Sex saker, och inget annat.",
+    firstWeekEyebrow: "Den första veckan",
+    firstWeekTitle: "Sedan, försiktigt, en rytm.",
+    firstWeekBody:
+      "De flesta hundar behöver två eller tre veckor för att visa dig vem de verkligen är. Döm inget under de första dagarna — varken aptiten, toalettvanorna eller karaktären.",
+    vetTitle: "När du bör ringa veterinären",
+    vetBody:
+      "Vägrar äta i mer än en dag, upprepade kräkningar eller diarré, ansträngd andning, slöhet som inte släpper, eller tecken på smärta. Nya hundar är ofta oroliga — men du känner igen sjukdom när du ser den, och det är aldrig bortkastad tid att fråga.",
+    andThen: "Och sedan",
+    myDogTitle: "Här börjar Min Hund.",
+    myDogBody:
+      "Allt härifrån — mat och portioner, träningspass, vikt, veterinärbesök, promenader och hela veckan — samlas på ett ställe, byggt kring din faktiska hund. Skapa dess profil, så följer allt du redan har berättat för oss med.",
+    createCta: "Skapa min hund",
+    packCta: "Det utskrivbara hundpaketet",
+  },
+  fi: {
+    imgAlt: "Perhe istumassa hiljaa lattialla, kun juuri saapunut koira haistelee uutta petiään",
+    eyebrow: "Tervetuloa kotiin",
+    title: "Päivä, jolloin se saapuu.",
+    intro:
+      "Rauhallisempaa kuin kuvittelet, ja hitaampaa kuin ehkä haluaisit. Se on juuri oikein. Uusi koira tarvitsee ensimmäisenä päivänä hyvin vähän — rauhaa, vettä ja oman paikan.",
+    firstDayEyebrow: "Ensimmäinen päivä",
+    firstDayTitle: "Kuusi asiaa, ei muuta.",
+    firstWeekEyebrow: "Ensimmäinen viikko",
+    firstWeekTitle: "Sitten, varovasti, rytmi.",
+    firstWeekBody:
+      "Useimmat koirat tarvitsevat kaksi tai kolme viikkoa näyttääkseen, keitä ne todella ovat. Älä arvioi mitään ensimmäisinä päivinä — ei ruokahalua, ei WC-tottumuksia eikä luonnetta.",
+    vetTitle: "Milloin soittaa eläinlääkärille",
+    vetBody:
+      "Ruoasta kieltäytyminen yli päivän ajan, toistuva oksentelu tai ripuli, raskas hengitys, väsymys joka ei helpotu, tai mikä tahansa kivun merkki. Uudet koirat ovat usein hämmentyneitä — mutta tunnistat sairauden, kun näet sen, eikä kysyminen ole koskaan kenenkään ajan hukkaa.",
+    andThen: "Ja sitten",
+    myDogTitle: "Tästä alkaa Oma koira.",
+    myDogBody:
+      "Kaikki tästä eteenpäin — ruokinta ja annokset, harjoitukset, paino, eläinlääkärikäynnit, lenkit ja koko viikko — kootaan yhteen paikkaan, rakennettuna juuri sinun koirasi ympärille. Luo sen profiili, niin kaikki jo kertomasi siirtyy mukana.",
+    createCta: "Luo koirani profiili",
+    packCta: "Tulostettava koirapaketti",
+  },
 } as const;
 
 function WelcomeHomePage() {

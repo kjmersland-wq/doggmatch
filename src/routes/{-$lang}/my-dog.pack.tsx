@@ -70,6 +70,42 @@ const copy = {
       "Wszystko, co warto mieć na papierze — kim jest twój pies, co je, jak wygląda twój tydzień i do kogo dzwonić.",
     subtitlePart: "Wydrukowano z DoggMatch. Puste pola uzupełnij ręcznie.",
   },
+  dk: {
+    backLink: "Vælg andre sider",
+    printOrSave: "Udskriv eller gem som PDF",
+    printHint:
+      'Sådan vil dette se ud på papir. Vælg "Gem som PDF" i udskriftsdialogen, hvis du hellere vil have det på telefonen.',
+    wholePackTitle: "Den komplette DoggMatch hundepakke",
+    dogPack: "Hundepakke",
+    dogNameFallback: "Min hund",
+    subtitleWhole:
+      "Alt der er værd at have på papir — hvem din hund er, hvad den spiser, hvordan din uge kører, og hvem du skal ringe til.",
+    subtitlePart: "Udskrevet fra DoggMatch. Udfyld det, der er tomt, i hånden.",
+  },
+  se: {
+    backLink: "Välj andra sidor",
+    printOrSave: "Skriv ut eller spara som PDF",
+    printHint:
+      'Så här kommer det se ut på papper. Välj "Spara som PDF" i utskriftsdialogen om du hellre vill ha det på telefonen.',
+    wholePackTitle: "Det kompletta DoggMatch-hundpaketet",
+    dogPack: "Hundpaket",
+    dogNameFallback: "Min hund",
+    subtitleWhole:
+      "Allt som är värt att ha på papper — vem din hund är, vad den äter, hur din vecka ser ut och vem du ska ringa.",
+    subtitlePart: "Utskrivet från DoggMatch. Fyll i det som är tomt för hand.",
+  },
+  fi: {
+    backLink: "Valitse muita sivuja",
+    printOrSave: "Tulosta tai tallenna PDF:nä",
+    printHint:
+      'Näin tämä näyttää paperilla. Valitse tulostusikkunassa "Tallenna PDF:nä", jos haluat sen mieluummin puhelimeesi.',
+    wholePackTitle: "Koko DoggMatch-koirapaketti",
+    dogPack: "Koirapaketti",
+    dogNameFallback: "Koirani",
+    subtitleWhole:
+      "Kaikki, mikä kannattaa olla paperilla — kuka koirasi on, mitä se syö, miltä viikkosi näyttää ja kenelle soittaa.",
+    subtitlePart: "Tulostettu DoggMatchista. Täytä tyhjät kohdat käsin.",
+  },
 } as const;
 
 function PackPage() {

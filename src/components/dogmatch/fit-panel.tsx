@@ -31,6 +31,33 @@ const copy = {
     honesty:
       "To wynik zgodności stylu życia, a nie pomiar naukowy. Porównuje to, co nam powiedziałeś, z tym, czego zwykle potrzebuje ten pies — poszczególne psy się różnią.",
   },
+  dk: {
+    fitsTitle: "Hvorfor denne hund kan passe til dit liv",
+    tradeTitle: "Ting du bør overveje grundigt",
+    fromLabel: "Dit svar",
+    none: "Intet her talte imod dig — men mød hunden, før du beslutter dig.",
+    noneFits: "Meget lidt her stemte med dine svar.",
+    honesty:
+      "Dette er et resultat om livsstilskompatibilitet, ikke en videnskabelig måling. Det sammenligner det, du fortalte os, med det denne hund normalt har brug for — den enkelte hund varierer.",
+  },
+  se: {
+    fitsTitle: "Varför den här hunden kan passa ditt liv",
+    tradeTitle: "Saker du bör tänka igenom ordentligt",
+    fromLabel: "Ditt svar",
+    none: "Inget här talade emot dig — men träffa hunden innan du bestämmer dig.",
+    noneFits: "Väldigt lite här stämde med dina svar.",
+    honesty:
+      "Det här är ett resultat om livsstilskompatibilitet, inte en vetenskaplig mätning. Det jämför det du berättade för oss med det den här hunden vanligtvis behöver — enskilda hundar varierar.",
+  },
+  fi: {
+    fitsTitle: "Miksi tämä koira voisi sopia elämääsi",
+    tradeTitle: "Asioita, jotka kannattaa miettiä huolella",
+    fromLabel: "Vastauksesi",
+    none: "Mikään tässä ei puhunut sinua vastaan — mutta tapaa koira ennen kuin päätät.",
+    noneFits: "Hyvin vähän tässä vastasi vastauksiasi.",
+    honesty:
+      "Tämä on elämäntyylin yhteensopivuutta kuvaava tulos, ei tieteellinen mittaus. Se vertaa kertomaasi siihen, mitä tämä koira yleensä tarvitsee — yksittäiset koirat vaihtelevat.",
+  },
 };
 
 /**

@@ -54,6 +54,24 @@ const traitCopy = {
     shedding: "Linienie",
     apartmentSuitability: "Mieszkanie",
   },
+  dk: {
+    energy: "Energi",
+    trainability: "Trænbarhed",
+    shedding: "Fældning",
+    apartmentSuitability: "Lejlighed",
+  },
+  se: {
+    energy: "Energi",
+    trainability: "Träningsvillighet",
+    shedding: "Fällning",
+    apartmentSuitability: "Lägenhet",
+  },
+  fi: {
+    energy: "Energia",
+    trainability: "Koulutettavuus",
+    shedding: "Karvanlähtö",
+    apartmentSuitability: "Kerrostaloon sopivuus",
+  },
 } as const;
 
 const localCopy = {
@@ -210,6 +228,159 @@ const localCopy = {
       },
     ],
   },
+  dk: {
+    matchLooks: "Sådan ser et match ud",
+    match: "match",
+    heroAlt: "En kvinde går tur med en golden retriever langs kysten ved solopgang",
+    terrierAlt: "En terrier, der hviler sig i en solbeskinnet lejlighed",
+    parkAlt: "En bypark i gryet med snoede gåstier",
+    jumpLabel: "Hop til en del af denne side",
+    jumpTitle: "På denne side",
+    shareLabel: "Del DoggMatch på et sprog",
+    shareTitle: "Læs DoggMatch på dit eget sprog",
+    shareBody:
+      "Hvert link åbner DoggMatch direkte på det sprog — kopiér det, og send det til nogen, der hellere vil læse på deres egen måde.",
+    shareCopy: "Kopiér link",
+    shareCopied: "Kopieret",
+    anchors: {
+      "why-doggmatch": "Hvorfor DoggMatch",
+      "how-it-works": "Sådan fungerer det",
+      "real-matches": "Se det i praksis",
+      "dog-breeds": "Udforsk hunderacer",
+      "compare-breeds": "Sammenlign racer",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "Hundeliv, hvor du bor",
+      faq: "Spørgsmål folk stiller",
+      "find-your-dog": "Find din hund",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "Lidt mere hjælp, når hunden er flyttet ind",
+    plusBody:
+      "Træning du kan følge uge for uge, foder og vægt samlet ét sted, styr på rejsepapirerne, og alt kan printes ud til køleskabet eller dyrlægen.",
+    plusCta: "Se, hvad der er i DoggMatch+",
+    faqEyebrow: "Godt at vide",
+    faqTitle: "Spørgsmål, folk stiller os",
+    faq: [
+      {
+        q: "Er det AI, der laver matchingen?",
+        a: "Nej. Det er et fast regelsæt, vi selv har skrevet. De samme svar giver altid de samme hunde, og vi viser dig begrundelsen bag hver eneste score.",
+      },
+      {
+        q: "Koster det noget at finde min hund?",
+        a: "Nej. Spørgsmålene, resultatet og alle racesider er gratis. DoggMatch+ gælder kun de værktøjer, du bruger, efter hunden er flyttet ind.",
+      },
+      {
+        q: "Hvad hvis en blandingshund passer bedst til mig?",
+        a: "Blandinger er hjertelig velkomne. Du kan sætte to racer sammen, så vurderer vi hunden foran dig — ikke en etiket.",
+      },
+      {
+        q: "Kan jeg stole på raceoplysningerne?",
+        a: "Vi holder vores kilder åbne. Hver race-, trænings- og sundhedsside linker til de fagmiljøer og den forskning, vi støtter os på.",
+      },
+    ],
+  },
+  se: {
+    matchLooks: "Så här ser en matchning ut",
+    match: "matchning",
+    heroAlt: "En kvinna som går med en golden retriever längs en kustväg vid soluppgång",
+    terrierAlt: "En terrier som vilar i en solig lägenhet",
+    parkAlt: "En stadspark i gryningen med slingrande gångstigar",
+    jumpLabel: "Hoppa till en del av denna sida",
+    jumpTitle: "På den här sidan",
+    shareLabel: "Dela DoggMatch på ett språk",
+    shareTitle: "Läs DoggMatch på ditt eget språk",
+    shareBody:
+      "Varje länk öppnar DoggMatch direkt på det språket — kopiera den och skicka den till någon som hellre läser på sitt eget sätt.",
+    shareCopy: "Kopiera länk",
+    shareCopied: "Kopierad",
+    anchors: {
+      "why-doggmatch": "Varför DoggMatch",
+      "how-it-works": "Så här fungerar det",
+      "real-matches": "Se det i praktiken",
+      "dog-breeds": "Utforska hundraser",
+      "compare-breeds": "Jämför raser",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "Hundliv nära dig",
+      faq: "Frågor folk ställer",
+      "find-your-dog": "Hitta din hund",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "Lite mer hjälp, när hunden väl är hemma",
+    plusBody:
+      "Träning du kan följa vecka för vecka, foder och vikt samlat på ett ställe, resepapper i ordning, och allt går att skriva ut till kylskåpet eller veterinären.",
+    plusCta: "Se vad som ingår i DoggMatch+",
+    faqEyebrow: "Bra att veta",
+    faqTitle: "Frågor vi ofta får",
+    faq: [
+      {
+        q: "Är det AI som gör matchningen?",
+        a: "Nej. Det är ett fast regelverk som vi själva har skrivit. Samma svar ger alltid samma hundar, och vi visar dig resonemanget bakom varje poäng.",
+      },
+      {
+        q: "Kostar det något att hitta min hund?",
+        a: "Nej. Frågorna, resultatet och alla rassidor är gratis. DoggMatch+ gäller bara verktygen du använder efter att hunden har flyttat in.",
+      },
+      {
+        q: "Tänk om en blandras passar mig bäst?",
+        a: "Blandraser är varmt välkomna. Du kan sätta ihop två raser, så bedömer vi hunden framför dig — inte en etikett.",
+      },
+      {
+        q: "Kan jag lita på rasinformationen?",
+        a: "Vi håller våra källor öppna. Varje ras-, tränings- och hälsosida länkar till de organisationer och den forskning vi bygger på.",
+      },
+    ],
+  },
+  fi: {
+    matchLooks: "Tältä ehdotus näyttää",
+    match: "osuvuus",
+    heroAlt: "Nainen kävelyttää kultaistanoutajaa rantareitillä auringonnousun aikaan",
+    terrierAlt: "Terrieri lepäämässä aurinkoisessa asunnossa",
+    parkAlt: "Kaupunkipuisto aamuhämärässä mutkittelevine kävelyteineen",
+    jumpLabel: "Siirry sivun johonkin osioon",
+    jumpTitle: "Tällä sivulla",
+    shareLabel: "Jaa DoggMatch jollain kielellä",
+    shareTitle: "Lue DoggMatchia omalla kielelläsi",
+    shareBody:
+      "Jokainen linkki avaa DoggMatchin suoraan kyseisellä kielellä — kopioi se ja lähetä sille, joka haluaa mieluummin lukea omalla kielellään.",
+    shareCopy: "Kopioi linkki",
+    shareCopied: "Kopioitu",
+    anchors: {
+      "why-doggmatch": "Miksi DoggMatch",
+      "how-it-works": "Näin se toimii",
+      "real-matches": "Katso, miten se toimii",
+      "dog-breeds": "Tutustu koirarotuihin",
+      "compare-breeds": "Vertaile rotuja",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "Koiraelämää lähelläsi",
+      faq: "Kysytyt kysymykset",
+      "find-your-dog": "Löydä koirasi",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "Vähän lisää apua, kun koira on jo kotona",
+    plusBody:
+      "Koulutusta, jota voit seurata viikko kerrallaan, ruokinta ja paino samassa paikassa, matkapaperit kunnossa, ja kaiken voi tulostaa jääkaapin oveen tai eläinlääkärille.",
+    plusCta: "Katso, mitä DoggMatch+ sisältää",
+    faqEyebrow: "Hyvä tietää",
+    faqTitle: "Kysymyksiä, joita meiltä usein kysytään",
+    faq: [
+      {
+        q: "Tekeekö tekoäly sovittamisen?",
+        a: "Ei. Kyse on kiinteistä säännöistä, jotka olemme kirjoittaneet itse. Samat vastaukset antavat aina samat koirat, ja näytämme sinulle perustelun jokaisen pistemäärän takana.",
+      },
+      {
+        q: "Maksaako koirani löytäminen mitään?",
+        a: "Ei. Kysymykset, tulos ja jokainen rotusivu ovat ilmaisia. DoggMatch+ koskee vain työkaluja, joita käytät sen jälkeen, kun koira on muuttanut kotiin.",
+      },
+      {
+        q: "Entä jos sekarotuinen sopisi minulle parhaiten?",
+        a: "Sekarotuiset ovat lämpimästi tervetulleita. Voit yhdistää kaksi rotua, ja me arvioimme edessäsi olevan koiran — emme pelkkää nimikettä.",
+      },
+      {
+        q: "Voinko luottaa rotutietoihin?",
+        a: "Pidämme lähteemme avoimina. Jokainen rotu-, koulutus- ja terveyssivu linkittyy niihin tahoihin ja tutkimuksiin, joihin nojaamme.",
+      },
+    ],
+  },
 } as const;
 
 const seoCopy = {
@@ -223,6 +394,21 @@ const seoCopy = {
     title: "DoggMatch — znajdź psa, który pasuje do Twojego życia",
     description:
       "Opowiedz nam trochę o swoim życiu, domu i codziennych dniach, a pomożemy Ci znaleźć psy, które mogą pasować najlepiej. Za darmo, uczciwie i zawsze pokazujemy, jak liczymy.",
+  },
+  dk: {
+    title: "DoggMatch — find hunden, der passer til dit liv",
+    description:
+      "Fortæl os lidt om dit liv, dit hjem og dine dage, så hjælper vi dig med at finde de hunde, der kan passe bedst. Gratis, ærligt, og vi viser altid, hvordan vi tænker.",
+  },
+  se: {
+    title: "DoggMatch — hitta hunden som passar ditt liv",
+    description:
+      "Berätta lite om ditt liv, ditt hem och dina dagar, så hjälper vi dig hitta de hundar som kan passa bäst. Gratis, ärligt, och vi visar alltid hur vi tänker.",
+  },
+  fi: {
+    title: "DoggMatch — löydä elämääsi sopiva koira",
+    description:
+      "Kerro meille vähän elämästäsi, kodistasi ja päivistäsi, niin autamme sinua löytämään koirat, jotka voisivat sopia sinulle parhaiten. Ilmaista, rehellistä, ja näytämme aina, miten päättelemme asiat.",
   },
 };
 
@@ -566,10 +752,16 @@ const SHARE_LANGS = [
   { code: "en", flag: "gb", short: "GB", label: "English" },
   { code: "no", flag: "no", short: "NO", label: "Norsk" },
   { code: "pl", flag: "pl", short: "PL", label: "Polski" },
+  { code: "dk", flag: "dk", short: "DK", label: "Dansk" },
+  { code: "se", flag: "se", short: "SE", label: "Svenska" },
+  { code: "fi", flag: "fi", short: "FI", label: "Suomi" },
 ] as const;
 
 /** The homepage's path in a given language: English is the bare root. */
 const sharePath = (code: string) => (code === "en" ? "/" : `/${code}`);
+
+/** BCP-47 language tag for a share-link's `hreflang` — most locale codes double as the tag, but dk/se are market codes over the real language codes da/sv. */
+const shareHrefLang = (code: string) => (code === "no" ? "nb" : code === "dk" ? "da" : code === "se" ? "sv" : code);
 
 function LanguageShare({ c }: { c: (typeof localCopy)["en"] }) {
   const { locale } = useLocale();
@@ -603,7 +795,7 @@ function LanguageShare({ c }: { c: (typeof localCopy)["en"] }) {
                   <div className="flex items-center gap-2 rounded-xl border border-border bg-background p-2 pr-1.5">
                     <a
                       href={sharePath(l.code)}
-                      hrefLang={l.code === "no" ? "nb" : l.code}
+                      hrefLang={shareHrefLang(l.code)}
                       className="flex min-w-0 flex-1 items-center gap-2 rounded-lg px-1.5 py-1 transition-colors hover:text-primary"
                       aria-label={`${l.label} — ${sharePath(l.code)}`}
                     >

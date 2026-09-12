@@ -6,6 +6,9 @@ const copy = {
   en: { mobileNav: "Mobile" },
   no: { mobileNav: "Mobilnavigasjon" },
   pl: { mobileNav: "Nawigacja mobilna" },
+  dk: { mobileNav: "Mobilnavigation" },
+  se: { mobileNav: "Mobilnavigering" },
+  fi: { mobileNav: "Mobiilinavigointi" },
 } as const;
 
 export function MobileTabs() {

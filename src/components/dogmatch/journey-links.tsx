@@ -50,6 +50,48 @@ const copy = {
       { to: "/dog-life", label: "Życie z psem", hint: "Codzienność razem, gdziekolwiek jesteś" },
     ],
   },
+  dk: {
+    title: "Hvor du kan gå videre",
+    intro: "DoggMatch følger hele rejsen — fra at finde ud af, hvilken hund der passer til dig, til de helt almindelige dage mange år senere.",
+    steps: [
+      { to: "/find-my-dog", label: "Find min hund", hint: "Nogle spørgsmål om dine dage" },
+      { to: "/breeds", label: "Racebiblioteket", hint: "Hvordan hver hund er at leve med" },
+      { to: "/compare", label: "Sammenlign hunde", hint: "Side om side, på det der betyder noget" },
+      { to: "/get-a-dog", label: "Få en hund", hint: "Parathed, omkostninger og gode valg" },
+      { to: "/my-dog", label: "Min hund", hint: "Rutiner, foder, vægt og pleje" },
+      { to: "/train", label: "Træning", hint: "Korte, venlige lektioner der bygger sig op" },
+      { to: "/travel", label: "Rejser", hint: "Over grænser og lange biature" },
+      { to: "/dog-life", label: "Hundeliv", hint: "Hverdagen sammen, uanset hvor du er" },
+    ],
+  },
+  se: {
+    title: "Vart du kan gå vidare",
+    intro: "DoggMatch följer hela resan — från att ta reda på vilken hund som passar dig, till de helt vanliga dagarna många år senare.",
+    steps: [
+      { to: "/find-my-dog", label: "Hitta min hund", hint: "Några frågor om dina dagar" },
+      { to: "/breeds", label: "Rasbiblioteket", hint: "Hur det är att leva med varje hund" },
+      { to: "/compare", label: "Jämför hundar", hint: "Sida vid sida, i det som spelar roll" },
+      { to: "/get-a-dog", label: "Skaffa hund", hint: "Beredskap, kostnader och kloka val" },
+      { to: "/my-dog", label: "Min hund", hint: "Rutiner, foder, vikt och skötsel" },
+      { to: "/train", label: "Träning", hint: "Korta, snälla lektioner som byggs på" },
+      { to: "/travel", label: "Resor", hint: "Över gränser och långa bilresor" },
+      { to: "/dog-life", label: "Hundliv", hint: "Vardagen tillsammans, var du än är" },
+    ],
+  },
+  fi: {
+    title: "Mihin voit jatkaa täältä",
+    intro: "DoggMatch kulkee koko matkan mukana — siitä, minkälainen koira sinulle sopii, aina niihin ihan tavallisiin päiviin vuosien päästä.",
+    steps: [
+      { to: "/find-my-dog", label: "Löydä koirani", hint: "Muutama kysymys arjestasi" },
+      { to: "/breeds", label: "Rotukirjasto", hint: "Millaista on elää kunkin koiran kanssa" },
+      { to: "/compare", label: "Vertaile koiria", hint: "Rinnakkain, niissä asioissa jotka merkitsevät" },
+      { to: "/get-a-dog", label: "Hanki koira", hint: "Valmius, kustannukset ja hyvät valinnat" },
+      { to: "/my-dog", label: "Oma koirani", hint: "Rutiinit, ruokinta, paino ja hoito" },
+      { to: "/train", label: "Koulutus", hint: "Lyhyitä, ystävällisiä oppitunteja, jotka rakentuvat vaiheittain" },
+      { to: "/travel", label: "Matkustaminen", hint: "Rajojen yli ja pitkät automatkat" },
+      { to: "/dog-life", label: "Koiran arki", hint: "Yhteinen arki, missä ikinä oletkin" },
+    ],
+  },
 } as const;
 
 export function JourneyLinks({ exclude = [] }: { exclude?: string[] }) {
