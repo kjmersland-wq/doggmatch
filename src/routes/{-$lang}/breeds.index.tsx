@@ -6,7 +6,7 @@ import { breeds } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Eyebrow } from "@/components/dogmatch/ui";
-import { seoLinks, abs, localizedHead } from "@/lib/seo";
+import { seoLinks, abs, localizedHead, headLocale, breadcrumbLd } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
