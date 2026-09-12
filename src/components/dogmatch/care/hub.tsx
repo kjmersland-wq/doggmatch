@@ -16,6 +16,9 @@ const copy = {
   dk: { anotherDog: "Tilføj endnu en hund", markDone: "Marker {label} som gjort", today: "I dag" },
   se: { anotherDog: "Lägg till en till hund", markDone: "Markera {label} som klar", today: "Idag" },
   fi: { anotherDog: "Lisää toinen koira", markDone: "Merkitse {label} tehdyksi", today: "Tänään" },
+  de: { anotherDog: "Weiteren Hund hinzufügen", markDone: "{label} als erledigt markieren", today: "Heute" },
+  fr: { anotherDog: "Ajouter un autre chien", markDone: "Marquer {label} comme fait", today: "Aujourd'hui" },
+  nl: { anotherDog: "Nog een hond toevoegen", markDone: "Markeer {label} als gedaan", today: "Vandaag" },
 } as const;
 
 /** Switch between the dogs you've added, without leaving the page. */
