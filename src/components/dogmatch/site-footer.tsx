@@ -79,6 +79,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-surface">
       <div className="container-page py-20 md:py-24">
+        <ShareStrip className="mb-16 rounded-3xl border border-border bg-background px-6 py-6 md:px-8" />
         <div className="grid gap-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="max-w-sm">
             <BrandLock markClassName="h-10 w-10" wordmarkClassName="text-2xl" />
