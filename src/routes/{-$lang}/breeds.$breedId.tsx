@@ -3,7 +3,7 @@ import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
 import { useT, pick, useCopy, interpolate } from "@/i18n";
 import { getBreed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
-import { breedImages } from "@/data/breed-images";
+import { breedImages, breedLifestyleImages } from "@/data/breed-images";
 import { withLangPrefix } from "@/lib/localized-path";
 import {
   bestSuitedFor,
@@ -43,6 +43,14 @@ const pageCopy = {
     milestoneEveningTitle: "Evening Energy Burn",
     milestoneNightTitle: "Decompression & Care",
     commitmentBadge: "Estimated daily active commitment: ~{hours} hours",
+    lifestyleTitle: "Life with a {breed}",
+    exerciseCaption: "Daily exercise",
+    homeCaption: "At home",
+    detailCaption: "Coat & detail",
+    exerciseAlt: "{breed} out on a daily walk",
+    homeAlt: "{breed} resting at home",
+    detailAlt: "Close-up detail of a {breed}'s coat",
+    portraitWideAlt: "{breed}, portrait",
   },
   no: {
     dayTitle: "En typisk dag sammen",
@@ -62,6 +70,14 @@ const pageCopy = {
     milestoneEveningTitle: "Kveldens energiuttak",
     milestoneNightTitle: "Nedtrapping og pleie",
     commitmentBadge: "Anslått daglig aktiv innsats: ~{hours} timer",
+    lifestyleTitle: "Livet med en {breed}",
+    exerciseCaption: "Daglig mosjon",
+    homeCaption: "Hjemme",
+    detailCaption: "Pels og detaljer",
+    exerciseAlt: "{breed} ute på en daglig tur",
+    homeAlt: "{breed} som slapper av hjemme",
+    detailAlt: "Nærbilde av pelsen til en {breed}",
+    portraitWideAlt: "{breed}, portrett",
   },
   pl: {
     dayTitle: "Typowy dzień razem",
@@ -81,6 +97,14 @@ const pageCopy = {
     milestoneEveningTitle: "Wieczorne rozładowanie energii",
     milestoneNightTitle: "Wyciszenie i pielęgnacja",
     commitmentBadge: "Szacowane dzienne zaangażowanie: ~{hours} godz.",
+    lifestyleTitle: "Życie z {breed}",
+    exerciseCaption: "Codzienny ruch",
+    homeCaption: "W domu",
+    detailCaption: "Sierść i detale",
+    exerciseAlt: "{breed} podczas codziennego spaceru",
+    homeAlt: "{breed} odpoczywający w domu",
+    detailAlt: "Zbliżenie sierści {breed}",
+    portraitWideAlt: "{breed}, portret",
   },
 };
 
@@ -193,6 +217,34 @@ function BreedDetail() {
     { time: c.timeNight, title: c.milestoneNightTitle, body: groomingCadence(breed.traits) },
   ];
 
+  const lifestyle = breedLifestyleImages[breed.id];
+  const lifestylePhotos = [
+    lifestyle?.exercise
+      ? {
+          key: "exercise",
+          src: lifestyle.exercise,
+          alt: interpolate(c.exerciseAlt, { breed: content.displayName }),
+          caption: c.exerciseCaption,
+        }
+      : undefined,
+    lifestyle?.home
+      ? {
+          key: "home",
+          src: lifestyle.home,
+          alt: interpolate(c.homeAlt, { breed: content.displayName }),
+          caption: c.homeCaption,
+        }
+      : undefined,
+    lifestyle?.detail
+      ? {
+          key: "detail",
+          src: lifestyle.detail,
+          alt: interpolate(c.detailAlt, { breed: content.displayName }),
+          caption: c.detailCaption,
+        }
+      : undefined,
+  ].filter((photo): photo is NonNullable<typeof photo> => photo !== undefined);
+
   return (
     <article className="pb-24">
       <div className="container-page py-12 md:py-16">
@@ -238,11 +290,47 @@ function BreedDetail() {
               alt={content.displayName}
               width={1024}
               height={1280}
+              decoding="async"
               className="aspect-[4/5] w-full object-cover"
             />
           </div>
         </div>
       </div>
+
+      {/* secondary lifestyle gallery — falls back to a wide crop of the portrait until real lifestyle photography exists */}
+      <section className="container-page border-t border-border py-16">
+        <h2 className="display-md">{interpolate(c.lifestyleTitle, { breed: content.displayName })}</h2>
+        {lifestylePhotos.length > 0 ? (
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {lifestylePhotos.map((photo) => (
+              <figure key={photo.key} className="overflow-hidden rounded-2xl border border-border">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={960}
+                  height={1200}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[4/5] w-full object-cover"
+                />
+                <figcaption className="px-4 py-3 text-sm text-muted-foreground">{photo.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        ) : (
+          <div className="mt-8 overflow-hidden rounded-2xl border border-border">
+            <img
+              src={breedImages[breed.id]}
+              alt={interpolate(c.portraitWideAlt, { breed: content.displayName })}
+              width={1600}
+              height={686}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[21/9] w-full object-cover object-top"
+            />
+          </div>
+        )}
+      </section>
 
       <section className="container-page grid gap-12 border-t border-border py-16 md:grid-cols-2 md:gap-16">
         <div>

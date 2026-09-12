@@ -28,6 +28,21 @@ import vizsla from "@/assets/breed-vizsla.jpg";
 import samoyed from "@/assets/breed-samoyed.jpg";
 import yorkshireTerrier from "@/assets/breed-yorkshire-terrier.jpg";
 
+/** Secondary lifestyle photography for one breed — outdoor exercise, at home, a coat/detail shot. All optional. */
+export interface BreedLifestyleImages {
+  exercise?: string;
+  home?: string;
+  detail?: string;
+}
+
+/**
+ * Optional lifestyle photography, keyed by breed id, alongside the single
+ * studio portrait in `breedImages`. Empty until that photography exists —
+ * the breed page falls back to a wide crop of the portrait itself rather
+ * than showing broken or missing images.
+ */
+export const breedLifestyleImages: Partial<Record<BreedId, BreedLifestyleImages>> = {};
+
 /** Imagery is kept out of the data layer so it can be swapped for a CDN later. */
 export const breedImages: Record<BreedId, string> = {
   "labrador-retriever": labrador,
