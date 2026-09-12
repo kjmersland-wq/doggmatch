@@ -369,7 +369,7 @@ import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "
 import { MatchNotes } from "@/components/dogmatch/match-notes";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { cn } from "@/lib/utils";
-import { seoLinks, abs, localizedHead } from "@/lib/seo";
+import { seoLinks, abs, localizedHead, headLocale, faqLd, breadcrumbLd } from "@/lib/seo";
 
 const title = "Find My Dog — a free match, in about two minutes | DoggMatch";
 const description =
@@ -378,49 +378,226 @@ const description =
 const seoCopy = {
   en: { title, description },
   no: {
-    title: "Finn min hund — gratis match på cirka to minutter | DoggMatch",
+    title: "Finn min hund — gratis match på to minutter | DoggMatch",
     description:
       "Svar på noen vennlige spørsmål om dagene dine, hjemmet ditt og hva du håper på, så viser vi deg hundene som kan passe deg best.",
   },
   pl: {
-    title: "Znajdź mojego psa — darmowe dopasowanie w około dwie minuty | DoggMatch",
+    title: "Znajdź psa — darmowe dopasowanie w 2 minuty | DoggMatch",
     description:
       "Odpowiedz na kilka przyjaznych pytań o swoje dni, dom i oczekiwania, a pokażemy Ci psy, które mogą pasować Ci najlepiej.",
   },
   dk: {
-    title: "Find min hund — gratis match på cirka to minutter | DoggMatch",
+    title: "Find min hund — gratis match på to minutter | DoggMatch",
     description:
       "Svar på nogle venlige spørgsmål om dine dage, dit hjem og hvad du håber på, så viser vi dig de hunde, der kan passe dig bedst.",
   },
   se: {
-    title: "Hitta min hund — gratis match på cirka två minuter | DoggMatch",
+    title: "Hitta min hund — gratis match på två minuter | DoggMatch",
     description:
       "Svara på några vänliga frågor om dina dagar, ditt hem och vad du hoppas på, så visar vi dig hundarna som kan passa dig bäst.",
   },
   fi: {
-    title: "Löydä koirani — ilmainen täsmäys noin kahdessa minuutissa | DoggMatch",
+    title: "Löydä koirani — ilmainen täsmäys 2 minuutissa | DoggMatch",
     description:
       "Vastaa muutamaan ystävälliseen kysymykseen päivistäsi, kodistasi ja toiveistasi, niin näytämme sinulle koirat, jotka voisivat sopia sinulle parhaiten.",
   },
   de: {
-    title: "Finde meinen Hund — kostenloses Match in etwa zwei Minuten | DoggMatch",
+    title: "Finde meinen Hund — Match in zwei Minuten | DoggMatch",
     description:
       "Beantworte ein paar freundliche Fragen zu deinem Alltag, deinem Zuhause und deinen Wünschen, und wir zeigen dir die Hunde, die am besten zu dir passen könnten.",
   },
   fr: {
-    title: "Trouver mon chien — un match gratuit en environ deux minutes | DoggMatch",
+    title: "Trouver mon chien — match gratuit en 2 minutes | DoggMatch",
     description:
       "Réponds à quelques questions simples sur ton quotidien, ton logement et tes envies, et nous te montrerons les chiens qui pourraient le mieux te convenir.",
   },
   nl: {
-    title: "Vind mijn hond — gratis match in ongeveer twee minuten | DoggMatch",
+    title: "Vind mijn hond — gratis match in 2 minuten | DoggMatch",
     description:
       "Beantwoord een paar vriendelijke vragen over je dagen, je huis en je wensen, en we laten je de honden zien die het beste bij je zouden kunnen passen.",
   },
 };
 
+/** The questions people actually ask about how the match is worked out. */
+const quizFaq: Record<string, { question: string; answer: string }[]> = {
+  en: [
+    {
+      question: "How does the match work?",
+      answer:
+        "It is deterministic, not a guess. Your answers become a profile, and every breed in the library is scored against that profile with the same rules. The same answers always give the same result.",
+    },
+    {
+      question: "What are hard limits?",
+      answer:
+        "Some answers are things you told us you cannot stretch — space, time alone, shedding or noise. Breeds that clash with one of those are ruled out rather than quietly ranked lower.",
+    },
+    {
+      question: "Is it free?",
+      answer: "Yes. The match, the reasoning behind it and the breed profiles are free, and we do not need an account.",
+    },
+  ],
+  no: [
+    {
+      question: "Hvordan fungerer matchen?",
+      answer:
+        "Den er deterministisk, ikke gjetting. Svarene dine blir en profil, og hver rase vurderes mot den profilen med de samme reglene. Samme svar gir alltid samme resultat.",
+    },
+    {
+      question: "Hva er absolutte grenser?",
+      answer:
+        "Noen svar er ting du har sagt at du ikke kan strekke på — plass, tid alene, pelsfelling eller bjeffing. Raser som kolliderer med en slik grense blir utelukket, ikke bare rangert lavere.",
+    },
+    {
+      question: "Er det gratis?",
+      answer: "Ja. Matchen, begrunnelsen og raseprofilene er gratis, og du trenger ingen konto.",
+    },
+  ],
+  pl: [
+    {
+      question: "Jak działa dopasowanie?",
+      answer:
+        "Jest deterministyczne, a nie zgadywane. Twoje odpowiedzi tworzą profil, a każda rasa jest oceniana wobec niego według tych samych reguł. Te same odpowiedzi zawsze dają ten sam wynik.",
+    },
+    {
+      question: "Czym są twarde ograniczenia?",
+      answer:
+        "Niektóre odpowiedzi to rzeczy, których nie da się nagiąć — miejsce, czas samotności, linienie czy szczekanie. Rasy, które się z nimi kłócą, są wykluczane, a nie tylko niżej oceniane.",
+    },
+    {
+      question: "Czy to darmowe?",
+      answer: "Tak. Dopasowanie, jego uzasadnienie i profile ras są darmowe i nie trzeba zakładać konta.",
+    },
+  ],
+  dk: [
+    {
+      question: "Hvordan fungerer matchet?",
+      answer:
+        "Det er deterministisk, ikke gætværk. Dine svar bliver til en profil, og hver race vurderes op mod den med de samme regler. De samme svar giver altid det samme resultat.",
+    },
+    {
+      question: "Hvad er hårde grænser?",
+      answer:
+        "Nogle svar er ting, du har sagt, du ikke kan strække — plads, tid alene, pelsfældning eller gøen. Racer, der støder sammen med sådan en grænse, bliver valgt fra, ikke bare placeret lavere.",
+    },
+    {
+      question: "Er det gratis?",
+      answer: "Ja. Matchet, begrundelsen og raceprofilerne er gratis, og du behøver ingen konto.",
+    },
+  ],
+  se: [
+    {
+      question: "Hur fungerar matchningen?",
+      answer:
+        "Den är deterministisk, inte en gissning. Dina svar blir en profil, och varje ras bedöms mot den med samma regler. Samma svar ger alltid samma resultat.",
+    },
+    {
+      question: "Vad är hårda gränser?",
+      answer:
+        "Vissa svar är sådant du sagt att du inte kan tumma på — utrymme, tid ensam, pälsfällning eller skällande. Raser som krockar med en sådan gräns väljs bort, inte bara rankas lägre.",
+    },
+    {
+      question: "Är det gratis?",
+      answer: "Ja. Matchningen, resonemanget bakom och rasprofilerna är gratis, och du behöver inget konto.",
+    },
+  ],
+  fi: [
+    {
+      question: "Miten täsmäys toimii?",
+      answer:
+        "Se on deterministinen, ei arvaus. Vastauksistasi muodostuu profiili, ja jokainen rotu pisteytetään sitä vasten samoilla säännöillä. Samat vastaukset antavat aina saman tuloksen.",
+    },
+    {
+      question: "Mitä ehdottomat rajat ovat?",
+      answer:
+        "Osa vastauksista on asioita, joista et voi joustaa — tila, yksinoloaika, karvanlähtö tai haukku. Rodut, jotka törmäävät niihin, karsiutuvat pois eivätkä vain putoa listalla.",
+    },
+    {
+      question: "Onko se ilmaista?",
+      answer: "Kyllä. Täsmäys, sen perustelut ja rotuprofiilit ovat ilmaisia, eikä tiliä tarvita.",
+    },
+  ],
+  de: [
+    {
+      question: "Wie funktioniert das Match?",
+      answer:
+        "Es ist deterministisch, kein Raten. Deine Antworten werden zu einem Profil, und jede Rasse wird nach denselben Regeln dagegen bewertet. Dieselben Antworten ergeben immer dasselbe Ergebnis.",
+    },
+    {
+      question: "Was sind harte Grenzen?",
+      answer:
+        "Manche Antworten sind Dinge, bei denen du nicht nachgeben kannst — Platz, Zeit allein, Fellwechsel oder Bellen. Rassen, die damit kollidieren, fallen raus statt nur schlechter platziert zu werden.",
+    },
+    {
+      question: "Ist das kostenlos?",
+      answer: "Ja. Das Match, die Begründung dahinter und die Rasseprofile sind kostenlos, und ein Konto brauchst du nicht.",
+    },
+  ],
+  fr: [
+    {
+      question: "Comment fonctionne le match ?",
+      answer:
+        "Il est déterministe, pas une supposition. Vos réponses forment un profil, et chaque race est évaluée face à lui avec les mêmes règles. Les mêmes réponses donnent toujours le même résultat.",
+    },
+    {
+      question: "Que sont les limites strictes ?",
+      answer:
+        "Certaines réponses portent sur ce que vous ne pouvez pas assouplir — la place, le temps seul, la perte de poils ou les aboiements. Les races qui s'y heurtent sont écartées, pas seulement mal classées.",
+    },
+    {
+      question: "Est-ce gratuit ?",
+      answer: "Oui. Le match, les explications et les fiches de race sont gratuits, et aucun compte n'est nécessaire.",
+    },
+  ],
+  nl: [
+    {
+      question: "Hoe werkt de match?",
+      answer:
+        "Hij is deterministisch, geen gok. Je antwoorden worden een profiel, en elk ras wordt met dezelfde regels daartegen afgezet. Dezelfde antwoorden geven altijd hetzelfde resultaat.",
+    },
+    {
+      question: "Wat zijn harde grenzen?",
+      answer:
+        "Sommige antwoorden gaan over wat je niet kunt rekken — ruimte, tijd alleen, verharen of blaffen. Rassen die daarmee botsen vallen af in plaats van alleen lager te eindigen.",
+    },
+    {
+      question: "Is het gratis?",
+      answer: "Ja. De match, de uitleg erbij en de rasprofielen zijn gratis, en een account is niet nodig.",
+    },
+  ],
+};
+
+/** Short breadcrumb label — the SEO title is far too long for a crumb. */
+const quizCrumb: Record<string, string> = {
+  en: "Find my dog",
+  no: "Finn min hund",
+  pl: "Znajdź psa",
+  dk: "Find min hund",
+  se: "Hitta min hund",
+  fi: "Löydä koirani",
+  de: "Finde meinen Hund",
+  fr: "Trouver mon chien",
+  nl: "Vind mijn hond",
+};
+
 export const Route = createFileRoute("/{-$lang}/find-my-dog")({
-  head: (ctx) => localizedHead(ctx, "/find-my-dog", seoCopy),
+  head: (ctx) => {
+    const locale = headLocale(ctx);
+    const base = localizedHead(ctx, "/find-my-dog", seoCopy);
+    return {
+      ...base,
+      scripts: [
+        faqLd(quizFaq[locale] ?? quizFaq["en"]!),
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: quizCrumb[locale] ?? "Find my dog", path: "/find-my-dog" },
+          ],
+          locale,
+        ),
+      ],
+    };
+  },
   component: FindMyDogPage,
 });
 
@@ -813,7 +990,7 @@ function MatchBreakdown({
       <p className="max-w-xl text-lg leading-relaxed">{scoreReading(score)}</p>
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
-          <h3 className="display-md">{c.fitsTitle}</h3>
+          <h2 className="display-md">{c.fitsTitle}</h2>
           <ul className="mt-6 space-y-4">
             {shownFits.length === 0 && (
               <li className="text-[0.9375rem] leading-relaxed text-muted-foreground">{c.fitsNone}</li>
@@ -832,7 +1009,7 @@ function MatchBreakdown({
           </ul>
         </div>
         <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
-          <h3 className="display-md">{c.tradeTitle}</h3>
+          <h2 className="display-md">{c.tradeTitle}</h2>
           <ul className="mt-6 space-y-4">
             {shownTradeoffs.length === 0 && (
               <li className="text-[0.9375rem] leading-relaxed text-muted-foreground">{c.tradeNone}</li>
@@ -1117,9 +1294,9 @@ function Results({
                   />
                 </div>
                 <div className="mt-4 flex items-baseline justify-between gap-3">
-                  <h3 className="font-display text-lg leading-tight tracking-tight">
+                  <h2 className="font-display text-lg leading-tight tracking-tight">
                     {breedContent()[r.breedId].displayName}
-                  </h3>
+                  </h2>
                   <span className="font-display text-sm tabular-nums text-muted-foreground">
                     {r.score}%
                   </span>

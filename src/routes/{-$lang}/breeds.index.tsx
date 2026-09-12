@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute, useRouterState } from "@tanstack/react-router";
 import { breedGroupLabel } from "@/data/breed-meta";
 import { useState } from "react";
 import { useT, interpolate, useCopy } from "@/i18n";
@@ -6,7 +6,7 @@ import { breeds } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Eyebrow } from "@/components/dogmatch/ui";
-import { seoLinks, abs, localizedHead } from "@/lib/seo";
+import { seoLinks, abs, localizedHead, headLocale, breadcrumbLd } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
@@ -59,7 +59,22 @@ const seoCopy = {
 };
 
 export const Route = createFileRoute("/{-$lang}/breeds/")({
-  head: (ctx) => localizedHead(ctx, "/breeds", seoCopy),
+  head: (ctx) => {
+    const locale = headLocale(ctx);
+    const base = localizedHead(ctx, "/breeds", seoCopy);
+    return {
+      ...base,
+      scripts: [
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: seoCopy[locale]?.title.split(" | ")[0]?.split(" — ")[0] ?? "Breeds", path: "/breeds" },
+          ],
+          locale,
+        ),
+      ],
+    };
+  },
   component: BreedsPage,
 });
 
@@ -114,7 +129,11 @@ const pageCopy = {
 function BreedsPage() {
   const t = useT();
   const c = useCopy(pageCopy);
-  const [query, setQuery] = useState("");
+  // A ?q= in the address bar pre-fills the search, so a search engine (or a
+  // shared link) can point straight at a breed someone is looking for.
+  const rawSearch = useRouterState({ select: (s) => s.location.search as Record<string, unknown> });
+  const initialQuery = typeof rawSearch["q"] === "string" ? (rawSearch["q"] as string) : "";
+  const [query, setQuery] = useState(initialQuery);
   const filtered = breeds.filter((b) =>
     breedContent()[b.id].displayName.toLowerCase().includes(query.trim().toLowerCase()),
   );

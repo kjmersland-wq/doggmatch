@@ -140,7 +140,7 @@ export function SiteFooter() {
 function FooterColumn({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="eyebrow">{title}</h3>
+      <h2 className="eyebrow">{title}</h2>
       <ul className="mt-5 space-y-3">{children}</ul>
     </div>
   );

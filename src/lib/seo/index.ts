@@ -86,7 +86,7 @@ export function nlUrl(path: string): string {
   return langUrl(path, "nl");
 }
 
-type LinkTag = { rel: string; href: string; hrefLang?: string };
+type LinkTag = { rel: string; href: string; hreflang?: string };
 
 /**
  * Canonical + a reciprocal hreflang set for a public page. Every language
@@ -95,16 +95,16 @@ type LinkTag = { rel: string; href: string; hrefLang?: string };
 export function seoLinks(path: string): LinkTag[] {
   return [
     { rel: "canonical", href: abs(path) },
-    { rel: "alternate", hrefLang: "en", href: abs(path) },
-    { rel: "alternate", hrefLang: "nb-NO", href: noUrl(path) },
-    { rel: "alternate", hrefLang: "pl-PL", href: plUrl(path) },
-    { rel: "alternate", hrefLang: "da-DK", href: dkUrl(path) },
-    { rel: "alternate", hrefLang: "sv-SE", href: seUrl(path) },
-    { rel: "alternate", hrefLang: "fi-FI", href: fiUrl(path) },
-    { rel: "alternate", hrefLang: "de-DE", href: deUrl(path) },
-    { rel: "alternate", hrefLang: "fr-FR", href: frUrl(path) },
-    { rel: "alternate", hrefLang: "nl-NL", href: nlUrl(path) },
-    { rel: "alternate", hrefLang: "x-default", href: abs(path) },
+    { rel: "alternate", hreflang: "en", href: abs(path) },
+    { rel: "alternate", hreflang: "nb-NO", href: noUrl(path) },
+    { rel: "alternate", hreflang: "pl-PL", href: plUrl(path) },
+    { rel: "alternate", hreflang: "da-DK", href: dkUrl(path) },
+    { rel: "alternate", hreflang: "sv-SE", href: seUrl(path) },
+    { rel: "alternate", hreflang: "fi-FI", href: fiUrl(path) },
+    { rel: "alternate", hreflang: "de-DE", href: deUrl(path) },
+    { rel: "alternate", hreflang: "fr-FR", href: frUrl(path) },
+    { rel: "alternate", hreflang: "nl-NL", href: nlUrl(path) },
+    { rel: "alternate", hreflang: "x-default", href: abs(path) },
   ];
 }
 
@@ -116,8 +116,11 @@ export const noindexMeta = [
 
 export type Crumb = { name: string; path: string };
 
-/** BreadcrumbList JSON-LD for deeper pages. */
-export function breadcrumbLd(crumbs: Crumb[]) {
+/**
+ * BreadcrumbList JSON-LD for deeper pages. Pass the locale so the trail
+ * points at the localized route paths (/no/breeds/..., /de/breeds/...).
+ */
+export function breadcrumbLd(crumbs: Crumb[], locale: Locale = "en") {
   return {
     type: "application/ld+json" as const,
     children: JSON.stringify({
@@ -127,7 +130,23 @@ export function breadcrumbLd(crumbs: Crumb[]) {
         "@type": "ListItem",
         position: i + 1,
         name: c.name,
-        item: abs(c.path),
+        item: langUrl(c.path, locale),
+      })),
+    }),
+  };
+}
+
+/** FAQPage JSON-LD from plain question / answer pairs. */
+export function faqLd(items: { question: string; answer: string }[]) {
+  return {
+    type: "application/ld+json" as const,
+    children: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: items.map((i) => ({
+        "@type": "Question",
+        name: i.question,
+        acceptedAnswer: { "@type": "Answer", text: i.answer },
       })),
     }),
   };
@@ -171,6 +190,11 @@ const OG_LOCALE: Record<Locale, string> = {
   fr: "fr_FR",
   nl: "nl_NL",
 };
+
+/** Open Graph locale string for a language ("de" -> "de_DE"). */
+export function ogLocaleTag(locale: Locale): string {
+  return OG_LOCALE[locale];
+}
 
 /**
  * Meta + links for a public page, written in the language the URL asks for.

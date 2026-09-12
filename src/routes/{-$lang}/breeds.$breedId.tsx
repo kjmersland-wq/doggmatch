@@ -21,7 +21,41 @@ import { FitPanel } from "@/components/dogmatch/fit-panel";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { relatedBreeds } from "@/lib/breeds/related";
-import { abs, breadcrumbLd, jsonLd, headLocale, langUrl, noUrl, plUrl } from "@/lib/seo";
+import {
+  abs,
+  breadcrumbLd,
+  jsonLd,
+  headLocale,
+  langUrl,
+  seoLinks,
+  ogLocaleTag,
+  type Locale,
+} from "@/lib/seo";
+
+/** The short "what this page covers" descriptor used in the title and the H1. */
+const breedDescriptor: Record<Locale, string> = {
+  en: "temperament & daily life",
+  no: "vesen og hverdag",
+  pl: "charakter i codzienność",
+  dk: "temperament og hverdag",
+  se: "temperament och vardag",
+  fi: "luonne ja arki",
+  de: "Wesen, Haltung & Alltag",
+  fr: "tempérament et quotidien",
+  nl: "karakter en dagelijks leven",
+};
+
+const breadcrumbBreeds: Record<Locale, string> = {
+  en: "Breeds",
+  no: "Raser",
+  pl: "Rasy",
+  dk: "Racer",
+  se: "Raser",
+  fi: "Rodut",
+  de: "Rassen",
+  fr: "Races",
+  nl: "Rassen",
+};
 import { ShareBar } from "@/components/dogmatch/share";
 
 const pageCopy = {
@@ -284,7 +318,7 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
     const path = `/breeds/${params.breedId}`;
     const locale = headLocale(ctx);
     const name = loaderData.content.displayName;
-    const title = `${name} — what they're really like to live with | DoggMatch`;
+    const title = `${name} – ${breedDescriptor[locale]} | DoggMatch`;
     const description = loaderData.content.summary;
     const image = abs(breedImages[loaderData.breed.id] ?? "/og-en.jpg");
     return {
@@ -295,25 +329,26 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: langUrl(path, locale) },
+        { property: "og:locale", content: ogLocaleTag(locale) },
         { property: "og:image", content: image },
-        { property: "og:image:alt", content: `${name} — DoggMatch breed profile` },
+        { property: "og:image:alt", content: `${name} — DoggMatch` },
+        { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
         { name: "twitter:image", content: image },
       ],
-      links: [
-        { rel: "canonical", href: langUrl(path, locale) },
-        { rel: "alternate", hrefLang: "en", href: abs(path) },
-        { rel: "alternate", hrefLang: "nb-NO", href: noUrl(path) },
-        { rel: "alternate", hrefLang: "pl-PL", href: plUrl(path) },
-        { rel: "alternate", hrefLang: "x-default", href: abs(path) },
-      ],
+      links: seoLinks(path).map((l) =>
+        l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
+      ),
       scripts: [
-        breadcrumbLd([
-          { name: "DoggMatch", path: "/" },
-          { name: "Breeds", path: "/breeds" },
-          { name, path: `/breeds/${params.breedId}` },
-        ]),
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: breadcrumbBreeds[locale], path: "/breeds" },
+            { name, path: `/breeds/${params.breedId}` },
+          ],
+          locale,
+        ),
         jsonLd({
           "@type": "Article",
           headline: title,
@@ -361,6 +396,7 @@ const labels = {
 function BreedDetail() {
   const t = useT();
   const c = useCopy(pageCopy);
+  const descriptor = useCopy(breedDescriptor);
   const profile = useMatchProfile();
   const { breed } = Route.useLoaderData();
   const content = breedContent()[breed.id];
@@ -424,7 +460,12 @@ function BreedDetail() {
               {breedGroupLabel(breed.group)} · {breedOriginLabel(breed.origin)}
             </Eyebrow>
             <div className="mt-6 flex items-start justify-between gap-4">
-              <h1 className="display-xl">{content.displayName}</h1>
+              <h1 className="display-xl">
+                {content.displayName}
+                <span className="mt-2 block font-display text-base font-normal tracking-tight text-muted-foreground">
+                  {descriptor}
+                </span>
+              </h1>
               <ShareBar compact className="mt-1 shrink-0" />
             </div>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">

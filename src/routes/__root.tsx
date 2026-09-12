@@ -213,7 +213,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "WebSite",
           name: "DoggMatch",
           url: "https://www.doggmatch.com/",
-          inLanguage: ["en", "nb-NO", "pl-PL"],
+          inLanguage: ["en", "nb-NO", "pl-PL", "da-DK", "sv-SE", "fi-FI", "de-DE", "fr-FR", "nl-NL"],
+          potentialAction: {
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: "https://www.doggmatch.com/breeds?q={search_term_string}",
+            },
+            "query-input": "required name=search_term_string",
+          },
           description:
             "A friendly, honest way to work out which dog would really suit your life.",
           publisher: {
