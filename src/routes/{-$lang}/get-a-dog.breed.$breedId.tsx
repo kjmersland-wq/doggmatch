@@ -185,6 +185,72 @@ const copy = {
     profileCta: "Koko rotuprofiili",
     costsCta: "Kustannukset kokonaisuudessaan",
   },
+  de: {
+    eyebrow: "Ich interessiere mich — was sollte ich wissen?",
+    heading: (name: string) => `Bereit werden für einen ${name}.`,
+    intro:
+      "Alles unten stammt aus den eigenen Merkmalen dieser Rasse in unserer Bibliothek — was sie Woche für Woche von dir verlangt, " +
+      "einschließlich der Dinge, von denen sich Menschen wünschen, sie hätten sie vorher gewusst.",
+    askEyebrow: "Was dieser Hund von dir verlangen wird",
+    askTitle: "Ehrlich gesagt, Woche für Woche.",
+    moneyEyebrow: "Das Geld",
+    moneyTitle: (name: string) => `Was ein ${name} in der Regel kostet`,
+    moneyBody:
+      "Pro Jahr, sobald er sich eingelebt hat — Futter, Versicherung, routinemäßige Tierarztkosten und Pflege. Bewusst breit gefasst: " +
+      "Preise unterscheiden sich enorm nach Land und Stadt, und dies ist kein Angebot.",
+    noticeTitle: "Bevor du Ja sagst",
+    noticeBody:
+      "Triff den Hund wenn möglich mehr als einmal, an einem ganz normalen Tag statt an einem besonderen. " +
+      "Frag, wie er um sechs Uhr morgens und um zehn Uhr abends ist. Die ehrliche Antwort darauf " +
+      "sagt dir mehr als jede Rassebeschreibung, auch diese hier.",
+    prepareCta: "Mein Zuhause vorbereiten",
+    profileCta: "Das vollständige Rasseprofil",
+    costsCta: "Kosten im Detail",
+  },
+  fr: {
+    eyebrow: "Je suis intéressé — que devrais-je savoir ?",
+    heading: (name: string) => `Se préparer pour un ${name}.`,
+    intro:
+      "Tout ce qui suit provient des traits propres à cette race dans notre bibliothèque — ce qu'elle vous demandera " +
+      "semaine après semaine, y compris ce que les gens auraient aimé savoir à l'avance.",
+    askEyebrow: "Ce que ce chien vous demandera",
+    askTitle: "Honnêtement, semaine après semaine.",
+    moneyEyebrow: "L'argent",
+    moneyTitle: (name: string) => `Ce que coûte généralement un ${name}`,
+    moneyBody:
+      "Par an, une fois qu'il est installé — nourriture, assurance, soins vétérinaires courants et toilettage. Volontairement large : " +
+      "les prix varient énormément selon le pays et la ville, et ceci n'est pas un devis.",
+    noticeTitle: "Avant de dire oui",
+    noticeBody:
+      "Rencontrez le chien plus d'une fois si possible, un jour ordinaire plutôt qu'un jour spécial. " +
+      "Demandez comment il est à six heures du matin et à dix heures du soir. La réponse honnête à cette " +
+      "question vous en dira plus que n'importe quelle description de race, y compris celle-ci.",
+    prepareCta: "Préparer ma maison",
+    profileCta: "Le profil complet de la race",
+    costsCta: "Les coûts en détail",
+  },
+  nl: {
+    eyebrow: "Ik ben geïnteresseerd — wat moet ik weten?",
+    heading: (name: string) => `Je klaarmaken voor een ${name}.`,
+    intro:
+      "Alles hieronder komt uit de eigen eigenschappen van dit ras in onze bibliotheek — wat het week na week " +
+      "van je zal vragen, inclusief de dingen waarvan mensen achteraf wensten dat ze ze eerder wisten.",
+    askEyebrow: "Wat deze hond van je zal vragen",
+    askTitle: "Eerlijk gezegd, week na week.",
+    moneyEyebrow: "Het geld",
+    moneyTitle: (name: string) => `Wat een ${name} doorgaans kost`,
+    moneyBody:
+      "Per jaar, zodra hij is ingeburgerd — voeding, verzekering, routine dierenartszorg en verzorging. Bewust breed: " +
+      "prijzen verschillen enorm per land en stad, en dit is geen offerte.",
+    noticeTitle: "Voordat je ja zegt",
+    noticeBody:
+      "Ontmoet de hond meer dan eens als je kunt, op een gewone dag in plaats van een bijzondere. " +
+      "Vraag hoe hij is om zes uur 's ochtends en om tien uur 's avonds. Het eerlijke antwoord op die " +
+      "vraag vertelt je meer dan welke rassenbeschrijving dan ook, ook deze.",
+    prepareCta: "Mijn huis klaarmaken",
+    profileCta: "Het volledige rasprofiel",
+    costsCta: "Kosten in detail",
+  },
 } as const;
 
 function BreedPrepPage() {
