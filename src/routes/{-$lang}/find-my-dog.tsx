@@ -378,42 +378,42 @@ const description =
 const seoCopy = {
   en: { title, description },
   no: {
-    title: "Finn min hund — gratis match på cirka to minutter | DoggMatch",
+    title: "Finn min hund — gratis match på to minutter | DoggMatch",
     description:
       "Svar på noen vennlige spørsmål om dagene dine, hjemmet ditt og hva du håper på, så viser vi deg hundene som kan passe deg best.",
   },
   pl: {
-    title: "Znajdź mojego psa — darmowe dopasowanie w około dwie minuty | DoggMatch",
+    title: "Znajdź psa — darmowe dopasowanie w 2 minuty | DoggMatch",
     description:
       "Odpowiedz na kilka przyjaznych pytań o swoje dni, dom i oczekiwania, a pokażemy Ci psy, które mogą pasować Ci najlepiej.",
   },
   dk: {
-    title: "Find min hund — gratis match på cirka to minutter | DoggMatch",
+    title: "Find min hund — gratis match på to minutter | DoggMatch",
     description:
       "Svar på nogle venlige spørgsmål om dine dage, dit hjem og hvad du håber på, så viser vi dig de hunde, der kan passe dig bedst.",
   },
   se: {
-    title: "Hitta min hund — gratis match på cirka två minuter | DoggMatch",
+    title: "Hitta min hund — gratis match på två minuter | DoggMatch",
     description:
       "Svara på några vänliga frågor om dina dagar, ditt hem och vad du hoppas på, så visar vi dig hundarna som kan passa dig bäst.",
   },
   fi: {
-    title: "Löydä koirani — ilmainen täsmäys noin kahdessa minuutissa | DoggMatch",
+    title: "Löydä koirani — ilmainen täsmäys 2 minuutissa | DoggMatch",
     description:
       "Vastaa muutamaan ystävälliseen kysymykseen päivistäsi, kodistasi ja toiveistasi, niin näytämme sinulle koirat, jotka voisivat sopia sinulle parhaiten.",
   },
   de: {
-    title: "Finde meinen Hund — kostenloses Match in etwa zwei Minuten | DoggMatch",
+    title: "Finde meinen Hund — Match in zwei Minuten | DoggMatch",
     description:
       "Beantworte ein paar freundliche Fragen zu deinem Alltag, deinem Zuhause und deinen Wünschen, und wir zeigen dir die Hunde, die am besten zu dir passen könnten.",
   },
   fr: {
-    title: "Trouver mon chien — un match gratuit en environ deux minutes | DoggMatch",
+    title: "Trouver mon chien — match gratuit en 2 minutes | DoggMatch",
     description:
       "Réponds à quelques questions simples sur ton quotidien, ton logement et tes envies, et nous te montrerons les chiens qui pourraient le mieux te convenir.",
   },
   nl: {
-    title: "Vind mijn hond — gratis match in ongeveer twee minuten | DoggMatch",
+    title: "Vind mijn hond — gratis match in 2 minuten | DoggMatch",
     description:
       "Beantwoord een paar vriendelijke vragen over je dagen, je huis en je wensen, en we laten je de honden zien die het beste bij je zouden kunnen passen.",
   },
