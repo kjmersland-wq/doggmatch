@@ -116,8 +116,11 @@ export const noindexMeta = [
 
 export type Crumb = { name: string; path: string };
 
-/** BreadcrumbList JSON-LD for deeper pages. */
-export function breadcrumbLd(crumbs: Crumb[]) {
+/**
+ * BreadcrumbList JSON-LD for deeper pages. Pass the locale so the trail
+ * points at the localized route paths (/no/breeds/..., /de/breeds/...).
+ */
+export function breadcrumbLd(crumbs: Crumb[], locale: Locale = "en") {
   return {
     type: "application/ld+json" as const,
     children: JSON.stringify({
@@ -127,7 +130,23 @@ export function breadcrumbLd(crumbs: Crumb[]) {
         "@type": "ListItem",
         position: i + 1,
         name: c.name,
-        item: abs(c.path),
+        item: langUrl(c.path, locale),
+      })),
+    }),
+  };
+}
+
+/** FAQPage JSON-LD from plain question / answer pairs. */
+export function faqLd(items: { question: string; answer: string }[]) {
+  return {
+    type: "application/ld+json" as const,
+    children: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: items.map((i) => ({
+        "@type": "Question",
+        name: i.question,
+        acceptedAnswer: { "@type": "Answer", text: i.answer },
       })),
     }),
   };
