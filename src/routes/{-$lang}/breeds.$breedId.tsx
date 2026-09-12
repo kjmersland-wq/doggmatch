@@ -21,7 +21,42 @@ import { FitPanel } from "@/components/dogmatch/fit-panel";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { relatedBreeds } from "@/lib/breeds/related";
-import { abs, breadcrumbLd, jsonLd, headLocale, langUrl, noUrl, plUrl } from "@/lib/seo";
+import {
+  abs,
+  breadcrumbLd,
+  jsonLd,
+  headLocale,
+  langUrl,
+  seoLinks,
+  ogLocaleTag,
+  ogLocaleAlternates,
+  type Locale,
+} from "@/lib/seo";
+
+/** The short "what this page covers" descriptor used in the title and the H1. */
+const breedDescriptor: Record<Locale, string> = {
+  en: "temperament & daily life",
+  no: "vesen og hverdag",
+  pl: "charakter i codzienność",
+  dk: "temperament og hverdag",
+  se: "temperament och vardag",
+  fi: "luonne ja arki",
+  de: "Wesen, Haltung & Alltag",
+  fr: "tempérament et quotidien",
+  nl: "karakter en dagelijks leven",
+};
+
+const breadcrumbBreeds: Record<Locale, string> = {
+  en: "Breeds",
+  no: "Raser",
+  pl: "Rasy",
+  dk: "Racer",
+  se: "Raser",
+  fi: "Rodut",
+  de: "Rassen",
+  fr: "Races",
+  nl: "Rassen",
+};
 import { ShareBar } from "@/components/dogmatch/share";
 
 const pageCopy = {
