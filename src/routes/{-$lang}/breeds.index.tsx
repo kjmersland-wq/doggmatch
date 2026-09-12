@@ -114,7 +114,10 @@ const pageCopy = {
 function BreedsPage() {
   const t = useT();
   const c = useCopy(pageCopy);
-  const [query, setQuery] = useState("");
+  // A ?q= in the address bar pre-fills the search, so a search engine (or a
+  // shared link) can point straight at a breed someone is looking for.
+  const { q } = Route.useSearch();
+  const [query, setQuery] = useState(q ?? "");
   const filtered = breeds.filter((b) =>
     breedContent()[b.id].displayName.toLowerCase().includes(query.trim().toLowerCase()),
   );
