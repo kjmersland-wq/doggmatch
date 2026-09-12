@@ -95,6 +95,36 @@ const copy = {
     everything: "Kaikki",
     empty: "Mikään ei vielä vastaa tätä. Kokeile toista sanaa tai tyhjennä suodattimet.",
   },
+  de: {
+    eyebrow: "Die Bibliothek",
+    title: "Jede Lektion, an einem ruhigen Ort.",
+    intro: "Fang an, wo du willst. Jede Lektion ist kurz, und du kannst so oft zurückkommen, wie du möchtest.",
+    searchPlaceholder: "Woran möchtest du arbeiten?",
+    searchAria: "Lektionen durchsuchen",
+    allLevels: "Alle Stufen",
+    everything: "Alles",
+    empty: "Dazu passt hier noch nichts. Probier ein anderes Wort, oder setz die Filter zurück.",
+  },
+  fr: {
+    eyebrow: "La bibliothèque",
+    title: "Toutes les leçons, réunies au calme.",
+    intro: "Commencez où vous voulez. Chaque leçon est courte, et vous pouvez y revenir autant de fois que vous le souhaitez.",
+    searchPlaceholder: "Sur quoi aimeriez-vous travailler ?",
+    searchAria: "Rechercher des leçons",
+    allLevels: "Tous les niveaux",
+    everything: "Tout",
+    empty: "Rien ne correspond encore à cela. Essayez un autre mot, ou réinitialisez les filtres.",
+  },
+  nl: {
+    eyebrow: "De bibliotheek",
+    title: "Alle lessen, op één rustige plek.",
+    intro: "Begin waar je wilt. Elke les is kort, en je kunt er zo vaak op teruggrijpen als je wilt.",
+    searchPlaceholder: "Waar wil je aan werken?",
+    searchAria: "Lessen doorzoeken",
+    allLevels: "Alle niveaus",
+    everything: "Alles",
+    empty: "Hier past nog niets bij. Probeer een ander woord, of wis de filters.",
+  },
 } as const;
 
 function LibraryPage() {

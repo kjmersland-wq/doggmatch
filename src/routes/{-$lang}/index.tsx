@@ -72,6 +72,24 @@ const traitCopy = {
     shedding: "Karvanlähtö",
     apartmentSuitability: "Kerrostaloon sopivuus",
   },
+  de: {
+    energy: "Energie",
+    trainability: "Trainierbarkeit",
+    shedding: "Fellwechsel",
+    apartmentSuitability: "Wohnungstauglichkeit",
+  },
+  fr: {
+    energy: "Énergie",
+    trainability: "Facilité de dressage",
+    shedding: "Perte de poils",
+    apartmentSuitability: "Adapté à l'appartement",
+  },
+  nl: {
+    energy: "Energie",
+    trainability: "Leerbaarheid",
+    shedding: "Vachtverlies",
+    apartmentSuitability: "Geschikt voor appartement",
+  },
 } as const;
 
 const localCopy = {

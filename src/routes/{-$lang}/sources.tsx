@@ -36,6 +36,21 @@ const seoCopy = {
     description:
       "Mistä DoggMatchin tiedot ovat peräisin: eläinlääketieteelliset järjestöt, kennelliitot, viranomaiset ja eläinsuojelujärjestöt — ja tarkalleen, miten täsmäys lasketaan.",
   },
+  de: {
+    title: "Quellen und Methodik — DoggMatch",
+    description:
+      "Woher die Informationen von DoggMatch stammen: tierärztliche Fachverbände, Zuchtverbände, Behörden und Tierschutzorganisationen — und genau, wie unsere Matching-Berechnung funktioniert.",
+  },
+  fr: {
+    title: "Sources et méthodologie — DoggMatch",
+    description:
+      "D'où viennent les informations de DoggMatch : organismes vétérinaires, clubs canins, autorités et associations de protection animale — et le fonctionnement exact de notre calcul de compatibilité.",
+  },
+  nl: {
+    title: "Bronnen en methodologie — DoggMatch",
+    description:
+      "Waar de informatie van DoggMatch vandaan komt: diergeneeskundige organisaties, kennelclubs, overheden en dierenwelzijnsorganisaties — en precies hoe onze matchberekening werkt.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/sources")({
@@ -397,6 +412,183 @@ const copy = {
     addBody:
       "Jos löydät väitteen, jota ei ole tuettu, tai lähteen, joka on siirtynyt tai muuttunut, kerro meille — korjaamme sen. Korjaukset ovat aina tervetulleita.",
     contact: "Lähetä meille korjaus",
+  },
+  de: {
+    eyebrow: "Transparenz",
+    h1: "Woher unsere Informationen stammen",
+    intro:
+      "Wir zeigen lieber unsere Hausaufgaben, als klug zu klingen. Alles Faktische auf DoggMatch stammt von namentlich genannten Organisationen, die du selbst überprüfen kannst, und alles, was wir selbst berechnen, ist einfache Mathematik, die wir gerne erklären.",
+    reviewed: "Gesamtes Verzeichnis zuletzt geprüft",
+    twoKinds: "Zwei verschiedene Arten von Informationen",
+    externalTitle: "Wissen von anderen",
+    externalBody:
+      "Rassestandards, Gesundheits- und Ernährungshinweise, Tierschutzregeln und Einreisebestimmungen stammen von tierärztlichen Organisationen, veröffentlichter Forschung, staatlichen Behörden, anerkannten Zuchtverbänden und etablierten Tierschutzorganisationen. Sie sind unten nach Thema aufgeführt, mit einem Link zur gelesenen Seite und dem Datum unserer letzten Prüfung.",
+    ownTitle: "Berechnungen, die von uns stammen",
+    ownBody:
+      "Match-Prozentsätze, Portionsschätzungen, Wochenrhythmen und Bereitschaftswerte entstehen aus unserem eigenen deterministischen Code. Dieselben Antworten ergeben immer dasselbe Ergebnis — Kein KI-Raten, keine Blackbox – transparente, feste Regeln. Keine persönlichen Daten verlassen dabei dein Gerät.",
+    methodTitle: "So funktioniert das Matching wirklich",
+    stageWord: "Schritt",
+    stages: [
+      {
+        t: "Deine Lebensstil-Angaben",
+        b: "Wohnsituation, Stunden allein, Aktivitätslevel, Erfahrung und Details im Haushalt wie Kinder, andere Haustiere, Fellwechsel und Allergien.",
+      },
+      {
+        t: "Ausschluss nach Ausschlusskriterien",
+        b: "Schwere Allergien, unpassende Wohnungsgrößen und lange Zeiten allein werden zuerst geprüft. Markiere selbst eines davon als Ausschlusskriterium, und eine Rasse, die es überschreitet, fällt komplett aus deinen Ergebnissen — nicht nur schlechter bewertet.",
+      },
+      {
+        t: "Deterministische Mehrfach-Bewertung",
+        b: "Jede verbleibende Rasse wird in allen 9 realen Dimensionen bewertet — Lebensstil, Zuhause, Aktivität, Temperament, Trainierbarkeit, Gesellschaft, Allergie, Wohlbefinden und Pflege — und dann mit festen Gewichtungen kombiniert.",
+      },
+      {
+        t: "Transparenter Bericht zu Passung und Kompromissen",
+        b: "Du siehst genau, was zu deinen Antworten passt und was nicht, nebeneinander — nie nur eine einzelne, undurchsichtige Zahl.",
+      },
+    ],
+    calloutEyebrow: "Ein Ausschlusskriterium in der Praxis",
+    calloutTitle: "Warum ein Border Collie bei 6+ Stunden allein ausgeschlossen werden kann",
+    calloutBody:
+      "Ein Border Collie punktet meist hervorragend bei Aktivität und Trainierbarkeit — aber seine Toleranz fürs Alleinsein ist gering. Markiere „Stunden allein\" als Ausschlusskriterium, und ein langer Tag allein schließt ihn komplett aus, egal wie gut er sonst abschneidet.",
+    calloutTrait1: "Hoher Aktivitätswert",
+    calloutTrait2: "Hoher Trainierbarkeitswert",
+    calloutEliminated: "Trotzdem ausgeschlossen",
+    limitsTitle: "Was eine Match-Prozentzahl ist — und was nicht",
+    limits:
+      "Eine DoggMatch-Prozentzahl ist eine algorithmische Kompatibilitätseinschätzung, basierend auf strukturierten Rassedaten und deinen Antworten. Sie ist keine wissenschaftliche Vorhersage, kein Maß für einen einzelnen Hund, und sie beansprucht keine Gewissheit. Hunde sind Individuen; zwei Hunde derselben Rasse können sehr unterschiedlich leben. Bei einem Hund, den du bereits kennst, bewerten wir die eigenen beobachteten Eigenschaften des Hundes statt Annahmen über seine Rasse.",
+    vetTitle: "Wir sind nicht dein Tierarzt",
+    vetBody:
+      "DoggMatch bietet allgemeine Aufklärung über das Leben mit Hund. Wir stellen keine Diagnosen, behandeln nicht und verschreiben nichts, und wir ersetzen nie den Rat eines qualifizierten Tierarztes, einer Verhaltenstherapeutin oder eines Trainers, der deinen Hund kennt. Wenn dich etwas beunruhigt, ruf deinen Tierarzt an — und im Notfall geh direkt hin.",
+    borderTitle: "Reisebestimmungen ändern sich",
+    borderBody:
+      "Grenz- und Einfuhrbestimmungen werden von Behörden festgelegt und können sich kurzfristig ändern. Wir verlinken zur zuständigen Behörde jedes Landes und sagen klar, wenn wir für eine Route keine geprüfte Regel vorliegen haben, statt zu raten.",
+    registryTitle: "Das Quellenverzeichnis",
+    registryBody:
+      "Nach Thema geordnet. Jeder Eintrag verlinkt zur Originalquelle. Neue Quellen und Prüfdaten werden hier ergänzt, während die Seite wächst.",
+    usedOn: "Verwendet auf",
+    reviewedShort: "Geprüft",
+    addTitle: "Etwas Falsches entdeckt?",
+    addBody:
+      "Wenn du eine unbelegte Behauptung findest oder eine Quelle, die umgezogen oder verändert wurde, sag uns Bescheid, und wir korrigieren es. Korrekturen sind jederzeit willkommen.",
+    contact: "Sende uns eine Korrektur",
+  },
+  fr: {
+    eyebrow: "Transparence",
+    h1: "D'où viennent nos informations",
+    intro:
+      "Nous préférons montrer nos calculs plutôt que de paraître savants. Tout ce qui est factuel sur DoggMatch provient d'organisations nommées que tu peux vérifier toi-même, et tout ce que nous calculons nous-mêmes est de l'arithmétique simple que nous expliquons volontiers.",
+    reviewed: "Registre complet mis à jour pour la dernière fois",
+    twoKinds: "Deux types d'informations différents",
+    externalTitle: "Connaissances venant d'ailleurs",
+    externalBody:
+      "Les standards de race, les conseils de santé et de nutrition, les règles de bien-être et les exigences frontalières proviennent d'organisations vétérinaires, de recherches publiées, d'autorités gouvernementales, de clubs canins reconnus et d'associations de protection animale établies. Elles sont listées ci-dessous, par sujet, avec un lien vers la page consultée et la date de notre dernière vérification.",
+    ownTitle: "Des calculs qui nous appartiennent",
+    ownBody:
+      "Les pourcentages de compatibilité, les estimations de portions, les rythmes hebdomadaires et les scores de préparation sont produits par notre propre code déterministe. Les mêmes réponses donnent toujours le même résultat — Pas d'estimation opaque par IA – des règles claires et transparentes. Aucune donnée personnelle ne quitte ton appareil pour les calculer.",
+    methodTitle: "Comment fonctionne réellement le matching",
+    stageWord: "Étape",
+    stages: [
+      {
+        t: "Tes informations de style de vie",
+        b: "Espace de vie, heures seul, niveau d'activité, expérience et détails du foyer comme les enfants, les autres animaux, la mue et les allergies.",
+      },
+      {
+        t: "Élimination des critères rédhibitoires",
+        b: "Les allergies sévères, l'incompatibilité avec un appartement et les longues journées seul sont vérifiées en premier. Marque toi-même l'un de ces éléments comme critère rédhibitoire, et une race qui le dépasse est totalement retirée de tes résultats — pas seulement moins bien notée.",
+      },
+      {
+        t: "Notation déterministe multi-vecteurs",
+        b: "Chaque race restante est notée sur les 9 dimensions réelles — style de vie, logement, activité, tempérament, aptitude à l'éducation, compagnie, allergie, bien-être et entretien — puis combinée avec des pondérations fixes.",
+      },
+      {
+        t: "Rapport transparent des correspondances et compromis",
+        b: "Tu vois exactement ce qui correspond à tes réponses et ce qui ne correspond pas, côte à côte — jamais juste un seul chiffre opaque.",
+      },
+    ],
+    calloutEyebrow: "Un critère rédhibitoire en pratique",
+    calloutTitle: "Pourquoi un Border Collie peut être éliminé pour une journée de plus de 6 heures seul",
+    calloutBody:
+      "Un Border Collie obtient généralement d'excellents scores en activité et en aptitude à l'éducation — mais sa tolérance à la solitude est faible. Marque « heures seul » comme critère rédhibitoire, et une longue journée seul l'exclut complètement, quelle que soit sa performance ailleurs.",
+    calloutTrait1: "Score d'activité élevé",
+    calloutTrait2: "Score d'aptitude à l'éducation élevé",
+    calloutEliminated: "Éliminé malgré tout",
+    limitsTitle: "Ce qu'est un pourcentage de compatibilité — et ce qu'il n'est pas",
+    limits:
+      "Un pourcentage DoggMatch est une évaluation algorithmique de compatibilité, fondée sur des données de race structurées et les réponses que tu nous as données. Ce n'est pas une prédiction scientifique, ni une mesure d'un chien en particulier, et cela ne prétend à aucune certitude. Les chiens sont des individus ; deux chiens de la même race peuvent vivre très différemment. Pour un chien que tu connais déjà, nous évaluons ses propres caractéristiques observées plutôt que des suppositions sur sa race.",
+    vetTitle: "Nous ne sommes pas ton vétérinaire",
+    vetBody:
+      "DoggMatch propose une éducation générale sur la vie avec un chien. Nous ne diagnostiquons pas, ne traitons pas, ne prescrivons pas, et nous ne remplaçons jamais les conseils d'un vétérinaire qualifié, d'un comportementaliste vétérinaire ou d'un éducateur qui a rencontré ton chien. Si quelque chose t'inquiète, appelle ton vétérinaire — et en cas d'urgence, rends-toi directement sur place.",
+    borderTitle: "Les règles de voyage changent",
+    borderBody:
+      "Les exigences frontalières et d'importation sont fixées par les gouvernements et peuvent changer sans grand préavis. Nous renvoyons vers l'autorité de chaque pays et te disons clairement quand nous n'avons pas de règle vérifiée pour un trajet, plutôt que de deviner.",
+    registryTitle: "Le registre des sources",
+    registryBody:
+      "Organisé par sujet. Chaque entrée renvoie vers la source d'origine. De nouvelles sources et dates de vérification sont ajoutées ici à mesure que le site évolue.",
+    usedOn: "Utilisé sur",
+    reviewedShort: "Vérifié",
+    addTitle: "Tu as repéré une erreur ?",
+    addBody:
+      "Si tu trouves une affirmation non étayée, ou une source qui a déménagé ou changé, dis-le-nous et nous la corrigerons. Les corrections sont toujours les bienvenues.",
+    contact: "Envoie-nous une correction",
+  },
+  nl: {
+    eyebrow: "Transparantie",
+    h1: "Waar onze informatie vandaan komt",
+    intro:
+      "We laten liever ons huiswerk zien dan slim te klinken. Alles wat feitelijk is op DoggMatch komt van met naam genoemde organisaties die je zelf kunt controleren, en alles wat we zelf berekenen is eenvoudige rekenkunde die we graag uitleggen.",
+    reviewed: "Volledig register laatst gecontroleerd",
+    twoKinds: "Twee soorten informatie",
+    externalTitle: "Kennis van anderen",
+    externalBody:
+      "Rasstandaarden, gezondheids- en voedingsadvies, welzijnsregels en grensvereisten komen van diergeneeskundige organisaties, gepubliceerd onderzoek, overheidsinstanties, erkende kennelclubs en gevestigde dierenwelzijnsorganisaties. Ze staan hieronder per onderwerp, met een link naar de pagina die we hebben gelezen en de datum waarop we deze voor het laatst hebben gecontroleerd.",
+    ownTitle: "Berekeningen die van ons zijn",
+    ownBody:
+      "Matchpercentages, portieschattingen, weekritmes en gereedheidsscores worden geproduceerd door onze eigen deterministische code. Dezelfde antwoorden geven altijd hetzelfde resultaat — Geen giswerk, geen zwarte doos van AI – heldere, vaste regels. Er verlaat geen persoonlijke data je apparaat om ze te berekenen.",
+    methodTitle: "Zo werkt de matching echt",
+    stageWord: "Stap",
+    stages: [
+      {
+        t: "Jouw leefstijlgegevens",
+        b: "Woonruimte, uren alleen, activiteitsniveau, ervaring en huishoudelijke details zoals kinderen, andere huisdieren, vachtverlies en allergieën.",
+      },
+      {
+        t: "Uitsluiting op basis van ononderhandelbare criteria",
+        b: "Ernstige allergieën, een niet-passend appartement en lange dagen alleen worden eerst gecontroleerd. Markeer er zelf een als ononderhandelbaar criterium, en een ras dat dit overschrijdt wordt volledig uit je resultaten verwijderd — niet alleen lager gescoord.",
+      },
+      {
+        t: "Deterministische multidimensionale score",
+        b: "Elk overgebleven ras wordt gescoord op alle 9 echte dimensies — levensstijl, huis, activiteit, temperament, trainbaarheid, gezelschap, allergie, welzijn en verzorging — en vervolgens gecombineerd met vaste gewichten.",
+      },
+      {
+        t: "Transparant rapport over match en afwegingen",
+        b: "Je ziet precies wat overeenkwam met je antwoorden en wat niet, naast elkaar — nooit slechts één ondoorzichtig getal.",
+      },
+    ],
+    calloutEyebrow: "Een ononderhandelbaar criterium in de praktijk",
+    calloutTitle: "Waarom een Border Collie kan worden uitgesloten bij 6+ uur alleen",
+    calloutBody:
+      "Een Border Collie scoort meestal uitstekend op activiteit en trainbaarheid — maar heeft weinig tolerantie voor alleen zijn. Markeer \"uren alleen\" als ononderhandelbaar criterium, en een lange dag alleen sluit hem volledig uit, hoe goed hij ook elders scoort.",
+    calloutTrait1: "Hoge activiteitsscore",
+    calloutTrait2: "Hoge trainbaarheidsscore",
+    calloutEliminated: "Nog steeds uitgesloten",
+    limitsTitle: "Wat een matchpercentage is — en niet is",
+    limits:
+      "Een DoggMatch-percentage is een algoritmische compatibiliteitsbeoordeling, gebaseerd op gestructureerde rasgegevens en de antwoorden die je ons hebt gegeven. Het is geen wetenschappelijke voorspelling, geen meting van een individuele hond, en het claimt geen zekerheid. Honden zijn individuen; twee honden van hetzelfde ras kunnen heel verschillend leven. Voor een hond die je al kent, scoren we de eigen waargenomen eigenschappen van de hond in plaats van aannames over het ras.",
+    vetTitle: "Wij zijn niet je dierenarts",
+    vetBody:
+      "DoggMatch biedt algemene educatie over het leven met een hond. We stellen geen diagnoses, behandelen niet en schrijven niets voor, en we vervangen nooit het advies van een gekwalificeerde dierenarts, diergedragstherapeut of trainer die je hond heeft ontmoet. Als iets je zorgen baart, bel dan je dierenarts — en ga bij een noodgeval direct daarheen.",
+    borderTitle: "Reisregels veranderen",
+    borderBody:
+      "Grens- en importvereisten worden vastgesteld door overheden en kunnen op korte termijn veranderen. We linken naar de instantie van elk land en vertellen je duidelijk wanneer we geen geverifieerde regel hebben voor een route, in plaats van te gokken.",
+    registryTitle: "Het bronnenregister",
+    registryBody:
+      "Geordend per onderwerp. Elke vermelding linkt naar de oorspronkelijke bron. Nieuwe bronnen en controledatums worden hier toegevoegd naarmate de site groeit.",
+    usedOn: "Gebruikt op",
+    reviewedShort: "Gecontroleerd",
+    addTitle: "Iets verkeerds gespot?",
+    addBody:
+      "Als je een bewering vindt die niet onderbouwd is, of een bron die verplaatst of veranderd is, laat het ons weten en we lossen het op. Correcties zijn altijd welkom.",
+    contact: "Stuur ons een correctie",
   },
 } as const;
 
