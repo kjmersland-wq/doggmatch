@@ -29,7 +29,6 @@ import {
   langUrl,
   seoLinks,
   ogLocaleTag,
-  ogLocaleAlternates,
   type Locale,
 } from "@/lib/seo";
 
@@ -331,7 +330,6 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
         { property: "og:type", content: "article" },
         { property: "og:url", content: langUrl(path, locale) },
         { property: "og:locale", content: ogLocaleTag(locale) },
-        ...ogLocaleAlternates(locale),
         { property: "og:image", content: image },
         { property: "og:image:alt", content: `${name} — DoggMatch` },
         { name: "twitter:card", content: "summary_large_image" },
