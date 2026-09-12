@@ -5,7 +5,7 @@ import { createFileRoute, notFound, redirect, Outlet } from "@tanstack/react-rou
  * Anything else in this position — /de, /xx, a stray typo — is a real 404,
  * not a silent fall-through to English.
  */
-const LANG_PREFIXES = ["no", "pl", "dk", "se", "fi"] as const;
+const LANG_PREFIXES = ["no", "pl", "dk", "se", "fi", "de", "fr", "nl"] as const;
 type LangPrefix = (typeof LANG_PREFIXES)[number];
 
 function isLangPrefix(value: unknown): value is LangPrefix {

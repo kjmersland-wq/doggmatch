@@ -162,6 +162,72 @@ const copy = {
     createCta: "Luo koirani profiili",
     packCta: "Tulostettava koirapaketti",
   },
+  de: {
+    imgAlt: "Eine Familie sitzt still auf dem Boden, während ein neu angekommener Hund an seinem neuen Bett schnuppert",
+    eyebrow: "Willkommen zu Hause",
+    title: "Der Tag, an dem er einzieht.",
+    intro:
+      "Ruhiger als du dir vorstellst, und langsamer, als dir lieb ist. Genau so soll es sein. Ein neuer Hund braucht am ersten Tag sehr wenig außer Ruhe, Wasser und einem eigenen Platz.",
+    firstDayEyebrow: "Der erste Tag",
+    firstDayTitle: "Sechs Dinge, und nichts weiter.",
+    firstWeekEyebrow: "Die erste Woche",
+    firstWeekTitle: "Dann, ganz sanft, ein Rhythmus.",
+    firstWeekBody:
+      "Die meisten Hunde brauchen zwei bis drei Wochen, um dir zu zeigen, wer sie wirklich sind. Beurteile in den ersten Tagen nichts — weder ihren Appetit, noch ihre Stubenreinheit, noch ihren Charakter.",
+    vetTitle: "Wann du den Tierarzt anrufen solltest",
+    vetBody:
+      "Futterverweigerung über mehr als einen Tag, wiederholtes Erbrechen oder Durchfall, erschwerte Atmung, anhaltende Mattheit oder jedes Anzeichen von Schmerz. Neue Hunde sind oft aufgewühlt — aber du erkennst Krankheit, wenn du sie siehst, und nachzufragen ist nie Zeitverschwendung.",
+    andThen: "Und dann",
+    myDogTitle: "Hier beginnt Mein Hund.",
+    myDogBody:
+      "Alles von hier an — Futter und Portionen, Trainingseinheiten, Gewicht, Tierarztbesuche, Spaziergänge und die ganze Woche — findet sich an einem Ort, gebaut um deinen konkreten Hund. Richte sein Profil ein, und alles, was du uns schon erzählt hast, kommt mit.",
+    createCta: "Meinen Hund anlegen",
+    packCta: "Das druckbare Hundepaket",
+  },
+  fr: {
+    imgAlt: "Une famille assise en silence sur le sol pendant qu'un chien tout juste arrivé renifle son nouveau panier",
+    eyebrow: "Bienvenue à la maison",
+    title: "Le jour de son arrivée.",
+    intro:
+      "Plus calme que vous ne l'imaginez, et plus lent que vous ne le voudriez. C'est exactement ce qu'il faut. Un nouveau chien a besoin de très peu le premier jour, à part du calme, de l'eau et un endroit bien à lui.",
+    firstDayEyebrow: "Le premier jour",
+    firstDayTitle: "Six choses, et rien d'autre.",
+    firstWeekEyebrow: "La première semaine",
+    firstWeekTitle: "Puis, doucement, un rythme.",
+    firstWeekBody:
+      "La plupart des chiens ont besoin de deux ou trois semaines pour vous montrer qui ils sont vraiment. Ne jugez rien les premiers jours — ni leur appétit, ni leur propreté, ni leur caractère.",
+    vetTitle: "Quand appeler le vétérinaire",
+    vetBody:
+      "Refus de manger pendant plus d'un jour, vomissements ou diarrhée répétés, respiration difficile, léthargie qui ne passe pas, ou tout signe de douleur. Les nouveaux chiens sont souvent perturbés — mais vous reconnaîtrez le malaise quand vous le verrez, et demander n'est jamais une perte de temps.",
+    andThen: "Et ensuite",
+    myDogTitle: "C'est ici que commence Mon Chien.",
+    myDogBody:
+      "Tout à partir de maintenant — alimentation et portions, séances d'éducation, poids, visites vétérinaires, promenades et toute la semaine — vit au même endroit, construit autour de votre chien réel. Créez son profil, et tout ce que vous nous avez déjà confié vous suit.",
+    createCta: "Créer mon chien",
+    packCta: "Le Dog Pack imprimable",
+  },
+  nl: {
+    imgAlt: "Een gezin zit stil op de vloer terwijl een net aangekomen hond aan zijn nieuwe mand snuffelt",
+    eyebrow: "Welkom thuis",
+    title: "De dag dat hij aankomt.",
+    intro:
+      "Rustiger dan je je voorstelt, en trager dan je zou willen. Dat klopt precies. Een nieuwe hond heeft de eerste dag heel weinig nodig, behalve rust, water en een eigen plekje.",
+    firstDayEyebrow: "De eerste dag",
+    firstDayTitle: "Zes dingen, en verder niets.",
+    firstWeekEyebrow: "De eerste week",
+    firstWeekTitle: "Dan, voorzichtig, een ritme.",
+    firstWeekBody:
+      "De meeste honden hebben twee tot drie weken nodig om te laten zien wie ze echt zijn. Oordeel de eerste dagen nergens over — niet over eetlust, niet over zindelijkheid, niet over karakter.",
+    vetTitle: "Wanneer de dierenarts bellen",
+    vetBody:
+      "Meer dan een dag geen voer eten, herhaaldelijk braken of diarree, moeizame ademhaling, lusteloosheid die niet overgaat, of enig teken van pijn. Nieuwe honden zijn vaak van slag — maar je herkent ziek zijn wanneer je het ziet, en vragen is nooit tijdverspilling.",
+    andThen: "En dan",
+    myDogTitle: "Hier begint Mijn Hond.",
+    myDogBody:
+      "Alles vanaf hier — voeding en porties, trainingssessies, gewicht, dierenartsbezoeken, wandelingen en de hele week — komt op één plek samen, opgebouwd rond jouw eigen hond. Stel zijn profiel in, en alles wat je ons al hebt verteld gaat mee.",
+    createCta: "Mijn hond aanmaken",
+    packCta: "Het afdrukbare Hondenpakket",
+  },
 } as const;
 
 function WelcomeHomePage() {

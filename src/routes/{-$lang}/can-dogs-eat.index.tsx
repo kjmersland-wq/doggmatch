@@ -39,6 +39,21 @@ const seo = {
     description:
       "Rauhallinen A–Ö-vastaus jokaiselle ruoka-aineelle: pieninä määrinä sopii, ole varovainen, tai älä anna tätä koiralle.",
   },
+  de: {
+    title: "Dürfen Hunde das fressen? A–Z-Liste zur Futtersicherheit | DoggMatch",
+    description:
+      "Eine ruhige A–Z-Antwort für jedes Lebensmittel: in kleinen Mengen unbedenklich, mit Bedacht, oder bitte nicht geben.",
+  },
+  fr: {
+    title: "Les chiens peuvent-ils manger ça ? Liste A–Z des aliments | DoggMatch",
+    description:
+      "Une réponse claire de A à Z pour chaque aliment : sans souci en petite quantité, avec prudence, ou à ne pas donner.",
+  },
+  nl: {
+    title: "Mogen honden dat eten? A–Z-lijst met voedselveiligheid | DoggMatch",
+    description:
+      "Een rustig A–Z-antwoord voor elk voedingsmiddel: prima in kleine hoeveelheden, wees voorzichtig, of geef dit niet.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/can-dogs-eat/")({

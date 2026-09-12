@@ -41,6 +41,21 @@ const seoCopy = {
     description:
       "Millaista jokaisen rodun kanssa oikeasti on elää — niiden energia, turkki, oppiminen ja millainen tavallinen päivä niiden kanssa näyttää.",
   },
+  de: {
+    title: "Hunderassen — ein ehrlicher Blick auf jede einzelne | DoggMatch",
+    description:
+      "Wie das Zusammenleben mit jeder Rasse wirklich ist — ihre Energie, ihr Fell, wie sie lernen und wie ein ganz normaler Tag mit ihnen aussieht.",
+  },
+  fr: {
+    title: "Races de chiens — un regard honnête sur chacune | DoggMatch",
+    description:
+      "À quoi ressemble vraiment la vie avec chaque race — son énergie, son pelage, sa façon d'apprendre et le déroulé d'une journée ordinaire à ses côtés.",
+  },
+  nl: {
+    title: "Hondenrassen — een eerlijke blik op elk ras | DoggMatch",
+    description:
+      "Hoe het echt is om met elk ras samen te leven — hun energie, hun vacht, hoe ze leren en hoe een doodgewone dag met hen eruitziet.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/breeds/")({
@@ -78,6 +93,21 @@ const pageCopy = {
     intro:
       "Deterministinen täsmäysmoottorimme perustuu malliin, joka kattaa yli 250 rotua. Alta löydät ne {count} rotua, jotka olemme toistaiseksi julkaisseet — jokainen arvioitu samalla tavalla ja varustettu täydellä, varmennetulla toimituksellisella profiililla ohuen ominaisuuslistan sijaan.",
     deepDiveBadge: "Toimituksellinen syväsukellus",
+  },
+  de: {
+    intro:
+      "Unsere deterministische Matching-Engine stützt sich auf ein Modell mit über 250 Rassen. Unten findest du die {count}, die wir bisher veröffentlicht haben — jede auf dieselbe Weise geprüft und mit einem vollständigen, verifizierten Redaktionsprofil statt einer dünnen Merkmalsliste.",
+    deepDiveBadge: "Redaktionelle Tiefenrecherche",
+  },
+  fr: {
+    intro:
+      "Notre moteur de matching déterministe s'appuie sur un modèle couvrant plus de 250 races. Voici les {count} que nous avons publiées à ce jour — chacune évaluée selon la même méthode, avec un profil éditorial complet et vérifié plutôt qu'une simple fiche de traits.",
+    deepDiveBadge: "Dossier éditorial approfondi",
+  },
+  nl: {
+    intro:
+      "Onze deterministische matchmachine bouwt op een model dat meer dan 250 rassen omvat. Hieronder vind je de {count} die we tot nu toe hebben gepubliceerd — elk op dezelfde manier beoordeeld en voorzien van een volledig, geverifieerd redactioneel profiel in plaats van een summier kenmerkenblaadje.",
+    deepDiveBadge: "Redactionele verdieping",
   },
 } as const;
 

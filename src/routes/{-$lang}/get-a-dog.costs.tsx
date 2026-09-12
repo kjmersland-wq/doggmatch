@@ -123,6 +123,51 @@ const copy = {
     compareCta: "Vertaile kustannuksia rinnakkain",
     prepareCta: "Valmistele kotisi",
   },
+  de: {
+    eyebrow: "Die Verpflichtung",
+    title: "Was kostet ein Hund wirklich?",
+    intro:
+      "Geld ist der am wenigsten romantische Teil davon, und der Teil, der später am ehesten wehtut. Hier ist die ehrliche Übersicht. Die tatsächlichen Preise unterscheiden sich enorm nach Land, Stadt und Hund.",
+    yourMatch: "Deine Übereinstimmung",
+    runningCostPrefix: "Ungefähre laufende Kosten pro Jahr, sobald der Hund sich eingelebt hat:",
+    runningCostSuffix:
+      "Das ist eine breite Spanne aus unserer Rassenbibliothek, kein Angebot — Preise für Futter, Versicherung und Pflege variieren stark von Land zu Land.",
+    noticeTitle: "Woher die Zahlen kommen",
+    noticeBody:
+      "Jede Rassenseite zeigt eine ungefähre jährliche Kostenspanne für diese Rasse, und Vergleichen stellt zwei oder drei davon nebeneinander. Wir zeigen dir lieber eine breite, ehrliche Spanne als eine genaue Zahl, die sich dort, wo du lebst, als falsch herausstellt.",
+    compareCta: "Kosten nebeneinander vergleichen",
+    prepareCta: "Dein Zuhause vorbereiten",
+  },
+  fr: {
+    eyebrow: "L'engagement",
+    title: "Combien coûte vraiment un chien ?",
+    intro:
+      "L'argent est la partie la moins romantique de tout cela, et celle qui fait le plus souvent mal ensuite. Voici la réalité, en toute honnêteté. Les prix réels varient énormément selon le pays, la ville et le chien.",
+    yourMatch: "Votre correspondance",
+    runningCostPrefix: "Coût de fonctionnement indicatif, par an, une fois qu'il est installé :",
+    runningCostSuffix:
+      "C'est une large fourchette issue de notre bibliothèque de races, pas un devis — les prix de la nourriture, de l'assurance et du toilettage varient beaucoup selon le pays.",
+    noticeTitle: "D'où viennent ces chiffres",
+    noticeBody:
+      "Chaque page de race affiche une fourchette de coût annuel indicatif pour cette race, et Comparer en met deux ou trois côte à côte. Nous préférons vous montrer une fourchette large et honnête plutôt qu'un chiffre précis qui se révélerait faux là où vous vivez.",
+    compareCta: "Comparer les coûts côte à côte",
+    prepareCta: "Préparer votre maison",
+  },
+  nl: {
+    eyebrow: "De verantwoordelijkheid",
+    title: "Wat kost een hond echt?",
+    intro:
+      "Geld is het minst romantische deel hiervan, en het deel dat later het vaakst pijn doet. Hier is het beeld, eerlijk verteld. De werkelijke prijzen verschillen enorm per land, stad en hond.",
+    yourMatch: "Jouw match",
+    runningCostPrefix: "Indicatieve doorlopende kosten, per jaar, zodra de hond is ingeburgerd:",
+    runningCostSuffix:
+      "Dat is een brede marge uit onze rassenbibliotheek, geen offerte — prijzen voor voeding, verzekering en verzorging verschillen sterk per land.",
+    noticeTitle: "Waar de cijfers vandaan komen",
+    noticeBody:
+      "Elke rassenpagina toont een indicatieve jaarlijkse kostenmarge voor dat ras, en Vergelijken zet er twee of drie naast elkaar. We laten liever een brede, eerlijke marge zien dan een precies getal dat op jouw woonplek onjuist blijkt.",
+    compareCta: "Vergelijk kosten naast elkaar",
+    prepareCta: "Maak je huis klaar",
+  },
 } as const;
 
 function CostsPage() {

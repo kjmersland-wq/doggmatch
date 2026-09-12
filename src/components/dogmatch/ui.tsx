@@ -10,6 +10,9 @@ const copy = {
   dk: { of: "af" },
   se: { of: "av" },
   fi: { of: "/" },
+  de: { of: "von" },
+  fr: { of: "sur" },
+  nl: { of: "van" },
 } as const;
 
 /* ---------------------------------------------------------------- Button */

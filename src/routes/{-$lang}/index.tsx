@@ -72,6 +72,24 @@ const traitCopy = {
     shedding: "Karvanlähtö",
     apartmentSuitability: "Kerrostaloon sopivuus",
   },
+  de: {
+    energy: "Energie",
+    trainability: "Trainierbarkeit",
+    shedding: "Fellwechsel",
+    apartmentSuitability: "Wohnungstauglichkeit",
+  },
+  fr: {
+    energy: "Énergie",
+    trainability: "Facilité de dressage",
+    shedding: "Perte de poils",
+    apartmentSuitability: "Adapté à l'appartement",
+  },
+  nl: {
+    energy: "Energie",
+    trainability: "Leerbaarheid",
+    shedding: "Vachtverlies",
+    apartmentSuitability: "Geschikt voor appartement",
+  },
 } as const;
 
 const localCopy = {
@@ -381,6 +399,159 @@ const localCopy = {
       },
     ],
   },
+  de: {
+    matchLooks: "So sieht eine Übereinstimmung aus",
+    match: "Übereinstimmung",
+    heroAlt: "Eine Frau geht bei Sonnenaufgang mit einem Golden Retriever an der Küste spazieren",
+    terrierAlt: "Ein Terrier ruht sich in einer sonnigen Wohnung aus",
+    parkAlt: "Ein Stadtpark im Morgengrauen mit geschwungenen Spazierwegen",
+    jumpLabel: "Zu einem Abschnitt dieser Seite springen",
+    jumpTitle: "Auf dieser Seite",
+    shareLabel: "DoggMatch in einer Sprache teilen",
+    shareTitle: "DoggMatch in deiner Sprache lesen",
+    shareBody:
+      "Jeder Link öffnet DoggMatch direkt in dieser Sprache — kopiere ihn und schicke ihn an jemanden, der lieber in seiner eigenen Sprache liest.",
+    shareCopy: "Link kopieren",
+    shareCopied: "Kopiert",
+    anchors: {
+      "why-doggmatch": "Warum DoggMatch",
+      "how-it-works": "So funktioniert's",
+      "real-matches": "So funktioniert es in der Praxis",
+      "dog-breeds": "Hunderassen entdecken",
+      "compare-breeds": "Rassen vergleichen",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "Hundeleben in deiner Nähe",
+      faq: "Häufige Fragen",
+      "find-your-dog": "Finde deinen Hund",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "Etwas mehr Unterstützung, sobald der Hund eingezogen ist",
+    plusBody:
+      "Training, dem du Woche für Woche folgen kannst, Fütterung und Gewicht an einem Ort, Reisepapiere geregelt, und alles zum Ausdrucken für den Kühlschrank oder den Tierarzt.",
+    plusCta: "Sieh dir an, was in DoggMatch+ steckt",
+    faqEyebrow: "Gut zu wissen",
+    faqTitle: "Fragen, die uns oft gestellt werden",
+    faq: [
+      {
+        q: "Übernimmt eine KI das Matching?",
+        a: "Nein. Es ist ein fester Regelsatz, den wir selbst geschrieben haben. Dieselben Antworten ergeben immer dieselben Hunde, und wir zeigen dir die Begründung hinter jeder Punktzahl.",
+      },
+      {
+        q: "Kostet es etwas, meinen Hund zu finden?",
+        a: "Nein. Die Fragen, das Ergebnis und jede Rasseseite sind kostenlos. DoggMatch+ betrifft nur die Werkzeuge, die du nutzt, nachdem der Hund eingezogen ist.",
+      },
+      {
+        q: "Was, wenn ein Mischling zu mir passt?",
+        a: "Mischlinge sind herzlich willkommen. Du kannst einen aus zwei Rassen zusammenstellen, und wir bewerten den Hund vor dir — nicht ein Etikett.",
+      },
+      {
+        q: "Kann ich den Rasseinformationen vertrauen?",
+        a: "Wir halten unsere Quellen offen. Jede Rasse-, Trainings- und Gesundheitsseite verlinkt zu den Stellen und Forschungsarbeiten, auf die wir uns stützen.",
+      },
+    ],
+  },
+  fr: {
+    matchLooks: "À quoi ressemble une bonne correspondance",
+    match: "correspondance",
+    heroAlt: "Une femme promène un golden retriever le long d'un sentier côtier au lever du soleil",
+    terrierAlt: "Un terrier qui se repose dans un appartement baigné de soleil",
+    parkAlt: "Un parc urbain à l'aube avec des allées sinueuses",
+    jumpLabel: "Aller à une section de cette page",
+    jumpTitle: "Sur cette page",
+    shareLabel: "Partager DoggMatch dans une langue",
+    shareTitle: "Lire DoggMatch dans votre langue",
+    shareBody:
+      "Chaque lien ouvre DoggMatch directement dans cette langue — copiez-le et envoyez-le à quelqu'un qui préfère lire à sa façon.",
+    shareCopy: "Copier le lien",
+    shareCopied: "Copié",
+    anchors: {
+      "why-doggmatch": "Pourquoi DoggMatch",
+      "how-it-works": "Comment ça marche",
+      "real-matches": "Voir comment ça marche",
+      "dog-breeds": "Découvrir les races de chiens",
+      "compare-breeds": "Comparer les races",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "La vie avec un chien près de chez vous",
+      faq: "Questions fréquentes",
+      "find-your-dog": "Trouvez votre chien",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "Un peu plus d'aide, une fois le chien à la maison",
+    plusBody:
+      "Un entraînement à suivre semaine après semaine, l'alimentation et le poids réunis au même endroit, les papiers de voyage réglés, et tout est imprimable pour le frigo ou le vétérinaire.",
+    plusCta: "Découvrez ce que contient DoggMatch+",
+    faqEyebrow: "Bon à savoir",
+    faqTitle: "Questions que l'on nous pose",
+    faq: [
+      {
+        q: "Est-ce une IA qui fait le matching ?",
+        a: "Non. C'est un ensemble de règles fixes que nous avons écrites nous-mêmes. Les mêmes réponses donnent toujours les mêmes chiens, et nous vous montrons le raisonnement derrière chaque score.",
+      },
+      {
+        q: "Est-ce que ça coûte quelque chose de trouver mon chien ?",
+        a: "Non. Les questions, les résultats et chaque page de race sont gratuits. DoggMatch+ ne concerne que les outils que vous utilisez une fois le chien arrivé chez vous.",
+      },
+      {
+        q: "Et si un chien croisé me convient mieux ?",
+        a: "Les croisés sont les bienvenus. Vous pouvez en composer un à partir de deux races, et nous évaluons le chien qui est devant vous, pas une étiquette.",
+      },
+      {
+        q: "Puis-je faire confiance aux informations sur les races ?",
+        a: "Nous gardons nos sources ouvertes. Chaque page de race, de dressage et de santé renvoie vers les organismes et les recherches sur lesquels nous nous appuyons.",
+      },
+    ],
+  },
+  nl: {
+    matchLooks: "Zo ziet een match eruit",
+    match: "match",
+    heroAlt: "Een vrouw wandelt met een golden retriever langs een kustpad bij zonsopgang",
+    terrierAlt: "Een terriër rust uit in een zonovergoten appartement",
+    parkAlt: "Een stadspark in de vroege ochtend met kronkelende wandelpaden",
+    jumpLabel: "Spring naar een onderdeel van deze pagina",
+    jumpTitle: "Op deze pagina",
+    shareLabel: "Deel DoggMatch in een taal",
+    shareTitle: "Lees DoggMatch in jouw taal",
+    shareBody:
+      "Elke link opent DoggMatch direct in die taal — kopieer hem en stuur hem naar iemand die liever op zijn eigen manier leest.",
+    shareCopy: "Link kopiëren",
+    shareCopied: "Gekopieerd",
+    anchors: {
+      "why-doggmatch": "Waarom DoggMatch",
+      "how-it-works": "Zo werkt het",
+      "real-matches": "Zie het in actie",
+      "dog-breeds": "Ontdek hondenrassen",
+      "compare-breeds": "Vergelijk rassen",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "Hondenleven bij jou in de buurt",
+      faq: "Veelgestelde vragen",
+      "find-your-dog": "Vind jouw hond",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "Een beetje extra hulp, zodra de hond thuis is",
+    plusBody:
+      "Training die je week na week kunt volgen, voeding en gewicht op één plek, reispapieren op orde, en alles afdrukbaar voor op de koelkast of voor de dierenarts.",
+    plusCta: "Bekijk wat er in DoggMatch+ zit",
+    faqEyebrow: "Goed om te weten",
+    faqTitle: "Vragen die we vaak krijgen",
+    faq: [
+      {
+        q: "Wordt de matching door AI gedaan?",
+        a: "Nee. Het is een vaste set regels die we zelf hebben geschreven. Dezelfde antwoorden leveren altijd dezelfde honden op, en we laten je altijd de redenering achter elke score zien.",
+      },
+      {
+        q: "Kost het iets om mijn hond te vinden?",
+        a: "Nee. De vragen, de resultaten en elke rassenpagina zijn gratis. DoggMatch+ geldt alleen voor de tools die je gebruikt nadat de hond bij je is komen wonen.",
+      },
+      {
+        q: "Wat als een kruising het beste bij mij past?",
+        a: "Kruisingen zijn van harte welkom. Je kunt er zelf een samenstellen uit twee rassen, en wij beoordelen de hond die voor je staat — niet een label.",
+      },
+      {
+        q: "Kan ik de rasinformatie vertrouwen?",
+        a: "We houden onze bronnen open. Elke ras-, trainings- en gezondheidspagina linkt naar de organisaties en het onderzoek waarop we vertrouwen.",
+      },
+    ],
+  },
 } as const;
 
 const seoCopy = {
@@ -409,6 +580,21 @@ const seoCopy = {
     title: "DoggMatch — löydä elämääsi sopiva koira",
     description:
       "Kerro meille vähän elämästäsi, kodistasi ja päivistäsi, niin autamme sinua löytämään koirat, jotka voisivat sopia sinulle parhaiten. Ilmaista, rehellistä, ja näytämme aina, miten päättelemme asiat.",
+  },
+  de: {
+    title: "DoggMatch — Finde den Hund, der zu deinem Leben passt",
+    description:
+      "Erzähl uns ein wenig über dein Leben, dein Zuhause und deinen Alltag, und wir helfen dir, die Hunde zu finden, die am besten zu dir passen könnten. Kostenlos, ehrlich, und wir zeigen dir immer, wie wir zu unserem Ergebnis kommen.",
+  },
+  fr: {
+    title: "DoggMatch — Trouvez le chien qui correspond à votre vie",
+    description:
+      "Parlez-nous un peu de votre vie, de votre logement et de vos journées, et nous vous aiderons à trouver les chiens qui pourraient le mieux vous convenir. Gratuit, honnête, et nous montrons toujours notre raisonnement.",
+  },
+  nl: {
+    title: "DoggMatch — Vind de hond die bij jouw leven past",
+    description:
+      "Vertel ons iets over je leven, je huis en je dagen, en wij helpen je de honden te vinden die het beste bij je zouden kunnen passen. Gratis, eerlijk, en we laten altijd zien hoe we tot onze conclusie komen.",
   },
 };
 

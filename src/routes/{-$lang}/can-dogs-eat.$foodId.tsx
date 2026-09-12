@@ -7,7 +7,7 @@ import { useCopy, useLocale } from "@/i18n";
 import type { FoodSafety } from "@/data/care/types";
 import { withLangPrefix } from "@/lib/localized-path";
 import { foodExists, foodFor, relatedFoods } from "@/lib/food";
-import { abs, breadcrumbLd, dkUrl, fiUrl, headLocale, jsonLd, langUrl, noUrl, plUrl, seUrl } from "@/lib/seo";
+import { abs, breadcrumbLd, deUrl, dkUrl, fiUrl, frUrl, headLocale, jsonLd, langUrl, nlUrl, noUrl, plUrl, seUrl } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 /** "Can dogs eat X?" — the phrase people actually type, in each language. */
@@ -18,6 +18,9 @@ const question = {
   dk: (name: string) => `Må hunde spise ${name.toLowerCase()}?`,
   se: (name: string) => `Kan hundar äta ${name.toLowerCase()}?`,
   fi: (name: string) => `Voiko koira syödä ${name.toLowerCase()}?`,
+  de: (name: string) => `Dürfen Hunde ${name.toLowerCase()} fressen?`,
+  fr: (name: string) => `Les chiens peuvent-ils manger ${name.toLowerCase()} ?`,
+  nl: (name: string) => `Mogen honden ${name.toLowerCase()} eten?`,
 };
 
 const verdict = {
@@ -51,7 +54,25 @@ const verdict = {
     care: "Kyllä, mutta varovasti",
     avoid: "Ei — älä anna tätä koiralle",
   },
-} as const satisfies Record<"en" | "no" | "pl" | "dk" | "se" | "fi", Record<FoodSafety, string>>;
+  de: {
+    safe: "Ja — in kleinen Mengen unbedenklich",
+    care: "Ja, aber mit Bedacht",
+    avoid: "Nein — das bitte nicht geben",
+  },
+  fr: {
+    safe: "Oui — sans souci en petite quantité",
+    care: "Oui, mais avec prudence",
+    avoid: "Non — à ne pas donner",
+  },
+  nl: {
+    safe: "Ja — prima in kleine hoeveelheden",
+    care: "Ja, maar wees voorzichtig",
+    avoid: "Nee — geef dit niet",
+  },
+} as const satisfies Record<
+  "en" | "no" | "pl" | "dk" | "se" | "fi" | "de" | "fr" | "nl",
+  Record<FoodSafety, string>
+>;
 
 export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
   loader: ({ params }) => {
@@ -89,6 +110,9 @@ export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
         { rel: "alternate", hrefLang: "da-DK", href: dkUrl(path) },
         { rel: "alternate", hrefLang: "sv-SE", href: seUrl(path) },
         { rel: "alternate", hrefLang: "fi-FI", href: fiUrl(path) },
+        { rel: "alternate", hrefLang: "de-DE", href: deUrl(path) },
+        { rel: "alternate", hrefLang: "fr-FR", href: frUrl(path) },
+        { rel: "alternate", hrefLang: "nl-NL", href: nlUrl(path) },
         { rel: "alternate", hrefLang: "x-default", href: abs(path) },
       ],
       scripts: [

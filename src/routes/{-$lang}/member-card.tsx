@@ -119,6 +119,48 @@ const copy = {
     printedNote:
       "Tulostettu oikeassa korttikoossa — 85,6 × 54 mm. Tulosta molemmat puolet jäykälle paperille, leikkaa reunaa pitkin ja taita, niin se mahtuu lompakkoon kuin mikä tahansa muu kortti.",
   },
+  de: {
+    signInHeading: "Melde dich an, um deine Karte zu sehen",
+    signInBody: "Deine Mitgliedskarte gehört zu deiner DoggMatch+-Mitgliedschaft, deshalb müssen wir wissen, dass du es bist.",
+    signInLabel: "Anmelden",
+    loadingHeading: "Einen Moment…",
+    loadingBody: "Wir holen deine Karte.",
+    backToAccount: "Zurück zu meinem Konto",
+    noCardHeading: "Diese Karte gehört zu DoggMatch+",
+    noCardBody: "Werde DoggMatch+-Mitglied, und deine persönliche Mitgliedskarte wird sofort erstellt.",
+    seePlus: "DoggMatch+ ansehen",
+    printCard: "Meine Mitgliedskarte drucken",
+    printedNote:
+      "Gedruckt in echter Kartengröße — 85,6 × 54 mm. Drucke beide Seiten auf steifem Papier, schneide entlang der Kante aus und falte — dann passt sie in jede Geldbörse, wie jede andere Karte.",
+  },
+  fr: {
+    signInHeading: "Connectez-vous pour voir votre carte",
+    signInBody: "Votre carte de membre est liée à votre abonnement DoggMatch+, nous devons donc savoir que c'est bien vous.",
+    signInLabel: "Se connecter",
+    loadingHeading: "Un instant…",
+    loadingBody: "Récupération de votre carte.",
+    backToAccount: "Retour à mon compte",
+    noCardHeading: "Cette carte est incluse avec DoggMatch+",
+    noCardBody: "Rejoignez DoggMatch+ et votre carte de membre personnelle est créée immédiatement.",
+    seePlus: "Voir DoggMatch+",
+    printCard: "Imprimer ma carte de membre",
+    printedNote:
+      "Imprimée à la taille réelle d'une carte — 85,6 × 54 mm. Imprimez les deux faces sur du papier rigide, découpez le long du bord et pliez : elle tiendra dans un portefeuille comme n'importe quelle autre carte.",
+  },
+  nl: {
+    signInHeading: "Log in om je kaart te bekijken",
+    signInBody: "Je ledenkaart hoort bij je DoggMatch+-lidmaatschap, dus we moeten weten dat jij het bent.",
+    signInLabel: "Inloggen",
+    loadingHeading: "Een moment…",
+    loadingBody: "Je kaart wordt opgehaald.",
+    backToAccount: "Terug naar mijn account",
+    noCardHeading: "Deze kaart hoort bij DoggMatch+",
+    noCardBody: "Word DoggMatch+-lid en je persoonlijke ledenkaart wordt meteen voor je gemaakt.",
+    seePlus: "Bekijk DoggMatch+",
+    printCard: "Mijn ledenkaart afdrukken",
+    printedNote:
+      "Afgedrukt op echte kaartformaat — 85,6 × 54 mm. Druk beide zijden af op stevig papier, knip langs de rand en vouw — dan past hij in een portemonnee, net als elke andere kaart.",
+  },
 } as const;
 
 function MemberCardPage() {

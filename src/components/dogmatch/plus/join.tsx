@@ -58,6 +58,27 @@ const copy = {
     join: "Liity DoggMatch+:aan",
     error: "Emme juuri nyt saaneet avattua maksusivua. Yritä uudelleen.",
   },
+  de: {
+    opening: "Sichere Kasse wird geöffnet …",
+    already: "Du bist bereits Mitglied",
+    signInToJoin: "Melde dich an, um beizutreten",
+    join: "DoggMatch+ beitreten",
+    error: "Wir konnten die Zahlungsseite gerade nicht öffnen. Bitte versuch es noch einmal.",
+  },
+  fr: {
+    opening: "Ouverture du paiement sécurisé…",
+    already: "Vous êtes déjà membre",
+    signInToJoin: "Connectez-vous pour adhérer",
+    join: "Rejoindre DoggMatch+",
+    error: "Nous n'avons pas pu ouvrir la page de paiement pour le moment. Merci de réessayer.",
+  },
+  nl: {
+    opening: "Beveiligde betaalpagina wordt geopend…",
+    already: "Je bent al lid",
+    signInToJoin: "Log in om lid te worden",
+    join: "Word lid van DoggMatch+",
+    error: "We konden de betaalpagina nu niet openen. Probeer het opnieuw.",
+  },
 } as const;
 
 /** Takes someone from the pricing card straight into Stripe checkout. */

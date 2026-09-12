@@ -39,6 +39,21 @@ const seoCopy = {
     description:
       "Ota yhteyttä DoggMatchiin. Autamme mielellämme oikean koiran löytämisessä, koulutuksessa, terveydessä, matkustamisessa ja koiran kanssa elämisessä.",
   },
+  de: {
+    title: "Kontakt zu DoggMatch",
+    description:
+      "Nimm Kontakt zu DoggMatch auf. Wir helfen gerne bei Fragen zur Hundewahl, zum Training, zur Gesundheit, zum Reisen und zum Alltag mit Hund.",
+  },
+  fr: {
+    title: "Contactez DoggMatch",
+    description:
+      "Contactez DoggMatch. Nous répondons volontiers à vos questions sur le choix du bon chien, l'éducation, la santé, les voyages et la vie avec un chien.",
+  },
+  nl: {
+    title: "Neem contact op met DoggMatch",
+    description:
+      "Neem contact op met DoggMatch. We helpen je graag met vragen over het vinden van de juiste hond, training, gezondheid, reizen en het leven met een hond.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/contact")({
@@ -270,6 +285,111 @@ const copy = {
     sending: "Lähetetään…",
     onlyUse: "Käytämme tietojasi vain vastataksemme sinulle. Emme mihinkään muuhun.",
     sendError: "Valitettavasti viestiäsi ei juuri nyt voitu lähettää. Yritä hetken kuluttua uudelleen.",
+  },
+  de: {
+    eyebrow: "Kontakt",
+    heading: "Wir hören gerne von dir.",
+    intro:
+      "Eine Frage zur Wahl des richtigen Hundes, zum Training, zum Futter, zur Gesundheit oder zum gemeinsamen Reisen — oder etwas, das nicht so funktioniert, wie es sollte. Schreib uns, und ein echter Mensch antwortet dir.",
+    doneHeading: "Danke. Deine Nachricht wurde gesendet.",
+    doneBody:
+      "Wir melden uns so schnell wie möglich. Behalte dein Postfach im Auge — wir haben dir eine kurze Bestätigung geschickt, dass sie angekommen ist.",
+    writeAnother: "Weitere Nachricht schreiben",
+    nameLabel: "Dein Name",
+    namePlaceholder: "Karin Neumann",
+    emailLabel: "Deine E-Mail",
+    emailPlaceholder: "du@beispiel.de",
+    subjectLabel: "Betreff",
+    subjectPlaceholder: "Worum geht es?",
+    reasonLabel: "Worum geht es?",
+    reasonHint: "Optional",
+    reasonPlaceholder: "Wähl gerne eins aus",
+    reasons: {
+      general: "Allgemeine Frage",
+      matching: "Hundevermittlung",
+      training: "Training",
+      health: "Gesundheit & Ernährung",
+      myDog: "Mein Hund",
+      technical: "Technisches Problem",
+      partnership: "Partnerschaft",
+      other: "Sonstiges",
+    },
+    messageLabel: "Deine Nachricht",
+    messagePlaceholder: "Erzähl uns so viel oder so wenig, wie du möchtest.",
+    send: "Nachricht senden",
+    sending: "Wird gesendet…",
+    onlyUse: "Wir nutzen deine Daten nur, um dir zu antworten. Sonst nichts.",
+    sendError: "Leider konnten wir deine Nachricht gerade nicht senden. Bitte versuch es gleich noch einmal.",
+  },
+  fr: {
+    eyebrow: "Contact",
+    heading: "Nous serions ravis de vous lire.",
+    intro:
+      "Une question sur le choix du bon chien, l'éducation, l'alimentation, la santé ou les voyages ensemble — ou quelque chose qui ne fonctionne pas comme il faut. Écrivez-nous, une vraie personne vous répondra.",
+    doneHeading: "Merci. Votre message a bien été envoyé.",
+    doneBody:
+      "Nous vous répondrons dès que possible. Surveillez votre boîte mail — nous vous avons envoyé un court message confirmant sa bonne réception.",
+    writeAnother: "Écrire un autre message",
+    nameLabel: "Votre nom",
+    namePlaceholder: "Camille Dupont",
+    emailLabel: "Votre e-mail",
+    emailPlaceholder: "vous@exemple.fr",
+    subjectLabel: "Sujet",
+    subjectPlaceholder: "De quoi s'agit-il ?",
+    reasonLabel: "De quoi s'agit-il ?",
+    reasonHint: "Facultatif",
+    reasonPlaceholder: "Choisissez-en un, si vous le souhaitez",
+    reasons: {
+      general: "Question générale",
+      matching: "Correspondance chien",
+      training: "Éducation",
+      health: "Santé et nutrition",
+      myDog: "Mon chien",
+      technical: "Problème technique",
+      partnership: "Partenariat",
+      other: "Autre",
+    },
+    messageLabel: "Votre message",
+    messagePlaceholder: "Racontez-nous autant ou aussi peu que vous le souhaitez.",
+    send: "Envoyer le message",
+    sending: "Envoi en cours…",
+    onlyUse: "Nous n'utilisons vos informations que pour vous répondre. Rien d'autre.",
+    sendError: "Désolé, nous n'avons pas pu envoyer votre message pour l'instant. Merci de réessayer dans un instant.",
+  },
+  nl: {
+    eyebrow: "Contact",
+    heading: "We horen graag van je.",
+    intro:
+      "Een vraag over het vinden van de juiste hond, training, voeding, gezondheid of samen reizen — of iets dat niet werkt zoals het zou moeten. Schrijf ons, en een echt persoon antwoordt je.",
+    doneHeading: "Bedankt. Je bericht is verzonden.",
+    doneBody:
+      "We reageren zo snel mogelijk. Houd je inbox in de gaten — we hebben je een kort bericht gestuurd ter bevestiging dat het is aangekomen.",
+    writeAnother: "Nog een bericht schrijven",
+    nameLabel: "Je naam",
+    namePlaceholder: "Kim de Vries",
+    emailLabel: "Je e-mailadres",
+    emailPlaceholder: "jij@voorbeeld.nl",
+    subjectLabel: "Onderwerp",
+    subjectPlaceholder: "Waar gaat het over?",
+    reasonLabel: "Waar gaat het over?",
+    reasonHint: "Optioneel",
+    reasonPlaceholder: "Kies er gerust een",
+    reasons: {
+      general: "Algemene vraag",
+      matching: "Hondenmatch",
+      training: "Training",
+      health: "Gezondheid & voeding",
+      myDog: "Mijn hond",
+      technical: "Technisch probleem",
+      partnership: "Samenwerking",
+      other: "Anders",
+    },
+    messageLabel: "Je bericht",
+    messagePlaceholder: "Vertel ons zoveel of zo weinig als je wilt.",
+    send: "Bericht versturen",
+    sending: "Bezig met verzenden…",
+    onlyUse: "We gebruiken je gegevens alleen om je te antwoorden. Verder niets.",
+    sendError: "Sorry, we konden je bericht nu even niet versturen. Probeer het straks nog eens.",
   },
 } as const;
 
