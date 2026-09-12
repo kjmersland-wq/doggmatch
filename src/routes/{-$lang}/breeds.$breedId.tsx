@@ -461,7 +461,12 @@ function BreedDetail() {
               {breedGroupLabel(breed.group)} · {breedOriginLabel(breed.origin)}
             </Eyebrow>
             <div className="mt-6 flex items-start justify-between gap-4">
-              <h1 className="display-xl">{content.displayName}</h1>
+              <h1 className="display-xl">
+                {content.displayName}
+                <span className="mt-2 block font-display text-base font-normal tracking-tight text-muted-foreground">
+                  {descriptor}
+                </span>
+              </h1>
               <ShareBar compact className="mt-1 shrink-0" />
             </div>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
