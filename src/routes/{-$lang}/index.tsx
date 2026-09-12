@@ -984,7 +984,7 @@ function LanguageShare({ c }: { c: (typeof localCopy)["en"] }) {
                   <div className="flex items-center gap-2 rounded-xl border border-border bg-background p-2 pr-1.5">
                     <a
                       href={sharePath(l.code)}
-                      hreflang={shareHrefLang(l.code)}
+                      hrefLang={shareHrefLang(l.code)}
                       className="flex min-w-0 flex-1 items-center gap-2 rounded-lg px-1.5 py-1 transition-colors hover:text-primary"
                       aria-label={`${l.label} — ${sharePath(l.code)}`}
                     >
