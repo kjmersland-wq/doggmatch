@@ -977,7 +977,7 @@ function MatchBreakdown({
       <p className="max-w-xl text-lg leading-relaxed">{scoreReading(score)}</p>
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
-          <h3 className="display-md">{c.fitsTitle}</h3>
+          <h2 className="display-md">{c.fitsTitle}</h2>
           <ul className="mt-6 space-y-4">
             {shownFits.length === 0 && (
               <li className="text-[0.9375rem] leading-relaxed text-muted-foreground">{c.fitsNone}</li>
@@ -996,7 +996,7 @@ function MatchBreakdown({
           </ul>
         </div>
         <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
-          <h3 className="display-md">{c.tradeTitle}</h3>
+          <h2 className="display-md">{c.tradeTitle}</h2>
           <ul className="mt-6 space-y-4">
             {shownTradeoffs.length === 0 && (
               <li className="text-[0.9375rem] leading-relaxed text-muted-foreground">{c.tradeNone}</li>
