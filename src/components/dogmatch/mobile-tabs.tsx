@@ -9,6 +9,9 @@ const copy = {
   dk: { mobileNav: "Mobilnavigation" },
   se: { mobileNav: "Mobilnavigering" },
   fi: { mobileNav: "Mobiilinavigointi" },
+  de: { mobileNav: "Mobile Navigation" },
+  fr: { mobileNav: "Navigation mobile" },
+  nl: { mobileNav: "Mobiele navigatie" },
 } as const;
 
 export function MobileTabs() {

@@ -75,6 +75,33 @@ const shellCopy = {
     retry: "Yritä uudelleen",
     home: "Etusivulle",
   },
+  de: {
+    notFound: "Diese Seite scheint sich verlaufen zu haben.",
+    notFoundBody: "Kein Problem — wir bringen dich wieder auf den richtigen Weg.",
+    back: "Zurück zu DoggMatch",
+    errorTitle: "Bei uns ist etwas schiefgelaufen.",
+    errorBody: "Tut uns leid. Deine Antworten sind sicher — versuch es noch einmal.",
+    retry: "Erneut versuchen",
+    home: "Zur Startseite",
+  },
+  fr: {
+    notFound: "Il semble que cette page se soit égarée.",
+    notFoundBody: "Aucun mal fait — remettons-vous sur la bonne voie.",
+    back: "Retour à DoggMatch",
+    errorTitle: "Quelque chose s'est mal passé de notre côté.",
+    errorBody: "Désolé pour ça. Vos réponses sont en sécurité — réessayez.",
+    retry: "Réessayer",
+    home: "Accueil",
+  },
+  nl: {
+    notFound: "Deze pagina lijkt te zijn afgedwaald.",
+    notFoundBody: "Geen probleem — we brengen je weer op het juiste spoor.",
+    back: "Terug naar DoggMatch",
+    errorTitle: "Er is iets misgegaan aan onze kant.",
+    errorBody: "Sorry daarvoor. Je antwoorden zijn veilig — probeer het nog eens.",
+    retry: "Opnieuw proberen",
+    home: "Naar home",
+  },
 };
 
 function NotFoundComponent() {
@@ -249,6 +276,9 @@ function SkipLink() {
     dk: { skip: "Spring til indhold" },
     se: { skip: "Hoppa till innehåll" },
     fi: { skip: "Siirry sisältöön" },
+    de: { skip: "Zum Inhalt springen" },
+    fr: { skip: "Passer au contenu" },
+    nl: { skip: "Naar de inhoud" },
   });
   return (
     <a href="#main" className="skip-link">

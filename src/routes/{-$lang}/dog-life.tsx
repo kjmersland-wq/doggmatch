@@ -37,6 +37,21 @@ const seoCopy = {
     description:
       "Puistoja, hyviä lenkkejä, koirakursseja, eläinlääkäreitä, trimmaajia ja paikkoja, jotka ottavat koirat mielellään vastaan. Kerro vain, missä asut.",
   },
+  de: {
+    title: "Hundeleben — hundefreundliche Orte bei dir vor Ort | DoggMatch",
+    description:
+      "Parks, schöne Gassirunden, Hundeschulen, Tierärzte, Hundefriseure und Orte, die Hunde willkommen heißen. Sag uns einfach, wo du wohnst.",
+  },
+  fr: {
+    title: "Vie de chien — des lieux qui accueillent bien votre chien près de chez vous | DoggMatch",
+    description:
+      "Parcs, belles balades, cours d'éducation, vétérinaires, toiletteurs et lieux qui aiment les chiens. Dites-nous simplement où vous habitez.",
+  },
+  nl: {
+    title: "Hondenleven — hondvriendelijke plekken bij jou in de buurt | DoggMatch",
+    description:
+      "Parken, fijne wandelroutes, hondenscholen, dierenartsen, trimsalons en plekken die honden verwelkomen. Vertel ons gewoon waar je woont.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/dog-life")({
@@ -160,6 +175,63 @@ const tipCopy = {
     notReady: (place: string) =>
       `Meillä ei ole vielä varmennettuja paikkoja alueelle ${place}. Kerro meille, niin priorisoimme sen — alla oleva tarkistuslista toimii sitä ennen kaikkialla.`,
   },
+  de: {
+    lead: "Wir bauen die lokalen Übersichten Stadt für Stadt auf. Bis deine fertig ist, ist das hier, worauf wir selbst achten würden — dieselbe Checkliste, die wir auch benutzen.",
+    tips: [
+      "Eingezäunt, mit einem eigenen Bereich für kleine Hunde, und nie so voll, dass dein Hund einer Situation nicht ausweichen kann.",
+      "Runden von 30-45 Minuten auf weichem Untergrund im Schatten. Wechsle die Route — neue Gerüche ermüden einen Hund mehr als neue Kilometer.",
+      "Prüfe die lokalen Regeln und die Jahreszeit; Bodenbrüter bedeuten im Frühling fast überall Leinenpflicht.",
+      "Frag, welche Methoden verwendet werden. Belohnungsbasiert, kleine Gruppen, und du solltest eine Stunde beobachten dürfen, bevor du buchst.",
+      "Melde dich an, bevor du es brauchst, und notiere die nächste Notfallklinik außerhalb der Öffnungszeiten am Kühlschrank.",
+      "Frag, wie sie mit einem nervösen Hund umgehen. Ein guter Hundefriseur macht gerne einen kurzen ersten Besuch ganz ohne Schneiden.",
+      "Versicherung, Referenzen und ein Treffen nach den Bedingungen deines Hundes. Frag, wie viele Hunde gleichzeitig ausgeführt werden.",
+      "Ein Wassernapf draußen ist ein gutes Zeichen; ein Napf und ein Leckerli hinter der Theke ist noch besser.",
+      "Ruf vorher an — hundefreundlich bedeutet oft nur die Terrasse, und das macht im Februar einen Unterschied.",
+      "Prüfe saisonale Badeverbote für Hunde, Strömungen und Blaualgen-Warnungen, bevor der Hund schwimmen darf.",
+      "Ein Laden, der dein Futter bestellt und die rassespezifischen Dinge kennt, schlägt den billigsten Regalpreis.",
+    ],
+    searching: (place: string) => `Wir schauen uns in ${place} um`,
+    notReady: (place: string) =>
+      `Wir haben noch keine verifizierten Orte für ${place}. Sag uns Bescheid, dann priorisieren wir das — die Checkliste unten funktioniert in der Zwischenzeit überall.`,
+  },
+  fr: {
+    lead: "Nous construisons les annuaires locaux ville par ville. En attendant que le vôtre soit prêt, voici ce que nous chercherions nous-mêmes — la même liste de critères que nous utilisons.",
+    tips: [
+      "Clôturé, avec une zone séparée pour les petits chiens, et jamais si bondé que votre chien ne puisse s'éloigner d'une situation.",
+      "Des boucles de 30 à 45 minutes sur sol souple et à l'ombre. Variez l'itinéraire — de nouvelles odeurs fatiguent plus un chien que de nouveaux kilomètres.",
+      "Vérifiez les règles locales et la saison ; la nidification au sol impose la laisse au printemps presque partout.",
+      "Demandez quelles méthodes sont utilisées. Renforcement positif, petits groupes, et vous devriez pouvoir observer un cours avant de réserver.",
+      "Inscrivez-vous avant d'en avoir besoin, et notez la clinique d'urgence la plus proche sur le frigo.",
+      "Demandez à voir comment ils gèrent un chien anxieux. Un bon toiletteur fera volontiers une première visite courte, sans aucune tonte.",
+      "Assurance, références et une rencontre selon les conditions de votre chien. Demandez combien de chiens ils promènent à la fois.",
+      "Une gamelle d'eau dehors est bon signe ; une gamelle et une friandise derrière le comptoir, c'est encore mieux.",
+      "Appelez avant d'y aller — « accepte les chiens » veut souvent dire seulement la terrasse, et cela compte en février.",
+      "Vérifiez les interdictions de baignade saisonnières, les courants et les alertes cyanobactéries avant de laisser un chien nager.",
+      "Un magasin qui commande votre nourriture et connaît les particularités de la race vaut mieux que le prix le plus bas en rayon.",
+    ],
+    searching: (place: string) => `À la découverte de ${place}`,
+    notReady: (place: string) =>
+      `Nous n'avons pas encore de lieux vérifiés pour ${place}. Dites-le-nous et nous en ferons une priorité — en attendant, la liste ci-dessous fonctionne partout.`,
+  },
+  nl: {
+    lead: "We bouwen de lokale overzichten stad voor stad op. Tot die van jou klaar is, is dit waar we zelf op zouden letten — dezelfde checklist die we zelf gebruiken.",
+    tips: [
+      "Omheind, met een apart gedeelte voor kleine honden, en nooit zo druk dat je hond een situatie niet kan ontwijken.",
+      "Rondjes van 30-45 minuten op zachte ondergrond en in de schaduw. Varieer de route — nieuwe geuren vermoeien een hond meer dan nieuwe kilometers.",
+      "Check de lokale regels en het seizoen; broedende vogels op de grond betekenen bijna overal een aanlijnplicht in het voorjaar.",
+      "Vraag welke methodes ze gebruiken. Beloningsgericht, kleine groepen, en je zou een les moeten mogen bijwonen voordat je boekt.",
+      "Registreer je voordat je het nodig hebt, en noteer de dichtstbijzijnde 24-uursdierenkliniek op de koelkast.",
+      "Vraag hoe ze omgaan met een nerveuze hond. Een goede trimsalon doet graag een kort eerste bezoek zonder te knippen.",
+      "Verzekering, referenties en een kennismaking op de voorwaarden van je hond. Vraag hoeveel honden ze tegelijk uitlaten.",
+      "Een waterbak buiten is een goed teken; een bak en een snoepje achter de toonbank is nog beter.",
+      "Bel van tevoren — hondvriendelijk betekent vaak alleen het terras, en dat merk je in februari.",
+      "Check seizoensgebonden zwemverboden voor honden, stromingen en blauwalgwaarschuwingen voordat je een hond laat zwemmen.",
+      "Een winkel die je voer bestelt en de rasspecifieke dingen kent, wint het van de goedkoopste schapprijs.",
+    ],
+    searching: (place: string) => `We kijken rond in ${place}`,
+    notReady: (place: string) =>
+      `We hebben nog geen geverifieerde plekken voor ${place}. Laat het ons weten, dan geven we het voorrang — de checklist hieronder werkt intussen overal.`,
+  },
 } as const;
 
 function DogLifePage() {
@@ -223,6 +295,9 @@ function DogLifePage() {
                     dk: "Uanset hvor du er",
                     se: "Var du än är",
                     fi: "Missä ikinä oletkin",
+                    de: "Wo auch immer du bist",
+                    fr: "Où que vous soyez",
+                    nl: "Waar je ook bent",
                   })}
             </p>
             <p className="mt-2 max-w-md text-sm text-primary-foreground/80">

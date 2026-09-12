@@ -70,6 +70,27 @@ const copy = {
     goToMyDog: "Siirry Oma koirani -osioon",
     seeMembership: "Katso jäsenyyteni",
   },
+  de: {
+    eyebrow: "Danke",
+    heading: "Du bist dabei. Willkommen bei DoggMatch",
+    body: "Deine Mitgliedschaft ist aktiv, und deine Quittung ist per E-Mail unterwegs. Lass uns gemeinsam gut für deinen Hund sorgen.",
+    goToMyDog: "Zu Mein Hund",
+    seeMembership: "Meine Mitgliedschaft ansehen",
+  },
+  fr: {
+    eyebrow: "Merci",
+    heading: "Vous êtes des nôtres. Bienvenue chez DoggMatch",
+    body: "Votre abonnement est actif et votre reçu arrive par e-mail. Prenons bien soin de votre chien ensemble.",
+    goToMyDog: "Aller à Mon chien",
+    seeMembership: "Voir mon abonnement",
+  },
+  nl: {
+    eyebrow: "Bedankt",
+    heading: "Je doet mee. Welkom bij DoggMatch",
+    body: "Je lidmaatschap is actief en je bevestiging is onderweg per e-mail. Laten we samen goed voor je hond zorgen.",
+    goToMyDog: "Naar Mijn hond",
+    seeMembership: "Bekijk mijn lidmaatschap",
+  },
 } as const;
 
 function SuccessPage() {
