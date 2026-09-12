@@ -65,15 +65,47 @@ const copy = {
     email: "Sähköposti",
     shareSection: "Jaa tämä osio",
   },
+  de: {
+    share: "Teilen",
+    shareThis: "Diese Seite teilen",
+    close: "Schließen",
+    copy: "Link kopieren",
+    copied: "Link kopiert",
+    email: "E-Mail",
+    shareSection: "Diesen Abschnitt teilen",
+  },
+  fr: {
+    share: "Partager",
+    shareThis: "Partager cette page",
+    close: "Fermer",
+    copy: "Copier le lien",
+    copied: "Lien copié",
+    email: "E-mail",
+    shareSection: "Partager cette section",
+  },
+  nl: {
+    share: "Delen",
+    shareThis: "Deze pagina delen",
+    close: "Sluiten",
+    copy: "Link kopiëren",
+    copied: "Link gekopieerd",
+    email: "E-mail",
+    shareSection: "Deze sectie delen",
+  },
 } as const;
 
 function useShareUrl(path?: string, anchor?: string) {
   const { locale } = useLocale();
   const [href, setHref] = useState("");
   useEffect(() => {
-    const base = path ? `${SITE_URL}${path}` : `${SITE_URL}${window.location.pathname}`;
-    const url = new URL(base);
-    if (locale !== "en") url.searchParams.set("lang", locale);
+    const rawPath = path ?? window.location.pathname;
+    // Share links always keep the reader's language as a path prefix —
+    // never a ?lang= query string.
+    const prefixed =
+      locale === "en" || rawPath.startsWith(`/${locale}/`) || rawPath === `/${locale}`
+        ? rawPath
+        : `/${locale}${rawPath === "/" ? "" : rawPath}`;
+    const url = new URL(`${SITE_URL}${prefixed || "/"}`);
     if (anchor) url.hash = anchor;
     setHref(url.toString());
   }, [path, anchor, locale]);
