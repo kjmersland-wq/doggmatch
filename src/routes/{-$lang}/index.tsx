@@ -16,7 +16,7 @@ import { withLangPrefix } from "@/lib/localized-path";
 
 const title = "DoggMatch — Find the dog that's right for your life";
 const description =
-  "Tell us a little about your life, your home and your days, and we'll help you find the dogs that may suit you best. Free, honest, and we always show our reasoning.";
+  "Tell us about your life, your home and your days, and we'll find the dogs that suit you best. Free, honest, and we always show our reasoning.";
 
 /**
  * Section ids are language-independent so a shared link lands in the right
