@@ -147,6 +147,42 @@ const copy = {
       firstTimeOutdoor: { context: "Ensimmäinen koira, talo pihalla, toivoo aktiivista seuralaista" },
     },
   },
+  de: {
+    eyebrow: "Sieh es in Aktion",
+    title: "Drei Lebenssituationen, passend gematcht",
+    intro:
+      "Keine Erfahrungsberichte — derselbe deterministische Algorithmus, live angewendet auf drei alltägliche Situationen, damit du genau siehst, wie er denkt, bevor du es selbst ausprobierst.",
+    badge: "Praxisbeispiel",
+    scenarios: {
+      apartmentAlone: { context: "Wohnung, Hund an Werktagen 6+ Stunden allein" },
+      familyShedding: { context: "Haus mit Garten, kleine Kinder, wenig Haarausfall gewünscht" },
+      firstTimeOutdoor: { context: "Erster Hund, Haus mit Garten, aktiver Begleiter gewünscht" },
+    },
+  },
+  fr: {
+    eyebrow: "Voyez-le à l'œuvre",
+    title: "Trois façons de vivre, trois matchs",
+    intro:
+      "Pas des témoignages — le même moteur déterministe, appliqué en direct à trois situations courantes, pour que vous voyiez exactement comment il raisonne avant de l'essayer vous-même.",
+    badge: "Cas pratique",
+    scenarios: {
+      apartmentAlone: { context: "Appartement, chien seul 6h ou plus un jour de semaine" },
+      familyShedding: { context: "Maison avec jardin, jeunes enfants, peu de perte de poils souhaitée" },
+      firstTimeOutdoor: { context: "Premier chien, maison avec jardin, envie d'un compagnon actif" },
+    },
+  },
+  nl: {
+    eyebrow: "Zie het in actie",
+    title: "Drie levensstijlen, gematcht",
+    intro:
+      "Geen getuigenissen — dezelfde deterministische engine, live toegepast op drie herkenbare situaties, zodat je precies ziet hoe ze redeneert voordat je het zelf probeert.",
+    badge: "Praktijkvoorbeeld",
+    scenarios: {
+      apartmentAlone: { context: "Appartement, hond op werkdagen 6+ uur alleen" },
+      familyShedding: { context: "Huis met tuin, jonge kinderen, weinig haarverlies gewenst" },
+      firstTimeOutdoor: { context: "Eerste hond, huis met tuin, wil een actieve buitenmaatje" },
+    },
+  },
 } as const;
 
 export function RealMatchesSection({ className }: { className?: string }) {
