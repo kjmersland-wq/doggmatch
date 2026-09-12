@@ -195,7 +195,7 @@ const OG_LOCALE: Record<Locale, string> = {
 export function ogLocaleAlternates(locale: Locale) {
   return (Object.keys(OG_LOCALE) as Locale[])
     .filter((l) => l !== locale)
-    .map((l) => ({ property: "og:locale:alternate", content: OG_LOCALE[l] }));
+    .map((l) => ({ key: `og-alt-${l}`, property: "og:locale:alternate", content: OG_LOCALE[l] }));
 }
 
 /** Open Graph locale string for a language ("de" -> "de_DE"). */
