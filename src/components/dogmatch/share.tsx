@@ -357,6 +357,82 @@ export function InlineShare({ title, text, path, label, className }: ShareProps)
   );
 }
 
+const stripCopy = {
+  en: { heading: "Pass DoggMatch on", sub: "Know someone wondering which dog would suit them? Send them over." },
+  no: { heading: "Tips en venn om DoggMatch", sub: "Kjenner du noen som lurer på hvilken hund som passer dem? Send dem hit." },
+  pl: { heading: "Poleć DoggMatch dalej", sub: "Znasz kogoś, kto zastanawia się, jaki pies do niego pasuje? Prześlij mu link." },
+  dk: { heading: "Send DoggMatch videre", sub: "Kender du en, der undrer sig over, hvilken hund der passer til dem? Send dem herhen." },
+  se: { heading: "Skicka DoggMatch vidare", sub: "Känner du någon som funderar på vilken hund som passar dem? Skicka dem hit." },
+  fi: { heading: "Jaa DoggMatch eteenpäin", sub: "Tunnetko jonkun, joka miettii, mikä koira sopisi hänelle? Lähetä hänet tänne." },
+  de: { heading: "DoggMatch weiterempfehlen", sub: "Kennst du jemanden, der sich fragt, welcher Hund zu ihm passt? Schick ihn hierher." },
+  fr: { heading: "Recommander DoggMatch", sub: "Vous connaissez quelqu'un qui se demande quel chien lui conviendrait ? Envoyez-le ici." },
+  nl: { heading: "Geef DoggMatch door", sub: "Ken je iemand die zich afvraagt welke hond bij hem past? Stuur hem hierheen." },
+} as const;
+
+/**
+ * The visible share strip above the footer — every social channel, always
+ * rendered, on every page and every language. Shares the current page with
+ * its language path, so the preview card lands in the right locale.
+ */
+export function ShareStrip({ className }: { className?: string }) {
+  const c = useCopy(stripCopy);
+  const url = useShareUrl();
+  const [copied, setCopied] = useState(false);
+  const shareTitle = typeof document !== "undefined" ? document.title : "DoggMatch";
+  const targets = useTargets(url, shareTitle, shareTitle);
+
+  const onCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+    } catch {
+      /* clipboard blocked — the links are still there */
+    }
+  }, [url]);
+
+  const labels = useCopy(copy);
+
+  return (
+    <section aria-label={labels.shareThis} className={cn("print:hidden", className)}>
+      <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 className="text-base font-semibold tracking-tight text-foreground">{c.heading}</h2>
+          <p className="mt-1 text-sm text-muted-foreground">{c.sub}</p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          {targets.map((tgt) => (
+            <a
+              key={tgt.id}
+              href={tgt.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={tgt.label}
+              title={tgt.label}
+              className="grid h-10 w-10 place-items-center rounded-full text-white transition-transform hover:scale-105"
+              style={{ backgroundColor: tgt.brand }}
+            >
+              {tgt.icon}
+            </a>
+          ))}
+          <button
+            type="button"
+            onClick={onCopy}
+            aria-label={labels.copy}
+            title={copied ? labels.copied : labels.copy}
+            className={cn(
+              "grid h-10 w-10 place-items-center rounded-full border border-border-strong text-foreground transition-colors hover:bg-surface",
+              copied && "border-accent text-accent",
+            )}
+          >
+            <LinkIcon />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /** A section heading with a stable anchor and its own share button. */
 export function SectionShare({
   anchor,
