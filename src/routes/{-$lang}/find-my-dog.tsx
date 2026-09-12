@@ -574,7 +574,7 @@ export const Route = createFileRoute("/{-$lang}/find-my-dog")({
     return {
       ...base,
       scripts: [
-        faqLd(quizFaq[locale] ?? quizFaq.en!),
+        faqLd(quizFaq[locale] ?? quizFaq["en"]!),
         breadcrumbLd(
           [
             { name: "DoggMatch", path: "/" },
