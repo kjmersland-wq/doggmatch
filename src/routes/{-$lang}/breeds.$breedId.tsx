@@ -284,7 +284,7 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
     const path = `/breeds/${params.breedId}`;
     const locale = headLocale(ctx);
     const name = loaderData.content.displayName;
-    const title = `${name} — what they're really like to live with | DoggMatch`;
+    const title = `${name} – ${breedDescriptor[locale]} | DoggMatch`;
     const description = loaderData.content.summary;
     const image = abs(breedImages[loaderData.breed.id] ?? "/og-en.jpg");
     return {
@@ -295,25 +295,27 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: langUrl(path, locale) },
+        { property: "og:locale", content: ogLocaleTag(locale) },
+        ...ogLocaleAlternates(locale),
         { property: "og:image", content: image },
-        { property: "og:image:alt", content: `${name} — DoggMatch breed profile` },
+        { property: "og:image:alt", content: `${name} — DoggMatch` },
+        { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
         { name: "twitter:image", content: image },
       ],
-      links: [
-        { rel: "canonical", href: langUrl(path, locale) },
-        { rel: "alternate", hrefLang: "en", href: abs(path) },
-        { rel: "alternate", hrefLang: "nb-NO", href: noUrl(path) },
-        { rel: "alternate", hrefLang: "pl-PL", href: plUrl(path) },
-        { rel: "alternate", hrefLang: "x-default", href: abs(path) },
-      ],
+      links: seoLinks(path).map((l) =>
+        l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
+      ),
       scripts: [
-        breadcrumbLd([
-          { name: "DoggMatch", path: "/" },
-          { name: "Breeds", path: "/breeds" },
-          { name, path: `/breeds/${params.breedId}` },
-        ]),
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: breadcrumbBreeds[locale], path: "/breeds" },
+            { name, path: `/breeds/${params.breedId}` },
+          ],
+          locale,
+        ),
         jsonLd({
           "@type": "Article",
           headline: title,
