@@ -5,6 +5,9 @@ import { breedContentPl } from "./breed-content.pl";
 import { breedContentDk } from "./breed-content.dk";
 import { breedContentSe } from "./breed-content.se";
 import { breedContentFi } from "./breed-content.fi";
+import { breedContentDe } from "./breed-content.de";
+import { breedContentFr } from "./breed-content.fr";
+import { breedContentNl } from "./breed-content.nl";
 import type { BreedId } from "./breeds";
 
 export type { BreedContent };
@@ -18,5 +21,8 @@ export function breedContent(): Record<BreedId, BreedContent> {
     dk: breedContentDk,
     se: breedContentSe,
     fi: breedContentFi,
+    de: breedContentDe,
+    fr: breedContentFr,
+    nl: breedContentNl,
   });
 }
