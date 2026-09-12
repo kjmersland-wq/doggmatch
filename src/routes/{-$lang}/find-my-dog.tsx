@@ -1281,7 +1281,7 @@ function Results({
                   />
                 </div>
                 <div className="mt-4 flex items-baseline justify-between gap-3">
-                  <h3 className="font-display text-lg leading-tight tracking-tight">
+                  <h2 className="font-display text-lg leading-tight tracking-tight">
                     {breedContent()[r.breedId].displayName}
                   </h3>
                   <span className="font-display text-sm tabular-nums text-muted-foreground">
