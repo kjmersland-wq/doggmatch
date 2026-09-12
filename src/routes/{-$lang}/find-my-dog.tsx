@@ -567,6 +567,19 @@ const quizFaq: Record<string, { question: string; answer: string }[]> = {
   ],
 };
 
+/** Short breadcrumb label — the SEO title is far too long for a crumb. */
+const quizCrumb: Record<string, string> = {
+  en: "Find my dog",
+  no: "Finn min hund",
+  pl: "Znajdź psa",
+  dk: "Find min hund",
+  se: "Hitta min hund",
+  fi: "Löydä koirani",
+  de: "Finde meinen Hund",
+  fr: "Trouver mon chien",
+  nl: "Vind mijn hond",
+};
+
 export const Route = createFileRoute("/{-$lang}/find-my-dog")({
   head: (ctx) => {
     const locale = headLocale(ctx);
@@ -578,7 +591,7 @@ export const Route = createFileRoute("/{-$lang}/find-my-dog")({
         breadcrumbLd(
           [
             { name: "DoggMatch", path: "/" },
-            { name: seoCopy[locale]?.title.split(" | ")[0] ?? "Find My Dog", path: "/find-my-dog" },
+            { name: quizCrumb[locale] ?? "Find my dog", path: "/find-my-dog" },
           ],
           locale,
         ),
@@ -1283,7 +1296,7 @@ function Results({
                 <div className="mt-4 flex items-baseline justify-between gap-3">
                   <h2 className="font-display text-lg leading-tight tracking-tight">
                     {breedContent()[r.breedId].displayName}
-                  </h3>
+                  </h2>
                   <span className="font-display text-sm tabular-nums text-muted-foreground">
                     {r.score}%
                   </span>
