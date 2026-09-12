@@ -15,22 +15,37 @@ export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-en.jpg`;
 export type Locale = "en" | "no" | "pl" | "dk" | "se" | "fi" | "de" | "fr" | "nl";
 
 /** Share cards are written in the reader's language, so previews match the page. */
-export const OG_IMAGE_BY_LOCALE: Record<Locale, string> = {
-  en: `${SITE_URL}/og-en.jpg`,
-  no: `${SITE_URL}/og-no.jpg`,
-  pl: `${SITE_URL}/og-pl.jpg`,
-  // No dedicated share-card art yet for these three — fall back to the
-  // English card rather than reference an image that doesn't exist.
-  dk: DEFAULT_OG_IMAGE,
-  se: DEFAULT_OG_IMAGE,
-  fi: DEFAULT_OG_IMAGE,
-  de: DEFAULT_OG_IMAGE,
-  fr: DEFAULT_OG_IMAGE,
-  nl: DEFAULT_OG_IMAGE,
-};
+const LOCALES: Locale[] = ["en", "no", "pl", "dk", "se", "fi", "de", "fr", "nl"];
+
+function cards(suffix: string): Record<Locale, string> {
+  return Object.fromEntries(
+    LOCALES.map((l) => [l, `${SITE_URL}/og-${l}${suffix}.jpg`]),
+  ) as Record<Locale, string>;
+}
+
+/** 1200×630 — Facebook, LinkedIn, X, WhatsApp link previews, Messenger, Slack. */
+export const OG_IMAGE_BY_LOCALE = cards("");
+/** 1200×1200 — Instagram feed, WhatsApp status, square placements. */
+export const OG_SQUARE_BY_LOCALE = cards("-square");
+/** 1080×1920 — Instagram / Facebook / TikTok stories and reels covers. */
+export const OG_STORY_BY_LOCALE = cards("-story");
+/** 1000×1500 — Pinterest pins. */
+export const OG_PIN_BY_LOCALE = cards("-pin");
 
 export function ogImage(locale: Locale): string {
   return OG_IMAGE_BY_LOCALE[locale] ?? DEFAULT_OG_IMAGE;
+}
+
+export function ogSquare(locale: Locale): string {
+  return OG_SQUARE_BY_LOCALE[locale] ?? OG_SQUARE_BY_LOCALE.en;
+}
+
+export function ogStory(locale: Locale): string {
+  return OG_STORY_BY_LOCALE[locale] ?? OG_STORY_BY_LOCALE.en;
+}
+
+export function ogPin(locale: Locale): string {
+  return OG_PIN_BY_LOCALE[locale] ?? OG_PIN_BY_LOCALE.en;
 }
 
 /** Absolute URL for an app path ("/breeds/labrador" -> full https URL). */
@@ -233,6 +248,8 @@ export function localizedHead(
       { property: "og:url", content: url },
       { property: "og:locale", content: ogLocale },
       { property: "og:image", content: image },
+      { property: "og:image:secure_url", content: image },
+      { property: "og:image:type", content: "image/jpeg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { property: "og:image:alt", content: title },
