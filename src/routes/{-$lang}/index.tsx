@@ -941,6 +941,9 @@ const SHARE_LANGS = [
   { code: "dk", flag: "dk", short: "DK", label: "Dansk" },
   { code: "se", flag: "se", short: "SE", label: "Svenska" },
   { code: "fi", flag: "fi", short: "FI", label: "Suomi" },
+  { code: "de", flag: "de", short: "DE", label: "Deutsch" },
+  { code: "fr", flag: "fr", short: "FR", label: "Français" },
+  { code: "nl", flag: "nl", short: "NL", label: "Nederlands" },
 ] as const;
 
 /** The homepage's path in a given language: English is the bare root. */
