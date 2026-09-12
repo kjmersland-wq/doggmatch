@@ -369,7 +369,7 @@ import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "
 import { MatchNotes } from "@/components/dogmatch/match-notes";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { cn } from "@/lib/utils";
-import { seoLinks, abs, localizedHead } from "@/lib/seo";
+import { seoLinks, abs, localizedHead, headLocale, faqLd, breadcrumbLd } from "@/lib/seo";
 
 const title = "Find My Dog — a free match, in about two minutes | DoggMatch";
 const description =
