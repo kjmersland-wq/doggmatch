@@ -71,6 +71,21 @@ export function fiUrl(path: string): string {
   return langUrl(path, "fi");
 }
 
+/** The German reading of a page. */
+export function deUrl(path: string): string {
+  return langUrl(path, "de");
+}
+
+/** The French reading of a page. */
+export function frUrl(path: string): string {
+  return langUrl(path, "fr");
+}
+
+/** The Dutch reading of a page. */
+export function nlUrl(path: string): string {
+  return langUrl(path, "nl");
+}
+
 type LinkTag = { rel: string; href: string; hrefLang?: string };
 
 /**
@@ -86,6 +101,9 @@ export function seoLinks(path: string): LinkTag[] {
     { rel: "alternate", hrefLang: "da-DK", href: dkUrl(path) },
     { rel: "alternate", hrefLang: "sv-SE", href: seUrl(path) },
     { rel: "alternate", hrefLang: "fi-FI", href: fiUrl(path) },
+    { rel: "alternate", hrefLang: "de-DE", href: deUrl(path) },
+    { rel: "alternate", hrefLang: "fr-FR", href: frUrl(path) },
+    { rel: "alternate", hrefLang: "nl-NL", href: nlUrl(path) },
     { rel: "alternate", hrefLang: "x-default", href: abs(path) },
   ];
 }
@@ -136,6 +154,9 @@ export function headLocale(ctx: HeadCtx): Locale {
   if (raw === "dk" || raw === "da" || raw === "da-dk") return "dk";
   if (raw === "se" || raw === "sv" || raw === "sv-se") return "se";
   if (raw === "fi" || raw === "fi-fi") return "fi";
+  if (raw === "de" || raw === "de-de" || raw === "de-at") return "de";
+  if (raw === "fr" || raw === "fr-fr" || raw === "fr-be") return "fr";
+  if (raw === "nl" || raw === "nl-nl" || raw === "nl-be") return "nl";
   return "en";
 }
 
@@ -146,6 +167,9 @@ const OG_LOCALE: Record<Locale, string> = {
   dk: "da_DK",
   se: "sv_SE",
   fi: "fi_FI",
+  de: "de_DE",
+  fr: "fr_FR",
+  nl: "nl_NL",
 };
 
 /**
@@ -156,7 +180,7 @@ const OG_LOCALE: Record<Locale, string> = {
 export function localizedHead(
   ctx: HeadCtx,
   path: string,
-  copy: { en: SeoCopy; no?: SeoCopy; pl?: SeoCopy; dk?: SeoCopy; se?: SeoCopy; fi?: SeoCopy },
+  copy: { en: SeoCopy; no?: SeoCopy; pl?: SeoCopy; dk?: SeoCopy; se?: SeoCopy; fi?: SeoCopy; de?: SeoCopy; fr?: SeoCopy; nl?: SeoCopy },
   options?: { image?: string; type?: string },
 ) {
   const locale = headLocale(ctx);
@@ -167,6 +191,9 @@ export function localizedHead(
     dk: copy.dk,
     se: copy.se,
     fi: copy.fi,
+    de: copy.de,
+    fr: copy.fr,
+    nl: copy.nl,
   };
   const { title, description } = byLocale[locale] ?? copy.en;
   const url = langUrl(path, locale);

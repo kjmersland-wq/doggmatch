@@ -116,7 +116,7 @@ export const Route = createFileRoute("/sitemap.xml")({
     handlers: {
       GET: async () => {
         const urls = collect().flatMap((e) => {
-          const localised = (lang: "" | "no" | "pl" | "dk" | "se" | "fi") =>
+          const localised = (lang: "" | "no" | "pl" | "dk" | "se" | "fi" | "de" | "fr" | "nl") =>
             lang === "" ? `${BASE_URL}${e.path}` : `${BASE_URL}/${lang}${e.path === "/" ? "" : e.path}`;
           const alternates = [
             `    <xhtml:link rel="alternate" hreflang="en" href="${localised("")}"/>`,
@@ -125,10 +125,13 @@ export const Route = createFileRoute("/sitemap.xml")({
             `    <xhtml:link rel="alternate" hreflang="da-DK" href="${localised("dk")}"/>`,
             `    <xhtml:link rel="alternate" hreflang="sv-SE" href="${localised("se")}"/>`,
             `    <xhtml:link rel="alternate" hreflang="fi-FI" href="${localised("fi")}"/>`,
+            `    <xhtml:link rel="alternate" hreflang="de-DE" href="${localised("de")}"/>`,
+            `    <xhtml:link rel="alternate" hreflang="fr-FR" href="${localised("fr")}"/>`,
+            `    <xhtml:link rel="alternate" hreflang="nl-NL" href="${localised("nl")}"/>`,
             `    <xhtml:link rel="alternate" hreflang="x-default" href="${localised("")}"/>`,
           ];
           // Each language reading is its own indexable URL.
-          return (["", "no", "pl", "dk", "se", "fi"] as const).map((lang) => [
+          return (["", "no", "pl", "dk", "se", "fi", "de", "fr", "nl"] as const).map((lang) => [
             `  <url>`,
             `    <loc>${localised(lang)}</loc>`,
             ...alternates,
