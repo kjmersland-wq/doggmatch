@@ -4,6 +4,9 @@ import { pl } from "./pl";
 import { dk } from "./dk";
 import { se } from "./se";
 import { fi } from "./fi";
+import { de } from "./de";
+import { fr } from "./fr";
+import { nl } from "./nl";
 import { useLocale, type Locale } from "./locale";
 
 export {
@@ -27,9 +30,12 @@ export const INTL_LOCALE: Record<Locale, string> = {
   dk: "da-DK",
   se: "sv-SE",
   fi: "fi-FI",
+  de: "de-DE",
+  fr: "fr-FR",
+  nl: "nl-NL",
 };
 
-const dictionaries: Record<Locale, Dictionary> = { en, no, pl, dk, se, fi };
+const dictionaries: Record<Locale, Dictionary> = { en, no, pl, dk, se, fi, de, fr, nl };
 
 export function getDictionary(locale: Locale = SOURCE_LOCALE): Dictionary {
   return dictionaries[locale] ?? en;

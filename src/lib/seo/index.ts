@@ -12,7 +12,7 @@ export const SITE_URL = "https://www.doggmatch.com";
 export const SITE_NAME = "DoggMatch";
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-en.jpg`;
 
-export type Locale = "en" | "no" | "pl" | "dk" | "se" | "fi";
+export type Locale = "en" | "no" | "pl" | "dk" | "se" | "fi" | "de" | "fr" | "nl";
 
 /** Share cards are written in the reader's language, so previews match the page. */
 export const OG_IMAGE_BY_LOCALE: Record<Locale, string> = {
@@ -24,6 +24,9 @@ export const OG_IMAGE_BY_LOCALE: Record<Locale, string> = {
   dk: DEFAULT_OG_IMAGE,
   se: DEFAULT_OG_IMAGE,
   fi: DEFAULT_OG_IMAGE,
+  de: DEFAULT_OG_IMAGE,
+  fr: DEFAULT_OG_IMAGE,
+  nl: DEFAULT_OG_IMAGE,
 };
 
 export function ogImage(locale: Locale): string {
