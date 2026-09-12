@@ -59,7 +59,25 @@ const seoCopy = {
 };
 
 export const Route = createFileRoute("/{-$lang}/breeds/")({
-  head: (ctx) => localizedHead(ctx, "/breeds", seoCopy),
+  validateSearch: (search: Record<string, unknown>) => ({
+    q: typeof search.q === "string" && search.q.trim() ? search.q : undefined,
+  }),
+  head: (ctx) => {
+    const locale = headLocale(ctx);
+    const base = localizedHead(ctx, "/breeds", seoCopy);
+    return {
+      ...base,
+      scripts: [
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: seoCopy[locale]?.title.split(" | ")[0]?.split(" — ")[0] ?? "Breeds", path: "/breeds" },
+          ],
+          locale,
+        ),
+      ],
+    };
+  },
   component: BreedsPage,
 });
 
