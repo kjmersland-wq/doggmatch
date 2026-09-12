@@ -70,6 +70,27 @@ const copy = {
     ended: "Jäsenyys on päättynyt",
     notFound: "Korttia ei löytynyt",
   },
+  de: {
+    checking: "Wird geprüft…",
+    active: "✓ Aktives Mitglied",
+    validUntil: "Gültig bis:",
+    ended: "Mitgliedschaft ist beendet",
+    notFound: "Karte nicht gefunden",
+  },
+  fr: {
+    checking: "Vérification…",
+    active: "✓ Membre actif",
+    validUntil: "Valable jusqu'au :",
+    ended: "L'abonnement a pris fin",
+    notFound: "Carte introuvable",
+  },
+  nl: {
+    checking: "Bezig met controleren…",
+    active: "✓ Actief lid",
+    validUntil: "Geldig tot:",
+    ended: "Lidmaatschap is beëindigd",
+    notFound: "Kaart niet gevonden",
+  },
 } as const;
 
 function VerifyPage() {
