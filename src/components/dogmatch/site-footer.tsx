@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useCopy, useT } from "@/i18n";
 import { BrandLock } from "./brand-logo";
 import { CookieSettingsLink } from "@/components/dogmatch/cookie-consent";
+import { ShareStrip } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
 const copy = {

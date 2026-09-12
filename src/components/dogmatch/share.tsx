@@ -422,7 +422,7 @@ export function ShareStrip({ className }: { className?: string }) {
             title={copied ? labels.copied : labels.copy}
             className={cn(
               "grid h-10 w-10 place-items-center rounded-full border border-border-strong text-foreground transition-colors hover:bg-surface",
-              copied && "border-accent text-accent",
+              copied && "bg-surface",
             )}
           >
             <LinkIcon />
