@@ -7,6 +7,7 @@ import { breeds } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Arrow, ButtonLink, Eyebrow, Section, TraitMeter } from "@/components/dogmatch/ui";
+import { RealMatchesSection } from "@/components/dogmatch/real-matches";
 import heroImage from "@/assets/hero.jpg";
 import homeImage from "@/assets/editorial-home.jpg";
 import dogLifeImage from "@/assets/dog-life.jpg";
@@ -24,6 +25,7 @@ const description =
 const SECTION_IDS = [
   "why-doggmatch",
   "how-it-works",
+  "real-matches",
   "dog-breeds",
   "compare-breeds",
   "doggmatch-plus",
@@ -72,6 +74,7 @@ const localCopy = {
     anchors: {
       "why-doggmatch": "Why DoggMatch",
       "how-it-works": "How it works",
+      "real-matches": "See it work",
       "dog-breeds": "Explore dog breeds",
       "compare-breeds": "Compare breeds",
       "doggmatch-plus": "DoggMatch+",
@@ -122,6 +125,7 @@ const localCopy = {
     anchors: {
       "why-doggmatch": "Hvorfor DoggMatch",
       "how-it-works": "Slik fungerer det",
+      "real-matches": "Se det i praksis",
       "dog-breeds": "Bli kjent med rasene",
       "compare-breeds": "Sammenlign raser",
       "doggmatch-plus": "DoggMatch+",
@@ -172,6 +176,7 @@ const localCopy = {
     anchors: {
       "why-doggmatch": "Dlaczego DoggMatch",
       "how-it-works": "Jak to działa",
+      "real-matches": "Zobacz, jak to działa",
       "dog-breeds": "Poznaj rasy psów",
       "compare-breeds": "Porównaj rasy",
       "doggmatch-plus": "DoggMatch+",
@@ -370,6 +375,11 @@ function HomePage() {
             </ol>
           </div>
         </div>
+      </Section>
+
+      {/* ------------------------------------------------------ Real matches */}
+      <Section id="real-matches">
+        <RealMatchesSection />
       </Section>
 
       {/* --------------------------------------------------- Breed preview */}
