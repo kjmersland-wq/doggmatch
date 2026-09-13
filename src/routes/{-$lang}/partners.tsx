@@ -18,6 +18,7 @@ import {
   Mountain,
 } from "lucide-react";
 import { Button, Eyebrow, Section, Arrow } from "@/components/dogmatch/ui";
+import { PartnerPortalLink } from "@/components/dogmatch/partner-portal-link";
 import { partnersContent } from "@/data/partners/content";
 import { sendPartnerEnquiry } from "@/lib/partners/partner.functions";
 import { cn } from "@/lib/utils";
