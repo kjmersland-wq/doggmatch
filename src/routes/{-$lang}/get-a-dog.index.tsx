@@ -453,11 +453,11 @@ function GetADogPage() {
               loading="lazy"
               className="h-[24rem] w-full object-cover md:h-[32rem]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/60 to-ink/20" />
             <div className="absolute inset-x-0 bottom-0 p-8 md:p-14">
-              <p className="eyebrow text-primary-foreground/70">{c.welcomeEyebrow}</p>
-              <h2 className="display-lg mt-4 max-w-xl text-primary-foreground">{c.welcomeTitle}</h2>
-              <p className="mt-4 max-w-lg leading-relaxed text-primary-foreground/80">{c.welcomeBody}</p>
+              <p className="eyebrow text-ivory/75">{c.welcomeEyebrow}</p>
+              <h2 className="display-lg mt-4 max-w-xl text-ivory drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">{c.welcomeTitle}</h2>
+              <p className="mt-4 max-w-lg leading-relaxed text-ivory/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">{c.welcomeBody}</p>
               <div className="mt-8">
                 <ButtonLink to={withLangPrefix("/get-a-dog/welcome-home")} tone="accent" size="lg">
                   {c.welcomeCta}

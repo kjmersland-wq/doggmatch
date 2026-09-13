@@ -283,9 +283,9 @@ function DogLifePage() {
             loading="lazy"
             className="h-[22rem] w-full object-cover md:h-[30rem]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/55 to-ink/15" />
           <div className="absolute inset-x-0 bottom-0 p-8 md:p-12">
-            <p className="font-display text-2xl text-primary-foreground">
+            <p className="font-display text-2xl text-ivory drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
               {submitted
                 ? c.searching(submitted)
                 : pick({
@@ -300,7 +300,7 @@ function DogLifePage() {
                     nl: "Waar je ook bent",
                   })}
             </p>
-            <p className="mt-2 max-w-md text-sm text-primary-foreground/80">
+            <p className="mt-2 max-w-md text-sm text-ivory/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">
               {submitted ? c.notReady(submitted) : c.lead}
             </p>
           </div>

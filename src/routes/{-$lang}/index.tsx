@@ -878,11 +878,11 @@ function HomePage() {
               loading="lazy"
               className="h-[26rem] w-full object-cover md:h-[34rem]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/25 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/60 to-ink/20" />
             <div className="absolute inset-x-0 bottom-0 p-8 md:p-14">
-              <p className="eyebrow text-primary-foreground/70">{t.home.lifeEyebrow}</p>
-              <h2 className="display-lg mt-4 max-w-xl text-primary-foreground">{t.home.lifeTitle}</h2>
-              <p className="mt-4 max-w-lg leading-relaxed text-primary-foreground/80">
+              <p className="eyebrow text-ivory/75">{t.home.lifeEyebrow}</p>
+              <h2 className="display-lg mt-4 max-w-xl text-ivory drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">{t.home.lifeTitle}</h2>
+              <p className="mt-4 max-w-lg leading-relaxed text-ivory/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">
                 {t.home.lifeBody}
               </p>
               <div className="mt-8">
