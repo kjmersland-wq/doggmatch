@@ -12,6 +12,7 @@ export type SavedPlace = {
 };
 
 const KEY = "doggmatch.places.saved.v1";
+const EMPTY: SavedPlace[] = [];
 
 let state: SavedPlace[] = [];
 let loaded = false;
@@ -60,7 +61,7 @@ export function useSavedPlaces(): SavedPlace[] {
       ensureLoaded();
       return state;
     },
-    () => [],
+    () => EMPTY,
   );
 }
 
