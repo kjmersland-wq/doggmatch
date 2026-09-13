@@ -155,7 +155,7 @@ export const issuePartnerCode = createServerFn({ method: "POST" })
 
     const code = codeFor(row.company);
     const promo = await stripe.promotionCodes.create({
-      coupon: PARTNER_COUPON_ID,
+      promotion: { type: "coupon", coupon: PARTNER_COUPON_ID },
       code,
       metadata: { partner_id: row.id, company: row.company },
     });

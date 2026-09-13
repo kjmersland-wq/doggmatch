@@ -546,7 +546,7 @@ function PortalPage() {
           <h2 className="text-2xl">{c.signInTitle}</h2>
           <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">{c.signInBody}</p>
           <div className="mt-6">
-            <ButtonLink to={withLangPrefix("/auth")} search={{ next: "/partners/portal" }}>
+            <ButtonLink to={withLangPrefix("/auth")} search={{ next: "/partners/portal" } as never}>
               {c.signIn} <Arrow />
             </ButtonLink>
           </div>
