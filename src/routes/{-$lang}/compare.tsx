@@ -4,6 +4,7 @@ import { useT, useCopy } from "@/i18n";
 import { breeds, breedById, type BreedId, type BreedTraits } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
+import { quizQuestions } from "@/data/questions.locale";
 import { combineBreedTraits } from "@/lib/dogs/profile";
 import { matchDogTraits } from "@/lib/matching/engine";
 import { matchInsights, scoreReading } from "@/lib/matching/insights";
@@ -25,6 +26,11 @@ const personalCopy = {
     bestLabel: "Best fit of the three",
     watch: "Worth thinking about",
     fine: "Nothing here worked against you.",
+    differencesTitle: "How these breeds differ for your lifestyle",
+    differencesBody: "The practical gaps that are most likely to shape your week, read against the answers you gave us.",
+    biggest: "Biggest practical difference",
+    yourAnswer: "You told us",
+    costContext: "Yearly cost is not scored against your answers, but it can make a real difference over time.",
   },
   no: {
     title: "Hvilken av disse passer livet ditt best?",
@@ -35,6 +41,11 @@ const personalCopy = {
     bestLabel: "Passer best av disse",
     watch: "Verdt å tenke på",
     fine: "Ingenting her talte imot deg.",
+    differencesTitle: "Slik skiller disse rasene seg for livet ditt",
+    differencesBody: "De praktiske forskjellene som mest sannsynlig vil merkes i hverdagen, sett opp mot svarene du ga oss.",
+    biggest: "Største praktiske forskjell",
+    yourAnswer: "Du fortalte oss",
+    costContext: "Årskostnaden vurderes ikke opp mot svarene dine, men kan utgjøre en tydelig forskjell over tid.",
   },
   pl: {
     title: "Który z nich najlepiej pasuje do Twojego życia?",
@@ -45,6 +56,11 @@ const personalCopy = {
     bestLabel: "Najlepiej dopasowany z trójki",
     watch: "Warto się zastanowić",
     fine: "Nic tutaj nie działało na Twoją niekorzyść.",
+    differencesTitle: "Jak te rasy różnią się w odniesieniu do Twojego życia",
+    differencesBody: "Praktyczne różnice, które najpewniej odczujesz na co dzień, zestawione z Twoimi odpowiedziami.",
+    biggest: "Największa praktyczna różnica",
+    yourAnswer: "Twoja odpowiedź",
+    costContext: "Roczny koszt nie wpływa na dopasowanie do odpowiedzi, ale z czasem może mieć duże znaczenie.",
   },
   dk: {
     title: "Hvilken af disse passer bedst til dit liv?",
@@ -110,34 +126,34 @@ const personalCopy = {
 
 const title = "Compare dogs side by side | DoggMatch";
 const description =
-  "Torn between a few dogs? Put up to three side by side and see where they really differ — energy, shedding, grooming, lifespan and yearly cost.";
+  "Compare up to four dog breeds side by side across exercise, grooming, alone time, shedding and yearly cost.";
 
 const seoCopy = {
   en: { title, description },
   no: {
     title: "Sammenlign hunder side om side | DoggMatch",
     description:
-      "Vanskelig å velge mellom noen hunder? Sett opptil tre ved siden av hverandre og se hvor de faktisk skiller seg — energi, pelsfelling, stell, levealder og årlige kostnader.",
+      "Sammenlign opptil fire hunderaser side om side på mosjon, pelsstell, alenetid, røyting og årlige kostnader.",
   },
   pl: {
     title: "Porównaj psy obok siebie | DoggMatch",
     description:
-      "Wahasz się między kilkoma psami? Zestaw do trzech obok siebie i zobacz, czym naprawdę się różnią — energia, linienie, pielęgnacja, długość życia i roczne koszty.",
+      "Porównaj obok siebie do czterech ras pod względem ruchu, pielęgnacji, samotności, linienia i rocznych kosztów.",
   },
   de: {
     title: "Hunde direkt vergleichen | DoggMatch",
     description:
-      "Kannst du dich zwischen ein paar Hunden nicht entscheiden? Stelle bis zu drei nebeneinander und sieh, worin sie sich wirklich unterscheiden — Energie, Fellwechsel, Pflege, Lebenserwartung und Jahreskosten.",
+      "Vergleiche bis zu vier Hunderassen bei Bewegung, Pflege, Alleinbleiben, Haaren und Jahreskosten.",
   },
   fr: {
     title: "Comparez des chiens côte à côte | DoggMatch",
     description:
-      "Vous hésitez entre plusieurs chiens ? Placez-en jusqu'à trois côte à côte et découvrez leurs vraies différences — énergie, perte de poils, toilettage, espérance de vie et coût annuel.",
+      "Comparez jusqu'à quatre races selon l'exercice, le toilettage, le temps seul, la perte de poils et le coût annuel.",
   },
   nl: {
     title: "Vergelijk honden naast elkaar | DoggMatch",
     description:
-      "Twijfel je tussen een paar honden? Zet er tot drie naast elkaar en zie waarin ze echt verschillen — energie, verharen, verzorging, levensverwachting en jaarlijkse kosten.",
+      "Vergelijk tot vier hondenrassen op beweging, verzorging, alleen zijn, verharen en jaarlijkse kosten.",
   },
 };
 
