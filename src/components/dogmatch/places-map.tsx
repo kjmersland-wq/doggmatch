@@ -153,6 +153,21 @@ export default function PlacesMap({ center, places, activeId, onSelect, label }:
     else map.panTo(center);
   }, [places, activeId, center, onSelect, ready]);
 
+  if (!BROWSER_KEY) {
+    return (
+      <div className="h-[22rem] w-full bg-ink md:h-[30rem]">
+        {fallback ? (
+          <img
+            src={fallback}
+            alt={label}
+            className="h-full w-full object-cover"
+            loading="lazy"
+          />
+        ) : null}
+      </div>
+    );
+  }
+
   return (
     <div
       ref={nodeRef}
