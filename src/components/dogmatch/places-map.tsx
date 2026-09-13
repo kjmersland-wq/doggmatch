@@ -144,7 +144,7 @@ export default function PlacesMap({
         } else {
           mapRef.current.panTo(center);
         }
-        mapRef.current.setMapTypeId(satellite ? "hybrid" : "roadmap");
+        mapRef.current?.setMapTypeId(satellite ? "hybrid" : "roadmap");
         setReady(true);
       })
       .catch(() => undefined);

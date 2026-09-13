@@ -462,6 +462,9 @@ function DogLifePage() {
                 activeId={activeId}
                 onSelect={setActiveId}
                 label={p.mapLabel}
+                radiusKm={result.radiusKm}
+                standardLabel={p.mapStandard}
+                satelliteLabel={p.mapSatellite}
               />
             </Suspense>
           ) : (
