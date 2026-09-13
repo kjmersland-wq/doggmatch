@@ -430,12 +430,85 @@ export const COST_GUIDE: LifestyleGuideConfig = {
   ].filter((x): x is CostExample => Boolean(x)),
 };
 
+/* ------------------------------------------------------------------ */
+/* 6. Most commonly mismatched breeds                                  */
+/* ------------------------------------------------------------------ */
+
+export const MISMATCH_GUIDE: LifestyleGuideConfig = {
+  id: "most-mismatched-breeds",
+  path: "/most-mismatched-breeds",
+  seo: { en: {
+    title: "The most commonly mismatched dog breeds | DoggMatch",
+    description:
+      "Border collies in studio flats, huskies in warm cities, Frenchies bought for looks — the breeds that most often end up in the wrong life, and the honest reasons why.",
+  } },
+  copy: { en: {
+    eyebrow: "Choosing a dog",
+    h1: "The most commonly mismatched breeds",
+    intro:
+      "Some breeds end up in the wrong home far more often than others — not because they are difficult dogs, but because they are loved for how they look and chosen before anyone asks how they live. Rescues see the same names again and again. Here they are, with the typical mismatch for each, so you can decide with your eyes open.",
+    howChosenTitle: "Why these breeds end up mismatched",
+    howChosen: [
+      "We looked at the breeds that dominate rescue waiting lists and surrender surveys, and compared them with the same trait data our matching engine uses.",
+      "The pattern is almost never aggression or 'bad dogs'. It is ordinary dogs whose daily needs — work, movement, space, care — were bigger than the life they were chosen for.",
+      "Every breed below is wonderful in the right home. This page exists so fewer of them have to find that home twice.",
+    ],
+    listTitle: "The breeds rescues see most",
+    listIntro:
+      "Eight breeds that most often land in the wrong lifestyle — with the typical mismatch spelled out honestly, and the full profile one click away.",
+    metrics: [
+      { key: "energy", label: "Energy" },
+      { key: "exerciseNeeds", label: "Exercise needs" },
+      { key: "mentalStimulation", label: "Mental stimulation" },
+      { key: "firstTimeSuitability", label: "First-time owners" },
+    ],
+    readProfile: "Read the full profile",
+    tradeoffNote:
+      "None of this is a reason to avoid these breeds — it is a reason to choose them honestly. If your week genuinely includes the work they need, they are some of the most rewarding dogs there are. If it doesn't, the kindest thing you can do is fall in love with a breed that fits the life you actually have.",
+    quizTitle: "Fall in love with the right dog, not the wrong photo",
+    quizBody:
+      "The Find My Dog quiz weighs your home, your time, your experience and your real week against every breed's traits — including every breed on this page — and shows you the reasoning behind each score.",
+    quizCta: quizBlock.quizCta,
+    compareCta: quizBlock.compareCta,
+    levelLabels,
+  } },
+  shortlist: byIds([
+    "border-collie",
+    "siberian-husky",
+    "australian-shepherd",
+    "jack-russell-terrier",
+    "french-bulldog",
+    "beagle",
+    "cocker-spaniel",
+    "dachshund",
+  ]),
+  reasons: { en: {
+    "border-collie":
+      "Chosen for intelligence and beauty, by people with a working week. A bored border collie invents its own job — herding children, chasing cars, dismantling the house. Two walks are not enough; this dog needs work.",
+    "siberian-husky":
+      "Chosen for the wolf looks. Then comes the reality: an escape artist bred to run all day, shedding in drifts, howling at the neighbours, wilting in summer heat. Stunning dog, very specific life.",
+    "australian-shepherd":
+      "The social-media dog of the last few years — bought for the merle coat and the tricks. Behind it sits a serious herding dog that needs a job daily, and that turns restless, vocal and nippy without one.",
+    "jack-russell-terrier":
+      "Bought because it's small. It is not a small dog in spirit — it's a working terrier in a compact body: tireless, prey-driven, vocal, and far too clever for a home that wanted a lapdog.",
+    "french-bulldog":
+      "The most bought companion dog in the world — chosen for the face, by owners unprepared for the vet bills. Breathing problems, skin, spine and heat intolerance are common; insurance is not optional here.",
+    beagle:
+      "Chosen as a gentle family dog — which it is. The surprise is the nose: off-lead recall is a life's work, food is a religion, and the baying voice carries through walls. Lovely dog, wrong flat.",
+    "cocker-spaniel":
+      "Chosen for the soft eyes and the spaniel reputation. A working-bred cocker is a busy, busy dog — needs real exercise and real coat care, and turns barky and restless in a quiet, sedentary home.",
+    dachshund:
+      "Chosen because it's cute and portable. It is a hunting hound: brave, stubborn, surprisingly loud, and prone to back injuries that mean stairs and sofa-jumping need managing for life.",
+  } },
+};
+
 export const LIFESTYLE_GUIDES = [
   APARTMENT_GUIDE,
   FIRST_TIME_GUIDE,
   ALONE_GUIDE,
   LOW_SHEDDING_GUIDE,
   COST_GUIDE,
+  MISMATCH_GUIDE,
 ];
 
 /**
