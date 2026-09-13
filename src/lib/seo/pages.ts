@@ -791,3 +791,16 @@ export const pageSeo = {
 } satisfies Record<string, PageSeo>;
 
 export type PageSeoKey = keyof typeof pageSeo;
+
+/** "Guides" as the breadcrumb trail names it, in each language. */
+export const guidesCrumb: Record<string, string> = {
+  en: "Guides",
+  no: "Guider",
+  pl: "Poradniki",
+  dk: "Guider",
+  se: "Guider",
+  fi: "Oppaat",
+  de: "Ratgeber",
+  fr: "Guides",
+  nl: "Gidsen",
+};
