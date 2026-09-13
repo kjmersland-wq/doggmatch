@@ -3,15 +3,15 @@ import type { Block, DocSection } from "@/lib/print/types";
 import { useCopy } from "@/i18n";
 
 const copy = {
-  en: { writtenDown: "Written down" },
-  no: { writtenDown: "Skrevet ut" },
-  pl: { writtenDown: "Zapisano" },
-  dk: { writtenDown: "Skrevet" },
-  se: { writtenDown: "Skrivet" },
-  fi: { writtenDown: "Kirjoitettu" },
-  de: { writtenDown: "Aufgeschrieben" },
-  fr: { writtenDown: "Rédigé" },
-  nl: { writtenDown: "Opgeschreven" },
+  en: { writtenDown: "Written down", inside: "What's inside" },
+  no: { inside: "Hva som er inni", writtenDown: "Skrevet ut" },
+  pl: { inside: "Co jest w środku", writtenDown: "Zapisano" },
+  dk: { inside: "Hvad der er indeni", writtenDown: "Skrevet" },
+  se: { inside: "Vad som ingår", writtenDown: "Skrivet" },
+  fi: { inside: "Mitä sisältää", writtenDown: "Kirjoitettu" },
+  de: { inside: "Was enthalten ist", writtenDown: "Aufgeschrieben" },
+  fr: { inside: "Ce qu'il contient", writtenDown: "Rédigé" },
+  nl: { inside: "Wat erin zit", writtenDown: "Opgeschreven" },
 } as const;
 
 /**
@@ -27,6 +27,7 @@ export function DocPaper({
   photo,
   subtitle,
   sections,
+  contents,
   date,
 }: {
   title: string;
@@ -35,6 +36,8 @@ export function DocPaper({
   photo?: string;
   subtitle?: string;
   sections: DocSection[];
+  /** Titles of the documents included, listed on the cover. */
+  contents?: string[];
   date: string;
 }) {
   const pages = paginate(sections);
@@ -49,6 +52,7 @@ export function DocPaper({
           <h1 className="doc-dogname">{dogName}</h1>
           {breedName && <p className="doc-breed">{breedName}</p>}
           {photo && <img src={photo} alt="" className="doc-photo" />}
+          {contents && contents.length > 1 && <Contents items={contents} />}
           {subtitle && <p className="doc-subtitle">{subtitle}</p>}
         </div>
         <Footer dogName={dogName} date={date} page={1} total={total} />
@@ -77,6 +81,23 @@ export function DocPaper({
           <Footer dogName={dogName} date={date} page={i + 2} total={total} />
         </article>
       ))}
+    </div>
+  );
+}
+
+function Contents({ items }: { items: string[] }) {
+  const c = useCopy(copy);
+  return (
+    <div className="doc-contents">
+      <p className="doc-contents-label">{c.inside}</p>
+      <ol>
+        {items.map((item, i) => (
+          <li key={item}>
+            <span>{i + 1}</span>
+            {item}
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }
