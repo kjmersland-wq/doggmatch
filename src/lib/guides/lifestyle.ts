@@ -19,34 +19,47 @@ export interface GuideSection {
   paragraphs: string[];
 }
 
+/** Everything a reader sees on a guide page, in one language. */
+export interface GuideCopy {
+  eyebrow: string;
+  h1: string;
+  intro: string;
+  howChosenTitle: string;
+  howChosen: string[];
+  listTitle?: string;
+  listIntro?: string;
+  metrics: GuideMetric[];
+  readProfile: string;
+  tradeoffNote?: string;
+  sections?: GuideSection[];
+  quizTitle: string;
+  quizBody: string;
+  quizCta: string;
+  compareCta: string;
+  levelLabels: string[];
+}
+
+export interface GuideSeo {
+  title: string;
+  description: string;
+}
+
+/**
+ * Every translatable value sits in a `{ en: ... }` map, so a new language is
+ * added by dropping a sibling key beside the English one — no code changes,
+ * and English keeps showing until the translation exists.
+ */
 export interface LifestyleGuideConfig {
   id: string;
   path: string;
-  seo: { title: string; description: string };
-  copy: {
-    eyebrow: string;
-    h1: string;
-    intro: string;
-    howChosenTitle: string;
-    howChosen: string[];
-    listTitle?: string;
-    listIntro?: string;
-    metrics: GuideMetric[];
-    readProfile: string;
-    tradeoffNote?: string;
-    sections?: GuideSection[];
-    quizTitle: string;
-    quizBody: string;
-    quizCta: string;
-    compareCta: string;
-    levelLabels: string[];
-  };
+  seo: CopyMap<GuideSeo>;
+  copy: CopyMap<GuideCopy>;
   /** Deterministic shortlist from real trait data. */
   shortlist?: Breed[];
   /** One honest line per shortlisted breed, keyed by breed id. */
-  reasons?: Record<string, string>;
+  reasons?: CopyMap<Record<string, string>>;
   /** Example breeds with real yearly cost ranges (cost guide). */
-  costExamples?: { breed: Breed; sizeLabel: string }[];
+  costExamples?: { breed: Breed; sizeLabel: CopyMap<string> }[];
 }
 
 const levelLabels = ["Very low", "Low", "Moderate", "High", "Very high"];
