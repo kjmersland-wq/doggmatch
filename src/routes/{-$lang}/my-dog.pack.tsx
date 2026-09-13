@@ -154,6 +154,7 @@ function PackPage() {
           {...(ctx.breedName ? { breedName: ctx.breedName } : {})}
           {...(ctx.details.photo ? { photo: ctx.details.photo } : {})}
           subtitle={whole ? c.subtitleWhole : c.subtitlePart}
+          contents={ids.map((id) => documentsById[id]?.title ?? id)}
           sections={sections}
           date={ctx.today}
         />
