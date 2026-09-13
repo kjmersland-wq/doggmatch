@@ -498,7 +498,10 @@ function DogLifePage() {
         </div>
       </section>
 
+      <SavedPlacesPanel />
+
       {result && (
+
         <section className="container-page mt-10">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
             <h2 className="font-display text-2xl tracking-tight">
