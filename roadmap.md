@@ -12,6 +12,6 @@
 - [x] Add concrete member-benefit examples to the English Partners page.
 - [x] Complete training categories, goals, and lessons in Danish, Swedish, Finnish, German, French, and Dutch.
 - [x] Audit every public page and shared content source across all nine languages against English.
-- [ ] Replace missing English fallbacks and incomplete localized content in Norwegian, Danish, Swedish, Finnish, German, French, Dutch, and Polish.
-- [ ] Review localized wording for a natural, warm, calm voice without changing layout or functionality.
-- [ ] Verify route coverage, metadata, rendering, and builds for every locale.
+- [x] Replace missing English fallbacks and incomplete localized content in Norwegian, Danish, Swedish, Finnish, German, French, Dutch, and Polish.
+- [x] Review localized wording for a natural, warm, calm voice without changing layout or functionality.
+- [x] Verify route coverage, metadata, rendering, and builds for every locale.
