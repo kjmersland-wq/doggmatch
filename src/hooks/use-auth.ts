@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import type { Session } from "@supabase/supabase-js";
-import { supabase } from "@/integrations/supabase/client";
+
+/** Is the backend configured in this build? Keeps public pages alive if not. */
+function backendConfigured(): boolean {
+  return Boolean(
+    import.meta.env["VITE_SUPABASE_URL"] && import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"],
+  );
+}
 
 /** The signed-in person, or null. Loading is true until we know. */
 export function useAuth() {
@@ -9,18 +15,36 @@ export function useAuth() {
 
   useEffect(() => {
     let alive = true;
-    supabase.auth.getSession().then(({ data }) => {
-      if (!alive) return;
-      setSession(data.session);
+    let unsubscribe: (() => void) | null = null;
+
+    if (!backendConfigured()) {
       setLoading(false);
-    });
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, next) => {
-      setSession(next);
-      setLoading(false);
-    });
+      return () => {
+        alive = false;
+      };
+    }
+
+    void (async () => {
+      try {
+        const { supabase } = await import("@/integrations/supabase/client");
+        const { data } = await supabase.auth.getSession();
+        if (!alive) return;
+        setSession(data.session);
+        setLoading(false);
+        const { data: sub } = supabase.auth.onAuthStateChange((_event, next) => {
+          setSession(next);
+          setLoading(false);
+        });
+        unsubscribe = () => sub.subscription.unsubscribe();
+      } catch {
+        // Sign-in simply isn't available here — the page should still work.
+        if (alive) setLoading(false);
+      }
+    })();
+
     return () => {
       alive = false;
-      sub.subscription.unsubscribe();
+      if (unsubscribe) unsubscribe();
     };
   }, []);
 
