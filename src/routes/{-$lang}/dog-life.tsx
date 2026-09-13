@@ -9,6 +9,8 @@ import { ShareBar } from "@/components/dogmatch/share";
 import { getPlacesCopy } from "@/lib/places/copy";
 import { findNearbyPlaces, suggestPlaces } from "@/lib/places/places.functions";
 import { PLACE_CATEGORIES, type NearbyResult, type PlaceCategory, type Suggestion } from "@/lib/places/types";
+import { PlaceSend, SavedPlacesPanel } from "@/components/dogmatch/place-send";
+
 
 const PlacesMap = lazy(() => import("@/components/dogmatch/places-map"));
 
