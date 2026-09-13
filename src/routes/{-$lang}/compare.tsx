@@ -23,7 +23,7 @@ const personalCopy = {
       "Answer the Find My Dog questions and this table will read itself against your own days — not just breed statistics.",
     promptCta: "Answer the questions",
     based: "Based on the answers you gave in Find My Dog, kept on this device.",
-    bestLabel: "Best fit of the three",
+    bestLabel: "Best fit of these dogs",
     watch: "Worth thinking about",
     fine: "Nothing here worked against you.",
     differencesTitle: "How these breeds differ for your lifestyle",
@@ -55,7 +55,7 @@ const personalCopy = {
       "Odpowiedz na pytania w Znajdź mojego psa, a ta tabela sama odniesie się do Twoich codziennych dni — nie tylko do statystyk rasy.",
     promptCta: "Odpowiedz na pytania",
     based: "Na podstawie odpowiedzi, które podałeś/aś w Znajdź mojego psa, zapisanych na tym urządzeniu.",
-    bestLabel: "Najlepiej dopasowany z trójki",
+    bestLabel: "Najlepiej dopasowany z tych psów",
     watch: "Warto się zastanowić",
     fine: "Nic tutaj nie działało na Twoją niekorzyść.",
     differencesTitle: "Jak te rasy różnią się w odniesieniu do Twojego życia",
@@ -346,6 +346,12 @@ function PersonalFit({ columns, names }: { columns: Column[]; names: Record<Bree
     const question = questionById[id];
     return question?.options.find((option) => option.value === profile[id])?.label;
   };
+  const difficulty = (value: number, inverse = false) => {
+    const adjusted = inverse ? 6 - value : value;
+    if (adjusted <= 2) return { value: 2, label: copy.compare.legend.low.split(" — ")[0] };
+    if (adjusted >= 4) return { value: 5, label: copy.compare.legend.high.split(" — ")[0] };
+    return { value: 3, label: copy.compare.legend.medium };
+  };
 
   return (
     <section className="mt-8">
@@ -389,12 +395,13 @@ function PersonalFit({ columns, names }: { columns: Column[]; names: Record<Bree
               <ul className="mt-4 grid gap-3">
                 {columns.map((col) => {
                   const value = Math.round(columnTraits(col)[item.trait]);
+                  const level = difficulty(value, item.key === "alone");
                   return (
                     <li key={columnKey(col)} className="flex items-center justify-between gap-4 text-sm">
                       <span>{columnName(col, copy.compare)}</span>
                       <span className="inline-flex items-center gap-2 text-muted-foreground">
-                        <LevelDot value={value} label={copy.compare.scale[value - 1] ?? "—"} size="sm" />
-                        {copy.compare.scale[value - 1] ?? "—"}
+                        <LevelDot value={level.value} label={level.label} size="sm" />
+                        {level.label}
                       </span>
                     </li>
                   );
