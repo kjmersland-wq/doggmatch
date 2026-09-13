@@ -50,6 +50,7 @@ function collect(): SitemapEntry[] {
     { path: "/dogs-that-can-be-left-alone", changefreq: "monthly", priority: "0.8" },
     { path: "/low-shedding-dogs", changefreq: "monthly", priority: "0.8" },
     { path: "/what-a-dog-costs", changefreq: "monthly", priority: "0.8" },
+    { path: "/most-mismatched-breeds", changefreq: "monthly", priority: "0.8" },
     { path: "/dog-life", changefreq: "monthly", priority: "0.6" },
     { path: "/get-a-dog", changefreq: "monthly", priority: "0.8" },
     { path: "/get-a-dog/ready", changefreq: "monthly", priority: "0.7" },

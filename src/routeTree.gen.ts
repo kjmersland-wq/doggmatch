@@ -28,6 +28,7 @@ import { Route as Char123LangChar125GetADogRouteImport } from './routes/{-$lang}
 import { Route as Char123LangChar125GuidesRouteImport } from './routes/{-$lang}/guides'
 import { Route as Char123LangChar125LowSheddingDogsRouteImport } from './routes/{-$lang}/low-shedding-dogs'
 import { Route as Char123LangChar125MemberCardRouteImport } from './routes/{-$lang}/member-card'
+import { Route as Char123LangChar125MostMismatchedBreedsRouteImport } from './routes/{-$lang}/most-mismatched-breeds'
 import { Route as Char123LangChar125MyDogRouteImport } from './routes/{-$lang}/my-dog'
 import { Route as Char123LangChar125PartnersRouteImport } from './routes/{-$lang}/partners'
 import { Route as Char123LangChar125PlusRouteImport } from './routes/{-$lang}/plus'
@@ -180,6 +181,12 @@ const Char123LangChar125MemberCardRoute =
   Char123LangChar125MemberCardRouteImport.update({
     id: '/member-card',
     path: '/member-card',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125MostMismatchedBreedsRoute =
+  Char123LangChar125MostMismatchedBreedsRouteImport.update({
+    id: '/most-mismatched-breeds',
+    path: '/most-mismatched-breeds',
     getParentRoute: () => Char123LangChar125Route,
   } as any)
 const Char123LangChar125MyDogRoute = Char123LangChar125MyDogRouteImport.update({
@@ -462,6 +469,7 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/guides': typeof Char123LangChar125GuidesRoute
   '/{-$lang}/low-shedding-dogs': typeof Char123LangChar125LowSheddingDogsRoute
   '/{-$lang}/member-card': typeof Char123LangChar125MemberCardRoute
+  '/{-$lang}/most-mismatched-breeds': typeof Char123LangChar125MostMismatchedBreedsRoute
   '/{-$lang}/my-dog': typeof Char123LangChar125MyDogRouteWithChildren
   '/{-$lang}/partners': typeof Char123LangChar125PartnersRoute
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
@@ -525,6 +533,7 @@ export interface FileRoutesByTo {
   '/{-$lang}/guides': typeof Char123LangChar125GuidesRoute
   '/{-$lang}/low-shedding-dogs': typeof Char123LangChar125LowSheddingDogsRoute
   '/{-$lang}/member-card': typeof Char123LangChar125MemberCardRoute
+  '/{-$lang}/most-mismatched-breeds': typeof Char123LangChar125MostMismatchedBreedsRoute
   '/{-$lang}/partners': typeof Char123LangChar125PartnersRoute
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
   '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
@@ -588,6 +597,7 @@ export interface FileRoutesById {
   '/{-$lang}/guides': typeof Char123LangChar125GuidesRoute
   '/{-$lang}/low-shedding-dogs': typeof Char123LangChar125LowSheddingDogsRoute
   '/{-$lang}/member-card': typeof Char123LangChar125MemberCardRoute
+  '/{-$lang}/most-mismatched-breeds': typeof Char123LangChar125MostMismatchedBreedsRoute
   '/{-$lang}/my-dog': typeof Char123LangChar125MyDogRouteWithChildren
   '/{-$lang}/partners': typeof Char123LangChar125PartnersRoute
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
@@ -655,6 +665,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/guides'
     | '/{-$lang}/low-shedding-dogs'
     | '/{-$lang}/member-card'
+    | '/{-$lang}/most-mismatched-breeds'
     | '/{-$lang}/my-dog'
     | '/{-$lang}/partners'
     | '/{-$lang}/plus'
@@ -718,6 +729,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/guides'
     | '/{-$lang}/low-shedding-dogs'
     | '/{-$lang}/member-card'
+    | '/{-$lang}/most-mismatched-breeds'
     | '/{-$lang}/partners'
     | '/{-$lang}/plus'
     | '/{-$lang}/privacy'
@@ -780,6 +792,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/guides'
     | '/{-$lang}/low-shedding-dogs'
     | '/{-$lang}/member-card'
+    | '/{-$lang}/most-mismatched-breeds'
     | '/{-$lang}/my-dog'
     | '/{-$lang}/partners'
     | '/{-$lang}/plus'
@@ -965,6 +978,13 @@ declare module '@tanstack/react-router' {
       path: '/member-card'
       fullPath: '/{-$lang}/member-card'
       preLoaderRoute: typeof Char123LangChar125MemberCardRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/most-mismatched-breeds': {
+      id: '/{-$lang}/most-mismatched-breeds'
+      path: '/most-mismatched-breeds'
+      fullPath: '/{-$lang}/most-mismatched-breeds'
+      preLoaderRoute: typeof Char123LangChar125MostMismatchedBreedsRouteImport
       parentRoute: typeof Char123LangChar125Route
     }
     '/{-$lang}/my-dog': {
@@ -1406,6 +1426,7 @@ interface Char123LangChar125RouteChildren {
   Char123LangChar125GuidesRoute: typeof Char123LangChar125GuidesRoute
   Char123LangChar125LowSheddingDogsRoute: typeof Char123LangChar125LowSheddingDogsRoute
   Char123LangChar125MemberCardRoute: typeof Char123LangChar125MemberCardRoute
+  Char123LangChar125MostMismatchedBreedsRoute: typeof Char123LangChar125MostMismatchedBreedsRoute
   Char123LangChar125MyDogRoute: typeof Char123LangChar125MyDogRouteWithChildren
   Char123LangChar125PartnersRoute: typeof Char123LangChar125PartnersRoute
   Char123LangChar125PlusRoute: typeof Char123LangChar125PlusRoute
@@ -1447,6 +1468,8 @@ const Char123LangChar125RouteChildren: Char123LangChar125RouteChildren = {
   Char123LangChar125LowSheddingDogsRoute:
     Char123LangChar125LowSheddingDogsRoute,
   Char123LangChar125MemberCardRoute: Char123LangChar125MemberCardRoute,
+  Char123LangChar125MostMismatchedBreedsRoute:
+    Char123LangChar125MostMismatchedBreedsRoute,
   Char123LangChar125MyDogRoute: Char123LangChar125MyDogRouteWithChildren,
   Char123LangChar125PartnersRoute: Char123LangChar125PartnersRoute,
   Char123LangChar125PlusRoute: Char123LangChar125PlusRoute,
