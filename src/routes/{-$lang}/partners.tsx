@@ -789,6 +789,8 @@ const partnerFeatureCopy = {
       memberSteps: ["They show their QR member card", "You check it in a few seconds", "They receive the benefit you chose"],
       imageAlt: "A pet shop owner showing DoggMatch on her phone to a happy customer with his golden retriever",
       caption: "You keep control of your offer. We take care of your customers' first-year discount.",
+      shareLabel: "Copy a link to this explanation",
+      copiedLabel: "Link copied",
     },
   },
   no: {
@@ -806,6 +808,8 @@ const partnerFeatureCopy = {
       memberSteps: ["Medlemmet viser QR-kortet sitt", "Du sjekker det på noen sekunder", "Medlemmet får fordelen du har valgt"],
       imageAlt: "En dyrebutikkeier viser DoggMatch på telefonen til en fornøyd kunde med en golden retriever",
       caption: "Du beholder kontrollen over tilbudet ditt. Vi tar oss av kundenes rabatt det første året.",
+      shareLabel: "Kopier en lenke til denne forklaringen",
+      copiedLabel: "Lenken er kopiert",
     },
   },
   pl: {
@@ -823,6 +827,8 @@ const partnerFeatureCopy = {
       memberSteps: ["Pokazuje kartę członkowską z kodem QR", "Sprawdzasz ją w kilka sekund", "Otrzymuje wybraną przez ciebie korzyść"],
       imageAlt: "Właścicielka sklepu zoologicznego pokazuje DoggMatch na telefonie zadowolonemu klientowi z golden retrieverem",
       caption: "Zachowujesz kontrolę nad swoją ofertą. My zajmujemy się zniżką dla twoich klientów na pierwszy rok.",
+      shareLabel: "Skopiuj link do tego wyjaśnienia",
+      copiedLabel: "Link skopiowany",
     },
   },
   dk: {
@@ -840,6 +846,8 @@ const partnerFeatureCopy = {
       memberSteps: ["Medlemmet viser sit QR-medlemskort", "Du tjekker det på et par sekunder", "Medlemmet får den fordel, du har valgt"],
       imageAlt: "En dyrehandelsejer viser DoggMatch på sin telefon til en glad kunde med sin golden retriever",
       caption: "Du beholder kontrollen over dit tilbud. Vi tager os af dine kunders rabat det første år.",
+      shareLabel: "Kopiér et link til denne forklaring",
+      copiedLabel: "Link kopieret",
     },
   },
   se: {
@@ -857,6 +865,8 @@ const partnerFeatureCopy = {
       memberSteps: ["De visar sitt QR-medlemskort", "Du kontrollerar det på några sekunder", "De får förmånen du valt"],
       imageAlt: "En djuraffärsägare visar DoggMatch på sin telefon för en nöjd kund med sin golden retriever",
       caption: "Du behåller kontrollen över ditt erbjudande. Vi tar hand om dina kunders rabatt det första året.",
+      shareLabel: "Kopiera en länk till den här förklaringen",
+      copiedLabel: "Länken är kopierad",
     },
   },
   de: {
@@ -874,6 +884,8 @@ const partnerFeatureCopy = {
       memberSteps: ["Es zeigt seine QR-Mitgliedskarte", "Sie prüfen sie in wenigen Sekunden", "Es erhält den von Ihnen gewählten Vorteil"],
       imageAlt: "Eine Zoofachhändlerin zeigt DoggMatch auf ihrem Handy einer zufriedenen Kundin mit ihrem Golden Retriever",
       caption: "Sie behalten die Kontrolle über Ihr Angebot. Wir kümmern uns um den Erstjahresrabatt Ihrer Kunden.",
+      shareLabel: "Link zu dieser Erklärung kopieren",
+      copiedLabel: "Link kopiert",
     },
   },
   fr: {
@@ -891,6 +903,8 @@ const partnerFeatureCopy = {
       memberSteps: ["Il montre sa carte de membre QR", "Vous la vérifiez en quelques secondes", "Il reçoit l'avantage que vous avez choisi"],
       imageAlt: "Une propriétaire d'animalerie montrant DoggMatch sur son téléphone à une cliente satisfaite avec son golden retriever",
       caption: "Vous gardez le contrôle de votre offre. Nous nous occupons de la réduction de première année de vos clients.",
+      shareLabel: "Copier un lien vers cette explication",
+      copiedLabel: "Lien copié",
     },
   },
   nl: {
@@ -908,6 +922,8 @@ const partnerFeatureCopy = {
       memberSteps: ["Ze laten hun QR-ledenpas zien", "Je controleert hem in een paar seconden", "Ze krijgen het voordeel dat jij hebt gekozen"],
       imageAlt: "Een dierenwinkeleigenaar laat DoggMatch op haar telefoon zien aan een tevreden klant met zijn golden retriever",
       caption: "Jij behoudt de controle over je aanbod. Wij zorgen voor de korting in het eerste jaar van je klanten.",
+      shareLabel: "Kopieer een link naar deze uitleg",
+      copiedLabel: "Link gekopieerd",
     },
   },
   fi: {
@@ -925,6 +941,8 @@ const partnerFeatureCopy = {
       memberSteps: ["Jäsen näyttää QR-jäsenkorttinsa", "Tarkistat sen muutamassa sekunnissa", "Jäsen saa valitsemasi edun"],
       imageAlt: "Lemmikkiliikkeen omistaja näyttää DoggMatchia puhelimestaan tyytyväiselle asiakkaalle, jolla on kultainennoutaja",
       caption: "Sinä pidät hallinnan tarjouksestasi. Me huolehdimme asiakkaidesi ensimmäisen vuoden alennuksesta.",
+      shareLabel: "Kopioi linkki tähän selitykseen",
+      copiedLabel: "Linkki kopioitu",
     },
   },
 } as const;
