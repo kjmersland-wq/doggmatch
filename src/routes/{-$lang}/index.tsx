@@ -554,6 +554,29 @@ const localCopy = {
   },
 } as const;
 
+const englishDifferencePoints = [
+  {
+    title: "You can see how every match was made",
+    body: "DoggMatch uses a fixed set of rules, not black-box AI. The same answers give the same result, and we show our reasoning.",
+  },
+  {
+    title: "The difficult parts count too",
+    body: "We look at barking, shedding, time alone, exercise and other everyday realities — not only the lovely parts of a breed.",
+  },
+  {
+    title: "Your hard limits stay hard",
+    body: "If a dog cannot reasonably fit something you told us is essential, a high score elsewhere will not hide that.",
+  },
+  {
+    title: "There is more than a score",
+    body: "Every result leads to a full, balanced breed profile and a realistic yearly cost estimate you can adjust for your life.",
+  },
+  {
+    title: "We stay useful after the match",
+    body: "DoggMatch+ brings practical help with training, food, weight, care, travel and the paperwork worth keeping together.",
+  },
+] as const;
+
 const seoCopy = {
   en: { title, description },
   no: {
@@ -629,6 +652,7 @@ function useParallax() {
 function HomePage() {
   const t = useT();
   const c = useCopy(localCopy);
+  const { locale } = useLocale();
   const traits = useCopy(traitCopy);
   const parallax = useParallax();
   const featured = breeds.slice(0, 4);
@@ -707,14 +731,33 @@ function HomePage() {
 
       {/* ---------------------------------------------------- Value strip */}
       <section id="why-doggmatch" aria-label={c.anchors["why-doggmatch"]} className="container-page mt-16 md:mt-20">
-        <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-          {t.home.valueStrip.map((item) => (
-            <div key={item.title} className="bg-background p-7">
-              <dt className="font-display text-lg tracking-tight">{item.title}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</dd>
-            </div>
-          ))}
-        </dl>
+        {locale === "en" ? (
+          <div>
+            <Eyebrow>Why DoggMatch</Eyebrow>
+            <h2 className="display-lg mt-6 max-w-2xl text-balance">What makes this different</h2>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              Choosing a dog is too important for a cheerful score with no explanation. We try to make the whole decision clearer.
+            </p>
+            <dl className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-5">
+              {englishDifferencePoints.map((item) => (
+                <div key={item.title} className="bg-background p-7">
+                  <Check aria-hidden="true" className="size-5 text-accent" />
+                  <dt className="mt-5 font-display text-lg tracking-tight">{item.title}</dt>
+                  <dd className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.body}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ) : (
+          <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+            {t.home.valueStrip.map((item) => (
+              <div key={item.title} className="bg-background p-7">
+                <dt className="font-display text-lg tracking-tight">{item.title}</dt>
+                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
       </section>
 
       {/* ------------------------------------------------------ How it works */}

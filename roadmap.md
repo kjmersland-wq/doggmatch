@@ -8,3 +8,5 @@
 - [x] Add 50 new English-first full editorial breed profiles with shared imagery across all locale paths.
 - [x] Add answer-specific reasoning, trade-offs, hard-limit explanations, and instant adjustments to Find My Dog results.
 - [x] Compare up to four breeds and show quiz-aware practical lifestyle differences.
+- [x] Explain what makes DoggMatch different on the English homepage.
+- [x] Add concrete member-benefit examples to the English Partners page.
