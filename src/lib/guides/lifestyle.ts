@@ -351,7 +351,9 @@ export const LOW_SHEDDING_GUIDE: LifestyleGuideConfig = {
 /* 5. What a dog really costs                                          */
 /* ------------------------------------------------------------------ */
 
-function costExample(id: string, sizeLabel: string) {
+type CostExample = { breed: Breed; sizeLabel: CopyMap<string> };
+
+function costExample(id: string, sizeLabel: CopyMap<string>): CostExample | null {
   const breed = breeds.find((b) => b.id === id);
   return breed ? { breed, sizeLabel } : null;
 }
@@ -415,10 +417,10 @@ export const COST_GUIDE: LifestyleGuideConfig = {
     levelLabels,
   } },
   costExamples: [
-    costExample("chihuahua", "A small dog"),
-    costExample("cocker-spaniel", "A medium dog"),
-    costExample("bernese-mountain-dog", "A large dog"),
-  ].filter((x): x is { breed: Breed; sizeLabel: string } => Boolean(x)),
+    costExample("chihuahua", { en: "A small dog (up to about 10 kg)" }),
+    costExample("cocker-spaniel", { en: "A medium dog (about 10–25 kg)" }),
+    costExample("bernese-mountain-dog", { en: "A large dog (over about 25 kg)" }),
+  ].filter((x): x is CostExample => Boolean(x)),
 };
 
 export const LIFESTYLE_GUIDES = [
