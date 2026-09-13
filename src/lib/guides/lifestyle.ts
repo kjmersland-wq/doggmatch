@@ -55,7 +55,7 @@ export interface GuideSeo {
 export interface LifestyleGuideConfig {
   id: string;
   path: string;
-  seo: CopyMap<GuideSeo>;
+  seo: { en: GuideSeo } & Partial<Record<Exclude<Locale, "en">, GuideSeo>>;
   copy: CopyMap<GuideCopy>;
   /** Deterministic shortlist from real trait data. */
   shortlist?: Breed[];
