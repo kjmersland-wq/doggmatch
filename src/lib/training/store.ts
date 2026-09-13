@@ -17,6 +17,10 @@ export interface DogProfile {
   observed?: ObservedTraits;
   breedOther?: string;
   ageStage: AgeStage;
+  /** Rough adult size. Shapes how long a session should realistically be. */
+  sizeBand?: "small" | "medium" | "large";
+  /** Minutes the owner can realistically give to training on a normal day. */
+  minutesPerDay?: number;
   sex?: "female" | "male";
   experience: "first-dog" | "some" | "lots";
   level: Level;
@@ -128,6 +132,23 @@ export const trainingStore = {
   logSession(record: SessionRecord) {
     ensureLoaded();
     write({ ...state, sessions: [...state.sessions, record] });
+  },
+  /**
+   * Mark a session done: logs it and nudges the skill one honest step
+   * forward, never past "getting there" on its own — only you decide when
+   * something is truly learned.
+   */
+  markDone(dogId: string, lessonId: string, feeling: SessionRecord["feeling"] = "good") {
+    ensureLoaded();
+    const current = state.progress[dogId]?.[lessonId] ?? "not-started";
+    const next: SkillStatus =
+      current === "not-started" ? "practising" : current === "practising" ? "getting-there" : current;
+    const forDog = { ...(state.progress[dogId] ?? {}), [lessonId]: next };
+    write({
+      ...state,
+      progress: { ...state.progress, [dogId]: forDog },
+      sessions: [...state.sessions, { lessonId, day: today(), feeling }],
+    });
   },
   saveNote(lessonId: string, note: string) {
     ensureLoaded();
