@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { withLangPrefix } from "@/lib/localized-path";
 import { useMemo, useState } from "react";

@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useCopy } from "@/i18n";
 import { Arrow, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
