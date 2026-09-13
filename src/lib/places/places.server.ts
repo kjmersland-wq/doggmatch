@@ -156,6 +156,7 @@ function toResults(
   raw: RawPlace[],
   center: { lat: number; lng: number },
   category: PlaceCategory,
+  maxKm: number,
 ): PlaceResult[] {
   const seen = new Set<string>();
   const out: PlaceResult[] = [];
@@ -163,6 +164,8 @@ function toResults(
     const lat = place.location?.latitude;
     const lng = place.location?.longitude;
     if (!place.id || !lat || !lng || seen.has(place.id)) continue;
+    // Text search only biases by location, so drop anything outside the search radius.
+    if (distanceKm(center, { lat, lng }) > maxKm) continue;
     seen.add(place.id);
     out.push({
       id: place.id,
@@ -260,7 +263,7 @@ export async function fetchCategory(
         textNearby(center, radius, DOG_PARK_QUERY[locale] ?? DOG_PARK_QUERY["en"]!, locale),
         nearby(center, radius, ["dog_park", "park"], locale),
       ]);
-      return toResults([...dogParks, ...parks], center, category);
+      return toResults([...dogParks, ...parks], center, category, radiusKm);
     }
     if (category === "walks") {
       const raw = await textNearby(
@@ -269,12 +272,12 @@ export async function fetchCategory(
         WALK_QUERY[locale] ?? WALK_QUERY["en"]!,
         locale,
       );
-      return toResults(raw, center, category);
+      return toResults(raw, center, category, radiusKm);
     }
     if (category === "vets") {
-      return toResults(await nearby(center, radius, ["veterinary_care"], locale), center, category);
+      return toResults(await nearby(center, radius, ["veterinary_care"], locale), center, category, radiusKm);
     }
-    return toResults(await nearby(center, radius, ["pet_store"], locale), center, category);
+    return toResults(await nearby(center, radius, ["pet_store"], locale), center, category, radiusKm);
   } catch (error) {
     console.error(`[places] category ${category} failed`, error);
     return [];
