@@ -710,6 +710,14 @@ function BreedDetail() {
         </section>
       )}
 
+      <BreedFaq breed={breed} displayName={content.displayName} />
+
+      <BreedGuideLinks breed={breed} />
+
+      <CompareSimilar breed={breed} />
+
+      <BreedQuizCta />
+
       {/* onward links for readers comparing breeds, and for Googlebot to reach every breed page without going back to the index */}
       <section className="container-page border-t border-border py-16">
         <h2 className="display-md">{c.relatedTitle}</h2>
