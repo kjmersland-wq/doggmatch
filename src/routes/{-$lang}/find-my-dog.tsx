@@ -1168,7 +1168,7 @@ function PostMatchJourney() {
         </div>
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <ButtonLink to={withLangPrefix("/my-dog")} size="lg">
+          <ButtonLink to={withLangPrefix("/my-dog/preview")} size="lg">
             {t.result.homeWithDogCtaPrimary}
             <Arrow />
           </ButtonLink>
