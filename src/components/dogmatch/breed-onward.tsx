@@ -26,6 +26,84 @@ const guideCopy = {
       "yearly-cost": "What a dog really costs per year",
     },
   },
+  dk: {
+    title: "Læs mere, før du beslutter dig",
+    intro: "De vigtigste guides til denne race, skrevet i et letforståeligt sprog.",
+    guides: {
+      "family-dogs": "Hunde og børn – en ærlig snak",
+      "flat-living": "At bo i lejlighed med hund",
+      "first-dog": "Din første hund",
+      "shedding-allergies": "Hårtab, pelspleje og allergi",
+      "calm-dogs": "Rolige hunde til rolige hjem",
+      "active-life": "Hunde til en aktiv livsstil",
+      "yearly-cost": "Hvad en hund reelt koster om året",
+    },
+  },
+  se: {
+    title: "Läs på innan du bestämmer dig",
+    intro: "De guider som är viktigast för den här rasen, skrivna på ett lättförståeligt sätt.",
+    guides: {
+      "family-dogs": "Hundar och barn – en ärlig guide",
+      "flat-living": "Att bo med hund i lägenhet",
+      "first-dog": "Din första hund",
+      "shedding-allergies": "Fällning, pälsvård och allergier",
+      "calm-dogs": "Lugnare hundar för ett lugnare hem",
+      "active-life": "Hundar för ett aktivt liv",
+      "yearly-cost": "Vad en hund verkligen kostar per år",
+    },
+  },
+  fi: {
+    title: "Lue lisää ennen päätöstäsi",
+    intro: "Tälle rodulle tärkeimmät oppaat, selkokielellä kirjoitettuna.",
+    guides: {
+      "family-dogs": "Koira ja lapset – rehellisesti",
+      "flat-living": "Koiran kanssa kerrostalossa",
+      "first-dog": "Ensimmäinen koirasi",
+      "shedding-allergies": "Karvanlähtö, turkinhoito ja allergiat",
+      "calm-dogs": "Rauhallisemmat koirat rauhallisempiin koteihin",
+      "active-life": "Koirat aktiiviseen elämään",
+      "yearly-cost": "Mitä koira todella maksaa vuodessa",
+    },
+  },
+  de: {
+    title: "Lesen Sie mehr, bevor Sie sich entscheiden",
+    intro: "Die wichtigsten Ratgeber für diese Rasse, verständlich erklärt.",
+    guides: {
+      "family-dogs": "Hunde und Kinder – die ehrliche Wahrheit",
+      "flat-living": "Ein Hund in der Stadtwohnung",
+      "first-dog": "Ihr erster Hund",
+      "shedding-allergies": "Haaren, Fellpflege und Allergien",
+      "calm-dogs": "Ruhigere Hunde für entspanntere Haushalte",
+      "active-life": "Hunde für ein aktives Leben",
+      "yearly-cost": "Was ein Hund wirklich pro Jahr kostet",
+    },
+  },
+  fr: {
+    title: "Lisez ceci avant de vous décider",
+    intro: "Les guides essentiels pour cette race, expliqués simplement.",
+    guides: {
+      "family-dogs": "Les chiens et les enfants, en toute franchise",
+      "flat-living": "Vivre avec un chien en appartement",
+      "first-dog": "Votre premier chien",
+      "shedding-allergies": "Perte de poils, entretien du pelage et allergies",
+      "calm-dogs": "Des chiens plus calmes pour des foyers plus sereins",
+      "active-life": "Des chiens pour une vie active",
+      "yearly-cost": "Le coût réel d'un chien par an",
+    },
+  },
+  nl: {
+    title: "Lees meer voordat u een beslissing neemt",
+    intro: "De gidsen die er het meest toe doen voor dit ras, geschreven in duidelijke taal.",
+    guides: {
+      "family-dogs": "Honden en kinderen, eerlijk gezegd",
+      "flat-living": "Samenleven met een hond in een appartement",
+      "first-dog": "Uw eerste hond",
+      "shedding-allergies": "Verharen, vachtverzorging en allergieën",
+      "calm-dogs": "Rustigere honden voor een rustiger thuis",
+      "active-life": "Honden voor een actief leven",
+      "yearly-cost": "Wat een hond werkelijk per jaar kost",
+    },
+  },
   no: {
     title: "Les mer før du bestemmer deg",
     intro: "Guidene som betyr mest for denne rasen, skrevet i klart språk.",
@@ -102,6 +180,48 @@ const compareCopy = {
     cta: "Compare these breeds",
     open: "Open the full comparison",
   },
+  dk: {
+    title: "Sammenlign med lignende racer",
+    intro:
+      "Side om side på motion, pelspleje, tid alene og pris — de ting, der afgør, hvordan ugen reelt føles.",
+    cta: "Sammenlign disse racer",
+    open: "Åbn den fulde sammenligning",
+  },
+  se: {
+    title: "Jämför med liknande raser",
+    intro:
+      "Sida vid sida gällande motion, pälsvård, ensamtid och kostnad – det som avgör hur veckan faktiskt känns.",
+    cta: "Jämför dessa raser",
+    open: "Öppna hela jämförelsen",
+  },
+  fi: {
+    title: "Vertaa samankaltaisiin rotuihin",
+    intro:
+      "Rinnakkain liikunnan, turkin, yksinoloajan ja kustannusten suhteen – asiat, jotka ratkaisevat, miltä viikko todellisuudessa tuntuu.",
+    cta: "Vertaa näitä rotuja",
+    open: "Avaa täydellinen vertailu",
+  },
+  de: {
+    title: "Vergleich mit ähnlichen Rassen",
+    intro:
+      "Seite an Seite bei Bewegung, Fellpflege, Alleinsein und Kosten – die Dinge, die entscheiden, wie sich die Woche tatsächlich anfühlt.",
+    cta: "Diese Rassen vergleichen",
+    open: "Vollständigen Vergleich öffnen",
+  },
+  fr: {
+    title: "Comparer avec des races similaires",
+    intro:
+      "Côte à côte pour l'exercice, le pelage, le temps seul et le coût — les éléments qui déterminent comment la semaine se déroule réellement.",
+    cta: "Comparer ces races",
+    open: "Ouvrir la comparaison complète",
+  },
+  nl: {
+    title: "Vergelijk met vergelijkbare rassen",
+    intro:
+      "Zij aan zij op het gebied van beweging, vacht, alleen zijn en kosten – de dingen die bepalen hoe de week daadwerkelijk voelt.",
+    cta: "Vergelijk deze rassen",
+    open: "Bekijk de volledige vergelijking",
+  },
   no: {
     title: "Sammenlign med lignende raser",
     intro:
@@ -170,6 +290,48 @@ const quizCopy = {
     cta: "Take the Find My Dog quiz",
     time: "Takes about three minutes. Your answers stay on this device.",
   },
+  dk: {
+    eyebrow: "Er du i tvivl?",
+    title: "Lad os matche denne race med din hverdag",
+    body: "Femten korte spørgsmål om dit hjem, din tid og dit energiniveau. Du får en rangeret liste, begrundelsen for den, og denne side vil begynde at tale til dine svar.",
+    cta: "Tag Find Min Hund-quizzen",
+    time: "Tager cirka tre minutter. Dine svar gemmes på denne enhed.",
+  },
+  se: {
+    eyebrow: "Osäker än?",
+    title: "Låt oss matcha rasen mot din vardag",
+    body: "Femton korta frågor om ditt hem, dina tider och din energinivå. Du får en rangordnad lista med hundraser, förklaringen bakom rekommendationen, och den här sidan kommer att anpassa sig efter dina svar.",
+    cta: "Gör \"Hitta min hund\"-testet",
+    time: "Tar ungefär tre minuter. Dina svar sparas lokalt på den här enheten.",
+  },
+  fi: {
+    eyebrow: "Etkö ole vielä varma?",
+    title: "Luetaan rotuasi omiin päiviisi sopivaksi",
+    body: "Viisitoista lyhyttä kysymystä kodistasi, aikatauluistasi ja energiatasostasi. Saat järjestetyn listan sopivimmista roduista, perustelut valinnoille ja tämä sivu alkaa puhua vastauksiesi pohjalta.",
+    cta: "Tee Löydä koirani -kysely",
+    time: "Kestää noin kolme minuuttia. Vastauksesi pysyvät tällä laitteella.",
+  },
+  de: {
+    eyebrow: "Noch unsicher?",
+    title: "Lassen Sie uns diese Rasse mit Ihren eigenen Tagen abgleichen",
+    body: "Fünfzehn kurze Fragen zu Ihrem Zuhause, Ihren Arbeitszeiten und Ihrer Energie. Sie erhalten eine Rangliste, die Begründung dafür, und diese Seite wird auf Ihre Antworten eingehen.",
+    cta: "Machen Sie den Finde-meinen-Hund-Quiz",
+    time: "Dauert etwa drei Minuten. Ihre Antworten bleiben auf diesem Gerät.",
+  },
+  fr: {
+    eyebrow: "Vous hésitez encore ?",
+    title: "Comparons cette race à votre quotidien",
+    body: "Quinze courtes questions sur votre foyer, vos horaires et votre niveau d'énergie. Vous recevrez une liste classée, les raisons de ce classement, et cette page s'adaptera à vos réponses.",
+    cta: "Faites le quiz 'Trouvez mon chien'",
+    time: "Environ trois minutes. Vos réponses restent sur cet appareil.",
+  },
+  nl: {
+    eyebrow: "Nog niet zeker?",
+    title: "Laat ons dit ras afzetten tegen jouw dagelijkse leven",
+    body: "Vijftien korte vragen over je huis, je tijden en je energie. Je krijgt een gerangschikte shortlist, de uitleg erachter, en deze pagina zal inspelen op jouw antwoorden.",
+    cta: "Doe de Vind Mijn Hond quiz",
+    time: "Duurt ongeveer drie minuten. Je antwoorden blijven op dit apparaat staan.",
+  },
   no: {
     eyebrow: "Usikker ennå?",
     title: "La oss lese denne rasen opp mot dine egne dager",
@@ -214,6 +376,12 @@ export function BreedQuizCta() {
 
 const faqCopy = {
   en: { title: "Questions people ask before committing to a {breed}" },
+  dk: { title: "Spørgsmål folk stiller, før de forpligter sig til en {breed}" },
+  se: { title: "Frågor som folk ställer innan de bestämmer sig för en {breed}" },
+  fi: { title: "Kysymyksiä, joita ihmiset miettivät ennen kuin sitoutuvat {rotu}n hankintaan" },
+  de: { title: "Fragen, die sich Menschen vor der Anschaffung eines {breed} stellen" },
+  fr: { title: "Questions que les gens se posent avant de s'engager avec un {breed}" },
+  nl: { title: "Vragen die mensen stellen voordat ze zich committeren aan een {breed}" },
   no: { title: "Spørsmål folk stiller før de bestemmer seg for en {breed}" },
   pl: { title: "Pytania, które ludzie zadają przed decyzją o rasie {breed}" },
 } as const;

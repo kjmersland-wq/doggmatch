@@ -9,6 +9,12 @@ import { pick } from "@/i18n";
 import { countries as countriesEn, transportModes as transportModesEn, travelTimeline as travelTimelineEn } from "./countries.en";
 import { countries as countriesNo, transportModes as transportModesNo, travelTimeline as travelTimelineNo } from "./countries.no";
 import { countries as countriesPl, transportModes as transportModesPl, travelTimeline as travelTimelinePl } from "./countries.pl";
+import { countries as countriesDk, transportModes as transportModesDk, travelTimeline as travelTimelineDk } from "./countries.dk";
+import { countries as countriesSe, transportModes as transportModesSe, travelTimeline as travelTimelineSe } from "./countries.se";
+import { countries as countriesFi, transportModes as transportModesFi, travelTimeline as travelTimelineFi } from "./countries.fi";
+import { countries as countriesDe, transportModes as transportModesDe, travelTimeline as travelTimelineDe } from "./countries.de";
+import { countries as countriesFr, transportModes as transportModesFr, travelTimeline as travelTimelineFr } from "./countries.fr";
+import { countries as countriesNl, transportModes as transportModesNl, travelTimeline as travelTimelineNl } from "./countries.nl";
 
 export interface OfficialSource {
   name: string;
@@ -53,7 +59,7 @@ export interface RuleSet {
 
 /** Locale-aware country list — call inside render so it re-picks on locale change. */
 export function getCountries(): Country[] {
-  return pick({ en: countriesEn, no: countriesNo, pl: countriesPl });
+  return pick({ en: countriesEn, no: countriesNo, pl: countriesPl, dk: countriesDk, se: countriesSe, fi: countriesFi, de: countriesDe, fr: countriesFr, nl: countriesNl });
 }
 
 export function getCountriesByCode(): Record<string, Country> {
@@ -61,9 +67,9 @@ export function getCountriesByCode(): Record<string, Country> {
 }
 
 export function getTransportModes() {
-  return pick({ en: transportModesEn, no: transportModesNo, pl: transportModesPl });
+  return pick({ en: transportModesEn, no: transportModesNo, pl: transportModesPl, dk: transportModesDk, se: transportModesSe, fi: transportModesFi, de: transportModesDe, fr: transportModesFr, nl: transportModesNl });
 }
 
 export function getTravelTimeline() {
-  return pick({ en: travelTimelineEn, no: travelTimelineNo, pl: travelTimelinePl });
+  return pick({ en: travelTimelineEn, no: travelTimelineNo, pl: travelTimelinePl, dk: travelTimelineDk, se: travelTimelineSe, fi: travelTimelineFi, de: travelTimelineDe, fr: travelTimelineFr, nl: travelTimelineNl });
 }

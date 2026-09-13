@@ -46,6 +46,42 @@ const copy = {
       "Everything worth having on paper — who your dog is, what they eat, how your week runs, and who to call.",
     subtitlePart: "Printed from DoggMatch. Fill in anything that's blank by hand.",
   },
+  de: {
+    backLink: "Andere Seiten auswählen",
+    printOrSave: "Ausdrucken oder als PDF speichern",
+    printHint:
+      'So wird es gedruckt. Wähle im Druckdialog "Als PDF speichern", wenn du es lieber auf deinem Handy behalten möchtest.',
+    wholePackTitle: "Das DoggMatch Hundepaket",
+    dogPack: "Hundepaket",
+    dogNameFallback: "Mein Hund",
+    subtitleWhole:
+      "Alles Wichtige auf Papier – wer dein Hund ist, was er frisst, wie deine Woche abläuft und wen du anrufen kannst.",
+    subtitlePart: "Gedruckt von DoggMatch. Fehlende Angaben kannst du handschriftlich ergänzen.",
+  },
+  fr: {
+    backLink: "Choisir d'autres pages",
+    printOrSave: "Imprimer ou enregistrer en PDF",
+    printHint:
+      'C\'est exactement comme cela que cela s\'affichera à l\'impression. Choisissez "Enregistrer au format PDF" dans la boîte de dialogue d\'impression si vous préférez le conserver sur votre téléphone.',
+    wholePackTitle: "Le Dossier Complet DoggMatch",
+    dogPack: "Dossier du chien",
+    dogNameFallback: "Mon chien",
+    subtitleWhole:
+      "Tout ce qui compte sur papier — qui est votre chien, ce qu'il mange, comment se déroule votre semaine, et qui contacter.",
+    subtitlePart: "Imprimé depuis DoggMatch. Complétez à la main ce qui manque.",
+  },
+  nl: {
+    backLink: "Kies andere pagina's",
+    printOrSave: "Printen of opslaan als PDF",
+    printHint:
+      'Dit is precies hoe het eruit zal zien bij het printen. Kies "Opslaan als PDF" in het afdrukvenster als je het liever op je telefoon bewaart.',
+    wholePackTitle: "Het DoggMatch Hondenpakket",
+    dogPack: "Hondenpakket",
+    dogNameFallback: "Mijn hond",
+    subtitleWhole:
+      "Alles wat de moeite waard is om op papier te hebben — wie je hond is, wat ze eten, hoe je week verloopt, en wie je kunt bellen.",
+    subtitlePart: "Geprint vanuit DoggMatch. Vul eventuele lege plekken met de hand in.",
+  },
   no: {
     backLink: "Velg andre sider",
     printOrSave: "Skriv ut eller lagre som PDF",

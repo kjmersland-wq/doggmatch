@@ -45,6 +45,45 @@ const copy = {
     vetNote:
       "Pages are filled in with whatever you've saved, and left blank where you haven't — so a fresh sheet still works with a pen. Everything stays on your device.",
   },
+  de: {
+    eyebrow: "Drucken & Speichern",
+    title: "Etwas zum Anfassen",
+    introFor: (name: string) =>
+      `Alles, was du über ${name} geschrieben hast, kann aufs Papier – für den Kühlschrank, den Hundesitter oder die Schubladenmappe.`,
+    dogFallback: "dein Hund",
+    wholePack: "Den ganzen Hundepack erstellen",
+    printChosen: (n: number) => `Ausgewähltes drucken (${n})`,
+    includeAria: (title: string) => `${title} einschließen`,
+    printJustThisOne: "Nur dieses eine drucken",
+    vetNote:
+      "Die Seiten sind gefüllt mit allem, was du gespeichert hast, und dort leer gelassen, wo du nichts eingetragen hast – so funktioniert ein frisches Blatt auch mit Stift. Alles bleibt auf deinem Gerät.",
+  },
+  fr: {
+    eyebrow: "Imprimer et enregistrer",
+    title: "Quelque chose à garder",
+    introFor: (name: string) =>
+      `Tout ce que vous avez écrit sur ${name} peut être imprimé — pour le mettre sur la porte du frigo, le laisser au gardien, ou le ranger dans un dossier.`,
+    dogFallback: "votre chien",
+    wholePack: "Créer le dossier complet du chien",
+    printChosen: (n: number) => `Imprimer ma sélection (${n})`,
+    includeAria: (title: string) => `Inclure ${title}`,
+    printJustThisOne: "Imprimer uniquement celui-ci",
+    vetNote:
+      "Les pages sont remplies avec les informations que vous avez enregistrées, et laissées vierges là où vous ne l'avez pas fait — ainsi une feuille vierge peut aussi être utilisée avec un stylo. Tout reste sur votre appareil.",
+  },
+  nl: {
+    eyebrow: "Printen en opslaan",
+    title: "Iets om vast te houden",
+    introFor: (name: string) =>
+      `Alles wat je hebt opgeschreven over ${name} kan op papier — voor op de koelkastdeur, voor de oppas, of voor het mapje dat je in een lade bewaart.`,
+    dogFallback: "je hond",
+    wholePack: "Maak de hele Dog Pack",
+    printChosen: (n: number) => `Print wat ik heb gekozen (${n})`,
+    includeAria: (title: string) => `${title} meenemen`,
+    printJustThisOne: "Print alleen deze",
+    vetNote:
+      "Pagina's worden ingevuld met wat je hebt opgeslagen, en leeg gelaten waar je dat niet hebt gedaan — dus een vers vel werkt ook met een pen. Alles blijft op je apparaat.",
+  },
   no: {
     eyebrow: "Skriv ut og lagre",
     title: "Noe du kan holde i hånden",

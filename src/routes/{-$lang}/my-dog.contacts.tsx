@@ -61,6 +61,69 @@ const copy = {
     vetNote:
       "If you're worried about a change in your dog's health, your veterinarian is the best person to ask. What you write here just helps you remember it all when you get there.",
   },
+  de: {
+    eyebrow: "Kontakte & Informationen",
+    titleFor: (name: string) => `Alles über ${name}, an einem Ort`,
+    titleFallback: "Alles an einem Ort",
+    intro:
+      "Tragen Sie ein, was Sie wissen. Es bleibt auf diesem Gerät und Sie können es jederzeit ausdrucken – für den Tierarzt, den Hundesitter oder für den Kühlschrank.",
+    printSave: "Drucken & Speichern",
+    addDogNote: "Fügen Sie zuerst Ihren Hund hinzu, und alles, was Sie hier eingeben, wird bei ihm gespeichert.",
+    detailsTitle: "Details zu Ihrem Hund",
+    dob: "Geburtsdatum",
+    colour: "Farbe und Abzeichen",
+    microchip: "Mikrochip-Nummer",
+    insurance: "Versicherung",
+    policy: "Versicherungsnummer",
+    worthKnowing: "Wissenswertes",
+    worthKnowingTitle: "Die Dinge, die Sie jemand anderem gerne mitteilen würden",
+    worthKnowingIntro:
+      "In Ihren Worten. Nichts hier ist eine Diagnose – es ist einfach das, was Sie im Zusammenleben mit Ihrem Hund bemerkt haben.",
+    vetNote:
+      "Wenn Sie sich Sorgen über eine Veränderung im Gesundheitszustand Ihres Hundes machen, ist Ihr Tierarzt die beste Ansprechperson. Was Sie hier schreiben, hilft Ihnen nur, sich alles zu merken, wenn Sie dort sind.",
+  },
+  fr: {
+    eyebrow: "Contacts et informations",
+    titleFor: (name: string) => `Tout sur ${name}, au même endroit`,
+    titleFallback: "Tout au même endroit",
+    intro:
+      "Remplissez ce que vous savez. Cela reste sur cet appareil, et vous pouvez l'imprimer quand vous en avez besoin — pour le vétérinaire, une personne qui garde votre chien, ou sur la porte du frigo.",
+    printSave: "Imprimer et enregistrer",
+    addDogNote: "Ajoutez d'abord votre chien et tout ce que vous écrivez ici sera conservé avec lui.",
+    detailsTitle: "Détails de votre chien",
+    dob: "Date de naissance",
+    colour: "Couleur et marques distinctives",
+    microchip: "Numéro de puce électronique",
+    insurance: "Assurance",
+    policy: "Numéro de police",
+    worthKnowing: "Bon à savoir",
+    worthKnowingTitle: "Les choses que vous aimeriez que quelqu'un d'autre sache",
+    worthKnowingIntro:
+      "Avec vos mots. Rien ici n'est un diagnostic — c'est simplement ce que vous avez remarqué en vivant avec votre chien.",
+    vetNote:
+      "Si vous êtes inquiet d'un changement dans la santé de votre chien, votre vétérinaire est la meilleure personne à consulter. Ce que vous écrivez ici vous aide simplement à tout retenir lorsque vous y allez.",
+  },
+  nl: {
+    eyebrow: "Contactgegevens & informatie",
+    titleFor: (name: string) => `Alles over ${name}, op één plek`,
+    titleFallback: "Alles op één plek",
+    intro:
+      "Vul in wat je weet. Dit blijft op dit apparaat staan en je kunt het afdrukken wanneer je het nodig hebt — voor de dierenarts, een oppas, of voor op de koelkastdeur.",
+    printSave: "Afdrukken & opslaan",
+    addDogNote: "Voeg eerst je hond toe en alles wat je hier typt, wordt bij hen bewaard.",
+    detailsTitle: "Gegevens van je hond",
+    dob: "Geboortedatum",
+    colour: "Kleur en aftekeningen",
+    microchip: "Chipnummer",
+    insurance: "Verzekering",
+    policy: "Polisnummer",
+    worthKnowing: "Handig om te weten",
+    worthKnowingTitle: "Dingen die je graag wilt dat iemand anders weet",
+    worthKnowingIntro:
+      "In je eigen woorden. Niets hier is een diagnose — het is simpelweg wat je hebt opgemerkt tijdens het leven met je hond.",
+    vetNote:
+      "Als je je zorgen maakt over een verandering in de gezondheid van je hond, is je dierenarts de beste persoon om te raadplegen. Wat je hier opschrijft, helpt je alleen maar om alles te onthouden als je er bent.",
+  },
   no: {
     eyebrow: "Kontakter og informasjon",
     titleFor: (name: string) => `Alt om ${name}, på ett sted`,

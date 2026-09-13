@@ -154,6 +154,39 @@ const copy = {
       "Dogs differ, and amount matters — a crumb of something rich is not the same as half a packet. Treats of any kind should stay under a tenth of what your dog eats in a day. If you're unsure, your vet would far rather take the call.",
     honestTitle: "Being honest about this",
   },
+  de: {
+    eyebrow: "Lebensmittelsicherheit",
+    howMuch: "Wie viel",
+    watchOut: "Wenn Ihr Hund es bereits gefressen hat",
+    basedOn: "Basierend auf Empfehlungen von",
+    relatedTitle: "Andere Lebensmittel, nach denen Leute fragen",
+    backLink: "Alle Lebensmittel anzeigen, A–Z",
+    honest:
+      "Hunde sind unterschiedlich, und die Menge spielt eine Rolle – ein Krümel von etwas Reichhaltigem ist nicht dasselbe wie eine halbe Packung. Leckerlis jeglicher Art sollten unter einem Zehntel dessen bleiben, was Ihr Hund täglich frisst. Wenn Sie unsicher sind, ruft Ihr Tierarzt lieber einmal zu viel als zu wenig an.",
+    honestTitle: "Ehrlich gesagt",
+  },
+  fr: {
+    eyebrow: "Sécurité alimentaire",
+    howMuch: "Quelle quantité",
+    watchOut: "Si votre chien en a déjà mangé",
+    basedOn: "Basé sur les recommandations de",
+    relatedTitle: "Autres aliments qui suscitent des questions",
+    backLink: "Voir tous les aliments, A-Z",
+    honest:
+      "Les chiens sont différents, et la quantité compte — une miette de quelque chose de riche n'est pas la même chose qu'un demi-paquet. Les friandises, quelles qu'elles soient, ne devraient pas dépasser un dixième de ce que votre chien mange par jour. En cas de doute, votre vétérinaire préférera de loin recevoir votre appel.",
+    honestTitle: "Soyons honnêtes à ce sujet",
+  },
+  nl: {
+    eyebrow: "Voedselveiligheid",
+    howMuch: "Hoeveel",
+    watchOut: "Als je hond het al heeft gegeten",
+    basedOn: "Gebaseerd op advies van",
+    relatedTitle: "Andere voedingsmiddelen waar mensen naar vragen",
+    backLink: "Bekijk al het voedsel, A–Z",
+    honest:
+      "Honden verschillen, en de hoeveelheid is belangrijk – een kruimel van iets rijks is niet hetzelfde als de helft van een pakje. Snoepjes van welke soort dan ook moeten minder dan een tiende blijven van wat je hond per dag eet. Als je twijfelt, neemt je dierenarts liever even contact op.",
+    honestTitle: "Eerlijk hierover zijn",
+  },
   no: {
     eyebrow: "Mattrygghet",
     howMuch: "Hvor mye",

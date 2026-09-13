@@ -91,6 +91,39 @@ const copy = {
     searchHint: "Prefer to search? Use the searchable food list.",
     searchLink: "Open the searchable list",
   },
+  de: {
+    eyebrow: "Lebensmittelsicherheit",
+    title: "Dürfen Hunde das fressen?",
+    intro:
+      "Eine Seite pro Lebensmittel, damit Sie eine klare Antwort erhalten, ohne erst an drei Werbeanzeigen vorbeiscrollen zu müssen. Wählen Sie aus, was Ihr Hund erwischt hat.",
+    counted: (n: number) => `${n} Lebensmittel bereits beantwortet`,
+    vetNote:
+      "Wenn Ihr Hund etwas von der „Nicht geben“-Liste gefressen hat, warten Sie nicht auf Symptome. Rufen Sie Ihren Tierarzt oder eine Tiergift-Notrufnummer an und sagen Sie ihnen, was es war, ungefähr wie viel und wann.",
+    searchHint: "Suchen Sie lieber? Nutzen Sie die durchsuchbare Lebensmittelliste.",
+    searchLink: "Durchsuchbare Liste öffnen",
+  },
+  fr: {
+    eyebrow: "Sécurité alimentaire",
+    title: "Les chiens peuvent-ils manger ça ?",
+    intro:
+      "Une page par aliment, pour une réponse claire sans avoir à faire défiler trois publicités. Choisissez ce que votre chien a mangé.",
+    counted: (n: number) => `${n} aliments analysés jusqu'à présent`,
+    vetNote:
+      "Si votre chien a ingéré un aliment de la liste « à ne pas donner », n'attendez pas les symptômes. Appelez votre vétérinaire ou un centre antipoison animal et précisez-lui ce que c'était, approximativement la quantité et quand.",
+    searchHint: "Vous préférez chercher ? Utilisez la liste des aliments consultable.",
+    searchLink: "Ouvrir la liste consultable",
+  },
+  nl: {
+    eyebrow: "Voedselveiligheid",
+    title: "Mag mijn hond dit eten?",
+    intro:
+      "Eén pagina per voedingsmiddel, zodat je direct antwoord krijgt zonder eerst langs drie advertenties te scrollen. Kies wat je hond te pakken heeft gekregen.",
+    counted: (n: number) => `${n} voedingsmiddelen beantwoord tot nu toe`,
+    vetNote:
+      "Als je hond iets heeft gegeten dat op de 'niet geven'-lijst staat, wacht dan niet op symptomen. Bel je dierenarts of een vergiftigingslijn voor dieren en vertel wat het was, ongeveer hoeveel, en wanneer.",
+    searchHint: "Liever zoeken? Gebruik de doorzoekbare voedingsmiddelenlijst.",
+    searchLink: "Open de doorzoekbare lijst",
+  },
   no: {
     eyebrow: "Mattrygghet",
     title: "Kan hunder spise det?",

@@ -1036,6 +1036,670 @@ const partnerTypesCopy = {
     alsoTitle: "Also very welcome",
     alsoBody: "If your work touches a dog's everyday life in any other way, we'd still like to hear from you.",
   },
+  no: {
+    askTitle: "Hva medlemmer vanligvis spør om",
+    offerTitle: "Tilbud som fungerer bra",
+    types: [
+      {
+        id: "equipment",
+        title: "Dyrepensjonater og utstyr",
+        tagline: "De første ukene med en ny hund innebærer mye handling – og medlemmer kommer med spørsmål, ikke bare en liste.",
+        ask: [
+          "Sele og bånd som passer ordentlig",
+          "Hjelp til å velge senger, bur og leker som varer",
+          "Ærlige råd om fôr uten merkevarepress",
+        ],
+        offers: [
+          "En prosentvis rabatt på et første tilpasningsbesøk",
+          "En startpakke for ny hund",
+          "Fast medlemsrabatt på hverdagsutstyr",
+        ],
+      },
+      {
+        id: "grooming",
+        title: "Pelsstell",
+        tagline: "En rolig hundefrisør er gull verdt, spesielt for valper og nervøse omplasseringshunder.",
+        ask: [
+          "En forsiktig første klipp for valper",
+          "Tålmodig håndtering av engstelige hunder",
+          "Regelmessige avtaler de kan stole på",
+        ],
+        offers: [
+          "Et første besøk til redusert pris",
+          "En gratis kloklipp sammen med pelsstell",
+          "Prioritert ombooking for medlemmer",
+        ],
+      },
+      {
+        id: "training",
+        title: "Hundetrener",
+        tagline: "Fra valpekurs til en omplasseringshunds første innkalling, medlemmer ser etter belønningsbasert hjelp de kan stole på.",
+        ask: [
+          "Valpekurs med små grupper",
+          "Hjelp med innkalling, løsline-gange og hopping",
+          "Én-til-én-støtte for en omplasseringshund som akklimatiserer seg",
+        ],
+        offers: [
+          "En gratis eller redusert introduksjonsøkt",
+          "En prosentvis rabatt på et kurs",
+          "En klasse kun for medlemmer eller en drop-in kveld",
+        ],
+      },
+      {
+        id: "vet",
+        title: "Veterinærklinikker",
+        tagline: "Nye eiere ønsker en klinikk som forklarer ting enkelt og ikke har hastverk. Den første introduksjonen er verdt å gjøre godt.",
+        ask: [
+          "Første helsesjekker og vaksinasjonsplaner",
+          "Klar veiledning om forsikring og mikrochipping",
+          "Noen å ringe når de er usikre på om det er akutt",
+        ],
+        offers: [
+          "En gratis eller redusert første konsultasjon",
+          "En velkomst helsesjekk til medlemspris",
+          "Mikrochipping inkludert i et første besøk",
+        ],
+      },
+      {
+        id: "boarding",
+        title: "Hundepass og dagpasning",
+        tagline: "Den første natten borte er et stort steg. Medlemmer ønsker å møte folkene og se stedet før de bestiller.",
+        ask: [
+          "En prøvedag eller et kort opphold til å begynne med",
+          "Helge- og feriedekning de kan planlegge rundt",
+          "Regelmessig dagpasning med en kjent rutine",
+        ],
+        offers: [
+          "En gratis eller halv pris prøvedag",
+          "En prosentvis rabatt på et første opphold",
+          "En medlemspris utenom høysesong",
+        ],
+      },
+    ],
+    alsoTitle: "Også hjertelig velkommen",
+    alsoBody: "Hvis arbeidet ditt berører en hunds hverdag på noen annen måte, vil vi fortsatt gjerne høre fra deg.",
+  },
+  pl: {
+    askTitle: "Czego zazwyczaj szukają członkowie",
+    offerTitle: "Oferty, które się sprawdzają",
+    types: [
+      {
+        id: "equipment",
+        title: "Sklepy zoologiczne i akcesoria",
+        tagline: "Pierwsze tygodnie z nowym psem to mnóstwo zakupów – a członkowie przychodzą z pytaniami, nie tylko z listą.",
+        ask: [
+          "Dobrze dopasowane szelki i smycz",
+          "Pomoc w wyborze legowisk, klatek i zabawek, które posłużą dłużej",
+          "Szczere porady dotyczące karmy, bez nacisku na konkretne marki",
+        ],
+        offers: [
+          "Zniżka procentowa na pierwszą wizytę dopasowania",
+          "Pakiet startowy dla nowego psa",
+          "Stała zniżka dla członków na codzienne akcesoria",
+        ],
+      },
+      {
+        id: "grooming",
+        title: "Salony pielęgnacji",
+        tagline: "Spokojny groomer jest na wagę złota, zwłaszcza dla szczeniąt i nerwowych psów ze schroniska.",
+        ask: [
+          "Delikatne pierwsze strzyżenie szczeniaka",
+          "Cierpliwe podejście do zestresowanych psów",
+          "Regularne wizyty, na których można polegać",
+        ],
+        offers: [
+          "Pierwsza wizyta w obniżonej cenie",
+          "Darmowe przycinanie pazurów podczas pielęgnacji",
+          "Priorytetowe terminy ponownego umawiania wizyt dla członków",
+        ],
+      },
+      {
+        id: "training",
+        title: "Szkoleniowcy",
+        tagline: "Od zajęć dla szczeniąt po pierwsze przywołanie psa ze schroniska – członkowie szukają nagradzającej pomocy, której mogą zaufać.",
+        ask: [
+          "Zajęcia dla szczeniąt w małych grupach",
+          "Pomoc w przywołaniu, nauce chodzenia na luźnej smyczy i oduczeniu skakania",
+          "Indywidualne wsparcie dla psa ze schroniska podczas adaptacji",
+        ],
+        offers: [
+          "Darmowa lub zniżkowa sesja wprowadzająca",
+          "Zniżka procentowa na kurs",
+          "Zajęcia lub wieczór otwarty tylko dla członków",
+        ],
+      },
+      {
+        id: "vet",
+        title: "Kliniki weterynaryjne",
+        tagline: "Nowi właściciele chcą kliniki, która wszystko jasno wyjaśnia i nie spieszy się. Pierwsze spotkanie warto dobrze zaplanować.",
+        ask: [
+          "Pierwsze badania kontrolne i plany szczepień",
+          "Jasne wskazówki dotyczące ubezpieczenia i chipowania",
+          "Kogoś, do kogo można zadzwonić, gdy nie są pewni, czy sytuacja jest pilna",
+        ],
+        offers: [
+          "Darmowa lub zniżkowa pierwsza konsultacja",
+          "Pierwsze badanie kontrolne w cenie dla członków",
+          "Chipowanie w pakiecie z pierwszą wizytą",
+        ],
+      },
+      {
+        id: "boarding",
+        title: "Hotele i opieka dzienna",
+        tagline: "Pierwsza noc poza domem to duży krok. Członkowie chcą poznać ludzi i zobaczyć miejsce, zanim zarezerwują.",
+        ask: [
+          "Dzień próbny lub krótki pobyt na początek",
+          "Opieka weekendowa i świąteczna, którą można zaplanować",
+          "Regularna opieka dzienna ze znaną rutyną",
+        ],
+        offers: [
+          "Darmowy lub pół-cenowy dzień próbny",
+          "Zniżka procentowa na pierwszy pobyt",
+          "Stawka dla członków poza szczytem sezonu",
+        ],
+      },
+    ],
+    alsoTitle: "Również mile widziane",
+    alsoBody: "Jeśli Twoja praca w jakikolwiek inny sposób dotyczy codziennego życia psa, nadal chętnie Cię poznamy.",
+  },
+  dk: {
+    askTitle: "Hvad medlemmer ofte spørger om",
+    offerTitle: "Tilbud der virker godt",
+    types: [
+      {
+        id: "equipment",
+        title: "Dyrlægeudstyr og tilbehør",
+        tagline: "De første uger med en ny hund involverer en masse indkøb – og medlemmer kommer med spørgsmål, ikke bare en indkøbsliste.",
+        ask: [
+          "Sele og snor der passer ordentligt",
+          "Hjælp til at vælge senge, bure og legetøj der holder",
+          "Ærlig rådgivning om foder uden mærkepres",
+        ],
+        offers: [
+          "En procentdel rabat på et første tilpasningsbesøg",
+          "En startpakke til den nye hund",
+          "Fast medlemsrabat på hverdagsudstyr",
+        ],
+      },
+      {
+        id: "grooming",
+        title: "Professionel pelspleje",
+        tagline: "En rolig hundefrisør er guld værd, især for hvalpe og nervøse hunde fra internat.",
+        ask: [
+          "En blid første klipning af hvalpen",
+          "Tålmodig håndtering af ængstelige hunde",
+          "Regelmæssige aftaler de kan regne med",
+        ],
+        offers: [
+          "Et første besøg til nedsat pris",
+          "En gratis klipning af kløer sammen med pelspleje",
+          "Prioriteret genbooking for medlemmer",
+        ],
+      },
+      {
+        id: "training",
+        title: "Hundetrænere",
+        tagline: "Fra hvalpetræning til en adopteret hunds første indkald – medlemmer søger belønningsbaseret hjælp, de kan stole på.",
+        ask: [
+          "Hvalpetræning med små hold",
+          "Hjælp til indkald, gå pænt i snor og springe op",
+          "Én-til-én støtte til en adopteret hund der falder til",
+        ],
+        offers: [
+          "En gratis eller nedsat introduktionssession",
+          "En procentdel rabat på et kursus",
+          "En klasse kun for medlemmer eller en aften med drop-in",
+        ],
+      },
+      {
+        id: "vet",
+        title: "Dyrlægeklinikker",
+        tagline: "Nye hundeejere ønsker en klinik, der forklarer tingene tydeligt og ikke har travlt. Den første introduktion er værd at gøre godt.",
+        ask: [
+          "Første sundhedstjek og vaccinationsplaner",
+          "Klar vejledning om forsikring og chipmærkning",
+          "Nogen at ringe til, når de er i tvivl om det er akut",
+        ],
+        offers: [
+          "En gratis eller nedsat første konsultation",
+          "Et velkomst sundhedstjek til medlemspris",
+          "Chipmærkning inkluderet i et første besøg",
+        ],
+      },
+      {
+        id: "boarding",
+        title: "Hundepension og pasning",
+        tagline: "Den første nat væk hjemmefra er et stort skridt. Medlemmer vil gerne møde personalet og se stedet, før de booker.",
+        ask: [
+          "En prøvedag eller et kort ophold til at starte med",
+          "Weekend- og feriedækning de kan planlægge efter",
+          "Regelmæssig pasning med en velkendt rutine",
+        ],
+        offers: [
+          "En gratis eller halvpris prøvedag",
+          "En procentdel rabat på et første ophold",
+          "En medlemspris uden for højsæsonen",
+        ],
+      },
+    ],
+    alsoTitle: "Også meget velkomne",
+    alsoBody: "Hvis dit arbejde på anden vis berører en hunds hverdag, vil vi stadig gerne høre fra dig.",
+  },
+  se: {
+    askTitle: "Vad medlemmar brukar fråga om",
+    offerTitle: "Erbjudanden som fungerar bra",
+    types: [
+      {
+        id: "equipment",
+        title: "Djuraffärer & tillbehör",
+        tagline: "De första veckorna med en ny hund innebär mycket inköp – och medlemmar kommer med frågor, inte bara en inköpslista.",
+        ask: [
+          "Hundsele och koppel som faktiskt sitter bra",
+          "Hjälp att välja bäddar, burar och leksaker som håller",
+          "Ärliga råd om foder utan märkespåverkan",
+        ],
+        offers: [
+          "Procent rabatt på ett första besök för utprovning",
+          "Ett startpaket för nya hundägare",
+          "Stående medlemsrabatt på vardagliga tillbehör",
+        ],
+      },
+      {
+        id: "grooming",
+        title: "Pälsvårdare",
+        tagline: "En lugn och trygg pälsvårdare är guld värd, särskilt för valpar och nervösa omplaceringshundar.",
+        ask: [
+          "En mjuk första klippning för valpen",
+          "Tålmodig hantering av oroliga hundar",
+          "Regelbundna tider de kan lita på",
+        ],
+        offers: [
+          "Ett första besök till reducerat pris",
+          "En gratis kloklippning i samband med pälsvård",
+          "Förtur till ombokning för medlemmar",
+        ],
+      },
+      {
+        id: "training",
+        title: "Hundtränare",
+        tagline: "Från valpkurs till en omplaceringshunds första inkallning, medlemmar söker belöningsbaserad hjälp de kan lita på.",
+        ask: [
+          "Valpkurser med små grupper",
+          "Hjälp med inkallning, följsamhet och hopp upp",
+          "En-till-en-stöd för en omplaceringshund som landar",
+        ],
+        offers: [
+          "En gratis eller rabatterad introduktionssession",
+          "Procent rabatt på en kurs",
+          "En medlemsklass eller drop-in-kväll",
+        ],
+      },
+      {
+        id: "vet",
+        title: "Veterinärkliniker",
+        tagline: "Nya hundägare vill ha en klinik som förklarar saker tydligt och inte stressar. Den första kontakten är viktig att göra bra.",
+        ask: [
+          "Första hälsokontroller och vaccinationsplaner",
+          "Tydlig vägledning om försäkring och chipmärkning",
+          "Någon att ringa när de är osäkra på om det är akut",
+        ],
+        offers: [
+          "En gratis eller rabatterad första konsultation",
+          "En välkomstkontroll till medlemspris",
+          "Chipmärkning i samband med ett första besök",
+        ],
+      },
+      {
+        id: "boarding",
+        title: "Hundpensionat & dagis",
+        tagline: "Den första natten borta är ett stort steg. Medlemmar vill träffa personalen och se stället innan de bokar.",
+        ask: [
+          "En prova-på-dag eller en kortare vistelse till att börja med",
+          "Helg- och semesteromsorg de kan planera kring",
+          "Regelbundet dagis med en trygg rutin",
+        ],
+        offers: [
+          "En gratis eller halvpris prova-på-dag",
+          "Procent rabatt på en första vistelse",
+          "Ett medlemspris utanför högsäsong",
+        ],
+      },
+    ],
+    alsoTitle: "Även välkomna",
+    alsoBody: "Om ditt arbete berör en hunds vardag på något annat sätt, vill vi ändå gärna höra från dig.",
+  },
+  fi: {
+    askTitle: "Mitä jäsenet usein kysyvät",
+    offerTitle: "Tarjoukset, jotka toimivat hyvin",
+    types: [
+      {
+        id: "equipment",
+        title: "Lemmikkitarvikeliikkeet ja varusteet",
+        tagline: "Uuden koiran kanssa ensimmäiset viikot sisältävät paljon ostoksia – ja jäsenet tulevat kysymään neuvoa, eivät vain listaa.",
+        ask: [
+          "Valjaat ja talutushihna, jotka todella sopivat",
+          "Apua kestävien petien, häkkien ja lelujen valintaan",
+          "Rehellisiä ruokaneuvoja ilman brändipushia",
+        ],
+        offers: [
+          "Prosenttialennus ensimmäisestä sovituskäynnistä",
+          "Uuden koiran aloituspaketti",
+          "Vakituinen jäsenalennus arkitarvikkeista",
+        ],
+      },
+      {
+        id: "grooming",
+        title: "Trimmaajat",
+        tagline: "Rauhallinen trimmaaja on kullanarvoinen, erityisesti pennuille ja arkojen rescue-koirien kanssa.",
+        ask: [
+          "Hellävarainen ensimmäinen pentutrimmi",
+          "Kärsivällinen käsittely ahdistuneille koirille",
+          "Säännölliset ajat, joihin voi luottaa",
+        ],
+        offers: [
+          "Alennettu hinta ensimmäisestä käynnistä",
+          "Ilmainen kynsienleikkaus trimmin yhteydessä",
+          "Jäsenille etusija uudelleenvarauksissa",
+        ],
+      },
+      {
+        id: "training",
+        title: "Kouluttajat",
+        tagline: "Pentukurssista rescue-koiran ensimmäiseen luoksetuloon, jäsenet etsivät palkitsemiseen perustuvaa apua, johon voi luottaa.",
+        ask: [
+          "Pentukurssit pienryhmissä",
+          "Apua luoksetuloon, hihnakävelyyn ja hyppimiseen",
+          "Henkilökohtaista tukea rescue-koiran kotiutumiseen",
+        ],
+        offers: [
+          "Ilmainen tai alennettu tutustumistunti",
+          "Prosenttialennus kurssista",
+          "Vain jäsenille tarkoitettu kurssi tai avoimet illat",
+        ],
+      },
+      {
+        id: "vet",
+        title: "Eläinlääkäriasemat",
+        tagline: "Uudet omistajat haluavat klinikan, joka selittää asiat selkeästi eikä kiirehdi. Ensimmäinen tutustuminen kannattaa tehdä hyvin.",
+        ask: [
+          "Ensimmäiset tarkastukset ja rokotussuunnitelmat",
+          "Selkeät ohjeet vakuutuksista ja mikrosirusta",
+          "Joku, jolta kysyä, kun ei ole varma onko kiireellistä",
+        ],
+        offers: [
+          "Ilmainen tai alennettu ensimmäinen konsultaatio",
+          "Tervetulotarkastus jäsenhintaan",
+          "Mikrosirutus yhdistettynä ensimmäiseen käyntiin",
+        ],
+      },
+      {
+        id: "boarding",
+        title: "Hoitola & päivähoito",
+        tagline: "Ensimmäinen yö poissa on iso askel. Jäsenet haluavat tavata ihmiset ja nähdä paikan ennen varausta.",
+        ask: [
+          "Kokeilupäivä tai lyhyt hoitojakso aluksi",
+          "Viikonloppu- ja lomahoito, jonka mukaan voi suunnitella",
+          "Säännöllinen päivähoito tutulla rutiinilla",
+        ],
+        offers: [
+          "Ilmainen tai puoleen hintaan kokeilupäivä",
+          "Prosenttialennus ensimmäisestä hoitojaksosta",
+          "Jäsenhinta ruuhka-aikojen ulkopuolella",
+        ],
+      },
+    ],
+    alsoTitle: "Myös erittäin tervetulleita",
+    alsoBody: "Jos työsi liittyy koiran arkeen millään muulla tavalla, haluaisimme silti kuulla sinusta.",
+  },
+  de: {
+    askTitle: "Was Mitglieder häufig fragen",
+    offerTitle: "Angebote, die gut ankommen",
+    types: [
+      {
+        id: "equipment",
+        title: "Tierbedarf & Ausstattung",
+        tagline: "Die ersten Wochen mit einem neuen Hund bedeuten viel Einkaufen – und Mitglieder kommen mit Fragen, nicht nur mit einer Einkaufsliste.",
+        ask: [
+          "Geschirre und Leinen, die wirklich passen",
+          "Hilfe bei der Auswahl von Betten, Boxen und Spielzeug, das hält",
+          "Ehrliche Futterberatung ohne Markenwerbung",
+        ],
+        offers: [
+          "Ein prozentualer Rabatt auf den ersten Anprobetermin",
+          "Ein Starterpaket für den neuen Hund",
+          "Ein fester Mitgliederrabatt auf alltägliches Zubehör",
+        ],
+      },
+      {
+        id: "grooming",
+        title: "Hundefriseure",
+        tagline: "Ein ruhiger Hundefriseur ist Gold wert, besonders für Welpen und unsichere Hunde aus dem Tierschutz.",
+        ask: [
+          "Eine sanfte erste Schur für Welpen",
+          "Geduldiger Umgang mit ängstlichen Hunden",
+          "Regelmäßige Termine, auf die man sich verlassen kann",
+        ],
+        offers: [
+          "Ein vergünstigter erster Besuch",
+          "Eine kostenlose Krallenpflege zusätzlich zur Schur",
+          "Bevorzugte Wiederbuchung für Mitglieder",
+        ],
+      },
+      {
+        id: "training",
+        title: "Hundetrainer",
+        tagline: "Vom Welpenkurs bis zum ersten Rückruf bei einem geretteten Hund – Mitglieder suchen nach belohnungsbasierten Hilfen, denen sie vertrauen können.",
+        ask: [
+          "Welpenkurse mit kleinen Gruppen",
+          "Hilfe bei Rückruf, lockerem Leinenlaufen und Hochspringen",
+          "Individuelle Unterstützung für einen sich einlebenden Tierschutzhund",
+        ],
+        offers: [
+          "Eine kostenlose oder vergünstigte Schnupperstunde",
+          "Ein prozentualer Rabatt auf einen Kurs",
+          "Eine exklusive Mitgliedersitzung oder ein offener Abend",
+        ],
+      },
+      {
+        id: "vet",
+        title: "Tierärzte",
+        tagline: "Neue Besitzer wünschen sich eine Praxis, die Dinge verständlich erklärt und sich Zeit nimmt. Die erste Vorstellung sollte gut gelingen.",
+        ask: [
+          "Erste Check-ups und Impfpläne",
+          "Klare Anleitungen zu Versicherung und Chip",
+          "Jemanden zum Anrufen, wenn man unsicher ist, ob es dringend ist",
+        ],
+        offers: [
+          "Eine kostenlose oder vergünstigte Erstberatung",
+          "Ein Willkommens-Gesundheitscheck zum Mitgliedspreis",
+          "Chipen im Paket mit dem ersten Besuch",
+        ],
+      },
+      {
+        id: "boarding",
+        title: "Unterkünfte & Tagesbetreuung",
+        tagline: "Die erste Nacht fernab von zu Hause ist ein großer Schritt. Mitglieder möchten die Leute und den Ort kennenlernen, bevor sie buchen.",
+        ask: [
+          "Ein Probetag oder ein kurzer Aufenthalt zum Anfang",
+          "Wochenend- und Urlaubsbetreuung, die man planen kann",
+          "Regelmäßige Tagesbetreuung mit vertrauter Routine",
+        ],
+        offers: [
+          "Ein kostenloser oder halbpreisiger Probetag",
+          "Ein prozentualer Rabatt auf den ersten Aufenthalt",
+          "Ein Nebensaison-Mitgliedertarif",
+        ],
+      },
+    ],
+    alsoTitle: "Ebenfalls sehr willkommen",
+    alsoBody: "Wenn Ihre Arbeit das alltägliche Leben eines Hundes auf irgendeine andere Weise berührt, würden wir uns trotzdem freuen, von Ihnen zu hören.",
+  },
+  fr: {
+    askTitle: "Ce que les membres demandent habituellement",
+    offerTitle: "Offres qui fonctionnent bien",
+    types: [
+      {
+        id: "equipment",
+        title: "Animaleries et accessoires",
+        tagline: "Les premières semaines avec un nouveau chien impliquent beaucoup d'achats – et les membres viennent avec des questions, pas juste une liste.",
+        ask: [
+          "Harnais et laisse bien ajustés, qui conviennent vraiment",
+          "Aide pour choisir des paniers, cages et jouets qui durent",
+          "Conseils honnêtes sur l'alimentation, sans pousser une marque",
+        ],
+        offers: [
+          "Un pourcentage de réduction sur une première visite d'ajustement",
+          "Un kit de démarrage pour nouveau chien",
+          "Une remise membre permanente sur le matériel courant",
+        ],
+      },
+      {
+        id: "grooming",
+        title: "Toilettage",
+        tagline: "Un toiletteur calme vaut de l'or, surtout pour les chiots et les chiens de sauvetage nerveux.",
+        ask: [
+          "Une première coupe douce pour chiot",
+          "Une manipulation patiente des chiens anxieux",
+          "Des rendez-vous réguliers sur lesquels on peut compter",
+        ],
+        offers: [
+          "Une première visite à prix réduit",
+          "Une coupe d'ongles offerte en plus du toilettage",
+          "Priorité de réservation pour les membres",
+        ],
+      },
+      {
+        id: "training",
+        title: "Éducateurs canins",
+        tagline: "Du cours pour chiots au premier rappel d'un chien sauvé, les membres cherchent une aide basée sur la récompense et digne de confiance.",
+        ask: [
+          "Cours pour chiots en petits groupes",
+          "Aide pour le rappel, la marche en laisse détendue et les sauts",
+          "Un accompagnement personnalisé pour un chien sauvé en phase d'adaptation",
+        ],
+        offers: [
+          "Une séance d'introduction gratuite ou à prix réduit",
+          "Un pourcentage de réduction sur un cours",
+          "Un cours ou une soirée libre réservés aux membres",
+        ],
+      },
+      {
+        id: "vet",
+        title: "Cliniques vétérinaires",
+        tagline: "Les nouveaux propriétaires veulent une clinique qui explique les choses clairement et sans précipitation. Cette première rencontre est importante.",
+        ask: [
+          "Premiers bilans de santé et plans de vaccination",
+          "Des conseils clairs sur l'assurance et l'identification par puce électronique",
+          "Quelqu'un à qui parler quand on n'est pas sûr si c'est urgent",
+        ],
+        offers: [
+          "Une première consultation gratuite ou à prix réduit",
+          "Un bilan de santé de bienvenue au tarif membre",
+          "Identification par puce électronique incluse dans une première visite",
+        ],
+      },
+      {
+        id: "boarding",
+        title: "Garde et pension",
+        tagline: "La première nuit loin de la maison est une étape importante. Les membres veulent rencontrer les personnes et voir les lieux avant de réserver.",
+        ask: [
+          "Une journée d'essai ou un court séjour pour commencer",
+          "Une couverture pour les week-ends et les vacances, qu'on peut planifier",
+          "Une garde régulière avec une routine familière",
+        ],
+        offers: [
+          "Une journée d'essai gratuite ou à moitié prix",
+          "Un pourcentage de réduction sur un premier séjour",
+          "Un tarif membre hors saison",
+        ],
+      },
+    ],
+    alsoTitle: "Également les bienvenus",
+    alsoBody: "Si votre activité touche au quotidien d'un chien d'une autre manière, nous aimerions tout de même avoir de vos nouvelles.",
+  },
+  nl: {
+    askTitle: "Wat leden vaak vragen",
+    offerTitle: "Aanbiedingen die goed werken",
+    types: [
+      {
+        id: "equipment",
+        title: "Dierenwinkels & benodigdheden",
+        tagline: "De eerste weken met een nieuwe hond gaan gepaard met veel aankopen – en leden komen met vragen, niet alleen met een boodschappenlijstje.",
+        ask: [
+          "Een tuigje en riem die écht goed passen",
+          "Hulp bij het kiezen van duurzame manden, benches en speeltjes",
+          "Eerlijk voeradvies zonder merkvoorkeur",
+        ],
+        offers: [
+          "Korting op een eerste passessie",
+          "Een startpakket voor de nieuwe hond",
+          "Vaste ledenkorting op dagelijkse benodigdheden",
+        ],
+      },
+      {
+        id: "grooming",
+        title: "Trimsalons",
+        tagline: "Een rustige trimmer is goud waard, zeker voor puppy's en nerveuze honden die net komen kijken.",
+        ask: [
+          "Een zachte eerste trimbeurt voor puppy's",
+          "Geduldige omgang met angstige honden",
+          "Regelmatige afspraken waar ze op kunnen rekenen",
+        ],
+        offers: [
+          "Een eerste bezoek met korting",
+          "Een gratis nagelknipbeurt bij een trimbeurt",
+          "Voorrang bij het opnieuw inplannen voor leden",
+        ],
+      },
+      {
+        id: "training",
+        title: "Gedragstrainers",
+        tagline: "Van puppycursus tot de eerste 'hier' van een herplaatste hond, leden zoeken betrouwbare, beloningsgerichte hulp.",
+        ask: [
+          "Puppycursussen in kleine groepen",
+          "Hulp bij het aanleren van de 'hier'-roep, netjes meelopen en opspringen",
+          "Individuele begeleiding voor een herplaatste hond die moet wennen",
+        ],
+        offers: [
+          "Een gratis of voordelige kennismakingssessie",
+          "Korting op een cursus",
+          "Een ledenklas of inloopavond",
+        ],
+      },
+      {
+        id: "vet",
+        title: "Dierenklinieken",
+        tagline: "Nieuwe eigenaren zoeken een dierenarts die dingen duidelijk uitlegt en geen haast heeft. Die eerste kennismaking is belangrijk.",
+        ask: [
+          "Eerste controles en vaccinatieplannen",
+          "Duidelijke uitleg over verzekeringen en chippen",
+          "Iemand om te bellen als ze niet zeker weten of het dringend is",
+        ],
+        offers: [
+          "Een gratis of voordelig eerste consult",
+          "Een welkomstgezondheidscheck tegen ledenprijs",
+          "Chippen in combinatie met een eerste bezoek",
+        ],
+      },
+      {
+        id: "boarding",
+        title: "Logeeropvang & dagopvang",
+        tagline: "De eerste nacht weg is een grote stap. Leden willen de mensen en de plek graag eerst leren kennen voordat ze boeken.",
+        ask: [
+          "Een proefdag of een kort verblijf om te beginnen",
+          "Weekend- en vakantieopvang waar ze op kunnen rekenen",
+          "Regelmatige dagopvang met een vertrouwde routine",
+        ],
+        offers: [
+          "Een gratis of halve proefdag",
+          "Korting op een eerste verblijf",
+          "Een ledenprijs buiten de piekuren",
+        ],
+      },
+    ],
+    alsoTitle: "Ook van harte welkom",
+    alsoBody: "Als uw werk op een andere manier raakt aan het dagelijks leven van een hond, horen we graag van u.",
+  },
 } as const;
 
 const englishPartnerOfferExamples = [

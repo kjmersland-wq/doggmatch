@@ -9,6 +9,12 @@
 import { foodItemsEn } from "@/data/care/nutrition.en";
 import { foodItemsNo } from "@/data/care/nutrition.no";
 import { foodItemsPl } from "@/data/care/nutrition.pl";
+import { foodItemsDk } from "@/data/care/nutrition.dk";
+import { foodItemsSe } from "@/data/care/nutrition.se";
+import { foodItemsFi } from "@/data/care/nutrition.fi";
+import { foodItemsDe } from "@/data/care/nutrition.de";
+import { foodItemsFr } from "@/data/care/nutrition.fr";
+import { foodItemsNl } from "@/data/care/nutrition.nl";
 import type { FoodItem } from "@/data/care/types";
 import type { Locale } from "@/i18n";
 
@@ -16,6 +22,12 @@ const byLocale: Partial<Record<Locale, FoodItem[]>> = {
   en: foodItemsEn,
   no: foodItemsNo,
   pl: foodItemsPl,
+  dk: foodItemsDk,
+  se: foodItemsSe,
+  fi: foodItemsFi,
+  de: foodItemsDe,
+  fr: foodItemsFr,
+  nl: foodItemsNl,
 };
 
 /** Every food id, in the order the English source lists them. */

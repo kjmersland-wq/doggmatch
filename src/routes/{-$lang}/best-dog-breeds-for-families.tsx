@@ -15,6 +15,21 @@ const seoCopy = {
     description:
       "The best dog breeds for families with children, chosen for steady temperament rather than reputation — with the honest trade-offs of each, in plain language.",
   },
+  de: {
+    title: "Die besten Hunderassen für Familien – eine ehrliche Auswahl | DoggMatch",
+    description:
+      "Die besten Hunderassen für Familien mit Kindern, ausgewählt nach ihrem ausgeglichenen Wesen statt nach ihrem Ruf – mit den ehrlichen Vor- und Nachteilen jeder einzelnen, verständlich erklärt.",
+  },
+  fr: {
+    title: "Les meilleures races de chiens pour les familles — une sélection honnête | DoggMatch",
+    description:
+      "Les meilleures races de chiens pour les familles avec enfants, choisies pour leur tempérament stable plutôt que pour leur réputation — avec les compromis honnêtes de chacune, expliqués simplement.",
+  },
+  nl: {
+    title: "Beste hondenrassen voor gezinnen — een eerlijke shortlist | DoggMatch",
+    description:
+      "De beste hondenrassen voor gezinnen met kinderen, gekozen op basis van een stabiel karakter in plaats van reputatie — met de eerlijke voor- en nadelen van elk, in duidelijke taal.",
+  },
   no: {
     title: "De beste hunderasene for familier — en ærlig liste | DoggMatch",
     description:
@@ -82,6 +97,111 @@ const copy = {
     quizCta: "Take the compatibility quiz",
     compareCta: "Compare breeds side by side",
     levelLabels: ["Very low", "Low", "Moderate", "High", "Very high"],
+  },
+  de: {
+    eyebrow: "Einen Hund auswählen",
+    h1: "Die besten Hunderassen für Familien",
+    intro:
+      "Fragen Sie zehn Leute nach dem besten Familienhund und Sie bekommen zehn Antworten – meistens den Hund, mit dem sie aufgewachsen sind. Hier ist also unsere ehrliche Version: Die unten aufgeführten Rassen sind ausgeglichen, nachsichtig und genießen es wirklich, mit Kindern zusammenzuleben. Aber der einzelne Hund ist wichtiger als der Rassenname auf dem Papier des Zuchtverbands, und keine Rasse macht Kinder und Hunde von sich aus sicher zusammen. Das liegt an uns Erwachsenen.",
+    whatMattersTitle: "Was wirklich zählt",
+    whatMatters: [
+      "Ein ausgeglichenes, nachsichtiges Temperament ist jeder Reputation überlegen. Sie wollen einen Hund, der eine ungeschickte Streicheleinheit, eine unerwartete Umarmung oder ein Spielzeug, das ihm beim Kauen weggeschnappt wird, mit Gelassenheit hinnimmt.",
+      "Größe ist zweischneidig. Ein großer, fröhlicher Hund kann versehentlich einen Kleinkind umwerfen; ein winziger Hund kann durch wildes Spielen verletzt werden. Mittelgroß und ausgeglichen ist oft der einfachste Ausgangspunkt.",
+      "Die Energie sollte zur tatsächlichen Woche Ihrer Familie passen, nicht zu Ihren besten Absichten. Eine Rasse, die täglich zwei Stunden Auslauf braucht, ist wunderbar – wenn jemand tatsächlich diese zwei Stunden hat.",
+      "Welpen und Kleinkinder gleichzeitig sind zwei Vollzeitjobs. Viele Familien haben einen viel ruhigeren Start mit einem Hund, der bereits ein oder zwei Jahre alt ist.",
+    ],
+    rulesTitle: "Die Regeln, die wichtiger sind als die Rasse",
+    rules: [
+      "Stören Sie niemals einen Hund, der frisst, schläft oder sich in seinem Körbchen befindet.",
+      "Ein Erwachsener ist immer im Raum, wenn kleine Kinder und Hunde zusammen sind.",
+      "Kinder lernen, den Hund zu lesen – ein abgewandter Kopf oder ein Gähnen bedeutet 'gib mir Raum'.",
+    ],
+    listTitle: "Unsere engere Auswahl für Familien",
+    listIntro:
+      "Acht Rassen, die in unseren Daten durchweg gut mit Kindern abschneiden, mit den ehrlichen Kompromissen. Mischlinge mit diesen Eltern sind oft genauso gut.",
+    childrenLabel: "Mit Kindern",
+    firstTimeLabel: "Erstbesitzer",
+    sheddingLabel: "Haaren",
+    energyLabel: "Energie",
+    readProfile: "Vollständiges Profil lesen",
+    allergyNote:
+      "Ein kurzes Wort zu Allergien: Kein Hund ist wirklich hypoallergen. Manche haaren weniger und verteilen weniger Hautschuppen im Haus, was vielen Familien hilft – aber verbringen Sie Zeit mit dem tatsächlichen Hund, bevor Sie eine Entscheidung treffen.",
+    quizTitle: "Ihre Familie ist die andere Hälfte der Übereinstimmung",
+    quizBody:
+      "Die beste Rasse auf dem Papier muss immer noch zu Ihrer Woche passen – Ihr Zuhause, Ihre Zeit, das Alter Ihrer Kinder. Unser Quiz berücksichtigt all das und zeigt Ihnen die Begründung hinter jeder Übereinstimmung.",
+    quizCta: "Machen Sie den Kompatibilitäts-Quiz",
+    compareCta: "Rassen Seite an Seite vergleichen",
+    levelLabels: ["Sehr niedrig", "Niedrig", "Moderat", "Hoch", "Sehr hoch"],
+  },
+  fr: {
+    eyebrow: "Choisir un chien",
+    h1: "Les meilleures races de chiens pour les familles",
+    intro:
+      "Demandez à dix personnes quel est le meilleur chien de famille, et vous obtiendrez dix réponses — généralement le chien avec lequel elles ont grandi. Voici donc notre version honnête : les races ci-dessous sont calmes, indulgentes et apprécient sincèrement de vivre avec des enfants. Mais le chien individuel compte plus que le nom de la race sur le pedigree, et aucune race ne rend les enfants et les chiens en sécurité ensemble à elle seule. Cela nous incombe, à nous adultes.",
+    whatMattersTitle: "Ce qui compte vraiment",
+    whatMatters: [
+      "Un tempérament calme et indulgent vaut mieux que n'importe quelle réputation. Vous voulez un chien qui ignore une tape maladroite, un câlin inattendu, un jouet arraché en plein milieu d'une mastication.",
+      "La taille a ses deux côtés. Un grand chien joyeux peut accidentellement aplatir un tout-petit ; un tout petit peut être blessé par des jeux un peu brusques. Un chien de taille moyenne et calme est souvent le plus facile pour commencer.",
+      "L'énergie doit correspondre à la semaine réelle de votre famille, pas à vos meilleures intentions. Une race qui a besoin de deux heures de course par jour est merveilleuse — si quelqu'un a réellement ces deux heures.",
+      "Les chiots et les tout-petits en même temps, c'est deux emplois à temps plein. De nombreuses familles commencent plus calmement avec un chien qui a déjà un an ou deux.",
+    ],
+    rulesTitle: "Les règles qui comptent plus que la race",
+    rules: [
+      "Ne jamais déranger un chien qui mange, dort ou est dans son panier.",
+      "Un adulte est toujours présent lorsque les jeunes enfants et les chiens sont ensemble.",
+      "Les enfants apprennent à lire le chien — une tête détournée ou un bâillement signifie 'laisse-moi de l'espace'.",
+    ],
+    listTitle: "Notre présélection familiale",
+    listIntro:
+      "Huit races qui obtiennent régulièrement de bons scores avec les enfants dans nos données, avec les compromis honnêtes. Les croisements avec ces parents font souvent tout aussi bien.",
+    childrenLabel: "Avec les enfants",
+    firstTimeLabel: "Propriétaires novices",
+    sheddingLabel: "Perte de poils",
+    energyLabel: "Énergie",
+    readProfile: "Lire le profil complet",
+    allergyNote:
+      "Un mot rapide sur les allergies : aucun chien n'est vraiment hypoallergénique. Certains perdent moins leurs poils et dispersent moins de squames dans la maison, ce qui aide de nombreuses familles — mais passez du temps avec le chien réel avant de décider.",
+    quizTitle: "Votre famille est l'autre moitié du match",
+    quizBody:
+      "La meilleure race sur le papier doit toujours s'adapter à votre semaine — votre maison, votre temps, l'âge de vos enfants. Notre quiz pèse tout cela et vous montre le raisonnement derrière chaque correspondance.",
+    quizCta: "Faire le quiz de compatibilité",
+    compareCta: "Comparer les races côte à côte",
+    levelLabels: ["Très faible", "Faible", "Modéré", "Élevé", "Très élevé"],
+  },
+  nl: {
+    eyebrow: "Een hond kiezen",
+    h1: "De beste hondenrassen voor gezinnen",
+    intro:
+      "Vraag tien mensen naar de beste gezinshond en je krijgt tien antwoorden — meestal de hond waarmee ze zijn opgegroeid. Dus hier is onze eerlijke versie: de onderstaande rassen zijn stabiel, vergevingsgezind en genieten er oprecht van om met kinderen te leven. Maar de individuele hond is belangrijker dan de rasnaam op het stamboompapier, en geen enkel ras maakt kinderen en honden vanzelf veilig samen. Dat deel is aan ons volwassenen.",
+    whatMattersTitle: "Wat er echt toe doet",
+    whatMatters: [
+      "Een stabiel, vergevingsgezind temperament is belangrijker dan welke reputatie dan ook. Je wilt een hond die zich niet laat van de wijs brengen door een onhandig aaitje, een onverwachte knuffel, of een speeltje dat halverwege het kauwen wordt afgepakt.",
+      "Grootte snijdt aan twee kanten. Een grote, vrolijke hond kan per ongeluk een peuter omver lopen; een kleintje kan gewond raken door ruw spel. Medium en stabiel is vaak het makkelijkst om mee te beginnen.",
+      "Energie moet passen bij de werkelijke week van je gezin, niet bij je beste voornemens. Een ras dat twee uur per dag rennen nodig heeft, is geweldig — als iemand die twee uur ook daadwerkelijk heeft.",
+      "Puppy's en peuters tegelijk is twee fulltime banen. Veel gezinnen beginnen rustiger met een hond die al een jaar of twee oud is.",
+    ],
+    rulesTitle: "De regels die belangrijker zijn dan het ras",
+    rules: [
+      "Besterf nooit een hond die eet, slaapt of in zijn mand ligt.",
+      "Een volwassene is altijd aanwezig als jonge kinderen en honden samen zijn.",
+      "Kinderen leren de hond te lezen — een weggedraaid hoofd of een geeuw betekent 'geef me ruimte'.",
+    ],
+    listTitle: "Onze shortlist voor gezinnen",
+    listIntro:
+      "Acht rassen die in onze gegevens consequent goed scoren bij kinderen, met de eerlijke afwegingen. Kruisingen met deze ouders doen het vaak net zo goed.",
+    childrenLabel: "Met kinderen",
+    firstTimeLabel: "Beginnende eigenaren",
+    sheddingLabel: "Verharen",
+    energyLabel: "Energie",
+    readProfile: "Lees het volledige profiel",
+    allergyNote:
+      "Een korte opmerking over allergieën: geen enkele hond is echt hypoallergeen. Sommige verharen minder en verspreiden minder huidschilfers in huis, wat veel gezinnen helpt — maar breng tijd door met de daadwerkelijke hond voordat je een beslissing neemt.",
+    quizTitle: "Jouw gezin is de andere helft van de match",
+    quizBody:
+      "Het beste ras op papier moet nog steeds passen bij jouw week — je huis, je tijd, de leeftijden van je kinderen. Onze quiz weegt dit allemaal mee en laat je de redenatie achter elke match zien.",
+    quizCta: "Doe de compatibiliteitsquiz",
+    compareCta: "Vergelijk rassen naast elkaar",
+    levelLabels: ["Heel laag", "Laag", "Gemiddeld", "Hoog", "Heel hoog"],
   },
   no: {
     eyebrow: "Å velge hund",
