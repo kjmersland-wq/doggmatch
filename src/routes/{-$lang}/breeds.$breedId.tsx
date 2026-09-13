@@ -377,6 +377,7 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
           isPartOf: { "@type": "WebSite", name: "DoggMatch", url: abs("/") },
           mainEntityOfPage: langUrl(path, locale),
         }),
+        faqLd(breedFaq(loaderData.breed, name, locale)),
       ],
     };
   },
