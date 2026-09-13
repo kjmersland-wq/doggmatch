@@ -66,6 +66,96 @@ const seoCopy = {
   },
 };
 
+/* ----------------------------------------- membership journey (8 stages) */
+/* English is the source language; other locales fall back until translated. */
+
+const stagesCopy = {
+  en: {
+    eyebrow: "From matching to everyday life",
+    title: "One journey, from first search to daily life",
+    body: "The free version helps you find the right dog. DoggMatch+ is everything that comes after — understanding, preparing, and living well with that dog, every single day.",
+    freeLabel: "Free — find the right dog",
+    freeLine: "The quiz, honest breed profiles, comparisons and yearly cost estimates. Yours to keep, no account needed.",
+    plusLabel: "DoggMatch+ — live well with that dog, every day",
+    plusLine: "Eight connected stages that carry you from \"we think this is the one\" to a calm, organised everyday life together.",
+    stages: [
+      {
+        title: "Understand your dog",
+        line: "Before anything else, get to know who you're living with.",
+        examples: [
+          "A personal profile built from your dog's breed, age and personality",
+          "Plain-language notes on energy, sociability and typical quirks",
+          "What your dog's breed was originally bred to do — and why it still shows",
+        ],
+      },
+      {
+        title: "Prepare for arrival",
+        line: "The weeks before the dog comes home, handled calmly.",
+        examples: [
+          "A readiness checklist paced to your moving-in date",
+          "Breed-aware shopping list — bed, lead, crate size and grooming tools",
+          "Realistic first-year and yearly cost ranges for your specific breed",
+        ],
+      },
+      {
+        title: "Daily life — the My Dog hub",
+        line: "One quiet place where your dog's whole day lives.",
+        examples: [
+          "Today's walks, meals, training and care on one simple screen",
+          "Weekly plans that adapt as your dog grows from puppy to adult",
+          "Separate profiles for every dog in the family",
+        ],
+      },
+      {
+        title: "Training",
+        line: "Short, kind sessions that fit into an ordinary day.",
+        examples: [
+          "Step-by-step lessons with a built-in timer — most take five minutes",
+          "Progress tracking from first sit to reliable recall",
+          "Difficulty matched to your dog's age and your experience",
+        ],
+      },
+      {
+        title: "Food & weight",
+        line: "Feeding that adjusts to the dog in front of you.",
+        examples: [
+          "Daily portion guidance based on weight, age and activity",
+          "Weight tracking with gentle nudges if the curve drifts",
+          "An honest food-safety list — what's fine, what's never fine",
+        ],
+      },
+      {
+        title: "Health & care calendar",
+        line: "The small things, remembered for you.",
+        examples: [
+          "Vaccinations, worming and vet visits on one shared calendar",
+          "Dental, coat, paws and nails — each with a simple routine",
+          "A health diary that helps you spot changes over weeks, not guess",
+        ],
+      },
+      {
+        title: "Travel & documents",
+        line: "Crossing borders without the last-minute paperwork panic.",
+        examples: [
+          "Country-to-country rules checked before you book anything",
+          "Passport, chip and vaccination requirements in plain language",
+          "A travel document pack ready to show at the border or the vet",
+        ],
+      },
+      {
+        title: "The printable Dog Pack",
+        line: "Everything about your dog, on paper, for anyone who needs it.",
+        examples: [
+          "A one-page summary for the vet, sitter or kennel",
+          "Feeding, medication and emergency contacts in one place",
+          "Print it, save it as a PDF, or share it before you travel",
+        ],
+      },
+    ],
+    closing: "No pressure and no lock-in — the free result stays complete either way. DoggMatch+ is simply there when the dog comes home.",
+  },
+};
+
 export const Route = createFileRoute("/{-$lang}/plus")({
   head: (ctx) => localizedHead(ctx, "/plus", seoCopy),
   component: PlusPage,
