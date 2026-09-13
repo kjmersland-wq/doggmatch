@@ -1576,12 +1576,11 @@ function EnquirySection() {
               />
             </Field>
 
-            <Field label={c.fields.message.label} id="message" error={errors["message"]}>
+            <Field label={c.fields.message.label} id="message" hint={c.fields.message.hint} error={errors["message"]}>
               <textarea
                 id="message"
                 name="message"
-                required
-                rows={7}
+                rows={5}
                 maxLength={4000}
                 placeholder={c.fields.message.placeholder}
                 className={cn(fieldClass, "resize-y leading-relaxed")}
