@@ -378,7 +378,12 @@ export function ShareStrip({ className }: { className?: string }) {
   const c = useCopy(stripCopy);
   const url = useShareUrl();
   const [copied, setCopied] = useState(false);
-  const shareTitle = typeof document !== "undefined" ? document.title : "DoggMatch";
+  // Start with a stable placeholder so server and first client render match;
+  // the real page title arrives after hydration.
+  const [shareTitle, setShareTitle] = useState("DoggMatch");
+  useEffect(() => {
+    if (document.title) setShareTitle(document.title);
+  }, []);
   const targets = useTargets(url, shareTitle, shareTitle);
 
   const onCopy = useCallback(async () => {
