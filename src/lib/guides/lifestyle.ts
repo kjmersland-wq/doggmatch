@@ -1,4 +1,5 @@
 import { breeds, type Breed, type BreedTraits } from "@/data/breeds";
+import type { CopyMap } from "@/i18n";
 
 /**
  * High-intent lifestyle guides. Each guide is honest editorial content plus a
