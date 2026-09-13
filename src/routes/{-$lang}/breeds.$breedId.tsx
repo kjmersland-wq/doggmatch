@@ -18,6 +18,7 @@ import { matchDogTraits } from "@/lib/matching/engine";
 import { useMatchProfile } from "@/lib/matching/store";
 import { Arrow, ButtonLink, Eyebrow, TraitMeter } from "@/components/dogmatch/ui";
 import { FitPanel } from "@/components/dogmatch/fit-panel";
+import { CostCalculator } from "@/components/dogmatch/cost-calculator";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { relatedBreeds } from "@/lib/breeds/related";
@@ -627,7 +628,10 @@ function BreedDetail() {
             </div>
           ))}
         </dl>
+
+        <CostCalculator breed={breed} className="mt-14" />
       </section>
+
 
       <section className="container-page grid gap-12 border-t border-border py-16 md:grid-cols-2 md:gap-16">
         <div>

@@ -367,6 +367,7 @@ import type { BreedTraits } from "@/data/breeds";
 import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/types";
 import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "@/components/dogmatch/ui";
 import { MatchNotes } from "@/components/dogmatch/match-notes";
+import { CostCalculator } from "@/components/dogmatch/cost-calculator";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { cn } from "@/lib/utils";
 import { seoLinks, abs, localizedHead, headLocale, faqLd, breadcrumbLd } from "@/lib/seo";
@@ -1324,6 +1325,11 @@ function Results({
         </div>
         <MatchNotes profile={profile} />
       </section>
+
+      <section className="container-page mt-20 md:mt-28">
+        <CostCalculator breed={best.breed} />
+      </section>
+
 
       {/* fit and trade-offs, tied line by line to the answers given */}
       <section className="container-page mt-20 md:mt-28">
