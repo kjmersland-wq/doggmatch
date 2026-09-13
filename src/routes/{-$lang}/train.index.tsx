@@ -13,7 +13,7 @@ import {
   weeklyPlan,
 } from "@/lib/training/schedule";
 import { ProgressOverview, WeekPlan, WeekPlanEmpty } from "@/components/dogmatch/training/plan-parts";
-import { streakDays, today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
+import { today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
@@ -119,8 +119,6 @@ function TrainHome() {
   const progress = useProgress(dog?.id);
   const plan = todaysPlan(dog, progress, today());
   const ageFocus = getAgeFocus();
-  const learned = Object.values(progress).filter((s) => s === "learned").length;
-  const streak = streakDays(state.sessions);
   const planCopy = useCopy(weekCopy);
   const week = weeklyPlan(dog, progress, state.sessions, today());
   const summary = progressSummary(state.sessions, progress, getLessons().length, today());
@@ -382,12 +380,4 @@ function TrainHome() {
   );
 }
 
-function Stat({ value, label }: { value: string; label: string }) {
-  return (
-    <div>
-      <p className="font-display text-4xl tabular-nums tracking-tight text-accent">{value}</p>
-      <p className="mt-2 text-sm text-muted-foreground">{label}</p>
-    </div>
-  );
-}
 
