@@ -139,8 +139,9 @@ export function LifestyleGuide({ config }: { config: LifestyleGuideConfig }) {
             </p>
           ))}
           {config.costExamples && i === c.sections!.length - 1 && (
-            <div className="mt-6 overflow-hidden rounded-3xl border border-border">
-              <table className="w-full text-sm">
+            <div className="mt-6 overflow-x-auto rounded-3xl border border-border">
+              <table className="w-full min-w-[30rem] text-sm">
+
                 <thead>
                   <tr className="border-b border-border bg-surface text-left text-muted-foreground">
                     <th className="px-5 py-3 font-medium">Example</th>
