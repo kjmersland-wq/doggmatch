@@ -25,6 +25,19 @@ export interface MatchResult {
   status: "recommended" | "caution" | "not-recommended";
 }
 
+export interface EliminatedMatch {
+  result: MatchResult;
+  /** The specific non-negotiable answer that removed this breed. */
+  reasons: string[];
+}
+
+export interface MatchRanking {
+  matches: MatchResult[];
+  eliminated: EliminatedMatch[];
+  /** True when every breed crossed a hard limit and soft-capped results are shown instead. */
+  limitsRelaxed: boolean;
+}
+
 export interface QuizOption {
   value: string;
   label: string;

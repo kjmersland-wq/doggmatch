@@ -18,9 +18,9 @@ const resultCopy = {
       "You told us {name} is a mix with unknown parentage, so we haven't guessed at breeds. This is your dog, as you described them.",
     ownDogFit: "Fit with the life you described",
     ownDogEdit: "Add more about {name}",
-    fitsTitle: "Why This Fits You",
+    fitsTitle: "Why this breed scored high",
     fitsNone: "Nothing stood out clearly here — but every dog is worth meeting in person.",
-    tradeTitle: "Trade-offs & Watch-outs",
+    tradeTitle: "Trade-offs to consider",
     tradeNone: "Nothing here worked against you, going by your answers.",
     breakdownHonesty:
       "This is a lifestyle compatibility reading, not a scientific measurement — it compares what you told us with what this breed usually needs.",
@@ -351,7 +351,7 @@ const resultCopy = {
 import { quizQuestions } from "@/data/questions.locale";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
-import { matchBreeds, explain } from "@/lib/matching/engine";
+import { matchBreedRanking, explain } from "@/lib/matching/engine";
 import {
   crossContributionLines,
   crossHeading,
@@ -731,7 +731,10 @@ function FindMyDogPage() {
   const isHardLimitEligible = HARD_LIMIT_QUESTIONS.has(question.id);
   const hardLimitOn = profile[`${question.id}HardLimit`] === "true";
 
-  const results = useMemo(() => (phase === "result" ? matchBreeds(profile) : []), [phase, profile]);
+  const ranking = useMemo(
+    () => (phase === "result" ? matchBreedRanking(profile) : { matches: [], eliminated: [], limitsRelaxed: false }),
+    [phase, profile],
+  );
 
   function choose(value: string) {
     setProfile((p) => ({ ...p, [question.id]: value }));
@@ -760,7 +763,18 @@ function FindMyDogPage() {
   }
 
   if (phase === "revealing") return <Reveal onDone={() => setPhase("result")} />;
-  if (phase === "result") return <Results results={results} profile={profile} onRestart={restart} />;
+  if (phase === "result") {
+    return (
+      <Results
+        results={ranking.matches}
+        eliminated={ranking.eliminated}
+        limitsRelaxed={ranking.limitsRelaxed}
+        profile={profile}
+        onProfileChange={setProfile}
+        onRestart={restart}
+      />
+    );
+  }
 
   return (
     <div className="container-page flex min-h-[calc(100vh-72px)] max-w-3xl flex-col py-10 md:py-16">
@@ -920,6 +934,26 @@ function Reveal({ onDone }: { onDone: () => void }) {
       clearInterval(tick);
       clearTimeout(finish);
     };
+
+const interactiveResultCopy = {
+  en: {
+    adjustEyebrow: "A closer look",
+    adjustTitle: "Adjust my answers",
+    adjustBody: "Life changes, and sometimes an answer needs a second thought. Change any of these and your matches will reorder straight away.",
+    updated: "Your ranking has been updated.",
+    removedEyebrow: "Your non-negotiables",
+    removedTitle: "Why some breeds were removed",
+    removedBody: "These dogs may be wonderful in the right home, but they crossed a boundary you asked us not to stretch.",
+    removedReason: "Why this breed was removed",
+    showRemoved: "Show removed breeds",
+    hideRemoved: "Hide removed breeds",
+    relaxedTitle: "No breed met every hard limit",
+    relaxedBody: "Rather than leave you with a blank page, we have shown the closest matches below. Each one needs a careful look at the limits you set.",
+    otherReason: "Why it ranked here",
+    otherTradeoffs: "Trade-offs to consider",
+    noTradeoffs: "Your answers did not reveal a clear lifestyle conflict for this breed.",
+  },
+} as const;
   }, [onDone]);
 
   return (
@@ -1098,11 +1132,17 @@ function FirstThirtyDays({ breedName }: { breedName: string }) {
 
 function Results({
   results,
+  eliminated,
+  limitsRelaxed,
   profile,
+  onProfileChange,
   onRestart,
 }: {
   results: MatchResult[];
+  eliminated: import("@/lib/matching/types").EliminatedMatch[];
+  limitsRelaxed: boolean;
   profile: UserProfile;
+  onProfileChange: React.Dispatch<React.SetStateAction<UserProfile>>;
   onRestart: () => void;
 }) {
   const t = useT();
@@ -1110,10 +1150,20 @@ function Results({
   const ownTraits = resolveDogTraits(ownDog);
   const ownFit = ownDog ? matchOwnDog(ownDog, profile) : undefined;
   const c = useCopy(resultCopy);
+  const ic = useCopy(interactiveResultCopy);
   const best = results[0]!;
   const content = breedContent()[best.breedId];
   const detail = explain(best);
   const others = results.slice(1, 4);
+  const adjustableQuestions = questionsForAdjustment();
+  const [showRemoved, setShowRemoved] = useState(false);
+  const [announceUpdate, setAnnounceUpdate] = useState(false);
+
+  function adjustAnswer(id: string, value: string) {
+    onProfileChange((current) => ({ ...current, [id]: value }));
+    setAnnounceUpdate(true);
+    window.setTimeout(() => setAnnounceUpdate(false), 1400);
+  }
 
   /** How forgiving a breed tends to be of first-timer training mistakes, from its firstTimeSuitability trait. */
   const beginnerLevel = (score: number) =>
@@ -1167,6 +1217,44 @@ function Results({
           </div>
         </div>
       </section>
+
+      <section className="container-page mt-12 md:mt-16" aria-labelledby="adjust-results-title">
+        <div className="rounded-2xl border border-border bg-surface p-6 md:p-8">
+          <Eyebrow>{ic.adjustEyebrow}</Eyebrow>
+          <div className="mt-4 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <h2 id="adjust-results-title" className="display-md">{ic.adjustTitle}</h2>
+              <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">{ic.adjustBody}</p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {adjustableQuestions.map((question) => (
+                <label key={question.id} className="grid gap-2 text-sm font-medium">
+                  <span>{question.title}</span>
+                  <select
+                    value={profile[question.id] ?? question.options[0]?.value ?? ""}
+                    onChange={(event) => adjustAnswer(question.id, event.target.value)}
+                    className="h-12 w-full rounded-lg border border-border-strong bg-background px-4 text-sm text-foreground outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  >
+                    {question.options.map((option) => (
+                      <option key={option.value} value={option.value}>{option.label}</option>
+                    ))}
+                  </select>
+                </label>
+              ))}
+            </div>
+          </div>
+          <p className="sr-only" aria-live="polite">{announceUpdate ? ic.updated : ""}</p>
+        </div>
+      </section>
+
+      {limitsRelaxed && (
+        <section className="container-page mt-8" aria-labelledby="relaxed-limits-title">
+          <div className="border-l-2 border-accent pl-5">
+            <h2 id="relaxed-limits-title" className="font-display text-xl">{ic.relaxedTitle}</h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">{ic.relaxedBody}</p>
+          </div>
+        </section>
+      )}
 
       {/* actionable next step, right beneath the top match */}
       <section className="container-page mt-12 md:mt-16">
@@ -1280,8 +1368,10 @@ function Results({
       <section className="container-page mt-20 md:mt-28">
         <h2 className="display-md">{t.result.otherMatches}</h2>
         <ul className="mt-8 grid gap-6 sm:grid-cols-3">
-          {others.map((r) => (
-            <li key={r.breedId}>
+          {others.map((r) => {
+            const insights = matchInsights(breedById[r.breedId].traits, profile);
+            return (
+            <li key={r.breedId} className="min-w-0">
               <Link to={withLangPrefix("/breeds/$breedId")} params={{ breedId: r.breedId }} className="group block">
                 <div className="overflow-hidden rounded-[1.25rem]">
                   <img
@@ -1310,10 +1400,42 @@ function Results({
                   <p className="mt-2 text-sm text-accent">{r.warnings[0]}</p>
                 )}
               </Link>
+              <div className="mt-5 border-t border-border pt-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">{ic.otherReason}</p>
+                <p className="mt-2 text-sm leading-relaxed">{insights.fits[0]?.text ?? scoreReading(r.score)}</p>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">{ic.otherTradeoffs}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{insights.tradeoffs[0]?.text ?? ic.noTradeoffs}</p>
+              </div>
             </li>
-          ))}
+          )})}
         </ul>
       </section>
+
+      {eliminated.length > 0 && !limitsRelaxed && (
+        <section className="container-page mt-20 md:mt-28" aria-labelledby="removed-breeds-title">
+          <Eyebrow>{ic.removedEyebrow}</Eyebrow>
+          <h2 id="removed-breeds-title" className="display-md mt-4">{ic.removedTitle}</h2>
+          <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">{ic.removedBody}</p>
+          <Button tone="outline" className="mt-6" onClick={() => setShowRemoved((open) => !open)} aria-expanded={showRemoved}>
+            {showRemoved ? ic.hideRemoved : ic.showRemoved}
+            <ChevronDown className={cn("h-4 w-4 transition-transform", showRemoved && "rotate-180")} aria-hidden="true" />
+          </Button>
+          {showRemoved && (
+            <ul className="animate-fade mt-6 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
+              {eliminated.slice(0, 8).map(({ result, reasons }) => (
+                <li key={result.breedId} className="bg-background p-6">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h3 className="font-display text-lg">{breedContent()[result.breedId].displayName}</h3>
+                    <span className="text-xs text-muted-foreground">{result.score}%</span>
+                  </div>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent">{ic.removedReason}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{reasons[0]}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      )}
 
       {/* premium */}
       <section className="container-page mt-20 md:mt-28">

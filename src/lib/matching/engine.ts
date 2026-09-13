@@ -1,7 +1,7 @@
 import { breeds, type Breed, type BreedTraits } from "@/data/breeds";
 import { pick } from "@/i18n";
 import { breedContent } from "@/data/breed-content";
-import type { DimensionKey, MatchResult, UserProfile } from "./types";
+import type { DimensionKey, MatchRanking, MatchResult, UserProfile } from "./types";
 
 /**
  * Deterministic, explainable compatibility engine.
@@ -184,8 +184,9 @@ function scoreDimensions(t: BreedTraits, p: UserProfile): Record<DimensionKey, n
 const isHardLimit = (p: UserProfile, key: string) => p[`${key}HardLimit`] === "true";
 
 /** Hard constraints. These cap the final score regardless of how well everything else fits — and, for a question the reader has flagged as a hard limit, eliminate the breed from `matchBreeds` outright. */
-function hardConstraints(t: BreedTraits, p: UserProfile): { warnings: string[]; cap: number; eliminated: boolean } {
+function hardConstraints(t: BreedTraits, p: UserProfile): { warnings: string[]; cap: number; eliminated: boolean; eliminationReasons: string[] } {
   const warnings: string[] = [];
+  const eliminationReasons: string[] = [];
   let cap = 100;
   let eliminated = false;
 
@@ -198,9 +199,13 @@ function hardConstraints(t: BreedTraits, p: UserProfile): { warnings: string[]; 
     cap = Math.min(cap, 55);
   }
   if (p["shedding"] === "must-low" && t.shedding >= 4) {
-    warnings.push(pick({ en: "They shed a lot. With someone at home who reacts to dogs, that's a difficult place to start.", no: "Den feller mye. Når noen hjemme reagerer på hund, er det et vanskelig utgangspunkt.", pl: "Ten pies mocno linieje. Jeśli ktoś w domu reaguje na psy, to trudny punkt wyjścia." }));
+    const warning = pick({ en: "They shed a lot. With someone at home who reacts to dogs, that's a difficult place to start.", no: "Den feller mye. Når noen hjemme reagerer på hund, er det et vanskelig utgangspunkt.", pl: "Ten pies mocno linieje. Jeśli ktoś w domu reaguje na psy, to trudny punkt wyjścia." });
+    warnings.push(warning);
     cap = Math.min(cap, 50);
-    if (isHardLimit(p, "shedding")) eliminated = true;
+    if (isHardLimit(p, "shedding")) {
+      eliminated = true;
+      eliminationReasons.push(warning);
+    }
   }
   if (p["children"] === "young" && t.goodWithChildren <= 3) {
     warnings.push(pick({ en: "With young children at home, this one usually needs an experienced hand.", no: "Med små barn hjemme trenger denne som regel en erfaren eier.", pl: "Z małymi dziećmi w domu ten pies zwykle potrzebuje doświadczonej ręki." }));
@@ -215,26 +220,38 @@ function hardConstraints(t: BreedTraits, p: UserProfile): { warnings: string[]; 
     cap = Math.min(cap, 60);
   }
   if (Number(p["alone"] ?? 0) >= 6 && t.aloneTolerance <= 2) {
-    warnings.push(pick({ en: "They find long days on their own hard. Six hours or more would need a proper plan.", no: "Den synes lange dager alene er tungt. Seks timer eller mer krever en ordentlig plan.", pl: "Długie dni w samotności są dla niego trudne. Sześć godzin lub więcej wymagałoby przemyślanego planu." }));
+    const warning = pick({ en: "They find long days on their own hard. Six hours or more would need a proper plan.", no: "Den synes lange dager alene er tungt. Seks timer eller mer krever en ordentlig plan.", pl: "Długie dni w samotności są dla niego trudne. Sześć godzin lub więcej wymagałoby przemyślanego planu." });
+    warnings.push(warning);
     cap = Math.min(cap, 58);
-    if (isHardLimit(p, "alone")) eliminated = true;
+    if (isHardLimit(p, "alone")) {
+      eliminated = true;
+      eliminationReasons.push(warning);
+    }
   }
   if (p["home"] === "apartment" && t.apartmentSuitability <= 1) {
-    warnings.push(pick({ en: "Flat living rarely suits this breed, even with plenty of long walks.", no: "Leilighetsliv passer sjelden for denne rasen, selv med mange lange turer.", pl: "Życie w mieszkaniu rzadko pasuje tej rasie, nawet przy wielu długich spacerach." }));
+    const warning = pick({ en: "Flat living rarely suits this breed, even with plenty of long walks.", no: "Leilighetsliv passer sjelden for denne rasen, selv med mange lange turer.", pl: "Życie w mieszkaniu rzadko pasuje tej rasie, nawet przy wielu długich spacerach." });
+    warnings.push(warning);
     cap = Math.min(cap, 50);
-    if (isHardLimit(p, "home")) eliminated = true;
+    if (isHardLimit(p, "home")) {
+      eliminated = true;
+      eliminationReasons.push(warning);
+    }
   }
   if (p["allergy"] === "significant" && t.shedding >= 4) {
-    warnings.push(pick({
+    const warning = pick({
       en: "With a significant allergy at home, a heavy-shedding dog is a hard place to start. Speak to an allergy specialist before you decide.",
       no: "Med en betydelig allergi hjemme er en hund som feller mye et vanskelig utgangspunkt. Snakk med en allergispesialist før du bestemmer deg.",
       pl: "Przy poważnej alergii w domu, pies, który mocno linieje, to trudny punkt wyjścia. Porozmawiaj ze specjalistą od alergii, zanim podejmiesz decyzję.",
-    }));
+    });
+    warnings.push(warning);
     cap = Math.min(cap, 48);
-    if (isHardLimit(p, "allergy")) eliminated = true;
+    if (isHardLimit(p, "allergy")) {
+      eliminated = true;
+      eliminationReasons.push(warning);
+    }
   }
 
-  return { warnings, cap, eliminated };
+  return { warnings, cap, eliminated, eliminationReasons };
 }
 
 
@@ -282,9 +299,14 @@ export function matchDogTraits(
  * reader always sees a result rather than an empty page.
  */
 export function matchBreeds(profile: UserProfile): MatchResult[] {
+  return matchBreedRanking(profile).matches;
+}
+
+/** Full deterministic ranking, including breeds removed by a reader-set hard limit. */
+export function matchBreedRanking(profile: UserProfile): MatchRanking {
   const scored = breeds.map((breed) => {
     const dimensions = scoreDimensions(breed.traits, profile);
-    const { warnings, cap, eliminated } = hardConstraints(breed.traits, profile);
+    const { warnings, cap, eliminated, eliminationReasons } = hardConstraints(breed.traits, profile);
 
     const weightedTotal = (Object.keys(dimensions) as DimensionKey[]).reduce(
       (sum, key) => sum + dimensions[key] * DIMENSION_WEIGHTS[key],
@@ -297,12 +319,22 @@ export function matchBreeds(profile: UserProfile): MatchResult[] {
     const status: MatchResult["status"] =
       cap <= 55 ? "not-recommended" : warnings.length > 0 ? "caution" : "recommended";
 
-    return { result: { breed, breedId: breed.id, score, dimensions, warnings, status }, eliminated };
+    return { result: { breed, breedId: breed.id, score, dimensions, warnings, status }, eliminated, eliminationReasons };
   });
 
   const survivors = scored.filter((s) => !s.eliminated).map((s) => s.result);
-  const pool = survivors.length > 0 ? survivors : scored.map((s) => s.result);
-  return pool.sort((a, b) => b.score - a.score);
+  const limitsRelaxed = survivors.length === 0;
+  const pool = limitsRelaxed ? scored.map((s) => s.result) : survivors;
+  const eliminated = scored
+    .filter((s) => s.eliminated)
+    .map((s) => ({ result: s.result, reasons: s.eliminationReasons }))
+    .sort((a, b) => b.result.score - a.result.score);
+
+  return {
+    matches: pool.sort((a, b) => b.score - a.score),
+    eliminated,
+    limitsRelaxed,
+  };
 }
 
 /** Explanation generator — strengths and honest trade-offs for the matched breed. */
