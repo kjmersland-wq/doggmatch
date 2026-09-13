@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { CardGrid, Checklist, Notice, PointList, SectionHead } from "@/components/dogmatch/journey/parts";
@@ -16,19 +18,7 @@ const description =
   "An honest comparison of puppies and adult dogs, what to ask a breeder, the red flags worth noticing, and what to think about when you adopt.";
 
 export const Route = createFileRoute("/{-$lang}/get-a-dog/choose")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/get-a-dog/choose"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/get-a-dog/choose", pageSeo.getDogChoose),
   component: ChoosePage,
 });
 

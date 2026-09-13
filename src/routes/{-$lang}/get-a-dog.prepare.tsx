@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { CardGrid, Checklist, Notice, PointList, SectionHead } from "@/components/dogmatch/journey/parts";
@@ -14,19 +16,7 @@ const description =
   "What your home and your everyday life mean for a dog, honest answers about allergies and time alone, and a tickable arrival checklist you can print.";
 
 export const Route = createFileRoute("/{-$lang}/get-a-dog/prepare")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/get-a-dog/prepare"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/get-a-dog/prepare", pageSeo.getDogPrepare),
   component: PreparePage,
 });
 

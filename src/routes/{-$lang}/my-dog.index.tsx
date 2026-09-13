@@ -34,20 +34,7 @@ const description =
   "A calm, personal place to look after your dog properly: food and portions, weight, teeth, coat, paws and the little daily things that add up.";
 
 export const Route = createFileRoute("/{-$lang}/my-dog/")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/my-dog") },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/my-dog"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/my-dog", pageSeo.myDog),
   component: MyDogHome,
 });
 

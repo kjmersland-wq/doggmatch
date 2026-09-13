@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { CardGrid, Notice, SectionHead } from "@/components/dogmatch/journey/parts";
@@ -13,19 +15,7 @@ const description =
   "A calm, step-by-step guide to bringing your dog home: the journey, the first evening, sleep, the first small lessons, and settling into a routine together.";
 
 export const Route = createFileRoute("/{-$lang}/get-a-dog/welcome-home")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/get-a-dog/welcome-home"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/get-a-dog/welcome-home", pageSeo.getDogWelcome),
   component: WelcomeHomePage,
 });
 

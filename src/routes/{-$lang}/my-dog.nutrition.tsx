@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { Panel, VetNote } from "@/components/dogmatch/care/parts";
@@ -16,31 +18,7 @@ const description =
   "Work out roughly how much to feed your dog each day, how often to feed, and how to change food without upsetting their stomach.";
 
 export const Route = createFileRoute("/{-$lang}/my-dog/nutrition")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/my-dog/nutrition"),
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Article",
-          headline: "How much should I feed my dog?",
-          description,
-          about: "Dog nutrition and portion sizes",
-        }),
-      },
-    ],
-  }),
+  head: (ctx) => localizedHead(ctx, "/my-dog/nutrition", pageSeo.myDogNutrition),
   component: NutritionPage,
 });
 

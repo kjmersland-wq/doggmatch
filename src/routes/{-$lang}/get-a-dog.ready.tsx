@@ -1,4 +1,6 @@
 import { useMemo, useState } from "react";
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, Button, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { Notice, SectionHead } from "@/components/dogmatch/journey/parts";
@@ -15,19 +17,7 @@ const description =
   "Twelve honest questions about your days, your home, your money and the people around you — and a warm, useful answer. No pass mark, no pressure.";
 
 export const Route = createFileRoute("/{-$lang}/get-a-dog/ready")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/get-a-dog/ready"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/get-a-dog/ready", pageSeo.getDogReady),
   component: ReadyPage,
 });
 

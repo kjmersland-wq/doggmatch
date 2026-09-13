@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
@@ -19,19 +21,7 @@ const description =
   "Tell us where you're travelling from, where you're going and when. We'll show what's usually required — microchip, rabies, passport, tapeworm — and link the official source.";
 
 export const Route = createFileRoute("/{-$lang}/travel/abroad")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/travel/abroad"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/travel/abroad", pageSeo.travelAbroad),
   component: AbroadPage,
 });
 

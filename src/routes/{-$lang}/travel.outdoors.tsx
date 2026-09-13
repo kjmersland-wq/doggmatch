@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { useCopy } from "@/i18n";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
@@ -13,19 +15,7 @@ const description =
   "Building up to longer walks, hot and cold weather, paw care on tarmac and grit, water safety, and what to take on a holiday with your dog.";
 
 export const Route = createFileRoute("/{-$lang}/travel/outdoors")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/travel/outdoors"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/travel/outdoors", pageSeo.travelOutdoors),
   component: OutdoorsPage,
 });
 

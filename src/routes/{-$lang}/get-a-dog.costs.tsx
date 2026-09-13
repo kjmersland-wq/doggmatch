@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { Notice, SectionHead } from "@/components/dogmatch/journey/parts";
@@ -16,19 +18,7 @@ const description =
   "An honest look at the cost of a dog: the one-off spend before they arrive, the steady monthly cost, and the unexpected vet bills worth being ready for.";
 
 export const Route = createFileRoute("/{-$lang}/get-a-dog/costs")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/get-a-dog/costs"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/get-a-dog/costs", pageSeo.getDogCosts),
   component: CostsPage,
 });
 

@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Eyebrow } from "@/components/dogmatch/ui";
 import { LessonCard, statusLabel } from "@/components/dogmatch/training/parts";
@@ -14,20 +16,7 @@ const description =
   "Everything you and your dog have worked on, in one place — what's going well, what needs practice, and what to try next.";
 
 export const Route = createFileRoute("/{-$lang}/train/journey")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-      { name: "robots", content: "noindex" },
-    ],
-    links: seoLinks("/train/journey"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/train/journey", pageSeo.trainJourney),
   component: JourneyPage,
 });
 

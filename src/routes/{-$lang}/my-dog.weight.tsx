@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Arrow, Button, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
@@ -17,19 +19,7 @@ const description =
   "Learn the simple hands-on body condition check, and keep a quiet record of your dog's weight over time.";
 
 export const Route = createFileRoute("/{-$lang}/my-dog/weight")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/my-dog/weight"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/my-dog/weight", pageSeo.myDogWeight),
   component: WeightPage,
 });
 

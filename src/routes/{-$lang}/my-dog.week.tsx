@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { X } from "lucide-react";
 import { Arrow, Button, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
@@ -16,19 +18,7 @@ const description =
   "A calm weekly overview built from your dog's age, breed, activity and training: walks, short sessions, meals and the bits of care that are easy to forget.";
 
 export const Route = createFileRoute("/{-$lang}/my-dog/week")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/my-dog/week"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/my-dog/week", pageSeo.myDogWeek),
   component: WeekPage,
 });
 

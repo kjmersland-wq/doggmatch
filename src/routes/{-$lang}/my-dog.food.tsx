@@ -16,19 +16,7 @@ const description =
   "Search any food and get a straight answer: fine in small amounts, be careful, or don't give this. Written for the moment something hits the kitchen floor.";
 
 export const Route = createFileRoute("/{-$lang}/my-dog/food")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/my-dog/food"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/my-dog/food", pageSeo.myDogFood),
   component: FoodSafetyPage,
 });
 

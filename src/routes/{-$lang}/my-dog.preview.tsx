@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Clock, Lock, PawPrint } from "lucide-react";
@@ -13,20 +15,7 @@ const description =
   "See what everyday life in the My Dog hub looks like: today's little routine, a weekly rhythm, one training lesson and a real food portion example.";
 
 export const Route = createFileRoute("/{-$lang}/my-dog/preview")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: abs("/my-dog/preview") },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/my-dog/preview"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/my-dog/preview", pageSeo.myDogPreview),
   component: MyDogPreview,
 });
 

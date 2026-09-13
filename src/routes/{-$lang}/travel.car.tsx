@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { useCopy } from "@/i18n";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
@@ -14,19 +16,7 @@ const description =
   "How to secure a dog in a car, first journeys for a nervous dog, car sickness, long drives and breaks — and the honest truth about hot cars.";
 
 export const Route = createFileRoute("/{-$lang}/travel/car")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/travel/car"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/travel/car", pageSeo.travelCar),
   component: CarPage,
 });
 
