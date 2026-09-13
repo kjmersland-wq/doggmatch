@@ -1387,6 +1387,12 @@ function Results({
         <MatchBreakdown traits={breedById[best.breedId].traits} profile={profile} score={best.score} />
       </section>
 
+      {/* mixed / designer crosses, scored with the same engine */}
+      <section className="container-page mt-20 md:mt-28">
+        <MixMatcher profile={profile} />
+      </section>
+
+
 
 
       {/* why + considerations */}
