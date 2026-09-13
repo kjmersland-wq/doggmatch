@@ -14,7 +14,7 @@ export type { BreedContent };
 
 /** Breed prose in the reader's language. Safe inside and outside React. */
 export function breedContent(): Record<BreedId, BreedContent> {
-  return pick({
+  const localized = pick({
     en: breedContentEn,
     no: breedContentNo,
     pl: breedContentPl,
@@ -25,4 +25,5 @@ export function breedContent(): Record<BreedId, BreedContent> {
     fr: breedContentFr,
     nl: breedContentNl,
   });
+  return { ...breedContentEn, ...localized };
 }

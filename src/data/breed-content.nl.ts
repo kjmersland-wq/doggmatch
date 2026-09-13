@@ -2,7 +2,7 @@ import type { BreedId } from "./breeds";
 import type { BreedContent } from "./breed-content.en";
 
 /** Nederlandstalige rasteksten, gekoppeld aan dezelfde vaste ras-id's. */
-export const breedContentNl: Record<BreedId, BreedContent> = {
+export const breedContentNl: Partial<Record<BreedId, BreedContent>> = {
   "labrador-retriever": {
     displayName: "Labrador Retriever",
     summary:
