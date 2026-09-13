@@ -166,6 +166,36 @@ export const pl: Dictionary = {
     beginnerHigh: "Wysoka",
     beginnerModerate: "Średnia",
     beginnerLow: "Niska",
+    homeWithDogEyebrow: "Gdy pies już będzie w domu",
+    homeWithDogTitle: "Pierwszy rok jest łatwiejszy, gdy jest trochę struktury",
+    homeWithDogBody:
+      "DoggMatch+ to cichy towarzysz w praktycznej stronie życia z psem. Bez presji — po prostu narzędzia, których sami chcielibyśmy mieć, gdy nasze psy wracały do domu.",
+    homeWithDogFeatures: [
+      {
+        title: "Centrum Mój pies",
+        body: "Jedno miejsce na wizyty weterynaryjne, notatki o wadze, pory posiłków i drobiazgi, których nie chcesz zapomnieć.",
+      },
+      {
+        title: "Plany tygodniowe",
+        body: "Łagodny rytm spacerów, pielęgnacji, treningu i odpoczynku dopasowany do wieku i energii psa.",
+      },
+      {
+        title: "Lekcje treningowe",
+        body: "Krótkie instrukcje krok po kroku z jasnymi zdjęciami — pięć do dziesięciu minut na raz.",
+      },
+      {
+        title: "Porcje jedzenia",
+        body: "Wskazówki żywieniowe oparte na wadze, wieku i aktywności psa, a nie ogólne porady.",
+      },
+      {
+        title: "Dokumenty podróży",
+        body: "Listy kontrolne na wyjazdy za granicę, przepisy krajowe i dokumenty, które łatwo zostawić w domu.",
+      },
+    ],
+    homeWithDogCtaPrimary: "Zobacz, jak działa Mój pies",
+    homeWithDogCtaSecondary: "Odkryj DoggMatch+",
+    homeWithDogNote:
+      "Twój wynik dopasowania pozostaje bezpłatny i kompletny. To po prostu dodatkowa pomoc, gdy jej potrzebujesz.",
   },
   dimensions: {
     lifestyle: "Codzienność",
