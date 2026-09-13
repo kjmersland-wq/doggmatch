@@ -22,9 +22,17 @@ import { CostCalculator } from "@/components/dogmatch/cost-calculator";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { relatedBreeds } from "@/lib/breeds/related";
+import { breedFaq } from "@/lib/breeds/faq";
+import {
+  BreedFaq,
+  BreedGuideLinks,
+  BreedQuizCta,
+  CompareSimilar,
+} from "@/components/dogmatch/breed-onward";
 import {
   abs,
   breadcrumbLd,
+  faqLd,
   jsonLd,
   headLocale,
   langUrl,
@@ -369,6 +377,7 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
           isPartOf: { "@type": "WebSite", name: "DoggMatch", url: abs("/") },
           mainEntityOfPage: langUrl(path, locale),
         }),
+        faqLd(breedFaq(loaderData.breed, name, locale)),
       ],
     };
   },
@@ -709,6 +718,14 @@ function BreedDetail() {
           />
         </section>
       )}
+
+      <BreedFaq breed={breed} displayName={content.displayName} />
+
+      <BreedGuideLinks breed={breed} />
+
+      <CompareSimilar breed={breed} />
+
+      <BreedQuizCta />
 
       {/* onward links for readers comparing breeds, and for Googlebot to reach every breed page without going back to the index */}
       <section className="container-page border-t border-border py-16">

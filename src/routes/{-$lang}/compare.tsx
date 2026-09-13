@@ -197,6 +197,9 @@ const seoCopy = {
 };
 
 export const Route = createFileRoute("/{-$lang}/compare")({
+  /** ?breeds=a,b,c lets a breed page open the table already filled in. */
+  validateSearch: (search: Record<string, unknown>): { breeds?: string } =>
+    typeof search["breeds"] === "string" ? { breeds: search["breeds"] } : {},
   head: (ctx) => localizedHead(ctx, "/compare", seoCopy),
   component: ComparePage,
 });
@@ -473,11 +476,22 @@ function ComparePage() {
   const copy = useT();
   const c = copy.compare;
   const names = breedContent();
-  const [selected, setSelected] = useState<Column[]>([
-    { kind: "breed", id: "labrador-retriever" },
-    { kind: "breed", id: "golden-retriever" },
-    { kind: "breed", id: "poodle" },
-  ]);
+  const search = Route.useSearch();
+  const fromLink = (search.breeds ?? "")
+    .split(",")
+    .map((id) => id.trim())
+    .filter((id): id is BreedId => id in breedById)
+    .slice(0, 4)
+    .map((id): Column => ({ kind: "breed", id }));
+  const [selected, setSelected] = useState<Column[]>(
+    fromLink.length > 0
+      ? fromLink
+      : [
+          { kind: "breed", id: "labrador-retriever" },
+          { kind: "breed", id: "golden-retriever" },
+          { kind: "breed", id: "poodle" },
+        ],
+  );
   const [query, setQuery] = useState("");
   const [mixOpen, setMixOpen] = useState(false);
   const [mixA, setMixA] = useState<BreedId | "">("");
