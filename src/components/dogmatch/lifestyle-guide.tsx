@@ -3,6 +3,7 @@ import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
 import { ShareBar, SectionShare } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 import { breedContent } from "@/data/breed-content";
+import { useCopy, useLocale, INTL_LOCALE } from "@/i18n";
 import type { BreedId } from "@/data/breeds";
 import type { LifestyleGuideConfig } from "@/lib/guides/lifestyle";
 
@@ -17,17 +18,24 @@ function LevelDot({ level, label }: { level: number; label: string }) {
   );
 }
 
-const eur = (n: number) => `€${n.toLocaleString("en-IE")}`;
-
 /**
  * Shared renderer for the high-intent lifestyle guides
- * (src/lib/guides/lifestyle.ts). One consistent, honest editorial layout:
- * intro, transparent methodology, optional breed shortlist, editorial
- * sections, optional real cost examples, and a calm quiz CTA.
+ * (src/lib/guides/lifestyle.ts). Every string comes from the guide's
+ * locale map, so a translated guide renders with no changes here.
  */
 export function LifestyleGuide({ config }: { config: LifestyleGuideConfig }) {
-  const c = config.copy;
+  const { locale } = useLocale();
+  const c = useCopy(config.copy);
+  const seo = useCopy(config.seo);
+  const reasons = useCopy(config.reasons ?? { en: {} as Record<string, string> });
   const content = breedContent();
+  const eur = (n: number) =>
+    new Intl.NumberFormat(INTL_LOCALE[locale], {
+      style: "currency",
+      currency: "EUR",
+      maximumFractionDigits: 0,
+    }).format(n);
+
 
   const articleLd = {
     "@context": "https://schema.org",
