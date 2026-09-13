@@ -187,10 +187,11 @@ export function PortionCalculator({
               className={fieldClass}
               inputMode="decimal"
               placeholder="18.5"
-              value={profile.weightKg ?? ""}
+              value={profile.weightKg || ""}
               onChange={(e) => {
                 const kg = Number.parseFloat(e.target.value);
-                patch({ weightKg: Number.isFinite(kg) && kg > 0 ? Math.round(kg * 10) / 10 : undefined });
+                const ok = Number.isFinite(kg) && kg > 0;
+                patch(ok ? { weightKg: Math.round(kg * 10) / 10 } : { weightKg: 0 });
               }}
             />
             <span className="text-muted-foreground">kg</span>
@@ -239,10 +240,10 @@ export function PortionCalculator({
             className={cn(fieldClass, "mt-2")}
             inputMode="numeric"
             placeholder="365"
-            value={profile.foodEnergy ?? ""}
+            value={profile.foodEnergy || ""}
             onChange={(e) => {
               const v = Number.parseInt(e.target.value, 10);
-              patch({ foodEnergy: Number.isFinite(v) && v > 0 ? v : undefined });
+              patch({ foodEnergy: Number.isFinite(v) && v > 0 ? v : 0 });
             }}
           />
         </label>
