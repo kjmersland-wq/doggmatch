@@ -1,6 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState, type Dispatch, type SetStateAction } from "react";
-import { ChevronDown } from "lucide-react";
+import { CalendarDays, ChevronDown, Dumbbell, Heart, Plane, Utensils } from "lucide-react";
 import { useT, interpolate, useCopy } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
 
@@ -1132,6 +1132,57 @@ function FirstThirtyDays({ breedName }: { breedName: string }) {
   );
 }
 
+const featureIcons = [Heart, CalendarDays, Dumbbell, Utensils, Plane];
+
+function PostMatchJourney() {
+  const t = useT();
+  return (
+    <section aria-labelledby="post-match-title">
+      <div className="rounded-[1.75rem] border border-border bg-surface p-8 md:p-12">
+        <p className="eyebrow">{t.result.homeWithDogEyebrow}</p>
+        <h2 id="post-match-title" className="display-md mt-4 max-w-xl">
+          {t.result.homeWithDogTitle}
+        </h2>
+        <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
+          {t.result.homeWithDogBody}
+        </p>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {t.result.homeWithDogFeatures.map((feature, index) => {
+            const Icon = featureIcons[index]!;
+            return (
+              <div
+                key={feature.title}
+                className="rounded-2xl border border-border bg-card p-6 transition-colors duration-300 hover:border-border-strong"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent">
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </div>
+                <h3 className="mt-4 font-display text-lg leading-tight">{feature.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{feature.body}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <ButtonLink to={withLangPrefix("/my-dog")} size="lg">
+            {t.result.homeWithDogCtaPrimary}
+            <Arrow />
+          </ButtonLink>
+          <ButtonLink to={withLangPrefix("/plus")} tone="outline" size="lg">
+            {t.result.homeWithDogCtaSecondary}
+          </ButtonLink>
+        </div>
+
+        <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          {t.result.homeWithDogNote}
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function Results({
   results,
   eliminated,
@@ -1448,20 +1499,7 @@ function Results({
 
       {/* premium */}
       <section className="container-page mt-20 md:mt-28">
-        <div className="grid gap-8 rounded-[1.75rem] border border-border bg-surface p-8 md:grid-cols-[1.2fr_1fr] md:items-center md:p-12">
-          <div>
-            <p className="eyebrow">{t.result.premiumEyebrow}</p>
-            <h2 className="display-md mt-4">{t.result.premiumTitle}</h2>
-            <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">
-              {t.result.premiumBody}
-            </p>
-            <p className="mt-6 text-sm text-muted-foreground">{t.result.premiumNote}</p>
-          </div>
-          <div className="flex flex-col items-start gap-4 md:items-end">
-            <span className="font-display text-4xl tracking-tight">{t.result.premiumPrice}</span>
-            <Button tone="outline">{t.result.premiumCta}</Button>
-          </div>
-        </div>
+        <PostMatchJourney />
       </section>
 
       {/* essentials */}

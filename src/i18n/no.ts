@@ -166,6 +166,36 @@ export const no: Dictionary = {
     beginnerHigh: "Høy",
     beginnerModerate: "Middels",
     beginnerLow: "Lav",
+    homeWithDogEyebrow: "Når hunden er hjemme",
+    homeWithDogTitle: "Det første året blir lettere med litt struktur",
+    homeWithDogBody:
+      "DoggMatch+ er en stille følgesvenn for den praktiske siden av hundelivet. Ingen press — bare verktøyene vi skulle ønske vi hadde hatt da våre egne hunder kom hjem.",
+    homeWithDogFeatures: [
+      {
+        title: "Min hund-hub",
+        body: "Et sted for veterinærtimer, vektnotater, måltider og de små tingene du ikke vil glemme.",
+      },
+      {
+        title: "Ukeplaner",
+        body: "En mild rytme av mosjon, pelsstell, trening og hvile som passer hundens alder og energi.",
+      },
+      {
+        title: "Treningsøkter",
+        body: "Korte, trinnvise veiledninger med tydelige bilder — fem til ti minutter om gangen.",
+      },
+      {
+        title: "Mengder mat",
+        body: "Fôringsveiledning basert på hundens vekt, alder og aktivitet — ikke generiske råd.",
+      },
+      {
+        title: "Reisedokumenter",
+        body: "Sjekklister for utenlandsturer, landeregler og papirene som er lette å glemme.",
+      },
+    ],
+    homeWithDogCtaPrimary: "Se hvordan Min hund fungerer",
+    homeWithDogCtaSecondary: "Utforsk DoggMatch+",
+    homeWithDogNote:
+      "Matchresultatet ditt forblir gratis og komplett. Dette er bare her hvis du vil ha litt ekstra hjelp.",
   },
   dimensions: {
     lifestyle: "Hverdagen",
