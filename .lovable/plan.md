@@ -1,10 +1,10 @@
-# Expand the breed library with 40 editorial profiles
+# Expand the breed library with 50 editorial profiles
 
 ## Goal
-Grow DoggMatch from 28 to 68 breed profiles. English remains the source language. Every new profile will appear at the same path and with the same visual structure in all supported languages, falling back to English until translated copy is added.
+Grow DoggMatch from 28 to 78 breed profiles. English remains the source language. Every new profile will appear at the same path and with the same visual structure in all supported languages, falling back to English until translated copy is added.
 
 ## Breed set
-Add these 40 high-interest breeds and mixes, with the three requested designer mixes first:
+Add these 50 high-interest breeds and mixes, with the three requested designer mixes first:
 
 1. Labradoodle
 2. Goldendoodle
@@ -46,11 +46,21 @@ Add these 40 high-interest breeds and mixes, with the three requested designer m
 38. Chinese Shar-Pei
 39. Chow Chow
 40. Portuguese Water Dog
+41. Rough Collie
+42. Old English Sheepdog
+43. Saint Bernard
+44. Irish Setter
+45. Miniature Pinscher
+46. Lhasa Apso
+47. Alaskan Malamute
+48. English Mastiff
+49. Toy Poodle
+50. Australian Labradoodle
 
 The requested priority pure breeds already exist in the current 28-breed library. Their established pages and matching data will remain intact.
 
 ## Editorial content
-For each new breed, add:
+For each of the 50 new breeds, add:
 - A concise introduction covering origin and original purpose
 - Honest strengths and everyday considerations
 - A normal-day description derived from the same measurable traits used by matching
@@ -71,7 +81,7 @@ Designer mixes will clearly explain that coat, size, temperament, and health can
 
 ## Language behavior
 - Keep all new source copy in English.
-- Update localized breed-content loading so existing translated profiles stay translated, while the 40 new profiles safely fall back to English on `/no`, `/pl`, `/dk`, `/se`, `/fi`, `/de`, `/fr`, and `/nl`.
+- Update localized breed-content loading so existing translated profiles stay translated, while the 50 new profiles safely fall back to English on `/no`, `/pl`, `/dk`, `/se`, `/fi`, `/de`, `/fr`, and `/nl`.
 - Preserve path-based locale URLs and never introduce language query parameters.
 
 ## Technical details
@@ -83,7 +93,7 @@ Designer mixes will clearly explain that coat, size, temperament, and health can
 - Preserve deterministic matching; no chatbot or generated-at-runtime claims.
 
 ## Verification
-- Confirm 68 breed records, 68 English editorial entries, and 68 registered portraits.
+- Confirm 78 breed records, 78 English editorial entries, and 78 registered portraits.
 - Type-check the changed files and confirm the preview build is healthy.
 - Open representative new pages for a pure breed and a designer mix on `/`, `/no`, and `/pl`.
 - Check desktop and mobile layouts, one H1, metadata, JSON-LD, images, trait bars, hard limits, trade-offs, and similar-breed links.
