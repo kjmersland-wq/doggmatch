@@ -22,7 +22,7 @@ import {
   useTrainingState,
 } from "@/lib/training/store";
 import { cn } from "@/lib/utils";
-import { seoLinks, breadcrumbLd } from "@/lib/seo";
+import { seoLinks, breadcrumbLd, headLocale, langUrl, ogLocaleTag } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { useCopy } from "@/i18n";
 
