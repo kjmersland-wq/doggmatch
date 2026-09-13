@@ -13,6 +13,8 @@ export interface CareProfile {
   foodType?: FoodType;
   /** kcal per 100g of the food, from the bag. */
   foodEnergy?: number;
+  /** Free text: the brand or kind of food currently being fed. */
+  foodBrand?: string;
   mealsPerDay?: number;
   bodyCondition?: BodyCondition;
   vetName?: string;
