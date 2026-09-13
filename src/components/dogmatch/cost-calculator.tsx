@@ -111,6 +111,7 @@ function Chip({
 
 export function CostCalculator({ breed, className }: { breed: Breed; className?: string }) {
   const c = useCopy(copy);
+  const euro = useEuro();
   const [options, setOptions] = useState<CostOptions>(DEFAULT_COST_OPTIONS);
   const estimate = yearlyCost(breed, options);
   const set = (patch: Partial<CostOptions>) => setOptions((o) => ({ ...o, ...patch }));
