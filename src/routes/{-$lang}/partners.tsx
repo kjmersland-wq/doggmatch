@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import {
   Check,
   Handshake,
+  Link2,
   ArrowRight,
   BadgePercent,
   QrCode,
