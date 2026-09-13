@@ -10,7 +10,8 @@ import { noindexMeta } from "@/lib/seo";
 import { withLangPrefix } from "@/lib/localized-path";
 
 const title = "Welcome to DoggMatch+ | DoggMatch";
-const description = "Your DoggMatch+ membership is active. Everything is ready for you and your dog.";
+const description =
+  "Your DoggMatch+ membership is active. Everything is ready for you and your dog.";
 
 export const Route = createFileRoute("/{-$lang}/checkout/success")({
   head: () => ({

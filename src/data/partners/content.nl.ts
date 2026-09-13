@@ -10,14 +10,46 @@ export type PartnerCategory = {
 };
 
 export const partnerCategories: PartnerCategory[] = [
-  { id: "equipment", label: "Huisdier- en hondenbenodigdheden", blurb: "Harnassen, lijnen, manden, speeltjes en de dagelijkse dingen die verslijten." },
-  { id: "grooming", label: "Trimsalons", blurb: "Salons en mobiele trimmers die de tijd nemen voor nerveuze honden." },
-  { id: "training", label: "Training", blurb: "Puppycursussen, individuele begeleiding en beloningsgerichte gedragstherapie." },
-  { id: "vet", label: "Dierenartsen & gezondheid", blurb: "Klinieken, fysiotherapeuten, tandartsen en iedereen die honden gezond houdt." },
-  { id: "insurance", label: "Verzekeringen", blurb: "Dekking die duidelijk is over wat wel en niet wordt vergoed." },
-  { id: "boarding", label: "Logeren & dagopvang", blurb: "Kennels, thuisopvang, dagopvang en vertrouwde oppassers." },
-  { id: "food", label: "Voeding & supplementen", blurb: "Voer, snacks en supplementen die je je eigen hond zou geven." },
-  { id: "travel", label: "Reizen & activiteiten", blurb: "Hondvriendelijke verblijven, auto-accessoires, wandelingen, zwemmen en uitstapjes." },
+  {
+    id: "equipment",
+    label: "Huisdier- en hondenbenodigdheden",
+    blurb: "Harnassen, lijnen, manden, speeltjes en de dagelijkse dingen die verslijten.",
+  },
+  {
+    id: "grooming",
+    label: "Trimsalons",
+    blurb: "Salons en mobiele trimmers die de tijd nemen voor nerveuze honden.",
+  },
+  {
+    id: "training",
+    label: "Training",
+    blurb: "Puppycursussen, individuele begeleiding en beloningsgerichte gedragstherapie.",
+  },
+  {
+    id: "vet",
+    label: "Dierenartsen & gezondheid",
+    blurb: "Klinieken, fysiotherapeuten, tandartsen en iedereen die honden gezond houdt.",
+  },
+  {
+    id: "insurance",
+    label: "Verzekeringen",
+    blurb: "Dekking die duidelijk is over wat wel en niet wordt vergoed.",
+  },
+  {
+    id: "boarding",
+    label: "Logeren & dagopvang",
+    blurb: "Kennels, thuisopvang, dagopvang en vertrouwde oppassers.",
+  },
+  {
+    id: "food",
+    label: "Voeding & supplementen",
+    blurb: "Voer, snacks en supplementen die je je eigen hond zou geven.",
+  },
+  {
+    id: "travel",
+    label: "Reizen & activiteiten",
+    blurb: "Hondvriendelijke verblijven, auto-accessoires, wandelingen, zwemmen en uitstapjes.",
+  },
 ];
 
 export const partnerBenefits = [

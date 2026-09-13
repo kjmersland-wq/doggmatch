@@ -10,14 +10,46 @@ export type PartnerCategory = {
 };
 
 export const partnerCategories: PartnerCategory[] = [
-  { id: "equipment", label: "Pet & dog equipment", blurb: "Harnesses, leads, beds, toys and the everyday things that wear out." },
-  { id: "grooming", label: "Grooming", blurb: "Salons and mobile groomers who take their time with nervous dogs." },
-  { id: "training", label: "Training", blurb: "Puppy classes, one-to-one help and reward-based behaviour work." },
-  { id: "vet", label: "Veterinary & health", blurb: "Clinics, physios, dentists and anyone keeping dogs well." },
-  { id: "insurance", label: "Insurance", blurb: "Cover that's clear about what it does and doesn't pay for." },
-  { id: "boarding", label: "Boarding & daycare", blurb: "Kennels, home boarders, daycare and trusted sitters." },
-  { id: "food", label: "Food & nutrition", blurb: "Food, treats and supplements you'd feed your own dog." },
-  { id: "travel", label: "Travel & activities", blurb: "Dog-friendly stays, car kit, hikes, swimming and days out." },
+  {
+    id: "equipment",
+    label: "Pet & dog equipment",
+    blurb: "Harnesses, leads, beds, toys and the everyday things that wear out.",
+  },
+  {
+    id: "grooming",
+    label: "Grooming",
+    blurb: "Salons and mobile groomers who take their time with nervous dogs.",
+  },
+  {
+    id: "training",
+    label: "Training",
+    blurb: "Puppy classes, one-to-one help and reward-based behaviour work.",
+  },
+  {
+    id: "vet",
+    label: "Veterinary & health",
+    blurb: "Clinics, physios, dentists and anyone keeping dogs well.",
+  },
+  {
+    id: "insurance",
+    label: "Insurance",
+    blurb: "Cover that's clear about what it does and doesn't pay for.",
+  },
+  {
+    id: "boarding",
+    label: "Boarding & daycare",
+    blurb: "Kennels, home boarders, daycare and trusted sitters.",
+  },
+  {
+    id: "food",
+    label: "Food & nutrition",
+    blurb: "Food, treats and supplements you'd feed your own dog.",
+  },
+  {
+    id: "travel",
+    label: "Travel & activities",
+    blurb: "Dog-friendly stays, car kit, hikes, swimming and days out.",
+  },
 ];
 
 export const partnerBenefits = [

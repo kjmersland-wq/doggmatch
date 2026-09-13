@@ -144,7 +144,8 @@ const copy = {
     send: "Send melding",
     sending: "Sender …",
     onlyUse: "Vi bruker opplysningene dine bare til å svare deg. Ikke noe annet.",
-    sendError: "Beklager, vi klarte ikke å sende meldingen din akkurat nå. Prøv gjerne igjen om litt.",
+    sendError:
+      "Beklager, vi klarte ikke å sende meldingen din akkurat nå. Prøv gjerne igjen om litt.",
   },
   pl: {
     eyebrow: "Kontakt",
@@ -179,7 +180,8 @@ const copy = {
     send: "Wyślij wiadomość",
     sending: "Wysyłanie…",
     onlyUse: "Używamy twoich danych wyłącznie po to, by ci odpowiedzieć. Nic więcej.",
-    sendError: "Przepraszamy, nie udało nam się teraz wysłać twojej wiadomości. Spróbuj ponownie za chwilę.",
+    sendError:
+      "Przepraszamy, nie udało nam się teraz wysłać twojej wiadomości. Spróbuj ponownie za chwilę.",
   },
   dk: {
     eyebrow: "Kontakt",
@@ -214,7 +216,8 @@ const copy = {
     send: "Send besked",
     sending: "Sender…",
     onlyUse: "Vi bruger kun dine oplysninger til at svare dig. Ikke til andet.",
-    sendError: "Beklager, vi kunne ikke sende din besked lige nu. Prøv venligst igen om et øjeblik.",
+    sendError:
+      "Beklager, vi kunne ikke sende din besked lige nu. Prøv venligst igen om et øjeblik.",
   },
   se: {
     eyebrow: "Kontakt",
@@ -249,7 +252,8 @@ const copy = {
     send: "Skicka meddelande",
     sending: "Skickar…",
     onlyUse: "Vi använder bara dina uppgifter för att svara dig. Inget annat.",
-    sendError: "Tyvärr kunde vi inte skicka ditt meddelande just nu. Försök gärna igen om en liten stund.",
+    sendError:
+      "Tyvärr kunde vi inte skicka ditt meddelande just nu. Försök gärna igen om en liten stund.",
   },
   fi: {
     eyebrow: "Yhteystiedot",
@@ -284,7 +288,8 @@ const copy = {
     send: "Lähetä viesti",
     sending: "Lähetetään…",
     onlyUse: "Käytämme tietojasi vain vastataksemme sinulle. Emme mihinkään muuhun.",
-    sendError: "Valitettavasti viestiäsi ei juuri nyt voitu lähettää. Yritä hetken kuluttua uudelleen.",
+    sendError:
+      "Valitettavasti viestiäsi ei juuri nyt voitu lähettää. Yritä hetken kuluttua uudelleen.",
   },
   de: {
     eyebrow: "Kontakt",
@@ -319,7 +324,8 @@ const copy = {
     send: "Nachricht senden",
     sending: "Wird gesendet…",
     onlyUse: "Wir nutzen deine Daten nur, um dir zu antworten. Sonst nichts.",
-    sendError: "Leider konnten wir deine Nachricht gerade nicht senden. Bitte versuch es gleich noch einmal.",
+    sendError:
+      "Leider konnten wir deine Nachricht gerade nicht senden. Bitte versuch es gleich noch einmal.",
   },
   fr: {
     eyebrow: "Contact",
@@ -354,7 +360,8 @@ const copy = {
     send: "Envoyer le message",
     sending: "Envoi en cours…",
     onlyUse: "Nous n'utilisons vos informations que pour vous répondre. Rien d'autre.",
-    sendError: "Désolé, nous n'avons pas pu envoyer votre message pour l'instant. Merci de réessayer dans un instant.",
+    sendError:
+      "Désolé, nous n'avons pas pu envoyer votre message pour l'instant. Merci de réessayer dans un instant.",
   },
   nl: {
     eyebrow: "Contact",
@@ -450,12 +457,7 @@ function ContactPage() {
             {c.doneHeading}
           </h2>
           <p className="mt-3 text-muted-foreground">{c.doneBody}</p>
-          <Button
-            tone="outline"
-            className="mt-7"
-            onClick={() => setDone(false)}
-            type="button"
-          >
+          <Button tone="outline" className="mt-7" onClick={() => setDone(false)} type="button">
             {c.writeAnother}
             <Arrow />
           </Button>
@@ -515,7 +517,12 @@ function ContactPage() {
           </Field>
 
           <Field label={c.reasonLabel} id="reason" hint={c.reasonHint} error={errors["reason"]}>
-            <select id="reason" name="reason" defaultValue="" className={cn(fieldClass, "appearance-none")}>
+            <select
+              id="reason"
+              name="reason"
+              defaultValue=""
+              className={cn(fieldClass, "appearance-none")}
+            >
               <option value="">{c.reasonPlaceholder}</option>
               {reasonKeys.map((r) => (
                 <option key={r} value={c.reasons[r]}>
@@ -573,7 +580,10 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 flex items-baseline gap-2 text-sm font-medium text-foreground">
+      <label
+        htmlFor={id}
+        className="mb-2 flex items-baseline gap-2 text-sm font-medium text-foreground"
+      >
         {label}
         {hint && <span className="text-xs font-normal text-muted-foreground">{hint}</span>}
       </label>

@@ -6,14 +6,19 @@ import { withLangPrefix } from "@/lib/localized-path";
 
 const resultCopy = {
   en: {
-    scoreNote: "Based on everything you told us, including the limits you said you couldn't stretch.",
-    essentials: ["A bed and a safe space", "Collar, lead and tag", "Food and mealtimes", "Insurance and vet care"],
+    scoreNote:
+      "Based on everything you told us, including the limits you said you couldn't stretch.",
+    essentials: [
+      "A bed and a safe space",
+      "Collar, lead and tag",
+      "Food and mealtimes",
+      "Insurance and vet care",
+    ],
     suited: "Suited to a {breed}.",
     ownDogTitle: "And the dog you already have",
     ownDogMixed:
       "Scored from {name}'s own characteristics — size, energy, how much exercise they need, how they are with people — not from a breed label.",
-    ownDogPure:
-      "Scored from what we know about {name}, breed included.",
+    ownDogPure: "Scored from what we know about {name}, breed included.",
     ownDogUnknown:
       "You told us {name} is a mix with unknown parentage, so we haven't guessed at breeds. This is your dog, as you described them.",
     ownDogFit: "Fit with the life you described",
@@ -32,7 +37,8 @@ const resultCopy = {
     budgetVetRange: "€80–180",
     budgetInsurance: "First month of pet insurance",
     budgetInsuranceRange: "€15–40",
-    budgetNote: "A general starting point — actual costs vary by country, breeder and vet practice.",
+    budgetNote:
+      "A general starting point — actual costs vary by country, breeder and vet practice.",
     checklistTitle: "Home-prep checklist",
     checklistItems: [
       "Set up one calm, enclosed room as a safe space before they arrive",
@@ -45,13 +51,17 @@ const resultCopy = {
   },
   no: {
     scoreNote: "Basert på alt du har fortalt oss, også grensene du sa du ikke kunne tøye.",
-    essentials: ["En seng og et trygt sted", "Halsbånd, bånd og ID-brikke", "Mat og faste måltider", "Forsikring og veterinær"],
+    essentials: [
+      "En seng og et trygt sted",
+      "Halsbånd, bånd og ID-brikke",
+      "Mat og faste måltider",
+      "Forsikring og veterinær",
+    ],
     suited: "Tilpasset en {breed}.",
     ownDogTitle: "Og hunden du allerede har",
     ownDogMixed:
       "Regnet ut fra {name} sine egne egenskaper — størrelse, energi, mosjonsbehov, hvordan den er med folk — ikke fra en rasemerkelapp.",
-    ownDogPure:
-      "Regnet ut fra det vi vet om {name}, rasen inkludert.",
+    ownDogPure: "Regnet ut fra det vi vet om {name}, rasen inkludert.",
     ownDogUnknown:
       "Du har fortalt oss at {name} er en blanding med ukjent opphav, så vi gjetter ikke på raser. Dette er hunden din, slik du har beskrevet den.",
     ownDogFit: "Passer med livet du beskrev",
@@ -70,7 +80,8 @@ const resultCopy = {
     budgetVetRange: "80–180 €",
     budgetInsurance: "Første måned med forsikring",
     budgetInsuranceRange: "15–40 €",
-    budgetNote: "Et generelt utgangspunkt — faktiske kostnader varierer med land, oppdretter og veterinær.",
+    budgetNote:
+      "Et generelt utgangspunkt — faktiske kostnader varierer med land, oppdretter og veterinær.",
     checklistTitle: "Sjekkliste for hjemmet",
     checklistItems: [
       "Sett i stand ett rolig, avgrenset rom som trygt sted før hunden kommer",
@@ -82,14 +93,19 @@ const resultCopy = {
     plusLinkLabel: "Følg daglige rutiner og planer i DoggMatch+",
   },
   pl: {
-    scoreNote: "Na podstawie wszystkiego, co nam powiedziałeś/aś, w tym granic, których — jak zaznaczyłeś/aś — nie chcesz przekraczać.",
-    essentials: ["Legowisko i bezpieczne miejsce", "Obroża, smycz i zawieszka", "Jedzenie i stałe pory posiłków", "Ubezpieczenie i opieka weterynaryjna"],
+    scoreNote:
+      "Na podstawie wszystkiego, co nam powiedziałeś/aś, w tym granic, których — jak zaznaczyłeś/aś — nie chcesz przekraczać.",
+    essentials: [
+      "Legowisko i bezpieczne miejsce",
+      "Obroża, smycz i zawieszka",
+      "Jedzenie i stałe pory posiłków",
+      "Ubezpieczenie i opieka weterynaryjna",
+    ],
     suited: "Dopasowane do {breed}.",
     ownDogTitle: "A co z psem, którego już masz",
     ownDogMixed:
       "Ocenione na podstawie własnych cech {name} — rozmiaru, energii, potrzeby ruchu, relacji z ludźmi — a nie etykietki rasy.",
-    ownDogPure:
-      "Ocenione na podstawie tego, co wiemy o {name}, łącznie z rasą.",
+    ownDogPure: "Ocenione na podstawie tego, co wiemy o {name}, łącznie z rasą.",
     ownDogUnknown:
       "Powiedziałeś/aś nam, że {name} to mieszaniec o nieznanym pochodzeniu, więc nie zgadujemy ras. To Twój pies, taki, jakim go opisałeś/aś.",
     ownDogFit: "Dopasowanie do życia, które opisałeś/aś",
@@ -121,13 +137,17 @@ const resultCopy = {
   },
   dk: {
     scoreNote: "Baseret på alt du har fortalt os, også de grænser du sagde du ikke kunne rykke.",
-    essentials: ["En seng og et trygt sted", "Halsbånd, snor og tag", "Mad og faste måltider", "Forsikring og dyrlæge"],
+    essentials: [
+      "En seng og et trygt sted",
+      "Halsbånd, snor og tag",
+      "Mad og faste måltider",
+      "Forsikring og dyrlæge",
+    ],
     suited: "Passer til en {breed}.",
     ownDogTitle: "Og hunden du allerede har",
     ownDogMixed:
       "Vurderet ud fra {name}s egne egenskaber — størrelse, energi, hvor meget motion de har brug for, hvordan de er med mennesker — ikke ud fra en racebetegnelse.",
-    ownDogPure:
-      "Vurderet ud fra det, vi ved om {name}, racen inklusive.",
+    ownDogPure: "Vurderet ud fra det, vi ved om {name}, racen inklusive.",
     ownDogUnknown:
       "Du har fortalt os, at {name} er en blanding med ukendt herkomst, så vi har ikke gættet på racer. Det her er din hund, sådan som du har beskrevet den.",
     ownDogFit: "Match med det liv, du beskrev",
@@ -146,7 +166,8 @@ const resultCopy = {
     budgetVetRange: "80–180 €",
     budgetInsurance: "Første måned med forsikring",
     budgetInsuranceRange: "15–40 €",
-    budgetNote: "Et generelt udgangspunkt — de reelle omkostninger varierer med land, opdrætter og dyrlæge.",
+    budgetNote:
+      "Et generelt udgangspunkt — de reelle omkostninger varierer med land, opdrætter og dyrlæge.",
     checklistTitle: "Tjekliste til hjemmet",
     checklistItems: [
       "Indret ét roligt, afgrænset rum som et trygt sted, inden hunden ankommer",
@@ -158,14 +179,19 @@ const resultCopy = {
     plusLinkLabel: "Følg daglige rutiner og planer i DoggMatch+",
   },
   se: {
-    scoreNote: "Baserat på allt du har berättat för oss, även de gränser du sa att du inte kunde tänja på.",
-    essentials: ["En säng och en trygg plats", "Halsband, koppel och bricka", "Mat och fasta måltider", "Försäkring och veterinärvård"],
+    scoreNote:
+      "Baserat på allt du har berättat för oss, även de gränser du sa att du inte kunde tänja på.",
+    essentials: [
+      "En säng och en trygg plats",
+      "Halsband, koppel och bricka",
+      "Mat och fasta måltider",
+      "Försäkring och veterinärvård",
+    ],
     suited: "Passar en {breed}.",
     ownDogTitle: "Och hunden du redan har",
     ownDogMixed:
       "Beräknat utifrån {name}s egna egenskaper — storlek, energi, hur mycket motion de behöver, hur de är med människor — inte utifrån en rasetikett.",
-    ownDogPure:
-      "Beräknat utifrån det vi vet om {name}, rasen inkluderad.",
+    ownDogPure: "Beräknat utifrån det vi vet om {name}, rasen inkluderad.",
     ownDogUnknown:
       "Du har berättat för oss att {name} är en blandning med okänt ursprung, så vi har inte gissat på raser. Det här är din hund, precis som du har beskrivit den.",
     ownDogFit: "Matchning med det liv du beskrev",
@@ -184,7 +210,8 @@ const resultCopy = {
     budgetVetRange: "80–180 €",
     budgetInsurance: "Första månadens försäkring",
     budgetInsuranceRange: "15–40 €",
-    budgetNote: "En generell utgångspunkt — de faktiska kostnaderna varierar med land, uppfödare och veterinär.",
+    budgetNote:
+      "En generell utgångspunkt — de faktiska kostnaderna varierar med land, uppfödare och veterinär.",
     checklistTitle: "Checklista för hemmet",
     checklistItems: [
       "Ordna ett lugnt, avgränsat rum som trygg plats innan hunden kommer hem",
@@ -196,20 +223,26 @@ const resultCopy = {
     plusLinkLabel: "Följ dagliga rutiner och scheman i DoggMatch+",
   },
   fi: {
-    scoreNote: "Perustuu kaikkeen, mitä olet meille kertonut, myös rajoihin, joita et sanonut voivasi venyttää.",
-    essentials: ["Peti ja turvallinen paikka", "Kaulapanta, hihna ja tunnistelaatta", "Ruoka ja säännölliset ruoka-ajat", "Vakuutus ja eläinlääkärikäynnit"],
+    scoreNote:
+      "Perustuu kaikkeen, mitä olet meille kertonut, myös rajoihin, joita et sanonut voivasi venyttää.",
+    essentials: [
+      "Peti ja turvallinen paikka",
+      "Kaulapanta, hihna ja tunnistelaatta",
+      "Ruoka ja säännölliset ruoka-ajat",
+      "Vakuutus ja eläinlääkärikäynnit",
+    ],
     suited: "Sopii tälle rodulle: {breed}.",
     ownDogTitle: "Entä koira, joka sinulla jo on",
     ownDogMixed:
       "Arvioitu {name}n omien ominaisuuksien perusteella — koon, energian, liikuntatarpeen ja ihmisten kanssa toimimisen — ei rotuleiman perusteella.",
-    ownDogPure:
-      "Arvioitu sen perusteella, mitä tiedämme {name}sta, rotu mukaan lukien.",
+    ownDogPure: "Arvioitu sen perusteella, mitä tiedämme {name}sta, rotu mukaan lukien.",
     ownDogUnknown:
       "Kerroit meille, että {name} on sekarotuinen tuntemattomasta taustasta, joten emme ole arvailleet rotuja. Tämä on sinun koirasi, sellaisena kuin sinä sen kuvasit.",
     ownDogFit: "Sopivuus kuvailemaasi elämään",
     ownDogEdit: "Kerro lisää {name}sta",
     fitsTitle: "Miksi tämä sopii sinulle",
-    fitsNone: "Mikään ei noussut tässä selvästi esiin — mutta jokainen koira kannattaa tavata kasvokkain.",
+    fitsNone:
+      "Mikään ei noussut tässä selvästi esiin — mutta jokainen koira kannattaa tavata kasvokkain.",
     tradeTitle: "Huomioitavat asiat",
     tradeNone: "Mikään tässä ei puhunut sinua vastaan, vastaustesi perusteella.",
     breakdownHonesty:
@@ -222,7 +255,8 @@ const resultCopy = {
     budgetVetRange: "80–180 €",
     budgetInsurance: "Ensimmäinen kuukausi vakuutusta",
     budgetInsuranceRange: "15–40 €",
-    budgetNote: "Yleinen lähtökohta — todelliset kustannukset vaihtelevat maan, kasvattajan ja eläinlääkärin mukaan.",
+    budgetNote:
+      "Yleinen lähtökohta — todelliset kustannukset vaihtelevat maan, kasvattajan ja eläinlääkärin mukaan.",
     checklistTitle: "Kodin valmistelun tarkistuslista",
     checklistItems: [
       "Järjestä yksi rauhallinen, rajattu huone turvapaikaksi ennen koiran saapumista",
@@ -234,20 +268,26 @@ const resultCopy = {
     plusLinkLabel: "Seuraa päivittäisiä rutiineja ja aikatauluja DoggMatch+:ssa",
   },
   de: {
-    scoreNote: "Basierend auf allem, was du uns erzählt hast — auch auf den Grenzen, die für dich nicht verhandelbar sind.",
-    essentials: ["Ein Bett und ein sicherer Rückzugsort", "Halsband, Leine und Adressanhänger", "Futter und feste Fütterungszeiten", "Versicherung und tierärztliche Versorgung"],
+    scoreNote:
+      "Basierend auf allem, was du uns erzählt hast — auch auf den Grenzen, die für dich nicht verhandelbar sind.",
+    essentials: [
+      "Ein Bett und ein sicherer Rückzugsort",
+      "Halsband, Leine und Adressanhänger",
+      "Futter und feste Fütterungszeiten",
+      "Versicherung und tierärztliche Versorgung",
+    ],
     suited: "Passend für einen {breed}.",
     ownDogTitle: "Und der Hund, den du schon hast",
     ownDogMixed:
       "Berechnet aus den eigenen Eigenschaften von {name} — Größe, Energie, Bewegungsbedarf, Umgang mit Menschen — nicht aus einer Rassebezeichnung.",
-    ownDogPure:
-      "Berechnet aus dem, was wir über {name} wissen, die Rasse eingeschlossen.",
+    ownDogPure: "Berechnet aus dem, was wir über {name} wissen, die Rasse eingeschlossen.",
     ownDogUnknown:
       "Du hast uns erzählt, dass {name} eine Mischung mit unbekannter Herkunft ist, deshalb raten wir nicht bei den Rassen. Das hier ist dein Hund, so wie du ihn beschrieben hast.",
     ownDogFit: "Passung zu dem Leben, das du beschrieben hast",
     ownDogEdit: "Erzähl uns mehr über {name}",
     fitsTitle: "Warum das zu dir passt",
-    fitsNone: "Hier stach nichts eindeutig hervor — aber jeder Hund ist es wert, persönlich getroffen zu werden.",
+    fitsNone:
+      "Hier stach nichts eindeutig hervor — aber jeder Hund ist es wert, persönlich getroffen zu werden.",
     tradeTitle: "Wichtige Kompromisse",
     tradeNone: "Nach deinen Antworten sprach hier nichts gegen dich.",
     breakdownHonesty:
@@ -260,7 +300,8 @@ const resultCopy = {
     budgetVetRange: "80–180 €",
     budgetInsurance: "Erster Monat Tierkrankenversicherung",
     budgetInsuranceRange: "15–40 €",
-    budgetNote: "Ein allgemeiner Ausgangspunkt — die tatsächlichen Kosten variieren je nach Land, Züchter und Tierarztpraxis.",
+    budgetNote:
+      "Ein allgemeiner Ausgangspunkt — die tatsächlichen Kosten variieren je nach Land, Züchter und Tierarztpraxis.",
     checklistTitle: "Checkliste für die Wohnungsvorbereitung",
     checklistItems: [
       "Richte einen ruhigen, abgegrenzten Raum als sicheren Ort ein, bevor der Hund einzieht",
@@ -272,20 +313,26 @@ const resultCopy = {
     plusLinkLabel: "Verfolge tägliche Abläufe und Routinen in DoggMatch+",
   },
   fr: {
-    scoreNote: "Basé sur tout ce que tu nous as dit, y compris les limites que tu as dit ne pas pouvoir dépasser.",
-    essentials: ["Un couchage et un espace sécurisant", "Collier, laisse et médaille", "Nourriture et repas réguliers", "Assurance et suivi vétérinaire"],
+    scoreNote:
+      "Basé sur tout ce que tu nous as dit, y compris les limites que tu as dit ne pas pouvoir dépasser.",
+    essentials: [
+      "Un couchage et un espace sécurisant",
+      "Collier, laisse et médaille",
+      "Nourriture et repas réguliers",
+      "Assurance et suivi vétérinaire",
+    ],
     suited: "Adapté à un {breed}.",
     ownDogTitle: "Et le chien que tu as déjà",
     ownDogMixed:
       "Calculé à partir des propres caractéristiques de {name} — taille, énergie, besoin d'exercice, rapport aux gens — pas à partir d'une étiquette de race.",
-    ownDogPure:
-      "Calculé à partir de ce que nous savons de {name}, race comprise.",
+    ownDogPure: "Calculé à partir de ce que nous savons de {name}, race comprise.",
     ownDogUnknown:
       "Tu nous as dit que {name} est un croisé d'origine inconnue, donc nous n'avons deviné aucune race. C'est ton chien, tel que tu l'as décrit.",
     ownDogFit: "Adéquation avec la vie que tu as décrite",
     ownDogEdit: "Donne-nous plus de détails sur {name}",
     fitsTitle: "Pourquoi cela te correspond",
-    fitsNone: "Rien ne s'est clairement démarqué ici — mais chaque chien mérite d'être rencontré en personne.",
+    fitsNone:
+      "Rien ne s'est clairement démarqué ici — mais chaque chien mérite d'être rencontré en personne.",
     tradeTitle: "Compromis et points de vigilance",
     tradeNone: "Rien ici ne jouait contre toi, d'après tes réponses.",
     breakdownHonesty:
@@ -298,7 +345,8 @@ const resultCopy = {
     budgetVetRange: "80–180 €",
     budgetInsurance: "Premier mois d'assurance",
     budgetInsuranceRange: "15–40 €",
-    budgetNote: "Un point de départ général — les coûts réels varient selon le pays, l'éleveur et le cabinet vétérinaire.",
+    budgetNote:
+      "Un point de départ général — les coûts réels varient selon le pays, l'éleveur et le cabinet vétérinaire.",
     checklistTitle: "Check-list de préparation de la maison",
     checklistItems: [
       "Aménage une pièce calme et fermée comme espace sécurisant avant son arrivée",
@@ -310,20 +358,26 @@ const resultCopy = {
     plusLinkLabel: "Suis les routines et emplois du temps quotidiens dans DoggMatch+",
   },
   nl: {
-    scoreNote: "Gebaseerd op alles wat je ons hebt verteld, ook de grenzen waarvan je zei dat je er niet in kon schuiven.",
-    essentials: ["Een mand en een veilige plek", "Halsband, riem en penning", "Voer en vaste eetmomenten", "Verzekering en dierenartszorg"],
+    scoreNote:
+      "Gebaseerd op alles wat je ons hebt verteld, ook de grenzen waarvan je zei dat je er niet in kon schuiven.",
+    essentials: [
+      "Een mand en een veilige plek",
+      "Halsband, riem en penning",
+      "Voer en vaste eetmomenten",
+      "Verzekering en dierenartszorg",
+    ],
     suited: "Geschikt voor een {breed}.",
     ownDogTitle: "En de hond die je al hebt",
     ownDogMixed:
       "Berekend op basis van {name}'s eigen eigenschappen — grootte, energie, benodigde beweging, omgang met mensen — niet op basis van een rasetiket.",
-    ownDogPure:
-      "Berekend op basis van wat we over {name} weten, ras inbegrepen.",
+    ownDogPure: "Berekend op basis van wat we over {name} weten, ras inbegrepen.",
     ownDogUnknown:
       "Je hebt ons verteld dat {name} een kruising is met onbekende afkomst, dus we hebben geen rassen geraden. Dit is jouw hond, zoals jij hem hebt beschreven.",
     ownDogFit: "Match met het leven dat je beschreef",
     ownDogEdit: "Vertel meer over {name}",
     fitsTitle: "Waarom dit bij je past",
-    fitsNone: "Hier sprong niets duidelijk uit — maar elke hond is het waard om persoonlijk te ontmoeten.",
+    fitsNone:
+      "Hier sprong niets duidelijk uit — maar elke hond is het waard om persoonlijk te ontmoeten.",
     tradeTitle: "Belangrijke afwegingen",
     tradeNone: "Op basis van je antwoorden pleitte hier niets tegen je.",
     breakdownHonesty:
@@ -336,7 +390,8 @@ const resultCopy = {
     budgetVetRange: "€80–180",
     budgetInsurance: "Eerste maand huisdierverzekering",
     budgetInsuranceRange: "€15–40",
-    budgetNote: "Een algemeen startpunt — de werkelijke kosten variëren per land, fokker en dierenartspraktijk.",
+    budgetNote:
+      "Een algemeen startpunt — de werkelijke kosten variëren per land, fokker en dierenartspraktijk.",
     checklistTitle: "Checklist huisvoorbereiding",
     checklistItems: [
       "Richt één rustige, afgesloten ruimte in als veilige plek voordat de hond arriveert",
@@ -365,7 +420,15 @@ import { saveMatchProfile } from "@/lib/matching/store";
 import { matchInsights, scoreReading } from "@/lib/matching/insights";
 import type { BreedTraits } from "@/data/breeds";
 import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/types";
-import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "@/components/dogmatch/ui";
+import {
+  Arrow,
+  Badge,
+  Button,
+  ButtonLink,
+  Eyebrow,
+  ScoreBar,
+  ScoreRing,
+} from "@/components/dogmatch/ui";
 import { MatchNotes } from "@/components/dogmatch/match-notes";
 import { CostCalculator } from "@/components/dogmatch/cost-calculator";
 import { MixMatcher } from "@/components/dogmatch/mix-matcher";
@@ -437,7 +500,8 @@ const quizFaq: Record<string, { question: string; answer: string }[]> = {
     },
     {
       question: "Is it free?",
-      answer: "Yes. The match, the reasoning behind it and the breed profiles are free, and we do not need an account.",
+      answer:
+        "Yes. The match, the reasoning behind it and the breed profiles are free, and we do not need an account.",
     },
   ],
   no: [
@@ -469,7 +533,8 @@ const quizFaq: Record<string, { question: string; answer: string }[]> = {
     },
     {
       question: "Czy to darmowe?",
-      answer: "Tak. Dopasowanie, jego uzasadnienie i profile ras są darmowe i nie trzeba zakładać konta.",
+      answer:
+        "Tak. Dopasowanie, jego uzasadnienie i profile ras są darmowe i nie trzeba zakładać konta.",
     },
   ],
   dk: [
@@ -501,7 +566,8 @@ const quizFaq: Record<string, { question: string; answer: string }[]> = {
     },
     {
       question: "Är det gratis?",
-      answer: "Ja. Matchningen, resonemanget bakom och rasprofilerna är gratis, och du behöver inget konto.",
+      answer:
+        "Ja. Matchningen, resonemanget bakom och rasprofilerna är gratis, och du behöver inget konto.",
     },
   ],
   fi: [
@@ -533,7 +599,8 @@ const quizFaq: Record<string, { question: string; answer: string }[]> = {
     },
     {
       question: "Ist das kostenlos?",
-      answer: "Ja. Das Match, die Begründung dahinter und die Rasseprofile sind kostenlos, und ein Konto brauchst du nicht.",
+      answer:
+        "Ja. Das Match, die Begründung dahinter und die Rasseprofile sind kostenlos, und ein Konto brauchst du nicht.",
     },
   ],
   fr: [
@@ -549,7 +616,8 @@ const quizFaq: Record<string, { question: string; answer: string }[]> = {
     },
     {
       question: "Est-ce gratuit ?",
-      answer: "Oui. Le match, les explications et les fiches de race sont gratuits, et aucun compte n'est nécessaire.",
+      answer:
+        "Oui. Le match, les explications et les fiches de race sont gratuits, et aucun compte n'est nécessaire.",
     },
   ],
   nl: [
@@ -565,7 +633,8 @@ const quizFaq: Record<string, { question: string; answer: string }[]> = {
     },
     {
       question: "Is het gratis?",
-      answer: "Ja. De match, de uitleg erbij en de rasprofielen zijn gratis, en een account is niet nodig.",
+      answer:
+        "Ja. De match, de uitleg erbij en de rasprofielen zijn gratis, en een account is niet nodig.",
     },
   ],
 };
@@ -626,7 +695,8 @@ const flowCopy = {
       "Deterministic scoring — no AI guesswork…",
     ],
     hardLimitLabel: "Set as Non-Negotiable (Hard Limit)",
-    hardLimitNote: "Breeds exceeding this boundary will be strictly eliminated from recommendations.",
+    hardLimitNote:
+      "Breeds exceeding this boundary will be strictly eliminated from recommendations.",
   },
   no: {
     statusPhrases: [
@@ -648,7 +718,8 @@ const flowCopy = {
       "Deterministyczne wyliczenia — bez zgadywania AI…",
     ],
     hardLimitLabel: "Ustaw jako warunek bezwzględny",
-    hardLimitNote: "Rasy, które nie spełniają tego warunku, zostaną całkowicie wykluczone z rekomendacji.",
+    hardLimitNote:
+      "Rasy, które nie spełniają tego warunku, zostaną całkowicie wykluczone z rekomendacji.",
   },
   dk: {
     statusPhrases: [
@@ -681,7 +752,8 @@ const flowCopy = {
       "Deterministinen laskenta — ei tekoälyn arvailua…",
     ],
     hardLimitLabel: "Aseta ehdottomaksi kriteeriksi",
-    hardLimitNote: "Rodut, jotka eivät täytä tätä kriteeriä, suljetaan kokonaan pois suosituksista.",
+    hardLimitNote:
+      "Rodut, jotka eivät täytä tätä kriteeriä, suljetaan kokonaan pois suosituksista.",
   },
   de: {
     statusPhrases: [
@@ -692,7 +764,8 @@ const flowCopy = {
       "Deterministische Berechnung — kein KI-Raten…",
     ],
     hardLimitLabel: "Als Ausschlusskriterium festlegen (feste Grenze)",
-    hardLimitNote: "Rassen, die diese Grenze überschreiten, werden konsequent aus den Empfehlungen ausgeschlossen.",
+    hardLimitNote:
+      "Rassen, die diese Grenze überschreiten, werden konsequent aus den Empfehlungen ausgeschlossen.",
   },
   fr: {
     statusPhrases: [
@@ -703,7 +776,8 @@ const flowCopy = {
       "Calcul déterministe — aucune estimation par IA…",
     ],
     hardLimitLabel: "Définir comme critère rédhibitoire (limite stricte)",
-    hardLimitNote: "Les races dépassant cette limite seront strictement éliminées des recommandations.",
+    hardLimitNote:
+      "Les races dépassant cette limite seront strictement éliminées des recommandations.",
   },
   nl: {
     statusPhrases: [
@@ -714,7 +788,8 @@ const flowCopy = {
       "Deterministische berekening — geen AI-giswerk…",
     ],
     hardLimitLabel: "Instellen als ononderhandelbaar criterium (harde grens)",
-    hardLimitNote: "Rassen die deze grens overschrijden worden strikt uitgesloten van de aanbevelingen.",
+    hardLimitNote:
+      "Rassen die deze grens overschrijden worden strikt uitgesloten van de aanbevelingen.",
   },
 } as const;
 
@@ -735,7 +810,10 @@ function FindMyDogPage() {
   const hardLimitOn = profile[`${question.id}HardLimit`] === "true";
 
   const ranking = useMemo(
-    () => (phase === "result" ? matchBreedRanking(profile) : { matches: [], eliminated: [], limitsRelaxed: false }),
+    () =>
+      phase === "result"
+        ? matchBreedRanking(profile)
+        : { matches: [], eliminated: [], limitsRelaxed: false },
     [phase, profile],
   );
 
@@ -806,7 +884,10 @@ function FindMyDogPage() {
           aria-live="polite"
           className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-surface px-3 py-1 text-xs text-muted-foreground"
         >
-          <span className="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-accent" aria-hidden="true" />
+          <span
+            className="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-accent"
+            aria-hidden="true"
+          />
           {statusPhrase}
         </p>
       </div>
@@ -892,7 +973,9 @@ function FindMyDogPage() {
               </button>
             </label>
             {hardLimitOn && (
-              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{fc.hardLimitNote}</p>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                {fc.hardLimitNote}
+              </p>
             )}
           </div>
         )}
@@ -937,13 +1020,15 @@ function Reveal({ onDone }: { onDone: () => void }) {
       clearInterval(tick);
       clearTimeout(finish);
     };
-
   }, [onDone]);
 
   return (
     <div className="container-page grid min-h-[calc(100vh-72px)] place-items-center py-20 text-center">
       <div>
-        <span className="mx-auto block h-2 w-2 animate-pulse rounded-full bg-accent" aria-hidden="true" />
+        <span
+          className="mx-auto block h-2 w-2 animate-pulse rounded-full bg-accent"
+          aria-hidden="true"
+        />
         <p className="display-md mt-8" aria-live="polite">
           {lines[Math.min(index, lines.length - 1)]}
         </p>
@@ -958,43 +1043,186 @@ const interactiveResultCopy = {
   en: {
     adjustEyebrow: "A closer look",
     adjustTitle: "Adjust my answers",
-    adjustBody: "Life changes, and sometimes an answer needs a second thought. Change any of these and your matches will reorder straight away.",
+    adjustBody:
+      "Life changes, and sometimes an answer needs a second thought. Change any of these and your matches will reorder straight away.",
     updated: "Your ranking has been updated.",
     removedEyebrow: "Your non-negotiables",
     removedTitle: "Why some breeds were removed",
-    removedBody: "These dogs may be wonderful in the right home, but they crossed a boundary you asked us not to stretch.",
+    removedBody:
+      "These dogs may be wonderful in the right home, but they crossed a boundary you asked us not to stretch.",
     removedReason: "Why this breed was removed",
     showRemoved: "Show removed breeds",
     hideRemoved: "Hide removed breeds",
     relaxedTitle: "No breed met every hard limit",
-    relaxedBody: "Rather than leave you with a blank page, we have shown the closest matches below. Each one needs a careful look at the limits you set.",
+    relaxedBody:
+      "Rather than leave you with a blank page, we have shown the closest matches below. Each one needs a careful look at the limits you set.",
     otherReason: "Why it ranked here",
     otherTradeoffs: "Trade-offs to consider",
     noTradeoffs: "Your answers did not reveal a clear lifestyle conflict for this breed.",
   },
   no: {
-    adjustEyebrow: "Se litt nærmere", adjustTitle: "Juster svarene mine", adjustBody: "Livet endrer seg, og noen ganger fortjener et svar en ny vurdering. Endrer du noe her, oppdateres rekkefølgen med én gang.", updated: "Rangeringen din er oppdatert.", removedEyebrow: "Grensene dine", removedTitle: "Hvorfor noen raser ble tatt bort", removedBody: "Disse hundene kan være fantastiske i riktig hjem, men de gikk over en grense du ba oss respektere.", removedReason: "Hvorfor rasen ble tatt bort", showRemoved: "Vis raser som ble tatt bort", hideRemoved: "Skjul raser som ble tatt bort", relaxedTitle: "Ingen rase møtte alle de faste grensene", relaxedBody: "I stedet for å gi deg en tom side viser vi de nærmeste treffene. Se nøye på hvordan hver av dem møter grensene du satte.", otherReason: "Hvorfor den havnet her", otherTradeoffs: "Ting å veie opp", noTradeoffs: "Svarene dine viste ingen tydelig konflikt mellom livsstilen din og denne rasen.",
+    adjustEyebrow: "Se litt nærmere",
+    adjustTitle: "Juster svarene mine",
+    adjustBody:
+      "Livet endrer seg, og noen ganger fortjener et svar en ny vurdering. Endrer du noe her, oppdateres rekkefølgen med én gang.",
+    updated: "Rangeringen din er oppdatert.",
+    removedEyebrow: "Grensene dine",
+    removedTitle: "Hvorfor noen raser ble tatt bort",
+    removedBody:
+      "Disse hundene kan være fantastiske i riktig hjem, men de gikk over en grense du ba oss respektere.",
+    removedReason: "Hvorfor rasen ble tatt bort",
+    showRemoved: "Vis raser som ble tatt bort",
+    hideRemoved: "Skjul raser som ble tatt bort",
+    relaxedTitle: "Ingen rase møtte alle de faste grensene",
+    relaxedBody:
+      "I stedet for å gi deg en tom side viser vi de nærmeste treffene. Se nøye på hvordan hver av dem møter grensene du satte.",
+    otherReason: "Hvorfor den havnet her",
+    otherTradeoffs: "Ting å veie opp",
+    noTradeoffs: "Svarene dine viste ingen tydelig konflikt mellom livsstilen din og denne rasen.",
   },
   pl: {
-    adjustEyebrow: "Przyjrzyjmy się bliżej", adjustTitle: "Zmień moje odpowiedzi", adjustBody: "Życie się zmienia, a czasem warto jeszcze raz przemyśleć odpowiedź. Zmień dowolną z nich, a kolejność dopasowań od razu się zaktualizuje.", updated: "Ranking został zaktualizowany.", removedEyebrow: "Twoje nieprzekraczalne granice", removedTitle: "Dlaczego niektóre rasy odpadły", removedBody: "Te psy mogą być wspaniałe w odpowiednim domu, ale przekroczyły granicę, której nie chciałeś lub nie chciałaś naginać.", removedReason: "Dlaczego ta rasa odpadła", showRemoved: "Pokaż odrzucone rasy", hideRemoved: "Ukryj odrzucone rasy", relaxedTitle: "Żadna rasa nie spełniła wszystkich twardych warunków", relaxedBody: "Zamiast zostawiać Cię z pustą stroną, pokazujemy najbliższe dopasowania. Przy każdym warto uważnie sprawdzić granice, które zostały przez Ciebie wskazane.", otherReason: "Dlaczego ta rasa jest na tym miejscu", otherTradeoffs: "Kwestie do rozważenia", noTradeoffs: "Twoje odpowiedzi nie wskazały wyraźnego konfliktu między stylem życia a potrzebami tej rasy.",
+    adjustEyebrow: "Przyjrzyjmy się bliżej",
+    adjustTitle: "Zmień moje odpowiedzi",
+    adjustBody:
+      "Życie się zmienia, a czasem warto jeszcze raz przemyśleć odpowiedź. Zmień dowolną z nich, a kolejność dopasowań od razu się zaktualizuje.",
+    updated: "Ranking został zaktualizowany.",
+    removedEyebrow: "Twoje nieprzekraczalne granice",
+    removedTitle: "Dlaczego niektóre rasy odpadły",
+    removedBody:
+      "Te psy mogą być wspaniałe w odpowiednim domu, ale przekroczyły granicę, której nie chciałeś lub nie chciałaś naginać.",
+    removedReason: "Dlaczego ta rasa odpadła",
+    showRemoved: "Pokaż odrzucone rasy",
+    hideRemoved: "Ukryj odrzucone rasy",
+    relaxedTitle: "Żadna rasa nie spełniła wszystkich twardych warunków",
+    relaxedBody:
+      "Zamiast zostawiać Cię z pustą stroną, pokazujemy najbliższe dopasowania. Przy każdym warto uważnie sprawdzić granice, które zostały przez Ciebie wskazane.",
+    otherReason: "Dlaczego ta rasa jest na tym miejscu",
+    otherTradeoffs: "Kwestie do rozważenia",
+    noTradeoffs:
+      "Twoje odpowiedzi nie wskazały wyraźnego konfliktu między stylem życia a potrzebami tej rasy.",
   },
   dk: {
-    adjustEyebrow: "Et nærmere kig", adjustTitle: "Tilpas mine svar", adjustBody: "Livet ændrer sig, og nogle gange fortjener et svar en ny tanke. Ændr noget her, så opdateres rækkefølgen med det samme.", updated: "Din rangering er opdateret.", removedEyebrow: "Dine faste grænser", removedTitle: "Derfor blev nogle racer sorteret fra", removedBody: "De kan være skønne hunde i det rette hjem, men de overskred en grænse, du bad os om at respektere.", removedReason: "Derfor blev racen sorteret fra", showRemoved: "Vis frasorterede racer", hideRemoved: "Skjul frasorterede racer", relaxedTitle: "Ingen race overholdt alle faste grænser", relaxedBody: "I stedet for at efterlade dig med en tom side viser vi de nærmeste match. Se nøje på, hvordan hver race passer til de grænser, du satte.", otherReason: "Derfor ligger den her", otherTradeoffs: "Det skal du veje op", noTradeoffs: "Dine svar viste ingen tydelig konflikt mellem din hverdag og denne race.",
+    adjustEyebrow: "Et nærmere kig",
+    adjustTitle: "Tilpas mine svar",
+    adjustBody:
+      "Livet ændrer sig, og nogle gange fortjener et svar en ny tanke. Ændr noget her, så opdateres rækkefølgen med det samme.",
+    updated: "Din rangering er opdateret.",
+    removedEyebrow: "Dine faste grænser",
+    removedTitle: "Derfor blev nogle racer sorteret fra",
+    removedBody:
+      "De kan være skønne hunde i det rette hjem, men de overskred en grænse, du bad os om at respektere.",
+    removedReason: "Derfor blev racen sorteret fra",
+    showRemoved: "Vis frasorterede racer",
+    hideRemoved: "Skjul frasorterede racer",
+    relaxedTitle: "Ingen race overholdt alle faste grænser",
+    relaxedBody:
+      "I stedet for at efterlade dig med en tom side viser vi de nærmeste match. Se nøje på, hvordan hver race passer til de grænser, du satte.",
+    otherReason: "Derfor ligger den her",
+    otherTradeoffs: "Det skal du veje op",
+    noTradeoffs: "Dine svar viste ingen tydelig konflikt mellem din hverdag og denne race.",
   },
   se: {
-    adjustEyebrow: "En närmare titt", adjustTitle: "Justera mina svar", adjustBody: "Livet förändras, och ibland behöver ett svar tänkas igenom en gång till. Ändra något här så uppdateras ordningen direkt.", updated: "Din rangordning har uppdaterats.", removedEyebrow: "Dina fasta gränser", removedTitle: "Därför valdes vissa raser bort", removedBody: "De kan vara underbara hundar i rätt hem, men de passerade en gräns som du bad oss att respektera.", removedReason: "Därför valdes rasen bort", showRemoved: "Visa bortvalda raser", hideRemoved: "Dölj bortvalda raser", relaxedTitle: "Ingen ras klarade alla fasta gränser", relaxedBody: "I stället för att lämna sidan tom visar vi de närmaste matchningarna. Titta noga på hur var och en förhåller sig till gränserna du satte.", otherReason: "Därför hamnade den här", otherTradeoffs: "Saker att väga in", noTradeoffs: "Dina svar visade ingen tydlig konflikt mellan din vardag och den här rasen.",
+    adjustEyebrow: "En närmare titt",
+    adjustTitle: "Justera mina svar",
+    adjustBody:
+      "Livet förändras, och ibland behöver ett svar tänkas igenom en gång till. Ändra något här så uppdateras ordningen direkt.",
+    updated: "Din rangordning har uppdaterats.",
+    removedEyebrow: "Dina fasta gränser",
+    removedTitle: "Därför valdes vissa raser bort",
+    removedBody:
+      "De kan vara underbara hundar i rätt hem, men de passerade en gräns som du bad oss att respektera.",
+    removedReason: "Därför valdes rasen bort",
+    showRemoved: "Visa bortvalda raser",
+    hideRemoved: "Dölj bortvalda raser",
+    relaxedTitle: "Ingen ras klarade alla fasta gränser",
+    relaxedBody:
+      "I stället för att lämna sidan tom visar vi de närmaste matchningarna. Titta noga på hur var och en förhåller sig till gränserna du satte.",
+    otherReason: "Därför hamnade den här",
+    otherTradeoffs: "Saker att väga in",
+    noTradeoffs: "Dina svar visade ingen tydlig konflikt mellan din vardag och den här rasen.",
   },
   fi: {
-    adjustEyebrow: "Tarkempi katsaus", adjustTitle: "Muokkaa vastauksiani", adjustBody: "Elämä muuttuu, ja joskus vastausta kannattaa miettiä uudelleen. Kun muutat jotakin näistä, järjestys päivittyy heti.", updated: "Järjestys on päivitetty.", removedEyebrow: "Rajasi", removedTitle: "Miksi jotkin rodut jäivät pois", removedBody: "Nämä koirat voivat olla ihania oikeassa kodissa, mutta ne ylittivät rajan, jota pyysit meitä kunnioittamaan.", removedReason: "Miksi tämä rotu jäi pois", showRemoved: "Näytä pois jätetyt rodut", hideRemoved: "Piilota pois jätetyt rodut", relaxedTitle: "Mikään rotu ei täyttänyt kaikkia ehdottomia rajojasi", relaxedBody: "Tyhjän sivun sijaan näytämme lähimmät osumat. Katso rauhassa, miten kukin niistä sopii asettamiisi rajoihin.", otherReason: "Miksi se sijoittui tähän", otherTradeoffs: "Huomioitavat kompromissit", noTradeoffs: "Vastauksesi eivät paljastaneet selvää ristiriitaa elämäntyylisi ja tämän rodun välillä.",
+    adjustEyebrow: "Tarkempi katsaus",
+    adjustTitle: "Muokkaa vastauksiani",
+    adjustBody:
+      "Elämä muuttuu, ja joskus vastausta kannattaa miettiä uudelleen. Kun muutat jotakin näistä, järjestys päivittyy heti.",
+    updated: "Järjestys on päivitetty.",
+    removedEyebrow: "Rajasi",
+    removedTitle: "Miksi jotkin rodut jäivät pois",
+    removedBody:
+      "Nämä koirat voivat olla ihania oikeassa kodissa, mutta ne ylittivät rajan, jota pyysit meitä kunnioittamaan.",
+    removedReason: "Miksi tämä rotu jäi pois",
+    showRemoved: "Näytä pois jätetyt rodut",
+    hideRemoved: "Piilota pois jätetyt rodut",
+    relaxedTitle: "Mikään rotu ei täyttänyt kaikkia ehdottomia rajojasi",
+    relaxedBody:
+      "Tyhjän sivun sijaan näytämme lähimmät osumat. Katso rauhassa, miten kukin niistä sopii asettamiisi rajoihin.",
+    otherReason: "Miksi se sijoittui tähän",
+    otherTradeoffs: "Huomioitavat kompromissit",
+    noTradeoffs:
+      "Vastauksesi eivät paljastaneet selvää ristiriitaa elämäntyylisi ja tämän rodun välillä.",
   },
   de: {
-    adjustEyebrow: "Genauer hinschauen", adjustTitle: "Meine Antworten anpassen", adjustBody: "Das Leben verändert sich, und manchmal lohnt es sich, eine Antwort neu zu bedenken. Ändern Sie hier etwas, wird die Reihenfolge sofort aktualisiert.", updated: "Ihre Reihenfolge wurde aktualisiert.", removedEyebrow: "Ihre festen Grenzen", removedTitle: "Warum einige Rassen aussortiert wurden", removedBody: "Diese Hunde können im richtigen Zuhause wunderbar sein, haben aber eine Grenze überschritten, die wir für Sie nicht verschieben sollten.", removedReason: "Warum diese Rasse aussortiert wurde", showRemoved: "Aussortierte Rassen anzeigen", hideRemoved: "Aussortierte Rassen ausblenden", relaxedTitle: "Keine Rasse erfüllte alle festen Grenzen", relaxedBody: "Statt einer leeren Seite zeigen wir Ihnen die ähnlichsten Treffer. Prüfen Sie bei jedem genau, wie er zu Ihren Grenzen passt.", otherReason: "Warum sie hier eingeordnet wurde", otherTradeoffs: "Was Sie abwägen sollten", noTradeoffs: "Ihre Antworten zeigen keinen deutlichen Konflikt zwischen Ihrem Alltag und dieser Rasse.",
+    adjustEyebrow: "Genauer hinschauen",
+    adjustTitle: "Meine Antworten anpassen",
+    adjustBody:
+      "Das Leben verändert sich, und manchmal lohnt es sich, eine Antwort neu zu bedenken. Ändern Sie hier etwas, wird die Reihenfolge sofort aktualisiert.",
+    updated: "Ihre Reihenfolge wurde aktualisiert.",
+    removedEyebrow: "Ihre festen Grenzen",
+    removedTitle: "Warum einige Rassen aussortiert wurden",
+    removedBody:
+      "Diese Hunde können im richtigen Zuhause wunderbar sein, haben aber eine Grenze überschritten, die wir für Sie nicht verschieben sollten.",
+    removedReason: "Warum diese Rasse aussortiert wurde",
+    showRemoved: "Aussortierte Rassen anzeigen",
+    hideRemoved: "Aussortierte Rassen ausblenden",
+    relaxedTitle: "Keine Rasse erfüllte alle festen Grenzen",
+    relaxedBody:
+      "Statt einer leeren Seite zeigen wir Ihnen die ähnlichsten Treffer. Prüfen Sie bei jedem genau, wie er zu Ihren Grenzen passt.",
+    otherReason: "Warum sie hier eingeordnet wurde",
+    otherTradeoffs: "Was Sie abwägen sollten",
+    noTradeoffs:
+      "Ihre Antworten zeigen keinen deutlichen Konflikt zwischen Ihrem Alltag und dieser Rasse.",
   },
   fr: {
-    adjustEyebrow: "Regarder de plus près", adjustTitle: "Modifier mes réponses", adjustBody: "La vie change, et certaines réponses méritent parfois d'être repensées. Modifiez l'une d'elles et le classement s'actualisera aussitôt.", updated: "Votre classement a été mis à jour.", removedEyebrow: "Vos limites essentielles", removedTitle: "Pourquoi certaines races ont été écartées", removedBody: "Ces chiens peuvent être formidables dans le bon foyer, mais ils dépassaient une limite que vous nous avez demandé de respecter.", removedReason: "Pourquoi cette race a été écartée", showRemoved: "Voir les races écartées", hideRemoved: "Masquer les races écartées", relaxedTitle: "Aucune race ne respectait toutes vos limites", relaxedBody: "Plutôt que de vous laisser face à une page vide, nous affichons les correspondances les plus proches. Pour chacune, regardez attentivement les limites que vous aviez fixées.", otherReason: "Pourquoi elle apparaît ici", otherTradeoffs: "Les compromis à considérer", noTradeoffs: "Vos réponses ne montrent aucun conflit évident entre votre mode de vie et cette race.",
+    adjustEyebrow: "Regarder de plus près",
+    adjustTitle: "Modifier mes réponses",
+    adjustBody:
+      "La vie change, et certaines réponses méritent parfois d'être repensées. Modifiez l'une d'elles et le classement s'actualisera aussitôt.",
+    updated: "Votre classement a été mis à jour.",
+    removedEyebrow: "Vos limites essentielles",
+    removedTitle: "Pourquoi certaines races ont été écartées",
+    removedBody:
+      "Ces chiens peuvent être formidables dans le bon foyer, mais ils dépassaient une limite que vous nous avez demandé de respecter.",
+    removedReason: "Pourquoi cette race a été écartée",
+    showRemoved: "Voir les races écartées",
+    hideRemoved: "Masquer les races écartées",
+    relaxedTitle: "Aucune race ne respectait toutes vos limites",
+    relaxedBody:
+      "Plutôt que de vous laisser face à une page vide, nous affichons les correspondances les plus proches. Pour chacune, regardez attentivement les limites que vous aviez fixées.",
+    otherReason: "Pourquoi elle apparaît ici",
+    otherTradeoffs: "Les compromis à considérer",
+    noTradeoffs:
+      "Vos réponses ne montrent aucun conflit évident entre votre mode de vie et cette race.",
   },
   nl: {
-    adjustEyebrow: "Iets beter kijken", adjustTitle: "Mijn antwoorden aanpassen", adjustBody: "Het leven verandert en soms verdient een antwoord een tweede gedachte. Pas hier iets aan en de volgorde wordt meteen bijgewerkt.", updated: "Je ranglijst is bijgewerkt.", removedEyebrow: "Jouw vaste grenzen", removedTitle: "Waarom sommige rassen afvielen", removedBody: "Deze honden kunnen geweldig zijn in het juiste huis, maar ze gingen over een grens die je ons vroeg te respecteren.", removedReason: "Waarom dit ras afviel", showRemoved: "Afgevallen rassen tonen", hideRemoved: "Afgevallen rassen verbergen", relaxedTitle: "Geen enkel ras voldeed aan alle harde grenzen", relaxedBody: "In plaats van een lege pagina laten we de beste benaderingen zien. Kijk bij elk ras goed naar de grenzen die je hebt aangegeven.", otherReason: "Waarom dit ras hier staat", otherTradeoffs: "Punten om af te wegen", noTradeoffs: "Je antwoorden laten geen duidelijk conflict zien tussen jouw leven en dit ras.",
+    adjustEyebrow: "Iets beter kijken",
+    adjustTitle: "Mijn antwoorden aanpassen",
+    adjustBody:
+      "Het leven verandert en soms verdient een antwoord een tweede gedachte. Pas hier iets aan en de volgorde wordt meteen bijgewerkt.",
+    updated: "Je ranglijst is bijgewerkt.",
+    removedEyebrow: "Jouw vaste grenzen",
+    removedTitle: "Waarom sommige rassen afvielen",
+    removedBody:
+      "Deze honden kunnen geweldig zijn in het juiste huis, maar ze gingen over een grens die je ons vroeg te respecteren.",
+    removedReason: "Waarom dit ras afviel",
+    showRemoved: "Afgevallen rassen tonen",
+    hideRemoved: "Afgevallen rassen verbergen",
+    relaxedTitle: "Geen enkel ras voldeed aan alle harde grenzen",
+    relaxedBody:
+      "In plaats van een lege pagina laten we de beste benaderingen zien. Kijk bij elk ras goed naar de grenzen die je hebt aangegeven.",
+    otherReason: "Waarom dit ras hier staat",
+    otherTradeoffs: "Punten om af te wegen",
+    noTradeoffs: "Je antwoorden laten geen duidelijk conflict zien tussen jouw leven en dit ras.",
   },
 } as const;
 
@@ -1013,7 +1241,13 @@ const DIMENSION_ORDER: DimensionKey[] = [
 function CheckIcon() {
   return (
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M5 13l4 4L19 7"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -1055,7 +1289,9 @@ function MatchBreakdown({
           <h2 className="display-md">{c.fitsTitle}</h2>
           <ul className="mt-6 space-y-4">
             {shownFits.length === 0 && (
-              <li className="text-[0.9375rem] leading-relaxed text-muted-foreground">{c.fitsNone}</li>
+              <li className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                {c.fitsNone}
+              </li>
             )}
             {shownFits.map((item) => (
               <li key={item.from} className="flex gap-3">
@@ -1074,7 +1310,9 @@ function MatchBreakdown({
           <h2 className="display-md">{c.tradeTitle}</h2>
           <ul className="mt-6 space-y-4">
             {shownTradeoffs.length === 0 && (
-              <li className="text-[0.9375rem] leading-relaxed text-muted-foreground">{c.tradeNone}</li>
+              <li className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                {c.tradeNone}
+              </li>
             )}
             {shownTradeoffs.map((item) => (
               <li key={item.from} className="flex gap-3">
@@ -1114,7 +1352,10 @@ function FirstThirtyDays({ breedName }: { breedName: string }) {
           {interpolate(c.thirtyDaysTitle, { breed: breedName })}
         </span>
         <ChevronDown
-          className={cn("h-5 w-5 shrink-0 text-muted-foreground transition-transform", open && "rotate-180")}
+          className={cn(
+            "h-5 w-5 shrink-0 text-muted-foreground transition-transform",
+            open && "rotate-180",
+          )}
           aria-hidden="true"
         />
       </button>
@@ -1124,11 +1365,15 @@ function FirstThirtyDays({ breedName }: { breedName: string }) {
           <ul className="mt-4 space-y-3">
             <li className="flex items-baseline justify-between gap-4 text-[0.9375rem]">
               <span>{c.budgetGear}</span>
-              <span className="shrink-0 font-display tabular-nums text-muted-foreground">{c.budgetGearRange}</span>
+              <span className="shrink-0 font-display tabular-nums text-muted-foreground">
+                {c.budgetGearRange}
+              </span>
             </li>
             <li className="flex items-baseline justify-between gap-4 text-[0.9375rem]">
               <span>{c.budgetVet}</span>
-              <span className="shrink-0 font-display tabular-nums text-muted-foreground">{c.budgetVetRange}</span>
+              <span className="shrink-0 font-display tabular-nums text-muted-foreground">
+                {c.budgetVetRange}
+              </span>
             </li>
             <li className="flex items-baseline justify-between gap-4 text-[0.9375rem]">
               <span>{c.budgetInsurance}</span>
@@ -1143,7 +1388,10 @@ function FirstThirtyDays({ breedName }: { breedName: string }) {
           <ul className="mt-4 space-y-2.5">
             {c.checklistItems.map((item) => (
               <li key={item} className="flex gap-3 text-[0.9375rem] leading-relaxed">
-                <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                <span
+                  aria-hidden="true"
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                />
                 <span>{item}</span>
               </li>
             ))}
@@ -1248,7 +1496,11 @@ function Results({
 
   /** How forgiving a breed tends to be of first-timer training mistakes, from its firstTimeSuitability trait. */
   const beginnerLevel = (score: number) =>
-    score >= 4 ? t.result.beginnerHigh : score <= 2 ? t.result.beginnerLow : t.result.beginnerModerate;
+    score >= 4
+      ? t.result.beginnerHigh
+      : score <= 2
+        ? t.result.beginnerLow
+        : t.result.beginnerModerate;
 
   // Kept on this device so Compare and the breed pages can speak to the same life.
   useEffect(() => {
@@ -1270,16 +1522,17 @@ function Results({
               <div className="max-w-[14rem]">
                 <p className="font-display text-lg leading-tight">{t.result.compatibility}</p>
                 <p className="mt-2 text-[0.9375rem] leading-relaxed">{scoreReading(best.score)}</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {c.scoreNote}
-                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.scoreNote}</p>
                 <div className="mt-4 flex flex-wrap items-center gap-2">
                   <Badge tone="neutral">
-                    {t.result.beginnerFriendlinessLabel}: {beginnerLevel(breedById[best.breedId].traits.firstTimeSuitability)}
+                    {t.result.beginnerFriendlinessLabel}:{" "}
+                    {beginnerLevel(breedById[best.breedId].traits.firstTimeSuitability)}
                   </Badge>
                   {best.status !== "recommended" && (
                     <Badge tone="accent">
-                      {best.status === "not-recommended" ? t.result.notRecommended : t.result.mismatchTitle}
+                      {best.status === "not-recommended"
+                        ? t.result.notRecommended
+                        : t.result.mismatchTitle}
                     </Badge>
                   )}
                 </div>
@@ -1304,8 +1557,12 @@ function Results({
           <Eyebrow>{ic.adjustEyebrow}</Eyebrow>
           <div className="mt-4 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
             <div>
-              <h2 id="adjust-results-title" className="display-md">{ic.adjustTitle}</h2>
-              <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">{ic.adjustBody}</p>
+              <h2 id="adjust-results-title" className="display-md">
+                {ic.adjustTitle}
+              </h2>
+              <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
+                {ic.adjustBody}
+              </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {adjustableQuestions.map((question) => (
@@ -1317,22 +1574,30 @@ function Results({
                     className="h-12 w-full rounded-lg border border-border-strong bg-background px-4 text-sm text-foreground outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/20"
                   >
                     {question.options.map((option) => (
-                      <option key={option.value} value={option.value}>{option.label}</option>
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
                     ))}
                   </select>
                 </label>
               ))}
             </div>
           </div>
-          <p className="sr-only" aria-live="polite">{announceUpdate ? ic.updated : ""}</p>
+          <p className="sr-only" aria-live="polite">
+            {announceUpdate ? ic.updated : ""}
+          </p>
         </div>
       </section>
 
       {limitsRelaxed && (
         <section className="container-page mt-8" aria-labelledby="relaxed-limits-title">
           <div className="border-l-2 border-accent pl-5">
-            <h2 id="relaxed-limits-title" className="font-display text-xl">{ic.relaxedTitle}</h2>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">{ic.relaxedBody}</p>
+            <h2 id="relaxed-limits-title" className="font-display text-xl">
+              {ic.relaxedTitle}
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              {ic.relaxedBody}
+            </p>
           </div>
         </section>
       )}
@@ -1353,7 +1618,11 @@ function Results({
                 <p className="font-display text-lg leading-tight">{c.ownDogFit}</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {interpolate(
-                    ownTraits.unknownMix ? c.ownDogUnknown : ownTraits.isMixed ? c.ownDogMixed : c.ownDogPure,
+                    ownTraits.unknownMix
+                      ? c.ownDogUnknown
+                      : ownTraits.isMixed
+                        ? c.ownDogMixed
+                        : c.ownDogPure,
                     { name: ownDog.name },
                   )}
                 </p>
@@ -1407,19 +1676,19 @@ function Results({
         <CostCalculator breed={best.breed} />
       </section>
 
-
       {/* fit and trade-offs, tied line by line to the answers given */}
       <section className="container-page mt-20 md:mt-28">
-        <MatchBreakdown traits={breedById[best.breedId].traits} profile={profile} score={best.score} />
+        <MatchBreakdown
+          traits={breedById[best.breedId].traits}
+          profile={profile}
+          score={best.score}
+        />
       </section>
 
       {/* mixed / designer crosses, scored with the same engine */}
       <section className="container-page mt-20 md:mt-28">
         <MixMatcher profile={profile} />
       </section>
-
-
-
 
       {/* why + considerations */}
       <section className="container-page mt-20 grid gap-10 md:mt-28 md:grid-cols-2 md:gap-14">
@@ -1463,64 +1732,92 @@ function Results({
           {others.map((r) => {
             const insights = matchInsights(breedById[r.breedId].traits, profile);
             return (
-            <li key={r.breedId} className="min-w-0">
-              <Link to={withLangPrefix("/breeds/$breedId")} params={{ breedId: r.breedId }} className="group block">
-                <div className="overflow-hidden rounded-[1.25rem]">
-                  <img
-                    src={breedImages[r.breedId]}
-                    alt={breedContent()[r.breedId].displayName}
-                    width={1024}
-                    height={1280}
-                    loading="lazy"
-                    className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
-                  />
+              <li key={r.breedId} className="min-w-0">
+                <Link
+                  to={withLangPrefix("/breeds/$breedId")}
+                  params={{ breedId: r.breedId }}
+                  className="group block"
+                >
+                  <div className="overflow-hidden rounded-[1.25rem]">
+                    <img
+                      src={breedImages[r.breedId]}
+                      alt={breedContent()[r.breedId].displayName}
+                      width={1024}
+                      height={1280}
+                      loading="lazy"
+                      className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
+                    />
+                  </div>
+                  <div className="mt-4 flex items-baseline justify-between gap-3">
+                    <h2 className="font-display text-lg leading-tight tracking-tight">
+                      {breedContent()[r.breedId].displayName}
+                    </h2>
+                    <span className="font-display text-sm tabular-nums text-muted-foreground">
+                      {r.score}%
+                    </span>
+                  </div>
+                  <div className="mt-2">
+                    <Badge tone="neutral">
+                      {t.result.beginnerFriendlinessLabel}:{" "}
+                      {beginnerLevel(breedById[r.breedId].traits.firstTimeSuitability)}
+                    </Badge>
+                  </div>
+                  {r.status !== "recommended" && (
+                    <p className="mt-2 text-sm text-accent">{r.warnings[0]}</p>
+                  )}
+                </Link>
+                <div className="mt-5 border-t border-border pt-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                    {ic.otherReason}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed">
+                    {insights.fits[0]?.text ?? scoreReading(r.score)}
+                  </p>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                    {ic.otherTradeoffs}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {insights.tradeoffs[0]?.text ?? ic.noTradeoffs}
+                  </p>
                 </div>
-                <div className="mt-4 flex items-baseline justify-between gap-3">
-                  <h2 className="font-display text-lg leading-tight tracking-tight">
-                    {breedContent()[r.breedId].displayName}
-                  </h2>
-                  <span className="font-display text-sm tabular-nums text-muted-foreground">
-                    {r.score}%
-                  </span>
-                </div>
-                <div className="mt-2">
-                  <Badge tone="neutral">
-                    {t.result.beginnerFriendlinessLabel}: {beginnerLevel(breedById[r.breedId].traits.firstTimeSuitability)}
-                  </Badge>
-                </div>
-                {r.status !== "recommended" && (
-                  <p className="mt-2 text-sm text-accent">{r.warnings[0]}</p>
-                )}
-              </Link>
-              <div className="mt-5 border-t border-border pt-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">{ic.otherReason}</p>
-                <p className="mt-2 text-sm leading-relaxed">{insights.fits[0]?.text ?? scoreReading(r.score)}</p>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">{ic.otherTradeoffs}</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{insights.tradeoffs[0]?.text ?? ic.noTradeoffs}</p>
-              </div>
-            </li>
-          )})}
+              </li>
+            );
+          })}
         </ul>
       </section>
 
       {eliminated.length > 0 && !limitsRelaxed && (
         <section className="container-page mt-20 md:mt-28" aria-labelledby="removed-breeds-title">
           <Eyebrow>{ic.removedEyebrow}</Eyebrow>
-          <h2 id="removed-breeds-title" className="display-md mt-4">{ic.removedTitle}</h2>
+          <h2 id="removed-breeds-title" className="display-md mt-4">
+            {ic.removedTitle}
+          </h2>
           <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">{ic.removedBody}</p>
-          <Button tone="outline" className="mt-6" onClick={() => setShowRemoved((open) => !open)} aria-expanded={showRemoved}>
+          <Button
+            tone="outline"
+            className="mt-6"
+            onClick={() => setShowRemoved((open) => !open)}
+            aria-expanded={showRemoved}
+          >
             {showRemoved ? ic.hideRemoved : ic.showRemoved}
-            <ChevronDown className={cn("h-4 w-4 transition-transform", showRemoved && "rotate-180")} aria-hidden="true" />
+            <ChevronDown
+              className={cn("h-4 w-4 transition-transform", showRemoved && "rotate-180")}
+              aria-hidden="true"
+            />
           </Button>
           {showRemoved && (
             <ul className="animate-fade mt-6 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
               {eliminated.slice(0, 8).map(({ result, reasons }) => (
                 <li key={result.breedId} className="bg-background p-6">
                   <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="font-display text-lg">{breedContent()[result.breedId].displayName}</h3>
+                    <h3 className="font-display text-lg">
+                      {breedContent()[result.breedId].displayName}
+                    </h3>
                     <span className="text-xs text-muted-foreground">{result.score}%</span>
                   </div>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent">{ic.removedReason}</p>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent">
+                    {ic.removedReason}
+                  </p>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{reasons[0]}</p>
                 </li>
               ))}
@@ -1555,7 +1852,11 @@ function Results({
       </section>
 
       <div className="container-page mt-16 flex flex-wrap gap-3">
-        <ButtonLink to={withLangPrefix("/breeds/$breedId")} params={{ breedId: best.breedId } as never} size="lg">
+        <ButtonLink
+          to={withLangPrefix("/breeds/$breedId")}
+          params={{ breedId: best.breedId } as never}
+          size="lg"
+        >
           {t.result.viewBreed}
           <Arrow />
         </ButtonLink>

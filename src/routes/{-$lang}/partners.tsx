@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { Button, Eyebrow, Section, Arrow } from "@/components/dogmatch/ui";
 import { PartnerPortalLink } from "@/components/dogmatch/partner-portal-link";
-import { partnersContent } from "@/data/partners/content";
+import { partnersContent, partnersContentFor } from "@/data/partners/content";
 import { sendPartnerEnquiry } from "@/lib/partners/partner.functions";
 import { cn } from "@/lib/utils";
 import { useCopy, useLocale } from "@/i18n";
@@ -30,7 +30,7 @@ import partnerTraining from "@/assets/partner-training.jpg";
 import partnerOutdoors from "@/assets/partner-outdoors.jpg";
 import partnerMoment from "@/assets/partner-moment.jpg";
 import partnerCustomerDoggMatch from "@/assets/partner-customer-doggmatch.jpg";
-import { seoLinks, abs, localizedHead } from "@/lib/seo";
+import { seoLinks, abs, localizedHead, headLocale, breadcrumbLd, faqLd } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Become a DoggMatch Partner";
@@ -82,7 +82,23 @@ const seoCopy = {
 };
 
 export const Route = createFileRoute("/{-$lang}/partners")({
-  head: (ctx) => localizedHead(ctx, "/partners", seoCopy),
+  head: (ctx) => {
+    const locale = headLocale(ctx);
+    const content = partnersContentFor(locale);
+    return {
+      ...localizedHead(ctx, "/partners", seoCopy),
+      scripts: [
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: "Partners", path: "/partners" },
+          ],
+          locale,
+        ),
+        faqLd(content.partnerFaq.map((f) => ({ question: f.q, answer: f.a }))),
+      ],
+    };
+  },
   component: PartnersPage,
 });
 
@@ -105,7 +121,8 @@ const copy = {
       body: "DoggMatch helps people find the right dog and then live well with them. Our members are already looking for beds, groomers, trainers, vets and places to stay. As a partner, you get in front of them — with an offer you fully control.",
       cta: "Become a DoggMatch Partner",
       note: "We're looking for partners we'd happily recommend to a friend.",
-      imgAlt: "A dog owner and her golden retriever browsing the shelves of an independent pet shop",
+      imgAlt:
+        "A dog owner and her golden retriever browsing the shelves of an independent pet shop",
       caption: "The moment a member walks into your shop is the whole point.",
     },
     why: {
@@ -143,7 +160,8 @@ const copy = {
       eyebrow: "How it works",
       title: "Four steps, and no small print to wade through.",
       momentAlt: "A smiling owner with her rescue dog leaning against her outside a café",
-      caption: "We'd rather have a short list of partners we genuinely trust than a long one nobody reads.",
+      caption:
+        "We'd rather have a short list of partners we genuinely trust than a long one nobody reads.",
     },
     faq: {
       eyebrow: "Questions",
@@ -154,7 +172,8 @@ const copy = {
       title: "Become a DoggMatch Partner.",
       body: "Tell us a little about your business and what you'd like to offer. Nothing here commits you to anything — it's the start of a conversation.",
       thanksTitle: "Thank you. Your enquiry is on its way.",
-      thanksBody: "We've sent a short note to your inbox confirming it arrived, and a real person will read it and reply as soon as we can.",
+      thanksBody:
+        "We've sent a short note to your inbox confirming it arrived, and a real person will read it and reply as soon as we can.",
       again: "Send another enquiry",
       genericError: "Sorry, we couldn't send your enquiry right now. Please try again in a moment.",
       fields: {
@@ -163,9 +182,22 @@ const copy = {
         email: { label: "Email", placeholder: "you@yourbusiness.com" },
         country: { label: "Country", placeholder: "Where you're based" },
         website: { label: "Website", hint: "Optional", placeholder: "yourbusiness.com" },
-        category: { label: "Category", placeholder: "Pick the closest one", other: "Something else" },
-        offer: { label: "Proposed discount or benefit", hint: "A rough idea is fine", placeholder: "e.g. 15% off harnesses and leads, or a free first grooming consultation" },
-        message: { label: "Message", hint: "Optional — a sentence or two is plenty", placeholder: "Tell us about your business, who you look after, and anything you'd like to know." },
+        category: {
+          label: "Category",
+          placeholder: "Pick the closest one",
+          other: "Something else",
+        },
+        offer: {
+          label: "Proposed discount or benefit",
+          hint: "A rough idea is fine",
+          placeholder: "e.g. 15% off harnesses and leads, or a free first grooming consultation",
+        },
+        message: {
+          label: "Message",
+          hint: "Optional — a sentence or two is plenty",
+          placeholder:
+            "Tell us about your business, who you look after, and anything you'd like to know.",
+        },
         honeypot: "Leave this empty",
       },
       sending: "Sending…",
@@ -218,7 +250,8 @@ const copy = {
       eyebrow: "Slik fungerer det",
       title: "Fire steg, uten liten skrift å vasse gjennom.",
       momentAlt: "En smilende eier med redningshunden sin lent inntil seg utenfor en kafé",
-      caption: "Vi vil heller ha en kort liste med partnere vi virkelig stoler på enn en lang ingen leser.",
+      caption:
+        "Vi vil heller ha en kort liste med partnere vi virkelig stoler på enn en lang ingen leser.",
     },
     faq: {
       eyebrow: "Spørsmål",
@@ -229,18 +262,33 @@ const copy = {
       title: "Bli DoggMatch-partner.",
       body: "Fortell oss litt om bedriften din og hva du ønsker å tilby. Ingenting her forplikter deg til noe — det er starten på en samtale.",
       thanksTitle: "Takk. Henvendelsen din er på vei.",
-      thanksBody: "Vi har sendt en kort bekreftelse til innboksen din, og et ekte menneske vil lese den og svare så fort vi kan.",
+      thanksBody:
+        "Vi har sendt en kort bekreftelse til innboksen din, og et ekte menneske vil lese den og svare så fort vi kan.",
       again: "Send en ny henvendelse",
-      genericError: "Beklager, vi klarte ikke å sende henvendelsen din akkurat nå. Prøv gjerne igjen om et lite øyeblikk.",
+      genericError:
+        "Beklager, vi klarte ikke å sende henvendelsen din akkurat nå. Prøv gjerne igjen om et lite øyeblikk.",
       fields: {
         company: { label: "Bedrift", placeholder: "Navnet på bedriften din" },
         contact: { label: "Kontaktperson", placeholder: "Hvem vi kommer til å snakke med" },
         email: { label: "E-post", placeholder: "deg@bedriften.no" },
         country: { label: "Land", placeholder: "Hvor dere holder til" },
         website: { label: "Nettside", hint: "Valgfritt", placeholder: "bedriften.no" },
-        category: { label: "Kategori", placeholder: "Velg det som passer best", other: "Noe annet" },
-        offer: { label: "Foreslått rabatt eller fordel", hint: "En omtrentlig idé holder", placeholder: "f.eks. 15 % rabatt på seler og bånd, eller en gratis første time hos groomer" },
-        message: { label: "Melding", hint: "Valgfritt — en setning eller to er nok", placeholder: "Fortell oss om bedriften din, hvem dere er til for, og alt du lurer på." },
+        category: {
+          label: "Kategori",
+          placeholder: "Velg det som passer best",
+          other: "Noe annet",
+        },
+        offer: {
+          label: "Foreslått rabatt eller fordel",
+          hint: "En omtrentlig idé holder",
+          placeholder:
+            "f.eks. 15 % rabatt på seler og bånd, eller en gratis første time hos groomer",
+        },
+        message: {
+          label: "Melding",
+          hint: "Valgfritt — en setning eller to er nok",
+          placeholder: "Fortell oss om bedriften din, hvem dere er til for, og alt du lurer på.",
+        },
         honeypot: "La dette stå tomt",
       },
       sending: "Sender…",
@@ -255,7 +303,8 @@ const copy = {
       body: "DoggMatch pomaga ludziom wybrać odpowiedniego psa, a potem dobrze z nim żyć. Nasi członkowie kupują legowiska, umawiają się do groomera, szukają weterynarza i planują pierwszy wyjazd. Jako partner to Ciebie znajdą — dzięki ofercie, która sprawi, że przyjdą właśnie do Ciebie.",
       cta: "Zostań partnerem DoggMatch",
       note: "Bez opłaty za wpis. Bez prowizji. Odpowiada prawdziwa osoba.",
-      imgAlt: "Właścicielka psa i jej golden retriever przeglądają półki w niezależnym sklepie zoologicznym",
+      imgAlt:
+        "Właścicielka psa i jej golden retriever przeglądają półki w niezależnym sklepie zoologicznym",
       caption: "Ten moment, gdy członek wchodzi do Twojego sklepu, to cały sens.",
     },
     why: {
@@ -268,7 +317,8 @@ const copy = {
       eyebrow: "Kogo szukamy",
       title: "Osiem rodzajów firm, o które najczęściej pytają nasi członkowie.",
       body: "Jeśli Twoja praca dotyczy codziennego życia psa i chętnie przyjmiesz kogoś, kogo do Ciebie skierujemy, jest tu dla Ciebie miejsce.",
-      outdoorsAlt: "Wędrowiec na nadmorskim szlaku o wschodzie słońca ze swoim owczarkiem australijskim",
+      outdoorsAlt:
+        "Wędrowiec na nadmorskim szlaku o wschodzie słońca ze swoim owczarkiem australijskim",
       trainingAlt: "Trener kucający obok border collie podczas zajęć na świeżym powietrzu",
     },
     verification: {
@@ -292,8 +342,10 @@ const copy = {
     how: {
       eyebrow: "Jak to działa",
       title: "Cztery kroki, bez drobnego druku do przebrnięcia.",
-      momentAlt: "Uśmiechnięta właścicielka ze swoim psem ze schroniska opartym o nią przed kawiarnią",
-      caption: "Wolimy mieć krótką listę partnerów, którym naprawdę ufamy, niż długą, której nikt nie czyta.",
+      momentAlt:
+        "Uśmiechnięta właścicielka ze swoim psem ze schroniska opartym o nią przed kawiarnią",
+      caption:
+        "Wolimy mieć krótką listę partnerów, którym naprawdę ufamy, niż długą, której nikt nie czyta.",
     },
     faq: {
       eyebrow: "Pytania",
@@ -304,9 +356,11 @@ const copy = {
       title: "Zostań partnerem DoggMatch.",
       body: "Opowiedz nam trochę o swojej firmie i o tym, co chciałbyś/chciałabyś zaoferować. Nic tu do niczego Cię nie zobowiązuje — to dopiero początek rozmowy.",
       thanksTitle: "Dziękujemy. Twoje zgłoszenie jest w drodze.",
-      thanksBody: "Wysłaliśmy krótką wiadomość na Twoją skrzynkę z potwierdzeniem, że dotarło, a prawdziwa osoba przeczyta je i odpowie najszybciej, jak to możliwe.",
+      thanksBody:
+        "Wysłaliśmy krótką wiadomość na Twoją skrzynkę z potwierdzeniem, że dotarło, a prawdziwa osoba przeczyta je i odpowie najszybciej, jak to możliwe.",
       again: "Wyślij kolejne zgłoszenie",
-      genericError: "Przepraszamy, nie udało nam się teraz wysłać Twojego zgłoszenia. Spróbuj ponownie za chwilę.",
+      genericError:
+        "Przepraszamy, nie udało nam się teraz wysłać Twojego zgłoszenia. Spróbuj ponownie za chwilę.",
       fields: {
         company: { label: "Firma", placeholder: "Nazwa Twojej firmy" },
         contact: { label: "Osoba kontaktowa", placeholder: "Z kim będziemy rozmawiać" },
@@ -314,8 +368,18 @@ const copy = {
         country: { label: "Kraj", placeholder: "Skąd działasz" },
         website: { label: "Strona internetowa", hint: "Opcjonalnie", placeholder: "twojafirma.pl" },
         category: { label: "Kategoria", placeholder: "Wybierz najbliższą", other: "Coś innego" },
-        offer: { label: "Proponowana zniżka lub korzyść", hint: "Wystarczy ogólny pomysł", placeholder: "np. 15% zniżki na szelki i smycze albo bezpłatna pierwsza konsultacja groomerska" },
-        message: { label: "Wiadomość", hint: "Opcjonalnie — wystarczy jedno lub dwa zdania", placeholder: "Opowiedz nam o swojej firmie, kim się opiekujecie i o czym chciałbyś/chciałabyś wiedzieć." },
+        offer: {
+          label: "Proponowana zniżka lub korzyść",
+          hint: "Wystarczy ogólny pomysł",
+          placeholder:
+            "np. 15% zniżki na szelki i smycze albo bezpłatna pierwsza konsultacja groomerska",
+        },
+        message: {
+          label: "Wiadomość",
+          hint: "Opcjonalnie — wystarczy jedno lub dwa zdania",
+          placeholder:
+            "Opowiedz nam o swojej firmie, kim się opiekujecie i o czym chciałbyś/chciałabyś wiedzieć.",
+        },
         honeypot: "Zostaw to pole puste",
       },
       sending: "Wysyłanie…",
@@ -330,7 +394,8 @@ const copy = {
       body: "DoggMatch hjælper folk med at vælge den rette hund og leve godt sammen med den bagefter. Vores medlemmer køber senge, bestiller tid hos frisøren, finder en dyrlæge og planlægger den første tur væk. Som partner er det dig, de finder — med et tilbud, der får dem til at komme til dig.",
       cta: "Bliv DoggMatch-partner",
       note: "Ingen oprettelsesgebyr. Ingen provision. Et rigtigt menneske svarer.",
-      imgAlt: "En hundeejer og hendes golden retriever kigger på hylderne i en uafhængig dyrehandel",
+      imgAlt:
+        "En hundeejer og hendes golden retriever kigger på hylderne i en uafhængig dyrehandel",
       caption: "Øjeblikket hvor et medlem træder ind i din butik er hele pointen.",
     },
     why: {
@@ -344,7 +409,8 @@ const copy = {
       title: "Otte typer virksomheder, vores medlemmer spørger mest om.",
       body: "Arbejder du med noget, der gør hverdagen med hund bedre, og sætter du pris på, at vi sender en ven din vej, hører du hjemme her.",
       outdoorsAlt: "En vandrer på en kyststi ved solopgang sammen med sin australske fårehund",
-      trainingAlt: "En træner der sidder på hug ved siden af en border collie under et udendørs hold",
+      trainingAlt:
+        "En træner der sidder på hug ved siden af en border collie under et udendørs hold",
     },
     verification: {
       eyebrow: "Ved disken",
@@ -368,7 +434,8 @@ const copy = {
       eyebrow: "Sådan fungerer det",
       title: "Fire trin, uden småt at vade igennem.",
       momentAlt: "En smilende ejer med sin adoptivhund lænet op ad sig uden for en café",
-      caption: "Vi vil hellere have en kort liste med partnere, vi virkelig stoler på, end en lang, ingen læser.",
+      caption:
+        "Vi vil hellere have en kort liste med partnere, vi virkelig stoler på, end en lang, ingen læser.",
     },
     faq: {
       eyebrow: "Spørgsmål",
@@ -379,18 +446,34 @@ const copy = {
       title: "Bliv DoggMatch-partner.",
       body: "Fortæl os lidt om din virksomhed, og hvad du gerne vil tilbyde. Intet her forpligter dig til noget — det er starten på en samtale.",
       thanksTitle: "Tak. Din henvendelse er på vej.",
-      thanksBody: "Vi har sendt en kort bekræftelse til din indbakke, og et rigtigt menneske læser den og svarer, så snart vi kan.",
+      thanksBody:
+        "Vi har sendt en kort bekræftelse til din indbakke, og et rigtigt menneske læser den og svarer, så snart vi kan.",
       again: "Send en ny henvendelse",
-      genericError: "Beklager, vi kunne ikke sende din henvendelse lige nu. Prøv venligst igen om et øjeblik.",
+      genericError:
+        "Beklager, vi kunne ikke sende din henvendelse lige nu. Prøv venligst igen om et øjeblik.",
       fields: {
         company: { label: "Virksomhed", placeholder: "Din virksomheds navn" },
         contact: { label: "Kontaktperson", placeholder: "Hvem vi kommer til at tale med" },
         email: { label: "E-mail", placeholder: "dig@dinvirksomhed.dk" },
         country: { label: "Land", placeholder: "Hvor I holder til" },
         website: { label: "Hjemmeside", hint: "Valgfrit", placeholder: "dinvirksomhed.dk" },
-        category: { label: "Kategori", placeholder: "Vælg den, der passer bedst", other: "Noget andet" },
-        offer: { label: "Foreslået rabat eller fordel", hint: "En omtrentlig idé er fint", placeholder: "fx 15 % rabat på seler og liner, eller en gratis første konsultation hos frisøren" },
-        message: { label: "Besked", hint: "Valgfrit — en sætning eller to er nok", placeholder: "Fortæl os om din virksomhed, hvem I tager jer af, og alt, du gerne vil vide." },
+        category: {
+          label: "Kategori",
+          placeholder: "Vælg den, der passer bedst",
+          other: "Noget andet",
+        },
+        offer: {
+          label: "Foreslået rabat eller fordel",
+          hint: "En omtrentlig idé er fint",
+          placeholder:
+            "fx 15 % rabat på seler og liner, eller en gratis første konsultation hos frisøren",
+        },
+        message: {
+          label: "Besked",
+          hint: "Valgfrit — en sætning eller to er nok",
+          placeholder:
+            "Fortæl os om din virksomhed, hvem I tager jer af, og alt, du gerne vil vide.",
+        },
         honeypot: "Lad dette felt være tomt",
       },
       sending: "Sender…",
@@ -405,7 +488,8 @@ const copy = {
       body: "DoggMatch hjälper människor att välja rätt hund och sedan leva bra tillsammans med den. Våra medlemmar köper bäddar, bokar tid hos frisören, hittar en veterinär och planerar den första resan bort. Som partner är det dig de hittar — med ett erbjudande som får dem att komma till dig.",
       cta: "Bli DoggMatch-partner",
       note: "Ingen listavgift. Ingen provision. En riktig person svarar.",
-      imgAlt: "En hundägare och hennes golden retriever tittar bland hyllorna i en oberoende djuraffär",
+      imgAlt:
+        "En hundägare och hennes golden retriever tittar bland hyllorna i en oberoende djuraffär",
       caption: "Ögonblicket när en medlem kliver in i din butik är hela poängen.",
     },
     why: {
@@ -418,7 +502,8 @@ const copy = {
       eyebrow: "Vilka vi letar efter",
       title: "Åtta sorters företag som våra medlemmar frågar mest om.",
       body: "Arbetar du med något som gör vardagen med hund bättre, och uppskattar du att vi skickar en vän din väg, hör du hemma här.",
-      outdoorsAlt: "En vandrare på en kuststig vid soluppgång tillsammans med sin australian shepherd",
+      outdoorsAlt:
+        "En vandrare på en kuststig vid soluppgång tillsammans med sin australian shepherd",
       trainingAlt: "En instruktör som sitter på huk bredvid en border collie under en utomhuskurs",
     },
     verification: {
@@ -443,7 +528,8 @@ const copy = {
       eyebrow: "Så här fungerar det",
       title: "Fyra steg, utan finstilt att vada igenom.",
       momentAlt: "En leende ägare med sin adopterade hund lutad mot sig utanför ett kafé",
-      caption: "Vi vill hellre ha en kort lista med partner vi verkligen litar på än en lång som ingen läser.",
+      caption:
+        "Vi vill hellre ha en kort lista med partner vi verkligen litar på än en lång som ingen läser.",
     },
     faq: {
       eyebrow: "Frågor",
@@ -454,18 +540,33 @@ const copy = {
       title: "Bli DoggMatch-partner.",
       body: "Berätta lite om ditt företag och vad du skulle vilja erbjuda. Inget här förpliktigar dig till något — det är bara början på ett samtal.",
       thanksTitle: "Tack. Din förfrågan är på väg.",
-      thanksBody: "Vi har skickat en kort bekräftelse till din inkorg, och en riktig person läser den och svarar så snart vi kan.",
+      thanksBody:
+        "Vi har skickat en kort bekräftelse till din inkorg, och en riktig person läser den och svarar så snart vi kan.",
       again: "Skicka en ny förfrågan",
-      genericError: "Tyvärr kunde vi inte skicka din förfrågan just nu. Försök gärna igen om en liten stund.",
+      genericError:
+        "Tyvärr kunde vi inte skicka din förfrågan just nu. Försök gärna igen om en liten stund.",
       fields: {
         company: { label: "Företag", placeholder: "Ditt företags namn" },
         contact: { label: "Kontaktperson", placeholder: "Vem vi kommer att prata med" },
         email: { label: "E-post", placeholder: "du@dittforetag.se" },
         country: { label: "Land", placeholder: "Var ni finns" },
         website: { label: "Webbplats", hint: "Valfritt", placeholder: "dittforetag.se" },
-        category: { label: "Kategori", placeholder: "Välj den som passar bäst", other: "Något annat" },
-        offer: { label: "Föreslagen rabatt eller förmån", hint: "En ungefärlig idé räcker", placeholder: "t.ex. 15 % rabatt på selar och koppel, eller en gratis första konsultation hos frisören" },
-        message: { label: "Meddelande", hint: "Valfritt — en mening eller två räcker", placeholder: "Berätta om ditt företag, vilka ni tar hand om, och allt du undrar över." },
+        category: {
+          label: "Kategori",
+          placeholder: "Välj den som passar bäst",
+          other: "Något annat",
+        },
+        offer: {
+          label: "Föreslagen rabatt eller förmån",
+          hint: "En ungefärlig idé räcker",
+          placeholder:
+            "t.ex. 15 % rabatt på selar och koppel, eller en gratis första konsultation hos frisören",
+        },
+        message: {
+          label: "Meddelande",
+          hint: "Valfritt — en mening eller två räcker",
+          placeholder: "Berätta om ditt företag, vilka ni tar hand om, och allt du undrar över.",
+        },
         honeypot: "Lämna detta fält tomt",
       },
       sending: "Skickar…",
@@ -480,8 +581,10 @@ const copy = {
       body: "DoggMatch hilft Menschen, den richtigen Hund zu finden und danach gut mit ihm zu leben. Unsere Mitglieder kaufen Betten, buchen Termine beim Hundefriseur, suchen einen Tierarzt und planen die erste Reise. Als Partner sind Sie es, den sie finden — mit einem Angebot, das sie zu Ihnen führt.",
       cta: "DoggMatch-Partner werden",
       note: "Keine Listungsgebühr. Keine Provision. Ein echter Mensch antwortet.",
-      imgAlt: "Eine Hundebesitzerin und ihr Golden Retriever stöbern in den Regalen eines unabhängigen Zoofachgeschäfts",
-      caption: "Der Moment, in dem ein Mitglied Ihr Geschäft betritt, ist der ganze Sinn der Sache.",
+      imgAlt:
+        "Eine Hundebesitzerin und ihr Golden Retriever stöbern in den Regalen eines unabhängigen Zoofachgeschäfts",
+      caption:
+        "Der Moment, in dem ein Mitglied Ihr Geschäft betritt, ist der ganze Sinn der Sache.",
     },
     why: {
       eyebrow: "Was Sie bekommen",
@@ -493,7 +596,8 @@ const copy = {
       eyebrow: "Wen wir suchen",
       title: "Acht Arten von Unternehmen, nach denen unsere Mitglieder am häufigsten fragen.",
       body: "Wenn Ihre Arbeit den Alltag mit Hund verbessert und Sie es schätzen, wenn wir Ihnen einen Freund schicken, sind Sie hier richtig.",
-      outdoorsAlt: "Ein Wanderer auf einem Küstenpfad bei Sonnenaufgang mit seinem Australian Shepherd",
+      outdoorsAlt:
+        "Ein Wanderer auf einem Küstenpfad bei Sonnenaufgang mit seinem Australian Shepherd",
       trainingAlt: "Ein Trainer kniet neben einem Border Collie während eines Outdoor-Kurses",
     },
     verification: {
@@ -517,8 +621,10 @@ const copy = {
     how: {
       eyebrow: "So funktioniert es",
       title: "Vier Schritte, ohne Kleingedrucktes zu wälzen.",
-      momentAlt: "Eine lächelnde Besitzerin mit ihrem Rettungshund, der sich an sie lehnt, vor einem Café",
-      caption: "Wir hätten lieber eine kurze Liste von Partnern, denen wir wirklich vertrauen, als eine lange, die niemand liest.",
+      momentAlt:
+        "Eine lächelnde Besitzerin mit ihrem Rettungshund, der sich an sie lehnt, vor einem Café",
+      caption:
+        "Wir hätten lieber eine kurze Liste von Partnern, denen wir wirklich vertrauen, als eine lange, die niemand liest.",
     },
     faq: {
       eyebrow: "Fragen",
@@ -529,18 +635,34 @@ const copy = {
       title: "DoggMatch-Partner werden.",
       body: "Erzählen Sie uns ein wenig über Ihr Unternehmen und was Sie anbieten möchten. Nichts hier verpflichtet Sie zu etwas — es ist der Beginn eines Gesprächs.",
       thanksTitle: "Danke. Ihre Anfrage ist unterwegs.",
-      thanksBody: "Wir haben eine kurze Bestätigung an Ihr Postfach gesendet, und eine echte Person wird sie lesen und so schnell wie möglich antworten.",
+      thanksBody:
+        "Wir haben eine kurze Bestätigung an Ihr Postfach gesendet, und eine echte Person wird sie lesen und so schnell wie möglich antworten.",
       again: "Weitere Anfrage senden",
-      genericError: "Entschuldigung, wir konnten Ihre Anfrage gerade nicht senden. Bitte versuchen Sie es gleich noch einmal.",
+      genericError:
+        "Entschuldigung, wir konnten Ihre Anfrage gerade nicht senden. Bitte versuchen Sie es gleich noch einmal.",
       fields: {
         company: { label: "Unternehmen", placeholder: "Name Ihres Unternehmens" },
         contact: { label: "Ansprechpartner", placeholder: "Mit wem wir sprechen werden" },
         email: { label: "E-Mail", placeholder: "sie@ihrunternehmen.de" },
         country: { label: "Land", placeholder: "Wo Sie ansässig sind" },
         website: { label: "Website", hint: "Optional", placeholder: "ihrunternehmen.de" },
-        category: { label: "Kategorie", placeholder: "Wählen Sie die passendste", other: "Etwas anderes" },
-        offer: { label: "Vorgeschlagener Rabatt oder Vorteil", hint: "Eine grobe Idee reicht", placeholder: "z. B. 15 % Rabatt auf Geschirre und Leinen, oder eine kostenlose erste Beratung beim Hundefriseur" },
-        message: { label: "Nachricht", hint: "Optional — ein oder zwei Sätze genügen", placeholder: "Erzählen Sie uns von Ihrem Unternehmen, um wen Sie sich kümmern, und was Sie sonst noch wissen möchten." },
+        category: {
+          label: "Kategorie",
+          placeholder: "Wählen Sie die passendste",
+          other: "Etwas anderes",
+        },
+        offer: {
+          label: "Vorgeschlagener Rabatt oder Vorteil",
+          hint: "Eine grobe Idee reicht",
+          placeholder:
+            "z. B. 15 % Rabatt auf Geschirre und Leinen, oder eine kostenlose erste Beratung beim Hundefriseur",
+        },
+        message: {
+          label: "Nachricht",
+          hint: "Optional — ein oder zwei Sätze genügen",
+          placeholder:
+            "Erzählen Sie uns von Ihrem Unternehmen, um wen Sie sich kümmern, und was Sie sonst noch wissen möchten.",
+        },
         honeypot: "Dieses Feld leer lassen",
       },
       sending: "Wird gesendet…",
@@ -555,20 +677,23 @@ const copy = {
       body: "DoggMatch aide les gens à choisir le bon chien, puis à bien vivre avec lui. Nos membres achètent des couchages, prennent rendez-vous chez le toiletteur, cherchent un vétérinaire et planifient leur premier séjour hors de chez eux. En tant que partenaire, c'est vous qu'ils trouvent — grâce à une offre qui les fait venir chez vous.",
       cta: "Devenir partenaire DoggMatch",
       note: "Pas de frais de référencement. Pas de commission. Une vraie personne vous répond.",
-      imgAlt: "Une propriétaire de chien et son golden retriever parcourant les rayons d'une animalerie indépendante",
+      imgAlt:
+        "Une propriétaire de chien et son golden retriever parcourant les rayons d'une animalerie indépendante",
       caption: "Le moment où un membre entre dans votre boutique, c'est tout l'intérêt.",
     },
     why: {
       eyebrow: "Ce que vous obtenez",
       title: "Six bonnes raisons honnêtes d'être référencé chez nous.",
       groomingAlt: "Un toiletteur brossant délicatement un petit terrier dans un salon lumineux",
-      vetAlt: "Un vétérinaire écoutant le cœur d'un labrador pendant que le propriétaire est assis à côté",
+      vetAlt:
+        "Un vétérinaire écoutant le cœur d'un labrador pendant que le propriétaire est assis à côté",
     },
     categories: {
       eyebrow: "Qui nous recherchons",
       title: "Huit types d'entreprises que nos membres demandent le plus souvent.",
       body: "Si votre travail améliore le quotidien avec un chien et que vous appréciez qu'on vous envoie un ami, vous avez votre place ici.",
-      outdoorsAlt: "Un randonneur sur un sentier côtier au lever du soleil avec son berger australien",
+      outdoorsAlt:
+        "Un randonneur sur un sentier côtier au lever du soleil avec son berger australien",
       trainingAlt: "Un éducateur accroupi à côté d'un border collie pendant un cours en extérieur",
     },
     verification: {
@@ -592,8 +717,10 @@ const copy = {
     how: {
       eyebrow: "Comment ça marche",
       title: "Quatre étapes, sans petites lignes à décortiquer.",
-      momentAlt: "Une propriétaire souriante avec son chien adopté appuyé contre elle devant un café",
-      caption: "Nous préférons une courte liste de partenaires en qui nous avons vraiment confiance à une longue liste que personne ne lit.",
+      momentAlt:
+        "Une propriétaire souriante avec son chien adopté appuyé contre elle devant un café",
+      caption:
+        "Nous préférons une courte liste de partenaires en qui nous avons vraiment confiance à une longue liste que personne ne lit.",
     },
     faq: {
       eyebrow: "Questions",
@@ -604,18 +731,34 @@ const copy = {
       title: "Devenir partenaire DoggMatch.",
       body: "Parlez-nous un peu de votre entreprise et de ce que vous aimeriez proposer. Rien ici ne vous engage à quoi que ce soit — c'est le début d'une conversation.",
       thanksTitle: "Merci. Votre demande est en route.",
-      thanksBody: "Nous avons envoyé une courte confirmation dans votre boîte mail, et une vraie personne la lira et vous répondra dès que possible.",
+      thanksBody:
+        "Nous avons envoyé une courte confirmation dans votre boîte mail, et une vraie personne la lira et vous répondra dès que possible.",
       again: "Envoyer une autre demande",
-      genericError: "Désolé, nous n'avons pas pu envoyer votre demande pour le moment. Veuillez réessayer dans un instant.",
+      genericError:
+        "Désolé, nous n'avons pas pu envoyer votre demande pour le moment. Veuillez réessayer dans un instant.",
       fields: {
         company: { label: "Entreprise", placeholder: "Le nom de votre entreprise" },
         contact: { label: "Personne à contacter", placeholder: "À qui nous nous adresserons" },
         email: { label: "E-mail", placeholder: "vous@votreentreprise.com" },
         country: { label: "Pays", placeholder: "Où vous êtes basé" },
         website: { label: "Site web", hint: "Facultatif", placeholder: "votreentreprise.com" },
-        category: { label: "Catégorie", placeholder: "Choisissez la plus proche", other: "Autre chose" },
-        offer: { label: "Réduction ou avantage proposé", hint: "Une idée approximative suffit", placeholder: "p. ex. 15 % de réduction sur harnais et laisses, ou une première consultation de toilettage gratuite" },
-        message: { label: "Message", hint: "Facultatif — une phrase ou deux suffisent", placeholder: "Parlez-nous de votre entreprise, de qui vous vous occupez, et de tout ce que vous aimeriez savoir." },
+        category: {
+          label: "Catégorie",
+          placeholder: "Choisissez la plus proche",
+          other: "Autre chose",
+        },
+        offer: {
+          label: "Réduction ou avantage proposé",
+          hint: "Une idée approximative suffit",
+          placeholder:
+            "p. ex. 15 % de réduction sur harnais et laisses, ou une première consultation de toilettage gratuite",
+        },
+        message: {
+          label: "Message",
+          hint: "Facultatif — une phrase ou deux suffisent",
+          placeholder:
+            "Parlez-nous de votre entreprise, de qui vous vous occupez, et de tout ce que vous aimeriez savoir.",
+        },
         honeypot: "Laissez ce champ vide",
       },
       sending: "Envoi en cours…",
@@ -630,14 +773,16 @@ const copy = {
       body: "DoggMatch helpt mensen de juiste hond te kiezen en daarna goed met hem of haar te leven. Onze leden kopen manden, boeken afspraken bij de trimsalon, zoeken een dierenarts en plannen hun eerste reisje weg. Als partner ben jij degene die ze vinden — met een aanbod dat ze naar jou brengt.",
       cta: "Word DoggMatch-partner",
       note: "Geen vermeldingskosten. Geen commissie. Een echt mens antwoordt.",
-      imgAlt: "Een hondeneigenaar en haar golden retriever bekijken de schappen in een onafhankelijke dierenwinkel",
+      imgAlt:
+        "Een hondeneigenaar en haar golden retriever bekijken de schappen in een onafhankelijke dierenwinkel",
       caption: "Het moment waarop een lid jouw winkel binnenloopt, is precies waar het om draait.",
     },
     why: {
       eyebrow: "Wat je krijgt",
       title: "Zes eerlijke redenen om bij ons vermeld te staan.",
       groomingAlt: "Een trimmer borstelt voorzichtig een kleine terriër in een lichte salon",
-      vetAlt: "Een dierenarts luistert naar het hart van een labrador terwijl de eigenaar ernaast zit",
+      vetAlt:
+        "Een dierenarts luistert naar het hart van een labrador terwijl de eigenaar ernaast zit",
     },
     categories: {
       eyebrow: "Wie we zoeken",
@@ -667,8 +812,10 @@ const copy = {
     how: {
       eyebrow: "Zo werkt het",
       title: "Vier stappen, zonder kleine lettertjes om doorheen te ploeteren.",
-      momentAlt: "Een glimlachende eigenaar met haar hond uit het asiel die tegen haar aan leunt buiten een café",
-      caption: "We hebben liever een korte lijst met partners die we echt vertrouwen dan een lange die niemand leest.",
+      momentAlt:
+        "Een glimlachende eigenaar met haar hond uit het asiel die tegen haar aan leunt buiten een café",
+      caption:
+        "We hebben liever een korte lijst met partners die we echt vertrouwen dan een lange die niemand leest.",
     },
     faq: {
       eyebrow: "Vragen",
@@ -679,7 +826,8 @@ const copy = {
       title: "Word DoggMatch-partner.",
       body: "Vertel ons iets over je bedrijf en wat je zou willen aanbieden. Niets hier verplicht je tot iets — het is het begin van een gesprek.",
       thanksTitle: "Bedankt. Je aanvraag is onderweg.",
-      thanksBody: "We hebben een korte bevestiging naar je inbox gestuurd, en een echt mens leest hem en reageert zo snel mogelijk.",
+      thanksBody:
+        "We hebben een korte bevestiging naar je inbox gestuurd, en een echt mens leest hem en reageert zo snel mogelijk.",
       again: "Nog een aanvraag versturen",
       genericError: "Sorry, we konden je aanvraag nu niet versturen. Probeer het straks nog eens.",
       fields: {
@@ -688,9 +836,21 @@ const copy = {
         email: { label: "E-mail", placeholder: "jij@jouwbedrijf.com" },
         country: { label: "Land", placeholder: "Waar je gevestigd bent" },
         website: { label: "Website", hint: "Optioneel", placeholder: "jouwbedrijf.com" },
-        category: { label: "Categorie", placeholder: "Kies de dichtstbijzijnde", other: "Iets anders" },
-        offer: { label: "Voorgestelde korting of voordeel", hint: "Een ruw idee is prima", placeholder: "bijv. 15% korting op tuigjes en riemen, of een gratis eerste trimconsult" },
-        message: { label: "Bericht", hint: "Optioneel — een zin of twee is genoeg", placeholder: "Vertel ons over je bedrijf, voor wie je zorgt, en alles wat je wilt weten." },
+        category: {
+          label: "Categorie",
+          placeholder: "Kies de dichtstbijzijnde",
+          other: "Iets anders",
+        },
+        offer: {
+          label: "Voorgestelde korting of voordeel",
+          hint: "Een ruw idee is prima",
+          placeholder: "bijv. 15% korting op tuigjes en riemen, of een gratis eerste trimconsult",
+        },
+        message: {
+          label: "Bericht",
+          hint: "Optioneel — een zin of twee is genoeg",
+          placeholder: "Vertel ons over je bedrijf, voor wie je zorgt, en alles wat je wilt weten.",
+        },
         honeypot: "Laat dit veld leeg",
       },
       sending: "Versturen…",
@@ -705,7 +865,8 @@ const copy = {
       body: "DoggMatch auttaa ihmisiä valitsemaan oikean koiran ja elämään sitten hyvin sen kanssa. Jäsenemme ostavat petejä, varaavat aikoja trimmaajalle, etsivät eläinlääkärin ja suunnittelevat ensimmäistä matkaa pois kotoa. Kumppanina juuri sinut he löytävät — tarjouksella, joka saa heidät tulemaan luoksesi.",
       cta: "Ryhdy DoggMatch-kumppaniksi",
       note: "Ei listautumismaksua. Ei provisiota. Oikea ihminen vastaa.",
-      imgAlt: "Koiranomistaja ja hänen kultainennoutajansa selailemassa itsenäisen lemmikkiliikkeen hyllyjä",
+      imgAlt:
+        "Koiranomistaja ja hänen kultainennoutajansa selailemassa itsenäisen lemmikkiliikkeen hyllyjä",
       caption: "Hetki, jolloin jäsen astuu liikkeeseesi, on koko pointti.",
     },
     why: {
@@ -718,7 +879,8 @@ const copy = {
       eyebrow: "Keitä etsimme",
       title: "Kahdeksan yritystyyppiä, joista jäsenemme kysyvät eniten.",
       body: "Jos työsi tekee koiran kanssa elämisestä arjessa parempaa ja arvostat, että ohjaamme ystävän luoksesi, kuulut tänne.",
-      outdoorsAlt: "Vaeltaja rannikkoreitillä auringonnousun aikaan yhdessä australianpaimenkoiransa kanssa",
+      outdoorsAlt:
+        "Vaeltaja rannikkoreitillä auringonnousun aikaan yhdessä australianpaimenkoiransa kanssa",
       trainingAlt: "Kouluttaja kyykyssä border collien vieressä ulkona pidettävällä kurssilla",
     },
     verification: {
@@ -742,8 +904,10 @@ const copy = {
     how: {
       eyebrow: "Näin se toimii",
       title: "Neljä vaihetta, ilman pientä painettua tekstiä.",
-      momentAlt: "Hymyilevä omistaja adoptiokoiransa kanssa nojaamassa häneen kahvilan ulkopuolella",
-      caption: "Haluamme mieluummin lyhyen listan kumppaneista, joihin todella luotamme, kuin pitkän, jota kukaan ei lue.",
+      momentAlt:
+        "Hymyilevä omistaja adoptiokoiransa kanssa nojaamassa häneen kahvilan ulkopuolella",
+      caption:
+        "Haluamme mieluummin lyhyen listan kumppaneista, joihin todella luotamme, kuin pitkän, jota kukaan ei lue.",
     },
     faq: {
       eyebrow: "Kysymyksiä",
@@ -754,9 +918,11 @@ const copy = {
       title: "Ryhdy DoggMatch-kumppaniksi.",
       body: "Kerro meille vähän yrityksestäsi ja siitä, mitä haluaisit tarjota. Mikään tässä ei sido sinua mihinkään — tämä on vasta keskustelun alku.",
       thanksTitle: "Kiitos. Tiedustelusi on matkalla.",
-      thanksBody: "Lähetimme sähköpostiisi lyhyen vahvistuksen sen perillepääsystä, ja oikea ihminen lukee sen ja vastaa niin pian kuin mahdollista.",
+      thanksBody:
+        "Lähetimme sähköpostiisi lyhyen vahvistuksen sen perillepääsystä, ja oikea ihminen lukee sen ja vastaa niin pian kuin mahdollista.",
       again: "Lähetä uusi tiedustelu",
-      genericError: "Valitettavasti tiedusteluasi ei juuri nyt voitu lähettää. Yritä hetken kuluttua uudelleen.",
+      genericError:
+        "Valitettavasti tiedusteluasi ei juuri nyt voitu lähettää. Yritä hetken kuluttua uudelleen.",
       fields: {
         company: { label: "Yritys", placeholder: "Yrityksesi nimi" },
         contact: { label: "Yhteyshenkilö", placeholder: "Kenen kanssa olemme yhteydessä" },
@@ -764,8 +930,17 @@ const copy = {
         country: { label: "Maa", placeholder: "Missä toimit" },
         website: { label: "Verkkosivu", hint: "Valinnainen", placeholder: "yrityksesi.fi" },
         category: { label: "Kategoria", placeholder: "Valitse lähin", other: "Jokin muu" },
-        offer: { label: "Ehdotettu alennus tai etu", hint: "Suuntaa antava idea riittää", placeholder: "esim. 15 % alennus valjaista ja hihnoista, tai maksuton ensimmäinen trimmauskonsultaatio" },
-        message: { label: "Viesti", hint: "Valinnainen — lause tai kaksi riittää", placeholder: "Kerro yrityksestäsi, keitä hoidatte, ja mitä tahansa haluat tietää." },
+        offer: {
+          label: "Ehdotettu alennus tai etu",
+          hint: "Suuntaa antava idea riittää",
+          placeholder:
+            "esim. 15 % alennus valjaista ja hihnoista, tai maksuton ensimmäinen trimmauskonsultaatio",
+        },
+        message: {
+          label: "Viesti",
+          hint: "Valinnainen — lause tai kaksi riittää",
+          placeholder: "Kerro yrityksestäsi, keitä hoidatte, ja mitä tahansa haluat tietää.",
+        },
         honeypot: "Jätä tämä kenttä tyhjäksi",
       },
       sending: "Lähetetään…",
@@ -778,7 +953,8 @@ const copy = {
 const partnerFeatureCopy = {
   en: {
     hero: {
-      reciprocal: "In return, your own customers get 25% off DoggMatch+ for their first year. No listing fee. No commission. You decide what you offer our members.",
+      reciprocal:
+        "In return, your own customers get 25% off DoggMatch+ for their first year. No listing fee. No commission. You decide what you offer our members.",
       secondaryCta: "Let's talk",
     },
     mutual: {
@@ -786,18 +962,29 @@ const partnerFeatureCopy = {
       title: "Simple for you. Useful for your customers.",
       body: "You decide what benefit you want to give our members. In return, we give your customers 25% off DoggMatch+ for their first year.",
       customerTitle: "For your customer",
-      customerSteps: ["Receives your partner code", "Joins DoggMatch+", "Gets 25% off the first year"],
+      customerSteps: [
+        "Receives your partner code",
+        "Joins DoggMatch+",
+        "Gets 25% off the first year",
+      ],
       memberTitle: "For a DoggMatch+ member",
-      memberSteps: ["Shows the QR member card", "You verify it in seconds", "Receives the benefit you chose"],
-      imageAlt: "A pet shop owner showing DoggMatch on her phone to a happy customer with his golden retriever",
-      caption: "You keep control of your offer. We take care of your customers' first-year discount.",
+      memberSteps: [
+        "Shows the QR member card",
+        "You verify it in seconds",
+        "Receives the benefit you chose",
+      ],
+      imageAlt:
+        "A pet shop owner showing DoggMatch on her phone to a happy customer with his golden retriever",
+      caption:
+        "You keep control of your offer. We take care of your customers' first-year discount.",
       shareLabel: "Copy a link to this explanation",
       copiedLabel: "Link copied",
     },
   },
   no: {
     hero: {
-      reciprocal: "Til gjengjeld får dine egne kunder 25 % rabatt på DoggMatch+ det første året. Ingen oppføringsavgift. Ingen provisjon. Du bestemmer hva du tilbyr medlemmene våre.",
+      reciprocal:
+        "Til gjengjeld får dine egne kunder 25 % rabatt på DoggMatch+ det første året. Ingen oppføringsavgift. Ingen provisjon. Du bestemmer hva du tilbyr medlemmene våre.",
       secondaryCta: "La oss snakke sammen",
     },
     mutual: {
@@ -805,18 +992,29 @@ const partnerFeatureCopy = {
       title: "Enkelt for deg. Nyttig for kundene dine.",
       body: "Du bestemmer hvilken fordel du vil gi medlemmene våre. Til gjengjeld gir vi kundene dine 25 % rabatt på DoggMatch+ det første året.",
       customerTitle: "For kunden din",
-      customerSteps: ["Får partnerkoden din", "Blir medlem i DoggMatch+", "Får 25 % rabatt det første året"],
+      customerSteps: [
+        "Får partnerkoden din",
+        "Blir medlem i DoggMatch+",
+        "Får 25 % rabatt det første året",
+      ],
       memberTitle: "For et DoggMatch+-medlem",
-      memberSteps: ["Viser QR-medlemskortet sitt", "Du bekrefter det på sekunder", "Får fordelen du har valgt"],
-      imageAlt: "En dyrebutikkeier viser DoggMatch på telefonen til en fornøyd kunde med en golden retriever",
-      caption: "Du beholder kontrollen over tilbudet ditt. Vi tar oss av kundenes rabatt det første året.",
+      memberSteps: [
+        "Viser QR-medlemskortet sitt",
+        "Du bekrefter det på sekunder",
+        "Får fordelen du har valgt",
+      ],
+      imageAlt:
+        "En dyrebutikkeier viser DoggMatch på telefonen til en fornøyd kunde med en golden retriever",
+      caption:
+        "Du beholder kontrollen over tilbudet ditt. Vi tar oss av kundenes rabatt det første året.",
       shareLabel: "Kopier en lenke til denne forklaringen",
       copiedLabel: "Lenken er kopiert",
     },
   },
   pl: {
     hero: {
-      reciprocal: "W zamian twoi klienci otrzymują 25% zniżki na DoggMatch+ przez pierwszy rok. Bez opłaty za wpis. Bez prowizji. Ty decydujesz, co oferujesz naszym członkom.",
+      reciprocal:
+        "W zamian twoi klienci otrzymują 25% zniżki na DoggMatch+ przez pierwszy rok. Bez opłaty za wpis. Bez prowizji. Ty decydujesz, co oferujesz naszym członkom.",
       secondaryCta: "Porozmawiajmy",
     },
     mutual: {
@@ -824,18 +1022,29 @@ const partnerFeatureCopy = {
       title: "Proste dla ciebie. Przydatne dla twoich klientów.",
       body: "Ty decydujesz, jaką korzyść zaoferujesz naszym członkom. W zamian dajemy twoim klientom 25% zniżki na DoggMatch+ przez pierwszy rok.",
       customerTitle: "Dla twojego klienta",
-      customerSteps: ["Otrzymuje twój kod partnera", "Dołącza do DoggMatch+", "Otrzymuje 25% zniżki na pierwszy rok"],
+      customerSteps: [
+        "Otrzymuje twój kod partnera",
+        "Dołącza do DoggMatch+",
+        "Otrzymuje 25% zniżki na pierwszy rok",
+      ],
       memberTitle: "Dla członka DoggMatch+",
-      memberSteps: ["Pokazuje kartę członkowską z kodem QR", "Weryfikujesz ją w kilka sekund", "Otrzymuje wybraną przez ciebie korzyść"],
-      imageAlt: "Właścicielka sklepu zoologicznego pokazuje DoggMatch na telefonie zadowolonemu klientowi z golden retrieverem",
-      caption: "Zachowujesz kontrolę nad swoją ofertą. My zajmujemy się zniżką dla twoich klientów na pierwszy rok.",
+      memberSteps: [
+        "Pokazuje kartę członkowską z kodem QR",
+        "Weryfikujesz ją w kilka sekund",
+        "Otrzymuje wybraną przez ciebie korzyść",
+      ],
+      imageAlt:
+        "Właścicielka sklepu zoologicznego pokazuje DoggMatch na telefonie zadowolonemu klientowi z golden retrieverem",
+      caption:
+        "Zachowujesz kontrolę nad swoją ofertą. My zajmujemy się zniżką dla twoich klientów na pierwszy rok.",
       shareLabel: "Skopiuj link do tego wyjaśnienia",
       copiedLabel: "Link skopiowany",
     },
   },
   dk: {
     hero: {
-      reciprocal: "Til gengæld får dine egne kunder 25 % rabat på DoggMatch+ det første år. Ingen listepris. Ingen provision. Du bestemmer, hvad du tilbyder vores medlemmer.",
+      reciprocal:
+        "Til gengæld får dine egne kunder 25 % rabat på DoggMatch+ det første år. Ingen listepris. Ingen provision. Du bestemmer, hvad du tilbyder vores medlemmer.",
       secondaryCta: "Lad os tale sammen",
     },
     mutual: {
@@ -843,18 +1052,29 @@ const partnerFeatureCopy = {
       title: "Enkelt for dig. Nyttigt for dine kunder.",
       body: "Du bestemmer, hvilken fordel du vil give vores medlemmer. Til gengæld giver vi dine kunder 25 % rabat på DoggMatch+ det første år.",
       customerTitle: "For din kunde",
-      customerSteps: ["Modtager din partnerkode", "Melder sig ind i DoggMatch+", "Får 25 % rabat det første år"],
+      customerSteps: [
+        "Modtager din partnerkode",
+        "Melder sig ind i DoggMatch+",
+        "Får 25 % rabat det første år",
+      ],
       memberTitle: "For et DoggMatch+-medlem",
-      memberSteps: ["Viser sit QR-medlemskort", "Du bekræfter det på få sekunder", "Får den fordel, du har valgt"],
-      imageAlt: "En dyrehandelsejer viser DoggMatch på sin telefon til en glad kunde med sin golden retriever",
-      caption: "Du beholder kontrollen over dit tilbud. Vi tager os af dine kunders rabat det første år.",
+      memberSteps: [
+        "Viser sit QR-medlemskort",
+        "Du bekræfter det på få sekunder",
+        "Får den fordel, du har valgt",
+      ],
+      imageAlt:
+        "En dyrehandelsejer viser DoggMatch på sin telefon til en glad kunde med sin golden retriever",
+      caption:
+        "Du beholder kontrollen over dit tilbud. Vi tager os af dine kunders rabat det første år.",
       shareLabel: "Kopiér et link til denne forklaring",
       copiedLabel: "Link kopieret",
     },
   },
   se: {
     hero: {
-      reciprocal: "I gengäld får dina egna kunder 25 % rabatt på DoggMatch+ under det första året. Ingen listavgift. Ingen provision. Du bestämmer vad du erbjuder våra medlemmar.",
+      reciprocal:
+        "I gengäld får dina egna kunder 25 % rabatt på DoggMatch+ under det första året. Ingen listavgift. Ingen provision. Du bestämmer vad du erbjuder våra medlemmar.",
       secondaryCta: "Låt oss prata",
     },
     mutual: {
@@ -862,18 +1082,29 @@ const partnerFeatureCopy = {
       title: "Enkelt för dig. Användbart för dina kunder.",
       body: "Du bestämmer vilken förmån du vill ge våra medlemmar. I gengäld ger vi dina kunder 25 % rabatt på DoggMatch+ under det första året.",
       customerTitle: "För din kund",
-      customerSteps: ["Får din partnerkod", "Blir medlem i DoggMatch+", "Får 25 % rabatt det första året"],
+      customerSteps: [
+        "Får din partnerkod",
+        "Blir medlem i DoggMatch+",
+        "Får 25 % rabatt det första året",
+      ],
       memberTitle: "För en DoggMatch+-medlem",
-      memberSteps: ["Visar sitt QR-medlemskort", "Du verifierar det på några sekunder", "Får förmånen du valt"],
-      imageAlt: "En djuraffärsägare visar DoggMatch på sin telefon för en nöjd kund med sin golden retriever",
-      caption: "Du behåller kontrollen över ditt erbjudande. Vi tar hand om dina kunders rabatt det första året.",
+      memberSteps: [
+        "Visar sitt QR-medlemskort",
+        "Du verifierar det på några sekunder",
+        "Får förmånen du valt",
+      ],
+      imageAlt:
+        "En djuraffärsägare visar DoggMatch på sin telefon för en nöjd kund med sin golden retriever",
+      caption:
+        "Du behåller kontrollen över ditt erbjudande. Vi tar hand om dina kunders rabatt det första året.",
       shareLabel: "Kopiera en länk till den här förklaringen",
       copiedLabel: "Länken är kopierad",
     },
   },
   de: {
     hero: {
-      reciprocal: "Im Gegenzug erhalten Ihre eigenen Kunden 25 % Rabatt auf DoggMatch+ im ersten Jahr. Keine Listungsgebühr. Keine Provision. Sie entscheiden, was Sie unseren Mitgliedern anbieten.",
+      reciprocal:
+        "Im Gegenzug erhalten Ihre eigenen Kunden 25 % Rabatt auf DoggMatch+ im ersten Jahr. Keine Listungsgebühr. Keine Provision. Sie entscheiden, was Sie unseren Mitgliedern anbieten.",
       secondaryCta: "Lassen Sie uns sprechen",
     },
     mutual: {
@@ -881,18 +1112,29 @@ const partnerFeatureCopy = {
       title: "Einfach für Sie. Nützlich für Ihre Kunden.",
       body: "Sie entscheiden, welchen Vorteil Sie unseren Mitgliedern geben möchten. Im Gegenzug geben wir Ihren Kunden 25 % Rabatt auf DoggMatch+ im ersten Jahr.",
       customerTitle: "Für Ihren Kunden",
-      customerSteps: ["Erhält Ihren Partnercode", "Tritt DoggMatch+ bei", "Erhält 25 % Rabatt im ersten Jahr"],
+      customerSteps: [
+        "Erhält Ihren Partnercode",
+        "Tritt DoggMatch+ bei",
+        "Erhält 25 % Rabatt im ersten Jahr",
+      ],
       memberTitle: "Für ein DoggMatch+-Mitglied",
-      memberSteps: ["Zeigt seine QR-Mitgliedskarte", "Sie bestätigen sie in Sekunden", "Erhält den von Ihnen gewählten Vorteil"],
-      imageAlt: "Eine Zoofachhändlerin zeigt DoggMatch auf ihrem Handy einer zufriedenen Kundin mit ihrem Golden Retriever",
-      caption: "Sie behalten die Kontrolle über Ihr Angebot. Wir kümmern uns um den Erstjahresrabatt Ihrer Kunden.",
+      memberSteps: [
+        "Zeigt seine QR-Mitgliedskarte",
+        "Sie bestätigen sie in Sekunden",
+        "Erhält den von Ihnen gewählten Vorteil",
+      ],
+      imageAlt:
+        "Eine Zoofachhändlerin zeigt DoggMatch auf ihrem Handy einer zufriedenen Kundin mit ihrem Golden Retriever",
+      caption:
+        "Sie behalten die Kontrolle über Ihr Angebot. Wir kümmern uns um den Erstjahresrabatt Ihrer Kunden.",
       shareLabel: "Link zu dieser Erklärung kopieren",
       copiedLabel: "Link kopiert",
     },
   },
   fr: {
     hero: {
-      reciprocal: "En échange, vos propres clients bénéficient de 25 % de réduction sur DoggMatch+ pour leur première année. Pas de frais de référencement. Pas de commission. Vous décidez ce que vous offrez à nos membres.",
+      reciprocal:
+        "En échange, vos propres clients bénéficient de 25 % de réduction sur DoggMatch+ pour leur première année. Pas de frais de référencement. Pas de commission. Vous décidez ce que vous offrez à nos membres.",
       secondaryCta: "Discutons-en",
     },
     mutual: {
@@ -900,18 +1142,29 @@ const partnerFeatureCopy = {
       title: "Simple pour vous. Utile pour vos clients.",
       body: "Vous décidez quel avantage vous souhaitez offrir à nos membres. En échange, nous offrons à vos clients 25 % de réduction sur DoggMatch+ pour leur première année.",
       customerTitle: "Pour votre client",
-      customerSteps: ["Reçoit votre code partenaire", "Rejoint DoggMatch+", "Bénéficie de 25 % de réduction la première année"],
+      customerSteps: [
+        "Reçoit votre code partenaire",
+        "Rejoint DoggMatch+",
+        "Bénéficie de 25 % de réduction la première année",
+      ],
       memberTitle: "Pour un membre DoggMatch+",
-      memberSteps: ["Montre sa carte de membre QR", "Vous la vérifiez en quelques secondes", "Reçoit l'avantage que vous avez choisi"],
-      imageAlt: "Une propriétaire d'animalerie montrant DoggMatch sur son téléphone à une cliente satisfaite avec son golden retriever",
-      caption: "Vous gardez le contrôle de votre offre. Nous nous occupons de la réduction de première année de vos clients.",
+      memberSteps: [
+        "Montre sa carte de membre QR",
+        "Vous la vérifiez en quelques secondes",
+        "Reçoit l'avantage que vous avez choisi",
+      ],
+      imageAlt:
+        "Une propriétaire d'animalerie montrant DoggMatch sur son téléphone à une cliente satisfaite avec son golden retriever",
+      caption:
+        "Vous gardez le contrôle de votre offre. Nous nous occupons de la réduction de première année de vos clients.",
       shareLabel: "Copier un lien vers cette explication",
       copiedLabel: "Lien copié",
     },
   },
   nl: {
     hero: {
-      reciprocal: "In ruil daarvoor krijgen jouw eigen klanten 25% korting op DoggMatch+ voor hun eerste jaar. Geen vermeldingskosten. Geen commissie. Jij bepaalt wat je onze leden aanbiedt.",
+      reciprocal:
+        "In ruil daarvoor krijgen jouw eigen klanten 25% korting op DoggMatch+ voor hun eerste jaar. Geen vermeldingskosten. Geen commissie. Jij bepaalt wat je onze leden aanbiedt.",
       secondaryCta: "Laten we praten",
     },
     mutual: {
@@ -919,18 +1172,29 @@ const partnerFeatureCopy = {
       title: "Eenvoudig voor jou. Nuttig voor je klanten.",
       body: "Jij bepaalt welk voordeel je onze leden wilt geven. In ruil daarvoor geven wij jouw klanten 25% korting op DoggMatch+ voor hun eerste jaar.",
       customerTitle: "Voor jouw klant",
-      customerSteps: ["Ontvangt jouw partnercode", "Wordt lid van DoggMatch+", "Krijgt 25% korting op het eerste jaar"],
+      customerSteps: [
+        "Ontvangt jouw partnercode",
+        "Wordt lid van DoggMatch+",
+        "Krijgt 25% korting op het eerste jaar",
+      ],
       memberTitle: "Voor een DoggMatch+-lid",
-      memberSteps: ["Toont de QR-ledenpas", "Jij verifieert hem in enkele seconden", "Ontvangt het voordeel dat jij koos"],
-      imageAlt: "Een dierenwinkeleigenaar laat DoggMatch op haar telefoon zien aan een tevreden klant met zijn golden retriever",
-      caption: "Jij behoudt de controle over je aanbod. Wij zorgen voor de korting in het eerste jaar van je klanten.",
+      memberSteps: [
+        "Toont de QR-ledenpas",
+        "Jij verifieert hem in enkele seconden",
+        "Ontvangt het voordeel dat jij koos",
+      ],
+      imageAlt:
+        "Een dierenwinkeleigenaar laat DoggMatch op haar telefoon zien aan een tevreden klant met zijn golden retriever",
+      caption:
+        "Jij behoudt de controle over je aanbod. Wij zorgen voor de korting in het eerste jaar van je klanten.",
       shareLabel: "Kopieer een link naar deze uitleg",
       copiedLabel: "Link gekopieerd",
     },
   },
   fi: {
     hero: {
-      reciprocal: "Vastineeksi omat asiakkaasi saavat 25 % alennuksen DoggMatch+:sta ensimmäiseltä vuodelta. Ei listautumismaksua. Ei provisiota. Sinä päätät, mitä tarjoat jäsenillemme.",
+      reciprocal:
+        "Vastineeksi omat asiakkaasi saavat 25 % alennuksen DoggMatch+:sta ensimmäiseltä vuodelta. Ei listautumismaksua. Ei provisiota. Sinä päätät, mitä tarjoat jäsenillemme.",
       secondaryCta: "Jutellaan",
     },
     mutual: {
@@ -938,11 +1202,21 @@ const partnerFeatureCopy = {
       title: "Yksinkertaista sinulle. Hyödyllistä asiakkaillesi.",
       body: "Sinä päätät, minkä edun haluat antaa jäsenillemme. Vastineeksi annamme asiakkaillesi 25 % alennuksen DoggMatch+:sta ensimmäiseltä vuodelta.",
       customerTitle: "Asiakkaallesi",
-      customerSteps: ["Saa kumppanikoodisi", "Liittyy DoggMatch+-jäseneksi", "Saa 25 % alennuksen ensimmäiseltä vuodelta"],
+      customerSteps: [
+        "Saa kumppanikoodisi",
+        "Liittyy DoggMatch+-jäseneksi",
+        "Saa 25 % alennuksen ensimmäiseltä vuodelta",
+      ],
       memberTitle: "DoggMatch+-jäsenelle",
-      memberSteps: ["Näyttää QR-jäsenkorttinsa", "Varmistat sen sekunneissa", "Saa valitsemasi edun"],
-      imageAlt: "Lemmikkiliikkeen omistaja näyttää DoggMatchia puhelimestaan tyytyväiselle asiakkaalle, jolla on kultainennoutaja",
-      caption: "Sinä pidät hallinnan tarjouksestasi. Me huolehdimme asiakkaidesi ensimmäisen vuoden alennuksesta.",
+      memberSteps: [
+        "Näyttää QR-jäsenkorttinsa",
+        "Varmistat sen sekunneissa",
+        "Saa valitsemasi edun",
+      ],
+      imageAlt:
+        "Lemmikkiliikkeen omistaja näyttää DoggMatchia puhelimestaan tyytyväiselle asiakkaalle, jolla on kultainennoutaja",
+      caption:
+        "Sinä pidät hallinnan tarjouksestasi. Me huolehdimme asiakkaidesi ensimmäisen vuoden alennuksesta.",
       shareLabel: "Kopioi linkki tähän selitykseen",
       copiedLabel: "Linkki kopioitu",
     },
@@ -961,7 +1235,8 @@ const partnerTypesCopy = {
       {
         id: "equipment",
         title: "Pet shops & equipment",
-        tagline: "The first weeks with a new dog involve a lot of shopping — and members come in with questions, not just a list.",
+        tagline:
+          "The first weeks with a new dog involve a lot of shopping — and members come in with questions, not just a list.",
         ask: [
           "Harness and lead fitting that actually fits",
           "Help choosing beds, crates and toys that last",
@@ -976,7 +1251,8 @@ const partnerTypesCopy = {
       {
         id: "grooming",
         title: "Groomers",
-        tagline: "A calm groomer is worth their weight in gold, especially for puppies and nervous rescues.",
+        tagline:
+          "A calm groomer is worth their weight in gold, especially for puppies and nervous rescues.",
         ask: [
           "A gentle first puppy trim",
           "Patient handling of anxious dogs",
@@ -991,7 +1267,8 @@ const partnerTypesCopy = {
       {
         id: "training",
         title: "Trainers",
-        tagline: "From puppy class to a rescue dog's first recall, members look for reward-based help they can trust.",
+        tagline:
+          "From puppy class to a rescue dog's first recall, members look for reward-based help they can trust.",
         ask: [
           "Puppy classes with small groups",
           "Help with recall, loose-lead walking and jumping up",
@@ -1006,7 +1283,8 @@ const partnerTypesCopy = {
       {
         id: "vet",
         title: "Veterinary clinics",
-        tagline: "New owners want a clinic that explains things plainly and doesn't rush. That first introduction is worth making well.",
+        tagline:
+          "New owners want a clinic that explains things plainly and doesn't rush. That first introduction is worth making well.",
         ask: [
           "First check-ups and vaccination plans",
           "Clear guidance on insurance and microchipping",
@@ -1021,7 +1299,8 @@ const partnerTypesCopy = {
       {
         id: "boarding",
         title: "Boarding & daycare",
-        tagline: "The first night away is a big step. Members want to meet the people and see the place before they book.",
+        tagline:
+          "The first night away is a big step. Members want to meet the people and see the place before they book.",
         ask: [
           "A trial day or a short stay to start with",
           "Weekend and holiday cover they can plan around",
@@ -1035,7 +1314,8 @@ const partnerTypesCopy = {
       },
     ],
     alsoTitle: "Also very welcome",
-    alsoBody: "If your work touches a dog's everyday life in any other way, we'd still like to hear from you.",
+    alsoBody:
+      "If your work touches a dog's everyday life in any other way, we'd still like to hear from you.",
   },
   no: {
     askTitle: "Hva medlemmer vanligvis spør om",
@@ -1044,7 +1324,8 @@ const partnerTypesCopy = {
       {
         id: "equipment",
         title: "Dyrepensjonater og utstyr",
-        tagline: "De første ukene med en ny hund innebærer mye handling – og medlemmer kommer med spørsmål, ikke bare en liste.",
+        tagline:
+          "De første ukene med en ny hund innebærer mye handling – og medlemmer kommer med spørsmål, ikke bare en liste.",
         ask: [
           "Sele og bånd som passer ordentlig",
           "Hjelp til å velge senger, bur og leker som varer",
@@ -1059,7 +1340,8 @@ const partnerTypesCopy = {
       {
         id: "grooming",
         title: "Pelsstell",
-        tagline: "En rolig hundefrisør er gull verdt, spesielt for valper og nervøse omplasseringshunder.",
+        tagline:
+          "En rolig hundefrisør er gull verdt, spesielt for valper og nervøse omplasseringshunder.",
         ask: [
           "En forsiktig første klipp for valper",
           "Tålmodig håndtering av engstelige hunder",
@@ -1074,7 +1356,8 @@ const partnerTypesCopy = {
       {
         id: "training",
         title: "Hundetrener",
-        tagline: "Fra valpekurs til en omplasseringshunds første innkalling, medlemmer ser etter belønningsbasert hjelp de kan stole på.",
+        tagline:
+          "Fra valpekurs til en omplasseringshunds første innkalling, medlemmer ser etter belønningsbasert hjelp de kan stole på.",
         ask: [
           "Valpekurs med små grupper",
           "Hjelp med innkalling, løsline-gange og hopping",
@@ -1089,7 +1372,8 @@ const partnerTypesCopy = {
       {
         id: "vet",
         title: "Veterinærklinikker",
-        tagline: "Nye eiere ønsker en klinikk som forklarer ting enkelt og ikke har hastverk. Den første introduksjonen er verdt å gjøre godt.",
+        tagline:
+          "Nye eiere ønsker en klinikk som forklarer ting enkelt og ikke har hastverk. Den første introduksjonen er verdt å gjøre godt.",
         ask: [
           "Første helsesjekker og vaksinasjonsplaner",
           "Klar veiledning om forsikring og mikrochipping",
@@ -1104,7 +1388,8 @@ const partnerTypesCopy = {
       {
         id: "boarding",
         title: "Hundepass og dagpasning",
-        tagline: "Den første natten borte er et stort steg. Medlemmer ønsker å møte folkene og se stedet før de bestiller.",
+        tagline:
+          "Den første natten borte er et stort steg. Medlemmer ønsker å møte folkene og se stedet før de bestiller.",
         ask: [
           "En prøvedag eller et kort opphold til å begynne med",
           "Helge- og feriedekning de kan planlegge rundt",
@@ -1118,7 +1403,8 @@ const partnerTypesCopy = {
       },
     ],
     alsoTitle: "Også hjertelig velkommen",
-    alsoBody: "Hvis arbeidet ditt berører en hunds hverdag på noen annen måte, vil vi fortsatt gjerne høre fra deg.",
+    alsoBody:
+      "Hvis arbeidet ditt berører en hunds hverdag på noen annen måte, vil vi fortsatt gjerne høre fra deg.",
   },
   pl: {
     askTitle: "Czego zazwyczaj szukają członkowie",
@@ -1127,7 +1413,8 @@ const partnerTypesCopy = {
       {
         id: "equipment",
         title: "Sklepy zoologiczne i akcesoria",
-        tagline: "Pierwsze tygodnie z nowym psem to mnóstwo zakupów – a członkowie przychodzą z pytaniami, nie tylko z listą.",
+        tagline:
+          "Pierwsze tygodnie z nowym psem to mnóstwo zakupów – a członkowie przychodzą z pytaniami, nie tylko z listą.",
         ask: [
           "Dobrze dopasowane szelki i smycz",
           "Pomoc w wyborze legowisk, klatek i zabawek, które posłużą dłużej",
@@ -1142,7 +1429,8 @@ const partnerTypesCopy = {
       {
         id: "grooming",
         title: "Salony pielęgnacji",
-        tagline: "Spokojny groomer jest na wagę złota, zwłaszcza dla szczeniąt i nerwowych psów ze schroniska.",
+        tagline:
+          "Spokojny groomer jest na wagę złota, zwłaszcza dla szczeniąt i nerwowych psów ze schroniska.",
         ask: [
           "Delikatne pierwsze strzyżenie szczeniaka",
           "Cierpliwe podejście do zestresowanych psów",
@@ -1157,7 +1445,8 @@ const partnerTypesCopy = {
       {
         id: "training",
         title: "Szkoleniowcy",
-        tagline: "Od zajęć dla szczeniąt po pierwsze przywołanie psa ze schroniska – członkowie szukają nagradzającej pomocy, której mogą zaufać.",
+        tagline:
+          "Od zajęć dla szczeniąt po pierwsze przywołanie psa ze schroniska – członkowie szukają nagradzającej pomocy, której mogą zaufać.",
         ask: [
           "Zajęcia dla szczeniąt w małych grupach",
           "Pomoc w przywołaniu, nauce chodzenia na luźnej smyczy i oduczeniu skakania",
@@ -1172,7 +1461,8 @@ const partnerTypesCopy = {
       {
         id: "vet",
         title: "Kliniki weterynaryjne",
-        tagline: "Nowi właściciele chcą kliniki, która wszystko jasno wyjaśnia i nie spieszy się. Pierwsze spotkanie warto dobrze zaplanować.",
+        tagline:
+          "Nowi właściciele chcą kliniki, która wszystko jasno wyjaśnia i nie spieszy się. Pierwsze spotkanie warto dobrze zaplanować.",
         ask: [
           "Pierwsze badania kontrolne i plany szczepień",
           "Jasne wskazówki dotyczące ubezpieczenia i chipowania",
@@ -1187,7 +1477,8 @@ const partnerTypesCopy = {
       {
         id: "boarding",
         title: "Hotele i opieka dzienna",
-        tagline: "Pierwsza noc poza domem to duży krok. Członkowie chcą poznać ludzi i zobaczyć miejsce, zanim zarezerwują.",
+        tagline:
+          "Pierwsza noc poza domem to duży krok. Członkowie chcą poznać ludzi i zobaczyć miejsce, zanim zarezerwują.",
         ask: [
           "Dzień próbny lub krótki pobyt na początek",
           "Opieka weekendowa i świąteczna, którą można zaplanować",
@@ -1201,7 +1492,8 @@ const partnerTypesCopy = {
       },
     ],
     alsoTitle: "Również mile widziane",
-    alsoBody: "Jeśli Twoja praca w jakikolwiek inny sposób dotyczy codziennego życia psa, nadal chętnie Cię poznamy.",
+    alsoBody:
+      "Jeśli Twoja praca w jakikolwiek inny sposób dotyczy codziennego życia psa, nadal chętnie Cię poznamy.",
   },
   dk: {
     askTitle: "Hvad medlemmer ofte spørger om",
@@ -1210,7 +1502,8 @@ const partnerTypesCopy = {
       {
         id: "equipment",
         title: "Dyrlægeudstyr og tilbehør",
-        tagline: "De første uger med en ny hund involverer en masse indkøb – og medlemmer kommer med spørgsmål, ikke bare en indkøbsliste.",
+        tagline:
+          "De første uger med en ny hund involverer en masse indkøb – og medlemmer kommer med spørgsmål, ikke bare en indkøbsliste.",
         ask: [
           "Sele og snor der passer ordentligt",
           "Hjælp til at vælge senge, bure og legetøj der holder",
@@ -1225,7 +1518,8 @@ const partnerTypesCopy = {
       {
         id: "grooming",
         title: "Professionel pelspleje",
-        tagline: "En rolig hundefrisør er guld værd, især for hvalpe og nervøse hunde fra internat.",
+        tagline:
+          "En rolig hundefrisør er guld værd, især for hvalpe og nervøse hunde fra internat.",
         ask: [
           "En blid første klipning af hvalpen",
           "Tålmodig håndtering af ængstelige hunde",
@@ -1240,7 +1534,8 @@ const partnerTypesCopy = {
       {
         id: "training",
         title: "Hundetrænere",
-        tagline: "Fra hvalpetræning til en adopteret hunds første indkald – medlemmer søger belønningsbaseret hjælp, de kan stole på.",
+        tagline:
+          "Fra hvalpetræning til en adopteret hunds første indkald – medlemmer søger belønningsbaseret hjælp, de kan stole på.",
         ask: [
           "Hvalpetræning med små hold",
           "Hjælp til indkald, gå pænt i snor og springe op",
@@ -1255,7 +1550,8 @@ const partnerTypesCopy = {
       {
         id: "vet",
         title: "Dyrlægeklinikker",
-        tagline: "Nye hundeejere ønsker en klinik, der forklarer tingene tydeligt og ikke har travlt. Den første introduktion er værd at gøre godt.",
+        tagline:
+          "Nye hundeejere ønsker en klinik, der forklarer tingene tydeligt og ikke har travlt. Den første introduktion er værd at gøre godt.",
         ask: [
           "Første sundhedstjek og vaccinationsplaner",
           "Klar vejledning om forsikring og chipmærkning",
@@ -1270,7 +1566,8 @@ const partnerTypesCopy = {
       {
         id: "boarding",
         title: "Hundepension og pasning",
-        tagline: "Den første nat væk hjemmefra er et stort skridt. Medlemmer vil gerne møde personalet og se stedet, før de booker.",
+        tagline:
+          "Den første nat væk hjemmefra er et stort skridt. Medlemmer vil gerne møde personalet og se stedet, før de booker.",
         ask: [
           "En prøvedag eller et kort ophold til at starte med",
           "Weekend- og feriedækning de kan planlægge efter",
@@ -1284,7 +1581,8 @@ const partnerTypesCopy = {
       },
     ],
     alsoTitle: "Også meget velkomne",
-    alsoBody: "Hvis dit arbejde på anden vis berører en hunds hverdag, vil vi stadig gerne høre fra dig.",
+    alsoBody:
+      "Hvis dit arbejde på anden vis berører en hunds hverdag, vil vi stadig gerne høre fra dig.",
   },
   se: {
     askTitle: "Vad medlemmar brukar fråga om",
@@ -1293,7 +1591,8 @@ const partnerTypesCopy = {
       {
         id: "equipment",
         title: "Djuraffärer & tillbehör",
-        tagline: "De första veckorna med en ny hund innebär mycket inköp – och medlemmar kommer med frågor, inte bara en inköpslista.",
+        tagline:
+          "De första veckorna med en ny hund innebär mycket inköp – och medlemmar kommer med frågor, inte bara en inköpslista.",
         ask: [
           "Hundsele och koppel som faktiskt sitter bra",
           "Hjälp att välja bäddar, burar och leksaker som håller",
@@ -1308,7 +1607,8 @@ const partnerTypesCopy = {
       {
         id: "grooming",
         title: "Pälsvårdare",
-        tagline: "En lugn och trygg pälsvårdare är guld värd, särskilt för valpar och nervösa omplaceringshundar.",
+        tagline:
+          "En lugn och trygg pälsvårdare är guld värd, särskilt för valpar och nervösa omplaceringshundar.",
         ask: [
           "En mjuk första klippning för valpen",
           "Tålmodig hantering av oroliga hundar",
@@ -1323,7 +1623,8 @@ const partnerTypesCopy = {
       {
         id: "training",
         title: "Hundtränare",
-        tagline: "Från valpkurs till en omplaceringshunds första inkallning, medlemmar söker belöningsbaserad hjälp de kan lita på.",
+        tagline:
+          "Från valpkurs till en omplaceringshunds första inkallning, medlemmar söker belöningsbaserad hjälp de kan lita på.",
         ask: [
           "Valpkurser med små grupper",
           "Hjälp med inkallning, följsamhet och hopp upp",
@@ -1338,7 +1639,8 @@ const partnerTypesCopy = {
       {
         id: "vet",
         title: "Veterinärkliniker",
-        tagline: "Nya hundägare vill ha en klinik som förklarar saker tydligt och inte stressar. Den första kontakten är viktig att göra bra.",
+        tagline:
+          "Nya hundägare vill ha en klinik som förklarar saker tydligt och inte stressar. Den första kontakten är viktig att göra bra.",
         ask: [
           "Första hälsokontroller och vaccinationsplaner",
           "Tydlig vägledning om försäkring och chipmärkning",
@@ -1353,7 +1655,8 @@ const partnerTypesCopy = {
       {
         id: "boarding",
         title: "Hundpensionat & dagis",
-        tagline: "Den första natten borta är ett stort steg. Medlemmar vill träffa personalen och se stället innan de bokar.",
+        tagline:
+          "Den första natten borta är ett stort steg. Medlemmar vill träffa personalen och se stället innan de bokar.",
         ask: [
           "En prova-på-dag eller en kortare vistelse till att börja med",
           "Helg- och semesteromsorg de kan planera kring",
@@ -1367,7 +1670,8 @@ const partnerTypesCopy = {
       },
     ],
     alsoTitle: "Även välkomna",
-    alsoBody: "Om ditt arbete berör en hunds vardag på något annat sätt, vill vi ändå gärna höra från dig.",
+    alsoBody:
+      "Om ditt arbete berör en hunds vardag på något annat sätt, vill vi ändå gärna höra från dig.",
   },
   fi: {
     askTitle: "Mitä jäsenet usein kysyvät",
@@ -1376,7 +1680,8 @@ const partnerTypesCopy = {
       {
         id: "equipment",
         title: "Lemmikkitarvikeliikkeet ja varusteet",
-        tagline: "Uuden koiran kanssa ensimmäiset viikot sisältävät paljon ostoksia – ja jäsenet tulevat kysymään neuvoa, eivät vain listaa.",
+        tagline:
+          "Uuden koiran kanssa ensimmäiset viikot sisältävät paljon ostoksia – ja jäsenet tulevat kysymään neuvoa, eivät vain listaa.",
         ask: [
           "Valjaat ja talutushihna, jotka todella sopivat",
           "Apua kestävien petien, häkkien ja lelujen valintaan",
@@ -1391,7 +1696,8 @@ const partnerTypesCopy = {
       {
         id: "grooming",
         title: "Trimmaajat",
-        tagline: "Rauhallinen trimmaaja on kullanarvoinen, erityisesti pennuille ja arkojen rescue-koirien kanssa.",
+        tagline:
+          "Rauhallinen trimmaaja on kullanarvoinen, erityisesti pennuille ja arkojen rescue-koirien kanssa.",
         ask: [
           "Hellävarainen ensimmäinen pentutrimmi",
           "Kärsivällinen käsittely ahdistuneille koirille",
@@ -1406,7 +1712,8 @@ const partnerTypesCopy = {
       {
         id: "training",
         title: "Kouluttajat",
-        tagline: "Pentukurssista rescue-koiran ensimmäiseen luoksetuloon, jäsenet etsivät palkitsemiseen perustuvaa apua, johon voi luottaa.",
+        tagline:
+          "Pentukurssista rescue-koiran ensimmäiseen luoksetuloon, jäsenet etsivät palkitsemiseen perustuvaa apua, johon voi luottaa.",
         ask: [
           "Pentukurssit pienryhmissä",
           "Apua luoksetuloon, hihnakävelyyn ja hyppimiseen",
@@ -1421,7 +1728,8 @@ const partnerTypesCopy = {
       {
         id: "vet",
         title: "Eläinlääkäriasemat",
-        tagline: "Uudet omistajat haluavat klinikan, joka selittää asiat selkeästi eikä kiirehdi. Ensimmäinen tutustuminen kannattaa tehdä hyvin.",
+        tagline:
+          "Uudet omistajat haluavat klinikan, joka selittää asiat selkeästi eikä kiirehdi. Ensimmäinen tutustuminen kannattaa tehdä hyvin.",
         ask: [
           "Ensimmäiset tarkastukset ja rokotussuunnitelmat",
           "Selkeät ohjeet vakuutuksista ja mikrosirusta",
@@ -1436,7 +1744,8 @@ const partnerTypesCopy = {
       {
         id: "boarding",
         title: "Hoitola & päivähoito",
-        tagline: "Ensimmäinen yö poissa on iso askel. Jäsenet haluavat tavata ihmiset ja nähdä paikan ennen varausta.",
+        tagline:
+          "Ensimmäinen yö poissa on iso askel. Jäsenet haluavat tavata ihmiset ja nähdä paikan ennen varausta.",
         ask: [
           "Kokeilupäivä tai lyhyt hoitojakso aluksi",
           "Viikonloppu- ja lomahoito, jonka mukaan voi suunnitella",
@@ -1450,7 +1759,8 @@ const partnerTypesCopy = {
       },
     ],
     alsoTitle: "Myös erittäin tervetulleita",
-    alsoBody: "Jos työsi liittyy koiran arkeen millään muulla tavalla, haluaisimme silti kuulla sinusta.",
+    alsoBody:
+      "Jos työsi liittyy koiran arkeen millään muulla tavalla, haluaisimme silti kuulla sinusta.",
   },
   de: {
     askTitle: "Was Mitglieder häufig fragen",
@@ -1459,7 +1769,8 @@ const partnerTypesCopy = {
       {
         id: "equipment",
         title: "Tierbedarf & Ausstattung",
-        tagline: "Die ersten Wochen mit einem neuen Hund bedeuten viel Einkaufen – und Mitglieder kommen mit Fragen, nicht nur mit einer Einkaufsliste.",
+        tagline:
+          "Die ersten Wochen mit einem neuen Hund bedeuten viel Einkaufen – und Mitglieder kommen mit Fragen, nicht nur mit einer Einkaufsliste.",
         ask: [
           "Geschirre und Leinen, die wirklich passen",
           "Hilfe bei der Auswahl von Betten, Boxen und Spielzeug, das hält",
@@ -1474,7 +1785,8 @@ const partnerTypesCopy = {
       {
         id: "grooming",
         title: "Hundefriseure",
-        tagline: "Ein ruhiger Hundefriseur ist Gold wert, besonders für Welpen und unsichere Hunde aus dem Tierschutz.",
+        tagline:
+          "Ein ruhiger Hundefriseur ist Gold wert, besonders für Welpen und unsichere Hunde aus dem Tierschutz.",
         ask: [
           "Eine sanfte erste Schur für Welpen",
           "Geduldiger Umgang mit ängstlichen Hunden",
@@ -1489,7 +1801,8 @@ const partnerTypesCopy = {
       {
         id: "training",
         title: "Hundetrainer",
-        tagline: "Vom Welpenkurs bis zum ersten Rückruf bei einem geretteten Hund – Mitglieder suchen nach belohnungsbasierten Hilfen, denen sie vertrauen können.",
+        tagline:
+          "Vom Welpenkurs bis zum ersten Rückruf bei einem geretteten Hund – Mitglieder suchen nach belohnungsbasierten Hilfen, denen sie vertrauen können.",
         ask: [
           "Welpenkurse mit kleinen Gruppen",
           "Hilfe bei Rückruf, lockerem Leinenlaufen und Hochspringen",
@@ -1504,7 +1817,8 @@ const partnerTypesCopy = {
       {
         id: "vet",
         title: "Tierärzte",
-        tagline: "Neue Besitzer wünschen sich eine Praxis, die Dinge verständlich erklärt und sich Zeit nimmt. Die erste Vorstellung sollte gut gelingen.",
+        tagline:
+          "Neue Besitzer wünschen sich eine Praxis, die Dinge verständlich erklärt und sich Zeit nimmt. Die erste Vorstellung sollte gut gelingen.",
         ask: [
           "Erste Check-ups und Impfpläne",
           "Klare Anleitungen zu Versicherung und Chip",
@@ -1519,7 +1833,8 @@ const partnerTypesCopy = {
       {
         id: "boarding",
         title: "Unterkünfte & Tagesbetreuung",
-        tagline: "Die erste Nacht fernab von zu Hause ist ein großer Schritt. Mitglieder möchten die Leute und den Ort kennenlernen, bevor sie buchen.",
+        tagline:
+          "Die erste Nacht fernab von zu Hause ist ein großer Schritt. Mitglieder möchten die Leute und den Ort kennenlernen, bevor sie buchen.",
         ask: [
           "Ein Probetag oder ein kurzer Aufenthalt zum Anfang",
           "Wochenend- und Urlaubsbetreuung, die man planen kann",
@@ -1533,7 +1848,8 @@ const partnerTypesCopy = {
       },
     ],
     alsoTitle: "Ebenfalls sehr willkommen",
-    alsoBody: "Wenn Ihre Arbeit das alltägliche Leben eines Hundes auf irgendeine andere Weise berührt, würden wir uns trotzdem freuen, von Ihnen zu hören.",
+    alsoBody:
+      "Wenn Ihre Arbeit das alltägliche Leben eines Hundes auf irgendeine andere Weise berührt, würden wir uns trotzdem freuen, von Ihnen zu hören.",
   },
   fr: {
     askTitle: "Ce que les membres demandent habituellement",
@@ -1542,7 +1858,8 @@ const partnerTypesCopy = {
       {
         id: "equipment",
         title: "Animaleries et accessoires",
-        tagline: "Les premières semaines avec un nouveau chien impliquent beaucoup d'achats – et les membres viennent avec des questions, pas juste une liste.",
+        tagline:
+          "Les premières semaines avec un nouveau chien impliquent beaucoup d'achats – et les membres viennent avec des questions, pas juste une liste.",
         ask: [
           "Harnais et laisse bien ajustés, qui conviennent vraiment",
           "Aide pour choisir des paniers, cages et jouets qui durent",
@@ -1557,7 +1874,8 @@ const partnerTypesCopy = {
       {
         id: "grooming",
         title: "Toilettage",
-        tagline: "Un toiletteur calme vaut de l'or, surtout pour les chiots et les chiens de sauvetage nerveux.",
+        tagline:
+          "Un toiletteur calme vaut de l'or, surtout pour les chiots et les chiens de sauvetage nerveux.",
         ask: [
           "Une première coupe douce pour chiot",
           "Une manipulation patiente des chiens anxieux",
@@ -1572,7 +1890,8 @@ const partnerTypesCopy = {
       {
         id: "training",
         title: "Éducateurs canins",
-        tagline: "Du cours pour chiots au premier rappel d'un chien sauvé, les membres cherchent une aide basée sur la récompense et digne de confiance.",
+        tagline:
+          "Du cours pour chiots au premier rappel d'un chien sauvé, les membres cherchent une aide basée sur la récompense et digne de confiance.",
         ask: [
           "Cours pour chiots en petits groupes",
           "Aide pour le rappel, la marche en laisse détendue et les sauts",
@@ -1587,7 +1906,8 @@ const partnerTypesCopy = {
       {
         id: "vet",
         title: "Cliniques vétérinaires",
-        tagline: "Les nouveaux propriétaires veulent une clinique qui explique les choses clairement et sans précipitation. Cette première rencontre est importante.",
+        tagline:
+          "Les nouveaux propriétaires veulent une clinique qui explique les choses clairement et sans précipitation. Cette première rencontre est importante.",
         ask: [
           "Premiers bilans de santé et plans de vaccination",
           "Des conseils clairs sur l'assurance et l'identification par puce électronique",
@@ -1602,7 +1922,8 @@ const partnerTypesCopy = {
       {
         id: "boarding",
         title: "Garde et pension",
-        tagline: "La première nuit loin de la maison est une étape importante. Les membres veulent rencontrer les personnes et voir les lieux avant de réserver.",
+        tagline:
+          "La première nuit loin de la maison est une étape importante. Les membres veulent rencontrer les personnes et voir les lieux avant de réserver.",
         ask: [
           "Une journée d'essai ou un court séjour pour commencer",
           "Une couverture pour les week-ends et les vacances, qu'on peut planifier",
@@ -1616,7 +1937,8 @@ const partnerTypesCopy = {
       },
     ],
     alsoTitle: "Également les bienvenus",
-    alsoBody: "Si votre activité touche au quotidien d'un chien d'une autre manière, nous aimerions tout de même avoir de vos nouvelles.",
+    alsoBody:
+      "Si votre activité touche au quotidien d'un chien d'une autre manière, nous aimerions tout de même avoir de vos nouvelles.",
   },
   nl: {
     askTitle: "Wat leden vaak vragen",
@@ -1625,7 +1947,8 @@ const partnerTypesCopy = {
       {
         id: "equipment",
         title: "Dierenwinkels & benodigdheden",
-        tagline: "De eerste weken met een nieuwe hond gaan gepaard met veel aankopen – en leden komen met vragen, niet alleen met een boodschappenlijstje.",
+        tagline:
+          "De eerste weken met een nieuwe hond gaan gepaard met veel aankopen – en leden komen met vragen, niet alleen met een boodschappenlijstje.",
         ask: [
           "Een tuigje en riem die écht goed passen",
           "Hulp bij het kiezen van duurzame manden, benches en speeltjes",
@@ -1640,7 +1963,8 @@ const partnerTypesCopy = {
       {
         id: "grooming",
         title: "Trimsalons",
-        tagline: "Een rustige trimmer is goud waard, zeker voor puppy's en nerveuze honden die net komen kijken.",
+        tagline:
+          "Een rustige trimmer is goud waard, zeker voor puppy's en nerveuze honden die net komen kijken.",
         ask: [
           "Een zachte eerste trimbeurt voor puppy's",
           "Geduldige omgang met angstige honden",
@@ -1655,7 +1979,8 @@ const partnerTypesCopy = {
       {
         id: "training",
         title: "Gedragstrainers",
-        tagline: "Van puppycursus tot de eerste 'hier' van een herplaatste hond, leden zoeken betrouwbare, beloningsgerichte hulp.",
+        tagline:
+          "Van puppycursus tot de eerste 'hier' van een herplaatste hond, leden zoeken betrouwbare, beloningsgerichte hulp.",
         ask: [
           "Puppycursussen in kleine groepen",
           "Hulp bij het aanleren van de 'hier'-roep, netjes meelopen en opspringen",
@@ -1670,7 +1995,8 @@ const partnerTypesCopy = {
       {
         id: "vet",
         title: "Dierenklinieken",
-        tagline: "Nieuwe eigenaren zoeken een dierenarts die dingen duidelijk uitlegt en geen haast heeft. Die eerste kennismaking is belangrijk.",
+        tagline:
+          "Nieuwe eigenaren zoeken een dierenarts die dingen duidelijk uitlegt en geen haast heeft. Die eerste kennismaking is belangrijk.",
         ask: [
           "Eerste controles en vaccinatieplannen",
           "Duidelijke uitleg over verzekeringen en chippen",
@@ -1685,7 +2011,8 @@ const partnerTypesCopy = {
       {
         id: "boarding",
         title: "Logeeropvang & dagopvang",
-        tagline: "De eerste nacht weg is een grote stap. Leden willen de mensen en de plek graag eerst leren kennen voordat ze boeken.",
+        tagline:
+          "De eerste nacht weg is een grote stap. Leden willen de mensen en de plek graag eerst leren kennen voordat ze boeken.",
         ask: [
           "Een proefdag of een kort verblijf om te beginnen",
           "Weekend- en vakantieopvang waar ze op kunnen rekenen",
@@ -1699,7 +2026,8 @@ const partnerTypesCopy = {
       },
     ],
     alsoTitle: "Ook van harte welkom",
-    alsoBody: "Als uw werk op een andere manier raakt aan het dagelijks leven van een hond, horen we graag van u.",
+    alsoBody:
+      "Als uw werk op een andere manier raakt aan het dagelijks leven van een hond, horen we graag van u.",
   },
 } as const;
 
@@ -1769,7 +2097,8 @@ function PartnerOfferExamples() {
         <Eyebrow>Real examples</Eyebrow>
         <h2 className="display-md mt-6 text-balance">What could a member benefit look like?</h2>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-          It does not need to be complicated or expensive. The best offers are simple, useful and easy for your team to honour.
+          It does not need to be complicated or expensive. The best offers are simple, useful and
+          easy for your team to honour.
         </p>
       </div>
 
@@ -1782,7 +2111,9 @@ function PartnerOfferExamples() {
                 <Icon aria-hidden="true" className="size-5" />
               </div>
               <p className="mt-5 text-sm font-medium text-muted-foreground">{example.title}</p>
-              <h3 className="mt-2 font-display text-xl tracking-tight text-foreground">{example.offer}</h3>
+              <h3 className="mt-2 font-display text-xl tracking-tight text-foreground">
+                {example.offer}
+              </h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{example.note}</p>
             </li>
           );
@@ -1790,7 +2121,8 @@ function PartnerOfferExamples() {
       </ul>
 
       <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-        These are examples, not requirements. You choose the benefit that feels fair for your business and helpful to a dog owner.
+        These are examples, not requirements. You choose the benefit that feels fair for your
+        business and helpful to a dog owner.
       </p>
     </Section>
   );
@@ -1820,7 +2152,10 @@ function Hero() {
               {c.cta}
               <Arrow />
             </a>
-            <a href="#enquiry" className="inline-flex h-14 shrink-0 items-center whitespace-nowrap rounded-full border border-border-strong px-6 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent">
+            <a
+              href="#enquiry"
+              className="inline-flex h-14 shrink-0 items-center whitespace-nowrap rounded-full border border-border-strong px-6 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
               {feature.secondaryCta}
             </a>
           </div>
@@ -1856,7 +2191,9 @@ function MutualBenefit() {
 
   const copyLink = async () => {
     try {
-      await navigator.clipboard.writeText(`${window.location.href.split("#")[0]}#how-benefits-work`);
+      await navigator.clipboard.writeText(
+        `${window.location.href.split("#")[0]}#how-benefits-work`,
+      );
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2500);
     } catch {
@@ -1875,7 +2212,10 @@ function MutualBenefit() {
 
             <div className="mt-9 grid gap-4">
               {flows.map(({ title: flowTitle, icon: Icon, steps }) => (
-                <div key={flowTitle} className="rounded-3xl border border-border bg-background p-6 md:p-7">
+                <div
+                  key={flowTitle}
+                  className="rounded-3xl border border-border bg-background p-6 md:p-7"
+                >
                   <div className="flex items-center gap-3">
                     <span className="grid h-10 w-10 place-items-center rounded-full bg-accent/10 text-accent">
                       <Icon className="h-5 w-5" aria-hidden />
@@ -1904,7 +2244,11 @@ function MutualBenefit() {
               onClick={copyLink}
               className="mt-6 inline-flex items-center gap-2.5 rounded-full border border-border-strong px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
             >
-              {copied ? <Check className="h-4 w-4 text-accent" aria-hidden /> : <Link2 className="h-4 w-4" aria-hidden />}
+              {copied ? (
+                <Check className="h-4 w-4 text-accent" aria-hidden />
+              ) : (
+                <Link2 className="h-4 w-4" aria-hidden />
+              )}
               {copied ? c.copiedLabel : c.shareLabel}
             </button>
           </div>
@@ -1918,7 +2262,9 @@ function MutualBenefit() {
               height={1072}
               className="aspect-[4/3] w-full rounded-[2rem] border border-border object-cover"
             />
-            <figcaption className="mt-4 text-sm leading-relaxed text-muted-foreground">{c.caption}</figcaption>
+            <figcaption className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              {c.caption}
+            </figcaption>
           </figure>
         </div>
       </div>
@@ -2010,8 +2356,15 @@ function Categories() {
                     </h4>
                     <ul className="mt-3 space-y-2.5">
                       {type.ask.map((line) => (
-                        <li key={line} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
-                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={2.4} aria-hidden />
+                        <li
+                          key={line}
+                          className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground"
+                        >
+                          <Check
+                            className="mt-0.5 h-4 w-4 shrink-0 text-accent"
+                            strokeWidth={2.4}
+                            aria-hidden
+                          />
                           <span>{line}</span>
                         </li>
                       ))}
@@ -2023,8 +2376,14 @@ function Categories() {
                     </h4>
                     <ul className="mt-3 space-y-2.5">
                       {type.offers.map((line) => (
-                        <li key={line} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
-                          <BadgePercent className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
+                        <li
+                          key={line}
+                          className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground"
+                        >
+                          <BadgePercent
+                            className="mt-0.5 h-4 w-4 shrink-0 text-accent"
+                            aria-hidden
+                          />
                           <span>{line}</span>
                         </li>
                       ))}
@@ -2052,7 +2411,9 @@ function Categories() {
               );
             })}
           </div>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">{t.alsoBody}</p>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            {t.alsoBody}
+          </p>
         </div>
 
         <div className="mt-14 grid gap-5 md:grid-cols-[1.3fr_1fr]">
@@ -2092,7 +2453,11 @@ function Verification() {
           <ul className="mt-8 space-y-4">
             {c.points.map((line) => (
               <li key={line} className="flex gap-3 text-[0.9375rem] leading-relaxed">
-                <Check className="mt-1 h-4 w-4 shrink-0 text-accent" strokeWidth={2.4} aria-hidden />
+                <Check
+                  className="mt-1 h-4 w-4 shrink-0 text-accent"
+                  strokeWidth={2.4}
+                  aria-hidden
+                />
                 <span className="text-muted-foreground">{line}</span>
               </li>
             ))}
@@ -2108,7 +2473,9 @@ function Verification() {
             {c.steps.map((step, i) => (
               <li key={step} className="flex gap-4">
                 <span className="font-mono text-sm text-accent">0{i + 1}</span>
-                <span className="text-[0.9375rem] leading-relaxed text-muted-foreground">{step}</span>
+                <span className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                  {step}
+                </span>
               </li>
             ))}
           </ol>
@@ -2154,7 +2521,9 @@ function How() {
               height={912}
               className="w-full rounded-[2rem] border border-border object-cover"
             />
-            <figcaption className="mt-4 text-sm leading-relaxed text-muted-foreground">{c.caption}</figcaption>
+            <figcaption className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              {c.caption}
+            </figcaption>
           </figure>
         </div>
       </div>
@@ -2247,7 +2616,9 @@ function EnquirySection() {
             <span className="grid h-12 w-12 place-items-center rounded-full bg-accent text-accent-foreground">
               <Check className="h-6 w-6" strokeWidth={2} aria-hidden />
             </span>
-            <h3 className="mt-6 font-display text-2xl tracking-tight text-foreground">{c.thanksTitle}</h3>
+            <h3 className="mt-6 font-display text-2xl tracking-tight text-foreground">
+              {c.thanksTitle}
+            </h3>
             <p className="mt-3 text-muted-foreground">{c.thanksBody}</p>
             <Button tone="outline" className="mt-7" type="button" onClick={() => setDone(false)}>
               {c.again}
@@ -2316,7 +2687,12 @@ function EnquirySection() {
                 />
               </Field>
 
-              <Field label={c.fields.website.label} id="website" hint={c.fields.website.hint} error={errors["website"]}>
+              <Field
+                label={c.fields.website.label}
+                id="website"
+                hint={c.fields.website.hint}
+                error={errors["website"]}
+              >
                 <input
                   id="website"
                   name="website"
@@ -2364,7 +2740,12 @@ function EnquirySection() {
               />
             </Field>
 
-            <Field label={c.fields.message.label} id="message" hint={c.fields.message.hint} error={errors["message"]}>
+            <Field
+              label={c.fields.message.label}
+              id="message"
+              hint={c.fields.message.hint}
+              error={errors["message"]}
+            >
               <textarea
                 id="message"
                 name="message"

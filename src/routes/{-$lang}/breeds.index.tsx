@@ -68,7 +68,10 @@ export const Route = createFileRoute("/{-$lang}/breeds/")({
         breadcrumbLd(
           [
             { name: "DoggMatch", path: "/" },
-            { name: seoCopy[locale]?.title.split(" | ")[0]?.split(" — ")[0] ?? "Breeds", path: "/breeds" },
+            {
+              name: seoCopy[locale]?.title.split(" | ")[0]?.split(" — ")[0] ?? "Breeds",
+              path: "/breeds",
+            },
           ],
           locale,
         ),
@@ -167,7 +170,11 @@ function BreedsPage() {
         <ul className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((breed) => (
             <li key={breed.id}>
-              <Link to={withLangPrefix("/breeds/$breedId")} params={{ breedId: breed.id }} className="group block">
+              <Link
+                to={withLangPrefix("/breeds/$breedId")}
+                params={{ breedId: breed.id }}
+                className="group block"
+              >
                 <div className="overflow-hidden rounded-[1.25rem] bg-surface">
                   <img
                     src={breedImages[breed.id]}
@@ -182,7 +189,8 @@ function BreedsPage() {
                   {breedContent()[breed.id].displayName}
                 </h2>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  {breedGroupLabel(breed.group)} · {breed.lifespan[0]}–{breed.lifespan[1]} {t.breeds.years}
+                  {breedGroupLabel(breed.group)} · {breed.lifespan[0]}–{breed.lifespan[1]}{" "}
+                  {t.breeds.years}
                 </p>
                 <span className="mt-2 inline-flex items-center rounded-full border border-border-strong px-2.5 py-1 text-xs text-muted-foreground">
                   {c.deepDiveBadge}

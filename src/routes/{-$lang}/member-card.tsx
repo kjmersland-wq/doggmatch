@@ -37,7 +37,8 @@ export const Route = createFileRoute("/{-$lang}/member-card")({
 const copy = {
   en: {
     signInHeading: "Sign in to see your card",
-    signInBody: "Your member card lives with your DoggMatch+ membership, so we need to know it's you.",
+    signInBody:
+      "Your member card lives with your DoggMatch+ membership, so we need to know it's you.",
     signInLabel: "Sign in",
     loadingHeading: "One moment…",
     loadingBody: "Fetching your card.",
@@ -51,7 +52,8 @@ const copy = {
   },
   no: {
     signInHeading: "Logg inn for å se kortet ditt",
-    signInBody: "Medlemskortet ditt hører sammen med DoggMatch+-medlemskapet, så vi må vite at det er deg.",
+    signInBody:
+      "Medlemskortet ditt hører sammen med DoggMatch+-medlemskapet, så vi må vite at det er deg.",
     signInLabel: "Logg inn",
     loadingHeading: "Ett øyeblikk …",
     loadingBody: "Henter kortet ditt.",
@@ -65,13 +67,15 @@ const copy = {
   },
   pl: {
     signInHeading: "Zaloguj się, aby zobaczyć swoją kartę",
-    signInBody: "Karta członkowska jest powiązana z Twoim członkostwem DoggMatch+, więc musimy potwierdzić, że to Ty.",
+    signInBody:
+      "Karta członkowska jest powiązana z Twoim członkostwem DoggMatch+, więc musimy potwierdzić, że to Ty.",
     signInLabel: "Zaloguj się",
     loadingHeading: "Chwileczkę…",
     loadingBody: "Pobieramy Twoją kartę.",
     backToAccount: "Wróć do mojego konta",
     noCardHeading: "Ta karta jest częścią DoggMatch+",
-    noCardBody: "Dołącz do DoggMatch+, a Twoja osobista karta członkowska zostanie od razu przygotowana.",
+    noCardBody:
+      "Dołącz do DoggMatch+, a Twoja osobista karta członkowska zostanie od razu przygotowana.",
     seePlus: "Zobacz DoggMatch+",
     printCard: "Wydrukuj moją kartę członkowską",
     printedNote:
@@ -79,7 +83,8 @@ const copy = {
   },
   dk: {
     signInHeading: "Log ind for at se dit kort",
-    signInBody: "Dit medlemskort hører sammen med dit DoggMatch+-medlemskab, så vi skal vide, det er dig.",
+    signInBody:
+      "Dit medlemskort hører sammen med dit DoggMatch+-medlemskab, så vi skal vide, det er dig.",
     signInLabel: "Log ind",
     loadingHeading: "Et øjeblik …",
     loadingBody: "Henter dit kort.",
@@ -93,7 +98,8 @@ const copy = {
   },
   se: {
     signInHeading: "Logga in för att se ditt kort",
-    signInBody: "Ditt medlemskort hör ihop med ditt DoggMatch+-medlemskap, så vi måste veta att det är du.",
+    signInBody:
+      "Ditt medlemskort hör ihop med ditt DoggMatch+-medlemskap, så vi måste veta att det är du.",
     signInLabel: "Logga in",
     loadingHeading: "Ett ögonblick …",
     loadingBody: "Hämtar ditt kort.",
@@ -107,7 +113,8 @@ const copy = {
   },
   fi: {
     signInHeading: "Kirjaudu sisään nähdäksesi korttisi",
-    signInBody: "Jäsenkorttisi kuuluu DoggMatch+-jäsenyyteesi, joten meidän on varmistettava, että kyseessä olet sinä.",
+    signInBody:
+      "Jäsenkorttisi kuuluu DoggMatch+-jäsenyyteesi, joten meidän on varmistettava, että kyseessä olet sinä.",
     signInLabel: "Kirjaudu sisään",
     loadingHeading: "Hetkinen…",
     loadingBody: "Haetaan korttiasi.",
@@ -121,13 +128,15 @@ const copy = {
   },
   de: {
     signInHeading: "Melde dich an, um deine Karte zu sehen",
-    signInBody: "Deine Mitgliedskarte gehört zu deiner DoggMatch+-Mitgliedschaft, deshalb müssen wir wissen, dass du es bist.",
+    signInBody:
+      "Deine Mitgliedskarte gehört zu deiner DoggMatch+-Mitgliedschaft, deshalb müssen wir wissen, dass du es bist.",
     signInLabel: "Anmelden",
     loadingHeading: "Einen Moment…",
     loadingBody: "Wir holen deine Karte.",
     backToAccount: "Zurück zu meinem Konto",
     noCardHeading: "Diese Karte gehört zu DoggMatch+",
-    noCardBody: "Werde DoggMatch+-Mitglied, und deine persönliche Mitgliedskarte wird sofort erstellt.",
+    noCardBody:
+      "Werde DoggMatch+-Mitglied, und deine persönliche Mitgliedskarte wird sofort erstellt.",
     seePlus: "DoggMatch+ ansehen",
     printCard: "Meine Mitgliedskarte drucken",
     printedNote:
@@ -135,13 +144,15 @@ const copy = {
   },
   fr: {
     signInHeading: "Connectez-vous pour voir votre carte",
-    signInBody: "Votre carte de membre est liée à votre abonnement DoggMatch+, nous devons donc savoir que c'est bien vous.",
+    signInBody:
+      "Votre carte de membre est liée à votre abonnement DoggMatch+, nous devons donc savoir que c'est bien vous.",
     signInLabel: "Se connecter",
     loadingHeading: "Un instant…",
     loadingBody: "Récupération de votre carte.",
     backToAccount: "Retour à mon compte",
     noCardHeading: "Cette carte est incluse avec DoggMatch+",
-    noCardBody: "Rejoignez DoggMatch+ et votre carte de membre personnelle est créée immédiatement.",
+    noCardBody:
+      "Rejoignez DoggMatch+ et votre carte de membre personnelle est créée immédiatement.",
     seePlus: "Voir DoggMatch+",
     printCard: "Imprimer ma carte de membre",
     printedNote:
@@ -149,7 +160,8 @@ const copy = {
   },
   nl: {
     signInHeading: "Log in om je kaart te bekijken",
-    signInBody: "Je ledenkaart hoort bij je DoggMatch+-lidmaatschap, dus we moeten weten dat jij het bent.",
+    signInBody:
+      "Je ledenkaart hoort bij je DoggMatch+-lidmaatschap, dus we moeten weten dat jij het bent.",
     signInLabel: "Inloggen",
     loadingHeading: "Een moment…",
     loadingBody: "Je kaart wordt opgehaald.",
@@ -184,17 +196,34 @@ function MemberCardPage() {
 
   if (!loading && !user) {
     return (
-      <Empty heading={c.signInHeading} body={c.signInBody} to={withLangPrefix("/auth")} label={c.signInLabel} />
+      <Empty
+        heading={c.signInHeading}
+        body={c.signInBody}
+        to={withLangPrefix("/auth")}
+        label={c.signInLabel}
+      />
     );
   }
 
   if (loading || isLoading) {
-    return <Empty heading={c.loadingHeading} body={c.loadingBody} to={withLangPrefix("/account")} label={c.backToAccount} />;
+    return (
+      <Empty
+        heading={c.loadingHeading}
+        body={c.loadingBody}
+        to={withLangPrefix("/account")}
+        label={c.backToAccount}
+      />
+    );
   }
 
   if (!data) {
     return (
-      <Empty heading={c.noCardHeading} body={c.noCardBody} to={withLangPrefix("/plus")} label={c.seePlus} />
+      <Empty
+        heading={c.noCardHeading}
+        body={c.noCardBody}
+        to={withLangPrefix("/plus")}
+        label={c.seePlus}
+      />
     );
   }
 
@@ -228,7 +257,17 @@ function MemberCardPage() {
   );
 }
 
-function Empty({ heading, body, to, label }: { heading: string; body: string; to: string; label: string }) {
+function Empty({
+  heading,
+  body,
+  to,
+  label,
+}: {
+  heading: string;
+  body: string;
+  to: string;
+  label: string;
+}) {
   return (
     <div className="container-page pt-32 pb-32">
       <h1 className="display-xl max-w-2xl">{heading}</h1>

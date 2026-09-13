@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Arrow, Button, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
@@ -17,19 +19,7 @@ const description =
   "Learn the simple hands-on body condition check, and keep a quiet record of your dog's weight over time.";
 
 export const Route = createFileRoute("/{-$lang}/my-dog/weight")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/my-dog/weight"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/my-dog/weight", pageSeo.myDogWeight),
   component: WeightPage,
 });
 
@@ -38,7 +28,8 @@ const copy = {
     eyebrow: "Weight & shape",
     weightFor: (name: string) => `${name}'s weight`,
     weight: "Weight",
-    noEntries: "Add a weight roughly once a month. Two entries is all it takes for the trend to start showing.",
+    noEntries:
+      "Add a weight roughly once a month. Two entries is all it takes for the trend to start showing.",
     weightAria: "Weight in kilograms",
     kg: "kg",
     saveToday: "Save today's weight",
@@ -66,7 +57,8 @@ const copy = {
     eyebrow: "Gewicht & Form",
     weightFor: (name: string) => `Gewicht von ${name}`,
     weight: "Gewicht",
-    noEntries: "Tragen Sie etwa einmal im Monat ein Gewicht ein. Zwei Einträge genügen, damit sich der Trend abzeichnet.",
+    noEntries:
+      "Tragen Sie etwa einmal im Monat ein Gewicht ein. Zwei Einträge genügen, damit sich der Trend abzeichnet.",
     weightAria: "Gewicht in Kilogramm",
     kg: "kg",
     saveToday: "Heutiges Gewicht speichern",
@@ -77,7 +69,8 @@ const copy = {
     overDays: (n: number) => `Über ${n} Tage`,
     change: "Veränderung",
     holdingSteady: "Bleibt gleich",
-    sincePercent: (percent: number) => `${percent > 0 ? "+" : ""}${percent}% seit dem ersten Eintrag`,
+    sincePercent: (percent: number) =>
+      `${percent > 0 ? "+" : ""}${percent}% seit dem ersten Eintrag`,
     addTwoWeights: "Zwei Gewichte eintragen, um dies zu sehen",
     weightVetNote:
       "Eine Veränderung von mehr als etwa 10 % in beide Richtungen, die nicht beabsichtigt ist, sollte dem Tierarzt mitgeteilt werden. Insbesondere plötzlicher Gewichtsverlust.",
@@ -94,7 +87,8 @@ const copy = {
     eyebrow: "Poids et silhouette",
     weightFor: (name: string) => `Poids de ${name}`,
     weight: "Poids",
-    noEntries: "Ajoutez un poids environ une fois par mois. Deux enregistrements suffisent pour que la tendance commence à apparaître.",
+    noEntries:
+      "Ajoutez un poids environ une fois par mois. Deux enregistrements suffisent pour que la tendance commence à apparaître.",
     weightAria: "Poids en kilogrammes",
     kg: "kg",
     saveToday: "Enregistrer le poids d'aujourd'hui",
@@ -105,7 +99,8 @@ const copy = {
     overDays: (n: number) => `Sur ${n} jours`,
     change: "Changement",
     holdingSteady: "Stable",
-    sincePercent: (percent: number) => `${percent > 0 ? "+" : ""}${percent}% depuis le premier enregistrement`,
+    sincePercent: (percent: number) =>
+      `${percent > 0 ? "+" : ""}${percent}% depuis le premier enregistrement`,
     addTwoWeights: "Ajoutez deux poids pour voir ceci",
     weightVetNote:
       "Un changement de plus d'environ 10% dans un sens ou dans l'autre, sans que vous le vouliez, mérite d'être signalé à votre vétérinaire. Surtout une perte de poids soudaine.",
@@ -122,7 +117,8 @@ const copy = {
     eyebrow: "Gewicht & vorm",
     weightFor: (name: string) => `Gewicht van ${name}`,
     weight: "Gewicht",
-    noEntries: "Voeg ongeveer één keer per maand een gewicht toe. Twee metingen zijn al genoeg om de trend te laten zien.",
+    noEntries:
+      "Voeg ongeveer één keer per maand een gewicht toe. Twee metingen zijn al genoeg om de trend te laten zien.",
     weightAria: "Gewicht in kilogram",
     kg: "kg",
     saveToday: "Sla het gewicht van vandaag op",
@@ -133,7 +129,8 @@ const copy = {
     overDays: (n: number) => `Over ${n} dagen`,
     change: "Verandering",
     holdingSteady: "Stabiel gebleven",
-    sincePercent: (percent: number) => `${percent > 0 ? "+" : ""}${percent}% sinds de eerste meting`,
+    sincePercent: (percent: number) =>
+      `${percent > 0 ? "+" : ""}${percent}% sinds de eerste meting`,
     addTwoWeights: "Voeg twee gewichten toe om dit te zien",
     weightVetNote:
       "Een verandering van meer dan ongeveer 10% in welke richting dan ook, zonder dat u dit bedoeld heeft, is het vermelden waard voor uw dierenarts. Vooral plotseling gewichtsverlies.",
@@ -150,7 +147,8 @@ const copy = {
     eyebrow: "Vekt og hold",
     weightFor: (name: string) => `${name}s vekt`,
     weight: "Vekt",
-    noEntries: "Legg inn en vekt omtrent én gang i måneden. To målinger er alt som skal til for at trenden begynner å vise seg.",
+    noEntries:
+      "Legg inn en vekt omtrent én gang i måneden. To målinger er alt som skal til for at trenden begynner å vise seg.",
     weightAria: "Vekt i kilo",
     kg: "kg",
     saveToday: "Lagre dagens vekt",
@@ -161,15 +159,15 @@ const copy = {
     overDays: (n: number) => `Over ${n} dager`,
     change: "Endring",
     holdingSteady: "Stabil",
-    sincePercent: (percent: number) => `${percent > 0 ? "+" : ""}${percent}% siden første oppføring`,
+    sincePercent: (percent: number) =>
+      `${percent > 0 ? "+" : ""}${percent}% siden første oppføring`,
     addTwoWeights: "Legg inn to vekter for å se dette",
     weightVetNote:
       "En endring på mer enn omtrent 10 % i noen retning, uten at du har planlagt det, er verdt å nevne for veterinæren din. Spesielt plutselig vekttap.",
     checkEyebrow: "Ettminuttssjekken",
     checkTitle: "Hendene dine forteller mer enn vekten",
     step: (n: number) => `Steg ${n}`,
-    figureAlt:
-      "Tre omriss av en hund sett ovenfra: for tynn, passe med tydelig midje, og for tung",
+    figureAlt: "Tre omriss av en hund sett ovenfra: for tynn, passe med tydelig midje, og for tung",
     figCaption:
       "Sett ovenfra: en mild innsnevring bak ribbeina er det du ser etter. Bygning endrer hvordan dette ser ut — en Greyhound og en Labrador i god form ser helt forskjellige ut.",
     workOutPortions: "Regn ut matporsjoner",
@@ -178,7 +176,8 @@ const copy = {
     eyebrow: "Waga i sylwetka",
     weightFor: (name: string) => `Waga ${name}`,
     weight: "Waga",
-    noEntries: "Dodawaj wagę mniej więcej raz w miesiącu. Wystarczą dwa wpisy, żeby zaczął się rysować trend.",
+    noEntries:
+      "Dodawaj wagę mniej więcej raz w miesiącu. Wystarczą dwa wpisy, żeby zaczął się rysować trend.",
     weightAria: "Waga w kilogramach",
     kg: "kg",
     saveToday: "Zapisz dzisiejszą wagę",
@@ -206,7 +205,8 @@ const copy = {
     eyebrow: "Vægt og hold",
     weightFor: (name: string) => `${name}s vægt`,
     weight: "Vægt",
-    noEntries: "Tilføj en vægt cirka én gang om måneden. To målinger er alt, der skal til, før tendensen begynder at vise sig.",
+    noEntries:
+      "Tilføj en vægt cirka én gang om måneden. To målinger er alt, der skal til, før tendensen begynder at vise sig.",
     weightAria: "Vægt i kilo",
     kg: "kg",
     saveToday: "Gem dagens vægt",
@@ -217,7 +217,8 @@ const copy = {
     overDays: (n: number) => `Over ${n} dage`,
     change: "Ændring",
     holdingSteady: "Stabil",
-    sincePercent: (percent: number) => `${percent > 0 ? "+" : ""}${percent}% siden første indtastning`,
+    sincePercent: (percent: number) =>
+      `${percent > 0 ? "+" : ""}${percent}% siden første indtastning`,
     addTwoWeights: "Tilføj to vægte for at se dette",
     weightVetNote:
       "En ændring på mere end omkring 10 % i nogen retning, uden at du har planlagt det, er værd at nævne for din dyrlæge. Især pludseligt vægttab.",
@@ -234,7 +235,8 @@ const copy = {
     eyebrow: "Vikt och hull",
     weightFor: (name: string) => `${name}s vikt`,
     weight: "Vikt",
-    noEntries: "Lägg till en vikt ungefär en gång i månaden. Två poster räcker för att trenden ska börja synas.",
+    noEntries:
+      "Lägg till en vikt ungefär en gång i månaden. Två poster räcker för att trenden ska börja synas.",
     weightAria: "Vikt i kilogram",
     kg: "kg",
     saveToday: "Spara dagens vikt",
@@ -262,7 +264,8 @@ const copy = {
     eyebrow: "Paino ja kunto",
     weightFor: (name: string) => `Koiran ${name} paino`,
     weight: "Paino",
-    noEntries: "Lisää paino noin kerran kuukaudessa. Kaksi merkintää riittää, jotta trendi alkaa näkyä.",
+    noEntries:
+      "Lisää paino noin kerran kuukaudessa. Kaksi merkintää riittää, jotta trendi alkaa näkyä.",
     weightAria: "Paino kilogrammoina",
     kg: "kg",
     saveToday: "Tallenna tämän päivän paino",
@@ -273,7 +276,8 @@ const copy = {
     overDays: (n: number) => `${n} päivän aikana`,
     change: "Muutos",
     holdingSteady: "Vakaa",
-    sincePercent: (percent: number) => `${percent > 0 ? "+" : ""}${percent}% ensimmäisestä merkinnästä`,
+    sincePercent: (percent: number) =>
+      `${percent > 0 ? "+" : ""}${percent}% ensimmäisestä merkinnästä`,
     addTwoWeights: "Lisää kaksi painoa nähdäksesi tämän",
     weightVetNote:
       "Yli noin 10 %:n muutos kumpaan tahansa suuntaan, ilman että se on tarkoituksellista, kannattaa mainita eläinlääkärille. Erityisesti äkillinen painonpudotus.",
@@ -310,7 +314,9 @@ function WeightPage() {
         <Eyebrow>{c.eyebrow}</Eyebrow>
         <h1 className="display-xl mt-6 max-w-3xl">{topic.title}</h1>
         <ShareBar className="mt-6" />
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{topic.promise}</p>
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          {topic.promise}
+        </p>
       </section>
 
       <Section className="container-page">
@@ -319,7 +325,9 @@ function WeightPage() {
             {weights.length >= 2 ? (
               <WeightChart entries={weights} />
             ) : (
-              <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">{c.noEntries}</p>
+              <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                {c.noEntries}
+              </p>
             )}
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <input
@@ -335,24 +343,28 @@ function WeightPage() {
                 {c.saveToday}
               </Button>
             </div>
-            {!dog && (
-              <p className="mt-4 text-sm text-muted-foreground">{c.addDogNote}</p>
-            )}
+            {!dog && <p className="mt-4 text-sm text-muted-foreground">{c.addDogNote}</p>}
             {weights.length > 0 && (
               <ul className="mt-6 divide-y divide-border border-t border-border">
-                {[...weights].reverse().slice(0, 8).map((w) => (
-                  <li key={w.day} className="flex items-center justify-between py-3 text-[0.9375rem] tabular-nums">
-                    <span className="text-muted-foreground">{w.day}</span>
-                    <span>{w.kg} kg</span>
-                    <button
-                      type="button"
-                      onClick={() => dog && careStore.removeWeight(dog.id, w.day)}
-                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                {[...weights]
+                  .reverse()
+                  .slice(0, 8)
+                  .map((w) => (
+                    <li
+                      key={w.day}
+                      className="flex items-center justify-between py-3 text-[0.9375rem] tabular-nums"
                     >
-                      {c.remove}
-                    </button>
-                  </li>
-                ))}
+                      <span className="text-muted-foreground">{w.day}</span>
+                      <span>{w.kg} kg</span>
+                      <button
+                        type="button"
+                        onClick={() => dog && careStore.removeWeight(dog.id, w.day)}
+                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        {c.remove}
+                      </button>
+                    </li>
+                  ))}
               </ul>
             )}
           </Panel>
@@ -395,8 +407,12 @@ function WeightPage() {
             {topic.steps?.map((step, i) => (
               <li key={step.title} className="rounded-[1.5rem] border border-border bg-card p-7">
                 <p className="text-xs uppercase tracking-[0.14em] text-accent">{c.step(i + 1)}</p>
-                <h3 className="mt-3 font-display text-xl leading-tight tracking-tight">{step.title}</h3>
-                <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">{step.body}</p>
+                <h3 className="mt-3 font-display text-xl leading-tight tracking-tight">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                  {step.body}
+                </p>
               </li>
             ))}
           </ol>
@@ -419,7 +435,9 @@ function WeightPage() {
           {topic.sections?.map((s) => (
             <article key={s.title} className="rounded-[1.5rem] border border-border bg-surface p-7">
               <h3 className="font-display text-lg tracking-tight">{s.title}</h3>
-              <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{s.body}</p>
+              <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                {s.body}
+              </p>
             </article>
           ))}
         </div>

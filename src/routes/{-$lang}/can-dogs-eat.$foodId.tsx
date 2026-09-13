@@ -7,7 +7,22 @@ import { useCopy, useLocale } from "@/i18n";
 import type { FoodSafety } from "@/data/care/types";
 import { withLangPrefix } from "@/lib/localized-path";
 import { foodExists, foodFor, relatedFoods } from "@/lib/food";
-import { abs, breadcrumbLd, deUrl, dkUrl, fiUrl, frUrl, headLocale, jsonLd, langUrl, nlUrl, noUrl, plUrl, seUrl } from "@/lib/seo";
+import {
+  abs,
+  breadcrumbLd,
+  deUrl,
+  dkUrl,
+  fiUrl,
+  frUrl,
+  headLocale,
+  jsonLd,
+  langUrl,
+  nlUrl,
+  noUrl,
+  plUrl,
+  seUrl,
+  seoLinks,
+} from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 /** "Can dogs eat X?" — the phrase people actually type, in each language. */
@@ -84,7 +99,12 @@ export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
     const id = ctx.params.foodId;
     const item = foodFor(locale, id);
     if (!item) {
-      return { meta: [{ title: "We haven't covered that food yet — DoggMatch" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [
+          { title: "We haven't covered that food yet — DoggMatch" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
     }
     const path = `/can-dogs-eat/${id}`;
     const heading = question[locale](item.name);
@@ -102,19 +122,9 @@ export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
       ],
-      links: [
-        { rel: "canonical", href: langUrl(path, locale) },
-        { rel: "alternate", hreflang: "en", href: abs(path) },
-        { rel: "alternate", hreflang: "nb-NO", href: noUrl(path) },
-        { rel: "alternate", hreflang: "pl-PL", href: plUrl(path) },
-        { rel: "alternate", hreflang: "da-DK", href: dkUrl(path) },
-        { rel: "alternate", hreflang: "sv-SE", href: seUrl(path) },
-        { rel: "alternate", hreflang: "fi-FI", href: fiUrl(path) },
-        { rel: "alternate", hreflang: "de-DE", href: deUrl(path) },
-        { rel: "alternate", hreflang: "fr-FR", href: frUrl(path) },
-        { rel: "alternate", hreflang: "nl-NL", href: nlUrl(path) },
-        { rel: "alternate", hreflang: "x-default", href: abs(path) },
-      ],
+      links: seoLinks(path).map((l) =>
+        l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
+      ),
       scripts: [
         breadcrumbLd([
           { name: "DoggMatch", path: "/" },
@@ -280,18 +290,26 @@ function FoodAnswer() {
             {item.serving && (
               <div className="rounded-[1.5rem] border border-border bg-card p-7">
                 <h2 className="font-display text-xl tracking-tight">{c.howMuch}</h2>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{item.serving}</p>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                  {item.serving}
+                </p>
               </div>
             )}
             {item.warning && (
               <div className="rounded-[1.5rem] border border-destructive/30 bg-destructive/5 p-7">
-                <h2 className="font-display text-xl tracking-tight text-destructive">{c.watchOut}</h2>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-destructive">{item.warning}</p>
+                <h2 className="font-display text-xl tracking-tight text-destructive">
+                  {c.watchOut}
+                </h2>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-destructive">
+                  {item.warning}
+                </p>
               </div>
             )}
             <div className="rounded-[1.5rem] border border-border bg-surface p-7">
               <h2 className="font-display text-xl tracking-tight">{c.honestTitle}</h2>
-              <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{c.honest}</p>
+              <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                {c.honest}
+              </p>
             </div>
             {item.source && (
               <p className="text-xs text-muted-foreground">

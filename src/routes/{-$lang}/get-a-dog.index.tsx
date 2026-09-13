@@ -11,7 +11,8 @@ import { seoLinks, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
-const title = "Get a dog — the whole journey, from thinking about it to bringing them home | DoggMatch";
+const title =
+  "Get a dog — the whole journey, from thinking about it to bringing them home | DoggMatch";
 const description =
   "Thinking about getting a dog? Work out whether now is the right time, find the dogs that suit your life, choose carefully, understand the costs and get your home ready.";
 
@@ -73,7 +74,8 @@ const copy = {
     ctaReady: "Am I Ready?",
     ctaFind: "Find My Dog",
     heroFootnote: "Free, all of it. No account, and nothing kept anywhere but this device.",
-    heroAlt: "An older man sitting on his front steps with his arm around a scruffy mixed-breed dog",
+    heroAlt:
+      "An older man sitting on his front steps with his arm around a scruffy mixed-breed dog",
     journeyEyebrow: "The journey",
     journeyTitle: "One decision, taken one step at a time.",
     journeyBody:
@@ -104,7 +106,8 @@ const copy = {
       "En hund kan gjøre hverdagen din bedre på fantastiske måter. Det er også en stor forpliktelse. La oss sørge for at du er klar for den rette.",
     ctaReady: "Er jeg klar?",
     ctaFind: "Finn min hund",
-    heroFootnote: "Alt sammen gratis. Ingen konto, og ingenting lagres andre steder enn på denne enheten.",
+    heroFootnote:
+      "Alt sammen gratis. Ingen konto, og ingenting lagres andre steder enn på denne enheten.",
     heroAlt: "En eldre mann som sitter på trappen med armen rundt en raggete blandingshund",
     journeyEyebrow: "Reisen",
     journeyTitle: "Én beslutning, tatt ett steg av gangen.",
@@ -122,7 +125,8 @@ const copy = {
     adultLabel: "En voksen hund",
     adultBody: "Mye mer av det du ser, er det du får.",
     compare: "Sammenlign dem ordentlig",
-    welcomeAlt: "En familie som sitter stille på gulvet mens en nyankommet hund snuser på sengen sin",
+    welcomeAlt:
+      "En familie som sitter stille på gulvet mens en nyankommet hund snuser på sengen sin",
     welcomeEyebrow: "Slutten på denne reisen",
     welcomeTitle: "Og begynnelsen på den langt lengre.",
     welcomeBody:
@@ -136,7 +140,8 @@ const copy = {
       "Pies potrafi wspaniale odmienić Twoją codzienność. Może też być dużym zobowiązaniem. Upewnijmy się, że jesteś gotowy na tego właściwego.",
     ctaReady: "Czy jestem gotowy?",
     ctaFind: "Znajdź mojego psa",
-    heroFootnote: "Wszystko za darmo. Bez konta, i nic nie jest przechowywane nigdzie poza tym urządzeniem.",
+    heroFootnote:
+      "Wszystko za darmo. Bez konta, i nic nie jest przechowywane nigdzie poza tym urządzeniem.",
     heroAlt: "Starszy mężczyzna siedzący na schodach z ręką wokół kudłatego psa mieszańca",
     journeyEyebrow: "Podróż",
     journeyTitle: "Jedna decyzja, podejmowana krok po kroku.",
@@ -154,7 +159,8 @@ const copy = {
     adultLabel: "Dorosły pies",
     adultBody: "O wiele więcej z tego, co widzisz, to naprawdę to, co dostajesz.",
     compare: "Porównaj je dokładnie",
-    welcomeAlt: "Rodzina siedząca spokojnie na podłodze, gdy nowo przybyły pies obwąchuje swoje nowe legowisko",
+    welcomeAlt:
+      "Rodzina siedząca spokojnie na podłodze, gdy nowo przybyły pies obwąchuje swoje nowe legowisko",
     welcomeEyebrow: "Koniec tej podróży",
     welcomeTitle: "I początek tej znacznie dłuższej.",
     welcomeBody:
@@ -168,7 +174,8 @@ const copy = {
       "En hund kan gøre din hverdag bedre på fantastiske måder. Det er også en stor forpligtelse. Lad os sikre, at du er klar til den rigtige.",
     ctaReady: "Er jeg klar?",
     ctaFind: "Find min hund",
-    heroFootnote: "Det hele er gratis. Ingen konto, og intet gemmes andre steder end på denne enhed.",
+    heroFootnote:
+      "Det hele er gratis. Ingen konto, og intet gemmes andre steder end på denne enhed.",
     heroAlt: "En ældre mand siddende på sin trappesten med armen om en langhåret blandingshund",
     journeyEyebrow: "Rejsen",
     journeyTitle: "Én beslutning, taget ét skridt ad gangen.",
@@ -186,7 +193,8 @@ const copy = {
     adultLabel: "En voksen hund",
     adultBody: "Meget mere af det du ser, er det du får.",
     compare: "Sammenlign dem ordentligt",
-    welcomeAlt: "En familie der sidder stille på gulvet, mens en nyankommet hund snuser til sin nye seng",
+    welcomeAlt:
+      "En familie der sidder stille på gulvet, mens en nyankommet hund snuser til sin nye seng",
     welcomeEyebrow: "Slutningen på denne rejse",
     welcomeTitle: "Og begyndelsen på den langt længere.",
     welcomeBody:
@@ -200,7 +208,8 @@ const copy = {
       "En hund kan förändra din vardag på fantastiska sätt. Det är också ett stort åtagande. Låt oss se till att du är redo för den rätta.",
     ctaReady: "Är jag redo?",
     ctaFind: "Hitta min hund",
-    heroFootnote: "Allt är gratis. Inget konto, och inget sparas någon annanstans än på den här enheten.",
+    heroFootnote:
+      "Allt är gratis. Inget konto, och inget sparas någon annanstans än på den här enheten.",
     heroAlt: "En äldre man som sitter på sin trappa med armen om en raggig blandhund",
     journeyEyebrow: "Resan",
     journeyTitle: "Ett beslut, taget ett steg i taget.",
@@ -218,7 +227,8 @@ const copy = {
     adultLabel: "En vuxen hund",
     adultBody: "Mycket mer av det du ser är det du får.",
     compare: "Jämför dem ordentligt",
-    welcomeAlt: "En familj som sitter tyst på golvet medan en nyanländ hund undersöker sin nya bädd",
+    welcomeAlt:
+      "En familj som sitter tyst på golvet medan en nyanländ hund undersöker sin nya bädd",
     welcomeEyebrow: "Slutet på den här resan",
     welcomeTitle: "Och början på den betydligt längre.",
     welcomeBody:
@@ -232,8 +242,10 @@ const copy = {
       "Koira voi muuttaa arkesi upealla tavalla. Se on myös iso sitoumus. Varmistetaan, että olet valmis juuri oikeaan koiraan.",
     ctaReady: "Olenko valmis?",
     ctaFind: "Löydä koirani",
-    heroFootnote: "Kaikki tämä on ilmaista. Ei tiliä, eikä mitään tallenneta muualle kuin tälle laitteelle.",
-    heroAlt: "Vanhempi mies istumassa kotinsa portailla käsi sekarotuisen, pörröisen koiran ympärillä",
+    heroFootnote:
+      "Kaikki tämä on ilmaista. Ei tiliä, eikä mitään tallenneta muualle kuin tälle laitteelle.",
+    heroAlt:
+      "Vanhempi mies istumassa kotinsa portailla käsi sekarotuisen, pörröisen koiran ympärillä",
     journeyEyebrow: "Matka",
     journeyTitle: "Yksi päätös, askel kerrallaan.",
     journeyBody:
@@ -250,7 +262,8 @@ const copy = {
     adultLabel: "Aikuinen koira",
     adultBody: "Paljon enemmän sitä, mitä näet, on sitä, mitä saat.",
     compare: "Vertaa niitä kunnolla",
-    welcomeAlt: "Perhe istumassa hiljaa lattialla, kun juuri saapunut koira haistelee uutta petiään",
+    welcomeAlt:
+      "Perhe istumassa hiljaa lattialla, kun juuri saapunut koira haistelee uutta petiään",
     welcomeEyebrow: "Tämän matkan loppu",
     welcomeTitle: "Ja alku paljon pidemmälle matkalle.",
     welcomeBody:
@@ -264,8 +277,10 @@ const copy = {
       "Ein Hund kann deinen Alltag auf wunderbare Weise verändern. Er ist aber auch eine große Verpflichtung. Lass uns sicherstellen, dass du bereit bist für den richtigen.",
     ctaReady: "Bin ich bereit?",
     ctaFind: "Meinen Hund finden",
-    heroFootnote: "Alles davon ist kostenlos. Kein Konto, und nichts wird irgendwo gespeichert außer auf diesem Gerät.",
-    heroAlt: "Ein älterer Mann sitzt auf seiner Eingangstreppe, den Arm um einen struppigen Mischlingshund gelegt",
+    heroFootnote:
+      "Alles davon ist kostenlos. Kein Konto, und nichts wird irgendwo gespeichert außer auf diesem Gerät.",
+    heroAlt:
+      "Ein älterer Mann sitzt auf seiner Eingangstreppe, den Arm um einen struppigen Mischlingshund gelegt",
     journeyEyebrow: "Der Weg",
     journeyTitle: "Eine Entscheidung, Schritt für Schritt getroffen.",
     journeyBody:
@@ -282,7 +297,8 @@ const copy = {
     adultLabel: "Ein erwachsener Hund",
     adultBody: "Viel mehr von dem, was du siehst, ist auch das, was du bekommst.",
     compare: "Richtig vergleichen",
-    welcomeAlt: "Eine Familie sitzt still auf dem Boden, während ein neu angekommener Hund an seinem neuen Bett schnuppert",
+    welcomeAlt:
+      "Eine Familie sitzt still auf dem Boden, während ein neu angekommener Hund an seinem neuen Bett schnuppert",
     welcomeEyebrow: "Das Ende dieser Reise",
     welcomeTitle: "Und der Beginn der viel längeren.",
     welcomeBody:
@@ -296,7 +312,8 @@ const copy = {
       "Un chien peut transformer votre quotidien de façon merveilleuse. C'est aussi un engagement important. Assurons-nous que vous êtes prêt pour le bon compagnon.",
     ctaReady: "Suis-je prêt ?",
     ctaFind: "Trouver mon chien",
-    heroFootnote: "Tout est gratuit. Pas de compte, et rien n'est conservé ailleurs que sur cet appareil.",
+    heroFootnote:
+      "Tout est gratuit. Pas de compte, et rien n'est conservé ailleurs que sur cet appareil.",
     heroAlt: "Un homme âgé assis sur son perron, le bras autour d'un chien croisé au poil hirsute",
     journeyEyebrow: "Le parcours",
     journeyTitle: "Une décision, prise pas à pas.",
@@ -314,7 +331,8 @@ const copy = {
     adultLabel: "Un chien adulte",
     adultBody: "Ce que vous voyez est bien plus souvent ce que vous obtenez.",
     compare: "Les comparer sérieusement",
-    welcomeAlt: "Une famille assise en silence sur le sol pendant qu'un chien tout juste arrivé renifle son nouveau panier",
+    welcomeAlt:
+      "Une famille assise en silence sur le sol pendant qu'un chien tout juste arrivé renifle son nouveau panier",
     welcomeEyebrow: "La fin de ce parcours",
     welcomeTitle: "Et le début d'un bien plus long.",
     welcomeBody:
@@ -328,7 +346,8 @@ const copy = {
       "Een hond kan je dagelijks leven op prachtige manieren veranderen. Het is ook een grote verantwoordelijkheid. Laten we ervoor zorgen dat je klaar bent voor de juiste.",
     ctaReady: "Ben ik er klaar voor?",
     ctaFind: "Vind mijn hond",
-    heroFootnote: "Helemaal gratis. Geen account, en niets wordt ergens anders bewaard dan op dit apparaat.",
+    heroFootnote:
+      "Helemaal gratis. Geen account, en niets wordt ergens anders bewaard dan op dit apparaat.",
     heroAlt: "Een oudere man zit op zijn stoep met zijn arm om een ruige gemengde hond",
     journeyEyebrow: "De reis",
     journeyTitle: "Eén beslissing, stap voor stap genomen.",
@@ -346,7 +365,8 @@ const copy = {
     adultLabel: "Een volwassen hond",
     adultBody: "Veel meer van wat je ziet, is ook wat je krijgt.",
     compare: "Vergelijk ze goed",
-    welcomeAlt: "Een gezin zit stil op de vloer terwijl een net aangekomen hond aan zijn nieuwe mand snuffelt",
+    welcomeAlt:
+      "Een gezin zit stil op de vloer terwijl een net aangekomen hond aan zijn nieuwe mand snuffelt",
     welcomeEyebrow: "Het einde van deze reis",
     welcomeTitle: "En het begin van de veel langere.",
     welcomeBody:
@@ -404,7 +424,9 @@ function GetADogPage() {
                 <Link to={step.to as never} className="group flex h-full flex-col p-8">
                   <span className="font-display text-sm tabular-nums text-accent">{step.no}</span>
                   <h3 className="display-md mt-4">{step.title}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {step.body}
+                  </p>
                   <span className="mt-6 inline-flex items-center gap-2 text-[0.9375rem] font-medium">
                     {c.open}
                     <Arrow />
@@ -425,8 +447,19 @@ function GetADogPage() {
               { img: puppyImage, alt: c.puppyAlt, label: c.puppyLabel, body: c.puppyBody },
               { img: adultImage, alt: c.adultAlt, label: c.adultLabel, body: c.adultBody },
             ].map((card) => (
-              <Link key={card.label} to={"/get-a-dog/choose" as never} className="group block overflow-hidden rounded-[1.75rem] bg-background">
-                <img src={card.img} alt={card.alt} width={1200} height={1504} loading="lazy" className="aspect-[5/4] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.03]" />
+              <Link
+                key={card.label}
+                to={"/get-a-dog/choose" as never}
+                className="group block overflow-hidden rounded-[1.75rem] bg-background"
+              >
+                <img
+                  src={card.img}
+                  alt={card.alt}
+                  width={1200}
+                  height={1504}
+                  loading="lazy"
+                  className="aspect-[5/4] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.03]"
+                />
                 <div className="p-8">
                   <h3 className="display-md">{card.label}</h3>
                   <p className="mt-3 text-muted-foreground">{card.body}</p>
@@ -456,8 +489,12 @@ function GetADogPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/60 to-ink/20" />
             <div className="absolute inset-x-0 bottom-0 p-8 md:p-14">
               <p className="eyebrow text-ivory/75">{c.welcomeEyebrow}</p>
-              <h2 className="display-lg mt-4 max-w-xl text-ivory drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">{c.welcomeTitle}</h2>
-              <p className="mt-4 max-w-lg leading-relaxed text-ivory/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">{c.welcomeBody}</p>
+              <h2 className="display-lg mt-4 max-w-xl text-ivory drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
+                {c.welcomeTitle}
+              </h2>
+              <p className="mt-4 max-w-lg leading-relaxed text-ivory/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">
+                {c.welcomeBody}
+              </p>
               <div className="mt-8">
                 <ButtonLink to={withLangPrefix("/get-a-dog/welcome-home")} tone="accent" size="lg">
                   {c.welcomeCta}

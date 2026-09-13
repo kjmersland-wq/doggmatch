@@ -129,7 +129,8 @@ const pageCopy = {
     considerTitle: "Ważne rzeczy do przemyślenia",
     healthTitle: "Kwestie zdrowotne",
     yourFitTitle: "Jak ten pies pasuje do twojego życia",
-    yourFitNote: "Odczytane na tle odpowiedzi, które podałeś w Znajdź mojego psa, zapisanych na tym urządzeniu.",
+    yourFitNote:
+      "Odczytane na tle odpowiedzi, które podałeś w Znajdź mojego psa, zapisanych na tym urządzeniu.",
     relatedTitle: "Podobne rasy, warte spojrzenia",
     timeMorning: "07:00",
     timeMidday: "12:00",
@@ -230,14 +231,15 @@ const pageCopy = {
     detailAlt: "Lähikuva turkista — {breed}",
     portraitWideAlt: "{breed}, muotokuva",
   },
-de: {
+  de: {
     dayTitle: "Ein typischer gemeinsamer Tag",
     commitmentTitle: "Was sie von dir verlangen",
     suitedTitle: "Am besten geeignet für",
     considerTitle: "Wichtige Dinge zu bedenken",
     healthTitle: "Gesundheitliche Aspekte",
     yourFitTitle: "Wie dieser Hund zu deinem Leben passt",
-    yourFitNote: "Abgeglichen mit den Antworten, die du bei Finde meinen Hund gegeben hast, gespeichert auf diesem Gerät.",
+    yourFitNote:
+      "Abgeglichen mit den Antworten, die du bei Finde meinen Hund gegeben hast, gespeichert auf diesem Gerät.",
     relatedTitle: "Ähnliche Rassen, einen Blick wert",
     timeMorning: "07:00",
     timeMidday: "12:00",
@@ -264,7 +266,8 @@ de: {
     considerTitle: "Points importants à considérer",
     healthTitle: "Aspects de santé à connaître",
     yourFitTitle: "Comment ce chien s'accorde à votre vie",
-    yourFitNote: "Analysé à partir des réponses que vous avez données dans Trouver mon chien, conservées sur cet appareil.",
+    yourFitNote:
+      "Analysé à partir des réponses que vous avez données dans Trouver mon chien, conservées sur cet appareil.",
     relatedTitle: "Des races proches qui méritent un coup d'œil",
     timeMorning: "07h00",
     timeMidday: "12h00",
@@ -291,7 +294,8 @@ de: {
     considerTitle: "Belangrijke aandachtspunten",
     healthTitle: "Aandachtspunten voor de gezondheid",
     yourFitTitle: "Hoe deze hond bij jouw leven past",
-    yourFitNote: "Afgezet tegen de antwoorden die je gaf bij Vind mijn hond, bewaard op dit apparaat.",
+    yourFitNote:
+      "Afgezet tegen de antwoorden die je gaf bij Vind mijn hond, bewaard op dit apparaat.",
     relatedTitle: "Vergelijkbare rassen die de moeite waard zijn",
     timeMorning: "07:00",
     timeMidday: "12:00",
@@ -322,7 +326,12 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
   head: (ctx) => {
     const { params, loaderData } = ctx;
     if (!loaderData) {
-      return { meta: [{ title: "We can't find that breed — DoggMatch" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [
+          { title: "We can't find that breed — DoggMatch" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
     }
     const path = `/breeds/${params.breedId}`;
     const locale = headLocale(ctx);
@@ -367,7 +376,14 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
             "@type": "Thing",
             name,
             additionalProperty: (
-              ["size", "energy", "shedding", "apartmentSuitability", "trainability", "firstTimeSuitability"] as const
+              [
+                "size",
+                "energy",
+                "shedding",
+                "apartmentSuitability",
+                "trainability",
+                "firstTimeSuitability",
+              ] as const
             ).map((key) => ({
               "@type": "PropertyValue",
               name: pick(labels[key], locale),
@@ -385,22 +401,127 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
 });
 
 const labels = {
-  size: { en: "Size", no: "Størrelse" , pl: "Rozmiar", de: "Größe", fr: "Taille", nl: "Grootte" },
-  energy: { en: "Energy", no: "Energi" , pl: "Energia", de: "Energie", fr: "Énergie", nl: "Energie" },
-  exerciseNeeds: { en: "Exercise needs", no: "Mosjonsbehov" , pl: "Potrzeby ruchowe", de: "Bewegungsbedarf", fr: "Besoin d'exercice", nl: "Behoefte aan beweging" },
-  mentalStimulation: { en: "Mental stimulation", no: "Mental stimulering" , pl: "Stymulacja umysłowa", de: "Geistige Auslastung", fr: "Stimulation mentale", nl: "Mentale prikkeling" },
-  trainability: { en: "Trainability", no: "Lærevillighet" , pl: "Podatność na szkolenie", de: "Erziehbarkeit", fr: "Facilité d'éducation", nl: "Leerbaarheid" },
-  sociability: { en: "Sociability", no: "Sosial med folk" , pl: "Towarzyskość z ludźmi", de: "Geselligkeit mit Menschen", fr: "Sociabilité avec les gens", nl: "Sociaal met mensen" },
-  affection: { en: "Affection", no: "Kosete" , pl: "Czułość", de: "Anhänglichkeit", fr: "Affection", nl: "Aanhankelijkheid" },
-  independence: { en: "Independence", no: "Selvstendighet" , pl: "Niezależność", de: "Eigenständigkeit", fr: "Indépendance", nl: "Zelfstandigheid" },
-  goodWithChildren: { en: "Good with children", no: "Passer med barn" , pl: "Dobrze z dziećmi", de: "Kinderfreundlich", fr: "Bon avec les enfants", nl: "Goed met kinderen" },
-  goodWithDogs: { en: "Good with other dogs", no: "Passer med andre hunder" , pl: "Dobrze z innymi psami", de: "Verträgt sich mit anderen Hunden", fr: "Bon avec les autres chiens", nl: "Goed met andere honden" },
-  apartmentSuitability: { en: "Apartment suitability", no: "Passer i leilighet" , pl: "Do mieszkania", de: "Wohnungstauglichkeit", fr: "Adapté à la vie en appartement", nl: "Geschikt voor een appartement" },
-  aloneTolerance: { en: "Tolerance of being alone", no: "Tåler å være alene" , pl: "Tolerancja samotności", de: "Verträgt Alleinsein", fr: "Tolérance à la solitude", nl: "Verdraagt alleen zijn" },
-  shedding: { en: "Shedding", no: "Pelsfelling" , pl: "Linienie", de: "Fellwechsel", fr: "Perte de poils", nl: "Verharen" },
-  grooming: { en: "Grooming", no: "Pelsstell" , pl: "Pielęgnacja sierści", de: "Fellpflege", fr: "Toilettage", nl: "Vachtverzorging" },
-  barking: { en: "Barking", no: "Bjeffing" , pl: "Szczekanie", de: "Bellen", fr: "Aboiements", nl: "Blaffen" },
-  firstTimeSuitability: { en: "First-time owner suitability", no: "Passer for førstegangseiere", pl: "Odpowiedni dla początkujących", de: "Geeignet für Ersthundehalter", fr: "Adapté aux primo-adoptants", nl: "Geschikt voor beginners" },
+  size: { en: "Size", no: "Størrelse", pl: "Rozmiar", de: "Größe", fr: "Taille", nl: "Grootte" },
+  energy: {
+    en: "Energy",
+    no: "Energi",
+    pl: "Energia",
+    de: "Energie",
+    fr: "Énergie",
+    nl: "Energie",
+  },
+  exerciseNeeds: {
+    en: "Exercise needs",
+    no: "Mosjonsbehov",
+    pl: "Potrzeby ruchowe",
+    de: "Bewegungsbedarf",
+    fr: "Besoin d'exercice",
+    nl: "Behoefte aan beweging",
+  },
+  mentalStimulation: {
+    en: "Mental stimulation",
+    no: "Mental stimulering",
+    pl: "Stymulacja umysłowa",
+    de: "Geistige Auslastung",
+    fr: "Stimulation mentale",
+    nl: "Mentale prikkeling",
+  },
+  trainability: {
+    en: "Trainability",
+    no: "Lærevillighet",
+    pl: "Podatność na szkolenie",
+    de: "Erziehbarkeit",
+    fr: "Facilité d'éducation",
+    nl: "Leerbaarheid",
+  },
+  sociability: {
+    en: "Sociability",
+    no: "Sosial med folk",
+    pl: "Towarzyskość z ludźmi",
+    de: "Geselligkeit mit Menschen",
+    fr: "Sociabilité avec les gens",
+    nl: "Sociaal met mensen",
+  },
+  affection: {
+    en: "Affection",
+    no: "Kosete",
+    pl: "Czułość",
+    de: "Anhänglichkeit",
+    fr: "Affection",
+    nl: "Aanhankelijkheid",
+  },
+  independence: {
+    en: "Independence",
+    no: "Selvstendighet",
+    pl: "Niezależność",
+    de: "Eigenständigkeit",
+    fr: "Indépendance",
+    nl: "Zelfstandigheid",
+  },
+  goodWithChildren: {
+    en: "Good with children",
+    no: "Passer med barn",
+    pl: "Dobrze z dziećmi",
+    de: "Kinderfreundlich",
+    fr: "Bon avec les enfants",
+    nl: "Goed met kinderen",
+  },
+  goodWithDogs: {
+    en: "Good with other dogs",
+    no: "Passer med andre hunder",
+    pl: "Dobrze z innymi psami",
+    de: "Verträgt sich mit anderen Hunden",
+    fr: "Bon avec les autres chiens",
+    nl: "Goed met andere honden",
+  },
+  apartmentSuitability: {
+    en: "Apartment suitability",
+    no: "Passer i leilighet",
+    pl: "Do mieszkania",
+    de: "Wohnungstauglichkeit",
+    fr: "Adapté à la vie en appartement",
+    nl: "Geschikt voor een appartement",
+  },
+  aloneTolerance: {
+    en: "Tolerance of being alone",
+    no: "Tåler å være alene",
+    pl: "Tolerancja samotności",
+    de: "Verträgt Alleinsein",
+    fr: "Tolérance à la solitude",
+    nl: "Verdraagt alleen zijn",
+  },
+  shedding: {
+    en: "Shedding",
+    no: "Pelsfelling",
+    pl: "Linienie",
+    de: "Fellwechsel",
+    fr: "Perte de poils",
+    nl: "Verharen",
+  },
+  grooming: {
+    en: "Grooming",
+    no: "Pelsstell",
+    pl: "Pielęgnacja sierści",
+    de: "Fellpflege",
+    fr: "Toilettage",
+    nl: "Vachtverzorging",
+  },
+  barking: {
+    en: "Barking",
+    no: "Bjeffing",
+    pl: "Szczekanie",
+    de: "Bellen",
+    fr: "Aboiements",
+    nl: "Blaffen",
+  },
+  firstTimeSuitability: {
+    en: "First-time owner suitability",
+    no: "Passer for førstegangseiere",
+    pl: "Odpowiedni dla początkujących",
+    de: "Geeignet für Ersthundehalter",
+    fr: "Adapté aux primo-adoptants",
+    nl: "Geschikt voor beginners",
+  },
 } as const;
 
 function BreedDetail() {
@@ -410,10 +531,9 @@ function BreedDetail() {
   const profile = useMatchProfile();
   const { breed } = Route.useLoaderData();
   const content = breedContent()[breed.id];
-  const traitRows: [string, number][] = (Object.keys(labels) as (keyof typeof labels)[]).map((key) => [
-    pick(labels[key]),
-    breed.traits[key],
-  ]);
+  const traitRows: [string, number][] = (Object.keys(labels) as (keyof typeof labels)[]).map(
+    (key) => [pick(labels[key]), breed.traits[key]],
+  );
   const related = relatedBreeds(breed.id, 4);
 
   const day = typicalDay(breed.traits);
@@ -484,7 +604,18 @@ function BreedDetail() {
             {content.originalPurpose && (
               <p className="mt-5 max-w-lg border-l-2 border-primary pl-4 text-sm leading-relaxed text-foreground/90">
                 <strong className="font-display font-medium">
-                  {pick({ en: "Origin & original purpose", no: "Opprinnelse og opprinnelig formål", pl: "Pochodzenie i pierwotne przeznaczenie", dk: "Oprindelse og oprindeligt formål", se: "Ursprung och ursprungligt syfte", fi: "Alkuperä ja alkuperäinen käyttötarkoitus", de: "Herkunft und ursprüngliche Aufgabe", fr: "Origine et fonction d’origine", nl: "Herkomst en oorspronkelijk doel" })}:
+                  {pick({
+                    en: "Origin & original purpose",
+                    no: "Opprinnelse og opprinnelig formål",
+                    pl: "Pochodzenie i pierwotne przeznaczenie",
+                    dk: "Oprindelse og oprindeligt formål",
+                    se: "Ursprung och ursprungligt syfte",
+                    fi: "Alkuperä ja alkuperäinen käyttötarkoitus",
+                    de: "Herkunft und ursprüngliche Aufgabe",
+                    fr: "Origine et fonction d’origine",
+                    nl: "Herkomst en oorspronkelijk doel",
+                  })}
+                  :
                 </strong>{" "}
                 {content.originalPurpose}
               </p>
@@ -520,7 +651,9 @@ function BreedDetail() {
 
       {/* secondary lifestyle gallery — falls back to a wide crop of the portrait until real lifestyle photography exists */}
       <section className="container-page border-t border-border py-16">
-        <h2 className="display-md">{interpolate(c.lifestyleTitle, { breed: content.displayName })}</h2>
+        <h2 className="display-md">
+          {interpolate(c.lifestyleTitle, { breed: content.displayName })}
+        </h2>
         {lifestylePhotos.length > 0 ? (
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {lifestylePhotos.map((photo) => (
@@ -534,7 +667,9 @@ function BreedDetail() {
                   decoding="async"
                   className="aspect-[4/5] w-full object-cover"
                 />
-                <figcaption className="px-4 py-3 text-sm text-muted-foreground">{photo.caption}</figcaption>
+                <figcaption className="px-4 py-3 text-sm text-muted-foreground">
+                  {photo.caption}
+                </figcaption>
               </figure>
             ))}
           </div>
@@ -555,7 +690,19 @@ function BreedDetail() {
 
       <section className="container-page grid gap-12 border-t border-border py-16 md:grid-cols-2 md:gap-16">
         <div>
-          <h2 className="display-md">{pick({ en: "What people love about them", no: "Det folk elsker ved dem", pl: "Co ludzie w nich kochają", dk: "Det folk elsker ved dem", se: "Det folk älskar hos dem", fi: "Mistä ihmiset pitävät heissä", de: "Was Menschen an ihnen lieben", fr: "Ce que les gens adorent chez eux", nl: "Wat mensen aan hen zo geweldig vinden" })}</h2>
+          <h2 className="display-md">
+            {pick({
+              en: "What people love about them",
+              no: "Det folk elsker ved dem",
+              pl: "Co ludzie w nich kochają",
+              dk: "Det folk elsker ved dem",
+              se: "Det folk älskar hos dem",
+              fi: "Mistä ihmiset pitävät heissä",
+              de: "Was Menschen an ihnen lieben",
+              fr: "Ce que les gens adorent chez eux",
+              nl: "Wat mensen aan hen zo geweldig vinden",
+            })}
+          </h2>
           <ul className="mt-7 space-y-4">
             {content.strengths.map((s) => (
               <li key={s} className="flex gap-3 text-[0.9375rem] leading-relaxed">
@@ -615,7 +762,9 @@ function BreedDetail() {
               </div>
               <div className="pt-2">
                 <h3 className="font-display text-lg tracking-tight">{m.title}</h3>
-                <p className="mt-2 max-w-md text-[0.9375rem] leading-relaxed text-foreground/90">{m.body}</p>
+                <p className="mt-2 max-w-md text-[0.9375rem] leading-relaxed text-foreground/90">
+                  {m.body}
+                </p>
               </div>
             </li>
           ))}
@@ -632,7 +781,9 @@ function BreedDetail() {
               <dt className="eyebrow">{fact.label}</dt>
               <dd className="mt-2 font-display text-base leading-snug">{fact.value}</dd>
               {fact.detail && (
-                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{fact.detail}</dd>
+                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {fact.detail}
+                </dd>
               )}
             </div>
           ))}
@@ -640,7 +791,6 @@ function BreedDetail() {
 
         <CostCalculator breed={breed} className="mt-14" />
       </section>
-
 
       <section className="container-page grid gap-12 border-t border-border py-16 md:grid-cols-2 md:gap-16">
         <div>
@@ -668,7 +818,9 @@ function BreedDetail() {
               </li>
             ))}
           </ul>
-          <h3 className="mt-10 font-display text-lg leading-tight tracking-tight">{c.healthTitle}</h3>
+          <h3 className="mt-10 font-display text-lg leading-tight tracking-tight">
+            {c.healthTitle}
+          </h3>
           <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
             {content.healthConsiderations ?? healthNote(breed.traits)}
           </p>
@@ -679,11 +831,25 @@ function BreedDetail() {
         <section className="container-page grid gap-12 border-t border-border py-16 md:grid-cols-2 md:gap-16">
           {content.poorMatchFor && (
             <div>
-              <h2 className="display-md">{pick({ en: "A poor match if…", no: "Passer dårlig hvis …", pl: "To nie jest dobry wybór, jeśli…", dk: "Et dårligt match hvis…", se: "Ett dåligt val om…", fi: "Huono valinta, jos…", de: "Keine gute Wahl, wenn…", fr: "Un choix peu adapté si…", nl: "Geen goede match als…" })}</h2>
+              <h2 className="display-md">
+                {pick({
+                  en: "A poor match if…",
+                  no: "Passer dårlig hvis …",
+                  pl: "To nie jest dobry wybór, jeśli…",
+                  dk: "Et dårligt match hvis…",
+                  se: "Ett dåligt val om…",
+                  fi: "Huono valinta, jos…",
+                  de: "Keine gute Wahl, wenn…",
+                  fr: "Un choix peu adapté si…",
+                  nl: "Geen goede match als…",
+                })}
+              </h2>
               <ul className="mt-7 space-y-4">
                 {content.poorMatchFor.map((line) => (
                   <li key={line} className="flex gap-3 text-[0.9375rem] leading-relaxed">
-                    <span aria-hidden="true" className="text-accent">×</span>
+                    <span aria-hidden="true" className="text-accent">
+                      ×
+                    </span>
                     {line}
                   </li>
                 ))}
@@ -692,10 +858,25 @@ function BreedDetail() {
           )}
           {content.keyTradeoffs && (
             <div>
-              <h2 className="display-md">{pick({ en: "Key trade-offs", no: "Viktige avveininger", pl: "Najważniejsze kompromisy", dk: "Vigtige afvejninger", se: "Viktiga avvägningar", fi: "Tärkeimmät kompromissit", de: "Die wichtigsten Abwägungen", fr: "Les principaux compromis", nl: "Belangrijkste afwegingen" })}</h2>
+              <h2 className="display-md">
+                {pick({
+                  en: "Key trade-offs",
+                  no: "Viktige avveininger",
+                  pl: "Najważniejsze kompromisy",
+                  dk: "Vigtige afvejninger",
+                  se: "Viktiga avvägningar",
+                  fi: "Tärkeimmät kompromissit",
+                  de: "Die wichtigsten Abwägungen",
+                  fr: "Les principaux compromis",
+                  nl: "Belangrijkste afwegingen",
+                })}
+              </h2>
               <ul className="mt-7 space-y-4">
                 {content.keyTradeoffs.map((line) => (
-                  <li key={line} className="border-l-2 border-primary pl-4 text-[0.9375rem] leading-relaxed text-foreground/90">
+                  <li
+                    key={line}
+                    className="border-l-2 border-primary pl-4 text-[0.9375rem] leading-relaxed text-foreground/90"
+                  >
                     {line}
                   </li>
                 ))}
@@ -709,7 +890,9 @@ function BreedDetail() {
       {profile && (
         <section className="container-page border-t border-border py-16">
           <h2 className="display-md">{c.yourFitTitle}</h2>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">{c.yourFitNote}</p>
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            {c.yourFitNote}
+          </p>
           <FitPanel
             className="mt-8"
             traits={breed.traits}
@@ -733,7 +916,11 @@ function BreedDetail() {
         <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {related.map((r) => (
             <li key={r.id}>
-              <Link to={withLangPrefix("/breeds/$breedId")} params={{ breedId: r.id }} className="group block">
+              <Link
+                to={withLangPrefix("/breeds/$breedId")}
+                params={{ breedId: r.id }}
+                className="group block"
+              >
                 <div className="overflow-hidden rounded-[1.25rem]">
                   <img
                     src={breedImages[r.id]}

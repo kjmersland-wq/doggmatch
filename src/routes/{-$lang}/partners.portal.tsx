@@ -43,7 +43,8 @@ const copy = {
   en: {
     eyebrow: "Partner portal",
     heading: "Your side of the partnership",
-    intro: "Your customer code, the members who joined through you, and how the 25% first-year discount is being used.",
+    intro:
+      "Your customer code, the members who joined through you, and how the 25% first-year discount is being used.",
     signInTitle: "Sign in to continue",
     signInBody: "The portal is tied to your account, so we know which business you belong to.",
     signIn: "Sign in",
@@ -59,7 +60,8 @@ const copy = {
     applying: "Sending…",
     applyError: "Something went wrong. Please check the fields and try again.",
     pendingTitle: "We've got your application",
-    pendingBody: "We read every one ourselves. You'll hear from us by email, and your code will appear on this page once you're approved.",
+    pendingBody:
+      "We read every one ourselves. You'll hear from us by email, and your code will appear on this page once you're approved.",
     pausedTitle: "Your listing is paused",
     pausedBody: "Write to us whenever you'd like to start again.",
     codeTitle: "Your customer code",
@@ -87,7 +89,8 @@ const copy = {
   no: {
     eyebrow: "Partnerportal",
     heading: "Din side av samarbeidet",
-    intro: "Kundekoden din, medlemmene som har blitt med via deg, og hvordan rabatten på 25 % det første året brukes.",
+    intro:
+      "Kundekoden din, medlemmene som har blitt med via deg, og hvordan rabatten på 25 % det første året brukes.",
     signInTitle: "Logg inn for å fortsette",
     signInBody: "Portalen er knyttet til kontoen din, så vi vet hvilken bedrift du hører til.",
     signIn: "Logg inn",
@@ -103,7 +106,8 @@ const copy = {
     applying: "Sender …",
     applyError: "Noe gikk galt. Se over feltene og prøv igjen.",
     pendingTitle: "Vi har fått søknaden din",
-    pendingBody: "Vi leser hver eneste en selv. Du hører fra oss på e-post, og koden din dukker opp her når du er godkjent.",
+    pendingBody:
+      "Vi leser hver eneste en selv. Du hører fra oss på e-post, og koden din dukker opp her når du er godkjent.",
     pausedTitle: "Oppføringen din er satt på pause",
     pausedBody: "Skriv til oss når du vil starte opp igjen.",
     codeTitle: "Kundekoden din",
@@ -131,9 +135,11 @@ const copy = {
   pl: {
     eyebrow: "Portal partnera",
     heading: "Twoja strona współpracy",
-    intro: "Twój kod dla klientów, osoby, które dołączyły dzięki Tobie, i to, jak wykorzystywana jest zniżka 25% na pierwszy rok.",
+    intro:
+      "Twój kod dla klientów, osoby, które dołączyły dzięki Tobie, i to, jak wykorzystywana jest zniżka 25% na pierwszy rok.",
     signInTitle: "Zaloguj się, aby kontynuować",
-    signInBody: "Portal jest powiązany z Twoim kontem, dzięki czemu wiemy, do jakiej firmy należysz.",
+    signInBody:
+      "Portal jest powiązany z Twoim kontem, dzięki czemu wiemy, do jakiej firmy należysz.",
     signIn: "Zaloguj się",
     applyTitle: "Opowiedz nam o swojej firmie",
     applyBody: "Czyta to prawdziwa osoba. Po zatwierdzeniu Twój kod pojawi się tutaj.",
@@ -147,7 +153,8 @@ const copy = {
     applying: "Wysyłanie…",
     applyError: "Coś poszło nie tak. Sprawdź pola i spróbuj ponownie.",
     pendingTitle: "Mamy Twoje zgłoszenie",
-    pendingBody: "Czytamy każde osobiście. Odezwiemy się mailem, a kod pojawi się tutaj po zatwierdzeniu.",
+    pendingBody:
+      "Czytamy każde osobiście. Odezwiemy się mailem, a kod pojawi się tutaj po zatwierdzeniu.",
     pausedTitle: "Twój wpis jest wstrzymany",
     pausedBody: "Napisz do nas, kiedy zechcesz zacząć od nowa.",
     codeTitle: "Twój kod dla klientów",
@@ -175,7 +182,8 @@ const copy = {
   dk: {
     eyebrow: "Partnerportal",
     heading: "Din side af samarbejdet",
-    intro: "Din kundekode, de medlemmer der er kommet til via dig, og hvordan rabatten på 25 % det første år bliver brugt.",
+    intro:
+      "Din kundekode, de medlemmer der er kommet til via dig, og hvordan rabatten på 25 % det første år bliver brugt.",
     signInTitle: "Log ind for at fortsætte",
     signInBody: "Portalen er knyttet til din konto, så vi ved, hvilken virksomhed du hører til.",
     signIn: "Log ind",
@@ -191,7 +199,8 @@ const copy = {
     applying: "Sender …",
     applyError: "Noget gik galt. Se felterne igennem og prøv igen.",
     pendingTitle: "Vi har modtaget din ansøgning",
-    pendingBody: "Vi læser hver eneste selv. Du hører fra os på mail, og din kode dukker op her, når du er godkendt.",
+    pendingBody:
+      "Vi læser hver eneste selv. Du hører fra os på mail, og din kode dukker op her, når du er godkendt.",
     pausedTitle: "Din visning er sat på pause",
     pausedBody: "Skriv til os, når du gerne vil i gang igen.",
     codeTitle: "Din kundekode",
@@ -219,7 +228,8 @@ const copy = {
   se: {
     eyebrow: "Partnerportal",
     heading: "Din sida av samarbetet",
-    intro: "Din kundkod, medlemmarna som gått med via dig och hur rabatten på 25 % första året används.",
+    intro:
+      "Din kundkod, medlemmarna som gått med via dig och hur rabatten på 25 % första året används.",
     signInTitle: "Logga in för att fortsätta",
     signInBody: "Portalen hör ihop med ditt konto, så vi vet vilket företag du tillhör.",
     signIn: "Logga in",
@@ -235,7 +245,8 @@ const copy = {
     applying: "Skickar …",
     applyError: "Något gick fel. Titta igenom fälten och försök igen.",
     pendingTitle: "Vi har fått din ansökan",
-    pendingBody: "Vi läser varenda en själva. Du hör från oss via mejl, och koden dyker upp här när du är godkänd.",
+    pendingBody:
+      "Vi läser varenda en själva. Du hör från oss via mejl, och koden dyker upp här när du är godkänd.",
     pausedTitle: "Din listning är pausad",
     pausedBody: "Skriv till oss när du vill börja igen.",
     codeTitle: "Din kundkod",
@@ -263,7 +274,8 @@ const copy = {
   fi: {
     eyebrow: "Kumppaniportaali",
     heading: "Sinun puolesi yhteistyöstä",
-    intro: "Asiakaskoodisi, kauttasi liittyneet jäsenet ja se, miten ensimmäisen vuoden 25 %:n alennusta käytetään.",
+    intro:
+      "Asiakaskoodisi, kauttasi liittyneet jäsenet ja se, miten ensimmäisen vuoden 25 %:n alennusta käytetään.",
     signInTitle: "Kirjaudu sisään jatkaaksesi",
     signInBody: "Portaali on sidottu tiliisi, joten tiedämme mihin yritykseen kuulut.",
     signIn: "Kirjaudu sisään",
@@ -279,11 +291,13 @@ const copy = {
     applying: "Lähetetään…",
     applyError: "Jokin meni pieleen. Tarkista kentät ja yritä uudelleen.",
     pendingTitle: "Hakemuksesi on saapunut",
-    pendingBody: "Luemme jokaisen itse. Kuulet meistä sähköpostitse, ja koodisi ilmestyy tälle sivulle hyväksynnän jälkeen.",
+    pendingBody:
+      "Luemme jokaisen itse. Kuulet meistä sähköpostitse, ja koodisi ilmestyy tälle sivulle hyväksynnän jälkeen.",
     pausedTitle: "Listauksesi on tauolla",
     pausedBody: "Kirjoita meille, kun haluat jatkaa.",
     codeTitle: "Asiakaskoodisi",
-    codeBody: "Anna tämä asiakkaillesi. Se antaa 25 % alennuksen DoggMatch+:n ensimmäisestä vuodesta.",
+    codeBody:
+      "Anna tämä asiakkaillesi. Se antaa 25 % alennuksen DoggMatch+:n ensimmäisestä vuodesta.",
     createCode: "Luo koodini",
     creating: "Luodaan…",
     copyCode: "Kopioi koodi",
@@ -307,12 +321,15 @@ const copy = {
   de: {
     eyebrow: "Partnerportal",
     heading: "Deine Seite der Partnerschaft",
-    intro: "Dein Kundencode, die Mitglieder, die über dich dazugekommen sind, und wie der Rabatt von 25 % im ersten Jahr genutzt wird.",
+    intro:
+      "Dein Kundencode, die Mitglieder, die über dich dazugekommen sind, und wie der Rabatt von 25 % im ersten Jahr genutzt wird.",
     signInTitle: "Melde dich an, um fortzufahren",
-    signInBody: "Das Portal hängt an deinem Konto, damit wir wissen, zu welchem Betrieb du gehörst.",
+    signInBody:
+      "Das Portal hängt an deinem Konto, damit wir wissen, zu welchem Betrieb du gehörst.",
     signIn: "Anmelden",
     applyTitle: "Erzähl uns von deinem Betrieb",
-    applyBody: "Das liest ein echter Mensch. Sobald du freigeschaltet bist, erscheint dein Code hier.",
+    applyBody:
+      "Das liest ein echter Mensch. Sobald du freigeschaltet bist, erscheint dein Code hier.",
     company: "Firmenname",
     contact: "Dein Name",
     country: "Land",
@@ -321,9 +338,11 @@ const copy = {
     benefit: "Der Vorteil, den du Mitgliedern geben möchtest (optional)",
     apply: "Anfrage senden",
     applying: "Wird gesendet …",
-    applyError: "Da ist etwas schiefgelaufen. Schau kurz über die Felder und versuch es noch einmal.",
+    applyError:
+      "Da ist etwas schiefgelaufen. Schau kurz über die Felder und versuch es noch einmal.",
     pendingTitle: "Deine Anfrage ist da",
-    pendingBody: "Wir lesen jede selbst. Du hörst per E-Mail von uns, und dein Code erscheint hier, sobald du freigeschaltet bist.",
+    pendingBody:
+      "Wir lesen jede selbst. Du hörst per E-Mail von uns, und dein Code erscheint hier, sobald du freigeschaltet bist.",
     pausedTitle: "Dein Eintrag pausiert",
     pausedBody: "Schreib uns, wann immer du wieder starten möchtest.",
     codeTitle: "Dein Kundencode",
@@ -351,9 +370,11 @@ const copy = {
   fr: {
     eyebrow: "Espace partenaire",
     heading: "Votre côté du partenariat",
-    intro: "Votre code client, les membres arrivés grâce à vous, et l'usage de la remise de 25 % la première année.",
+    intro:
+      "Votre code client, les membres arrivés grâce à vous, et l'usage de la remise de 25 % la première année.",
     signInTitle: "Connectez-vous pour continuer",
-    signInBody: "L'espace est lié à votre compte, pour que nous sachions à quelle entreprise vous appartenez.",
+    signInBody:
+      "L'espace est lié à votre compte, pour que nous sachions à quelle entreprise vous appartenez.",
     signIn: "Se connecter",
     applyTitle: "Parlez-nous de votre entreprise",
     applyBody: "Une vraie personne vous lit. Une fois validé, votre code apparaît ici.",
@@ -367,7 +388,8 @@ const copy = {
     applying: "Envoi…",
     applyError: "Quelque chose n'a pas fonctionné. Vérifiez les champs et réessayez.",
     pendingTitle: "Nous avons bien votre demande",
-    pendingBody: "Nous lisons chacune nous-mêmes. Vous aurez un mot par e-mail, et votre code apparaîtra ici une fois validé.",
+    pendingBody:
+      "Nous lisons chacune nous-mêmes. Vous aurez un mot par e-mail, et votre code apparaîtra ici une fois validé.",
     pausedTitle: "Votre fiche est en pause",
     pausedBody: "Écrivez-nous quand vous voulez reprendre.",
     codeTitle: "Votre code client",
@@ -390,12 +412,14 @@ const copy = {
     approve: "Valider",
     pause: "Mettre en pause",
     noPartners: "Aucun partenaire pour l'instant.",
-    privacyNote: "Nous n'affichons que la date et le statut — jamais le nom ni l'e-mail d'un membre.",
+    privacyNote:
+      "Nous n'affichons que la date et le statut — jamais le nom ni l'e-mail d'un membre.",
   },
   nl: {
     eyebrow: "Partnerportaal",
     heading: "Jouw kant van de samenwerking",
-    intro: "Je klantcode, de leden die via jou zijn binnengekomen, en hoe de korting van 25% in het eerste jaar wordt gebruikt.",
+    intro:
+      "Je klantcode, de leden die via jou zijn binnengekomen, en hoe de korting van 25% in het eerste jaar wordt gebruikt.",
     signInTitle: "Log in om verder te gaan",
     signInBody: "Het portaal hangt aan je account, zodat we weten bij welk bedrijf je hoort.",
     signIn: "Inloggen",
@@ -411,7 +435,8 @@ const copy = {
     applying: "Versturen…",
     applyError: "Er ging iets mis. Kijk de velden even na en probeer het opnieuw.",
     pendingTitle: "We hebben je aanvraag",
-    pendingBody: "We lezen ze allemaal zelf. Je hoort van ons per e-mail, en je code verschijnt hier zodra je bent goedgekeurd.",
+    pendingBody:
+      "We lezen ze allemaal zelf. Je hoort van ons per e-mail, en je code verschijnt hier zodra je bent goedgekeurd.",
     pausedTitle: "Je vermelding staat op pauze",
     pausedBody: "Schrijf ons wanneer je weer wilt starten.",
     codeTitle: "Je klantcode",

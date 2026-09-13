@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { withLangPrefix } from "@/lib/localized-path";
 import { useMemo, useState } from "react";
@@ -16,19 +18,7 @@ const description =
   "Search any food and get a straight answer: fine in small amounts, be careful, or don't give this. Written for the moment something hits the kitchen floor.";
 
 export const Route = createFileRoute("/{-$lang}/my-dog/food")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/my-dog/food"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/my-dog/food", pageSeo.myDogFood),
   component: FoodSafetyPage,
 });
 
@@ -72,7 +62,7 @@ const copy = {
     empty:
       "Das haben wir noch nicht aufgeschrieben. Wenn dein Hund es bereits gefressen hat und du dir unsicher bist, ruf deinen Tierarzt an – dafür sind sie genau da.",
     vetNote:
-      "Wenn dein Hund etwas von der Liste \"Nicht geben\" gefressen hat, warte nicht ab, was passiert. Ruf deinen Tierarzt oder eine Tiergift-Notrufnummer an und sag ihnen, was es war, ungefähr wie viel und wann.",
+      'Wenn dein Hund etwas von der Liste "Nicht geben" gefressen hat, warte nicht ab, was passiert. Ruf deinen Tierarzt oder eine Tiergift-Notrufnummer an und sag ihnen, was es war, ungefähr wie viel und wann.',
     noteTitle: "Ein Hinweis zu solchen Listen",
     noteBody:
       "Hunde sind verschieden. Was für die meisten in Ordnung ist, kann deinen Hund trotzdem stören, und die Menge spielt eine Rolle – ein Krümel von etwas Reichhaltigem ist nicht dasselbe wie eine halbe Packung. Leckerlis jeglicher Art sollten unter etwa einem Zehntel dessen bleiben, was dein Hund täglich frisst.",
@@ -182,7 +172,7 @@ const copy = {
     empty:
       "Den har vi ikke skrevet op endnu. Har din hund allerede spist det, og du er usikker, så ring til dyrlægen — det er præcis den slags opkald, de er der for.",
     vetNote:
-      "Har din hund spist noget fra \"giv ikke\"-listen, så vent ikke med at se, hvad der sker. Ring til dyrlægen eller en dyregiftlinje og fortæl, hvad det var, cirka hvor meget, og hvornår.",
+      'Har din hund spist noget fra "giv ikke"-listen, så vent ikke med at se, hvad der sker. Ring til dyrlægen eller en dyregiftlinje og fortæl, hvad det var, cirka hvor meget, og hvornår.',
     noteTitle: "En note om lister som denne",
     noteBody:
       "Hunde er forskellige. Noget der er fint for de fleste, kan stadig give din hund problemer, og mængde betyder noget — en krumme af noget fedt er ikke det samme som en halv pakke. Godbidder af enhver slags bør holdes under omkring en tiendedel af det, din hund spiser på en dag.",
@@ -204,7 +194,7 @@ const copy = {
     empty:
       "Den har vi inte skrivit om än. Har din hund redan ätit det och du är osäker, ring veterinären — det är precis den typen av samtal de finns till för.",
     vetNote:
-      "Har din hund ätit något från listan \"ge inte\", vänta inte och se vad som händer. Ring veterinären eller en djurgiftlinje och berätta vad det var, ungefär hur mycket, och när.",
+      'Har din hund ätit något från listan "ge inte", vänta inte och se vad som händer. Ring veterinären eller en djurgiftlinje och berätta vad det var, ungefär hur mycket, och när.',
     noteTitle: "En kommentar om listor som denna",
     noteBody:
       "Hundar är olika. Något som är okej för de flesta kan ändå ge din hund problem, och mängden spelar roll — en smula av något fett är inte samma sak som ett halvt paket. Godis av alla slag bör hållas under ungefär en tiondel av vad hunden äter på en dag.",
@@ -226,7 +216,7 @@ const copy = {
     empty:
       "Sitä emme ole vielä kirjoittaneet auki. Jos koirasi on jo syönyt sitä etkä ole varma, soita eläinlääkärille — juuri sitä varten he ovat olemassa.",
     vetNote:
-      "Jos koirasi on syönyt jotain \"älä anna\" -listalta, älä jää odottamaan mitä tapahtuu. Soita eläinlääkärille tai eläinten myrkytyspäivystykseen ja kerro, mitä se oli, suunnilleen kuinka paljon ja milloin.",
+      'Jos koirasi on syönyt jotain "älä anna" -listalta, älä jää odottamaan mitä tapahtuu. Soita eläinlääkärille tai eläinten myrkytyspäivystykseen ja kerro, mitä se oli, suunnilleen kuinka paljon ja milloin.',
     noteTitle: "Huomio tällaisista listoista",
     noteBody:
       "Koirat ovat erilaisia. Jokin, mikä sopii useimmille, voi silti aiheuttaa ongelmia omallesi, ja määrällä on väliä — murunen jotain rasvaista ei ole sama asia kuin puoli pakettia. Kaikenlaisten herkkujen tulisi jäädä alle kymmenesosaan siitä, mitä koira syö päivässä.",
@@ -243,7 +233,9 @@ function FoodSafetyPage() {
     const q = query.trim().toLowerCase();
     return foodItems()
       .filter((f) => (filter === "all" ? true : f.safety === filter))
-      .filter((f) => (q ? f.name.toLowerCase().includes(q) || f.body.toLowerCase().includes(q) : true))
+      .filter((f) =>
+        q ? f.name.toLowerCase().includes(q) || f.body.toLowerCase().includes(q) : true,
+      )
       .sort((a, b) => a.name.localeCompare(b.name));
   }, [query, filter]);
 
@@ -298,7 +290,9 @@ function FoodSafetyPage() {
         <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-start">
           <div className="rounded-[1.5rem] border border-border bg-card px-6 md:px-8">
             {results.length === 0 ? (
-              <p className="py-10 text-[0.9375rem] leading-relaxed text-muted-foreground">{c.empty}</p>
+              <p className="py-10 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                {c.empty}
+              </p>
             ) : (
               <ul>
                 {results.map((item) => (
@@ -317,7 +311,9 @@ function FoodSafetyPage() {
             <VetNote>{c.vetNote}</VetNote>
             <div className="rounded-[1.5rem] border border-border bg-surface p-7">
               <h2 className="font-display text-xl tracking-tight">{c.noteTitle}</h2>
-              <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{c.noteBody}</p>
+              <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                {c.noteBody}
+              </p>
             </div>
           </div>
         </div>

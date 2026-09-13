@@ -1,6 +1,14 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
-import { CardGrid, Checklist, Notice, PointList, SectionHead } from "@/components/dogmatch/journey/parts";
+import {
+  CardGrid,
+  Checklist,
+  Notice,
+  PointList,
+  SectionHead,
+} from "@/components/dogmatch/journey/parts";
 import { getDogContent } from "@/data/getdog/content";
 import { useGetDog } from "@/lib/getdog/store";
 import { useCopy } from "@/i18n";
@@ -14,19 +22,7 @@ const description =
   "What your home and your everyday life mean for a dog, honest answers about allergies and time alone, and a tickable arrival checklist you can print.";
 
 export const Route = createFileRoute("/{-$lang}/get-a-dog/prepare")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/get-a-dog/prepare"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/get-a-dog/prepare", pageSeo.getDogPrepare),
   component: PreparePage,
 });
 
@@ -43,7 +39,8 @@ const copy = {
     worthChecking: "Worth checking",
     lifeEyebrow: "Your everyday life",
     lifeTitle: "What does an ordinary week look like for you?",
-    lifeBody: "The dog has to fit the week you actually have, not the one you'd like to have. Find yourself below.",
+    lifeBody:
+      "The dog has to fit the week you actually have, not the one you'd like to have. Find yourself below.",
     allergiesEyebrow: "Allergies",
     allergiesTitle: "What we can honestly say.",
     allergiesBody1:
@@ -83,7 +80,8 @@ const copy = {
     worthChecking: "Verdt å sjekke",
     lifeEyebrow: "Hverdagen din",
     lifeTitle: "Hvordan ser en helt vanlig uke ut for deg?",
-    lifeBody: "Hunden må passe inn i uken du faktisk har, ikke den du skulle ønske du hadde. Kjenn deg igjen nedenfor.",
+    lifeBody:
+      "Hunden må passe inn i uken du faktisk har, ikke den du skulle ønske du hadde. Kjenn deg igjen nedenfor.",
     allergiesEyebrow: "Allergier",
     allergiesTitle: "Det vi ærlig kan si.",
     allergiesBody1:
@@ -123,7 +121,8 @@ const copy = {
     worthChecking: "Warto sprawdzić",
     lifeEyebrow: "Twoja codzienność",
     lifeTitle: "Jak wygląda dla Ciebie zwykły tydzień?",
-    lifeBody: "Pies musi pasować do tygodnia, który naprawdę masz, a nie do tego, który chciałbyś mieć. Znajdź się poniżej.",
+    lifeBody:
+      "Pies musi pasować do tygodnia, który naprawdę masz, a nie do tego, który chciałbyś mieć. Znajdź się poniżej.",
     allergiesEyebrow: "Alergie",
     allergiesTitle: "To, co możemy uczciwie powiedzieć.",
     allergiesBody1:
@@ -163,7 +162,8 @@ const copy = {
     worthChecking: "Værd at tjekke",
     lifeEyebrow: "Din hverdag",
     lifeTitle: "Hvordan ser en helt almindelig uge ud for dig?",
-    lifeBody: "Hunden skal passe ind i den uge du faktisk har, ikke den du ønsker du havde. Genkend dig selv nedenfor.",
+    lifeBody:
+      "Hunden skal passe ind i den uge du faktisk har, ikke den du ønsker du havde. Genkend dig selv nedenfor.",
     allergiesEyebrow: "Allergier",
     allergiesTitle: "Det vi ærligt kan sige.",
     allergiesBody1:
@@ -203,7 +203,8 @@ const copy = {
     worthChecking: "Värt att kolla upp",
     lifeEyebrow: "Din vardag",
     lifeTitle: "Hur ser en helt vanlig vecka ut för dig?",
-    lifeBody: "Hunden måste passa in i veckan du faktiskt har, inte den du önskar att du hade. Känn igen dig själv nedan.",
+    lifeBody:
+      "Hunden måste passa in i veckan du faktiskt har, inte den du önskar att du hade. Känn igen dig själv nedan.",
     allergiesEyebrow: "Allergier",
     allergiesTitle: "Det vi ärligt kan säga.",
     allergiesBody1:
@@ -243,7 +244,8 @@ const copy = {
     worthChecking: "Kannattaa tarkistaa",
     lifeEyebrow: "Arkesi",
     lifeTitle: "Miltä tavallinen viikko sinulla näyttää?",
-    lifeBody: "Koiran on sovittava siihen viikkoon, joka sinulla oikeasti on, ei siihen, jonka toivoisit olevan. Tunnista itsesi alta.",
+    lifeBody:
+      "Koiran on sovittava siihen viikkoon, joka sinulla oikeasti on, ei siihen, jonka toivoisit olevan. Tunnista itsesi alta.",
     allergiesEyebrow: "Allergiat",
     allergiesTitle: "Mitä voimme rehellisesti sanoa.",
     allergiesBody1:
@@ -283,7 +285,8 @@ const copy = {
     worthChecking: "Wert, zu prüfen",
     lifeEyebrow: "Dein Alltag",
     lifeTitle: "Wie sieht eine ganz normale Woche für dich aus?",
-    lifeBody: "Der Hund muss zu der Woche passen, die du wirklich hast, nicht zu der, die du gerne hättest. Erkenne dich unten wieder.",
+    lifeBody:
+      "Der Hund muss zu der Woche passen, die du wirklich hast, nicht zu der, die du gerne hättest. Erkenne dich unten wieder.",
     allergiesEyebrow: "Allergien",
     allergiesTitle: "Was wir ehrlich sagen können.",
     allergiesBody1:
@@ -323,7 +326,8 @@ const copy = {
     worthChecking: "À vérifier",
     lifeEyebrow: "Votre quotidien",
     lifeTitle: "À quoi ressemble une semaine ordinaire pour vous ?",
-    lifeBody: "Le chien doit s'adapter à la semaine que vous avez réellement, pas à celle que vous aimeriez avoir. Reconnaissez-vous ci-dessous.",
+    lifeBody:
+      "Le chien doit s'adapter à la semaine que vous avez réellement, pas à celle que vous aimeriez avoir. Reconnaissez-vous ci-dessous.",
     allergiesEyebrow: "Allergies",
     allergiesTitle: "Ce que nous pouvons dire honnêtement.",
     allergiesBody1:
@@ -344,7 +348,8 @@ const copy = {
     checklistTitle: "La liste pour son arrivée.",
     checklistBody:
       "Cochez les éléments au fur et à mesure. Elle s'enregistre en cours de route, sur cet appareil, pour que vous puissiez la retrouver en magasin.",
-    homePrepAlt: "Une composition illustrée avec panier, gamelles, laisse, harnais et jouets pour chien",
+    homePrepAlt:
+      "Une composition illustrée avec panier, gamelles, laisse, harnais et jouets pour chien",
     printCta: "Imprimer ma liste d'arrivée",
     noteTitle: "Une remarque honnête",
     noteBody:
@@ -363,7 +368,8 @@ const copy = {
     worthChecking: "Het waard om te checken",
     lifeEyebrow: "Je dagelijks leven",
     lifeTitle: "Hoe ziet een gewone week er voor jou uit?",
-    lifeBody: "De hond moet passen bij de week die je echt hebt, niet bij de week die je zou willen hebben. Herken jezelf hieronder.",
+    lifeBody:
+      "De hond moet passen bij de week die je echt hebt, niet bij de week die je zou willen hebben. Herken jezelf hieronder.",
     allergiesEyebrow: "Allergieën",
     allergiesTitle: "Wat we eerlijk kunnen zeggen.",
     allergiesBody1:
@@ -384,7 +390,8 @@ const copy = {
     checklistTitle: "De aankomstlijst.",
     checklistBody:
       "Vink dingen af zodra je ze in huis hebt. Hij wordt onderweg opgeslagen, op dit apparaat, zodat je hem in de winkel weer kunt raadplegen.",
-    homePrepAlt: "Een geïllustreerd overzicht van een hondenmand, bakjes, riem, tuigje en speeltjes",
+    homePrepAlt:
+      "Een geïllustreerd overzicht van een hondenmand, bakjes, riem, tuigje en speeltjes",
     printCta: "Mijn aankomstlijst afdrukken",
     noteTitle: "Eén eerlijke opmerking",
     noteBody:
@@ -413,7 +420,10 @@ function PreparePage() {
         <div className="container-page">
           <SectionHead eyebrow={c.homeEyebrow} title={c.homeTitle} body={c.homeBody} />
           <div className="mt-12 grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
-            <CardGrid items={homeScenarios.map((s) => ({ title: s.title, body: s.body }))} columns={2} />
+            <CardGrid
+              items={homeScenarios.map((s) => ({ title: s.title, body: s.body }))}
+              columns={2}
+            />
             <div>
               <p className="eyebrow">{c.worthChecking}</p>
               <div className="mt-6 rounded-2xl border border-border bg-card p-7">
@@ -460,7 +470,11 @@ function PreparePage() {
         <div className="container-page">
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
             <div className="lg:sticky lg:top-28 lg:self-start">
-              <SectionHead eyebrow={c.checklistEyebrow} title={c.checklistTitle} body={c.checklistBody} />
+              <SectionHead
+                eyebrow={c.checklistEyebrow}
+                title={c.checklistTitle}
+                body={c.checklistBody}
+              />
               <p className="mt-8 font-display text-4xl tabular-nums tracking-tight text-accent">
                 {ticked.length}
                 <span className="text-xl text-muted-foreground"> / {arrivalChecklist.length}</span>

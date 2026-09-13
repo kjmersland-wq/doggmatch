@@ -6,13 +6,12 @@ import { getTrainingCategories } from "@/data/training/categories";
 import { categoryImages, trainingImages } from "@/data/training/images";
 import { getLessons } from "@/data/training/lessons";
 import { todaysPlan, getAgeFocus } from "@/lib/training/plan";
+import { dailyBudget, encouragement, progressSummary, weeklyPlan } from "@/lib/training/schedule";
 import {
-  dailyBudget,
-  encouragement,
-  progressSummary,
-  weeklyPlan,
-} from "@/lib/training/schedule";
-import { ProgressOverview, WeekPlan, WeekPlanEmpty } from "@/components/dogmatch/training/plan-parts";
+  ProgressOverview,
+  WeekPlan,
+  WeekPlanEmpty,
+} from "@/components/dogmatch/training/plan-parts";
 import { today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { seoLinks, abs, localizedHead } from "@/lib/seo";
@@ -335,26 +334,30 @@ function TrainHome() {
             </Link>
           </div>
           <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {getTrainingCategories().slice(0, 4).map((c) => (
-              <li key={c.id}>
-                <Link
-                  to={withLangPrefix("/train/library")}
-                  hash={c.id}
-                  className="group block overflow-hidden rounded-[1.25rem]"
-                >
-                  <img
-                    src={categoryImages[c.id]}
-                    alt=""
-                    loading="lazy"
-                    width={1200}
-                    height={1500}
-                    className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
-                  />
-                  <h3 className="mt-4 font-display text-lg leading-tight tracking-tight">{c.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.blurb}</p>
-                </Link>
-              </li>
-            ))}
+            {getTrainingCategories()
+              .slice(0, 4)
+              .map((c) => (
+                <li key={c.id}>
+                  <Link
+                    to={withLangPrefix("/train/library")}
+                    hash={c.id}
+                    className="group block overflow-hidden rounded-[1.25rem]"
+                  >
+                    <img
+                      src={categoryImages[c.id]}
+                      alt=""
+                      loading="lazy"
+                      width={1200}
+                      height={1500}
+                      className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
+                    />
+                    <h3 className="mt-4 font-display text-lg leading-tight tracking-tight">
+                      {c.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.blurb}</p>
+                  </Link>
+                </li>
+              ))}
           </ul>
         </div>
       </Section>
@@ -365,11 +368,13 @@ function TrainHome() {
           <Eyebrow>{t.train.pickedEyebrow}</Eyebrow>
           <h2 className="display-md mt-5 max-w-lg">{t.train.pickedTitle}</h2>
           <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {getLessons().slice(0, 3).map((l) => (
-              <li key={l.id}>
-                <LessonCard lesson={l} status={progress[l.id]} />
-              </li>
-            ))}
+            {getLessons()
+              .slice(0, 3)
+              .map((l) => (
+                <li key={l.id}>
+                  <LessonCard lesson={l} status={progress[l.id]} />
+                </li>
+              ))}
           </ul>
         </div>
       </Section>
@@ -384,7 +389,9 @@ function TrainHome() {
             {(Object.keys(ageFocus) as (keyof typeof ageFocus)[]).map((k) => (
               <li key={k} className="bg-background p-8">
                 <h3 className="font-display text-lg leading-tight">{ageFocus[k].title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{ageFocus[k].body}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {ageFocus[k].body}
+                </p>
                 <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
                   {ageFocus[k].points.map((p) => (
                     <li key={p} className="flex gap-2">
@@ -427,5 +434,3 @@ function TrainHome() {
     </div>
   );
 }
-
-

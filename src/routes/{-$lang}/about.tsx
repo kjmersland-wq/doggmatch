@@ -13,13 +13,15 @@ const seoCopy = {
   en: { title, description },
   de: { title, description },
   fr: {
-  title: "DoggMatch",
-  description: "Trouvez le compagnon canin idéal pour votre style de vie grâce à DoggMatch. Notre application vous aide à découvrir des chiens à adopter en fonction de vos préférences, de votre niveau d'activité et de votre environnement familial. Que vous recherchiez un compagnon énergique pour vos aventures en plein air ou un toutou calme pour des câlins sur le canapé, DoggMatch est là pour vous guider vers votre nouveau meilleur ami.",
-},
+    title: "DoggMatch",
+    description:
+      "Trouvez le compagnon canin idéal pour votre style de vie grâce à DoggMatch. Notre application vous aide à découvrir des chiens à adopter en fonction de vos préférences, de votre niveau d'activité et de votre environnement familial. Que vous recherchiez un compagnon énergique pour vos aventures en plein air ou un toutou calme pour des câlins sur le canapé, DoggMatch est là pour vous guider vers votre nouveau meilleur ami.",
+  },
   nl: {
-  title: "DoggMatch",
-  description: "Vind de perfecte match voor jouw hond. Ontdek nieuwe vrienden, speelmaatjes en potentiële partners voor je trouwe viervoeter.",
-},
+    title: "DoggMatch",
+    description:
+      "Vind de perfecte match voor jouw hond. Ontdek nieuwe vrienden, speelmaatjes en potentiële partners voor je trouwe viervoeter.",
+  },
   no: {
     title: "Om DoggMatch — en snillere måte å velge hund på",
     description:

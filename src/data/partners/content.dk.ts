@@ -10,14 +10,46 @@ export type PartnerCategory = {
 };
 
 export const partnerCategories: PartnerCategory[] = [
-  { id: "equipment", label: "Tilbehør og udstyr til hunde", blurb: "Hundeseler, snore, senge, legetøj og de daglige fornødenheder, der slides op." },
-  { id: "grooming", label: "Pelspleje", blurb: "Saloner og mobile hundefrisører, der tager sig tid til nervøse hunde." },
-  { id: "training", label: "Træning", blurb: "Hvalpehold, individuel hjælp og belønningsbaseret adfærdstræning." },
-  { id: "vet", label: "Dyrlæge & sundhed", blurb: "Klinikker, fysioterapeuter, tandlæger og alle, der holder hunde sunde." },
-  { id: "insurance", label: "Forsikring", blurb: "Dækning, der er klar omkring, hvad den dækker og ikke dækker." },
-  { id: "boarding", label: "Pasning & dagspleje", blurb: "Kenneler, hjemmepasning, dagspleje og betroede hundepassere." },
-  { id: "food", label: "Foder & ernæring", blurb: "Foder, godbidder og kosttilskud, som du selv ville give din egen hund." },
-  { id: "travel", label: "Rejser & aktiviteter", blurb: "Hundevenlige overnatningssteder, biltilbehør, vandreture, svømning og udflugter." },
+  {
+    id: "equipment",
+    label: "Tilbehør og udstyr til hunde",
+    blurb: "Hundeseler, snore, senge, legetøj og de daglige fornødenheder, der slides op.",
+  },
+  {
+    id: "grooming",
+    label: "Pelspleje",
+    blurb: "Saloner og mobile hundefrisører, der tager sig tid til nervøse hunde.",
+  },
+  {
+    id: "training",
+    label: "Træning",
+    blurb: "Hvalpehold, individuel hjælp og belønningsbaseret adfærdstræning.",
+  },
+  {
+    id: "vet",
+    label: "Dyrlæge & sundhed",
+    blurb: "Klinikker, fysioterapeuter, tandlæger og alle, der holder hunde sunde.",
+  },
+  {
+    id: "insurance",
+    label: "Forsikring",
+    blurb: "Dækning, der er klar omkring, hvad den dækker og ikke dækker.",
+  },
+  {
+    id: "boarding",
+    label: "Pasning & dagspleje",
+    blurb: "Kenneler, hjemmepasning, dagspleje og betroede hundepassere.",
+  },
+  {
+    id: "food",
+    label: "Foder & ernæring",
+    blurb: "Foder, godbidder og kosttilskud, som du selv ville give din egen hund.",
+  },
+  {
+    id: "travel",
+    label: "Rejser & aktiviteter",
+    blurb: "Hundevenlige overnatningssteder, biltilbehør, vandreture, svømning og udflugter.",
+  },
 ];
 
 export const partnerBenefits = [

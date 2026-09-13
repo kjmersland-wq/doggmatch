@@ -8,7 +8,7 @@ import { costRange, prepCards } from "@/lib/getdog/prep";
 import { getDogStore } from "@/lib/getdog/store";
 import { useCopy } from "@/i18n";
 import { useEffect } from "react";
-import { seoLinks, abs, breadcrumbLd } from "@/lib/seo";
+import { seoLinks, abs, breadcrumbLd, headLocale, langUrl, ogLocaleTag } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
@@ -18,9 +18,13 @@ export const Route = createFileRoute("/{-$lang}/get-a-dog/breed/$breedId")({
     if (!breed) throw notFound();
     return { breedId: breed.id };
   },
-  head: ({ loaderData }) => {
+  head: (ctx) => {
+    const { loaderData } = ctx;
+    const locale = headLocale(ctx);
     if (!loaderData) {
-      return { meta: [{ title: "Unavailable | DoggMatch" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [{ title: "Unavailable | DoggMatch" }, { name: "robots", content: "noindex" }],
+      };
     }
     const name = breedContent()[loaderData.breedId].displayName;
     const title = `Getting ready for a ${name} — what to know before you commit | DoggMatch`;
@@ -33,24 +37,29 @@ export const Route = createFileRoute("/{-$lang}/get-a-dog/breed/$breedId")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: abs(path) },
+        { property: "og:url", content: langUrl(path, locale) },
+        { property: "og:locale", content: ogLocaleTag(locale) },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
       ],
-      links: seoLinks(path),
+      links: seoLinks(path).map((l) =>
+        l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
+      ),
       scripts: [
-        breadcrumbLd([
-          { name: "DoggMatch", path: "/" },
-          { name: "Get a dog", path: "/get-a-dog" },
-          { name, path },
-        ]),
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: "Get a dog", path: "/get-a-dog" },
+            { name, path },
+          ],
+          locale,
+        ),
       ],
     };
   },
   component: BreedPrepPage,
 });
-
 
 const copy = {
   en: {
@@ -273,9 +282,7 @@ function BreedPrepPage() {
             <h1 className="display-xl mt-6">{c.heading(content.displayName)}</h1>
             <ShareBar className="mt-6" />
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{content.summary}</p>
-            <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted-foreground">
-              {c.intro}
-            </p>
+            <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted-foreground">{c.intro}</p>
           </div>
           <div className="overflow-hidden rounded-[2rem] bg-surface">
             <img
@@ -310,14 +317,12 @@ function BreedPrepPage() {
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
             <div>
               <SectionHead eyebrow={c.moneyEyebrow} title={c.moneyTitle(content.displayName)} />
-              <p className="mt-6 font-display text-4xl tracking-tight text-accent">{costRange(breed)}</p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                {c.moneyBody}
+              <p className="mt-6 font-display text-4xl tracking-tight text-accent">
+                {costRange(breed)}
               </p>
+              <p className="mt-3 text-sm text-muted-foreground">{c.moneyBody}</p>
             </div>
-            <Notice title={c.noticeTitle}>
-              {c.noticeBody}
-            </Notice>
+            <Notice title={c.noticeTitle}>{c.noticeBody}</Notice>
           </div>
 
           <div className="mt-14 flex flex-wrap gap-3">

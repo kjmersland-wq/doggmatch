@@ -43,7 +43,8 @@ const seoCopy = {
       "Parks, schöne Gassirunden, Hundeschulen, Tierärzte, Hundefriseure und Orte, die Hunde willkommen heißen. Sag uns einfach, wo du wohnst.",
   },
   fr: {
-    title: "Vie de chien — des lieux qui accueillent bien votre chien près de chez vous | DoggMatch",
+    title:
+      "Vie de chien — des lieux qui accueillent bien votre chien près de chez vous | DoggMatch",
     description:
       "Parcs, belles balades, cours d'éducation, vétérinaires, toiletteurs et lieux qui aiment les chiens. Dites-nous simplement où vous habitez.",
   },

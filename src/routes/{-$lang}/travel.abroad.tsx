@@ -1,8 +1,15 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { Notice, PointList, SectionHead } from "@/components/dogmatch/journey/parts";
-import { getCountries, getTransportModes, getTravelTimeline, type Rule } from "@/data/travel/countries";
+import {
+  getCountries,
+  getTransportModes,
+  getTravelTimeline,
+  type Rule,
+} from "@/data/travel/countries";
 import { getBeforeYouLeave } from "@/data/travel/content";
 import { useCopy } from "@/i18n";
 import { checkRoute, type Leg } from "@/lib/travel/rules";
@@ -19,19 +26,7 @@ const description =
   "Tell us where you're travelling from, where you're going and when. We'll show what's usually required — microchip, rabies, passport, tapeworm — and link the official source.";
 
 export const Route = createFileRoute("/{-$lang}/travel/abroad")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/travel/abroad"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/travel/abroad", pageSeo.travelAbroad),
   component: AbroadPage,
 });
 
@@ -48,7 +43,8 @@ const copy = {
     dateLabel: "When are you going?",
     countryPlaceholder: "Choose a country",
     transportEyebrow: "How are you travelling?",
-    datePrefix: "Some steps have waiting periods measured in weeks, so the date matters. Work backwards from",
+    datePrefix:
+      "Some steps have waiting periods measured in weeks, so the date matters. Work backwards from",
     dateSuffix: "using the timeline below.",
     dateLocale: "en-GB",
     going: "Going",
@@ -144,7 +140,8 @@ const copy = {
     dateLabel: "Kiedy wyjeżdżacie?",
     countryPlaceholder: "Wybierz kraj",
     transportEyebrow: "Jak podróżujecie?",
-    datePrefix: "Niektóre kroki mają okresy oczekiwania liczone w tygodniach, więc data ma znaczenie. Licz wstecz od",
+    datePrefix:
+      "Niektóre kroki mają okresy oczekiwania liczone w tygodniach, więc data ma znaczenie. Licz wstecz od",
     dateSuffix: "korzystając z osi czasu poniżej.",
     dateLocale: "pl-PL",
     going: "W drogę",
@@ -240,7 +237,8 @@ const copy = {
     dateLabel: "När reser ni?",
     countryPlaceholder: "Välj ett land",
     transportEyebrow: "Hur reser ni?",
-    datePrefix: "Vissa steg har väntetider mätta i veckor, så datumet spelar roll. Räkna bakåt från",
+    datePrefix:
+      "Vissa steg har väntetider mätta i veckor, så datumet spelar roll. Räkna bakåt från",
     dateSuffix: "med tidslinjen nedan.",
     dateLocale: "sv-SE",
     going: "På väg ut",
@@ -288,7 +286,8 @@ const copy = {
     dateLabel: "Milloin olette menossa?",
     countryPlaceholder: "Valitse maa",
     transportEyebrow: "Miten matkustatte?",
-    datePrefix: "Joissakin vaiheissa on viikkojen mittaisia odotusaikoja, joten päivämäärällä on väliä. Laske taaksepäin",
+    datePrefix:
+      "Joissakin vaiheissa on viikkojen mittaisia odotusaikoja, joten päivämäärällä on väliä. Laske taaksepäin",
     dateSuffix: "käyttäen alla olevaa aikajanaa.",
     dateLocale: "fi-FI",
     going: "Menomatka",
@@ -336,7 +335,8 @@ const copy = {
     dateLabel: "Wann geht es los?",
     countryPlaceholder: "Land wählen",
     transportEyebrow: "Wie reist ihr?",
-    datePrefix: "Manche Schritte haben Wartezeiten von mehreren Wochen, deshalb zählt das Datum. Rechne rückwärts ab",
+    datePrefix:
+      "Manche Schritte haben Wartezeiten von mehreren Wochen, deshalb zählt das Datum. Rechne rückwärts ab",
     dateSuffix: "anhand der Zeitleiste unten.",
     dateLocale: "de-DE",
     going: "Hinreise",
@@ -384,7 +384,8 @@ const copy = {
     dateLabel: "Quand partez-vous ?",
     countryPlaceholder: "Choisir un pays",
     transportEyebrow: "Comment voyagez-vous ?",
-    datePrefix: "Certaines étapes ont des délais d'attente de plusieurs semaines, donc la date compte. Comptez à rebours à partir du",
+    datePrefix:
+      "Certaines étapes ont des délais d'attente de plusieurs semaines, donc la date compte. Comptez à rebours à partir du",
     dateSuffix: "à l'aide de la chronologie ci-dessous.",
     dateLocale: "fr-FR",
     going: "Aller",
@@ -432,7 +433,8 @@ const copy = {
     dateLabel: "Wanneer vertrekken jullie?",
     countryPlaceholder: "Kies een land",
     transportEyebrow: "Hoe reizen jullie?",
-    datePrefix: "Sommige stappen hebben wachttijden van meerdere weken, dus de datum is belangrijk. Reken terug vanaf",
+    datePrefix:
+      "Sommige stappen hebben wachttijden van meerdere weken, dus de datum is belangrijk. Reken terug vanaf",
     dateSuffix: "met de tijdlijn hieronder.",
     dateLocale: "nl-NL",
     going: "Heenreis",
@@ -491,7 +493,14 @@ function AbroadPage() {
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
           </div>
           <div className="overflow-hidden rounded-[2rem] bg-surface">
-            <img src={abroadImage} alt={c.heroAlt} width={1600} height={1100} fetchPriority="high" className="aspect-[4/3] w-full object-cover" />
+            <img
+              src={abroadImage}
+              alt={c.heroAlt}
+              width={1600}
+              height={1100}
+              fetchPriority="high"
+              className="aspect-[4/3] w-full object-cover"
+            />
           </div>
         </div>
       </section>
@@ -538,7 +547,9 @@ function AbroadPage() {
                       onClick={() => getDogStore.setTrip({ transport: on ? undefined : mode.id })}
                       className={cn(
                         "h-11 rounded-full border px-5 text-[0.9375rem] transition-colors",
-                        on ? "border-accent bg-accent text-accent-foreground" : "border-border hover:border-border-strong",
+                        on
+                          ? "border-accent bg-accent text-accent-foreground"
+                          : "border-border hover:border-border-strong",
                       )}
                     >
                       {mode.label}
@@ -556,7 +567,12 @@ function AbroadPage() {
             {trip.date && (
               <p className="mt-8 text-sm text-muted-foreground">
                 {c.datePrefix}{" "}
-                {new Date(trip.date).toLocaleDateString(c.dateLocale, { day: "numeric", month: "long", year: "numeric" })} {c.dateSuffix}
+                {new Date(trip.date).toLocaleDateString(c.dateLocale, {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}{" "}
+                {c.dateSuffix}
               </p>
             )}
           </div>
@@ -574,9 +590,7 @@ function AbroadPage() {
               </div>
             ) : null}
 
-            {!check.outbound && (
-              <Notice title={c.noRulesTitle}>{c.noRulesBody}</Notice>
-            )}
+            {!check.outbound && <Notice title={c.noRulesTitle}>{c.noRulesBody}</Notice>}
           </div>
         </Section>
       )}
@@ -589,15 +603,27 @@ function AbroadPage() {
               <SectionHead eyebrow={c.timingEyebrow} title={c.timingTitle} body={c.timingBody} />
               <ol className="mt-10 space-y-px overflow-hidden rounded-2xl border border-border bg-border">
                 {getTravelTimeline().map((row) => (
-                  <li key={row.when} className="flex flex-wrap items-baseline gap-x-6 gap-y-1 bg-background p-6">
+                  <li
+                    key={row.when}
+                    className="flex flex-wrap items-baseline gap-x-6 gap-y-1 bg-background p-6"
+                  >
                     <span className="font-display text-[0.9375rem] text-accent">{row.when}</span>
-                    <span className="flex-1 text-[0.9375rem] text-muted-foreground">{row.what}</span>
+                    <span className="flex-1 text-[0.9375rem] text-muted-foreground">
+                      {row.what}
+                    </span>
                   </li>
                 ))}
               </ol>
             </div>
             <div className="overflow-hidden rounded-[1.5rem] lg:sticky lg:top-28 lg:self-start">
-              <img src={illus} alt={c.timelineAlt} width={1200} height={1200} loading="lazy" className="aspect-square w-full object-cover" />
+              <img
+                src={illus}
+                alt={c.timelineAlt}
+                width={1200}
+                height={1200}
+                loading="lazy"
+                className="aspect-square w-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -699,11 +725,15 @@ function LegPanel({ leg, heading, copy: c }: { leg: Leg; heading: string; copy: 
             <div className="mt-10 grid gap-6 md:grid-cols-2">
               <div className="rounded-2xl bg-surface p-6">
                 <p className="eyebrow">{c.quarantine}</p>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{leg.ruleSet.quarantine}</p>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                  {leg.ruleSet.quarantine}
+                </p>
               </div>
               <div className="rounded-2xl bg-surface p-6">
                 <p className="eyebrow">{c.minimumAge}</p>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{leg.ruleSet.minimumAge}</p>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                  {leg.ruleSet.minimumAge}
+                </p>
               </div>
             </div>
           )}
@@ -753,7 +783,9 @@ function RuleGroup({ title, rules, accent }: { title: string; rules: Rule[]; acc
       <ul className="mt-5 space-y-px overflow-hidden rounded-2xl border border-border bg-border">
         {rules.map((rule) => (
           <li key={rule.id} className="bg-background p-6">
-            <p className="font-display text-[1.0625rem] leading-tight tracking-tight">{rule.title}</p>
+            <p className="font-display text-[1.0625rem] leading-tight tracking-tight">
+              {rule.title}
+            </p>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{rule.detail}</p>
           </li>
         ))}

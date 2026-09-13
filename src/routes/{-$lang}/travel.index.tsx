@@ -98,7 +98,8 @@ const copy = {
     ],
     differentEyebrow: "Not every dog travels the same",
     differentTitle: "Who you're travelling with changes everything.",
-    differentBody: "A puppy, an old dog, a flat-faced breed and a fit adult need quite different plans for the same journey.",
+    differentBody:
+      "A puppy, an old dog, a flat-faced breed and a fit adult need quite different plans for the same journey.",
   },
   dk: {
     eyebrow: "Rejser og eventyr",
@@ -133,7 +134,8 @@ const copy = {
     ],
     differentEyebrow: "Ikke alle hunde rejser ens",
     differentTitle: "Hvem du rejser med, ændrer alt.",
-    differentBody: "En hvalp, en gammel hund, en fladnosset race og en sund voksen hund kræver helt forskellige planer for den samme rejse.",
+    differentBody:
+      "En hvalp, en gammel hund, en fladnosset race og en sund voksen hund kræver helt forskellige planer for den samme rejse.",
   },
   se: {
     eyebrow: "Resor och äventyr",
@@ -168,7 +170,8 @@ const copy = {
     ],
     differentEyebrow: "Alla hundar reser inte likadant",
     differentTitle: "Vem du reser med förändrar allt.",
-    differentBody: "En valp, en gammal hund, en brachycefal (kortnosig) ras och en frisk vuxen hund behöver helt olika planer för samma resa.",
+    differentBody:
+      "En valp, en gammal hund, en brachycefal (kortnosig) ras och en frisk vuxen hund behöver helt olika planer för samma resa.",
   },
   fi: {
     eyebrow: "Matkailu ja seikkailut",
@@ -203,7 +206,8 @@ const copy = {
     ],
     differentEyebrow: "Kaikki koirat eivät matkusta samalla tavalla",
     differentTitle: "Se, kenen kanssa matkustat, muuttaa kaiken.",
-    differentBody: "Pentu, vanha koira, lyhytkuonolainen rotu ja terve aikuinen koira tarvitsevat varsin erilaisia suunnitelmia samaan matkaan.",
+    differentBody:
+      "Pentu, vanha koira, lyhytkuonolainen rotu ja terve aikuinen koira tarvitsevat varsin erilaisia suunnitelmia samaan matkaan.",
   },
   no: {
     eyebrow: "Reise og eventyr",
@@ -238,7 +242,8 @@ const copy = {
     ],
     differentEyebrow: "Ikke alle hunder reiser likt",
     differentTitle: "Hvem du reiser med endrer alt.",
-    differentBody: "En valp, en gammel hund, en rase med flatt ansikt og en sprek voksen hund trenger ganske ulike planer for samme reise.",
+    differentBody:
+      "En valp, en gammel hund, en rase med flatt ansikt og en sprek voksen hund trenger ganske ulike planer for samme reise.",
   },
   pl: {
     eyebrow: "Podróże i przygody",
@@ -273,7 +278,8 @@ const copy = {
     ],
     differentEyebrow: "Nie każdy pies podróżuje tak samo",
     differentTitle: "To, z kim podróżujesz, zmienia wszystko.",
-    differentBody: "Szczeniak, starszy pies, rasa płaskonosa i sprawny dorosły pies potrzebują zupełnie innych planów na tę samą podróż.",
+    differentBody:
+      "Szczeniak, starszy pies, rasa płaskonosa i sprawny dorosły pies potrzebują zupełnie innych planów na tę samą podróż.",
   },
   de: {
     eyebrow: "Reisen und Abenteuer",
@@ -308,7 +314,8 @@ const copy = {
     ],
     differentEyebrow: "Nicht jeder Hund reist gleich",
     differentTitle: "Wer mitreist, verändert alles.",
-    differentBody: "Ein Welpe, ein alter Hund, eine kurznasige Rasse und ein fitter Erwachsener brauchen ganz unterschiedliche Pläne für dieselbe Reise.",
+    differentBody:
+      "Ein Welpe, ein alter Hund, eine kurznasige Rasse und ein fitter Erwachsener brauchen ganz unterschiedliche Pläne für dieselbe Reise.",
   },
   fr: {
     eyebrow: "Voyages et aventures",
@@ -343,7 +350,8 @@ const copy = {
     ],
     differentEyebrow: "Tous les chiens ne voyagent pas de la même façon",
     differentTitle: "Qui vous accompagne change tout.",
-    differentBody: "Un chiot, un chien âgé, une race brachycéphale et un adulte en forme ont besoin de plans bien différents pour le même trajet.",
+    differentBody:
+      "Un chiot, un chien âgé, une race brachycéphale et un adulte en forme ont besoin de plans bien différents pour le même trajet.",
   },
   nl: {
     eyebrow: "Reizen en avonturen",
@@ -378,13 +386,18 @@ const copy = {
     ],
     differentEyebrow: "Niet elke hond reist hetzelfde",
     differentTitle: "Met wie je reist verandert alles.",
-    differentBody: "Een puppy, een oude hond, een kortsnuitig ras en een fitte volwassen hond hebben heel verschillende plannen nodig voor dezelfde reis.",
+    differentBody:
+      "Een puppy, een oude hond, een kortsnuitig ras en een fitte volwassen hond hebben heel verschillende plannen nodig voor dezelfde reis.",
   },
 } as const;
 
 function TravelPage() {
   const c = useCopy(copy);
-  const images = { "/travel/car": carImage, "/travel/outdoors": heroImage, "/travel/abroad": abroadImage } as const;
+  const images = {
+    "/travel/car": carImage,
+    "/travel/outdoors": heroImage,
+    "/travel/abroad": abroadImage,
+  } as const;
   return (
     <div className="pb-24">
       <section className="container-page pt-24 md:pt-32">
@@ -425,11 +438,20 @@ function TravelPage() {
               to={s.to as never}
               className="group flex flex-col overflow-hidden rounded-[1.75rem] border border-border bg-card transition-colors hover:border-border-strong"
             >
-              <img src={images[s.to as keyof typeof images]} alt={s.alt} width={1408} height={1056} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.03]" />
+              <img
+                src={images[s.to as keyof typeof images]}
+                alt={s.alt}
+                width={1408}
+                height={1056}
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.03]"
+              />
               <div className="flex flex-1 flex-col p-8">
                 <p className="eyebrow">{s.label}</p>
                 <h2 className="display-md mt-4">{s.title}</h2>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {s.body}
+                </p>
                 <span className="mt-6 inline-flex items-center gap-2 text-[0.9375rem] font-medium">
                   {c.open}
                   <Arrow />

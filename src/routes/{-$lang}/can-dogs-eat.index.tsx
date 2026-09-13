@@ -137,7 +137,8 @@ const copy = {
   pl: {
     eyebrow: "Bezpieczeństwo żywności",
     title: "Czy pies może to zjeść?",
-    intro: "Jedna strona na produkt, więc od razu masz jasną odpowiedź. Wybierz to, co zjadł twój pies.",
+    intro:
+      "Jedna strona na produkt, więc od razu masz jasną odpowiedź. Wybierz to, co zjadł twój pies.",
     counted: (n: number) => `${n} produktów opisanych do tej pory`,
     vetNote:
       "Jeśli pies zjadł coś z listy „nie podawaj”, nie czekaj na objawy. Zadzwoń do weterynarza i powiedz, co to było, ile mniej więcej i kiedy.",
@@ -147,7 +148,8 @@ const copy = {
   dk: {
     eyebrow: "Fødevaresikkerhed",
     title: "Må hunde spise det?",
-    intro: "Én side per fødevare, så du får et klart svar med det samme. Vælg det, hunden fik fat i.",
+    intro:
+      "Én side per fødevare, så du får et klart svar med det samme. Vælg det, hunden fik fat i.",
     counted: (n: number) => `${n} fødevarer besvaret indtil videre`,
     vetNote:
       "Har hunden spist noget fra listen „giv ikke hunden dette“, så vent ikke på symptomer. Ring til din dyrlæge eller en dyregiftlinje, og fortæl hvad det var, cirka hvor meget, og hvornår.",
@@ -167,7 +169,8 @@ const copy = {
   fi: {
     eyebrow: "Ruokaturvallisuus",
     title: "Voiko koira syödä sitä?",
-    intro: "Yksi sivu jokaista ruoka-ainetta kohti, jotta saat suoran vastauksen heti. Valitse se, mitä koirasi sai käsiinsä.",
+    intro:
+      "Yksi sivu jokaista ruoka-ainetta kohti, jotta saat suoran vastauksen heti. Valitse se, mitä koirasi sai käsiinsä.",
     counted: (n: number) => `${n} ruoka-ainetta käsitelty tähän mennessä`,
     vetNote:
       "Jos koira on syönyt jotain ”älä anna tätä koiralle” -listalta, älä odota oireita. Soita eläinlääkärille tai myrkytystietokeskukseen ja kerro, mitä se oli, suunnilleen kuinka paljon ja milloin.",
@@ -197,7 +200,9 @@ function FoodHub() {
           <div className="grid gap-8">
             {groups.map((group) => (
               <div key={group.letter}>
-                <h2 className="font-display text-lg tracking-tight text-muted-foreground">{group.letter}</h2>
+                <h2 className="font-display text-lg tracking-tight text-muted-foreground">
+                  {group.letter}
+                </h2>
                 <ul className="mt-3 grid gap-1 sm:grid-cols-2">
                   {group.items.map((item) => (
                     <li key={item.id}>
@@ -219,7 +224,9 @@ function FoodHub() {
           <div className="grid gap-6">
             <VetNote>{c.vetNote}</VetNote>
             <div className="rounded-[1.5rem] border border-border bg-surface p-7">
-              <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">{c.searchHint}</p>
+              <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                {c.searchHint}
+              </p>
               <Link
                 to={withLangPrefix("/my-dog/food")}
                 className="mt-4 inline-flex text-sm text-accent underline decoration-border underline-offset-4 hover:decoration-accent"

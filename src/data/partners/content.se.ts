@@ -10,14 +10,46 @@ export type PartnerCategory = {
 };
 
 export const partnerCategories: PartnerCategory[] = [
-  { id: "equipment", label: "Djurtillbehör & hundutrustning", blurb: "Hundselar, koppel, bäddar, leksaker och vardagliga saker som slits ut." },
-  { id: "grooming", label: "Pälsvård", blurb: "Salonger och mobila hundfrisörer som tar sig tid med nervösa hundar." },
-  { id: "training", label: "Träning", blurb: "Valpkurser, individuell hjälp och belöningsbaserad beteendeförändring." },
-  { id: "vet", label: "Veterinär & hälsa", blurb: "Kliniker, fysioterapeuter, tandläkare och alla som håller hundar friska." },
-  { id: "insurance", label: "Försäkring", blurb: "Skydd som är tydligt med vad det täcker och inte täcker." },
-  { id: "boarding", label: "Pensionat & dagis", blurb: "Hundpensionat, hemmaboende hundvakter, dagis och pålitliga hundvakter." },
-  { id: "food", label: "Foder & nutrition", blurb: "Foder, godis och kosttillskott som du skulle ge din egen hund." },
-  { id: "travel", label: "Resor & aktiviteter", blurb: "Hundvänliga boenden, bilutrustning, vandringar, simning och dagsutflykter." },
+  {
+    id: "equipment",
+    label: "Djurtillbehör & hundutrustning",
+    blurb: "Hundselar, koppel, bäddar, leksaker och vardagliga saker som slits ut.",
+  },
+  {
+    id: "grooming",
+    label: "Pälsvård",
+    blurb: "Salonger och mobila hundfrisörer som tar sig tid med nervösa hundar.",
+  },
+  {
+    id: "training",
+    label: "Träning",
+    blurb: "Valpkurser, individuell hjälp och belöningsbaserad beteendeförändring.",
+  },
+  {
+    id: "vet",
+    label: "Veterinär & hälsa",
+    blurb: "Kliniker, fysioterapeuter, tandläkare och alla som håller hundar friska.",
+  },
+  {
+    id: "insurance",
+    label: "Försäkring",
+    blurb: "Skydd som är tydligt med vad det täcker och inte täcker.",
+  },
+  {
+    id: "boarding",
+    label: "Pensionat & dagis",
+    blurb: "Hundpensionat, hemmaboende hundvakter, dagis och pålitliga hundvakter.",
+  },
+  {
+    id: "food",
+    label: "Foder & nutrition",
+    blurb: "Foder, godis och kosttillskott som du skulle ge din egen hund.",
+  },
+  {
+    id: "travel",
+    label: "Resor & aktiviteter",
+    blurb: "Hundvänliga boenden, bilutrustning, vandringar, simning och dagsutflykter.",
+  },
 ];
 
 export const partnerBenefits = [

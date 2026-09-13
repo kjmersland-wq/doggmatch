@@ -1,4 +1,6 @@
 import { useMemo, useState } from "react";
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, Button, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { Notice, SectionHead } from "@/components/dogmatch/journey/parts";
@@ -15,19 +17,7 @@ const description =
   "Twelve honest questions about your days, your home, your money and the people around you — and a warm, useful answer. No pass mark, no pressure.";
 
 export const Route = createFileRoute("/{-$lang}/get-a-dog/ready")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/get-a-dog/ready"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/get-a-dog/ready", pageSeo.getDogReady),
   component: ReadyPage,
 });
 
@@ -43,7 +33,8 @@ const copy = {
     answersOnDevice: "Your answers stay on this device.",
     resultEyebrow: "What we think",
     basedOn: "Based on",
-    resultNote: "answers. This isn't a score — it just decides which of three honest answers we give you.",
+    resultNote:
+      "answers. This isn't a score — it just decides which of three honest answers we give you.",
     notesTitle: "A few things worth sorting out first",
     notesBody:
       "None of these are reasons not to have a dog. They're the things that are much easier to arrange now than later.",
@@ -67,7 +58,8 @@ const copy = {
     answersOnDevice: "Svarene dine blir liggende på denne enheten.",
     resultEyebrow: "Det vi tenker",
     basedOn: "Basert på",
-    resultNote: "svar. Dette er ikke en poengsum — det avgjør bare hvilket av tre ærlige svar vi gir deg.",
+    resultNote:
+      "svar. Dette er ikke en poengsum — det avgjør bare hvilket av tre ærlige svar vi gir deg.",
     notesTitle: "Noen ting som er verdt å ordne først",
     notesBody:
       "Ingen av disse er grunner til å ikke ha hund. Det er ting som er langt lettere å ordne nå enn senere.",
@@ -91,12 +83,14 @@ const copy = {
     answersOnDevice: "Twoje odpowiedzi zostają na tym urządzeniu.",
     resultEyebrow: "Co o tym myślimy",
     basedOn: "Na podstawie",
-    resultNote: "odpowiedzi. To nie jest wynik punktowy — decyduje jedynie, którą z trzech szczerych odpowiedzi Ci damy.",
+    resultNote:
+      "odpowiedzi. To nie jest wynik punktowy — decyduje jedynie, którą z trzech szczerych odpowiedzi Ci damy.",
     notesTitle: "Kilka spraw warto ogarnąć wcześniej",
     notesBody:
       "Żadna z nich nie jest powodem, by nie mieć psa. To po prostu rzeczy, które dużo łatwiej ustalić teraz niż później.",
     weveKept: "Zachowaliśmy",
-    answersHelp: "odpowiedzi, które pomagają w dopasowaniu, więc Znajdź mojego psa nie zapyta o nie ponownie.",
+    answersHelp:
+      "odpowiedzi, które pomagają w dopasowaniu, więc Znajdź mojego psa nie zapyta o nie ponownie.",
     findMyDog: "Znajdź mojego psa",
     puppyOrAdult: "Szczeniak czy dorosły?",
     changeAnswers: "Zmień moje odpowiedzi",
@@ -115,7 +109,8 @@ const copy = {
     answersOnDevice: "Dine svar bliver på denne enhed.",
     resultEyebrow: "Det vi tænker",
     basedOn: "Baseret på",
-    resultNote: "svar. Det her er ikke en pointsum — det afgør bare hvilket af tre ærlige svar vi giver dig.",
+    resultNote:
+      "svar. Det her er ikke en pointsum — det afgør bare hvilket af tre ærlige svar vi giver dig.",
     notesTitle: "Et par ting der er værd at ordne først",
     notesBody:
       "Ingen af dem er grunde til ikke at have hund. Det er ting der er langt lettere at ordne nu end senere.",
@@ -139,12 +134,14 @@ const copy = {
     answersOnDevice: "Dina svar stannar på den här enheten.",
     resultEyebrow: "Vad vi tycker",
     basedOn: "Baserat på",
-    resultNote: "svar. Det här är inte ett poäng — det avgör bara vilket av tre ärliga svar vi ger dig.",
+    resultNote:
+      "svar. Det här är inte ett poäng — det avgör bara vilket av tre ärliga svar vi ger dig.",
     notesTitle: "Några saker som är värda att ordna först",
     notesBody:
       "Inget av det här är skäl att inte skaffa hund. Det är saker som är mycket lättare att ordna nu än senare.",
     weveKept: "Vi har sparat de",
-    answersHelp: "svaren som hjälper till med matchningen, så Hitta min hund frågar inte om dem igen.",
+    answersHelp:
+      "svaren som hjälper till med matchningen, så Hitta min hund frågar inte om dem igen.",
     findMyDog: "Hitta min hund",
     puppyOrAdult: "Valp eller vuxen?",
     changeAnswers: "Ändra mina svar",
@@ -163,12 +160,14 @@ const copy = {
     answersOnDevice: "Vastauksesi pysyvät tällä laitteella.",
     resultEyebrow: "Mitä ajattelemme",
     basedOn: "Perustuu",
-    resultNote: "vastaukseen. Tämä ei ole pistemäärä — se vain ratkaisee, minkä kolmesta rehellisestä vastauksesta annamme sinulle.",
+    resultNote:
+      "vastaukseen. Tämä ei ole pistemäärä — se vain ratkaisee, minkä kolmesta rehellisestä vastauksesta annamme sinulle.",
     notesTitle: "Muutama asia kannattaa hoitaa ensin",
     notesBody:
       "Mikään näistä ei ole syy olla hankkimatta koiraa. Ne on vain paljon helpompi hoitaa nyt kuin myöhemmin.",
     weveKept: "Säilytimme ne",
-    answersHelp: "vastausta, jotka auttavat sopivuuden arvioinnissa, joten Löydä koirani ei kysy niitä uudelleen.",
+    answersHelp:
+      "vastausta, jotka auttavat sopivuuden arvioinnissa, joten Löydä koirani ei kysy niitä uudelleen.",
     findMyDog: "Löydä koirani",
     puppyOrAdult: "Pentu vai aikuinen?",
     changeAnswers: "Muuta vastauksiani",
@@ -187,12 +186,14 @@ const copy = {
     answersOnDevice: "Deine Antworten bleiben auf diesem Gerät.",
     resultEyebrow: "Was wir denken",
     basedOn: "Basierend auf",
-    resultNote: "Antworten. Das ist keine Punktzahl — es entscheidet nur, welche von drei ehrlichen Antworten wir dir geben.",
+    resultNote:
+      "Antworten. Das ist keine Punktzahl — es entscheidet nur, welche von drei ehrlichen Antworten wir dir geben.",
     notesTitle: "Ein paar Dinge, die sich vorher zu klären lohnen",
     notesBody:
       "Keines davon ist ein Grund, keinen Hund zu haben. Es sind Dinge, die sich jetzt viel leichter regeln lassen als später.",
     weveKept: "Wir haben die",
-    answersHelp: "Antworten aufbewahrt, die beim Matching helfen, damit Meinen Hund finden dich nicht noch einmal danach fragt.",
+    answersHelp:
+      "Antworten aufbewahrt, die beim Matching helfen, damit Meinen Hund finden dich nicht noch einmal danach fragt.",
     findMyDog: "Meinen Hund finden",
     puppyOrAdult: "Welpe oder erwachsen?",
     changeAnswers: "Meine Antworten ändern",
@@ -211,12 +212,14 @@ const copy = {
     answersOnDevice: "Vos réponses restent sur cet appareil.",
     resultEyebrow: "Ce que nous en pensons",
     basedOn: "Sur la base de",
-    resultNote: "réponses. Ce n'est pas un score — cela détermine simplement laquelle des trois réponses honnêtes nous vous donnons.",
+    resultNote:
+      "réponses. Ce n'est pas un score — cela détermine simplement laquelle des trois réponses honnêtes nous vous donnons.",
     notesTitle: "Quelques points à régler d'abord",
     notesBody:
       "Aucun d'eux n'est une raison de ne pas avoir de chien. Ce sont des choses bien plus faciles à organiser maintenant que plus tard.",
     weveKept: "Nous avons conservé les",
-    answersHelp: "réponses qui aident au matching, afin que Trouver mon chien ne vous les demande plus.",
+    answersHelp:
+      "réponses qui aident au matching, afin que Trouver mon chien ne vous les demande plus.",
     findMyDog: "Trouver mon chien",
     puppyOrAdult: "Chiot ou adulte ?",
     changeAnswers: "Modifier mes réponses",
@@ -235,12 +238,14 @@ const copy = {
     answersOnDevice: "Je antwoorden blijven op dit apparaat.",
     resultEyebrow: "Wat wij denken",
     basedOn: "Gebaseerd op",
-    resultNote: "antwoorden. Dit is geen score — het bepaalt alleen welk van de drie eerlijke antwoorden we je geven.",
+    resultNote:
+      "antwoorden. Dit is geen score — het bepaalt alleen welk van de drie eerlijke antwoorden we je geven.",
     notesTitle: "Een paar dingen die het waard zijn om eerst te regelen",
     notesBody:
       "Geen van deze zijn redenen om geen hond te nemen. Het zijn dingen die nu veel makkelijker te regelen zijn dan later.",
     weveKept: "We hebben de",
-    answersHelp: "antwoorden bewaard die helpen bij het matchen, zodat Vind mijn hond er niet opnieuw naar vraagt.",
+    answersHelp:
+      "antwoorden bewaard die helpen bij het matchen, zodat Vind mijn hond er niet opnieuw naar vraagt.",
     findMyDog: "Vind mijn hond",
     puppyOrAdult: "Puppy of volwassen?",
     changeAnswers: "Mijn antwoorden wijzigen",
@@ -256,7 +261,9 @@ function ReadyPage() {
   const saved = useGetDog();
   const [answers, setAnswers] = useState<Record<string, string>>(saved.readiness);
   const [step, setStep] = useState(0);
-  const [done, setDone] = useState(Object.keys(saved.readiness).length >= readinessQuestions.length);
+  const [done, setDone] = useState(
+    Object.keys(saved.readiness).length >= readinessQuestions.length,
+  );
 
   const question = readinessQuestions[step]!;
   const total = readinessQuestions.length;
@@ -308,7 +315,10 @@ function ReadyPage() {
           aria-valuemax={100}
           aria-label={c.progress}
         >
-          <div className="h-full rounded-full bg-accent transition-[width] duration-500 ease-out" style={{ width: `${progress}%` }} />
+          <div
+            className="h-full rounded-full bg-accent transition-[width] duration-500 ease-out"
+            style={{ width: `${progress}%` }}
+          />
         </div>
       </div>
 
@@ -316,7 +326,9 @@ function ReadyPage() {
         <p className="eyebrow">{question.eyebrow}</p>
         <h1 className="display-lg mt-4">{question.title}</h1>
         {question.help && (
-          <p className="mt-4 max-w-xl text-[0.9375rem] leading-relaxed text-muted-foreground">{question.help}</p>
+          <p className="mt-4 max-w-xl text-[0.9375rem] leading-relaxed text-muted-foreground">
+            {question.help}
+          </p>
         )}
 
         <fieldset className="mt-10 space-y-3">
@@ -356,8 +368,12 @@ function ReadyPage() {
                   />
                 </span>
                 <span className="min-w-0">
-                  <span className="block font-display text-[1.0625rem] leading-tight tracking-tight">{option.label}</span>
-                  {option.hint && <span className="mt-1 block text-sm text-muted-foreground">{option.hint}</span>}
+                  <span className="block font-display text-[1.0625rem] leading-tight tracking-tight">
+                    {option.label}
+                  </span>
+                  {option.hint && (
+                    <span className="mt-1 block text-sm text-muted-foreground">{option.hint}</span>
+                  )}
                 </span>
               </label>
             );
@@ -366,7 +382,10 @@ function ReadyPage() {
       </div>
 
       <div className="sticky bottom-20 mt-12 flex items-center gap-3 border-t border-border bg-background/90 py-5 backdrop-blur-xl lg:bottom-0">
-        <Button tone="ghost" onClick={() => (step === 0 ? window.history.back() : setStep(step - 1))}>
+        <Button
+          tone="ghost"
+          onClick={() => (step === 0 ? window.history.back() : setStep(step - 1))}
+        >
           {c.back}
         </Button>
         <Button size="lg" className="ml-auto" disabled={!selected} onClick={next}>
@@ -397,8 +416,14 @@ function Result({ onRedo }: { onRedo: () => void }) {
         <h1 className="display-xl mt-7">{outcome.title}</h1>
         <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{outcome.body}</p>
 
-        <div className="mt-10 h-[3px] w-full overflow-hidden rounded-full bg-surface-strong" aria-hidden="true">
-          <div className="h-full rounded-full bg-accent transition-[width] duration-[1200ms] ease-out" style={{ width: `${result.percent}%` }} />
+        <div
+          className="mt-10 h-[3px] w-full overflow-hidden rounded-full bg-surface-strong"
+          aria-hidden="true"
+        >
+          <div
+            className="h-full rounded-full bg-accent transition-[width] duration-[1200ms] ease-out"
+            style={{ width: `${result.percent}%` }}
+          />
         </div>
         <p className="mt-3 text-sm text-muted-foreground">
           {c.basedOn} {result.answered} {c.of} {result.total} {c.resultNote}
@@ -411,7 +436,10 @@ function Result({ onRedo }: { onRedo: () => void }) {
             <SectionHead title={c.notesTitle} body={c.notesBody} />
             <ul className="mt-10 space-y-4">
               {result.notes.map((note) => (
-                <li key={note} className="rounded-2xl border border-border bg-card p-6 text-[0.9375rem] leading-relaxed">
+                <li
+                  key={note}
+                  className="rounded-2xl border border-border bg-card p-6 text-[0.9375rem] leading-relaxed"
+                >
                   {note}
                 </li>
               ))}
