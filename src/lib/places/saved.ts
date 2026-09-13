@@ -82,10 +82,9 @@ export const savedPlaces = {
 
 /** A link any phone or car navigation system can open. */
 export function mapsLink(place: { name: string; address: string; lat: number; lng: number }): string {
-  const query = encodeURIComponent(`${place.lat},${place.lng}`);
-  const label = encodeURIComponent(`${place.name} ${place.address}`.trim());
-  return `https://www.google.com/maps/search/?api=1&query=${query}&query_place_id=&z=16#${label}`;
+  return `https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lng}`;
 }
+
 
 /** Plain coordinates — what most car systems ask you to type in. */
 export function coordsText(place: { lat: number; lng: number }): string {
