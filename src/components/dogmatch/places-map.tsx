@@ -71,9 +71,36 @@ export default function PlacesMap({ center, places, activeId, onSelect, label }:
   const mapRef = useRef<google.maps.Map | null>(null);
   const markersRef = useRef<google.maps.Marker[]>([]);
   const [ready, setReady] = useState(false);
+  const [fallback, setFallback] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
+    if (BROWSER_KEY) return undefined;
+    setFallback(null);
+    getStaticMap({
+      data: {
+        center,
+        points: places.slice(0, 24).map((place) => ({
+          lat: place.lat,
+          lng: place.lng,
+          highlight: place.partner || place.id === activeId,
+        })),
+        width: 640,
+        height: 360,
+      },
+    })
+      .then((response) => {
+        if (!cancelled && response.ok && response.image) setFallback(response.image);
+      })
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, [center, places, activeId]);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!BROWSER_KEY) return undefined;
     loadMaps()
       .then((maps) => {
         if (cancelled || !nodeRef.current) return;
