@@ -5,3 +5,4 @@
 - [x] Keep the text localized independently for English, Norwegian, and Polish.
 - [x] Verify the updated page and build.
 - [ ] Publish the updated site.
+- [ ] Add 50 new English-first full editorial breed profiles with shared imagery across all locale paths.
