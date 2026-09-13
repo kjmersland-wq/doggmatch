@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { ButtonLink, Arrow, Eyebrow, Section } from "@/components/dogmatch/ui";
+import { confirmPartnerReferral } from "@/lib/plus/stripe.functions";
+import { PARTNER_CODE_KEY } from "@/components/dogmatch/plus/partner-code";
 import { useMembership } from "@/hooks/use-membership";
 import { useCopy } from "@/i18n";
 import { noindexMeta } from "@/lib/seo";
@@ -96,10 +99,17 @@ const copy = {
 function SuccessPage() {
   const c = useCopy(copy);
   const { refetch } = useMembership();
+  const confirmReferral = useServerFn(confirmPartnerReferral);
   useEffect(() => {
     const t = setTimeout(() => void refetch(), 1500);
+    void confirmReferral().catch(() => undefined);
+    try {
+      window.localStorage.removeItem(PARTNER_CODE_KEY);
+    } catch {
+      /* nothing to clear */
+    }
     return () => clearTimeout(t);
-  }, [refetch]);
+  }, [refetch, confirmReferral]);
 
   return (
     <div className="pb-24">

@@ -106,7 +106,7 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
     }
     setBusy(true);
     try {
-      const { url } = await startCheckout({ data: { plan } });
+      const { url } = await startCheckout({ data: { plan, code: readPartnerCode() } });
       window.location.href = url;
     } catch {
       setError(c.error);
