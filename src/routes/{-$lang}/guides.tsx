@@ -893,6 +893,7 @@ const copy = {
 function GuidesPage() {
   const t = useT();
   const c = useCopy(copy);
+  const { locale } = useLocale();
   return (
     <div className="container-page py-14 md:py-20">
       <Eyebrow>{t.guides.title}</Eyebrow>
