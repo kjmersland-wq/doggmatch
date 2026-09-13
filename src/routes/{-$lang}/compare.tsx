@@ -319,12 +319,29 @@ function PersonalFit({ columns, names }: { columns: Column[]; names: Record<Bree
     return { key: columnKey(col), label, fit, tradeoff: tradeoffs[0]?.text };
   });
   const top = Math.max(...scored.map((s) => s.fit.score));
+  const questionById = Object.fromEntries(quizQuestions().map((question) => [question.id, question]));
+  const practical = [
+    { key: "exercise", label: names ? useT().compare.rows.exercise : "Exercise", trait: "exerciseNeeds" as const, answerId: "activity" },
+    { key: "grooming", label: useT().compare.rows.grooming, trait: "grooming" as const, answerId: "grooming" },
+    { key: "alone", label: useT().result.aloneTime, trait: "aloneTolerance" as const, answerId: "alone" },
+    { key: "shedding", label: useT().compare.rows.shedding, trait: "shedding" as const, answerId: "shedding" },
+  ].map((item) => ({
+    ...item,
+    spread: Math.max(...columns.map((col) => columnTraits(col)[item.trait])) - Math.min(...columns.map((col) => columnTraits(col)[item.trait])),
+  }));
+  const costSpread = Math.max(...columns.map((col) => columnRange(col, "annualCost")[1])) - Math.min(...columns.map((col) => columnRange(col, "annualCost")[0]));
+  const biggestKey = [...practical, { key: "cost", spread: costSpread / 600 }].sort((a, b) => b.spread - a.spread)[0]?.key;
+
+  const answerLabel = (id: string) => {
+    const question = questionById[id];
+    return question?.options.find((option) => option.value === profile[id])?.label;
+  };
 
   return (
     <section className="mt-8">
       <h2 className="display-md">{p.title}</h2>
       <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">{p.based}</p>
-      <ul className="mt-6 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-3">
+      <ul className="mt-6 grid gap-px overflow-hidden rounded-2xl border border-border sm:grid-cols-2 xl:grid-cols-4">
         {scored.map((item) => (
           <li key={item.key} className="bg-card p-6">
             <div className="flex items-baseline justify-between gap-3">
@@ -346,6 +363,50 @@ function PersonalFit({ columns, names }: { columns: Column[]; names: Record<Bree
           </li>
         ))}
       </ul>
+      <div className="mt-12 border-t border-border pt-10">
+        <h2 className="display-md">{p.differencesTitle}</h2>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">{p.differencesBody}</p>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {practical.map((item) => (
+            <article key={item.key} className="rounded-2xl border border-border bg-card p-5">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h3 className="font-display text-base">{item.label}</h3>
+                {item.key === biggestKey && <span className="text-xs font-medium text-accent">{p.biggest}</span>}
+              </div>
+              {answerLabel(item.answerId) && (
+                <p className="mt-2 text-xs text-muted-foreground">{p.yourAnswer}: {answerLabel(item.answerId)}</p>
+              )}
+              <ul className="mt-4 grid gap-3">
+                {columns.map((col) => {
+                  const value = Math.round(columnTraits(col)[item.trait]);
+                  return (
+                    <li key={columnKey(col)} className="flex items-center justify-between gap-4 text-sm">
+                      <span>{columnName(col, useT().compare)}</span>
+                      <span className="inline-flex items-center gap-2 text-muted-foreground">
+                        <LevelDot value={value} label={useT().compare.scale[value - 1] ?? "—"} size="sm" />
+                        {useT().compare.scale[value - 1] ?? "—"}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </article>
+          ))}
+          <article className="rounded-2xl border border-border bg-card p-5">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h3 className="font-display text-base">{useT().compare.rows.cost}</h3>
+              {biggestKey === "cost" && <span className="text-xs font-medium text-accent">{p.biggest}</span>}
+            </div>
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{p.costContext}</p>
+            <ul className="mt-4 grid gap-3">
+              {columns.map((col) => {
+                const [lo, hi] = columnRange(col, "annualCost");
+                return <li key={columnKey(col)} className="flex items-center justify-between gap-4 text-sm"><span>{columnName(col, useT().compare)}</span><span className="tabular-nums text-muted-foreground">€{lo}–{hi}</span></li>;
+              })}
+            </ul>
+          </article>
+        </div>
+      </div>
     </section>
   );
 }
@@ -426,7 +487,7 @@ function ComparePage() {
       if (current.some((col) => columnKey(col) === key)) {
         return current.filter((col) => columnKey(col) !== key);
       }
-      return current.length >= 3 ? [...current.slice(1), next] : [...current, next];
+      return current.length >= 4 ? [...current.slice(1), next] : [...current, next];
     });
   }
 
