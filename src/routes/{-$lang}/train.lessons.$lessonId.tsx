@@ -8,11 +8,16 @@ import { Arrow, Badge, Button, ButtonLink, Eyebrow } from "@/components/dogmatch
 import { withLangPrefix } from "@/lib/localized-path";
 import {
   levelLabel,
-  SessionTimer,
   StatusPicker,
   StepFigure,
   TreatCounter,
 } from "@/components/dogmatch/training/parts";
+import {
+  MarkDoneButton,
+  StepTimer,
+  WhyItMatters,
+} from "@/components/dogmatch/training/plan-parts";
+import { sessionMinutes, whyItMatters } from "@/lib/training/schedule";
 import {
   today,
   trainingStore,
@@ -360,6 +365,7 @@ function LessonPage() {
   const status: SkillStatus = progress[lesson.id] ?? "not-started";
   const [note, setNote] = useState(state.notes[lesson.id] ?? "");
   const [logged, setLogged] = useState(false);
+  const doneToday = state.sessions.some((s) => s.lessonId === lesson.id && s.day === today());
   const category = getTrainingCategories().find((c) => c.id === lesson.category);
   const next = lesson.nextLessonId ? getLessonsById()[lesson.nextLessonId] : undefined;
 
@@ -429,6 +435,9 @@ function LessonPage() {
 
       <div className="container-page mt-16 grid gap-16 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-20">
         <div>
+          <div className="mb-12">
+            <WhyItMatters text={whyItMatters(lesson)} />
+          </div>
           <h2 className="display-md">{c.howTo}</h2>
           <ol className="mt-10 space-y-14">
             {lesson.steps.map((step, i) => (
@@ -515,6 +524,15 @@ function LessonPage() {
                     </Button>
                   ))}
                 </div>
+                <div className="mt-8">
+                  <MarkDoneButton
+                    done={logged || doneToday}
+                    onDone={() => {
+                      trainingStore.markDone(dog.id, lesson.id);
+                      setLogged(true);
+                    }}
+                  />
+                </div>
                 {logged && (
                   <p className="mt-4 text-[0.9375rem] text-accent">
                     {c.logged}
@@ -581,7 +599,7 @@ function LessonPage() {
               {c.whileYouTrainLead}
             </p>
             <div className="mt-6">
-              <SessionTimer minutes={lesson.duration} />
+              <StepTimer lesson={lesson} minutes={sessionMinutes(lesson, dog)} />
             </div>
             <div className="mt-8 border-t border-border pt-6">
               <TreatCounter />

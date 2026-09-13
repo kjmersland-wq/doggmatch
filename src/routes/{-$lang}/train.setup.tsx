@@ -325,8 +325,64 @@ const copy = {
   },
 } as const;
 
+/** Newer questions — English is the source, other languages fall back to it. */
+const extraCopy = {
+  en: {
+    sizeLabel: "Roughly how big is your dog, full grown?",
+    sizeHint: "It only changes how long we suggest each session should be.",
+    sizes: [
+      { value: "small" as const, label: "Small", hint: "Up to about 10 kg" },
+      { value: "medium" as const, label: "Medium", hint: "Around 10–25 kg" },
+      { value: "large" as const, label: "Large", hint: "25 kg and up" },
+    ],
+    timeLabel: "How much time do you honestly have on a normal day?",
+    timeHint: "Be realistic rather than hopeful — we'll build the week around this.",
+    times: [
+      { value: "5", label: "About 5 minutes", hint: "Busy days, short and sweet" },
+      { value: "10", label: "About 10 minutes", hint: "One proper little session" },
+      { value: "20", label: "About 20 minutes", hint: "Two or three short sessions" },
+      { value: "30", label: "30 minutes or more", hint: "Plenty of room to play with" },
+    ],
+  },
+  no: {
+    sizeLabel: "Omtrent hvor stor er hunden din som voksen?",
+    sizeHint: "Det påvirker bare hvor lange økter vi foreslår.",
+    sizes: [
+      { value: "small" as const, label: "Liten", hint: "Opptil rundt 10 kg" },
+      { value: "medium" as const, label: "Mellomstor", hint: "Rundt 10–25 kg" },
+      { value: "large" as const, label: "Stor", hint: "25 kg og oppover" },
+    ],
+    timeLabel: "Hvor mye tid har du ærlig talt på en vanlig dag?",
+    timeHint: "Vær realistisk heller enn optimistisk — vi bygger uken rundt dette.",
+    times: [
+      { value: "5", label: "Rundt 5 minutter", hint: "Travle dager, kort og godt" },
+      { value: "10", label: "Rundt 10 minutter", hint: "Én skikkelig liten økt" },
+      { value: "20", label: "Rundt 20 minutter", hint: "To–tre korte økter" },
+      { value: "30", label: "30 minutter eller mer", hint: "God plass å boltre seg på" },
+    ],
+  },
+  pl: {
+    sizeLabel: "Jak duży jest twój pies jako dorosły?",
+    sizeHint: "Wpływa to tylko na to, jak długie sesje proponujemy.",
+    sizes: [
+      { value: "small" as const, label: "Mały", hint: "Do około 10 kg" },
+      { value: "medium" as const, label: "Średni", hint: "Około 10–25 kg" },
+      { value: "large" as const, label: "Duży", hint: "25 kg i więcej" },
+    ],
+    timeLabel: "Ile czasu naprawdę masz w zwykły dzień?",
+    timeHint: "Lepiej realistycznie niż optymistycznie — na tym oprzemy tydzień.",
+    times: [
+      { value: "5", label: "Około 5 minut", hint: "Zabiegane dni, krótko i treściwie" },
+      { value: "10", label: "Około 10 minut", hint: "Jedna porządna mała sesja" },
+      { value: "20", label: "Około 20 minut", hint: "Dwie–trzy krótkie sesje" },
+      { value: "30", label: "30 minut lub więcej", hint: "Sporo miejsca na zabawę" },
+    ],
+  },
+} as const;
+
 function SetupPage() {
   const c = useCopy(copy);
+  const x = useCopy(extraCopy);
   const navigate = useNavigate();
   const existing = useActiveDog();
   const [name, setName] = useState(existing?.name ?? "");
@@ -335,6 +391,10 @@ function SetupPage() {
   const [experience, setExperience] = useState(existing?.experience ?? "first-dog");
   const [level, setLevel] = useState<Level>(existing?.level ?? "beginner");
   const [goals, setGoals] = useState<GoalId[]>(existing?.goals ?? []);
+  const [sizeBand, setSizeBand] = useState<"small" | "medium" | "large">(
+    existing?.sizeBand ?? "medium",
+  );
+  const [minutesPerDay, setMinutesPerDay] = useState(String(existing?.minutesPerDay ?? 10));
 
   function toggleGoal(id: GoalId) {
     setGoals((g) => (g.includes(id) ? g.filter((x) => x !== id) : [...g, id]));
@@ -346,6 +406,8 @@ function SetupPage() {
       name: name.trim() || "your dog",
       ...selectionToDog(breedSel),
       ageStage,
+      sizeBand,
+      minutesPerDay: Number(minutesPerDay),
       experience,
       level,
       goals,
@@ -373,6 +435,18 @@ function SetupPage() {
 
         <Field label={c.ageLabel}>
           <Choices options={c.ageStages} value={ageStage} onChange={(v) => setAgeStage(v as AgeStage)} />
+        </Field>
+
+        <Field label={x.sizeLabel} hint={x.sizeHint}>
+          <Choices
+            options={x.sizes}
+            value={sizeBand}
+            onChange={(v) => setSizeBand(v as typeof sizeBand)}
+          />
+        </Field>
+
+        <Field label={x.timeLabel} hint={x.timeHint}>
+          <Choices options={x.times} value={minutesPerDay} onChange={setMinutesPerDay} />
         </Field>
 
         <Field label={c.experienceLabel}>

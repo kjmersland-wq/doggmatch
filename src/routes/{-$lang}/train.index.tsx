@@ -6,7 +6,14 @@ import { getTrainingCategories } from "@/data/training/categories";
 import { categoryImages, trainingImages } from "@/data/training/images";
 import { getLessons } from "@/data/training/lessons";
 import { todaysPlan, getAgeFocus } from "@/lib/training/plan";
-import { streakDays, today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
+import {
+  dailyBudget,
+  encouragement,
+  progressSummary,
+  weeklyPlan,
+} from "@/lib/training/schedule";
+import { ProgressOverview, WeekPlan, WeekPlanEmpty } from "@/components/dogmatch/training/plan-parts";
+import { today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
@@ -22,6 +29,33 @@ const copy = {
   de: { welcomeUser: (name: string) => `Schön, dich zu sehen, Mensch von ${name}.` },
   fr: { welcomeUser: (name: string) => `Ravi de te revoir, humain de ${name}.` },
   nl: { welcomeUser: (name: string) => `Fijn je te zien, mens van ${name}.` },
+} as const;
+
+const weekCopy = {
+  en: {
+    weekTitle: "The week ahead",
+    weekBody: (m: number) =>
+      `Built around ${m} minutes a day — your dog's age and size, and the time you told us you have. Miss a day and nothing breaks; it simply moves along with you.`,
+    weekBodyGuest:
+      "Tell us your dog's age, size and how much time you have, and we'll lay out a simple week you can actually keep.",
+    progressTitle: "How it's going",
+  },
+  no: {
+    weekTitle: "Uken som kommer",
+    weekBody: (m: number) =>
+      `Bygget rundt ${m} minutter om dagen — hundens alder og størrelse, og tiden du sa du har. Hopper du over en dag, ryker ingenting; planen flytter seg bare med deg.`,
+    weekBodyGuest:
+      "Fortell oss hundens alder, størrelse og hvor mye tid du har, så legger vi opp en enkel uke du faktisk klarer å holde.",
+    progressTitle: "Hvordan det går",
+  },
+  pl: {
+    weekTitle: "Nadchodzący tydzień",
+    weekBody: (m: number) =>
+      `Ułożony wokół ${m} minut dziennie — wieku i wielkości psa oraz czasu, który masz. Opuszczony dzień niczego nie psuje; plan po prostu przesuwa się razem z tobą.`,
+    weekBodyGuest:
+      "Powiedz nam, ile pies ma lat, jak jest duży i ile masz czasu, a ułożymy prosty tydzień, który naprawdę utrzymasz.",
+    progressTitle: "Jak idzie",
+  },
 } as const;
 
 const title = "Train Your Dog — Small sessions, clear steps | DoggMatch";
@@ -85,8 +119,9 @@ function TrainHome() {
   const progress = useProgress(dog?.id);
   const plan = todaysPlan(dog, progress, today());
   const ageFocus = getAgeFocus();
-  const learned = Object.values(progress).filter((s) => s === "learned").length;
-  const streak = streakDays(state.sessions);
+  const planCopy = useCopy(weekCopy);
+  const week = weeklyPlan(dog, progress, state.sessions, today());
+  const summary = progressSummary(state.sessions, progress, getLessons().length, today());
 
   return (
     <div className="pb-24">
@@ -185,11 +220,21 @@ function TrainHome() {
             ))}
           </ol>
 
+          {/* the week ahead, shaped by age, size and the time you actually have */}
+          <div className="mt-16">
+            <h3 className="display-md">{planCopy.weekTitle}</h3>
+            <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">
+              {dog ? planCopy.weekBody(dailyBudget(dog)) : planCopy.weekBodyGuest}
+            </p>
+            <div className="mt-8">{dog ? <WeekPlan days={week} /> : <WeekPlanEmpty />}</div>
+          </div>
+
           {dog && (
-            <div className="mt-10 grid gap-8 rounded-2xl border border-border bg-surface p-8 sm:grid-cols-3">
-              <Stat value={String(state.sessions.length)} label={t.train.statSessions} />
-              <Stat value={String(learned)} label={t.train.statSkills} />
-              <Stat value={String(streak)} label={t.train.statStreak} />
+            <div className="mt-16">
+              <h3 className="display-md">{planCopy.progressTitle}</h3>
+              <div className="mt-8">
+                <ProgressOverview summary={summary} note={encouragement(summary)} />
+              </div>
             </div>
           )}
         </div>
@@ -335,12 +380,4 @@ function TrainHome() {
   );
 }
 
-function Stat({ value, label }: { value: string; label: string }) {
-  return (
-    <div>
-      <p className="font-display text-4xl tabular-nums tracking-tight text-accent">{value}</p>
-      <p className="mt-2 text-sm text-muted-foreground">{label}</p>
-    </div>
-  );
-}
 
