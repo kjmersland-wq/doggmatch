@@ -13,7 +13,7 @@ export interface BreedContent {
   keyTradeoffs?: string[];
 }
 
-export const breedContentEn: Record<BreedId, BreedContent> = {
+export const breedContentEn = {
   "labrador-retriever": {
     displayName: "Labrador Retriever",
     summary:
@@ -492,4 +492,4 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
     ],
   },
   ...breedContentNewEn,
-};
+} as Record<BreedId, BreedContent>;
