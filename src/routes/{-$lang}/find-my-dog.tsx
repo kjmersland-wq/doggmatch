@@ -1325,6 +1325,11 @@ function Results({
         <MatchNotes profile={profile} />
       </section>
 
+      <section className="container-page mt-20 md:mt-28">
+        <CostCalculator breed={best.breed} />
+      </section>
+
+
       {/* fit and trade-offs, tied line by line to the answers given */}
       <section className="container-page mt-20 md:mt-28">
         <MatchBreakdown traits={breedById[best.breedId].traits} profile={profile} score={best.score} />
