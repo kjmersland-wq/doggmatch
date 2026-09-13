@@ -163,7 +163,7 @@ const copy = {
         website: { label: "Website", hint: "Optional", placeholder: "yourbusiness.com" },
         category: { label: "Category", placeholder: "Pick the closest one", other: "Something else" },
         offer: { label: "Proposed discount or benefit", hint: "A rough idea is fine", placeholder: "e.g. 15% off harnesses and leads, or a free first grooming consultation" },
-        message: { label: "Message", placeholder: "Tell us about your business, who you look after, and anything you'd like to know." },
+        message: { label: "Message", hint: "Optional — a sentence or two is plenty", placeholder: "Tell us about your business, who you look after, and anything you'd like to know." },
         honeypot: "Leave this empty",
       },
       sending: "Sending…",
@@ -238,7 +238,7 @@ const copy = {
         website: { label: "Nettside", hint: "Valgfritt", placeholder: "bedriften.no" },
         category: { label: "Kategori", placeholder: "Velg det som passer best", other: "Noe annet" },
         offer: { label: "Foreslått rabatt eller fordel", hint: "En omtrentlig idé holder", placeholder: "f.eks. 15 % rabatt på seler og bånd, eller en gratis første time hos groomer" },
-        message: { label: "Melding", placeholder: "Fortell oss om bedriften din, hvem dere er til for, og alt du lurer på." },
+        message: { label: "Melding", hint: "Valgfritt — en setning eller to er nok", placeholder: "Fortell oss om bedriften din, hvem dere er til for, og alt du lurer på." },
         honeypot: "La dette stå tomt",
       },
       sending: "Sender…",
@@ -313,7 +313,7 @@ const copy = {
         website: { label: "Strona internetowa", hint: "Opcjonalnie", placeholder: "twojafirma.pl" },
         category: { label: "Kategoria", placeholder: "Wybierz najbliższą", other: "Coś innego" },
         offer: { label: "Proponowana zniżka lub korzyść", hint: "Wystarczy ogólny pomysł", placeholder: "np. 15% zniżki na szelki i smycze albo bezpłatna pierwsza konsultacja groomerska" },
-        message: { label: "Wiadomość", placeholder: "Opowiedz nam o swojej firmie, kim się opiekujecie i o czym chciałbyś/chciałabyś wiedzieć." },
+        message: { label: "Wiadomość", hint: "Opcjonalnie — wystarczy jedno lub dwa zdania", placeholder: "Opowiedz nam o swojej firmie, kim się opiekujecie i o czym chciałbyś/chciałabyś wiedzieć." },
         honeypot: "Zostaw to pole puste",
       },
       sending: "Wysyłanie…",
@@ -388,7 +388,7 @@ const copy = {
         website: { label: "Hjemmeside", hint: "Valgfrit", placeholder: "dinvirksomhed.dk" },
         category: { label: "Kategori", placeholder: "Vælg den, der passer bedst", other: "Noget andet" },
         offer: { label: "Foreslået rabat eller fordel", hint: "En omtrentlig idé er fint", placeholder: "fx 15 % rabat på seler og liner, eller en gratis første konsultation hos frisøren" },
-        message: { label: "Besked", placeholder: "Fortæl os om din virksomhed, hvem I tager jer af, og alt, du gerne vil vide." },
+        message: { label: "Besked", hint: "Valgfrit — en sætning eller to er nok", placeholder: "Fortæl os om din virksomhed, hvem I tager jer af, og alt, du gerne vil vide." },
         honeypot: "Lad dette felt være tomt",
       },
       sending: "Sender…",
@@ -463,7 +463,7 @@ const copy = {
         website: { label: "Webbplats", hint: "Valfritt", placeholder: "dittforetag.se" },
         category: { label: "Kategori", placeholder: "Välj den som passar bäst", other: "Något annat" },
         offer: { label: "Föreslagen rabatt eller förmån", hint: "En ungefärlig idé räcker", placeholder: "t.ex. 15 % rabatt på selar och koppel, eller en gratis första konsultation hos frisören" },
-        message: { label: "Meddelande", placeholder: "Berätta om ditt företag, vilka ni tar hand om, och allt du undrar över." },
+        message: { label: "Meddelande", hint: "Valfritt — en mening eller två räcker", placeholder: "Berätta om ditt företag, vilka ni tar hand om, och allt du undrar över." },
         honeypot: "Lämna detta fält tomt",
       },
       sending: "Skickar…",
@@ -538,7 +538,7 @@ const copy = {
         website: { label: "Website", hint: "Optional", placeholder: "ihrunternehmen.de" },
         category: { label: "Kategorie", placeholder: "Wählen Sie die passendste", other: "Etwas anderes" },
         offer: { label: "Vorgeschlagener Rabatt oder Vorteil", hint: "Eine grobe Idee reicht", placeholder: "z. B. 15 % Rabatt auf Geschirre und Leinen, oder eine kostenlose erste Beratung beim Hundefriseur" },
-        message: { label: "Nachricht", placeholder: "Erzählen Sie uns von Ihrem Unternehmen, um wen Sie sich kümmern, und was Sie sonst noch wissen möchten." },
+        message: { label: "Nachricht", hint: "Optional — ein oder zwei Sätze genügen", placeholder: "Erzählen Sie uns von Ihrem Unternehmen, um wen Sie sich kümmern, und was Sie sonst noch wissen möchten." },
         honeypot: "Dieses Feld leer lassen",
       },
       sending: "Wird gesendet…",
@@ -613,7 +613,7 @@ const copy = {
         website: { label: "Site web", hint: "Facultatif", placeholder: "votreentreprise.com" },
         category: { label: "Catégorie", placeholder: "Choisissez la plus proche", other: "Autre chose" },
         offer: { label: "Réduction ou avantage proposé", hint: "Une idée approximative suffit", placeholder: "p. ex. 15 % de réduction sur harnais et laisses, ou une première consultation de toilettage gratuite" },
-        message: { label: "Message", placeholder: "Parlez-nous de votre entreprise, de qui vous vous occupez, et de tout ce que vous aimeriez savoir." },
+        message: { label: "Message", hint: "Facultatif — une phrase ou deux suffisent", placeholder: "Parlez-nous de votre entreprise, de qui vous vous occupez, et de tout ce que vous aimeriez savoir." },
         honeypot: "Laissez ce champ vide",
       },
       sending: "Envoi en cours…",
@@ -688,7 +688,7 @@ const copy = {
         website: { label: "Website", hint: "Optioneel", placeholder: "jouwbedrijf.com" },
         category: { label: "Categorie", placeholder: "Kies de dichtstbijzijnde", other: "Iets anders" },
         offer: { label: "Voorgestelde korting of voordeel", hint: "Een ruw idee is prima", placeholder: "bijv. 15% korting op tuigjes en riemen, of een gratis eerste trimconsult" },
-        message: { label: "Bericht", placeholder: "Vertel ons over je bedrijf, voor wie je zorgt, en alles wat je wilt weten." },
+        message: { label: "Bericht", hint: "Optioneel — een zin of twee is genoeg", placeholder: "Vertel ons over je bedrijf, voor wie je zorgt, en alles wat je wilt weten." },
         honeypot: "Laat dit veld leeg",
       },
       sending: "Versturen…",
@@ -763,7 +763,7 @@ const copy = {
         website: { label: "Verkkosivu", hint: "Valinnainen", placeholder: "yrityksesi.fi" },
         category: { label: "Kategoria", placeholder: "Valitse lähin", other: "Jokin muu" },
         offer: { label: "Ehdotettu alennus tai etu", hint: "Suuntaa antava idea riittää", placeholder: "esim. 15 % alennus valjaista ja hihnoista, tai maksuton ensimmäinen trimmauskonsultaatio" },
-        message: { label: "Viesti", placeholder: "Kerro yrityksestäsi, keitä hoidatte, ja mitä tahansa haluat tietää." },
+        message: { label: "Viesti", hint: "Valinnainen — lause tai kaksi riittää", placeholder: "Kerro yrityksestäsi, keitä hoidatte, ja mitä tahansa haluat tietää." },
         honeypot: "Jätä tämä kenttä tyhjäksi",
       },
       sending: "Lähetetään…",
@@ -926,6 +926,96 @@ const partnerFeatureCopy = {
       imageAlt: "Lemmikkiliikkeen omistaja näyttää DoggMatchia puhelimestaan tyytyväiselle asiakkaalle, jolla on kultainennoutaja",
       caption: "Sinä pidät hallinnan tarjouksestasi. Me huolehdimme asiakkaidesi ensimmäisen vuoden alennuksesta.",
     },
+  },
+} as const;
+
+/**
+ * Detailed partner-type sections. English is the source language — other
+ * locales fall back to English here until they are translated.
+ */
+const partnerTypesCopy = {
+  en: {
+    askTitle: "What members usually ask for",
+    offerTitle: "Offers that work well",
+    types: [
+      {
+        id: "equipment",
+        title: "Pet shops & equipment",
+        tagline: "The first weeks with a new dog involve a lot of shopping — and members come in with questions, not just a list.",
+        ask: [
+          "Harness and lead fitting that actually fits",
+          "Help choosing beds, crates and toys that last",
+          "Honest food advice without the brand push",
+        ],
+        offers: [
+          "A percentage off a first fitting visit",
+          "A new-dog starter bundle",
+          "A standing member discount on everyday kit",
+        ],
+      },
+      {
+        id: "grooming",
+        title: "Groomers",
+        tagline: "A calm groomer is worth their weight in gold, especially for puppies and nervous rescues.",
+        ask: [
+          "A gentle first puppy trim",
+          "Patient handling of anxious dogs",
+          "Regular appointments they can rely on",
+        ],
+        offers: [
+          "A reduced-price first visit",
+          "A free nail trim alongside a groom",
+          "Priority rebooking for members",
+        ],
+      },
+      {
+        id: "training",
+        title: "Trainers",
+        tagline: "From puppy class to a rescue dog's first recall, members look for reward-based help they can trust.",
+        ask: [
+          "Puppy classes with small groups",
+          "Help with recall, loose-lead walking and jumping up",
+          "One-to-one support for a rescue settling in",
+        ],
+        offers: [
+          "A free or reduced intro session",
+          "A percentage off a course",
+          "A members-only class or drop-in evening",
+        ],
+      },
+      {
+        id: "vet",
+        title: "Veterinary clinics",
+        tagline: "New owners want a clinic that explains things plainly and doesn't rush. That first introduction is worth making well.",
+        ask: [
+          "First check-ups and vaccination plans",
+          "Clear guidance on insurance and microchipping",
+          "Someone to call when they're not sure it's urgent",
+        ],
+        offers: [
+          "A free or reduced first consultation",
+          "A welcome health-check at member price",
+          "Microchipping bundled with a first visit",
+        ],
+      },
+      {
+        id: "boarding",
+        title: "Boarding & daycare",
+        tagline: "The first night away is a big step. Members want to meet the people and see the place before they book.",
+        ask: [
+          "A trial day or a short stay to start with",
+          "Weekend and holiday cover they can plan around",
+          "Regular daycare with a familiar routine",
+        ],
+        offers: [
+          "A free or half-price trial day",
+          "A percentage off a first stay",
+          "An off-peak member rate",
+        ],
+      },
+    ],
+    alsoTitle: "Also very welcome",
+    alsoBody: "If your work touches a dog's everyday life in any other way, we'd still like to hear from you.",
   },
 } as const;
 
@@ -1097,7 +1187,11 @@ function Why() {
 
 function Categories() {
   const c = useCopy(copy).categories;
+  const t = useCopy(partnerTypesCopy);
   const { partnerCategories } = partnersContent();
+  const alsoWelcome = partnerCategories.filter((cat) =>
+    ["insurance", "food", "travel"].includes(cat.id),
+  );
   return (
     <Section className="border-y border-border bg-surface">
       <div className="container-page">
@@ -1105,23 +1199,74 @@ function Categories() {
         <h2 className="display-md mt-6 max-w-2xl text-balance">{c.title}</h2>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.body}</p>
 
-        <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {partnerCategories.map((cat) => {
-            const Icon = categoryIcons[cat.id] ?? ShoppingBag;
+        <div className="mt-14 grid gap-5 md:grid-cols-2">
+          {t.types.map((type) => {
+            const Icon = categoryIcons[type.id] ?? ShoppingBag;
             return (
-              <li
-                key={cat.id}
-                className="rounded-[1.5rem] border border-border bg-background p-6 transition-colors hover:border-foreground/20"
+              <article
+                key={type.id}
+                className="rounded-[1.75rem] border border-border bg-background p-7 transition-colors hover:border-foreground/20 md:p-8"
               >
-                <span className="grid h-10 w-10 place-items-center rounded-full border border-border-strong text-foreground">
-                  <Icon className="h-[1.1rem] w-[1.1rem]" aria-hidden />
-                </span>
-                <h3 className="mt-5 font-display text-lg tracking-tight">{cat.label}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{cat.blurb}</p>
-              </li>
+                <div className="flex items-center gap-3.5">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-accent/10 text-accent">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </span>
+                  <h3 className="font-display text-xl tracking-tight">{type.title}</h3>
+                </div>
+                <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                  {type.tagline}
+                </p>
+                <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground/70">
+                      {t.askTitle}
+                    </h4>
+                    <ul className="mt-3 space-y-2.5">
+                      {type.ask.map((line) => (
+                        <li key={line} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={2.4} aria-hidden />
+                          <span>{line}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground/70">
+                      {t.offerTitle}
+                    </h4>
+                    <ul className="mt-3 space-y-2.5">
+                      {type.offers.map((line) => (
+                        <li key={line} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                          <BadgePercent className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
+                          <span>{line}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </article>
             );
           })}
-        </ul>
+        </div>
+
+        <div className="mt-8 rounded-[1.75rem] border border-dashed border-border-strong bg-background/60 p-6 md:p-7">
+          <h3 className="font-display text-lg tracking-tight">{t.alsoTitle}</h3>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {alsoWelcome.map((cat) => {
+              const Icon = categoryIcons[cat.id] ?? ShoppingBag;
+              return (
+                <span
+                  key={cat.id}
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground"
+                >
+                  <Icon className="h-4 w-4 text-accent" aria-hidden />
+                  {cat.label}
+                </span>
+              );
+            })}
+          </div>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">{t.alsoBody}</p>
+        </div>
 
         <div className="mt-14 grid gap-5 md:grid-cols-[1.3fr_1fr]">
           <img
@@ -1431,12 +1576,11 @@ function EnquirySection() {
               />
             </Field>
 
-            <Field label={c.fields.message.label} id="message" error={errors["message"]}>
+            <Field label={c.fields.message.label} id="message" hint={c.fields.message.hint} error={errors["message"]}>
               <textarea
                 id="message"
                 name="message"
-                required
-                rows={7}
+                rows={5}
                 maxLength={4000}
                 placeholder={c.fields.message.placeholder}
                 className={cn(fieldClass, "resize-y leading-relaxed")}

@@ -13,8 +13,9 @@ const partnerSchema = z.object({
   message: z
     .string()
     .trim()
-    .min(10, "A little more detail helps us reply properly.")
-    .max(4000, "That's a bit long — could you shorten it a touch?"),
+    .max(4000, "That's a bit long — could you shorten it a touch?")
+    .optional()
+    .default(""),
   /** Honeypot: real people never see or fill this. */
   fax: z.string().max(0).optional(),
 });
