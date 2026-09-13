@@ -32,6 +32,7 @@ import {
 import {
   abs,
   breadcrumbLd,
+  faqLd,
   jsonLd,
   headLocale,
   langUrl,
