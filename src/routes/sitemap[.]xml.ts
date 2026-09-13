@@ -60,6 +60,7 @@ function collect(): SitemapEntry[] {
     { path: "/train", changefreq: "monthly", priority: "0.8" },
     { path: "/train/library", changefreq: "monthly", priority: "0.7" },
     { path: "/my-dog", changefreq: "monthly", priority: "0.7" },
+    { path: "/my-dog/preview", changefreq: "monthly", priority: "0.7" },
     { path: "/my-dog/nutrition", changefreq: "monthly", priority: "0.7" },
     { path: "/my-dog/food", changefreq: "monthly", priority: "0.7" },
     { path: "/can-dogs-eat", changefreq: "weekly", priority: "0.9" },

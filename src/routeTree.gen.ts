@@ -54,6 +54,7 @@ import { Route as Char123LangChar125MyDogContactsRouteImport } from './routes/{-
 import { Route as Char123LangChar125MyDogFoodRouteImport } from './routes/{-$lang}/my-dog.food'
 import { Route as Char123LangChar125MyDogNutritionRouteImport } from './routes/{-$lang}/my-dog.nutrition'
 import { Route as Char123LangChar125MyDogPackRouteImport } from './routes/{-$lang}/my-dog.pack'
+import { Route as Char123LangChar125MyDogPreviewRouteImport } from './routes/{-$lang}/my-dog.preview'
 import { Route as Char123LangChar125MyDogPrintRouteImport } from './routes/{-$lang}/my-dog.print'
 import { Route as Char123LangChar125MyDogSetupRouteImport } from './routes/{-$lang}/my-dog.setup'
 import { Route as Char123LangChar125MyDogVetRouteImport } from './routes/{-$lang}/my-dog.vet'
@@ -333,6 +334,12 @@ const Char123LangChar125MyDogPackRoute =
     path: '/pack',
     getParentRoute: () => Char123LangChar125MyDogRoute,
   } as any)
+const Char123LangChar125MyDogPreviewRoute =
+  Char123LangChar125MyDogPreviewRouteImport.update({
+    id: '/preview',
+    path: '/preview',
+    getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
 const Char123LangChar125MyDogPrintRoute =
   Char123LangChar125MyDogPrintRouteImport.update({
     id: '/print',
@@ -478,6 +485,7 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/my-dog/food': typeof Char123LangChar125MyDogFoodRoute
   '/{-$lang}/my-dog/nutrition': typeof Char123LangChar125MyDogNutritionRoute
   '/{-$lang}/my-dog/pack': typeof Char123LangChar125MyDogPackRoute
+  '/{-$lang}/my-dog/preview': typeof Char123LangChar125MyDogPreviewRoute
   '/{-$lang}/my-dog/print': typeof Char123LangChar125MyDogPrintRoute
   '/{-$lang}/my-dog/setup': typeof Char123LangChar125MyDogSetupRoute
   '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
@@ -537,6 +545,7 @@ export interface FileRoutesByTo {
   '/{-$lang}/my-dog/food': typeof Char123LangChar125MyDogFoodRoute
   '/{-$lang}/my-dog/nutrition': typeof Char123LangChar125MyDogNutritionRoute
   '/{-$lang}/my-dog/pack': typeof Char123LangChar125MyDogPackRoute
+  '/{-$lang}/my-dog/preview': typeof Char123LangChar125MyDogPreviewRoute
   '/{-$lang}/my-dog/print': typeof Char123LangChar125MyDogPrintRoute
   '/{-$lang}/my-dog/setup': typeof Char123LangChar125MyDogSetupRoute
   '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
@@ -602,6 +611,7 @@ export interface FileRoutesById {
   '/{-$lang}/my-dog/food': typeof Char123LangChar125MyDogFoodRoute
   '/{-$lang}/my-dog/nutrition': typeof Char123LangChar125MyDogNutritionRoute
   '/{-$lang}/my-dog/pack': typeof Char123LangChar125MyDogPackRoute
+  '/{-$lang}/my-dog/preview': typeof Char123LangChar125MyDogPreviewRoute
   '/{-$lang}/my-dog/print': typeof Char123LangChar125MyDogPrintRoute
   '/{-$lang}/my-dog/setup': typeof Char123LangChar125MyDogSetupRoute
   '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
@@ -668,6 +678,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/food'
     | '/{-$lang}/my-dog/nutrition'
     | '/{-$lang}/my-dog/pack'
+    | '/{-$lang}/my-dog/preview'
     | '/{-$lang}/my-dog/print'
     | '/{-$lang}/my-dog/setup'
     | '/{-$lang}/my-dog/vet'
@@ -727,6 +738,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/food'
     | '/{-$lang}/my-dog/nutrition'
     | '/{-$lang}/my-dog/pack'
+    | '/{-$lang}/my-dog/preview'
     | '/{-$lang}/my-dog/print'
     | '/{-$lang}/my-dog/setup'
     | '/{-$lang}/my-dog/vet'
@@ -791,6 +803,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/food'
     | '/{-$lang}/my-dog/nutrition'
     | '/{-$lang}/my-dog/pack'
+    | '/{-$lang}/my-dog/preview'
     | '/{-$lang}/my-dog/print'
     | '/{-$lang}/my-dog/setup'
     | '/{-$lang}/my-dog/vet'
@@ -1136,6 +1149,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LangChar125MyDogPackRouteImport
       parentRoute: typeof Char123LangChar125MyDogRoute
     }
+    '/{-$lang}/my-dog/preview': {
+      id: '/{-$lang}/my-dog/preview'
+      path: '/preview'
+      fullPath: '/{-$lang}/my-dog/preview'
+      preLoaderRoute: typeof Char123LangChar125MyDogPreviewRouteImport
+      parentRoute: typeof Char123LangChar125MyDogRoute
+    }
     '/{-$lang}/my-dog/print': {
       id: '/{-$lang}/my-dog/print'
       path: '/print'
@@ -1292,6 +1312,7 @@ interface Char123LangChar125MyDogRouteChildren {
   Char123LangChar125MyDogFoodRoute: typeof Char123LangChar125MyDogFoodRoute
   Char123LangChar125MyDogNutritionRoute: typeof Char123LangChar125MyDogNutritionRoute
   Char123LangChar125MyDogPackRoute: typeof Char123LangChar125MyDogPackRoute
+  Char123LangChar125MyDogPreviewRoute: typeof Char123LangChar125MyDogPreviewRoute
   Char123LangChar125MyDogPrintRoute: typeof Char123LangChar125MyDogPrintRoute
   Char123LangChar125MyDogSetupRoute: typeof Char123LangChar125MyDogSetupRoute
   Char123LangChar125MyDogVetRoute: typeof Char123LangChar125MyDogVetRoute
@@ -1308,6 +1329,7 @@ const Char123LangChar125MyDogRouteChildren: Char123LangChar125MyDogRouteChildren
     Char123LangChar125MyDogNutritionRoute:
       Char123LangChar125MyDogNutritionRoute,
     Char123LangChar125MyDogPackRoute: Char123LangChar125MyDogPackRoute,
+    Char123LangChar125MyDogPreviewRoute: Char123LangChar125MyDogPreviewRoute,
     Char123LangChar125MyDogPrintRoute: Char123LangChar125MyDogPrintRoute,
     Char123LangChar125MyDogSetupRoute: Char123LangChar125MyDogSetupRoute,
     Char123LangChar125MyDogVetRoute: Char123LangChar125MyDogVetRoute,
