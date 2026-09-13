@@ -15,7 +15,16 @@ import dogLifeImage from "@/assets/dog-life.jpg";
 import travelImage from "@/assets/travel-car.jpg";
 import lunaImage from "@/assets/breed-labrador-retriever.jpg";
 import maxImage from "@/assets/breed-cocker-spaniel.jpg";
-import { seoLinks, abs, localizedHead } from "@/lib/seo";
+import {
+  seoLinks,
+  abs,
+  localizedHead,
+  headLocale,
+  langUrl,
+  breadcrumbLd,
+  faqLd,
+  jsonLd,
+} from "@/lib/seo";
 import { withLangPrefix } from "@/lib/localized-path";
 
 const title = "DoggMatch+ | Premium Dog Life Membership";
@@ -857,7 +866,51 @@ const stagesCopy = {
 };
 
 export const Route = createFileRoute("/{-$lang}/plus")({
-  head: (ctx) => localizedHead(ctx, "/plus", seoCopy),
+  head: (ctx) => {
+    const locale = headLocale(ctx);
+    const base = localizedHead(ctx, "/plus", seoCopy);
+    const text = copy[locale] ?? copy.en;
+    return {
+      ...base,
+      scripts: [
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: "DoggMatch+", path: "/plus" },
+          ],
+          locale,
+        ),
+        jsonLd({
+          "@type": "SoftwareApplication",
+          name: "DoggMatch+",
+          applicationCategory: "LifestyleApplication",
+          operatingSystem: "Web",
+          url: langUrl("/plus", locale),
+          inLanguage: locale,
+          publisher: { "@type": "Organization", name: "KM TECH LABS" },
+          offers: [
+            {
+              "@type": "Offer",
+              name: "DoggMatch+ monthly",
+              price: "7.99",
+              priceCurrency: "EUR",
+              url: langUrl("/plus", locale),
+              availability: "https://schema.org/InStock",
+            },
+            {
+              "@type": "Offer",
+              name: "DoggMatch+ yearly",
+              price: "59.99",
+              priceCurrency: "EUR",
+              url: langUrl("/plus", locale),
+              availability: "https://schema.org/InStock",
+            },
+          ],
+        }),
+        faqLd(text.faqs.map((f) => ({ question: f.q, answer: f.a }))),
+      ],
+    };
+  },
   component: PlusPage,
 });
 
