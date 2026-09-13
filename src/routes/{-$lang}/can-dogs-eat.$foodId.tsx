@@ -121,19 +121,9 @@ export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
       ],
-      links: [
-        { rel: "canonical", href: langUrl(path, locale) },
-        { rel: "alternate", hreflang: "en", href: abs(path) },
-        { rel: "alternate", hreflang: "nb-NO", href: noUrl(path) },
-        { rel: "alternate", hreflang: "pl-PL", href: plUrl(path) },
-        { rel: "alternate", hreflang: "da-DK", href: dkUrl(path) },
-        { rel: "alternate", hreflang: "sv-SE", href: seUrl(path) },
-        { rel: "alternate", hreflang: "fi-FI", href: fiUrl(path) },
-        { rel: "alternate", hreflang: "de-DE", href: deUrl(path) },
-        { rel: "alternate", hreflang: "fr-FR", href: frUrl(path) },
-        { rel: "alternate", hreflang: "nl-NL", href: nlUrl(path) },
-        { rel: "alternate", hreflang: "x-default", href: abs(path) },
-      ],
+      links: seoLinks(path).map((l) =>
+        l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
+      ),
       scripts: [
         breadcrumbLd([
           { name: "DoggMatch", path: "/" },

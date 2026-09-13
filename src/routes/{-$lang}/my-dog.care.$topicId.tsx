@@ -7,7 +7,7 @@ import { knownBreedIds } from "@/lib/dogs/profile";
 import { useMyDog } from "@/lib/care/store";
 import { useCopy } from "@/i18n";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
-import { seoLinks } from "@/lib/seo";
+import { seoLinks, headLocale, langUrl, ogLocaleTag, breadcrumbLd } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
@@ -17,11 +17,14 @@ export const Route = createFileRoute("/{-$lang}/my-dog/care/$topicId")({
     if (!topic) throw notFound();
     return { topic };
   },
-  head: ({ loaderData }) => {
+  head: (ctx) => {
+    const { loaderData } = ctx;
+    const locale = headLocale(ctx);
     if (!loaderData) {
       return { meta: [{ title: "Not found | DoggMatch" }, { name: "robots", content: "noindex" }] };
     }
     const { topic } = loaderData;
+    const path = `/my-dog/care/${topic.id}`;
     const t = `${topic.title} — My Dog | DoggMatch`;
     return {
       meta: [
@@ -30,11 +33,25 @@ export const Route = createFileRoute("/{-$lang}/my-dog/care/$topicId")({
         { property: "og:title", content: t },
         { property: "og:description", content: topic.promise },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: langUrl(path, locale) },
+        { property: "og:locale", content: ogLocaleTag(locale) },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: t },
         { name: "twitter:description", content: topic.promise },
       ],
-      links: seoLinks(`/my-dog/care/${topic.id}`),
+      links: seoLinks(path).map((l) =>
+        l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
+      ),
+      scripts: [
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: "My Dog", path: "/my-dog" },
+            { name: topic.title, path },
+          ],
+          locale,
+        ),
+      ],
     };
   },
   notFoundComponent: TopicNotFound,

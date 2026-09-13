@@ -8,7 +8,7 @@ import { costRange, prepCards } from "@/lib/getdog/prep";
 import { getDogStore } from "@/lib/getdog/store";
 import { useCopy } from "@/i18n";
 import { useEffect } from "react";
-import { seoLinks, abs, breadcrumbLd } from "@/lib/seo";
+import { seoLinks, abs, breadcrumbLd, headLocale, langUrl, ogLocaleTag } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
@@ -18,7 +18,9 @@ export const Route = createFileRoute("/{-$lang}/get-a-dog/breed/$breedId")({
     if (!breed) throw notFound();
     return { breedId: breed.id };
   },
-  head: ({ loaderData }) => {
+  head: (ctx) => {
+    const { loaderData } = ctx;
+    const locale = headLocale(ctx);
     if (!loaderData) {
       return {
         meta: [{ title: "Unavailable | DoggMatch" }, { name: "robots", content: "noindex" }],
@@ -35,18 +37,24 @@ export const Route = createFileRoute("/{-$lang}/get-a-dog/breed/$breedId")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: abs(path) },
+        { property: "og:url", content: langUrl(path, locale) },
+        { property: "og:locale", content: ogLocaleTag(locale) },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
       ],
-      links: seoLinks(path),
+      links: seoLinks(path).map((l) =>
+        l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
+      ),
       scripts: [
-        breadcrumbLd([
-          { name: "DoggMatch", path: "/" },
-          { name: "Get a dog", path: "/get-a-dog" },
-          { name, path },
-        ]),
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: "Get a dog", path: "/get-a-dog" },
+            { name, path },
+          ],
+          locale,
+        ),
       ],
     };
   },

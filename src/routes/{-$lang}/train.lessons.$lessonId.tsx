@@ -328,13 +328,16 @@ export const Route = createFileRoute("/{-$lang}/train/lessons/$lessonId")({
     if (!lesson) throw notFound();
     return { lesson };
   },
-  head: ({ loaderData }) => {
+  head: (ctx) => {
+    const { loaderData } = ctx;
+    const locale = headLocale(ctx);
     if (!loaderData) {
       return {
         meta: [{ title: "Lesson not found | DoggMatch" }, { name: "robots", content: "noindex" }],
       };
     }
     const { lesson } = loaderData;
+    const path = `/train/lessons/${lesson.id}`;
     const title = `${lesson.title} — Train Your Dog | DoggMatch`;
     return {
       meta: [
@@ -343,18 +346,25 @@ export const Route = createFileRoute("/{-$lang}/train/lessons/$lessonId")({
         { property: "og:title", content: title },
         { property: "og:description", content: lesson.promise },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: langUrl(path, locale) },
+        { property: "og:locale", content: ogLocaleTag(locale) },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: lesson.promise },
       ],
-      links: seoLinks(`/train/lessons/${lesson.id}`),
+      links: seoLinks(path).map((l) =>
+        l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
+      ),
       scripts: [
-        breadcrumbLd([
-          { name: "DoggMatch", path: "/" },
-          { name: "Train Your Dog", path: "/train" },
-          { name: "Library", path: "/train/library" },
-          { name: lesson.title, path: `/train/lessons/${lesson.id}` },
-        ]),
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: "Train Your Dog", path: "/train" },
+            { name: "Library", path: "/train/library" },
+            { name: lesson.title, path },
+          ],
+          locale,
+        ),
       ],
     };
   },
