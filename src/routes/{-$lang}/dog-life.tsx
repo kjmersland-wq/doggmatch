@@ -300,7 +300,7 @@ function DogLifePage() {
                     nl: "Waar je ook bent",
                   })}
             </p>
-            <p className="mt-2 max-w-md text-sm text-primary-foreground/80">
+            <p className="mt-2 max-w-md text-sm text-ivory/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">
               {submitted ? c.notReady(submitted) : c.lead}
             </p>
           </div>
