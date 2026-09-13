@@ -22,6 +22,13 @@ import { CostCalculator } from "@/components/dogmatch/cost-calculator";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { relatedBreeds } from "@/lib/breeds/related";
+import { breedFaq } from "@/lib/breeds/faq";
+import {
+  BreedFaq,
+  BreedGuideLinks,
+  BreedQuizCta,
+  CompareSimilar,
+} from "@/components/dogmatch/breed-onward";
 import {
   abs,
   breadcrumbLd,
