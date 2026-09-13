@@ -10,3 +10,4 @@
 - [x] Compare up to four breeds and show quiz-aware practical lifestyle differences.
 - [x] Explain what makes DoggMatch different on the English homepage.
 - [x] Add concrete member-benefit examples to the English Partners page.
+- [x] Complete training categories, goals, and lessons in Danish, Swedish, Finnish, German, French, and Dutch.

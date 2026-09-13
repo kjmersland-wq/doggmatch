@@ -79,6 +79,48 @@ const copy = {
     practising: "obecnie ćwiczonych",
     thisWeek: "dni treningu w ostatnim tygodniu",
   },
+  dk: {
+    step: "Trin", of: "af", start: "Start", pause: "Pause", resume: "Fortsæt", reset: "Start forfra", nextStep: "Næste trin",
+    finished: "Så er træningen slut. Afslut med noget nemt, og lad hunden føle sig dygtig.", whyTitle: "Hvorfor det her betyder noget",
+    markDone: "Marker dagens træning som gennemført", doneToday: "Klaret i dag — flot arbejde.", weekTitle: "Jeres uge", restDay: "Roligere dag",
+    noPlan: "Fortæl os om din hund, så tilpasser vi en uge til den tid, du faktisk har.", today: "I dag", minutes: "min", streak: "dage i træk",
+    best: "Bedste indtil videre", sessions: "gennemførte træninger", learned: "færdigheder I regner som indlært", practising: "det I øver lige nu", thisWeek: "træningsdage den seneste uge",
+  },
+  se: {
+    step: "Steg", of: "av", start: "Starta", pause: "Pausa", resume: "Fortsätt", reset: "Börja om", nextStep: "Nästa steg",
+    finished: "Då är passet klart. Avsluta med något lätt och låt hunden känna sig duktig.", whyTitle: "Varför det här spelar roll",
+    markDone: "Markera dagens pass som klart", doneToday: "Klart idag — fint jobbat.", weekTitle: "Er vecka", restDay: "Lugnare dag",
+    noPlan: "Berätta om din hund så formar vi en vecka efter den tid du faktiskt har.", today: "I dag", minutes: "min", streak: "dagar i rad",
+    best: "Bäst hittills", sessions: "loggade pass", learned: "färdigheter ni räknar som inlärda", practising: "det ni övar på just nu", thisWeek: "träningsdagar den senaste veckan",
+  },
+  fi: {
+    step: "Vaihe", of: "/", start: "Aloita", pause: "Tauko", resume: "Jatka", reset: "Aloita alusta", nextStep: "Seuraava vaihe",
+    finished: "Treenikerta on valmis. Lopettakaa johonkin helppoon ja antakaa koiran tuntea onnistuneensa.", whyTitle: "Miksi tämä on tärkeää",
+    markDone: "Merkitse tämän päivän treeni tehdyksi", doneToday: "Tänään tehty — hienoa työtä.", weekTitle: "Teidän viikkonne", restDay: "Kevyempi päivä",
+    noPlan: "Kerro meille koirastasi, niin rakennamme viikon sen ajan ympärille, joka sinulla oikeasti on.", today: "Tänään", minutes: "min", streak: "päivän putki",
+    best: "Paras tähän mennessä", sessions: "kirjattua treenikertaa", learned: "opituksi laskettua taitoa", practising: "juuri nyt harjoiteltavaa taitoa", thisWeek: "treenipäivää viimeisen viikon aikana",
+  },
+  de: {
+    step: "Schritt", of: "von", start: "Start", pause: "Pause", resume: "Weiter", reset: "Neu starten", nextStep: "Nächster Schritt",
+    finished: "Das war die Einheit. Hört mit etwas Leichtem auf und lasst euren Hund glänzen.", whyTitle: "Warum das wichtig ist",
+    markDone: "Heutige Einheit als erledigt markieren", doneToday: "Heute geschafft — gut gemacht.", weekTitle: "Eure Woche", restDay: "Ruhigerer Tag",
+    noPlan: "Erzählt uns von eurem Hund, dann gestalten wir eine Woche rund um die Zeit, die ihr wirklich habt.", today: "Heute", minutes: "Min.", streak: "Tage in Folge",
+    best: "Bisheriger Bestwert", sessions: "protokollierte Einheiten", learned: "Fähigkeiten, die ihr als gelernt betrachtet", practising: "gerade im Training", thisWeek: "Trainingstage in der letzten Woche",
+  },
+  fr: {
+    step: "Étape", of: "sur", start: "Démarrer", pause: "Pause", resume: "Reprendre", reset: "Recommencer", nextStep: "Étape suivante",
+    finished: "La séance est terminée. Finissez par quelque chose de facile et laissez votre chien briller.", whyTitle: "Pourquoi c'est important",
+    markDone: "Marquer la séance du jour comme faite", doneToday: "Fait aujourd'hui — bravo.", weekTitle: "Votre semaine", restDay: "Journée plus légère",
+    noPlan: "Parlez-nous de votre chien et nous organiserons une semaine autour du temps dont vous disposez vraiment.", today: "Aujourd'hui", minutes: "min", streak: "jours d'affilée",
+    best: "Meilleur résultat", sessions: "séances enregistrées", learned: "compétences que vous jugez acquises", practising: "en cours d'apprentissage", thisWeek: "jours d'entraînement cette dernière semaine",
+  },
+  nl: {
+    step: "Stap", of: "van", start: "Start", pause: "Pauze", resume: "Verder", reset: "Opnieuw beginnen", nextStep: "Volgende stap",
+    finished: "Dat was de sessie. Sluit af met iets makkelijks en laat je hond stralen.", whyTitle: "Waarom dit belangrijk is",
+    markDone: "Markeer de sessie van vandaag als gedaan", doneToday: "Vandaag gedaan — goed bezig.", weekTitle: "Jullie week", restDay: "Rustigere dag",
+    noPlan: "Vertel ons over je hond, dan maken we een week die past bij de tijd die je echt hebt.", today: "Vandaag", minutes: "min", streak: "dagen op rij",
+    best: "Beste tot nu toe", sessions: "bijgehouden sessies", learned: "vaardigheden die jullie als geleerd zien", practising: "nu aan het oefenen", thisWeek: "trainingsdagen in de afgelopen week",
+  },
 } as const;
 
 /* --------------------------------------------------------- stepped timer */
