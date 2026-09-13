@@ -367,6 +367,7 @@ import type { BreedTraits } from "@/data/breeds";
 import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/types";
 import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "@/components/dogmatch/ui";
 import { MatchNotes } from "@/components/dogmatch/match-notes";
+import { CostCalculator } from "@/components/dogmatch/cost-calculator";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { cn } from "@/lib/utils";
 import { seoLinks, abs, localizedHead, headLocale, faqLd, breadcrumbLd } from "@/lib/seo";
