@@ -222,14 +222,6 @@ function TrainHome() {
             ))}
           </ol>
 
-          {dog && (
-            <div className="mt-10 grid gap-8 rounded-2xl border border-border bg-surface p-8 sm:grid-cols-3">
-              <Stat value={String(state.sessions.length)} label={t.train.statSessions} />
-              <Stat value={String(learned)} label={t.train.statSkills} />
-              <Stat value={String(streak)} label={t.train.statStreak} />
-            </div>
-          )}
-
           {/* the week ahead, shaped by age, size and the time you actually have */}
           <div className="mt-16">
             <h3 className="display-md">{planCopy.weekTitle}</h3>
