@@ -2,18 +2,26 @@ import { pick } from "@/i18n";
 import * as en from "./content.en";
 import * as no from "./content.no";
 import * as pl from "./content.pl";
+import * as dk from "./content.dk";
+import * as se from "./content.se";
+import * as fi from "./content.fi";
+import * as de from "./content.de";
+import * as fr from "./content.fr";
+import * as nl from "./content.nl";
 
-export function getCarSteps() { return pick({ en: en.carSteps, no: no.carSteps, pl: pl.carSteps }); }
-export function getCarSafety() { return pick({ en: en.carSafety, no: no.carSafety, pl: pl.carSafety }); }
-export function getCarSickness() { return pick({ en: en.carSickness, no: no.carSickness, pl: pl.carSickness }); }
-export function getNervousDog() { return pick({ en: en.nervousDog, no: no.nervousDog, pl: pl.nervousDog }); }
-export function getWalkPrep() { return pick({ en: en.walkPrep, no: no.walkPrep, pl: pl.walkPrep }); }
-export function getHikingFactors() { return pick({ en: en.hikingFactors, no: no.hikingFactors, pl: pl.hikingFactors }); }
-export function getWeather() { return pick({ en: en.weather, no: no.weather, pl: pl.weather }); }
-export function getPawChecks() { return pick({ en: en.pawChecks, no: no.pawChecks, pl: pl.pawChecks }); }
-export function getLongJourney() { return pick({ en: en.longJourney, no: no.longJourney, pl: pl.longJourney }); }
-export function getBeforeYouLeave() { return pick({ en: en.beforeYouLeave, no: no.beforeYouLeave, pl: pl.beforeYouLeave }); }
-export function getHolidayChecklist() { return pick({ en: en.holidayChecklist, no: no.holidayChecklist, pl: pl.holidayChecklist }); }
-export function getPublicTransport() { return pick({ en: en.publicTransport, no: no.publicTransport, pl: pl.publicTransport }); }
-export function getAirTravel() { return pick({ en: en.airTravel, no: no.airTravel, pl: pl.airTravel }); }
-export function getTravelWithDifferentDogs() { return pick({ en: en.travelWithDifferentDogs, no: no.travelWithDifferentDogs, pl: pl.travelWithDifferentDogs }); }
+const localized = <K extends keyof typeof en>(key: K) => pick({ en: en[key], no: no[key], pl: pl[key], dk: dk[key], se: se[key], fi: fi[key], de: de[key], fr: fr[key], nl: nl[key] });
+
+export function getCarSteps() { return localized("carSteps"); }
+export function getCarSafety() { return localized("carSafety"); }
+export function getCarSickness() { return localized("carSickness"); }
+export function getNervousDog() { return localized("nervousDog"); }
+export function getWalkPrep() { return localized("walkPrep"); }
+export function getHikingFactors() { return localized("hikingFactors"); }
+export function getWeather() { return localized("weather"); }
+export function getPawChecks() { return localized("pawChecks"); }
+export function getLongJourney() { return localized("longJourney"); }
+export function getBeforeYouLeave() { return localized("beforeYouLeave"); }
+export function getHolidayChecklist() { return localized("holidayChecklist"); }
+export function getPublicTransport() { return localized("publicTransport"); }
+export function getAirTravel() { return localized("airTravel"); }
+export function getTravelWithDifferentDogs() { return localized("travelWithDifferentDogs"); }

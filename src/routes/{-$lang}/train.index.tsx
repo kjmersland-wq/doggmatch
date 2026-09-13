@@ -40,6 +40,54 @@ const weekCopy = {
       "Tell us your dog's age, size and how much time you have, and we'll lay out a simple week you can actually keep.",
     progressTitle: "How it's going",
   },
+  dk: {
+    weekTitle: "Ugen der kommer",
+    weekBody: (m: number) =>
+      `Bygget op omkring ${m} minutter om dagen — din hunds alder og størrelse, og den tid du har fortalt os, du har. Spring en dag over, og intet går i stykker; det følger bare med dig.`,
+    weekBodyGuest:
+      "Fortæl os din hunds alder, størrelse og hvor meget tid du har, så lægger vi en simpel uge op, som du rent faktisk kan overholde.",
+    progressTitle: "Hvordan det går",
+  },
+  se: {
+    weekTitle: "Veckan som kommer",
+    weekBody: (m: number) =>
+      `Anpassat efter ${m} minuter om dagen – baserat på din hunds ålder och storlek, samt den tid du angett. Missar du en dag är det ingen fara, schemat anpassar sig bara efter dig.`,
+    weekBodyGuest:
+      "Berätta om din hunds ålder, storlek och hur mycket tid du har, så skapar vi en enkel vecka som du faktiskt kan följa.",
+    progressTitle: "Hur det går",
+  },
+  fi: {
+    weekTitle: "Tuleva viikko",
+    weekBody: (m: number) =>
+      `Rakennettu ${m} minuutin ympärille päivässä — koirasi iän ja koon sekä ilmoittamasi ajan mukaan. Yksi päivä väliin ei riko mitään; ohjelma vain mukautuu elämäntilanteeseesi.`,
+    weekBodyGuest:
+      "Kerro meille koirasi ikä, koko ja käytettävissä oleva aika, niin luomme sinulle yksinkertaisen viikko-ohjelman, jota voit todella noudattaa.",
+    progressTitle: "Miten edistyminen sujuu",
+  },
+  de: {
+    weekTitle: "Die kommende Woche",
+    weekBody: (m: number) =>
+      `Zugeschnitten auf ${m} Minuten täglich – basierend auf Alter und Größe deines Hundes sowie deiner angegebenen Zeit. Wenn du mal einen Tag auslässt, ist das kein Problem, das Programm passt sich einfach an deinen Rhythmus an.`,
+    weekBodyGuest:
+      "Gib uns das Alter und die Größe deines Hundes sowie deine verfügbare Zeit an, und wir erstellen dir einen einfachen Wochenplan, den du auch wirklich einhalten kannst.",
+    progressTitle: "So läuft's",
+  },
+  fr: {
+    weekTitle: "La semaine à venir",
+    weekBody: (m: number) =>
+      `Conçu pour ${m} minutes par jour — en fonction de l'âge et de la taille de votre chien, ainsi que du temps dont vous nous avez dit disposer. Manquez une journée et rien ne s'arrête ; tout s'adapte simplement à votre rythme.`,
+    weekBodyGuest:
+      "Indiquez-nous l'âge, la taille de votre chien et le temps dont vous disposez, et nous vous proposerons une semaine simple que vous pourrez réellement suivre.",
+    progressTitle: "Comment ça se passe",
+  },
+  nl: {
+    weekTitle: "De week vooruit",
+    weekBody: (m: number) =>
+      `Opgebouwd rond ${m} minuten per dag — gebaseerd op de leeftijd en grootte van je hond, en de tijd die je ons hebt doorgegeven. Sla een dag over en niets breekt; het gaat gewoon met je mee.`,
+    weekBodyGuest:
+      "Vertel ons de leeftijd, grootte en hoeveel tijd je hebt voor je hond, en we stellen een eenvoudige week samen die je kunt volhouden.",
+    progressTitle: "Hoe het gaat",
+  },
   no: {
     weekTitle: "Uken som kommer",
     weekBody: (m: number) =>

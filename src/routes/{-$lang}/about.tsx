@@ -11,6 +11,15 @@ const description =
 
 const seoCopy = {
   en: { title, description },
+  de: { title, description },
+  fr: {
+  title: "DoggMatch",
+  description: "Trouvez le compagnon canin idéal pour votre style de vie grâce à DoggMatch. Notre application vous aide à découvrir des chiens à adopter en fonction de vos préférences, de votre niveau d'activité et de votre environnement familial. Que vous recherchiez un compagnon énergique pour vos aventures en plein air ou un toutou calme pour des câlins sur le canapé, DoggMatch est là pour vous guider vers votre nouveau meilleur ami.",
+},
+  nl: {
+  title: "DoggMatch",
+  description: "Vind de perfecte match voor jouw hond. Ontdek nieuwe vrienden, speelmaatjes en potentiële partners voor je trouwe viervoeter.",
+},
   no: {
     title: "Om DoggMatch — en snillere måte å velge hund på",
     description:
@@ -48,6 +57,21 @@ const copy = {
     p1: "Bringing a dog home is a big decision, and it deserves more thought than a list of the most popular breeds. Getting it right is better for you, and much better for the dog.",
     p2: "There's no guesswork here. Every match comes from what you've told us, held up against what each breed usually needs. If you tell us something is a hard limit, we take you at your word — even when that rules out a dog you had your heart set on.",
     p3: "We ask for as little as we can. You only share where you live if you want local suggestions, and you never need an account to get your result.",
+  },
+  de: {
+    p1: "Einen Hund nach Hause zu holen, ist eine große Entscheidung und verdient mehr Überlegung als eine Liste der beliebtesten Rassen. Wenn es von Anfang an passt, ist das besser für Sie und viel besser für den Hund.",
+    p2: "Hier gibt es kein Rätselraten. Jede Übereinstimmung basiert auf dem, was Sie uns erzählt haben, abgeglichen mit den üblichen Bedürfnissen jeder Rasse. Wenn Sie uns sagen, dass etwas eine absolute Grenze ist, nehmen wir Sie beim Wort – auch wenn das bedeutet, dass ein Hund, den Sie sich ins Herz geschlossen hatten, ausscheidet.",
+    p3: "Wir fragen nur nach dem Nötigsten. Sie teilen Ihren Wohnort nur mit, wenn Sie lokale Vorschläge wünschen, und Sie benötigen niemals ein Konto, um Ihr Ergebnis zu erhalten.",
+  },
+  fr: {
+    p1: "Adopter un chien est une décision importante qui mérite plus de réflexion qu'une simple liste des races les plus populaires. Bien choisir, c'est mieux pour vous, et tellement mieux pour le chien.",
+    p2: "Pas de hasard ici. Chaque suggestion est basée sur ce que vous nous avez dit, comparé aux besoins habituels de chaque race. Si vous nous indiquez une contrainte absolue, nous vous prenons au mot — même si cela écarte un chien qui vous tenait à cœur.",
+    p3: "Nous vous demandons le minimum. Vous ne partagez votre lieu de résidence que si vous souhaitez des suggestions locales, et vous n'avez jamais besoin de compte pour obtenir votre résultat.",
+  },
+  nl: {
+    p1: "Een hond in huis nemen is een grote beslissing, en verdient meer aandacht dan alleen een lijstje met de populairste rassen. Als je de juiste keuze maakt, is dat beter voor jou, en nog veel beter voor de hond.",
+    p2: "Hier komt geen giswerk aan te pas. Elke match is gebaseerd op wat je ons vertelt, afgezet tegen wat de meeste honden van een bepaald ras doorgaans nodig hebben. Als je aangeeft dat iets een absolute grens is, nemen we dat serieus – zelfs als dat betekent dat een hond die je op het oog had, toch afvalt.",
+    p3: "We vragen zo min mogelijk. Je deelt alleen je woonplaats als je lokale suggesties wilt, en je hebt nooit een account nodig om je resultaat te krijgen.",
   },
   no: {
     p1: "Å ta med en hund hjem er en stor beslutning, og den fortjener mer omtanke enn en liste over de mest populære rasene. Å få det riktig er bedre for deg, og mye bedre for hunden.",

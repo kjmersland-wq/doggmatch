@@ -10,6 +10,12 @@ const description =
 
 const seoCopy = {
   en: { title, description },
+  de: { title, description },
+  fr: {
+  title: "DoggMatch",
+  description: "Trouvez le compagnon canin idéal pour votre style de vie.",
+},
+  nl: { title: "Welkom bij DoggMatch", description: "Vind de perfecte match voor jouw hond. Ontdek nieuwe vriendjes, speelmaatjes en misschien zelfs de liefde van hun leven!" },
   no: {
     title: "Personvern — slik behandler DoggMatch dataene dine",
     description:
@@ -179,6 +185,423 @@ const copy = {
         title: "Changes to this notice",
         p1:
           "If we change anything meaningful here, we'll update the date at the top of this page, and tell account holders by email when the change affects them.",
+      },
+    },
+  },
+  de: {
+    eyebrow: "Datenschutz",
+    title: "Ihre Daten, sorgfältig behandelt",
+    intro:
+      "Wir fragen nur nach dem Nötigsten, erklären Ihnen klar und deutlich, was wir damit tun, und Sie können uns jederzeit bitten, sie zu löschen. Diese Seite erklärt alles in einfacher Sprache.",
+    updated: "16. August 2026",
+    contactPage: "Kontaktseite",
+    sections: {
+      responsible: {
+        title: "Wer ist für Ihre Daten verantwortlich",
+        p1:
+          "DoggMatch wird von KM TECH LABS, Org.-Nr. 934 044 029, in Kristiansand, Norwegen, entwickelt und betrieben. KM TECH LABS ist der Datenverantwortliche für personenbezogene Daten, die über diese Website verarbeitet werden, und entscheidet, warum und wie diese Daten verwendet werden.",
+        p2:
+          "Norwegen ist Teil des EWR, daher gilt für uns die EU-Datenschutz-Grundverordnung (DSGVO) in vollem Umfang, zusammen mit dem norwegischen Gesetz über personenbezogene Daten (personopplysningsloven). Unsere Aufsichtsbehörde ist die norwegische Datenschutzbehörde (Datatilsynet).",
+        p3Before: "Der einfachste Weg, uns bezüglich allem auf dieser Seite zu erreichen, ist über unsere",
+        p3After: ".",
+      },
+      collect: {
+        title: "Was wir sammeln und warum",
+        p1:
+          "Der Großteil von DoggMatch funktioniert ohne ein Konto und ohne dass wir etwas über Sie speichern. Ihre Quizantworten, Ihre Hundeprofile, Ihr Trainingsfortschritt und Ihre Pflegehinweise werden im lokalen Speicher Ihres Browsers auf Ihrem Gerät gespeichert – nicht auf unseren Servern.",
+        items: [
+          {
+            strong: "Quizantworten und Hundeprofile.",
+            rest:
+              " Lokal auf Ihrem Gerät gespeichert, damit Sie darauf zurückgreifen können. Wir sehen sie nie. Das Löschen Ihrer Browserdaten entfernt sie.",
+          },
+          {
+            strong: "Kontodaten.",
+            rest:
+              " Wenn Sie ein Konto erstellen, speichern wir Ihre E-Mail-Adresse und Ihre Anmeldeidentität. Rechtsgrundlage: Erfüllung eines Vertrags (DSGVO Art. 6 Abs. 1 lit. b).",
+          },
+          {
+            strong: "Mitgliedschaftsdetails.",
+            rest:
+              " Für DoggMatch+ speichern wir Ihren Abonnementstatus, Ihren Plan, Ihre Mitglieds-ID und das Gültigkeitsdatum. Rechtsgrundlage: Erfüllung eines Vertrags.",
+          },
+          {
+            strong: "Zahlungsdetails.",
+            rest:
+              " Kartendaten werden vollständig von Stripe verarbeitet. Wir sehen oder speichern niemals Ihre Kartennummer. Wir behalten nur die Abonnementreferenz, die wir benötigen, um zu wissen, ob Ihre Mitgliedschaft aktiv ist.",
+          },
+          {
+            strong: "Nachrichten, die Sie uns senden.",
+            rest:
+              " Ihr Name, Ihre E-Mail-Adresse, Ihr Betreff und Ihre Nachricht, damit wir antworten können. Rechtsgrundlage: berechtigtes Interesse an Ihrer Beantwortung (DSGVO Art. 6 Abs. 1 lit. f).",
+          },
+          {
+            strong: "Technische Daten.",
+            rest:
+              " Standard-Serverprotokolle wie IP-Adresse und Browsertyp, die kurzzeitig zur Sicherheit, zur Verhinderung von Missbrauch und zur Fehlerbehebung gespeichert werden. Rechtsgrundlage: berechtigtes Interesse an der Sicherheit des Dienstes.",
+          },
+        ],
+      },
+      notDo: {
+        title: "Was wir nicht tun",
+        items: [
+          "Wir verkaufen oder vermieten Ihre persönlichen Daten nicht an Dritte.",
+          "Wir verwenden keine Werbetracker oder Cookies von Drittanbietern für Werbung.",
+          "Wir erstellen keine Verhaltensprofile von Ihnen für Marketingzwecke.",
+          "Wir treffen keine automatisierten Entscheidungen mit rechtlichen oder ähnlich bedeutsamen Auswirkungen. Ihr Match-Ergebnis ist eine transparente Berechnung, deren Begründung Sie einsehen können und die keine rechtlichen Konsequenzen hat.",
+        ],
+      },
+      cookies: {
+        title: "Cookies und lokaler Speicher",
+        p1:
+          "Wir verwenden nur das, was unbedingt notwendig ist, damit die Website funktioniert: eine Anmeldesitzung, Ihre Präferenz für helles/dunkles Design, Ihre Sprache und die oben beschriebenen lokalen Daten. Gemäß der ePrivacy-Richtlinie und dem norwegischen ekomlov ist für die unbedingt notwendige Speicherung dieser Art keine Zustimmung erforderlich, weshalb Sie kein Cookie-Banner sehen. Wenn wir jemals Analyse- oder Marketing-Cookies hinzufügen, werden wir Sie vorher fragen.",
+      },
+      processors: {
+        title: "Wer Daten in unserem Auftrag verarbeitet",
+        p1:
+          "Wir nutzen eine kleine Anzahl sorgfältig ausgewählter Anbieter, die jeweils durch eine Auftragsverarbeitungsvereinbarung gemäß DSGVO Art. 28 gebunden sind:",
+        items: [
+          {
+            strong: "Hosting, Datenbank und Authentifizierung.",
+            rest: " Betreibt unsere Server, speichert Konto- und Mitgliedschaftsdaten und kümmert sich um die Anmeldung.",
+          },
+          {
+            strong: "Stripe.",
+            rest: " Zahlungen und Abonnementabrechnung, als unabhängiger Verantwortlicher für Zahlungsdaten.",
+          },
+          {
+            strong: "Google.",
+            rest: " Nur wenn Sie sich entscheiden, sich mit Google anzumelden, und nur für diese Anmeldung.",
+          },
+          {
+            strong: "E-Mail-Zustellung.",
+            rest: " Wird verwendet, um die von Ihnen an uns gesendeten Nachrichten zu senden und zu empfangen.",
+          },
+        ],
+      },
+      transfers: {
+        title: "Wo Ihre Daten gespeichert werden und Übermittlungen außerhalb des EWR",
+        p1:
+          "Wir speichern personenbezogene Daten, wo immer möglich, auf Servern innerhalb der EU/des EWR. Einige unserer Anbieter haben ihren Sitz in den Vereinigten Staaten. Wenn Daten den EWR verlassen, beruht die Übermittlung auf den Standardvertragsklauseln der Europäischen Kommission und, wo zutreffend, auf dem EU-US-Datenschutzrahmen, zusammen mit zusätzlichen technischen Schutzmaßnahmen wie Verschlüsselung während der Übertragung und im Ruhezustand.",
+      },
+      retention: {
+        title: "Wie lange wir Dinge aufbewahren",
+        items: [
+          "Lokale Daten auf Ihrem Gerät: bis Sie sie löschen. Sie gehören Ihnen, auf Ihrem Rechner.",
+          "Konto- und Mitgliedschaftsdaten: solange Ihr Konto besteht, danach gelöscht oder anonymisiert innerhalb von 90 Tagen nach Schließung.",
+          "Kontaktanfragen: bis zu 24 Monate, damit wir Kontext haben, falls Sie erneut schreiben.",
+          "Zahlungs- und Rechnungsaufzeichnungen: 5 Jahre aufbewahrt, wie das norwegische Buchführungsgesetz (bokføringsloven) vorschreibt. Rechtsgrundlage: rechtliche Verpflichtung (DSGVO Art. 6 Abs. 1 lit. c).",
+          "Sicherheitsprotokolle: normalerweise 90 Tage oder weniger.",
+        ],
+      },
+      protect: {
+        title: "Wie wir sie schützen",
+        p1:
+          "Daten werden während der Übertragung (TLS) und im Ruhezustand von unserem Hosting-Anbieter verschlüsselt. Der Datenbankzugriff ist durch Row-Level-Security-Regeln eingeschränkt, sodass ein Konto niemals auf seine eigenen Datensätze zugreifen kann. Der Zugriff auf Produktionssysteme ist auf Personen beschränkt, die ihn wirklich benötigen. Sollte ein Verstoß jemals Ihre Rechte gefährden, werden wir Datatilsynet innerhalb von 72 Stunden benachrichtigen und Sie direkt informieren, wo das Gesetz es vorschreibt.",
+      },
+      rights: {
+        title: "Ihre Rechte",
+        intro: "Gemäß der DSGVO können Sie uns bitten:",
+        items: [
+          "Uns mitzuteilen, was wir über Sie gespeichert haben, und uns eine Kopie davon zu geben (Art. 15).",
+          "Alles zu korrigieren, was falsch ist (Art. 16).",
+          "Ihre Daten zu löschen (Art. 17).",
+          "Die Nutzung Ihrer Daten einzuschränken (Art. 18).",
+          "Sie oder einen anderen Anbieter in einem portablen Format zu erhalten (Art. 20).",
+          "Die Verarbeitung aufgrund berechtigter Interessen einzustellen (Art. 21).",
+          "Ihre Einwilligung jederzeit zu widerrufen, wenn die Verarbeitung auf Einwilligung beruht (Art. 7).",
+        ],
+        p2Before: "Schreiben Sie uns über die",
+        p2Mid:
+          "und wir werden Ihnen innerhalb von 30 Tagen kostenlos antworten. Wenn Sie mit unserer Handhabung nicht zufrieden sind, können Sie sich bei Datatilsynet oder bei der Datenschutzbehörde Ihres eigenen Landes beschweren.",
+      },
+      children: {
+        title: "Kinder",
+        p1:
+          "DoggMatch ist nicht für Kinder bestimmt. Sie müssen mindestens 16 Jahre alt sein, um ein Konto zu erstellen. Wenn Sie glauben, dass ein Kind uns persönliche Daten zur Verfügung gestellt hat, informieren Sie uns bitte, und wir werden diese entfernen.",
+      },
+      changes: {
+        title: "Änderungen dieser Mitteilung",
+        p1:
+          "Wenn wir hier etwas Wesentliches ändern, aktualisieren wir das Datum am Anfang dieser Seite und informieren Kontoinhaber per E-Mail, wenn die Änderung sie betrifft.",
+      },
+    },
+  },
+  fr: {
+    eyebrow: "Confidentialité",
+    title: "Vos données, traitées avec soin",
+    intro:
+      "Nous ne demandons que le strict minimum, nous vous expliquons clairement ce que nous en faisons, et vous pouvez nous demander de les supprimer à tout moment. Cette page vous explique tout cela en langage clair.",
+    updated: "16 août 2026",
+    contactPage: "page de contact",
+    sections: {
+      responsible: {
+        title: "Qui est responsable de vos données",
+        p1:
+          "DoggMatch est développé et géré par KM TECH LABS, org.nr. 934 044 029, à Kristiansand, en Norvège. KM TECH LABS est le responsable du traitement des données personnelles traitées via ce site web, et décide des raisons et des modalités d'utilisation de ces données.",
+        p2:
+          "La Norvège fait partie de l'Espace Économique Européen (EEE), ainsi le Règlement Général sur la Protection des Données (RGPD) de l'UE s'applique intégralement, ainsi que la loi norvégienne sur la protection des données personnelles (personopplysningsloven). Notre autorité de contrôle est l'Autorité norvégienne de protection des données (Datatilsynet).",
+        p3Before: "Le moyen le plus simple de nous contacter pour toute question relative à cette page est via notre",
+        p3After: ".",
+      },
+      collect: {
+        title: "Ce que nous collectons, et pourquoi",
+        p1:
+          "La plupart des fonctionnalités de DoggMatch fonctionnent sans compte et sans que nous stockions quoi que ce soit vous concernant. Vos réponses aux quiz, vos profils de chien, vos progrès d'entraînement et vos notes de soins sont conservés dans le stockage local de votre propre navigateur sur votre appareil – pas sur nos serveurs.",
+        items: [
+          {
+            strong: "Réponses aux quiz et profils de chien.",
+            rest:
+              " Stockés localement sur votre appareil afin que vous puissiez y revenir. Nous n'y avons jamais accès. La suppression de vos données de navigation les efface.",
+          },
+          {
+            strong: "Détails du compte.",
+            rest:
+              " Si vous créez un compte, nous stockons votre adresse e-mail et votre identifiant de connexion. Base légale : exécution d'un contrat (RGPD Art. 6(1)(b)).",
+          },
+          {
+            strong: "Détails de l'adhésion.",
+            rest:
+              " Pour DoggMatch+, nous stockons votre statut d'abonnement, votre plan, votre identifiant membre et la date d'expiration. Base légale : exécution d'un contrat.",
+          },
+          {
+            strong: "Détails de paiement.",
+            rest:
+              " Les données de carte sont entièrement gérées par Stripe. Nous ne voyons ni ne stockons jamais votre numéro de carte. Nous conservons uniquement la référence de l'abonnement nécessaire pour savoir si votre adhésion est active.",
+          },
+          {
+            strong: "Messages que vous nous envoyez.",
+            rest:
+              " Votre nom, e-mail, sujet et message, afin que nous puissions vous répondre. Base légale : intérêt légitime à vous répondre (RGPD Art. 6(1)(f)).",
+          },
+          {
+            strong: "Données techniques.",
+            rest:
+              " Journaux de serveur standards tels que l'adresse IP et le type de navigateur, conservés brièvement pour des raisons de sécurité, de prévention des abus et de dépannages. Base légale : intérêt légitime à maintenir la sécurité du service.",
+          },
+        ],
+      },
+      notDo: {
+        title: "Ce que nous ne faisons pas",
+        items: [
+          "Nous ne vendons ni ne louons vos données personnelles à qui que ce soit.",
+          "Nous n'utilisons pas de traqueurs publicitaires ni de cookies publicitaires tiers.",
+          "Nous ne construisons pas de profils comportementaux de vous à des fins marketing.",
+          "Nous ne prenons pas de décisions automatisées ayant des effets juridiques ou similaires. Le résultat de votre mise en relation est un calcul transparent dont vous pouvez voir le raisonnement, et il n'a aucune conséquence juridique.",
+        ],
+      },
+      cookies: {
+        title: "Cookies et stockage local",
+        p1:
+          "Nous utilisons uniquement ce qui est strictement nécessaire au bon fonctionnement du site : une session de connexion, votre préférence clair/sombre, votre langue, et les données locales décrites ci-dessus. Conformément à la directive ePrivacy et à la loi norvégienne ekomlov, le stockage strictement nécessaire de ce type ne nécessite pas de consentement, c'est pourquoi vous ne voyez pas de bannière de cookies. Si nous ajoutions un jour des cookies d'analyse ou de marketing, nous vous demanderions d'abord votre accord.",
+      },
+      processors: {
+        title: "Qui traite les données pour notre compte",
+        p1:
+          "Nous faisons appel à un petit nombre de prestataires soigneusement sélectionnés, chacun lié par un accord de traitement des données conformément à l'article 28 du RGPD :",
+        items: [
+          {
+            strong: "Hébergement, base de données et authentification.",
+            rest: " Gère nos serveurs, stocke les enregistrements de compte et d'adhésion, et gère la connexion.",
+          },
+          {
+            strong: "Stripe.",
+            rest: " Paiements et facturation des abonnements, en tant que responsable de traitement indépendant pour les données de paiement.",
+          },
+          {
+            strong: "Google.",
+            rest: " Uniquement si vous choisissez de vous connecter avec Google, et uniquement pour cette connexion.",
+          },
+          {
+            strong: "Envoi d'e-mails.",
+            rest: " Utilisé pour envoyer et recevoir les messages que vous nous écrivez.",
+          },
+        ],
+      },
+      transfers: {
+        title: "Où vos données sont stockées, et transferts hors de l'EEE",
+        p1:
+          "Nous stockons les données personnelles sur des serveurs situés dans l'UE/EEE dans la mesure du possible. Certains de nos prestataires sont basés aux États-Unis. Lorsque des données quittent l'EEE, le transfert repose sur les Clauses Contractuelles Types de la Commission Européenne, et le cas échéant sur le Cadre de Protection des Données UE-États-Unis, ainsi que sur des mesures de sécurité techniques supplémentaires telles que le chiffrement en transit et au repos.",
+      },
+      retention: {
+        title: "Combien de temps nous conservons les données",
+        items: [
+          "Données locales sur votre appareil : jusqu'à ce que vous les supprimiez. Elles vous appartiennent, sur votre machine.",
+          "Données de compte et d'adhésion : tant que votre compte existe, puis supprimées ou anonymisées dans les 90 jours suivant sa clôture.",
+          "Messages de contact : jusqu'à 24 mois, afin d'avoir du contexte si vous nous réécrivez.",
+          "Enregistrements de paiement et de facturation : conservés pendant 5 ans, comme l'exige la loi norvégienne sur la comptabilité (bokføringsloven). Base légale : obligation légale (RGPD Art. 6(1)(c)).",
+          "Journaux de sécurité : normalement 90 jours ou moins.",
+        ],
+      },
+      protect: {
+        title: "Comment nous les protégeons",
+        p1:
+          "Les données sont chiffrées en transit (TLS) et au repos par notre fournisseur d'hébergement. L'accès à la base de données est restreint par des règles de sécurité au niveau des lignes, de sorte qu'un compte ne peut jamais accéder qu'à ses propres enregistrements. L'accès aux systèmes de production est limité aux personnes qui en ont réellement besoin. En cas de violation mettant vos droits en danger, nous informerons Datatilsynet dans les 72 heures et vous informerons directement lorsque la loi l'exige.",
+      },
+      rights: {
+        title: "Vos droits",
+        intro: "Conformément au RGPD, vous pouvez nous demander de :",
+        items: [
+          "Vous informer de ce que nous détenons à votre sujet, et vous en fournir une copie (Art. 15).",
+          "Corriger toute information inexacte (Art. 16).",
+          "Supprimer vos données (Art. 17).",
+          "Restreindre la manière dont nous les utilisons (Art. 18).",
+          "Vous les transmettre ou à un autre fournisseur dans un format portable (Art. 20).",
+          "Cesser le traitement basé sur un intérêt légitime (Art. 21).",
+          "Retirer votre consentement à tout moment, lorsque le traitement est basé sur le consentement (Art. 7).",
+        ],
+        p2Before: "Écrivez-nous via la",
+        p2Mid:
+          "et nous vous répondrons dans les 30 jours, gratuitement. Si vous n'êtes pas satisfait de la manière dont nous avons traité votre demande, vous pouvez porter plainte auprès de Datatilsynet ou de l'autorité de protection des données de votre propre pays.",
+      },
+      children: {
+        title: "Enfants",
+        p1:
+          "DoggMatch n'est pas destiné aux enfants. Vous devez avoir au moins 16 ans pour créer un compte. Si vous pensez qu'un enfant nous a fourni des données personnelles, informez-nous et nous les supprimerons.",
+      },
+      changes: {
+        title: "Modifications de cet avis",
+        p1:
+          "Si nous apportons des modifications significatives ici, nous mettrons à jour la date en haut de cette page et informerons les titulaires de compte par e-mail lorsque la modification les concerne.",
+      },
+    },
+  },
+  nl: {
+    eyebrow: "Privacy",
+    title: "Uw gegevens, met zorg behandeld",
+    intro:
+      "We vragen zo min mogelijk, we vertellen u duidelijk wat we ermee doen, en u kunt ons op elk moment vragen om het te verwijderen. Deze pagina legt dat allemaal uit in normale taal.",
+    updated: "16 augustus 2026",
+    contactPage: "contactpagina",
+    sections: {
+      responsible: {
+        title: "Wie is verantwoordelijk voor uw gegevens",
+        p1:
+          "DoggMatch is gebouwd en wordt beheerd door KM TECH LABS, org.nr. 934 044 029, in Kristiansand, Noorwegen. KM TECH LABS is de verwerkingsverantwoordelijke voor persoonsgegevens die via deze website worden verwerkt, en bepaalt waarom en hoe die gegevens worden gebruikt.",
+        p2:
+          "Noorwegen maakt deel uit van de EER, dus de Algemene Verordening Gegevensbescherming (AVG) van de EU is volledig op ons van toepassing, samen met de Noorse Wet op Persoonsgegevens (personopplysningsloven). Onze toezichthoudende autoriteit is de Noorse Autoriteit voor Gegevensbescherming (Datatilsynet).",
+        p3Before: "De makkelijkste manier om ons te bereiken over alles op deze pagina is via onze",
+        p3After: ".",
+      },
+      collect: {
+        title: "Wat we verzamelen, en waarom",
+        p1:
+          "Het grootste deel van DoggMatch werkt zonder account en zonder dat we iets over u opslaan. Uw quizantwoorden, uw hondprofielen, uw trainingsvoortgang en uw verzorgingsnotities worden opgeslagen in de lokale opslag van uw eigen browser op uw apparaat — niet op onze servers.",
+        items: [
+          {
+            strong: "Quizantwoorden en hondprofielen.",
+            rest:
+              " Lokaal opgeslagen op uw apparaat zodat u ze kunt terugzien. Wij zien ze nooit. Het wissen van uw browsergegevens verwijdert ze.",
+          },
+          {
+            strong: "Accountgegevens.",
+            rest:
+              " Als u een account aanmaakt, slaan we uw e-mailadres en inloggegevens op. Rechtsgrondslag: uitvoering van een overeenkomst (AVG Art. 6(1)(b)).",
+          },
+          {
+            strong: "Lidmaatschapsgegevens.",
+            rest:
+              " Voor DoggMatch+ slaan we uw abonnementsstatus, plan, lidmaatschapsnummer en geldigheidsdatum op. Rechtsgrondslag: uitvoering van een overeenkomst.",
+          },
+          {
+            strong: "Betalingsgegevens.",
+            rest:
+              " Kaartgegevens worden volledig afgehandeld door Stripe. Wij zien of slaan uw kaartnummer nooit op. We bewaren alleen de abonnementsreferentie die we nodig hebben om te weten of uw lidmaatschap actief is.",
+          },
+          {
+            strong: "Berichten die u ons stuurt.",
+            rest:
+              " Uw naam, e-mailadres, onderwerp en bericht, zodat we kunnen antwoorden. Rechtsgrondslag: gerechtvaardigd belang om u te antwoorden (AVG Art. 6(1)(f)).",
+          },
+          {
+            strong: "Technische gegevens.",
+            rest:
+              " Standaard serverlogs zoals IP-adres en browsertype, kort bewaard voor beveiliging, misbruikpreventie en probleemoplossing. Rechtsgrondslag: gerechtvaardigd belang om de service veilig te houden.",
+          },
+        ],
+      },
+      notDo: {
+        title: "Wat we niet doen",
+        items: [
+          "We verkopen of verhuren uw persoonsgegevens aan niemand.",
+          "We gebruiken geen advertentie-trackers of cookies van derden voor advertenties.",
+          "We bouwen geen gedragsprofielen van u voor marketingdoeleinden.",
+          "We nemen geen geautomatiseerde beslissingen met juridische of vergelijkbaar significante gevolgen. Uw matchresultaat is een transparante berekening waarvan u de redenering kunt zien, en het heeft geen juridische consequenties.",
+        ],
+      },
+      cookies: {
+        title: "Cookies en lokale opslag",
+        p1:
+          "We gebruiken alleen wat strikt noodzakelijk is om de site te laten werken: een inlogsessie, uw lichte/donkere voorkeur, uw taal, en de lokale gegevens zoals hierboven beschreven. Volgens de ePrivacy-richtlijn en de Noorse ekomlov is voor strikt noodzakelijke opslag van dit soort gegevens geen toestemming vereist, daarom ziet u geen cookiebanner. Als we ooit analytische of marketingcookies toevoegen, zullen we u eerst vragen.",
+      },
+      processors: {
+        title: "Wie verwerkt gegevens namens ons",
+        p1:
+          "We maken gebruik van een klein aantal zorgvuldig geselecteerde providers, elk gebonden aan een verwerkersovereenkomst volgens AVG Art. 28:",
+        items: [
+          {
+            strong: "Hosting, database en authenticatie.",
+            rest: " Draait onze servers, slaat account- en lidmaatschapsgegevens op, en beheert het inloggen.",
+          },
+          {
+            strong: "Stripe.",
+            rest: " Betalingen en abonnementsfacturering, als onafhankelijke verwerkingsverantwoordelijke voor betalingsgegevens.",
+          },
+          {
+            strong: "Google.",
+            rest: " Alleen als u ervoor kiest om in te loggen met Google, en alleen voor dat inloggen.",
+          },
+          {
+            strong: "E-mailbezorging.",
+            rest: " Gebruikt om de berichten die u ons schrijft te verzenden en te ontvangen.",
+          },
+        ],
+      },
+      transfers: {
+        title: "Waar uw gegevens worden opgeslagen, en overdrachten buiten de EER",
+        p1:
+          "We slaan persoonsgegevens op servers binnen de EU/EER op waar mogelijk. Sommige van onze providers zijn gevestigd in de Verenigde Staten. Waar gegevens de EER verlaten, is de overdracht gebaseerd op de Standaard Contractuele Clausules van de Europese Commissie, en waar van toepassing het EU-VS Data Privacy Framework, samen met aanvullende technische waarborgen zoals encryptie tijdens transport en in rust.",
+      },
+      retention: {
+        title: "Hoe lang we dingen bewaren",
+        items: [
+          "Lokale gegevens op uw apparaat: totdat u ze wist. Het is van u, op uw machine.",
+          "Account- en lidmaatschapsgegevens: zolang uw account bestaat, daarna verwijderd of geanonimiseerd binnen 90 dagen na sluiting.",
+          "Contactberichten: tot 24 maanden, zodat we context hebben als u opnieuw schrijft.",
+          "Betalings- en factuurgegevens: 5 jaar bewaard, zoals de Noorse boekhoudwet (bokføringsloven) vereist. Rechtsgrondslag: wettelijke verplichting (AVG Art. 6(1)(c)).",
+          "Beveiligingslogs: normaal gesproken 90 dagen of minder.",
+        ],
+      },
+      protect: {
+        title: "Hoe we het beschermen",
+        p1:
+          "Gegevens worden versleuteld tijdens transport (TLS) en in rust door onze hostingprovider. Database-toegang is beperkt door regels voor beveiliging op rij-niveau, zodat een account nooit bij de gegevens van een ander kan komen. Toegang tot productiesystemen is beperkt tot de personen die het echt nodig hebben. Als een datalek ooit uw rechten in gevaar brengt, zullen we Datatilsynet binnen 72 uur op de hoogte stellen en u direct informeren waar de wet dat vereist.",
+      },
+      rights: {
+        title: "Uw rechten",
+        intro: "Volgens de AVG kunt u ons vragen om:",
+        items: [
+          "U te vertellen wat we over u hebben, en u daar een kopie van te geven (Art. 15).",
+          "Alles te corrigeren wat onjuist is (Art. 16).",
+          "Uw gegevens te verwijderen (Art. 17).",
+          "Het gebruik ervan door ons te beperken (Art. 18).",
+          "Het naar u of een andere provider te sturen in een draagbaar formaat (Art. 20).",
+          "De verwerking op basis van gerechtvaardigd belang te stoppen (Art. 21).",
+          "Toestemming op elk moment in te trekken, waar de verwerking gebaseerd is op toestemming (Art. 7).",
+        ],
+        p2Before: "Schrijf ons via de",
+        p2Mid:
+          "en we zullen binnen 30 dagen reageren, kosteloos. Als u niet tevreden bent met hoe we ermee zijn omgegaan, kunt u een klacht indienen bij Datatilsynet of bij de autoriteit voor gegevensbescherming in uw eigen land.",
+      },
+      children: {
+        title: "Kinderen",
+        p1:
+          "DoggMatch is niet bedoeld voor kinderen. U moet minimaal 16 jaar oud zijn om een account aan te maken. Als u gelooft dat een kind ons persoonsgegevens heeft verstrekt, laat het ons weten en we zullen het verwijderen.",
+      },
+      changes: {
+        title: "Wijzigingen in deze kennisgeving",
+        p1:
+          "Als we hier iets belangrijks veranderen, werken we de datum bovenaan deze pagina bij en informeren we accounthouders per e-mail wanneer de wijziging hen treft.",
       },
     },
   },

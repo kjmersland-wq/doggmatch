@@ -169,6 +169,9 @@ const description =
 
 const seoCopy = {
   en: { title, description },
+  dk: { title: "DoggMatch", description: "Find din perfekte firbenede ven" },
+  se: { title: "DoggMatch", description: "Hitta din perfekta fyrbenta vän" },
+  fi: { title: "DoggMatch", description: "Löydä täydellinen kumppani koirallesi" },
   no: {
     title: "Sammenlign hunder side om side | DoggMatch",
     description:
