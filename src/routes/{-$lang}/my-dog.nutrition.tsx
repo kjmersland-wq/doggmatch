@@ -263,39 +263,15 @@ function NutritionPage() {
 
       <Section className="container-page">
         <Panel title={dog ? c.startingPointFor(dog.name) : c.startingPoint}>
-          {portions ? (
-            <>
-              <div className="grid gap-3 sm:grid-cols-3">
-                <Stat label={c.statDay} value={`${portions.dailyKcal} kcal`} hint={portions.factorReason} />
-                <Stat
-                  label={c.statFoodDay}
-                  value={portions.gramsPerDay ? `${portions.gramsPerDay} g` : "—"}
-                  hint={portions.gramsPerDay ? c.statFoodDayHintWeighed : c.statFoodDayHintMissing}
-                />
-                <Stat
-                  label={c.statPerMeal}
-                  value={portions.gramsPerMeal ? `${portions.gramsPerMeal} g` : "—"}
-                  hint={c.statPerMealHint(portions.mealsPerDay)}
-                />
-              </div>
-              <div className="mt-6 rounded-[1.25rem] border border-border bg-surface p-6">
-                <h3 className="font-display text-lg tracking-tight">{c.howWeGotThereTitle}</h3>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
-                  {c.howWeGotThereP1(profile.weightKg!, portions.restingKcal, portions.factor, portions.factorReason)}
-                </p>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
-                  {c.howWeGotThereP2(portions.treatKcal)}
-                </p>
-              </div>
-            </>
-          ) : (
-            <div>
-              <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">{c.noPortionsBody}</p>
-              <ButtonLink to={withLangPrefix("/my-dog/setup")} className="mt-6" size="lg">
-                {c.addDetailsCta}
-                <Arrow />
-              </ButtonLink>
-            </div>
+          <PortionCalculator
+            {...(dog ? { dogId: dog.id, dogName: dog.name } : {})}
+            ageStage={dog?.ageStage ?? "adult"}
+          />
+          {!dog && (
+            <ButtonLink to={withLangPrefix("/my-dog/setup")} tone="outline" className="mt-6">
+              {c.addDetailsCta}
+              <Arrow />
+            </ButtonLink>
           )}
         </Panel>
       </Section>
