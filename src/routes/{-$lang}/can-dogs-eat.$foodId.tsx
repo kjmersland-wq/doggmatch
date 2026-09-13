@@ -21,6 +21,7 @@ import {
   noUrl,
   plUrl,
   seUrl,
+  seoLinks,
 } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
