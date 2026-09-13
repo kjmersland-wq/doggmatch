@@ -191,7 +191,7 @@ export const de: Dictionary = {
   },
   compare: {
     title: "Diese Hunde vergleichen",
-    subtitle: "Wähle bis zu drei Rassen und sieh, wo sie sich wirklich unterscheiden.",
+    subtitle: "Wähle bis zu vier Rassen und sieh, wo sie sich wirklich unterscheiden.",
     add: "Rasse hinzufügen",
     remove: "Entfernen",
     empty: "Wähle eine Rasse, um loszulegen.",

@@ -191,7 +191,7 @@ export const se: Dictionary = {
   },
   compare: {
     title: "Jämför de här hundarna",
-    subtitle: "Välj upp till tre raser och se var de verkligen skiljer sig.",
+    subtitle: "Välj upp till fyra raser och se var de verkligen skiljer sig.",
     add: "Lägg till en ras",
     remove: "Ta bort",
     empty: "Välj en ras för att komma igång.",

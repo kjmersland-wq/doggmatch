@@ -191,7 +191,7 @@ export const fr: Dictionary = {
   },
   compare: {
     title: "Comparer ces chiens",
-    subtitle: "Choisissez jusqu'à trois races et découvrez où elles diffèrent vraiment.",
+    subtitle: "Choisissez jusqu'à quatre races et découvrez où elles diffèrent vraiment.",
     add: "Ajouter une race",
     remove: "Retirer",
     empty: "Choisissez une race pour commencer.",

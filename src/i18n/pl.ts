@@ -191,7 +191,7 @@ export const pl: Dictionary = {
   },
   compare: {
     title: "Porównaj te psy",
-    subtitle: "Wybierz do trzech ras i zobacz, czym naprawdę się różnią.",
+    subtitle: "Wybierz do czterech ras i zobacz, czym naprawdę się różnią.",
     add: "Dodaj rasę",
     remove: "Usuń",
     empty: "Wybierz rasę, żeby zacząć.",

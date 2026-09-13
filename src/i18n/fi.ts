@@ -191,7 +191,7 @@ export const fi: Dictionary = {
   },
   compare: {
     title: "Vertaile näitä koiria",
-    subtitle: "Valitse enintään kolme rotua ja katso, missä ne oikeasti eroavat.",
+    subtitle: "Valitse enintään neljä rotua ja katso, missä ne oikeasti eroavat.",
     add: "Lisää rotu",
     remove: "Poista",
     empty: "Valitse rotu aloittaaksesi.",
