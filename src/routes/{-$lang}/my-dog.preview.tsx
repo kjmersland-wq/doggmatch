@@ -205,7 +205,7 @@ function MyDogPreview() {
           </ol>
           <p className="mt-5 text-sm text-muted-foreground">{c.lessonTimer}</p>
           <div className="mt-6">
-            <ButtonLink to={withLangPrefix("/train")} tone="outline" size="sm">
+            <ButtonLink to={withLangPrefix("/train")} tone="outline">
               {c.lessonCta}
               <Arrow />
             </ButtonLink>
