@@ -1187,7 +1187,11 @@ function Why() {
 
 function Categories() {
   const c = useCopy(copy).categories;
+  const t = useCopy(partnerTypesCopy);
   const { partnerCategories } = partnersContent();
+  const alsoWelcome = partnerCategories.filter((cat) =>
+    ["insurance", "food", "travel"].includes(cat.id),
+  );
   return (
     <Section className="border-y border-border bg-surface">
       <div className="container-page">
@@ -1195,23 +1199,74 @@ function Categories() {
         <h2 className="display-md mt-6 max-w-2xl text-balance">{c.title}</h2>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.body}</p>
 
-        <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {partnerCategories.map((cat) => {
-            const Icon = categoryIcons[cat.id] ?? ShoppingBag;
+        <div className="mt-14 grid gap-5 md:grid-cols-2">
+          {t.types.map((type) => {
+            const Icon = categoryIcons[type.id] ?? ShoppingBag;
             return (
-              <li
-                key={cat.id}
-                className="rounded-[1.5rem] border border-border bg-background p-6 transition-colors hover:border-foreground/20"
+              <article
+                key={type.id}
+                className="rounded-[1.75rem] border border-border bg-background p-7 transition-colors hover:border-foreground/20 md:p-8"
               >
-                <span className="grid h-10 w-10 place-items-center rounded-full border border-border-strong text-foreground">
-                  <Icon className="h-[1.1rem] w-[1.1rem]" aria-hidden />
-                </span>
-                <h3 className="mt-5 font-display text-lg tracking-tight">{cat.label}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{cat.blurb}</p>
-              </li>
+                <div className="flex items-center gap-3.5">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-accent/10 text-accent">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </span>
+                  <h3 className="font-display text-xl tracking-tight">{type.title}</h3>
+                </div>
+                <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                  {type.tagline}
+                </p>
+                <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground/70">
+                      {t.askTitle}
+                    </h4>
+                    <ul className="mt-3 space-y-2.5">
+                      {type.ask.map((line) => (
+                        <li key={line} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={2.4} aria-hidden />
+                          <span>{line}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground/70">
+                      {t.offerTitle}
+                    </h4>
+                    <ul className="mt-3 space-y-2.5">
+                      {type.offers.map((line) => (
+                        <li key={line} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                          <BadgePercent className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
+                          <span>{line}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </article>
             );
           })}
-        </ul>
+        </div>
+
+        <div className="mt-8 rounded-[1.75rem] border border-dashed border-border-strong bg-background/60 p-6 md:p-7">
+          <h3 className="font-display text-lg tracking-tight">{t.alsoTitle}</h3>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {alsoWelcome.map((cat) => {
+              const Icon = categoryIcons[cat.id] ?? ShoppingBag;
+              return (
+                <span
+                  key={cat.id}
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground"
+                >
+                  <Icon className="h-4 w-4 text-accent" aria-hidden />
+                  {cat.label}
+                </span>
+              );
+            })}
+          </div>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">{t.alsoBody}</p>
+        </div>
 
         <div className="mt-14 grid gap-5 md:grid-cols-[1.3fr_1fr]">
           <img
