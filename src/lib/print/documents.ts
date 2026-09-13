@@ -291,6 +291,180 @@ function vetSection(ctx: DocContext): DocSection {
   };
 }
 
+function emergencySection(ctx: DocContext): DocSection {
+  const name = ctx.dog?.name ?? pick({ en: "our dog", no: "hunden vår", pl: "nasz pies" });
+  return {
+    heading: pick({ en: "In an emergency", no: "Ved en nødsituasjon", pl: "W nagłym wypadku" }),
+    intro: pick({
+      en: `Stick this on the fridge and keep a copy in the car. Everything someone would need in the first two minutes if something happens to ${name}.`,
+      no: `Heng dette på kjøleskapet og ha en kopi i bilen. Alt noen trenger de første to minuttene hvis noe skjer med ${name}.`,
+      pl: `Powieś to na lodówce i miej kopię w samochodzie. Wszystko, czego ktoś potrzebuje w pierwszych dwóch minutach, jeśli coś stanie się ${name}.`,
+    }),
+    blocks: [
+      {
+        kind: "fields",
+        fields: [
+          { label: pick({ en: "Dog", no: "Hund", pl: "Pies" }), value: ctx.dog?.name },
+          { label: pick({ en: "Breed", no: "Rase", pl: "Rasa" }), value: ctx.breedName },
+          { label: pick({ en: "Weight", no: "Vekt", pl: "Waga" }), value: ctx.care.weightKg ? `${ctx.care.weightKg} kg` : undefined },
+          { label: pick({ en: "Microchip", no: "ID-merking", pl: "Mikroczip" }), value: ctx.details.microchip },
+          { label: pick({ en: "Owner", no: "Eier", pl: "Właściciel" }), value: ctx.contacts["owner"]?.["name"] },
+          { label: pick({ en: "Owner phone", no: "Eiers telefon", pl: "Telefon właściciela" }), value: ctx.contacts["owner"]?.["phone"] },
+          { label: pick({ en: "Vet", no: "Veterinær", pl: "Weterynarz" }), value: ctx.contacts["vet"]?.["clinic"] },
+          { label: pick({ en: "Vet phone", no: "Veterinærens telefon", pl: "Telefon do weterynarza" }), value: ctx.contacts["vet"]?.["phone"] },
+          { label: pick({ en: "Out-of-hours vet", no: "Vakttelefon veterinær", pl: "Weterynarz dyżurny" }), value: ctx.contacts["emergency-vet"]?.["clinic"] },
+          { label: pick({ en: "Out-of-hours phone", no: "Vakttelefon", pl: "Telefon dyżurny" }), value: ctx.contacts["emergency-vet"]?.["phone"] },
+          { label: pick({ en: "Second contact", no: "Andre kontakt", pl: "Druga osoba kontaktowa" }), value: ctx.contacts["sitter"]?.["name"] },
+          { label: pick({ en: "Second contact phone", no: "Telefon til andre kontakt", pl: "Telefon drugiej osoby" }), value: ctx.contacts["sitter"]?.["phone"] },
+          { label: pick({ en: "Medication", no: "Medisiner", pl: "Leki" }), value: ctx.info.medication, wide: true },
+          { label: pick({ en: "Allergies", no: "Allergier", pl: "Alergie" }), value: ctx.info.allergies, wide: true },
+          { label: pick({ en: "Insurance and policy number", no: "Forsikring og polisenummer", pl: "Ubezpieczenie i numer polisy" }), value: [ctx.details.insurer, ctx.details.policy].filter(Boolean).join(" · ") || undefined, wide: true },
+        ],
+      },
+      {
+        kind: "checklist",
+        items: pick({
+          en: [
+            "Phone the vet before setting off, so they're ready",
+            "Say the breed, weight and what happened",
+            "Bring the packet or plant if something was swallowed",
+            "Muzzle or towel a dog in pain, gently — pain makes any dog bite",
+            "Keep them warm and still on the way",
+            "Take this sheet with you",
+          ],
+          no: [
+            "Ring veterinæren før du drar, så de er klare",
+            "Si rase, vekt og hva som har skjedd",
+            "Ta med pakningen eller planten hvis noe er spist",
+            "Munnkurv eller håndkle på en hund med smerter, forsiktig — smerte får enhver hund til å bite",
+            "Hold den varm og i ro på veien",
+            "Ta med dette arket",
+          ],
+          pl: [
+            "Zadzwoń do weterynarza przed wyjazdem, żeby był gotowy",
+            "Podaj rasę, wagę i to, co się stało",
+            "Zabierz opakowanie lub roślinę, jeśli pies coś połknął",
+            "Delikatnie załóż kaganiec lub ręcznik psu w bólu — ból sprawia, że każdy pies może ugryźć",
+            "W drodze trzymaj go w cieple i spokoju",
+            "Zabierz tę kartkę ze sobą",
+          ],
+        }),
+        columns: 1,
+      },
+      {
+        kind: "note",
+        text: pick({
+          en: "This sheet is owner-kept information, not medical advice. If you are unsure whether something is serious, phone a vet — they would always rather hear from you early.",
+          no: "Dette arket er informasjon ført av eieren, ikke medisinske råd. Er du usikker på om noe er alvorlig, ring veterinær — de vil alltid heller høre fra deg tidlig.",
+          pl: "Ta kartka to informacje prowadzone przez właściciela, nie porada medyczna. Jeśli nie masz pewności, czy to poważne, zadzwoń do weterynarza — zawsze woli usłyszeć o sprawie wcześniej.",
+        }),
+      },
+    ],
+  };
+}
+
+function travelSection(ctx: DocContext): DocSection {
+  return {
+    heading: pick({ en: "Travel checklist", no: "Reisesjekkliste", pl: "Lista podróżna" }),
+    intro: pick({
+      en: "Fill in the trip at the top, then work down the list the evening before. Rules differ by country — check the official requirements for where you're going in good time.",
+      no: "Fyll inn turen øverst, og jobb deg nedover listen kvelden før. Reglene varierer fra land til land — sjekk de offisielle kravene for dit du skal i god tid.",
+      pl: "Wpisz szczegóły wyjazdu na górze, a potem przejdź listę wieczorem wcześniej. Przepisy różnią się w zależności od kraju — sprawdź oficjalne wymagania dla celu podróży z wyprzedzeniem.",
+    }),
+    blocks: [
+      {
+        kind: "fields",
+        fields: [
+          { label: pick({ en: "Dog", no: "Hund", pl: "Pies" }), value: ctx.dog?.name },
+          { label: pick({ en: "Where we're going", no: "Hvor vi skal", pl: "Dokąd jedziemy" }) },
+          { label: pick({ en: "Dates", no: "Datoer", pl: "Daty" }) },
+          { label: pick({ en: "How we're travelling", no: "Hvordan vi reiser", pl: "Jak podróżujemy" }) },
+          { label: pick({ en: "Where we're staying", no: "Hvor vi bor", pl: "Gdzie się zatrzymujemy" }), wide: true },
+          { label: pick({ en: "Vet at the destination", no: "Veterinær på reisemålet", pl: "Weterynarz na miejscu" }), wide: true },
+        ],
+      },
+      {
+        kind: "checklist",
+        items: pick({
+          en: [
+            "Pet passport or health certificate, in date",
+            "Microchip number matches the paperwork",
+            "Rabies vaccination valid for the whole trip",
+            "Tapeworm treatment if the destination requires it",
+            "Insurance covers travel, and the policy number is written down",
+            "Vet's phone number saved, plus one at the destination",
+            "ID tag with a phone number that works abroad",
+          ],
+          no: [
+            "Pass eller helseattest, gyldig",
+            "Chipnummeret stemmer med papirene",
+            "Rabiesvaksine gyldig hele turen",
+            "Bendelormbehandling hvis reisemålet krever det",
+            "Forsikringen dekker reise, og polisenummeret er skrevet ned",
+            "Veterinærens telefonnummer lagret, pluss ett på reisemålet",
+            "ID-brikke med et telefonnummer som virker i utlandet",
+          ],
+          pl: [
+            "Paszport lub świadectwo zdrowia, ważne",
+            "Numer mikroczipa zgadza się z dokumentami",
+            "Szczepienie na wściekliznę ważne przez cały wyjazd",
+            "Odrobaczenie na tasiemca, jeśli kraj docelowy tego wymaga",
+            "Ubezpieczenie obejmuje podróż, a numer polisy jest zapisany",
+            "Numer do weterynarza zapisany, plus jeden na miejscu",
+            "Adresówka z numerem telefonu działającym za granicą",
+          ],
+        }),
+        columns: 1,
+      },
+      {
+        kind: "checklist",
+        items: pick({
+          en: [
+            "Food for the whole trip, measured out",
+            "Bowls and a water bottle",
+            "Lead, spare lead, harness",
+            "Bed or blanket that smells of home",
+            "Crate or car harness, fitted",
+            "Poo bags, towel, brush",
+            "Medication and a small first-aid kit",
+            "Two favourite toys and a chew",
+          ],
+          no: [
+            "Mat til hele turen, oppmålt",
+            "Skåler og en vannflaske",
+            "Bånd, reservebånd, sele",
+            "Seng eller teppe som lukter hjem",
+            "Bur eller bilsele, tilpasset",
+            "Poser, håndkle, børste",
+            "Medisiner og et lite førstehjelpssett",
+            "To favorittleker og et tyggebein",
+          ],
+          pl: [
+            "Karma na cały wyjazd, odmierzona",
+            "Miski i butelka na wodę",
+            "Smycz, zapasowa smycz, szelki",
+            "Legowisko albo koc pachnący domem",
+            "Transporter lub pas samochodowy, dopasowany",
+            "Woreczki, ręcznik, szczotka",
+            "Leki i mała apteczka",
+            "Dwie ulubione zabawki i gryzak",
+          ],
+        }),
+        columns: 2,
+      },
+      {
+        kind: "note",
+        text: pick({
+          en: "On the road: a break every two hours, water at every stop, and never leave a dog in a parked car in warm weather — it takes minutes, not hours.",
+          no: "På veien: pause annenhver time, vann ved hvert stopp, og aldri la en hund være igjen i en parkert bil i varmt vær — det tar minutter, ikke timer.",
+          pl: "W drodze: przerwa co dwie godziny, woda na każdym postoju i nigdy nie zostawiaj psa w zaparkowanym aucie w ciepły dzień — wystarczą minuty, nie godziny.",
+        }),
+      },
+      { kind: "lines", count: 5, label: pick({ en: "Anything else to remember", no: "Annet å huske", pl: "Co jeszcze zapamiętać" }) },
+    ],
+  };
+}
+
 function handoverSections(ctx: DocContext): DocSection[] {
   const name = ctx.dog?.name ?? pick({ en: "our dog", no: "hunden vår", pl: "nasz pies" });
   return [
@@ -398,6 +572,18 @@ export const documents: DocSpec[] = [
     build: (ctx) => [vetSection(ctx)],
   },
   {
+    id: "emergency",
+    get title() { return pick({ en: "Emergency contacts", no: "Nødkontakter", pl: "Kontakty awaryjne" }); },
+    get blurb() { return pick({ en: "One sheet for the fridge and the car: who to call, and what to say.", no: "Ett ark til kjøleskapet og bilen: hvem du skal ringe, og hva du skal si.", pl: "Jedna kartka na lodówkę i do auta: do kogo dzwonić i co powiedzieć." }); },
+    build: (ctx) => [emergencySection(ctx)],
+  },
+  {
+    id: "travel",
+    get title() { return pick({ en: "Travel checklist", no: "Reisesjekkliste", pl: "Lista podróżna" }); },
+    get blurb() { return pick({ en: "Papers, packing and the car — everything to tick off before you leave.", no: "Papirer, pakking og bilen — alt du krysser av før du drar.", pl: "Dokumenty, pakowanie i auto — wszystko do odhaczenia przed wyjazdem." }); },
+    build: (ctx) => [travelSection(ctx)],
+  },
+  {
     id: "info",
     get title() { return pick({ en: "Important information", no: "Viktig informasjon", pl: "Ważne informacje" }); },
     get blurb() { return pick({ en: "Allergies, medication, fears, favourites and special instructions.", no: "Allergier, medisiner, frykt, favoritter og spesielle instrukser.", pl: "Alergie, leki, lęki, ulubione rzeczy i specjalne wskazówki." }); },
@@ -416,7 +602,7 @@ export const documentsById: Record<string, DocSpec> = Object.fromEntries(
 );
 
 /** The complete pack, in the order it reads best on paper. */
-export const packOrder = ["profile", "contacts", "food", "health", "grooming", "training", "week", "vet", "info"];
+export const packOrder = ["profile", "contacts", "emergency", "food", "health", "grooming", "training", "week", "vet", "travel", "info"];
 
 export function buildDocument(ids: string[], ctx: DocContext): DocSection[] {
   const ordered = packOrder
