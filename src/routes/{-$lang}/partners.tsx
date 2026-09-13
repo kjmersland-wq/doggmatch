@@ -30,7 +30,7 @@ import partnerTraining from "@/assets/partner-training.jpg";
 import partnerOutdoors from "@/assets/partner-outdoors.jpg";
 import partnerMoment from "@/assets/partner-moment.jpg";
 import partnerCustomerDoggMatch from "@/assets/partner-customer-doggmatch.jpg";
-import { seoLinks, abs, localizedHead } from "@/lib/seo";
+import { seoLinks, abs, localizedHead, headLocale, breadcrumbLd, faqLd } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Become a DoggMatch Partner";
@@ -82,7 +82,23 @@ const seoCopy = {
 };
 
 export const Route = createFileRoute("/{-$lang}/partners")({
-  head: (ctx) => localizedHead(ctx, "/partners", seoCopy),
+  head: (ctx) => {
+    const locale = headLocale(ctx);
+    const content = pick({ en: enPartners, no: noPartners, pl: plPartners, dk: dkPartners, se: sePartners, fi: fiPartners, de: dePartners, fr: frPartners, nl: nlPartners }, locale);
+    return {
+      ...localizedHead(ctx, "/partners", seoCopy),
+      scripts: [
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: "Partners", path: "/partners" },
+          ],
+          locale,
+        ),
+        faqLd(content.partnerFaq.map((f) => ({ question: f.q, answer: f.a }))),
+      ],
+    };
+  },
   component: PartnersPage,
 });
 
