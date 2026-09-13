@@ -2,7 +2,7 @@ import type { BreedId } from "./breeds";
 import type { BreedContent } from "./breed-content.en";
 
 /** Rasetekst på norsk, knyttet til de samme stabile rase-id-ene. */
-export const breedContentNo: Record<BreedId, BreedContent> = {
+export const breedContentNo: Partial<Record<BreedId, BreedContent>> = {
   "labrador-retriever": {
     displayName: "Labrador retriever",
     summary:

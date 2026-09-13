@@ -2,7 +2,7 @@ import type { BreedId } from "./breeds";
 import type { BreedContent } from "./breed-content.en";
 
 /** Rasowe teksty po polsku, powiązane z tymi samymi stabilnymi id ras. */
-export const breedContentPl: Record<BreedId, BreedContent> = {
+export const breedContentPl: Partial<Record<BreedId, BreedContent>> = {
   "labrador-retriever": {
     displayName: "Labrador retriever",
     summary:

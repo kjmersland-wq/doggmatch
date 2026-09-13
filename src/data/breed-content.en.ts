@@ -1,4 +1,5 @@
 import type { BreedId } from "./breeds";
+import { breedContentNewEn } from "./breed-content-new.en";
 
 /** Language-specific breed prose, attached to stable breed ids. */
 export interface BreedContent {
@@ -6,6 +7,10 @@ export interface BreedContent {
   summary: string;
   strengths: string[];
   considerations: string[];
+  originalPurpose?: string;
+  healthConsiderations?: string;
+  poorMatchFor?: string[];
+  keyTradeoffs?: string[];
 }
 
 export const breedContentEn: Record<BreedId, BreedContent> = {
@@ -486,4 +491,5 @@ export const breedContentEn: Record<BreedId, BreedContent> = {
       "Housetraining can be slower than you'd expect",
     ],
   },
+  ...breedContentNewEn,
 };

@@ -2,7 +2,7 @@ import type { BreedId } from "./breeds";
 import type { BreedContent } from "./breed-content.en";
 
 /** Rotuesittelyt suomeksi, kytkettynä samoihin pysyviin rotutunnisteisiin. */
-export const breedContentFi: Record<BreedId, BreedContent> = {
+export const breedContentFi: Partial<Record<BreedId, BreedContent>> = {
   "labrador-retriever": {
     displayName: "Labradorinnoutaja",
     summary:
