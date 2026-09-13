@@ -197,6 +197,9 @@ const seoCopy = {
 };
 
 export const Route = createFileRoute("/{-$lang}/compare")({
+  /** ?breeds=a,b,c lets a breed page open the table already filled in. */
+  validateSearch: (search: Record<string, unknown>): { breeds?: string } =>
+    typeof search["breeds"] === "string" ? { breeds: search["breeds"] } : {},
   head: (ctx) => localizedHead(ctx, "/compare", seoCopy),
   component: ComparePage,
 });
