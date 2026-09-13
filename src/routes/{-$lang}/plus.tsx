@@ -2914,6 +2914,7 @@ const copy = {
 
 function PlusPage() {
   const c = useCopy(copy);
+  const s = useCopy(stagesCopy);
   return (
     <div className="overflow-x-clip pb-24">
       {/* 2 — Hero */}
