@@ -73,12 +73,12 @@ function byIds(ids: string[]): Breed[] {
 export const APARTMENT_GUIDE: LifestyleGuideConfig = {
   id: "apartment-dogs",
   path: "/best-apartment-dogs",
-  seo: {
+  seo: { en: {
     title: "Best dog breeds for apartment living | DoggMatch",
     description:
       "The best dogs for flats, chosen for calm indoor manners and low barking rather than small size — with the honest trade-offs of each breed.",
-  },
-  copy: {
+  } },
+  copy: { en: {
     eyebrow: "Choosing a dog",
     h1: "The best dog breeds for apartment living",
     intro:
@@ -106,7 +106,7 @@ export const APARTMENT_GUIDE: LifestyleGuideConfig = {
     quizCta: quizBlock.quizCta,
     compareCta: quizBlock.compareCta,
     levelLabels,
-  },
+  } },
   shortlist: byIds([
     "french-bulldog",
     "pug",
@@ -117,7 +117,7 @@ export const APARTMENT_GUIDE: LifestyleGuideConfig = {
     "dachshund",
     "chihuahua",
   ]),
-  reasons: {
+  reasons: { en: {
     "french-bulldog":
       "Quiet, low-exercise and happiest beside you — but heat-sensitive and prone to expensive health problems.",
     pug: "Calm and comical indoors; snoring, heat sensitivity and vet bills are part of the package.",
@@ -128,7 +128,7 @@ export const APARTMENT_GUIDE: LifestyleGuideConfig = {
     "bichon-frise": "Cheerful and low-shedding; the trade-off is professional grooming every 6–8 weeks.",
     dachshund: "Small and portable — but surprisingly vocal, and backs need protecting from stairs and jumps.",
     chihuahua: "Tiny and flat-friendly in size; many bark more than neighbours would like, so training matters.",
-  },
+  } },
 };
 
 /* ------------------------------------------------------------------ */
@@ -138,12 +138,12 @@ export const APARTMENT_GUIDE: LifestyleGuideConfig = {
 export const FIRST_TIME_GUIDE: LifestyleGuideConfig = {
   id: "first-time-owners",
   path: "/best-dogs-for-first-time-owners",
-  seo: {
+  seo: { en: {
     title: "Best dog breeds for first-time owners | DoggMatch",
     description:
       "The best dogs for beginners: forgiving, trainable breeds that shrug off first-year mistakes — chosen from real trait data, with the trade-offs spelled out.",
-  },
-  copy: {
+  } },
+  copy: { en: {
     eyebrow: "Choosing a dog",
     h1: "The best dog breeds for first-time owners",
     intro:
@@ -171,7 +171,7 @@ export const FIRST_TIME_GUIDE: LifestyleGuideConfig = {
     quizCta: quizBlock.quizCta,
     compareCta: quizBlock.compareCta,
     levelLabels,
-  },
+  } },
   shortlist: byIds([
     "labrador-retriever",
     "golden-retriever",
@@ -182,7 +182,7 @@ export const FIRST_TIME_GUIDE: LifestyleGuideConfig = {
     "cavalier-king-charles-spaniel",
     "labradoodle",
   ]),
-  reasons: {
+  reasons: { en: {
     "labrador-retriever":
       "Forgiving, food-motivated and endlessly good-natured — but a serious shedder with a serious appetite.",
     "golden-retriever":
@@ -196,7 +196,7 @@ export const FIRST_TIME_GUIDE: LifestyleGuideConfig = {
       "As forgiving as a dog gets — but health screening of the breeder matters more here than almost anywhere.",
     labradoodle:
       "Friendly and clever, though less predictable than the marketing suggests — coat and energy vary dog to dog.",
-  },
+  } },
 };
 
 /* ------------------------------------------------------------------ */
@@ -206,12 +206,12 @@ export const FIRST_TIME_GUIDE: LifestyleGuideConfig = {
 export const ALONE_GUIDE: LifestyleGuideConfig = {
   id: "dogs-left-alone",
   path: "/dogs-that-can-be-left-alone",
-  seo: {
+  seo: { en: {
     title: "Dogs that can be left alone longer | DoggMatch",
     description:
       "Which dog breeds cope best with time alone, what 'longer' really means, and how to build alone time kindly — no myths, no guilt, just the honest picture.",
-  },
-  copy: {
+  } },
+  copy: { en: {
     eyebrow: "Choosing a dog",
     h1: "Dogs that can handle being left alone",
     intro:
@@ -240,7 +240,7 @@ export const ALONE_GUIDE: LifestyleGuideConfig = {
     quizCta: quizBlock.quizCta,
     compareCta: quizBlock.compareCta,
     levelLabels,
-  },
+  } },
   shortlist: byIds([
     "great-pyrenees",
     "chinese-shar-pei",
@@ -251,7 +251,7 @@ export const ALONE_GUIDE: LifestyleGuideConfig = {
     "basenji",
     "rhodesian-ridgeback",
   ]),
-  reasons: {
+  reasons: { en: {
     "great-pyrenees":
       "Bred to watch flocks alone for days — calm and self-sufficient, but giant, sheddy and fond of night barking.",
     "chinese-shar-pei":
@@ -263,7 +263,7 @@ export const ALONE_GUIDE: LifestyleGuideConfig = {
     basenji: "Famously barkless and independent — but clever enough to invent mischief if under-exercised.",
     "rhodesian-ridgeback":
       "Athletic outside, settled and independent at home; needs real exercise before any alone time counts.",
-  },
+  } },
 };
 
 /* ------------------------------------------------------------------ */
@@ -273,12 +273,12 @@ export const ALONE_GUIDE: LifestyleGuideConfig = {
 export const LOW_SHEDDING_GUIDE: LifestyleGuideConfig = {
   id: "low-shedding-dogs",
   path: "/low-shedding-dogs",
-  seo: {
+  seo: { en: {
     title: "Low-shedding dogs and allergies | DoggMatch",
     description:
       "Which dogs shed least, why no dog is truly hypoallergenic, and how to think it through if someone at home is allergic — plus the grooming trade-offs.",
-  },
-  copy: {
+  } },
+  copy: { en: {
     eyebrow: "Choosing a dog",
     h1: "Low-shedding dogs, and living with allergies",
     intro:
@@ -307,7 +307,7 @@ export const LOW_SHEDDING_GUIDE: LifestyleGuideConfig = {
     quizCta: quizBlock.quizCta,
     compareCta: quizBlock.compareCta,
     levelLabels,
-  },
+  } },
   shortlist: byIds([
     "poodle",
     "miniature-schnauzer",
@@ -318,7 +318,7 @@ export const LOW_SHEDDING_GUIDE: LifestyleGuideConfig = {
     "havanese",
     "maltese",
   ]),
-  reasons: {
+  reasons: { en: {
     poodle: "The benchmark low-shedding coat — clever, trainable, and at the groomer every 6–8 weeks without fail.",
     "miniature-schnauzer":
       "Hardly sheds at all and full of character; needs hand-stripping or clipping and firm, kind training.",
@@ -330,7 +330,7 @@ export const LOW_SHEDDING_GUIDE: LifestyleGuideConfig = {
       "A popular low-shedding cross — coats vary puppy to puppy, so meet the litter rather than trusting the label.",
     havanese: "Gentle, sociable and light on shedding; the long coat needs daily attention or a practical pet clip.",
     maltese: "Centuries as a companion, barely sheds — but the white coat shows every tear stain and tangle.",
-  },
+  } },
 };
 
 /* ------------------------------------------------------------------ */
@@ -345,12 +345,12 @@ function costExample(id: string, sizeLabel: string) {
 export const COST_GUIDE: LifestyleGuideConfig = {
   id: "what-a-dog-costs",
   path: "/what-a-dog-costs",
-  seo: {
+  seo: { en: {
     title: "What a dog really costs each year | DoggMatch",
     description:
       "An honest yearly budget for a dog: food, vet care, insurance, grooming and the costs everyone forgets — with real ranges and the first year counted apart.",
-  },
-  copy: {
+  } },
+  copy: { en: {
     eyebrow: "Before you decide",
     h1: "What a dog really costs",
     intro:
@@ -399,7 +399,7 @@ export const COST_GUIDE: LifestyleGuideConfig = {
     quizCta: quizBlock.quizCta,
     compareCta: quizBlock.compareCta,
     levelLabels,
-  },
+  } },
   costExamples: [
     costExample("chihuahua", "A small dog"),
     costExample("cocker-spaniel", "A medium dog"),
