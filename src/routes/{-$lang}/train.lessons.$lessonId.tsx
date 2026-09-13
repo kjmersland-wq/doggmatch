@@ -365,6 +365,7 @@ function LessonPage() {
   const status: SkillStatus = progress[lesson.id] ?? "not-started";
   const [note, setNote] = useState(state.notes[lesson.id] ?? "");
   const [logged, setLogged] = useState(false);
+  const doneToday = state.sessions.some((s) => s.lessonId === lesson.id && s.day === today());
   const category = getTrainingCategories().find((c) => c.id === lesson.category);
   const next = lesson.nextLessonId ? getLessonsById()[lesson.nextLessonId] : undefined;
 
