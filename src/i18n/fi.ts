@@ -166,36 +166,36 @@ export const fi: Dictionary = {
     beginnerHigh: "Hyvä",
     beginnerModerate: "Kohtalainen",
     beginnerLow: "Heikko",
-    homeWithDogEyebrow: "Once the dog is home",
-    homeWithDogTitle: "The first year is easier with a little structure",
+    homeWithDogEyebrow: "Kun koira on muuttanut kotiin",
+    homeWithDogTitle: "Ensimmäinen vuosi on helpompi, kun arjessa on hieman rakennetta",
     homeWithDogBody:
-      "DoggMatch+ is a quiet companion for the practical side of dog life. No pressure — just the tools we wish we'd had when our own dogs came home.",
+      "DoggMatch+ on rauhallinen apu koira-arjen käytännön asioihin. Ei painetta — vain työkalut, jotka olisimme itse halunneet koiriemme tullessa kotiin.",
     homeWithDogFeatures: [
       {
-        title: "My Dog hub",
-        body: "One place for vet dates, weight notes, mealtimes and the small things you don't want to forget.",
+        title: "Oma koira",
+        body: "Yksi paikka eläinlääkäriajoille, painomerkinnöille, ruoka-ajoille ja pienille asioille, joita et halua unohtaa.",
       },
       {
-        title: "Weekly plans",
-        body: "A gentle rhythm of exercise, grooming, training and rest that fits your dog's age and energy.",
+        title: "Viikkosuunnitelmat",
+        body: "Lempeä liikunnan, turkinhoidon, koulutuksen ja levon rytmi koirasi iän ja energiatason mukaan.",
       },
       {
-        title: "Training lessons",
-        body: "Short, step-by-step guides with clear pictures — five to ten minutes at a time.",
+        title: "Koulutusharjoitukset",
+        body: "Lyhyitä vaiheittaisia ohjeita selkein kuvin — viidestä kymmeneen minuuttia kerrallaan.",
       },
       {
-        title: "Food portions",
-        body: "Feeding guidance worked out from your dog's weight, age and activity, not generic advice.",
+        title: "Ruoka-annokset",
+        body: "Ruokintaohjeet koirasi painon, iän ja aktiivisuuden mukaan — eivät yleisiä arvauksia.",
       },
       {
-        title: "Travel documents",
-        body: "Checklists for trips abroad, country rules and the paperwork that is easy to leave behind.",
+        title: "Matka-asiakirjat",
+        body: "Tarkistuslistat ulkomaanmatkoille, maakohtaiset säännöt ja helposti unohtuvat paperit.",
       },
     ],
-    homeWithDogCtaPrimary: "See how My Dog works",
-    homeWithDogCtaSecondary: "Explore DoggMatch+",
+    homeWithDogCtaPrimary: "Katso, miten Oma koira toimii",
+    homeWithDogCtaSecondary: "Tutustu DoggMatch+:aan",
     homeWithDogNote:
-      "Your match result stays free and complete. This is simply here when you want a little extra help.",
+      "Match-tuloksesi pysyy maksuttomana ja kokonaisena. Tämä on täällä vain silloin, kun kaipaat hieman lisäapua.",
   },
   dimensions: {
     lifestyle: "Arki",

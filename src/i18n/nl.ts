@@ -166,36 +166,36 @@ export const nl: Dictionary = {
     beginnerHigh: "Hoog",
     beginnerModerate: "Gemiddeld",
     beginnerLow: "Laag",
-    homeWithDogEyebrow: "Once the dog is home",
-    homeWithDogTitle: "The first year is easier with a little structure",
+    homeWithDogEyebrow: "Als je hond eenmaal thuis is",
+    homeWithDogTitle: "Met een beetje houvast wordt het eerste jaar makkelijker",
     homeWithDogBody:
-      "DoggMatch+ is a quiet companion for the practical side of dog life. No pressure — just the tools we wish we'd had when our own dogs came home.",
+      "DoggMatch+ helpt je rustig met de praktische kant van het leven met een hond. Zonder druk — met de hulpmiddelen die we zelf graag hadden gehad toen onze honden thuiskwamen.",
     homeWithDogFeatures: [
       {
-        title: "My Dog hub",
-        body: "One place for vet dates, weight notes, mealtimes and the small things you don't want to forget.",
+        title: "Mijn hond",
+        body: "Eén plek voor afspraken bij de dierenarts, gewichtsnotities, etenstijden en de kleine dingen die je niet wilt vergeten.",
       },
       {
-        title: "Weekly plans",
-        body: "A gentle rhythm of exercise, grooming, training and rest that fits your dog's age and energy.",
+        title: "Weekplannen",
+        body: "Een rustig ritme van beweging, verzorging, training en rust dat past bij de leeftijd en energie van je hond.",
       },
       {
-        title: "Training lessons",
-        body: "Short, step-by-step guides with clear pictures — five to ten minutes at a time.",
+        title: "Trainingslessen",
+        body: "Korte stap-voor-staplessen met duidelijke beelden — vijf tot tien minuten per keer.",
       },
       {
-        title: "Food portions",
-        body: "Feeding guidance worked out from your dog's weight, age and activity, not generic advice.",
+        title: "Voerporties",
+        body: "Voedingsadvies op basis van het gewicht, de leeftijd en activiteit van je hond — geen algemeen advies.",
       },
       {
-        title: "Travel documents",
-        body: "Checklists for trips abroad, country rules and the paperwork that is easy to leave behind.",
+        title: "Reisdocumenten",
+        body: "Checklists voor reizen naar het buitenland, regels per land en de papieren die je makkelijk vergeet.",
       },
     ],
-    homeWithDogCtaPrimary: "See how My Dog works",
-    homeWithDogCtaSecondary: "Explore DoggMatch+",
+    homeWithDogCtaPrimary: "Bekijk hoe Mijn hond werkt",
+    homeWithDogCtaSecondary: "Ontdek DoggMatch+",
     homeWithDogNote:
-      "Your match result stays free and complete. This is simply here when you want a little extra help.",
+      "Je matchresultaat blijft gratis en volledig. Dit is er gewoon voor je wanneer je wat extra hulp wilt.",
   },
   dimensions: {
     lifestyle: "Dagelijks leven",
