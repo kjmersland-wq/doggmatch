@@ -31,6 +31,33 @@ const copy = {
   nl: { welcomeUser: (name: string) => `Fijn je te zien, mens van ${name}.` },
 } as const;
 
+const weekCopy = {
+  en: {
+    weekTitle: "The week ahead",
+    weekBody: (m: number) =>
+      `Built around ${m} minutes a day — your dog's age and size, and the time you told us you have. Miss a day and nothing breaks; it simply moves along with you.`,
+    weekBodyGuest:
+      "Tell us your dog's age, size and how much time you have, and we'll lay out a simple week you can actually keep.",
+    progressTitle: "How it's going",
+  },
+  no: {
+    weekTitle: "Uken som kommer",
+    weekBody: (m: number) =>
+      `Bygget rundt ${m} minutter om dagen — hundens alder og størrelse, og tiden du sa du har. Hopper du over en dag, ryker ingenting; planen flytter seg bare med deg.`,
+    weekBodyGuest:
+      "Fortell oss hundens alder, størrelse og hvor mye tid du har, så legger vi opp en enkel uke du faktisk klarer å holde.",
+    progressTitle: "Hvordan det går",
+  },
+  pl: {
+    weekTitle: "Nadchodzący tydzień",
+    weekBody: (m: number) =>
+      `Ułożony wokół ${m} minut dziennie — wieku i wielkości psa oraz czasu, który masz. Opuszczony dzień niczego nie psuje; plan po prostu przesuwa się razem z tobą.`,
+    weekBodyGuest:
+      "Powiedz nam, ile pies ma lat, jak jest duży i ile masz czasu, a ułożymy prosty tydzień, który naprawdę utrzymasz.",
+    progressTitle: "Jak idzie",
+  },
+} as const;
+
 const title = "Train Your Dog — Small sessions, clear steps | DoggMatch";
 const description =
   "Kind, reward-based training you can actually do at home. Short sessions, clear steps and pictures that show you exactly what to do.";
@@ -94,6 +121,9 @@ function TrainHome() {
   const ageFocus = getAgeFocus();
   const learned = Object.values(progress).filter((s) => s === "learned").length;
   const streak = streakDays(state.sessions);
+  const planCopy = useCopy(weekCopy);
+  const week = weeklyPlan(dog, progress, state.sessions, today());
+  const summary = progressSummary(state.sessions, progress, getLessons().length, today());
 
   return (
     <div className="pb-24">
