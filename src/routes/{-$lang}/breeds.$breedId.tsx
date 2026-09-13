@@ -471,6 +471,14 @@ function BreedDetail() {
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
               {content.summary}
             </p>
+            {content.originalPurpose && (
+              <p className="mt-5 max-w-lg border-l-2 border-primary pl-4 text-sm leading-relaxed text-foreground/90">
+                <strong className="font-display font-medium">
+                  {pick({ en: "Origin & original purpose", no: "Opprinnelse og opprinnelig formål", pl: "Pochodzenie i pierwotne przeznaczenie", dk: "Oprindelse og oprindeligt formål", se: "Ursprung och ursprungligt syfte", fi: "Alkuperä ja alkuperäinen käyttötarkoitus", de: "Herkunft und ursprüngliche Aufgabe", fr: "Origine et fonction d’origine", nl: "Herkomst en oorspronkelijk doel" })}:
+                </strong>{" "}
+                {content.originalPurpose}
+              </p>
+            )}
             <dl className="mt-9 grid max-w-md grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border">
               <div className="bg-background p-5">
                 <dt className="eyebrow">{t.breeds.lifespan}</dt>
@@ -649,10 +657,40 @@ function BreedDetail() {
           </ul>
           <h3 className="mt-10 font-display text-lg leading-tight tracking-tight">{c.healthTitle}</h3>
           <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
-            {healthNote(breed.traits)}
+            {content.healthConsiderations ?? healthNote(breed.traits)}
           </p>
         </div>
       </section>
+
+      {(content.poorMatchFor || content.keyTradeoffs) && (
+        <section className="container-page grid gap-12 border-t border-border py-16 md:grid-cols-2 md:gap-16">
+          {content.poorMatchFor && (
+            <div>
+              <h2 className="display-md">{pick({ en: "A poor match if…", no: "Passer dårlig hvis …", pl: "To nie jest dobry wybór, jeśli…", dk: "Et dårligt match hvis…", se: "Ett dåligt val om…", fi: "Huono valinta, jos…", de: "Keine gute Wahl, wenn…", fr: "Un choix peu adapté si…", nl: "Geen goede match als…" })}</h2>
+              <ul className="mt-7 space-y-4">
+                {content.poorMatchFor.map((line) => (
+                  <li key={line} className="flex gap-3 text-[0.9375rem] leading-relaxed">
+                    <span aria-hidden="true" className="text-accent">×</span>
+                    {line}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {content.keyTradeoffs && (
+            <div>
+              <h2 className="display-md">{pick({ en: "Key trade-offs", no: "Viktige avveininger", pl: "Najważniejsze kompromisy", dk: "Vigtige afvejninger", se: "Viktiga avvägningar", fi: "Tärkeimmät kompromissit", de: "Die wichtigsten Abwägungen", fr: "Les principaux compromis", nl: "Belangrijkste afwegingen" })}</h2>
+              <ul className="mt-7 space-y-4">
+                {content.keyTradeoffs.map((line) => (
+                  <li key={line} className="border-l-2 border-primary pl-4 text-[0.9375rem] leading-relaxed text-foreground/90">
+                    {line}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* how they sit against the reader's own answers */}
       {profile && (
