@@ -69,3 +69,32 @@ technical identifiers, code, ids.
 - Do not change functionality, logic, Stripe, auth, database, routing or styling.
 - `bunx tsgo --noEmit -p tsconfig.json` must pass for the files you touched.
 - Only edit the files assigned to you.
+
+## Rule 4 — lifestyle guides, breed FAQs and calculators
+
+Newer content modules keep every translatable string inside a `{ en: ... }`
+locale map, so a translation is added by dropping a sibling key beside the
+English one — no component changes, and English keeps showing until the
+translation exists.
+
+- `src/lib/guides/lifestyle.ts` — each guide has `seo`, `copy`, `reasons`
+  and `costExamples[].sizeLabel` as locale maps. Add `no: { ... }` next to
+  `en: { ... }` with the same keys. Do not translate `id`, `path` or breed ids.
+- `src/lib/breeds/faq.ts` — answers are locale maps with `{token}`
+  placeholders (`{min}`, `{h}`). Keep the tokens; only the sentence changes.
+- Components (`cost-calculator.tsx`, `mix-matcher.tsx`, `breed-onward.tsx`,
+  `lifestyle-guide.tsx`) hold their UI strings in a local `copy = { en, no, pl }`
+  map read through `useCopy`. Add languages there, never inline new text in JSX.
+
+### Keeping content country-neutral
+
+- Use metric units (kg, km, minutes, hours) and ranges, never miles, pounds
+  or °F.
+- Money is shown in euros and formatted with `Intl.NumberFormat` using
+  `INTL_LOCALE[locale]`, so separators follow the reader's language.
+- Cost, insurance and rehoming figures are ranges with a visible note that
+  they vary by country — never quote one national price, tax rule or law as
+  if it applied everywhere.
+- No country-specific assumptions in examples (no "your local shelter charges
+  X", no national registry names) unless the page is explicitly about one
+  country, as the travel rules pages are.
