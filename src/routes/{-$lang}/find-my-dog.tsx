@@ -935,6 +935,22 @@ function Reveal({ onDone }: { onDone: () => void }) {
       clearTimeout(finish);
     };
 
+  }, [onDone]);
+
+  return (
+    <div className="container-page grid min-h-[calc(100vh-72px)] place-items-center py-20 text-center">
+      <div>
+        <span className="mx-auto block h-2 w-2 animate-pulse rounded-full bg-accent" aria-hidden="true" />
+        <p className="display-md mt-8" aria-live="polite">
+          {lines[Math.min(index, lines.length - 1)]}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------- The result */
+
 const interactiveResultCopy = {
   en: {
     adjustEyebrow: "A closer look",
@@ -954,21 +970,6 @@ const interactiveResultCopy = {
     noTradeoffs: "Your answers did not reveal a clear lifestyle conflict for this breed.",
   },
 } as const;
-  }, [onDone]);
-
-  return (
-    <div className="container-page grid min-h-[calc(100vh-72px)] place-items-center py-20 text-center">
-      <div>
-        <span className="mx-auto block h-2 w-2 animate-pulse rounded-full bg-accent" aria-hidden="true" />
-        <p className="display-md mt-8" aria-live="polite">
-          {lines[Math.min(index, lines.length - 1)]}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------- The result */
 
 const DIMENSION_ORDER: DimensionKey[] = [
   "lifestyle",
