@@ -1,6 +1,7 @@
 /// <reference types="google.maps" />
 import { useEffect, useRef, useState } from "react";
 import type { PlaceResult } from "@/lib/places/types";
+import { getStaticMap } from "@/lib/places/staticmap.functions";
 
 const BROWSER_KEY =
   (import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY"] as string | undefined) ??
