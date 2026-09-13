@@ -10,7 +10,7 @@ import { useMembership } from "@/hooks/use-membership";
 type Props = { place: PlaceResult };
 
 export function PlaceSend({ place }: Props) {
-  const locale = useLocale();
+  const { locale } = useLocale();
   const c = getSendCopy(locale);
   const [open, setOpen] = useState(false);
   const [qr, setQr] = useState<string | null>(null);
@@ -138,7 +138,7 @@ export function PlaceSend({ place }: Props) {
                   <span className="text-sm text-muted-foreground">
                     {c.plusHint}{" "}
                     <Link
-                      to={withLangPrefix("/plus", locale)}
+                      to={withLangPrefix("/plus")}
                       className="text-primary underline-offset-4 hover:underline"
                     >
                       {c.plusLink}
@@ -156,7 +156,7 @@ export function PlaceSend({ place }: Props) {
 
 /** The places a member has kept, shown above the results. */
 export function SavedPlacesPanel() {
-  const locale = useLocale();
+  const { locale } = useLocale();
   const c = getSendCopy(locale);
   const saved = useSavedPlaces();
   const { membership } = useMembership();
