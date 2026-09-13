@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
-import { Panel, Stat, VetNote } from "@/components/dogmatch/care/parts";
+import { Panel, VetNote } from "@/components/dogmatch/care/parts";
+import { PortionCalculator } from "@/components/dogmatch/care/portion-calculator";
 import { careImages } from "@/data/care/images";
 import { nutritionSections } from "@/data/care/nutrition";
-import { estimatePortions } from "@/lib/care/portions";
-import { useCareProfile, useMyDog } from "@/lib/care/store";
+import { useMyDog } from "@/lib/care/store";
 import { useCopy } from "@/i18n";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { seoLinks } from "@/lib/seo";
@@ -236,8 +236,6 @@ const copy = {
 function NutritionPage() {
   const c = useCopy(copy);
   const dog = useMyDog();
-  const profile = useCareProfile(dog?.id);
-  const portions = estimatePortions(profile.weightKg, dog?.ageStage ?? "adult", profile);
 
   return (
     <div className="pb-24">

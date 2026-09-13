@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Arrow, Button, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { Panel, Stat, VetNote, WeightChart, Sources } from "@/components/dogmatch/care/parts";
+import { WeightWatchPanel } from "@/components/dogmatch/care/weight-watch-panel";
 import { careVisuals } from "@/data/care/images";
 import { getCareTopic } from "@/data/care/topics";
 import { weightTrend } from "@/lib/care/portions";
@@ -291,6 +292,12 @@ function WeightPage() {
                 }
               />
             </div>
+            <Panel>
+              <WeightWatchPanel
+                entries={weights}
+                {...(profile.foodBrand ? { foodBrand: profile.foodBrand } : {})}
+              />
+            </Panel>
             <VetNote>{c.weightVetNote}</VetNote>
           </div>
         </div>
