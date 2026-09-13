@@ -6,6 +6,13 @@ import { getTrainingCategories } from "@/data/training/categories";
 import { categoryImages, trainingImages } from "@/data/training/images";
 import { getLessons } from "@/data/training/lessons";
 import { todaysPlan, getAgeFocus } from "@/lib/training/plan";
+import {
+  dailyBudget,
+  encouragement,
+  progressSummary,
+  weeklyPlan,
+} from "@/lib/training/schedule";
+import { ProgressOverview, WeekPlan, WeekPlanEmpty } from "@/components/dogmatch/training/plan-parts";
 import { streakDays, today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { seoLinks, abs, localizedHead } from "@/lib/seo";
@@ -190,6 +197,24 @@ function TrainHome() {
               <Stat value={String(state.sessions.length)} label={t.train.statSessions} />
               <Stat value={String(learned)} label={t.train.statSkills} />
               <Stat value={String(streak)} label={t.train.statStreak} />
+            </div>
+          )}
+
+          {/* the week ahead, shaped by age, size and the time you actually have */}
+          <div className="mt-16">
+            <h3 className="display-md">{planCopy.weekTitle}</h3>
+            <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">
+              {dog ? planCopy.weekBody(dailyBudget(dog)) : planCopy.weekBodyGuest}
+            </p>
+            <div className="mt-8">{dog ? <WeekPlan days={week} /> : <WeekPlanEmpty />}</div>
+          </div>
+
+          {dog && (
+            <div className="mt-16">
+              <h3 className="display-md">{planCopy.progressTitle}</h3>
+              <div className="mt-8">
+                <ProgressOverview summary={summary} note={encouragement(summary)} />
+              </div>
             </div>
           )}
         </div>
