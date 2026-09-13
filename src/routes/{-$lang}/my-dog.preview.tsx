@@ -34,7 +34,8 @@ const copy = {
     todayTitle: "Today",
     todayIntro:
       "A short daily routine, built around your dog. None of it has to be perfect — tick off what you've done and it resets tomorrow. Go on, try ticking one.",
-    todayHint: "In the preview nothing is saved — once your dog is added, the days remember themselves.",
+    todayHint:
+      "In the preview nothing is saved — once your dog is added, the days remember themselves.",
     routineItems: [
       { id: "fresh-water", label: "Fresh water", hint: "Clean bowl, topped up", done: true },
       { id: "measured-meals", label: "Meals measured", hint: "Weighed, not guessed", done: true },
@@ -68,7 +69,8 @@ const copy = {
       "Wait for them to lie down, then calmly place a few treats on the mat, one at a time.",
       "After a minute, cheerfully release them and take the mat away. Done for today.",
     ],
-    lessonTimer: "A built-in timer keeps the session honest — short sessions, often, beat long ones.",
+    lessonTimer:
+      "A built-in timer keeps the session honest — short sessions, often, beat long ones.",
     lessonCta: "Browse the training lessons",
 
     foodTitle: "A real food portion, worked out for her",
@@ -87,10 +89,22 @@ const copy = {
     unlockIntro:
       "Everything above works with your own dog for free. DoggMatch+ is for people who want the whole day-to-day picture, kept for them.",
     unlockItems: [
-      { title: "Saved days and weeks", body: "Your routine, week rhythm and progress remembered — across phone and computer." },
-      { title: "Weight and health records", body: "Weigh-ins, vet notes and a care calendar that nudges you before things slip." },
-      { title: "Full training library", body: "Every lesson and behaviour programme, with progression that follows your dog." },
-      { title: "Travel documents and printing", body: "The printable Dog Pack, vet summaries and travel checklists, ready when you need them." },
+      {
+        title: "Saved days and weeks",
+        body: "Your routine, week rhythm and progress remembered — across phone and computer.",
+      },
+      {
+        title: "Weight and health records",
+        body: "Weigh-ins, vet notes and a care calendar that nudges you before things slip.",
+      },
+      {
+        title: "Full training library",
+        body: "Every lesson and behaviour programme, with progression that follows your dog.",
+      },
+      {
+        title: "Travel documents and printing",
+        body: "The printable Dog Pack, vet summaries and travel checklists, ready when you need them.",
+      },
     ],
     unlockCtaPrimary: "See DoggMatch+",
     unlockCtaSecondary: "Add your dog — it's free",
@@ -109,7 +123,8 @@ const copy = {
     todayTitle: "I dag",
     todayIntro:
       "En kort daglig rutine, bygget rundt hunden din. Ingenting trenger å være perfekt — kryss av det du har gjort, så nullstilles det i morgen. Bare prøv å krysse av én ting.",
-    todayHint: "I forhåndsvisningen lagres ingenting — når hunden din er lagt til, husker dagene seg selv.",
+    todayHint:
+      "I forhåndsvisningen lagres ingenting — når hunden din er lagt til, husker dagene seg selv.",
     routineItems: [
       { id: "fresh-water", label: "Rent vann", hint: "Ren skål, fylt opp", done: true },
       { id: "measured-meals", label: "Måltider veid", hint: "Veiing, ikke gjetting", done: true },
@@ -162,10 +177,22 @@ const copy = {
     unlockIntro:
       "Alt ovenfor fungerer med din egen hund gratis. DoggMatch+ er for de som ønsker hele hverdagsbildet, lagret for dem.",
     unlockItems: [
-      { title: "Lagrede dager og uker", body: "Din rutine, ukentlige rytme og fremgang huskes — på tvers av telefon og datamaskin." },
-      { title: "Vekt- og helsejournaler", body: "Veiinger, veterinærnotater og en omsorgskalender som minner deg på ting før de glipper." },
-      { title: "Full treningsbibliotek", body: "Hver økt og atferdsprosedyre, med progresjon som følger hunden din." },
-      { title: "Reisedokumenter og utskrift", body: "Den utskrivbare Hundepakken, veterinærsammendrag og sjekklister for reise, klare når du trenger dem." },
+      {
+        title: "Lagrede dager og uker",
+        body: "Din rutine, ukentlige rytme og fremgang huskes — på tvers av telefon og datamaskin.",
+      },
+      {
+        title: "Vekt- og helsejournaler",
+        body: "Veiinger, veterinærnotater og en omsorgskalender som minner deg på ting før de glipper.",
+      },
+      {
+        title: "Full treningsbibliotek",
+        body: "Hver økt og atferdsprosedyre, med progresjon som følger hunden din.",
+      },
+      {
+        title: "Reisedokumenter og utskrift",
+        body: "Den utskrivbare Hundepakken, veterinærsammendrag og sjekklister for reise, klare når du trenger dem.",
+      },
     ],
     unlockCtaPrimary: "Se DoggMatch+",
     unlockCtaSecondary: "Legg til hunden din — det er gratis",
@@ -184,7 +211,8 @@ const copy = {
     todayTitle: "Dziś",
     todayIntro:
       "Krótka codzienna rutyna, dopasowana do Twojego psa. Nic nie musi być idealne — zaznacz, co zrobiłeś, a jutro wszystko się zresetuje. Śmiało, spróbuj zaznaczyć jedno.",
-    todayHint: "W podglądzie nic nie jest zapisywane — gdy dodasz swojego psa, dni będą zapamiętywane same.",
+    todayHint:
+      "W podglądzie nic nie jest zapisywane — gdy dodasz swojego psa, dni będą zapamiętywane same.",
     routineItems: [
       { id: "fresh-water", label: "Świeża woda", hint: "Czysta miska, uzupełniona", done: true },
       { id: "measured-meals", label: "Porcje odmierzone", hint: "Zważone, nie na oko", done: true },
@@ -218,7 +246,8 @@ const copy = {
       "Poczekaj, aż się położy, a następnie spokojnie kładź na macie kilka smakołyków, jeden po drugim.",
       "Po minucie radośnie go uwolnij i zabierz matę. Koniec na dziś.",
     ],
-    lessonTimer: "Wbudowany timer sprawia, że sesja jest efektywna — krótkie sesje, często, są lepsze od długich.",
+    lessonTimer:
+      "Wbudowany timer sprawia, że sesja jest efektywna — krótkie sesje, często, są lepsze od długich.",
     lessonCta: "Przeglądaj lekcje treningowe",
 
     foodTitle: "Realna porcja jedzenia, obliczona dla niej",
@@ -237,10 +266,22 @@ const copy = {
     unlockIntro:
       "Wszystko powyższe działa z Twoim psem za darmo. DoggMatch+ jest dla osób, które chcą mieć pełny obraz dnia codziennego, zapisany dla nich.",
     unlockItems: [
-      { title: "Zapisane dni i tygodnie", body: "Twoja rutyna, tygodniowy rytm i postępy zapamiętywane — na telefonie i komputerze." },
-      { title: "Zapisy wagi i zdrowia", body: "Ważenia, notatki weterynaryjne i kalendarz opieki, który przypomina o rzeczach, zanim się o nich zapomni." },
-      { title: "Pełna biblioteka treningowa", body: "Każda lekcja i program zachowań, z postępem dopasowanym do Twojego psa." },
-      { title: "Dokumenty podróżne i drukowanie", body: "Pies Pack do druku, podsumowania weterynaryjne i listy kontrolne do podróży, gotowe, gdy ich potrzebujesz." },
+      {
+        title: "Zapisane dni i tygodnie",
+        body: "Twoja rutyna, tygodniowy rytm i postępy zapamiętywane — na telefonie i komputerze.",
+      },
+      {
+        title: "Zapisy wagi i zdrowia",
+        body: "Ważenia, notatki weterynaryjne i kalendarz opieki, który przypomina o rzeczach, zanim się o nich zapomni.",
+      },
+      {
+        title: "Pełna biblioteka treningowa",
+        body: "Każda lekcja i program zachowań, z postępem dopasowanym do Twojego psa.",
+      },
+      {
+        title: "Dokumenty podróżne i drukowanie",
+        body: "Pies Pack do druku, podsumowania weterynaryjne i listy kontrolne do podróży, gotowe, gdy ich potrzebujesz.",
+      },
     ],
     unlockCtaPrimary: "Zobacz DoggMatch+",
     unlockCtaSecondary: "Dodaj swojego psa — to darmowe",
@@ -259,7 +300,8 @@ const copy = {
     todayTitle: "I dag",
     todayIntro:
       "En kort daglig rutine, bygget op omkring din hund. Intet behøver at være perfekt — afkryds det, du har gjort, og det nulstilles i morgen. Kom, prøv at afkrydse en ting.",
-    todayHint: "I forhåndsvisningen gemmes intet — når din hund er tilføjet, husker dagene sig selv.",
+    todayHint:
+      "I forhåndsvisningen gemmes intet — når din hund er tilføjet, husker dagene sig selv.",
     routineItems: [
       { id: "fresh-water", label: "Frisk vand", hint: "Ren skål, fyldt op", done: true },
       { id: "measured-meals", label: "Afmålte måltider", hint: "Afvejet, ikke gættet", done: true },
@@ -312,10 +354,22 @@ const copy = {
     unlockIntro:
       "Alt ovenstående fungerer med din egen hund gratis. DoggMatch+ er for folk, der ønsker hele hverdagsbilledet, gemt for dem.",
     unlockItems: [
-      { title: "Gemte dage og uger", body: "Din rutine, ugentlige rytme og fremskridt huskes — på tværs af telefon og computer." },
-      { title: "Vægt- og sundhedsjournaler", body: "Vejninger, dyrlægenoter og en plejekalender, der minder dig om ting, før de glemmes." },
-      { title: "Komplet træningsbibliotek", body: "Hver lektion og adfærdsprogram, med progression der følger din hund." },
-      { title: "Rejsedokumenter og print", body: "Den printbare Hundepakke, dyrlægeoversigter og tjeklister til rejser, klar når du har brug for dem." },
+      {
+        title: "Gemte dage og uger",
+        body: "Din rutine, ugentlige rytme og fremskridt huskes — på tværs af telefon og computer.",
+      },
+      {
+        title: "Vægt- og sundhedsjournaler",
+        body: "Vejninger, dyrlægenoter og en plejekalender, der minder dig om ting, før de glemmes.",
+      },
+      {
+        title: "Komplet træningsbibliotek",
+        body: "Hver lektion og adfærdsprogram, med progression der følger din hund.",
+      },
+      {
+        title: "Rejsedokumenter og print",
+        body: "Den printbare Hundepakke, dyrlægeoversigter og tjeklister til rejser, klar når du har brug for dem.",
+      },
     ],
     unlockCtaPrimary: "Se DoggMatch+",
     unlockCtaSecondary: "Tilføj din hund — det er gratis",
@@ -334,7 +388,8 @@ const copy = {
     todayTitle: "Idag",
     todayIntro:
       "En kort daglig rutin, byggd kring din hund. Inget behöver vara perfekt – bocka av det du har gjort så nollställs det imorgon. Varsågod, prova att bocka av en.",
-    todayHint: "I förhandsvisningen sparas inget – när din hund är tillagd kommer dagarna att minnas sig själva.",
+    todayHint:
+      "I förhandsvisningen sparas inget – när din hund är tillagd kommer dagarna att minnas sig själva.",
     routineItems: [
       { id: "fresh-water", label: "Friskt vatten", hint: "Ren skål, påfylld", done: true },
       { id: "measured-meals", label: "Måltider uppmätta", hint: "Vägda, inte gissade", done: true },
@@ -387,10 +442,22 @@ const copy = {
     unlockIntro:
       "Allt ovan fungerar med din egen hund gratis. DoggMatch+ är för personer som vill ha hela dagsbilden, sparad för dem.",
     unlockItems: [
-      { title: "Sparade dagar och veckor", body: "Din rutin, veckorytm och framsteg ihågkomna – över telefon och dator." },
-      { title: "Vikt- och hälsoregister", body: "Vägningar, veterinäranteckningar och en skötselkalender som påminner dig innan saker faller mellan stolarna." },
-      { title: "Fullständig träningsbibliotek", body: "Varje lektion och beteendeprogram, med progression som följer din hund." },
-      { title: "Resedokument och utskrifter", body: "Den utskrivbara Hundpaketet, veterinärsammanfattningar och checklistor för resor, redo när du behöver dem." },
+      {
+        title: "Sparade dagar och veckor",
+        body: "Din rutin, veckorytm och framsteg ihågkomna – över telefon och dator.",
+      },
+      {
+        title: "Vikt- och hälsoregister",
+        body: "Vägningar, veterinäranteckningar och en skötselkalender som påminner dig innan saker faller mellan stolarna.",
+      },
+      {
+        title: "Fullständig träningsbibliotek",
+        body: "Varje lektion och beteendeprogram, med progression som följer din hund.",
+      },
+      {
+        title: "Resedokument och utskrifter",
+        body: "Den utskrivbara Hundpaketet, veterinärsammanfattningar och checklistor för resor, redo när du behöver dem.",
+      },
     ],
     unlockCtaPrimary: "Se DoggMatch+",
     unlockCtaSecondary: "Lägg till din hund – det är gratis",
@@ -409,10 +476,16 @@ const copy = {
     todayTitle: "Tänään",
     todayIntro:
       "Lyhyt päivittäinen rutiini, joka on rakennettu koirasi ympärille. Mikään ei tarvitse olla täydellistä – rastita tekemäsi, niin se nollautuu huomenna. Anna mennä, kokeile rastittaa yksi.",
-    todayHint: "Esikatselussa mitään ei tallenneta – kun koirasi on lisätty, päivät muistavat itsensä.",
+    todayHint:
+      "Esikatselussa mitään ei tallenneta – kun koirasi on lisätty, päivät muistavat itsensä.",
     routineItems: [
       { id: "fresh-water", label: "Raikasta vettä", hint: "Puhdas kuppi, täytetty", done: true },
-      { id: "measured-meals", label: "Mitatut ruoka-annokset", hint: "Punittu, ei arvattu", done: true },
+      {
+        id: "measured-meals",
+        label: "Mitatut ruoka-annokset",
+        hint: "Punittu, ei arvattu",
+        done: true,
+      },
       { id: "walk", label: "Kunnollinen lenkki", hint: "Aikaa haisteluun", done: false },
       { id: "play", label: "Pieni leikkihetki", hint: "Kymmenen minuuttia riittää", done: false },
       { id: "teeth", label: "Hampaat", hint: "Jo kolmekymmentä sekuntia auttaa", done: false },
@@ -443,7 +516,8 @@ const copy = {
       "Odota, että koira käy makuulle, ja aseta sitten rauhallisesti muutama herkku matolle, yksi kerrallaan.",
       "Minuutin kuluttua vapauta koira iloisesti ja ota matto pois. Tältä päivältä valmis.",
     ],
-    lessonTimer: "Sisäänrakennettu ajastin pitää harjoituksen reiluna – lyhyet harjoitukset usein ovat parempia kuin pitkät.",
+    lessonTimer:
+      "Sisäänrakennettu ajastin pitää harjoituksen reiluna – lyhyet harjoitukset usein ovat parempia kuin pitkät.",
     lessonCta: "Selaa koulutusohjeita",
 
     foodTitle: "Todellinen ruoka-annos, laskettuna hänelle",
@@ -462,10 +536,22 @@ const copy = {
     unlockIntro:
       "Kaikki yllä oleva toimii oman koirasi kanssa ilmaiseksi. DoggMatch+ on ihmisille, jotka haluavat koko päivittäisen kuvan säilytettynä.",
     unlockItems: [
-      { title: "Tallennut päivät ja viikot", body: "Rutiinisi, viikon rytmi ja edistymisesi muistetaan – puhelimella ja tietokoneella." },
-      { title: "Paino- ja terveystiedot", body: "Punnitukset, eläinlääkärin muistiinpanot ja hoitokalenteri, joka muistuttaa ennen kuin asiat unohtuvat." },
-      { title: "Täysi koulutuskirjasto", body: "Jokainen ohje ja käyttäytymisohjelma, edistymisen seurannalla, joka seuraa koiraasi." },
-      { title: "Matkustusasiakirjat ja tulostus", body: "Tulostettava Dog Pack, eläinlääkärien yhteenveto ja matkustuslistat, valmiina kun tarvitset niitä." },
+      {
+        title: "Tallennut päivät ja viikot",
+        body: "Rutiinisi, viikon rytmi ja edistymisesi muistetaan – puhelimella ja tietokoneella.",
+      },
+      {
+        title: "Paino- ja terveystiedot",
+        body: "Punnitukset, eläinlääkärin muistiinpanot ja hoitokalenteri, joka muistuttaa ennen kuin asiat unohtuvat.",
+      },
+      {
+        title: "Täysi koulutuskirjasto",
+        body: "Jokainen ohje ja käyttäytymisohjelma, edistymisen seurannalla, joka seuraa koiraasi.",
+      },
+      {
+        title: "Matkustusasiakirjat ja tulostus",
+        body: "Tulostettava Dog Pack, eläinlääkärien yhteenveto ja matkustuslistat, valmiina kun tarvitset niitä.",
+      },
     ],
     unlockCtaPrimary: "Katso DoggMatch+",
     unlockCtaSecondary: "Lisää koirasi – se on ilmaista",
@@ -484,11 +570,27 @@ const copy = {
     todayTitle: "Heute",
     todayIntro:
       "Ein kurzer Tagesablauf, der sich um deinen Hund dreht. Nichts davon muss perfekt sein – hake ab, was du erledigt hast, und morgen beginnt alles von vorn. Los, versuch mal, eins abzuhaken.",
-    todayHint: "In der Vorschau wird nichts gespeichert – sobald dein Hund hinzugefügt ist, merken sich die Tage selbst. ",
+    todayHint:
+      "In der Vorschau wird nichts gespeichert – sobald dein Hund hinzugefügt ist, merken sich die Tage selbst. ",
     routineItems: [
-      { id: "fresh-water", label: "Frisches Wasser", hint: "Saubere Schüssel, aufgefüllt", done: true },
-      { id: "measured-meals", label: "Abgewogene Mahlzeiten", hint: "Gewogen, nicht geschätzt", done: true },
-      { id: "walk", label: "Ein ordentlicher Spaziergang", hint: "Mit Zeit zum Schnüffeln", done: false },
+      {
+        id: "fresh-water",
+        label: "Frisches Wasser",
+        hint: "Saubere Schüssel, aufgefüllt",
+        done: true,
+      },
+      {
+        id: "measured-meals",
+        label: "Abgewogene Mahlzeiten",
+        hint: "Gewogen, nicht geschätzt",
+        done: true,
+      },
+      {
+        id: "walk",
+        label: "Ein ordentlicher Spaziergang",
+        hint: "Mit Zeit zum Schnüffeln",
+        done: false,
+      },
       { id: "play", label: "Ein bisschen spielen", hint: "Zehn Minuten zählen", done: false },
       { id: "teeth", label: "Zähne", hint: "Auch dreißig Sekunden helfen", done: false },
       { id: "paw-check", label: "Pfoten-Check", hint: "Nach dem Spaziergang", done: false },
@@ -518,7 +620,8 @@ const copy = {
       "Warte, bis sie sich hinlegen, und lege dann ruhig ein paar Leckerlis nacheinander auf die Decke.",
       "Nach einer Minute löse sie fröhlich auf und nimm die Decke weg. Das war's für heute.",
     ],
-    lessonTimer: "Ein integrierter Timer sorgt für Ehrlichkeit bei der Einheit – kurze, häufige Einheiten sind besser als lange.",
+    lessonTimer:
+      "Ein integrierter Timer sorgt für Ehrlichkeit bei der Einheit – kurze, häufige Einheiten sind besser als lange.",
     lessonCta: "Trainingslektionen durchstöbern",
 
     foodTitle: "Eine echte Futterportion, für sie berechnet",
@@ -537,10 +640,22 @@ const copy = {
     unlockIntro:
       "Alles oben Genannte funktioniert kostenlos mit deinem eigenen Hund. DoggMatch+ ist für Leute, die das komplette tägliche Bild haben möchten, das für sie gespeichert wird.",
     unlockItems: [
-      { title: "Gespeicherte Tage und Wochen", body: "Deine Routine, dein Wochenrhythmus und dein Fortschritt werden gespeichert – auf Handy und Computer." },
-      { title: "Gewichts- und Gesundheitsaufzeichnungen", body: "Wiegen, Tierarztnotizen und ein Pflegekalender, der dich erinnert, bevor etwas vergessen wird." },
-      { title: "Vollständige Trainingsbibliothek", body: "Jede Lektion und jedes Verhaltenstraining, mit Fortschritt, der deinem Hund folgt." },
-      { title: "Reisedokumente und Ausdrucke", body: "Das ausdruckbare Hunde-Paket, Tierarztzusammenfassungen und Checklisten für Reisen, bereit, wenn du sie brauchst." },
+      {
+        title: "Gespeicherte Tage und Wochen",
+        body: "Deine Routine, dein Wochenrhythmus und dein Fortschritt werden gespeichert – auf Handy und Computer.",
+      },
+      {
+        title: "Gewichts- und Gesundheitsaufzeichnungen",
+        body: "Wiegen, Tierarztnotizen und ein Pflegekalender, der dich erinnert, bevor etwas vergessen wird.",
+      },
+      {
+        title: "Vollständige Trainingsbibliothek",
+        body: "Jede Lektion und jedes Verhaltenstraining, mit Fortschritt, der deinem Hund folgt.",
+      },
+      {
+        title: "Reisedokumente und Ausdrucke",
+        body: "Das ausdruckbare Hunde-Paket, Tierarztzusammenfassungen und Checklisten für Reisen, bereit, wenn du sie brauchst.",
+      },
     ],
     unlockCtaPrimary: "DoggMatch+ ansehen",
     unlockCtaSecondary: "Hund hinzufügen – das ist kostenlos",
@@ -559,14 +674,20 @@ const copy = {
     todayTitle: "Aujourd'hui",
     todayIntro:
       "Une courte routine quotidienne, conçue autour de votre chien. Rien ne doit être parfait — cochez ce que vous avez fait et ça se réinitialise demain. Allez-y, essayez d'en cocher un.",
-    todayHint: "Dans l'aperçu, rien n'est sauvegardé — une fois votre chien ajouté, les jours se souviennent d'eux-mêmes.",
+    todayHint:
+      "Dans l'aperçu, rien n'est sauvegardé — une fois votre chien ajouté, les jours se souviennent d'eux-mêmes.",
     routineItems: [
       { id: "fresh-water", label: "Eau fraîche", hint: "Gourde propre, remplie", done: true },
       { id: "measured-meals", label: "Repas mesurés", hint: "Pesés, pas estimés", done: true },
       { id: "walk", label: "Une vraie promenade", hint: "Avec le temps de renifler", done: false },
       { id: "play", label: "Un peu de jeu", hint: "Dix minutes, ça compte", done: false },
       { id: "teeth", hint: "Même trente secondes aident", done: false, label: "Dents" },
-      { id: "paw-check", label: "Vérification des pattes", hint: "Après la promenade", done: false },
+      {
+        id: "paw-check",
+        label: "Vérification des pattes",
+        hint: "Après la promenade",
+        done: false,
+      },
     ],
 
     weekTitle: "Un rythme hebdomadaire",
@@ -593,7 +714,8 @@ const copy = {
       "Attendez qu'il s'allonge, puis placez calmement quelques friandises sur le tapis, une par une.",
       "Après une minute, libérez-le joyeusement et retirez le tapis. C'est fini pour aujourd'hui.",
     ],
-    lessonTimer: "Un minuteur intégré rend la séance honnête — des séances courtes, fréquentes, battent les longues.",
+    lessonTimer:
+      "Un minuteur intégré rend la séance honnête — des séances courtes, fréquentes, battent les longues.",
     lessonCta: "Découvrir les leçons d'éducation",
 
     foodTitle: "Une vraie portion de nourriture, calculée pour elle",
@@ -612,10 +734,22 @@ const copy = {
     unlockIntro:
       "Tout ce qui précède fonctionne avec votre propre chien gratuitement. DoggMatch+ est pour ceux qui veulent l'image complète du quotidien, conservée pour eux.",
     unlockItems: [
-      { title: "Jours et semaines sauvegardés", body: "Votre routine, votre rythme hebdomadaire et vos progrès enregistrés — sur téléphone et ordinateur." },
-      { title: "Suivi du poids et de la santé", body: "Pesées, notes vétérinaires et un calendrier de soins qui vous rappelle les choses avant qu'elles ne soient oubliées." },
-      { title: "Bibliothèque complète d'éducation", body: "Chaque leçon et programme de comportement, avec une progression qui suit votre chien." },
-      { title: "Documents de voyage et impressions", body: "Le Pack Chien imprimable, les résumés vétérinaires et les listes de contrôle de voyage, prêts quand vous en avez besoin." },
+      {
+        title: "Jours et semaines sauvegardés",
+        body: "Votre routine, votre rythme hebdomadaire et vos progrès enregistrés — sur téléphone et ordinateur.",
+      },
+      {
+        title: "Suivi du poids et de la santé",
+        body: "Pesées, notes vétérinaires et un calendrier de soins qui vous rappelle les choses avant qu'elles ne soient oubliées.",
+      },
+      {
+        title: "Bibliothèque complète d'éducation",
+        body: "Chaque leçon et programme de comportement, avec une progression qui suit votre chien.",
+      },
+      {
+        title: "Documents de voyage et impressions",
+        body: "Le Pack Chien imprimable, les résumés vétérinaires et les listes de contrôle de voyage, prêts quand vous en avez besoin.",
+      },
     ],
     unlockCtaPrimary: "Voir DoggMatch+",
     unlockCtaSecondary: "Ajouter votre chien — c'est gratuit",
@@ -634,10 +768,16 @@ const copy = {
     todayTitle: "Vandaag",
     todayIntro:
       "Een korte dagelijkse routine, opgebouwd rondom je hond. Niets hoeft perfect te zijn — vink af wat je hebt gedaan en het reset morgen weer. Ga je gang, probeer er eentje af te vinken.",
-    todayHint: "In de preview wordt niets opgeslagen — zodra je hond is toegevoegd, onthouden de dagen zichzelf.",
+    todayHint:
+      "In de preview wordt niets opgeslagen — zodra je hond is toegevoegd, onthouden de dagen zichzelf.",
     routineItems: [
       { id: "fresh-water", label: "Vers water", hint: "Schone bak, bijgevuld", done: true },
-      { id: "measured-meals", label: "Afwegen van maaltijden", hint: "Afwegen, niet gokken", done: true },
+      {
+        id: "measured-meals",
+        label: "Afwegen van maaltijden",
+        hint: "Afwegen, niet gokken",
+        done: true,
+      },
       { id: "walk", label: "Een goede wandeling", hint: "Met tijd om te snuffelen", done: false },
       { id: "play", label: "Een beetje spelen", hint: "Tien minuten telt", done: false },
       { id: "teeth", label: "Tanden", hint: "Zelfs dertig seconden helpt", done: false },
@@ -668,7 +808,8 @@ const copy = {
       "Wacht tot ze gaan liggen, leg dan rustig een paar snoepjes op het kleedje, één voor één.",
       "Na een minuut, maak je ze vrolijk los en haal je het kleedje weg. Klaar voor vandaag.",
     ],
-    lessonTimer: "Een ingebouwde timer houdt de sessie eerlijk — korte sessies, vaak, zijn beter dan lange.",
+    lessonTimer:
+      "Een ingebouwde timer houdt de sessie eerlijk — korte sessies, vaak, zijn beter dan lange.",
     lessonCta: "Bekijk de trainingslessen",
 
     foodTitle: "Een echte portie voer, voor haar berekend",
@@ -687,10 +828,22 @@ const copy = {
     unlockIntro:
       "Alles hierboven werkt gratis met je eigen hond. DoggMatch+ is voor mensen die het hele dagelijkse plaatje willen, dat voor hen bewaard wordt.",
     unlockItems: [
-      { title: "Opgeslagen dagen en weken", body: "Je routine, weekritme en voortgang onthouden — op telefoon en computer." },
-      { title: "Gewichts- en gezondheidsdossiers", body: "Wegingen, dierenartsnotities en een zorgkalender die je herinnert voordat dingen misgaan." },
-      { title: "Volledige trainingsbibliotheek", body: "Elke les en gedragsprogramma, met voortgang die je hond volgt." },
-      { title: "Reisdocumenten en printen", body: "Het printbare Hondendossier, dierenarts-samenvattingen en reischecklists, klaar wanneer je ze nodig hebt." },
+      {
+        title: "Opgeslagen dagen en weken",
+        body: "Je routine, weekritme en voortgang onthouden — op telefoon en computer.",
+      },
+      {
+        title: "Gewichts- en gezondheidsdossiers",
+        body: "Wegingen, dierenartsnotities en een zorgkalender die je herinnert voordat dingen misgaan.",
+      },
+      {
+        title: "Volledige trainingsbibliotheek",
+        body: "Elke les en gedragsprogramma, met voortgang die je hond volgt.",
+      },
+      {
+        title: "Reisdocumenten en printen",
+        body: "Het printbare Hondendossier, dierenarts-samenvattingen en reischecklists, klaar wanneer je ze nodig hebt.",
+      },
     ],
     unlockCtaPrimary: "Bekijk DoggMatch+",
     unlockCtaSecondary: "Voeg je hond toe — het is gratis",

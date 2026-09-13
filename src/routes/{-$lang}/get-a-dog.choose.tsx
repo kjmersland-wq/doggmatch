@@ -2,7 +2,13 @@ import { localizedHead } from "@/lib/seo";
 import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
-import { CardGrid, Checklist, Notice, PointList, SectionHead } from "@/components/dogmatch/journey/parts";
+import {
+  CardGrid,
+  Checklist,
+  Notice,
+  PointList,
+  SectionHead,
+} from "@/components/dogmatch/journey/parts";
 import { getDogContent } from "@/data/getdog/content";
 import { useCopy } from "@/i18n";
 import puppyImage from "@/assets/puppy.jpg";
@@ -57,7 +63,8 @@ const copy = {
     whatsHard: "Hva som er tøft",
     whereFrom: "Hvor fra",
     breederAlt: "En mor-hund som hviler med valpene sine på et teppe i en familiestue",
-    rescueAlt: "En kvinne som huker seg ned for å hilse på en voksen omplasseringshund på et internat",
+    rescueAlt:
+      "En kvinne som huker seg ned for å hilse på en voksen omplasseringshund på et internat",
     whatsGoodAbout: "Hva som er bra med det",
     worthLookingInto: "Verdt å undersøke",
     meetingBreederEyebrow: "Å møte en oppdretter",
@@ -186,7 +193,8 @@ const copy = {
     whatsGood: "Was gut ist",
     whatsHard: "Was schwer ist",
     whereFrom: "Woher",
-    breederAlt: "Eine Hundemutter ruht mit ihren Welpen auf einer Decke in einem familiären Wohnzimmer",
+    breederAlt:
+      "Eine Hundemutter ruht mit ihren Welpen auf einer Decke in einem familiären Wohnzimmer",
     rescueAlt: "Eine Frau kniet sich hin, um einen erwachsenen Tierheimhund zu begrüßen",
     whatsGoodAbout: "Was daran gut ist",
     worthLookingInto: "Wert, genauer hinzuschauen",
@@ -261,7 +269,8 @@ const copy = {
 
 function ChoosePage() {
   const c = useCopy(copy);
-  const { adoptionConsiderations, breederQuestions, breederRedFlags, puppyVsAdult, sources } = getDogContent();
+  const { adoptionConsiderations, breederQuestions, breederRedFlags, puppyVsAdult, sources } =
+    getDogContent();
 
   return (
     <div className="pb-24">
@@ -279,8 +288,18 @@ function ChoosePage() {
             { data: puppyVsAdult.puppy, img: puppyImage, alt: c.puppyAlt },
             { data: puppyVsAdult.adult, img: adultImage, alt: c.adultAlt },
           ].map(({ data, img, alt }) => (
-            <article key={data.title} className="overflow-hidden rounded-[1.75rem] border border-border bg-card">
-              <img src={img} alt={alt} width={1200} height={1504} loading="lazy" className="aspect-[5/4] w-full object-cover" />
+            <article
+              key={data.title}
+              className="overflow-hidden rounded-[1.75rem] border border-border bg-card"
+            >
+              <img
+                src={img}
+                alt={alt}
+                width={1200}
+                height={1504}
+                loading="lazy"
+                className="aspect-[5/4] w-full object-cover"
+              />
               <div className="p-8 md:p-10">
                 <h2 className="display-md">{data.title}</h2>
                 <p className="mt-3 leading-relaxed text-muted-foreground">{data.lead}</p>
@@ -311,8 +330,18 @@ function ChoosePage() {
               { data: sources.breeder, img: breederImage, alt: c.breederAlt },
               { data: sources.rescue, img: adoptionImage, alt: c.rescueAlt },
             ].map(({ data, img, alt }) => (
-              <article key={data.title} className="overflow-hidden rounded-[1.75rem] border border-border bg-background">
-                <img src={img} alt={alt} width={1408} height={1056} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+              <article
+                key={data.title}
+                className="overflow-hidden rounded-[1.75rem] border border-border bg-background"
+              >
+                <img
+                  src={img}
+                  alt={alt}
+                  width={1408}
+                  height={1056}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full object-cover"
+                />
                 <div className="p-8 md:p-10">
                   <h3 className="display-md">{data.title}</h3>
                   <p className="eyebrow mt-6">{c.whatsGoodAbout}</p>

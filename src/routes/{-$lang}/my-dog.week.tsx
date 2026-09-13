@@ -183,7 +183,8 @@ const copy = {
     addPlaceholder: "Cours pour chiot, longue promenade…",
     add: "Ajouter",
     addOwn: "Ajouter quelque chose de personnel",
-    genericNotePrefix: "Cette semaine est générique tant que vous ne nous parlez pas de votre chien.",
+    genericNotePrefix:
+      "Cette semaine est générique tant que vous ne nous parlez pas de votre chien.",
     addDog: "Ajoutez votre chien",
     genericNoteSuffix: "et elle s'adaptera à lui.",
     vetNote:
@@ -340,7 +341,9 @@ function WeekPage() {
         </div>
       </Section>
 
-      <p className="container-page text-sm text-muted-foreground">{c.footer(getDayNames().length)}</p>
+      <p className="container-page text-sm text-muted-foreground">
+        {c.footer(getDayNames().length)}
+      </p>
     </div>
   );
 }

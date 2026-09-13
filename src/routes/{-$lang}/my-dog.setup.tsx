@@ -1,10 +1,21 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { BreedPicker, selectionFromDog, selectionToDog, type BreedSelection } from "@/components/dogmatch/breed-picker";
+import {
+  BreedPicker,
+  selectionFromDog,
+  selectionToDog,
+  type BreedSelection,
+} from "@/components/dogmatch/breed-picker";
 import type { AgeStage } from "@/data/care/types";
 import { Arrow, Button, Eyebrow } from "@/components/dogmatch/ui";
 import { trainingStore, useActiveDog } from "@/lib/training/store";
-import { careStore, useCareProfile, type ActivityLevel, type BodyCondition, type FoodType } from "@/lib/care/store";
+import {
+  careStore,
+  useCareProfile,
+  type ActivityLevel,
+  type BodyCondition,
+  type FoodType,
+} from "@/lib/care/store";
 import { suggestedMeals } from "@/lib/care/portions";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
@@ -74,10 +85,12 @@ const copy = {
     weightHint: "In kilograms. A rough figure is fine to start with.",
     activityLabel: "How active are they?",
     bodyLabel: "And how do they look right now?",
-    bodyHint: "Feel along their ribs and look down from above. There's a proper guide in Weight & shape.",
+    bodyHint:
+      "Feel along their ribs and look down from above. There's a proper guide in Weight & shape.",
     foodTypeLabel: "What do you feed?",
     energyLabel: "Calories per 100g, if the bag says",
-    energyHint: "Usually printed as kcal/100g. Leave it blank and we'll use a typical figure for that kind of food.",
+    energyHint:
+      "Usually printed as kcal/100g. Leave it blank and we'll use a typical figure for that kind of food.",
     kcalPer100g: "kcal per 100g",
     mealsLabel: "How many meals a day?",
     vetLabel: "Your vet",
@@ -133,7 +146,8 @@ const copy = {
     bodyHint: "Kjenn langs ribbeina og se ovenfra. Det er en skikkelig guide under Vekt & hold.",
     foodTypeLabel: "Hva fôrer du med?",
     energyLabel: "Kalorier per 100 g, hvis posen sier det",
-    energyHint: "Står vanligvis som kcal/100 g. La stå tomt, så bruker vi et typisk tall for den typen fôr.",
+    energyHint:
+      "Står vanligvis som kcal/100 g. La stå tomt, så bruker vi et typisk tall for den typen fôr.",
     kcalPer100g: "kcal per 100 g",
     mealsLabel: "Hvor mange måltider om dagen?",
     vetLabel: "Veterinæren din",
@@ -186,10 +200,12 @@ const copy = {
     weightHint: "W kilogramach. Na początek wystarczy przybliżona liczba.",
     activityLabel: "Jak aktywny jest twój pies?",
     bodyLabel: "A jak wygląda teraz?",
-    bodyHint: "Sprawdź dotykiem żebra i spójrz z góry. Pełny przewodnik znajdziesz w sekcji Waga i sylwetka.",
+    bodyHint:
+      "Sprawdź dotykiem żebra i spójrz z góry. Pełny przewodnik znajdziesz w sekcji Waga i sylwetka.",
     foodTypeLabel: "Czym karmisz?",
     energyLabel: "Kalorie na 100 g, jeśli podane są na opakowaniu",
-    energyHint: "Zwykle podane jako kcal/100 g. Zostaw puste, a użyjemy typowej wartości dla tego rodzaju karmy.",
+    energyHint:
+      "Zwykle podane jako kcal/100 g. Zostaw puste, a użyjemy typowej wartości dla tego rodzaju karmy.",
     kcalPer100g: "kcal na 100 g",
     mealsLabel: "Ile posiłków dziennie?",
     vetLabel: "Twój weterynarz",
@@ -245,7 +261,8 @@ const copy = {
     bodyHint: "Mærk langs ribbenene og se den ovenfra. Der er en rigtig guide under Vægt & hold.",
     foodTypeLabel: "Hvad fodrer du med?",
     energyLabel: "Kalorier per 100 g, hvis posen siger det",
-    energyHint: "Står normalt som kcal/100 g. Lad det stå tomt, så bruger vi et typisk tal for den slags foder.",
+    energyHint:
+      "Står normalt som kcal/100 g. Lad det stå tomt, så bruger vi et typisk tal for den slags foder.",
     kcalPer100g: "kcal per 100 g",
     mealsLabel: "Hvor mange måltider om dagen?",
     vetLabel: "Din dyrlæge",
@@ -298,10 +315,12 @@ const copy = {
     weightHint: "I kilogram. Ett ungefärligt tal är bra att börja med.",
     activityLabel: "Hur aktiv är den?",
     bodyLabel: "Och hur ser den ut just nu?",
-    bodyHint: "Känn längs revbenen och titta uppifrån. Det finns en riktig guide under Vikt & hull.",
+    bodyHint:
+      "Känn längs revbenen och titta uppifrån. Det finns en riktig guide under Vikt & hull.",
     foodTypeLabel: "Vad ger du för foder?",
     energyLabel: "Kalorier per 100 g, om det står på påsen",
-    energyHint: "Brukar stå som kcal/100 g. Lämna tomt så använder vi ett typiskt värde för den typen av foder.",
+    energyHint:
+      "Brukar stå som kcal/100 g. Lämna tomt så använder vi ett typiskt värde för den typen av foder.",
     kcalPer100g: "kcal per 100 g",
     mealsLabel: "Hur många måltider om dagen?",
     vetLabel: "Din veterinär",
@@ -322,7 +341,11 @@ const copy = {
       "Kaikki tämä pysyy tällä laitteella. Ohita se, mitä et tiedä — voit aina palata ja täyttää sen myöhemmin.",
     ageStages: [
       { value: "puppy", label: "Pentu", hint: "Noin kuuteen kuukauteen asti" },
-      { value: "adolescent", label: "Murrosikäinen", hint: "Noin kuudesta kuukaudesta kahteen vuoteen" },
+      {
+        value: "adolescent",
+        label: "Murrosikäinen",
+        hint: "Noin kuudesta kuukaudesta kahteen vuoteen",
+      },
       { value: "adult", label: "Aikuinen", hint: "Jossain keskimmäisissä vuosissa" },
       { value: "senior", label: "Ikääntyvä", hint: "Hidastaa hieman vauhtia" },
     ],
@@ -341,23 +364,30 @@ const copy = {
     conditions: [
       { value: "thin", label: "Hieman laiha", hint: "Kylkiluut ja lonkkaluut erottuvat" },
       { value: "ideal", label: "Sopiva", hint: "Kylkiluut tuntuvat helposti, selkeä vyötärö" },
-      { value: "heavy", label: "Hieman ylipainoinen", hint: "Kylkiluita vaikea tuntea, ei vyötäröä" },
+      {
+        value: "heavy",
+        label: "Hieman ylipainoinen",
+        hint: "Kylkiluita vaikea tuntea, ei vyötäröä",
+      },
     ],
     nameLabel: "Mikä sen nimi on?",
     namePlaceholder: "Luna",
     ageLabel: "Kuinka vanha koirasi on?",
     neuteredLabel: "Onko se leikattu?",
-    neuteredHint: "Se vaikuttaa siihen, kuinka paljon ruokaa se tarvitsee, joten se on hyvä tietää.",
+    neuteredHint:
+      "Se vaikuttaa siihen, kuinka paljon ruokaa se tarvitsee, joten se on hyvä tietää.",
     yes: "Kyllä",
     noOrUnsure: "Ei, tai en ole varma",
     weightLabel: "Kuinka paljon se painaa suunnilleen?",
     weightHint: "Kilogrammoina. Suunnilleen riittää aluksi.",
     activityLabel: "Kuinka aktiivinen se on?",
     bodyLabel: "Ja miltä se näyttää juuri nyt?",
-    bodyHint: "Tunnustele kylkiluita ja katso ylhäältä. Kunnollinen opas löytyy kohdasta Paino ja kunto.",
+    bodyHint:
+      "Tunnustele kylkiluita ja katso ylhäältä. Kunnollinen opas löytyy kohdasta Paino ja kunto.",
     foodTypeLabel: "Millä ruokit?",
     energyLabel: "Kalorit / 100 g, jos pussissa lukee",
-    energyHint: "Ilmoitetaan yleensä muodossa kcal/100 g. Jätä tyhjäksi, niin käytämme tyypillistä arvoa kyseiselle ruokatyypille.",
+    energyHint:
+      "Ilmoitetaan yleensä muodossa kcal/100 g. Jätä tyhjäksi, niin käytämme tyypillistä arvoa kyseiselle ruokatyypille.",
     kcalPer100g: "kcal / 100 g",
     mealsLabel: "Kuinka monta ateriaa päivässä?",
     vetLabel: "Eläinlääkärisi",
@@ -390,7 +420,11 @@ const copy = {
     foodTypes: [
       { value: "dry", label: "Trockenfutter", hint: "Kroketten" },
       { value: "wet", label: "Nassfutter", hint: "Dosen, Schalen oder Beutel" },
-      { value: "mixed", label: "Ein bisschen von beidem", hint: "Nass- und Trockenfutter zusammen" },
+      {
+        value: "mixed",
+        label: "Ein bisschen von beidem",
+        hint: "Nass- und Trockenfutter zusammen",
+      },
       { value: "raw", label: "Barf", hint: "Fertig oder selbst zubereitet, roh" },
       { value: "home", label: "Selbst gekocht", hint: "Zu Hause gekocht" },
     ],
@@ -410,10 +444,12 @@ const copy = {
     weightHint: "In Kilogramm. Ein grober Wert reicht zum Start.",
     activityLabel: "Wie aktiv ist er oder sie?",
     bodyLabel: "Und wie sieht er oder sie gerade aus?",
-    bodyHint: "Taste die Rippen ab und schau von oben. Eine ausführliche Anleitung gibt es unter Gewicht & Kondition.",
+    bodyHint:
+      "Taste die Rippen ab und schau von oben. Eine ausführliche Anleitung gibt es unter Gewicht & Kondition.",
     foodTypeLabel: "Was fütterst du?",
     energyLabel: "Kalorien pro 100 g, falls auf der Packung angegeben",
-    energyHint: "Meist als kcal/100 g angegeben. Leer lassen, dann nehmen wir einen typischen Wert für diese Futterart.",
+    energyHint:
+      "Meist als kcal/100 g angegeben. Leer lassen, dann nehmen wir einen typischen Wert für diese Futterart.",
     kcalPer100g: "kcal pro 100 g",
     mealsLabel: "Wie viele Mahlzeiten am Tag?",
     vetLabel: "Deine Tierarztpraxis",
@@ -452,7 +488,11 @@ const copy = {
     ],
     conditions: [
       { value: "thin", label: "Un peu maigre", hint: "Côtes et hanches saillantes" },
-      { value: "ideal", label: "À peu près juste", hint: "Côtes faciles à sentir, taille bien marquée" },
+      {
+        value: "ideal",
+        label: "À peu près juste",
+        hint: "Côtes faciles à sentir, taille bien marquée",
+      },
       { value: "heavy", label: "Un peu enrobé", hint: "Côtes difficiles à sentir, pas de taille" },
     ],
     nameLabel: "Comment s'appelle-t-il ?",
@@ -466,10 +506,12 @@ const copy = {
     weightHint: "En kilogrammes. Une estimation suffit pour commencer.",
     activityLabel: "Quel est son niveau d'activité ?",
     bodyLabel: "Et à quoi ressemble-t-il en ce moment ?",
-    bodyHint: "Palpez le long des côtes et regardez-le d'en haut. Un guide détaillé se trouve dans Poids & silhouette.",
+    bodyHint:
+      "Palpez le long des côtes et regardez-le d'en haut. Un guide détaillé se trouve dans Poids & silhouette.",
     foodTypeLabel: "Que lui donnez-vous à manger ?",
     energyLabel: "Calories pour 100 g, si indiqué sur le paquet",
-    energyHint: "Généralement indiqué en kcal/100 g. Laissez vide et nous utiliserons une valeur typique pour ce type d'aliment.",
+    energyHint:
+      "Généralement indiqué en kcal/100 g. Laissez vide et nous utiliserons une valeur typique pour ce type d'aliment.",
     kcalPer100g: "kcal pour 100 g",
     mealsLabel: "Combien de repas par jour ?",
     vetLabel: "Votre vétérinaire",
@@ -522,10 +564,12 @@ const copy = {
     weightHint: "In kilogram. Een ruwe schatting is prima om mee te beginnen.",
     activityLabel: "Hoe actief is hij of zij?",
     bodyLabel: "En hoe ziet hij of zij er nu uit?",
-    bodyHint: "Voel langs de ribben en kijk van bovenaf. Er staat een uitgebreide gids bij Gewicht & conditie.",
+    bodyHint:
+      "Voel langs de ribben en kijk van bovenaf. Er staat een uitgebreide gids bij Gewicht & conditie.",
     foodTypeLabel: "Wat voer je?",
     energyLabel: "Calorieën per 100 g, als dat op de zak staat",
-    energyHint: "Meestal aangegeven als kcal/100 g. Laat leeg, dan gebruiken we een gebruikelijke waarde voor dat soort voer.",
+    energyHint:
+      "Meestal aangegeven als kcal/100 g. Laat leeg, dan gebruiken we een gebruikelijke waarde voor dat soort voer.",
     kcalPer100g: "kcal per 100 g",
     mealsLabel: "Hoeveel maaltijden per dag?",
     vetLabel: "Je dierenarts",
@@ -561,9 +605,13 @@ function MyDogSetup() {
   const [neutered, setNeutered] = useState(profile.neutered ?? false);
   const [weight, setWeight] = useState(profile.weightKg ? String(profile.weightKg) : "");
   const [activity, setActivity] = useState<ActivityLevel>(profile.activity ?? "moderate");
-  const [bodyCondition, setBodyCondition] = useState<BodyCondition>(profile.bodyCondition ?? "ideal");
+  const [bodyCondition, setBodyCondition] = useState<BodyCondition>(
+    profile.bodyCondition ?? "ideal",
+  );
   const [foodType, setFoodType] = useState<FoodType>(profile.foodType ?? "dry");
-  const [foodEnergy, setFoodEnergy] = useState(profile.foodEnergy ? String(profile.foodEnergy) : "");
+  const [foodEnergy, setFoodEnergy] = useState(
+    profile.foodEnergy ? String(profile.foodEnergy) : "",
+  );
   const [meals, setMeals] = useState(String(profile.mealsPerDay ?? suggestedMeals(ageStage)));
   const [vetName, setVetName] = useState(profile.vetName ?? "");
   const [vetPhone, setVetPhone] = useState(profile.vetPhone ?? "");
@@ -762,7 +810,9 @@ function Choices<T extends string>({
               : "border-border bg-card hover:border-border-strong",
           )}
         >
-          <span className="block font-display text-[1.0625rem] leading-tight tracking-tight">{o.label}</span>
+          <span className="block font-display text-[1.0625rem] leading-tight tracking-tight">
+            {o.label}
+          </span>
           {o.hint && <span className="mt-1 block text-sm text-muted-foreground">{o.hint}</span>}
         </button>
       ))}

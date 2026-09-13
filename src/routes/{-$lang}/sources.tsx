@@ -95,7 +95,7 @@ const copy = {
     calloutEyebrow: "A hard limit in practice",
     calloutTitle: "Why a Border Collie can be eliminated for a 6+ hour alone day",
     calloutBody:
-      "A Border Collie tends to score brilliantly on activity and trainability — but its tolerance for being left alone is low. Mark \"hours alone\" as a hard limit, and a long day alone rules it out completely, no matter how well it does everywhere else.",
+      'A Border Collie tends to score brilliantly on activity and trainability — but its tolerance for being left alone is low. Mark "hours alone" as a hard limit, and a long day alone rules it out completely, no matter how well it does everywhere else.',
     calloutTrait1: "High activity score",
     calloutTrait2: "High trainability score",
     calloutEliminated: "Still eliminated",
@@ -272,7 +272,7 @@ const copy = {
     calloutEyebrow: "En absolut grænse i praksis",
     calloutTitle: "Hvorfor en border collie kan blive udelukket ved 6+ timer alene",
     calloutBody:
-      "En border collie scorer som regel strålende på aktivitet og trænbarhed — men tåler dårligt at være alene. Marker \"timer alene\" som en absolut grænse, og en lang dag alene udelukker den helt, uanset hvor godt den klarer sig andre steder.",
+      'En border collie scorer som regel strålende på aktivitet og trænbarhed — men tåler dårligt at være alene. Marker "timer alene" som en absolut grænse, og en lang dag alene udelukker den helt, uanset hvor godt den klarer sig andre steder.',
     calloutTrait1: "Høj score på aktivitet",
     calloutTrait2: "Høj score på trænbarhed",
     calloutEliminated: "Stadig udelukket",
@@ -331,7 +331,7 @@ const copy = {
     calloutEyebrow: "En absolut gräns i praktiken",
     calloutTitle: "Varför en border collie kan uteslutas vid 6+ timmar ensam",
     calloutBody:
-      "En border collie brukar prestera lysande på aktivitet och träningsvillighet — men har låg tolerans för att lämnas ensam. Markera \"timmar ensam\" som en absolut gräns, och en lång dag ensam utesluter den helt, oavsett hur bra den presterar på andra håll.",
+      'En border collie brukar prestera lysande på aktivitet och träningsvillighet — men har låg tolerans för att lämnas ensam. Markera "timmar ensam" som en absolut gräns, och en lång dag ensam utesluter den helt, oavsett hur bra den presterar på andra håll.',
     calloutTrait1: "Hög poäng på aktivitet",
     calloutTrait2: "Hög poäng på träningsvillighet",
     calloutEliminated: "Fortfarande utesluten",
@@ -390,7 +390,7 @@ const copy = {
     calloutEyebrow: "Ehdoton vaatimus käytännössä",
     calloutTitle: "Miksi bordercollie voidaan sulkea pois, jos koira olisi yksin 6+ tuntia",
     calloutBody:
-      "Bordercollie pärjää yleensä loistavasti aktiivisuudessa ja koulutettavuudessa — mutta sen kyky sietää yksinoloa on heikko. Merkitse \"tunnit yksin\" ehdottomaksi kriteeriksi, ja pitkä yksinäolopäivä sulkee sen kokonaan pois, riippumatta siitä, kuinka hyvin se pärjää muualla.",
+      'Bordercollie pärjää yleensä loistavasti aktiivisuudessa ja koulutettavuudessa — mutta sen kyky sietää yksinoloa on heikko. Merkitse "tunnit yksin" ehdottomaksi kriteeriksi, ja pitkä yksinäolopäivä sulkee sen kokonaan pois, riippumatta siitä, kuinka hyvin se pärjää muualla.',
     calloutTrait1: "Korkea aktiivisuuspisteytys",
     calloutTrait2: "Korkea koulutettavuuspisteytys",
     calloutEliminated: "Silti suljettu pois",
@@ -449,7 +449,7 @@ const copy = {
     calloutEyebrow: "Ein Ausschlusskriterium in der Praxis",
     calloutTitle: "Warum ein Border Collie bei 6+ Stunden allein ausgeschlossen werden kann",
     calloutBody:
-      "Ein Border Collie punktet meist hervorragend bei Aktivität und Trainierbarkeit — aber seine Toleranz fürs Alleinsein ist gering. Markiere „Stunden allein\" als Ausschlusskriterium, und ein langer Tag allein schließt ihn komplett aus, egal wie gut er sonst abschneidet.",
+      'Ein Border Collie punktet meist hervorragend bei Aktivität und Trainierbarkeit — aber seine Toleranz fürs Alleinsein ist gering. Markiere „Stunden allein" als Ausschlusskriterium, und ein langer Tag allein schließt ihn komplett aus, egal wie gut er sonst abschneidet.',
     calloutTrait1: "Hoher Aktivitätswert",
     calloutTrait2: "Hoher Trainierbarkeitswert",
     calloutEliminated: "Trotzdem ausgeschlossen",
@@ -506,7 +506,8 @@ const copy = {
       },
     ],
     calloutEyebrow: "Un critère rédhibitoire en pratique",
-    calloutTitle: "Pourquoi un Border Collie peut être éliminé pour une journée de plus de 6 heures seul",
+    calloutTitle:
+      "Pourquoi un Border Collie peut être éliminé pour une journée de plus de 6 heures seul",
     calloutBody:
       "Un Border Collie obtient généralement d'excellents scores en activité et en aptitude à l'éducation — mais sa tolérance à la solitude est faible. Marque « heures seul » comme critère rédhibitoire, et une longue journée seul l'exclut complètement, quelle que soit sa performance ailleurs.",
     calloutTrait1: "Score d'activité élevé",
@@ -567,7 +568,7 @@ const copy = {
     calloutEyebrow: "Een ononderhandelbaar criterium in de praktijk",
     calloutTitle: "Waarom een Border Collie kan worden uitgesloten bij 6+ uur alleen",
     calloutBody:
-      "Een Border Collie scoort meestal uitstekend op activiteit en trainbaarheid — maar heeft weinig tolerantie voor alleen zijn. Markeer \"uren alleen\" als ononderhandelbaar criterium, en een lange dag alleen sluit hem volledig uit, hoe goed hij ook elders scoort.",
+      'Een Border Collie scoort meestal uitstekend op activiteit en trainbaarheid — maar heeft weinig tolerantie voor alleen zijn. Markeer "uren alleen" als ononderhandelbaar criterium, en een lange dag alleen sluit hem volledig uit, hoe goed hij ook elders scoort.',
     calloutTrait1: "Hoge activiteitsscore",
     calloutTrait2: "Hoge trainbaarheidsscore",
     calloutEliminated: "Nog steeds uitgesloten",
@@ -627,8 +628,12 @@ function SourcesPage() {
                   <span className="inline-flex items-center rounded-full border border-border-strong px-2.5 py-0.5 text-xs text-muted-foreground">
                     {c.stageWord} {i + 1}
                   </span>
-                  <h3 className="mt-2 font-display text-lg tracking-tight text-foreground">{s.t}</h3>
-                  <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-muted-foreground">{s.b}</p>
+                  <h3 className="mt-2 font-display text-lg tracking-tight text-foreground">
+                    {s.t}
+                  </h3>
+                  <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                    {s.b}
+                  </p>
                 </div>
               </div>
               {i < c.stages.length - 1 && (
@@ -747,17 +752,43 @@ function Note({ title, body }: { title: string; body: string }) {
 /** A minimal connector between two pipeline stages. */
 function PipelineConnector() {
   return (
-    <svg width="16" height="24" viewBox="0 0 16 24" fill="none" aria-hidden="true" className="text-border-strong">
+    <svg
+      width="16"
+      height="24"
+      viewBox="0 0 16 24"
+      fill="none"
+      aria-hidden="true"
+      className="text-border-strong"
+    >
       <path d="M8 0v16" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M2 15l6 6 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M2 15l6 6 6-6"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
 function ArrowRightIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="text-muted-foreground">
-      <path d="M4 12h16M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      className="text-muted-foreground"
+    >
+      <path
+        d="M4 12h16M13 5l7 7-7 7"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }

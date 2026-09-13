@@ -12,11 +12,7 @@ import {
   StepFigure,
   TreatCounter,
 } from "@/components/dogmatch/training/parts";
-import {
-  MarkDoneButton,
-  StepTimer,
-  WhyItMatters,
-} from "@/components/dogmatch/training/plan-parts";
+import { MarkDoneButton, StepTimer, WhyItMatters } from "@/components/dogmatch/training/plan-parts";
 import { sessionMinutes, whyItMatters } from "@/lib/training/schedule";
 import {
   today,
@@ -29,7 +25,6 @@ import { cn } from "@/lib/utils";
 import { seoLinks, breadcrumbLd } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { useCopy } from "@/i18n";
-
 
 const copy = {
   en: {
@@ -109,7 +104,11 @@ const copy = {
     howDidItGo: "Jak poszło?",
     tellUsWhere: (name: string) =>
       `Powiedz nam, na jakim etapie jest ${name}. To tylko dla ciebie \u2014 dzięki temu twoja droga pozostaje szczera i pomaga nam zaproponować kolejny krok.`,
-    feelings: ["Poszło naprawdę dobrze", "Wystarczająco dobrze jak na dziś", "Potrzebujemy więcej ćwiczeń"] as const,
+    feelings: [
+      "Poszło naprawdę dobrze",
+      "Wystarczająco dobrze jak na dziś",
+      "Potrzebujemy więcej ćwiczeń",
+    ] as const,
     logged: "Zapisano. Świetna robota \u2014 to kolejna wspólna sesja.",
     noteLabel: "Coś, co warto zapamiętać na następny raz?",
     notePlaceholder: "Lepiej w korytarzu niż w ogrodzie.",
@@ -152,8 +151,7 @@ const copy = {
     whileYouTrainLead: "Hold det kort, og slut af på noget godt.",
     heroAlt: (title: string) => `${title} — en hund og deres menneske øver sammen`,
     notFoundTitle: "Vi kunne ikke finde den lektion.",
-    notFoundBody:
-      "Den kan være flyttet. Kig i biblioteket — det, du ledte efter, ligger nok der.",
+    notFoundBody: "Den kan være flyttet. Kig i biblioteket — det, du ledte efter, ligger nok der.",
     seeEvery: "Se alle lektioner",
   },
   se: {
@@ -202,7 +200,11 @@ const copy = {
     howDidItGo: "Miten meni?",
     tellUsWhere: (name: string) =>
       `Kerro, missä vaiheessa ${name} on tämän kanssa. Tieto on vain sinua varten — se pitää matkanne rehellisenä ja auttaa meitä ehdottamaan seuraavaa askelta.`,
-    feelings: ["Tämä meni tosi hyvin", "Riittävän hyvin tälle päivälle", "Tarvitsemme lisää harjoitusta"] as const,
+    feelings: [
+      "Tämä meni tosi hyvin",
+      "Riittävän hyvin tälle päivälle",
+      "Tarvitsemme lisää harjoitusta",
+    ] as const,
     logged: "Kirjattu. Hyvää työtä — taas yksi yhteinen harjoitus.",
     noteLabel: "Jotain, minkä haluat muistaa ensi kertaa varten?",
     notePlaceholder: "Sujui paremmin eteisessä kuin pihalla.",
@@ -214,8 +216,7 @@ const copy = {
     whileYouTrainLead: "Pidä se lyhyenä ja lopeta hyvään hetkeen.",
     heroAlt: (title: string) => `${title} — koira ja sen ihminen harjoittelevat yhdessä`,
     notFoundTitle: "Emme löytäneet sitä oppituntia.",
-    notFoundBody:
-      "Se on voinut siirtyä. Käy kirjastossa — etsimäsi asia löytyy varmasti sieltä.",
+    notFoundBody: "Se on voinut siirtyä. Käy kirjastossa — etsimäsi asia löytyy varmasti sieltä.",
     seeEvery: "Katso kaikki oppitunnit",
   },
   de: {
@@ -264,7 +265,11 @@ const copy = {
     howDidItGo: "Comment ça s'est passé ?",
     tellUsWhere: (name: string) =>
       `Dites-nous où en est ${name} avec ça. C'est seulement pour vous — ça garde votre parcours honnête et nous aide à suggérer la suite.`,
-    feelings: ["Ça s'est vraiment bien passé", "Assez bien pour aujourd'hui", "On a besoin de plus de pratique"] as const,
+    feelings: [
+      "Ça s'est vraiment bien passé",
+      "Assez bien pour aujourd'hui",
+      "On a besoin de plus de pratique",
+    ] as const,
     logged: "Enregistré. Bien joué — encore une séance ensemble.",
     noteLabel: "Quelque chose à retenir pour la prochaine fois ?",
     notePlaceholder: "Mieux dans le couloir que dans le jardin.",
@@ -295,7 +300,11 @@ const copy = {
     howDidItGo: "Hoe ging het?",
     tellUsWhere: (name: string) =>
       `Vertel ons waar ${name} hiermee staat. Dit is alleen voor jou — het houdt jullie traject eerlijk en helpt ons de volgende stap voor te stellen.`,
-    feelings: ["Dat ging heel goed", "Goed genoeg voor vandaag", "We hebben meer oefening nodig"] as const,
+    feelings: [
+      "Dat ging heel goed",
+      "Goed genoeg voor vandaag",
+      "We hebben meer oefening nodig",
+    ] as const,
     logged: "Vastgelegd. Goed gedaan — weer een sessie samen.",
     noteLabel: "Iets wat je voor de volgende keer wilt onthouden?",
     notePlaceholder: "Beter in de gang dan in de tuin.",
@@ -391,7 +400,10 @@ function LessonPage() {
 
   return (
     <article className="pb-28">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo) }}
+      />
 
       <header className="container-page pt-28 md:pt-36">
         <Link
@@ -533,15 +545,9 @@ function LessonPage() {
                     }}
                   />
                 </div>
-                {logged && (
-                  <p className="mt-4 text-[0.9375rem] text-accent">
-                    {c.logged}
-                  </p>
-                )}
+                {logged && <p className="mt-4 text-[0.9375rem] text-accent">{c.logged}</p>}
                 <label className="mt-8 block">
-                  <span className="text-sm text-muted-foreground">
-                    {c.noteLabel}
-                  </span>
+                  <span className="text-sm text-muted-foreground">{c.noteLabel}</span>
                   <textarea
                     value={note}
                     onChange={(e) => setNote(e.target.value)}
@@ -554,9 +560,7 @@ function LessonPage() {
               </>
             ) : (
               <>
-                <p className="mt-3 leading-relaxed text-muted-foreground">
-                  {c.noDogLead}
-                </p>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{c.noDogLead}</p>
                 <div className="mt-6">
                   <ButtonLink to={withLangPrefix("/train/setup")}>
                     {c.tellUsAboutDog}

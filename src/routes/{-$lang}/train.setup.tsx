@@ -1,6 +1,11 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { BreedPicker, selectionFromDog, selectionToDog, type BreedSelection } from "@/components/dogmatch/breed-picker";
+import {
+  BreedPicker,
+  selectionFromDog,
+  selectionToDog,
+  type BreedSelection,
+} from "@/components/dogmatch/breed-picker";
 import { getTrainingGoals } from "@/data/training/categories";
 import type { AgeStage, GoalId, Level } from "@/data/training/types";
 import type { BreedId } from "@/data/breeds";
@@ -51,19 +56,47 @@ const copy = {
     save: "Save and start training",
     ageStages: [
       { value: "puppy" as const, label: "A puppy", hint: "Up to about six months" },
-      { value: "adolescent" as const, label: "A teenager", hint: "Roughly six months to two years" },
+      {
+        value: "adolescent" as const,
+        label: "A teenager",
+        hint: "Roughly six months to two years",
+      },
       { value: "adult" as const, label: "Grown up", hint: "Somewhere in the middle years" },
       { value: "senior" as const, label: "Getting older", hint: "Slowing down a little" },
     ],
     experiences: [
-      { value: "first-dog" as const, label: "This is my first dog", hint: "We'll keep everything simple" },
-      { value: "some" as const, label: "I've had a dog before", hint: "You know your way around a treat pouch" },
-      { value: "lots" as const, label: "I've trained a fair bit", hint: "Happy to go a bit further" },
+      {
+        value: "first-dog" as const,
+        label: "This is my first dog",
+        hint: "We'll keep everything simple",
+      },
+      {
+        value: "some" as const,
+        label: "I've had a dog before",
+        hint: "You know your way around a treat pouch",
+      },
+      {
+        value: "lots" as const,
+        label: "I've trained a fair bit",
+        hint: "Happy to go a bit further",
+      },
     ],
     levels: [
-      { value: "beginner" as const, label: "We're just starting", hint: "Almost everything is new" },
-      { value: "building" as const, label: "A few things are coming along", hint: "Some days are better than others" },
-      { value: "intermediate" as const, label: "The basics are solid", hint: "Ready for distractions" },
+      {
+        value: "beginner" as const,
+        label: "We're just starting",
+        hint: "Almost everything is new",
+      },
+      {
+        value: "building" as const,
+        label: "A few things are coming along",
+        hint: "Some days are better than others",
+      },
+      {
+        value: "intermediate" as const,
+        label: "The basics are solid",
+        hint: "Ready for distractions",
+      },
       { value: "advanced" as const, label: "We train a lot", hint: "Looking for something more" },
     ],
   },
@@ -88,14 +121,30 @@ const copy = {
       { value: "senior" as const, label: "Blir eldre", hint: "Roer seg litt ned" },
     ],
     experiences: [
-      { value: "first-dog" as const, label: "Dette er min første hund", hint: "Vi holder alt enkelt" },
-      { value: "some" as const, label: "Jeg har hatt hund før", hint: "Du kjenner godteriposen godt" },
+      {
+        value: "first-dog" as const,
+        label: "Dette er min første hund",
+        hint: "Vi holder alt enkelt",
+      },
+      {
+        value: "some" as const,
+        label: "Jeg har hatt hund før",
+        hint: "Du kjenner godteriposen godt",
+      },
       { value: "lots" as const, label: "Jeg har trent en god del", hint: "Gjerne litt lenger" },
     ],
     levels: [
       { value: "beginner" as const, label: "Vi er akkurat i gang", hint: "Nesten alt er nytt" },
-      { value: "building" as const, label: "Noen ting begynner å sitte", hint: "Noen dager er bedre enn andre" },
-      { value: "intermediate" as const, label: "Grunnlaget sitter godt", hint: "Klare for forstyrrelser" },
+      {
+        value: "building" as const,
+        label: "Noen ting begynner å sitte",
+        hint: "Noen dager er bedre enn andre",
+      },
+      {
+        value: "intermediate" as const,
+        label: "Grunnlaget sitter godt",
+        hint: "Klare for forstyrrelser",
+      },
       { value: "advanced" as const, label: "Vi trener mye", hint: "Ser etter noe mer" },
     ],
   },
@@ -115,19 +164,35 @@ const copy = {
     save: "Zapisz i zacznij trening",
     ageStages: [
       { value: "puppy" as const, label: "Szczeniak", hint: "Do około szóstego miesiąca" },
-      { value: "adolescent" as const, label: "Nastolatek", hint: "Mniej więcej od sześciu miesięcy do dwóch lat" },
+      {
+        value: "adolescent" as const,
+        label: "Nastolatek",
+        hint: "Mniej więcej od sześciu miesięcy do dwóch lat",
+      },
       { value: "adult" as const, label: "Dorosły", hint: "Gdzieś w środkowych latach" },
       { value: "senior" as const, label: "Coraz starszy", hint: "Trochę zwalnia tempo" },
     ],
     experiences: [
       { value: "first-dog" as const, label: "To mój pierwszy pies", hint: "Zaczniemy od podstaw" },
-      { value: "some" as const, label: "Miałem już psa wcześniej", hint: "Znasz się na przysmakach" },
+      {
+        value: "some" as const,
+        label: "Miałem już psa wcześniej",
+        hint: "Znasz się na przysmakach",
+      },
       { value: "lots" as const, label: "Trenowałem już sporo", hint: "Chętnie pójdziemy dalej" },
     ],
     levels: [
       { value: "beginner" as const, label: "Dopiero zaczynamy", hint: "Prawie wszystko jest nowe" },
-      { value: "building" as const, label: "Niektóre rzeczy zaczynają działać", hint: "Niektóre dni są lepsze od innych" },
-      { value: "intermediate" as const, label: "Podstawy są solidne", hint: "Gotowi na rozpraszacze" },
+      {
+        value: "building" as const,
+        label: "Niektóre rzeczy zaczynają działać",
+        hint: "Niektóre dni są lepsze od innych",
+      },
+      {
+        value: "intermediate" as const,
+        label: "Podstawy są solidne",
+        hint: "Gotowi na rozpraszacze",
+      },
       { value: "advanced" as const, label: "Trenujemy dużo", hint: "Szukamy czegoś więcej" },
     ],
   },
@@ -152,14 +217,30 @@ const copy = {
       { value: "senior" as const, label: "Bliver ældre", hint: "Falder lidt til ro" },
     ],
     experiences: [
-      { value: "first-dog" as const, label: "Det her er min første hund", hint: "Vi holder det hele enkelt" },
-      { value: "some" as const, label: "Jeg har haft hund før", hint: "Du kender godbidsposen godt" },
+      {
+        value: "first-dog" as const,
+        label: "Det her er min første hund",
+        hint: "Vi holder det hele enkelt",
+      },
+      {
+        value: "some" as const,
+        label: "Jeg har haft hund før",
+        hint: "Du kender godbidsposen godt",
+      },
       { value: "lots" as const, label: "Jeg har trænet en del", hint: "Gerne lidt længere" },
     ],
     levels: [
       { value: "beginner" as const, label: "Vi er lige startet", hint: "Næsten alt er nyt" },
-      { value: "building" as const, label: "Noget begynder at sidde", hint: "Nogle dage er bedre end andre" },
-      { value: "intermediate" as const, label: "Grundlaget sidder godt", hint: "Klar til forstyrrelser" },
+      {
+        value: "building" as const,
+        label: "Noget begynder at sidde",
+        hint: "Nogle dage er bedre end andre",
+      },
+      {
+        value: "intermediate" as const,
+        label: "Grundlaget sidder godt",
+        hint: "Klar til forstyrrelser",
+      },
       { value: "advanced" as const, label: "Vi træner meget", hint: "Leder efter noget mere" },
     ],
   },
@@ -179,19 +260,35 @@ const copy = {
     save: "Spara och börja träna",
     ageStages: [
       { value: "puppy" as const, label: "En valp", hint: "Upp till ungefär sex månader" },
-      { value: "adolescent" as const, label: "En tonåring", hint: "Ungefär sex månader till två år" },
+      {
+        value: "adolescent" as const,
+        label: "En tonåring",
+        hint: "Ungefär sex månader till två år",
+      },
       { value: "adult" as const, label: "Vuxen", hint: "Någonstans i de mellersta åren" },
       { value: "senior" as const, label: "Blir äldre", hint: "Lugnar ner sig lite" },
     ],
     experiences: [
-      { value: "first-dog" as const, label: "Det här är min första hund", hint: "Vi håller allt enkelt" },
+      {
+        value: "first-dog" as const,
+        label: "Det här är min första hund",
+        hint: "Vi håller allt enkelt",
+      },
       { value: "some" as const, label: "Jag har haft hund tidigare", hint: "Du kan din godispåse" },
       { value: "lots" as const, label: "Jag har tränat en hel del", hint: "Gärna lite längre" },
     ],
     levels: [
       { value: "beginner" as const, label: "Vi har precis börjat", hint: "Nästan allt är nytt" },
-      { value: "building" as const, label: "Något börjar sitta", hint: "Vissa dagar är bättre än andra" },
-      { value: "intermediate" as const, label: "Grunderna sitter bra", hint: "Redo för distraktioner" },
+      {
+        value: "building" as const,
+        label: "Något börjar sitta",
+        hint: "Vissa dagar är bättre än andra",
+      },
+      {
+        value: "intermediate" as const,
+        label: "Grunderna sitter bra",
+        hint: "Redo för distraktioner",
+      },
       { value: "advanced" as const, label: "Vi tränar mycket", hint: "Letar efter något mer" },
     ],
   },
@@ -211,19 +308,47 @@ const copy = {
     save: "Tallenna ja aloita koulutus",
     ageStages: [
       { value: "puppy" as const, label: "Pentu", hint: "Noin kuuteen kuukauteen asti" },
-      { value: "adolescent" as const, label: "Murrosikäinen", hint: "Noin kuudesta kuukaudesta kahteen vuoteen" },
+      {
+        value: "adolescent" as const,
+        label: "Murrosikäinen",
+        hint: "Noin kuudesta kuukaudesta kahteen vuoteen",
+      },
       { value: "adult" as const, label: "Aikuinen", hint: "Jossain keskivaiheilla" },
       { value: "senior" as const, label: "Ikääntyvä", hint: "Rauhoittuu hieman" },
     ],
     experiences: [
-      { value: "first-dog" as const, label: "Tämä on ensimmäinen koirani", hint: "Pidämme kaiken yksinkertaisena" },
-      { value: "some" as const, label: "Minulla on ollut koira aiemmin", hint: "Tunnet jo herkkupussin" },
-      { value: "lots" as const, label: "Olen kouluttanut aika paljon", hint: "Voidaan mennä pidemmälle" },
+      {
+        value: "first-dog" as const,
+        label: "Tämä on ensimmäinen koirani",
+        hint: "Pidämme kaiken yksinkertaisena",
+      },
+      {
+        value: "some" as const,
+        label: "Minulla on ollut koira aiemmin",
+        hint: "Tunnet jo herkkupussin",
+      },
+      {
+        value: "lots" as const,
+        label: "Olen kouluttanut aika paljon",
+        hint: "Voidaan mennä pidemmälle",
+      },
     ],
     levels: [
-      { value: "beginner" as const, label: "Olemme vasta aloittamassa", hint: "Melkein kaikki on uutta" },
-      { value: "building" as const, label: "Jotkin asiat alkavat sujua", hint: "Toiset päivät ovat parempia kuin toiset" },
-      { value: "intermediate" as const, label: "Perusteet ovat hallussa", hint: "Valmiina häiriötekijöille" },
+      {
+        value: "beginner" as const,
+        label: "Olemme vasta aloittamassa",
+        hint: "Melkein kaikki on uutta",
+      },
+      {
+        value: "building" as const,
+        label: "Jotkin asiat alkavat sujua",
+        hint: "Toiset päivät ovat parempia kuin toiset",
+      },
+      {
+        value: "intermediate" as const,
+        label: "Perusteet ovat hallussa",
+        hint: "Valmiina häiriötekijöille",
+      },
       { value: "advanced" as const, label: "Koulutamme paljon", hint: "Etsimme jotain lisää" },
     ],
   },
@@ -243,19 +368,47 @@ const copy = {
     save: "Speichern und Training starten",
     ageStages: [
       { value: "puppy" as const, label: "Ein Welpe", hint: "Bis etwa sechs Monate" },
-      { value: "adolescent" as const, label: "Ein Teenager", hint: "Etwa sechs Monate bis zwei Jahre" },
+      {
+        value: "adolescent" as const,
+        label: "Ein Teenager",
+        hint: "Etwa sechs Monate bis zwei Jahre",
+      },
       { value: "adult" as const, label: "Erwachsen", hint: "Irgendwo in den mittleren Jahren" },
       { value: "senior" as const, label: "Wird älter", hint: "Wird etwas ruhiger" },
     ],
     experiences: [
-      { value: "first-dog" as const, label: "Das ist mein erster Hund", hint: "Wir halten alles einfach" },
-      { value: "some" as const, label: "Ich hatte schon einen Hund", hint: "Du kennst dich mit dem Leckerlibeutel aus" },
-      { value: "lots" as const, label: "Ich habe schon einiges trainiert", hint: "Gerne auch etwas anspruchsvoller" },
+      {
+        value: "first-dog" as const,
+        label: "Das ist mein erster Hund",
+        hint: "Wir halten alles einfach",
+      },
+      {
+        value: "some" as const,
+        label: "Ich hatte schon einen Hund",
+        hint: "Du kennst dich mit dem Leckerlibeutel aus",
+      },
+      {
+        value: "lots" as const,
+        label: "Ich habe schon einiges trainiert",
+        hint: "Gerne auch etwas anspruchsvoller",
+      },
     ],
     levels: [
-      { value: "beginner" as const, label: "Wir fangen gerade erst an", hint: "Fast alles ist neu" },
-      { value: "building" as const, label: "Einiges klappt schon", hint: "Manche Tage sind besser als andere" },
-      { value: "intermediate" as const, label: "Die Grundlagen sitzen gut", hint: "Bereit für Ablenkungen" },
+      {
+        value: "beginner" as const,
+        label: "Wir fangen gerade erst an",
+        hint: "Fast alles ist neu",
+      },
+      {
+        value: "building" as const,
+        label: "Einiges klappt schon",
+        hint: "Manche Tage sind besser als andere",
+      },
+      {
+        value: "intermediate" as const,
+        label: "Die Grundlagen sitzen gut",
+        hint: "Bereit für Ablenkungen",
+      },
       { value: "advanced" as const, label: "Wir trainieren viel", hint: "Wir suchen nach mehr" },
     ],
   },
@@ -280,15 +433,43 @@ const copy = {
       { value: "senior" as const, label: "Qui vieillit", hint: "Ralentit un peu" },
     ],
     experiences: [
-      { value: "first-dog" as const, label: "C'est mon premier chien", hint: "On garde tout simple" },
-      { value: "some" as const, label: "J'ai déjà eu un chien", hint: "Vous savez manier la pochette à friandises" },
-      { value: "lots" as const, label: "J'ai déjà pas mal entraîné", hint: "Prêts à aller un peu plus loin" },
+      {
+        value: "first-dog" as const,
+        label: "C'est mon premier chien",
+        hint: "On garde tout simple",
+      },
+      {
+        value: "some" as const,
+        label: "J'ai déjà eu un chien",
+        hint: "Vous savez manier la pochette à friandises",
+      },
+      {
+        value: "lots" as const,
+        label: "J'ai déjà pas mal entraîné",
+        hint: "Prêts à aller un peu plus loin",
+      },
     ],
     levels: [
-      { value: "beginner" as const, label: "On démarre tout juste", hint: "Presque tout est nouveau" },
-      { value: "building" as const, label: "Quelques choses commencent à venir", hint: "Certains jours sont meilleurs que d'autres" },
-      { value: "intermediate" as const, label: "Les bases sont solides", hint: "Prêts pour les distractions" },
-      { value: "advanced" as const, label: "On s'entraîne beaucoup", hint: "On cherche autre chose" },
+      {
+        value: "beginner" as const,
+        label: "On démarre tout juste",
+        hint: "Presque tout est nouveau",
+      },
+      {
+        value: "building" as const,
+        label: "Quelques choses commencent à venir",
+        hint: "Certains jours sont meilleurs que d'autres",
+      },
+      {
+        value: "intermediate" as const,
+        label: "Les bases sont solides",
+        hint: "Prêts pour les distractions",
+      },
+      {
+        value: "advanced" as const,
+        label: "On s'entraîne beaucoup",
+        hint: "On cherche autre chose",
+      },
     ],
   },
   nl: {
@@ -307,18 +488,38 @@ const copy = {
     save: "Opslaan en beginnen met trainen",
     ageStages: [
       { value: "puppy" as const, label: "Een puppy", hint: "Tot ongeveer zes maanden" },
-      { value: "adolescent" as const, label: "Een puber", hint: "Ongeveer zes maanden tot twee jaar" },
+      {
+        value: "adolescent" as const,
+        label: "Een puber",
+        hint: "Ongeveer zes maanden tot twee jaar",
+      },
       { value: "adult" as const, label: "Volwassen", hint: "Ergens in de middenjaren" },
       { value: "senior" as const, label: "Wordt ouder", hint: "Wordt wat rustiger" },
     ],
     experiences: [
-      { value: "first-dog" as const, label: "Dit is mijn eerste hond", hint: "We houden alles simpel" },
-      { value: "some" as const, label: "Ik heb eerder een hond gehad", hint: "Je kent de snoepzak al" },
-      { value: "lots" as const, label: "Ik heb al aardig wat getraind", hint: "Graag wat verder gaan" },
+      {
+        value: "first-dog" as const,
+        label: "Dit is mijn eerste hond",
+        hint: "We houden alles simpel",
+      },
+      {
+        value: "some" as const,
+        label: "Ik heb eerder een hond gehad",
+        hint: "Je kent de snoepzak al",
+      },
+      {
+        value: "lots" as const,
+        label: "Ik heb al aardig wat getraind",
+        hint: "Graag wat verder gaan",
+      },
     ],
     levels: [
       { value: "beginner" as const, label: "We beginnen net", hint: "Bijna alles is nieuw" },
-      { value: "building" as const, label: "Sommige dingen beginnen te lukken", hint: "Sommige dagen gaan beter dan andere" },
+      {
+        value: "building" as const,
+        label: "Sommige dingen beginnen te lukken",
+        hint: "Sommige dagen gaan beter dan andere",
+      },
       { value: "intermediate" as const, label: "De basis zit goed", hint: "Klaar voor afleiding" },
       { value: "advanced" as const, label: "We trainen veel", hint: "Op zoek naar meer" },
     ],
@@ -392,7 +593,11 @@ const extraCopy = {
       { value: "5", label: "Noin 5 minuuttia", hint: "Kiireiset päivät, lyhyesti ja ytimekkäästi" },
       { value: "10", label: "Noin 10 minuuttia", hint: "Yksi kunnon pieni harjoitushetki" },
       { value: "20", label: "Noin 20 minuuttia", hint: "Kaksi tai kolme lyhyempää hetkeä" },
-      { value: "30", label: "30 minuuttia tai enemmän", hint: "Runsaasti tilaa leikkiä ja harjoitella" },
+      {
+        value: "30",
+        label: "30 minuuttia tai enemmän",
+        hint: "Runsaasti tilaa leikkiä ja harjoitella",
+      },
     ],
   },
   de: {
@@ -421,7 +626,8 @@ const extraCopy = {
       { value: "large" as const, label: "Grand", hint: "25 kg et plus" },
     ],
     timeLabel: "Combien de temps avez-vous honnêtement chaque jour en temps normal ?",
-    timeHint: "Soyez réaliste plutôt qu'optimiste — nous organiserons la semaine en fonction de cela.",
+    timeHint:
+      "Soyez réaliste plutôt qu'optimiste — nous organiserons la semaine en fonction de cela.",
     times: [
       { value: "5", label: "Environ 5 minutes", hint: "Journées chargées, court et efficace" },
       { value: "10", label: "Environ 10 minutes", hint: "Une vraie petite séance" },
@@ -536,7 +742,11 @@ function SetupPage() {
         <BreedPicker value={breedSel} onChange={setBreedSel} Field={Field} />
 
         <Field label={c.ageLabel}>
-          <Choices options={c.ageStages} value={ageStage} onChange={(v) => setAgeStage(v as AgeStage)} />
+          <Choices
+            options={c.ageStages}
+            value={ageStage}
+            onChange={(v) => setAgeStage(v as AgeStage)}
+          />
         </Field>
 
         <Field label={x.sizeLabel} hint={x.sizeHint}>

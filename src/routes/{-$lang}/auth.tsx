@@ -222,7 +222,8 @@ const copy = {
     signInInstead: "Se connecter à la place",
     signUpNotice: "Presque terminé — vérifiez votre boîte mail et confirmez votre adresse e-mail.",
     genericError: "Une erreur s'est produite. Veuillez réessayer.",
-    googleError: "Nous n'avons pas pu vous connecter avec Google pour l'instant. Veuillez réessayer.",
+    googleError:
+      "Nous n'avons pas pu vous connecter avec Google pour l'instant. Veuillez réessayer.",
   },
   nl: {
     eyebrow: "Jouw account",

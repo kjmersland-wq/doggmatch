@@ -352,12 +352,20 @@ function NutritionPage() {
           {nutritionSections().map((s) => (
             <article key={s.title} className="rounded-[1.5rem] border border-border bg-card p-7">
               <h3 className="font-display text-xl leading-tight tracking-tight">{s.title}</h3>
-              <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{s.body}</p>
+              <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                {s.body}
+              </p>
               {"points" in s && s.points && (
                 <ul className="mt-4 space-y-2">
                   {s.points.map((p) => (
-                    <li key={p} className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
-                      <span aria-hidden="true" className="mt-[0.6rem] h-1 w-3 shrink-0 rounded-full bg-accent" />
+                    <li
+                      key={p}
+                      className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted-foreground"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-[0.6rem] h-1 w-3 shrink-0 rounded-full bg-accent"
+                      />
                       {p}
                     </li>
                   ))}
@@ -373,7 +381,9 @@ function NutritionPage() {
           <VetNote>{c.vetNote}</VetNote>
           <div className="rounded-[1.5rem] border border-border bg-surface p-7">
             <h3 className="font-display text-xl tracking-tight">{c.watchShapeTitle}</h3>
-            <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{c.watchShapeBody}</p>
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+              {c.watchShapeBody}
+            </p>
             <ButtonLink to={withLangPrefix("/my-dog/weight")} tone="outline" className="mt-6">
               {c.weightCta}
               <Arrow />

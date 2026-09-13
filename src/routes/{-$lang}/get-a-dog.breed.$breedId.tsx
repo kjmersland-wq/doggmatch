@@ -20,7 +20,9 @@ export const Route = createFileRoute("/{-$lang}/get-a-dog/breed/$breedId")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Unavailable | DoggMatch" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [{ title: "Unavailable | DoggMatch" }, { name: "robots", content: "noindex" }],
+      };
     }
     const name = breedContent()[loaderData.breedId].displayName;
     const title = `Getting ready for a ${name} — what to know before you commit | DoggMatch`;
@@ -50,7 +52,6 @@ export const Route = createFileRoute("/{-$lang}/get-a-dog/breed/$breedId")({
   },
   component: BreedPrepPage,
 });
-
 
 const copy = {
   en: {
@@ -273,9 +274,7 @@ function BreedPrepPage() {
             <h1 className="display-xl mt-6">{c.heading(content.displayName)}</h1>
             <ShareBar className="mt-6" />
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{content.summary}</p>
-            <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted-foreground">
-              {c.intro}
-            </p>
+            <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted-foreground">{c.intro}</p>
           </div>
           <div className="overflow-hidden rounded-[2rem] bg-surface">
             <img
@@ -310,14 +309,12 @@ function BreedPrepPage() {
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
             <div>
               <SectionHead eyebrow={c.moneyEyebrow} title={c.moneyTitle(content.displayName)} />
-              <p className="mt-6 font-display text-4xl tracking-tight text-accent">{costRange(breed)}</p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                {c.moneyBody}
+              <p className="mt-6 font-display text-4xl tracking-tight text-accent">
+                {costRange(breed)}
               </p>
+              <p className="mt-3 text-sm text-muted-foreground">{c.moneyBody}</p>
             </div>
-            <Notice title={c.noticeTitle}>
-              {c.noticeBody}
-            </Notice>
+            <Notice title={c.noticeTitle}>{c.noticeBody}</Notice>
           </div>
 
           <div className="mt-14 flex flex-wrap gap-3">

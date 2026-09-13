@@ -3,8 +3,22 @@ import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { useCopy } from "@/i18n";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
-import { CardGrid, Notice, PointList, SectionHead, StepList } from "@/components/dogmatch/journey/parts";
-import { getCarSafety, getCarSickness, getCarSteps, getLongJourney, getNervousDog, getPublicTransport, getAirTravel } from "@/data/travel/content";
+import {
+  CardGrid,
+  Notice,
+  PointList,
+  SectionHead,
+  StepList,
+} from "@/components/dogmatch/journey/parts";
+import {
+  getCarSafety,
+  getCarSickness,
+  getCarSteps,
+  getLongJourney,
+  getNervousDog,
+  getPublicTransport,
+  getAirTravel,
+} from "@/data/travel/content";
 import carImage from "@/assets/travel-car.jpg";
 import safetyIllus from "@/assets/illus-car-safety.jpg";
 import { seoLinks } from "@/lib/seo";
@@ -30,7 +44,8 @@ const copy = {
     safeUnsafeTitle: "How your dog should travel.",
     safe: "Safe",
     notSafe: "Not safe",
-    safetyAlt: "An illustration comparing a dog secured in a crate with an unsecured dog on a car seat",
+    safetyAlt:
+      "An illustration comparing a dog secured in a crate with an unsecured dog on a car seat",
     hotCarEyebrow: "Please read this one",
     hotCarTitle: "Never leave your dog in a parked car in warm weather.",
     hotCarBody1:
@@ -49,7 +64,8 @@ const copy = {
     longJourneysTitle: "Breaks, water and patience.",
     otherEyebrow: "Trains, buses, boats and planes",
     otherTitle: "Everything else that moves.",
-    otherBody: "Every operator sets its own rules, and they change. Always confirm directly with them before you book anything.",
+    otherBody:
+      "Every operator sets its own rules, and they change. Always confirm directly with them before you book anything.",
     publicTransport: "Public transport",
     flying: "Flying",
     flyingNotice:
@@ -66,7 +82,8 @@ const copy = {
     safeUnsafeTitle: "Hvordan hunden din bør reise.",
     safe: "Trygt",
     notSafe: "Ikke trygt",
-    safetyAlt: "En illustrasjon som sammenligner en hund sikret i et bur med en usikret hund på bilsetet",
+    safetyAlt:
+      "En illustrasjon som sammenligner en hund sikret i et bur med en usikret hund på bilsetet",
     hotCarEyebrow: "Vennligst les denne",
     hotCarTitle: "Aldri la hunden din bli igjen i en parkert bil i varmt vær.",
     hotCarBody1:
@@ -85,7 +102,8 @@ const copy = {
     longJourneysTitle: "Pauser, vann og tålmodighet.",
     otherEyebrow: "Tog, buss, båt og fly",
     otherTitle: "Alt annet som beveger seg.",
-    otherBody: "Hver operatør har sine egne regler, og de endrer seg. Bekreft alltid direkte med dem før dere bestiller noe.",
+    otherBody:
+      "Hver operatør har sine egne regler, og de endrer seg. Bekreft alltid direkte med dem før dere bestiller noe.",
     publicTransport: "Offentlig transport",
     flying: "Fly",
     flyingNotice:
@@ -102,7 +120,8 @@ const copy = {
     safeUnsafeTitle: "Jak powinien podróżować twój pies.",
     safe: "Bezpiecznie",
     notSafe: "Niebezpiecznie",
-    safetyAlt: "Ilustracja porównująca psa zabezpieczonego w transporterze z niezabezpieczonym psem na siedzeniu samochodu",
+    safetyAlt:
+      "Ilustracja porównująca psa zabezpieczonego w transporterze z niezabezpieczonym psem na siedzeniu samochodu",
     hotCarEyebrow: "Koniecznie to przeczytaj",
     hotCarTitle: "Nigdy nie zostawiaj psa w zaparkowanym samochodzie w ciepłą pogodę.",
     hotCarBody1:
@@ -121,7 +140,8 @@ const copy = {
     longJourneysTitle: "Przerwy, woda i cierpliwość.",
     otherEyebrow: "Pociągi, autobusy, statki i samoloty",
     otherTitle: "Wszystko inne, co się porusza.",
-    otherBody: "Każdy przewoźnik ma własne zasady i one się zmieniają. Zawsze potwierdź je bezpośrednio przed rezerwacją.",
+    otherBody:
+      "Każdy przewoźnik ma własne zasady i one się zmieniają. Zawsze potwierdź je bezpośrednio przed rezerwacją.",
     publicTransport: "Transport publiczny",
     flying: "Podróż samolotem",
     flyingNotice:
@@ -138,7 +158,8 @@ const copy = {
     safeUnsafeTitle: "Sådan bør din hund rejse.",
     safe: "Sikkert",
     notSafe: "Ikke sikkert",
-    safetyAlt: "En illustration der sammenligner en hund sikret i en boks med en usikret hund på et bilsæde",
+    safetyAlt:
+      "En illustration der sammenligner en hund sikret i en boks med en usikret hund på et bilsæde",
     hotCarEyebrow: "Læs venligst denne",
     hotCarTitle: "Efterlad aldrig din hund i en parkeret bil i varmt vejr.",
     hotCarBody1:
@@ -157,7 +178,8 @@ const copy = {
     longJourneysTitle: "Pauser, vand og tålmodighed.",
     otherEyebrow: "Tog, busser, både og fly",
     otherTitle: "Alt andet der bevæger sig.",
-    otherBody: "Hver operatør har sine egne regler, og de ændrer sig. Bekræft altid direkte med dem, før du booker noget.",
+    otherBody:
+      "Hver operatør har sine egne regler, og de ændrer sig. Bekræft altid direkte med dem, før du booker noget.",
     publicTransport: "Offentlig transport",
     flying: "At flyve",
     flyingNotice:
@@ -174,7 +196,8 @@ const copy = {
     safeUnsafeTitle: "Så här bör din hund resa.",
     safe: "Säkert",
     notSafe: "Inte säkert",
-    safetyAlt: "En illustration som jämför en hund säkrad i en bur med en osäkrad hund i ett bilsäte",
+    safetyAlt:
+      "En illustration som jämför en hund säkrad i en bur med en osäkrad hund i ett bilsäte",
     hotCarEyebrow: "Läs den här",
     hotCarTitle: "Lämna aldrig din hund i en parkerad bil i varmt väder.",
     hotCarBody1:
@@ -193,7 +216,8 @@ const copy = {
     longJourneysTitle: "Pauser, vatten och tålamod.",
     otherEyebrow: "Tåg, bussar, båtar och flyg",
     otherTitle: "Allt annat som rör sig.",
-    otherBody: "Varje operatör har sina egna regler, och de ändras. Bekräfta alltid direkt med dem innan du bokar något.",
+    otherBody:
+      "Varje operatör har sina egna regler, och de ändras. Bekräfta alltid direkt med dem innan du bokar något.",
     publicTransport: "Kollektivtrafik",
     flying: "Att flyga",
     flyingNotice:
@@ -210,7 +234,8 @@ const copy = {
     safeUnsafeTitle: "Näin koirasi tulisi matkustaa.",
     safe: "Turvallista",
     notSafe: "Ei turvallista",
-    safetyAlt: "Kuva, joka vertaa häkkiin kiinnitettyä koiraa kiinnittämättömään koiraan autonistuimella",
+    safetyAlt:
+      "Kuva, joka vertaa häkkiin kiinnitettyä koiraa kiinnittämättömään koiraan autonistuimella",
     hotCarEyebrow: "Lue tämä ehdottomasti",
     hotCarTitle: "Älä koskaan jätä koiraasi pysäköityyn autoon lämpimällä säällä.",
     hotCarBody1:
@@ -229,7 +254,8 @@ const copy = {
     longJourneysTitle: "Tauot, vesi ja kärsivällisyys.",
     otherEyebrow: "Junat, bussit, laivat ja lentokoneet",
     otherTitle: "Kaikki muu, mikä liikkuu.",
-    otherBody: "Jokaisella liikennöitsijällä on omat sääntönsä, ja ne muuttuvat. Varmista aina suoraan heiltä ennen varaamista.",
+    otherBody:
+      "Jokaisella liikennöitsijällä on omat sääntönsä, ja ne muuttuvat. Varmista aina suoraan heiltä ennen varaamista.",
     publicTransport: "Julkinen liikenne",
     flying: "Lentäminen",
     flyingNotice:
@@ -246,7 +272,8 @@ const copy = {
     safeUnsafeTitle: "So sollte dein Hund reisen.",
     safe: "Sicher",
     notSafe: "Nicht sicher",
-    safetyAlt: "Eine Illustration, die einen im Käfig gesicherten Hund mit einem ungesicherten Hund auf dem Autositz vergleicht",
+    safetyAlt:
+      "Eine Illustration, die einen im Käfig gesicherten Hund mit einem ungesicherten Hund auf dem Autositz vergleicht",
     hotCarEyebrow: "Bitte unbedingt lesen",
     hotCarTitle: "Lass deinen Hund bei warmem Wetter nie in einem geparkten Auto.",
     hotCarBody1:
@@ -265,7 +292,8 @@ const copy = {
     longJourneysTitle: "Pausen, Wasser und Geduld.",
     otherEyebrow: "Zug, Bus, Boot und Flugzeug",
     otherTitle: "Alles andere, was sich bewegt.",
-    otherBody: "Jeder Anbieter hat eigene Regeln, und sie ändern sich. Bestätige immer direkt bei ihm, bevor du etwas buchst.",
+    otherBody:
+      "Jeder Anbieter hat eigene Regeln, und sie ändern sich. Bestätige immer direkt bei ihm, bevor du etwas buchst.",
     publicTransport: "Öffentliche Verkehrsmittel",
     flying: "Fliegen",
     flyingNotice:
@@ -282,7 +310,8 @@ const copy = {
     safeUnsafeTitle: "Comment votre chien devrait voyager.",
     safe: "Sûr",
     notSafe: "Pas sûr",
-    safetyAlt: "Une illustration comparant un chien attaché dans une cage à un chien non attaché sur un siège de voiture",
+    safetyAlt:
+      "Une illustration comparant un chien attaché dans une cage à un chien non attaché sur un siège de voiture",
     hotCarEyebrow: "Merci de lire ceci",
     hotCarTitle: "Ne laissez jamais votre chien dans une voiture garée par temps chaud.",
     hotCarBody1:
@@ -301,7 +330,8 @@ const copy = {
     longJourneysTitle: "Pauses, eau et patience.",
     otherEyebrow: "Trains, bus, bateaux et avions",
     otherTitle: "Tout ce qui bouge, en fait.",
-    otherBody: "Chaque opérateur fixe ses propres règles, et elles changent. Confirmez toujours directement auprès de lui avant de réserver quoi que ce soit.",
+    otherBody:
+      "Chaque opérateur fixe ses propres règles, et elles changent. Confirmez toujours directement auprès de lui avant de réserver quoi que ce soit.",
     publicTransport: "Transports en commun",
     flying: "Prendre l'avion",
     flyingNotice:
@@ -318,7 +348,8 @@ const copy = {
     safeUnsafeTitle: "Zo zou je hond moeten reizen.",
     safe: "Veilig",
     notSafe: "Niet veilig",
-    safetyAlt: "Een illustratie die een hond vastgezet in een bench vergelijkt met een niet-vastgezette hond op een autostoel",
+    safetyAlt:
+      "Een illustratie die een hond vastgezet in een bench vergelijkt met een niet-vastgezette hond op een autostoel",
     hotCarEyebrow: "Lees dit alsjeblieft",
     hotCarTitle: "Laat je hond nooit achter in een geparkeerde auto bij warm weer.",
     hotCarBody1:
@@ -337,7 +368,8 @@ const copy = {
     longJourneysTitle: "Pauzes, water en geduld.",
     otherEyebrow: "Trein, bus, boot en vliegtuig",
     otherTitle: "Al het andere dat beweegt.",
-    otherBody: "Elke vervoerder heeft zijn eigen regels, en die veranderen. Bevestig altijd rechtstreeks bij hen voordat je iets boekt.",
+    otherBody:
+      "Elke vervoerder heeft zijn eigen regels, en die veranderen. Bevestig altijd rechtstreeks bij hen voordat je iets boekt.",
     publicTransport: "Openbaar vervoer",
     flying: "Vliegen",
     flyingNotice:
@@ -362,7 +394,14 @@ function CarPage() {
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
           </div>
           <div className="overflow-hidden rounded-[2rem] bg-surface">
-            <img src={carImage} alt="A dog secured in a travel crate in the boot of an estate car" width={1600} height={1100} fetchPriority="high" className="aspect-[4/3] w-full object-cover" />
+            <img
+              src={carImage}
+              alt="A dog secured in a travel crate in the boot of an estate car"
+              width={1600}
+              height={1100}
+              fetchPriority="high"
+              className="aspect-[4/3] w-full object-cover"
+            />
           </div>
         </div>
       </section>
@@ -389,7 +428,14 @@ function CarPage() {
               </div>
             </div>
             <div className="overflow-hidden rounded-[1.5rem]">
-              <img src={safetyIllus} alt={c.safetyAlt} width={1200} height={1200} loading="lazy" className="aspect-square w-full object-cover" />
+              <img
+                src={safetyIllus}
+                alt={c.safetyAlt}
+                width={1200}
+                height={1200}
+                loading="lazy"
+                className="aspect-square w-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -456,11 +502,7 @@ function CarPage() {
       {/* ----------------------------------------------- Other transport */}
       <Section className="pt-0">
         <div className="container-page">
-          <SectionHead
-            eyebrow={c.otherEyebrow}
-            title={c.otherTitle}
-            body={c.otherBody}
-          />
+          <SectionHead eyebrow={c.otherEyebrow} title={c.otherTitle} body={c.otherBody} />
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
             <div>
               <p className="eyebrow">{c.publicTransport}</p>

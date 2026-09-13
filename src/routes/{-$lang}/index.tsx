@@ -637,7 +637,8 @@ function useParallax() {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const y = Math.min(window.scrollY, 600);
-        if (ref.current) ref.current.style.transform = `translate3d(0, ${y * 0.06}px, 0) scale(1.04)`;
+        if (ref.current)
+          ref.current.style.transform = `translate3d(0, ${y * 0.06}px, 0) scale(1.04)`;
       });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -730,20 +731,27 @@ function HomePage() {
       <LanguageShare c={c} />
 
       {/* ---------------------------------------------------- Value strip */}
-      <section id="why-doggmatch" aria-label={c.anchors["why-doggmatch"]} className="container-page mt-16 md:mt-20">
+      <section
+        id="why-doggmatch"
+        aria-label={c.anchors["why-doggmatch"]}
+        className="container-page mt-16 md:mt-20"
+      >
         {locale === "en" ? (
           <div>
             <Eyebrow>Why DoggMatch</Eyebrow>
             <h2 className="display-lg mt-6 max-w-2xl text-balance">What makes this different</h2>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Choosing a dog is too important for a cheerful score with no explanation. We try to make the whole decision clearer.
+              Choosing a dog is too important for a cheerful score with no explanation. We try to
+              make the whole decision clearer.
             </p>
             <dl className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-5">
               {englishDifferencePoints.map((item) => (
                 <div key={item.title} className="bg-background p-7">
                   <Check aria-hidden="true" className="size-5 text-accent" />
                   <dt className="mt-5 font-display text-lg tracking-tight">{item.title}</dt>
-                  <dd className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.body}</dd>
+                  <dd className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {item.body}
+                  </dd>
                 </div>
               ))}
             </dl>
@@ -880,15 +888,14 @@ function HomePage() {
               ))}
             </div>
             <div className="mt-4 divide-y divide-border">
-              {(["energy", "trainability", "shedding", "apartmentSuitability"] as const).map((key) => (
-                <div key={key} className="grid grid-cols-2 gap-4">
-                  <TraitMeter
-                    label={traits[key]}
-                    value={breeds[0]!.traits[key]}
-                  />
-                  <TraitMeter label="" value={breeds[1]!.traits[key]} />
-                </div>
-              ))}
+              {(["energy", "trainability", "shedding", "apartmentSuitability"] as const).map(
+                (key) => (
+                  <div key={key} className="grid grid-cols-2 gap-4">
+                    <TraitMeter label={traits[key]} value={breeds[0]!.traits[key]} />
+                    <TraitMeter label="" value={breeds[1]!.traits[key]} />
+                  </div>
+                ),
+              )}
             </div>
           </div>
         </div>
@@ -924,7 +931,9 @@ function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/60 to-ink/20" />
             <div className="absolute inset-x-0 bottom-0 p-8 md:p-14">
               <p className="eyebrow text-ivory/75">{t.home.lifeEyebrow}</p>
-              <h2 className="display-lg mt-4 max-w-xl text-ivory drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">{t.home.lifeTitle}</h2>
+              <h2 className="display-lg mt-4 max-w-xl text-ivory drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
+                {t.home.lifeTitle}
+              </h2>
               <p className="mt-4 max-w-lg leading-relaxed text-ivory/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">
                 {t.home.lifeBody}
               </p>
@@ -993,7 +1002,8 @@ const SHARE_LANGS = [
 const sharePath = (code: string) => (code === "en" ? "/" : `/${code}`);
 
 /** BCP-47 language tag for a share-link's `hreflang` — most locale codes double as the tag, but dk/se are market codes over the real language codes da/sv. */
-const shareHrefLang = (code: string) => (code === "no" ? "nb" : code === "dk" ? "da" : code === "se" ? "sv" : code);
+const shareHrefLang = (code: string) =>
+  code === "no" ? "nb" : code === "dk" ? "da" : code === "se" ? "sv" : code;
 
 function LanguageShare({ c }: { c: (typeof localCopy)["en"] }) {
   const { locale } = useLocale();

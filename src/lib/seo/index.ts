@@ -18,9 +18,10 @@ export type Locale = "en" | "no" | "pl" | "dk" | "se" | "fi" | "de" | "fr" | "nl
 const LOCALES: Locale[] = ["en", "no", "pl", "dk", "se", "fi", "de", "fr", "nl"];
 
 function cards(suffix: string): Record<Locale, string> {
-  return Object.fromEntries(
-    LOCALES.map((l) => [l, `${SITE_URL}/og-${l}${suffix}.jpg`]),
-  ) as Record<Locale, string>;
+  return Object.fromEntries(LOCALES.map((l) => [l, `${SITE_URL}/og-${l}${suffix}.jpg`])) as Record<
+    Locale,
+    string
+  >;
 }
 
 /** 1200×630 — Facebook, LinkedIn, X, WhatsApp link previews, Messenger, Slack. */
@@ -219,7 +220,17 @@ export function ogLocaleTag(locale: Locale): string {
 export function localizedHead(
   ctx: HeadCtx,
   path: string,
-  copy: { en: SeoCopy; no?: SeoCopy; pl?: SeoCopy; dk?: SeoCopy; se?: SeoCopy; fi?: SeoCopy; de?: SeoCopy; fr?: SeoCopy; nl?: SeoCopy },
+  copy: {
+    en: SeoCopy;
+    no?: SeoCopy;
+    pl?: SeoCopy;
+    dk?: SeoCopy;
+    se?: SeoCopy;
+    fi?: SeoCopy;
+    de?: SeoCopy;
+    fr?: SeoCopy;
+    nl?: SeoCopy;
+  },
   options?: { image?: string; type?: string },
 ) {
   const locale = headLocale(ctx);

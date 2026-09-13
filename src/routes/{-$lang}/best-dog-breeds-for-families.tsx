@@ -289,7 +289,7 @@ const copy = {
     rules: [
       "Forstyr aldrig en hund, der spiser, sover eller ligger i sin seng.",
       "En voksen er altid i rummet, når små børn og hunde er sammen.",
-      "Børn lærer at læse hunden — et bortvendt hoved eller et gab betyder \"giv mig plads\".",
+      'Børn lærer at læse hunden — et bortvendt hoved eller et gab betyder "giv mig plads".',
     ],
     listTitle: "Vores familieliste",
     listIntro:
@@ -324,7 +324,7 @@ const copy = {
     rules: [
       "Stör aldrig en hund som äter, sover eller ligger i sin bädd.",
       "En vuxen är alltid i rummet när små barn och hundar är tillsammans.",
-      "Barn lär sig läsa hunden — ett bortvänt huvud eller en gäspning betyder \"ge mig utrymme\".",
+      'Barn lär sig läsa hunden — ett bortvänt huvud eller en gäspning betyder "ge mig utrymme".',
     ],
     listTitle: "Vår familjelista",
     listIntro:
@@ -359,7 +359,7 @@ const copy = {
     rules: [
       "Älä koskaan häiritse koiraa, joka syö, nukkuu tai on omalla petipaikallaan.",
       "Aikuinen on aina huoneessa, kun pienet lapset ja koirat ovat yhdessä.",
-      "Lapset oppivat lukemaan koiraa — poiskäännetty pää tai haukottelu tarkoittaa \"anna minulle tilaa\".",
+      'Lapset oppivat lukemaan koiraa — poiskäännetty pää tai haukottelu tarkoittaa "anna minulle tilaa".',
     ],
     listTitle: "Perhelistamme",
     listIntro:
@@ -385,18 +385,14 @@ const familyBreeds = breeds
   .filter((b) => b.traits.goodWithChildren >= 4)
   .sort(
     (a, b) =>
-      b.traits.goodWithChildren + b.traits.firstTimeSuitability -
+      b.traits.goodWithChildren +
+      b.traits.firstTimeSuitability -
       (a.traits.goodWithChildren + a.traits.firstTimeSuitability),
   )
   .slice(0, 8);
 
 function LevelDot({ level, label }: { level: number; label: string }) {
-  const tone =
-    level >= 4
-      ? "bg-accent"
-      : level === 3
-        ? "bg-amber-500"
-        : "bg-muted-foreground/40";
+  const tone = level >= 4 ? "bg-accent" : level === 3 ? "bg-amber-500" : "bg-muted-foreground/40";
   return (
     <span className="inline-flex items-center gap-1.5" title={label}>
       <span className={`h-2.5 w-2.5 rounded-full ${tone}`} aria-hidden="true" />
@@ -408,7 +404,6 @@ function LevelDot({ level, label }: { level: number; label: string }) {
 function FamilyBreedsPage() {
   const c = useCopy(copy);
   const content = breedContent();
-
 
   return (
     <article className="mx-auto max-w-3xl px-5 py-16 sm:py-24">
@@ -428,7 +423,10 @@ function FamilyBreedsPage() {
         <ul className="mt-5 space-y-3">
           {c.whatMatters.map((point) => (
             <li key={point} className="flex gap-3 text-muted-foreground leading-relaxed">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+              <span
+                className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                aria-hidden="true"
+              />
               {point}
             </li>
           ))}
@@ -436,13 +434,14 @@ function FamilyBreedsPage() {
       </section>
 
       <section className="mt-14 rounded-3xl border border-border bg-surface p-7 sm:p-9">
-        <h2 className="font-display text-2xl font-semibold text-foreground">
-          {c.rulesTitle}
-        </h2>
+        <h2 className="font-display text-2xl font-semibold text-foreground">{c.rulesTitle}</h2>
         <ul className="mt-5 space-y-3">
           {c.rules.map((rule) => (
             <li key={rule} className="flex gap-3 text-muted-foreground leading-relaxed">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+              <span
+                className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                aria-hidden="true"
+              />
               {rule}
             </li>
           ))}
@@ -450,9 +449,7 @@ function FamilyBreedsPage() {
       </section>
 
       <section className="mt-14">
-        <h2 className="font-display text-2xl font-semibold text-foreground">
-          {c.listTitle}
-        </h2>
+        <h2 className="font-display text-2xl font-semibold text-foreground">{c.listTitle}</h2>
         <p className="mt-4 text-muted-foreground leading-relaxed">{c.listIntro}</p>
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
           {familyBreeds.map((breed) => {

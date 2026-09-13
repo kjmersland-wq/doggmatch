@@ -46,7 +46,8 @@ const copy = {
   en: {
     eyebrow: "My Account",
     heading: "Your side of things",
-    introPrefix: "This page is about you — your details, your language, what you'd like to hear from us. Everything about your dog lives over in",
+    introPrefix:
+      "This page is about you — your details, your language, what you'd like to hear from us. Everything about your dog lives over in",
     myDogLink: "My Dog",
     preferences: "Preferences",
     units: "Units",
@@ -61,15 +62,18 @@ const copy = {
     printSave: "Print & save",
     yourDogs: "Your dogs",
     yourDog: "Your dog",
-    switchBody: "Switch between them here, or add another. Each dog keeps their own food, health, training and documents.",
-    noDogBody: "You haven't added a dog yet. It only takes a minute, and everything else follows from it.",
+    switchBody:
+      "Switch between them here, or add another. Each dog keeps their own food, health, training and documents.",
+    noDogBody:
+      "You haven't added a dog yet. It only takes a minute, and everything else follows from it.",
     addAnother: "Add another dog",
     addYours: "Add your dog",
   },
   no: {
     eyebrow: "Min konto",
     heading: "Din side av saken",
-    introPrefix: "Denne siden handler om deg — dine detaljer, ditt språk, hva du ønsker å høre fra oss. Alt om hunden din finner du under",
+    introPrefix:
+      "Denne siden handler om deg — dine detaljer, ditt språk, hva du ønsker å høre fra oss. Alt om hunden din finner du under",
     myDogLink: "Min hund",
     preferences: "Innstillinger",
     units: "Enheter",
@@ -84,15 +88,18 @@ const copy = {
     printSave: "Skriv ut og lagre",
     yourDogs: "Hundene dine",
     yourDog: "Hunden din",
-    switchBody: "Bytt mellom dem her, eller legg til en til. Hver hund har sin egen mat, helse, trening og dokumenter.",
-    noDogBody: "Du har ikke lagt til noen hund ennå. Det tar bare et minutt, og alt annet følger av det.",
+    switchBody:
+      "Bytt mellom dem her, eller legg til en til. Hver hund har sin egen mat, helse, trening og dokumenter.",
+    noDogBody:
+      "Du har ikke lagt til noen hund ennå. Det tar bare et minutt, og alt annet følger av det.",
     addAnother: "Legg til en hund til",
     addYours: "Legg til hunden din",
   },
   pl: {
     eyebrow: "Moje konto",
     heading: "Twoja strona sprawy",
-    introPrefix: "Ta strona dotyczy Ciebie — Twoich danych, Twojego języka, tego, co chcesz od nas słyszeć. Wszystko o Twoim psie znajdziesz w",
+    introPrefix:
+      "Ta strona dotyczy Ciebie — Twoich danych, Twojego języka, tego, co chcesz od nas słyszeć. Wszystko o Twoim psie znajdziesz w",
     myDogLink: "Mój pies",
     preferences: "Preferencje",
     units: "Jednostki",
@@ -107,15 +114,18 @@ const copy = {
     printSave: "Drukuj i zachowaj",
     yourDogs: "Twoje psy",
     yourDog: "Twój pies",
-    switchBody: "Przełączaj się między nimi tutaj albo dodaj kolejnego. Każdy pies ma własne dane o jedzeniu, zdrowiu, treningu i dokumentach.",
-    noDogBody: "Nie dodałeś jeszcze psa. To zajmuje tylko chwilę, a wszystko inne wynika z tego kroku.",
+    switchBody:
+      "Przełączaj się między nimi tutaj albo dodaj kolejnego. Każdy pies ma własne dane o jedzeniu, zdrowiu, treningu i dokumentach.",
+    noDogBody:
+      "Nie dodałeś jeszcze psa. To zajmuje tylko chwilę, a wszystko inne wynika z tego kroku.",
     addAnother: "Dodaj kolejnego psa",
     addYours: "Dodaj swojego psa",
   },
   dk: {
     eyebrow: "Min konto",
     heading: "Din side af sagen",
-    introPrefix: "Denne side handler om dig — dine oplysninger, dit sprog, hvad du gerne vil høre fra os. Alt om din hund finder du under",
+    introPrefix:
+      "Denne side handler om dig — dine oplysninger, dit sprog, hvad du gerne vil høre fra os. Alt om din hund finder du under",
     myDogLink: "Min hund",
     preferences: "Indstillinger",
     units: "Enheder",
@@ -130,15 +140,18 @@ const copy = {
     printSave: "Udskriv og gem",
     yourDogs: "Dine hunde",
     yourDog: "Din hund",
-    switchBody: "Skift mellem dem her, eller tilføj en mere. Hver hund har sin egen mad, sundhed, træning og dokumenter.",
-    noDogBody: "Du har ikke tilføjet en hund endnu. Det tager kun et minut, og resten følger derfra.",
+    switchBody:
+      "Skift mellem dem her, eller tilføj en mere. Hver hund har sin egen mad, sundhed, træning og dokumenter.",
+    noDogBody:
+      "Du har ikke tilføjet en hund endnu. Det tager kun et minut, og resten følger derfra.",
     addAnother: "Tilføj endnu en hund",
     addYours: "Tilføj din hund",
   },
   se: {
     eyebrow: "Mitt konto",
     heading: "Din sida av saken",
-    introPrefix: "Den här sidan handlar om dig — dina uppgifter, ditt språk, vad du vill höra från oss. Allt om din hund hittar du under",
+    introPrefix:
+      "Den här sidan handlar om dig — dina uppgifter, ditt språk, vad du vill höra från oss. Allt om din hund hittar du under",
     myDogLink: "Min hund",
     preferences: "Inställningar",
     units: "Enheter",
@@ -153,15 +166,18 @@ const copy = {
     printSave: "Skriv ut och spara",
     yourDogs: "Dina hundar",
     yourDog: "Din hund",
-    switchBody: "Växla mellan dem här, eller lägg till en till. Varje hund har sin egen mat, hälsa, träning och sina egna dokument.",
-    noDogBody: "Du har inte lagt till någon hund än. Det tar bara en minut, och resten följer av det.",
+    switchBody:
+      "Växla mellan dem här, eller lägg till en till. Varje hund har sin egen mat, hälsa, träning och sina egna dokument.",
+    noDogBody:
+      "Du har inte lagt till någon hund än. Det tar bara en minut, och resten följer av det.",
     addAnother: "Lägg till en hund till",
     addYours: "Lägg till din hund",
   },
   fi: {
     eyebrow: "Oma tili",
     heading: "Sinun puolesi asiasta",
-    introPrefix: "Tämä sivu koskee sinua — tietojasi, kieltäsi, sitä mitä toivot kuulevasi meiltä. Kaiken koirastasi löydät kohdasta",
+    introPrefix:
+      "Tämä sivu koskee sinua — tietojasi, kieltäsi, sitä mitä toivot kuulevasi meiltä. Kaiken koirastasi löydät kohdasta",
     myDogLink: "Oma koirani",
     preferences: "Asetukset",
     units: "Mittayksiköt",
@@ -176,7 +192,8 @@ const copy = {
     printSave: "Tulosta ja tallenna",
     yourDogs: "Koirasi",
     yourDog: "Koirasi",
-    switchBody: "Vaihda niiden välillä täällä, tai lisää toinen. Jokaisella koiralla on omat ruoka-, terveys-, koulutus- ja asiakirjatietonsa.",
+    switchBody:
+      "Vaihda niiden välillä täällä, tai lisää toinen. Jokaisella koiralla on omat ruoka-, terveys-, koulutus- ja asiakirjatietonsa.",
     noDogBody: "Et ole vielä lisännyt koiraa. Se vie vain minuutin, ja loput seuraa siitä.",
     addAnother: "Lisää toinen koira",
     addYours: "Lisää koirasi",
@@ -184,7 +201,8 @@ const copy = {
   de: {
     eyebrow: "Mein Konto",
     heading: "Dein Teil der Sache",
-    introPrefix: "Diese Seite dreht sich um dich — deine Angaben, deine Sprache, was du von uns hören möchtest. Alles über deinen Hund findest du unter",
+    introPrefix:
+      "Diese Seite dreht sich um dich — deine Angaben, deine Sprache, was du von uns hören möchtest. Alles über deinen Hund findest du unter",
     myDogLink: "Mein Hund",
     preferences: "Einstellungen",
     units: "Einheiten",
@@ -199,15 +217,18 @@ const copy = {
     printSave: "Drucken & speichern",
     yourDogs: "Deine Hunde",
     yourDog: "Dein Hund",
-    switchBody: "Wechsle hier zwischen ihnen oder füge einen weiteren hinzu. Jeder Hund hat sein eigenes Futter, seine Gesundheit, sein Training und seine Dokumente.",
-    noDogBody: "Du hast noch keinen Hund hinzugefügt. Es dauert nur eine Minute, und alles andere folgt daraus.",
+    switchBody:
+      "Wechsle hier zwischen ihnen oder füge einen weiteren hinzu. Jeder Hund hat sein eigenes Futter, seine Gesundheit, sein Training und seine Dokumente.",
+    noDogBody:
+      "Du hast noch keinen Hund hinzugefügt. Es dauert nur eine Minute, und alles andere folgt daraus.",
     addAnother: "Weiteren Hund hinzufügen",
     addYours: "Deinen Hund hinzufügen",
   },
   fr: {
     eyebrow: "Mon compte",
     heading: "Votre part de l'histoire",
-    introPrefix: "Cette page vous concerne — vos informations, votre langue, ce que vous aimeriez recevoir de notre part. Tout ce qui concerne votre chien se trouve dans",
+    introPrefix:
+      "Cette page vous concerne — vos informations, votre langue, ce que vous aimeriez recevoir de notre part. Tout ce qui concerne votre chien se trouve dans",
     myDogLink: "Mon chien",
     preferences: "Préférences",
     units: "Unités",
@@ -215,22 +236,26 @@ const copy = {
     reminders: "Rappels",
     off: "Désactivé",
     emailFromUs: "E-mails de notre part",
-    preferencesNote: "Nous préférons ne rien envoyer plutôt que quelque chose que vous n'avez pas demandé.",
+    preferencesNote:
+      "Nous préférons ne rien envoyer plutôt que quelque chose que vous n'avez pas demandé.",
     privacy: "Confidentialité",
     privacyBody:
       "Les informations de votre chien, son poids, sa progression à l'entraînement et vos notes restent dans ce navigateur. Rien n'est envoyé, vendu ou partagé. Si vous effacez les données de votre navigateur, elles disparaîtront aussi — imprimez donc ce qui compte et gardez-en une copie.",
     printSave: "Imprimer et enregistrer",
     yourDogs: "Vos chiens",
     yourDog: "Votre chien",
-    switchBody: "Passez de l'un à l'autre ici, ou ajoutez-en un autre. Chaque chien garde sa propre alimentation, sa santé, son entraînement et ses documents.",
-    noDogBody: "Vous n'avez pas encore ajouté de chien. Cela ne prend qu'une minute, et tout le reste en découle.",
+    switchBody:
+      "Passez de l'un à l'autre ici, ou ajoutez-en un autre. Chaque chien garde sa propre alimentation, sa santé, son entraînement et ses documents.",
+    noDogBody:
+      "Vous n'avez pas encore ajouté de chien. Cela ne prend qu'une minute, et tout le reste en découle.",
     addAnother: "Ajouter un autre chien",
     addYours: "Ajouter votre chien",
   },
   nl: {
     eyebrow: "Mijn account",
     heading: "Jouw kant van het verhaal",
-    introPrefix: "Deze pagina gaat over jou — je gegevens, je taal, wat je van ons wilt horen. Alles over je hond vind je onder",
+    introPrefix:
+      "Deze pagina gaat over jou — je gegevens, je taal, wat je van ons wilt horen. Alles over je hond vind je onder",
     myDogLink: "Mijn hond",
     preferences: "Voorkeuren",
     units: "Eenheden",
@@ -245,8 +270,10 @@ const copy = {
     printSave: "Afdrukken & bewaren",
     yourDogs: "Jouw honden",
     yourDog: "Jouw hond",
-    switchBody: "Wissel hier tussen ze, of voeg er nog een toe. Elke hond heeft zijn eigen voeding, gezondheid, training en documenten.",
-    noDogBody: "Je hebt nog geen hond toegevoegd. Het kost maar een minuutje, en de rest volgt vanzelf.",
+    switchBody:
+      "Wissel hier tussen ze, of voeg er nog een toe. Elke hond heeft zijn eigen voeding, gezondheid, training en documenten.",
+    noDogBody:
+      "Je hebt nog geen hond toegevoegd. Het kost maar een minuutje, en de rest volgt vanzelf.",
     addAnother: "Nog een hond toevoegen",
     addYours: "Voeg je hond toe",
   },
@@ -265,7 +292,10 @@ function AccountPage() {
         <h1 className="display-xl mt-6 max-w-2xl">{c.heading}</h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
           {c.introPrefix}{" "}
-          <Link to={withLangPrefix("/my-dog")} className="text-accent underline-offset-4 hover:underline">
+          <Link
+            to={withLangPrefix("/my-dog")}
+            className="text-accent underline-offset-4 hover:underline"
+          >
             {c.myDogLink}
           </Link>
           .
@@ -280,12 +310,21 @@ function AccountPage() {
             <Row label={c.units} value={c.unitsValue} />
             <Row label={c.reminders} value={c.off} />
             <Row label={c.emailFromUs} value={c.off} />
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{c.preferencesNote}</p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              {c.preferencesNote}
+            </p>
           </Panel>
 
           <Panel title={c.privacy}>
-            <p className="-mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">{c.privacyBody}</p>
-            <ButtonLink to={withLangPrefix("/my-dog/print")} tone="outline" size="md" className="mt-5">
+            <p className="-mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">
+              {c.privacyBody}
+            </p>
+            <ButtonLink
+              to={withLangPrefix("/my-dog/print")}
+              tone="outline"
+              size="md"
+              className="mt-5"
+            >
               {c.printSave}
             </ButtonLink>
           </Panel>

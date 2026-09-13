@@ -14,7 +14,8 @@ const description = "A print-ready set of pages for your dog, made from what you
 
 export const Route = createFileRoute("/{-$lang}/my-dog/pack")({
   validateSearch: (search: Record<string, unknown>) => ({
-    docs: typeof search["docs"] === "string" && search["docs"] ? (search["docs"] as string) : "profile",
+    docs:
+      typeof search["docs"] === "string" && search["docs"] ? (search["docs"] as string) : "profile",
   }),
   head: () => ({
     meta: [
@@ -62,7 +63,7 @@ const copy = {
     backLink: "Choisir d'autres pages",
     printOrSave: "Imprimer ou enregistrer en PDF",
     printHint:
-      'C\'est exactement comme cela que cela s\'affichera à l\'impression. Choisissez "Enregistrer au format PDF" dans la boîte de dialogue d\'impression si vous préférez le conserver sur votre téléphone.',
+      "C'est exactement comme cela que cela s'affichera à l'impression. Choisissez \"Enregistrer au format PDF\" dans la boîte de dialogue d'impression si vous préférez le conserver sur votre téléphone.",
     wholePackTitle: "Le Dossier Complet DoggMatch",
     dogPack: "Dossier du chien",
     dogNameFallback: "Mon chien",
@@ -86,7 +87,7 @@ const copy = {
     backLink: "Velg andre sider",
     printOrSave: "Skriv ut eller lagre som PDF",
     printHint:
-      'Slik vil dette se ut på papir. Velg «Lagre som PDF» i utskriftsdialogen hvis du heller vil ha det på telefonen.',
+      "Slik vil dette se ut på papir. Velg «Lagre som PDF» i utskriftsdialogen hvis du heller vil ha det på telefonen.",
     wholePackTitle: "Den komplette DoggMatch-hundepakken",
     dogPack: "Hundepakke",
     dogNameFallback: "Hunden min",
@@ -98,7 +99,7 @@ const copy = {
     backLink: "Wybierz inne strony",
     printOrSave: "Wydrukuj lub zapisz jako PDF",
     printHint:
-      'Tak dokładnie będzie to wyglądać na wydruku. Wybierz „Zapisz jako PDF” w oknie drukowania, jeśli wolisz mieć to na telefonie.',
+      "Tak dokładnie będzie to wyglądać na wydruku. Wybierz „Zapisz jako PDF” w oknie drukowania, jeśli wolisz mieć to na telefonie.",
     wholePackTitle: "Kompletny pakiet DoggMatch dla psa",
     dogPack: "Pakiet dla psa",
     dogNameFallback: "Mój pies",

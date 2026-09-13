@@ -104,7 +104,8 @@ const copy = {
     intro:
       "Raha on tämän vähiten romanttinen osa, ja se osa, joka useimmiten sattuu myöhemmin. Tässä on tilanne rehellisesti kerrottuna. Todelliset hinnat vaihtelevat valtavasti maan, kaupungin ja koiran mukaan.",
     yourMatch: "Sinun osumasi",
-    runningCostPrefix: "Suuntaa antava vuosittainen ylläpitokustannus, kun koira on asettunut arkeen:",
+    runningCostPrefix:
+      "Suuntaa antava vuosittainen ylläpitokustannus, kun koira on asettunut arkeen:",
     runningCostSuffix:
       "Tämä on laaja haarukka rotukirjastostamme, ei tarjous — ruoan, vakuutuksen ja hoidon hinnat vaihtelevat paljon maittain.",
     noticeTitle: "Mistä luvut tulevat",
@@ -182,7 +183,8 @@ function CostsPage() {
             <h2 className="display-md mt-3">{breedContent()[breed.id].displayName}</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
               {c.runningCostPrefix}{" "}
-              <span className="font-display text-foreground">{costRange(breed)}</span>. {c.runningCostSuffix}
+              <span className="font-display text-foreground">{costRange(breed)}</span>.{" "}
+              {c.runningCostSuffix}
             </p>
           </div>
         </section>
@@ -198,8 +200,12 @@ function CostsPage() {
               <ul className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
                 {group.items.map((item) => (
                   <li key={item.label} className="bg-background p-7">
-                    <p className="font-display text-[1.0625rem] leading-tight tracking-tight">{item.label}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
+                    <p className="font-display text-[1.0625rem] leading-tight tracking-tight">
+                      {item.label}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {item.note}
+                    </p>
                   </li>
                 ))}
               </ul>
