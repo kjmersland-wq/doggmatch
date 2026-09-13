@@ -1,6 +1,6 @@
 const GATEWAY_URL = "https://connector-gateway.lovable.dev/google_maps";
 
-export type StaticMapPoint = { lat: number; lng: number; highlight?: boolean };
+export type StaticMapPoint = { lat: number; lng: number; highlight?: boolean | undefined };
 
 export async function fetchStaticMap(
   center: { lat: number; lng: number },
