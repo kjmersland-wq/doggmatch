@@ -38,6 +38,8 @@ export interface GuideCopy {
   quizCta: string;
   compareCta: string;
   levelLabels: string[];
+  /** Column headings for the cost table (cost guide only). */
+  costTable?: { example: string; breed: string; yearly: string };
 }
 
 export interface GuideSeo {
@@ -415,6 +417,11 @@ export const COST_GUIDE: LifestyleGuideConfig = {
     quizCta: quizBlock.quizCta,
     compareCta: quizBlock.compareCta,
     levelLabels,
+    costTable: {
+      example: "Example",
+      breed: "Breed",
+      yearly: "Typical yearly cost",
+    },
   } },
   costExamples: [
     costExample("chihuahua", { en: "A small dog (up to about 10 kg)" }),
