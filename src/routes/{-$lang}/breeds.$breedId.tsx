@@ -627,7 +627,10 @@ function BreedDetail() {
             </div>
           ))}
         </dl>
+
+        <CostCalculator breed={breed} className="mt-14" />
       </section>
+
 
       <section className="container-page grid gap-12 border-t border-border py-16 md:grid-cols-2 md:gap-16">
         <div>
