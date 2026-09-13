@@ -36,6 +36,21 @@ const seoCopy = {
     description:
       "Suoria, ystävällisiä vastauksia rodun valintaan, kerrostaloelämään, ensimmäiseen koiraan, karvanlähtöön, koulutukseen ja yhteiseen arkeen.",
   },
+  de: {
+    title: "Ratgeber — einen Hund auswählen, und mit ihm leben | DoggMatch",
+    description:
+      "Klare, freundliche Antworten zur Rassewahl, zum Leben in der Wohnung, zum ersten Hund, zu Fellwechsel, Erziehung und dem gemeinsamen Alltag.",
+  },
+  fr: {
+    title: "Guides — choisir un chien, et vivre avec lui | DoggMatch",
+    description:
+      "Des réponses claires et bienveillantes sur le choix d'une race, la vie en appartement, votre premier chien, la mue, l'éducation et le quotidien ensemble.",
+  },
+  nl: {
+    title: "Gidsen — een hond kiezen, en ermee leven | DoggMatch",
+    description:
+      "Eerlijke, vriendelijke antwoorden over raskeuze, wonen in een flat, uw eerste hond, verharen, training en het dagelijks leven samen.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/guides")({
@@ -593,6 +608,282 @@ const copy = {
           "Unohdetut kulut: turkinhoito, hoitola tai lemmikinhoitaja loman ajaksi, kurssit ja puskuri sille vuodelle, jolloin jokin menee pieleen.",
         ],
         close: "Jokaisen rodun kustannussivu näyttää vuosittaisen vaihteluvälin jaettuna ruokaan, terveyteen, hoitoon ja muuhun.",
+      },
+    ],
+  },
+  de: {
+    intro:
+      "Sieben Fragen, die uns am häufigsten gestellt werden, beantwortet wie einer Freundin oder einem Freund — ohne Wenn und Aber, ohne Verkaufsgerede.",
+    familyGuideLink: "Unseren vollständigen Ratgeber zu den besten Hunderassen für Familien ansehen",
+    shareLabel: "Diesen Ratgeber teilen",
+    guides: [
+      {
+        id: "family-dogs",
+        title: "Gute Hunde für Familien mit Kindern",
+        body: "Kinder und Hunde können wunderbar zusammen sein — solange der Hund zur tatsächlichen Woche der Familie passt und die Kinder ein paar einfache Regeln lernen.",
+        points: [
+          "Achten Sie zuerst auf ein stabiles, nachsichtiges Wesen. Ein Hund, der ein tollpatschiges Streicheln locker wegsteckt, ist wichtiger als der Ruf der Rasse allein.",
+          "Größe wirkt in beide Richtungen: Ein großer Hund kann ein Kleinkind versehentlich umstoßen, ein kleiner kann bei grobem Spiel verletzt werden. Mittelgroß und ausgeglichen ist oft am einfachsten.",
+          "Welpe und Kleinkind gleichzeitig sind zwei Aufgaben auf einmal. Viele Familien haben einen ruhigeren Start mit einem Hund, der ein oder zwei Jahre alt ist.",
+          "Die Regeln zählen mehr als die Rasse: Ein Hund, der frisst, schläft oder in seinem Körbchen liegt, wird nicht gestört — und ein Erwachsener ist bei kleinen Kindern immer im Raum.",
+        ],
+        close: "Labrador, Golden Retriever, Cavalier King Charles Spaniel und viele sanfte Mischlinge machen sich hier gut — der Test berücksichtigt das Familienleben bei jedem Vorschlag.",
+      },
+      {
+        id: "flat-living",
+        title: "Hunde, die sich in einer Wohnung wohlfühlen",
+        body: "Platz zählt weniger, als man denken würde. Lautstärke, Bewegung und wie gut ein Hund allein zurechtkommt, zählen viel mehr.",
+        points: [
+          "Bellen ist am Ende das, was am meisten zählt. Ein Hund, der jeden Schritt im Treppenhaus ankündigt, macht das Zusammenleben in einem Mehrfamilienhaus schwer, egal wie klein er ist.",
+          "Zwei richtige Spaziergänge am Tag schlagen einen Garten. Der Garten ist zum Herumtrödeln da; der Spaziergang ist es, wo der Kopf des Hundes leer wird.",
+          "Aufzug und Treppen gehören dazu. Ein großer Hund, den man eines Tages vielleicht tragen muss, und ein Welpe, der monatelang keine Treppen steigen sollte, sind es wert, jetzt schon zu bedenken.",
+          "Alleinbleiben wird gelernt, nicht mitgebracht. Beginnen Sie mit Minuten, nicht Stunden, und bauen Sie es in den ersten Wochen langsam auf.",
+        ],
+        close: "Greyhounds, viele Spaniels und etliche kleine Terrier leben glücklich in Wohnungen. Laute, wachsame Rassen tun sich meist schwerer.",
+      },
+      {
+        id: "first-dog",
+        title: "Den ersten Hund auswählen",
+        body: "Jeder macht im ersten Jahr Fehler. Manche Hunde verzeihen sie leichter als andere.",
+        points: [
+          "Wählen Sie nachsichtig statt beeindruckend. Ein Hund, der Ihre Unbeständigkeit locker wegsteckt, lehrt Sie mehr als einer, der sie bestraft.",
+          "Fragen Sie nach mittlerer Energie, nicht niedriger. Sehr energiearme Hunde sind oft älter oder kurznasig; sehr energiereiche Hunde brauchen eine Aufgabe, die Sie vielleicht nicht haben.",
+          "Treffen Sie wenn möglich die Elterntiere, oder bei einer Vermittlung den erwachsenen Hund selbst. Das Wesen zeigt sich in der Familie, nicht auf dem Foto.",
+          "Vereinbaren Sie den ersten Tierarztbesuch, die erste Trainingsstunde und zwei ruhige Wochen zu Hause, bevor der Hund einzieht.",
+        ],
+        close: "Sind Sie unsicher, machen Sie den Test — er zeigt, welche Hunde zu Ihrer Woche passen, und die Begründung hinter jedem Ergebnis.",
+      },
+      {
+        id: "shedding-allergies",
+        title: "Fellwechsel und das Leben mit Allergien",
+        body: "Was weniger Fellwechsel eigentlich bedeutet, und wie Sie es durchdenken, wenn jemand zu Hause auf Hunde reagiert.",
+        points: [
+          "Kein Hund ist völlig hypoallergen. Auslöser ist ein Protein in Speichel, Hautschuppen und Urin — nicht das Haar selbst.",
+          "Fell mit weniger Haarwechsel hält dieses Protein eher fest, statt es zu verteilen. Das hilft manchen Menschen und bringt anderen nichts.",
+          "Wenig Fellwechsel bedeutet meist mehr Pflege: Ein Pudelfell muss ein Leben lang alle 6-8 Wochen professionell geschnitten werden.",
+          "Testen Sie es, bevor Sie sich festlegen. Verbringen Sie mehrmals einige Stunden mit erwachsenen Hunden dieser Rasse, und sprechen Sie vorher mit einem Arzt.",
+        ],
+        close: "Wir zeigen Fellwechsel und Fellpflege auf jeder Rasseseite, und der Test fragt nach Allergien im Haushalt, damit das Ergebnis das berücksichtigt.",
+      },
+      {
+        id: "calm-dogs",
+        title: "Ruhige Hunde für ruhigere Haushalte",
+        body: "Auch ein ruhiger Hund braucht viel von Ihnen. So erkennen Sie einen, der wirklich gelassen ist.",
+        points: [
+          "Achten Sie auf eine niedrige Schreckreaktion — ein Hund, der bei einem Geräusch den Kopf hebt, statt zur Tür zu stürmen.",
+          "Ruhig drinnen und ruhig draußen sind zwei verschiedene Eigenschaften. Viele Windhunde schlafen den ganzen Tag und brauchen trotzdem einen ordentlichen Auslauf.",
+          "Alter sagt mehr aus als Rasse. Ein vierjähriger Hund aus dem Tierschutz zeigt Ihnen genau, wer er ist; ein Welpe ist zwei Jahre lang eine Vermutung.",
+          "Geben Sie dem Hund einen Ort zum Abschalten — ein Körbchen weit weg von der Haustür bewirkt mehr für die Ruhe als jedes Training.",
+        ],
+        close: "Greyhound, Cavalier King Charles Spaniel, Berner Sennenhund und ältere Tierschutzhunde vieler Rassen passen gut in ruhige Haushalte.",
+      },
+      {
+        id: "active-life",
+        title: "Hunde für Menschen, die sich gerne bewegen",
+        body: "Seien Sie ehrlich über die Woche, die Sie tatsächlich haben, nicht die, die Sie sich wünschen würden.",
+        points: [
+          "Zählen Sie Ihre schlechteste Woche, nicht Ihre beste. Regen, Termindruck und Krankheit sind es, wenn ein energiereicher Hund schwierig wird.",
+          "Kopfarbeit ermüdet einen Hund schneller als Distanz. Zwanzig Minuten Nasenarbeit schlagen an den meisten Abenden einen weiteren Kilometer.",
+          "Gelenke müssen geschützt werden. Keine langen Läufe auf hartem Untergrund, bis die Wachstumsfugen geschlossen sind — meist 12-18 Monate, bei großen Rassen später.",
+          "Hitze ist die eigentliche Grenze. Kurznasige Rassen und dichtes Doppelfell kommen deutlich früher an ihre Grenzen als Sie.",
+        ],
+        close: "Border Collie, Vizsla, Labrador und viele Gebrauchsmischlinge blühen hier auf — solange die Woche echt ist.",
+      },
+      {
+        id: "yearly-cost",
+        title: "Was ein Hund im Jahr wirklich kostet",
+        body: "Futter, Versicherung, Tierarzt, Hundefriseur — und die Posten, die fast alle beim Budgetieren vergessen.",
+        points: [
+          "Futter richtet sich nach der Größe: Ein kleiner Hund kostet vielleicht 25 € im Monat, ein großer das Dreifache.",
+          "Die Versicherung steigt mit dem Alter und variiert stark je nach Rasse. Holen Sie ein echtes Angebot für die Rasse ein, die Sie in Betracht ziehen.",
+          "Routinemäßige Tierarztkosten — Impfung, Entwurmung, Zeckenschutz, Zahnkontrolle — sind ein vorhersehbarer Jahresposten, keine Überraschung.",
+          "Die vergessenen Kosten: Fellpflege, Hundepension oder Betreuung im Urlaub, Trainingsstunden, und eine Rücklage für das Jahr, in dem etwas schiefgeht.",
+        ],
+        close: "Die Kostenseiten der jeweiligen Rasse zeigen eine jährliche Spanne, aufgeteilt in Futter, Gesundheit, Pflege und den Rest.",
+      },
+    ],
+  },
+  fr: {
+    intro:
+      "Sept questions qu'on nous pose le plus souvent, avec les réponses qu'on donnerait à un ami — sans réserve, sans discours commercial.",
+    familyGuideLink: "Consultez notre guide complet des meilleures races de chiens pour les familles",
+    shareLabel: "Partager ce guide",
+    guides: [
+      {
+        id: "family-dogs",
+        title: "De bons chiens pour les familles avec enfants",
+        body: "Enfants et chiens peuvent former un duo merveilleux — à condition que le chien corresponde à la semaine réelle de la famille, et que les enfants apprennent quelques règles simples.",
+        points: [
+          "Cherchez d'abord un tempérament stable et indulgent. Un chien qui encaisse une caresse maladroite sans broncher compte plus que la seule réputation de la race.",
+          "La taille joue dans les deux sens : un grand chien peut renverser un tout-petit par accident, et un petit peut être blessé par un jeu trop brusque. Taille moyenne et calme est souvent le plus simple.",
+          "Chiot et jeune enfant en même temps, c'est deux tâches à la fois. Beaucoup de familles ont un début plus serein avec un chien d'un an ou deux.",
+          "Les règles comptent plus que la race : ne pas déranger un chien qui mange, dort ou est dans son panier — et un adulte toujours présent dans la pièce avec de jeunes enfants.",
+        ],
+        close: "Labrador, golden retriever, cavalier king charles et de nombreux croisés au tempérament doux réussissent bien ici — le test pondère la vie de famille dans chaque proposition.",
+      },
+      {
+        id: "flat-living",
+        title: "Des chiens qui s'épanouissent en appartement",
+        body: "L'espace compte moins qu'on ne le croit. Le bruit, l'exercice et la capacité à rester seul comptent bien davantage.",
+        points: [
+          "L'aboiement finit par être ce qui compte le plus. Un chien qui signale chaque pas dans la cage d'escalier est difficile à vivre en immeuble, même s'il est petit.",
+          "Deux vraies promenades par jour valent mieux qu'un jardin. Le jardin est un endroit pour flâner ; la promenade est ce qui vide la tête d'un chien.",
+          "Ascenseur et escaliers font partie du contrat. Un grand chien qu'il faudra peut-être porter un jour, et un chiot qui ne devrait pas monter d'escaliers pendant plusieurs mois, méritent d'être pensés dès maintenant.",
+          "Rester seul s'apprend, ce n'est pas inné. Commencez par des minutes, pas des heures, et augmentez progressivement dans les premières semaines.",
+        ],
+        close: "Lévriers, de nombreux épagneuls et bien des petits terriers vivent heureux en appartement. Les races bruyantes et vigilantes s'en sortent souvent moins bien.",
+      },
+      {
+        id: "first-dog",
+        title: "Choisir son premier chien",
+        body: "Tout le monde fait des erreurs la première année. Certains chiens les pardonnent plus facilement que d'autres.",
+        points: [
+          "Préférez un chien indulgent à un chien impressionnant. Un chien qui encaisse votre inconstance vous apprendra plus qu'un chien qui la sanctionne.",
+          "Visez une énergie moyenne, pas basse. Les chiens très peu énergiques sont souvent âgés ou brachycéphales ; les chiens très énergiques ont besoin d'une occupation que vous n'avez peut-être pas.",
+          "Rencontrez les parents si possible, ou le chien adulte lui-même en cas d'adoption. Le tempérament se révèle en famille, pas sur une photo.",
+          "Prévoyez la première visite chez le vétérinaire, le premier cours d'éducation et une quinzaine de jours calmes à la maison avant l'arrivée du chien.",
+        ],
+        close: "Si vous hésitez, faites le test — il indique quels chiens conviennent à votre semaine, et le raisonnement derrière chaque score.",
+      },
+      {
+        id: "shedding-allergies",
+        title: "La mue, et vivre avec des allergies",
+        body: "Ce que « perd moins ses poils » signifie vraiment, et comment y réfléchir si quelqu'un chez vous réagit aux chiens.",
+        points: [
+          "Aucun chien n'est totalement hypoallergénique. Le déclencheur est une protéine présente dans la salive, les squames et l'urine — pas le poil lui-même.",
+          "Un pelage qui perd moins ses poils retient ce déclencheur plutôt que de le disperser. Cela aide certaines personnes et ne change rien pour d'autres.",
+          "Une mue faible signifie généralement plus d'entretien : un pelage type caniche doit être tondu par un professionnel toutes les 6 à 8 semaines, toute la vie du chien.",
+          "Testez avant de vous engager. Passez plusieurs heures avec des chiens adultes de cette race, à plusieurs reprises, et parlez-en à un médecin avant de décider.",
+        ],
+        close: "Nous indiquons la mue et l'entretien du pelage sur chaque fiche de race, et le test demande s'il y a des allergies à la maison pour en tenir compte dans le résultat.",
+      },
+      {
+        id: "calm-dogs",
+        title: "Des chiens calmes pour des foyers plus tranquilles",
+        body: "Un chien calme a quand même besoin de beaucoup de vous. Voici comment repérer celui qui est réellement placide.",
+        points: [
+          "Cherchez une faible réaction de sursaut — un chien qui lève la tête à un bruit plutôt que de se précipiter vers la porte.",
+          "Calme à l'intérieur et calme à l'extérieur sont deux traits différents. Beaucoup de lévriers dorment toute la journée et ont quand même besoin d'une bonne course.",
+          "L'âge en dit plus long que la race. Un chien de refuge de quatre ans vous montre exactement qui il est ; un chiot reste une supposition pendant deux ans.",
+          "Offrez au chien un endroit pour décompresser — un panier loin de la porte d'entrée fait plus pour le calme que n'importe quelle dose d'éducation.",
+        ],
+        close: "Lévrier, cavalier king charles, bouvier bernois et de nombreux chiens de refuge plus âgés conviennent bien aux foyers tranquilles.",
+      },
+      {
+        id: "active-life",
+        title: "Des chiens pour les personnes qui aiment bouger",
+        body: "Soyez honnête sur la semaine que vous avez réellement, pas celle que vous aimeriez avoir.",
+        points: [
+          "Comptez votre pire semaine, pas votre meilleure. Pluie, échéances et maladie, c'est là qu'un chien très énergique devient difficile.",
+          "Le travail mental fatigue un chien plus vite que la distance. Vingt minutes de jeux olfactifs valent mieux qu'un kilomètre de plus la plupart des soirs.",
+          "Les articulations doivent être protégées. Pas de longues courses sur sol dur avant la fermeture des plaques de croissance — généralement 12 à 18 mois, plus tard pour les grandes races.",
+          "La chaleur est la vraie limite. Les races brachycéphales et les doubles pelages épais souffrent bien avant vous.",
+        ],
+        close: "Border collie, vizsla, labrador et de nombreux croisés de travail s'épanouissent ici — à condition que la semaine soit réelle.",
+      },
+      {
+        id: "yearly-cost",
+        title: "Ce qu'un chien coûte vraiment par an",
+        body: "Nourriture, assurance, vétérinaire, toiletteur — et les postes que presque tout le monde oublie de budgétiser.",
+        points: [
+          "La nourriture varie avec la taille : un petit chien peut coûter 25 € par mois, un grand chien trois fois plus.",
+          "L'assurance augmente avec l'âge et varie énormément selon la race. Demandez un vrai devis pour la race envisagée avant de vous engager.",
+          "Les soins vétérinaires de routine — vaccination, vermifuge, antiparasitaires, contrôle dentaire — sont un poste annuel prévisible, pas une surprise.",
+          "Les coûts oubliés : toilettage, pension ou garde pendant les vacances, cours d'éducation, et une réserve pour l'année où quelque chose tourne mal.",
+        ],
+        close: "Les pages de coût par race montrent une fourchette annuelle, répartie entre nourriture, santé, toilettage et le reste.",
+      },
+    ],
+  },
+  nl: {
+    intro:
+      "Zeven dingen die mensen ons het vaakst vragen, beantwoord zoals we een vriend zouden antwoorden — zonder voorbehoud en zonder verkooppraatje.",
+    familyGuideLink: "Bekijk onze volledige gids over de beste hondenrassen voor gezinnen",
+    shareLabel: "Deel deze gids",
+    guides: [
+      {
+        id: "family-dogs",
+        title: "Goede honden voor gezinnen met kinderen",
+        body: "Kinderen en honden kunnen geweldig samengaan — zolang de hond past bij de echte week van het gezin, en de kinderen een paar simpele regels leren.",
+        points: [
+          "Zoek eerst naar een stabiel, vergevingsgezind karakter. Een hond die een onhandig aaitje van zich af schudt, is belangrijker dan alleen de reputatie van het ras.",
+          "Grootte werkt twee kanten op: een grote hond kan per ongeluk een peuter omver lopen, en een kleine kan gewond raken bij ruw spel. Middelgroot en stabiel is vaak het makkelijkst.",
+          "Een puppy en een peuter tegelijk is twee taken ineens. Veel gezinnen hebben een rustigere start met een hond van een jaar of twee.",
+          "De regels tellen meer dan het ras: een hond die eet, slaapt of in zijn mand ligt, wordt niet gestoord — en er is altijd een volwassene in de kamer bij jonge kinderen.",
+        ],
+        close: "Labrador, golden retriever, cavalier king charles spaniël en veel zachtaardige kruisingen doen het hier goed — de test weegt het gezinsleven mee in elk voorstel.",
+      },
+      {
+        id: "flat-living",
+        title: "Honden die goed gedijen in een flat",
+        body: "Ruimte doet er minder toe dan u zou denken. Geluid, beweging en hoe ze omgaan met alleen zijn, doen er veel meer toe.",
+        points: [
+          "Blaffen is uiteindelijk wat het meest telt. Een hond die elke voetstap in het trappenhuis aankondigt, is zwaar om mee te wonen in een flatgebouw, hoe klein hij ook is.",
+          "Twee echte wandelingen per dag verslaan een tuin. De tuin is een plek om rond te scharrelen; de wandeling is waar de hond zijn hoofd leegt.",
+          "Lift en trappen horen erbij. Een grote hond die u ooit misschien moet dragen, en een puppy die maandenlang geen trappen zou moeten lopen, zijn het waard om nu al te overwegen.",
+          "Alleen zijn wordt geleerd, niet meegegeven. Begin met minuten, niet uren, en bouw het rustig op in de eerste weken.",
+        ],
+        close: "Windhonden, veel spaniëls en heel wat kleine terriërs wonen gelukkig in flats. Luidruchtige, waakzame rassen hebben het vaak moeilijker.",
+      },
+      {
+        id: "first-dog",
+        title: "Uw eerste hond kiezen",
+        body: "Iedereen maakt fouten in het eerste jaar. Sommige honden vergeven ze makkelijker dan andere.",
+        points: [
+          "Kies vergevingsgezind boven indrukwekkend. Een hond die uw inconsistentie van zich af schudt, leert u meer dan een die het bestraft.",
+          "Vraag om gemiddelde energie, niet laag. Honden met zeer weinig energie zijn vaak ouder of kortsnuitig; honden met zeer veel energie hebben een taak nodig die u misschien niet heeft.",
+          "Ontmoet de ouderdieren als het kan, of de volwassen hond zelf bij een herplaatsing. Karakter toont zich in het gezin, niet op de foto.",
+          "Boek het eerste dierenartsbezoek, de eerste training en twee rustige weken thuis voordat de hond aankomt.",
+        ],
+        close: "Twijfelt u, doe dan de test — die laat zien welke honden bij uw week passen, en de redenering achter elke score.",
+      },
+      {
+        id: "shedding-allergies",
+        title: "Verharen, en leven met allergieën",
+        body: "Wat minder verharen eigenlijk betekent, en hoe u dat kunt overdenken als iemand thuis op honden reageert.",
+        points: [
+          "Geen enkele hond is volledig hypoallergeen. De trigger is een eiwit in speeksel, huidschilfers en urine — niet het haar zelf.",
+          "Vachten die minder verharen houden dat eiwit vast in plaats van het te verspreiden. Dat helpt sommige mensen en maakt voor anderen niets uit.",
+          "Weinig verharen betekent meestal meer verzorging: een poedelvacht moet levenslang elke 6-8 weken professioneel geknipt worden.",
+          "Test het voordat u zich vastlegt. Breng meerdere keren een paar uur door met volwassen honden van dat ras, en praat met een arts voordat u beslist.",
+        ],
+        close: "We tonen verharen en vachtverzorging op elke rassenpagina, en de test vraagt naar allergieën thuis zodat het resultaat daar rekening mee houdt.",
+      },
+      {
+        id: "calm-dogs",
+        title: "Rustige honden voor stillere huishoudens",
+        body: "Een rustige hond vraagt nog steeds veel van u. Zo herkent u er een die echt ontspannen is.",
+        points: [
+          "Zoek naar een lage schrikreactie — een hond die zijn kop optilt bij een geluid in plaats van naar de deur te stormen.",
+          "Rustig binnen en rustig buiten zijn twee verschillende eigenschappen. Veel windhonden slapen de hele dag en hebben toch een stevige rensessie nodig.",
+          "Leeftijd zegt meer dan ras. Een vierjarige uit een asiel laat precies zien wie hij is; een puppy blijft twee jaar lang een gok.",
+          "Geef de hond een plek om tot rust te komen — een mand ver van de voordeur doet meer voor de rust dan welke training dan ook.",
+        ],
+        close: "Windhond, cavalier king charles spaniël, berner sennenhond en oudere herplaatste honden van veel rassen passen goed bij stillere huishoudens.",
+      },
+      {
+        id: "active-life",
+        title: "Honden voor mensen die graag bewegen",
+        body: "Wees eerlijk over de week die u echt heeft, niet de week die u zou willen hebben.",
+        points: [
+          "Reken met uw slechtste week, niet uw beste. Regen, deadlines en ziekte zijn het moment waarop een energieke hond lastig wordt.",
+          "Mentaal werk vermoeit een hond sneller dan afstand. Twintig minuten speurspelletjes verslaat de meeste avonden nog een extra kilometer.",
+          "Gewrichten moeten beschermd worden. Geen lange rensessies op harde ondergrond totdat de groeischijven gesloten zijn — meestal 12-18 maanden, later bij grote rassen.",
+          "Hitte is de echte grens. Kortsnuitige rassen en dikke dubbele vachten hebben het lang voor u zwaar.",
+        ],
+        close: "Border collie, vizsla, labrador en veel gebruikskruisingen bloeien hier op — zolang de week echt is.",
+      },
+      {
+        id: "yearly-cost",
+        title: "Wat een hond echt kost per jaar",
+        body: "Voer, verzekering, de dierenarts, de trimsalon — en de posten die bijna iedereen vergeet te begroten.",
+        points: [
+          "Voer schaalt met de grootte: een kleine hond kost misschien 25 € per maand, een grote hond drie keer zoveel.",
+          "Verzekering stijgt met de leeftijd en verschilt enorm per ras. Vraag een echte offerte aan voor het ras dat u overweegt, voordat u zich vastlegt.",
+          "Routinematige dierenartszorg — vaccinatie, ontworming, vlooienbehandeling, gebitscontrole — is een voorspelbare jaarlijkse post, geen verrassing.",
+          "De vergeten kosten: vachtverzorging, een pension of oppas voor de vakantie, trainingslessen, en een buffer voor het jaar waarin iets misgaat.",
+        ],
+        close: "De kostenpagina's per ras tonen een jaarlijkse bandbreedte, opgesplitst in voer, gezondheid, verzorging en de rest.",
       },
     ],
   },

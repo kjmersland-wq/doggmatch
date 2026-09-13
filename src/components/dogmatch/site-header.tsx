@@ -18,6 +18,9 @@ const copy = {
   dk: { primaryNav: "Hovedmenu", mobileNav: "Mobilmenu" },
   se: { primaryNav: "Huvudmeny", mobileNav: "Mobilmeny" },
   fi: { primaryNav: "Päävalikko", mobileNav: "Mobiilivalikko" },
+  de: { primaryNav: "Hauptmenü", mobileNav: "Mobiles Menü" },
+  fr: { primaryNav: "Menu principal", mobileNav: "Menu mobile" },
+  nl: { primaryNav: "Hoofdmenu", mobileNav: "Mobiel menu" },
 } as const;
 
 const drawerCopy = {
@@ -56,6 +59,24 @@ const drawerCopy = {
     breedExplorer: "Tutustu rotuihin",
     compareBreeds: "Vertaile rotuja",
     takeBreedMatcher: "Tee rotutesti",
+  },
+  de: {
+    findMyDog: "Finde meinen Hund (Quiz)",
+    breedExplorer: "Rassen entdecken",
+    compareBreeds: "Rassen vergleichen",
+    takeBreedMatcher: "Zum Rassen-Matcher",
+  },
+  fr: {
+    findMyDog: "Trouver mon chien (quiz)",
+    breedExplorer: "Explorer les races",
+    compareBreeds: "Comparer les races",
+    takeBreedMatcher: "Faire le test de race",
+  },
+  nl: {
+    findMyDog: "Vind mijn hond (quiz)",
+    breedExplorer: "Ontdek rassen",
+    compareBreeds: "Vergelijk rassen",
+    takeBreedMatcher: "Doe de rassentest",
   },
 } as const;
 

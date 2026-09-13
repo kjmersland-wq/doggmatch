@@ -231,6 +231,99 @@ const copy = {
       "Todellinen testi ei ole pussissa oleva luku. Se on, miltä koirasi näyttää ja tuntuu kuukauden kuluttua. Tarkista kuukausittain ja säädä noin 10 % kerrallaan.",
     weightCta: "Paino ja kunto",
   },
+  de: {
+    eyebrow: "Futter",
+    title: "Wie viel sollte ich füttern?",
+    intro:
+      "Niemand kann Ihnen eine exakte Zahl nennen, und wer etwas anderes behauptet, rät ebenfalls nur. Was wir tun können, ist Ihnen einen sinnvollen Ausgangspunkt zu geben und Ihnen dann bei der Anpassung zu helfen.",
+    heroAlt: "Eine Schüssel Hundefutter wird in einer Küche abgemessen",
+    startingPointFor: (name: string) => `Ein Ausgangspunkt für ${name}`,
+    startingPoint: "Ein Ausgangspunkt",
+    statDay: "Am Tag",
+    statFoodDay: "Futter pro Tag",
+    statFoodDayHintWeighed: "Abgewogen, nicht geschöpft",
+    statFoodDayHintMissing: "Fügen Sie die kcal/100g vom Beutel hinzu",
+    statPerMeal: "Pro Mahlzeit",
+    statPerMealHint: (n: number) => `Verteilt auf ${n} Mahlzeiten`,
+    howWeGotThereTitle: "So sind wir darauf gekommen",
+    howWeGotThereP1: (weightKg: number, restingKcal: number, factor: number, reason: string) =>
+      `Wir beginnen mit dem Ruheenergiebedarf, den ein Hund mit ${weightKg} kg benötigt — ${restingKcal} kcal — nach der Standardformel, die Tierärzte verwenden (70 × Gewicht^0,75). Dann multiplizieren wir mit ${factor} für ${reason}. Keine Blackbox, kein Raten, das Sie nicht nachvollziehen können.`,
+    howWeGotThereP2: (treatKcal: number) =>
+      `Halten Sie Leckerlis bei etwa ${treatKcal} kcal am Tag — ungefähr ein Zehntel der Gesamtmenge — und ziehen Sie das von den Mahlzeiten ab, statt es obendrauf zu geben.`,
+    noPortionsBody:
+      "Geben Sie das Gewicht Ihres Hundes ein, und wir berechnen eine Tagesmenge, zeigen Ihnen die dahinterstehende Rechnung und rechnen sie in Gramm des Futters um, das Sie tatsächlich füttern.",
+    addDetailsCta: "Angaben zu Ihrem Hund hinzufügen",
+    basicsEyebrow: "Die Grundlagen",
+    basicsTitle: "Das Futter richtig hinbekommen, ohne es zu kompliziert zu machen",
+    vetNote:
+      "Dies ist ein Ausgangspunkt, keine Verordnung. Welpen, trächtige Hündinnen, Hunde auf Diät und Hunde mit einer Erkrankung brauchen alle etwas Spezifischeres — das ist ein Gespräch mit Ihrem Tierarzt, und ein lohnendes.",
+    watchShapeTitle: "Behalten Sie dann die Kondition im Blick",
+    watchShapeBody:
+      "Der eigentliche Test ist nicht die Zahl auf dem Beutel. Es ist, wie Ihr Hund in einem Monat aussieht und sich fühlt. Prüfen Sie monatlich und passen Sie jeweils um etwa 10 % an.",
+    weightCta: "Gewicht & Kondition",
+  },
+  fr: {
+    eyebrow: "Nourriture",
+    title: "Combien devrais-je nourrir mon chien ?",
+    intro:
+      "Personne ne peut vous donner un chiffre exact, et quiconque prétend le contraire devine aussi. Ce que nous pouvons faire, c'est vous donner un point de départ raisonnable, puis vous aider à ajuster.",
+    heroAlt: "Un bol de nourriture pour chien mesuré dans une cuisine",
+    startingPointFor: (name: string) => `Un point de départ pour ${name}`,
+    startingPoint: "Un point de départ",
+    statDay: "Par jour",
+    statFoodDay: "Nourriture par jour",
+    statFoodDayHintWeighed: "Pesée, pas mesurée à la louche",
+    statFoodDayHintMissing: "Ajoutez les kcal/100g indiquées sur le sac",
+    statPerMeal: "Par repas",
+    statPerMealHint: (n: number) => `Réparti sur ${n} repas`,
+    howWeGotThereTitle: "Comment nous avons calculé cela",
+    howWeGotThereP1: (weightKg: number, restingKcal: number, factor: number, reason: string) =>
+      `Nous partons de l'énergie au repos dont a besoin un chien de ${weightKg} kg — ${restingKcal} kcal — selon la formule standard utilisée par les vétérinaires (70 × poids^0,75). Puis nous multiplions par ${factor} pour ${reason}. Pas de boîte noire, pas de suppositions invisibles.`,
+    howWeGotThereP2: (treatKcal: number) =>
+      `Limitez les friandises à environ ${treatKcal} kcal par jour — soit environ un dixième du total — et retirez cette quantité des repas plutôt que de l'ajouter en plus.`,
+    noPortionsBody:
+      "Indiquez le poids de votre chien, et nous calculerons une quantité quotidienne, vous montrerons le calcul derrière, et la convertirons en grammes de la nourriture que vous donnez réellement.",
+    addDetailsCta: "Ajouter les informations de votre chien",
+    basicsEyebrow: "Les bases",
+    basicsTitle: "Bien nourrir votre chien, sans se compliquer la vie",
+    vetNote:
+      "Ceci est un point de départ, pas une prescription. Les chiots, les chiennes gestantes, les chiens au régime et les chiens ayant un problème de santé ont tous besoin de quelque chose de plus spécifique — c'est une conversation à avoir avec votre vétérinaire, et une conversation qui vaut la peine.",
+    watchShapeTitle: "Puis surveillez la silhouette",
+    watchShapeBody:
+      "Le vrai test n'est pas le chiffre sur le sac. C'est l'apparence et l'état de votre chien dans un mois. Vérifiez chaque mois et ajustez d'environ 10 % à la fois.",
+    weightCta: "Poids & forme",
+  },
+  nl: {
+    eyebrow: "Voeding",
+    title: "Hoeveel zou ik moeten voeren?",
+    intro:
+      "Niemand kan u een exact getal geven, en iedereen die iets anders beweert, gokt ook. Wat we wél kunnen doen, is u een verstandig startpunt geven en u vervolgens helpen bij te sturen.",
+    heroAlt: "Een kom hondenvoer wordt afgemeten in een keuken",
+    startingPointFor: (name: string) => `Een startpunt voor ${name}`,
+    startingPoint: "Een startpunt",
+    statDay: "Per dag",
+    statFoodDay: "Voeding per dag",
+    statFoodDayHintWeighed: "Afgewogen, niet geschept",
+    statFoodDayHintMissing: "Voeg de kcal/100g van de zak toe",
+    statPerMeal: "Per maaltijd",
+    statPerMealHint: (n: number) => `Verdeeld over ${n} maaltijden`,
+    howWeGotThereTitle: "Zo kwamen we daarop uit",
+    howWeGotThereP1: (weightKg: number, restingKcal: number, factor: number, reason: string) =>
+      `We beginnen met de rustenergie die een hond van ${weightKg} kg nodig heeft — ${restingKcal} kcal — met de standaardformule die dierenartsen gebruiken (70 × gewicht^0,75). Vervolgens vermenigvuldigen we met ${factor} vanwege: ${reason}. Geen zwarte doos, geen giswerk dat u niet kunt zien.`,
+    howWeGotThereP2: (treatKcal: number) =>
+      `Houd snacks rond ${treatKcal} kcal per dag — ongeveer een tiende van het totaal — en haal dat van de maaltijden af in plaats van het erbovenop te doen.`,
+    noPortionsBody:
+      "Voeg het gewicht van uw hond toe, en wij berekenen een dagelijkse hoeveelheid, laten u de berekening erachter zien en zetten het om in grammen van het voer dat u daadwerkelijk geeft.",
+    addDetailsCta: "Gegevens van uw hond toevoegen",
+    basicsEyebrow: "De basis",
+    basicsTitle: "Voeding goed regelen, zonder er te veel over na te denken",
+    vetNote:
+      "Dit is een startpunt, geen voorschrift. Pups, drachtige teven, honden op dieet en honden met een aandoening hebben allemaal iets specifiekers nodig — dat is een gesprek met uw dierenarts, en de moeite waard.",
+    watchShapeTitle: "Houd daarna de conditie in de gaten",
+    watchShapeBody:
+      "De echte test is niet het getal op de zak. Het is hoe uw hond er over een maand uitziet en zich voelt. Controleer maandelijks en pas ongeveer 10% per keer aan.",
+    weightCta: "Gewicht & conditie",
+  },
 } as const;
 
 function NutritionPage() {

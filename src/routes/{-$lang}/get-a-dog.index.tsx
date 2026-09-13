@@ -42,6 +42,21 @@ const seoCopy = {
     description:
       "Harkitsetko koiran hankintaa? Selvitä, onko ajankohta oikea, löydä elämääsi sopivat koirat, valitse harkiten, ymmärrä kustannukset ja valmistele kotisi.",
   },
+  de: {
+    title: "Einen Hund holen — der ganze Weg, vom Gedanken bis zum Einzug | DoggMatch",
+    description:
+      "Denken Sie über einen Hund nach? Finden Sie heraus, ob der Zeitpunkt richtig ist, entdecken Sie Hunde, die zu Ihrem Leben passen, wählen Sie sorgfältig, verstehen Sie die Kosten und machen Sie Ihr Zuhause bereit.",
+  },
+  fr: {
+    title: "Adopter un chien — tout le chemin, de l'idée à l'arrivée à la maison | DoggMatch",
+    description:
+      "Vous pensez à adopter un chien ? Vérifiez si le moment est bien choisi, trouvez les chiens qui correspondent à votre vie, choisissez avec soin, comprenez les coûts et préparez votre maison.",
+  },
+  nl: {
+    title: "Een hond nemen — de hele weg, van het idee tot de thuiskomst | DoggMatch",
+    description:
+      "Denkt u aan een hond? Ontdek of het juiste moment is aangebroken, vind honden die bij uw leven passen, kies zorgvuldig, begrijp de kosten en maak uw huis klaar.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/get-a-dog/")({
@@ -241,6 +256,102 @@ const copy = {
     welcomeBody:
       "Kun koirasi tulee kotiin, kaikki kertomasi siirtyy Oma koira -osioon — ruokinta, koulutus, terveys, lenkit ja paperityöt, kaikki yhdessä paikassa.",
     welcomeCta: "Katso ensimmäinen viikko",
+  },
+  de: {
+    eyebrow: "Hund holen",
+    heroTitle: "Denken Sie darüber nach, sich einen Hund anzuschaffen?",
+    heroBody:
+      "Ein Hund kann Ihren Alltag auf wunderbare Weise verändern. Es ist aber auch eine große Verpflichtung. Vergewissern wir uns, dass Sie bereit für den richtigen sind.",
+    ctaReady: "Bin ich bereit?",
+    ctaFind: "Meinen Hund finden",
+    heroFootnote: "Alles kostenlos. Kein Konto, und nichts wird irgendwo außer auf diesem Gerät gespeichert.",
+    heroAlt: "Ein älterer Mann sitzt auf seiner Eingangstreppe, den Arm um einen zotteligen Mischlingshund gelegt",
+    journeyEyebrow: "Der Weg",
+    journeyTitle: "Eine Entscheidung, Schritt für Schritt getroffen.",
+    journeyBody:
+      "Sich einen Hund anzuschaffen ist aufregend. Es ist auch eine große Entscheidung. Hier ist der gesamte Weg, in der Reihenfolge, wie er meist verläuft — beginnen Sie, wo Sie möchten, und kommen Sie jederzeit zurück.",
+    open: "Öffnen",
+    choiceEyebrow: "Eine erste große Entscheidung",
+    choiceTitle: "Welpe, oder ein bereits erwachsener Hund?",
+    choiceBody:
+      "Zwei ganz unterschiedliche erste Jahre. Keins ist besser — was passt, hängt viel mehr von Ihrem Leben ab als vom Hund.",
+    puppyAlt: "Ein Cocker-Spaniel-Welpe sitzt neben einem angekauten Hausschuh",
+    puppyLabel: "Ein Welpe",
+    puppyBody: "Schlaflose Monate, und Sie prägen fast alles selbst.",
+    adultAlt: "Ein ruhiger erwachsener Hund ruht auf einem Sofa in einer sonnigen Wohnung",
+    adultLabel: "Ein erwachsener Hund",
+    adultBody: "Viel mehr von dem, was Sie sehen, ist auch das, was Sie bekommen.",
+    compare: "Richtig vergleichen",
+    welcomeAlt: "Eine Familie sitzt still auf dem Boden, während ein neu angekommener Hund an seinem neuen Bett schnuppert",
+    welcomeEyebrow: "Das Ende dieser Reise",
+    welcomeTitle: "Und der Beginn der viel längeren.",
+    welcomeBody:
+      "Wenn Ihr Hund einzieht, wandert alles, was Sie uns erzählt haben, in Mein Hund — Futter, Training, Gesundheit, Spaziergänge und Papierkram, alles an einem Ort.",
+    welcomeCta: "Die erste Woche ansehen",
+  },
+  fr: {
+    eyebrow: "Adopter un chien",
+    heroTitle: "Vous pensez à adopter un chien ?",
+    heroBody:
+      "Un chien peut transformer votre quotidien de façon merveilleuse. C'est aussi un engagement important. Assurons-nous que vous êtes prêt pour le bon.",
+    ctaReady: "Suis-je prêt ?",
+    ctaFind: "Trouver mon chien",
+    heroFootnote: "Tout est gratuit. Pas de compte, et rien n'est conservé ailleurs que sur cet appareil.",
+    heroAlt: "Un homme âgé assis sur son perron, le bras autour d'un chien croisé un peu ébouriffé",
+    journeyEyebrow: "Le parcours",
+    journeyTitle: "Une décision, prise une étape à la fois.",
+    journeyBody:
+      "Adopter un chien est excitant. C'est aussi une grande décision. Voici tout le parcours, dans l'ordre où il se déroule habituellement — commencez où vous voulez, et revenez quand vous le souhaitez.",
+    open: "Ouvrir",
+    choiceEyebrow: "Un premier grand choix",
+    choiceTitle: "Chiot, ou un chien déjà adulte ?",
+    choiceBody:
+      "Deux premières années assez différentes. Aucune n'est meilleure — ce qui convient dépend bien plus de votre vie que du chien.",
+    puppyAlt: "Un chiot cocker spaniel assis à côté d'une chausson mâchouillé",
+    puppyLabel: "Un chiot",
+    puppyBody: "Des mois sans sommeil, et vous façonnez presque tout vous-même.",
+    adultAlt: "Un chien adulte calme se reposant sur un canapé dans un appartement ensoleillé",
+    adultLabel: "Un chien adulte",
+    adultBody: "Ce que vous voyez correspond bien plus à ce que vous obtenez.",
+    compare: "Bien les comparer",
+    welcomeAlt: "Une famille assise tranquillement sur le sol pendant qu'un chien nouvellement arrivé renifle son nouveau panier",
+    welcomeEyebrow: "La fin de ce parcours",
+    welcomeTitle: "Et le début du bien plus long.",
+    welcomeBody:
+      "Quand votre chien arrive à la maison, tout ce que vous nous avez confié passe dans Mon chien — alimentation, éducation, santé, promenades et papiers, tout au même endroit.",
+    welcomeCta: "Voir la première semaine",
+  },
+  nl: {
+    eyebrow: "Een hond nemen",
+    heroTitle: "Denkt u aan een hond nemen?",
+    heroBody:
+      "Een hond kan uw dagelijks leven op prachtige manieren veranderen. Het is ook een grote verplichting. Laten we ervoor zorgen dat u klaar bent voor de juiste.",
+    ctaReady: "Ben ik er klaar voor?",
+    ctaFind: "Vind mijn hond",
+    heroFootnote: "Alles gratis. Geen account, en niets wordt ergens anders bewaard dan op dit apparaat.",
+    heroAlt: "Een oudere man zittend op zijn stoep met zijn arm om een ruige gemengde hond",
+    journeyEyebrow: "De weg",
+    journeyTitle: "Eén beslissing, stap voor stap genomen.",
+    journeyBody:
+      "Een hond nemen is spannend. Het is ook een grote beslissing. Hier is de hele weg, in de volgorde waarin het meestal gaat — begin waar u wilt, en kom terug wanneer u wilt.",
+    open: "Openen",
+    choiceEyebrow: "Een eerste grote keuze",
+    choiceTitle: "Puppy, of een hond die al volwassen is?",
+    choiceBody:
+      "Twee heel verschillende eerste jaren. Geen van beide is beter — wat past hangt veel meer af van uw leven dan van de hond.",
+    puppyAlt: "Een cockerspanielpup zittend naast een kapotgekauwde slof",
+    puppyLabel: "Een puppy",
+    puppyBody: "Slapeloze maanden, en u vormt bijna alles zelf.",
+    adultAlt: "Een rustige volwassen hond rustend op een bank in een zonnig appartement",
+    adultLabel: "Een volwassen hond",
+    adultBody: "Veel meer van wat u ziet, is ook wat u krijgt.",
+    compare: "Vergelijk ze goed",
+    welcomeAlt: "Een gezin dat rustig op de grond zit terwijl een nieuw aangekomen hond aan zijn nieuwe mand snuffelt",
+    welcomeEyebrow: "Het einde van deze reis",
+    welcomeTitle: "En het begin van de veel langere.",
+    welcomeBody:
+      "Als uw hond thuiskomt, verhuist alles wat u ons hebt verteld naar Mijn hond — voeding, training, gezondheid, wandelingen en papierwerk, allemaal op één plek.",
+    welcomeCta: "Bekijk de eerste week",
   },
 } as const;
 

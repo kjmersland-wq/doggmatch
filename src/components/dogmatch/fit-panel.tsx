@@ -58,6 +58,33 @@ const copy = {
     honesty:
       "Tämä on elämäntyylin yhteensopivuutta kuvaava tulos, ei tieteellinen mittaus. Se vertaa kertomaasi siihen, mitä tämä koira yleensä tarvitsee — yksittäiset koirat vaihtelevat.",
   },
+  de: {
+    fitsTitle: "Warum dieser Hund zu deinem Leben passen könnte",
+    tradeTitle: "Dinge, über die du gründlich nachdenken solltest",
+    fromLabel: "Deine Antwort",
+    none: "Nichts sprach hier gegen dich — aber triff den Hund, bevor du dich entscheidest.",
+    noneFits: "Sehr wenig hier passte zu deinen Antworten.",
+    honesty:
+      "Dies ist ein Ergebnis zur Lebensstil-Kompatibilität, keine wissenschaftliche Messung. Es vergleicht das, was du uns erzählt hast, mit dem, was dieser Hund normalerweise braucht — einzelne Hunde variieren.",
+  },
+  fr: {
+    fitsTitle: "Pourquoi ce chien pourrait convenir à votre vie",
+    tradeTitle: "Points à considérer sérieusement",
+    fromLabel: "Votre réponse",
+    none: "Rien ici ne jouait en votre défaveur — mais rencontrez le chien avant de décider.",
+    noneFits: "Très peu de choses ici correspondaient à vos réponses.",
+    honesty:
+      "Ceci est un résultat de compatibilité de style de vie, pas une mesure scientifique. Il compare ce que vous nous avez dit avec ce dont ce chien a généralement besoin — chaque chien varie.",
+  },
+  nl: {
+    fitsTitle: "Waarom deze hond bij uw leven zou kunnen passen",
+    tradeTitle: "Zaken om serieus over na te denken",
+    fromLabel: "Uw antwoord",
+    none: "Niets hier pleitte tegen u — maar ontmoet de hond voordat u beslist.",
+    noneFits: "Heel weinig hier kwam overeen met uw antwoorden.",
+    honesty:
+      "Dit is een resultaat over levensstijlcompatibiliteit, geen wetenschappelijke meting. Het vergelijkt wat u ons vertelde met wat deze hond doorgaans nodig heeft — individuele honden verschillen.",
+  },
 };
 
 /**

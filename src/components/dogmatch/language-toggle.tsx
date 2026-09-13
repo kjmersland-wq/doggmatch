@@ -16,6 +16,9 @@ const LANGS: { code: Locale; flag: string; short: string; label: string }[] = [
   { code: "dk", flag: "dk", short: "DK", label: "Dansk" },
   { code: "se", flag: "se", short: "SE", label: "Svenska" },
   { code: "fi", flag: "fi", short: "FI", label: "Suomi" },
+  { code: "de", flag: "de", short: "DE", label: "Deutsch" },
+  { code: "fr", flag: "fr", short: "FR", label: "Français" },
+  { code: "nl", flag: "nl", short: "NL", label: "Nederlands" },
 ];
 
 const ARIA_LABEL: Record<Locale, string> = {
@@ -25,6 +28,9 @@ const ARIA_LABEL: Record<Locale, string> = {
   dk: "Vælg sprog",
   se: "Välj språk",
   fi: "Valitse kieli",
+  de: "Sprache wählen",
+  fr: "Choisir la langue",
+  nl: "Taal kiezen",
 };
 
 const MENU_LABEL: Record<Locale, string> = {
@@ -34,6 +40,9 @@ const MENU_LABEL: Record<Locale, string> = {
   dk: "Sprog",
   se: "Språk",
   fi: "Kielet",
+  de: "Sprachen",
+  fr: "Langues",
+  nl: "Talen",
 };
 
 function Flag({ country, className }: { country: string; className?: string }) {

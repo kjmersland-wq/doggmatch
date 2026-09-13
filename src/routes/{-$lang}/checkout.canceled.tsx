@@ -68,6 +68,27 @@ const copy = {
     backToPlus: "Takaisin DoggMatch+:aan",
     goToMyDog: "Siirry Oma koirani -osioon",
   },
+  de: {
+    eyebrow: "Keine Zahlung erfolgt",
+    heading: "Das ist völlig in Ordnung.",
+    body: "Es wurde nichts abgebucht. DoggMatch+ ist da, wenn Sie bereit sind, und alles, was Sie genutzt haben, bleibt genau so, wie es war.",
+    backToPlus: "Zurück zu DoggMatch+",
+    goToMyDog: "Zu Mein Hund",
+  },
+  fr: {
+    eyebrow: "Aucun paiement effectué",
+    heading: "Ce n'est pas grave du tout.",
+    body: "Rien n'a été débité. DoggMatch+ sera là quand vous serez prêt, et tout ce que vous utilisiez reste exactement comme avant.",
+    backToPlus: "Retour à DoggMatch+",
+    goToMyDog: "Aller à Mon chien",
+  },
+  nl: {
+    eyebrow: "Geen betaling uitgevoerd",
+    heading: "Dat is helemaal prima.",
+    body: "Er is niets in rekening gebracht. DoggMatch+ staat klaar wanneer u zover bent, en alles wat u gebruikte blijft precies zoals het was.",
+    backToPlus: "Terug naar DoggMatch+",
+    goToMyDog: "Ga naar Mijn hond",
+  },
 } as const;
 
 function CanceledPage() {

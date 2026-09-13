@@ -21,7 +21,7 @@ import { FitPanel } from "@/components/dogmatch/fit-panel";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { relatedBreeds } from "@/lib/breeds/related";
-import { abs, breadcrumbLd, jsonLd, headLocale, langUrl, noUrl, plUrl } from "@/lib/seo";
+import { abs, breadcrumbLd, jsonLd, headLocale, langUrl, seoLinks } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 
 const pageCopy = {
@@ -187,6 +187,87 @@ const pageCopy = {
     detailAlt: "Lähikuva turkista — {breed}",
     portraitWideAlt: "{breed}, muotokuva",
   },
+  de: {
+    dayTitle: "Ein typischer Tag",
+    commitmentTitle: "Was er von Ihnen verlangt",
+    suitedTitle: "Am besten geeignet für",
+    considerTitle: "Wichtige Punkte zum Nachdenken",
+    healthTitle: "Gesundheitliche Hinweise",
+    yourFitTitle: "Wie dieser Hund zu Ihrem Leben passt",
+    yourFitNote: "Abgeglichen mit Ihren Antworten aus Finde meinen Hund, gespeichert auf diesem Gerät.",
+    relatedTitle: "Ähnliche Rassen, einen Blick wert",
+    timeMorning: "07:00",
+    timeMidday: "12:00",
+    timeEvening: "17:30",
+    timeNight: "21:00",
+    milestoneMorningTitle: "Morgenroutine",
+    milestoneMiddayTitle: "Mittags & Alleinsein",
+    milestoneEveningTitle: "Abendlicher Energieabbau",
+    milestoneNightTitle: "Ruhe & Pflege",
+    commitmentBadge: "Geschätzter täglicher aktiver Zeitaufwand: ~{hours} Stunden",
+    lifestyleTitle: "Das Leben mit einem {breed}",
+    exerciseCaption: "Tägliche Bewegung",
+    homeCaption: "Zu Hause",
+    detailCaption: "Fell & Details",
+    exerciseAlt: "{breed} beim täglichen Spaziergang",
+    homeAlt: "{breed} entspannt zu Hause",
+    detailAlt: "Nahaufnahme des Fells eines {breed}",
+    portraitWideAlt: "{breed}, Porträt",
+  },
+  fr: {
+    dayTitle: "Une journée type",
+    commitmentTitle: "Ce qu'il attend de vous",
+    suitedTitle: "Convient le mieux à",
+    considerTitle: "Points importants à considérer",
+    healthTitle: "Points de vigilance sur la santé",
+    yourFitTitle: "Comment ce chien s'accorde à votre vie",
+    yourFitNote: "Comparé aux réponses que vous avez données dans Trouver mon chien, conservées sur cet appareil.",
+    relatedTitle: "Races similaires à découvrir",
+    timeMorning: "07 h 00",
+    timeMidday: "12 h 00",
+    timeEvening: "17 h 30",
+    timeNight: "21 h 00",
+    milestoneMorningTitle: "Routine du matin",
+    milestoneMiddayTitle: "Milieu de journée & autonomie",
+    milestoneEveningTitle: "Dépense d'énergie du soir",
+    milestoneNightTitle: "Décompression & soins",
+    commitmentBadge: "Engagement actif quotidien estimé : ~{hours} heures",
+    lifestyleTitle: "La vie avec un {breed}",
+    exerciseCaption: "Exercice quotidien",
+    homeCaption: "À la maison",
+    detailCaption: "Pelage & détails",
+    exerciseAlt: "{breed} lors d'une promenade quotidienne",
+    homeAlt: "{breed} qui se détend à la maison",
+    detailAlt: "Gros plan sur le pelage d'un {breed}",
+    portraitWideAlt: "{breed}, portrait",
+  },
+  nl: {
+    dayTitle: "Een dag uit het leven",
+    commitmentTitle: "Wat hij van u vraagt",
+    suitedTitle: "Het meest geschikt voor",
+    considerTitle: "Belangrijke aandachtspunten",
+    healthTitle: "Gezondheidsaandachtspunten",
+    yourFitTitle: "Hoe deze hond bij uw leven past",
+    yourFitNote: "Vergeleken met de antwoorden die u gaf bij Vind mijn hond, bewaard op dit apparaat.",
+    relatedTitle: "Vergelijkbare rassen om te bekijken",
+    timeMorning: "07:00",
+    timeMidday: "12:00",
+    timeEvening: "17:30",
+    timeNight: "21:00",
+    milestoneMorningTitle: "Ochtendroutine",
+    milestoneMiddayTitle: "Middag & zelfstandigheid",
+    milestoneEveningTitle: "Avondlijke energieverbranding",
+    milestoneNightTitle: "Ontspanning & verzorging",
+    commitmentBadge: "Geschatte dagelijkse actieve tijdsbesteding: ~{hours} uur",
+    lifestyleTitle: "Het leven met een {breed}",
+    exerciseCaption: "Dagelijkse beweging",
+    homeCaption: "Thuis",
+    detailCaption: "Vacht & details",
+    exerciseAlt: "{breed} tijdens een dagelijkse wandeling",
+    homeAlt: "{breed} die thuis ontspant",
+    detailAlt: "Close-up van de vacht van een {breed}",
+    portraitWideAlt: "{breed}, portret",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
@@ -220,13 +301,7 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
         { name: "twitter:description", content: description },
         { name: "twitter:image", content: image },
       ],
-      links: [
-        { rel: "canonical", href: langUrl(path, locale) },
-        { rel: "alternate", hrefLang: "en", href: abs(path) },
-        { rel: "alternate", hrefLang: "nb-NO", href: noUrl(path) },
-        { rel: "alternate", hrefLang: "pl-PL", href: plUrl(path) },
-        { rel: "alternate", hrefLang: "x-default", href: abs(path) },
-      ],
+      links: seoLinks(path).map((l) => (l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l)),
       scripts: [
         breadcrumbLd([
           { name: "DoggMatch", path: "/" },
@@ -259,22 +334,22 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
 });
 
 const labels = {
-  size: { en: "Size", no: "Størrelse" , pl: "Rozmiar" },
-  energy: { en: "Energy", no: "Energi" , pl: "Energia" },
-  exerciseNeeds: { en: "Exercise needs", no: "Mosjonsbehov" , pl: "Potrzeby ruchowe" },
-  mentalStimulation: { en: "Mental stimulation", no: "Mental stimulering" , pl: "Stymulacja umysłowa" },
-  trainability: { en: "Trainability", no: "Lærevillighet" , pl: "Podatność na szkolenie" },
-  sociability: { en: "Sociability", no: "Sosial med folk" , pl: "Towarzyskość z ludźmi" },
-  affection: { en: "Affection", no: "Kosete" , pl: "Czułość" },
-  independence: { en: "Independence", no: "Selvstendighet" , pl: "Niezależność" },
-  goodWithChildren: { en: "Good with children", no: "Passer med barn" , pl: "Dobrze z dziećmi" },
-  goodWithDogs: { en: "Good with other dogs", no: "Passer med andre hunder" , pl: "Dobrze z innymi psami" },
-  apartmentSuitability: { en: "Apartment suitability", no: "Passer i leilighet" , pl: "Do mieszkania" },
-  aloneTolerance: { en: "Tolerance of being alone", no: "Tåler å være alene" , pl: "Tolerancja samotności" },
-  shedding: { en: "Shedding", no: "Pelsfelling" , pl: "Linienie" },
-  grooming: { en: "Grooming", no: "Pelsstell" , pl: "Pielęgnacja sierści" },
-  barking: { en: "Barking", no: "Bjeffing" , pl: "Szczekanie" },
-  firstTimeSuitability: { en: "First-time owner suitability", no: "Passer for førstegangseiere", pl: "Odpowiedni dla początkujących" },
+  size: { en: "Size", no: "Størrelse", pl: "Rozmiar", de: "Größe", fr: "Taille", nl: "Grootte" },
+  energy: { en: "Energy", no: "Energi", pl: "Energia", de: "Energie", fr: "Énergie", nl: "Energie" },
+  exerciseNeeds: { en: "Exercise needs", no: "Mosjonsbehov", pl: "Potrzeby ruchowe", de: "Bewegungsbedarf", fr: "Besoin d'exercice", nl: "Beweegbehoefte" },
+  mentalStimulation: { en: "Mental stimulation", no: "Mental stimulering", pl: "Stymulacja umysłowa", de: "Geistige Auslastung", fr: "Stimulation mentale", nl: "Mentale stimulatie" },
+  trainability: { en: "Trainability", no: "Lærevillighet", pl: "Podatność na szkolenie", de: "Erziehbarkeit", fr: "Facilité d'éducation", nl: "Leerbaarheid" },
+  sociability: { en: "Sociability", no: "Sosial med folk", pl: "Towarzyskość z ludźmi", de: "Geselligkeit", fr: "Sociabilité", nl: "Sociaal gedrag" },
+  affection: { en: "Affection", no: "Kosete", pl: "Czułość", de: "Anhänglichkeit", fr: "Affection", nl: "Aanhankelijkheid" },
+  independence: { en: "Independence", no: "Selvstendighet", pl: "Niezależność", de: "Eigenständigkeit", fr: "Indépendance", nl: "Zelfstandigheid" },
+  goodWithChildren: { en: "Good with children", no: "Passer med barn", pl: "Dobrze z dziećmi", de: "Kinderfreundlichkeit", fr: "Bonne entente avec les enfants", nl: "Geschikt voor kinderen" },
+  goodWithDogs: { en: "Good with other dogs", no: "Passer med andre hunder", pl: "Dobrze z innymi psami", de: "Verträglichkeit mit anderen Hunden", fr: "Bonne entente avec les autres chiens", nl: "Geschikt voor andere honden" },
+  apartmentSuitability: { en: "Apartment suitability", no: "Passer i leilighet", pl: "Do mieszkania", de: "Wohnungstauglichkeit", fr: "Adapté à la vie en appartement", nl: "Geschikt voor een appartement" },
+  aloneTolerance: { en: "Tolerance of being alone", no: "Tåler å være alene", pl: "Tolerancja samotności", de: "Verträgt Alleinsein", fr: "Tolérance à la solitude", nl: "Tolerantie voor alleen zijn" },
+  shedding: { en: "Shedding", no: "Pelsfelling", pl: "Linienie", de: "Fellwechsel", fr: "Perte de poils", nl: "Haaruitval" },
+  grooming: { en: "Grooming", no: "Pelsstell", pl: "Pielęgnacja sierści", de: "Fellpflege", fr: "Toilettage", nl: "Vachtverzorging" },
+  barking: { en: "Barking", no: "Bjeffing", pl: "Szczekanie", de: "Bellneigung", fr: "Aboiements", nl: "Blafgedrag" },
+  firstTimeSuitability: { en: "First-time owner suitability", no: "Passer for førstegangseiere", pl: "Odpowiedni dla początkujących", de: "Eignung für Ersthundehalter", fr: "Adapté aux primo-adoptants", nl: "Geschikt voor beginners" },
 } as const;
 
 function BreedDetail() {
@@ -415,7 +490,7 @@ function BreedDetail() {
 
       <section className="container-page grid gap-12 border-t border-border py-16 md:grid-cols-2 md:gap-16">
         <div>
-          <h2 className="display-md">{pick({ en: "What people love about them", no: "Det folk elsker ved dem", pl: "Co ludzie w nich kochają", dk: "Det folk elsker ved dem", se: "Det folk älskar hos dem", fi: "Mistä ihmiset pitävät heissä" })}</h2>
+          <h2 className="display-md">{pick({ en: "What people love about them", no: "Det folk elsker ved dem", pl: "Co ludzie w nich kochają", dk: "Det folk elsker ved dem", se: "Det folk älskar hos dem", fi: "Mistä ihmiset pitävät heissä", de: "Was Menschen an ihnen lieben", fr: "Ce que les gens adorent chez eux", nl: "Wat mensen aan hen waarderen" })}</h2>
           <ul className="mt-7 space-y-4">
             {content.strengths.map((s) => (
               <li key={s} className="flex gap-3 text-[0.9375rem] leading-relaxed">

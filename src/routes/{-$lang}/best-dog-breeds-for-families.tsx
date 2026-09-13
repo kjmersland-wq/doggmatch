@@ -40,6 +40,21 @@ const seoCopy = {
     description:
       "Parhaat koirarodut lapsiperheille, valittu vakaan luonteen perusteella maineen sijaan — jokaisen rehellisin hyvin ja huonoin puolin, selkokielellä.",
   },
+  de: {
+    title: "Die besten Hunderassen für Familien — eine ehrliche Auswahl | DoggMatch",
+    description:
+      "Die besten Hunderassen für Familien mit Kindern, ausgewählt wegen ihres stabilen Wesens statt ihres Rufs — mit den ehrlichen Kompromissen jeder einzelnen, in klarer Sprache.",
+  },
+  fr: {
+    title: "Les meilleures races de chiens pour les familles — une sélection honnête | DoggMatch",
+    description:
+      "Les meilleures races de chiens pour les familles avec enfants, choisies pour leur tempérament stable plutôt que leur réputation — avec les compromis honnêtes de chacune, en langage clair.",
+  },
+  nl: {
+    title: "De beste hondenrassen voor gezinnen — een eerlijke shortlist | DoggMatch",
+    description:
+      "De beste hondenrassen voor gezinnen met kinderen, gekozen om hun stabiele karakter in plaats van hun reputatie — met de eerlijke afwegingen van elk, in duidelijke taal.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/best-dog-breeds-for-families")({
@@ -257,6 +272,111 @@ const copy = {
     quizCta: "Tee yhteensopivuuskysely",
     compareCta: "Vertaile rotuja rinnakkain",
     levelLabels: ["Erittäin matala", "Matala", "Kohtalainen", "Korkea", "Erittäin korkea"],
+  },
+  de: {
+    eyebrow: "Einen Hund wählen",
+    h1: "Die besten Hunderassen für Familien",
+    intro:
+      "Fragen Sie zehn Menschen nach dem besten Familienhund, und Sie erhalten zehn Antworten — meist den Hund, mit dem sie selbst aufgewachsen sind. Hier also unsere ehrliche Version: Die Rassen unten sind stabil, nachsichtig und genießen das Leben mit Kindern wirklich. Aber der einzelne Hund zählt mehr als der Rassename auf dem Papier, und keine Rasse macht Kinder und Hunde von allein sicher zusammen. Das ist unsere Aufgabe als Erwachsene.",
+    whatMattersTitle: "Was wirklich zählt",
+    whatMatters: [
+      "Ein stabiles, nachsichtiges Wesen schlägt jeden Ruf. Sie wollen einen Hund, der einen tollpatschigen Klaps, eine unerwartete Umarmung oder ein mitten im Kauen weggenommenes Spielzeug locker wegsteckt.",
+      "Größe wirkt in beide Richtungen. Ein großer, fröhlicher Hund kann ein Kleinkind versehentlich umwerfen; ein sehr kleiner kann bei grobem Spiel verletzt werden. Mittelgroß und stabil ist oft der einfachste Startpunkt.",
+      "Die Energie sollte zur tatsächlichen Woche Ihrer Familie passen, nicht zu Ihren besten Absichten. Eine Rasse, die zwei Stunden Laufen am Tag braucht, ist wunderbar — wenn jemand diese zwei Stunden auch wirklich hat.",
+      "Welpe und Kleinkind gleichzeitig sind zwei Vollzeitjobs. Viele Familien haben einen deutlich ruhigeren Start mit einem Hund, der bereits ein oder zwei Jahre alt ist.",
+    ],
+    rulesTitle: "Die Regeln, die wichtiger sind als die Rasse",
+    rules: [
+      "Stören Sie nie einen Hund, der isst, schläft oder in seinem Bett liegt.",
+      "Ein Erwachsener ist immer im Raum, wenn kleine Kinder und Hunde zusammen sind.",
+      "Kinder lernen, den Hund zu lesen — ein abgewendeter Kopf oder ein Gähnen bedeutet „gib mir Raum“.",
+    ],
+    listTitle: "Unsere Familien-Auswahl",
+    listIntro:
+      "Acht Rassen, die in unseren Daten durchweg gut mit Kindern abschneiden, mit den ehrlichen Kompromissen. Mischlinge mit diesen Eltern schneiden oft genauso gut ab.",
+    childrenLabel: "Mit Kindern",
+    firstTimeLabel: "Für Erstbesitzer",
+    sheddingLabel: "Haarausfall",
+    energyLabel: "Energie",
+    readProfile: "Das vollständige Profil lesen",
+    allergyNote:
+      "Ein kurzes Wort zu Allergien: Kein Hund ist wirklich hypoallergen. Manche haaren weniger und verteilen weniger Hautschuppen im Haus, was vielen Familien hilft — aber verbringen Sie Zeit mit dem konkreten Hund, bevor Sie sich entscheiden.",
+    quizTitle: "Ihre Familie ist die andere Hälfte des Matchings",
+    quizBody:
+      "Die beste Rasse auf dem Papier muss trotzdem zu Ihrer Woche passen — Ihrem Zuhause, Ihrer Zeit, dem Alter Ihrer Kinder. Unser Quiz wägt all das ab und zeigt Ihnen die Begründung hinter jedem Match.",
+    quizCta: "Den Kompatibilitäts-Quiz machen",
+    compareCta: "Rassen nebeneinander vergleichen",
+    levelLabels: ["Sehr niedrig", "Niedrig", "Mäßig", "Hoch", "Sehr hoch"],
+  },
+  fr: {
+    eyebrow: "Choisir un chien",
+    h1: "Les meilleures races de chiens pour les familles",
+    intro:
+      "Demandez à dix personnes quel est le meilleur chien de famille, et vous obtiendrez dix réponses — généralement le chien avec lequel elles ont grandi. Voici donc notre version honnête : les races ci-dessous sont stables, indulgentes et apprécient réellement de vivre avec des enfants. Mais le chien en tant qu'individu compte plus que le nom de la race sur le pedigree, et aucune race ne rend seule enfants et chiens sûrs ensemble. Cette partie nous incombe, à nous, les adultes.",
+    whatMattersTitle: "Ce qui compte vraiment",
+    whatMatters: [
+      "Un tempérament stable et indulgent bat n'importe quelle réputation. Vous voulez un chien qui encaisse une caresse maladroite, une étreinte inattendue, un jouet arraché en pleine mastication.",
+      "La taille joue dans les deux sens. Un grand chien joyeux peut accidentellement renverser un tout-petit ; un très petit peut être blessé par un jeu brutal. Une taille moyenne et un tempérament stable sont souvent le point de départ le plus simple.",
+      "L'énergie doit correspondre à la semaine réelle de votre famille, pas à vos meilleures intentions. Une race qui a besoin de deux heures de course par jour est merveilleuse — si quelqu'un a réellement ces deux heures.",
+      "Un chiot et un tout-petit en même temps, ce sont deux emplois à temps plein. De nombreuses familles connaissent un début bien plus calme avec un chien déjà âgé d'un an ou deux.",
+    ],
+    rulesTitle: "Les règles plus importantes que la race",
+    rules: [
+      "Ne dérangez jamais un chien qui mange, dort ou est dans son panier.",
+      "Un adulte est toujours présent dans la pièce quand de jeunes enfants et des chiens sont ensemble.",
+      "Les enfants apprennent à lire le chien — une tête détournée ou un bâillement signifie « laisse-moi de l'espace ».",
+    ],
+    listTitle: "Notre sélection familiale",
+    listIntro:
+      "Huit races qui obtiennent systématiquement de bons résultats avec les enfants dans nos données, avec les compromis honnêtes. Les chiens croisés issus de ces parents s'en sortent souvent tout aussi bien.",
+    childrenLabel: "Avec les enfants",
+    firstTimeLabel: "Pour débutants",
+    sheddingLabel: "Mue",
+    energyLabel: "Énergie",
+    readProfile: "Lire le profil complet",
+    allergyNote:
+      "Un mot rapide sur les allergies : aucun chien n'est vraiment hypoallergénique. Certains perdent moins leurs poils et dispersent moins de squames dans la maison, ce qui aide de nombreuses familles — mais passez du temps avec le chien en question avant de vous décider.",
+    quizTitle: "Votre famille est l'autre moitié du match",
+    quizBody:
+      "La meilleure race sur le papier doit tout de même s'adapter à votre semaine — votre maison, votre temps, l'âge de vos enfants. Notre quiz pèse tout cela et vous montre le raisonnement derrière chaque correspondance.",
+    quizCta: "Faire le quiz de compatibilité",
+    compareCta: "Comparer les races côte à côte",
+    levelLabels: ["Très faible", "Faible", "Modérée", "Élevée", "Très élevée"],
+  },
+  nl: {
+    eyebrow: "Een hond kiezen",
+    h1: "De beste hondenrassen voor gezinnen",
+    intro:
+      "Vraag tien mensen naar de beste gezinshond, en u krijgt tien antwoorden — meestal de hond waarmee ze zelf zijn opgegroeid. Dus hier is onze eerlijke versie: de rassen hieronder zijn stabiel, toegeeflijk en genieten echt van het leven met kinderen. Maar de individuele hond telt meer dan de rasnaam op het stamboompapier, en geen enkel ras maakt kinderen en honden op zichzelf veilig samen. Dat deel is aan ons, de volwassenen.",
+    whatMattersTitle: "Wat er echt toe doet",
+    whatMatters: [
+      "Een stabiel, toegeeflijk karakter verslaat elke reputatie. U wilt een hond die een onhandig aaitje, een onverwachte knuffel of een speelgoedje dat midden in het kauwen wordt afgepakt, gewoon van zich af laat glijden.",
+      "Grootte werkt in beide richtingen. Een grote, vrolijke hond kan per ongeluk een peuter omverwerpen; een heel kleine kan gewond raken bij ruw spel. Middelgroot en stabiel is vaak het makkelijkste startpunt.",
+      "De energie moet passen bij de echte week van uw gezin, niet bij uw beste bedoelingen. Een ras dat twee uur rennen per dag nodig heeft is prachtig — als iemand die twee uur ook daadwerkelijk heeft.",
+      "Een puppy en een peuter tegelijk zijn twee voltijdbanen. Veel gezinnen hebben een veel rustigere start met een hond die al een jaar of twee oud is.",
+    ],
+    rulesTitle: "De regels die belangrijker zijn dan het ras",
+    rules: [
+      "Stoor nooit een hond die eet, slaapt of in zijn mand ligt.",
+      "Er is altijd een volwassene in de kamer als jonge kinderen en honden samen zijn.",
+      "Kinderen leren de hond te lezen — een afgewend hoofd of een geeuw betekent 'geef me ruimte'.",
+    ],
+    listTitle: "Onze gezinsshortlist",
+    listIntro:
+      "Acht rassen die in onze gegevens consequent goed scoren bij kinderen, met de eerlijke afwegingen. Kruisingen met deze ouders doen het vaak net zo goed.",
+    childrenLabel: "Met kinderen",
+    firstTimeLabel: "Voor beginners",
+    sheddingLabel: "Verharen",
+    energyLabel: "Energie",
+    readProfile: "Het volledige profiel lezen",
+    allergyNote:
+      "Een kort woord over allergieën: geen enkele hond is echt hypoallergeen. Sommige verharen minder en verspreiden minder huidschilfers in huis, wat veel gezinnen helpt — maar breng tijd door met de specifieke hond voordat u beslist.",
+    quizTitle: "Uw gezin is de andere helft van de match",
+    quizBody:
+      "Het beste ras op papier moet nog steeds bij uw week passen — uw huis, uw tijd, de leeftijd van uw kinderen. Onze quiz weegt dit allemaal af en laat u de redenering achter elke match zien.",
+    quizCta: "Doe de compatibiliteitsquiz",
+    compareCta: "Rassen naast elkaar vergelijken",
+    levelLabels: ["Zeer laag", "Laag", "Gemiddeld", "Hoog", "Zeer hoog"],
   },
 };
 

@@ -5,9 +5,13 @@ import { useCopy } from "@/i18n";
 const copy = {
   en: { previous: "Previous", next: "Next", morePages: "More pages" },
   no: { previous: "Forrige", next: "Neste", morePages: "Flere sider" },
+  pl: { previous: "Poprzednia", next: "Następna", morePages: "Więcej stron" },
   dk: { previous: "Forrige", next: "Næste", morePages: "Flere sider" },
   se: { previous: "Föregående", next: "Nästa", morePages: "Fler sidor" },
   fi: { previous: "Edellinen", next: "Seuraava", morePages: "Lisää sivuja" },
+  de: { previous: "Zurück", next: "Weiter", morePages: "Weitere Seiten" },
+  fr: { previous: "Précédent", next: "Suivant", morePages: "Plus de pages" },
+  nl: { previous: "Vorige", next: "Volgende", morePages: "Meer pagina's" },
 } as const;
 
 import { cn } from "@/lib/utils";

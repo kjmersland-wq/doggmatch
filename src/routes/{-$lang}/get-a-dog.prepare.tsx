@@ -271,6 +271,126 @@ const copy = {
       "Osta vähemmän kuin luulet tarvitsevasi. Peti, kupit, ruoka, valjaat, hihna ja tunnistelaatta riittävät hyvin ensimmäiseen viikkoon. Opit pian, mistä koirasi oikeasti pitää.",
     welcomeCta: "Ensimmäiset päivät kotona",
   },
+  de: {
+    eyebrow: "Bereit machen",
+    title: "Alles vorbereiten.",
+    intro:
+      "Ihr Zuhause, Ihre Tage und die praktischen Dinge, die sich jetzt viel leichter regeln lassen als mitten in der ersten Woche mit einem neuen Hund.",
+    homeEyebrow: "Ihr Zuhause",
+    homeTitle: "Fast jedes Zuhause kann ein gutes Zuhause sein.",
+    homeBody:
+      "Hunden sind Quadratmeter viel weniger wichtig, als Menschen erwarten. Was innerhalb von zehn Minuten von Ihrer Haustür liegt, zählt weit mehr.",
+    worthChecking: "Lohnt sich zu prüfen",
+    lifeEyebrow: "Ihr Alltag",
+    lifeTitle: "Wie sieht eine gewöhnliche Woche bei Ihnen aus?",
+    lifeBody: "Der Hund muss zu der Woche passen, die Sie wirklich haben, nicht zu der, die Sie sich wünschen. Finden Sie sich unten wieder.",
+    allergiesEyebrow: "Allergien",
+    allergiesTitle: "Was wir ehrlich sagen können.",
+    allergiesBody1:
+      "Manche Rassen haaren tendenziell weniger als andere, und Menschen mit Allergien empfinden das manchmal als leichter. Aber kein Hund ist völlig allergiefrei. Die Proteine, auf die Menschen reagieren, stecken ebenso in Speichel und Haut wie im Fell, und die Verträglichkeit ist von Person zu Person sehr unterschiedlich.",
+    allergiesBody2:
+      "Wenn jemand in Ihrem Haushalt Allergien hat, verbringen Sie vor der Entscheidung wirklich Zeit mit genau diesem Hund — mehrere Besuche, nicht nur einen — und sprechen Sie mit Ihrem Arzt. Das sagt Ihnen weit mehr als jede Rasseliste, auch unsere.",
+    aloneEyebrow: "Zeit allein",
+    aloneTitle: "Wie lange ist zu lange?",
+    aloneBody:
+      "Die meisten erwachsenen Hunde kommen problemlos drei oder vier Stunden allein zurecht, sobald sie es gelernt haben. Ein Welpe kann das anfangs nicht — er braucht die ersten Monate über die meiste Zeit des Tages jemanden in seiner Nähe, und das Alleinsein ist eine Fähigkeit, die Sie ihm langsam beibringen.",
+    alonePoints: [
+      "Üben Sie kurze Abwesenheiten schon ab der ersten Woche, bevor es überhaupt nötig ist",
+      "Ein Mittagsspaziergänger oder ein Nachbar macht aus einem schwierigen Tag einen leichten",
+      "Ein paar Tage die Woche Hundetagesstätte passt manchen Hunden gut und überfordert andere",
+      "Ein Hund, der beim Alleinbleiben in Panik gerät, braucht früh Hilfe — es bessert sich selten von allein",
+    ],
+    checklistEyebrow: "Vor der Ankunft",
+    checklistTitle: "Die Ankunftscheckliste.",
+    checklistBody:
+      "Haken Sie Dinge ab, sobald Sie sie besorgt haben. Sie wird unterwegs auf diesem Gerät gespeichert, sodass Sie im Laden darauf zurückgreifen können.",
+    homePrepAlt: "Eine illustrierte Übersicht aus Hundebett, Näpfen, Leine, Geschirr und Spielzeug",
+    printCta: "Meine Ankunftscheckliste drucken",
+    noteTitle: "Ein ehrlicher Hinweis",
+    noteBody:
+      "Kaufen Sie weniger, als Sie denken. Ein Bett, Näpfe, Futter, ein Geschirr, eine Leine und eine Erkennungsmarke bringen Sie problemlos durch die erste Woche. Sie werden bald genug herausfinden, was Ihr Hund wirklich mag.",
+    welcomeCta: "Die ersten Tage zu Hause",
+  },
+  fr: {
+    eyebrow: "Se préparer",
+    title: "Tout préparer.",
+    intro:
+      "Votre maison, vos journées, et les choses pratiques bien plus faciles à régler maintenant qu'au milieu de la première semaine avec un nouveau chien.",
+    homeEyebrow: "Votre maison",
+    homeTitle: "Presque n'importe quel foyer peut être un bon foyer.",
+    homeBody:
+      "Les chiens se soucient bien moins des mètres carrés que les gens ne l'imaginent. Ce qui se trouve à dix minutes de votre porte compte bien davantage.",
+    worthChecking: "À vérifier",
+    lifeEyebrow: "Votre quotidien",
+    lifeTitle: "À quoi ressemble une semaine ordinaire chez vous ?",
+    lifeBody: "Le chien doit s'adapter à la semaine que vous avez réellement, pas à celle que vous aimeriez avoir. Retrouvez-vous ci-dessous.",
+    allergiesEyebrow: "Allergies",
+    allergiesTitle: "Ce que nous pouvons honnêtement affirmer.",
+    allergiesBody1:
+      "Certaines races perdent généralement moins leurs poils que d'autres, et les personnes allergiques trouvent parfois plus facile de vivre avec elles. Mais aucun chien n'est totalement hypoallergénique. Les protéines auxquelles les gens réagissent se trouvent dans la salive et la peau autant que dans le poil, et les réactions varient énormément d'une personne à l'autre.",
+    allergiesBody2:
+      "Si quelqu'un chez vous est allergique, passez vraiment du temps avec ce chien précis avant de vous engager — plusieurs visites, pas une seule — et parlez-en à votre médecin. Cela vous en apprendra bien plus que n'importe quelle liste de races, y compris la nôtre.",
+    aloneEyebrow: "Temps seul",
+    aloneTitle: "Combien de temps, c'est trop long ?",
+    aloneBody:
+      "La plupart des chiens adultes gèrent confortablement trois ou quatre heures seuls une fois qu'ils l'ont appris. Un chiot n'en est pas capable au début — il a besoin de quelqu'un la majeure partie de la journée pendant les premiers mois, et apprendre à rester seul est une compétence qui s'enseigne progressivement.",
+    alonePoints: [
+      "Entraînez-vous à de courtes absences dès la première semaine, avant même qu'il y en ait besoin",
+      "Quelqu'un qui promène le chien à midi, ou un voisin, transforme une journée difficile en journée facile",
+      "Quelques jours par semaine en garderie canine conviennent à certains chiens et en submergent d'autres",
+      "Un chien qui panique quand on le laisse seul a besoin d'aide tôt — cela s'améliore rarement tout seul",
+    ],
+    checklistEyebrow: "Avant l'arrivée",
+    checklistTitle: "La liste d'arrivée.",
+    checklistBody:
+      "Cochez les éléments au fur et à mesure. Elle s'enregistre en cours de route, sur cet appareil, pour que vous puissiez la retrouver en magasin.",
+    homePrepAlt: "Une composition illustrée d'un panier, de gamelles, d'une laisse, d'un harnais et de jouets",
+    printCta: "Imprimer ma liste d'arrivée",
+    noteTitle: "Une remarque honnête",
+    noteBody:
+      "Achetez moins que ce que vous pensez. Un panier, des gamelles, de la nourriture, un harnais, une laisse et une médaille d'identification suffiront très bien pour la première semaine. Vous découvrirez bien assez tôt ce que votre chien aime vraiment.",
+    welcomeCta: "Les premiers jours à la maison",
+  },
+  nl: {
+    eyebrow: "Klaarmaken",
+    title: "Alles klaarmaken.",
+    intro:
+      "Uw huis, uw dagen, en de praktische zaken die nu veel makkelijker te regelen zijn dan midden in de eerste week met een nieuwe hond.",
+    homeEyebrow: "Uw huis",
+    homeTitle: "Bijna elk huis kan een goed thuis zijn.",
+    homeBody:
+      "Honden geven veel minder om vierkante meters dan mensen verwachten. Wat binnen tien minuten van uw voordeur ligt, telt veel meer.",
+    worthChecking: "De moeite waard om te checken",
+    lifeEyebrow: "Uw dagelijks leven",
+    lifeTitle: "Hoe ziet een gewone week er bij u uit?",
+    lifeBody: "De hond moet passen bij de week die u werkelijk heeft, niet bij de week die u zou willen hebben. Herken uzelf hieronder.",
+    allergiesEyebrow: "Allergieën",
+    allergiesTitle: "Wat we eerlijk kunnen zeggen.",
+    allergiesBody1:
+      "Sommige rassen verharen doorgaans minder dan andere, en mensen met allergieën vinden ze soms makkelijker om mee te leven. Maar geen enkele hond is volledig allergievrij. De eiwitten waarop mensen reageren zitten net zo goed in speeksel en huid als in haar, en reacties verschillen enorm per persoon.",
+    allergiesBody2:
+      "Als iemand bij u thuis allergieën heeft, breng dan echt tijd door met die specifieke hond voordat u zich vastlegt — meerdere bezoeken, niet één — en overleg met uw arts. Dat vertelt u veel meer dan welke rassenlijst dan ook, ook de onze.",
+    aloneEyebrow: "Tijd alleen",
+    aloneTitle: "Hoe lang is te lang?",
+    aloneBody:
+      "De meeste volwassen honden kunnen prima drie of vier uur alleen zijn zodra ze het geleerd hebben. Een puppy kan dat aanvankelijk niet — hij heeft de eerste maanden het grootste deel van de dag iemand nodig, en alleen leren zijn is een vaardigheid die u langzaam aanleert.",
+    alonePoints: [
+      "Oefen vanaf de eerste week met korte afwezigheden, voordat het echt nodig is",
+      "Iemand die 's middags uitlaat, of een buurman, maakt van een lastige dag een makkelijke",
+      "Een paar dagen per week een hondendagverblijf past sommige honden goed en overweldigt andere",
+      "Een hond die in paniek raakt als hij alleen wordt gelaten, heeft vroeg hulp nodig — het verbetert zelden vanzelf",
+    ],
+    checklistEyebrow: "Voor de aankomst",
+    checklistTitle: "De aankomstlijst.",
+    checklistBody:
+      "Vink dingen af zodra u ze heeft. Deze wordt onderweg bewaard, op dit apparaat, zodat u er in een winkel op kunt terugvallen.",
+    homePrepAlt: "Een geïllustreerd overzicht van een hondenmand, bakjes, riem, tuig en speelgoed",
+    printCta: "Mijn aankomstlijst afdrukken",
+    noteTitle: "Een eerlijke opmerking",
+    noteBody:
+      "Koop minder dan u denkt. Een mand, bakjes, voer, een tuig, een riem en een penning met naamplaatje brengen u prima door de eerste week. U komt snel genoeg te weten wat uw hond echt leuk vindt.",
+    welcomeCta: "De eerste dagen thuis",
+  },
 } as const;
 
 function PreparePage() {

@@ -152,12 +152,12 @@ export const pl: Dictionary = {
     otherMatches: "Kilka innych, które naszym zdaniem Ci się spodobają",
     restart: "Zacznij od nowa",
     viewBreed: "Powiedz mi więcej",
-    premiumEyebrow: "Opcjonalnie",
-    premiumTitle: "Chcesz sięgnąć głębiej?",
+    premiumEyebrow: "DoggMatch+",
+    premiumTitle: "Znalazłeś już swojego pupila? Pomożemy Ci przejść przez pierwszy rok.",
     premiumBody:
-      "Pełniejszy raport: Twoje dziesięć najlepszych dopasowań, porównania obok siebie, ile może kosztować rok z każdym z nich, oraz checklista, która pomoże Ci się przygotować.",
-    premiumPrice: "3,99 €",
-    premiumNote: "Twój bezpłatny wynik jest kompletny. Nic powyżej nie jest ukryte za płatnością.",
+      "Checklisty do zabezpieczenia domu przed szczeniakiem, przewodniki żywieniowe dopasowane do wagi, uczciwe harmonogramy nauki czystości i przygotowania do podróży — praktyczna, spokojna pomoc we wszystkim, przed czym nikt tak naprawdę Cię nie ostrzega.",
+    premiumPrice: "17 zł",
+    premiumNote: "Twój bezpłatny wynik jest kompletny od początku do końca. Nic z powyższego nie jest ukryte za opłatą.",
     premiumCta: "Daj mi znać, gdy będzie gotowe",
     essentialsTitle: "Przygotowania do {breed}",
     essentialsBody:

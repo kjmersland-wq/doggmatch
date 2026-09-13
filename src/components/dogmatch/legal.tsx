@@ -9,6 +9,9 @@ const copy = {
   dk: { lastUpdated: "Sidst opdateret: " },
   se: { lastUpdated: "Senast uppdaterad: " },
   fi: { lastUpdated: "Viimeksi päivitetty: " },
+  de: { lastUpdated: "Zuletzt aktualisiert: " },
+  fr: { lastUpdated: "Dernière mise à jour : " },
+  nl: { lastUpdated: "Laatst bijgewerkt: " },
 } as const;
 
 export function LegalPage({

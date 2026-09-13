@@ -29,14 +29,38 @@ export interface Benefit {
   active?: boolean;
 }
 
-const benefitCategoryLabels: Record<BenefitCategory, { en: string; no: string; pl: string }> = {
-  equipment: { en: "Equipment", no: "Utstyr", pl: "Wyposażenie" },
-  food: { en: "Food & treats", no: "Mat og godbiter", pl: "Jedzenie i przysmaki" },
-  grooming: { en: "Grooming", no: "Stell og pels", pl: "Pielęgnacja" },
-  training: { en: "Training", no: "Trening", pl: "Szkolenie" },
-  insurance: { en: "Insurance", no: "Forsikring", pl: "Ubezpieczenie" },
-  vet: { en: "Vet care", no: "Veterinær", pl: "Opieka weterynaryjna" },
-  travel: { en: "Travel", no: "Reise", pl: "Podróże" },
+const benefitCategoryLabels: Record<
+  BenefitCategory,
+  { en: string; no: string; pl: string; dk: string; se: string; fi: string; de: string; fr: string; nl: string }
+> = {
+  equipment: {
+    en: "Equipment", no: "Utstyr", pl: "Wyposażenie", dk: "Udstyr", se: "Utrustning",
+    fi: "Varusteet", de: "Ausrüstung", fr: "Équipement", nl: "Uitrusting",
+  },
+  food: {
+    en: "Food & treats", no: "Mat og godbiter", pl: "Jedzenie i przysmaki", dk: "Mad og godbidder", se: "Mat och godis",
+    fi: "Ruoka ja herkut", de: "Futter & Leckerlis", fr: "Alimentation et friandises", nl: "Voeding en snacks",
+  },
+  grooming: {
+    en: "Grooming", no: "Stell og pels", pl: "Pielęgnacja", dk: "Pleje", se: "Pälsvård",
+    fi: "Turkinhoito", de: "Fellpflege", fr: "Toilettage", nl: "Verzorging",
+  },
+  training: {
+    en: "Training", no: "Trening", pl: "Szkolenie", dk: "Træning", se: "Träning",
+    fi: "Koulutus", de: "Training", fr: "Éducation", nl: "Training",
+  },
+  insurance: {
+    en: "Insurance", no: "Forsikring", pl: "Ubezpieczenie", dk: "Forsikring", se: "Försäkring",
+    fi: "Vakuutus", de: "Versicherung", fr: "Assurance", nl: "Verzekering",
+  },
+  vet: {
+    en: "Vet care", no: "Veterinær", pl: "Opieka weterynaryjna", dk: "Dyrlæge", se: "Veterinärvård",
+    fi: "Eläinlääkäripalvelut", de: "Tierarzt", fr: "Soins vétérinaires", nl: "Dierenarts",
+  },
+  travel: {
+    en: "Travel", no: "Reise", pl: "Podróże", dk: "Rejse", se: "Resor",
+    fi: "Matkailu", de: "Reisen", fr: "Voyage", nl: "Reizen",
+  },
 };
 
 /** Bilingual, locale-aware benefit categories. Call from render — reads the live locale. */

@@ -233,6 +233,120 @@ const resultCopy = {
     ],
     plusLinkLabel: "Seuraa päivittäisiä rutiineja ja aikatauluja DoggMatch+:ssa",
   },
+  de: {
+    scoreNote: "Basierend auf allem, was Sie uns mitgeteilt haben, einschließlich der Grenzen, die Sie als unverhandelbar bezeichnet haben.",
+    essentials: ["Ein Bett und ein sicherer Rückzugsort", "Halsband, Leine und Marke", "Futter und feste Fütterungszeiten", "Versicherung und tierärztliche Versorgung"],
+    suited: "Passend für einen {breed}.",
+    ownDogTitle: "Und der Hund, den Sie schon haben",
+    ownDogMixed:
+      "Bewertet nach {name}s eigenen Eigenschaften — Größe, Energie, Bewegungsbedarf, Umgang mit Menschen — nicht nach einer Rassebezeichnung.",
+    ownDogPure:
+      "Bewertet nach dem, was wir über {name} wissen, die Rasse eingeschlossen.",
+    ownDogUnknown:
+      "Sie haben uns mitgeteilt, dass {name} ein Mischling unbekannter Abstammung ist, daher haben wir keine Rassen erraten. Das ist Ihr Hund, so wie Sie ihn beschrieben haben.",
+    ownDogFit: "Passung zum beschriebenen Leben",
+    ownDogEdit: "Mehr über {name} ergänzen",
+    fitsTitle: "Warum das zu Ihnen passt",
+    fitsNone: "Hier stach nichts eindeutig hervor — aber jeder Hund ist es wert, persönlich getroffen zu werden.",
+    tradeTitle: "Wichtige Kompromisse",
+    tradeNone: "Nach Ihren Antworten sprach hier nichts gegen Sie.",
+    breakdownHonesty:
+      "Das ist eine Einschätzung der Lebensstil-Kompatibilität, keine wissenschaftliche Messung — sie vergleicht das, was Sie uns mitgeteilt haben, mit dem, was diese Rasse üblicherweise braucht.",
+    thirtyDaysTitle: "Ihre ersten 30 Tage mit einem {breed}",
+    budgetTitle: "Geschätztes Startbudget",
+    budgetGear: "Erstausstattung — Bett, Box, Leine, Näpfe, Spielzeug",
+    budgetGearRange: "150–350 €",
+    budgetVet: "Erster Tierarztbesuch, Impfungen & Chippen",
+    budgetVetRange: "80–180 €",
+    budgetInsurance: "Erster Monat Hundeversicherung",
+    budgetInsuranceRange: "15–40 €",
+    budgetNote: "Ein allgemeiner Ausgangspunkt — die tatsächlichen Kosten variieren je nach Land, Züchter und Tierarztpraxis.",
+    checklistTitle: "Checkliste zur Vorbereitung zu Hause",
+    checklistItems: [
+      "Ein ruhiges, abgegrenztes Zimmer als sicheren Rückzugsort einrichten, bevor der Hund einzieht",
+      "Haushaltschemikalien, Medikamente und alles Verschluckbare wegschließen",
+      "Lose Kabel und Strippen verstecken oder abdecken",
+      "Ein Treppenschutzgitter oder eine Barriere anbringen, falls Treppen, ein Pool oder ein Teich vorhanden sind",
+      "Futter, Schokolade und alles für Hunde Giftige gut außer Reichweite aufbewahren",
+    ],
+    plusLinkLabel: "Tägliche Abläufe & Routinen in DoggMatch+ verfolgen",
+  },
+  fr: {
+    scoreNote: "En fonction de tout ce que vous nous avez indiqué, y compris les limites que vous avez dites ne pas pouvoir dépasser.",
+    essentials: ["Un couchage et un espace sûr", "Collier, laisse et médaille", "Nourriture et horaires de repas", "Assurance et soins vétérinaires"],
+    suited: "Adapté à un {breed}.",
+    ownDogTitle: "Et le chien que vous avez déjà",
+    ownDogMixed:
+      "Évalué à partir des caractéristiques propres de {name} — taille, énergie, besoin d'exercice, comportement avec les gens — pas d'après une étiquette de race.",
+    ownDogPure:
+      "Évalué à partir de ce que nous savons de {name}, race comprise.",
+    ownDogUnknown:
+      "Vous nous avez indiqué que {name} est un croisé d'origine inconnue, nous n'avons donc pas deviné de races. Voici votre chien, tel que vous l'avez décrit.",
+    ownDogFit: "Compatibilité avec la vie que vous avez décrite",
+    ownDogEdit: "Ajouter des informations sur {name}",
+    fitsTitle: "Pourquoi cela vous correspond",
+    fitsNone: "Rien ne s'est clairement démarqué ici — mais chaque chien mérite d'être rencontré en personne.",
+    tradeTitle: "Compromis et points de vigilance",
+    tradeNone: "D'après vos réponses, rien ici ne jouait en votre défaveur.",
+    breakdownHonesty:
+      "Il s'agit d'une lecture de la compatibilité de style de vie, pas d'une mesure scientifique — elle compare ce que vous nous avez indiqué à ce dont cette race a généralement besoin.",
+    thirtyDaysTitle: "Vos 30 premiers jours avec un {breed}",
+    budgetTitle: "Budget de départ estimé",
+    budgetGear: "Équipement initial — couchage, caisse, laisse, gamelles, jouets",
+    budgetGearRange: "150–350 €",
+    budgetVet: "Première visite vétérinaire, vaccins et puce électronique",
+    budgetVetRange: "80–180 €",
+    budgetInsurance: "Premier mois d'assurance",
+    budgetInsuranceRange: "15–40 €",
+    budgetNote: "Un point de départ général — les coûts réels varient selon le pays, l'éleveur et le cabinet vétérinaire.",
+    checklistTitle: "Liste de préparation du logement",
+    checklistItems: [
+      "Aménagez une pièce calme et fermée comme espace sûr avant son arrivée",
+      "Rangez sous clé les produits ménagers, les médicaments et tout ce qui peut être avalé",
+      "Cachez ou protégez les câbles et fils qui traînent",
+      "Installez une barrière d'escalier si vous avez des marches, une piscine ou un bassin",
+      "Rangez la nourriture, le chocolat et tout ce qui est toxique pour les chiens hors de portée",
+    ],
+    plusLinkLabel: "Suivez les routines et plannings quotidiens sur DoggMatch+",
+  },
+  nl: {
+    scoreNote: "Gebaseerd op alles wat u ons heeft verteld, inclusief de grenzen waarvan u zei dat ze niet onderhandelbaar waren.",
+    essentials: ["Een mand en een veilige plek", "Halsband, riem en penning", "Voer en vaste eetmomenten", "Verzekering en dierenartszorg"],
+    suited: "Geschikt voor een {breed}.",
+    ownDogTitle: "En de hond die u al heeft",
+    ownDogMixed:
+      "Beoordeeld op basis van {name}s eigen kenmerken — grootte, energie, beweegbehoefte, omgang met mensen — niet op basis van een rasetiket.",
+    ownDogPure:
+      "Beoordeeld op basis van wat we over {name} weten, het ras inbegrepen.",
+    ownDogUnknown:
+      "U heeft ons verteld dat {name} een kruising is met onbekende afkomst, dus we hebben geen rassen geraden. Dit is uw hond, zoals u die heeft beschreven.",
+    ownDogFit: "Match met het leven dat u beschreef",
+    ownDogEdit: "Meer over {name} toevoegen",
+    fitsTitle: "Waarom dit bij u past",
+    fitsNone: "Hier viel niets duidelijk op — maar elke hond is het waard om in persoon te ontmoeten.",
+    tradeTitle: "Belangrijke afwegingen",
+    tradeNone: "Op basis van uw antwoorden pleitte hier niets tegen u.",
+    breakdownHonesty:
+      "Dit is een leefstijl-compatibiliteitsanalyse, geen wetenschappelijke meting — het vergelijkt wat u ons heeft verteld met wat dit ras doorgaans nodig heeft.",
+    thirtyDaysTitle: "Uw eerste 30 dagen met een {breed}",
+    budgetTitle: "Geschat opstartbudget",
+    budgetGear: "Startuitrusting — mand, bench, riem, bakken, speelgoed",
+    budgetGearRange: "€150–350",
+    budgetVet: "Eerste dierenartsbezoek, vaccinaties & chippen",
+    budgetVetRange: "€80–180",
+    budgetInsurance: "Eerste maand huisdierenverzekering",
+    budgetInsuranceRange: "€15–40",
+    budgetNote: "Een algemeen uitgangspunt — de werkelijke kosten variëren per land, fokker en dierenartspraktijk.",
+    checklistTitle: "Checklist voorbereiding thuis",
+    checklistItems: [
+      "Richt één rustige, afgesloten ruimte in als veilige plek voordat de hond arriveert",
+      "Berg huishoudchemicaliën, medicijnen en alles wat ingeslikt kan worden op slot op",
+      "Verstop of dek losse kabels en snoeren af",
+      "Plaats een traphekje of barrière als u trappen, een zwembad of een vijver heeft",
+      "Bewaar voer, chocolade en alles wat giftig is voor honden goed buiten bereik",
+    ],
+    plusLinkLabel: "Volg dagelijkse schema's en routines in DoggMatch+",
+  },
 };
 import { quizQuestions } from "@/data/questions.locale";
 import { breedContent } from "@/data/breed-content";
@@ -287,6 +401,21 @@ const seoCopy = {
     title: "Löydä koirani — ilmainen täsmäys noin kahdessa minuutissa | DoggMatch",
     description:
       "Vastaa muutamaan ystävälliseen kysymykseen päivistäsi, kodistasi ja toiveistasi, niin näytämme sinulle koirat, jotka voisivat sopia sinulle parhaiten.",
+  },
+  de: {
+    title: "Finde meinen Hund — kostenloses Matching in etwa zwei Minuten | DoggMatch",
+    description:
+      "Beantworten Sie ein paar freundliche Fragen zu Ihrem Alltag, Ihrem Zuhause und Ihren Wünschen, und wir zeigen Ihnen die Hunde, die am besten zu Ihnen passen könnten.",
+  },
+  fr: {
+    title: "Trouver mon chien — un match gratuit en environ deux minutes | DoggMatch",
+    description:
+      "Répondez à quelques questions simples sur votre quotidien, votre logement et vos attentes, et nous vous montrerons les chiens qui pourraient le mieux vous convenir.",
+  },
+  nl: {
+    title: "Vind mijn hond — gratis match in ongeveer twee minuten | DoggMatch",
+    description:
+      "Beantwoord een paar vriendelijke vragen over uw dagen, uw huis en uw wensen, en wij laten u de honden zien die het beste bij u zouden kunnen passen.",
   },
 };
 
@@ -373,6 +502,39 @@ const flowCopy = {
     ],
     hardLimitLabel: "Aseta ehdottomaksi kriteeriksi",
     hardLimitNote: "Rodut, jotka eivät täytä tätä kriteeriä, suljetaan kokonaan pois suosituksista.",
+  },
+  de: {
+    statusPhrases: [
+      "Abgleich mit 9 Lebensstil-Dimensionen…",
+      "Überschneidung der Ausschlusskriterien wird berechnet…",
+      "Eigenschaftskompatibilität wird gewichtet…",
+      "Abgleich mit Rasseeigenschaften…",
+      "Deterministische Berechnung — kein KI-Raten…",
+    ],
+    hardLimitLabel: "Als Ausschlusskriterium festlegen",
+    hardLimitNote: "Rassen, die diese Grenze überschreiten, werden strikt aus den Empfehlungen ausgeschlossen.",
+  },
+  fr: {
+    statusPhrases: [
+      "Évaluation sur 9 dimensions de style de vie…",
+      "Calcul du chevauchement des contraintes…",
+      "Pondération de la compatibilité des traits…",
+      "Comparaison avec les traits des races…",
+      "Calcul déterministe — aucune estimation par IA…",
+    ],
+    hardLimitLabel: "Définir comme critère rédhibitoire",
+    hardLimitNote: "Les races dépassant cette limite seront strictement exclues des recommandations.",
+  },
+  nl: {
+    statusPhrases: [
+      "Toetsing aan 9 leefstijldimensies…",
+      "Overlap tussen criteria wordt berekend…",
+      "Weging van eigenschap-compatibiliteit…",
+      "Vergelijking met raseigenschappen…",
+      "Deterministische berekening — geen AI-giswerk…",
+    ],
+    hardLimitLabel: "Instellen als ononderhandelbaar criterium",
+    hardLimitNote: "Rassen die deze grens overschrijden, worden volledig uitgesloten van de aanbevelingen.",
   },
 } as const;
 

@@ -165,6 +165,72 @@ const copy = {
     noteBody:
       "Koirat ovat erilaisia. Jokin, mikä sopii useimmille, voi silti aiheuttaa ongelmia omallesi, ja määrällä on väliä — murunen jotain rasvaista ei ole sama asia kuin puoli pakettia. Kaikenlaisten herkkujen tulisi jäädä alle kymmenesosaan siitä, mitä koira syö päivässä.",
   },
+  de: {
+    eyebrow: "Futtersicherheit",
+    title: "Darf mein Hund das essen?",
+    intro:
+      "Etwas ist auf dem Boden gelandet, und Ihr Hund war zuerst da. Tippen Sie es ein, und Sie erhalten eine klare Antwort, ohne Panik.",
+    azLink: "Alle Lebensmittel von A–Z durchsuchen",
+    searchPlaceholder: "Weintrauben, Käse, Erdnussbutter …",
+    searchAria: "Lebensmittel suchen",
+    filters: [
+      { value: "all" as const, label: "Alles" },
+      { value: "safe" as const, label: "In kleinen Mengen unbedenklich" },
+      { value: "care" as const, label: "Mit Vorsicht" },
+      { value: "avoid" as const, label: "Nicht geben" },
+    ],
+    empty:
+      "Das haben wir noch nicht beschrieben. Hat Ihr Hund es bereits gefressen und sind Sie unsicher, rufen Sie Ihren Tierarzt an — genau für solche Anrufe sind sie da.",
+    vetNote:
+      "Hat Ihr Hund etwas von der „Nicht geben“-Liste gefressen, warten Sie nicht ab, was passiert. Rufen Sie Ihren Tierarzt oder eine Giftnotrufzentrale an und schildern Sie, was es war, ungefähr wie viel, und wann.",
+    noteTitle: "Ein Hinweis zu Listen wie dieser",
+    noteBody:
+      "Hunde sind unterschiedlich. Etwas, das für die meisten unbedenklich ist, kann Ihrem Hund trotzdem zu schaffen machen, und die Menge zählt — ein Krümel von etwas Reichhaltigem ist nicht dasselbe wie eine halbe Packung. Leckerlis jeder Art sollten unter etwa einem Zehntel der Tagesration bleiben.",
+  },
+  fr: {
+    eyebrow: "Sécurité alimentaire",
+    title: "Mon chien peut-il manger ça ?",
+    intro:
+      "Quelque chose est tombé par terre et votre chien est arrivé le premier. Tapez-le, et vous obtiendrez une réponse claire, sans panique.",
+    azLink: "Parcourir tous les aliments, de A à Z",
+    searchPlaceholder: "Raisin, fromage, beurre de cacahuète…",
+    searchAria: "Rechercher des aliments",
+    filters: [
+      { value: "all" as const, label: "Tout" },
+      { value: "safe" as const, label: "Sans souci en petite quantité" },
+      { value: "care" as const, label: "Avec prudence" },
+      { value: "avoid" as const, label: "Ne pas donner" },
+    ],
+    empty:
+      "Nous n'avons pas encore rédigé de fiche pour cet aliment. Si votre chien l'a déjà mangé et que vous n'êtes pas sûr, appelez votre vétérinaire — c'est exactement le genre d'appel pour lequel il est là.",
+    vetNote:
+      "Si votre chien a mangé quelque chose de la liste « ne pas donner », n'attendez pas de voir ce qui se passe. Appelez votre vétérinaire ou un centre antipoison animalier et indiquez ce que c'était, environ la quantité, et le moment.",
+    noteTitle: "Une remarque sur les listes comme celle-ci",
+    noteBody:
+      "Chaque chien est différent. Quelque chose qui convient à la plupart peut tout de même perturber le vôtre, et la quantité compte — une miette d'un aliment riche n'est pas comparable à la moitié d'un paquet. Toutes friandises confondues devraient rester sous environ un dixième de ce que votre chien mange en une journée.",
+  },
+  nl: {
+    eyebrow: "Voedselveiligheid",
+    title: "Mag mijn hond dit eten?",
+    intro:
+      "Er is iets op de vloer beland en uw hond was er als eerste bij. Typ het in en u krijgt een duidelijk antwoord, zonder paniek.",
+    azLink: "Blader door alle voedingsmiddelen, A–Z",
+    searchPlaceholder: "Druiven, kaas, pindakaas…",
+    searchAria: "Voedingsmiddelen zoeken",
+    filters: [
+      { value: "all" as const, label: "Alles" },
+      { value: "safe" as const, label: "Geen probleem in kleine hoeveelheden" },
+      { value: "care" as const, label: "Wees voorzichtig" },
+      { value: "avoid" as const, label: "Niet geven" },
+    ],
+    empty:
+      "Dat hebben we nog niet uitgewerkt. Heeft uw hond het al gegeten en weet u het niet zeker, bel dan uw dierenarts — precies voor dat soort telefoontjes zijn ze er.",
+    vetNote:
+      "Heeft uw hond iets van de lijst \"niet geven\" gegeten, wacht dan niet af wat er gebeurt. Bel uw dierenarts of een dierendierengiflijn en vertel wat het was, ongeveer hoeveel, en wanneer.",
+    noteTitle: "Een opmerking over lijsten zoals deze",
+    noteBody:
+      "Honden verschillen. Iets dat voor de meeste honden prima is, kan bij de uwe toch problemen geven, en de hoeveelheid maakt uit — een kruimel van iets machtigs is niet hetzelfde als een half pakje. Snacks van welke aard dan ook mogen samen niet meer zijn dan ongeveer een tiende van wat uw hond op een dag eet.",
+  },
 } as const;
 
 function FoodSafetyPage() {

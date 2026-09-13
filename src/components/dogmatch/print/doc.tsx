@@ -9,6 +9,9 @@ const copy = {
   dk: { writtenDown: "Skrevet" },
   se: { writtenDown: "Skrivet" },
   fi: { writtenDown: "Kirjoitettu" },
+  de: { writtenDown: "Aufgeschrieben" },
+  fr: { writtenDown: "Rédigé" },
+  nl: { writtenDown: "Opgeschreven" },
 } as const;
 
 /**

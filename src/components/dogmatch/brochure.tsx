@@ -361,6 +361,180 @@ const copy = {
     printBtn: "Tulosta / tallenna PDF:nä",
     qrAlt: "QR-koodi osoitteeseen doggmatch.com",
   },
+  de: {
+    badge: "Finde deinen Hund",
+    headline: "Finde den Hund, der zu deinem Leben passt.",
+    coverLead:
+      "Ein ruhiger, ehrlicher Weg herauszufinden, welche Art von Hund zu deinem Zuhause, deinem Alltag und den Menschen um dich herum passt.",
+    cta: "DoggMatch testen — kostenlos",
+    url: "doggmatch.com",
+    scan: "Scannen zum Starten",
+    scanBack: "Mit der Handykamera scannen",
+    howEyebrow: "So funktioniert es",
+    howTitle: "Du antwortest. Wir zeigen unsere Arbeit.",
+    howLead:
+      "Du erzählst uns von deinem Alltag — Aktivitätslevel, Erfahrung, Familie und Kinder, Zeit fürs Training, Fellpflege, Größe, Allergien im Haushalt und einige andere wichtige Dinge. Dann bekommst du Rassen, die zu einem Leben wie deinem passen, mit den Gründen hinter jeder einzelnen.",
+    points: [
+      {
+        title: "Keine KI entscheidet irgendetwas",
+        body: "Das Ergebnis stammt aus einem festen, transparenten Algorithmus. Gleiche Antworten, gleiches Ergebnis, jedes Mal.",
+      },
+      {
+        title: "Du siehst, warum",
+        body: "Jede Übereinstimmung wird Dimension für Dimension erklärt, auch dort, wo eine Rasse schlechter zu dir passt.",
+      },
+      {
+        title: "Rassehunde und Mischlinge",
+        body: "Bekannte Kreuzungen kombinieren die Eigenschaften beider Elternteile — als Orientierung gezeigt, nie als Garantie.",
+      },
+      {
+        title: "Nützlich, sobald du einen Hund hast",
+        body: "Werkzeuge für Training, Gesundheit, Futter und Reisen, die dich lange nach der Entscheidung begleiten.",
+      },
+    ],
+    toolsEyebrow: "Das ist alles dabei",
+    toolsTitle: "Alles an einem ruhigen Ort.",
+    tools: [
+      { title: "Finde deinen Hund", body: "Die Kompatibilitätsfragen, in wenigen Minuten beantwortet." },
+      { title: "Rassen vergleichen", body: "Nebeneinander, bei dem, was den Alltag wirklich verändert." },
+      { title: "Mischlinge", body: "Kombiniere zwei Elternrassen und sieh den wahrscheinlichen Mittelweg." },
+      { title: "Training", body: "Kurze, freundliche Lektionen, die sinnvoll aufeinander aufbauen." },
+      { title: "Gesundheit & Wohlbefinden", body: "Fell, Zähne, Pfoten, Gewicht — ohne Panik geprüft." },
+      { title: "Futter & Ernährung", body: "Portionshinweise und eine klare Liste, was Hunde nicht essen sollten." },
+      { title: "Reisen", body: "Regeln von Land zu Land, Sicherheit im Auto und Tage im Freien." },
+      { title: "Mein Hund", body: "Die eigene Akte deines Hundes: Gewicht, Tierarztbesuche, Kontakte, die kommende Woche." },
+    ],
+    plusTitle: "DoggMatch+",
+    plusBody:
+      "Eine optionale Mitgliedschaft für alle, die mehr wollen: zusätzliche Werkzeuge, druckbare Seiten für den Kühlschrank oder den Tierarzt, eine persönliche Mitgliedskarte und Partnervorteile, sobald sie hinzukommen.",
+    backTitle: "Nimm dir fünf Minuten Zeit. Es ist eine Entscheidung für die nächsten fünfzehn Jahre.",
+    backBody:
+      "Kostenlos zum Testen, nichts zu installieren. Beantworte die Fragen auf dem Handy und sieh, was zu deinem Leben passt — mit sichtbarer Begründung, auf Englisch oder Norwegisch.",
+    backNote:
+      "DoggMatch bietet Orientierung, keine tierärztliche oder medizinische Beratung. Sprich bei Gesundheitsfragen immer mit einem Tierarzt, und hol dir bei Allergien professionellen Rat.",
+    madeBy: "Gemacht in Kristiansand, Norwegen von KM TECH LABS",
+    printTitle: "A5-Broschüre",
+    printLead:
+      "Eine A5-Seite (148 × 210 mm), druckfertig. Als PDF drucken, Ränder auf keine gesetzt und Hintergrundgrafiken aktiviert. Bitte die Druckerei um 3 mm Beschnitt.",
+    printBtn: "Drucken / als PDF speichern",
+    qrAlt: "QR-Code zu doggmatch.com",
+  },
+  fr: {
+    badge: "Trouvez votre chien",
+    headline: "Trouvez le chien qui correspond à votre vie.",
+    coverLead:
+      "Une façon calme et honnête de déterminer quel type de chien conviendrait à votre foyer, à vos journées et aux personnes qui vous entourent.",
+    cta: "Essayez DoggMatch — gratuit",
+    url: "doggmatch.com",
+    scan: "Scannez pour commencer",
+    scanBack: "Scannez avec l'appareil photo de votre téléphone",
+    howEyebrow: "Comment ça marche",
+    howTitle: "Vous répondez. Nous montrons notre raisonnement.",
+    howLead:
+      "Vous nous parlez de votre quotidien — niveau d'activité, expérience, famille et enfants, temps disponible pour l'éducation, entretien, taille, allergies dans le foyer et quelques autres points importants. Vous obtenez ensuite des races qui conviennent généralement à une vie comme la vôtre, avec les raisons derrière chacune.",
+    points: [
+      {
+        title: "Aucune IA ne décide de rien",
+        body: "Le résultat provient d'un algorithme fixe et transparent. Mêmes réponses, même résultat, à chaque fois.",
+      },
+      {
+        title: "Vous voyez pourquoi",
+        body: "Chaque correspondance est expliquée dimension par dimension, y compris là où une race vous convient moins bien.",
+      },
+      {
+        title: "Races pures et croisements",
+        body: "Les croisements connus combinent les traits des deux parents — présentés comme une indication, jamais comme une garantie.",
+      },
+      {
+        title: "Utile une fois que vous avez un chien",
+        body: "Des outils d'éducation, de santé, d'alimentation et de voyage qui restent avec vous longtemps après le choix.",
+      },
+    ],
+    toolsEyebrow: "Ce que vous trouverez à l'intérieur",
+    toolsTitle: "Tout au même endroit, en toute sérénité.",
+    tools: [
+      { title: "Trouvez votre chien", body: "Les questions de compatibilité, en quelques minutes." },
+      { title: "Comparer les races", body: "Côte à côte, sur ce qui change vraiment le quotidien." },
+      { title: "Races croisées", body: "Combinez deux races parentes et voyez le juste milieu probable." },
+      { title: "Éducation", body: "Des leçons courtes et bienveillantes, construites dans un ordre logique." },
+      { title: "Santé et bien-être", body: "Pelage, dents, pattes, poids — vérifiés sans dramatiser." },
+      { title: "Alimentation et nutrition", body: "Des repères de portions et une liste claire de ce qu'il ne faut pas donner." },
+      { title: "Voyages", body: "Règles d'un pays à l'autre, sécurité en voiture et journées en plein air." },
+      { title: "Mon chien", body: "Le carnet de votre chien : poids, visites vétérinaires, contacts, la semaine à venir." },
+    ],
+    plusTitle: "DoggMatch+",
+    plusBody:
+      "Un abonnement optionnel pour ceux qui veulent aller plus loin : outils supplémentaires, pages imprimables pour le frigo ou le vétérinaire, une carte de membre personnelle, et des avantages partenaires au fil de leur arrivée.",
+    backTitle: "Prenez cinq minutes. C'est une décision pour les quinze prochaines années.",
+    backBody:
+      "Gratuit à essayer, rien à installer. Répondez aux questions sur votre téléphone et découvrez ce qui convient à votre vie — avec le raisonnement visible, en anglais ou en norvégien.",
+    backNote:
+      "DoggMatch fournit des repères, pas un avis vétérinaire ou médical. Parlez toujours à un vétérinaire pour les questions de santé, et consultez un professionnel pour les allergies.",
+    madeBy: "Conçu à Kristiansand, en Norvège, par KM TECH LABS",
+    printTitle: "Brochure A5",
+    printLead:
+      "Une page A5 (148 × 210 mm), prête à imprimer. Imprimez en PDF avec les marges réglées sur aucune et les graphiques d'arrière-plan activés. Demandez à l'imprimeur un fond perdu de 3 mm.",
+    printBtn: "Imprimer / enregistrer en PDF",
+    qrAlt: "Code QR vers doggmatch.com",
+  },
+  nl: {
+    badge: "Vind uw hond",
+    headline: "Vind de hond die bij uw leven past.",
+    coverLead:
+      "Een rustige, eerlijke manier om uit te zoeken welk soort hond past bij uw huis, uw dagen en de mensen om u heen.",
+    cta: "Probeer DoggMatch — gratis",
+    url: "doggmatch.com",
+    scan: "Scan om te beginnen",
+    scanBack: "Scan met de camera van uw telefoon",
+    howEyebrow: "Zo werkt het",
+    howTitle: "U antwoordt. Wij laten ons werk zien.",
+    howLead:
+      "U vertelt ons over uw dagelijks leven — activiteitsniveau, ervaring, gezin en kinderen, tijd voor training, vachtverzorging, grootte, allergieën in huis en een paar andere belangrijke dingen. Daarna krijgt u rassen die meestal passen bij een leven zoals het uwe, met de redenen achter elk ras.",
+    points: [
+      {
+        title: "Geen AI beslist iets",
+        body: "Het resultaat komt uit een vast, transparant algoritme. Dezelfde antwoorden geven altijd hetzelfde resultaat.",
+      },
+      {
+        title: "U ziet waarom",
+        body: "Elke match wordt dimensie voor dimensie uitgelegd, ook waar een ras minder goed bij u past.",
+      },
+      {
+        title: "Rasechte honden en kruisingen",
+        body: "Bekende kruisingen combineren de eigenschappen van beide ouders — getoond als richtlijn, nooit als garantie.",
+      },
+      {
+        title: "Nuttig zodra u een hond heeft",
+        body: "Hulpmiddelen voor training, gezondheid, voeding en reizen die nog lang na de keuze met u meegaan.",
+      },
+    ],
+    toolsEyebrow: "Dit zit erin",
+    toolsTitle: "Alles op één rustige plek.",
+    tools: [
+      { title: "Vind uw hond", body: "De compatibiliteitsvragen, in een paar minuten beantwoord." },
+      { title: "Vergelijk rassen", body: "Naast elkaar, op wat het dagelijks leven echt verandert." },
+      { title: "Kruisingen", body: "Combineer twee ouderrassen en zie het waarschijnlijke middenweg." },
+      { title: "Training", body: "Korte, vriendelijke lessen die logisch op elkaar voortbouwen." },
+      { title: "Gezondheid & welzijn", body: "Vacht, tanden, poten, gewicht — gecontroleerd zonder paniek." },
+      { title: "Voeding", body: "Richtlijnen voor porties en een duidelijke lijst van wat honden niet mogen eten." },
+      { title: "Reizen", body: "Regels van land tot land, veiligheid in de auto en dagen buiten." },
+      { title: "Mijn hond", body: "Het eigen dossier van uw hond: gewicht, dierenartsbezoeken, contacten, de komende week." },
+    ],
+    plusTitle: "DoggMatch+",
+    plusBody:
+      "Een optioneel lidmaatschap voor wie meer wil: extra hulpmiddelen, afdrukbare pagina's voor de koelkast of de dierenarts, een persoonlijke ledenkaart en partnervoordelen zodra ze beschikbaar komen.",
+    backTitle: "Neem vijf minuten. Het is een beslissing voor de komende vijftien jaar.",
+    backBody:
+      "Gratis om te proberen, niets te installeren. Beantwoord de vragen op uw telefoon en zie wat bij uw leven past — met de redenering zichtbaar, in het Engels of Noors.",
+    backNote:
+      "DoggMatch biedt richtlijnen, geen diergeneeskundig of medisch advies. Praat bij gezondheidskwesties altijd met een dierenarts, en zoek professioneel advies bij allergieën.",
+    madeBy: "Gemaakt in Kristiansand, Noorwegen door KM TECH LABS",
+    printTitle: "A5-brochure",
+    printLead:
+      "Eén A5-pagina (148 × 210 mm), afdrukklaar. Druk af als PDF met marges op geen en achtergrondafbeeldingen aan. Vraag de drukker om 3 mm afloop.",
+    printBtn: "Afdrukken / opslaan als PDF",
+    qrAlt: "QR-code naar doggmatch.com",
+  },
 } as const;
 
 function useQr(text: string, size = 640) {

@@ -36,6 +36,21 @@ const seoCopy = {
     description:
       "DoggMatch on ilmainen ja rehellinen tapa selvittää, mikä koira voisi sopia elämääsi. Näytämme aina, miten päättelemme asiat, ja kysymme sinusta mahdollisimman vähän.",
   },
+  de: {
+    title: "Über DoggMatch — ein sanfterer Weg, einen Hund auszuwählen",
+    description:
+      "DoggMatch ist ein kostenloser, ehrlicher Weg herauszufinden, welcher Hund zu Ihrem Leben passen könnte. Wir zeigen immer unsere Überlegungen und fragen so wenig wie möglich über Sie ab.",
+  },
+  fr: {
+    title: "À propos de DoggMatch — une manière plus bienveillante de choisir un chien",
+    description:
+      "DoggMatch est un moyen gratuit et honnête de déterminer quel chien pourrait convenir à votre vie. Nous montrons toujours notre raisonnement et vous demandons le moins d'informations possible.",
+  },
+  nl: {
+    title: "Over DoggMatch — een vriendelijkere manier om een hond te kiezen",
+    description:
+      "DoggMatch is een gratis, eerlijke manier om te bepalen welke hond bij uw leven zou kunnen passen. We laten altijd onze redenering zien en vragen zo min mogelijk over u.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/about")({
@@ -73,6 +88,21 @@ const copy = {
     p1: "Koiran hankkiminen on iso päätös, ja se ansaitsee enemmän harkintaa kuin listan suosituimmista roduista. Oikea valinta on parempi sinulle — ja paljon parempi koiralle.",
     p2: "Täällä ei arvailla. Jokainen ehdotus perustuu siihen, mitä olet kertonut meille, verrattuna siihen, mitä kukin rotu yleensä tarvitsee. Jos kerrot meille, että jokin on ehdoton vaatimus, uskomme sanaasi — vaikka se sulkisi pois koiran, johon olit jo mieltynyt.",
     p3: "Kysymme sinusta mahdollisimman vähän. Kerrot asuinpaikkasi vain, jos haluat paikallisia vinkkejä, eikä tulosta varten tarvita koskaan tiliä.",
+  },
+  de: {
+    p1: "Einen Hund aufzunehmen ist eine große Entscheidung, und sie verdient mehr Überlegung als eine Liste der beliebtesten Rassen. Die richtige Wahl ist besser für Sie — und viel besser für den Hund.",
+    p2: "Hier wird nicht geraten. Jedes Match beruht auf dem, was Sie uns erzählt haben, abgeglichen mit dem, was jede Rasse normalerweise braucht. Wenn Sie uns sagen, dass etwas ein Ausschlusskriterium ist, nehmen wir Sie beim Wort — auch wenn das einen Hund ausschließt, in den Sie sich schon verliebt hatten.",
+    p3: "Wir fragen so wenig wie möglich ab. Sie teilen Ihren Wohnort nur mit, wenn Sie lokale Vorschläge möchten, und Sie brauchen nie ein Konto, um Ihr Ergebnis zu erhalten.",
+  },
+  fr: {
+    p1: "Accueillir un chien est une grande décision, qui mérite plus de réflexion qu'une liste des races les plus populaires. Bien choisir, c'est mieux pour vous — et bien mieux pour le chien.",
+    p2: "Ici, pas de suppositions. Chaque correspondance découle de ce que vous nous avez confié, comparé à ce dont chaque race a généralement besoin. Si vous nous dites que quelque chose est un critère rédhibitoire, nous vous prenons au mot — même si cela écarte un chien qui vous tenait à cœur.",
+    p3: "Nous demandons le moins d'informations possible. Vous ne partagez votre lieu de résidence que si vous souhaitez des suggestions locales, et vous n'avez jamais besoin de créer de compte pour obtenir votre résultat.",
+  },
+  nl: {
+    p1: "Een hond in huis nemen is een grote beslissing, die meer overweging verdient dan een lijst van de populairste rassen. Het goed doen is beter voor u — en veel beter voor de hond.",
+    p2: "Hier wordt niet gegokt. Elke match komt voort uit wat u ons heeft verteld, afgezet tegen wat elk ras doorgaans nodig heeft. Als u ons vertelt dat iets een ononderhandelbaar criterium is, nemen we u op uw woord — zelfs als dat een hond uitsluit waar uw hart naar uitging.",
+    p3: "We vragen zo min mogelijk. U deelt alleen waar u woont als u lokale suggesties wilt, en u heeft nooit een account nodig om uw resultaat te krijgen.",
   },
 } as const;
 

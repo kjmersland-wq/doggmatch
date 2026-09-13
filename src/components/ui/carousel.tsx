@@ -6,9 +6,13 @@ import { useCopy } from "@/i18n";
 const copy = {
   en: { previousSlide: "Previous slide", nextSlide: "Next slide" },
   no: { previousSlide: "Forrige bilde", nextSlide: "Neste bilde" },
+  pl: { previousSlide: "Poprzedni slajd", nextSlide: "Następny slajd" },
   dk: { previousSlide: "Forrige billede", nextSlide: "Næste billede" },
   se: { previousSlide: "Föregående bild", nextSlide: "Nästa bild" },
   fi: { previousSlide: "Edellinen kuva", nextSlide: "Seuraava kuva" },
+  de: { previousSlide: "Vorheriges Bild", nextSlide: "Nächstes Bild" },
+  fr: { previousSlide: "Image précédente", nextSlide: "Image suivante" },
+  nl: { previousSlide: "Vorige afbeelding", nextSlide: "Volgende afbeelding" },
 } as const;
 
 import { cn } from "@/lib/utils";

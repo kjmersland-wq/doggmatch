@@ -6,9 +6,13 @@ import { useCopy } from "@/i18n";
 const copy = {
   en: { more: "More" },
   no: { more: "Mer" },
+  pl: { more: "Więcej" },
   dk: { more: "Mere" },
   se: { more: "Mer" },
   fi: { more: "Lisää" },
+  de: { more: "Mehr" },
+  fr: { more: "Plus" },
+  nl: { more: "Meer" },
 } as const;
 
 import { cn } from "@/lib/utils";

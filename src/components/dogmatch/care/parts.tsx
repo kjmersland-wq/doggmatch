@@ -56,6 +56,30 @@ const copy = {
     basedOn: "Perustuu ohjeisiin lähteestä",
     readFull: "Lue koko vastaus",
   },
+  de: {
+    safety: { safe: "In kleinen Mengen unbedenklich", care: "Vorsicht geboten", avoid: "Nicht geben" } as Record<FoodSafety, string>,
+    howMuch: "Wie viel: ",
+    weightChartAlt: "Gewicht im Zeitverlauf",
+    worthKnowing: "Gut zu wissen",
+    basedOn: "Basierend auf Empfehlungen von",
+    readFull: "Ganze Antwort lesen",
+  },
+  fr: {
+    safety: { safe: "Sans souci en petite quantité", care: "Soyez prudent", avoid: "Ne pas donner" } as Record<FoodSafety, string>,
+    howMuch: "En quelle quantité : ",
+    weightChartAlt: "Poids dans le temps",
+    worthKnowing: "Bon à savoir",
+    basedOn: "D'après les recommandations de",
+    readFull: "Lire la réponse complète",
+  },
+  nl: {
+    safety: { safe: "Geen probleem in kleine hoeveelheden", care: "Wees voorzichtig", avoid: "Geef dit niet" } as Record<FoodSafety, string>,
+    howMuch: "Hoeveel: ",
+    weightChartAlt: "Gewicht in de tijd",
+    worthKnowing: "Goed om te weten",
+    basedOn: "Gebaseerd op advies van",
+    readFull: "Lees het volledige antwoord",
+  },
 } as const;
 
 /* ---------------------------------------------------------------- Cards */

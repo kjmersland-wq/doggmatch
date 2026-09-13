@@ -92,6 +92,48 @@ const copy = {
       { to: "/dog-life", label: "Koiran arki", hint: "Yhteinen arki, missä ikinä oletkin" },
     ],
   },
+  de: {
+    title: "Wo es als Nächstes weitergeht",
+    intro: "DoggMatch begleitet die ganze Reise — vom Herausfinden, welcher Hund zu dir passt, bis zu den ganz normalen Tagen viele Jahre später.",
+    steps: [
+      { to: "/find-my-dog", label: "Finde meinen Hund", hint: "Ein paar Fragen zu deinem Alltag" },
+      { to: "/breeds", label: "Rassebibliothek", hint: "Wie es ist, mit jedem Hund zu leben" },
+      { to: "/compare", label: "Hunde vergleichen", hint: "Nebeneinander, bei dem, was zählt" },
+      { to: "/get-a-dog", label: "Einen Hund bekommen", hint: "Bereitschaft, Kosten und eine gute Wahl" },
+      { to: "/my-dog", label: "Mein Hund", hint: "Routinen, Futter, Gewicht und Pflege" },
+      { to: "/train", label: "Training", hint: "Kurze, freundliche Lektionen, die aufeinander aufbauen" },
+      { to: "/travel", label: "Reisen", hint: "Über Grenzen und lange Autofahrten" },
+      { to: "/dog-life", label: "Hundeleben", hint: "Der gemeinsame Alltag, wo auch immer du bist" },
+    ],
+  },
+  fr: {
+    title: "Où aller ensuite",
+    intro: "DoggMatch vous accompagne tout au long du chemin — depuis la recherche du chien qui vous convient jusqu'aux journées les plus ordinaires, des années plus tard.",
+    steps: [
+      { to: "/find-my-dog", label: "Trouver mon chien", hint: "Quelques questions sur votre quotidien" },
+      { to: "/breeds", label: "Bibliothèque des races", hint: "Comment c'est de vivre avec chaque chien" },
+      { to: "/compare", label: "Comparer les chiens", hint: "Côte à côte, sur ce qui compte" },
+      { to: "/get-a-dog", label: "Adopter un chien", hint: "Préparation, coûts et bons choix" },
+      { to: "/my-dog", label: "Mon chien", hint: "Routines, alimentation, poids et soins" },
+      { to: "/train", label: "Éducation", hint: "Des leçons courtes et bienveillantes qui se construisent" },
+      { to: "/travel", label: "Voyages", hint: "Passer les frontières et les longs trajets en voiture" },
+      { to: "/dog-life", label: "Vie de chien", hint: "Le quotidien ensemble, où que vous soyez" },
+    ],
+  },
+  nl: {
+    title: "Waar u verder kunt gaan",
+    intro: "DoggMatch begeleidt de hele reis — van uitzoeken welke hond bij u past tot de heel gewone dagen jaren later.",
+    steps: [
+      { to: "/find-my-dog", label: "Vind mijn hond", hint: "Een paar vragen over uw dagen" },
+      { to: "/breeds", label: "Rassenbibliotheek", hint: "Hoe het is om met elke hond te leven" },
+      { to: "/compare", label: "Vergelijk honden", hint: "Naast elkaar, op wat ertoe doet" },
+      { to: "/get-a-dog", label: "Een hond nemen", hint: "Klaarheid, kosten en goede keuzes" },
+      { to: "/my-dog", label: "Mijn hond", hint: "Routines, voeding, gewicht en verzorging" },
+      { to: "/train", label: "Training", hint: "Korte, vriendelijke lessen die voortbouwen" },
+      { to: "/travel", label: "Reizen", hint: "Grenzen over en lange autoritten" },
+      { to: "/dog-life", label: "Hondenleven", hint: "Het dagelijks leven samen, waar u ook bent" },
+    ],
+  },
 } as const;
 
 export function JourneyLinks({ exclude = [] }: { exclude?: string[] }) {

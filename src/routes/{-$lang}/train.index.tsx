@@ -19,6 +19,9 @@ const copy = {
   dk: { welcomeUser: (name: string) => `Godt at se dig, ${name}s menneske.` },
   se: { welcomeUser: (name: string) => `Kul att se dig, ${name}s människa.` },
   fi: { welcomeUser: (name: string) => `Kiva nähdä sinut taas – ${name} odottaa jo!` },
+  de: { welcomeUser: (name: string) => `Schön, Sie zu sehen, ${name}s Mensch.` },
+  fr: { welcomeUser: (name: string) => `Ravi de vous revoir, humain de ${name}.` },
+  nl: { welcomeUser: (name: string) => `Fijn u te zien, ${name}s baasje.` },
 } as const;
 
 const title = "Train Your Dog — Small sessions, clear steps | DoggMatch";
@@ -51,6 +54,21 @@ const seoCopy = {
     title: "Kouluta koiraasi — lyhyitä harjoituksia, selkeitä askeleita | DoggMatch",
     description:
       "Ystävällistä, palkitsevaa koulutusta, jota oikeasti ehtii tehdä kotona. Lyhyitä harjoituksia, selkeitä askeleita ja kuvia, jotka näyttävät tarkalleen, mitä tehdä.",
+  },
+  de: {
+    title: "Hundetraining — Kurze Einheiten, klare Schritte | DoggMatch",
+    description:
+      "Freundliches, belohnungsbasiertes Training, das zu Hause wirklich klappt. Kurze Einheiten, klare Schritte und Bilder, die genau zeigen, was zu tun ist.",
+  },
+  fr: {
+    title: "Éduquer votre chien — Petites séances, étapes claires | DoggMatch",
+    description:
+      "Une éducation bienveillante et basée sur la récompense, réalisable chez vous. Des séances courtes, des étapes claires et des images qui montrent exactement quoi faire.",
+  },
+  nl: {
+    title: "Train uw hond — Korte sessies, duidelijke stappen | DoggMatch",
+    description:
+      "Vriendelijke, beloningsgerichte training die u echt thuis kunt doen. Korte sessies, duidelijke stappen en beelden die precies laten zien wat u moet doen.",
   },
 };
 

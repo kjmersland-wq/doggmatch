@@ -39,6 +39,21 @@ const seo = {
     description:
       "Rauhallinen A–Ö-vastaus jokaiselle ruoka-aineelle: pieninä määrinä sopii, ole varovainen, tai älä anna tätä koiralle.",
   },
+  de: {
+    title: "Dürfen Hunde das essen? A–Z Futtersicherheit für Hunde | DoggMatch",
+    description:
+      "Eine ruhige A–Z-Antwort für jedes Lebensmittel: in kleinen Mengen unbedenklich, mit Vorsicht, oder besser nicht geben.",
+  },
+  fr: {
+    title: "Mon chien peut-il manger ça ? Liste A–Z de sécurité alimentaire | DoggMatch",
+    description:
+      "Une réponse claire de A à Z pour chaque aliment : sans souci en petite quantité, avec prudence, ou à ne pas donner.",
+  },
+  nl: {
+    title: "Mag mijn hond dat eten? A–Z voedingslijst voor honden | DoggMatch",
+    description:
+      "Een rustig A–Z-antwoord voor elk voedingsmiddel: prima in kleine hoeveelheden, wees voorzichtig, of geef dit niet.",
+  },
 };
 
 export const Route = createFileRoute("/{-$lang}/can-dogs-eat/")({
@@ -125,6 +140,39 @@ const copy = {
       "Jos koira on syönyt jotain ”älä anna tätä koiralle” -listalta, älä odota oireita. Soita eläinlääkärille tai myrkytystietokeskukseen ja kerro, mitä se oli, suunnilleen kuinka paljon ja milloin.",
     searchHint: "Haluatko mieluummin hakea? Käytä haettavaa ruokalistaa.",
     searchLink: "Avaa haettava lista",
+  },
+  de: {
+    eyebrow: "Futtersicherheit",
+    title: "Dürfen Hunde das essen?",
+    intro:
+      "Eine Seite pro Lebensmittel, damit Sie sofort eine klare Antwort bekommen. Wählen Sie aus, was Ihr Hund erwischt hat.",
+    counted: (n: number) => `${n} Lebensmittel bisher beantwortet`,
+    vetNote:
+      "Hat Ihr Hund etwas von der „besser nicht geben“-Liste gefressen, warten Sie nicht auf Symptome. Rufen Sie Ihren Tierarzt oder eine Giftnotrufzentrale an und sagen Sie, was es war, ungefähr wie viel, und wann.",
+    searchHint: "Suchen Sie lieber? Nutzen Sie die durchsuchbare Lebensmittelliste.",
+    searchLink: "Durchsuchbare Liste öffnen",
+  },
+  fr: {
+    eyebrow: "Sécurité alimentaire",
+    title: "Mon chien peut-il manger ça ?",
+    intro:
+      "Une page par aliment, pour une réponse claire tout de suite. Choisissez ce que votre chien a attrapé.",
+    counted: (n: number) => `${n} aliments déjà répertoriés`,
+    vetNote:
+      "Si votre chien a mangé quelque chose de la liste « à ne pas donner », n'attendez pas les symptômes. Appelez votre vétérinaire ou un centre antipoison animalier et indiquez ce que c'était, à peu près quelle quantité, et quand.",
+    searchHint: "Vous préférez chercher ? Utilisez la liste d'aliments consultable.",
+    searchLink: "Ouvrir la liste consultable",
+  },
+  nl: {
+    eyebrow: "Voedselveiligheid",
+    title: "Mag mijn hond dat eten?",
+    intro:
+      "Eén pagina per voedingsmiddel, zodat u meteen een duidelijk antwoord krijgt. Kies wat uw hond te pakken kreeg.",
+    counted: (n: number) => `${n} voedingsmiddelen tot nu toe beantwoord`,
+    vetNote:
+      "Heeft uw hond iets van de lijst „niet geven” gegeten, wacht dan niet op symptomen. Bel uw dierenarts of een vergiftigingeninformatiecentrum en vertel wat het was, ongeveer hoeveel, en wanneer.",
+    searchHint: "Zoekt u liever? Gebruik de doorzoekbare voedingslijst.",
+    searchLink: "Doorzoekbare lijst openen",
   },
 } as const;
 

@@ -47,6 +47,27 @@ const copy = {
     partner: "Ryhdy kumppaniksi",
     sources: "Lähteet ja menetelmä",
   },
+  de: {
+    blurb: "Ein ruhiger, ehrlicher Ort, um herauszufinden, welcher Hund zu deinem Leben passen würde.",
+    food: "Futter & Portionen",
+    canEat: "Darf mein Hund das essen?",
+    partner: "Partner werden",
+    sources: "Quellen & Methodik",
+  },
+  fr: {
+    blurb: "Un endroit calme et honnête pour déterminer quel chien conviendrait à votre vie.",
+    food: "Alimentation et portions",
+    canEat: "Mon chien peut-il manger ça ?",
+    partner: "Devenir partenaire",
+    sources: "Sources et méthodologie",
+  },
+  nl: {
+    blurb: "Een rustige, eerlijke plek om uit te zoeken welke hond bij uw leven zou passen.",
+    food: "Voeding en porties",
+    canEat: "Mag mijn hond dit eten?",
+    partner: "Partner worden",
+    sources: "Bronnen en methodologie",
+  },
 };
 
 export function SiteFooter() {

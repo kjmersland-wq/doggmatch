@@ -1,11 +1,21 @@
 import { createContext, useContext, useEffect, useMemo, type ReactNode } from "react";
 
-export type Locale = "en" | "no" | "pl" | "dk" | "se" | "fi";
+export type Locale = "en" | "no" | "pl" | "dk" | "se" | "fi" | "de" | "fr" | "nl";
 
-export const SUPPORTED_LOCALES: Locale[] = ["en", "no", "pl", "dk", "se", "fi"];
+export const SUPPORTED_LOCALES: Locale[] = ["en", "no", "pl", "dk", "se", "fi", "de", "fr", "nl"];
 
-/** The /no, /pl, /dk, /se or /fi path segment (and <html lang>) we use for each language. */
-export const HTML_LANG: Record<Locale, string> = { en: "en", no: "nb", pl: "pl", dk: "da", se: "sv", fi: "fi" };
+/** The /no, /pl, /dk, /se, /fi, /de, /fr or /nl path segment (and <html lang>) we use for each language. */
+export const HTML_LANG: Record<Locale, string> = {
+  en: "en",
+  no: "nb",
+  pl: "pl",
+  dk: "da",
+  se: "sv",
+  fi: "fi",
+  de: "de",
+  fr: "fr",
+  nl: "nl",
+};
 
 /**
  * Mirror of the active locale for plain (non-React) modules — data files and
@@ -26,7 +36,17 @@ function setCurrentLocale(next: Locale) {
  * A copy map. English is the source language and always required; the other
  * languages are optional so a page still renders while a translation lands.
  */
-export type CopyMap<A> = { en: A; no?: unknown; pl?: unknown; dk?: unknown; se?: unknown; fi?: unknown };
+export type CopyMap<A> = {
+  en: A;
+  no?: unknown;
+  pl?: unknown;
+  dk?: unknown;
+  se?: unknown;
+  fi?: unknown;
+  de?: unknown;
+  fr?: unknown;
+  nl?: unknown;
+};
 
 /**
  * Picks the right variant of a localised value. Safe outside React.
@@ -39,11 +59,14 @@ export function pick<A>(map: CopyMap<A>, locale: Locale = getLocale()): A {
     locale === "dk" ? map.dk :
     locale === "se" ? map.se :
     locale === "fi" ? map.fi :
+    locale === "de" ? map.de :
+    locale === "fr" ? map.fr :
+    locale === "nl" ? map.nl :
     map.en;
   return ((value ?? map.en) as unknown) as A;
 }
 
-/** Normalises whatever the /no, /pl, /dk, /se, /fi path segment looks like into a locale we support. */
+/** Normalises whatever the /no, /pl, /dk, /se, /fi, /de, /fr, /nl path segment looks like into a locale we support. */
 export function localeFromParam(value: unknown): Locale | null {
   const v = String(value ?? "").toLowerCase();
   if (v === "no" || v === "nb" || v === "nn" || v === "nb-no") return "no";
@@ -51,6 +74,9 @@ export function localeFromParam(value: unknown): Locale | null {
   if (v === "dk" || v === "da" || v === "da-dk") return "dk";
   if (v === "se" || v === "sv" || v === "sv-se") return "se";
   if (v === "fi" || v === "fi-fi") return "fi";
+  if (v === "de" || v === "de-de" || v === "de-at") return "de";
+  if (v === "fr" || v === "fr-fr") return "fr";
+  if (v === "nl" || v === "nl-nl" || v === "nl-be") return "nl";
   if (v === "en") return "en";
   return null;
 }

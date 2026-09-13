@@ -185,6 +185,72 @@ const copy = {
     profileCta: "Koko rotuprofiili",
     costsCta: "Kustannukset kokonaisuudessaan",
   },
+  de: {
+    eyebrow: "Ich bin interessiert — was sollte ich wissen?",
+    heading: (name: string) => `Bereit werden für einen ${name}.`,
+    intro:
+      "Alles unten stammt aus den eigenen Eigenschaften dieser Rasse in unserer Bibliothek — was sie " +
+      "Woche für Woche von Ihnen verlangt, einschließlich der Dinge, die andere gerne vorher gewusst hätten.",
+    askEyebrow: "Was dieser Hund von Ihnen verlangen wird",
+    askTitle: "Ehrlich gesagt, Woche für Woche.",
+    moneyEyebrow: "Das Geld",
+    moneyTitle: (name: string) => `Was ein ${name} in der Regel kostet`,
+    moneyBody:
+      "Pro Jahr, sobald der Hund sich eingelebt hat — Futter, Versicherung, routinemäßige Tierarztbesuche und Pflege. " +
+      "Bewusst breit gefasst: Die Preise unterscheiden sich enorm nach Land und Stadt, und dies ist kein Angebot.",
+    noticeTitle: "Bevor Sie ja sagen",
+    noticeBody:
+      "Treffen Sie den Hund nach Möglichkeit mehr als einmal, an einem gewöhnlichen Tag statt an einem besonderen. " +
+      "Fragen Sie, wie er um sechs Uhr morgens und um zehn Uhr abends ist. Die ehrliche Antwort auf diese " +
+      "Frage sagt Ihnen mehr als jede Rassebeschreibung, auch diese hier.",
+    prepareCta: "Mein Zuhause vorbereiten",
+    profileCta: "Das vollständige Rasseprofil",
+    costsCta: "Kosten im Detail",
+  },
+  fr: {
+    eyebrow: "Je suis intéressé — que devrais-je savoir ?",
+    heading: (name: string) => `Se préparer pour un ${name}.`,
+    intro:
+      "Tout ce qui suit provient des caractéristiques propres de cette race dans notre bibliothèque — ce " +
+      "qu'elle vous demandera semaine après semaine, y compris ce que les gens auraient aimé savoir à l'avance.",
+    askEyebrow: "Ce que ce chien vous demandera",
+    askTitle: "Honnêtement, semaine après semaine.",
+    moneyEyebrow: "L'argent",
+    moneyTitle: (name: string) => `Ce qu'un ${name} coûte généralement`,
+    moneyBody:
+      "Par an, une fois le chien installé — nourriture, assurance, soins vétérinaires de routine et toilettage. " +
+      "Volontairement large : les prix varient énormément selon le pays et la ville, et ceci n'est pas un devis.",
+    noticeTitle: "Avant de dire oui",
+    noticeBody:
+      "Rencontrez le chien plus d'une fois si vous le pouvez, un jour ordinaire plutôt qu'un jour spécial. " +
+      "Demandez comment il est à six heures du matin et à dix heures du soir. La réponse honnête à cette " +
+      "question vous en dira plus que n'importe quelle description de race, y compris celle-ci.",
+    prepareCta: "Préparer ma maison",
+    profileCta: "Le profil complet de la race",
+    costsCta: "Les coûts en détail",
+  },
+  nl: {
+    eyebrow: "Ik ben geïnteresseerd — wat moet ik weten?",
+    heading: (name: string) => `Klaarmaken voor een ${name}.`,
+    intro:
+      "Alles hieronder komt uit de eigen eigenschappen van dit ras in onze bibliotheek — wat het week na " +
+      "week van u zal vragen, inclusief de dingen waarvan mensen wensen dat ze ze vooraf hadden geweten.",
+    askEyebrow: "Wat deze hond van u zal vragen",
+    askTitle: "Eerlijk gezegd, week na week.",
+    moneyEyebrow: "Het geld",
+    moneyTitle: (name: string) => `Wat een ${name} doorgaans kost`,
+    moneyBody:
+      "Per jaar, zodra de hond gewend is — voeding, verzekering, routinematige dierenartszorg en verzorging. " +
+      "Bewust breed: prijzen verschillen enorm per land en stad, en dit is geen offerte.",
+    noticeTitle: "Voordat u ja zegt",
+    noticeBody:
+      "Ontmoet de hond meer dan één keer als u dat kunt, op een gewone dag in plaats van een bijzondere. " +
+      "Vraag hoe hij is om zes uur 's ochtends en om tien uur 's avonds. Het eerlijke antwoord op die " +
+      "vraag vertelt u meer dan welke rassenbeschrijving dan ook, deze inbegrepen.",
+    prepareCta: "Mijn huis voorbereiden",
+    profileCta: "Het volledige rasprofiel",
+    costsCta: "Kosten in detail",
+  },
 } as const;
 
 function BreedPrepPage() {

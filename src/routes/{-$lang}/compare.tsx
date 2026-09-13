@@ -76,6 +76,36 @@ const personalCopy = {
     watch: "Kannattaa miettiä",
     fine: "Mikään tässä ei puhunut sinua vastaan.",
   },
+  de: {
+    title: "Welcher davon passt am besten zu Ihrem Leben?",
+    prompt:
+      "Beantworten Sie die Fragen von Meinen Hund finden, und diese Tabelle liest sich an Ihren eigenen Tagen — nicht nur an Rassestatistiken.",
+    promptCta: "Fragen beantworten",
+    based: "Basierend auf den Antworten, die Sie bei Meinen Hund finden gegeben haben, gespeichert auf diesem Gerät.",
+    bestLabel: "Passt am besten von den dreien",
+    watch: "Wert, darüber nachzudenken",
+    fine: "Hier sprach nichts gegen Sie.",
+  },
+  fr: {
+    title: "Lequel de ces chiens correspond le mieux à votre vie ?",
+    prompt:
+      "Répondez aux questions de Trouver mon chien, et ce tableau se lira à l'aune de vos propres journées — pas seulement des statistiques de race.",
+    promptCta: "Répondre aux questions",
+    based: "D'après les réponses que vous avez données dans Trouver mon chien, conservées sur cet appareil.",
+    bestLabel: "Le mieux adapté des trois",
+    watch: "À prendre en considération",
+    fine: "Rien ici ne jouait en votre défaveur.",
+  },
+  nl: {
+    title: "Welke van deze past het best bij uw leven?",
+    prompt:
+      "Beantwoord de vragen van Vind mijn hond, en deze tabel leest zichzelf tegen uw eigen dagen — niet alleen rasstatistieken.",
+    promptCta: "Vragen beantwoorden",
+    based: "Gebaseerd op de antwoorden die u gaf bij Vind mijn hond, bewaard op dit apparaat.",
+    bestLabel: "Beste match van de drie",
+    watch: "De moeite waard om over na te denken",
+    fine: "Niets hier pleitte tegen u.",
+  },
 };
 
 const title = "Compare dogs side by side | DoggMatch";
@@ -93,6 +123,36 @@ const seoCopy = {
     title: "Porównaj psy obok siebie | DoggMatch",
     description:
       "Wahasz się między kilkoma psami? Zestaw do trzech obok siebie i zobacz, czym naprawdę się różnią — energia, linienie, pielęgnacja, długość życia i roczne koszty.",
+  },
+  dk: {
+    title: "Sammenlign hunde side om side | DoggMatch",
+    description:
+      "Svær at vælge mellem et par hunde? Sæt op til tre side om side, og se hvor de virkelig adskiller sig — energi, fældning, pleje, levealder og årlige omkostninger.",
+  },
+  se: {
+    title: "Jämför hundar sida vid sida | DoggMatch",
+    description:
+      "Svårt att välja mellan några hundar? Ställ upp till tre sida vid sida och se var de verkligen skiljer sig — energi, fällning, pälsvård, livslängd och årlig kostnad.",
+  },
+  fi: {
+    title: "Vertaile koiria rinnakkain | DoggMatch",
+    description:
+      "Vaikea valita muutaman koiran välillä? Aseta jopa kolme rinnakkain ja katso, missä ne todella eroavat toisistaan — energia, karvanlähtö, turkinhoito, elinikä ja vuosittaiset kustannukset.",
+  },
+  de: {
+    title: "Hunde direkt vergleichen | DoggMatch",
+    description:
+      "Unentschlossen zwischen mehreren Hunden? Stellen Sie bis zu drei nebeneinander und sehen Sie, wo sie sich wirklich unterscheiden — Energie, Haarausfall, Fellpflege, Lebenserwartung und jährliche Kosten.",
+  },
+  fr: {
+    title: "Comparer des chiens côte à côte | DoggMatch",
+    description:
+      "Hésitant entre plusieurs chiens ? Placez-en jusqu'à trois côte à côte et découvrez où ils diffèrent vraiment — énergie, mue, toilettage, longévité et coût annuel.",
+  },
+  nl: {
+    title: "Honden naast elkaar vergelijken | DoggMatch",
+    description:
+      "Twijfelt u tussen een paar honden? Zet er tot drie naast elkaar en bekijk waar ze echt verschillen — energie, verharen, verzorging, levensverwachting en jaarlijkse kosten.",
   },
 };
 

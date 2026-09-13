@@ -65,6 +65,33 @@ const copy = {
     email: "Sähköposti",
     shareSection: "Jaa tämä osio",
   },
+  de: {
+    share: "Teilen",
+    shareThis: "Diese Seite teilen",
+    close: "Schließen",
+    copy: "Link kopieren",
+    copied: "Link kopiert",
+    email: "E-Mail",
+    shareSection: "Diesen Abschnitt teilen",
+  },
+  fr: {
+    share: "Partager",
+    shareThis: "Partager cette page",
+    close: "Fermer",
+    copy: "Copier le lien",
+    copied: "Lien copié",
+    email: "E-mail",
+    shareSection: "Partager cette section",
+  },
+  nl: {
+    share: "Delen",
+    shareThis: "Deel deze pagina",
+    close: "Sluiten",
+    copy: "Link kopiëren",
+    copied: "Link gekopieerd",
+    email: "E-mail",
+    shareSection: "Deel dit onderdeel",
+  },
 } as const;
 
 function useShareUrl(path?: string, anchor?: string) {

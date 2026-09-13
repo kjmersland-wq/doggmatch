@@ -152,12 +152,12 @@ export const no: Dictionary = {
     otherMatches: "Noen andre vi tror du vil like",
     restart: "Start på nytt",
     viewBreed: "Fortell meg mer",
-    premiumEyebrow: "Valgfritt",
-    premiumTitle: "Vil du gå dypere?",
+    premiumEyebrow: "DoggMatch+",
+    premiumTitle: "Fant du matchen din? Vi hjelper deg gjennom det første året.",
     premiumBody:
-      "En fyldigere rapport: dine ti beste matcher, sammenligninger side om side, hva et år med hver av dem kan koste, og en sjekkliste som hjelper deg å bli klar.",
+      "Sjekklister for valpesikring, fôrguider regnet ut etter vekt, ærlige tidslinjer for renslighetstrening og reiseforberedelser — den praktiske, rolige hjelpen til alt ingen egentlig advarer deg om.",
     premiumPrice: "39 kr",
-    premiumNote: "Det gratise resultatet ditt er komplett. Ingenting over er gjemt bak betaling.",
+    premiumNote: "Det gratis resultatet ditt er komplett, fra start til slutt. Ingenting over er skjult bak betaling.",
     premiumCta: "Si fra når det er klart",
     essentialsTitle: "Bli klar til en {breed}",
     essentialsBody:

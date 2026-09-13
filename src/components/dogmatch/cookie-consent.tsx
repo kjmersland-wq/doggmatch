@@ -41,6 +41,24 @@ const copy = {
     essentialOnly: "Vain välttämättömät",
     acceptAll: "Hyväksy kaikki",
   },
+  de: {
+    label: "Hinweis zu Cookies",
+    body: "Wir respektieren Ihre Privatsphäre. DoggMatch verwendet nur die Cookies, die nötig sind, um Ihre Match-Einstellungen zu speichern und sichere Sitzungen zu gewährleisten — keine Werbe-Tracker.",
+    essentialOnly: "Nur notwendige",
+    acceptAll: "Alle akzeptieren",
+  },
+  fr: {
+    label: "À propos des cookies",
+    body: "Nous respectons votre vie privée. DoggMatch utilise uniquement les cookies essentiels pour enregistrer vos préférences de match et garantir des sessions sécurisées — aucun traceur publicitaire.",
+    essentialOnly: "Essentiels uniquement",
+    acceptAll: "Tout accepter",
+  },
+  nl: {
+    label: "Over cookies",
+    body: "We respecteren uw privacy. DoggMatch gebruikt alleen essentiële cookies om uw matchvoorkeuren op te slaan en veilige sessies te garanderen — geen advertentietrackers.",
+    essentialOnly: "Alleen essentiële",
+    acceptAll: "Alles accepteren",
+  },
 } as const;
 
 export function CookieConsent() {
@@ -99,6 +117,9 @@ export function CookieSettingsLink({ className }: { className?: string }) {
     dk: { settings: "Cookieindstillinger" },
     se: { settings: "Cookie-inställningar" },
     fi: { settings: "Evästeasetukset" },
+    de: { settings: "Cookie-Einstellungen" },
+    fr: { settings: "Paramètres des cookies" },
+    nl: { settings: "Cookie-instellingen" },
   } as const);
   const { reopen } = useConsent();
   return (

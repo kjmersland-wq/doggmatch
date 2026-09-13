@@ -7,7 +7,7 @@ import { useCopy, useLocale } from "@/i18n";
 import type { FoodSafety } from "@/data/care/types";
 import { withLangPrefix } from "@/lib/localized-path";
 import { foodExists, foodFor, relatedFoods } from "@/lib/food";
-import { abs, breadcrumbLd, dkUrl, fiUrl, headLocale, jsonLd, langUrl, noUrl, plUrl, seUrl } from "@/lib/seo";
+import { abs, breadcrumbLd, deUrl, dkUrl, fiUrl, frUrl, headLocale, jsonLd, langUrl, nlUrl, noUrl, plUrl, seUrl } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 /** "Can dogs eat X?" — the phrase people actually type, in each language. */
@@ -18,6 +18,9 @@ const question = {
   dk: (name: string) => `Må hunde spise ${name.toLowerCase()}?`,
   se: (name: string) => `Kan hundar äta ${name.toLowerCase()}?`,
   fi: (name: string) => `Voiko koira syödä ${name.toLowerCase()}?`,
+  de: (name: string) => `Dürfen Hunde ${name.toLowerCase()} fressen?`,
+  fr: (name: string) => `Un chien peut-il manger ${name.toLowerCase()} ?`,
+  nl: (name: string) => `Mogen honden ${name.toLowerCase()} eten?`,
 };
 
 const verdict = {
@@ -51,7 +54,22 @@ const verdict = {
     care: "Kyllä, mutta varovasti",
     avoid: "Ei — älä anna tätä koiralle",
   },
-} as const satisfies Record<"en" | "no" | "pl" | "dk" | "se" | "fi", Record<FoodSafety, string>>;
+  de: {
+    safe: "Ja — in kleinen Mengen unbedenklich",
+    care: "Ja, aber mit Vorsicht",
+    avoid: "Nein — das sollte der Hund nicht bekommen",
+  },
+  fr: {
+    safe: "Oui — en petite quantité, c'est sans souci",
+    care: "Oui, mais avec prudence",
+    avoid: "Non — ne donnez pas cela à votre chien",
+  },
+  nl: {
+    safe: "Ja — in kleine hoeveelheden geen probleem",
+    care: "Ja, maar wees voorzichtig",
+    avoid: "Nee — geef dit niet aan je hond",
+  },
+} as const satisfies Record<"en" | "no" | "pl" | "dk" | "se" | "fi" | "de" | "fr" | "nl", Record<FoodSafety, string>>;
 
 export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
   loader: ({ params }) => {
@@ -89,6 +107,9 @@ export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
         { rel: "alternate", hrefLang: "da-DK", href: dkUrl(path) },
         { rel: "alternate", hrefLang: "sv-SE", href: seUrl(path) },
         { rel: "alternate", hrefLang: "fi-FI", href: fiUrl(path) },
+        { rel: "alternate", hrefLang: "de-DE", href: deUrl(path) },
+        { rel: "alternate", hrefLang: "fr-FR", href: frUrl(path) },
+        { rel: "alternate", hrefLang: "nl-NL", href: nlUrl(path) },
         { rel: "alternate", hrefLang: "x-default", href: abs(path) },
       ],
       scripts: [
@@ -184,6 +205,39 @@ const copy = {
     honest:
       "Koirat ovat yksilöitä, ja määrällä on väliä — murunen jotain raskasta ei ole sama asia kuin puoli pussillista. Herkkujen osuus koiran päivittäisestä ruoasta kannattaa pitää alle kymmenesosassa. Jos olet epävarma, eläinlääkäri ottaa mieluummin vastaan turhankin puhelun.",
     honestTitle: "Rehellisesti tästä aiheesta",
+  },
+  de: {
+    eyebrow: "Futtersicherheit",
+    howMuch: "Wie viel",
+    watchOut: "Wenn der Hund es schon gefressen hat",
+    basedOn: "Basierend auf Empfehlungen von",
+    relatedTitle: "Andere Lebensmittel, nach denen oft gefragt wird",
+    backLink: "Alle Lebensmittel von A–Z ansehen",
+    honest:
+      "Hunde sind unterschiedlich, und die Menge zählt — ein Krümel von etwas Reichhaltigem ist nicht dasselbe wie eine halbe Packung. Leckerlis jeder Art sollten unter einem Zehntel der Tagesration bleiben. Im Zweifel nimmt Ihr Tierarzt den Anruf lieber einmal zu viel entgegen als zu wenig.",
+    honestTitle: "Ehrlich gesagt",
+  },
+  fr: {
+    eyebrow: "Sécurité alimentaire",
+    howMuch: "En quelle quantité",
+    watchOut: "Si votre chien en a déjà mangé",
+    basedOn: "D'après les recommandations de",
+    relatedTitle: "D'autres aliments qui posent question",
+    backLink: "Voir tous les aliments, de A à Z",
+    honest:
+      "Chaque chien est différent, et la quantité compte — une miette d'un aliment riche n'est pas comparable à la moitié d'un paquet. Toutes friandises confondues, restez sous un dixième de la ration quotidienne de votre chien. En cas de doute, votre vétérinaire préfère largement être appelé pour rien plutôt que trop tard.",
+    honestTitle: "En toute honnêteté",
+  },
+  nl: {
+    eyebrow: "Voedselveiligheid",
+    howMuch: "Hoeveel",
+    watchOut: "Als je hond het al heeft gegeten",
+    basedOn: "Gebaseerd op advies van",
+    relatedTitle: "Andere voedingsmiddelen waar mensen naar vragen",
+    backLink: "Bekijk alle voedingsmiddelen, A–Z",
+    honest:
+      "Honden verschillen, en de hoeveelheid maakt uit — een kruimel van iets machtigs is niet hetzelfde als een half pakje. Snacks van welke aard dan ook mogen samen niet meer zijn dan een tiende van wat je hond op een dag eet. Twijfel je, dan neemt je dierenarts liever één keer te veel de telefoon op dan te weinig.",
+    honestTitle: "Eerlijk gezegd",
   },
 } as const;
 

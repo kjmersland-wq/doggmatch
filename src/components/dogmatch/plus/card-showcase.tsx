@@ -117,6 +117,57 @@ const copy = {
     discountsBody:
       "Neuvottelemme parhaillaan ensimmäisten kumppaneiden kanssa, ja jäsenalennukset ovat todennäköisesti tulossa pian. Kun tarjous on aidosti aikasi arvoinen, se ilmestyy yksinkertaisesti tilisivullesi — ei sähköposteja, ei häslinkiä.",
   },
+  de: {
+    eyebrow: "Als Mitglied erhalten Sie",
+    title: "Eine Mitgliedskarte, die Sie wirklich in der Hand halten können",
+    body: "Jedes Mitglied bekommt eine persönliche DoggMatch+-Karte. Drucken Sie sie in echter Kartengröße aus, tragen Sie sie in Ihrem Portemonnaie, und jeder kann den Code auf der Rückseite scannen, um zu sehen, dass sie echt ist.",
+    caption: "Beispielkarte. Name, ID und Daten sind erfunden.",
+    features: [
+      ["Ihr Name und eine eindeutige Mitglieds-ID", "So etwas wie DM-4F7K-92QX — nur Ihre."],
+      ["Status und Gültigkeitsdatum", "Damit immer klar ist, dass die Mitgliedschaft aktiv ist."],
+      ["Ihr Foto, sobald wir eines haben", "Aus Ihrem Konto oder dem Profil Ihres Hundes."],
+      ["Ein Code auf der Rückseite", "Scannen Sie ihn, und eine einfache Seite bestätigt, dass die Karte echt ist."],
+      ["Gedruckt in 85,6 × 54 mm", "Genau die Größe einer Bankkarte, auf festem Papier."],
+    ],
+    comingSoon: "Demnächst",
+    discountsTitle: "Mitgliederrabatte",
+    discountsBody:
+      "Wir sprechen gerade mit den ersten Partnern, und Mitgliederrabatte kommen höchstwahrscheinlich bald. Sobald ein Angebot wirklich Ihre Zeit wert ist, erscheint es einfach auf Ihrer Kontoseite — keine E-Mail, kein Aufwand.",
+  },
+  fr: {
+    eyebrow: "En tant que membre, vous recevez",
+    title: "Une carte de membre que vous pouvez vraiment tenir en main",
+    body: "Chaque membre reçoit sa carte DoggMatch+ personnelle. Imprimez-la à la taille réelle d'une carte, gardez-la dans votre portefeuille, et n'importe qui peut scanner le code au dos pour vérifier qu'elle est authentique.",
+    caption: "Carte exemple. Nom, identifiant et dates sont fictifs.",
+    features: [
+      ["Votre nom et un identifiant de membre unique", "Quelque chose comme DM-4F7K-92QX — rien qu'à vous."],
+      ["Statut et date de validité", "Pour que ce soit toujours clair que l'adhésion est active."],
+      ["Votre photo dès que nous en avons une", "Tirée de votre compte ou du profil de votre chien."],
+      ["Un code au dos", "Scannez-le, et une page simple confirme que la carte est authentique."],
+      ["Imprimée en 85,6 × 54 mm", "Exactement la taille d'une carte bancaire, sur papier rigide."],
+    ],
+    comingSoon: "Bientôt disponible",
+    discountsTitle: "Réductions membres",
+    discountsBody:
+      "Nous parlons en ce moment avec les premiers partenaires, et les réductions membres arriveront très probablement bientôt. Quand une offre vaut vraiment votre temps, elle apparaît simplement sur votre page de compte — sans e-mail, sans tracas.",
+  },
+  nl: {
+    eyebrow: "Als lid krijgt u",
+    title: "Een ledenpas die u echt in handen kunt houden",
+    body: "Elk lid krijgt een persoonlijke DoggMatch+-pas. Print hem op echt pasformaat, bewaar hem in uw portemonnee, en iedereen kan de code op de achterkant scannen om te zien dat hij echt is.",
+    caption: "Voorbeeldpas. Naam, ID en data zijn verzonnen.",
+    features: [
+      ["Uw naam en een unieke leden-ID", "Iets als DM-4F7K-92QX — alleen van u."],
+      ["Status en geldig-tot-datum", "Zodat altijd duidelijk is dat het lidmaatschap actief is."],
+      ["Uw foto zodra we die hebben", "Gehaald uit uw account of het profiel van uw hond."],
+      ["Een code op de achterkant", "Scan hem, en een simpele pagina bevestigt dat de pas echt is."],
+      ["Gedrukt op 85,6 × 54 mm", "Precies het formaat van een bankpas, op stevig papier."],
+    ],
+    comingSoon: "Binnenkort beschikbaar",
+    discountsTitle: "Ledenkortingen",
+    discountsBody:
+      "We praten nu met de eerste partners, en ledenkortingen komen hoogstwaarschijnlijk binnenkort. Zodra een aanbieding echt uw tijd waard is, verschijnt hij gewoon op uw accountpagina — geen e-mail, geen gedoe.",
+  },
 } as const;
 
 /** Shows the member card and the partner offers we're working on. */

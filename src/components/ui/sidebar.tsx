@@ -22,9 +22,13 @@ import { useCopy } from "@/i18n";
 const sidebarCopy = {
   en: { toggle: "Toggle Sidebar" },
   no: { toggle: "Vis/skjul sidepanel" },
+  pl: { toggle: "Pokaż/ukryj panel boczny" },
   dk: { toggle: "Vis/skjul sidepanel" },
   se: { toggle: "Visa/dölj sidopanel" },
   fi: { toggle: "Näytä/piilota sivupaneeli" },
+  de: { toggle: "Seitenleiste ein-/ausblenden" },
+  fr: { toggle: "Afficher/masquer la barre latérale" },
+  nl: { toggle: "Zijbalk in-/uitschakelen" },
 } as const;
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";

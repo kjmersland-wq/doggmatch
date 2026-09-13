@@ -71,6 +71,39 @@ const copy = {
     code: "Koodi:",
     goTo: "Siirry",
   },
+  de: {
+    title: "Mitgliedervorteile",
+    intro:
+      "Kleine, nützliche Ersparnisse von Leuten, die wir einem Freund guten Gewissens empfehlen würden — Geschäfte, Hundefriseure, Trainer, Versicherer. Uns sind fünf gute Angebote lieber als fünfzig vergessene.",
+    emptyBody:
+      "Hier ist noch nichts. Wir sprechen gerade mit den ersten Partnern, und sobald ein Angebot Ihre Zeit wert ist, erscheint es auf dieser Seite — keine E-Mail nötig.",
+    partnerCta: "Führen Sie ein Unternehmen rund um Hunde?",
+    partnerLink: "Werden Sie DoggMatch-Partner",
+    code: "Code:",
+    goTo: "Gehe zu",
+  },
+  fr: {
+    title: "Avantages membres",
+    intro:
+      "De petites économies utiles, venant de personnes que nous recommanderions volontiers à un ami — boutiques, toiletteurs, éducateurs, assureurs. Nous préférons cinq bonnes offres à cinquante oubliables.",
+    emptyBody:
+      "Rien ici pour l'instant. Nous parlons en ce moment avec les premiers partenaires, et dès qu'une offre vaudra votre temps, elle apparaîtra sur cette page — aucun e-mail nécessaire.",
+    partnerCta: "Vous dirigez une entreprise liée aux chiens ?",
+    partnerLink: "Devenez partenaire DoggMatch",
+    code: "Code :",
+    goTo: "Aller sur",
+  },
+  nl: {
+    title: "Ledenvoordelen",
+    intro:
+      "Kleine, nuttige besparingen van mensen die we met een gerust hart bij een vriend zouden aanbevelen — winkels, trimsalons, trainers, verzekeraars. Wij hebben liever vijf goede aanbiedingen dan vijftig vergetelijke.",
+    emptyBody:
+      "Hier staat nog niets. We praten nu met de eerste partners, en zodra een aanbieding uw tijd waard is, verschijnt het op deze pagina — geen e-mail nodig.",
+    partnerCta: "Runt u een hondengerelateerd bedrijf?",
+    partnerLink: "Word DoggMatch-partner",
+    code: "Code:",
+    goTo: "Ga naar",
+  },
 } as const;
 
 /** Partner offers for members. Empty until the first partners are in place. */

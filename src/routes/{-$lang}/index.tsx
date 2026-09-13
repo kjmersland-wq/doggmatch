@@ -72,6 +72,24 @@ const traitCopy = {
     shedding: "Karvanlähtö",
     apartmentSuitability: "Kerrostaloon sopivuus",
   },
+  de: {
+    energy: "Energie",
+    trainability: "Trainierbarkeit",
+    shedding: "Fellwechsel",
+    apartmentSuitability: "Wohnungstauglich",
+  },
+  fr: {
+    energy: "Énergie",
+    trainability: "Facilité de dressage",
+    shedding: "Mue",
+    apartmentSuitability: "Appartement",
+  },
+  nl: {
+    energy: "Energie",
+    trainability: "Leerbaarheid",
+    shedding: "Verharen",
+    apartmentSuitability: "Geschikt voor appartement",
+  },
 } as const;
 
 const localCopy = {
@@ -381,6 +399,159 @@ const localCopy = {
       },
     ],
   },
+  de: {
+    matchLooks: "So sieht ein passendes Match aus",
+    match: "Übereinstimmung",
+    heroAlt: "Eine Frau geht mit einem Golden Retriever bei Sonnenaufgang an der Küste spazieren",
+    terrierAlt: "Ein Terrier ruht sich in einer sonnigen Wohnung aus",
+    parkAlt: "Ein Stadtpark im Morgengrauen mit geschwungenen Spazierwegen",
+    jumpLabel: "Zu einem Abschnitt dieser Seite springen",
+    jumpTitle: "Auf dieser Seite",
+    shareLabel: "DoggMatch in einer Sprache teilen",
+    shareTitle: "DoggMatch in Ihrer Sprache lesen",
+    shareBody:
+      "Jeder Link öffnet DoggMatch direkt in dieser Sprache — kopieren Sie ihn und schicken Sie ihn jemandem, der es lieber in seiner eigenen Sprache liest.",
+    shareCopy: "Link kopieren",
+    shareCopied: "Kopiert",
+    anchors: {
+      "why-doggmatch": "Warum DoggMatch",
+      "how-it-works": "So funktioniert es",
+      "real-matches": "So funktioniert es in der Praxis",
+      "dog-breeds": "Hunderassen entdecken",
+      "compare-breeds": "Rassen vergleichen",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "Hundeleben in Ihrer Nähe",
+      faq: "Häufig gestellte Fragen",
+      "find-your-dog": "Finden Sie Ihren Hund",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "Etwas mehr Unterstützung, sobald der Hund eingezogen ist",
+    plusBody:
+      "Training, dem Sie Woche für Woche folgen können, Futter und Gewicht an einem Ort, Reisepapiere geregelt, und alles zum Ausdrucken für den Kühlschrank oder den Tierarzt.",
+    plusCta: "Sehen Sie, was in DoggMatch+ steckt",
+    faqEyebrow: "Gut zu wissen",
+    faqTitle: "Fragen, die uns gestellt werden",
+    faq: [
+      {
+        q: "Übernimmt eine KI das Matching?",
+        a: "Nein. Es sind feste Regeln, die wir selbst geschrieben haben. Dieselben Antworten ergeben immer dieselben Hunde, und wir zeigen Ihnen die Begründung hinter jedem Wert.",
+      },
+      {
+        q: "Kostet es etwas, meinen Hund zu finden?",
+        a: "Nein. Die Fragen, die Ergebnisse und jede Rasseseite sind kostenlos. DoggMatch+ gilt nur für die Werkzeuge, die Sie nutzen, nachdem der Hund eingezogen ist.",
+      },
+      {
+        q: "Was, wenn ein Mischling zu mir passt?",
+        a: "Mischlinge sind willkommen. Sie können einen aus zwei Rassen zusammenstellen, und wir bewerten den Hund vor Ihnen, nicht ein Etikett.",
+      },
+      {
+        q: "Kann ich den Rasseinformationen vertrauen?",
+        a: "Wir halten unsere Quellen offen. Jede Rasse-, Trainings- und Gesundheitsseite verlinkt zu den Stellen und der Forschung, auf die wir uns stützen.",
+      },
+    ],
+  },
+  fr: {
+    matchLooks: "À quoi ressemble une bonne correspondance",
+    match: "correspondance",
+    heroAlt: "Une femme promène un golden retriever le long d'un sentier côtier au lever du soleil",
+    terrierAlt: "Un terrier se reposant dans un appartement ensoleillé",
+    parkAlt: "Un parc urbain à l'aube avec des allées sinueuses",
+    jumpLabel: "Aller à une section de cette page",
+    jumpTitle: "Sur cette page",
+    shareLabel: "Partager DoggMatch dans une langue",
+    shareTitle: "Lire DoggMatch dans votre langue",
+    shareBody:
+      "Chaque lien ouvre DoggMatch directement dans cette langue — copiez-le et envoyez-le à quelqu'un qui préfère lire à sa façon.",
+    shareCopy: "Copier le lien",
+    shareCopied: "Copié",
+    anchors: {
+      "why-doggmatch": "Pourquoi DoggMatch",
+      "how-it-works": "Comment ça marche",
+      "real-matches": "Voir comment ça marche",
+      "dog-breeds": "Découvrir les races de chiens",
+      "compare-breeds": "Comparer les races",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "La vie avec un chien près de chez vous",
+      faq: "Questions fréquentes",
+      "find-your-dog": "Trouvez votre chien",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "Un peu plus d'aide, une fois le chien arrivé",
+    plusBody:
+      "Un entraînement à suivre semaine après semaine, alimentation et poids réunis au même endroit, papiers de voyage en ordre, et tout imprimable pour le frigo ou le vétérinaire.",
+    plusCta: "Découvrir ce que contient DoggMatch+",
+    faqEyebrow: "Bon à savoir",
+    faqTitle: "Questions qu'on nous pose souvent",
+    faq: [
+      {
+        q: "Est-ce une IA qui fait la mise en correspondance ?",
+        a: "Non. Ce sont des règles fixes que nous avons écrites nous-mêmes. Les mêmes réponses donnent toujours les mêmes chiens, et nous vous montrons le raisonnement derrière chaque score.",
+      },
+      {
+        q: "Est-ce que trouver mon chien coûte quelque chose ?",
+        a: "Non. Les questions, les résultats et chaque page de race sont gratuits. DoggMatch+ concerne uniquement les outils que vous utilisez après l'arrivée du chien.",
+      },
+      {
+        q: "Et si un chien croisé me convenait le mieux ?",
+        a: "Les croisements sont les bienvenus. Vous pouvez en composer un à partir de deux races, et nous évaluons le chien devant vous, pas une étiquette.",
+      },
+      {
+        q: "Puis-je faire confiance aux informations sur les races ?",
+        a: "Nous gardons nos sources ouvertes. Chaque page de race, d'éducation et de santé renvoie vers les organismes et les recherches sur lesquels nous nous appuyons.",
+      },
+    ],
+  },
+  nl: {
+    matchLooks: "Zo ziet een goede match eruit",
+    match: "match",
+    heroAlt: "Een vrouw wandelt met een golden retriever langs een kustpad bij zonsopgang",
+    terrierAlt: "Een terriër die uitrust in een zonnig appartement",
+    parkAlt: "Een stadspark in de vroege ochtend met kronkelende wandelpaden",
+    jumpLabel: "Ga naar een onderdeel van deze pagina",
+    jumpTitle: "Op deze pagina",
+    shareLabel: "Deel DoggMatch in een taal",
+    shareTitle: "Lees DoggMatch in uw taal",
+    shareBody:
+      "Elke link opent DoggMatch direct in die taal — kopieer hem en stuur hem naar iemand die liever op zijn eigen manier leest.",
+    shareCopy: "Link kopiëren",
+    shareCopied: "Gekopieerd",
+    anchors: {
+      "why-doggmatch": "Waarom DoggMatch",
+      "how-it-works": "Zo werkt het",
+      "real-matches": "Zie het in de praktijk",
+      "dog-breeds": "Ontdek hondenrassen",
+      "compare-breeds": "Vergelijk rassen",
+      "doggmatch-plus": "DoggMatch+",
+      "dog-life": "Hondenleven bij u in de buurt",
+      faq: "Veelgestelde vragen",
+      "find-your-dog": "Vind uw hond",
+    },
+    plusEyebrow: "DoggMatch+",
+    plusTitle: "Een beetje extra hulp, zodra de hond thuis is",
+    plusBody:
+      "Training die u week na week kunt volgen, voeding en gewicht op één plek, reispapieren op orde, en alles afdrukbaar voor op de koelkast of voor de dierenarts.",
+    plusCta: "Bekijk wat er in DoggMatch+ zit",
+    faqEyebrow: "Goed om te weten",
+    faqTitle: "Vragen die ons vaak gesteld worden",
+    faq: [
+      {
+        q: "Wordt de match door AI gemaakt?",
+        a: "Nee. Het is een vaste set regels die we zelf hebben geschreven. Dezelfde antwoorden leveren altijd dezelfde honden op, en we laten u de redenering achter elke score zien.",
+      },
+      {
+        q: "Kost het iets om mijn hond te vinden?",
+        a: "Nee. De vragen, de resultaten en elke rassenpagina zijn gratis. DoggMatch+ geldt alleen voor de tools die u gebruikt nadat de hond is ingetrokken.",
+      },
+      {
+        q: "Wat als een gemengd ras bij mij past?",
+        a: "Mixen zijn welkom. U kunt er een samenstellen uit twee rassen, en wij beoordelen de hond die voor u staat, niet een etiket.",
+      },
+      {
+        q: "Kan ik de rasinformatie vertrouwen?",
+        a: "We houden onze bronnen open. Elke ras-, trainings- en gezondheidspagina linkt naar de instanties en het onderzoek waarop we vertrouwen.",
+      },
+    ],
+  },
 } as const;
 
 const seoCopy = {
@@ -409,6 +580,21 @@ const seoCopy = {
     title: "DoggMatch — löydä elämääsi sopiva koira",
     description:
       "Kerro meille vähän elämästäsi, kodistasi ja päivistäsi, niin autamme sinua löytämään koirat, jotka voisivat sopia sinulle parhaiten. Ilmaista, rehellistä, ja näytämme aina, miten päättelemme asiat.",
+  },
+  de: {
+    title: "DoggMatch — finden Sie den Hund, der zu Ihrem Leben passt",
+    description:
+      "Erzählen Sie uns ein wenig über Ihr Leben, Ihr Zuhause und Ihre Tage, und wir helfen Ihnen, die Hunde zu finden, die am besten zu Ihnen passen könnten. Kostenlos, ehrlich, und wir zeigen immer, wie wir zu unserer Einschätzung kommen.",
+  },
+  fr: {
+    title: "DoggMatch — trouvez le chien qui correspond à votre vie",
+    description:
+      "Parlez-nous un peu de votre vie, de votre foyer et de vos journées, et nous vous aiderons à trouver les chiens qui pourraient vous convenir le mieux. Gratuit, honnête, et nous montrons toujours notre raisonnement.",
+  },
+  nl: {
+    title: "DoggMatch — vind de hond die bij uw leven past",
+    description:
+      "Vertel ons iets over uw leven, uw huis en uw dagen, en wij helpen u de honden te vinden die het beste bij u zouden kunnen passen. Gratis, eerlijk, en we laten altijd onze redenering zien.",
   },
 };
 
@@ -755,6 +941,9 @@ const SHARE_LANGS = [
   { code: "dk", flag: "dk", short: "DK", label: "Dansk" },
   { code: "se", flag: "se", short: "SE", label: "Svenska" },
   { code: "fi", flag: "fi", short: "FI", label: "Suomi" },
+  { code: "de", flag: "de", short: "DE", label: "Deutsch" },
+  { code: "fr", flag: "fr", short: "FR", label: "Français" },
+  { code: "nl", flag: "nl", short: "NL", label: "Nederlands" },
 ] as const;
 
 /** The homepage's path in a given language: English is the bare root. */

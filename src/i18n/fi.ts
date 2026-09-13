@@ -152,10 +152,10 @@ export const fi: Dictionary = {
     otherMatches: "Muutama muu, josta uskomme sinun pitävän",
     restart: "Aloita alusta",
     viewBreed: "Kerro lisää",
-    premiumEyebrow: "Valinnainen",
-    premiumTitle: "Haluatko mennä syvemmälle?",
+    premiumEyebrow: "DoggMatch+",
+    premiumTitle: "Löysitkö täydellisen osumasi? Autamme sinua koko ensimmäisen vuoden ajan.",
     premiumBody:
-      "Kattavampi raportti: kymmenen parasta täsmäystäsi, vertailut vierekkäin, mitä vuosi kunkin kanssa voisi maksaa, ja tarkistuslista, joka auttaa sinua valmistautumaan.",
+      "Tarkistuslistat pentuturvallisuuteen, painon mukaan lasketut ruokintaoppaat, rehelliset aikataulut siisteyskasvatukseen ja matkavalmisteluihin — käytännöllistä, tasaista apua kaikkeen, mistä kukaan ei oikeastaan varoita sinua.",
     premiumPrice: "3,99 €",
     premiumNote: "Ilmainen tuloksesi on täydellinen alusta loppuun. Mikään yllä ei ole piilotettu maksun taakse.",
     premiumCta: "Kerro minulle, kun se on valmis",
