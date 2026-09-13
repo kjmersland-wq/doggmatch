@@ -147,7 +147,7 @@ export function CompareSimilar({ breed }: { breed: Breed }) {
         ))}
       </ul>
       <div className="mt-8">
-        <ButtonLink to={withLangPrefix("/compare")} search={{ breeds: ids }} size="lg">
+        <ButtonLink to={withLangPrefix("/compare")} search={() => ({ breeds: ids })} size="lg">
           {c.cta}
           <Arrow />
         </ButtonLink>
