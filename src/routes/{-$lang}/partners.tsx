@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import {
   Check,
   Handshake,
+  Link2,
   ArrowRight,
   BadgePercent,
   QrCode,
@@ -784,11 +785,13 @@ const partnerFeatureCopy = {
       title: "Simple for you. Useful for your customers.",
       body: "You decide what benefit you want to give our members. In return, we give your customers 25% off DoggMatch+ for their first year.",
       customerTitle: "For your customer",
-      customerSteps: ["You share your unique partner code", "They join DoggMatch+", "They receive 25% off their first year"],
+      customerSteps: ["Receives your partner code", "Joins DoggMatch+", "Gets 25% off the first year"],
       memberTitle: "For a DoggMatch+ member",
-      memberSteps: ["They show their QR member card", "You check it in a few seconds", "They receive the benefit you chose"],
+      memberSteps: ["Shows the QR member card", "You verify it in seconds", "Receives the benefit you chose"],
       imageAlt: "A pet shop owner showing DoggMatch on her phone to a happy customer with his golden retriever",
       caption: "You keep control of your offer. We take care of your customers' first-year discount.",
+      shareLabel: "Copy a link to this explanation",
+      copiedLabel: "Link copied",
     },
   },
   no: {
@@ -801,11 +804,13 @@ const partnerFeatureCopy = {
       title: "Enkelt for deg. Nyttig for kundene dine.",
       body: "Du bestemmer hvilken fordel du vil gi medlemmene våre. Til gjengjeld gir vi kundene dine 25 % rabatt på DoggMatch+ det første året.",
       customerTitle: "For kunden din",
-      customerSteps: ["Du deler din unike partnerkode", "Kunden blir med i DoggMatch+", "Kunden får 25 % rabatt det første året"],
+      customerSteps: ["Får partnerkoden din", "Blir medlem i DoggMatch+", "Får 25 % rabatt det første året"],
       memberTitle: "For et DoggMatch+-medlem",
-      memberSteps: ["Medlemmet viser QR-kortet sitt", "Du sjekker det på noen sekunder", "Medlemmet får fordelen du har valgt"],
+      memberSteps: ["Viser QR-medlemskortet sitt", "Du bekrefter det på sekunder", "Får fordelen du har valgt"],
       imageAlt: "En dyrebutikkeier viser DoggMatch på telefonen til en fornøyd kunde med en golden retriever",
       caption: "Du beholder kontrollen over tilbudet ditt. Vi tar oss av kundenes rabatt det første året.",
+      shareLabel: "Kopier en lenke til denne forklaringen",
+      copiedLabel: "Lenken er kopiert",
     },
   },
   pl: {
@@ -818,11 +823,13 @@ const partnerFeatureCopy = {
       title: "Proste dla ciebie. Przydatne dla twoich klientów.",
       body: "Ty decydujesz, jaką korzyść zaoferujesz naszym członkom. W zamian dajemy twoim klientom 25% zniżki na DoggMatch+ przez pierwszy rok.",
       customerTitle: "Dla twojego klienta",
-      customerSteps: ["Udostępniasz swój unikalny kod partnera", "Klient dołącza do DoggMatch+", "Otrzymuje 25% zniżki na pierwszy rok"],
+      customerSteps: ["Otrzymuje twój kod partnera", "Dołącza do DoggMatch+", "Otrzymuje 25% zniżki na pierwszy rok"],
       memberTitle: "Dla członka DoggMatch+",
-      memberSteps: ["Pokazuje kartę członkowską z kodem QR", "Sprawdzasz ją w kilka sekund", "Otrzymuje wybraną przez ciebie korzyść"],
+      memberSteps: ["Pokazuje kartę członkowską z kodem QR", "Weryfikujesz ją w kilka sekund", "Otrzymuje wybraną przez ciebie korzyść"],
       imageAlt: "Właścicielka sklepu zoologicznego pokazuje DoggMatch na telefonie zadowolonemu klientowi z golden retrieverem",
       caption: "Zachowujesz kontrolę nad swoją ofertą. My zajmujemy się zniżką dla twoich klientów na pierwszy rok.",
+      shareLabel: "Skopiuj link do tego wyjaśnienia",
+      copiedLabel: "Link skopiowany",
     },
   },
   dk: {
@@ -835,11 +842,13 @@ const partnerFeatureCopy = {
       title: "Enkelt for dig. Nyttigt for dine kunder.",
       body: "Du bestemmer, hvilken fordel du vil give vores medlemmer. Til gengæld giver vi dine kunder 25 % rabat på DoggMatch+ det første år.",
       customerTitle: "For din kunde",
-      customerSteps: ["Du deler din unikke partnerkode", "Kunden melder sig ind i DoggMatch+", "Kunden får 25 % rabat det første år"],
+      customerSteps: ["Modtager din partnerkode", "Melder sig ind i DoggMatch+", "Får 25 % rabat det første år"],
       memberTitle: "For et DoggMatch+-medlem",
-      memberSteps: ["Medlemmet viser sit QR-medlemskort", "Du tjekker det på et par sekunder", "Medlemmet får den fordel, du har valgt"],
+      memberSteps: ["Viser sit QR-medlemskort", "Du bekræfter det på få sekunder", "Får den fordel, du har valgt"],
       imageAlt: "En dyrehandelsejer viser DoggMatch på sin telefon til en glad kunde med sin golden retriever",
       caption: "Du beholder kontrollen over dit tilbud. Vi tager os af dine kunders rabat det første år.",
+      shareLabel: "Kopiér et link til denne forklaring",
+      copiedLabel: "Link kopieret",
     },
   },
   se: {
@@ -852,11 +861,13 @@ const partnerFeatureCopy = {
       title: "Enkelt för dig. Användbart för dina kunder.",
       body: "Du bestämmer vilken förmån du vill ge våra medlemmar. I gengäld ger vi dina kunder 25 % rabatt på DoggMatch+ under det första året.",
       customerTitle: "För din kund",
-      customerSteps: ["Du delar din unika partnerkod", "Kunden blir medlem i DoggMatch+", "Kunden får 25 % rabatt det första året"],
+      customerSteps: ["Får din partnerkod", "Blir medlem i DoggMatch+", "Får 25 % rabatt det första året"],
       memberTitle: "För en DoggMatch+-medlem",
-      memberSteps: ["De visar sitt QR-medlemskort", "Du kontrollerar det på några sekunder", "De får förmånen du valt"],
+      memberSteps: ["Visar sitt QR-medlemskort", "Du verifierar det på några sekunder", "Får förmånen du valt"],
       imageAlt: "En djuraffärsägare visar DoggMatch på sin telefon för en nöjd kund med sin golden retriever",
       caption: "Du behåller kontrollen över ditt erbjudande. Vi tar hand om dina kunders rabatt det första året.",
+      shareLabel: "Kopiera en länk till den här förklaringen",
+      copiedLabel: "Länken är kopierad",
     },
   },
   de: {
@@ -869,11 +880,13 @@ const partnerFeatureCopy = {
       title: "Einfach für Sie. Nützlich für Ihre Kunden.",
       body: "Sie entscheiden, welchen Vorteil Sie unseren Mitgliedern geben möchten. Im Gegenzug geben wir Ihren Kunden 25 % Rabatt auf DoggMatch+ im ersten Jahr.",
       customerTitle: "Für Ihren Kunden",
-      customerSteps: ["Sie teilen Ihren einzigartigen Partnercode", "Der Kunde tritt DoggMatch+ bei", "Er erhält 25 % Rabatt im ersten Jahr"],
+      customerSteps: ["Erhält Ihren Partnercode", "Tritt DoggMatch+ bei", "Erhält 25 % Rabatt im ersten Jahr"],
       memberTitle: "Für ein DoggMatch+-Mitglied",
-      memberSteps: ["Es zeigt seine QR-Mitgliedskarte", "Sie prüfen sie in wenigen Sekunden", "Es erhält den von Ihnen gewählten Vorteil"],
+      memberSteps: ["Zeigt seine QR-Mitgliedskarte", "Sie bestätigen sie in Sekunden", "Erhält den von Ihnen gewählten Vorteil"],
       imageAlt: "Eine Zoofachhändlerin zeigt DoggMatch auf ihrem Handy einer zufriedenen Kundin mit ihrem Golden Retriever",
       caption: "Sie behalten die Kontrolle über Ihr Angebot. Wir kümmern uns um den Erstjahresrabatt Ihrer Kunden.",
+      shareLabel: "Link zu dieser Erklärung kopieren",
+      copiedLabel: "Link kopiert",
     },
   },
   fr: {
@@ -886,11 +899,13 @@ const partnerFeatureCopy = {
       title: "Simple pour vous. Utile pour vos clients.",
       body: "Vous décidez quel avantage vous souhaitez offrir à nos membres. En échange, nous offrons à vos clients 25 % de réduction sur DoggMatch+ pour leur première année.",
       customerTitle: "Pour votre client",
-      customerSteps: ["Vous partagez votre code partenaire unique", "Il rejoint DoggMatch+", "Il reçoit 25 % de réduction pour sa première année"],
+      customerSteps: ["Reçoit votre code partenaire", "Rejoint DoggMatch+", "Bénéficie de 25 % de réduction la première année"],
       memberTitle: "Pour un membre DoggMatch+",
-      memberSteps: ["Il montre sa carte de membre QR", "Vous la vérifiez en quelques secondes", "Il reçoit l'avantage que vous avez choisi"],
+      memberSteps: ["Montre sa carte de membre QR", "Vous la vérifiez en quelques secondes", "Reçoit l'avantage que vous avez choisi"],
       imageAlt: "Une propriétaire d'animalerie montrant DoggMatch sur son téléphone à une cliente satisfaite avec son golden retriever",
       caption: "Vous gardez le contrôle de votre offre. Nous nous occupons de la réduction de première année de vos clients.",
+      shareLabel: "Copier un lien vers cette explication",
+      copiedLabel: "Lien copié",
     },
   },
   nl: {
@@ -903,11 +918,13 @@ const partnerFeatureCopy = {
       title: "Eenvoudig voor jou. Nuttig voor je klanten.",
       body: "Jij bepaalt welk voordeel je onze leden wilt geven. In ruil daarvoor geven wij jouw klanten 25% korting op DoggMatch+ voor hun eerste jaar.",
       customerTitle: "Voor jouw klant",
-      customerSteps: ["Je deelt jouw unieke partnercode", "De klant wordt lid van DoggMatch+", "De klant krijgt 25% korting in het eerste jaar"],
+      customerSteps: ["Ontvangt jouw partnercode", "Wordt lid van DoggMatch+", "Krijgt 25% korting op het eerste jaar"],
       memberTitle: "Voor een DoggMatch+-lid",
-      memberSteps: ["Ze laten hun QR-ledenpas zien", "Je controleert hem in een paar seconden", "Ze krijgen het voordeel dat jij hebt gekozen"],
+      memberSteps: ["Toont de QR-ledenpas", "Jij verifieert hem in enkele seconden", "Ontvangt het voordeel dat jij koos"],
       imageAlt: "Een dierenwinkeleigenaar laat DoggMatch op haar telefoon zien aan een tevreden klant met zijn golden retriever",
       caption: "Jij behoudt de controle over je aanbod. Wij zorgen voor de korting in het eerste jaar van je klanten.",
+      shareLabel: "Kopieer een link naar deze uitleg",
+      copiedLabel: "Link gekopieerd",
     },
   },
   fi: {
@@ -920,11 +937,13 @@ const partnerFeatureCopy = {
       title: "Yksinkertaista sinulle. Hyödyllistä asiakkaillesi.",
       body: "Sinä päätät, minkä edun haluat antaa jäsenillemme. Vastineeksi annamme asiakkaillesi 25 % alennuksen DoggMatch+:sta ensimmäiseltä vuodelta.",
       customerTitle: "Asiakkaallesi",
-      customerSteps: ["Jaat ainutlaatuisen kumppanikoodisi", "Asiakas liittyy DoggMatch+:aan", "Asiakas saa 25 % alennuksen ensimmäisestä vuodesta"],
+      customerSteps: ["Saa kumppanikoodisi", "Liittyy DoggMatch+-jäseneksi", "Saa 25 % alennuksen ensimmäiseltä vuodelta"],
       memberTitle: "DoggMatch+-jäsenelle",
-      memberSteps: ["Jäsen näyttää QR-jäsenkorttinsa", "Tarkistat sen muutamassa sekunnissa", "Jäsen saa valitsemasi edun"],
+      memberSteps: ["Näyttää QR-jäsenkorttinsa", "Varmistat sen sekunneissa", "Saa valitsemasi edun"],
       imageAlt: "Lemmikkiliikkeen omistaja näyttää DoggMatchia puhelimestaan tyytyväiselle asiakkaalle, jolla on kultainennoutaja",
       caption: "Sinä pidät hallinnan tarjouksestasi. Me huolehdimme asiakkaidesi ensimmäisen vuoden alennuksesta.",
+      shareLabel: "Kopioi linkki tähän selitykseen",
+      copiedLabel: "Linkki kopioitu",
     },
   },
 } as const;
@@ -1086,13 +1105,24 @@ function Hero() {
 
 function MutualBenefit() {
   const c = useCopy(partnerFeatureCopy).mutual;
+  const [copied, setCopied] = useState(false);
   const flows = [
     { title: c.customerTitle, icon: BadgePercent, steps: c.customerSteps },
     { title: c.memberTitle, icon: QrCode, steps: c.memberSteps },
   ] as const;
 
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(`${window.location.href.split("#")[0]}#how-benefits-work`);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2500);
+    } catch {
+      /* clipboard unavailable — leave the anchor in place */
+    }
+  };
+
   return (
-    <Section className="border-y border-border bg-surface">
+    <Section id="how-benefits-work" className="scroll-mt-24 border-y border-border bg-surface">
       <div className="container-page">
         <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
           <div>
@@ -1109,17 +1139,31 @@ function MutualBenefit() {
                     </span>
                     <h3 className="font-display text-xl tracking-tight">{flowTitle}</h3>
                   </div>
-                  <ol className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-center">
+                  <ol className="mt-6 space-y-4">
                     {steps.map((step, index) => (
-                      <li key={step} className="contents">
-                        <span className="text-sm leading-relaxed text-muted-foreground">{step}</span>
-                        {index < steps.length - 1 && <ArrowRight className="hidden h-4 w-4 text-accent sm:block" aria-hidden />}
+                      <li key={step} className="flex items-start gap-4">
+                        <span
+                          className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent font-display text-sm font-semibold text-accent-foreground"
+                          aria-hidden
+                        >
+                          {index + 1}
+                        </span>
+                        <span className="pt-1 text-base leading-relaxed">{step}</span>
                       </li>
                     ))}
                   </ol>
                 </div>
               ))}
             </div>
+
+            <button
+              type="button"
+              onClick={copyLink}
+              className="mt-6 inline-flex items-center gap-2.5 rounded-full border border-border-strong px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              {copied ? <Check className="h-4 w-4 text-accent" aria-hidden /> : <Link2 className="h-4 w-4" aria-hidden />}
+              {copied ? c.copiedLabel : c.shareLabel}
+            </button>
           </div>
 
           <figure>
