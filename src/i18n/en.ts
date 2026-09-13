@@ -191,7 +191,7 @@ export const en = {
   },
   compare: {
     title: "Compare these dogs",
-    subtitle: "Pick up to three breeds and see where they really differ.",
+    subtitle: "Pick up to four breeds and see where they really differ.",
     add: "Add a breed",
     remove: "Remove",
     empty: "Pick a breed to get started.",

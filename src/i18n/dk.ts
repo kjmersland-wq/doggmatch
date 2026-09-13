@@ -191,7 +191,7 @@ export const dk: Dictionary = {
   },
   compare: {
     title: "Sammenlign disse hunde",
-    subtitle: "Vælg op til tre racer, og se hvor de virkelig adskiller sig.",
+    subtitle: "Vælg op til fire racer, og se hvor de virkelig adskiller sig.",
     add: "Tilføj en race",
     remove: "Fjern",
     empty: "Vælg en race for at komme i gang.",

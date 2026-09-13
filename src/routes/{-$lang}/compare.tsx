@@ -4,6 +4,7 @@ import { useT, useCopy } from "@/i18n";
 import { breeds, breedById, type BreedId, type BreedTraits } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
+import { quizQuestions } from "@/data/questions.locale";
 import { combineBreedTraits } from "@/lib/dogs/profile";
 import { matchDogTraits } from "@/lib/matching/engine";
 import { matchInsights, scoreReading } from "@/lib/matching/insights";
@@ -22,9 +23,15 @@ const personalCopy = {
       "Answer the Find My Dog questions and this table will read itself against your own days — not just breed statistics.",
     promptCta: "Answer the questions",
     based: "Based on the answers you gave in Find My Dog, kept on this device.",
-    bestLabel: "Best fit of the three",
+    bestLabel: "Best fit of these dogs",
     watch: "Worth thinking about",
     fine: "Nothing here worked against you.",
+    differencesTitle: "How these breeds differ for your lifestyle",
+    differencesBody: "The practical gaps that are most likely to shape your week, read against the answers you gave us.",
+    biggest: "Biggest practical difference",
+    yourAnswer: "You told us",
+    costContext: "Yearly cost is not scored against your answers, but it can make a real difference over time.",
+    aloneTime: "Time alone",
   },
   no: {
     title: "Hvilken av disse passer livet ditt best?",
@@ -35,6 +42,12 @@ const personalCopy = {
     bestLabel: "Passer best av disse",
     watch: "Verdt å tenke på",
     fine: "Ingenting her talte imot deg.",
+    differencesTitle: "Slik skiller disse rasene seg for livet ditt",
+    differencesBody: "De praktiske forskjellene som mest sannsynlig vil merkes i hverdagen, sett opp mot svarene du ga oss.",
+    biggest: "Største praktiske forskjell",
+    yourAnswer: "Du fortalte oss",
+    costContext: "Årskostnaden vurderes ikke opp mot svarene dine, men kan utgjøre en tydelig forskjell over tid.",
+    aloneTime: "Tid alene",
   },
   pl: {
     title: "Który z nich najlepiej pasuje do Twojego życia?",
@@ -42,9 +55,15 @@ const personalCopy = {
       "Odpowiedz na pytania w Znajdź mojego psa, a ta tabela sama odniesie się do Twoich codziennych dni — nie tylko do statystyk rasy.",
     promptCta: "Odpowiedz na pytania",
     based: "Na podstawie odpowiedzi, które podałeś/aś w Znajdź mojego psa, zapisanych na tym urządzeniu.",
-    bestLabel: "Najlepiej dopasowany z trójki",
+    bestLabel: "Najlepiej dopasowany z tych psów",
     watch: "Warto się zastanowić",
     fine: "Nic tutaj nie działało na Twoją niekorzyść.",
+    differencesTitle: "Jak te rasy różnią się w odniesieniu do Twojego życia",
+    differencesBody: "Praktyczne różnice, które najpewniej odczujesz na co dzień, zestawione z Twoimi odpowiedziami.",
+    biggest: "Największa praktyczna różnica",
+    yourAnswer: "Twoja odpowiedź",
+    costContext: "Roczny koszt nie wpływa na dopasowanie do odpowiedzi, ale z czasem może mieć duże znaczenie.",
+    aloneTime: "Czas w samotności",
   },
   dk: {
     title: "Hvilken af disse passer bedst til dit liv?",
@@ -52,9 +71,15 @@ const personalCopy = {
       "Svar på spørgsmålene i Find min hund, så læser denne tabel sig selv op mod dine egne dage — ikke bare racestatistik.",
     promptCta: "Svar på spørgsmålene",
     based: "Baseret på de svar du gav i Find min hund, gemt på denne enhed.",
-    bestLabel: "Passer bedst af de tre",
+    bestLabel: "Passer bedst af disse",
     watch: "Værd at overveje",
     fine: "Intet her talte imod dig.",
+    differencesTitle: "Sådan adskiller racerne sig i dit liv",
+    differencesBody: "De praktiske forskelle, du mest sandsynligt vil mærke i hverdagen, set i forhold til dine svar.",
+    biggest: "Største praktiske forskel",
+    yourAnswer: "Du fortalte os",
+    costContext: "Årsprisen vurderes ikke op mod dine svar, men kan gøre en reel forskel over tid.",
+    aloneTime: "Tid alene",
   },
   se: {
     title: "Vilken av dessa passar ditt liv bäst?",
@@ -62,9 +87,15 @@ const personalCopy = {
       "Svara på frågorna i Hitta min hund, så läser den här tabellen sig själv mot dina egna dagar — inte bara rasstatistik.",
     promptCta: "Svara på frågorna",
     based: "Baserat på svaren du gav i Hitta min hund, sparade på den här enheten.",
-    bestLabel: "Passar bäst av de tre",
+    bestLabel: "Passar bäst av dessa",
     watch: "Värt att fundera på",
     fine: "Inget här talade emot dig.",
+    differencesTitle: "Så skiljer sig raserna för ditt liv",
+    differencesBody: "De praktiska skillnader du troligen märker mest i vardagen, satta i relation till dina svar.",
+    biggest: "Största praktiska skillnaden",
+    yourAnswer: "Du berättade",
+    costContext: "Årskostnaden vägs inte mot dina svar, men kan göra stor skillnad över tid.",
+    aloneTime: "Tid ensam",
   },
   fi: {
     title: "Mikä näistä sopii parhaiten elämääsi?",
@@ -72,9 +103,15 @@ const personalCopy = {
       "Vastaa Löydä koirani -kyselyn kysymyksiin, niin tämä taulukko peilaa itsensä omiin päiviisi — ei vain rotutilastoihin.",
     promptCta: "Vastaa kysymyksiin",
     based: "Perustuu vastauksiin, jotka annoit Löydä koirani -kyselyssä, tallennettuna tälle laitteelle.",
-    bestLabel: "Sopii parhaiten näistä kolmesta",
+    bestLabel: "Sopii parhaiten näistä",
     watch: "Kannattaa miettiä",
     fine: "Mikään tässä ei puhunut sinua vastaan.",
+    differencesTitle: "Näin rodut eroavat sinun arjessasi",
+    differencesBody: "Käytännön erot, jotka todennäköisimmin näkyvät viikossasi, suhteutettuna antamiisi vastauksiin.",
+    biggest: "Suurin käytännön ero",
+    yourAnswer: "Kerroit meille",
+    costContext: "Vuosikustannusta ei pisteytetä vastaustesi perusteella, mutta sillä voi olla ajan mittaan suuri merkitys.",
+    aloneTime: "Aika yksin",
   },
   de: {
     title: "Welcher von diesen passt am besten zu deinem Leben?",
@@ -82,9 +119,15 @@ const personalCopy = {
       "Beantworte die Fragen von Finde meinen Hund, dann liest sich diese Tabelle von selbst gegen deinen eigenen Alltag — nicht nur gegen Rassestatistiken.",
     promptCta: "Fragen beantworten",
     based: "Basierend auf den Antworten, die du bei Finde meinen Hund gegeben hast, gespeichert auf diesem Gerät.",
-    bestLabel: "Beste Passung der drei",
+    bestLabel: "Beste Passung dieser Hunde",
     watch: "Es lohnt sich, darüber nachzudenken",
     fine: "Hier sprach nichts gegen dich.",
+    differencesTitle: "Wie sich diese Rassen für deinen Alltag unterscheiden",
+    differencesBody: "Die praktischen Unterschiede, die deine Woche am ehesten prägen, bezogen auf deine Antworten.",
+    biggest: "Größter praktischer Unterschied",
+    yourAnswer: "Du hast uns gesagt",
+    costContext: "Die Jahreskosten fließen nicht in deine Antworten ein, können langfristig aber einen deutlichen Unterschied machen.",
+    aloneTime: "Zeit allein",
   },
   fr: {
     title: "Lequel de ces chiens correspond le mieux à votre vie ?",
@@ -92,9 +135,15 @@ const personalCopy = {
       "Répondez aux questions de Trouver mon chien, et ce tableau se lira de lui-même à la lumière de vos propres journées — pas seulement des statistiques de race.",
     promptCta: "Répondre aux questions",
     based: "Basé sur les réponses que vous avez données dans Trouver mon chien, conservées sur cet appareil.",
-    bestLabel: "Meilleur choix des trois",
+    bestLabel: "Meilleur choix parmi ceux-ci",
     watch: "À prendre en compte",
     fine: "Rien ici ne jouait en votre défaveur.",
+    differencesTitle: "Ce qui distingue ces races pour votre mode de vie",
+    differencesBody: "Les écarts pratiques qui devraient le plus compter dans votre semaine, à la lumière de vos réponses.",
+    biggest: "Différence pratique la plus marquée",
+    yourAnswer: "Vous nous avez indiqué",
+    costContext: "Le coût annuel n'est pas évalué selon vos réponses, mais il peut compter réellement avec le temps.",
+    aloneTime: "Temps seul",
   },
   nl: {
     title: "Welke van deze past het best bij jouw leven?",
@@ -102,42 +151,48 @@ const personalCopy = {
       "Beantwoord de vragen van Vind mijn hond, en deze tabel leest zichzelf af tegen je eigen dagen — niet alleen tegen rasstatistieken.",
     promptCta: "Beantwoord de vragen",
     based: "Gebaseerd op de antwoorden die je gaf bij Vind mijn hond, bewaard op dit apparaat.",
-    bestLabel: "Beste match van de drie",
+    bestLabel: "Beste match van deze honden",
     watch: "Het overwegen waard",
     fine: "Hier speelde niets in je nadeel.",
+    differencesTitle: "Hoe deze rassen verschillen voor jouw leven",
+    differencesBody: "De praktische verschillen die je waarschijnlijk het meest merkt, bekeken naast jouw antwoorden.",
+    biggest: "Grootste praktische verschil",
+    yourAnswer: "Je vertelde ons",
+    costContext: "Jaarlijkse kosten worden niet aan je antwoorden getoetst, maar kunnen op termijn veel verschil maken.",
+    aloneTime: "Tijd alleen",
   },
 };
 
 const title = "Compare dogs side by side | DoggMatch";
 const description =
-  "Torn between a few dogs? Put up to three side by side and see where they really differ — energy, shedding, grooming, lifespan and yearly cost.";
+  "Compare up to four dog breeds side by side across exercise, grooming, alone time, shedding and yearly cost.";
 
 const seoCopy = {
   en: { title, description },
   no: {
     title: "Sammenlign hunder side om side | DoggMatch",
     description:
-      "Vanskelig å velge mellom noen hunder? Sett opptil tre ved siden av hverandre og se hvor de faktisk skiller seg — energi, pelsfelling, stell, levealder og årlige kostnader.",
+      "Sammenlign opptil fire hunderaser side om side på mosjon, pelsstell, alenetid, røyting og årlige kostnader.",
   },
   pl: {
     title: "Porównaj psy obok siebie | DoggMatch",
     description:
-      "Wahasz się między kilkoma psami? Zestaw do trzech obok siebie i zobacz, czym naprawdę się różnią — energia, linienie, pielęgnacja, długość życia i roczne koszty.",
+      "Porównaj obok siebie do czterech ras pod względem ruchu, pielęgnacji, samotności, linienia i rocznych kosztów.",
   },
   de: {
     title: "Hunde direkt vergleichen | DoggMatch",
     description:
-      "Kannst du dich zwischen ein paar Hunden nicht entscheiden? Stelle bis zu drei nebeneinander und sieh, worin sie sich wirklich unterscheiden — Energie, Fellwechsel, Pflege, Lebenserwartung und Jahreskosten.",
+      "Vergleiche bis zu vier Hunderassen bei Bewegung, Pflege, Alleinbleiben, Haaren und Jahreskosten.",
   },
   fr: {
     title: "Comparez des chiens côte à côte | DoggMatch",
     description:
-      "Vous hésitez entre plusieurs chiens ? Placez-en jusqu'à trois côte à côte et découvrez leurs vraies différences — énergie, perte de poils, toilettage, espérance de vie et coût annuel.",
+      "Comparez jusqu'à quatre races selon l'exercice, le toilettage, le temps seul, la perte de poils et le coût annuel.",
   },
   nl: {
     title: "Vergelijk honden naast elkaar | DoggMatch",
     description:
-      "Twijfel je tussen een paar honden? Zet er tot drie naast elkaar en zie waarin ze echt verschillen — energie, verharen, verzorging, levensverwachting en jaarlijkse kosten.",
+      "Vergelijk tot vier hondenrassen op beweging, verzorging, alleen zijn, verharen en jaarlijkse kosten.",
   },
 };
 
@@ -245,6 +300,7 @@ function CompareLegend({ c }: { c: CompareCopy }) {
  */
 function PersonalFit({ columns, names }: { columns: Column[]; names: Record<BreedId, { displayName: string }> }) {
   const p = useCopy(personalCopy);
+  const copy = useT();
   const profile = useMatchProfile();
 
   if (!profile) {
@@ -273,12 +329,35 @@ function PersonalFit({ columns, names }: { columns: Column[]; names: Record<Bree
     return { key: columnKey(col), label, fit, tradeoff: tradeoffs[0]?.text };
   });
   const top = Math.max(...scored.map((s) => s.fit.score));
+  const questionById = Object.fromEntries(quizQuestions().map((question) => [question.id, question]));
+  const practical = [
+    { key: "exercise", label: copy.compare.rows.exercise, trait: "exerciseNeeds" as const, answerId: "activity" },
+    { key: "grooming", label: copy.compare.rows.grooming, trait: "grooming" as const, answerId: "grooming" },
+    { key: "alone", label: p.aloneTime, trait: "aloneTolerance" as const, answerId: "alone" },
+    { key: "shedding", label: copy.compare.rows.shedding, trait: "shedding" as const, answerId: "shedding" },
+  ].map((item) => ({
+    ...item,
+    spread: Math.max(...columns.map((col) => columnTraits(col)[item.trait])) - Math.min(...columns.map((col) => columnTraits(col)[item.trait])),
+  }));
+  const costSpread = Math.max(...columns.map((col) => columnRange(col, "annualCost")[1])) - Math.min(...columns.map((col) => columnRange(col, "annualCost")[0]));
+  const biggestKey = [...practical, { key: "cost", spread: costSpread / 600 }].sort((a, b) => b.spread - a.spread)[0]?.key;
+
+  const answerLabel = (id: string) => {
+    const question = questionById[id];
+    return question?.options.find((option) => option.value === profile[id])?.label;
+  };
+  const difficulty = (value: number, inverse = false) => {
+    const adjusted = inverse ? 6 - value : value;
+    if (adjusted <= 2) return { value: 2, label: copy.compare.legend.low.split(" — ")[0] ?? copy.compare.legend.low };
+    if (adjusted >= 4) return { value: 5, label: copy.compare.legend.high.split(" — ")[0] ?? copy.compare.legend.high };
+    return { value: 3, label: copy.compare.legend.medium };
+  };
 
   return (
     <section className="mt-8">
       <h2 className="display-md">{p.title}</h2>
       <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">{p.based}</p>
-      <ul className="mt-6 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-3">
+      <ul className="mt-6 grid gap-px overflow-hidden rounded-2xl border border-border sm:grid-cols-2 xl:grid-cols-4">
         {scored.map((item) => (
           <li key={item.key} className="bg-card p-6">
             <div className="flex items-baseline justify-between gap-3">
@@ -300,6 +379,51 @@ function PersonalFit({ columns, names }: { columns: Column[]; names: Record<Bree
           </li>
         ))}
       </ul>
+      <div className="mt-12 border-t border-border pt-10">
+        <h2 className="display-md">{p.differencesTitle}</h2>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">{p.differencesBody}</p>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {practical.map((item) => (
+            <article key={item.key} className="rounded-2xl border border-border bg-card p-5">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h3 className="font-display text-base">{item.label}</h3>
+                {item.key === biggestKey && <span className="text-xs font-medium text-accent">{p.biggest}</span>}
+              </div>
+              {answerLabel(item.answerId) && (
+                <p className="mt-2 text-xs text-muted-foreground">{p.yourAnswer}: {answerLabel(item.answerId)}</p>
+              )}
+              <ul className="mt-4 grid gap-3">
+                {columns.map((col) => {
+                  const value = Math.round(columnTraits(col)[item.trait]);
+                  const level = difficulty(value, item.key === "alone");
+                  return (
+                    <li key={columnKey(col)} className="flex items-center justify-between gap-4 text-sm">
+                      <span>{columnName(col, copy.compare)}</span>
+                      <span className="inline-flex items-center gap-2 text-muted-foreground">
+                        <LevelDot value={level.value} label={level.label} size="sm" />
+                        {level.label}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </article>
+          ))}
+          <article className="rounded-2xl border border-border bg-card p-5">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h3 className="font-display text-base">{copy.compare.rows.cost}</h3>
+              {biggestKey === "cost" && <span className="text-xs font-medium text-accent">{p.biggest}</span>}
+            </div>
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{p.costContext}</p>
+            <ul className="mt-4 grid gap-3">
+              {columns.map((col) => {
+                const [lo, hi] = columnRange(col, "annualCost");
+                return <li key={columnKey(col)} className="flex items-center justify-between gap-4 text-sm"><span>{columnName(col, copy.compare)}</span><span className="tabular-nums text-muted-foreground">€{lo}–{hi}</span></li>;
+              })}
+            </ul>
+          </article>
+        </div>
+      </div>
     </section>
   );
 }
@@ -380,7 +504,7 @@ function ComparePage() {
       if (current.some((col) => columnKey(col) === key)) {
         return current.filter((col) => columnKey(col) !== key);
       }
-      return current.length >= 3 ? [...current.slice(1), next] : [...current, next];
+      return current.length >= 4 ? [...current.slice(1), next] : [...current, next];
     });
   }
 

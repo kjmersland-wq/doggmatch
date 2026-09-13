@@ -191,7 +191,7 @@ export const nl: Dictionary = {
   },
   compare: {
     title: "Vergelijk deze honden",
-    subtitle: "Kies tot drie rassen en zie waar ze écht van elkaar verschillen.",
+    subtitle: "Kies tot vier rassen en zie waar ze écht van elkaar verschillen.",
     add: "Ras toevoegen",
     remove: "Verwijderen",
     empty: "Kies een ras om te beginnen.",
