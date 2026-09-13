@@ -166,36 +166,36 @@ export const se: Dictionary = {
     beginnerHigh: "Hög",
     beginnerModerate: "Måttlig",
     beginnerLow: "Låg",
-    homeWithDogEyebrow: "Once the dog is home",
-    homeWithDogTitle: "The first year is easier with a little structure",
+    homeWithDogEyebrow: "När hunden har kommit hem",
+    homeWithDogTitle: "Det första året blir lättare med lite struktur",
     homeWithDogBody:
-      "DoggMatch+ is a quiet companion for the practical side of dog life. No pressure — just the tools we wish we'd had when our own dogs came home.",
+      "DoggMatch+ är ett lugnt stöd för den praktiska delen av hundlivet. Ingen press — bara de verktyg vi själva önskar att vi hade haft när våra hundar kom hem.",
     homeWithDogFeatures: [
       {
-        title: "My Dog hub",
-        body: "One place for vet dates, weight notes, mealtimes and the small things you don't want to forget.",
+        title: "Min hund",
+        body: "En plats för veterinärbesök, viktanteckningar, måltider och de små sakerna du inte vill glömma.",
       },
       {
-        title: "Weekly plans",
-        body: "A gentle rhythm of exercise, grooming, training and rest that fits your dog's age and energy.",
+        title: "Veckoplaner",
+        body: "En lugn rytm med motion, pälsvård, träning och vila som passar hundens ålder och energi.",
       },
       {
-        title: "Training lessons",
-        body: "Short, step-by-step guides with clear pictures — five to ten minutes at a time.",
+        title: "Träningslektioner",
+        body: "Korta steg-för-steg-guider med tydliga bilder — fem till tio minuter åt gången.",
       },
       {
-        title: "Food portions",
-        body: "Feeding guidance worked out from your dog's weight, age and activity, not generic advice.",
+        title: "Foderportioner",
+        body: "Utfodringsråd utifrån hundens vikt, ålder och aktivitet — inte allmänna råd.",
       },
       {
-        title: "Travel documents",
-        body: "Checklists for trips abroad, country rules and the paperwork that is easy to leave behind.",
+        title: "Resedokument",
+        body: "Checklistor för utlandsresor, regler för olika länder och papperen som är lätta att glömma.",
       },
     ],
-    homeWithDogCtaPrimary: "See how My Dog works",
-    homeWithDogCtaSecondary: "Explore DoggMatch+",
+    homeWithDogCtaPrimary: "Se hur Min hund fungerar",
+    homeWithDogCtaSecondary: "Utforska DoggMatch+",
     homeWithDogNote:
-      "Your match result stays free and complete. This is simply here when you want a little extra help.",
+      "Ditt matchresultat förblir gratis och komplett. Det här finns bara här när du vill ha lite extra hjälp.",
   },
   dimensions: {
     lifestyle: "Vardagen",

@@ -166,36 +166,36 @@ export const dk: Dictionary = {
     beginnerHigh: "Høj",
     beginnerModerate: "Moderat",
     beginnerLow: "Lav",
-    homeWithDogEyebrow: "Once the dog is home",
-    homeWithDogTitle: "The first year is easier with a little structure",
+    homeWithDogEyebrow: "Når hunden er kommet hjem",
+    homeWithDogTitle: "Det første år bliver lettere med lidt struktur",
     homeWithDogBody:
-      "DoggMatch+ is a quiet companion for the practical side of dog life. No pressure — just the tools we wish we'd had when our own dogs came home.",
+      "DoggMatch+ er en rolig følgesvend til den praktiske side af hundelivet. Intet pres — bare de værktøjer, vi selv ville ønske, vi havde haft, da vores hunde kom hjem.",
     homeWithDogFeatures: [
       {
-        title: "My Dog hub",
-        body: "One place for vet dates, weight notes, mealtimes and the small things you don't want to forget.",
+        title: "Min hund",
+        body: "Ét sted til dyrlægetider, vægtnoter, måltider og de små ting, du ikke vil glemme.",
       },
       {
-        title: "Weekly plans",
-        body: "A gentle rhythm of exercise, grooming, training and rest that fits your dog's age and energy.",
+        title: "Ugeplaner",
+        body: "En rolig rytme med motion, pelspleje, træning og hvile, der passer til din hunds alder og energi.",
       },
       {
-        title: "Training lessons",
-        body: "Short, step-by-step guides with clear pictures — five to ten minutes at a time.",
+        title: "Træningslektioner",
+        body: "Korte trin-for-trin-vejledninger med tydelige billeder — fem til ti minutter ad gangen.",
       },
       {
-        title: "Food portions",
-        body: "Feeding guidance worked out from your dog's weight, age and activity, not generic advice.",
+        title: "Foderportioner",
+        body: "Fodervejledning beregnet ud fra din hunds vægt, alder og aktivitet — ikke generelle råd.",
       },
       {
-        title: "Travel documents",
-        body: "Checklists for trips abroad, country rules and the paperwork that is easy to leave behind.",
+        title: "Rejsedokumenter",
+        body: "Tjeklister til udlandsrejser, regler for hvert land og de papirer, der er lette at glemme.",
       },
     ],
-    homeWithDogCtaPrimary: "See how My Dog works",
-    homeWithDogCtaSecondary: "Explore DoggMatch+",
+    homeWithDogCtaPrimary: "Se, hvordan Min hund fungerer",
+    homeWithDogCtaSecondary: "Udforsk DoggMatch+",
     homeWithDogNote:
-      "Your match result stays free and complete. This is simply here when you want a little extra help.",
+      "Dit matchresultat forbliver gratis og komplet. Det her er bare til dig, når du gerne vil have lidt ekstra hjælp.",
   },
   dimensions: {
     lifestyle: "Hverdagsliv",

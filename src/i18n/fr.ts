@@ -166,36 +166,36 @@ export const fr: Dictionary = {
     beginnerHigh: "Élevé",
     beginnerModerate: "Modéré",
     beginnerLow: "Faible",
-    homeWithDogEyebrow: "Once the dog is home",
-    homeWithDogTitle: "The first year is easier with a little structure",
+    homeWithDogEyebrow: "Une fois votre chien à la maison",
+    homeWithDogTitle: "La première année est plus douce avec quelques repères",
     homeWithDogBody:
-      "DoggMatch+ is a quiet companion for the practical side of dog life. No pressure — just the tools we wish we'd had when our own dogs came home.",
+      "DoggMatch+ vous accompagne simplement dans le quotidien avec votre chien. Sans pression — avec les outils que nous aurions aimé avoir lorsque nos propres chiens sont arrivés à la maison.",
     homeWithDogFeatures: [
       {
-        title: "My Dog hub",
-        body: "One place for vet dates, weight notes, mealtimes and the small things you don't want to forget.",
+        title: "Mon chien",
+        body: "Un seul endroit pour les rendez-vous vétérinaires, le suivi du poids, les repas et les petites choses à ne pas oublier.",
       },
       {
-        title: "Weekly plans",
-        body: "A gentle rhythm of exercise, grooming, training and rest that fits your dog's age and energy.",
+        title: "Programmes de la semaine",
+        body: "Un rythme doux entre sorties, soins, éducation et repos, adapté à l'âge et à l'énergie de votre chien.",
       },
       {
-        title: "Training lessons",
-        body: "Short, step-by-step guides with clear pictures — five to ten minutes at a time.",
+        title: "Séances d'éducation",
+        body: "Des guides courts, étape par étape, avec des images claires — cinq à dix minutes à la fois.",
       },
       {
-        title: "Food portions",
-        body: "Feeding guidance worked out from your dog's weight, age and activity, not generic advice.",
+        title: "Portions alimentaires",
+        body: "Des repères calculés selon le poids, l'âge et l'activité de votre chien — pas des conseils passe-partout.",
       },
       {
-        title: "Travel documents",
-        body: "Checklists for trips abroad, country rules and the paperwork that is easy to leave behind.",
+        title: "Documents de voyage",
+        body: "Des listes pour les voyages à l'étranger, les règles de chaque pays et les papiers faciles à oublier.",
       },
     ],
-    homeWithDogCtaPrimary: "See how My Dog works",
-    homeWithDogCtaSecondary: "Explore DoggMatch+",
+    homeWithDogCtaPrimary: "Découvrir Mon chien",
+    homeWithDogCtaSecondary: "Découvrir DoggMatch+",
     homeWithDogNote:
-      "Your match result stays free and complete. This is simply here when you want a little extra help.",
+      "Votre résultat reste gratuit et complet. Cette aide est simplement là si vous en avez envie.",
   },
   dimensions: {
     lifestyle: "Vie quotidienne",
