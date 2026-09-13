@@ -60,11 +60,19 @@ export const findNearbyPlaces = createServerFn({ method: "POST" })
       const { checkPlacesRate } = await import("./rate-limit.server");
       if (!checkPlacesRate(clientKey())) return { ok: false, error: "busy" };
 
-      try {
-        const { placeLocation, searchLocation, fetchCategory, approvedPartners } = await import(
-          "./places.server"
-        );
+      const { placeLocation, searchLocation, fetchCategory, approvedPartners } = await import(
+        "./places.server"
+      );
 
+      // Partner lookup is an enhancement, not a requirement. If it fails, keep searching.
+      let partners: Array<{ name: string; benefit: string | null }> = [];
+      try {
+        partners = await approvedPartners();
+      } catch (error) {
+        console.error("[places] partner lookup failed, continuing without partners", error);
+      }
+
+      try {
         let center: { lat: number; lng: number } | null = null;
         let label = "";
 
@@ -83,12 +91,9 @@ export const findNearbyPlaces = createServerFn({ method: "POST" })
 
         if (!center) return { ok: false, error: "not_found" };
 
-        const [partners, ...lists] = await Promise.all([
-          approvedPartners(),
-          ...PLACE_CATEGORIES.map((category) =>
-            fetchCategory(category, center!, data.radiusKm, data.locale),
-          ),
-        ]);
+        const lists = await Promise.all(
+          PLACE_CATEGORIES.map((category) => fetchCategory(category, center!, data.radiusKm, data.locale)),
+        );
 
         const partnerIndex = new Map(
           partners.filter((p) => p.name.trim().length > 1).map((p) => [normalise(p.name), p]),
