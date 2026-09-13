@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { useT, useCopy } from "@/i18n";
+import { useT, useCopy, useLocale, pick } from "@/i18n";
+import { GUIDE_HUB_LINKS } from "@/lib/guides/lifestyle";
 import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
 import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { InlineShare, SectionShare } from "@/components/dogmatch/share";
@@ -915,15 +916,19 @@ function GuidesPage() {
               ))}
             </ul>
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{guide.close}</p>
-            {guide.id === "family-dogs" && (
-              <Link
-                to={withLangPrefix("/best-dog-breeds-for-families")}
-                className="group mt-5 inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
-              >
-                {c.familyGuideLink}
-                <Arrow />
-              </Link>
-            )}
+            {(() => {
+              const link = GUIDE_HUB_LINKS[guide.id];
+              if (!link) return null;
+              return (
+                <Link
+                  to={withLangPrefix(link.path)}
+                  className="group mt-5 inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+                >
+                  {pick(link.label, locale)}
+                  <Arrow />
+                </Link>
+              );
+            })()}
           </li>
         ))}
       </ul>
