@@ -595,6 +595,8 @@ function DogLifePage() {
                   >
                     {p.directions}
                   </a>
+                  <PlaceSend place={place} />
+
                 </li>
               ))}
             </ul>
