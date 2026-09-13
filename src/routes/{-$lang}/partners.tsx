@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { Button, Eyebrow, Section, Arrow } from "@/components/dogmatch/ui";
 import { PartnerPortalLink } from "@/components/dogmatch/partner-portal-link";
-import { partnersContent } from "@/data/partners/content";
+import { partnersContent, partnersContentFor } from "@/data/partners/content";
 import { sendPartnerEnquiry } from "@/lib/partners/partner.functions";
 import { cn } from "@/lib/utils";
 import { useCopy, useLocale } from "@/i18n";
@@ -84,7 +84,7 @@ const seoCopy = {
 export const Route = createFileRoute("/{-$lang}/partners")({
   head: (ctx) => {
     const locale = headLocale(ctx);
-    const content = pick({ en: enPartners, no: noPartners, pl: plPartners, dk: dkPartners, se: sePartners, fi: fiPartners, de: dePartners, fr: frPartners, nl: nlPartners }, locale);
+    const content = partnersContentFor(locale);
     return {
       ...localizedHead(ctx, "/partners", seoCopy),
       scripts: [
