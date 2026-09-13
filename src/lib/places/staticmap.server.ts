@@ -12,6 +12,7 @@ const GATEWAY_URL = "https://connector-gateway.lovable.dev/google_maps";
 
 export type StaticMapPoint = { lat: number; lng: number; highlight?: boolean | undefined };
 
+/** Satellite tiles are not available for every account/region, so we fall back quietly. */
 export async function fetchStaticMap(
   center: { lat: number; lng: number },
   points: StaticMapPoint[],
@@ -19,7 +20,7 @@ export async function fetchStaticMap(
   height: number,
   radiusKm: number,
   mapType: "roadmap" | "satellite",
-): Promise<string> {
+): Promise<{ image: string; mapType: "roadmap" | "satellite" }> {
   const lovableKey = process.env["LOVABLE_API_KEY"];
   const mapsKey = process.env["GOOGLE_MAPS_API_KEY"];
   if (!lovableKey || !mapsKey) throw new Error("staticmap_not_configured");
@@ -54,12 +55,24 @@ export async function fetchStaticMap(
     );
   }
 
-  const response = await fetch(`${GATEWAY_URL}/maps/api/staticmap?${params.toString()}`, {
-    headers: {
-      Authorization: `Bearer ${lovableKey}`,
-      "X-Connection-Api-Key": mapsKey,
-    },
-  });
+  const request = async (type: "roadmap" | "satellite") => {
+    params.set("maptype", type);
+    return fetch(`${GATEWAY_URL}/maps/api/staticmap?${params.toString()}`, {
+      headers: {
+        Authorization: `Bearer ${lovableKey}`,
+        "X-Connection-Api-Key": mapsKey,
+      },
+    });
+  };
+
+  let used: "roadmap" | "satellite" = mapType;
+  let response = await request(mapType);
+  if (!response.ok && mapType === "satellite") {
+    const body = await response.text();
+    console.error(`[staticmap] satellite unavailable [${response.status}]: ${body}`);
+    used = "roadmap";
+    response = await request("roadmap");
+  }
   if (!response.ok) {
     const body = await response.text();
     console.error(`[staticmap] failed [${response.status}]: ${body}`);
@@ -71,5 +84,5 @@ export async function fetchStaticMap(
   for (let i = 0; i < bytes.length; i += 1) binary += String.fromCharCode(bytes[i]!);
   const base64 = btoa(binary);
   const type = response.headers.get("content-type") ?? "image/png";
-  return `data:${type};base64,${base64}`;
+  return { image: `data:${type};base64,${base64}`, mapType: used };
 }

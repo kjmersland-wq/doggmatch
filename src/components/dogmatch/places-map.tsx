@@ -96,6 +96,7 @@ export default function PlacesMap({
   const [ready, setReady] = useState(false);
   const [fallback, setFallback] = useState<string | null>(null);
   const [satellite, setSatellite] = useState(false);
+  const [satelliteBlocked, setSatelliteBlocked] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -116,7 +117,12 @@ export default function PlacesMap({
       },
     })
       .then((response) => {
-        if (!cancelled && response.ok && response.image) setFallback(response.image);
+        if (cancelled || !response.ok || !response.image) return;
+        setFallback(response.image);
+        if (satellite && response.mapType !== "satellite") {
+          setSatelliteBlocked(true);
+          setSatellite(false);
+        }
       })
       .catch(() => undefined);
     return () => {
@@ -192,6 +198,7 @@ export default function PlacesMap({
       >
         {standardLabel}
       </button>
+      {satelliteBlocked ? null : (
       <button
         type="button"
         onClick={() => setSatellite(true)}
@@ -200,6 +207,7 @@ export default function PlacesMap({
       >
         {satelliteLabel}
       </button>
+      )}
     </div>
   );
 

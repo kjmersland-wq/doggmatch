@@ -18,13 +18,24 @@ const schema = z.object({
 
 export const getStaticMap = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => schema.parse(data))
-  .handler(async ({ data }): Promise<{ ok: boolean; image?: string }> => {
+  .handler(
+    async ({
+      data,
+    }): Promise<{ ok: boolean; image?: string; mapType?: "roadmap" | "satellite" }> => {
     try {
       const { fetchStaticMap } = await import("./staticmap.server");
-      const image = await fetchStaticMap(data.center, data.points, data.width, data.height, data.radiusKm, data.mapType);
-      return { ok: true, image };
+      const result = await fetchStaticMap(
+        data.center,
+        data.points,
+        data.width,
+        data.height,
+        data.radiusKm,
+        data.mapType,
+      );
+      return { ok: true, image: result.image, mapType: result.mapType };
     } catch (error) {
       console.error("[staticmap] request failed", error);
       return { ok: false };
     }
-  });
+  },
+  );
