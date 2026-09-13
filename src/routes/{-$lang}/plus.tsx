@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Arrow, ButtonLink, Badge, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { SectionHead } from "@/components/dogmatch/journey/parts";
 import { JoinPlusButton } from "@/components/dogmatch/plus/join";
+import { PartnerCodeField } from "@/components/dogmatch/plus/partner-code";
 import { MemberCardShowcase } from "@/components/dogmatch/plus/card-showcase";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
@@ -4689,6 +4690,7 @@ function PlusPage() {
             </div>
           </Card>
         </div>
+        <PartnerCodeField className="mt-10 max-w-xl rounded-3xl border border-border p-6" />
         <div className="mt-8 max-w-xl">
           <p className="font-display text-lg tracking-tight">{c.membership.openLine}</p>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">

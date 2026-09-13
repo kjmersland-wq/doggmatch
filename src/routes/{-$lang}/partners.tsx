@@ -18,6 +18,7 @@ import {
   Mountain,
 } from "lucide-react";
 import { Button, Eyebrow, Section, Arrow } from "@/components/dogmatch/ui";
+import { PartnerPortalLink } from "@/components/dogmatch/partner-portal-link";
 import { partnersContent } from "@/data/partners/content";
 import { sendPartnerEnquiry } from "@/lib/partners/partner.functions";
 import { cn } from "@/lib/utils";
@@ -2239,6 +2240,7 @@ function EnquirySection() {
         <Eyebrow>{c.eyebrow}</Eyebrow>
         <h2 className="display-md mt-6 text-balance">{c.title}</h2>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{c.body}</p>
+        <PartnerPortalLink className="mt-8" />
 
         {done ? (
           <div className="animate-fade mt-10 rounded-3xl border border-border bg-background p-8 md:p-10">

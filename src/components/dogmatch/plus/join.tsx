@@ -4,9 +4,11 @@ import { useServerFn } from "@tanstack/react-start";
 import { createPlusCheckout } from "@/lib/plus/stripe.functions";
 import type { PlanId } from "@/lib/plus/plans";
 import { useMembership } from "@/hooks/use-membership";
+import { readPartnerCode } from "@/components/dogmatch/plus/partner-code";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
+
 
 type Props = {
   plan: PlanId;
@@ -104,7 +106,7 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
     }
     setBusy(true);
     try {
-      const { url } = await startCheckout({ data: { plan } });
+      const { url } = await startCheckout({ data: { plan, code: readPartnerCode() } });
       window.location.href = url;
     } catch {
       setError(c.error);

@@ -61,6 +61,7 @@ import { Route as Char123LangChar125MyDogSetupRouteImport } from './routes/{-$la
 import { Route as Char123LangChar125MyDogVetRouteImport } from './routes/{-$lang}/my-dog.vet'
 import { Route as Char123LangChar125MyDogWeekRouteImport } from './routes/{-$lang}/my-dog.week'
 import { Route as Char123LangChar125MyDogWeightRouteImport } from './routes/{-$lang}/my-dog.weight'
+import { Route as Char123LangChar125PartnersPortalRouteImport } from './routes/{-$lang}/partners.portal'
 import { Route as Char123LangChar125TrainIndexRouteImport } from './routes/{-$lang}/train.index'
 import { Route as Char123LangChar125TrainJourneyRouteImport } from './routes/{-$lang}/train.journey'
 import { Route as Char123LangChar125TrainLibraryRouteImport } from './routes/{-$lang}/train.library'
@@ -377,6 +378,12 @@ const Char123LangChar125MyDogWeightRoute =
     path: '/weight',
     getParentRoute: () => Char123LangChar125MyDogRoute,
   } as any)
+const Char123LangChar125PartnersPortalRoute =
+  Char123LangChar125PartnersPortalRouteImport.update({
+    id: '/portal',
+    path: '/portal',
+    getParentRoute: () => Char123LangChar125PartnersRoute,
+  } as any)
 const Char123LangChar125TrainIndexRoute =
   Char123LangChar125TrainIndexRouteImport.update({
     id: '/',
@@ -471,7 +478,7 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/member-card': typeof Char123LangChar125MemberCardRoute
   '/{-$lang}/most-mismatched-breeds': typeof Char123LangChar125MostMismatchedBreedsRoute
   '/{-$lang}/my-dog': typeof Char123LangChar125MyDogRouteWithChildren
-  '/{-$lang}/partners': typeof Char123LangChar125PartnersRoute
+  '/{-$lang}/partners': typeof Char123LangChar125PartnersRouteWithChildren
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
   '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
   '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
@@ -499,6 +506,7 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
   '/{-$lang}/my-dog/week': typeof Char123LangChar125MyDogWeekRoute
   '/{-$lang}/my-dog/weight': typeof Char123LangChar125MyDogWeightRoute
+  '/{-$lang}/partners/portal': typeof Char123LangChar125PartnersPortalRoute
   '/{-$lang}/train/journey': typeof Char123LangChar125TrainJourneyRoute
   '/{-$lang}/train/library': typeof Char123LangChar125TrainLibraryRoute
   '/{-$lang}/train/setup': typeof Char123LangChar125TrainSetupRoute
@@ -534,7 +542,7 @@ export interface FileRoutesByTo {
   '/{-$lang}/low-shedding-dogs': typeof Char123LangChar125LowSheddingDogsRoute
   '/{-$lang}/member-card': typeof Char123LangChar125MemberCardRoute
   '/{-$lang}/most-mismatched-breeds': typeof Char123LangChar125MostMismatchedBreedsRoute
-  '/{-$lang}/partners': typeof Char123LangChar125PartnersRoute
+  '/{-$lang}/partners': typeof Char123LangChar125PartnersRouteWithChildren
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
   '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
   '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
@@ -560,6 +568,7 @@ export interface FileRoutesByTo {
   '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
   '/{-$lang}/my-dog/week': typeof Char123LangChar125MyDogWeekRoute
   '/{-$lang}/my-dog/weight': typeof Char123LangChar125MyDogWeightRoute
+  '/{-$lang}/partners/portal': typeof Char123LangChar125PartnersPortalRoute
   '/{-$lang}/train/journey': typeof Char123LangChar125TrainJourneyRoute
   '/{-$lang}/train/library': typeof Char123LangChar125TrainLibraryRoute
   '/{-$lang}/train/setup': typeof Char123LangChar125TrainSetupRoute
@@ -599,7 +608,7 @@ export interface FileRoutesById {
   '/{-$lang}/member-card': typeof Char123LangChar125MemberCardRoute
   '/{-$lang}/most-mismatched-breeds': typeof Char123LangChar125MostMismatchedBreedsRoute
   '/{-$lang}/my-dog': typeof Char123LangChar125MyDogRouteWithChildren
-  '/{-$lang}/partners': typeof Char123LangChar125PartnersRoute
+  '/{-$lang}/partners': typeof Char123LangChar125PartnersRouteWithChildren
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
   '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
   '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
@@ -627,6 +636,7 @@ export interface FileRoutesById {
   '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
   '/{-$lang}/my-dog/week': typeof Char123LangChar125MyDogWeekRoute
   '/{-$lang}/my-dog/weight': typeof Char123LangChar125MyDogWeightRoute
+  '/{-$lang}/partners/portal': typeof Char123LangChar125PartnersPortalRoute
   '/{-$lang}/train/journey': typeof Char123LangChar125TrainJourneyRoute
   '/{-$lang}/train/library': typeof Char123LangChar125TrainLibraryRoute
   '/{-$lang}/train/setup': typeof Char123LangChar125TrainSetupRoute
@@ -695,6 +705,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/vet'
     | '/{-$lang}/my-dog/week'
     | '/{-$lang}/my-dog/weight'
+    | '/{-$lang}/partners/portal'
     | '/{-$lang}/train/journey'
     | '/{-$lang}/train/library'
     | '/{-$lang}/train/setup'
@@ -756,6 +767,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/vet'
     | '/{-$lang}/my-dog/week'
     | '/{-$lang}/my-dog/weight'
+    | '/{-$lang}/partners/portal'
     | '/{-$lang}/train/journey'
     | '/{-$lang}/train/library'
     | '/{-$lang}/train/setup'
@@ -822,6 +834,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/vet'
     | '/{-$lang}/my-dog/week'
     | '/{-$lang}/my-dog/weight'
+    | '/{-$lang}/partners/portal'
     | '/{-$lang}/train/journey'
     | '/{-$lang}/train/library'
     | '/{-$lang}/train/setup'
@@ -1211,6 +1224,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LangChar125MyDogWeightRouteImport
       parentRoute: typeof Char123LangChar125MyDogRoute
     }
+    '/{-$lang}/partners/portal': {
+      id: '/{-$lang}/partners/portal'
+      path: '/portal'
+      fullPath: '/{-$lang}/partners/portal'
+      preLoaderRoute: typeof Char123LangChar125PartnersPortalRouteImport
+      parentRoute: typeof Char123LangChar125PartnersRoute
+    }
     '/{-$lang}/train/': {
       id: '/{-$lang}/train/'
       path: '/'
@@ -1365,6 +1385,21 @@ const Char123LangChar125MyDogRouteWithChildren =
     Char123LangChar125MyDogRouteChildren,
   )
 
+interface Char123LangChar125PartnersRouteChildren {
+  Char123LangChar125PartnersPortalRoute: typeof Char123LangChar125PartnersPortalRoute
+}
+
+const Char123LangChar125PartnersRouteChildren: Char123LangChar125PartnersRouteChildren =
+  {
+    Char123LangChar125PartnersPortalRoute:
+      Char123LangChar125PartnersPortalRoute,
+  }
+
+const Char123LangChar125PartnersRouteWithChildren =
+  Char123LangChar125PartnersRoute._addFileChildren(
+    Char123LangChar125PartnersRouteChildren,
+  )
+
 interface Char123LangChar125TrainRouteChildren {
   Char123LangChar125TrainJourneyRoute: typeof Char123LangChar125TrainJourneyRoute
   Char123LangChar125TrainLibraryRoute: typeof Char123LangChar125TrainLibraryRoute
@@ -1428,7 +1463,7 @@ interface Char123LangChar125RouteChildren {
   Char123LangChar125MemberCardRoute: typeof Char123LangChar125MemberCardRoute
   Char123LangChar125MostMismatchedBreedsRoute: typeof Char123LangChar125MostMismatchedBreedsRoute
   Char123LangChar125MyDogRoute: typeof Char123LangChar125MyDogRouteWithChildren
-  Char123LangChar125PartnersRoute: typeof Char123LangChar125PartnersRoute
+  Char123LangChar125PartnersRoute: typeof Char123LangChar125PartnersRouteWithChildren
   Char123LangChar125PlusRoute: typeof Char123LangChar125PlusRoute
   Char123LangChar125PrivacyRoute: typeof Char123LangChar125PrivacyRoute
   Char123LangChar125SourcesRoute: typeof Char123LangChar125SourcesRoute
@@ -1471,7 +1506,7 @@ const Char123LangChar125RouteChildren: Char123LangChar125RouteChildren = {
   Char123LangChar125MostMismatchedBreedsRoute:
     Char123LangChar125MostMismatchedBreedsRoute,
   Char123LangChar125MyDogRoute: Char123LangChar125MyDogRouteWithChildren,
-  Char123LangChar125PartnersRoute: Char123LangChar125PartnersRoute,
+  Char123LangChar125PartnersRoute: Char123LangChar125PartnersRouteWithChildren,
   Char123LangChar125PlusRoute: Char123LangChar125PlusRoute,
   Char123LangChar125PrivacyRoute: Char123LangChar125PrivacyRoute,
   Char123LangChar125SourcesRoute: Char123LangChar125SourcesRoute,

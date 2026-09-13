@@ -50,6 +50,104 @@ export type Database = {
         }
         Relationships: []
       }
+      partner_referrals: {
+        Row: {
+          code: string
+          confirmed_at: string | null
+          created_at: string
+          discount_percent: number
+          id: string
+          partner_id: string
+          plan: string | null
+          status: string
+          stripe_session_id: string | null
+          user_id: string
+        }
+        Insert: {
+          code: string
+          confirmed_at?: string | null
+          created_at?: string
+          discount_percent?: number
+          id?: string
+          partner_id: string
+          plan?: string | null
+          status?: string
+          stripe_session_id?: string | null
+          user_id: string
+        }
+        Update: {
+          code?: string
+          confirmed_at?: string | null
+          created_at?: string
+          discount_percent?: number
+          id?: string
+          partner_id?: string
+          plan?: string | null
+          status?: string
+          stripe_session_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "partner_referrals_partner_id_fkey"
+            columns: ["partner_id"]
+            isOneToOne: false
+            referencedRelation: "partners"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      partners: {
+        Row: {
+          benefit: string | null
+          category: string
+          code: string | null
+          company: string
+          contact_name: string
+          country: string
+          created_at: string
+          email: string
+          id: string
+          status: string
+          stripe_promotion_code_id: string | null
+          updated_at: string
+          user_id: string
+          website: string | null
+        }
+        Insert: {
+          benefit?: string | null
+          category: string
+          code?: string | null
+          company: string
+          contact_name: string
+          country: string
+          created_at?: string
+          email: string
+          id?: string
+          status?: string
+          stripe_promotion_code_id?: string | null
+          updated_at?: string
+          user_id: string
+          website?: string | null
+        }
+        Update: {
+          benefit?: string | null
+          category?: string
+          code?: string | null
+          company?: string
+          contact_name?: string
+          country?: string
+          created_at?: string
+          email?: string
+          id?: string
+          status?: string
+          stripe_promotion_code_id?: string | null
+          updated_at?: string
+          user_id?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
       plus_waitlist: {
         Row: {
           consented_at: string
@@ -74,15 +172,42 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -209,6 +334,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const
