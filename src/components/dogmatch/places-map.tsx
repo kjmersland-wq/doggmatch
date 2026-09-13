@@ -1,6 +1,7 @@
 /// <reference types="google.maps" />
 import { useEffect, useRef, useState } from "react";
 import type { PlaceResult } from "@/lib/places/types";
+import { getStaticMap } from "@/lib/places/staticmap.functions";
 
 const BROWSER_KEY =
   (import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY"] as string | undefined) ??
@@ -71,9 +72,36 @@ export default function PlacesMap({ center, places, activeId, onSelect, label }:
   const mapRef = useRef<google.maps.Map | null>(null);
   const markersRef = useRef<google.maps.Marker[]>([]);
   const [ready, setReady] = useState(false);
+  const [fallback, setFallback] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
+    if (BROWSER_KEY) return undefined;
+    setFallback(null);
+    getStaticMap({
+      data: {
+        center,
+        points: places.slice(0, 24).map((place) => ({
+          lat: place.lat,
+          lng: place.lng,
+          highlight: place.partner || place.id === activeId,
+        })),
+        width: 640,
+        height: 360,
+      },
+    })
+      .then((response) => {
+        if (!cancelled && response.ok && response.image) setFallback(response.image);
+      })
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, [center, places, activeId]);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!BROWSER_KEY) return undefined;
     loadMaps()
       .then((maps) => {
         if (cancelled || !nodeRef.current) return;
@@ -125,6 +153,21 @@ export default function PlacesMap({ center, places, activeId, onSelect, label }:
     if (places.length > 0) map.fitBounds(bounds, 48);
     else map.panTo(center);
   }, [places, activeId, center, onSelect, ready]);
+
+  if (!BROWSER_KEY) {
+    return (
+      <div className="h-[22rem] w-full bg-ink md:h-[30rem]">
+        {fallback ? (
+          <img
+            src={fallback}
+            alt={label}
+            className="h-full w-full object-cover"
+            loading="lazy"
+          />
+        ) : null}
+      </div>
+    );
+  }
 
   return (
     <div
