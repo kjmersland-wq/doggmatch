@@ -74,9 +74,9 @@ export const APARTMENT_GUIDE: LifestyleGuideConfig = {
   id: "apartment-dogs",
   path: "/best-apartment-dogs",
   seo: {
-    title: "Best dog breeds for apartment living — an honest shortlist | DoggMatch",
+    title: "Best dog breeds for apartment living | DoggMatch",
     description:
-      "The best dogs for flats and apartments, chosen for calm indoor manners and low barking rather than small size — with the honest trade-offs of each breed.",
+      "The best dogs for flats, chosen for calm indoor manners and low barking rather than small size — with the honest trade-offs of each breed.",
   },
   copy: {
     eyebrow: "Choosing a dog",
@@ -139,7 +139,7 @@ export const FIRST_TIME_GUIDE: LifestyleGuideConfig = {
   id: "first-time-owners",
   path: "/best-dogs-for-first-time-owners",
   seo: {
-    title: "Best dog breeds for first-time owners — an honest shortlist | DoggMatch",
+    title: "Best dog breeds for first-time owners | DoggMatch",
     description:
       "The best dogs for beginners: forgiving, trainable breeds that shrug off first-year mistakes — chosen from real trait data, with the trade-offs spelled out.",
   },
@@ -207,9 +207,9 @@ export const ALONE_GUIDE: LifestyleGuideConfig = {
   id: "dogs-left-alone",
   path: "/dogs-that-can-be-left-alone",
   seo: {
-    title: "Dogs that can be left alone longer — the honest version | DoggMatch",
+    title: "Dogs that can be left alone longer | DoggMatch",
     description:
-      "Which dog breeds cope best with time alone, what 'longer' realistically means, and how to build alone time kindly — no myths, no guilt, just the honest picture.",
+      "Which dog breeds cope best with time alone, what 'longer' really means, and how to build alone time kindly — no myths, no guilt, just the honest picture.",
   },
   copy: {
     eyebrow: "Choosing a dog",
@@ -274,9 +274,9 @@ export const LOW_SHEDDING_GUIDE: LifestyleGuideConfig = {
   id: "low-shedding-dogs",
   path: "/low-shedding-dogs",
   seo: {
-    title: "Low-shedding dogs and allergies — the honest version | DoggMatch",
+    title: "Low-shedding dogs and allergies | DoggMatch",
     description:
-      "Which dogs shed least, why no dog is truly hypoallergenic, and how to think it through if someone at home is allergic — including the grooming trade-offs nobody mentions.",
+      "Which dogs shed least, why no dog is truly hypoallergenic, and how to think it through if someone at home is allergic — plus the grooming trade-offs.",
   },
   copy: {
     eyebrow: "Choosing a dog",
@@ -346,9 +346,9 @@ export const COST_GUIDE: LifestyleGuideConfig = {
   id: "what-a-dog-costs",
   path: "/what-a-dog-costs",
   seo: {
-    title: "What a dog really costs — first year and every year after | DoggMatch",
+    title: "What a dog really costs each year | DoggMatch",
     description:
-      "An honest yearly budget for a dog: food, vet care, insurance, grooming and the costs everyone forgets — with real ranges and the first year counted separately.",
+      "An honest yearly budget for a dog: food, vet care, insurance, grooming and the costs everyone forgets — with real ranges and the first year counted apart.",
   },
   copy: {
     eyebrow: "Before you decide",
