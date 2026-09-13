@@ -48,6 +48,16 @@ function loadMaps(): Promise<Maps> {
   return loader;
 }
 
+function distance(a: { lat: number; lng: number }, b: { lat: number; lng: number }): number {
+  const R = 6371;
+  const dLat = ((b.lat - a.lat) * Math.PI) / 180;
+  const dLng = ((b.lng - a.lng) * Math.PI) / 180;
+  const h =
+    Math.sin(dLat / 2) ** 2 +
+    Math.sin(dLng / 2) ** 2 * Math.cos((a.lat * Math.PI) / 180) * Math.cos((b.lat * Math.PI) / 180);
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+
 function markerIcon(maps: Maps, highlighted: boolean) {
   return {
     path: maps.SymbolPath.CIRCLE,
@@ -65,14 +75,28 @@ type Props = {
   activeId: string | null;
   onSelect: (id: string) => void;
   label: string;
+  radiusKm?: number;
+  standardLabel?: string;
+  satelliteLabel?: string;
 };
 
-export default function PlacesMap({ center, places, activeId, onSelect, label }: Props) {
+export default function PlacesMap({
+  center,
+  places,
+  activeId,
+  onSelect,
+  label,
+  radiusKm = 10,
+  standardLabel = "Map",
+  satelliteLabel = "Satellite",
+}: Props) {
   const nodeRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<google.maps.Map | null>(null);
   const markersRef = useRef<google.maps.Marker[]>([]);
   const [ready, setReady] = useState(false);
   const [fallback, setFallback] = useState<string | null>(null);
+  const [satellite, setSatellite] = useState(false);
+  const [satelliteBlocked, setSatelliteBlocked] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -88,16 +112,23 @@ export default function PlacesMap({ center, places, activeId, onSelect, label }:
         })),
         width: 640,
         height: 360,
+        radiusKm,
+        mapType: satellite ? "satellite" : "roadmap",
       },
     })
       .then((response) => {
-        if (!cancelled && response.ok && response.image) setFallback(response.image);
+        if (cancelled || !response.ok || !response.image) return;
+        setFallback(response.image);
+        if (satellite && response.mapType !== "satellite") {
+          setSatelliteBlocked(true);
+          setSatellite(false);
+        }
       })
       .catch(() => undefined);
     return () => {
       cancelled = true;
     };
-  }, [center, places, activeId]);
+  }, [center, places, activeId, radiusKm, satellite]);
 
   useEffect(() => {
     let cancelled = false;
@@ -112,19 +143,21 @@ export default function PlacesMap({ center, places, activeId, onSelect, label }:
             clickableIcons: false,
             disableDefaultUI: true,
             zoomControl: true,
+            mapTypeId: satellite ? "hybrid" : "roadmap",
             backgroundColor: NAVY,
             styles: [{ featureType: "poi", stylers: [{ visibility: "off" }] }],
           });
         } else {
           mapRef.current.panTo(center);
         }
+        mapRef.current?.setMapTypeId(satellite ? "hybrid" : "roadmap");
         setReady(true);
       })
       .catch(() => undefined);
     return () => {
       cancelled = true;
     };
-  }, [center]);
+  }, [center, satellite]);
 
   useEffect(() => {
     const maps = typeof window !== "undefined" ? window.google?.maps : undefined;
@@ -138,6 +171,7 @@ export default function PlacesMap({ center, places, activeId, onSelect, label }:
     bounds.extend(center);
 
     places.forEach((place) => {
+      if (distance(center, place) > radiusKm * 1.5) return;
       const marker = new maps.Marker({
         map,
         position: { lat: place.lat, lng: place.lng },
@@ -152,11 +186,35 @@ export default function PlacesMap({ center, places, activeId, onSelect, label }:
 
     if (places.length > 0) map.fitBounds(bounds, 48);
     else map.panTo(center);
-  }, [places, activeId, center, onSelect, ready]);
+  }, [places, activeId, center, onSelect, ready, radiusKm]);
+
+  const toggle = (
+    <div className="absolute right-3 top-3 z-10 flex overflow-hidden rounded-full border border-border bg-ink/85 text-xs backdrop-blur">
+      <button
+        type="button"
+        onClick={() => setSatellite(false)}
+        aria-pressed={!satellite}
+        className={`px-3 py-1.5 ${satellite ? "text-cream/70" : "bg-cream text-ink"}`}
+      >
+        {standardLabel}
+      </button>
+      {satelliteBlocked ? null : (
+      <button
+        type="button"
+        onClick={() => setSatellite(true)}
+        aria-pressed={satellite}
+        className={`px-3 py-1.5 ${satellite ? "bg-cream text-ink" : "text-cream/70"}`}
+      >
+        {satelliteLabel}
+      </button>
+      )}
+    </div>
+  );
 
   if (!BROWSER_KEY) {
     return (
-      <div className="h-[22rem] w-full bg-ink md:h-[30rem]">
+      <div className="relative h-[22rem] w-full bg-ink md:h-[30rem]">
+        {toggle}
         {fallback ? (
           <img
             src={fallback}
@@ -170,11 +228,9 @@ export default function PlacesMap({ center, places, activeId, onSelect, label }:
   }
 
   return (
-    <div
-      ref={nodeRef}
-      role="application"
-      aria-label={label}
-      className="h-[22rem] w-full bg-ink md:h-[30rem]"
-    />
+    <div className="relative h-[22rem] w-full md:h-[30rem]">
+      {toggle}
+      <div ref={nodeRef} role="application" aria-label={label} className="h-full w-full bg-ink" />
+    </div>
   );
 }

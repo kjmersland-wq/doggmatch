@@ -28,6 +28,8 @@ export type PlacesCopy = {
   guidanceTitle: string;
   guidance: string[];
   mapLabel: string;
+  mapStandard: string;
+  mapSatellite: string;
   directions: string;
 };
 
@@ -67,6 +69,8 @@ export const placesCopy: Record<string, PlacesCopy> = {
       "Register with a vet before you need one, and note your nearest out-of-hours clinic.",
     ],
     mapLabel: "Map of dog-friendly places nearby",
+    mapStandard: "Map",
+    mapSatellite: "Satellite",
     directions: "Open in Maps",
   },
   no: {
@@ -104,6 +108,8 @@ export const placesCopy: Record<string, PlacesCopy> = {
       "Registrer deg hos en veterinær før du trenger det, og noter nærmeste vaktklinikk.",
     ],
     mapLabel: "Kart over hundevennlige steder i nærheten",
+    mapStandard: "Kart",
+    mapSatellite: "Satellitt",
     directions: "Åpne i Maps",
   },
   pl: {
@@ -141,6 +147,8 @@ export const placesCopy: Record<string, PlacesCopy> = {
       "Zapisz się do weterynarza, zanim będzie potrzebny, i zanotuj najbliższą całodobową lecznicę.",
     ],
     mapLabel: "Mapa miejsc przyjaznych psom w okolicy",
+    mapStandard: "Mapa",
+    mapSatellite: "Satelita",
     directions: "Otwórz w Mapach",
   },
   dk: {
@@ -178,6 +186,8 @@ export const placesCopy: Record<string, PlacesCopy> = {
       "Bliv tilmeldt en dyrlæge, før du får brug for det, og noter den nærmeste vagtklinik.",
     ],
     mapLabel: "Kort over hundevenlige steder i nærheden",
+    mapStandard: "Kort",
+    mapSatellite: "Satellit",
     directions: "Åbn i Maps",
   },
   se: {
@@ -215,6 +225,8 @@ export const placesCopy: Record<string, PlacesCopy> = {
       "Skriv in dig hos en veterinär innan du behöver det, och notera närmaste jourklinik.",
     ],
     mapLabel: "Karta över hundvänliga platser i närheten",
+    mapStandard: "Karta",
+    mapSatellite: "Satellit",
     directions: "Öppna i Maps",
   },
   fi: {
@@ -252,6 +264,8 @@ export const placesCopy: Record<string, PlacesCopy> = {
       "Rekisteröidy eläinlääkärille ennen kuin tarvitset, ja merkitse lähin päivystys ylös.",
     ],
     mapLabel: "Kartta koiraystävällisistä paikoista lähistöllä",
+    mapStandard: "Kartta",
+    mapSatellite: "Satelliitti",
     directions: "Avaa Mapsissa",
   },
   de: {
@@ -289,6 +303,8 @@ export const placesCopy: Record<string, PlacesCopy> = {
       "Melde dich bei einer Tierarztpraxis an, bevor du sie brauchst, und notiere die nächste Notfallklinik.",
     ],
     mapLabel: "Karte mit hundefreundlichen Orten in der Nähe",
+    mapStandard: "Karte",
+    mapSatellite: "Satellit",
     directions: "In Maps öffnen",
   },
   fr: {
@@ -326,6 +342,8 @@ export const placesCopy: Record<string, PlacesCopy> = {
       "Inscrivez-vous chez un vétérinaire avant d'en avoir besoin, et notez la clinique d'urgence la plus proche.",
     ],
     mapLabel: "Carte des lieux qui accueillent les chiens à proximité",
+    mapStandard: "Carte",
+    mapSatellite: "Satellite",
     directions: "Ouvrir dans Maps",
   },
   nl: {
@@ -363,6 +381,8 @@ export const placesCopy: Record<string, PlacesCopy> = {
       "Schrijf je in bij een dierenarts voordat je er een nodig hebt, en noteer de dichtstbijzijnde spoedkliniek.",
     ],
     mapLabel: "Kaart met hondvriendelijke plekken in de buurt",
+    mapStandard: "Kaart",
+    mapSatellite: "Satelliet",
     directions: "Openen in Maps",
   },
 };
