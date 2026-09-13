@@ -3,6 +3,7 @@ import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
 import { ShareBar, SectionShare } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 import { breedContent } from "@/data/breed-content";
+import { useCopy, useLocale, pick, INTL_LOCALE } from "@/i18n";
 import type { BreedId } from "@/data/breeds";
 import type { LifestyleGuideConfig } from "@/lib/guides/lifestyle";
 
@@ -17,23 +18,30 @@ function LevelDot({ level, label }: { level: number; label: string }) {
   );
 }
 
-const eur = (n: number) => `€${n.toLocaleString("en-IE")}`;
-
 /**
  * Shared renderer for the high-intent lifestyle guides
- * (src/lib/guides/lifestyle.ts). One consistent, honest editorial layout:
- * intro, transparent methodology, optional breed shortlist, editorial
- * sections, optional real cost examples, and a calm quiz CTA.
+ * (src/lib/guides/lifestyle.ts). Every string comes from the guide's
+ * locale map, so a translated guide renders with no changes here.
  */
 export function LifestyleGuide({ config }: { config: LifestyleGuideConfig }) {
-  const c = config.copy;
+  const { locale } = useLocale();
+  const c = useCopy(config.copy);
+  const seo = useCopy(config.seo);
+  const reasons = useCopy(config.reasons ?? { en: {} as Record<string, string> });
   const content = breedContent();
+  const eur = (n: number) =>
+    new Intl.NumberFormat(INTL_LOCALE[locale], {
+      style: "currency",
+      currency: "EUR",
+      maximumFractionDigits: 0,
+    }).format(n);
+
 
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: c.h1,
-    description: config.seo.description,
+    description: seo.description,
     author: { "@type": "Organization", name: "DoggMatch" },
     publisher: { "@type": "Organization", name: "DoggMatch" },
     mainEntityOfPage: `https://www.doggmatch.com${config.path}`,
@@ -92,7 +100,7 @@ export function LifestyleGuide({ config }: { config: LifestyleGuideConfig }) {
                     {bc?.displayName ?? breed.name}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {config.reasons?.[breed.id] ?? bc?.summary ?? ""}
+                    {reasons[breed.id] ?? bc?.summary ?? ""}
                   </p>
                   <dl className="mt-4 space-y-1.5 text-sm text-muted-foreground">
                     {c.metrics.map((m) => (
@@ -144,15 +152,19 @@ export function LifestyleGuide({ config }: { config: LifestyleGuideConfig }) {
 
                 <thead>
                   <tr className="border-b border-border bg-surface text-left text-muted-foreground">
-                    <th className="px-5 py-3 font-medium">Example</th>
-                    <th className="px-5 py-3 font-medium">Breed</th>
-                    <th className="px-5 py-3 font-medium text-right">Typical yearly cost</th>
+                    <th className="px-5 py-3 font-medium">{c.costTable?.example}</th>
+                    <th className="px-5 py-3 font-medium">{c.costTable?.breed}</th>
+                    <th className="px-5 py-3 font-medium text-right">
+                      {c.costTable?.yearly}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {config.costExamples.map(({ breed, sizeLabel }) => (
                     <tr key={breed.id} className="border-b border-border last:border-0">
-                      <td className="px-5 py-3 text-muted-foreground">{sizeLabel}</td>
+                      <td className="px-5 py-3 text-muted-foreground">
+                        {pick(sizeLabel, locale)}
+                      </td>
                       <td className="px-5 py-3">
                         <Link
                           to={withLangPrefix("/breeds/$breedId")}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCopy } from "@/i18n";
+import { useCopy, useLocale, INTL_LOCALE } from "@/i18n";
 import { cn } from "@/lib/utils";
 import type { Breed } from "@/data/breeds";
 import {
@@ -16,7 +16,7 @@ const copy = {
     intro:
       "An honest estimate, built from this breed's size and coat. Adjust the two things that really move the number, and you'll see the range change as you go.",
     level: "Where you live",
-    levels: { lower: "Lower cost country", typical: "Around the European average", higher: "Higher cost city" },
+    levels: { lower: "Lower cost country", typical: "Mid-range country", higher: "Higher cost city" },
     insurance: "Insurance included",
     grooming: "Professional grooming",
     yes: "Yes",
@@ -76,7 +76,16 @@ const copy = {
   },
 } as const;
 
-const euro = (n: number) => `€${Math.round(n).toLocaleString("en-GB")}`;
+/** Euro is the shared base currency; separators follow the reader's language. */
+function useEuro() {
+  const { locale } = useLocale();
+  const fmt = new Intl.NumberFormat(INTL_LOCALE[locale], {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 0,
+  });
+  return (n: number) => fmt.format(Math.round(n));
+}
 
 function Chip({
   active,
@@ -102,6 +111,7 @@ function Chip({
 
 export function CostCalculator({ breed, className }: { breed: Breed; className?: string }) {
   const c = useCopy(copy);
+  const euro = useEuro();
   const [options, setOptions] = useState<CostOptions>(DEFAULT_COST_OPTIONS);
   const estimate = yearlyCost(breed, options);
   const set = (patch: Partial<CostOptions>) => setOptions((o) => ({ ...o, ...patch }));
