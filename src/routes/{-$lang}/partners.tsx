@@ -929,6 +929,96 @@ const partnerFeatureCopy = {
   },
 } as const;
 
+/**
+ * Detailed partner-type sections. English is the source language — other
+ * locales fall back to English here until they are translated.
+ */
+const partnerTypesCopy = {
+  en: {
+    askTitle: "What members usually ask for",
+    offerTitle: "Offers that work well",
+    types: [
+      {
+        id: "equipment",
+        title: "Pet shops & equipment",
+        tagline: "The first weeks with a new dog involve a lot of shopping — and members come in with questions, not just a list.",
+        ask: [
+          "Harness and lead fitting that actually fits",
+          "Help choosing beds, crates and toys that last",
+          "Honest food advice without the brand push",
+        ],
+        offers: [
+          "A percentage off a first fitting visit",
+          "A new-dog starter bundle",
+          "A standing member discount on everyday kit",
+        ],
+      },
+      {
+        id: "grooming",
+        title: "Groomers",
+        tagline: "A calm groomer is worth their weight in gold, especially for puppies and nervous rescues.",
+        ask: [
+          "A gentle first puppy trim",
+          "Patient handling of anxious dogs",
+          "Regular appointments they can rely on",
+        ],
+        offers: [
+          "A reduced-price first visit",
+          "A free nail trim alongside a groom",
+          "Priority rebooking for members",
+        ],
+      },
+      {
+        id: "training",
+        title: "Trainers",
+        tagline: "From puppy class to a rescue dog's first recall, members look for reward-based help they can trust.",
+        ask: [
+          "Puppy classes with small groups",
+          "Help with recall, loose-lead walking and jumping up",
+          "One-to-one support for a rescue settling in",
+        ],
+        offers: [
+          "A free or reduced intro session",
+          "A percentage off a course",
+          "A members-only class or drop-in evening",
+        ],
+      },
+      {
+        id: "vet",
+        title: "Veterinary clinics",
+        tagline: "New owners want a clinic that explains things plainly and doesn't rush. That first introduction is worth making well.",
+        ask: [
+          "First check-ups and vaccination plans",
+          "Clear guidance on insurance and microchipping",
+          "Someone to call when they're not sure it's urgent",
+        ],
+        offers: [
+          "A free or reduced first consultation",
+          "A welcome health-check at member price",
+          "Microchipping bundled with a first visit",
+        ],
+      },
+      {
+        id: "boarding",
+        title: "Boarding & daycare",
+        tagline: "The first night away is a big step. Members want to meet the people and see the place before they book.",
+        ask: [
+          "A trial day or a short stay to start with",
+          "Weekend and holiday cover they can plan around",
+          "Regular daycare with a familiar routine",
+        ],
+        offers: [
+          "A free or half-price trial day",
+          "A percentage off a first stay",
+          "An off-peak member rate",
+        ],
+      },
+    ],
+    alsoTitle: "Also very welcome",
+    alsoBody: "If your work touches a dog's everyday life in any other way, we'd still like to hear from you.",
+  },
+} as const;
+
 function PartnersPage() {
   return (
     <div>
