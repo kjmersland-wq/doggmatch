@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type Dispatch, type SetStateAction } from "react";
 import { ChevronDown } from "lucide-react";
 import { useT, interpolate, useCopy } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
@@ -1142,7 +1142,7 @@ function Results({
   eliminated: import("@/lib/matching/types").EliminatedMatch[];
   limitsRelaxed: boolean;
   profile: UserProfile;
-  onProfileChange: React.Dispatch<React.SetStateAction<UserProfile>>;
+  onProfileChange: Dispatch<SetStateAction<UserProfile>>;
   onRestart: () => void;
 }) {
   const t = useT();
@@ -1155,7 +1155,9 @@ function Results({
   const content = breedContent()[best.breedId];
   const detail = explain(best);
   const others = results.slice(1, 4);
-  const adjustableQuestions = questionsForAdjustment();
+  const adjustableQuestions = quizQuestions().filter((question) =>
+    ["activity", "alone", "shedding", "experience"].includes(question.id),
+  );
   const [showRemoved, setShowRemoved] = useState(false);
   const [announceUpdate, setAnnounceUpdate] = useState(false);
 
