@@ -348,8 +348,8 @@ function PersonalFit({ columns, names }: { columns: Column[]; names: Record<Bree
   };
   const difficulty = (value: number, inverse = false) => {
     const adjusted = inverse ? 6 - value : value;
-    if (adjusted <= 2) return { value: 2, label: copy.compare.legend.low.split(" — ")[0] };
-    if (adjusted >= 4) return { value: 5, label: copy.compare.legend.high.split(" — ")[0] };
+    if (adjusted <= 2) return { value: 2, label: copy.compare.legend.low.split(" — ")[0] ?? copy.compare.legend.low };
+    if (adjusted >= 4) return { value: 5, label: copy.compare.legend.high.split(" — ")[0] ?? copy.compare.legend.high };
     return { value: 3, label: copy.compare.legend.medium };
   };
 
