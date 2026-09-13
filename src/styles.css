@@ -355,6 +355,9 @@ html {
 .doc-cover { flex: 1; display: flex; flex-direction: column; }
 .doc-logo { margin-bottom: 28mm; }
 .doc-runlogo { opacity: 0.9; }
+/* The wordmark inherits app theme colours, which are light — force paper ink. */
+.doc-paper .text-foreground { color: var(--doc-navy); }
+.doc-paper .text-accent { color: var(--doc-orange); }
 .doc-kicker {
   font-size: 8.5pt;
   letter-spacing: 0.18em;
