@@ -3069,6 +3069,56 @@ function PlusPage() {
         </div>
       </Section>
 
+      {/* 3b — The membership journey in 8 stages */}
+      <Section className="container-page pt-0">
+        <div className="max-w-2xl">
+          <Eyebrow>{s.eyebrow}</Eyebrow>
+          <h2 className="display-lg mt-6">{s.title}</h2>
+          <p className="mt-5 leading-relaxed text-muted-foreground">{s.body}</p>
+        </div>
+
+        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-background p-7">
+            <p className="eyebrow">{s.freeLabel}</p>
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{s.freeLine}</p>
+          </div>
+          <div className="rounded-2xl border border-border-strong bg-surface p-7">
+            <p className="eyebrow text-accent">{s.plusLabel}</p>
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{s.plusLine}</p>
+          </div>
+        </div>
+
+        <ol className="mt-8 grid gap-5 md:grid-cols-2">
+          {s.stages.map((stage, i) => (
+            <li
+              key={stage.title}
+              className="rounded-2xl border border-border bg-background p-7 shadow-[var(--shadow-soft)] md:p-9"
+            >
+              <div className="flex items-baseline gap-4">
+                <span className="font-display text-sm tabular-nums text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className="font-display text-xl tracking-tight md:text-2xl">{stage.title}</h3>
+                  <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">{stage.line}</p>
+                </div>
+              </div>
+              <ul className="mt-6 space-y-2.5 border-t border-border pt-5">
+                {stage.examples.map((ex) => (
+                  <li key={ex} className="flex gap-3 text-sm leading-relaxed">
+                    <Tick />
+                    <span>{ex}</span>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-10 max-w-2xl text-[0.9375rem] leading-relaxed text-muted-foreground">
+          {s.closing}
+        </p>
+      </Section>
+
       {/* 4 — My Dog */}
       <Section id="included" className="container-page scroll-mt-24 pt-0">
         <SectionHead
