@@ -31,6 +31,7 @@ const personalCopy = {
     biggest: "Biggest practical difference",
     yourAnswer: "You told us",
     costContext: "Yearly cost is not scored against your answers, but it can make a real difference over time.",
+    aloneTime: "Time alone",
   },
   no: {
     title: "Hvilken av disse passer livet ditt best?",
@@ -46,6 +47,7 @@ const personalCopy = {
     biggest: "Største praktiske forskjell",
     yourAnswer: "Du fortalte oss",
     costContext: "Årskostnaden vurderes ikke opp mot svarene dine, men kan utgjøre en tydelig forskjell over tid.",
+    aloneTime: "Tid alene",
   },
   pl: {
     title: "Który z nich najlepiej pasuje do Twojego życia?",
@@ -61,6 +63,7 @@ const personalCopy = {
     biggest: "Największa praktyczna różnica",
     yourAnswer: "Twoja odpowiedź",
     costContext: "Roczny koszt nie wpływa na dopasowanie do odpowiedzi, ale z czasem może mieć duże znaczenie.",
+    aloneTime: "Czas w samotności",
   },
   dk: {
     title: "Hvilken af disse passer bedst til dit liv?",
@@ -76,6 +79,7 @@ const personalCopy = {
     biggest: "Største praktiske forskel",
     yourAnswer: "Du fortalte os",
     costContext: "Årsprisen vurderes ikke op mod dine svar, men kan gøre en reel forskel over tid.",
+    aloneTime: "Tid alene",
   },
   se: {
     title: "Vilken av dessa passar ditt liv bäst?",
@@ -91,6 +95,7 @@ const personalCopy = {
     biggest: "Största praktiska skillnaden",
     yourAnswer: "Du berättade",
     costContext: "Årskostnaden vägs inte mot dina svar, men kan göra stor skillnad över tid.",
+    aloneTime: "Tid ensam",
   },
   fi: {
     title: "Mikä näistä sopii parhaiten elämääsi?",
@@ -106,6 +111,7 @@ const personalCopy = {
     biggest: "Suurin käytännön ero",
     yourAnswer: "Kerroit meille",
     costContext: "Vuosikustannusta ei pisteytetä vastaustesi perusteella, mutta sillä voi olla ajan mittaan suuri merkitys.",
+    aloneTime: "Aika yksin",
   },
   de: {
     title: "Welcher von diesen passt am besten zu deinem Leben?",
@@ -121,6 +127,7 @@ const personalCopy = {
     biggest: "Größter praktischer Unterschied",
     yourAnswer: "Du hast uns gesagt",
     costContext: "Die Jahreskosten fließen nicht in deine Antworten ein, können langfristig aber einen deutlichen Unterschied machen.",
+    aloneTime: "Zeit allein",
   },
   fr: {
     title: "Lequel de ces chiens correspond le mieux à votre vie ?",
@@ -136,6 +143,7 @@ const personalCopy = {
     biggest: "Différence pratique la plus marquée",
     yourAnswer: "Vous nous avez indiqué",
     costContext: "Le coût annuel n'est pas évalué selon vos réponses, mais il peut compter réellement avec le temps.",
+    aloneTime: "Temps seul",
   },
   nl: {
     title: "Welke van deze past het best bij jouw leven?",
@@ -151,6 +159,7 @@ const personalCopy = {
     biggest: "Grootste praktische verschil",
     yourAnswer: "Je vertelde ons",
     costContext: "Jaarlijkse kosten worden niet aan je antwoorden getoetst, maar kunnen op termijn veel verschil maken.",
+    aloneTime: "Tijd alleen",
   },
 };
 
@@ -291,6 +300,7 @@ function CompareLegend({ c }: { c: CompareCopy }) {
  */
 function PersonalFit({ columns, names }: { columns: Column[]; names: Record<BreedId, { displayName: string }> }) {
   const p = useCopy(personalCopy);
+  const copy = useT();
   const profile = useMatchProfile();
 
   if (!profile) {
@@ -321,10 +331,10 @@ function PersonalFit({ columns, names }: { columns: Column[]; names: Record<Bree
   const top = Math.max(...scored.map((s) => s.fit.score));
   const questionById = Object.fromEntries(quizQuestions().map((question) => [question.id, question]));
   const practical = [
-    { key: "exercise", label: names ? useT().compare.rows.exercise : "Exercise", trait: "exerciseNeeds" as const, answerId: "activity" },
-    { key: "grooming", label: useT().compare.rows.grooming, trait: "grooming" as const, answerId: "grooming" },
-    { key: "alone", label: useT().result.aloneTime, trait: "aloneTolerance" as const, answerId: "alone" },
-    { key: "shedding", label: useT().compare.rows.shedding, trait: "shedding" as const, answerId: "shedding" },
+    { key: "exercise", label: copy.compare.rows.exercise, trait: "exerciseNeeds" as const, answerId: "activity" },
+    { key: "grooming", label: copy.compare.rows.grooming, trait: "grooming" as const, answerId: "grooming" },
+    { key: "alone", label: p.aloneTime, trait: "aloneTolerance" as const, answerId: "alone" },
+    { key: "shedding", label: copy.compare.rows.shedding, trait: "shedding" as const, answerId: "shedding" },
   ].map((item) => ({
     ...item,
     spread: Math.max(...columns.map((col) => columnTraits(col)[item.trait])) - Math.min(...columns.map((col) => columnTraits(col)[item.trait])),
@@ -381,10 +391,10 @@ function PersonalFit({ columns, names }: { columns: Column[]; names: Record<Bree
                   const value = Math.round(columnTraits(col)[item.trait]);
                   return (
                     <li key={columnKey(col)} className="flex items-center justify-between gap-4 text-sm">
-                      <span>{columnName(col, useT().compare)}</span>
+                      <span>{columnName(col, copy.compare)}</span>
                       <span className="inline-flex items-center gap-2 text-muted-foreground">
-                        <LevelDot value={value} label={useT().compare.scale[value - 1] ?? "—"} size="sm" />
-                        {useT().compare.scale[value - 1] ?? "—"}
+                        <LevelDot value={value} label={copy.compare.scale[value - 1] ?? "—"} size="sm" />
+                        {copy.compare.scale[value - 1] ?? "—"}
                       </span>
                     </li>
                   );
@@ -394,14 +404,14 @@ function PersonalFit({ columns, names }: { columns: Column[]; names: Record<Bree
           ))}
           <article className="rounded-2xl border border-border bg-card p-5">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <h3 className="font-display text-base">{useT().compare.rows.cost}</h3>
+              <h3 className="font-display text-base">{copy.compare.rows.cost}</h3>
               {biggestKey === "cost" && <span className="text-xs font-medium text-accent">{p.biggest}</span>}
             </div>
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{p.costContext}</p>
             <ul className="mt-4 grid gap-3">
               {columns.map((col) => {
                 const [lo, hi] = columnRange(col, "annualCost");
-                return <li key={columnKey(col)} className="flex items-center justify-between gap-4 text-sm"><span>{columnName(col, useT().compare)}</span><span className="tabular-nums text-muted-foreground">€{lo}–{hi}</span></li>;
+                return <li key={columnKey(col)} className="flex items-center justify-between gap-4 text-sm"><span>{columnName(col, copy.compare)}</span><span className="tabular-nums text-muted-foreground">€{lo}–{hi}</span></li>;
               })}
             </ul>
           </article>
