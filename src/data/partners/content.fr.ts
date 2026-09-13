@@ -10,14 +10,48 @@ export type PartnerCategory = {
 };
 
 export const partnerCategories: PartnerCategory[] = [
-  { id: "equipment", label: "Équipement pour animaux et chiens", blurb: "Harnais, laisses, paniers, jouets et tout le nécessaire du quotidien qui s'use." },
-  { id: "grooming", label: "Toilettage", blurb: "Salons et toiletteurs mobiles qui prennent leur temps avec les chiens nerveux." },
-  { id: "training", label: "Éducation", blurb: "Cours pour chiots, aide individuelle et travail comportemental basé sur la récompense." },
-  { id: "vet", label: "Vétérinaire et santé", blurb: "Cliniques, physiothérapeutes, dentistes et tous ceux qui veillent au bien-être des chiens." },
-  { id: "insurance", label: "Assurance", blurb: "Couvertures claires sur ce qu'elles prennent en charge et ce qu'elles ne prennent pas en charge." },
-  { id: "boarding", label: "Garde et garderie", blurb: "Chenils, familles d'accueil, garderies et pet-sitters de confiance." },
-  { id: "food", label: "Alimentation et nutrition", blurb: "Nourriture, friandises et suppléments que vous donneriez à votre propre chien." },
-  { id: "travel", label: "Voyages et activités", blurb: "Séjours acceptant les chiens, kits de voiture, randonnées, baignades et sorties." },
+  {
+    id: "equipment",
+    label: "Équipement pour animaux et chiens",
+    blurb: "Harnais, laisses, paniers, jouets et tout le nécessaire du quotidien qui s'use.",
+  },
+  {
+    id: "grooming",
+    label: "Toilettage",
+    blurb: "Salons et toiletteurs mobiles qui prennent leur temps avec les chiens nerveux.",
+  },
+  {
+    id: "training",
+    label: "Éducation",
+    blurb: "Cours pour chiots, aide individuelle et travail comportemental basé sur la récompense.",
+  },
+  {
+    id: "vet",
+    label: "Vétérinaire et santé",
+    blurb:
+      "Cliniques, physiothérapeutes, dentistes et tous ceux qui veillent au bien-être des chiens.",
+  },
+  {
+    id: "insurance",
+    label: "Assurance",
+    blurb:
+      "Couvertures claires sur ce qu'elles prennent en charge et ce qu'elles ne prennent pas en charge.",
+  },
+  {
+    id: "boarding",
+    label: "Garde et garderie",
+    blurb: "Chenils, familles d'accueil, garderies et pet-sitters de confiance.",
+  },
+  {
+    id: "food",
+    label: "Alimentation et nutrition",
+    blurb: "Nourriture, friandises et suppléments que vous donneriez à votre propre chien.",
+  },
+  {
+    id: "travel",
+    label: "Voyages et activités",
+    blurb: "Séjours acceptant les chiens, kits de voiture, randonnées, baignades et sorties.",
+  },
 ];
 
 export const partnerBenefits = [

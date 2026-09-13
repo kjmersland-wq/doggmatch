@@ -10,14 +10,46 @@ export type PartnerCategory = {
 };
 
 export const partnerCategories: PartnerCategory[] = [
-  { id: "equipment", label: "Tierbedarf & Hundeausstattung", blurb: "Geschirre, Leinen, Betten, Spielzeug und die alltäglichen Dinge, die abgenutzt werden." },
-  { id: "grooming", label: "Pflege", blurb: "Salons und mobile Hundefriseure, die sich Zeit für nervöse Hunde nehmen." },
-  { id: "training", label: "Training", blurb: "Welpenkurse, Einzelunterstützung und belohnungsbasierte Verhaltensarbeit." },
-  { id: "vet", label: "Tierärztliche Versorgung & Gesundheit", blurb: "Kliniken, Physiotherapeuten, Zahnärzte und alle, die Hunde gesund halten." },
-  { id: "insurance", label: "Versicherungen", blurb: "Tarife, die klar darlegen, was sie abdecken und was nicht." },
-  { id: "boarding", label: "Betreuung & Tagesstätte", blurb: "Zwinger, private Hundebetreuer, Tagesstätten und vertrauenswürdige Sitter." },
-  { id: "food", label: "Futter & Ernährung", blurb: "Futter, Leckerlis und Ergänzungsmittel, die Sie auch Ihrem eigenen Hund geben würden." },
-  { id: "travel", label: "Reisen & Aktivitäten", blurb: "Hundefreundliche Unterkünfte, Autozubehör, Wanderungen, Schwimmen und Ausflüge." },
+  {
+    id: "equipment",
+    label: "Tierbedarf & Hundeausstattung",
+    blurb: "Geschirre, Leinen, Betten, Spielzeug und die alltäglichen Dinge, die abgenutzt werden.",
+  },
+  {
+    id: "grooming",
+    label: "Pflege",
+    blurb: "Salons und mobile Hundefriseure, die sich Zeit für nervöse Hunde nehmen.",
+  },
+  {
+    id: "training",
+    label: "Training",
+    blurb: "Welpenkurse, Einzelunterstützung und belohnungsbasierte Verhaltensarbeit.",
+  },
+  {
+    id: "vet",
+    label: "Tierärztliche Versorgung & Gesundheit",
+    blurb: "Kliniken, Physiotherapeuten, Zahnärzte und alle, die Hunde gesund halten.",
+  },
+  {
+    id: "insurance",
+    label: "Versicherungen",
+    blurb: "Tarife, die klar darlegen, was sie abdecken und was nicht.",
+  },
+  {
+    id: "boarding",
+    label: "Betreuung & Tagesstätte",
+    blurb: "Zwinger, private Hundebetreuer, Tagesstätten und vertrauenswürdige Sitter.",
+  },
+  {
+    id: "food",
+    label: "Futter & Ernährung",
+    blurb: "Futter, Leckerlis und Ergänzungsmittel, die Sie auch Ihrem eigenen Hund geben würden.",
+  },
+  {
+    id: "travel",
+    label: "Reisen & Aktivitäten",
+    blurb: "Hundefreundliche Unterkünfte, Autozubehör, Wanderungen, Schwimmen und Ausflüge.",
+  },
 ];
 
 export const partnerBenefits = [

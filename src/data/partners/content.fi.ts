@@ -10,14 +10,47 @@ export type PartnerCategory = {
 };
 
 export const partnerCategories: PartnerCategory[] = [
-  { id: "equipment", label: "Lemmikit & koiratarvikkeet", blurb: "Valjaat, taluttimet, pedit, lelut ja arjen kulutustavarat." },
-  { id: "grooming", label: "Turkinhoito", blurb: "Kampaamot ja liikkuvat trimmaajat, jotka ottavat aikaa myös arasteluville koirille." },
-  { id: "training", label: "Koulutus", blurb: "Pennunpentueet, henkilökohtainen apu ja palkkiopohjainen käytöstyöskentely." },
-  { id: "vet", label: "Eläinlääkäri & terveys", blurb: "Klinikat, fysioterapeutit, hammaslääkärit ja kaikki koirien hyvinvoinnista huolehtivat." },
-  { id: "insurance", label: "Vakuutukset", blurb: "Vakuutukset, jotka kertovat selkeästi, mitä ne kattavat ja mitä eivät." },
-  { id: "boarding", label: "Hoito & päivähoito", blurb: "Koirahotellit, kotihoidot, päivähoito ja luotettavat hoitajat." },
-  { id: "food", label: "Ruoka & ravitsemus", blurb: "Ruokaa, herkkuja ja lisäravinteita, joita antaisit omalle koirallesi." },
-  { id: "travel", label: "Matkailu & aktiviteetit", blurb: "Koiraystävälliset majoitukset, autotarvikkeet, vaellukset, uinnit ja retket." },
+  {
+    id: "equipment",
+    label: "Lemmikit & koiratarvikkeet",
+    blurb: "Valjaat, taluttimet, pedit, lelut ja arjen kulutustavarat.",
+  },
+  {
+    id: "grooming",
+    label: "Turkinhoito",
+    blurb: "Kampaamot ja liikkuvat trimmaajat, jotka ottavat aikaa myös arasteluville koirille.",
+  },
+  {
+    id: "training",
+    label: "Koulutus",
+    blurb: "Pennunpentueet, henkilökohtainen apu ja palkkiopohjainen käytöstyöskentely.",
+  },
+  {
+    id: "vet",
+    label: "Eläinlääkäri & terveys",
+    blurb:
+      "Klinikat, fysioterapeutit, hammaslääkärit ja kaikki koirien hyvinvoinnista huolehtivat.",
+  },
+  {
+    id: "insurance",
+    label: "Vakuutukset",
+    blurb: "Vakuutukset, jotka kertovat selkeästi, mitä ne kattavat ja mitä eivät.",
+  },
+  {
+    id: "boarding",
+    label: "Hoito & päivähoito",
+    blurb: "Koirahotellit, kotihoidot, päivähoito ja luotettavat hoitajat.",
+  },
+  {
+    id: "food",
+    label: "Ruoka & ravitsemus",
+    blurb: "Ruokaa, herkkuja ja lisäravinteita, joita antaisit omalle koirallesi.",
+  },
+  {
+    id: "travel",
+    label: "Matkailu & aktiviteetit",
+    blurb: "Koiraystävälliset majoitukset, autotarvikkeet, vaellukset, uinnit ja retket.",
+  },
 ];
 
 export const partnerBenefits = [
