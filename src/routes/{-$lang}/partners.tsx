@@ -2239,6 +2239,7 @@ function EnquirySection() {
         <Eyebrow>{c.eyebrow}</Eyebrow>
         <h2 className="display-md mt-6 text-balance">{c.title}</h2>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{c.body}</p>
+        <PartnerPortalLink className="mt-8" />
 
         {done ? (
           <div className="animate-fade mt-10 rounded-3xl border border-border bg-background p-8 md:p-10">
