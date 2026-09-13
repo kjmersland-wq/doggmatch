@@ -1038,18 +1038,96 @@ const partnerTypesCopy = {
   },
 } as const;
 
+const englishPartnerOfferExamples = [
+  {
+    title: "Pet shop",
+    offer: "15% off everyday equipment",
+    note: "Useful for leads, beds, bowls and the things a new dog genuinely needs.",
+    icon: ShoppingBag,
+  },
+  {
+    title: "Harness specialist",
+    offer: "A free harness fitting",
+    note: "A little time to get the fit right, without making the visit feel rushed.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Dog trainer",
+    offer: "A free introductory session",
+    note: "A calm first conversation before the owner chooses a class or course.",
+    icon: GraduationCap,
+  },
+  {
+    title: "Daycare",
+    offer: "A half-price trial day",
+    note: "A sensible way for the dog, owner and daycare team to get to know one another.",
+    icon: Home,
+  },
+  {
+    title: "Groomer",
+    offer: "20% off the first groom",
+    note: "Especially helpful for a puppy's first visit or a nervous rescue dog.",
+    icon: Scissors,
+  },
+  {
+    title: "Veterinary clinic",
+    offer: "A welcome health check at member price",
+    note: "A straightforward first visit to talk through health, weight and prevention.",
+    icon: Stethoscope,
+  },
+] as const;
+
 function PartnersPage() {
   return (
     <div>
       <Hero />
       <Why />
       <MutualBenefit />
+      <PartnerOfferExamples />
       <Categories />
       <Verification />
       <How />
       <Faq />
       <EnquirySection />
     </div>
+  );
+}
+
+function PartnerOfferExamples() {
+  const { locale } = useLocale();
+
+  if (locale !== "en") return null;
+
+  return (
+    <Section className="container-page">
+      <div className="max-w-2xl">
+        <Eyebrow>Real examples</Eyebrow>
+        <h2 className="display-md mt-6 text-balance">What could a member benefit look like?</h2>
+        <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+          It does not need to be complicated or expensive. The best offers are simple, useful and easy for your team to honour.
+        </p>
+      </div>
+
+      <ul className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+        {englishPartnerOfferExamples.map((example) => {
+          const Icon = example.icon;
+          return (
+            <li key={example.title} className="bg-background p-7 md:p-8">
+              <div className="flex size-11 items-center justify-center rounded-full bg-accent-soft text-accent">
+                <Icon aria-hidden="true" className="size-5" />
+              </div>
+              <p className="mt-5 text-sm font-medium text-muted-foreground">{example.title}</p>
+              <h3 className="mt-2 font-display text-xl tracking-tight text-foreground">{example.offer}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{example.note}</p>
+            </li>
+          );
+        })}
+      </ul>
+
+      <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+        These are examples, not requirements. You choose the benefit that feels fair for your business and helpful to a dog owner.
+      </p>
+    </Section>
   );
 }
 
