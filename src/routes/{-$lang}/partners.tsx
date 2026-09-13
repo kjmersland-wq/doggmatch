@@ -1105,13 +1105,24 @@ function Hero() {
 
 function MutualBenefit() {
   const c = useCopy(partnerFeatureCopy).mutual;
+  const [copied, setCopied] = useState(false);
   const flows = [
     { title: c.customerTitle, icon: BadgePercent, steps: c.customerSteps },
     { title: c.memberTitle, icon: QrCode, steps: c.memberSteps },
   ] as const;
 
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(`${window.location.href.split("#")[0]}#how-benefits-work`);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2500);
+    } catch {
+      /* clipboard unavailable — leave the anchor in place */
+    }
+  };
+
   return (
-    <Section className="border-y border-border bg-surface">
+    <Section id="how-benefits-work" className="scroll-mt-24 border-y border-border bg-surface">
       <div className="container-page">
         <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
           <div>
@@ -1128,17 +1139,31 @@ function MutualBenefit() {
                     </span>
                     <h3 className="font-display text-xl tracking-tight">{flowTitle}</h3>
                   </div>
-                  <ol className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-center">
+                  <ol className="mt-6 space-y-4">
                     {steps.map((step, index) => (
-                      <li key={step} className="contents">
-                        <span className="text-sm leading-relaxed text-muted-foreground">{step}</span>
-                        {index < steps.length - 1 && <ArrowRight className="hidden h-4 w-4 text-accent sm:block" aria-hidden />}
+                      <li key={step} className="flex items-start gap-4">
+                        <span
+                          className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent font-display text-sm font-semibold text-accent-foreground"
+                          aria-hidden
+                        >
+                          {index + 1}
+                        </span>
+                        <span className="pt-1 text-base leading-relaxed">{step}</span>
                       </li>
                     ))}
                   </ol>
                 </div>
               ))}
             </div>
+
+            <button
+              type="button"
+              onClick={copyLink}
+              className="mt-6 inline-flex items-center gap-2.5 rounded-full border border-border-strong px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              {copied ? <Check className="h-4 w-4 text-accent" aria-hidden /> : <Link2 className="h-4 w-4" aria-hidden />}
+              {copied ? c.copiedLabel : c.shareLabel}
+            </button>
           </div>
 
           <figure>
