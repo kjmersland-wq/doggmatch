@@ -49,6 +49,8 @@ export const createDossierCheckout = createServerFn({ method: "POST" })
             unit_amount: price.amount,
             product_data: {
               name: `DoggMatch — Complete Breed & Puppy Buyer Dossier: ${name}`,
+              // Stripe Managed Payments requires a tax code: electronically supplied services.
+              tax_code: "txcd_10000000",
             },
           },
           quantity: 1,
