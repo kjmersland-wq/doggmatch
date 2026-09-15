@@ -76,7 +76,7 @@ function collect(): SitemapEntry[] {
   const breedPages = breeds.flatMap((b) => [
     {
       path: `/breeds/${b.id}`,
-      changefreq: "monthly" as const,
+      changefreq: "weekly" as const,
       priority: FEATURED_BREED_IDS.has(b.id) ? "0.9" : "0.8",
     },
     { path: `/get-a-dog/breed/${b.id}`, changefreq: "monthly" as const, priority: "0.6" },

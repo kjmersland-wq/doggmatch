@@ -54,6 +54,7 @@ import { Route as Char123LangChar125MyDogSetupRouteImport } from './routes/{-$la
 import { Route as Char123LangChar125MyDogVetRouteImport } from './routes/{-$lang}/my-dog.vet'
 import { Route as Char123LangChar125MyDogWeekRouteImport } from './routes/{-$lang}/my-dog.week'
 import { Route as Char123LangChar125MyDogWeightRouteImport } from './routes/{-$lang}/my-dog.weight'
+import { Route as Char123LangChar125QuizSuccessRouteImport } from './routes/{-$lang}/quiz.success'
 import { Route as Char123LangChar125TrainIndexRouteImport } from './routes/{-$lang}/train.index'
 import { Route as Char123LangChar125TrainJourneyRouteImport } from './routes/{-$lang}/train.journey'
 import { Route as Char123LangChar125TrainLibraryRouteImport } from './routes/{-$lang}/train.library'
@@ -328,6 +329,12 @@ const Char123LangChar125MyDogWeightRoute =
     path: '/weight',
     getParentRoute: () => Char123LangChar125MyDogRoute,
   } as any)
+const Char123LangChar125QuizSuccessRoute =
+  Char123LangChar125QuizSuccessRouteImport.update({
+    id: '/quiz/success',
+    path: '/quiz/success',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
 const Char123LangChar125TrainIndexRoute =
   Char123LangChar125TrainIndexRouteImport.update({
     id: '/',
@@ -443,6 +450,7 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
   '/{-$lang}/my-dog/week': typeof Char123LangChar125MyDogWeekRoute
   '/{-$lang}/my-dog/weight': typeof Char123LangChar125MyDogWeightRoute
+  '/{-$lang}/quiz/success': typeof Char123LangChar125QuizSuccessRoute
   '/{-$lang}/train/journey': typeof Char123LangChar125TrainJourneyRoute
   '/{-$lang}/train/library': typeof Char123LangChar125TrainLibraryRoute
   '/{-$lang}/train/setup': typeof Char123LangChar125TrainSetupRoute
@@ -497,6 +505,7 @@ export interface FileRoutesByTo {
   '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
   '/{-$lang}/my-dog/week': typeof Char123LangChar125MyDogWeekRoute
   '/{-$lang}/my-dog/weight': typeof Char123LangChar125MyDogWeightRoute
+  '/{-$lang}/quiz/success': typeof Char123LangChar125QuizSuccessRoute
   '/{-$lang}/train/journey': typeof Char123LangChar125TrainJourneyRoute
   '/{-$lang}/train/library': typeof Char123LangChar125TrainLibraryRoute
   '/{-$lang}/train/setup': typeof Char123LangChar125TrainSetupRoute
@@ -557,6 +566,7 @@ export interface FileRoutesById {
   '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
   '/{-$lang}/my-dog/week': typeof Char123LangChar125MyDogWeekRoute
   '/{-$lang}/my-dog/weight': typeof Char123LangChar125MyDogWeightRoute
+  '/{-$lang}/quiz/success': typeof Char123LangChar125QuizSuccessRoute
   '/{-$lang}/train/journey': typeof Char123LangChar125TrainJourneyRoute
   '/{-$lang}/train/library': typeof Char123LangChar125TrainLibraryRoute
   '/{-$lang}/train/setup': typeof Char123LangChar125TrainSetupRoute
@@ -618,6 +628,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/vet'
     | '/{-$lang}/my-dog/week'
     | '/{-$lang}/my-dog/weight'
+    | '/{-$lang}/quiz/success'
     | '/{-$lang}/train/journey'
     | '/{-$lang}/train/library'
     | '/{-$lang}/train/setup'
@@ -672,6 +683,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/vet'
     | '/{-$lang}/my-dog/week'
     | '/{-$lang}/my-dog/weight'
+    | '/{-$lang}/quiz/success'
     | '/{-$lang}/train/journey'
     | '/{-$lang}/train/library'
     | '/{-$lang}/train/setup'
@@ -731,6 +743,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/vet'
     | '/{-$lang}/my-dog/week'
     | '/{-$lang}/my-dog/weight'
+    | '/{-$lang}/quiz/success'
     | '/{-$lang}/train/journey'
     | '/{-$lang}/train/library'
     | '/{-$lang}/train/setup'
@@ -1071,6 +1084,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LangChar125MyDogWeightRouteImport
       parentRoute: typeof Char123LangChar125MyDogRoute
     }
+    '/{-$lang}/quiz/success': {
+      id: '/{-$lang}/quiz/success'
+      path: '/quiz/success'
+      fullPath: '/{-$lang}/quiz/success'
+      preLoaderRoute: typeof Char123LangChar125QuizSuccessRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
     '/{-$lang}/train/': {
       id: '/{-$lang}/train/'
       path: '/'
@@ -1293,6 +1313,7 @@ interface Char123LangChar125RouteChildren {
   Char123LangChar125CanDogsEatFoodIdRoute: typeof Char123LangChar125CanDogsEatFoodIdRoute
   Char123LangChar125CheckoutCanceledRoute: typeof Char123LangChar125CheckoutCanceledRoute
   Char123LangChar125CheckoutSuccessRoute: typeof Char123LangChar125CheckoutSuccessRoute
+  Char123LangChar125QuizSuccessRoute: typeof Char123LangChar125QuizSuccessRoute
   Char123LangChar125VerifyMemberIdRoute: typeof Char123LangChar125VerifyMemberIdRoute
   Char123LangChar125BreedsIndexRoute: typeof Char123LangChar125BreedsIndexRoute
   Char123LangChar125CanDogsEatIndexRoute: typeof Char123LangChar125CanDogsEatIndexRoute
@@ -1328,6 +1349,7 @@ const Char123LangChar125RouteChildren: Char123LangChar125RouteChildren = {
     Char123LangChar125CheckoutCanceledRoute,
   Char123LangChar125CheckoutSuccessRoute:
     Char123LangChar125CheckoutSuccessRoute,
+  Char123LangChar125QuizSuccessRoute: Char123LangChar125QuizSuccessRoute,
   Char123LangChar125VerifyMemberIdRoute: Char123LangChar125VerifyMemberIdRoute,
   Char123LangChar125BreedsIndexRoute: Char123LangChar125BreedsIndexRoute,
   Char123LangChar125CanDogsEatIndexRoute:

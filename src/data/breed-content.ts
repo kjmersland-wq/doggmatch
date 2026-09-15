@@ -1,4 +1,4 @@
-import { pick } from "@/i18n";
+import { pick, type Locale } from "@/i18n";
 import { breedContentEn, type BreedContent } from "./breed-content.en";
 import { breedContentNo } from "./breed-content.no";
 import { breedContentPl } from "./breed-content.pl";
@@ -12,17 +12,24 @@ import type { BreedId } from "./breeds";
 
 export type { BreedContent };
 
-/** Breed prose in the reader's language. Safe inside and outside React. */
-export function breedContent(): Record<BreedId, BreedContent> {
-  return pick({
-    en: breedContentEn,
-    no: breedContentNo,
-    pl: breedContentPl,
-    dk: breedContentDk,
-    se: breedContentSe,
-    fi: breedContentFi,
-    de: breedContentDe,
-    fr: breedContentFr,
-    nl: breedContentNl,
-  });
+/**
+ * Breed prose in the reader's language. Safe inside and outside React.
+ * Pass `locale` explicitly when there's no active render to read it from
+ * (e.g. building a Stripe product name inside a server function).
+ */
+export function breedContent(locale?: Locale): Record<BreedId, BreedContent> {
+  return pick(
+    {
+      en: breedContentEn,
+      no: breedContentNo,
+      pl: breedContentPl,
+      dk: breedContentDk,
+      se: breedContentSe,
+      fi: breedContentFi,
+      de: breedContentDe,
+      fr: breedContentFr,
+      nl: breedContentNl,
+    },
+    locale,
+  );
 }

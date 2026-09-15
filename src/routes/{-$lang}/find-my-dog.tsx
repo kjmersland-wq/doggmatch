@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { useT, interpolate, useCopy } from "@/i18n";
+import { useT, interpolate, useCopy, useLocale } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
 
 const resultCopy = {
@@ -42,6 +42,19 @@ const resultCopy = {
       "Store food, chocolate and anything toxic to dogs well out of reach",
     ],
     plusLinkLabel: "Track daily schedules & routines in DoggMatch+",
+    dossierEyebrow: "Complete Breed & Puppy Buyer Dossier",
+    dossierTitle: "Unlock everything before you meet a breeder",
+    dossierBody:
+      "A deeper, printable guide built around this exact match, so you walk into breeder visits prepared instead of guessing.",
+    dossierFeatures: [
+      "Detailed temperament breakdown",
+      "Breeder question checklist",
+      "Health risk overview",
+      "First-year cost estimator",
+      "Contract preparation guide",
+    ],
+    dossierGuarantee: "100% Satisfaction Guarantee",
+    dossierNote: "One-time payment. Yours to keep, print, and take with you.",
   },
   no: {
     scoreNote: "Basert på alt du har fortalt oss, også grensene du sa du ikke kunne tøye.",
@@ -80,6 +93,19 @@ const resultCopy = {
       "Oppbevar mat, sjokolade og alt giftig for hunder utilgjengelig",
     ],
     plusLinkLabel: "Følg daglige rutiner og planer i DoggMatch+",
+    dossierEyebrow: "Komplett rase- og valpekjøper-dossier",
+    dossierTitle: "Lås opp alt før du møter en oppdretter",
+    dossierBody:
+      "En grundigere, utskriftsvennlig guide bygget rundt akkurat dette treffet, så du møter forberedt i stedet for å gjette.",
+    dossierFeatures: [
+      "Detaljert temperamentoversikt",
+      "Sjekkliste med spørsmål til oppdretter",
+      "Oversikt over helserisiko",
+      "Kostnadsoverslag for første år",
+      "Guide til kjøpekontrakten",
+    ],
+    dossierGuarantee: "100 % fornøydgaranti",
+    dossierNote: "Engangsbetaling. Din å beholde, skrive ut og ta med deg.",
   },
   pl: {
     scoreNote: "Na podstawie wszystkiego, co nam powiedziałeś/aś, w tym granic, których — jak zaznaczyłeś/aś — nie chcesz przekraczać.",
@@ -118,6 +144,19 @@ const resultCopy = {
       "Trzymaj jedzenie, czekoladę i wszystko toksyczne dla psów poza zasięgiem",
     ],
     plusLinkLabel: "Śledź codzienne plany i rutyny w DoggMatch+",
+    dossierEyebrow: "Pełne dossier rasy i kupującego szczenię",
+    dossierTitle: "Odblokuj wszystko, zanim spotkasz hodowcę",
+    dossierBody:
+      "Dogłębny, gotowy do druku przewodnik zbudowany wokół tego konkretnego dopasowania, żebyś szedł/szła na spotkanie przygotowany/a, a nie zgadując.",
+    dossierFeatures: [
+      "Szczegółowy przegląd temperamentu",
+      "Lista pytań do hodowcy",
+      "Przegląd ryzyka zdrowotnego",
+      "Szacunek kosztów pierwszego roku",
+      "Przewodnik po przygotowaniu umowy",
+    ],
+    dossierGuarantee: "100% gwarancji satysfakcji",
+    dossierNote: "Płatność jednorazowa. Zostaje przy tobie — do zapisania i wydrukowania.",
   },
   dk: {
     scoreNote: "Baseret på alt du har fortalt os, også de grænser du sagde du ikke kunne rykke.",
@@ -156,6 +195,19 @@ const resultCopy = {
       "Opbevar mad, chokolade og alt giftigt for hunde utilgængeligt",
     ],
     plusLinkLabel: "Følg daglige rutiner og planer i DoggMatch+",
+    dossierEyebrow: "Komplet race- og hvalpekøber-dossier",
+    dossierTitle: "Lås alt op, før du møder en opdrætter",
+    dossierBody:
+      "En dybere, udskriftsvenlig guide bygget omkring præcis dette match, så du møder forberedt i stedet for at gætte.",
+    dossierFeatures: [
+      "Detaljeret temperamentoverblik",
+      "Tjekliste med spørgsmål til opdrætteren",
+      "Oversigt over sundhedsrisiko",
+      "Omkostningsoverslag for første år",
+      "Guide til købskontrakten",
+    ],
+    dossierGuarantee: "100 % tilfredshedsgaranti",
+    dossierNote: "Engangsbetaling. Din at beholde, udskrive og tage med.",
   },
   se: {
     scoreNote: "Baserat på allt du har berättat för oss, även de gränser du sa att du inte kunde tänja på.",
@@ -194,6 +246,19 @@ const resultCopy = {
       "Förvara mat, choklad och allt som är giftigt för hundar utom räckhåll",
     ],
     plusLinkLabel: "Följ dagliga rutiner och scheman i DoggMatch+",
+    dossierEyebrow: "Komplett ras- och valpköpar-dossier",
+    dossierTitle: "Lås upp allt innan du möter en uppfödare",
+    dossierBody:
+      "En djupare, utskriftsvänlig guide byggd kring just denna matchning, så du går in förberedd istället för att gissa.",
+    dossierFeatures: [
+      "Detaljerad temperamentöversikt",
+      "Checklista med frågor till uppfödaren",
+      "Översikt över hälsorisker",
+      "Kostnadsberäkning för första året",
+      "Guide till köpekontraktet",
+    ],
+    dossierGuarantee: "100 % nöjdhetsgaranti",
+    dossierNote: "Engångsbetalning. Din att behålla, skriva ut och ta med.",
   },
   fi: {
     scoreNote: "Perustuu kaikkeen, mitä olet meille kertonut, myös rajoihin, joita et sanonut voivasi venyttää.",
@@ -232,6 +297,19 @@ const resultCopy = {
       "Säilytä ruoka, suklaa ja kaikki koirille myrkyllinen hyvin ulottumattomissa",
     ],
     plusLinkLabel: "Seuraa päivittäisiä rutiineja ja aikatauluja DoggMatch+:ssa",
+    dossierEyebrow: "Täydellinen rotu- ja pentuostajan dossier",
+    dossierTitle: "Avaa kaikki ennen kasvattajan tapaamista",
+    dossierBody:
+      "Syvempi, tulostettava opas rakennettu juuri tämän osuman ympärille, jotta menet paikalle valmistautuneena etkä arvaillen.",
+    dossierFeatures: [
+      "Yksityiskohtainen luonnekatsaus",
+      "Tarkistuslista kasvattajalle esitettävistä kysymyksistä",
+      "Terveysriskien yleiskatsaus",
+      "Ensimmäisen vuoden kustannusarvio",
+      "Opas kauppasopimuksen valmisteluun",
+    ],
+    dossierGuarantee: "100 % tyytyväisyystakuu",
+    dossierNote: "Kertamaksu. Jää sinulle — tulosta ja ota mukaan.",
   },
   de: {
     scoreNote: "Basierend auf allem, was Sie uns mitgeteilt haben, einschließlich der Grenzen, die Sie als unverhandelbar bezeichnet haben.",
@@ -270,6 +348,19 @@ const resultCopy = {
       "Futter, Schokolade und alles für Hunde Giftige gut außer Reichweite aufbewahren",
     ],
     plusLinkLabel: "Tägliche Abläufe & Routinen in DoggMatch+ verfolgen",
+    dossierEyebrow: "Vollständiges Rassen- und Welpenkäufer-Dossier",
+    dossierTitle: "Alles freischalten, bevor Sie einen Züchter treffen",
+    dossierBody:
+      "Ein tiefergehender, druckbarer Leitfaden rund um genau dieses Match, damit Sie vorbereitet statt ratend hineingehen.",
+    dossierFeatures: [
+      "Detaillierte Temperamentübersicht",
+      "Checkliste mit Fragen an den Züchter",
+      "Überblick über Gesundheitsrisiken",
+      "Kostenschätzung für das erste Jahr",
+      "Leitfaden zur Vertragsvorbereitung",
+    ],
+    dossierGuarantee: "100 % Zufriedenheitsgarantie",
+    dossierNote: "Einmalige Zahlung. Gehört Ihnen — zum Behalten, Drucken und Mitnehmen.",
   },
   fr: {
     scoreNote: "En fonction de tout ce que vous nous avez indiqué, y compris les limites que vous avez dites ne pas pouvoir dépasser.",
@@ -308,6 +399,19 @@ const resultCopy = {
       "Rangez la nourriture, le chocolat et tout ce qui est toxique pour les chiens hors de portée",
     ],
     plusLinkLabel: "Suivez les routines et plannings quotidiens sur DoggMatch+",
+    dossierEyebrow: "Dossier complet race et achat de chiot",
+    dossierTitle: "Débloquez tout avant de rencontrer un éleveur",
+    dossierBody:
+      "Un guide plus approfondi et imprimable, construit autour de cette correspondance précise, pour arriver préparé plutôt que de deviner.",
+    dossierFeatures: [
+      "Analyse détaillée du tempérament",
+      "Liste de questions pour l'éleveur",
+      "Aperçu des risques de santé",
+      "Estimation des coûts de la première année",
+      "Guide de préparation du contrat",
+    ],
+    dossierGuarantee: "Garantie satisfaction 100 %",
+    dossierNote: "Paiement unique. À vous — à garder, imprimer et emporter.",
   },
   nl: {
     scoreNote: "Gebaseerd op alles wat u ons heeft verteld, inclusief de grenzen waarvan u zei dat ze niet onderhandelbaar waren.",
@@ -346,6 +450,19 @@ const resultCopy = {
       "Bewaar voer, chocolade en alles wat giftig is voor honden goed buiten bereik",
     ],
     plusLinkLabel: "Volg dagelijkse schema's en routines in DoggMatch+",
+    dossierEyebrow: "Volledig ras- en puppykoper-dossier",
+    dossierTitle: "Ontgrendel alles voordat u een fokker ontmoet",
+    dossierBody:
+      "Een diepgaandere, afdrukbare gids opgebouwd rond precies deze match, zodat u voorbereid binnenkomt in plaats van te gokken.",
+    dossierFeatures: [
+      "Gedetailleerd temperamentoverzicht",
+      "Checklist met vragen voor de fokker",
+      "Overzicht van gezondheidsrisico's",
+      "Kostenraming eerste jaar",
+      "Gids voor het voorbereiden van het contract",
+    ],
+    dossierGuarantee: "100% tevredenheidsgarantie",
+    dossierNote: "Eenmalige betaling. Van u — om te bewaren, af te drukken en mee te nemen.",
   },
 };
 import { quizQuestions } from "@/data/questions.locale";
@@ -366,6 +483,8 @@ import { matchInsights, scoreReading } from "@/lib/matching/insights";
 import type { BreedTraits } from "@/data/breeds";
 import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/types";
 import { Arrow, Badge, Button, ButtonLink, Eyebrow, ScoreBar, ScoreRing } from "@/components/dogmatch/ui";
+import { DossierCheckoutButton } from "@/components/dogmatch/dossier/checkout-button";
+import { dossierPrice } from "@/lib/dossier/pricing";
 import { MatchNotes } from "@/components/dogmatch/match-notes";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { cn } from "@/lib/utils";
@@ -929,6 +1048,7 @@ function Results({
   onRestart: () => void;
 }) {
   const t = useT();
+  const { locale } = useLocale();
   const ownDog = useActiveDog();
   const ownTraits = resolveDogTraits(ownDog);
   const ownFit = ownDog ? matchOwnDog(ownDog, profile) : undefined;
@@ -1138,20 +1258,35 @@ function Results({
         </ul>
       </section>
 
-      {/* premium */}
+      {/* paid dossier teaser — the one thing in this result that isn't free */}
       <section className="container-page mt-20 md:mt-28">
-        <div className="grid gap-8 rounded-[1.75rem] border border-border bg-surface p-8 md:grid-cols-[1.2fr_1fr] md:items-center md:p-12">
+        <div className="grid gap-8 rounded-[1.75rem] border border-border bg-surface p-8 shadow-[var(--shadow-soft)] md:grid-cols-[1.2fr_1fr] md:items-center md:p-12">
           <div>
-            <p className="eyebrow">{t.result.premiumEyebrow}</p>
-            <h2 className="display-md mt-4">{t.result.premiumTitle}</h2>
-            <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">
-              {t.result.premiumBody}
-            </p>
-            <p className="mt-6 text-sm text-muted-foreground">{t.result.premiumNote}</p>
+            <p className="eyebrow">{c.dossierEyebrow}</p>
+            <h2 className="display-md mt-4">{c.dossierTitle}</h2>
+            <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">{c.dossierBody}</p>
+            <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
+              {c.dossierFeatures.map((feature) => (
+                <li key={feature} className="flex items-start gap-2 text-sm leading-relaxed">
+                  <span aria-hidden="true" className="mt-[3px] text-primary">
+                    ✓
+                  </span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-sm text-muted-foreground">{c.dossierNote}</p>
           </div>
-          <div className="flex flex-col items-start gap-4 md:items-end">
-            <span className="font-display text-4xl tracking-tight">{t.result.premiumPrice}</span>
-            <Button tone="outline">{t.result.premiumCta}</Button>
+          <div className="flex flex-col items-start gap-4 rounded-2xl border border-border bg-card p-6 md:items-end md:text-right">
+            <Badge tone="primary">{c.dossierGuarantee}</Badge>
+            <span className="font-display text-4xl tracking-tight">
+              {dossierPrice(locale).display}
+            </span>
+            <DossierCheckoutButton
+              breedId={best.breedId}
+              breedName={content.displayName}
+              className="w-full items-stretch md:items-end"
+            />
           </div>
         </div>
       </section>
