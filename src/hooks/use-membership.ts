@@ -9,6 +9,7 @@ const none: MembershipStatus = {
   plan: null,
   renewsAt: null,
   cancelsAtPeriodEnd: false,
+  lifetime: false,
 };
 
 /** DoggMatch+ status for the signed-in person, read from Stripe. */

@@ -2,12 +2,15 @@ import { createServerFn } from "@tanstack/react-start";
 import { getRequestHeader } from "@tanstack/react-start/server";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { PLUS_PLANS, type PlanId } from "./plans";
+import { isFounderEmail } from "./founder";
 
 export type MembershipStatus = {
   subscribed: boolean;
   plan: PlanId | null;
   renewsAt: string | null;
   cancelsAtPeriodEnd: boolean;
+  /** Founder account — permanent, granted without a Stripe subscription. */
+  lifetime: boolean;
 };
 
 function originOf(): string {
@@ -117,9 +120,15 @@ export const getMembership = createServerFn({ method: "POST" })
       plan: null,
       renewsAt: null,
       cancelsAtPeriodEnd: false,
+      lifetime: false,
     };
     const email = context.claims?.email as string | undefined;
     if (!email) return none;
+
+    // Founder accounts skip Stripe entirely — permanent membership by email alone.
+    if (isFounderEmail(email)) {
+      return { subscribed: true, plan: "yearly", renewsAt: null, cancelsAtPeriodEnd: false, lifetime: true };
+    }
 
     const { getStripe, findCustomerId } = await import("./stripe.server");
     const stripe = getStripe();
@@ -145,6 +154,7 @@ export const getMembership = createServerFn({ method: "POST" })
       plan,
       renewsAt: periodEnd ? new Date(periodEnd * 1000).toISOString() : null,
       cancelsAtPeriodEnd: Boolean(sub.cancel_at_period_end),
+      lifetime: false,
     };
   });
 

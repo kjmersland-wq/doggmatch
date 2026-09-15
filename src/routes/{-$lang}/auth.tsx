@@ -62,6 +62,10 @@ const copy = {
     signUpNotice: "Almost there — check your inbox and confirm your email address.",
     genericError: "Something went wrong. Please try again.",
     googleError: "We couldn't sign you in with Google just then. Please try again.",
+    magicLinkCta: "Email me a sign-in link instead",
+    magicLinkSending: "Sending…",
+    magicLinkSent: "Check your inbox — click the link we sent to sign in, no password needed.",
+    magicLinkNeedsEmail: "Enter your email address above first.",
   },
   no: {
     eyebrow: "Kontoen din",
@@ -85,6 +89,10 @@ const copy = {
     signUpNotice: "Nesten der — sjekk innboksen din og bekreft e-postadressen.",
     genericError: "Noe gikk galt. Prøv gjerne igjen.",
     googleError: "Vi klarte ikke å logge deg inn med Google akkurat nå. Prøv gjerne igjen.",
+    magicLinkCta: "Send meg en innloggingslenke i stedet",
+    magicLinkSending: "Sender …",
+    magicLinkSent: "Sjekk innboksen din — klikk på lenken vi sendte for å logge inn, uten passord.",
+    magicLinkNeedsEmail: "Skriv inn e-postadressen din ovenfor først.",
   },
   pl: {
     eyebrow: "Twoje konto",
@@ -108,6 +116,10 @@ const copy = {
     signUpNotice: "Już prawie gotowe — sprawdź swoją skrzynkę i potwierdź adres e-mail.",
     genericError: "Coś poszło nie tak. Spróbuj ponownie.",
     googleError: "Nie udało się zalogować przez Google. Spróbuj ponownie.",
+    magicLinkCta: "Wyślij mi zamiast tego link do logowania",
+    magicLinkSending: "Wysyłanie…",
+    magicLinkSent: "Sprawdź skrzynkę — kliknij wysłany link, aby się zalogować, bez hasła.",
+    magicLinkNeedsEmail: "Najpierw wpisz swój adres e-mail powyżej.",
   },
   dk: {
     eyebrow: "Din konto",
@@ -131,6 +143,10 @@ const copy = {
     signUpNotice: "Næsten der — tjek din indbakke og bekræft din e-mailadresse.",
     genericError: "Noget gik galt. Prøv venligst igen.",
     googleError: "Vi kunne ikke logge dig ind med Google lige nu. Prøv venligst igen.",
+    magicLinkCta: "Send mig et login-link i stedet",
+    magicLinkSending: "Sender …",
+    magicLinkSent: "Tjek din indbakke — klik på linket, vi sendte, for at logge ind, uden adgangskode.",
+    magicLinkNeedsEmail: "Indtast din e-mailadresse ovenfor først.",
   },
   se: {
     eyebrow: "Ditt konto",
@@ -154,6 +170,10 @@ const copy = {
     signUpNotice: "Nästan klart — kolla din inkorg och bekräfta din e-postadress.",
     genericError: "Något gick fel. Försök igen.",
     googleError: "Vi kunde inte logga in dig med Google just nu. Försök igen.",
+    magicLinkCta: "Skicka mig en inloggningslänk istället",
+    magicLinkSending: "Skickar …",
+    magicLinkSent: "Kolla din inkorg — klicka på länken vi skickade för att logga in, utan lösenord.",
+    magicLinkNeedsEmail: "Ange din e-postadress ovan först.",
   },
   fi: {
     eyebrow: "Tilisi",
@@ -177,6 +197,10 @@ const copy = {
     signUpNotice: "Melkein valmista — tarkista sähköpostisi ja vahvista osoitteesi.",
     genericError: "Jokin meni pieleen. Yritä uudelleen.",
     googleError: "Emme voineet kirjata sinua sisään Googlella juuri nyt. Yritä uudelleen.",
+    magicLinkCta: "Lähetä minulle kirjautumislinkki sen sijaan",
+    magicLinkSending: "Lähetetään…",
+    magicLinkSent: "Tarkista sähköpostisi — kirjaudu sisään lähettämämme linkin kautta, ilman salasanaa.",
+    magicLinkNeedsEmail: "Kirjoita ensin sähköpostiosoitteesi yllä.",
   },
   de: {
     eyebrow: "Dein Konto",
@@ -200,6 +224,10 @@ const copy = {
     signUpNotice: "Fast geschafft — sieh in dein Postfach und bestätige deine E-Mail-Adresse.",
     genericError: "Etwas ist schiefgelaufen. Bitte versuch es noch einmal.",
     googleError: "Wir konnten dich gerade nicht mit Google anmelden. Bitte versuch es noch einmal.",
+    magicLinkCta: "Stattdessen einen Anmeldelink zuschicken",
+    magicLinkSending: "Wird gesendet …",
+    magicLinkSent: "Sieh in dein Postfach — klicke auf den gesendeten Link, um dich ohne Passwort anzumelden.",
+    magicLinkNeedsEmail: "Gib zuerst deine E-Mail-Adresse oben ein.",
   },
   fr: {
     eyebrow: "Votre compte",
@@ -224,6 +252,11 @@ const copy = {
     genericError: "Une erreur s'est produite. Veuillez réessayer.",
     googleError:
       "Nous n'avons pas pu vous connecter avec Google pour l'instant. Veuillez réessayer.",
+    magicLinkCta: "M'envoyer un lien de connexion à la place",
+    magicLinkSending: "Envoi…",
+    magicLinkSent:
+      "Vérifiez votre boîte mail — cliquez sur le lien envoyé pour vous connecter, sans mot de passe.",
+    magicLinkNeedsEmail: "Saisissez d'abord votre adresse e-mail ci-dessus.",
   },
   nl: {
     eyebrow: "Jouw account",
@@ -247,6 +280,10 @@ const copy = {
     signUpNotice: "Bijna klaar — check je inbox en bevestig je e-mailadres.",
     genericError: "Er ging iets mis. Probeer het opnieuw.",
     googleError: "We konden je niet inloggen met Google. Probeer het opnieuw.",
+    magicLinkCta: "Stuur mij in plaats daarvan een inloglink",
+    magicLinkSending: "Verzenden…",
+    magicLinkSent: "Check je inbox — klik op de link die we stuurden om in te loggen, zonder wachtwoord.",
+    magicLinkNeedsEmail: "Vul eerst uw e-mailadres hierboven in.",
   },
 } as const;
 
@@ -261,6 +298,7 @@ function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [magicLinkBusy, setMagicLinkBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
 
@@ -300,6 +338,28 @@ function AuthPage() {
       redirect_uri: window.location.origin,
     });
     if (result?.error) setMessage(c.googleError);
+  }
+
+  async function onMagicLink() {
+    if (!email.trim()) {
+      setMessage(c.magicLinkNeedsEmail);
+      return;
+    }
+    setMessage(null);
+    setNotice(null);
+    setMagicLinkBusy(true);
+    try {
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: { emailRedirectTo: `${window.location.origin}${next}` },
+      });
+      if (error) throw error;
+      setNotice(c.magicLinkSent);
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : c.genericError);
+    } finally {
+      setMagicLinkBusy(false);
+    }
   }
 
   return (
@@ -365,6 +425,17 @@ function AuthPage() {
               {!busy && <Arrow />}
             </Button>
           </form>
+
+          {mode === "signin" && (
+            <button
+              type="button"
+              onClick={onMagicLink}
+              disabled={magicLinkBusy}
+              className="mt-4 w-full text-center text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline disabled:opacity-70"
+            >
+              {magicLinkBusy ? c.magicLinkSending : c.magicLinkCta}
+            </button>
+          )}
 
           {notice && (
             <p role="status" className="mt-5 text-sm leading-relaxed text-muted-foreground">

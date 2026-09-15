@@ -35,12 +35,15 @@ const copy = {
     checking: "Checking…",
     planYearly: "DoggMatch+ yearly",
     planMonthly: "DoggMatch+ monthly",
+    planLifetime: "DoggMatch+ lifetime",
     free: "Free",
     ends: "Ends",
     renews: "Renews",
     dash: "—",
+    never: "Never",
     endingBody: "Your membership is set to end, and you'll keep everything until then.",
     activeBody: "Thank you for being a member. You can change or cancel this yourself at any time.",
+    lifetimeBody: "You have lifetime DoggMatch+ access. Thank you for building this.",
     printCard: "Print my member card",
     manage: "Manage my membership",
     manageBusy: "One moment…",
@@ -63,12 +66,15 @@ const copy = {
     checking: "Sjekker …",
     planYearly: "DoggMatch+ årlig",
     planMonthly: "DoggMatch+ månedlig",
+    planLifetime: "DoggMatch+ livstid",
     free: "Gratis",
     ends: "Avsluttes",
     renews: "Fornyes",
     dash: "—",
     endingBody: "Medlemskapet ditt er satt til å avsluttes, og du beholder alt fram til da.",
     activeBody: "Takk for at du er medlem. Du kan endre eller si opp dette selv når som helst.",
+    never: "Aldri",
+    lifetimeBody: "Du har livstids DoggMatch+-tilgang. Takk for at du bygger dette.",
     printCard: "Skriv ut medlemskortet mitt",
     manage: "Administrer medlemskapet mitt",
     manageBusy: "Ett øyeblikk …",
@@ -91,12 +97,15 @@ const copy = {
     checking: "Sprawdzanie…",
     planYearly: "DoggMatch+ roczny",
     planMonthly: "DoggMatch+ miesięczny",
+    planLifetime: "DoggMatch+ dożywotni",
     free: "Bezpłatny",
     ends: "Kończy się",
     renews: "Odnawia się",
     dash: "—",
     endingBody: "Twoje członkostwo ma się zakończyć, a do tego czasu zachowujesz wszystko.",
     activeBody: "Dziękujemy, że jesteś z nami. W każdej chwili możesz to zmienić lub anulować samodzielnie.",
+    never: "Nigdy",
+    lifetimeBody: "Masz dożywotni dostęp do DoggMatch+. Dziękujemy, że to budujesz.",
     printCard: "Wydrukuj moją kartę członkowską",
     manage: "Zarządzaj moim członkostwem",
     manageBusy: "Chwileczkę…",
@@ -119,12 +128,15 @@ const copy = {
     checking: "Tjekker …",
     planYearly: "DoggMatch+ årligt",
     planMonthly: "DoggMatch+ månedligt",
+    planLifetime: "DoggMatch+ livstid",
     free: "Gratis",
     ends: "Ophører",
     renews: "Fornyes",
     dash: "—",
     endingBody: "Dit medlemskab er sat til at ophøre, og du beholder alt indtil da.",
     activeBody: "Tak, fordi du er medlem. Du kan selv ændre eller opsige det når som helst.",
+    never: "Aldrig",
+    lifetimeBody: "Du har livstids DoggMatch+-adgang. Tak, fordi du bygger dette.",
     printCard: "Print mit medlemskort",
     manage: "Administrer mit medlemskab",
     manageBusy: "Et øjeblik …",
@@ -147,12 +159,15 @@ const copy = {
     checking: "Kontrollerar …",
     planYearly: "DoggMatch+ årsvis",
     planMonthly: "DoggMatch+ månadsvis",
+    planLifetime: "DoggMatch+ livstid",
     free: "Gratis",
     ends: "Upphör",
     renews: "Förnyas",
     dash: "—",
     endingBody: "Ditt medlemskap är inställt på att upphöra, och du behåller allt fram till dess.",
     activeBody: "Tack för att du är medlem. Du kan själv ändra eller säga upp det när som helst.",
+    never: "Aldrig",
+    lifetimeBody: "Du har livstids DoggMatch+-åtkomst. Tack för att du bygger det här.",
     printCard: "Skriv ut mitt medlemskort",
     manage: "Hantera mitt medlemskap",
     manageBusy: "Ett ögonblick …",
@@ -175,12 +190,15 @@ const copy = {
     checking: "Tarkistetaan…",
     planYearly: "DoggMatch+ vuosittain",
     planMonthly: "DoggMatch+ kuukausittain",
+    planLifetime: "DoggMatch+ elinikäinen",
     free: "Ilmainen",
     ends: "Päättyy",
     renews: "Uusiutuu",
     dash: "—",
     endingBody: "Jäsenyytesi on määrätty päättymään, ja säilytät kaiken siihen asti.",
     activeBody: "Kiitos, että olet jäsen. Voit muuttaa tai peruuttaa sen itse milloin tahansa.",
+    never: "Ei koskaan",
+    lifetimeBody: "Sinulla on elinikäinen DoggMatch+-käyttöoikeus. Kiitos, että rakennat tätä.",
     printCard: "Tulosta jäsenkorttini",
     manage: "Hallinnoi jäsenyyttäni",
     manageBusy: "Hetkinen…",
@@ -203,12 +221,15 @@ const copy = {
     checking: "Wird geprüft…",
     planYearly: "DoggMatch+ jährlich",
     planMonthly: "DoggMatch+ monatlich",
+    planLifetime: "DoggMatch+ lebenslang",
     free: "Kostenlos",
     ends: "Endet",
     renews: "Verlängert sich",
     dash: "—",
     endingBody: "Ihre Mitgliedschaft ist auf ein Ende eingestellt, und Sie behalten bis dahin alles.",
     activeBody: "Danke, dass Sie Mitglied sind. Sie können dies jederzeit selbst ändern oder kündigen.",
+    never: "Nie",
+    lifetimeBody: "Sie haben lebenslangen DoggMatch+-Zugang. Danke, dass Sie das hier aufbauen.",
     printCard: "Meine Mitgliedskarte drucken",
     manage: "Meine Mitgliedschaft verwalten",
     manageBusy: "Einen Moment …",
@@ -231,12 +252,15 @@ const copy = {
     checking: "Vérification…",
     planYearly: "DoggMatch+ annuel",
     planMonthly: "DoggMatch+ mensuel",
+    planLifetime: "DoggMatch+ à vie",
     free: "Gratuit",
     ends: "Se termine",
     renews: "Se renouvelle",
     dash: "—",
     endingBody: "Votre adhésion est programmée pour se terminer, et vous gardez tout jusque-là.",
     activeBody: "Merci d'être membre. Vous pouvez modifier ou résilier cela vous-même à tout moment.",
+    never: "Jamais",
+    lifetimeBody: "Vous avez un accès DoggMatch+ à vie. Merci de construire tout ceci.",
     printCard: "Imprimer ma carte de membre",
     manage: "Gérer mon adhésion",
     manageBusy: "Un instant…",
@@ -259,12 +283,15 @@ const copy = {
     checking: "Controleren…",
     planYearly: "DoggMatch+ jaarlijks",
     planMonthly: "DoggMatch+ maandelijks",
+    planLifetime: "DoggMatch+ levenslang",
     free: "Gratis",
     ends: "Eindigt",
     renews: "Verlengt",
     dash: "—",
     endingBody: "Uw lidmaatschap staat ingesteld om te eindigen, en u behoudt alles tot die tijd.",
     activeBody: "Bedankt dat u lid bent. U kunt dit zelf op elk moment wijzigen of opzeggen.",
+    never: "Nooit",
+    lifetimeBody: "U heeft levenslange DoggMatch+-toegang. Bedankt dat u dit bouwt.",
     printCard: "Mijn ledenpas printen",
     manage: "Mijn lidmaatschap beheren",
     manageBusy: "Een moment …",
@@ -338,27 +365,35 @@ export function AccountMembership() {
           value={
             loading
               ? c.checking
-              : membership.subscribed
-                ? membership.plan === "yearly"
-                  ? c.planYearly
-                  : c.planMonthly
-                : c.free
+              : membership.lifetime
+                ? c.planLifetime
+                : membership.subscribed
+                  ? membership.plan === "yearly"
+                    ? c.planYearly
+                    : c.planMonthly
+                  : c.free
           }
         />
         <Row
           label={membership.cancelsAtPeriodEnd ? c.ends : c.renews}
-          value={membership.subscribed ? renews : c.dash}
+          value={membership.lifetime ? c.never : membership.subscribed ? renews : c.dash}
         />
         {membership.subscribed ? (
           <>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              {membership.cancelsAtPeriodEnd ? c.endingBody : c.activeBody}
+              {membership.lifetime
+                ? c.lifetimeBody
+                : membership.cancelsAtPeriodEnd
+                  ? c.endingBody
+                  : c.activeBody}
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <ButtonLink to={withLangPrefix("/member-card")}>{c.printCard}</ButtonLink>
-              <Button tone="outline" onClick={manage} disabled={busy}>
-                {busy ? c.manageBusy : c.manage}
-              </Button>
+              {!membership.lifetime && (
+                <Button tone="outline" onClick={manage} disabled={busy}>
+                  {busy ? c.manageBusy : c.manage}
+                </Button>
+              )}
             </div>
           </>
         ) : (
