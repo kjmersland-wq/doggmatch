@@ -7,6 +7,7 @@ import { Arrow, Button, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { useCopy } from "@/i18n";
 import { abs, noindexMeta } from "@/lib/seo";
 import { withLangPrefix } from "@/lib/localized-path";
+import { resetCopy } from "@/lib/auth/reset-copy";
 
 const title = "Sign in — Your DoggMatch account | DoggMatch";
 const description =
@@ -289,6 +290,7 @@ const copy = {
 
 function AuthPage() {
   const c = useCopy(copy);
+  const r = useCopy(resetCopy);
   const { user, loading } = useAuth();
   const navigate = useNavigate();
   const search = Route.useSearch();
@@ -299,6 +301,7 @@ function AuthPage() {
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [magicLinkBusy, setMagicLinkBusy] = useState(false);
+  const [resetBusy, setResetBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
 
@@ -329,6 +332,27 @@ function AuthPage() {
       setMessage(error instanceof Error ? error.message : c.genericError);
     } finally {
       setBusy(false);
+    }
+  }
+
+  async function onResetPassword() {
+    if (!email.trim()) {
+      setMessage(r.needsEmail);
+      return;
+    }
+    setMessage(null);
+    setNotice(null);
+    setResetBusy(true);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}${withLangPrefix("/reset-password")}`,
+      });
+      if (error) throw error;
+      setNotice(r.sent);
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : r.error);
+    } finally {
+      setResetBusy(false);
     }
   }
 
