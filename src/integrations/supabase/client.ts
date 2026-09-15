@@ -28,21 +28,24 @@ function createSupabaseFetch(supabaseKey: string): typeof fetch {
 }
 
 
+// Publishable keys (unlike the service-role key) are meant to be public —
+// they're already shipped to every browser whenever the env vars resolve
+// normally, with access control enforced by Supabase Row Level Security, not
+// by keeping this value secret. These are this project's real values, used
+// only if the environment variables below are unset at build/runtime.
+const SUPABASE_URL_FALLBACK = 'https://gcwwhsywttwhigxbzoua.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY_FALLBACK = 'sb_publishable_r_Fw9oa3ytPzvl9BFEd0rg_AScfH6vk';
+
 function createSupabaseClient() {
   // Use import.meta.env for client-side (Vite build-time replacement)
-  // Fall back to process.env for SSR (server-side rendering)
-  const SUPABASE_URL = import.meta.env['VITE_SUPABASE_URL'] || process.env['SUPABASE_URL'];
-  const SUPABASE_PUBLISHABLE_KEY = import.meta.env['VITE_SUPABASE_PUBLISHABLE_KEY'] || process.env['SUPABASE_PUBLISHABLE_KEY'];
-
-  if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
-    const missing = [
-      ...(!SUPABASE_URL ? ['SUPABASE_URL'] : []),
-      ...(!SUPABASE_PUBLISHABLE_KEY ? ['SUPABASE_PUBLISHABLE_KEY'] : []),
-    ];
-    const message = `Missing Supabase environment variable(s): ${missing.join(', ')}. Connect Supabase in Lovable Cloud.`;
-    console.error(`[Supabase] ${message}`);
-    throw new Error(message);
-  }
+  // Fall back to process.env for SSR (server-side rendering), then to the
+  // known project values so a missing env var never breaks sign-in.
+  const SUPABASE_URL =
+    import.meta.env['VITE_SUPABASE_URL'] || process.env['SUPABASE_URL'] || SUPABASE_URL_FALLBACK;
+  const SUPABASE_PUBLISHABLE_KEY =
+    import.meta.env['VITE_SUPABASE_PUBLISHABLE_KEY'] ||
+    process.env['SUPABASE_PUBLISHABLE_KEY'] ||
+    SUPABASE_PUBLISHABLE_KEY_FALLBACK;
 
   return createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
     global: {
