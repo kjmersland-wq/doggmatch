@@ -1,5 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
-import { getRequestHeader } from "@tanstack/react-start/server";
+import { trustedOrigin } from "@/lib/trusted-origin";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { PLUS_PLANS, type PlanId } from "./plans";
 import { isFounderEmail } from "./founder";
