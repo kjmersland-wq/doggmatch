@@ -1,5 +1,6 @@
+import type { ReactNode } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { Arrow, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
+import { Arrow, ButtonLink, Eyebrow, Section, Toggle } from "@/components/dogmatch/ui";
 import { Panel } from "@/components/dogmatch/care/parts";
 import { DogSwitcher } from "@/components/dogmatch/care/hub";
 import { useMyDog } from "@/lib/care/store";
@@ -7,9 +8,11 @@ import { useTrainingState } from "@/lib/training/store";
 import { AccountMembership } from "@/components/dogmatch/plus/membership";
 import { MemberBenefits } from "@/components/dogmatch/plus/benefits";
 import { useMembership } from "@/hooks/use-membership";
+import { usePreferences, preferencesStore, type UnitSystem } from "@/lib/account/preferences";
 import { useCopy } from "@/i18n";
 import { abs, noindexMeta } from "@/lib/seo";
 import { withLangPrefix } from "@/lib/localized-path";
+import { cn } from "@/lib/utils";
 
 const title = "My Account — Your details and preferences | DoggMatch";
 const description =
@@ -33,11 +36,11 @@ export const Route = createFileRoute("/{-$lang}/account")({
   component: AccountPage,
 });
 
-function Row({ label, value }: { label: string; value: string }) {
+function PrefRow({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className="flex items-baseline justify-between gap-6 border-b border-border/60 py-3 last:border-0">
+    <div className="flex items-center justify-between gap-6 border-b border-border/60 py-3 last:border-0">
       <span className="text-sm text-muted-foreground">{label}</span>
-      <span className="text-right text-[0.9375rem]">{value}</span>
+      {children}
     </div>
   );
 }
@@ -51,9 +54,10 @@ const copy = {
     myDogLink: "My Dog",
     preferences: "Preferences",
     units: "Units",
-    unitsValue: "Metric (kg, km)",
+    unitsMetric: "Metric",
+    unitsImperial: "Imperial",
+    unitsNote: "Applies here for now — weight, food and travel pages still show metric.",
     reminders: "Reminders",
-    off: "Off",
     emailFromUs: "Email from us",
     preferencesNote: "We'd rather send nothing than send something you didn't ask for.",
     privacy: "Privacy",
@@ -77,9 +81,10 @@ const copy = {
     myDogLink: "Min hund",
     preferences: "Innstillinger",
     units: "Enheter",
-    unitsValue: "Metrisk (kg, km)",
+    unitsMetric: "Metrisk",
+    unitsImperial: "Imperial",
+    unitsNote: "Gjelder foreløpig bare her — vekt, mat og reisesider viser fortsatt metrisk.",
     reminders: "Påminnelser",
-    off: "Av",
     emailFromUs: "E-post fra oss",
     preferencesNote: "Vi sender heller ingenting enn noe du ikke har bedt om.",
     privacy: "Personvern",
@@ -103,9 +108,10 @@ const copy = {
     myDogLink: "Mój pies",
     preferences: "Preferencje",
     units: "Jednostki",
-    unitsValue: "Metryczne (kg, km)",
+    unitsMetric: "Metryczne",
+    unitsImperial: "Imperialne",
+    unitsNote: "Na razie dotyczy tylko tego miejsca — strony wagi, jedzenia i podróży nadal pokazują wartości metryczne.",
     reminders: "Przypomnienia",
-    off: "Wyłączone",
     emailFromUs: "Wiadomości od nas",
     preferencesNote: "Wolimy nic nie wysyłać, niż wysłać coś, o co nie prosiłeś.",
     privacy: "Prywatność",
@@ -129,9 +135,10 @@ const copy = {
     myDogLink: "Min hund",
     preferences: "Indstillinger",
     units: "Enheder",
-    unitsValue: "Metrisk (kg, km)",
+    unitsMetric: "Metrisk",
+    unitsImperial: "Imperial",
+    unitsNote: "Gælder kun her indtil videre — vægt, mad og rejsesider viser stadig metrisk.",
     reminders: "Påmindelser",
-    off: "Fra",
     emailFromUs: "E-mail fra os",
     preferencesNote: "Vi sender hellere ingenting end noget, du ikke har bedt om.",
     privacy: "Privatliv",
@@ -155,9 +162,10 @@ const copy = {
     myDogLink: "Min hund",
     preferences: "Inställningar",
     units: "Enheter",
-    unitsValue: "Metriskt (kg, km)",
+    unitsMetric: "Metriskt",
+    unitsImperial: "Imperial",
+    unitsNote: "Gäller bara här tills vidare — vikt, mat och resesidor visar fortfarande metriskt.",
     reminders: "Påminnelser",
-    off: "Av",
     emailFromUs: "E-post från oss",
     preferencesNote: "Vi skickar hellre ingenting än något du inte bad om.",
     privacy: "Integritet",
@@ -181,9 +189,10 @@ const copy = {
     myDogLink: "Oma koirani",
     preferences: "Asetukset",
     units: "Mittayksiköt",
-    unitsValue: "Metrinen (kg, km)",
+    unitsMetric: "Metrinen",
+    unitsImperial: "Imperiaalinen",
+    unitsNote: "Koskee toistaiseksi vain tätä kohtaa — paino-, ruoka- ja matkasivut näyttävät yhä metrisiä yksiköitä.",
     reminders: "Muistutukset",
-    off: "Pois päältä",
     emailFromUs: "Sähköpostit meiltä",
     preferencesNote: "Lähetämme mieluummin ei mitään kuin jotain, mitä et pyytänyt.",
     privacy: "Tietosuoja",
@@ -206,9 +215,10 @@ const copy = {
     myDogLink: "Mein Hund",
     preferences: "Einstellungen",
     units: "Einheiten",
-    unitsValue: "Metrisch (kg, km)",
+    unitsMetric: "Metrisch",
+    unitsImperial: "Imperial",
+    unitsNote: "Gilt vorerst nur hier — Gewicht, Futter und Reiseseiten zeigen weiterhin metrische Einheiten.",
     reminders: "Erinnerungen",
-    off: "Aus",
     emailFromUs: "E-Mails von uns",
     preferencesNote: "Wir schicken lieber nichts, als etwas, um das du nicht gebeten hast.",
     privacy: "Datenschutz",
@@ -232,9 +242,10 @@ const copy = {
     myDogLink: "Mon chien",
     preferences: "Préférences",
     units: "Unités",
-    unitsValue: "Métrique (kg, km)",
+    unitsMetric: "Métrique",
+    unitsImperial: "Impérial",
+    unitsNote: "S'applique seulement ici pour l'instant — les pages poids, alimentation et voyage affichent encore le métrique.",
     reminders: "Rappels",
-    off: "Désactivé",
     emailFromUs: "E-mails de notre part",
     preferencesNote:
       "Nous préférons ne rien envoyer plutôt que quelque chose que vous n'avez pas demandé.",
@@ -259,9 +270,10 @@ const copy = {
     myDogLink: "Mijn hond",
     preferences: "Voorkeuren",
     units: "Eenheden",
-    unitsValue: "Metrisch (kg, km)",
+    unitsMetric: "Metrisch",
+    unitsImperial: "Imperiaal",
+    unitsNote: "Geldt voorlopig alleen hier — gewicht-, voedings- en reispagina's tonen nog steeds metrisch.",
     reminders: "Herinneringen",
-    off: "Uit",
     emailFromUs: "E-mail van ons",
     preferencesNote: "We sturen liever niets dan iets waar je niet om hebt gevraagd.",
     privacy: "Privacy",
@@ -284,6 +296,7 @@ function AccountPage() {
   const dog = useMyDog();
   const { dogs } = useTrainingState();
   const { membership } = useMembership();
+  const prefs = usePreferences();
 
   return (
     <div className="pb-24">
@@ -307,10 +320,42 @@ function AccountPage() {
           <AccountMembership />
 
           <Panel title={c.preferences}>
-            <Row label={c.units} value={c.unitsValue} />
-            <Row label={c.reminders} value={c.off} />
-            <Row label={c.emailFromUs} value={c.off} />
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            <PrefRow label={c.units}>
+              <div className="inline-flex rounded-full border border-border-strong p-1">
+                {(["metric", "imperial"] as UnitSystem[]).map((option) => (
+                  <button
+                    key={option}
+                    type="button"
+                    aria-pressed={prefs.units === option}
+                    onClick={() => preferencesStore.setUnits(option)}
+                    className={cn(
+                      "rounded-full px-3 py-1 text-sm font-medium transition-colors",
+                      prefs.units === option
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    {option === "metric" ? c.unitsMetric : c.unitsImperial}
+                  </button>
+                ))}
+              </div>
+            </PrefRow>
+            <PrefRow label={c.reminders}>
+              <Toggle
+                checked={prefs.reminders}
+                onChange={preferencesStore.setReminders}
+                label={c.reminders}
+              />
+            </PrefRow>
+            <PrefRow label={c.emailFromUs}>
+              <Toggle
+                checked={prefs.emailUpdates}
+                onChange={preferencesStore.setEmailUpdates}
+                label={c.emailFromUs}
+              />
+            </PrefRow>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{c.unitsNote}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               {c.preferencesNote}
             </p>
           </Panel>

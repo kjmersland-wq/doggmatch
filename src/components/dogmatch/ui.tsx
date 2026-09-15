@@ -198,3 +198,37 @@ export function Badge({
     </span>
   );
 }
+
+/* ----------------------------------------------------------------- Toggle */
+
+export function Toggle({
+  checked,
+  onChange,
+  label,
+}: {
+  checked: boolean;
+  onChange: (next: boolean) => void;
+  label: string;
+}) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={label}
+      onClick={() => onChange(!checked)}
+      className={cn(
+        "relative h-7 w-12 shrink-0 rounded-full border transition-colors duration-200 ease-out",
+        checked ? "border-primary bg-primary" : "border-border-strong bg-surface-strong",
+      )}
+    >
+      <span
+        className={cn(
+          "absolute top-[3px] h-5 w-5 rounded-full bg-background shadow-[var(--shadow-soft)] transition-transform duration-200 ease-out",
+          checked ? "translate-x-[22px]" : "translate-x-[3px]",
+        )}
+        aria-hidden="true"
+      />
+    </button>
+  );
+}
