@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
+import { useNavigate } from "@tanstack/react-router";
 import { createDossierCheckout } from "@/lib/dossier/stripe.functions";
 import { useCopy, useLocale, interpolate } from "@/i18n";
 import type { BreedId } from "@/data/breeds";
 import { Button } from "@/components/dogmatch/ui";
 import { cn } from "@/lib/utils";
+import { useMembership } from "@/hooks/use-membership";
+import { withLangPrefix } from "@/lib/localized-path";
 
 const copy = {
   en: {
@@ -67,6 +70,8 @@ export function DossierCheckoutButton({
   const c = useCopy(copy);
   const { locale } = useLocale();
   const startCheckout = useServerFn(createDossierCheckout);
+  const navigate = useNavigate();
+  const { membership } = useMembership();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -74,6 +79,11 @@ export function DossierCheckoutButton({
     setError(null);
     setBusy(true);
     try {
+      // Lifetime members never pay for a dossier — the server checks this again.
+      if (membership.lifetime) {
+        await navigate({ to: withLangPrefix("/quiz/success"), search: { breed: breedId } });
+        return;
+      }
       const { url } = await startCheckout({ data: { breedId, locale } });
       window.location.href = url;
     } catch {

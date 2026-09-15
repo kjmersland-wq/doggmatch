@@ -4,7 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { Printer, ShieldCheck } from "lucide-react";
 import { getBreed, type Breed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
-import { verifyDossierCheckout } from "@/lib/dossier/stripe.functions";
+import { verifyDossierCheckout, unlockDossierAsMember } from "@/lib/dossier/stripe.functions";
 import { dossierSections } from "@/lib/dossier/doc";
 import { DocPaper } from "@/components/dogmatch/print/doc";
 import { ButtonLink, Button, Eyebrow } from "@/components/dogmatch/ui";
@@ -17,6 +17,7 @@ const title = "Your Dossier | DoggMatch";
 export const Route = createFileRoute("/{-$lang}/quiz/success")({
   validateSearch: (search: Record<string, unknown>) => ({
     session_id: typeof search["session_id"] === "string" ? search["session_id"] : "",
+    breed: typeof search["breed"] === "string" ? search["breed"] : "",
   }),
   head: () => ({
     meta: [...noindexMeta, { title }, { name: "robots", content: "noindex" }],
@@ -185,17 +186,39 @@ const copy = {
 
 function SuccessPage() {
   const c = useCopy(copy);
-  const { session_id } = Route.useSearch();
+  const { session_id, breed: breedParam } = Route.useSearch();
   const verify = useServerFn(verifyDossierCheckout);
+  const unlockAsMember = useServerFn(unlockDossierAsMember);
   const [status, setStatus] = useState<"loading" | "paid" | "unpaid">("loading");
   const [breed, setBreed] = useState<Breed | null>(null);
 
   useEffect(() => {
-    if (!session_id) {
-      setStatus("unpaid");
-      return;
-    }
     let cancelled = false;
+
+    if (!session_id) {
+      if (!breedParam) {
+        setStatus("unpaid");
+        return;
+      }
+      // Lifetime members: the server confirms the account before unlocking.
+      unlockAsMember({ data: { breedId: breedParam } })
+        .then((res) => {
+          if (cancelled) return;
+          if (res.paid && res.breedId) {
+            setBreed(getBreed(res.breedId) ?? null);
+            setStatus("paid");
+          } else {
+            setStatus("unpaid");
+          }
+        })
+        .catch(() => {
+          if (!cancelled) setStatus("unpaid");
+        });
+      return () => {
+        cancelled = true;
+      };
+    }
+
     verify({ data: { sessionId: session_id } })
       .then((res) => {
         if (cancelled) return;
@@ -212,7 +235,7 @@ function SuccessPage() {
     return () => {
       cancelled = true;
     };
-  }, [session_id, verify]);
+  }, [session_id, breedParam, verify, unlockAsMember]);
 
   if (status === "loading") {
     return (
