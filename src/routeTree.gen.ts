@@ -33,6 +33,7 @@ import { Route as Char123LangChar125MyDogRouteImport } from './routes/{-$lang}/m
 import { Route as Char123LangChar125PartnersRouteImport } from './routes/{-$lang}/partners'
 import { Route as Char123LangChar125PlusRouteImport } from './routes/{-$lang}/plus'
 import { Route as Char123LangChar125PrivacyRouteImport } from './routes/{-$lang}/privacy'
+import { Route as Char123LangChar125ResetPasswordRouteImport } from './routes/{-$lang}/reset-password'
 import { Route as Char123LangChar125SourcesRouteImport } from './routes/{-$lang}/sources'
 import { Route as Char123LangChar125TermsRouteImport } from './routes/{-$lang}/terms'
 import { Route as Char123LangChar125TrainRouteImport } from './routes/{-$lang}/train'
@@ -211,6 +212,12 @@ const Char123LangChar125PrivacyRoute =
   Char123LangChar125PrivacyRouteImport.update({
     id: '/privacy',
     path: '/privacy',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125ResetPasswordRoute =
+  Char123LangChar125ResetPasswordRouteImport.update({
+    id: '/reset-password',
+    path: '/reset-password',
     getParentRoute: () => Char123LangChar125Route,
   } as any)
 const Char123LangChar125SourcesRoute =
@@ -488,6 +495,7 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/partners': typeof Char123LangChar125PartnersRouteWithChildren
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
   '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
+  '/{-$lang}/reset-password': typeof Char123LangChar125ResetPasswordRoute
   '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
   '/{-$lang}/terms': typeof Char123LangChar125TermsRoute
   '/{-$lang}/train': typeof Char123LangChar125TrainRouteWithChildren
@@ -553,6 +561,7 @@ export interface FileRoutesByTo {
   '/{-$lang}/partners': typeof Char123LangChar125PartnersRouteWithChildren
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
   '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
+  '/{-$lang}/reset-password': typeof Char123LangChar125ResetPasswordRoute
   '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
   '/{-$lang}/terms': typeof Char123LangChar125TermsRoute
   '/{-$lang}/what-a-dog-costs': typeof Char123LangChar125WhatADogCostsRoute
@@ -620,6 +629,7 @@ export interface FileRoutesById {
   '/{-$lang}/partners': typeof Char123LangChar125PartnersRouteWithChildren
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
   '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
+  '/{-$lang}/reset-password': typeof Char123LangChar125ResetPasswordRoute
   '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
   '/{-$lang}/terms': typeof Char123LangChar125TermsRoute
   '/{-$lang}/train': typeof Char123LangChar125TrainRouteWithChildren
@@ -690,6 +700,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/partners'
     | '/{-$lang}/plus'
     | '/{-$lang}/privacy'
+    | '/{-$lang}/reset-password'
     | '/{-$lang}/sources'
     | '/{-$lang}/terms'
     | '/{-$lang}/train'
@@ -755,6 +766,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/partners'
     | '/{-$lang}/plus'
     | '/{-$lang}/privacy'
+    | '/{-$lang}/reset-password'
     | '/{-$lang}/sources'
     | '/{-$lang}/terms'
     | '/{-$lang}/what-a-dog-costs'
@@ -821,6 +833,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/partners'
     | '/{-$lang}/plus'
     | '/{-$lang}/privacy'
+    | '/{-$lang}/reset-password'
     | '/{-$lang}/sources'
     | '/{-$lang}/terms'
     | '/{-$lang}/train'
@@ -1039,6 +1052,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/{-$lang}/privacy'
       preLoaderRoute: typeof Char123LangChar125PrivacyRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/reset-password': {
+      id: '/{-$lang}/reset-password'
+      path: '/reset-password'
+      fullPath: '/{-$lang}/reset-password'
+      preLoaderRoute: typeof Char123LangChar125ResetPasswordRouteImport
       parentRoute: typeof Char123LangChar125Route
     }
     '/{-$lang}/sources': {
@@ -1486,6 +1506,7 @@ interface Char123LangChar125RouteChildren {
   Char123LangChar125PartnersRoute: typeof Char123LangChar125PartnersRouteWithChildren
   Char123LangChar125PlusRoute: typeof Char123LangChar125PlusRoute
   Char123LangChar125PrivacyRoute: typeof Char123LangChar125PrivacyRoute
+  Char123LangChar125ResetPasswordRoute: typeof Char123LangChar125ResetPasswordRoute
   Char123LangChar125SourcesRoute: typeof Char123LangChar125SourcesRoute
   Char123LangChar125TermsRoute: typeof Char123LangChar125TermsRoute
   Char123LangChar125TrainRoute: typeof Char123LangChar125TrainRouteWithChildren
@@ -1530,6 +1551,7 @@ const Char123LangChar125RouteChildren: Char123LangChar125RouteChildren = {
   Char123LangChar125PartnersRoute: Char123LangChar125PartnersRouteWithChildren,
   Char123LangChar125PlusRoute: Char123LangChar125PlusRoute,
   Char123LangChar125PrivacyRoute: Char123LangChar125PrivacyRoute,
+  Char123LangChar125ResetPasswordRoute: Char123LangChar125ResetPasswordRoute,
   Char123LangChar125SourcesRoute: Char123LangChar125SourcesRoute,
   Char123LangChar125TermsRoute: Char123LangChar125TermsRoute,
   Char123LangChar125TrainRoute: Char123LangChar125TrainRouteWithChildren,

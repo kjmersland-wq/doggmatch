@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
-import { getRequestHeader } from "@tanstack/react-start/server";
+import { trustedOrigin } from "@/lib/trusted-origin";
+import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { getBreed, type BreedId } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n";
@@ -14,10 +15,7 @@ import { dossierPrice } from "./pricing";
  */
 
 function originOf(): string {
-  return (
-    getRequestHeader("origin") ??
-    (getRequestHeader("host") ? `https://${getRequestHeader("host")}` : "https://doggmatch.com")
-  );
+  return trustedOrigin();
 }
 
 function langPath(locale: Locale, path: string): string {
@@ -51,6 +49,8 @@ export const createDossierCheckout = createServerFn({ method: "POST" })
             unit_amount: price.amount,
             product_data: {
               name: `DoggMatch — Complete Breed & Puppy Buyer Dossier: ${name}`,
+              // Stripe Managed Payments requires a tax code: electronically supplied services.
+              tax_code: "txcd_10000000",
             },
           },
           quantity: 1,
@@ -83,4 +83,22 @@ export const verifyDossierCheckout = createServerFn({ method: "POST" })
     const rawBreedId = session.metadata?.["breedId"];
     const breedId = rawBreedId && getBreed(rawBreedId) ? (rawBreedId as BreedId) : null;
     return { paid: session.payment_status === "paid", breedId };
+  });
+
+/**
+ * Founder accounts hold lifetime DoggMatch+ and never pay for a dossier.
+ * The email is read from the verified auth token, so this can't be faked
+ * by passing an address from the browser.
+ */
+export const unlockDossierAsMember = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((data: { breedId: string }) => {
+    if (!getBreed(data.breedId)) throw new Error("Unknown breed");
+    return { breedId: data.breedId as BreedId };
+  })
+  .handler(async ({ data, context }): Promise<DossierSession> => {
+    const email = context.claims?.email as string | undefined;
+    const { isFounderEmail } = await import("@/lib/plus/founder");
+    if (!isFounderEmail(email)) return { paid: false, breedId: null };
+    return { paid: true, breedId: data.breedId };
   });
