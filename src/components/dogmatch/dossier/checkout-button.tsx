@@ -81,7 +81,7 @@ export function DossierCheckoutButton({
     try {
       // Lifetime members never pay for a dossier — the server checks this again.
       if (membership.lifetime) {
-        await navigate({ to: withLangPrefix("/quiz/success"), search: { breed: breedId } });
+        await navigate({ to: withLangPrefix("/quiz/success"), search: { breed: breedId, session_id: "" } });
         return;
       }
       const { url } = await startCheckout({ data: { breedId, locale } });
