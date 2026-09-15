@@ -2,6 +2,37 @@ import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/r
 
 import { renderErrorPage } from "./lib/error-page";
 
+const CONTENT_SECURITY_POLICY = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://challenges.cloudflare.com",
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.stripe.com",
+  "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://challenges.cloudflare.com",
+  "img-src 'self' data: blob: https:",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com",
+  "font-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com",
+].join("; ");
+
+const PERMISSIONS_POLICY = "camera=(), microphone=(), geolocation=()";
+
+/** Response statuses the Fetch spec forbids from carrying a body. */
+const NULL_BODY_STATUSES = new Set([101, 204, 205, 304]);
+
+// Applied to every response (including error pages from errorMiddleware
+// below), so it's listed first — request middleware wraps outer-to-inner,
+// so this only gets to add headers after everything else has resolved.
+const securityHeadersMiddleware = createMiddleware().server(async ({ next }) => {
+  const result = await next();
+  const response = result.response;
+  const headers = new Headers(response.headers);
+  headers.set("X-Frame-Options", "SAMEORIGIN");
+  headers.set("Permissions-Policy", PERMISSIONS_POLICY);
+  headers.set("Content-Security-Policy", CONTENT_SECURITY_POLICY);
+  const withHeaders = NULL_BODY_STATUSES.has(response.status)
+    ? new Response(null, { status: response.status, statusText: response.statusText, headers })
+    : new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+  return { ...result, response: withHeaders };
+});
+
 const errorMiddleware = createMiddleware().server(async ({ next }) => {
   try {
     return await next();
@@ -50,5 +81,5 @@ const safeSupabaseAuth = createMiddleware({ type: "function" }).client(
 
 export const startInstance = createStart(() => ({
   functionMiddleware: [safeSupabaseAuth],
-  requestMiddleware: [errorMiddleware, csrfMiddleware],
+  requestMiddleware: [securityHeadersMiddleware, errorMiddleware, csrfMiddleware],
 }));
