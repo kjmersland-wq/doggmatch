@@ -427,14 +427,24 @@ function AuthPage() {
           </form>
 
           {mode === "signin" && (
-            <button
-              type="button"
-              onClick={onMagicLink}
-              disabled={magicLinkBusy}
-              className="mt-4 w-full text-center text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline disabled:opacity-70"
-            >
-              {magicLinkBusy ? c.magicLinkSending : c.magicLinkCta}
-            </button>
+            <>
+              <button
+                type="button"
+                onClick={onMagicLink}
+                disabled={magicLinkBusy}
+                className="mt-4 w-full text-center text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline disabled:opacity-70"
+              >
+                {magicLinkBusy ? c.magicLinkSending : c.magicLinkCta}
+              </button>
+              <button
+                type="button"
+                onClick={onResetPassword}
+                disabled={resetBusy}
+                className="mt-3 w-full text-center text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline disabled:opacity-70"
+              >
+                {resetBusy ? r.sending : r.forgot}
+              </button>
+            </>
           )}
 
           {notice && (
