@@ -472,6 +472,17 @@ function AuthPage() {
             </Button>
           </form>
 
+          {message && (
+            <p role="alert" className="mt-5 text-sm leading-relaxed text-accent">
+              {message}
+            </p>
+          )}
+          {notice && (
+            <p role="status" className="mt-5 text-sm leading-relaxed text-muted-foreground">
+              {notice}
+            </p>
+          )}
+
           {mode === "signin" && (
             <>
               <button
@@ -491,17 +502,6 @@ function AuthPage() {
                 {resetBusy ? r.sending : r.forgot}
               </button>
             </>
-          )}
-
-          {notice && (
-            <p role="status" className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              {notice}
-            </p>
-          )}
-          {message && (
-            <p role="alert" className="mt-5 text-sm leading-relaxed text-accent">
-              {message}
-            </p>
           )}
 
           <p className="mt-6 text-sm text-muted-foreground">

@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Session } from "@supabase/supabase-js";
 
-/** Is the backend configured in this build? Keeps public pages alive if not. */
-function backendConfigured(): boolean {
-  return Boolean(
-    import.meta.env["VITE_SUPABASE_URL"] && import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"],
-  );
-}
-
 /** The signed-in person, or null. Loading is true until we know. */
 export function useAuth() {
   const [session, setSession] = useState<Session | null>(null);
@@ -16,13 +9,6 @@ export function useAuth() {
   useEffect(() => {
     let alive = true;
     let unsubscribe: (() => void) | null = null;
-
-    if (!backendConfigured()) {
-      setLoading(false);
-      return () => {
-        alive = false;
-      };
-    }
 
     void (async () => {
       try {
