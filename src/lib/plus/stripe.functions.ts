@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { trustedOrigin } from "@/lib/trusted-origin";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { PLUS_PLANS, type PlanId } from "./plans";
-import { isFounderEmail } from "./founder";
+import { founderEmailFromClaims, isFounderEmail } from "./founder";
 
 export type MembershipStatus = {
   subscribed: boolean;
@@ -22,7 +22,10 @@ export const createPlusCheckout = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((data: { plan: PlanId; code?: string }) => {
     if (data?.plan !== "monthly" && data?.plan !== "yearly") throw new Error("Unknown plan");
-    return { plan: data.plan, code: typeof data.code === "string" ? data.code.trim().toUpperCase().slice(0, 40) : "" };
+    return {
+      plan: data.plan,
+      code: typeof data.code === "string" ? data.code.trim().toUpperCase().slice(0, 40) : "",
+    };
   })
   .handler(async ({ data, context }): Promise<{ url: string }> => {
     const { getStripe, findCustomerId } = await import("./stripe.server");
@@ -79,7 +82,10 @@ export const createPlusCheckout = createServerFn({ method: "POST" })
 /** Does this partner code exist and is it live? Used before checkout. */
 export const checkPartnerCode = createServerFn({ method: "POST" })
   .inputValidator((data: { code: string }) => ({
-    code: String(data?.code ?? "").trim().toUpperCase().slice(0, 40),
+    code: String(data?.code ?? "")
+      .trim()
+      .toUpperCase()
+      .slice(0, 40),
   }))
   .handler(async ({ data }): Promise<{ valid: boolean; company: string | null }> => {
     if (!data.code) return { valid: false, company: null };
@@ -107,7 +113,6 @@ export const confirmPartnerReferral = createServerFn({ method: "POST" })
     return { ok: !error };
   });
 
-
 /** Is this person a DoggMatch+ member right now? Read straight from Stripe. */
 export const getMembership = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
@@ -119,20 +124,32 @@ export const getMembership = createServerFn({ method: "POST" })
       cancelsAtPeriodEnd: false,
       lifetime: false,
     };
-    const email = context.claims?.email as string | undefined;
-    if (!email) return none;
+    const email = founderEmailFromClaims(context.claims);
 
-    // Founder accounts skip Stripe entirely — permanent membership by email alone.
+    // Founder accounts skip Stripe entirely — permanent membership by email
+    // alone. Checked first, so a missing/empty email claim elsewhere in this
+    // function can never short-circuit past a founder's own account.
     if (isFounderEmail(email)) {
-      return { subscribed: true, plan: "yearly", renewsAt: null, cancelsAtPeriodEnd: false, lifetime: true };
+      return {
+        subscribed: true,
+        plan: "yearly",
+        renewsAt: null,
+        cancelsAtPeriodEnd: false,
+        lifetime: true,
+      };
     }
+    if (!email) return none;
 
     const { getStripe, findCustomerId } = await import("./stripe.server");
     const stripe = getStripe();
     const customerId = await findCustomerId(email);
     if (!customerId) return none;
 
-    const subs = await stripe.subscriptions.list({ customer: customerId, status: "active", limit: 1 });
+    const subs = await stripe.subscriptions.list({
+      customer: customerId,
+      status: "active",
+      limit: 1,
+    });
     const sub = subs.data[0];
     if (!sub) return none;
 

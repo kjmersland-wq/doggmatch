@@ -7,6 +7,7 @@ import { useMyDog } from "@/lib/care/store";
 import { useTrainingState } from "@/lib/training/store";
 import { AccountMembership } from "@/components/dogmatch/plus/membership";
 import { MemberBenefits } from "@/components/dogmatch/plus/benefits";
+import { OwnerProfileCard } from "@/components/dogmatch/account/owner-profile";
 import { useMembership } from "@/hooks/use-membership";
 import { usePreferences, preferencesStore, type UnitSystem } from "@/lib/account/preferences";
 import { useCopy } from "@/i18n";
@@ -316,6 +317,10 @@ function AccountPage() {
       </section>
 
       <Section className="container-page">
+        <OwnerProfileCard />
+      </Section>
+
+      <Section className="container-page pt-0">
         <div className="grid gap-6 lg:grid-cols-2">
           <AccountMembership />
 

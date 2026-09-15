@@ -97,8 +97,8 @@ export const unlockDossierAsMember = createServerFn({ method: "POST" })
     return { breedId: data.breedId as BreedId };
   })
   .handler(async ({ data, context }): Promise<DossierSession> => {
-    const email = context.claims?.email as string | undefined;
-    const { isFounderEmail } = await import("@/lib/plus/founder");
+    const { founderEmailFromClaims, isFounderEmail } = await import("@/lib/plus/founder");
+    const email = founderEmailFromClaims(context.claims);
     if (!isFounderEmail(email)) return { paid: false, breedId: null };
     return { paid: true, breedId: data.breedId };
   });

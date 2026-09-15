@@ -16,3 +16,21 @@ const FOUNDER_EMAILS = new Set(["kjmersland@gmail.com"]);
 export function isFounderEmail(email: string | null | undefined): boolean {
   return Boolean(email && FOUNDER_EMAILS.has(email.trim().toLowerCase()));
 }
+
+/**
+ * Supabase puts `email` at the top level of the JWT claims for normal
+ * sign-ins, but it's an optional claim — some auth paths (or a custom
+ * Access Token Hook) can end up carrying it only under `user_metadata`
+ * instead. Check both rather than assuming one shape.
+ */
+export function founderEmailFromClaims(
+  claims: Record<string, unknown> | undefined | null,
+): string | undefined {
+  if (!claims) return undefined;
+  const direct = claims["email"];
+  if (typeof direct === "string" && direct) return direct;
+  const userMetadata = claims["user_metadata"] as Record<string, unknown> | undefined;
+  const metaEmail = userMetadata?.["email"];
+  if (typeof metaEmail === "string" && metaEmail) return metaEmail;
+  return undefined;
+}
