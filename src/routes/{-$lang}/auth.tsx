@@ -61,6 +61,7 @@ const copy = {
     signInInstead: "Sign in instead",
     signUpNotice: "Almost there — check your inbox and confirm your email address.",
     genericError: "Something went wrong. Please try again.",
+    configError: "Sign-in is temporarily unavailable. Please try again shortly.",
     googleError: "We couldn't sign you in with Google just then. Please try again.",
     magicLinkCta: "Email me a sign-in link instead",
     magicLinkSending: "Sending…",
@@ -88,6 +89,7 @@ const copy = {
     signInInstead: "Logg inn i stedet",
     signUpNotice: "Nesten der — sjekk innboksen din og bekreft e-postadressen.",
     genericError: "Noe gikk galt. Prøv gjerne igjen.",
+    configError: "Innlogging er midlertidig utilgjengelig. Prøv igjen om litt.",
     googleError: "Vi klarte ikke å logge deg inn med Google akkurat nå. Prøv gjerne igjen.",
     magicLinkCta: "Send meg en innloggingslenke i stedet",
     magicLinkSending: "Sender …",
@@ -115,6 +117,7 @@ const copy = {
     signInInstead: "Zaloguj się zamiast tego",
     signUpNotice: "Już prawie gotowe — sprawdź swoją skrzynkę i potwierdź adres e-mail.",
     genericError: "Coś poszło nie tak. Spróbuj ponownie.",
+    configError: "Logowanie jest chwilowo niedostępne. Spróbuj ponownie za chwilę.",
     googleError: "Nie udało się zalogować przez Google. Spróbuj ponownie.",
     magicLinkCta: "Wyślij mi zamiast tego link do logowania",
     magicLinkSending: "Wysyłanie…",
@@ -142,6 +145,7 @@ const copy = {
     signInInstead: "Log ind i stedet",
     signUpNotice: "Næsten der — tjek din indbakke og bekræft din e-mailadresse.",
     genericError: "Noget gik galt. Prøv venligst igen.",
+    configError: "Log ind er midlertidigt utilgængeligt. Prøv igen om lidt.",
     googleError: "Vi kunne ikke logge dig ind med Google lige nu. Prøv venligst igen.",
     magicLinkCta: "Send mig et login-link i stedet",
     magicLinkSending: "Sender …",
@@ -169,6 +173,7 @@ const copy = {
     signInInstead: "Logga in istället",
     signUpNotice: "Nästan klart — kolla din inkorg och bekräfta din e-postadress.",
     genericError: "Något gick fel. Försök igen.",
+    configError: "Inloggning är tillfälligt otillgänglig. Försök igen om en liten stund.",
     googleError: "Vi kunde inte logga in dig med Google just nu. Försök igen.",
     magicLinkCta: "Skicka mig en inloggningslänk istället",
     magicLinkSending: "Skickar …",
@@ -196,6 +201,7 @@ const copy = {
     signInInstead: "Kirjaudu sisään sen sijaan",
     signUpNotice: "Melkein valmista — tarkista sähköpostisi ja vahvista osoitteesi.",
     genericError: "Jokin meni pieleen. Yritä uudelleen.",
+    configError: "Kirjautuminen ei ole juuri nyt käytettävissä. Yritä pian uudelleen.",
     googleError: "Emme voineet kirjata sinua sisään Googlella juuri nyt. Yritä uudelleen.",
     magicLinkCta: "Lähetä minulle kirjautumislinkki sen sijaan",
     magicLinkSending: "Lähetetään…",
@@ -223,6 +229,7 @@ const copy = {
     signInInstead: "Stattdessen anmelden",
     signUpNotice: "Fast geschafft — sieh in dein Postfach und bestätige deine E-Mail-Adresse.",
     genericError: "Etwas ist schiefgelaufen. Bitte versuch es noch einmal.",
+    configError: "Die Anmeldung ist vorübergehend nicht verfügbar. Bitte versuch es in Kürze erneut.",
     googleError: "Wir konnten dich gerade nicht mit Google anmelden. Bitte versuch es noch einmal.",
     magicLinkCta: "Stattdessen einen Anmeldelink zuschicken",
     magicLinkSending: "Wird gesendet …",
@@ -250,6 +257,7 @@ const copy = {
     signInInstead: "Se connecter à la place",
     signUpNotice: "Presque terminé — vérifiez votre boîte mail et confirmez votre adresse e-mail.",
     genericError: "Une erreur s'est produite. Veuillez réessayer.",
+    configError: "La connexion est temporairement indisponible. Veuillez réessayer sous peu.",
     googleError:
       "Nous n'avons pas pu vous connecter avec Google pour l'instant. Veuillez réessayer.",
     magicLinkCta: "M'envoyer un lien de connexion à la place",
@@ -279,6 +287,7 @@ const copy = {
     signInInstead: "Toch inloggen",
     signUpNotice: "Bijna klaar — check je inbox en bevestig je e-mailadres.",
     genericError: "Er ging iets mis. Probeer het opnieuw.",
+    configError: "Inloggen is tijdelijk niet beschikbaar. Probeer het binnenkort opnieuw.",
     googleError: "We konden je niet inloggen met Google. Probeer het opnieuw.",
     magicLinkCta: "Stuur mij in plaats daarvan een inloglink",
     magicLinkSending: "Verzenden…",
@@ -286,6 +295,19 @@ const copy = {
     magicLinkNeedsEmail: "Vul eerst uw e-mailadres hierboven in.",
   },
 } as const;
+
+/**
+ * Supabase client creation failures (missing build-time env vars) surface
+ * here as a raw internal error message. Show something honest but calm
+ * instead of that string verbatim.
+ */
+function authErrorMessage(error: unknown, fallback: string, configFallback: string): string {
+  if (error instanceof Error) {
+    if (error.message.includes("Missing Supabase environment variable")) return configFallback;
+    return error.message;
+  }
+  return fallback;
+}
 
 function AuthPage() {
   const c = useCopy(copy);
@@ -326,7 +348,7 @@ function AuthPage() {
         if (error) throw error;
       }
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : c.genericError);
+      setMessage(authErrorMessage(error, c.genericError, c.configError));
     } finally {
       setBusy(false);
     }
@@ -356,7 +378,7 @@ function AuthPage() {
       if (error) throw error;
       setNotice(c.magicLinkSent);
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : c.genericError);
+      setMessage(authErrorMessage(error, c.genericError, c.configError));
     } finally {
       setMagicLinkBusy(false);
     }
