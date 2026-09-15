@@ -8,6 +8,13 @@
       "when": 1789302737473,
       "tag": "0000_partner_portal",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1789476461205,
+      "tag": "0001_harden_definer_functions_and_deny_client_writes",
+      "breakpoints": true
     }
   ]
 }
