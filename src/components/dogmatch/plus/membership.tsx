@@ -35,7 +35,7 @@ const copy = {
     checking: "Checking…",
     planYearly: "DoggMatch+ yearly",
     planMonthly: "DoggMatch+ monthly",
-    planLifetime: "DoggMatch+ lifetime",
+    planLifetime: "DoggMatch+ Lifetime",
     free: "Free",
     ends: "Ends",
     renews: "Renews",
