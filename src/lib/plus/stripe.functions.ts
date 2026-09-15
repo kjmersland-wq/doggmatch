@@ -14,10 +14,7 @@ export type MembershipStatus = {
 };
 
 function originOf(): string {
-  return (
-    getRequestHeader("origin") ??
-    (getRequestHeader("host") ? `https://${getRequestHeader("host")}` : "https://doggmatch.com")
-  );
+  return trustedOrigin();
 }
 
 /** Start a DoggMatch+ subscription checkout for the signed-in person. */

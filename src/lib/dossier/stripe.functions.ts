@@ -1,5 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
-import { getRequestHeader } from "@tanstack/react-start/server";
+import { trustedOrigin } from "@/lib/trusted-origin";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { getBreed, type BreedId } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
@@ -15,10 +15,7 @@ import { dossierPrice } from "./pricing";
  */
 
 function originOf(): string {
-  return (
-    getRequestHeader("origin") ??
-    (getRequestHeader("host") ? `https://${getRequestHeader("host")}` : "https://doggmatch.com")
-  );
+  return trustedOrigin();
 }
 
 function langPath(locale: Locale, path: string): string {
