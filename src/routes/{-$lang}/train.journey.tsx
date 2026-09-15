@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Eyebrow } from "@/components/dogmatch/ui";
 import { LessonCard, statusLabel } from "@/components/dogmatch/training/parts";
@@ -14,20 +16,7 @@ const description =
   "Everything you and your dog have worked on, in one place — what's going well, what needs practice, and what to try next.";
 
 export const Route = createFileRoute("/{-$lang}/train/journey")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-      { name: "robots", content: "noindex" },
-    ],
-    links: seoLinks("/train/journey"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/train/journey", pageSeo.trainJourney),
   component: JourneyPage,
 });
 
@@ -38,7 +27,8 @@ const copy = {
     eyebrow: "Your journey",
     titleWithDog: (name: string) => `You and ${name}, so far.`,
     titleGuest: "Your journey together, once you start.",
-    guestBody: "Tell us about your dog and we'll keep track of what you've worked on. Nothing leaves this device.",
+    guestBody:
+      "Tell us about your dog and we'll keep track of what you've worked on. Nothing leaves this device.",
     guestCta: "Tell us about your dog",
     statSessions: "Sessions together",
     statSkills: "Skills learned",
@@ -55,7 +45,8 @@ const copy = {
     eyebrow: "Reisen din",
     titleWithDog: (name: string) => `Du og ${name}, så langt.`,
     titleGuest: "Reisen sammen, så snart dere starter.",
-    guestBody: "Fortell oss om hunden din, så holder vi oversikt over det dere har jobbet med. Ingenting forlater denne enheten.",
+    guestBody:
+      "Fortell oss om hunden din, så holder vi oversikt over det dere har jobbet med. Ingenting forlater denne enheten.",
     guestCta: "Fortell oss om hunden din",
     statSessions: "Økter sammen",
     statSkills: "Ferdigheter lært",
@@ -72,7 +63,8 @@ const copy = {
     eyebrow: "Twoja podróż",
     titleWithDog: (name: string) => `Ty i ${name}, jak dotąd.`,
     titleGuest: "Wasza wspólna podróż, gdy tylko zaczniecie.",
-    guestBody: "Opowiedz nam o swoim psie, a będziemy śledzić, nad czym pracowaliście. Nic nie opuszcza tego urządzenia.",
+    guestBody:
+      "Opowiedz nam o swoim psie, a będziemy śledzić, nad czym pracowaliście. Nic nie opuszcza tego urządzenia.",
     guestCta: "Opowiedz nam o swoim psie",
     statSessions: "Sesje razem",
     statSkills: "Poznane umiejętności",
@@ -89,7 +81,8 @@ const copy = {
     eyebrow: "Din rejse",
     titleWithDog: (name: string) => `Dig og ${name}, indtil videre.`,
     titleGuest: "Jeres fælles rejse, når I kommer i gang.",
-    guestBody: "Fortæl os om din hund, så holder vi styr på det, I har arbejdet med. Intet forlader denne enhed.",
+    guestBody:
+      "Fortæl os om din hund, så holder vi styr på det, I har arbejdet med. Intet forlader denne enhed.",
     guestCta: "Fortæl os om din hund",
     statSessions: "Sessioner sammen",
     statSkills: "Færdigheder lært",
@@ -106,7 +99,8 @@ const copy = {
     eyebrow: "Din resa",
     titleWithDog: (name: string) => `Du och ${name}, hittills.`,
     titleGuest: "Er gemensamma resa, så snart ni sätter igång.",
-    guestBody: "Berätta om din hund så håller vi koll på vad ni har jobbat med. Inget lämnar den här enheten.",
+    guestBody:
+      "Berätta om din hund så håller vi koll på vad ni har jobbat med. Inget lämnar den här enheten.",
     guestCta: "Berätta om din hund",
     statSessions: "Pass tillsammans",
     statSkills: "Färdigheter inlärda",
@@ -123,7 +117,8 @@ const copy = {
     eyebrow: "Matkasi",
     titleWithDog: (name: string) => `Sinä ja ${name}, tähän mennessä.`,
     titleGuest: "Yhteinen matkanne alkaa, kun aloitatte.",
-    guestBody: "Kerro meille koirastasi, niin pidämme kirjaa siitä, mitä olette harjoitelleet. Mikään ei poistu tältä laitteelta.",
+    guestBody:
+      "Kerro meille koirastasi, niin pidämme kirjaa siitä, mitä olette harjoitelleet. Mikään ei poistu tältä laitteelta.",
     guestCta: "Kerro meille koirastasi",
     statSessions: "Yhteiset harjoitukset",
     statSkills: "Opitut taidot",
@@ -137,27 +132,29 @@ const copy = {
     nextTitle: "Mitä kannattaa kokeilla seuraavaksi",
   },
   de: {
-    eyebrow: "Ihre Reise",
-    titleWithDog: (name: string) => `Sie und ${name}, bisher.`,
-    titleGuest: "Ihre gemeinsame Reise, sobald Sie starten.",
-    guestBody: "Erzählen Sie uns von Ihrem Hund, und wir behalten den Überblick über das, woran Sie gearbeitet haben. Nichts verlässt dieses Gerät.",
-    guestCta: "Erzählen Sie uns von Ihrem Hund",
+    eyebrow: "Deine Reise",
+    titleWithDog: (name: string) => `Du und ${name}, bis hierhin.`,
+    titleGuest: "Eure gemeinsame Reise, sobald ihr startet.",
+    guestBody:
+      "Erzähl uns von deinem Hund, dann behalten wir im Blick, woran ihr gearbeitet habt. Nichts verlässt dieses Gerät.",
+    guestCta: "Erzähl uns von deinem Hund",
     statSessions: "Einheiten zusammen",
     statSkills: "Gelernte Fähigkeiten",
     statStreak: "Tage in Folge",
-    standingTitle: "So sieht es gerade aus",
+    standingTitle: "So steht es gerade",
     nothingYet: "Hier ist noch nichts.",
     recentTitle: "Letzte Einheiten",
     feelingGreat: "Lief richtig gut",
     feelingGood: "Gut genug",
     feelingMore: "Braucht mehr Übung",
-    nextTitle: "Was Sie als Nächstes ausprobieren können",
+    nextTitle: "Was ihr als Nächstes versuchen könnt",
   },
   fr: {
     eyebrow: "Votre parcours",
     titleWithDog: (name: string) => `Vous et ${name}, jusqu'ici.`,
-    titleGuest: "Votre parcours ensemble, dès que vous commencerez.",
-    guestBody: "Parlez-nous de votre chien, et nous suivrons ce sur quoi vous avez travaillé. Rien ne quitte cet appareil.",
+    titleGuest: "Votre parcours commun, dès que vous commencez.",
+    guestBody:
+      "Parlez-nous de votre chien, et nous suivrons ce sur quoi vous avez travaillé. Rien ne quitte cet appareil.",
     guestCta: "Parlez-nous de votre chien",
     statSessions: "Séances ensemble",
     statSkills: "Compétences acquises",
@@ -165,17 +162,18 @@ const copy = {
     standingTitle: "Où vous en êtes",
     nothingYet: "Rien ici pour l'instant.",
     recentTitle: "Séances récentes",
-    feelingGreat: "Ça s'est vraiment bien passé",
+    feelingGreat: "Ça s'est très bien passé",
     feelingGood: "Assez bien",
     feelingMore: "A besoin de plus de pratique",
     nextTitle: "Quoi essayer ensuite",
   },
   nl: {
-    eyebrow: "Uw reis",
-    titleWithDog: (name: string) => `U en ${name}, tot nu toe.`,
-    titleGuest: "Uw gezamenlijke reis, zodra u begint.",
-    guestBody: "Vertel ons over uw hond, dan houden we bij waar u aan gewerkt heeft. Er verlaat niets dit apparaat.",
-    guestCta: "Vertel ons over uw hond",
+    eyebrow: "Jouw traject",
+    titleWithDog: (name: string) => `Jij en ${name}, tot nu toe.`,
+    titleGuest: "Jullie gezamenlijke traject, zodra jullie beginnen.",
+    guestBody:
+      "Vertel ons over je hond, dan houden we bij waar jullie aan hebben gewerkt. Niets verlaat dit apparaat.",
+    guestCta: "Vertel ons over je hond",
     statSessions: "Sessies samen",
     statSkills: "Geleerde vaardigheden",
     statStreak: "Dagen op rij",
@@ -185,7 +183,7 @@ const copy = {
     feelingGreat: "Ging heel goed",
     feelingGood: "Goed genoeg",
     feelingMore: "Heeft meer oefening nodig",
-    nextTitle: "Wat u hierna kunt proberen",
+    nextTitle: "Wat je hierna kunt proberen",
   },
 } as const;
 
@@ -272,7 +270,11 @@ function JourneyPage() {
                     </span>
                     <span className="text-sm text-muted-foreground">
                       {s.day} ·{" "}
-                      {s.feeling === "great" ? c.feelingGreat : s.feeling === "good" ? c.feelingGood : c.feelingMore}
+                      {s.feeling === "great"
+                        ? c.feelingGreat
+                        : s.feeling === "good"
+                          ? c.feelingGood
+                          : c.feelingMore}
                     </span>
                   </li>
                 ))}

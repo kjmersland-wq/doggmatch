@@ -1,7 +1,6 @@
 import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/react-start";
 
 import { renderErrorPage } from "./lib/error-page";
-import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
 
 const errorMiddleware = createMiddleware().server(async ({ next }) => {
   try {
@@ -25,7 +24,31 @@ const csrfMiddleware = createCsrfMiddleware({
   filter: (ctx) => ctx.handlerType === "serverFn",
 });
 
+// Only attach a Supabase bearer token when Supabase is actually configured.
+// This keeps public server functions (e.g. places lookup) working even if the
+// published build is missing Supabase env vars, while still protecting auth-
+// required functions on properly configured deployments.
+const safeSupabaseAuth = createMiddleware({ type: "function" }).client(
+  async ({ next }) => {
+    const url = import.meta.env["VITE_SUPABASE_URL"];
+    const key = import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"];
+    if (!url || !key) {
+      return next({ headers: {} });
+    }
+    try {
+      const { supabase } = await import("@/integrations/supabase/client");
+      const { data } = await supabase.auth.getSession();
+      const token = data.session?.access_token;
+      return next({
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+    } catch {
+      return next({ headers: {} });
+    }
+  },
+);
+
 export const startInstance = createStart(() => ({
-  functionMiddleware: [attachSupabaseAuth],
+  functionMiddleware: [safeSupabaseAuth],
   requestMiddleware: [errorMiddleware, csrfMiddleware],
 }));

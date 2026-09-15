@@ -4,9 +4,11 @@ import { useServerFn } from "@tanstack/react-start";
 import { createPlusCheckout } from "@/lib/plus/stripe.functions";
 import type { PlanId } from "@/lib/plus/plans";
 import { useMembership } from "@/hooks/use-membership";
+import { readPartnerCode } from "@/components/dogmatch/plus/partner-code";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
+
 
 type Props = {
   plan: PlanId;
@@ -60,24 +62,24 @@ const copy = {
   },
   de: {
     opening: "Sichere Kasse wird geöffnet …",
-    already: "Sie sind bereits Mitglied",
-    signInToJoin: "Anmelden, um beizutreten",
+    already: "Du bist bereits Mitglied",
+    signInToJoin: "Melde dich an, um beizutreten",
     join: "DoggMatch+ beitreten",
-    error: "Wir konnten die Zahlungsseite gerade nicht öffnen. Bitte versuchen Sie es erneut.",
+    error: "Wir konnten die Zahlungsseite gerade nicht öffnen. Bitte versuch es noch einmal.",
   },
   fr: {
     opening: "Ouverture du paiement sécurisé…",
     already: "Vous êtes déjà membre",
-    signInToJoin: "Connectez-vous pour rejoindre",
+    signInToJoin: "Connectez-vous pour adhérer",
     join: "Rejoindre DoggMatch+",
-    error: "Nous n'avons pas pu ouvrir la page de paiement à l'instant. Veuillez réessayer.",
+    error: "Nous n'avons pas pu ouvrir la page de paiement pour le moment. Merci de réessayer.",
   },
   nl: {
-    opening: "Beveiligd afrekenen wordt geopend…",
-    already: "U bent al lid",
+    opening: "Beveiligde betaalpagina wordt geopend…",
+    already: "Je bent al lid",
     signInToJoin: "Log in om lid te worden",
     join: "Word lid van DoggMatch+",
-    error: "We konden de betaalpagina zojuist niet openen. Probeer het opnieuw.",
+    error: "We konden de betaalpagina nu niet openen. Probeer het opnieuw.",
   },
 } as const;
 
@@ -104,7 +106,7 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
     }
     setBusy(true);
     try {
-      const { url } = await startCheckout({ data: { plan } });
+      const { url } = await startCheckout({ data: { plan, code: readPartnerCode() } });
       window.location.href = url;
     } catch {
       setError(c.error);

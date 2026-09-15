@@ -43,9 +43,9 @@ const seoCopy = {
       "Turvallisesti perille ja hyviä hetkiä kohteessa: turvallisuus autossa, ensimmäiset matkat, kuuma sää, tassut, vaellus, koirille ystävälliset paikat ja matkustaminen maiden välillä.",
   },
   de: {
-    title: "Reisen und Abenteuer mit Ihrem Hund — Auto, Wanderweg und Ausland | DoggMatch",
+    title: "Reisen und Abenteuer mit Hund — Auto, Wanderweg und Ausland | DoggMatch",
     description:
-      "Sicher ankommen und schöne Tage erleben: Sicherheit im Auto, erste Fahrten, heißes Wetter, Pfoten, Wandern, hundefreundliche Orte und Reisen zwischen Ländern.",
+      "Sicher ankommen und dort eine gute Zeit haben: Sicherheit im Auto, erste Fahrten, heißes Wetter, Pfoten, Wandern, hundefreundliche Orte und Reisen zwischen Ländern.",
   },
   fr: {
     title: "Voyages et aventures avec votre chien — voiture, sentier et étranger | DoggMatch",
@@ -53,9 +53,9 @@ const seoCopy = {
       "Arriver en sécurité et passer de bons moments sur place : sécurité en voiture, premiers trajets, chaleur, coussinets, randonnée, lieux accueillants pour chiens et voyages entre pays.",
   },
   nl: {
-    title: "Reizen en avonturen met uw hond — auto, pad en buitenland | DoggMatch",
+    title: "Reizen en avonturen met je hond — auto, pad en buitenland | DoggMatch",
     description:
-      "Veilig aankomen en fijne momenten beleven: veiligheid in de auto, eerste ritten, warm weer, pootjes, wandelen, hondvriendelijke plekken en reizen tussen landen.",
+      "Veilig aankomen en genieten als je er bent: veiligheid in de auto, eerste ritjes, warm weer, pootjes, wandelen, hondvriendelijke plekken en reizen tussen landen.",
   },
 };
 
@@ -98,7 +98,116 @@ const copy = {
     ],
     differentEyebrow: "Not every dog travels the same",
     differentTitle: "Who you're travelling with changes everything.",
-    differentBody: "A puppy, an old dog, a flat-faced breed and a fit adult need quite different plans for the same journey.",
+    differentBody:
+      "A puppy, an old dog, a flat-faced breed and a fit adult need quite different plans for the same journey.",
+  },
+  dk: {
+    eyebrow: "Rejser og eventyr",
+    heroTitle: "Skal I ud at rejse sammen?",
+    heroBody:
+      "Halvdelen af en god tur er at komme sikkert frem. Den anden halvdel er at vide, at din hund nyder det – og at vide, hvornår det er tid til at vende om.",
+    checkJourney: "Tjek min rejse",
+    carSafety: "Bilsikkerhed",
+    open: "Åben",
+    sections: [
+      {
+        to: "/travel/car",
+        label: "I bilen",
+        title: "Sikker transport.",
+        body: "Sådan spænder du hunden forsvarligt fast, de første bilture for en nervøs hund, køresyge, lange ture – og hvorfor en parkeret bil er livsfarlig om sommeren.",
+        alt: "En hund spændt fast i en transportkasse på bagsædet af en stationcar",
+      },
+      {
+        to: "/travel/outdoors",
+        label: "Udendørs",
+        title: "Gåture, stier og vejr.",
+        body: "Opbygning til længere vandreture, varme og kulde, poter på varm asfalt og grus, sikkerhed ved vandet og steder, hvor hunde er velkomne.",
+        alt: "En kvinde og hendes hund hviler sig på en bjergsti i gyldent lys",
+      },
+      {
+        to: "/travel/abroad",
+        label: "Over grænsen",
+        title: "Rejser til udlandet.",
+        body: "Fortæl os, hvor I skal hen, og hvornår. Vi viser, hvad der typisk kræves – chip, rabiesvaccination, pas, ormekur – og henviser til den officielle kilde for de endelige regler.",
+        alt: "En hund venter roligt ved siden af en kuffert i en lys ankomsthal",
+      },
+    ],
+    differentEyebrow: "Ikke alle hunde rejser ens",
+    differentTitle: "Hvem du rejser med, ændrer alt.",
+    differentBody:
+      "En hvalp, en gammel hund, en fladnosset race og en sund voksen hund kræver helt forskellige planer for den samme rejse.",
+  },
+  se: {
+    eyebrow: "Resor och äventyr",
+    heroTitle: "Ska ni iväg någonstans tillsammans?",
+    heroBody:
+      "Halva en lyckad resa är att komma fram tryggt. Den andra halvan är att veta att din hund verkligen njuter – och att veta när det är dags att vända om.",
+    checkJourney: "Kolla min resa",
+    carSafety: "Bilsäkerhet",
+    open: "Öppna",
+    sections: [
+      {
+        to: "/travel/car",
+        label: "I bilen",
+        title: "Att komma fram tryggt.",
+        body: "Hur du spänner fast hunden ordentligt, första bilresorna för en orolig hund, åksjuka, långa resor – och varför en parkerad bil på sommaren är så farlig.",
+        alt: "En hund säkert fastspänd i en transportbur i bagageutrymmet på en kombi",
+      },
+      {
+        to: "/travel/outdoors",
+        label: "Utomhus",
+        title: "Promenader, leder och väder.",
+        body: "Bygga upp för längre vandringar, värme och kyla, tassar på het asfalt och grus, vattensäkerhet och platser som verkligen välkomnar hundar.",
+        alt: "En kvinna och hennes hund vilar på en bergsvandringsled i gyllene timmen",
+      },
+      {
+        to: "/travel/abroad",
+        label: "Över gränserna",
+        title: "Resa utomlands.",
+        body: "Berätta vart ni ska och när. Vi visar vad som brukar krävas – chip, rabies, pass, avmaskning – och hänvisar till officiella källor för det slutgiltiga beskedet.",
+        alt: "En hund som lugnt väntar bredvid en resväska i en ljus ankomsthall",
+      },
+    ],
+    differentEyebrow: "Alla hundar reser inte likadant",
+    differentTitle: "Vem du reser med förändrar allt.",
+    differentBody:
+      "En valp, en gammal hund, en brachycefal (kortnosig) ras och en frisk vuxen hund behöver helt olika planer för samma resa.",
+  },
+  fi: {
+    eyebrow: "Matkailu ja seikkailut",
+    heroTitle: "Lähdössä jonnekin yhdessä?",
+    heroBody:
+      "Puolikas onnistuneesta matkasta on turvallinen matkanteko. Toinen puolisko on varmuus siitä, että koirasi todella nauttii matkasta – ja tieto siitä, milloin on aika kääntyä takaisin.",
+    checkJourney: "Tarkista matkani",
+    carSafety: "Autoturvallisuus",
+    open: "Avaa",
+    sections: [
+      {
+        to: "/travel/car",
+        label: "Autossa",
+        title: "Turvallinen matkanteko autolla.",
+        body: "Kuinka koira kiinnitetään asianmukaisesti, ensimmäiset matkat aralle koiralle, matkapahoinvointi, pitkät ajomatkat – ja miksi kesällä parkkeerattu auto on niin vaarallinen.",
+        alt: "Matkustushäkkiin kiinnitetty koira farmariauton takakontissa",
+      },
+      {
+        to: "/travel/outdoors",
+        label: "Ulkona ja liikkeellä",
+        title: "Lenkit, polut ja sää.",
+        body: "Pidempien vaellusten aloittaminen, kuumuus ja kylmyys, tassut kuumalla asfaltilla ja hiekalla, vesiturvallisuus ja paikat, joissa koira on todella tervetullut.",
+        alt: "Nainen ja hänen koiransa lepäämässä vuoristopolulla kultaisessa hetkessä",
+      },
+      {
+        to: "/travel/abroad",
+        label: "Rajojen ylitys",
+        title: "Matkustaminen ulkomaille.",
+        body: "Kerro meille minne ja milloin olet menossa. Näytämme, mitä yleensä vaaditaan – mikrosiru, raivotauti, passi, madotus – ja ohjaamme sinut viralliseen lähteeseen lopullisen tiedon saamiseksi.",
+        alt: "Koira odottaa rauhallisesti matkalaukun vieressä avarassa lähtöaulassa",
+      },
+    ],
+    differentEyebrow: "Kaikki koirat eivät matkusta samalla tavalla",
+    differentTitle: "Se, kenen kanssa matkustat, muuttaa kaiken.",
+    differentBody:
+      "Pentu, vanha koira, lyhytkuonolainen rotu ja terve aikuinen koira tarvitsevat varsin erilaisia suunnitelmia samaan matkaan.",
   },
   no: {
     eyebrow: "Reise og eventyr",
@@ -133,7 +242,8 @@ const copy = {
     ],
     differentEyebrow: "Ikke alle hunder reiser likt",
     differentTitle: "Hvem du reiser med endrer alt.",
-    differentBody: "En valp, en gammel hund, en rase med flatt ansikt og en sprek voksen hund trenger ganske ulike planer for samme reise.",
+    differentBody:
+      "En valp, en gammel hund, en rase med flatt ansikt og en sprek voksen hund trenger ganske ulike planer for samme reise.",
   },
   pl: {
     eyebrow: "Podróże i przygody",
@@ -168,118 +278,14 @@ const copy = {
     ],
     differentEyebrow: "Nie każdy pies podróżuje tak samo",
     differentTitle: "To, z kim podróżujesz, zmienia wszystko.",
-    differentBody: "Szczeniak, starszy pies, rasa płaskonosa i sprawny dorosły pies potrzebują zupełnie innych planów na tę samą podróż.",
-  },
-  dk: {
-    eyebrow: "Rejse og eventyr",
-    heroTitle: "Skal I et sted hen sammen?",
-    heroBody:
-      "Halvdelen af en god tur er at komme sikkert frem. Den anden halvdel er at vide, at din hund virkelig nyder det — og at vide, hvornår I skal vende om.",
-    checkJourney: "Tjek min rejse",
-    carSafety: "Sikkerhed i bilen",
-    open: "Åbn",
-    sections: [
-      {
-        to: "/travel/car",
-        label: "I bilen",
-        title: "At komme sikkert frem.",
-        body: "Sådan sikrer du en hund korrekt, første ture for en nervøs hund, køresyge, lange køreture — og hvorfor en parkeret bil om sommeren er så farlig.",
-        alt: "En hund sikret i en transportkasse i bagagerummet på en stationcar",
-      },
-      {
-        to: "/travel/outdoors",
-        label: "Ude og gå",
-        title: "Ture, stier og vejr.",
-        body: "At bygge op til længere vandreture, varme og kulde, poter på varm asfalt og grus, sikkerhed ved vand, og steder der virkelig sætter pris på en hund.",
-        alt: "En kvinde og hendes hund hviler på en bjergsti i det gyldne lys",
-      },
-      {
-        to: "/travel/abroad",
-        label: "Over landegrænser",
-        title: "Rejse til udlandet.",
-        body: "Fortæl os hvor og hvornår I rejser. Vi viser, hvad der normalt kræves — chip, rabies, pas, ormekur — og henviser dig til den officielle kilde for det endelige svar.",
-        alt: "En hund der venter roligt ved siden af en kuffert i en luftig afgangshal",
-      },
-    ],
-    differentEyebrow: "Ikke alle hunde rejser ens",
-    differentTitle: "Hvem du rejser med, ændrer alt.",
-    differentBody: "En hvalp, en gammel hund, en fladtrynet race og en sprød voksen hund har brug for ganske forskellige planer til den samme rejse.",
-  },
-  se: {
-    eyebrow: "Resor och äventyr",
-    heroTitle: "Ska ni någonstans tillsammans?",
-    heroBody:
-      "Halva en bra resa är att komma fram säkert. Den andra halvan är att veta att din hund verkligen njuter av det — och att veta när ni bör vända om.",
-    checkJourney: "Kolla min resa",
-    carSafety: "Säkerhet i bilen",
-    open: "Öppna",
-    sections: [
-      {
-        to: "/travel/car",
-        label: "I bilen",
-        title: "Att komma fram säkert.",
-        body: "Hur man säkrar en hund ordentligt, första resorna för en nervös hund, åksjuka, långa bilresor — och varför en parkerad bil på sommaren är så farlig.",
-        alt: "En hund säkrad i en transportbur i bagageutrymmet på en kombi",
-      },
-      {
-        to: "/travel/outdoors",
-        label: "Ute och går",
-        title: "Promenader, leder och väder.",
-        body: "Att bygga upp till längre vandringar, värme och kyla, tassar på het asfalt och grus, säkerhet vid vatten, och platser som verkligen uppskattar en hund.",
-        alt: "En kvinna och hennes hund vilar på en bergsled i det gyllene ljuset",
-      },
-      {
-        to: "/travel/abroad",
-        label: "Över landsgränser",
-        title: "Resa utomlands.",
-        body: "Berätta var och när ni ska resa. Vi visar vad som vanligtvis krävs — chip, rabies, pass, avmaskning — och pekar dig till den officiella källan för det slutgiltiga svaret.",
-        alt: "En hund som väntar lugnt bredvid en resväska i en luftig avgångshall",
-      },
-    ],
-    differentEyebrow: "Alla hundar reser inte likadant",
-    differentTitle: "Vem du reser med förändrar allt.",
-    differentBody: "En valp, en gammal hund, en kortnosig ras och en pigg vuxen hund behöver ganska olika planer för samma resa.",
-  },
-  fi: {
-    eyebrow: "Matkailu ja seikkailut",
-    heroTitle: "Oletteko menossa jonnekin yhdessä?",
-    heroBody:
-      "Puolet hyvästä matkasta on turvallisesti perille pääseminen. Toinen puoli on tietää, että koirasi todella nauttii siitä — ja tietää, milloin on aika kääntyä takaisin.",
-    checkJourney: "Tarkista matkani",
-    carSafety: "Turvallisuus autossa",
-    open: "Avaa",
-    sections: [
-      {
-        to: "/travel/car",
-        label: "Autossa",
-        title: "Turvallisesti perille.",
-        body: "Miten koira kiinnitetään oikein, ensimmäiset matkat arasta koiralle, matkapahoinvointi, pitkät automatkat — ja miksi kesällä pysäköity auto on niin vaarallinen.",
-        alt: "Koira turvallisesti kiinnitettynä kuljetushäkissä farmariauton tavaratilassa",
-      },
-      {
-        to: "/travel/outdoors",
-        label: "Ulkona liikkeellä",
-        title: "Kävelyt, polut ja sää.",
-        body: "Pidempiin vaelluksiin totuttautuminen, kuumuus ja kylmyys, tassut kuumalla asfaltilla ja sepelillä, turvallisuus vedessä, ja paikat, jotka aidosti iloitsevat koirasta.",
-        alt: "Nainen ja hänen koiransa lepäävät vuoripolulla kultaisen tunnin valossa",
-      },
-      {
-        to: "/travel/abroad",
-        label: "Rajojen yli",
-        title: "Matkustaminen ulkomaille.",
-        body: "Kerro meille, minne ja milloin olette matkustamassa. Näytämme, mitä tavallisesti vaaditaan — mikrosiru, rabies, lemmikkipassi, madotus — ja ohjaamme sinut viralliseen lähteeseen lopullista vastausta varten.",
-        alt: "Koira odottaa rauhallisesti matkalaukun vieressä valoisassa lähtöhallissa",
-      },
-    ],
-    differentEyebrow: "Kaikki koirat eivät matkusta samalla tavalla",
-    differentTitle: "Se, kenen kanssa matkustat, muuttaa kaiken.",
-    differentBody: "Pentu, vanha koira, litteäkuonoinen rotu ja hyväkuntoinen aikuinen koira tarvitsevat hyvin erilaiset suunnitelmat samalle matkalle.",
+    differentBody:
+      "Szczeniak, starszy pies, rasa płaskonosa i sprawny dorosły pies potrzebują zupełnie innych planów na tę samą podróż.",
   },
   de: {
     eyebrow: "Reisen und Abenteuer",
-    heroTitle: "Wollen Sie gemeinsam irgendwohin?",
+    heroTitle: "Geht es gemeinsam irgendwohin?",
     heroBody:
-      "Die halbe Miete einer guten Reise ist, sicher anzukommen. Die andere Hälfte ist zu wissen, dass Ihr Hund es wirklich genießt — und zu wissen, wann Sie umkehren sollten.",
+      "Die halbe Miete einer guten Reise ist, sicher anzukommen. Die andere Hälfte ist zu wissen, dass dein Hund es wirklich genießt — und zu wissen, wann umgekehrt werden sollte.",
     checkJourney: "Meine Reise prüfen",
     carSafety: "Sicherheit im Auto",
     open: "Öffnen",
@@ -287,7 +293,7 @@ const copy = {
       {
         to: "/travel/car",
         label: "Im Auto",
-        title: "Sicher ans Ziel kommen.",
+        title: "Sicher ankommen.",
         body: "Wie man einen Hund richtig sichert, erste Fahrten für einen ängstlichen Hund, Reisekrankheit, lange Fahrten — und warum ein geparktes Auto im Sommer so gefährlich ist.",
         alt: "Ein Hund gesichert in einer Transportbox im Kofferraum eines Kombis",
       },
@@ -295,27 +301,28 @@ const copy = {
         to: "/travel/outdoors",
         label: "Draußen unterwegs",
         title: "Spaziergänge, Wege und Wetter.",
-        body: "Sich auf längere Wanderungen zubewegen, Hitze und Kälte, Pfoten auf heißem Asphalt und Splitt, Sicherheit am Wasser und Orte, die sich wirklich über einen Hund freuen.",
-        alt: "Eine Frau und ihr Hund ruhen sich auf einem Bergpfad zur goldenen Stunde aus",
+        body: "Längere Wanderungen aufbauen, Hitze und Kälte, Pfoten auf heißem Asphalt und Splitt, Sicherheit am Wasser, und Orte, die sich wirklich über einen Hund freuen.",
+        alt: "Eine Frau und ihr Hund ruhen auf einem Bergpfad im goldenen Licht",
       },
       {
         to: "/travel/abroad",
-        label: "Über Grenzen hinweg",
+        label: "Über die Grenze",
         title: "Ins Ausland reisen.",
-        body: "Sagen Sie uns, wohin und wann Sie reisen. Wir zeigen Ihnen, was üblicherweise erforderlich ist — Mikrochip, Tollwut, Ausweis, Entwurmung — und verweisen Sie für das letzte Wort an die zuständige Behörde.",
+        body: "Sag uns, wohin und wann ihr reist. Wir zeigen, was üblicherweise nötig ist — Chip, Tollwut, Pass, Entwurmung — und verweisen auf die offizielle Quelle für das letzte Wort.",
         alt: "Ein Hund wartet ruhig neben einem Koffer in einer luftigen Abflughalle",
       },
     ],
     differentEyebrow: "Nicht jeder Hund reist gleich",
-    differentTitle: "Mit wem Sie reisen, ändert alles.",
-    differentBody: "Ein Welpe, ein alter Hund, eine kurznasige Rasse und ein fitter erwachsener Hund brauchen für dieselbe Reise ganz unterschiedliche Pläne.",
+    differentTitle: "Wer mitreist, verändert alles.",
+    differentBody:
+      "Ein Welpe, ein alter Hund, eine kurznasige Rasse und ein fitter Erwachsener brauchen ganz unterschiedliche Pläne für dieselbe Reise.",
   },
   fr: {
     eyebrow: "Voyages et aventures",
     heroTitle: "Vous partez quelque part ensemble ?",
     heroBody:
-      "La moitié d'un bon voyage, c'est d'arriver en sécurité. L'autre moitié, c'est de savoir que votre chien s'amuse vraiment — et de savoir quand faire demi-tour.",
-    checkJourney: "Vérifier mon trajet",
+      "La moitié d'un bon voyage, c'est d'arriver en sécurité. L'autre moitié, c'est de savoir que votre chien apprécie vraiment — et de savoir quand faire demi-tour.",
+    checkJourney: "Vérifier mon voyage",
     carSafety: "Sécurité en voiture",
     open: "Ouvrir",
     sections: [
@@ -323,34 +330,35 @@ const copy = {
         to: "/travel/car",
         label: "En voiture",
         title: "Arriver en sécurité.",
-        body: "Comment attacher correctement un chien, premiers trajets pour un chien anxieux, mal des transports, longs trajets — et pourquoi une voiture garée en été est si dangereuse.",
-        alt: "Un chien attaché dans une cage de transport dans le coffre d'un break",
+        body: "Comment bien sécuriser un chien, premiers trajets pour un chien anxieux, mal des transports, longs trajets — et pourquoi une voiture garée en été est si dangereuse.",
+        alt: "Un chien sécurisé dans une cage de transport dans le coffre d'un break",
       },
       {
         to: "/travel/outdoors",
         label: "En extérieur",
         title: "Promenades, sentiers et météo.",
-        body: "Progresser vers des randonnées plus longues, chaleur et froid, coussinets sur bitume chaud et gravier, sécurité près de l'eau, et lieux réellement ravis d'accueillir un chien.",
-        alt: "Une femme et son chien se reposant sur un sentier de montagne à l'heure dorée",
+        body: "Augmenter progressivement la longueur des randonnées, chaleur et froid, coussinets sur bitume chaud et gravillons, sécurité en milieu aquatique, et lieux réellement ravis d'accueillir un chien.",
+        alt: "Une femme et son chien se reposent sur un sentier de montagne à l'heure dorée",
       },
       {
         to: "/travel/abroad",
         label: "Passer les frontières",
         title: "Voyager à l'étranger.",
-        body: "Dites-nous où et quand vous partez. Nous vous montrerons ce qui est généralement requis — puce électronique, rage, passeport, vermifuge — et vous orienterons vers la source officielle pour le mot final.",
-        alt: "Un chien attendant calmement près d'une valise dans un hall de départ lumineux",
+        body: "Dites-nous où et quand vous partez. Nous vous montrerons ce qui est généralement requis — puce, rage, passeport, vermifuge — et nous vous orienterons vers la source officielle pour le mot final.",
+        alt: "Un chien attendant calmement près d'une valise dans un hall de départ aéré",
       },
     ],
-    differentEyebrow: "Chaque chien ne voyage pas de la même façon",
+    differentEyebrow: "Tous les chiens ne voyagent pas de la même façon",
     differentTitle: "Qui vous accompagne change tout.",
-    differentBody: "Un chiot, un vieux chien, une race brachycéphale et un adulte en forme ont besoin de plans assez différents pour le même trajet.",
+    differentBody:
+      "Un chiot, un chien âgé, une race brachycéphale et un adulte en forme ont besoin de plans bien différents pour le même trajet.",
   },
   nl: {
     eyebrow: "Reizen en avonturen",
-    heroTitle: "Gaat u samen ergens naartoe?",
+    heroTitle: "Gaan jullie samen ergens heen?",
     heroBody:
-      "De helft van een goede reis is veilig aankomen. De andere helft is weten dat uw hond er echt van geniet — en weten wanneer u moet omkeren.",
-    checkJourney: "Controleer mijn reis",
+      "De helft van een goede reis is veilig aankomen. De andere helft is weten dat je hond er echt van geniet — en weten wanneer je moet omkeren.",
+    checkJourney: "Check mijn reis",
     carSafety: "Veiligheid in de auto",
     open: "Openen",
     sections: [
@@ -358,33 +366,38 @@ const copy = {
         to: "/travel/car",
         label: "In de auto",
         title: "Veilig aankomen.",
-        body: "Hoe u een hond goed vastzet, eerste ritten voor een nerveuze hond, reisziekte, lange ritten — en waarom een geparkeerde auto in de zomer zo gevaarlijk is.",
-        alt: "Een hond vastgezet in een reisbench in de kofferbak van een stationwagon",
+        body: "Hoe je een hond goed vastzet, eerste ritjes voor een nerveuze hond, wagenziekte, lange ritten — en waarom een geparkeerde auto in de zomer zo gevaarlijk is.",
+        alt: "Een hond veilig vastgezet in een reisbench in de kofferbak van een stationwagen",
       },
       {
         to: "/travel/outdoors",
-        label: "Erop uit",
+        label: "Op pad",
         title: "Wandelingen, paden en weer.",
-        body: "Opbouwen naar langere wandelingen, hitte en kou, pootjes op heet asfalt en grind, veiligheid in het water, en plekken die echt blij zijn met een hond.",
+        body: "Opbouwen naar langere wandelingen, hitte en kou, pootjes op heet asfalt en split, veiligheid bij water, en plekken die echt blij zijn met een hond.",
         alt: "Een vrouw en haar hond rusten op een bergpad tijdens het gouden uur",
       },
       {
         to: "/travel/abroad",
         label: "Grenzen over",
         title: "Naar het buitenland reizen.",
-        body: "Vertel ons waar en wanneer u naartoe gaat. We laten zien wat meestal vereist is — microchip, hondsdolheid, paspoort, ontworming — en verwijzen u naar de officiële bron voor het laatste woord.",
-        alt: "Een hond die rustig naast een koffer wacht in een lichte vertrekhal",
+        body: "Vertel ons waar en wanneer je heen gaat. We laten zien wat meestal nodig is — chip, rabiës, paspoort, ontworming — en verwijzen je naar de officiële bron voor het laatste woord.",
+        alt: "Een hond wacht rustig naast een koffer in een lichte vertrekhal",
       },
     ],
     differentEyebrow: "Niet elke hond reist hetzelfde",
-    differentTitle: "Met wie u reist, verandert alles.",
-    differentBody: "Een puppy, een oude hond, een platneuzig ras en een fitte volwassen hond hebben heel verschillende plannen nodig voor dezelfde reis.",
+    differentTitle: "Met wie je reist verandert alles.",
+    differentBody:
+      "Een puppy, een oude hond, een kortsnuitig ras en een fitte volwassen hond hebben heel verschillende plannen nodig voor dezelfde reis.",
   },
 } as const;
 
 function TravelPage() {
   const c = useCopy(copy);
-  const images = { "/travel/car": carImage, "/travel/outdoors": heroImage, "/travel/abroad": abroadImage } as const;
+  const images = {
+    "/travel/car": carImage,
+    "/travel/outdoors": heroImage,
+    "/travel/abroad": abroadImage,
+  } as const;
   return (
     <div className="pb-24">
       <section className="container-page pt-24 md:pt-32">
@@ -425,11 +438,20 @@ function TravelPage() {
               to={s.to as never}
               className="group flex flex-col overflow-hidden rounded-[1.75rem] border border-border bg-card transition-colors hover:border-border-strong"
             >
-              <img src={images[s.to as keyof typeof images]} alt={s.alt} width={1408} height={1056} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.03]" />
+              <img
+                src={images[s.to as keyof typeof images]}
+                alt={s.alt}
+                width={1408}
+                height={1056}
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.03]"
+              />
               <div className="flex flex-1 flex-col p-8">
                 <p className="eyebrow">{s.label}</p>
                 <h2 className="display-md mt-4">{s.title}</h2>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {s.body}
+                </p>
                 <span className="mt-6 inline-flex items-center gap-2 text-[0.9375rem] font-medium">
                   {c.open}
                   <Arrow />

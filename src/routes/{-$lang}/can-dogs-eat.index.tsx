@@ -40,17 +40,17 @@ const seo = {
       "Rauhallinen A–Ö-vastaus jokaiselle ruoka-aineelle: pieninä määrinä sopii, ole varovainen, tai älä anna tätä koiralle.",
   },
   de: {
-    title: "Dürfen Hunde das essen? A–Z Futtersicherheit für Hunde | DoggMatch",
+    title: "Dürfen Hunde das fressen? A–Z-Liste zur Futtersicherheit | DoggMatch",
     description:
-      "Eine ruhige A–Z-Antwort für jedes Lebensmittel: in kleinen Mengen unbedenklich, mit Vorsicht, oder besser nicht geben.",
+      "Eine ruhige A–Z-Antwort für jedes Lebensmittel: in kleinen Mengen unbedenklich, mit Bedacht, oder bitte nicht geben.",
   },
   fr: {
-    title: "Mon chien peut-il manger ça ? Liste A–Z de sécurité alimentaire | DoggMatch",
+    title: "Les chiens peuvent-ils manger ça ? Liste A–Z des aliments | DoggMatch",
     description:
       "Une réponse claire de A à Z pour chaque aliment : sans souci en petite quantité, avec prudence, ou à ne pas donner.",
   },
   nl: {
-    title: "Mag mijn hond dat eten? A–Z voedingslijst voor honden | DoggMatch",
+    title: "Mogen honden dat eten? A–Z-lijst met voedselveiligheid | DoggMatch",
     description:
       "Een rustig A–Z-antwoord voor elk voedingsmiddel: prima in kleine hoeveelheden, wees voorzichtig, of geef dit niet.",
   },
@@ -91,6 +91,39 @@ const copy = {
     searchHint: "Prefer to search? Use the searchable food list.",
     searchLink: "Open the searchable list",
   },
+  de: {
+    eyebrow: "Lebensmittelsicherheit",
+    title: "Dürfen Hunde das fressen?",
+    intro:
+      "Eine Seite pro Lebensmittel, damit Sie eine klare Antwort erhalten, ohne erst an drei Werbeanzeigen vorbeiscrollen zu müssen. Wählen Sie aus, was Ihr Hund erwischt hat.",
+    counted: (n: number) => `${n} Lebensmittel bereits beantwortet`,
+    vetNote:
+      "Wenn Ihr Hund etwas von der „Nicht geben“-Liste gefressen hat, warten Sie nicht auf Symptome. Rufen Sie Ihren Tierarzt oder eine Tiergift-Notrufnummer an und sagen Sie ihnen, was es war, ungefähr wie viel und wann.",
+    searchHint: "Suchen Sie lieber? Nutzen Sie die durchsuchbare Lebensmittelliste.",
+    searchLink: "Durchsuchbare Liste öffnen",
+  },
+  fr: {
+    eyebrow: "Sécurité alimentaire",
+    title: "Les chiens peuvent-ils manger ça ?",
+    intro:
+      "Une page par aliment, pour une réponse claire sans avoir à faire défiler trois publicités. Choisissez ce que votre chien a mangé.",
+    counted: (n: number) => `${n} aliments analysés jusqu'à présent`,
+    vetNote:
+      "Si votre chien a ingéré un aliment de la liste « à ne pas donner », n'attendez pas les symptômes. Appelez votre vétérinaire ou un centre antipoison animal et précisez-lui ce que c'était, approximativement la quantité et quand.",
+    searchHint: "Vous préférez chercher ? Utilisez la liste des aliments consultable.",
+    searchLink: "Ouvrir la liste consultable",
+  },
+  nl: {
+    eyebrow: "Voedselveiligheid",
+    title: "Mag mijn hond dit eten?",
+    intro:
+      "Eén pagina per voedingsmiddel, zodat je direct antwoord krijgt zonder eerst langs drie advertenties te scrollen. Kies wat je hond te pakken heeft gekregen.",
+    counted: (n: number) => `${n} voedingsmiddelen beantwoord tot nu toe`,
+    vetNote:
+      "Als je hond iets heeft gegeten dat op de 'niet geven'-lijst staat, wacht dan niet op symptomen. Bel je dierenarts of een vergiftigingslijn voor dieren en vertel wat het was, ongeveer hoeveel, en wanneer.",
+    searchHint: "Liever zoeken? Gebruik de doorzoekbare voedingsmiddelenlijst.",
+    searchLink: "Open de doorzoekbare lijst",
+  },
   no: {
     eyebrow: "Mattrygghet",
     title: "Kan hunder spise det?",
@@ -104,7 +137,8 @@ const copy = {
   pl: {
     eyebrow: "Bezpieczeństwo żywności",
     title: "Czy pies może to zjeść?",
-    intro: "Jedna strona na produkt, więc od razu masz jasną odpowiedź. Wybierz to, co zjadł twój pies.",
+    intro:
+      "Jedna strona na produkt, więc od razu masz jasną odpowiedź. Wybierz to, co zjadł twój pies.",
     counted: (n: number) => `${n} produktów opisanych do tej pory`,
     vetNote:
       "Jeśli pies zjadł coś z listy „nie podawaj”, nie czekaj na objawy. Zadzwoń do weterynarza i powiedz, co to było, ile mniej więcej i kiedy.",
@@ -114,7 +148,8 @@ const copy = {
   dk: {
     eyebrow: "Fødevaresikkerhed",
     title: "Må hunde spise det?",
-    intro: "Én side per fødevare, så du får et klart svar med det samme. Vælg det, hunden fik fat i.",
+    intro:
+      "Én side per fødevare, så du får et klart svar med det samme. Vælg det, hunden fik fat i.",
     counted: (n: number) => `${n} fødevarer besvaret indtil videre`,
     vetNote:
       "Har hunden spist noget fra listen „giv ikke hunden dette“, så vent ikke på symptomer. Ring til din dyrlæge eller en dyregiftlinje, og fortæl hvad det var, cirka hvor meget, og hvornår.",
@@ -134,45 +169,13 @@ const copy = {
   fi: {
     eyebrow: "Ruokaturvallisuus",
     title: "Voiko koira syödä sitä?",
-    intro: "Yksi sivu jokaista ruoka-ainetta kohti, jotta saat suoran vastauksen heti. Valitse se, mitä koirasi sai käsiinsä.",
+    intro:
+      "Yksi sivu jokaista ruoka-ainetta kohti, jotta saat suoran vastauksen heti. Valitse se, mitä koirasi sai käsiinsä.",
     counted: (n: number) => `${n} ruoka-ainetta käsitelty tähän mennessä`,
     vetNote:
       "Jos koira on syönyt jotain ”älä anna tätä koiralle” -listalta, älä odota oireita. Soita eläinlääkärille tai myrkytystietokeskukseen ja kerro, mitä se oli, suunnilleen kuinka paljon ja milloin.",
     searchHint: "Haluatko mieluummin hakea? Käytä haettavaa ruokalistaa.",
     searchLink: "Avaa haettava lista",
-  },
-  de: {
-    eyebrow: "Futtersicherheit",
-    title: "Dürfen Hunde das essen?",
-    intro:
-      "Eine Seite pro Lebensmittel, damit Sie sofort eine klare Antwort bekommen. Wählen Sie aus, was Ihr Hund erwischt hat.",
-    counted: (n: number) => `${n} Lebensmittel bisher beantwortet`,
-    vetNote:
-      "Hat Ihr Hund etwas von der „besser nicht geben“-Liste gefressen, warten Sie nicht auf Symptome. Rufen Sie Ihren Tierarzt oder eine Giftnotrufzentrale an und sagen Sie, was es war, ungefähr wie viel, und wann.",
-    searchHint: "Suchen Sie lieber? Nutzen Sie die durchsuchbare Lebensmittelliste.",
-    searchLink: "Durchsuchbare Liste öffnen",
-  },
-  fr: {
-    eyebrow: "Sécurité alimentaire",
-    title: "Mon chien peut-il manger ça ?",
-    intro:
-      "Une page par aliment, pour une réponse claire tout de suite. Choisissez ce que votre chien a attrapé.",
-    counted: (n: number) => `${n} aliments déjà répertoriés`,
-    vetNote:
-      "Si votre chien a mangé quelque chose de la liste « à ne pas donner », n'attendez pas les symptômes. Appelez votre vétérinaire ou un centre antipoison animalier et indiquez ce que c'était, à peu près quelle quantité, et quand.",
-    searchHint: "Vous préférez chercher ? Utilisez la liste d'aliments consultable.",
-    searchLink: "Ouvrir la liste consultable",
-  },
-  nl: {
-    eyebrow: "Voedselveiligheid",
-    title: "Mag mijn hond dat eten?",
-    intro:
-      "Eén pagina per voedingsmiddel, zodat u meteen een duidelijk antwoord krijgt. Kies wat uw hond te pakken kreeg.",
-    counted: (n: number) => `${n} voedingsmiddelen tot nu toe beantwoord`,
-    vetNote:
-      "Heeft uw hond iets van de lijst „niet geven” gegeten, wacht dan niet op symptomen. Bel uw dierenarts of een vergiftigingeninformatiecentrum en vertel wat het was, ongeveer hoeveel, en wanneer.",
-    searchHint: "Zoekt u liever? Gebruik de doorzoekbare voedingslijst.",
-    searchLink: "Doorzoekbare lijst openen",
   },
 } as const;
 
@@ -197,7 +200,9 @@ function FoodHub() {
           <div className="grid gap-8">
             {groups.map((group) => (
               <div key={group.letter}>
-                <h2 className="font-display text-lg tracking-tight text-muted-foreground">{group.letter}</h2>
+                <h2 className="font-display text-lg tracking-tight text-muted-foreground">
+                  {group.letter}
+                </h2>
                 <ul className="mt-3 grid gap-1 sm:grid-cols-2">
                   {group.items.map((item) => (
                     <li key={item.id}>
@@ -219,7 +224,9 @@ function FoodHub() {
           <div className="grid gap-6">
             <VetNote>{c.vetNote}</VetNote>
             <div className="rounded-[1.5rem] border border-border bg-surface p-7">
-              <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">{c.searchHint}</p>
+              <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                {c.searchHint}
+              </p>
               <Link
                 to={withLangPrefix("/my-dog/food")}
                 className="mt-4 inline-flex text-sm text-accent underline decoration-border underline-offset-4 hover:decoration-accent"

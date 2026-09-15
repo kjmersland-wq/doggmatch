@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Eyebrow } from "@/components/dogmatch/ui";
@@ -16,19 +18,7 @@ const description =
   "Browse every DoggMatch lesson: puppy foundations, everyday manners, walking, recall, calm at home, tricks and brain games.";
 
 export const Route = createFileRoute("/{-$lang}/train/library")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/train/library"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/train/library", pageSeo.trainLibrary),
   component: LibraryPage,
 });
 
@@ -38,7 +28,8 @@ const copy = {
   en: {
     eyebrow: "The library",
     title: "Every lesson, in one calm place.",
-    intro: "Start anywhere. Each lesson is short, and you can come back to it as many times as you like.",
+    intro:
+      "Start anywhere. Each lesson is short, and you can come back to it as many times as you like.",
     searchPlaceholder: "What would you like to work on?",
     searchAria: "Search lessons",
     allLevels: "All levels",
@@ -48,7 +39,8 @@ const copy = {
   no: {
     eyebrow: "Biblioteket",
     title: "Alle leksjonene, på ett rolig sted.",
-    intro: "Start hvor som helst. Hver leksjon er kort, og du kan komme tilbake til den så mange ganger du vil.",
+    intro:
+      "Start hvor som helst. Hver leksjon er kort, og du kan komme tilbake til den så mange ganger du vil.",
     searchPlaceholder: "Hva vil du øve på?",
     searchAria: "Søk i leksjoner",
     allLevels: "Alle nivåer",
@@ -58,7 +50,8 @@ const copy = {
   pl: {
     eyebrow: "Biblioteka",
     title: "Wszystkie lekcje, w jednym spokojnym miejscu.",
-    intro: "Zacznij, gdziekolwiek chcesz. Każda lekcja jest krótka i możesz wracać do niej tyle razy, ile chcesz.",
+    intro:
+      "Zacznij, gdziekolwiek chcesz. Każda lekcja jest krótka i możesz wracać do niej tyle razy, ile chcesz.",
     searchPlaceholder: "Nad czym chciałbyś popracować?",
     searchAria: "Szukaj lekcji",
     allLevels: "Wszystkie poziomy",
@@ -68,7 +61,8 @@ const copy = {
   dk: {
     eyebrow: "Biblioteket",
     title: "Alle lektioner, ét roligt sted.",
-    intro: "Start hvor som helst. Hver lektion er kort, og du kan vende tilbage til den, så mange gange du vil.",
+    intro:
+      "Start hvor som helst. Hver lektion er kort, og du kan vende tilbage til den, så mange gange du vil.",
     searchPlaceholder: "Hvad vil du gerne øve på?",
     searchAria: "Søg i lektioner",
     allLevels: "Alle niveauer",
@@ -78,7 +72,8 @@ const copy = {
   se: {
     eyebrow: "Biblioteket",
     title: "Alla lektioner, på ett lugnt ställe.",
-    intro: "Börja var du vill. Varje lektion är kort, och du kan gå tillbaka till den så många gånger du vill.",
+    intro:
+      "Börja var du vill. Varje lektion är kort, och du kan gå tillbaka till den så många gånger du vill.",
     searchPlaceholder: "Vad vill du träna på?",
     searchAria: "Sök bland lektioner",
     allLevels: "Alla nivåer",
@@ -88,7 +83,8 @@ const copy = {
   fi: {
     eyebrow: "Kirjasto",
     title: "Kaikki oppitunnit, yhdessä rauhallisessa paikassa.",
-    intro: "Aloita mistä vain. Jokainen oppitunti on lyhyt, ja voit palata siihen niin monta kertaa kuin haluat.",
+    intro:
+      "Aloita mistä vain. Jokainen oppitunti on lyhyt, ja voit palata siihen niin monta kertaa kuin haluat.",
     searchPlaceholder: "Mitä haluaisit harjoitella?",
     searchAria: "Hae oppitunteja",
     allLevels: "Kaikki tasot",
@@ -97,33 +93,36 @@ const copy = {
   },
   de: {
     eyebrow: "Die Bibliothek",
-    title: "Alle Lektionen, an einem ruhigen Ort.",
-    intro: "Fangen Sie irgendwo an. Jede Lektion ist kurz, und Sie können so oft zurückkommen, wie Sie möchten.",
-    searchPlaceholder: "Woran möchten Sie arbeiten?",
+    title: "Jede Lektion, an einem ruhigen Ort.",
+    intro:
+      "Fang an, wo du willst. Jede Lektion ist kurz, und du kannst so oft zurückkommen, wie du möchtest.",
+    searchPlaceholder: "Woran möchtest du arbeiten?",
     searchAria: "Lektionen durchsuchen",
     allLevels: "Alle Stufen",
     everything: "Alles",
-    empty: "Dazu passt hier noch nichts. Probieren Sie ein anderes Wort oder setzen Sie die Filter zurück.",
+    empty: "Dazu passt hier noch nichts. Probier ein anderes Wort, oder setz die Filter zurück.",
   },
   fr: {
     eyebrow: "La bibliothèque",
-    title: "Toutes les leçons, dans un seul endroit paisible.",
-    intro: "Commencez où vous voulez. Chaque leçon est courte, et vous pouvez y revenir autant de fois que vous le souhaitez.",
+    title: "Toutes les leçons, réunies au calme.",
+    intro:
+      "Commencez où vous voulez. Chaque leçon est courte, et vous pouvez y revenir autant de fois que vous le souhaitez.",
     searchPlaceholder: "Sur quoi aimeriez-vous travailler ?",
     searchAria: "Rechercher des leçons",
     allLevels: "Tous les niveaux",
     everything: "Tout",
-    empty: "Rien ne correspond encore à cela. Essayez un autre mot, ou effacez les filtres.",
+    empty: "Rien ne correspond encore à cela. Essayez un autre mot, ou réinitialisez les filtres.",
   },
   nl: {
     eyebrow: "De bibliotheek",
     title: "Alle lessen, op één rustige plek.",
-    intro: "Begin waar u wilt. Elke les is kort, en u kunt er zo vaak op terugkomen als u wilt.",
-    searchPlaceholder: "Waar wilt u aan werken?",
-    searchAria: "Lessen zoeken",
+    intro:
+      "Begin waar je wilt. Elke les is kort, en je kunt er zo vaak op teruggrijpen als je wilt.",
+    searchPlaceholder: "Waar wil je aan werken?",
+    searchAria: "Lessen doorzoeken",
     allLevels: "Alle niveaus",
     everything: "Alles",
-    empty: "Hier komt nog niets mee overeen. Probeer een ander woord, of wis de filters.",
+    empty: "Hier past nog niets bij. Probeer een ander woord, of wis de filters.",
   },
 } as const;
 

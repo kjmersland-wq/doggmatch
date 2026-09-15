@@ -15,15 +15,20 @@ import { Route as Char123LangChar125IndexRouteImport } from './routes/{-$lang}/i
 import { Route as Char123LangChar125AboutRouteImport } from './routes/{-$lang}/about'
 import { Route as Char123LangChar125AccountRouteImport } from './routes/{-$lang}/account'
 import { Route as Char123LangChar125AuthRouteImport } from './routes/{-$lang}/auth'
+import { Route as Char123LangChar125BestApartmentDogsRouteImport } from './routes/{-$lang}/best-apartment-dogs'
 import { Route as Char123LangChar125BestDogBreedsForFamiliesRouteImport } from './routes/{-$lang}/best-dog-breeds-for-families'
+import { Route as Char123LangChar125BestDogsForFirstTimeOwnersRouteImport } from './routes/{-$lang}/best-dogs-for-first-time-owners'
 import { Route as Char123LangChar125BrochureRouteImport } from './routes/{-$lang}/brochure'
 import { Route as Char123LangChar125CompareRouteImport } from './routes/{-$lang}/compare'
 import { Route as Char123LangChar125ContactRouteImport } from './routes/{-$lang}/contact'
 import { Route as Char123LangChar125DogLifeRouteImport } from './routes/{-$lang}/dog-life'
+import { Route as Char123LangChar125DogsThatCanBeLeftAloneRouteImport } from './routes/{-$lang}/dogs-that-can-be-left-alone'
 import { Route as Char123LangChar125FindMyDogRouteImport } from './routes/{-$lang}/find-my-dog'
 import { Route as Char123LangChar125GetADogRouteImport } from './routes/{-$lang}/get-a-dog'
 import { Route as Char123LangChar125GuidesRouteImport } from './routes/{-$lang}/guides'
+import { Route as Char123LangChar125LowSheddingDogsRouteImport } from './routes/{-$lang}/low-shedding-dogs'
 import { Route as Char123LangChar125MemberCardRouteImport } from './routes/{-$lang}/member-card'
+import { Route as Char123LangChar125MostMismatchedBreedsRouteImport } from './routes/{-$lang}/most-mismatched-breeds'
 import { Route as Char123LangChar125MyDogRouteImport } from './routes/{-$lang}/my-dog'
 import { Route as Char123LangChar125PartnersRouteImport } from './routes/{-$lang}/partners'
 import { Route as Char123LangChar125PlusRouteImport } from './routes/{-$lang}/plus'
@@ -32,6 +37,7 @@ import { Route as Char123LangChar125SourcesRouteImport } from './routes/{-$lang}
 import { Route as Char123LangChar125TermsRouteImport } from './routes/{-$lang}/terms'
 import { Route as Char123LangChar125TrainRouteImport } from './routes/{-$lang}/train'
 import { Route as Char123LangChar125TravelRouteImport } from './routes/{-$lang}/travel'
+import { Route as Char123LangChar125WhatADogCostsRouteImport } from './routes/{-$lang}/what-a-dog-costs'
 import { Route as Char123LangChar125BreedsIndexRouteImport } from './routes/{-$lang}/breeds.index'
 import { Route as Char123LangChar125BreedsBreedIdRouteImport } from './routes/{-$lang}/breeds.$breedId'
 import { Route as Char123LangChar125CanDogsEatIndexRouteImport } from './routes/{-$lang}/can-dogs-eat.index'
@@ -49,11 +55,13 @@ import { Route as Char123LangChar125MyDogContactsRouteImport } from './routes/{-
 import { Route as Char123LangChar125MyDogFoodRouteImport } from './routes/{-$lang}/my-dog.food'
 import { Route as Char123LangChar125MyDogNutritionRouteImport } from './routes/{-$lang}/my-dog.nutrition'
 import { Route as Char123LangChar125MyDogPackRouteImport } from './routes/{-$lang}/my-dog.pack'
+import { Route as Char123LangChar125MyDogPreviewRouteImport } from './routes/{-$lang}/my-dog.preview'
 import { Route as Char123LangChar125MyDogPrintRouteImport } from './routes/{-$lang}/my-dog.print'
 import { Route as Char123LangChar125MyDogSetupRouteImport } from './routes/{-$lang}/my-dog.setup'
 import { Route as Char123LangChar125MyDogVetRouteImport } from './routes/{-$lang}/my-dog.vet'
 import { Route as Char123LangChar125MyDogWeekRouteImport } from './routes/{-$lang}/my-dog.week'
 import { Route as Char123LangChar125MyDogWeightRouteImport } from './routes/{-$lang}/my-dog.weight'
+import { Route as Char123LangChar125PartnersPortalRouteImport } from './routes/{-$lang}/partners.portal'
 import { Route as Char123LangChar125QuizSuccessRouteImport } from './routes/{-$lang}/quiz.success'
 import { Route as Char123LangChar125TrainIndexRouteImport } from './routes/{-$lang}/train.index'
 import { Route as Char123LangChar125TrainJourneyRouteImport } from './routes/{-$lang}/train.journey'
@@ -99,10 +107,22 @@ const Char123LangChar125AuthRoute = Char123LangChar125AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => Char123LangChar125Route,
 } as any)
+const Char123LangChar125BestApartmentDogsRoute =
+  Char123LangChar125BestApartmentDogsRouteImport.update({
+    id: '/best-apartment-dogs',
+    path: '/best-apartment-dogs',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
 const Char123LangChar125BestDogBreedsForFamiliesRoute =
   Char123LangChar125BestDogBreedsForFamiliesRouteImport.update({
     id: '/best-dog-breeds-for-families',
     path: '/best-dog-breeds-for-families',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125BestDogsForFirstTimeOwnersRoute =
+  Char123LangChar125BestDogsForFirstTimeOwnersRouteImport.update({
+    id: '/best-dogs-for-first-time-owners',
+    path: '/best-dogs-for-first-time-owners',
     getParentRoute: () => Char123LangChar125Route,
   } as any)
 const Char123LangChar125BrochureRoute =
@@ -129,6 +149,12 @@ const Char123LangChar125DogLifeRoute =
     path: '/dog-life',
     getParentRoute: () => Char123LangChar125Route,
   } as any)
+const Char123LangChar125DogsThatCanBeLeftAloneRoute =
+  Char123LangChar125DogsThatCanBeLeftAloneRouteImport.update({
+    id: '/dogs-that-can-be-left-alone',
+    path: '/dogs-that-can-be-left-alone',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
 const Char123LangChar125FindMyDogRoute =
   Char123LangChar125FindMyDogRouteImport.update({
     id: '/find-my-dog',
@@ -147,10 +173,22 @@ const Char123LangChar125GuidesRoute =
     path: '/guides',
     getParentRoute: () => Char123LangChar125Route,
   } as any)
+const Char123LangChar125LowSheddingDogsRoute =
+  Char123LangChar125LowSheddingDogsRouteImport.update({
+    id: '/low-shedding-dogs',
+    path: '/low-shedding-dogs',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
 const Char123LangChar125MemberCardRoute =
   Char123LangChar125MemberCardRouteImport.update({
     id: '/member-card',
     path: '/member-card',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125MostMismatchedBreedsRoute =
+  Char123LangChar125MostMismatchedBreedsRouteImport.update({
+    id: '/most-mismatched-breeds',
+    path: '/most-mismatched-breeds',
     getParentRoute: () => Char123LangChar125Route,
   } as any)
 const Char123LangChar125MyDogRoute = Char123LangChar125MyDogRouteImport.update({
@@ -195,6 +233,12 @@ const Char123LangChar125TravelRoute =
   Char123LangChar125TravelRouteImport.update({
     id: '/travel',
     path: '/travel',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
+const Char123LangChar125WhatADogCostsRoute =
+  Char123LangChar125WhatADogCostsRouteImport.update({
+    id: '/what-a-dog-costs',
+    path: '/what-a-dog-costs',
     getParentRoute: () => Char123LangChar125Route,
   } as any)
 const Char123LangChar125BreedsIndexRoute =
@@ -299,6 +343,12 @@ const Char123LangChar125MyDogPackRoute =
     path: '/pack',
     getParentRoute: () => Char123LangChar125MyDogRoute,
   } as any)
+const Char123LangChar125MyDogPreviewRoute =
+  Char123LangChar125MyDogPreviewRouteImport.update({
+    id: '/preview',
+    path: '/preview',
+    getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
 const Char123LangChar125MyDogPrintRoute =
   Char123LangChar125MyDogPrintRouteImport.update({
     id: '/print',
@@ -328,6 +378,12 @@ const Char123LangChar125MyDogWeightRoute =
     id: '/weight',
     path: '/weight',
     getParentRoute: () => Char123LangChar125MyDogRoute,
+  } as any)
+const Char123LangChar125PartnersPortalRoute =
+  Char123LangChar125PartnersPortalRouteImport.update({
+    id: '/portal',
+    path: '/portal',
+    getParentRoute: () => Char123LangChar125PartnersRoute,
   } as any)
 const Char123LangChar125QuizSuccessRoute =
   Char123LangChar125QuizSuccessRouteImport.update({
@@ -414,23 +470,29 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/about': typeof Char123LangChar125AboutRoute
   '/{-$lang}/account': typeof Char123LangChar125AccountRoute
   '/{-$lang}/auth': typeof Char123LangChar125AuthRoute
+  '/{-$lang}/best-apartment-dogs': typeof Char123LangChar125BestApartmentDogsRoute
   '/{-$lang}/best-dog-breeds-for-families': typeof Char123LangChar125BestDogBreedsForFamiliesRoute
+  '/{-$lang}/best-dogs-for-first-time-owners': typeof Char123LangChar125BestDogsForFirstTimeOwnersRoute
   '/{-$lang}/brochure': typeof Char123LangChar125BrochureRoute
   '/{-$lang}/compare': typeof Char123LangChar125CompareRoute
   '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
   '/{-$lang}/dog-life': typeof Char123LangChar125DogLifeRoute
+  '/{-$lang}/dogs-that-can-be-left-alone': typeof Char123LangChar125DogsThatCanBeLeftAloneRoute
   '/{-$lang}/find-my-dog': typeof Char123LangChar125FindMyDogRoute
   '/{-$lang}/get-a-dog': typeof Char123LangChar125GetADogRouteWithChildren
   '/{-$lang}/guides': typeof Char123LangChar125GuidesRoute
+  '/{-$lang}/low-shedding-dogs': typeof Char123LangChar125LowSheddingDogsRoute
   '/{-$lang}/member-card': typeof Char123LangChar125MemberCardRoute
+  '/{-$lang}/most-mismatched-breeds': typeof Char123LangChar125MostMismatchedBreedsRoute
   '/{-$lang}/my-dog': typeof Char123LangChar125MyDogRouteWithChildren
-  '/{-$lang}/partners': typeof Char123LangChar125PartnersRoute
+  '/{-$lang}/partners': typeof Char123LangChar125PartnersRouteWithChildren
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
   '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
   '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
   '/{-$lang}/terms': typeof Char123LangChar125TermsRoute
   '/{-$lang}/train': typeof Char123LangChar125TrainRouteWithChildren
   '/{-$lang}/travel': typeof Char123LangChar125TravelRouteWithChildren
+  '/{-$lang}/what-a-dog-costs': typeof Char123LangChar125WhatADogCostsRoute
   '/{-$lang}/': typeof Char123LangChar125IndexRoute
   '/{-$lang}/breeds/$breedId': typeof Char123LangChar125BreedsBreedIdRoute
   '/{-$lang}/can-dogs-eat/$foodId': typeof Char123LangChar125CanDogsEatFoodIdRoute
@@ -445,11 +507,13 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/my-dog/food': typeof Char123LangChar125MyDogFoodRoute
   '/{-$lang}/my-dog/nutrition': typeof Char123LangChar125MyDogNutritionRoute
   '/{-$lang}/my-dog/pack': typeof Char123LangChar125MyDogPackRoute
+  '/{-$lang}/my-dog/preview': typeof Char123LangChar125MyDogPreviewRoute
   '/{-$lang}/my-dog/print': typeof Char123LangChar125MyDogPrintRoute
   '/{-$lang}/my-dog/setup': typeof Char123LangChar125MyDogSetupRoute
   '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
   '/{-$lang}/my-dog/week': typeof Char123LangChar125MyDogWeekRoute
   '/{-$lang}/my-dog/weight': typeof Char123LangChar125MyDogWeightRoute
+  '/{-$lang}/partners/portal': typeof Char123LangChar125PartnersPortalRoute
   '/{-$lang}/quiz/success': typeof Char123LangChar125QuizSuccessRoute
   '/{-$lang}/train/journey': typeof Char123LangChar125TrainJourneyRoute
   '/{-$lang}/train/library': typeof Char123LangChar125TrainLibraryRoute
@@ -473,19 +537,25 @@ export interface FileRoutesByTo {
   '/{-$lang}/about': typeof Char123LangChar125AboutRoute
   '/{-$lang}/account': typeof Char123LangChar125AccountRoute
   '/{-$lang}/auth': typeof Char123LangChar125AuthRoute
+  '/{-$lang}/best-apartment-dogs': typeof Char123LangChar125BestApartmentDogsRoute
   '/{-$lang}/best-dog-breeds-for-families': typeof Char123LangChar125BestDogBreedsForFamiliesRoute
+  '/{-$lang}/best-dogs-for-first-time-owners': typeof Char123LangChar125BestDogsForFirstTimeOwnersRoute
   '/{-$lang}/brochure': typeof Char123LangChar125BrochureRoute
   '/{-$lang}/compare': typeof Char123LangChar125CompareRoute
   '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
   '/{-$lang}/dog-life': typeof Char123LangChar125DogLifeRoute
+  '/{-$lang}/dogs-that-can-be-left-alone': typeof Char123LangChar125DogsThatCanBeLeftAloneRoute
   '/{-$lang}/find-my-dog': typeof Char123LangChar125FindMyDogRoute
   '/{-$lang}/guides': typeof Char123LangChar125GuidesRoute
+  '/{-$lang}/low-shedding-dogs': typeof Char123LangChar125LowSheddingDogsRoute
   '/{-$lang}/member-card': typeof Char123LangChar125MemberCardRoute
-  '/{-$lang}/partners': typeof Char123LangChar125PartnersRoute
+  '/{-$lang}/most-mismatched-breeds': typeof Char123LangChar125MostMismatchedBreedsRoute
+  '/{-$lang}/partners': typeof Char123LangChar125PartnersRouteWithChildren
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
   '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
   '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
   '/{-$lang}/terms': typeof Char123LangChar125TermsRoute
+  '/{-$lang}/what-a-dog-costs': typeof Char123LangChar125WhatADogCostsRoute
   '/{-$lang}': typeof Char123LangChar125IndexRoute
   '/{-$lang}/breeds/$breedId': typeof Char123LangChar125BreedsBreedIdRoute
   '/{-$lang}/can-dogs-eat/$foodId': typeof Char123LangChar125CanDogsEatFoodIdRoute
@@ -500,11 +570,13 @@ export interface FileRoutesByTo {
   '/{-$lang}/my-dog/food': typeof Char123LangChar125MyDogFoodRoute
   '/{-$lang}/my-dog/nutrition': typeof Char123LangChar125MyDogNutritionRoute
   '/{-$lang}/my-dog/pack': typeof Char123LangChar125MyDogPackRoute
+  '/{-$lang}/my-dog/preview': typeof Char123LangChar125MyDogPreviewRoute
   '/{-$lang}/my-dog/print': typeof Char123LangChar125MyDogPrintRoute
   '/{-$lang}/my-dog/setup': typeof Char123LangChar125MyDogSetupRoute
   '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
   '/{-$lang}/my-dog/week': typeof Char123LangChar125MyDogWeekRoute
   '/{-$lang}/my-dog/weight': typeof Char123LangChar125MyDogWeightRoute
+  '/{-$lang}/partners/portal': typeof Char123LangChar125PartnersPortalRoute
   '/{-$lang}/quiz/success': typeof Char123LangChar125QuizSuccessRoute
   '/{-$lang}/train/journey': typeof Char123LangChar125TrainJourneyRoute
   '/{-$lang}/train/library': typeof Char123LangChar125TrainLibraryRoute
@@ -530,23 +602,29 @@ export interface FileRoutesById {
   '/{-$lang}/about': typeof Char123LangChar125AboutRoute
   '/{-$lang}/account': typeof Char123LangChar125AccountRoute
   '/{-$lang}/auth': typeof Char123LangChar125AuthRoute
+  '/{-$lang}/best-apartment-dogs': typeof Char123LangChar125BestApartmentDogsRoute
   '/{-$lang}/best-dog-breeds-for-families': typeof Char123LangChar125BestDogBreedsForFamiliesRoute
+  '/{-$lang}/best-dogs-for-first-time-owners': typeof Char123LangChar125BestDogsForFirstTimeOwnersRoute
   '/{-$lang}/brochure': typeof Char123LangChar125BrochureRoute
   '/{-$lang}/compare': typeof Char123LangChar125CompareRoute
   '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
   '/{-$lang}/dog-life': typeof Char123LangChar125DogLifeRoute
+  '/{-$lang}/dogs-that-can-be-left-alone': typeof Char123LangChar125DogsThatCanBeLeftAloneRoute
   '/{-$lang}/find-my-dog': typeof Char123LangChar125FindMyDogRoute
   '/{-$lang}/get-a-dog': typeof Char123LangChar125GetADogRouteWithChildren
   '/{-$lang}/guides': typeof Char123LangChar125GuidesRoute
+  '/{-$lang}/low-shedding-dogs': typeof Char123LangChar125LowSheddingDogsRoute
   '/{-$lang}/member-card': typeof Char123LangChar125MemberCardRoute
+  '/{-$lang}/most-mismatched-breeds': typeof Char123LangChar125MostMismatchedBreedsRoute
   '/{-$lang}/my-dog': typeof Char123LangChar125MyDogRouteWithChildren
-  '/{-$lang}/partners': typeof Char123LangChar125PartnersRoute
+  '/{-$lang}/partners': typeof Char123LangChar125PartnersRouteWithChildren
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
   '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
   '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
   '/{-$lang}/terms': typeof Char123LangChar125TermsRoute
   '/{-$lang}/train': typeof Char123LangChar125TrainRouteWithChildren
   '/{-$lang}/travel': typeof Char123LangChar125TravelRouteWithChildren
+  '/{-$lang}/what-a-dog-costs': typeof Char123LangChar125WhatADogCostsRoute
   '/{-$lang}/': typeof Char123LangChar125IndexRoute
   '/{-$lang}/breeds/$breedId': typeof Char123LangChar125BreedsBreedIdRoute
   '/{-$lang}/can-dogs-eat/$foodId': typeof Char123LangChar125CanDogsEatFoodIdRoute
@@ -561,11 +639,13 @@ export interface FileRoutesById {
   '/{-$lang}/my-dog/food': typeof Char123LangChar125MyDogFoodRoute
   '/{-$lang}/my-dog/nutrition': typeof Char123LangChar125MyDogNutritionRoute
   '/{-$lang}/my-dog/pack': typeof Char123LangChar125MyDogPackRoute
+  '/{-$lang}/my-dog/preview': typeof Char123LangChar125MyDogPreviewRoute
   '/{-$lang}/my-dog/print': typeof Char123LangChar125MyDogPrintRoute
   '/{-$lang}/my-dog/setup': typeof Char123LangChar125MyDogSetupRoute
   '/{-$lang}/my-dog/vet': typeof Char123LangChar125MyDogVetRoute
   '/{-$lang}/my-dog/week': typeof Char123LangChar125MyDogWeekRoute
   '/{-$lang}/my-dog/weight': typeof Char123LangChar125MyDogWeightRoute
+  '/{-$lang}/partners/portal': typeof Char123LangChar125PartnersPortalRoute
   '/{-$lang}/quiz/success': typeof Char123LangChar125QuizSuccessRoute
   '/{-$lang}/train/journey': typeof Char123LangChar125TrainJourneyRoute
   '/{-$lang}/train/library': typeof Char123LangChar125TrainLibraryRoute
@@ -592,15 +672,20 @@ export interface FileRouteTypes {
     | '/{-$lang}/about'
     | '/{-$lang}/account'
     | '/{-$lang}/auth'
+    | '/{-$lang}/best-apartment-dogs'
     | '/{-$lang}/best-dog-breeds-for-families'
+    | '/{-$lang}/best-dogs-for-first-time-owners'
     | '/{-$lang}/brochure'
     | '/{-$lang}/compare'
     | '/{-$lang}/contact'
     | '/{-$lang}/dog-life'
+    | '/{-$lang}/dogs-that-can-be-left-alone'
     | '/{-$lang}/find-my-dog'
     | '/{-$lang}/get-a-dog'
     | '/{-$lang}/guides'
+    | '/{-$lang}/low-shedding-dogs'
     | '/{-$lang}/member-card'
+    | '/{-$lang}/most-mismatched-breeds'
     | '/{-$lang}/my-dog'
     | '/{-$lang}/partners'
     | '/{-$lang}/plus'
@@ -609,6 +694,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/terms'
     | '/{-$lang}/train'
     | '/{-$lang}/travel'
+    | '/{-$lang}/what-a-dog-costs'
     | '/{-$lang}/'
     | '/{-$lang}/breeds/$breedId'
     | '/{-$lang}/can-dogs-eat/$foodId'
@@ -623,11 +709,13 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/food'
     | '/{-$lang}/my-dog/nutrition'
     | '/{-$lang}/my-dog/pack'
+    | '/{-$lang}/my-dog/preview'
     | '/{-$lang}/my-dog/print'
     | '/{-$lang}/my-dog/setup'
     | '/{-$lang}/my-dog/vet'
     | '/{-$lang}/my-dog/week'
     | '/{-$lang}/my-dog/weight'
+    | '/{-$lang}/partners/portal'
     | '/{-$lang}/quiz/success'
     | '/{-$lang}/train/journey'
     | '/{-$lang}/train/library'
@@ -651,19 +739,25 @@ export interface FileRouteTypes {
     | '/{-$lang}/about'
     | '/{-$lang}/account'
     | '/{-$lang}/auth'
+    | '/{-$lang}/best-apartment-dogs'
     | '/{-$lang}/best-dog-breeds-for-families'
+    | '/{-$lang}/best-dogs-for-first-time-owners'
     | '/{-$lang}/brochure'
     | '/{-$lang}/compare'
     | '/{-$lang}/contact'
     | '/{-$lang}/dog-life'
+    | '/{-$lang}/dogs-that-can-be-left-alone'
     | '/{-$lang}/find-my-dog'
     | '/{-$lang}/guides'
+    | '/{-$lang}/low-shedding-dogs'
     | '/{-$lang}/member-card'
+    | '/{-$lang}/most-mismatched-breeds'
     | '/{-$lang}/partners'
     | '/{-$lang}/plus'
     | '/{-$lang}/privacy'
     | '/{-$lang}/sources'
     | '/{-$lang}/terms'
+    | '/{-$lang}/what-a-dog-costs'
     | '/{-$lang}'
     | '/{-$lang}/breeds/$breedId'
     | '/{-$lang}/can-dogs-eat/$foodId'
@@ -678,11 +772,13 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/food'
     | '/{-$lang}/my-dog/nutrition'
     | '/{-$lang}/my-dog/pack'
+    | '/{-$lang}/my-dog/preview'
     | '/{-$lang}/my-dog/print'
     | '/{-$lang}/my-dog/setup'
     | '/{-$lang}/my-dog/vet'
     | '/{-$lang}/my-dog/week'
     | '/{-$lang}/my-dog/weight'
+    | '/{-$lang}/partners/portal'
     | '/{-$lang}/quiz/success'
     | '/{-$lang}/train/journey'
     | '/{-$lang}/train/library'
@@ -707,15 +803,20 @@ export interface FileRouteTypes {
     | '/{-$lang}/about'
     | '/{-$lang}/account'
     | '/{-$lang}/auth'
+    | '/{-$lang}/best-apartment-dogs'
     | '/{-$lang}/best-dog-breeds-for-families'
+    | '/{-$lang}/best-dogs-for-first-time-owners'
     | '/{-$lang}/brochure'
     | '/{-$lang}/compare'
     | '/{-$lang}/contact'
     | '/{-$lang}/dog-life'
+    | '/{-$lang}/dogs-that-can-be-left-alone'
     | '/{-$lang}/find-my-dog'
     | '/{-$lang}/get-a-dog'
     | '/{-$lang}/guides'
+    | '/{-$lang}/low-shedding-dogs'
     | '/{-$lang}/member-card'
+    | '/{-$lang}/most-mismatched-breeds'
     | '/{-$lang}/my-dog'
     | '/{-$lang}/partners'
     | '/{-$lang}/plus'
@@ -724,6 +825,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/terms'
     | '/{-$lang}/train'
     | '/{-$lang}/travel'
+    | '/{-$lang}/what-a-dog-costs'
     | '/{-$lang}/'
     | '/{-$lang}/breeds/$breedId'
     | '/{-$lang}/can-dogs-eat/$foodId'
@@ -738,11 +840,13 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/food'
     | '/{-$lang}/my-dog/nutrition'
     | '/{-$lang}/my-dog/pack'
+    | '/{-$lang}/my-dog/preview'
     | '/{-$lang}/my-dog/print'
     | '/{-$lang}/my-dog/setup'
     | '/{-$lang}/my-dog/vet'
     | '/{-$lang}/my-dog/week'
     | '/{-$lang}/my-dog/weight'
+    | '/{-$lang}/partners/portal'
     | '/{-$lang}/quiz/success'
     | '/{-$lang}/train/journey'
     | '/{-$lang}/train/library'
@@ -811,11 +915,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LangChar125AuthRouteImport
       parentRoute: typeof Char123LangChar125Route
     }
+    '/{-$lang}/best-apartment-dogs': {
+      id: '/{-$lang}/best-apartment-dogs'
+      path: '/best-apartment-dogs'
+      fullPath: '/{-$lang}/best-apartment-dogs'
+      preLoaderRoute: typeof Char123LangChar125BestApartmentDogsRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
     '/{-$lang}/best-dog-breeds-for-families': {
       id: '/{-$lang}/best-dog-breeds-for-families'
       path: '/best-dog-breeds-for-families'
       fullPath: '/{-$lang}/best-dog-breeds-for-families'
       preLoaderRoute: typeof Char123LangChar125BestDogBreedsForFamiliesRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/best-dogs-for-first-time-owners': {
+      id: '/{-$lang}/best-dogs-for-first-time-owners'
+      path: '/best-dogs-for-first-time-owners'
+      fullPath: '/{-$lang}/best-dogs-for-first-time-owners'
+      preLoaderRoute: typeof Char123LangChar125BestDogsForFirstTimeOwnersRouteImport
       parentRoute: typeof Char123LangChar125Route
     }
     '/{-$lang}/brochure': {
@@ -846,6 +964,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LangChar125DogLifeRouteImport
       parentRoute: typeof Char123LangChar125Route
     }
+    '/{-$lang}/dogs-that-can-be-left-alone': {
+      id: '/{-$lang}/dogs-that-can-be-left-alone'
+      path: '/dogs-that-can-be-left-alone'
+      fullPath: '/{-$lang}/dogs-that-can-be-left-alone'
+      preLoaderRoute: typeof Char123LangChar125DogsThatCanBeLeftAloneRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
     '/{-$lang}/find-my-dog': {
       id: '/{-$lang}/find-my-dog'
       path: '/find-my-dog'
@@ -867,11 +992,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LangChar125GuidesRouteImport
       parentRoute: typeof Char123LangChar125Route
     }
+    '/{-$lang}/low-shedding-dogs': {
+      id: '/{-$lang}/low-shedding-dogs'
+      path: '/low-shedding-dogs'
+      fullPath: '/{-$lang}/low-shedding-dogs'
+      preLoaderRoute: typeof Char123LangChar125LowSheddingDogsRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
     '/{-$lang}/member-card': {
       id: '/{-$lang}/member-card'
       path: '/member-card'
       fullPath: '/{-$lang}/member-card'
       preLoaderRoute: typeof Char123LangChar125MemberCardRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/most-mismatched-breeds': {
+      id: '/{-$lang}/most-mismatched-breeds'
+      path: '/most-mismatched-breeds'
+      fullPath: '/{-$lang}/most-mismatched-breeds'
+      preLoaderRoute: typeof Char123LangChar125MostMismatchedBreedsRouteImport
       parentRoute: typeof Char123LangChar125Route
     }
     '/{-$lang}/my-dog': {
@@ -928,6 +1067,13 @@ declare module '@tanstack/react-router' {
       path: '/travel'
       fullPath: '/{-$lang}/travel'
       preLoaderRoute: typeof Char123LangChar125TravelRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/what-a-dog-costs': {
+      id: '/{-$lang}/what-a-dog-costs'
+      path: '/what-a-dog-costs'
+      fullPath: '/{-$lang}/what-a-dog-costs'
+      preLoaderRoute: typeof Char123LangChar125WhatADogCostsRouteImport
       parentRoute: typeof Char123LangChar125Route
     }
     '/{-$lang}/breeds/': {
@@ -1049,6 +1195,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LangChar125MyDogPackRouteImport
       parentRoute: typeof Char123LangChar125MyDogRoute
     }
+    '/{-$lang}/my-dog/preview': {
+      id: '/{-$lang}/my-dog/preview'
+      path: '/preview'
+      fullPath: '/{-$lang}/my-dog/preview'
+      preLoaderRoute: typeof Char123LangChar125MyDogPreviewRouteImport
+      parentRoute: typeof Char123LangChar125MyDogRoute
+    }
     '/{-$lang}/my-dog/print': {
       id: '/{-$lang}/my-dog/print'
       path: '/print'
@@ -1083,6 +1236,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/{-$lang}/my-dog/weight'
       preLoaderRoute: typeof Char123LangChar125MyDogWeightRouteImport
       parentRoute: typeof Char123LangChar125MyDogRoute
+    }
+    '/{-$lang}/partners/portal': {
+      id: '/{-$lang}/partners/portal'
+      path: '/portal'
+      fullPath: '/{-$lang}/partners/portal'
+      preLoaderRoute: typeof Char123LangChar125PartnersPortalRouteImport
+      parentRoute: typeof Char123LangChar125PartnersRoute
     }
     '/{-$lang}/quiz/success': {
       id: '/{-$lang}/quiz/success'
@@ -1212,6 +1372,7 @@ interface Char123LangChar125MyDogRouteChildren {
   Char123LangChar125MyDogFoodRoute: typeof Char123LangChar125MyDogFoodRoute
   Char123LangChar125MyDogNutritionRoute: typeof Char123LangChar125MyDogNutritionRoute
   Char123LangChar125MyDogPackRoute: typeof Char123LangChar125MyDogPackRoute
+  Char123LangChar125MyDogPreviewRoute: typeof Char123LangChar125MyDogPreviewRoute
   Char123LangChar125MyDogPrintRoute: typeof Char123LangChar125MyDogPrintRoute
   Char123LangChar125MyDogSetupRoute: typeof Char123LangChar125MyDogSetupRoute
   Char123LangChar125MyDogVetRoute: typeof Char123LangChar125MyDogVetRoute
@@ -1228,6 +1389,7 @@ const Char123LangChar125MyDogRouteChildren: Char123LangChar125MyDogRouteChildren
     Char123LangChar125MyDogNutritionRoute:
       Char123LangChar125MyDogNutritionRoute,
     Char123LangChar125MyDogPackRoute: Char123LangChar125MyDogPackRoute,
+    Char123LangChar125MyDogPreviewRoute: Char123LangChar125MyDogPreviewRoute,
     Char123LangChar125MyDogPrintRoute: Char123LangChar125MyDogPrintRoute,
     Char123LangChar125MyDogSetupRoute: Char123LangChar125MyDogSetupRoute,
     Char123LangChar125MyDogVetRoute: Char123LangChar125MyDogVetRoute,
@@ -1241,6 +1403,21 @@ const Char123LangChar125MyDogRouteChildren: Char123LangChar125MyDogRouteChildren
 const Char123LangChar125MyDogRouteWithChildren =
   Char123LangChar125MyDogRoute._addFileChildren(
     Char123LangChar125MyDogRouteChildren,
+  )
+
+interface Char123LangChar125PartnersRouteChildren {
+  Char123LangChar125PartnersPortalRoute: typeof Char123LangChar125PartnersPortalRoute
+}
+
+const Char123LangChar125PartnersRouteChildren: Char123LangChar125PartnersRouteChildren =
+  {
+    Char123LangChar125PartnersPortalRoute:
+      Char123LangChar125PartnersPortalRoute,
+  }
+
+const Char123LangChar125PartnersRouteWithChildren =
+  Char123LangChar125PartnersRoute._addFileChildren(
+    Char123LangChar125PartnersRouteChildren,
   )
 
 interface Char123LangChar125TrainRouteChildren {
@@ -1291,23 +1468,29 @@ interface Char123LangChar125RouteChildren {
   Char123LangChar125AboutRoute: typeof Char123LangChar125AboutRoute
   Char123LangChar125AccountRoute: typeof Char123LangChar125AccountRoute
   Char123LangChar125AuthRoute: typeof Char123LangChar125AuthRoute
+  Char123LangChar125BestApartmentDogsRoute: typeof Char123LangChar125BestApartmentDogsRoute
   Char123LangChar125BestDogBreedsForFamiliesRoute: typeof Char123LangChar125BestDogBreedsForFamiliesRoute
+  Char123LangChar125BestDogsForFirstTimeOwnersRoute: typeof Char123LangChar125BestDogsForFirstTimeOwnersRoute
   Char123LangChar125BrochureRoute: typeof Char123LangChar125BrochureRoute
   Char123LangChar125CompareRoute: typeof Char123LangChar125CompareRoute
   Char123LangChar125ContactRoute: typeof Char123LangChar125ContactRoute
   Char123LangChar125DogLifeRoute: typeof Char123LangChar125DogLifeRoute
+  Char123LangChar125DogsThatCanBeLeftAloneRoute: typeof Char123LangChar125DogsThatCanBeLeftAloneRoute
   Char123LangChar125FindMyDogRoute: typeof Char123LangChar125FindMyDogRoute
   Char123LangChar125GetADogRoute: typeof Char123LangChar125GetADogRouteWithChildren
   Char123LangChar125GuidesRoute: typeof Char123LangChar125GuidesRoute
+  Char123LangChar125LowSheddingDogsRoute: typeof Char123LangChar125LowSheddingDogsRoute
   Char123LangChar125MemberCardRoute: typeof Char123LangChar125MemberCardRoute
+  Char123LangChar125MostMismatchedBreedsRoute: typeof Char123LangChar125MostMismatchedBreedsRoute
   Char123LangChar125MyDogRoute: typeof Char123LangChar125MyDogRouteWithChildren
-  Char123LangChar125PartnersRoute: typeof Char123LangChar125PartnersRoute
+  Char123LangChar125PartnersRoute: typeof Char123LangChar125PartnersRouteWithChildren
   Char123LangChar125PlusRoute: typeof Char123LangChar125PlusRoute
   Char123LangChar125PrivacyRoute: typeof Char123LangChar125PrivacyRoute
   Char123LangChar125SourcesRoute: typeof Char123LangChar125SourcesRoute
   Char123LangChar125TermsRoute: typeof Char123LangChar125TermsRoute
   Char123LangChar125TrainRoute: typeof Char123LangChar125TrainRouteWithChildren
   Char123LangChar125TravelRoute: typeof Char123LangChar125TravelRouteWithChildren
+  Char123LangChar125WhatADogCostsRoute: typeof Char123LangChar125WhatADogCostsRoute
   Char123LangChar125IndexRoute: typeof Char123LangChar125IndexRoute
   Char123LangChar125BreedsBreedIdRoute: typeof Char123LangChar125BreedsBreedIdRoute
   Char123LangChar125CanDogsEatFoodIdRoute: typeof Char123LangChar125CanDogsEatFoodIdRoute
@@ -1323,24 +1506,35 @@ const Char123LangChar125RouteChildren: Char123LangChar125RouteChildren = {
   Char123LangChar125AboutRoute: Char123LangChar125AboutRoute,
   Char123LangChar125AccountRoute: Char123LangChar125AccountRoute,
   Char123LangChar125AuthRoute: Char123LangChar125AuthRoute,
+  Char123LangChar125BestApartmentDogsRoute:
+    Char123LangChar125BestApartmentDogsRoute,
   Char123LangChar125BestDogBreedsForFamiliesRoute:
     Char123LangChar125BestDogBreedsForFamiliesRoute,
+  Char123LangChar125BestDogsForFirstTimeOwnersRoute:
+    Char123LangChar125BestDogsForFirstTimeOwnersRoute,
   Char123LangChar125BrochureRoute: Char123LangChar125BrochureRoute,
   Char123LangChar125CompareRoute: Char123LangChar125CompareRoute,
   Char123LangChar125ContactRoute: Char123LangChar125ContactRoute,
   Char123LangChar125DogLifeRoute: Char123LangChar125DogLifeRoute,
+  Char123LangChar125DogsThatCanBeLeftAloneRoute:
+    Char123LangChar125DogsThatCanBeLeftAloneRoute,
   Char123LangChar125FindMyDogRoute: Char123LangChar125FindMyDogRoute,
   Char123LangChar125GetADogRoute: Char123LangChar125GetADogRouteWithChildren,
   Char123LangChar125GuidesRoute: Char123LangChar125GuidesRoute,
+  Char123LangChar125LowSheddingDogsRoute:
+    Char123LangChar125LowSheddingDogsRoute,
   Char123LangChar125MemberCardRoute: Char123LangChar125MemberCardRoute,
+  Char123LangChar125MostMismatchedBreedsRoute:
+    Char123LangChar125MostMismatchedBreedsRoute,
   Char123LangChar125MyDogRoute: Char123LangChar125MyDogRouteWithChildren,
-  Char123LangChar125PartnersRoute: Char123LangChar125PartnersRoute,
+  Char123LangChar125PartnersRoute: Char123LangChar125PartnersRouteWithChildren,
   Char123LangChar125PlusRoute: Char123LangChar125PlusRoute,
   Char123LangChar125PrivacyRoute: Char123LangChar125PrivacyRoute,
   Char123LangChar125SourcesRoute: Char123LangChar125SourcesRoute,
   Char123LangChar125TermsRoute: Char123LangChar125TermsRoute,
   Char123LangChar125TrainRoute: Char123LangChar125TrainRouteWithChildren,
   Char123LangChar125TravelRoute: Char123LangChar125TravelRouteWithChildren,
+  Char123LangChar125WhatADogCostsRoute: Char123LangChar125WhatADogCostsRoute,
   Char123LangChar125IndexRoute: Char123LangChar125IndexRoute,
   Char123LangChar125BreedsBreedIdRoute: Char123LangChar125BreedsBreedIdRoute,
   Char123LangChar125CanDogsEatFoodIdRoute:

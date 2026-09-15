@@ -6,7 +6,13 @@ import { getTrainingCategories } from "@/data/training/categories";
 import { categoryImages, trainingImages } from "@/data/training/images";
 import { getLessons } from "@/data/training/lessons";
 import { todaysPlan, getAgeFocus } from "@/lib/training/plan";
-import { streakDays, today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
+import { dailyBudget, encouragement, progressSummary, weeklyPlan } from "@/lib/training/schedule";
+import {
+  ProgressOverview,
+  WeekPlan,
+  WeekPlanEmpty,
+} from "@/components/dogmatch/training/plan-parts";
+import { today, useActiveDog, useProgress, useTrainingState } from "@/lib/training/store";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
@@ -19,9 +25,84 @@ const copy = {
   dk: { welcomeUser: (name: string) => `Godt at se dig, ${name}s menneske.` },
   se: { welcomeUser: (name: string) => `Kul att se dig, ${name}s människa.` },
   fi: { welcomeUser: (name: string) => `Kiva nähdä sinut taas – ${name} odottaa jo!` },
-  de: { welcomeUser: (name: string) => `Schön, Sie zu sehen, ${name}s Mensch.` },
-  fr: { welcomeUser: (name: string) => `Ravi de vous revoir, humain de ${name}.` },
-  nl: { welcomeUser: (name: string) => `Fijn u te zien, ${name}s baasje.` },
+  de: { welcomeUser: (name: string) => `Schön, dich zu sehen, Mensch von ${name}.` },
+  fr: { welcomeUser: (name: string) => `Ravi de te revoir, humain de ${name}.` },
+  nl: { welcomeUser: (name: string) => `Fijn je te zien, mens van ${name}.` },
+} as const;
+
+const weekCopy = {
+  en: {
+    weekTitle: "The week ahead",
+    weekBody: (m: number) =>
+      `Built around ${m} minutes a day — your dog's age and size, and the time you told us you have. Miss a day and nothing breaks; it simply moves along with you.`,
+    weekBodyGuest:
+      "Tell us your dog's age, size and how much time you have, and we'll lay out a simple week you can actually keep.",
+    progressTitle: "How it's going",
+  },
+  dk: {
+    weekTitle: "Ugen der kommer",
+    weekBody: (m: number) =>
+      `Bygget op omkring ${m} minutter om dagen — din hunds alder og størrelse, og den tid du har fortalt os, du har. Spring en dag over, og intet går i stykker; det følger bare med dig.`,
+    weekBodyGuest:
+      "Fortæl os din hunds alder, størrelse og hvor meget tid du har, så lægger vi en simpel uge op, som du rent faktisk kan overholde.",
+    progressTitle: "Hvordan det går",
+  },
+  se: {
+    weekTitle: "Veckan som kommer",
+    weekBody: (m: number) =>
+      `Anpassat efter ${m} minuter om dagen – baserat på din hunds ålder och storlek, samt den tid du angett. Missar du en dag är det ingen fara, schemat anpassar sig bara efter dig.`,
+    weekBodyGuest:
+      "Berätta om din hunds ålder, storlek och hur mycket tid du har, så skapar vi en enkel vecka som du faktiskt kan följa.",
+    progressTitle: "Hur det går",
+  },
+  fi: {
+    weekTitle: "Tuleva viikko",
+    weekBody: (m: number) =>
+      `Rakennettu ${m} minuutin ympärille päivässä — koirasi iän ja koon sekä ilmoittamasi ajan mukaan. Yksi päivä väliin ei riko mitään; ohjelma vain mukautuu elämäntilanteeseesi.`,
+    weekBodyGuest:
+      "Kerro meille koirasi ikä, koko ja käytettävissä oleva aika, niin luomme sinulle yksinkertaisen viikko-ohjelman, jota voit todella noudattaa.",
+    progressTitle: "Miten edistyminen sujuu",
+  },
+  de: {
+    weekTitle: "Die kommende Woche",
+    weekBody: (m: number) =>
+      `Zugeschnitten auf ${m} Minuten täglich – basierend auf Alter und Größe deines Hundes sowie deiner angegebenen Zeit. Wenn du mal einen Tag auslässt, ist das kein Problem, das Programm passt sich einfach an deinen Rhythmus an.`,
+    weekBodyGuest:
+      "Gib uns das Alter und die Größe deines Hundes sowie deine verfügbare Zeit an, und wir erstellen dir einen einfachen Wochenplan, den du auch wirklich einhalten kannst.",
+    progressTitle: "So läuft's",
+  },
+  fr: {
+    weekTitle: "La semaine à venir",
+    weekBody: (m: number) =>
+      `Conçu pour ${m} minutes par jour — en fonction de l'âge et de la taille de votre chien, ainsi que du temps dont vous nous avez dit disposer. Manquez une journée et rien ne s'arrête ; tout s'adapte simplement à votre rythme.`,
+    weekBodyGuest:
+      "Indiquez-nous l'âge, la taille de votre chien et le temps dont vous disposez, et nous vous proposerons une semaine simple que vous pourrez réellement suivre.",
+    progressTitle: "Comment ça se passe",
+  },
+  nl: {
+    weekTitle: "De week vooruit",
+    weekBody: (m: number) =>
+      `Opgebouwd rond ${m} minuten per dag — gebaseerd op de leeftijd en grootte van je hond, en de tijd die je ons hebt doorgegeven. Sla een dag over en niets breekt; het gaat gewoon met je mee.`,
+    weekBodyGuest:
+      "Vertel ons de leeftijd, grootte en hoeveel tijd je hebt voor je hond, en we stellen een eenvoudige week samen die je kunt volhouden.",
+    progressTitle: "Hoe het gaat",
+  },
+  no: {
+    weekTitle: "Uken som kommer",
+    weekBody: (m: number) =>
+      `Bygget rundt ${m} minutter om dagen — hundens alder og størrelse, og tiden du sa du har. Hopper du over en dag, ryker ingenting; planen flytter seg bare med deg.`,
+    weekBodyGuest:
+      "Fortell oss hundens alder, størrelse og hvor mye tid du har, så legger vi opp en enkel uke du faktisk klarer å holde.",
+    progressTitle: "Hvordan det går",
+  },
+  pl: {
+    weekTitle: "Nadchodzący tydzień",
+    weekBody: (m: number) =>
+      `Ułożony wokół ${m} minut dziennie — wieku i wielkości psa oraz czasu, który masz. Opuszczony dzień niczego nie psuje; plan po prostu przesuwa się razem z tobą.`,
+    weekBodyGuest:
+      "Powiedz nam, ile pies ma lat, jak jest duży i ile masz czasu, a ułożymy prosty tydzień, który naprawdę utrzymasz.",
+    progressTitle: "Jak idzie",
+  },
 } as const;
 
 const title = "Train Your Dog — Small sessions, clear steps | DoggMatch";
@@ -56,19 +137,19 @@ const seoCopy = {
       "Ystävällistä, palkitsevaa koulutusta, jota oikeasti ehtii tehdä kotona. Lyhyitä harjoituksia, selkeitä askeleita ja kuvia, jotka näyttävät tarkalleen, mitä tehdä.",
   },
   de: {
-    title: "Hundetraining — Kurze Einheiten, klare Schritte | DoggMatch",
+    title: "Hundetraining — kurze Einheiten, klare Schritte | DoggMatch",
     description:
-      "Freundliches, belohnungsbasiertes Training, das zu Hause wirklich klappt. Kurze Einheiten, klare Schritte und Bilder, die genau zeigen, was zu tun ist.",
+      "Freundliches, belohnungsbasiertes Training, das du wirklich zu Hause schaffst. Kurze Einheiten, klare Schritte und Bilder, die genau zeigen, was zu tun ist.",
   },
   fr: {
-    title: "Éduquer votre chien — Petites séances, étapes claires | DoggMatch",
+    title: "Éduquez votre chien — séances courtes, étapes claires | DoggMatch",
     description:
-      "Une éducation bienveillante et basée sur la récompense, réalisable chez vous. Des séances courtes, des étapes claires et des images qui montrent exactement quoi faire.",
+      "Une éducation bienveillante et positive que vous pouvez vraiment faire à la maison. Des séances courtes, des étapes claires et des images qui montrent exactement quoi faire.",
   },
   nl: {
-    title: "Train uw hond — Korte sessies, duidelijke stappen | DoggMatch",
+    title: "Train je hond — korte sessies, duidelijke stappen | DoggMatch",
     description:
-      "Vriendelijke, beloningsgerichte training die u echt thuis kunt doen. Korte sessies, duidelijke stappen en beelden die precies laten zien wat u moet doen.",
+      "Vriendelijke, beloningsgerichte training die je echt thuis volhoudt. Korte sessies, duidelijke stappen en beelden die precies laten zien wat je moet doen.",
   },
 };
 
@@ -85,8 +166,9 @@ function TrainHome() {
   const progress = useProgress(dog?.id);
   const plan = todaysPlan(dog, progress, today());
   const ageFocus = getAgeFocus();
-  const learned = Object.values(progress).filter((s) => s === "learned").length;
-  const streak = streakDays(state.sessions);
+  const planCopy = useCopy(weekCopy);
+  const week = weeklyPlan(dog, progress, state.sessions, today());
+  const summary = progressSummary(state.sessions, progress, getLessons().length, today());
 
   return (
     <div className="pb-24">
@@ -185,11 +267,21 @@ function TrainHome() {
             ))}
           </ol>
 
+          {/* the week ahead, shaped by age, size and the time you actually have */}
+          <div className="mt-16">
+            <h3 className="display-md">{planCopy.weekTitle}</h3>
+            <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">
+              {dog ? planCopy.weekBody(dailyBudget(dog)) : planCopy.weekBodyGuest}
+            </p>
+            <div className="mt-8">{dog ? <WeekPlan days={week} /> : <WeekPlanEmpty />}</div>
+          </div>
+
           {dog && (
-            <div className="mt-10 grid gap-8 rounded-2xl border border-border bg-surface p-8 sm:grid-cols-3">
-              <Stat value={String(state.sessions.length)} label={t.train.statSessions} />
-              <Stat value={String(learned)} label={t.train.statSkills} />
-              <Stat value={String(streak)} label={t.train.statStreak} />
+            <div className="mt-16">
+              <h3 className="display-md">{planCopy.progressTitle}</h3>
+              <div className="mt-8">
+                <ProgressOverview summary={summary} note={encouragement(summary)} />
+              </div>
             </div>
           )}
         </div>
@@ -242,26 +334,30 @@ function TrainHome() {
             </Link>
           </div>
           <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {getTrainingCategories().slice(0, 4).map((c) => (
-              <li key={c.id}>
-                <Link
-                  to={withLangPrefix("/train/library")}
-                  hash={c.id}
-                  className="group block overflow-hidden rounded-[1.25rem]"
-                >
-                  <img
-                    src={categoryImages[c.id]}
-                    alt=""
-                    loading="lazy"
-                    width={1200}
-                    height={1500}
-                    className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
-                  />
-                  <h3 className="mt-4 font-display text-lg leading-tight tracking-tight">{c.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.blurb}</p>
-                </Link>
-              </li>
-            ))}
+            {getTrainingCategories()
+              .slice(0, 4)
+              .map((c) => (
+                <li key={c.id}>
+                  <Link
+                    to={withLangPrefix("/train/library")}
+                    hash={c.id}
+                    className="group block overflow-hidden rounded-[1.25rem]"
+                  >
+                    <img
+                      src={categoryImages[c.id]}
+                      alt=""
+                      loading="lazy"
+                      width={1200}
+                      height={1500}
+                      className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
+                    />
+                    <h3 className="mt-4 font-display text-lg leading-tight tracking-tight">
+                      {c.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.blurb}</p>
+                  </Link>
+                </li>
+              ))}
           </ul>
         </div>
       </Section>
@@ -272,11 +368,13 @@ function TrainHome() {
           <Eyebrow>{t.train.pickedEyebrow}</Eyebrow>
           <h2 className="display-md mt-5 max-w-lg">{t.train.pickedTitle}</h2>
           <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {getLessons().slice(0, 3).map((l) => (
-              <li key={l.id}>
-                <LessonCard lesson={l} status={progress[l.id]} />
-              </li>
-            ))}
+            {getLessons()
+              .slice(0, 3)
+              .map((l) => (
+                <li key={l.id}>
+                  <LessonCard lesson={l} status={progress[l.id]} />
+                </li>
+              ))}
           </ul>
         </div>
       </Section>
@@ -291,7 +389,9 @@ function TrainHome() {
             {(Object.keys(ageFocus) as (keyof typeof ageFocus)[]).map((k) => (
               <li key={k} className="bg-background p-8">
                 <h3 className="font-display text-lg leading-tight">{ageFocus[k].title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{ageFocus[k].body}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {ageFocus[k].body}
+                </p>
                 <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
                   {ageFocus[k].points.map((p) => (
                     <li key={p} className="flex gap-2">
@@ -334,13 +434,3 @@ function TrainHome() {
     </div>
   );
 }
-
-function Stat({ value, label }: { value: string; label: string }) {
-  return (
-    <div>
-      <p className="font-display text-4xl tabular-nums tracking-tight text-accent">{value}</p>
-      <p className="mt-2 text-sm text-muted-foreground">{label}</p>
-    </div>
-  );
-}
-

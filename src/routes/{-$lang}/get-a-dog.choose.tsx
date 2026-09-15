@@ -1,6 +1,14 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
-import { CardGrid, Checklist, Notice, PointList, SectionHead } from "@/components/dogmatch/journey/parts";
+import {
+  CardGrid,
+  Checklist,
+  Notice,
+  PointList,
+  SectionHead,
+} from "@/components/dogmatch/journey/parts";
 import { getDogContent } from "@/data/getdog/content";
 import { useCopy } from "@/i18n";
 import puppyImage from "@/assets/puppy.jpg";
@@ -16,19 +24,7 @@ const description =
   "An honest comparison of puppies and adult dogs, what to ask a breeder, the red flags worth noticing, and what to think about when you adopt.";
 
 export const Route = createFileRoute("/{-$lang}/get-a-dog/choose")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/get-a-dog/choose"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/get-a-dog/choose", pageSeo.getDogChoose),
   component: ChoosePage,
 });
 
@@ -67,7 +63,8 @@ const copy = {
     whatsHard: "Hva som er tøft",
     whereFrom: "Hvor fra",
     breederAlt: "En mor-hund som hviler med valpene sine på et teppe i en familiestue",
-    rescueAlt: "En kvinne som huker seg ned for å hilse på en voksen omplasseringshund på et internat",
+    rescueAlt:
+      "En kvinne som huker seg ned for å hilse på en voksen omplasseringshund på et internat",
     whatsGoodAbout: "Hva som er bra med det",
     worthLookingInto: "Verdt å undersøke",
     meetingBreederEyebrow: "Å møte en oppdretter",
@@ -190,88 +187,90 @@ const copy = {
     findMyDog: "Löydä koirani",
   },
   de: {
-    eyebrow: "Sorgfältig wählen",
-    puppyAlt: "Ein Cocker-Spaniel-Welpe sitzt neben einem angekauten Hausschuh",
+    eyebrow: "Mit Bedacht wählen",
+    puppyAlt: "Ein Cocker-Spaniel-Welpe sitzt neben einem zerkauten Hausschuh",
     adultAlt: "Ein ruhiger erwachsener Hund ruht auf einem Sofa in einer sonnigen Wohnung",
     whatsGood: "Was gut ist",
     whatsHard: "Was schwer ist",
     whereFrom: "Woher",
-    breederAlt: "Eine Hundemutter ruht mit ihren Welpen auf einer Decke in einem Familienwohnzimmer",
-    rescueAlt: "Eine Frau hockt sich hin, um einen erwachsenen Tierheimhund zu begrüßen",
+    breederAlt:
+      "Eine Hundemutter ruht mit ihren Welpen auf einer Decke in einem familiären Wohnzimmer",
+    rescueAlt: "Eine Frau kniet sich hin, um einen erwachsenen Tierheimhund zu begrüßen",
     whatsGoodAbout: "Was daran gut ist",
-    worthLookingInto: "Lohnt sich zu prüfen",
+    worthLookingInto: "Wert, genauer hinzuschauen",
     meetingBreederEyebrow: "Einen Züchter treffen",
-    meetingBreederTitle: "Was Sie fragen und worauf Sie achten sollten.",
+    meetingBreederTitle: "Was zu fragen ist, und worauf zu achten ist.",
     meetingBreederBody:
-      "Haken Sie diese der Reihe nach ab. Ein guter Züchter freut sich über Ihre Fragen — die meisten wünschten, mehr Menschen würden fragen.",
+      "Hake diese nacheinander ab. Ein guter Züchter wird sich freuen, dass du fragst — die meisten wünschen sich, dass es mehr Menschen tun.",
     questionsWorthAsking: "Fragen, die sich zu stellen lohnen",
-    thingsGivePause: "Dinge, die uns stutzig machen",
+    thingsGivePause: "Dinge, die uns zögern lassen",
     pauseBody:
-      "Keines davon beweist für sich allein etwas. Zwei oder drei zusammen sind meist ein Grund, sich Zeit zu nehmen oder abzusagen — und Absagen ist immer in Ordnung.",
-    adoptionEyebrow: "Adoption",
-    adoptionTitle: "Denken Sie über eine Adoption nach?",
+      "Keines davon beweist für sich allein etwas. Zwei oder drei zusammen sind meist ein Grund, sich Zeit zu nehmen oder zu gehen — und es ist immer in Ordnung zu gehen.",
+    adoptionEyebrow: "Vermittlung",
+    adoptionTitle: "Denkst du über eine Vermittlung nach?",
     adoptionBody:
-      "Tierheimhunde sind keine Ware zweiter Klasse. Die meisten sind völlig normale Hunde, deren Menschen die Zeit, das Geld oder die Gesundheit ausging. Hier ist, worüber es sich zu sprechen lohnt.",
+      "Vermittlungshunde sind keine beschädigte Ware. Die meisten sind ganz gewöhnliche Hunde, deren Menschen die Zeit, das Geld oder die Gesundheit ausgegangen ist. Hier ist, was es sich zu besprechen lohnt.",
     costsCta: "Was kostet ein Hund wirklich?",
     findMyDog: "Meinen Hund finden",
   },
   fr: {
     eyebrow: "Choisir avec soin",
-    puppyAlt: "Un chiot cocker spaniel assis à côté d'une chausson mâchouillé",
+    puppyAlt: "Un chiot cocker spaniel assis à côté d'une pantoufle mâchouillée",
     adultAlt: "Un chien adulte calme se reposant sur un canapé dans un appartement ensoleillé",
     whatsGood: "Ce qui est bon",
     whatsHard: "Ce qui est difficile",
     whereFrom: "D'où vient-il",
     breederAlt: "Une chienne se reposant avec ses chiots sur une couverture dans un salon familial",
-    rescueAlt: "Une femme s'accroupissant pour saluer un chien adulte à la SPA",
+    rescueAlt: "Une femme s'accroupissant pour saluer un chien adulte dans un refuge",
     whatsGoodAbout: "Ce qui est bon là-dedans",
     worthLookingInto: "À approfondir",
     meetingBreederEyebrow: "Rencontrer un éleveur",
-    meetingBreederTitle: "Quoi demander, et quoi remarquer.",
+    meetingBreederTitle: "Quoi demander, et à quoi faire attention.",
     meetingBreederBody:
-      "Cochez ces points au fur et à mesure. Un bon éleveur sera ravi que vous posiez ces questions — la plupart souhaiteraient que plus de gens le fassent.",
+      "Cochez-les au fur et à mesure. Un bon éleveur sera content que vous posiez ces questions — la plupart aimeraient que plus de gens le fassent.",
     questionsWorthAsking: "Questions qui valent la peine d'être posées",
-    thingsGivePause: "Ce qui doit vous alerter",
+    thingsGivePause: "Des choses qui doivent alerter",
     pauseBody:
-      "Aucun de ces éléments ne prouve quoi que ce soit à lui seul. Deux ou trois ensemble sont généralement une raison de prendre votre temps, ou de renoncer — et renoncer est toujours acceptable.",
+      "Aucune d'elles ne prouve quoi que ce soit à elle seule. Deux ou trois ensemble sont généralement une raison de prendre son temps, ou de partir — et il est toujours acceptable de partir.",
     adoptionEyebrow: "Adoption",
     adoptionTitle: "Vous pensez à l'adoption ?",
     adoptionBody:
-      "Les chiens de refuge ne sont pas des marchandises abîmées. La plupart sont des chiens parfaitement ordinaires dont les propriétaires ont manqué de temps, d'argent ou de santé. Voici ce qui vaut la peine d'être abordé.",
-    costsCta: "Combien coûte réellement un chien ?",
+      "Les chiens de refuge ne sont pas des marchandises abîmées. La plupart sont des chiens tout à fait ordinaires dont les maîtres ont manqué de temps, d'argent ou de santé. Voici ce qui mérite d'être discuté.",
+    costsCta: "Combien coûte vraiment un chien ?",
     findMyDog: "Trouver mon chien",
   },
   nl: {
     eyebrow: "Zorgvuldig kiezen",
-    puppyAlt: "Een cockerspanielpup zittend naast een kapotgekauwde slof",
-    adultAlt: "Een rustige volwassen hond rustend op een bank in een zonnig appartement",
+    puppyAlt: "Een cockerspaniël-puppy zit naast een kapotgekauwde pantoffel",
+    adultAlt: "Een rustige volwassen hond rust op een bank in een zonnig appartement",
     whatsGood: "Wat goed is",
     whatsHard: "Wat lastig is",
-    whereFrom: "Waar vandaan",
-    breederAlt: "Een moederhond die met haar puppy's op een deken rust in een huiskamer",
-    rescueAlt: "Een vrouw die neerhurkt om een volwassen asielhond te begroeten",
-    whatsGoodAbout: "Wat daar goed aan is",
-    worthLookingInto: "De moeite waard om te onderzoeken",
+    whereFrom: "Waarvandaan",
+    breederAlt: "Een moederhond rust met haar puppy's op een deken in een gezinswoonkamer",
+    rescueAlt: "Een vrouw hurkt neer om een volwassen asielhond te begroeten",
+    whatsGoodAbout: "Wat er goed aan is",
+    worthLookingInto: "Het waard om uit te zoeken",
     meetingBreederEyebrow: "Een fokker ontmoeten",
-    meetingBreederTitle: "Wat u moet vragen, en waar u op moet letten.",
+    meetingBreederTitle: "Wat te vragen, en waarop te letten.",
     meetingBreederBody:
-      "Vink deze een voor een af. Een goede fokker is blij dat u het vraagt — de meesten zouden willen dat meer mensen dat deden.",
-    questionsWorthAsking: "Vragen die het waard zijn om te stellen",
-    thingsGivePause: "Dingen die ons doen twijfelen",
+      "Vink deze een voor een af. Een goede fokker is blij dat je het vraagt — de meesten zouden willen dat meer mensen dat deden.",
+    questionsWorthAsking: "Vragen die het stellen waard zijn",
+    thingsGivePause: "Dingen die ons doen aarzelen",
     pauseBody:
-      "Geen van deze zaken bewijst op zichzelf iets. Twee of drie samen zijn meestal een reden om de tijd te nemen, of ervan af te zien — en afzien mag altijd.",
+      "Geen van deze bewijst iets op zichzelf. Twee of drie samen zijn meestal een reden om de tijd te nemen, of weg te lopen — en het is altijd oké om weg te lopen.",
     adoptionEyebrow: "Adoptie",
-    adoptionTitle: "Denkt u aan adoptie?",
+    adoptionTitle: "Denk je aan adoptie?",
     adoptionBody:
-      "Asielhonden zijn geen beschadigde waar. De meeste zijn heel gewone honden van wie de mensen zonder tijd, geld of gezondheid kwamen te zitten. Dit is de moeite waard om over na te denken.",
-    costsCta: "Wat kost een hond werkelijk?",
+      "Asielhonden zijn geen beschadigde waar. De meesten zijn heel gewone honden van wie de mensen tijd, geld of gezondheid tekortkwamen. Hier is wat het waard is om te bespreken.",
+    costsCta: "Wat kost een hond echt?",
     findMyDog: "Vind mijn hond",
   },
 } as const;
 
 function ChoosePage() {
   const c = useCopy(copy);
-  const { adoptionConsiderations, breederQuestions, breederRedFlags, puppyVsAdult, sources } = getDogContent();
+  const { adoptionConsiderations, breederQuestions, breederRedFlags, puppyVsAdult, sources } =
+    getDogContent();
 
   return (
     <div className="pb-24">
@@ -289,8 +288,18 @@ function ChoosePage() {
             { data: puppyVsAdult.puppy, img: puppyImage, alt: c.puppyAlt },
             { data: puppyVsAdult.adult, img: adultImage, alt: c.adultAlt },
           ].map(({ data, img, alt }) => (
-            <article key={data.title} className="overflow-hidden rounded-[1.75rem] border border-border bg-card">
-              <img src={img} alt={alt} width={1200} height={1504} loading="lazy" className="aspect-[5/4] w-full object-cover" />
+            <article
+              key={data.title}
+              className="overflow-hidden rounded-[1.75rem] border border-border bg-card"
+            >
+              <img
+                src={img}
+                alt={alt}
+                width={1200}
+                height={1504}
+                loading="lazy"
+                className="aspect-[5/4] w-full object-cover"
+              />
               <div className="p-8 md:p-10">
                 <h2 className="display-md">{data.title}</h2>
                 <p className="mt-3 leading-relaxed text-muted-foreground">{data.lead}</p>
@@ -321,8 +330,18 @@ function ChoosePage() {
               { data: sources.breeder, img: breederImage, alt: c.breederAlt },
               { data: sources.rescue, img: adoptionImage, alt: c.rescueAlt },
             ].map(({ data, img, alt }) => (
-              <article key={data.title} className="overflow-hidden rounded-[1.75rem] border border-border bg-background">
-                <img src={img} alt={alt} width={1408} height={1056} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+              <article
+                key={data.title}
+                className="overflow-hidden rounded-[1.75rem] border border-border bg-background"
+              >
+                <img
+                  src={img}
+                  alt={alt}
+                  width={1408}
+                  height={1056}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full object-cover"
+                />
                 <div className="p-8 md:p-10">
                   <h3 className="display-md">{data.title}</h3>
                   <p className="eyebrow mt-6">{c.whatsGoodAbout}</p>

@@ -7,7 +7,7 @@ import { knownBreedIds } from "@/lib/dogs/profile";
 import { useMyDog } from "@/lib/care/store";
 import { useCopy } from "@/i18n";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
-import { seoLinks } from "@/lib/seo";
+import { seoLinks, headLocale, langUrl, ogLocaleTag, breadcrumbLd } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
@@ -17,11 +17,14 @@ export const Route = createFileRoute("/{-$lang}/my-dog/care/$topicId")({
     if (!topic) throw notFound();
     return { topic };
   },
-  head: ({ loaderData }) => {
+  head: (ctx) => {
+    const { loaderData } = ctx;
+    const locale = headLocale(ctx);
     if (!loaderData) {
       return { meta: [{ title: "Not found | DoggMatch" }, { name: "robots", content: "noindex" }] };
     }
     const { topic } = loaderData;
+    const path = `/my-dog/care/${topic.id}`;
     const t = `${topic.title} — My Dog | DoggMatch`;
     return {
       meta: [
@@ -30,11 +33,25 @@ export const Route = createFileRoute("/{-$lang}/my-dog/care/$topicId")({
         { property: "og:title", content: t },
         { property: "og:description", content: topic.promise },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: langUrl(path, locale) },
+        { property: "og:locale", content: ogLocaleTag(locale) },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: t },
         { name: "twitter:description", content: topic.promise },
       ],
-      links: seoLinks(`/my-dog/care/${topic.id}`),
+      links: seoLinks(path).map((l) =>
+        l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
+      ),
+      scripts: [
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: "My Dog", path: "/my-dog" },
+            { name: topic.title, path },
+          ],
+          locale,
+        ),
+      ],
     };
   },
   notFoundComponent: TopicNotFound,
@@ -156,52 +173,54 @@ const copy = {
     gentleWeekTitle: "Eine ruhige erste Woche",
     gentleWeekBody: "Langsam ist hier schneller. Jeder Tag dauert höchstens eine Minute.",
     forName: (name: string) => `Für ${name}`,
-    forYourDog: "Für Ihren Hund",
-    thingsWorthNoticing: "Worauf Sie achten sollten",
-    makeAboutDog: "Auf Ihren Hund zugeschnitten",
-    makeAboutDogBody: "Fügen Sie ein paar Details hinzu, und wir passen die Hinweise auf Seiten wie dieser an.",
+    forYourDog: "Für deinen Hund",
+    thingsWorthNoticing: "Worauf zu achten ist",
+    makeAboutDog: "Mach das zu etwas über deinen Hund",
+    makeAboutDogBody:
+      "Füge ein paar Details hinzu, und wir passen die Hinweise auf Seiten wie dieser an.",
     setUpMyDog: "Meinen Hund einrichten",
     keepGoing: "Weiter geht's",
-    moreEverydayCare: "Mehr zur Alltagspflege",
+    moreEverydayCare: "Mehr zur täglichen Pflege",
     notWrittenTitle: "Das haben wir noch nicht geschrieben.",
     notWrittenBody:
-      "Schauen Sie sich stattdessen alles in Mein Hund an — es besteht eine gute Chance, dass Sie es dort unter einem anderen Namen finden.",
+      "Schau stattdessen bei allem in Mein Hund nach — es besteht eine gute Chance, dass das, wonach du suchst, dort unter einem anderen Namen zu finden ist.",
     backToMyDog: "Zurück zu Mein Hund",
   },
   fr: {
     myDog: "Mon chien",
     step: "Étape",
     gentleWeekTitle: "Une première semaine en douceur",
-    gentleWeekBody: "Ici, aller doucement va plus vite. Chaque jour prend une minute tout au plus.",
+    gentleWeekBody: "Ici, lentement va plus vite. Chaque jour prend au plus une minute.",
     forName: (name: string) => `Pour ${name}`,
     forYourDog: "Pour votre chien",
-    thingsWorthNoticing: "Ce qui mérite votre attention",
-    makeAboutDog: "Personnalisez selon votre chien",
-    makeAboutDogBody: "Ajoutez quelques détails et nous adapterons les notes sur des pages comme celle-ci.",
+    thingsWorthNoticing: "Des choses à surveiller",
+    makeAboutDog: "Personnaliser cela pour votre chien",
+    makeAboutDogBody:
+      "Ajoutez quelques détails et nous adapterons les notes sur des pages comme celle-ci.",
     setUpMyDog: "Configurer mon chien",
     keepGoing: "Continuer",
     moreEverydayCare: "Plus de soins au quotidien",
     notWrittenTitle: "Nous n'avons pas encore écrit sur ce sujet.",
     notWrittenBody:
-      "Parcourez plutôt tout ce que propose Mon chien — il y a de bonnes chances que ce que vous cherchez s'y trouve sous un autre nom.",
+      "Regardez plutôt tout ce qui se trouve dans Mon chien — il y a de bonnes chances que ce que vous cherchez s'y trouve sous un autre nom.",
     backToMyDog: "Retour à Mon chien",
   },
   nl: {
     myDog: "Mijn hond",
     step: "Stap",
     gentleWeekTitle: "Een rustige eerste week",
-    gentleWeekBody: "Langzaam is hier sneller. Elke dag duurt hooguit een minuut.",
+    gentleWeekBody: "Langzaam gaat hier sneller. Elke dag duurt hooguit een minuut.",
     forName: (name: string) => `Voor ${name}`,
-    forYourDog: "Voor uw hond",
+    forYourDog: "Voor je hond",
     thingsWorthNoticing: "Dingen om op te letten",
-    makeAboutDog: "Maak dit specifiek voor uw hond",
-    makeAboutDogBody: "Voeg een paar details toe, dan passen we de notities op pagina's zoals deze aan.",
+    makeAboutDog: "Maak dit persoonlijk voor je hond",
+    makeAboutDogBody: "Voeg wat gegevens toe en we passen de notities op pagina's zoals deze aan.",
     setUpMyDog: "Mijn hond instellen",
     keepGoing: "Ga verder",
     moreEverydayCare: "Meer over dagelijkse verzorging",
     notWrittenTitle: "Dat hebben we nog niet geschreven.",
     notWrittenBody:
-      "Bekijk in plaats daarvan alles bij Mijn hond — de kans is groot dat wat u zoekt daar onder een andere naam te vinden is.",
+      "Kijk in plaats daarvan naar alles in Mijn hond — de kans is groot dat wat je zoekt daar onder een andere naam te vinden is.",
     backToMyDog: "Terug naar Mijn hond",
   },
 } as const;
@@ -225,7 +244,9 @@ function CareTopicPage() {
         <Eyebrow>{c.myDog}</Eyebrow>
         <h1 className="display-xl mt-6 max-w-3xl">{topic.title}</h1>
         <ShareBar className="mt-6" />
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{topic.promise}</p>
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          {topic.promise}
+        </p>
         <div className="mt-12 overflow-hidden rounded-[2rem] border border-border">
           <img
             src={hero}
@@ -251,7 +272,10 @@ function CareTopicPage() {
             {topic.steps && (
               <ol className="mt-12 space-y-6">
                 {topic.steps.map((step, i) => (
-                  <li key={step.title} className="overflow-hidden rounded-[1.5rem] border border-border bg-card">
+                  <li
+                    key={step.title}
+                    className="overflow-hidden rounded-[1.5rem] border border-border bg-card"
+                  >
                     {step.visual && careVisuals[step.visual] && (
                       <img
                         src={careVisuals[step.visual]!}
@@ -263,9 +287,15 @@ function CareTopicPage() {
                       />
                     )}
                     <div className="p-7">
-                      <p className="text-xs uppercase tracking-[0.14em] text-accent">{c.step} {i + 1}</p>
-                      <h2 className="mt-3 font-display text-xl leading-tight tracking-tight">{step.title}</h2>
-                      <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">{step.body}</p>
+                      <p className="text-xs uppercase tracking-[0.14em] text-accent">
+                        {c.step} {i + 1}
+                      </p>
+                      <h2 className="mt-3 font-display text-xl leading-tight tracking-tight">
+                        {step.title}
+                      </h2>
+                      <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                        {step.body}
+                      </p>
                     </div>
                   </li>
                 ))}
@@ -275,14 +305,19 @@ function CareTopicPage() {
             {topic.routine && (
               <div className="mt-12 rounded-[1.5rem] border border-border bg-surface p-7 md:p-9">
                 <h2 className="font-display text-xl tracking-tight">{c.gentleWeekTitle}</h2>
-                <p className="mt-2 text-[0.9375rem] text-muted-foreground">
-                  {c.gentleWeekBody}
-                </p>
+                <p className="mt-2 text-[0.9375rem] text-muted-foreground">{c.gentleWeekBody}</p>
                 <ol className="mt-6 space-y-3">
                   {topic.routine.map((r) => (
-                    <li key={r.day} className="flex gap-5 border-t border-border pt-3 first:border-0 first:pt-0">
-                      <span className="w-16 shrink-0 text-sm uppercase tracking-[0.1em] text-accent">{r.day}</span>
-                      <span className="text-[0.9375rem] leading-relaxed text-muted-foreground">{r.body}</span>
+                    <li
+                      key={r.day}
+                      className="flex gap-5 border-t border-border pt-3 first:border-0 first:pt-0"
+                    >
+                      <span className="w-16 shrink-0 text-sm uppercase tracking-[0.1em] text-accent">
+                        {r.day}
+                      </span>
+                      <span className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                        {r.body}
+                      </span>
                     </li>
                   ))}
                 </ol>
@@ -292,14 +327,25 @@ function CareTopicPage() {
             {topic.sections && (
               <div className="mt-12 grid gap-6 md:grid-cols-2">
                 {topic.sections.map((s) => (
-                  <article key={s.title} className="rounded-[1.5rem] border border-border bg-card p-7">
+                  <article
+                    key={s.title}
+                    className="rounded-[1.5rem] border border-border bg-card p-7"
+                  >
                     <h2 className="font-display text-lg leading-tight tracking-tight">{s.title}</h2>
-                    <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{s.body}</p>
+                    <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                      {s.body}
+                    </p>
                     {s.points && (
                       <ul className="mt-4 space-y-2">
                         {s.points.map((p) => (
-                          <li key={p} className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
-                            <span aria-hidden="true" className="mt-[0.6rem] h-1 w-3 shrink-0 rounded-full bg-accent" />
+                          <li
+                            key={p}
+                            className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted-foreground"
+                          >
+                            <span
+                              aria-hidden="true"
+                              className="mt-[0.6rem] h-1 w-3 shrink-0 rounded-full bg-accent"
+                            />
                             {p}
                           </li>
                         ))}
@@ -330,8 +376,14 @@ function CareTopicPage() {
                 <h2 className="font-display text-lg tracking-tight">{c.thingsWorthNoticing}</h2>
                 <ul className="mt-4 space-y-2">
                   {topic.watchFor.map((w) => (
-                    <li key={w} className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
-                      <span aria-hidden="true" className="mt-[0.6rem] h-1 w-3 shrink-0 rounded-full bg-destructive/70" />
+                    <li
+                      key={w}
+                      className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted-foreground"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-[0.6rem] h-1 w-3 shrink-0 rounded-full bg-destructive/70"
+                      />
                       {w}
                     </li>
                   ))}
@@ -365,7 +417,11 @@ function CareTopicPage() {
             .filter((t) => t.id !== topic.id)
             .map((t) => (
               <li key={t.id}>
-                <ButtonLink to={withLangPrefix("/my-dog/care/$topicId")} params={{ topicId: t.id } as never} tone="outline">
+                <ButtonLink
+                  to={withLangPrefix("/my-dog/care/$topicId")}
+                  params={{ topicId: t.id } as never}
+                  tone="outline"
+                >
                   {t.title}
                 </ButtonLink>
               </li>

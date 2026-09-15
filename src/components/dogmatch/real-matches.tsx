@@ -148,39 +148,39 @@ const copy = {
     },
   },
   de: {
-    eyebrow: "So funktioniert es",
-    title: "Drei Lebenssituationen, gematcht",
+    eyebrow: "Sieh es in Aktion",
+    title: "Drei Lebenssituationen, passend gematcht",
     intro:
-      "Keine Kundenstimmen — dieselbe deterministische Engine, live auf drei alltägliche Situationen angewendet, damit Sie genau sehen, wie sie argumentiert, bevor Sie es selbst ausprobieren.",
+      "Keine Erfahrungsberichte — derselbe deterministische Algorithmus, live angewendet auf drei alltägliche Situationen, damit du genau siehst, wie er denkt, bevor du es selbst ausprobierst.",
     badge: "Praxisbeispiel",
     scenarios: {
-      apartmentAlone: { context: "Wohnung, Hund an einem Arbeitstag 6+ Stunden allein" },
-      familyShedding: { context: "Haus mit Garten, kleine Kinder, wenig Fellwechsel gewünscht" },
-      firstTimeOutdoor: { context: "Erster Hund, Haus mit Garten, wünscht sich einen aktiven Begleiter" },
+      apartmentAlone: { context: "Wohnung, Hund an Werktagen 6+ Stunden allein" },
+      familyShedding: { context: "Haus mit Garten, kleine Kinder, wenig Haarausfall gewünscht" },
+      firstTimeOutdoor: { context: "Erster Hund, Haus mit Garten, aktiver Begleiter gewünscht" },
     },
   },
   fr: {
     eyebrow: "Voyez-le à l'œuvre",
-    title: "Trois styles de vie, trois matchs",
+    title: "Trois façons de vivre, trois matchs",
     intro:
       "Pas des témoignages — le même moteur déterministe, appliqué en direct à trois situations courantes, pour que vous voyiez exactement comment il raisonne avant de l'essayer vous-même.",
-    badge: "Cas pratique en conditions réelles",
+    badge: "Cas pratique",
     scenarios: {
-      apartmentAlone: { context: "Vie en appartement, seul 6 heures ou plus un jour de travail" },
-      familyShedding: { context: "Maison avec jardin, jeunes enfants, souhaite peu de perte de poils" },
-      firstTimeOutdoor: { context: "Premier chien, maison avec jardin, souhaite un compagnon actif en extérieur" },
+      apartmentAlone: { context: "Appartement, chien seul 6h ou plus un jour de semaine" },
+      familyShedding: { context: "Maison avec jardin, jeunes enfants, peu de perte de poils souhaitée" },
+      firstTimeOutdoor: { context: "Premier chien, maison avec jardin, envie d'un compagnon actif" },
     },
   },
   nl: {
     eyebrow: "Zie het in actie",
     title: "Drie levensstijlen, gematcht",
     intro:
-      "Geen testimonials — dezelfde deterministische engine, live losgelaten op drie veelvoorkomende situaties, zodat u precies ziet hoe die redeneert voordat u het zelf probeert.",
+      "Geen getuigenissen — dezelfde deterministische engine, live toegepast op drie herkenbare situaties, zodat je precies ziet hoe ze redeneert voordat je het zelf probeert.",
     badge: "Praktijkvoorbeeld",
     scenarios: {
-      apartmentAlone: { context: "Appartement, hond 6+ uur alleen op een werkdag" },
-      familyShedding: { context: "Huis met tuin, jonge kinderen, wil weinig haaruitval" },
-      firstTimeOutdoor: { context: "Eerste hond, huis met tuin, wil een actieve buitenmetgezel" },
+      apartmentAlone: { context: "Appartement, hond op werkdagen 6+ uur alleen" },
+      familyShedding: { context: "Huis met tuin, jonge kinderen, weinig haarverlies gewenst" },
+      firstTimeOutdoor: { context: "Eerste hond, huis met tuin, wil een actieve buitenmaatje" },
     },
   },
 } as const;

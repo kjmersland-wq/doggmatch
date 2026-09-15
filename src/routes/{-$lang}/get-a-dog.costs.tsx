@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { Notice, SectionHead } from "@/components/dogmatch/journey/parts";
@@ -16,19 +18,7 @@ const description =
   "An honest look at the cost of a dog: the one-off spend before they arrive, the steady monthly cost, and the unexpected vet bills worth being ready for.";
 
 export const Route = createFileRoute("/{-$lang}/get-a-dog/costs")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/get-a-dog/costs"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/get-a-dog/costs", pageSeo.getDogCosts),
   component: CostsPage,
 });
 
@@ -114,7 +104,8 @@ const copy = {
     intro:
       "Raha on tämän vähiten romanttinen osa, ja se osa, joka useimmiten sattuu myöhemmin. Tässä on tilanne rehellisesti kerrottuna. Todelliset hinnat vaihtelevat valtavasti maan, kaupungin ja koiran mukaan.",
     yourMatch: "Sinun osumasi",
-    runningCostPrefix: "Suuntaa antava vuosittainen ylläpitokustannus, kun koira on asettunut arkeen:",
+    runningCostPrefix:
+      "Suuntaa antava vuosittainen ylläpitokustannus, kun koira on asettunut arkeen:",
     runningCostSuffix:
       "Tämä on laaja haarukka rotukirjastostamme, ei tarjous — ruoan, vakuutuksen ja hoidon hinnat vaihtelevat paljon maittain.",
     noticeTitle: "Mistä luvut tulevat",
@@ -127,46 +118,46 @@ const copy = {
     eyebrow: "Die Verpflichtung",
     title: "Was kostet ein Hund wirklich?",
     intro:
-      "Geld ist der am wenigsten romantische Teil davon — und der Teil, der später am ehesten wehtut. Hier ist das Bild dazu, ehrlich. Die tatsächlichen Preise unterscheiden sich enorm nach Land, Stadt und Hund.",
-    yourMatch: "Ihre Übereinstimmung",
-    runningCostPrefix: "Indikative laufende Kosten pro Jahr, sobald sich der Hund eingelebt hat:",
+      "Geld ist der am wenigsten romantische Teil davon, und der Teil, der später am ehesten wehtut. Hier ist die ehrliche Übersicht. Die tatsächlichen Preise unterscheiden sich enorm nach Land, Stadt und Hund.",
+    yourMatch: "Deine Übereinstimmung",
+    runningCostPrefix: "Ungefähre laufende Kosten pro Jahr, sobald der Hund sich eingelebt hat:",
     runningCostSuffix:
-      "Das ist eine breite Spanne aus unserer Rassebibliothek, kein Angebot — Preise für Futter, Versicherung und Pflege variieren stark je nach Land.",
+      "Das ist eine breite Spanne aus unserer Rassenbibliothek, kein Angebot — Preise für Futter, Versicherung und Pflege variieren stark von Land zu Land.",
     noticeTitle: "Woher die Zahlen kommen",
     noticeBody:
-      "Jede Rasseseite zeigt eine indikative jährliche Kostenspanne für diese Rasse, und Vergleichen stellt zwei oder drei davon nebeneinander. Wir zeigen Ihnen lieber eine breite, ehrliche Spanne als eine genaue Zahl, die sich dort, wo Sie leben, als falsch erweist.",
+      "Jede Rassenseite zeigt eine ungefähre jährliche Kostenspanne für diese Rasse, und Vergleichen stellt zwei oder drei davon nebeneinander. Wir zeigen dir lieber eine breite, ehrliche Spanne als eine genaue Zahl, die sich dort, wo du lebst, als falsch herausstellt.",
     compareCta: "Kosten nebeneinander vergleichen",
-    prepareCta: "Ihr Zuhause vorbereiten",
+    prepareCta: "Dein Zuhause vorbereiten",
   },
   fr: {
     eyebrow: "L'engagement",
-    title: "Combien coûte réellement un chien ?",
+    title: "Combien coûte vraiment un chien ?",
     intro:
-      "L'argent est la partie la moins romantique de tout cela, et celle qui fait le plus mal par la suite. Voici la situation, honnêtement. Les prix réels varient énormément selon le pays, la ville et le chien.",
+      "L'argent est la partie la moins romantique de tout cela, et celle qui fait le plus souvent mal ensuite. Voici la réalité, en toute honnêteté. Les prix réels varient énormément selon le pays, la ville et le chien.",
     yourMatch: "Votre correspondance",
-    runningCostPrefix: "Coût de fonctionnement indicatif, par an, une fois le chien installé :",
+    runningCostPrefix: "Coût de fonctionnement indicatif, par an, une fois qu'il est installé :",
     runningCostSuffix:
       "C'est une large fourchette issue de notre bibliothèque de races, pas un devis — les prix de la nourriture, de l'assurance et du toilettage varient beaucoup selon le pays.",
     noticeTitle: "D'où viennent ces chiffres",
     noticeBody:
-      "Chaque page de race affiche une fourchette de coût annuel indicative pour cette race, et Comparer en met deux ou trois côte à côte. Nous préférons vous montrer une fourchette large et honnête plutôt qu'un chiffre précis qui s'avérerait faux là où vous vivez.",
+      "Chaque page de race affiche une fourchette de coût annuel indicatif pour cette race, et Comparer en met deux ou trois côte à côte. Nous préférons vous montrer une fourchette large et honnête plutôt qu'un chiffre précis qui se révélerait faux là où vous vivez.",
     compareCta: "Comparer les coûts côte à côte",
     prepareCta: "Préparer votre maison",
   },
   nl: {
-    eyebrow: "De verplichting",
-    title: "Wat kost een hond werkelijk?",
+    eyebrow: "De verantwoordelijkheid",
+    title: "Wat kost een hond echt?",
     intro:
-      "Geld is het minst romantische deel hiervan, en het deel dat later het meest pijn doet. Hier is het beeld, eerlijk gezegd. De werkelijke prijzen verschillen enorm per land, stad en hond.",
-    yourMatch: "Uw match",
-    runningCostPrefix: "Indicatieve lopende kosten, per jaar, zodra de hond gewend is:",
+      "Geld is het minst romantische deel hiervan, en het deel dat later het vaakst pijn doet. Hier is het beeld, eerlijk verteld. De werkelijke prijzen verschillen enorm per land, stad en hond.",
+    yourMatch: "Jouw match",
+    runningCostPrefix: "Indicatieve doorlopende kosten, per jaar, zodra de hond is ingeburgerd:",
     runningCostSuffix:
-      "Dat is een brede bandbreedte uit onze rassenbibliotheek, geen offerte — prijzen voor voeding, verzekering en verzorging verschillen sterk per land.",
+      "Dat is een brede marge uit onze rassenbibliotheek, geen offerte — prijzen voor voeding, verzekering en verzorging verschillen sterk per land.",
     noticeTitle: "Waar de cijfers vandaan komen",
     noticeBody:
-      "Elke rassenpagina toont een indicatieve jaarlijkse kostenbandbreedte voor dat ras, en Vergelijken zet er twee of drie naast elkaar. We laten liever een brede, eerlijke bandbreedte zien dan een precies getal dat verkeerd blijkt te zijn waar u woont.",
-    compareCta: "Kosten naast elkaar vergelijken",
-    prepareCta: "Uw huis voorbereiden",
+      "Elke rassenpagina toont een indicatieve jaarlijkse kostenmarge voor dat ras, en Vergelijken zet er twee of drie naast elkaar. We laten liever een brede, eerlijke marge zien dan een precies getal dat op jouw woonplek onjuist blijkt.",
+    compareCta: "Vergelijk kosten naast elkaar",
+    prepareCta: "Maak je huis klaar",
   },
 } as const;
 
@@ -192,7 +183,8 @@ function CostsPage() {
             <h2 className="display-md mt-3">{breedContent()[breed.id].displayName}</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
               {c.runningCostPrefix}{" "}
-              <span className="font-display text-foreground">{costRange(breed)}</span>. {c.runningCostSuffix}
+              <span className="font-display text-foreground">{costRange(breed)}</span>.{" "}
+              {c.runningCostSuffix}
             </p>
           </div>
         </section>
@@ -208,8 +200,12 @@ function CostsPage() {
               <ul className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
                 {group.items.map((item) => (
                   <li key={item.label} className="bg-background p-7">
-                    <p className="font-display text-[1.0625rem] leading-tight tracking-tight">{item.label}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
+                    <p className="font-display text-[1.0625rem] leading-tight tracking-tight">
+                      {item.label}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {item.note}
+                    </p>
                   </li>
                 ))}
               </ul>

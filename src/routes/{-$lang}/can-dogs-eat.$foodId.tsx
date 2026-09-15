@@ -7,7 +7,22 @@ import { useCopy, useLocale } from "@/i18n";
 import type { FoodSafety } from "@/data/care/types";
 import { withLangPrefix } from "@/lib/localized-path";
 import { foodExists, foodFor, relatedFoods } from "@/lib/food";
-import { abs, breadcrumbLd, deUrl, dkUrl, fiUrl, frUrl, headLocale, jsonLd, langUrl, nlUrl, noUrl, plUrl, seUrl } from "@/lib/seo";
+import {
+  abs,
+  breadcrumbLd,
+  deUrl,
+  dkUrl,
+  fiUrl,
+  frUrl,
+  headLocale,
+  jsonLd,
+  langUrl,
+  nlUrl,
+  noUrl,
+  plUrl,
+  seUrl,
+  seoLinks,
+} from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 /** "Can dogs eat X?" — the phrase people actually type, in each language. */
@@ -19,7 +34,7 @@ const question = {
   se: (name: string) => `Kan hundar äta ${name.toLowerCase()}?`,
   fi: (name: string) => `Voiko koira syödä ${name.toLowerCase()}?`,
   de: (name: string) => `Dürfen Hunde ${name.toLowerCase()} fressen?`,
-  fr: (name: string) => `Un chien peut-il manger ${name.toLowerCase()} ?`,
+  fr: (name: string) => `Les chiens peuvent-ils manger ${name.toLowerCase()} ?`,
   nl: (name: string) => `Mogen honden ${name.toLowerCase()} eten?`,
 };
 
@@ -56,20 +71,23 @@ const verdict = {
   },
   de: {
     safe: "Ja — in kleinen Mengen unbedenklich",
-    care: "Ja, aber mit Vorsicht",
-    avoid: "Nein — das sollte der Hund nicht bekommen",
+    care: "Ja, aber mit Bedacht",
+    avoid: "Nein — das bitte nicht geben",
   },
   fr: {
-    safe: "Oui — en petite quantité, c'est sans souci",
+    safe: "Oui — sans souci en petite quantité",
     care: "Oui, mais avec prudence",
-    avoid: "Non — ne donnez pas cela à votre chien",
+    avoid: "Non — à ne pas donner",
   },
   nl: {
-    safe: "Ja — in kleine hoeveelheden geen probleem",
+    safe: "Ja — prima in kleine hoeveelheden",
     care: "Ja, maar wees voorzichtig",
-    avoid: "Nee — geef dit niet aan je hond",
+    avoid: "Nee — geef dit niet",
   },
-} as const satisfies Record<"en" | "no" | "pl" | "dk" | "se" | "fi" | "de" | "fr" | "nl", Record<FoodSafety, string>>;
+} as const satisfies Record<
+  "en" | "no" | "pl" | "dk" | "se" | "fi" | "de" | "fr" | "nl",
+  Record<FoodSafety, string>
+>;
 
 export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
   loader: ({ params }) => {
@@ -81,7 +99,12 @@ export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
     const id = ctx.params.foodId;
     const item = foodFor(locale, id);
     if (!item) {
-      return { meta: [{ title: "We haven't covered that food yet — DoggMatch" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [
+          { title: "We haven't covered that food yet — DoggMatch" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
     }
     const path = `/can-dogs-eat/${id}`;
     const heading = question[locale](item.name);
@@ -99,19 +122,9 @@ export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
       ],
-      links: [
-        { rel: "canonical", href: langUrl(path, locale) },
-        { rel: "alternate", hrefLang: "en", href: abs(path) },
-        { rel: "alternate", hrefLang: "nb-NO", href: noUrl(path) },
-        { rel: "alternate", hrefLang: "pl-PL", href: plUrl(path) },
-        { rel: "alternate", hrefLang: "da-DK", href: dkUrl(path) },
-        { rel: "alternate", hrefLang: "sv-SE", href: seUrl(path) },
-        { rel: "alternate", hrefLang: "fi-FI", href: fiUrl(path) },
-        { rel: "alternate", hrefLang: "de-DE", href: deUrl(path) },
-        { rel: "alternate", hrefLang: "fr-FR", href: frUrl(path) },
-        { rel: "alternate", hrefLang: "nl-NL", href: nlUrl(path) },
-        { rel: "alternate", hrefLang: "x-default", href: abs(path) },
-      ],
+      links: seoLinks(path).map((l) =>
+        l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
+      ),
       scripts: [
         breadcrumbLd([
           { name: "DoggMatch", path: "/" },
@@ -150,6 +163,39 @@ const copy = {
     honest:
       "Dogs differ, and amount matters — a crumb of something rich is not the same as half a packet. Treats of any kind should stay under a tenth of what your dog eats in a day. If you're unsure, your vet would far rather take the call.",
     honestTitle: "Being honest about this",
+  },
+  de: {
+    eyebrow: "Lebensmittelsicherheit",
+    howMuch: "Wie viel",
+    watchOut: "Wenn Ihr Hund es bereits gefressen hat",
+    basedOn: "Basierend auf Empfehlungen von",
+    relatedTitle: "Andere Lebensmittel, nach denen Leute fragen",
+    backLink: "Alle Lebensmittel anzeigen, A–Z",
+    honest:
+      "Hunde sind unterschiedlich, und die Menge spielt eine Rolle – ein Krümel von etwas Reichhaltigem ist nicht dasselbe wie eine halbe Packung. Leckerlis jeglicher Art sollten unter einem Zehntel dessen bleiben, was Ihr Hund täglich frisst. Wenn Sie unsicher sind, ruft Ihr Tierarzt lieber einmal zu viel als zu wenig an.",
+    honestTitle: "Ehrlich gesagt",
+  },
+  fr: {
+    eyebrow: "Sécurité alimentaire",
+    howMuch: "Quelle quantité",
+    watchOut: "Si votre chien en a déjà mangé",
+    basedOn: "Basé sur les recommandations de",
+    relatedTitle: "Autres aliments qui suscitent des questions",
+    backLink: "Voir tous les aliments, A-Z",
+    honest:
+      "Les chiens sont différents, et la quantité compte — une miette de quelque chose de riche n'est pas la même chose qu'un demi-paquet. Les friandises, quelles qu'elles soient, ne devraient pas dépasser un dixième de ce que votre chien mange par jour. En cas de doute, votre vétérinaire préférera de loin recevoir votre appel.",
+    honestTitle: "Soyons honnêtes à ce sujet",
+  },
+  nl: {
+    eyebrow: "Voedselveiligheid",
+    howMuch: "Hoeveel",
+    watchOut: "Als je hond het al heeft gegeten",
+    basedOn: "Gebaseerd op advies van",
+    relatedTitle: "Andere voedingsmiddelen waar mensen naar vragen",
+    backLink: "Bekijk al het voedsel, A–Z",
+    honest:
+      "Honden verschillen, en de hoeveelheid is belangrijk – een kruimel van iets rijks is niet hetzelfde als de helft van een pakje. Snoepjes van welke soort dan ook moeten minder dan een tiende blijven van wat je hond per dag eet. Als je twijfelt, neemt je dierenarts liever even contact op.",
+    honestTitle: "Eerlijk hierover zijn",
   },
   no: {
     eyebrow: "Mattrygghet",
@@ -206,39 +252,6 @@ const copy = {
       "Koirat ovat yksilöitä, ja määrällä on väliä — murunen jotain raskasta ei ole sama asia kuin puoli pussillista. Herkkujen osuus koiran päivittäisestä ruoasta kannattaa pitää alle kymmenesosassa. Jos olet epävarma, eläinlääkäri ottaa mieluummin vastaan turhankin puhelun.",
     honestTitle: "Rehellisesti tästä aiheesta",
   },
-  de: {
-    eyebrow: "Futtersicherheit",
-    howMuch: "Wie viel",
-    watchOut: "Wenn der Hund es schon gefressen hat",
-    basedOn: "Basierend auf Empfehlungen von",
-    relatedTitle: "Andere Lebensmittel, nach denen oft gefragt wird",
-    backLink: "Alle Lebensmittel von A–Z ansehen",
-    honest:
-      "Hunde sind unterschiedlich, und die Menge zählt — ein Krümel von etwas Reichhaltigem ist nicht dasselbe wie eine halbe Packung. Leckerlis jeder Art sollten unter einem Zehntel der Tagesration bleiben. Im Zweifel nimmt Ihr Tierarzt den Anruf lieber einmal zu viel entgegen als zu wenig.",
-    honestTitle: "Ehrlich gesagt",
-  },
-  fr: {
-    eyebrow: "Sécurité alimentaire",
-    howMuch: "En quelle quantité",
-    watchOut: "Si votre chien en a déjà mangé",
-    basedOn: "D'après les recommandations de",
-    relatedTitle: "D'autres aliments qui posent question",
-    backLink: "Voir tous les aliments, de A à Z",
-    honest:
-      "Chaque chien est différent, et la quantité compte — une miette d'un aliment riche n'est pas comparable à la moitié d'un paquet. Toutes friandises confondues, restez sous un dixième de la ration quotidienne de votre chien. En cas de doute, votre vétérinaire préfère largement être appelé pour rien plutôt que trop tard.",
-    honestTitle: "En toute honnêteté",
-  },
-  nl: {
-    eyebrow: "Voedselveiligheid",
-    howMuch: "Hoeveel",
-    watchOut: "Als je hond het al heeft gegeten",
-    basedOn: "Gebaseerd op advies van",
-    relatedTitle: "Andere voedingsmiddelen waar mensen naar vragen",
-    backLink: "Bekijk alle voedingsmiddelen, A–Z",
-    honest:
-      "Honden verschillen, en de hoeveelheid maakt uit — een kruimel van iets machtigs is niet hetzelfde als een half pakje. Snacks van welke aard dan ook mogen samen niet meer zijn dan een tiende van wat je hond op een dag eet. Twijfel je, dan neemt je dierenarts liever één keer te veel de telefoon op dan te weinig.",
-    honestTitle: "Eerlijk gezegd",
-  },
 } as const;
 
 function FoodAnswer() {
@@ -277,18 +290,26 @@ function FoodAnswer() {
             {item.serving && (
               <div className="rounded-[1.5rem] border border-border bg-card p-7">
                 <h2 className="font-display text-xl tracking-tight">{c.howMuch}</h2>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{item.serving}</p>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                  {item.serving}
+                </p>
               </div>
             )}
             {item.warning && (
               <div className="rounded-[1.5rem] border border-destructive/30 bg-destructive/5 p-7">
-                <h2 className="font-display text-xl tracking-tight text-destructive">{c.watchOut}</h2>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-destructive">{item.warning}</p>
+                <h2 className="font-display text-xl tracking-tight text-destructive">
+                  {c.watchOut}
+                </h2>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-destructive">
+                  {item.warning}
+                </p>
               </div>
             )}
             <div className="rounded-[1.5rem] border border-border bg-surface p-7">
               <h2 className="font-display text-xl tracking-tight">{c.honestTitle}</h2>
-              <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{c.honest}</p>
+              <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                {c.honest}
+              </p>
             </div>
             {item.source && (
               <p className="text-xs text-muted-foreground">

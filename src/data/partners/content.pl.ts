@@ -5,14 +5,46 @@
 import type { PartnerCategory } from "./content.en";
 
 export const partnerCategories: PartnerCategory[] = [
-  { id: "equipment", label: "Sprzęt dla zwierząt i psów", blurb: "Szelki, smycze, legowiska, zabawki i codzienne rzeczy, które się zużywają." },
-  { id: "grooming", label: "Pielęgnacja", blurb: "Salony i mobilni groomerzy, którzy poświęcają czas nerwowym psom." },
-  { id: "training", label: "Trening", blurb: "Kursy dla szczeniąt, indywidualna pomoc i praca oparta na wzmocnieniu pozytywnym." },
-  { id: "vet", label: "Weterynaria i zdrowie", blurb: "Kliniki, fizjoterapeuci, stomatolodzy i każdy, kto dba o zdrowie psów." },
-  { id: "insurance", label: "Ubezpieczenia", blurb: "Ochrona, która jasno mówi, co pokrywa, a czego nie." },
-  { id: "boarding", label: "Pensjonaty i żłobki dla psów", blurb: "Pensjonaty, opiekunowie domowi, żłobki dzienne i zaufani opiekunowie." },
-  { id: "food", label: "Jedzenie i żywienie", blurb: "Karma, przekąski i suplementy, które sam podałbyś swojemu psu." },
-  { id: "travel", label: "Podróże i aktywności", blurb: "Noclegi przyjazne psom, wyposażenie samochodowe, wędrówki, pływanie i wyjścia." },
+  {
+    id: "equipment",
+    label: "Sprzęt dla zwierząt i psów",
+    blurb: "Szelki, smycze, legowiska, zabawki i codzienne rzeczy, które się zużywają.",
+  },
+  {
+    id: "grooming",
+    label: "Pielęgnacja",
+    blurb: "Salony i mobilni groomerzy, którzy poświęcają czas nerwowym psom.",
+  },
+  {
+    id: "training",
+    label: "Trening",
+    blurb: "Kursy dla szczeniąt, indywidualna pomoc i praca oparta na wzmocnieniu pozytywnym.",
+  },
+  {
+    id: "vet",
+    label: "Weterynaria i zdrowie",
+    blurb: "Kliniki, fizjoterapeuci, stomatolodzy i każdy, kto dba o zdrowie psów.",
+  },
+  {
+    id: "insurance",
+    label: "Ubezpieczenia",
+    blurb: "Ochrona, która jasno mówi, co pokrywa, a czego nie.",
+  },
+  {
+    id: "boarding",
+    label: "Pensjonaty i żłobki dla psów",
+    blurb: "Pensjonaty, opiekunowie domowi, żłobki dzienne i zaufani opiekunowie.",
+  },
+  {
+    id: "food",
+    label: "Jedzenie i żywienie",
+    blurb: "Karma, przekąski i suplementy, które sam podałbyś swojemu psu.",
+  },
+  {
+    id: "travel",
+    label: "Podróże i aktywności",
+    blurb: "Noclegi przyjazne psom, wyposażenie samochodowe, wędrówki, pływanie i wyjścia.",
+  },
 ];
 
 export const partnerBenefits = [

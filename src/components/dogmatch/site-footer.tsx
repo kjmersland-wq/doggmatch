@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useCopy, useT } from "@/i18n";
 import { BrandLock } from "./brand-logo";
 import { CookieSettingsLink } from "@/components/dogmatch/cookie-consent";
+import { ShareStrip } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
 const copy = {
@@ -48,25 +49,25 @@ const copy = {
     sources: "Lähteet ja menetelmä",
   },
   de: {
-    blurb: "Ein ruhiger, ehrlicher Ort, um herauszufinden, welcher Hund zu deinem Leben passen würde.",
+    blurb: "Ein ruhiger, ehrlicher Ort, um herauszufinden, welcher Hund zu deinem Leben passt.",
     food: "Futter & Portionen",
     canEat: "Darf mein Hund das essen?",
     partner: "Partner werden",
     sources: "Quellen & Methodik",
   },
   fr: {
-    blurb: "Un endroit calme et honnête pour déterminer quel chien conviendrait à votre vie.",
+    blurb: "Un endroit calme et honnête pour découvrir quel chien correspondrait à votre vie.",
     food: "Alimentation et portions",
     canEat: "Mon chien peut-il manger ça ?",
     partner: "Devenir partenaire",
     sources: "Sources et méthodologie",
   },
   nl: {
-    blurb: "Een rustige, eerlijke plek om uit te zoeken welke hond bij uw leven zou passen.",
-    food: "Voeding en porties",
+    blurb: "Een rustige, eerlijke plek om uit te zoeken welke hond bij jouw leven past.",
+    food: "Voeding & porties",
     canEat: "Mag mijn hond dit eten?",
-    partner: "Partner worden",
-    sources: "Bronnen en methodologie",
+    partner: "Word partner",
+    sources: "Bronnen & methodiek",
   },
 };
 
@@ -78,6 +79,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-surface">
       <div className="container-page py-20 md:py-24">
+        <ShareStrip className="mb-16 rounded-3xl border border-border bg-background px-6 py-6 md:px-8" />
         <div className="grid gap-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="max-w-sm">
             <BrandLock markClassName="h-10 w-10" wordmarkClassName="text-2xl" />
@@ -140,7 +142,7 @@ export function SiteFooter() {
 function FooterColumn({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="eyebrow">{title}</h3>
+      <h2 className="eyebrow">{title}</h2>
       <ul className="mt-5 space-y-3">{children}</ul>
     </div>
   );

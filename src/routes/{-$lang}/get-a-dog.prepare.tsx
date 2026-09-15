@@ -1,6 +1,14 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
-import { CardGrid, Checklist, Notice, PointList, SectionHead } from "@/components/dogmatch/journey/parts";
+import {
+  CardGrid,
+  Checklist,
+  Notice,
+  PointList,
+  SectionHead,
+} from "@/components/dogmatch/journey/parts";
 import { getDogContent } from "@/data/getdog/content";
 import { useGetDog } from "@/lib/getdog/store";
 import { useCopy } from "@/i18n";
@@ -14,19 +22,7 @@ const description =
   "What your home and your everyday life mean for a dog, honest answers about allergies and time alone, and a tickable arrival checklist you can print.";
 
 export const Route = createFileRoute("/{-$lang}/get-a-dog/prepare")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/get-a-dog/prepare"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/get-a-dog/prepare", pageSeo.getDogPrepare),
   component: PreparePage,
 });
 
@@ -43,7 +39,8 @@ const copy = {
     worthChecking: "Worth checking",
     lifeEyebrow: "Your everyday life",
     lifeTitle: "What does an ordinary week look like for you?",
-    lifeBody: "The dog has to fit the week you actually have, not the one you'd like to have. Find yourself below.",
+    lifeBody:
+      "The dog has to fit the week you actually have, not the one you'd like to have. Find yourself below.",
     allergiesEyebrow: "Allergies",
     allergiesTitle: "What we can honestly say.",
     allergiesBody1:
@@ -83,7 +80,8 @@ const copy = {
     worthChecking: "Verdt å sjekke",
     lifeEyebrow: "Hverdagen din",
     lifeTitle: "Hvordan ser en helt vanlig uke ut for deg?",
-    lifeBody: "Hunden må passe inn i uken du faktisk har, ikke den du skulle ønske du hadde. Kjenn deg igjen nedenfor.",
+    lifeBody:
+      "Hunden må passe inn i uken du faktisk har, ikke den du skulle ønske du hadde. Kjenn deg igjen nedenfor.",
     allergiesEyebrow: "Allergier",
     allergiesTitle: "Det vi ærlig kan si.",
     allergiesBody1:
@@ -123,7 +121,8 @@ const copy = {
     worthChecking: "Warto sprawdzić",
     lifeEyebrow: "Twoja codzienność",
     lifeTitle: "Jak wygląda dla Ciebie zwykły tydzień?",
-    lifeBody: "Pies musi pasować do tygodnia, który naprawdę masz, a nie do tego, który chciałbyś mieć. Znajdź się poniżej.",
+    lifeBody:
+      "Pies musi pasować do tygodnia, który naprawdę masz, a nie do tego, który chciałbyś mieć. Znajdź się poniżej.",
     allergiesEyebrow: "Alergie",
     allergiesTitle: "To, co możemy uczciwie powiedzieć.",
     allergiesBody1:
@@ -163,7 +162,8 @@ const copy = {
     worthChecking: "Værd at tjekke",
     lifeEyebrow: "Din hverdag",
     lifeTitle: "Hvordan ser en helt almindelig uge ud for dig?",
-    lifeBody: "Hunden skal passe ind i den uge du faktisk har, ikke den du ønsker du havde. Genkend dig selv nedenfor.",
+    lifeBody:
+      "Hunden skal passe ind i den uge du faktisk har, ikke den du ønsker du havde. Genkend dig selv nedenfor.",
     allergiesEyebrow: "Allergier",
     allergiesTitle: "Det vi ærligt kan sige.",
     allergiesBody1:
@@ -203,7 +203,8 @@ const copy = {
     worthChecking: "Värt att kolla upp",
     lifeEyebrow: "Din vardag",
     lifeTitle: "Hur ser en helt vanlig vecka ut för dig?",
-    lifeBody: "Hunden måste passa in i veckan du faktiskt har, inte den du önskar att du hade. Känn igen dig själv nedan.",
+    lifeBody:
+      "Hunden måste passa in i veckan du faktiskt har, inte den du önskar att du hade. Känn igen dig själv nedan.",
     allergiesEyebrow: "Allergier",
     allergiesTitle: "Det vi ärligt kan säga.",
     allergiesBody1:
@@ -243,7 +244,8 @@ const copy = {
     worthChecking: "Kannattaa tarkistaa",
     lifeEyebrow: "Arkesi",
     lifeTitle: "Miltä tavallinen viikko sinulla näyttää?",
-    lifeBody: "Koiran on sovittava siihen viikkoon, joka sinulla oikeasti on, ei siihen, jonka toivoisit olevan. Tunnista itsesi alta.",
+    lifeBody:
+      "Koiran on sovittava siihen viikkoon, joka sinulla oikeasti on, ei siihen, jonka toivoisit olevan. Tunnista itsesi alta.",
     allergiesEyebrow: "Allergiat",
     allergiesTitle: "Mitä voimme rehellisesti sanoa.",
     allergiesBody1:
@@ -273,122 +275,127 @@ const copy = {
   },
   de: {
     eyebrow: "Bereit machen",
-    title: "Alles vorbereiten.",
+    title: "Alles bereit machen.",
     intro:
-      "Ihr Zuhause, Ihre Tage und die praktischen Dinge, die sich jetzt viel leichter regeln lassen als mitten in der ersten Woche mit einem neuen Hund.",
-    homeEyebrow: "Ihr Zuhause",
+      "Dein Zuhause, deine Tage und die praktischen Dinge, die sich jetzt viel leichter regeln lassen als mitten in der ersten Woche mit einem neuen Hund.",
+    homeEyebrow: "Dein Zuhause",
     homeTitle: "Fast jedes Zuhause kann ein gutes Zuhause sein.",
     homeBody:
-      "Hunden sind Quadratmeter viel weniger wichtig, als Menschen erwarten. Was innerhalb von zehn Minuten von Ihrer Haustür liegt, zählt weit mehr.",
-    worthChecking: "Lohnt sich zu prüfen",
-    lifeEyebrow: "Ihr Alltag",
-    lifeTitle: "Wie sieht eine gewöhnliche Woche bei Ihnen aus?",
-    lifeBody: "Der Hund muss zu der Woche passen, die Sie wirklich haben, nicht zu der, die Sie sich wünschen. Finden Sie sich unten wieder.",
+      "Hunden ist die Quadratmeterzahl viel egaler, als Menschen denken. Was in zehn Minuten von deiner Haustür erreichbar ist, zählt viel mehr.",
+    worthChecking: "Wert, zu prüfen",
+    lifeEyebrow: "Dein Alltag",
+    lifeTitle: "Wie sieht eine ganz normale Woche für dich aus?",
+    lifeBody:
+      "Der Hund muss zu der Woche passen, die du wirklich hast, nicht zu der, die du gerne hättest. Erkenne dich unten wieder.",
     allergiesEyebrow: "Allergien",
     allergiesTitle: "Was wir ehrlich sagen können.",
     allergiesBody1:
-      "Manche Rassen haaren tendenziell weniger als andere, und Menschen mit Allergien empfinden das manchmal als leichter. Aber kein Hund ist völlig allergiefrei. Die Proteine, auf die Menschen reagieren, stecken ebenso in Speichel und Haut wie im Fell, und die Verträglichkeit ist von Person zu Person sehr unterschiedlich.",
+      "Manche Rassen haaren tendenziell weniger als andere, und Menschen mit Allergien finden sie manchmal einfacher im Zusammenleben. Aber kein Hund ist völlig allergiefrei. Die Proteine, auf die Menschen reagieren, stecken in Speichel und Haut ebenso wie im Fell, und Reaktionen sind von Person zu Person sehr unterschiedlich.",
     allergiesBody2:
-      "Wenn jemand in Ihrem Haushalt Allergien hat, verbringen Sie vor der Entscheidung wirklich Zeit mit genau diesem Hund — mehrere Besuche, nicht nur einen — und sprechen Sie mit Ihrem Arzt. Das sagt Ihnen weit mehr als jede Rasseliste, auch unsere.",
+      "Wenn jemand in deinem Zuhause Allergien hat, verbring wirklich Zeit mit dem konkreten Hund, bevor du dich entscheidest — mehrere Besuche, nicht nur einen — und sprich mit deinem Arzt. Das sagt dir viel mehr als jede Rasseliste, auch unsere.",
     aloneEyebrow: "Zeit allein",
     aloneTitle: "Wie lange ist zu lange?",
     aloneBody:
-      "Die meisten erwachsenen Hunde kommen problemlos drei oder vier Stunden allein zurecht, sobald sie es gelernt haben. Ein Welpe kann das anfangs nicht — er braucht die ersten Monate über die meiste Zeit des Tages jemanden in seiner Nähe, und das Alleinsein ist eine Fähigkeit, die Sie ihm langsam beibringen.",
+      "Die meisten erwachsenen Hunde kommen problemlos drei bis vier Stunden allein zurecht, sobald sie es gelernt haben. Ein Welpe kann das anfangs nicht — er braucht in den ersten Monaten die meiste Zeit des Tages jemanden an seiner Seite, und Alleinsein ist eine Fähigkeit, die du langsam beibringst.",
     alonePoints: [
-      "Üben Sie kurze Abwesenheiten schon ab der ersten Woche, bevor es überhaupt nötig ist",
-      "Ein Mittagsspaziergänger oder ein Nachbar macht aus einem schwierigen Tag einen leichten",
-      "Ein paar Tage die Woche Hundetagesstätte passt manchen Hunden gut und überfordert andere",
-      "Ein Hund, der beim Alleinbleiben in Panik gerät, braucht früh Hilfe — es bessert sich selten von allein",
+      "Übe kurze Abwesenheiten schon ab der ersten Woche, bevor es überhaupt nötig ist",
+      "Ein Mittagsspaziergänger oder eine Nachbarin macht aus einem schwierigen Tag einen leichten",
+      "Ein paar Tage die Woche in der Tagesbetreuung passt manchen Hunden, andere überfordert es",
+      "Ein Hund, der beim Alleinsein in Panik gerät, braucht früh Hilfe — es bessert sich selten von allein",
     ],
-    checklistEyebrow: "Vor der Ankunft",
-    checklistTitle: "Die Ankunftscheckliste.",
+    checklistEyebrow: "Bevor er einzieht",
+    checklistTitle: "Die Checkliste für den Einzug.",
     checklistBody:
-      "Haken Sie Dinge ab, sobald Sie sie besorgt haben. Sie wird unterwegs auf diesem Gerät gespeichert, sodass Sie im Laden darauf zurückgreifen können.",
+      "Hake Dinge ab, sobald du sie besorgt hast. Sie wird laufend auf diesem Gerät gespeichert, sodass du im Geschäft darauf zurückgreifen kannst.",
     homePrepAlt: "Eine illustrierte Übersicht aus Hundebett, Näpfen, Leine, Geschirr und Spielzeug",
-    printCta: "Meine Ankunftscheckliste drucken",
-    noteTitle: "Ein ehrlicher Hinweis",
+    printCta: "Meine Einzugscheckliste drucken",
+    noteTitle: "Eine ehrliche Anmerkung",
     noteBody:
-      "Kaufen Sie weniger, als Sie denken. Ein Bett, Näpfe, Futter, ein Geschirr, eine Leine und eine Erkennungsmarke bringen Sie problemlos durch die erste Woche. Sie werden bald genug herausfinden, was Ihr Hund wirklich mag.",
+      "Kauf weniger, als du denkst. Ein Bett, Näpfe, Futter, ein Geschirr, eine Leine und eine ID-Marke bringen dich problemlos durch die erste Woche. Du wirst bald genug herausfinden, was dein Hund wirklich mag.",
     welcomeCta: "Die ersten Tage zu Hause",
   },
   fr: {
     eyebrow: "Se préparer",
     title: "Tout préparer.",
     intro:
-      "Votre maison, vos journées, et les choses pratiques bien plus faciles à régler maintenant qu'au milieu de la première semaine avec un nouveau chien.",
+      "Votre maison, vos journées, et les aspects pratiques bien plus faciles à régler maintenant qu'en pleine première semaine avec un nouveau chien.",
     homeEyebrow: "Votre maison",
-    homeTitle: "Presque n'importe quel foyer peut être un bon foyer.",
+    homeTitle: "Presque tous les logements peuvent être un bon foyer.",
     homeBody:
-      "Les chiens se soucient bien moins des mètres carrés que les gens ne l'imaginent. Ce qui se trouve à dix minutes de votre porte compte bien davantage.",
+      "Les chiens se soucient bien moins des mètres carrés qu'on ne le pense. Ce qui se trouve à dix minutes de votre porte compte bien davantage.",
     worthChecking: "À vérifier",
     lifeEyebrow: "Votre quotidien",
-    lifeTitle: "À quoi ressemble une semaine ordinaire chez vous ?",
-    lifeBody: "Le chien doit s'adapter à la semaine que vous avez réellement, pas à celle que vous aimeriez avoir. Retrouvez-vous ci-dessous.",
+    lifeTitle: "À quoi ressemble une semaine ordinaire pour vous ?",
+    lifeBody:
+      "Le chien doit s'adapter à la semaine que vous avez réellement, pas à celle que vous aimeriez avoir. Reconnaissez-vous ci-dessous.",
     allergiesEyebrow: "Allergies",
-    allergiesTitle: "Ce que nous pouvons honnêtement affirmer.",
+    allergiesTitle: "Ce que nous pouvons dire honnêtement.",
     allergiesBody1:
-      "Certaines races perdent généralement moins leurs poils que d'autres, et les personnes allergiques trouvent parfois plus facile de vivre avec elles. Mais aucun chien n'est totalement hypoallergénique. Les protéines auxquelles les gens réagissent se trouvent dans la salive et la peau autant que dans le poil, et les réactions varient énormément d'une personne à l'autre.",
+      "Certaines races perdent généralement moins leurs poils que d'autres, et les personnes allergiques les trouvent parfois plus faciles à vivre. Mais aucun chien n'est totalement hypoallergénique. Les protéines auxquelles les gens réagissent se trouvent dans la salive et la peau autant que dans le poil, et les réactions varient énormément d'une personne à l'autre.",
     allergiesBody2:
       "Si quelqu'un chez vous est allergique, passez vraiment du temps avec ce chien précis avant de vous engager — plusieurs visites, pas une seule — et parlez-en à votre médecin. Cela vous en apprendra bien plus que n'importe quelle liste de races, y compris la nôtre.",
-    aloneEyebrow: "Temps seul",
-    aloneTitle: "Combien de temps, c'est trop long ?",
+    aloneEyebrow: "Le temps seul",
+    aloneTitle: "Combien de temps est trop long ?",
     aloneBody:
-      "La plupart des chiens adultes gèrent confortablement trois ou quatre heures seuls une fois qu'ils l'ont appris. Un chiot n'en est pas capable au début — il a besoin de quelqu'un la majeure partie de la journée pendant les premiers mois, et apprendre à rester seul est une compétence qui s'enseigne progressivement.",
+      "La plupart des chiens adultes gèrent confortablement trois ou quatre heures seuls, une fois qu'ils l'ont appris. Un chiot ne le peut pas au début — il a besoin de quelqu'un la majeure partie de la journée pendant les premiers mois, et apprendre à rester seul est une compétence qui se construit lentement.",
     alonePoints: [
-      "Entraînez-vous à de courtes absences dès la première semaine, avant même qu'il y en ait besoin",
-      "Quelqu'un qui promène le chien à midi, ou un voisin, transforme une journée difficile en journée facile",
-      "Quelques jours par semaine en garderie canine conviennent à certains chiens et en submergent d'autres",
-      "Un chien qui panique quand on le laisse seul a besoin d'aide tôt — cela s'améliore rarement tout seul",
+      "Entraînez de courtes absences dès la première semaine, avant même qu'il y en ait besoin",
+      "Une personne qui promène le chien à midi, ou un voisin, transforme une journée difficile en journée facile",
+      "Quelques jours par semaine en garderie convient à certains chiens et en submerge d'autres",
+      "Un chien qui panique quand on le laisse a besoin d'aide tôt — cela s'améliore rarement tout seul",
     ],
-    checklistEyebrow: "Avant l'arrivée",
-    checklistTitle: "La liste d'arrivée.",
+    checklistEyebrow: "Avant son arrivée",
+    checklistTitle: "La liste pour son arrivée.",
     checklistBody:
       "Cochez les éléments au fur et à mesure. Elle s'enregistre en cours de route, sur cet appareil, pour que vous puissiez la retrouver en magasin.",
-    homePrepAlt: "Une composition illustrée d'un panier, de gamelles, d'une laisse, d'un harnais et de jouets",
+    homePrepAlt:
+      "Une composition illustrée avec panier, gamelles, laisse, harnais et jouets pour chien",
     printCta: "Imprimer ma liste d'arrivée",
     noteTitle: "Une remarque honnête",
     noteBody:
-      "Achetez moins que ce que vous pensez. Un panier, des gamelles, de la nourriture, un harnais, une laisse et une médaille d'identification suffiront très bien pour la première semaine. Vous découvrirez bien assez tôt ce que votre chien aime vraiment.",
+      "Achetez moins que vous ne pensez. Un panier, des gamelles, de la nourriture, un harnais, une laisse et une médaille d'identification suffiront très bien pour la première semaine. Vous découvrirez bien assez tôt ce que votre chien aime vraiment.",
     welcomeCta: "Les premiers jours à la maison",
   },
   nl: {
-    eyebrow: "Klaarmaken",
+    eyebrow: "Je klaarmaken",
     title: "Alles klaarmaken.",
     intro:
-      "Uw huis, uw dagen, en de praktische zaken die nu veel makkelijker te regelen zijn dan midden in de eerste week met een nieuwe hond.",
-    homeEyebrow: "Uw huis",
+      "Je huis, je dagen, en de praktische dingen die nu veel makkelijker te regelen zijn dan midden in de eerste week met een nieuwe hond.",
+    homeEyebrow: "Je huis",
     homeTitle: "Bijna elk huis kan een goed thuis zijn.",
     homeBody:
-      "Honden geven veel minder om vierkante meters dan mensen verwachten. Wat binnen tien minuten van uw voordeur ligt, telt veel meer.",
-    worthChecking: "De moeite waard om te checken",
-    lifeEyebrow: "Uw dagelijks leven",
-    lifeTitle: "Hoe ziet een gewone week er bij u uit?",
-    lifeBody: "De hond moet passen bij de week die u werkelijk heeft, niet bij de week die u zou willen hebben. Herken uzelf hieronder.",
+      "Honden geven veel minder om vierkante meters dan mensen denken. Wat binnen tien minuten van je voordeur ligt, telt veel zwaarder.",
+    worthChecking: "Het waard om te checken",
+    lifeEyebrow: "Je dagelijks leven",
+    lifeTitle: "Hoe ziet een gewone week er voor jou uit?",
+    lifeBody:
+      "De hond moet passen bij de week die je echt hebt, niet bij de week die je zou willen hebben. Herken jezelf hieronder.",
     allergiesEyebrow: "Allergieën",
     allergiesTitle: "Wat we eerlijk kunnen zeggen.",
     allergiesBody1:
-      "Sommige rassen verharen doorgaans minder dan andere, en mensen met allergieën vinden ze soms makkelijker om mee te leven. Maar geen enkele hond is volledig allergievrij. De eiwitten waarop mensen reageren zitten net zo goed in speeksel en huid als in haar, en reacties verschillen enorm per persoon.",
+      "Sommige rassen verharen doorgaans minder dan andere, en mensen met allergieën vinden ze soms makkelijker om mee te leven. Maar geen enkele hond is helemaal allergievrij. De eiwitten waarop mensen reageren zitten in speeksel en huid net zo goed als in haar, en reacties verschillen enorm van persoon tot persoon.",
     allergiesBody2:
-      "Als iemand bij u thuis allergieën heeft, breng dan echt tijd door met die specifieke hond voordat u zich vastlegt — meerdere bezoeken, niet één — en overleg met uw arts. Dat vertelt u veel meer dan welke rassenlijst dan ook, ook de onze.",
+      "Als iemand in je huis allergieën heeft, breng dan echt tijd door met díe specifieke hond voordat je je vastlegt — meerdere bezoeken, niet één — en praat met je arts. Dat vertelt je veel meer dan welke rassenlijst dan ook, ook de onze.",
     aloneEyebrow: "Tijd alleen",
     aloneTitle: "Hoe lang is te lang?",
     aloneBody:
-      "De meeste volwassen honden kunnen prima drie of vier uur alleen zijn zodra ze het geleerd hebben. Een puppy kan dat aanvankelijk niet — hij heeft de eerste maanden het grootste deel van de dag iemand nodig, en alleen leren zijn is een vaardigheid die u langzaam aanleert.",
+      "De meeste volwassen honden redden zich comfortabel drie tot vier uur alleen, zodra ze het geleerd hebben. Een puppy kan dat aanvankelijk niet — hij heeft de eerste maanden het grootste deel van de dag iemand nodig, en alleen leren zijn is een vaardigheid die je langzaam aanleert.",
     alonePoints: [
-      "Oefen vanaf de eerste week met korte afwezigheden, voordat het echt nodig is",
-      "Iemand die 's middags uitlaat, of een buurman, maakt van een lastige dag een makkelijke",
-      "Een paar dagen per week een hondendagverblijf past sommige honden goed en overweldigt andere",
+      "Oefen korte afwezigheden al vanaf de eerste week, voordat het nodig is",
+      "Iemand die 's middags uitlaat, of een buur, maakt van een lastige dag een makkelijke",
+      "Een paar dagen per week naar de dagopvang past sommige honden, en overweldigt andere",
       "Een hond die in paniek raakt als hij alleen wordt gelaten, heeft vroeg hulp nodig — het verbetert zelden vanzelf",
     ],
-    checklistEyebrow: "Voor de aankomst",
+    checklistEyebrow: "Voordat hij thuiskomt",
     checklistTitle: "De aankomstlijst.",
     checklistBody:
-      "Vink dingen af zodra u ze heeft. Deze wordt onderweg bewaard, op dit apparaat, zodat u er in een winkel op kunt terugvallen.",
-    homePrepAlt: "Een geïllustreerd overzicht van een hondenmand, bakjes, riem, tuig en speelgoed",
+      "Vink dingen af zodra je ze in huis hebt. Hij wordt onderweg opgeslagen, op dit apparaat, zodat je hem in de winkel weer kunt raadplegen.",
+    homePrepAlt:
+      "Een geïllustreerd overzicht van een hondenmand, bakjes, riem, tuigje en speeltjes",
     printCta: "Mijn aankomstlijst afdrukken",
-    noteTitle: "Een eerlijke opmerking",
+    noteTitle: "Eén eerlijke opmerking",
     noteBody:
-      "Koop minder dan u denkt. Een mand, bakjes, voer, een tuig, een riem en een penning met naamplaatje brengen u prima door de eerste week. U komt snel genoeg te weten wat uw hond echt leuk vindt.",
+      "Koop minder dan je denkt. Een mand, bakjes, voer, een tuigje, een riem en een naamplaatje brengen je prima door de eerste week. Je komt snel genoeg erachter wat je hond echt lekker vindt.",
     welcomeCta: "De eerste dagen thuis",
   },
 } as const;
@@ -413,7 +420,10 @@ function PreparePage() {
         <div className="container-page">
           <SectionHead eyebrow={c.homeEyebrow} title={c.homeTitle} body={c.homeBody} />
           <div className="mt-12 grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
-            <CardGrid items={homeScenarios.map((s) => ({ title: s.title, body: s.body }))} columns={2} />
+            <CardGrid
+              items={homeScenarios.map((s) => ({ title: s.title, body: s.body }))}
+              columns={2}
+            />
             <div>
               <p className="eyebrow">{c.worthChecking}</p>
               <div className="mt-6 rounded-2xl border border-border bg-card p-7">
@@ -460,7 +470,11 @@ function PreparePage() {
         <div className="container-page">
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
             <div className="lg:sticky lg:top-28 lg:self-start">
-              <SectionHead eyebrow={c.checklistEyebrow} title={c.checklistTitle} body={c.checklistBody} />
+              <SectionHead
+                eyebrow={c.checklistEyebrow}
+                title={c.checklistTitle}
+                body={c.checklistBody}
+              />
               <p className="mt-8 font-display text-4xl tabular-nums tracking-tight text-accent">
                 {ticked.length}
                 <span className="text-xl text-muted-foreground"> / {arrivalChecklist.length}</span>

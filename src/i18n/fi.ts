@@ -166,6 +166,36 @@ export const fi: Dictionary = {
     beginnerHigh: "Hyvä",
     beginnerModerate: "Kohtalainen",
     beginnerLow: "Heikko",
+    homeWithDogEyebrow: "Kun koira on muuttanut kotiin",
+    homeWithDogTitle: "Ensimmäinen vuosi on helpompi, kun arjessa on hieman rakennetta",
+    homeWithDogBody:
+      "DoggMatch+ on rauhallinen apu koira-arjen käytännön asioihin. Ei painetta — vain työkalut, jotka olisimme itse halunneet koiriemme tullessa kotiin.",
+    homeWithDogFeatures: [
+      {
+        title: "Oma koira",
+        body: "Yksi paikka eläinlääkäriajoille, painomerkinnöille, ruoka-ajoille ja pienille asioille, joita et halua unohtaa.",
+      },
+      {
+        title: "Viikkosuunnitelmat",
+        body: "Lempeä liikunnan, turkinhoidon, koulutuksen ja levon rytmi koirasi iän ja energiatason mukaan.",
+      },
+      {
+        title: "Koulutusharjoitukset",
+        body: "Lyhyitä vaiheittaisia ohjeita selkein kuvin — viidestä kymmeneen minuuttia kerrallaan.",
+      },
+      {
+        title: "Ruoka-annokset",
+        body: "Ruokintaohjeet koirasi painon, iän ja aktiivisuuden mukaan — eivät yleisiä arvauksia.",
+      },
+      {
+        title: "Matka-asiakirjat",
+        body: "Tarkistuslistat ulkomaanmatkoille, maakohtaiset säännöt ja helposti unohtuvat paperit.",
+      },
+    ],
+    homeWithDogCtaPrimary: "Katso, miten Oma koira toimii",
+    homeWithDogCtaSecondary: "Tutustu DoggMatch+:aan",
+    homeWithDogNote:
+      "Match-tuloksesi pysyy maksuttomana ja kokonaisena. Tämä on täällä vain silloin, kun kaipaat hieman lisäapua.",
   },
   dimensions: {
     lifestyle: "Arki",
@@ -191,7 +221,7 @@ export const fi: Dictionary = {
   },
   compare: {
     title: "Vertaile näitä koiria",
-    subtitle: "Valitse enintään kolme rotua ja katso, missä ne oikeasti eroavat.",
+    subtitle: "Valitse enintään neljä rotua ja katso, missä ne oikeasti eroavat.",
     add: "Lisää rotu",
     remove: "Poista",
     empty: "Valitse rotu aloittaaksesi.",

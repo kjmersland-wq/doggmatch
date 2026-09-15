@@ -40,19 +40,19 @@ const seoCopy = {
       "Ota yhteyttä DoggMatchiin. Autamme mielellämme oikean koiran löytämisessä, koulutuksessa, terveydessä, matkustamisessa ja koiran kanssa elämisessä.",
   },
   de: {
-    title: "Kontaktieren Sie DoggMatch",
+    title: "Kontakt zu DoggMatch",
     description:
-      "Nehmen Sie Kontakt mit DoggMatch auf. Wir helfen gerne bei Fragen zur Suche nach dem richtigen Hund, zu Training, Gesundheit, Reisen und dem Leben mit Ihrem Hund.",
+      "Nimm Kontakt zu DoggMatch auf. Wir helfen gerne bei Fragen zur Hundewahl, zum Training, zur Gesundheit, zum Reisen und zum Alltag mit Hund.",
   },
   fr: {
-    title: "Contacter DoggMatch",
+    title: "Contactez DoggMatch",
     description:
-      "Contactez DoggMatch. Nous sommes là pour vous aider avec vos questions sur le choix du bon chien, l'éducation, la santé, les voyages et la vie avec votre chien.",
+      "Contactez DoggMatch. Nous répondons volontiers à vos questions sur le choix du bon chien, l'éducation, la santé, les voyages et la vie avec un chien.",
   },
   nl: {
     title: "Neem contact op met DoggMatch",
     description:
-      "Neem contact op met DoggMatch. We helpen u graag met vragen over het vinden van de juiste hond, training, gezondheid, reizen en het leven met uw hond.",
+      "Neem contact op met DoggMatch. We helpen je graag met vragen over het vinden van de juiste hond, training, gezondheid, reizen en het leven met een hond.",
   },
 };
 
@@ -144,7 +144,8 @@ const copy = {
     send: "Send melding",
     sending: "Sender …",
     onlyUse: "Vi bruker opplysningene dine bare til å svare deg. Ikke noe annet.",
-    sendError: "Beklager, vi klarte ikke å sende meldingen din akkurat nå. Prøv gjerne igjen om litt.",
+    sendError:
+      "Beklager, vi klarte ikke å sende meldingen din akkurat nå. Prøv gjerne igjen om litt.",
   },
   pl: {
     eyebrow: "Kontakt",
@@ -179,7 +180,8 @@ const copy = {
     send: "Wyślij wiadomość",
     sending: "Wysyłanie…",
     onlyUse: "Używamy twoich danych wyłącznie po to, by ci odpowiedzieć. Nic więcej.",
-    sendError: "Przepraszamy, nie udało nam się teraz wysłać twojej wiadomości. Spróbuj ponownie za chwilę.",
+    sendError:
+      "Przepraszamy, nie udało nam się teraz wysłać twojej wiadomości. Spróbuj ponownie za chwilę.",
   },
   dk: {
     eyebrow: "Kontakt",
@@ -214,7 +216,8 @@ const copy = {
     send: "Send besked",
     sending: "Sender…",
     onlyUse: "Vi bruger kun dine oplysninger til at svare dig. Ikke til andet.",
-    sendError: "Beklager, vi kunne ikke sende din besked lige nu. Prøv venligst igen om et øjeblik.",
+    sendError:
+      "Beklager, vi kunne ikke sende din besked lige nu. Prøv venligst igen om et øjeblik.",
   },
   se: {
     eyebrow: "Kontakt",
@@ -249,7 +252,8 @@ const copy = {
     send: "Skicka meddelande",
     sending: "Skickar…",
     onlyUse: "Vi använder bara dina uppgifter för att svara dig. Inget annat.",
-    sendError: "Tyvärr kunde vi inte skicka ditt meddelande just nu. Försök gärna igen om en liten stund.",
+    sendError:
+      "Tyvärr kunde vi inte skicka ditt meddelande just nu. Försök gärna igen om en liten stund.",
   },
   fi: {
     eyebrow: "Yhteystiedot",
@@ -284,26 +288,27 @@ const copy = {
     send: "Lähetä viesti",
     sending: "Lähetetään…",
     onlyUse: "Käytämme tietojasi vain vastataksemme sinulle. Emme mihinkään muuhun.",
-    sendError: "Valitettavasti viestiäsi ei juuri nyt voitu lähettää. Yritä hetken kuluttua uudelleen.",
+    sendError:
+      "Valitettavasti viestiäsi ei juuri nyt voitu lähettää. Yritä hetken kuluttua uudelleen.",
   },
   de: {
     eyebrow: "Kontakt",
-    heading: "Wir würden gerne von Ihnen hören.",
+    heading: "Wir hören gerne von dir.",
     intro:
-      "Eine Frage zur Suche nach dem richtigen Hund, zu Training, Futter, Gesundheit oder gemeinsamem Reisen — oder etwas, das nicht so funktioniert, wie es sollte. Schreiben Sie uns, und ein echter Mensch antwortet.",
-    doneHeading: "Danke. Ihre Nachricht wurde gesendet.",
+      "Eine Frage zur Wahl des richtigen Hundes, zum Training, zum Futter, zur Gesundheit oder zum gemeinsamen Reisen — oder etwas, das nicht so funktioniert, wie es sollte. Schreib uns, und ein echter Mensch antwortet dir.",
+    doneHeading: "Danke. Deine Nachricht wurde gesendet.",
     doneBody:
-      "Wir melden uns so schnell wie möglich bei Ihnen. Behalten Sie Ihr Postfach im Auge — wir haben Ihnen eine kurze Bestätigung geschickt.",
-    writeAnother: "Eine weitere Nachricht schreiben",
-    nameLabel: "Ihr Name",
-    namePlaceholder: "Anna Müller",
-    emailLabel: "Ihre E-Mail-Adresse",
-    emailPlaceholder: "sie@beispiel.de",
+      "Wir melden uns so schnell wie möglich. Behalte dein Postfach im Auge — wir haben dir eine kurze Bestätigung geschickt, dass sie angekommen ist.",
+    writeAnother: "Weitere Nachricht schreiben",
+    nameLabel: "Dein Name",
+    namePlaceholder: "Karin Neumann",
+    emailLabel: "Deine E-Mail",
+    emailPlaceholder: "du@beispiel.de",
     subjectLabel: "Betreff",
     subjectPlaceholder: "Worum geht es?",
     reasonLabel: "Worum geht es?",
     reasonHint: "Optional",
-    reasonPlaceholder: "Wählen Sie gerne eine Option",
+    reasonPlaceholder: "Wähl gerne eins aus",
     reasons: {
       general: "Allgemeine Frage",
       matching: "Hundevermittlung",
@@ -314,34 +319,35 @@ const copy = {
       partnership: "Partnerschaft",
       other: "Sonstiges",
     },
-    messageLabel: "Ihre Nachricht",
-    messagePlaceholder: "Erzählen Sie uns so viel oder so wenig, wie Sie möchten.",
+    messageLabel: "Deine Nachricht",
+    messagePlaceholder: "Erzähl uns so viel oder so wenig, wie du möchtest.",
     send: "Nachricht senden",
     sending: "Wird gesendet…",
-    onlyUse: "Wir verwenden Ihre Angaben nur, um Ihnen zu antworten. Zu nichts anderem.",
-    sendError: "Leider konnten wir Ihre Nachricht gerade nicht senden. Bitte versuchen Sie es in einem Moment erneut.",
+    onlyUse: "Wir nutzen deine Daten nur, um dir zu antworten. Sonst nichts.",
+    sendError:
+      "Leider konnten wir deine Nachricht gerade nicht senden. Bitte versuch es gleich noch einmal.",
   },
   fr: {
     eyebrow: "Contact",
-    heading: "Nous serions ravis d'avoir de vos nouvelles.",
+    heading: "Nous serions ravis de vous lire.",
     intro:
-      "Une question sur le choix du bon chien, l'éducation, l'alimentation, la santé ou les voyages ensemble — ou quelque chose qui ne fonctionne pas comme il faudrait. Écrivez-nous, une vraie personne vous répondra.",
-    doneHeading: "Merci. Votre message a été envoyé.",
+      "Une question sur le choix du bon chien, l'éducation, l'alimentation, la santé ou les voyages ensemble — ou quelque chose qui ne fonctionne pas comme il faut. Écrivez-nous, une vraie personne vous répondra.",
+    doneHeading: "Merci. Votre message a bien été envoyé.",
     doneBody:
-      "Nous vous répondrons dès que possible. Gardez un œil sur votre boîte de réception — nous vous avons envoyé une courte confirmation de bonne réception.",
+      "Nous vous répondrons dès que possible. Surveillez votre boîte mail — nous vous avons envoyé un court message confirmant sa bonne réception.",
     writeAnother: "Écrire un autre message",
     nameLabel: "Votre nom",
-    namePlaceholder: "Claire Dubois",
+    namePlaceholder: "Camille Dupont",
     emailLabel: "Votre e-mail",
     emailPlaceholder: "vous@exemple.fr",
     subjectLabel: "Sujet",
     subjectPlaceholder: "De quoi s'agit-il ?",
     reasonLabel: "De quoi s'agit-il ?",
     reasonHint: "Facultatif",
-    reasonPlaceholder: "Choisissez-en un, si vous voulez",
+    reasonPlaceholder: "Choisissez-en un, si vous le souhaitez",
     reasons: {
       general: "Question générale",
-      matching: "Mise en correspondance",
+      matching: "Correspondance chien",
       training: "Éducation",
       health: "Santé et nutrition",
       myDog: "Mon chien",
@@ -350,25 +356,26 @@ const copy = {
       other: "Autre",
     },
     messageLabel: "Votre message",
-    messagePlaceholder: "Dites-nous-en autant ou aussi peu que vous le souhaitez.",
+    messagePlaceholder: "Racontez-nous autant ou aussi peu que vous le souhaitez.",
     send: "Envoyer le message",
     sending: "Envoi en cours…",
-    onlyUse: "Nous utilisons vos informations uniquement pour vous répondre. Rien d'autre.",
-    sendError: "Désolé, nous n'avons pas pu envoyer votre message pour le moment. Veuillez réessayer dans un instant.",
+    onlyUse: "Nous n'utilisons vos informations que pour vous répondre. Rien d'autre.",
+    sendError:
+      "Désolé, nous n'avons pas pu envoyer votre message pour l'instant. Merci de réessayer dans un instant.",
   },
   nl: {
     eyebrow: "Contact",
-    heading: "We horen graag van u.",
+    heading: "We horen graag van je.",
     intro:
-      "Een vraag over het vinden van de juiste hond, training, voeding, gezondheid of samen reizen — of iets dat niet werkt zoals het zou moeten. Schrijf ons, en een echt persoon antwoordt.",
-    doneHeading: "Bedankt. Uw bericht is verzonden.",
+      "Een vraag over het vinden van de juiste hond, training, voeding, gezondheid of samen reizen — of iets dat niet werkt zoals het zou moeten. Schrijf ons, en een echt persoon antwoordt je.",
+    doneHeading: "Bedankt. Je bericht is verzonden.",
     doneBody:
-      "We nemen zo snel mogelijk contact met u op. Houd uw inbox in de gaten — we hebben u een korte bevestiging gestuurd dat het is aangekomen.",
+      "We reageren zo snel mogelijk. Houd je inbox in de gaten — we hebben je een kort bericht gestuurd ter bevestiging dat het is aangekomen.",
     writeAnother: "Nog een bericht schrijven",
-    nameLabel: "Uw naam",
-    namePlaceholder: "Anna de Vries",
-    emailLabel: "Uw e-mailadres",
-    emailPlaceholder: "u@voorbeeld.nl",
+    nameLabel: "Je naam",
+    namePlaceholder: "Kim de Vries",
+    emailLabel: "Je e-mailadres",
+    emailPlaceholder: "jij@voorbeeld.nl",
     subjectLabel: "Onderwerp",
     subjectPlaceholder: "Waar gaat het over?",
     reasonLabel: "Waar gaat het over?",
@@ -376,7 +383,7 @@ const copy = {
     reasonPlaceholder: "Kies er gerust een",
     reasons: {
       general: "Algemene vraag",
-      matching: "Hond matchen",
+      matching: "Hondenmatch",
       training: "Training",
       health: "Gezondheid & voeding",
       myDog: "Mijn hond",
@@ -384,12 +391,12 @@ const copy = {
       partnership: "Samenwerking",
       other: "Anders",
     },
-    messageLabel: "Uw bericht",
-    messagePlaceholder: "Vertel ons zo veel of zo weinig als u wilt.",
+    messageLabel: "Je bericht",
+    messagePlaceholder: "Vertel ons zoveel of zo weinig als je wilt.",
     send: "Bericht versturen",
-    sending: "Verzenden…",
-    onlyUse: "We gebruiken uw gegevens alleen om u te antwoorden. Nergens anders voor.",
-    sendError: "Sorry, we konden uw bericht nu niet verzenden. Probeer het straks nog eens.",
+    sending: "Bezig met verzenden…",
+    onlyUse: "We gebruiken je gegevens alleen om je te antwoorden. Verder niets.",
+    sendError: "Sorry, we konden je bericht nu even niet versturen. Probeer het straks nog eens.",
   },
 } as const;
 
@@ -450,12 +457,7 @@ function ContactPage() {
             {c.doneHeading}
           </h2>
           <p className="mt-3 text-muted-foreground">{c.doneBody}</p>
-          <Button
-            tone="outline"
-            className="mt-7"
-            onClick={() => setDone(false)}
-            type="button"
-          >
+          <Button tone="outline" className="mt-7" onClick={() => setDone(false)} type="button">
             {c.writeAnother}
             <Arrow />
           </Button>
@@ -515,7 +517,12 @@ function ContactPage() {
           </Field>
 
           <Field label={c.reasonLabel} id="reason" hint={c.reasonHint} error={errors["reason"]}>
-            <select id="reason" name="reason" defaultValue="" className={cn(fieldClass, "appearance-none")}>
+            <select
+              id="reason"
+              name="reason"
+              defaultValue=""
+              className={cn(fieldClass, "appearance-none")}
+            >
               <option value="">{c.reasonPlaceholder}</option>
               {reasonKeys.map((r) => (
                 <option key={r} value={c.reasons[r]}>
@@ -573,7 +580,10 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 flex items-baseline gap-2 text-sm font-medium text-foreground">
+      <label
+        htmlFor={id}
+        className="mb-2 flex items-baseline gap-2 text-sm font-medium text-foreground"
+      >
         {label}
         {hint && <span className="text-xs font-normal text-muted-foreground">{hint}</span>}
       </label>

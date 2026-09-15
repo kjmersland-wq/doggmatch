@@ -1,10 +1,21 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { BreedPicker, selectionFromDog, selectionToDog, type BreedSelection } from "@/components/dogmatch/breed-picker";
+import {
+  BreedPicker,
+  selectionFromDog,
+  selectionToDog,
+  type BreedSelection,
+} from "@/components/dogmatch/breed-picker";
 import type { AgeStage } from "@/data/care/types";
 import { Arrow, Button, Eyebrow } from "@/components/dogmatch/ui";
 import { trainingStore, useActiveDog } from "@/lib/training/store";
-import { careStore, useCareProfile, type ActivityLevel, type BodyCondition, type FoodType } from "@/lib/care/store";
+import {
+  careStore,
+  useCareProfile,
+  type ActivityLevel,
+  type BodyCondition,
+  type FoodType,
+} from "@/lib/care/store";
 import { suggestedMeals } from "@/lib/care/portions";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
@@ -74,10 +85,12 @@ const copy = {
     weightHint: "In kilograms. A rough figure is fine to start with.",
     activityLabel: "How active are they?",
     bodyLabel: "And how do they look right now?",
-    bodyHint: "Feel along their ribs and look down from above. There's a proper guide in Weight & shape.",
+    bodyHint:
+      "Feel along their ribs and look down from above. There's a proper guide in Weight & shape.",
     foodTypeLabel: "What do you feed?",
     energyLabel: "Calories per 100g, if the bag says",
-    energyHint: "Usually printed as kcal/100g. Leave it blank and we'll use a typical figure for that kind of food.",
+    energyHint:
+      "Usually printed as kcal/100g. Leave it blank and we'll use a typical figure for that kind of food.",
     kcalPer100g: "kcal per 100g",
     mealsLabel: "How many meals a day?",
     vetLabel: "Your vet",
@@ -133,7 +146,8 @@ const copy = {
     bodyHint: "Kjenn langs ribbeina og se ovenfra. Det er en skikkelig guide under Vekt & hold.",
     foodTypeLabel: "Hva fôrer du med?",
     energyLabel: "Kalorier per 100 g, hvis posen sier det",
-    energyHint: "Står vanligvis som kcal/100 g. La stå tomt, så bruker vi et typisk tall for den typen fôr.",
+    energyHint:
+      "Står vanligvis som kcal/100 g. La stå tomt, så bruker vi et typisk tall for den typen fôr.",
     kcalPer100g: "kcal per 100 g",
     mealsLabel: "Hvor mange måltider om dagen?",
     vetLabel: "Veterinæren din",
@@ -186,10 +200,12 @@ const copy = {
     weightHint: "W kilogramach. Na początek wystarczy przybliżona liczba.",
     activityLabel: "Jak aktywny jest twój pies?",
     bodyLabel: "A jak wygląda teraz?",
-    bodyHint: "Sprawdź dotykiem żebra i spójrz z góry. Pełny przewodnik znajdziesz w sekcji Waga i sylwetka.",
+    bodyHint:
+      "Sprawdź dotykiem żebra i spójrz z góry. Pełny przewodnik znajdziesz w sekcji Waga i sylwetka.",
     foodTypeLabel: "Czym karmisz?",
     energyLabel: "Kalorie na 100 g, jeśli podane są na opakowaniu",
-    energyHint: "Zwykle podane jako kcal/100 g. Zostaw puste, a użyjemy typowej wartości dla tego rodzaju karmy.",
+    energyHint:
+      "Zwykle podane jako kcal/100 g. Zostaw puste, a użyjemy typowej wartości dla tego rodzaju karmy.",
     kcalPer100g: "kcal na 100 g",
     mealsLabel: "Ile posiłków dziennie?",
     vetLabel: "Twój weterynarz",
@@ -245,7 +261,8 @@ const copy = {
     bodyHint: "Mærk langs ribbenene og se den ovenfra. Der er en rigtig guide under Vægt & hold.",
     foodTypeLabel: "Hvad fodrer du med?",
     energyLabel: "Kalorier per 100 g, hvis posen siger det",
-    energyHint: "Står normalt som kcal/100 g. Lad det stå tomt, så bruger vi et typisk tal for den slags foder.",
+    energyHint:
+      "Står normalt som kcal/100 g. Lad det stå tomt, så bruger vi et typisk tal for den slags foder.",
     kcalPer100g: "kcal per 100 g",
     mealsLabel: "Hvor mange måltider om dagen?",
     vetLabel: "Din dyrlæge",
@@ -298,10 +315,12 @@ const copy = {
     weightHint: "I kilogram. Ett ungefärligt tal är bra att börja med.",
     activityLabel: "Hur aktiv är den?",
     bodyLabel: "Och hur ser den ut just nu?",
-    bodyHint: "Känn längs revbenen och titta uppifrån. Det finns en riktig guide under Vikt & hull.",
+    bodyHint:
+      "Känn längs revbenen och titta uppifrån. Det finns en riktig guide under Vikt & hull.",
     foodTypeLabel: "Vad ger du för foder?",
     energyLabel: "Kalorier per 100 g, om det står på påsen",
-    energyHint: "Brukar stå som kcal/100 g. Lämna tomt så använder vi ett typiskt värde för den typen av foder.",
+    energyHint:
+      "Brukar stå som kcal/100 g. Lämna tomt så använder vi ett typiskt värde för den typen av foder.",
     kcalPer100g: "kcal per 100 g",
     mealsLabel: "Hur många måltider om dagen?",
     vetLabel: "Din veterinär",
@@ -322,7 +341,11 @@ const copy = {
       "Kaikki tämä pysyy tällä laitteella. Ohita se, mitä et tiedä — voit aina palata ja täyttää sen myöhemmin.",
     ageStages: [
       { value: "puppy", label: "Pentu", hint: "Noin kuuteen kuukauteen asti" },
-      { value: "adolescent", label: "Murrosikäinen", hint: "Noin kuudesta kuukaudesta kahteen vuoteen" },
+      {
+        value: "adolescent",
+        label: "Murrosikäinen",
+        hint: "Noin kuudesta kuukaudesta kahteen vuoteen",
+      },
       { value: "adult", label: "Aikuinen", hint: "Jossain keskimmäisissä vuosissa" },
       { value: "senior", label: "Ikääntyvä", hint: "Hidastaa hieman vauhtia" },
     ],
@@ -341,23 +364,30 @@ const copy = {
     conditions: [
       { value: "thin", label: "Hieman laiha", hint: "Kylkiluut ja lonkkaluut erottuvat" },
       { value: "ideal", label: "Sopiva", hint: "Kylkiluut tuntuvat helposti, selkeä vyötärö" },
-      { value: "heavy", label: "Hieman ylipainoinen", hint: "Kylkiluita vaikea tuntea, ei vyötäröä" },
+      {
+        value: "heavy",
+        label: "Hieman ylipainoinen",
+        hint: "Kylkiluita vaikea tuntea, ei vyötäröä",
+      },
     ],
     nameLabel: "Mikä sen nimi on?",
     namePlaceholder: "Luna",
     ageLabel: "Kuinka vanha koirasi on?",
     neuteredLabel: "Onko se leikattu?",
-    neuteredHint: "Se vaikuttaa siihen, kuinka paljon ruokaa se tarvitsee, joten se on hyvä tietää.",
+    neuteredHint:
+      "Se vaikuttaa siihen, kuinka paljon ruokaa se tarvitsee, joten se on hyvä tietää.",
     yes: "Kyllä",
     noOrUnsure: "Ei, tai en ole varma",
     weightLabel: "Kuinka paljon se painaa suunnilleen?",
     weightHint: "Kilogrammoina. Suunnilleen riittää aluksi.",
     activityLabel: "Kuinka aktiivinen se on?",
     bodyLabel: "Ja miltä se näyttää juuri nyt?",
-    bodyHint: "Tunnustele kylkiluita ja katso ylhäältä. Kunnollinen opas löytyy kohdasta Paino ja kunto.",
+    bodyHint:
+      "Tunnustele kylkiluita ja katso ylhäältä. Kunnollinen opas löytyy kohdasta Paino ja kunto.",
     foodTypeLabel: "Millä ruokit?",
     energyLabel: "Kalorit / 100 g, jos pussissa lukee",
-    energyHint: "Ilmoitetaan yleensä muodossa kcal/100 g. Jätä tyhjäksi, niin käytämme tyypillistä arvoa kyseiselle ruokatyypille.",
+    energyHint:
+      "Ilmoitetaan yleensä muodossa kcal/100 g. Jätä tyhjäksi, niin käytämme tyypillistä arvoa kyseiselle ruokatyypille.",
     kcalPer100g: "kcal / 100 g",
     mealsLabel: "Kuinka monta ateriaa päivässä?",
     vetLabel: "Eläinlääkärisi",
@@ -372,10 +402,10 @@ const copy = {
     save: "Tallenna",
   },
   de: {
-    eyebrow: "Ihr Hund",
-    title: "Ein paar Angaben, und wir übernehmen die Rechenarbeit.",
+    eyebrow: "Dein Hund",
+    title: "Ein paar Angaben, und wir übernehmen die Rechnerei.",
     intro:
-      "Alles hier bleibt auf diesem Gerät. Überspringen Sie, was Sie nicht wissen — Sie können jederzeit zurückkommen und es später ausfüllen.",
+      "Alles hier bleibt auf diesem Gerät. Überspringe, was du nicht weißt — du kannst später jederzeit zurückkommen und es ergänzen.",
     ageStages: [
       { value: "puppy", label: "Ein Welpe", hint: "Bis etwa sechs Monate" },
       { value: "adolescent", label: "Ein Junghund", hint: "Etwa sechs Monate bis zwei Jahre" },
@@ -383,116 +413,128 @@ const copy = {
       { value: "senior", label: "Wird älter", hint: "Wird etwas ruhiger" },
     ],
     activities: [
-      { value: "gentle", label: "Ruhig", hint: "Kurze Spaziergänge, viel Schlaf" },
-      { value: "moderate", label: "Recht normal", hint: "Etwa eine Stunde am Tag" },
-      { value: "busy", label: "Immer in Bewegung", hint: "Lange Spaziergänge, Laufen, Sport" },
+      { value: "gentle", label: "Ruhig", hint: "Kurze Spaziergänge, viel Nickerchen" },
+      { value: "moderate", label: "Ziemlich normal", hint: "Etwa eine Stunde am Tag" },
+      { value: "busy", label: "Immer in Aktion", hint: "Lange Spaziergänge, Laufen, Sport" },
     ],
     foodTypes: [
       { value: "dry", label: "Trockenfutter", hint: "Kroketten" },
       { value: "wet", label: "Nassfutter", hint: "Dosen, Schalen oder Beutel" },
-      { value: "mixed", label: "Etwas von beidem", hint: "Nass- und Trockenfutter zusammen" },
-      { value: "raw", label: "Roh", hint: "Fertig oder selbst zubereitetes Rohfutter" },
+      {
+        value: "mixed",
+        label: "Ein bisschen von beidem",
+        hint: "Nass- und Trockenfutter zusammen",
+      },
+      { value: "raw", label: "Barf", hint: "Fertig oder selbst zubereitet, roh" },
       { value: "home", label: "Selbst gekocht", hint: "Zu Hause gekocht" },
     ],
     conditions: [
       { value: "thin", label: "Etwas dünn", hint: "Rippen und Hüften stehen hervor" },
-      { value: "ideal", label: "Genau richtig", hint: "Rippen leicht zu fühlen, klare Taille" },
-      { value: "heavy", label: "Etwas übergewichtig", hint: "Rippen schwer zu fühlen, keine Taille" },
+      { value: "ideal", label: "Genau richtig", hint: "Rippen gut fühlbar, klare Taille" },
+      { value: "heavy", label: "Etwas mollig", hint: "Rippen schwer zu fühlen, keine Taille" },
     ],
-    nameLabel: "Wie heißt er/sie?",
+    nameLabel: "Wie heißt er oder sie?",
     namePlaceholder: "Luna",
-    ageLabel: "Wie alt ist Ihr Hund?",
-    neuteredLabel: "Wurde er/sie kastriert?",
-    neuteredHint: "Das ändert, wie viel Futter er/sie braucht, deshalb lohnt es sich, das zu wissen.",
+    ageLabel: "Wie alt ist dein Hund?",
+    neuteredLabel: "Ist er oder sie kastriert?",
+    neuteredHint: "Das ändert, wie viel Futter nötig ist, deshalb lohnt es sich zu wissen.",
     yes: "Ja",
     noOrUnsure: "Nein, oder nicht sicher",
-    weightLabel: "Wie viel wiegt er/sie ungefähr?",
-    weightHint: "In Kilogramm. Ein ungefährer Wert reicht zum Anfangen.",
-    activityLabel: "Wie aktiv ist er/sie?",
-    bodyLabel: "Und wie sieht er/sie gerade aus?",
-    bodyHint: "Tasten Sie die Rippen ab und schauen Sie von oben. Eine richtige Anleitung finden Sie unter Gewicht & Kondition.",
-    foodTypeLabel: "Was füttern Sie?",
-    energyLabel: "Kalorien pro 100 g, falls auf dem Beutel angegeben",
-    energyHint: "Wird meist als kcal/100g angegeben. Lassen Sie es leer, dann verwenden wir einen typischen Wert für diese Futterart.",
+    weightLabel: "Wie viel wiegt er oder sie ungefähr?",
+    weightHint: "In Kilogramm. Ein grober Wert reicht zum Start.",
+    activityLabel: "Wie aktiv ist er oder sie?",
+    bodyLabel: "Und wie sieht er oder sie gerade aus?",
+    bodyHint:
+      "Taste die Rippen ab und schau von oben. Eine ausführliche Anleitung gibt es unter Gewicht & Kondition.",
+    foodTypeLabel: "Was fütterst du?",
+    energyLabel: "Kalorien pro 100 g, falls auf der Packung angegeben",
+    energyHint:
+      "Meist als kcal/100 g angegeben. Leer lassen, dann nehmen wir einen typischen Wert für diese Futterart.",
     kcalPer100g: "kcal pro 100 g",
     mealsLabel: "Wie viele Mahlzeiten am Tag?",
-    vetLabel: "Ihr Tierarzt",
-    vetHint: "Hier gespeichert, damit Sie nicht danach suchen müssen, wenn Sie es brauchen.",
+    vetLabel: "Deine Tierarztpraxis",
+    vetHint: "Hier gespeichert, damit du nicht suchen musst, wenn du es brauchst.",
     practiceName: "Name der Praxis",
     phoneNumber: "Telefonnummer",
-    outOfHours: "Notfallnummer außerhalb der Öffnungszeiten",
+    outOfHours: "Notdienstnummer",
     notesLabel: "Sonst noch etwas Wichtiges?",
-    notesHint: "Allergien, Medikamente, Dinge, die er/sie nicht verträgt.",
-    notesPlaceholder: "Reagiert auf Hühnchen. Bekommt Gelenknahrungsergänzung.",
-    notNow: "Nicht jetzt",
+    notesHint: "Allergien, Medikamente, Dinge, die er oder sie nicht verträgt.",
+    notesPlaceholder: "Reagiert auf Hühnchen. Bekommt Gelenknahrung.",
+    notNow: "Jetzt nicht",
     save: "Speichern",
   },
   fr: {
     eyebrow: "Votre chien",
-    title: "Quelques détails, et nous nous occupons du calcul.",
+    title: "Quelques détails, et on s'occupe des calculs.",
     intro:
-      "Tout ici reste sur cet appareil. Passez ce que vous ne savez pas — vous pourrez toujours revenir le compléter plus tard.",
+      "Tout ceci reste sur cet appareil. Ignorez ce que vous ne savez pas — vous pourrez toujours revenir plus tard pour le compléter.",
     ageStages: [
       { value: "puppy", label: "Un chiot", hint: "Jusqu'à environ six mois" },
       { value: "adolescent", label: "Un adolescent", hint: "Environ six mois à deux ans" },
       { value: "adult", label: "Adulte", hint: "Quelque part dans les années intermédiaires" },
-      { value: "senior", label: "Vieillissant", hint: "Ralentit un peu" },
+      { value: "senior", label: "Qui vieillit", hint: "Ralentit un peu" },
     ],
     activities: [
-      { value: "gentle", label: "Calme", hint: "Courtes promenades, beaucoup de siestes" },
-      { value: "moderate", label: "Assez normal", hint: "Environ une heure par jour" },
+      { value: "gentle", label: "Tranquille", hint: "Courtes promenades, beaucoup de siestes" },
+      { value: "moderate", label: "Plutôt normal", hint: "Environ une heure par jour" },
       { value: "busy", label: "Toujours en mouvement", hint: "Longues promenades, course, sport" },
     ],
     foodTypes: [
       { value: "dry", label: "Croquettes", hint: "Aliment sec" },
       { value: "wet", label: "Pâtée", hint: "Boîtes, barquettes ou sachets" },
       { value: "mixed", label: "Un peu des deux", hint: "Pâtée et croquettes ensemble" },
-      { value: "raw", label: "Cru", hint: "Ration crue préparée ou faite maison" },
+      { value: "raw", label: "Ration crue (BARF)", hint: "Préparée ou maison, crue" },
       { value: "home", label: "Fait maison", hint: "Cuisiné à la maison" },
     ],
     conditions: [
       { value: "thin", label: "Un peu maigre", hint: "Côtes et hanches saillantes" },
-      { value: "ideal", label: "Parfait", hint: "Côtes faciles à sentir, taille marquée" },
+      {
+        value: "ideal",
+        label: "À peu près juste",
+        hint: "Côtes faciles à sentir, taille bien marquée",
+      },
       { value: "heavy", label: "Un peu enrobé", hint: "Côtes difficiles à sentir, pas de taille" },
     ],
-    nameLabel: "Comment s'appelle-t-il/elle ?",
+    nameLabel: "Comment s'appelle-t-il ?",
     namePlaceholder: "Luna",
     ageLabel: "Quel âge a votre chien ?",
-    neuteredLabel: "A-t-il/elle été stérilisé(e) ?",
-    neuteredHint: "Cela change la quantité de nourriture dont il/elle a besoin, donc c'est utile à savoir.",
+    neuteredLabel: "A-t-il été castré ou stérilisée ?",
+    neuteredHint: "Cela change ses besoins en nourriture, donc c'est utile à savoir.",
     yes: "Oui",
     noOrUnsure: "Non, ou pas sûr(e)",
-    weightLabel: "Combien pèse-t-il/elle environ ?",
-    weightHint: "En kilogrammes. Un chiffre approximatif suffit pour commencer.",
+    weightLabel: "Quel est son poids approximatif ?",
+    weightHint: "En kilogrammes. Une estimation suffit pour commencer.",
     activityLabel: "Quel est son niveau d'activité ?",
-    bodyLabel: "Et à quoi ressemble-t-il/elle en ce moment ?",
-    bodyHint: "Palpez le long des côtes et regardez d'en haut. Un vrai guide se trouve dans Poids & forme.",
+    bodyLabel: "Et à quoi ressemble-t-il en ce moment ?",
+    bodyHint:
+      "Palpez le long des côtes et regardez-le d'en haut. Un guide détaillé se trouve dans Poids & silhouette.",
     foodTypeLabel: "Que lui donnez-vous à manger ?",
-    energyLabel: "Calories pour 100 g, si indiqué sur le sac",
-    energyHint: "Généralement indiqué en kcal/100g. Laissez vide et nous utiliserons une valeur typique pour ce type d'aliment.",
+    energyLabel: "Calories pour 100 g, si indiqué sur le paquet",
+    energyHint:
+      "Généralement indiqué en kcal/100 g. Laissez vide et nous utiliserons une valeur typique pour ce type d'aliment.",
     kcalPer100g: "kcal pour 100 g",
     mealsLabel: "Combien de repas par jour ?",
     vetLabel: "Votre vétérinaire",
-    vetHint: "Conservé ici pour que vous n'ayez pas à le chercher quand vous en avez besoin.",
+    vetHint: "Conservé ici pour ne pas avoir à le chercher au moment où vous en avez besoin.",
     practiceName: "Nom du cabinet",
     phoneNumber: "Numéro de téléphone",
-    outOfHours: "Numéro en dehors des heures d'ouverture",
+    outOfHours: "Numéro d'urgence",
     notesLabel: "Autre chose à retenir ?",
-    notesHint: "Allergies, médicaments, choses qu'il/elle ne supporte pas.",
+    notesHint: "Allergies, médicaments, choses qu'il ne supporte pas.",
     notesPlaceholder: "Réagit au poulet. Prend des compléments articulaires.",
     notNow: "Pas maintenant",
     save: "Enregistrer",
   },
   nl: {
-    eyebrow: "Uw hond",
-    title: "Een paar details, en wij doen de berekening.",
+    eyebrow: "Jouw hond",
+    title: "Een paar gegevens, en wij doen de rekensom.",
     intro:
-      "Alles hier blijft op dit apparaat. Sla over wat u niet weet — u kunt altijd later terugkomen om het aan te vullen.",
+      "Alles hier blijft op dit apparaat. Sla over wat je niet weet — je kunt altijd later terugkomen om het aan te vullen.",
     ageStages: [
       { value: "puppy", label: "Een pup", hint: "Tot ongeveer zes maanden" },
       { value: "adolescent", label: "Een puber", hint: "Ongeveer zes maanden tot twee jaar" },
-      { value: "adult", label: "Volwassen", hint: "Ergens in de middelste jaren" },
-      { value: "senior", label: "Wordt ouder", hint: "Gaat een beetje rustiger aan" },
+      { value: "adult", label: "Volwassen", hint: "Ergens in de middenjaren" },
+      { value: "senior", label: "Wordt ouder", hint: "Gaat wat rustiger aan" },
     ],
     activities: [
       { value: "gentle", label: "Rustig", hint: "Korte wandelingen, veel dutjes" },
@@ -501,40 +543,42 @@ const copy = {
     ],
     foodTypes: [
       { value: "dry", label: "Droogvoer", hint: "Brokjes" },
-      { value: "wet", label: "Natvoer", hint: "Blikjes, bakjes of zakjes" },
+      { value: "wet", label: "Natvoer", hint: "Blikjes, schaaltjes of zakjes" },
       { value: "mixed", label: "Een beetje van beide", hint: "Nat- en droogvoer samen" },
-      { value: "raw", label: "Rauw", hint: "Kant-en-klaar of zelfgemaakt rauw voer" },
+      { value: "raw", label: "Rauw (BARF)", hint: "Kant-en-klaar of zelfgemaakt rauw voer" },
       { value: "home", label: "Zelfgekookt", hint: "Thuis bereid" },
     ],
     conditions: [
-      { value: "thin", label: "Iets te mager", hint: "Ribben en heupen steken uit" },
+      { value: "thin", label: "Een beetje mager", hint: "Ribben en heupen steken uit" },
       { value: "ideal", label: "Precies goed", hint: "Ribben goed voelbaar, duidelijke taille" },
-      { value: "heavy", label: "Iets te zwaar", hint: "Ribben moeilijk voelbaar, geen taille" },
+      { value: "heavy", label: "Een beetje zwaar", hint: "Ribben moeilijk voelbaar, geen taille" },
     ],
-    nameLabel: "Hoe heet hij/zij?",
+    nameLabel: "Hoe heet je hond?",
     namePlaceholder: "Luna",
-    ageLabel: "Hoe oud is uw hond?",
-    neuteredLabel: "Is hij/zij gecastreerd of gesteriliseerd?",
-    neuteredHint: "Dit verandert hoeveel voeding hij/zij nodig heeft, dus het is goed om te weten.",
+    ageLabel: "Hoe oud is je hond?",
+    neuteredLabel: "Is je hond gecastreerd of gesteriliseerd?",
+    neuteredHint: "Dat verandert hoeveel voer nodig is, dus het is goed om te weten.",
     yes: "Ja",
     noOrUnsure: "Nee, of niet zeker",
-    weightLabel: "Hoeveel weegt hij/zij ongeveer?",
+    weightLabel: "Hoeveel weegt hij of zij ongeveer?",
     weightHint: "In kilogram. Een ruwe schatting is prima om mee te beginnen.",
-    activityLabel: "Hoe actief is hij/zij?",
-    bodyLabel: "En hoe ziet hij/zij er nu uit?",
-    bodyHint: "Voel langs de ribben en kijk van bovenaf. Een echte handleiding vindt u bij Gewicht & conditie.",
-    foodTypeLabel: "Wat voert u?",
+    activityLabel: "Hoe actief is hij of zij?",
+    bodyLabel: "En hoe ziet hij of zij er nu uit?",
+    bodyHint:
+      "Voel langs de ribben en kijk van bovenaf. Er staat een uitgebreide gids bij Gewicht & conditie.",
+    foodTypeLabel: "Wat voer je?",
     energyLabel: "Calorieën per 100 g, als dat op de zak staat",
-    energyHint: "Meestal aangegeven als kcal/100g. Laat leeg en we gebruiken een typische waarde voor dat soort voer.",
+    energyHint:
+      "Meestal aangegeven als kcal/100 g. Laat leeg, dan gebruiken we een gebruikelijke waarde voor dat soort voer.",
     kcalPer100g: "kcal per 100 g",
     mealsLabel: "Hoeveel maaltijden per dag?",
-    vetLabel: "Uw dierenarts",
-    vetHint: "Hier bewaard, zodat u er niet naar hoeft te zoeken wanneer u het nodig heeft.",
+    vetLabel: "Je dierenarts",
+    vetHint: "Hier bewaard zodat je er niet naar hoeft te zoeken als je het nodig hebt.",
     practiceName: "Naam van de praktijk",
     phoneNumber: "Telefoonnummer",
     outOfHours: "Nummer buiten openingstijden",
     notesLabel: "Nog iets anders om te onthouden?",
-    notesHint: "Allergieën, medicatie, dingen die hij/zij niet verdraagt.",
+    notesHint: "Allergieën, medicatie, dingen die hij of zij niet verdraagt.",
     notesPlaceholder: "Reageert op kip. Krijgt gewrichtssupplementen.",
     notNow: "Niet nu",
     save: "Opslaan",
@@ -561,9 +605,13 @@ function MyDogSetup() {
   const [neutered, setNeutered] = useState(profile.neutered ?? false);
   const [weight, setWeight] = useState(profile.weightKg ? String(profile.weightKg) : "");
   const [activity, setActivity] = useState<ActivityLevel>(profile.activity ?? "moderate");
-  const [bodyCondition, setBodyCondition] = useState<BodyCondition>(profile.bodyCondition ?? "ideal");
+  const [bodyCondition, setBodyCondition] = useState<BodyCondition>(
+    profile.bodyCondition ?? "ideal",
+  );
   const [foodType, setFoodType] = useState<FoodType>(profile.foodType ?? "dry");
-  const [foodEnergy, setFoodEnergy] = useState(profile.foodEnergy ? String(profile.foodEnergy) : "");
+  const [foodEnergy, setFoodEnergy] = useState(
+    profile.foodEnergy ? String(profile.foodEnergy) : "",
+  );
   const [meals, setMeals] = useState(String(profile.mealsPerDay ?? suggestedMeals(ageStage)));
   const [vetName, setVetName] = useState(profile.vetName ?? "");
   const [vetPhone, setVetPhone] = useState(profile.vetPhone ?? "");
@@ -762,7 +810,9 @@ function Choices<T extends string>({
               : "border-border bg-card hover:border-border-strong",
           )}
         >
-          <span className="block font-display text-[1.0625rem] leading-tight tracking-tight">{o.label}</span>
+          <span className="block font-display text-[1.0625rem] leading-tight tracking-tight">
+            {o.label}
+          </span>
           {o.hint && <span className="mt-1 block text-sm text-muted-foreground">{o.hint}</span>}
         </button>
       ))}

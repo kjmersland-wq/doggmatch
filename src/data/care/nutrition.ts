@@ -12,17 +12,7 @@ import type { FoodItem } from "./types";
 
 /** Locale-aware food safety list and nutrition guide sections. */
 export function foodItems(): FoodItem[] {
-  return pick({
-    en: foodItemsEn,
-    no: foodItemsNo,
-    pl: foodItemsPl,
-    dk: foodItemsDk,
-    se: foodItemsSe,
-    fi: foodItemsFi,
-    de: foodItemsDe,
-    fr: foodItemsFr,
-    nl: foodItemsNl,
-  });
+  return pick({ en: foodItemsEn, no: foodItemsNo, pl: foodItemsPl, dk: foodItemsDk, se: foodItemsSe, fi: foodItemsFi, de: foodItemsDe, fr: foodItemsFr, nl: foodItemsNl });
 }
 
 export function foodById(): Record<string, FoodItem> {
@@ -30,15 +20,5 @@ export function foodById(): Record<string, FoodItem> {
 }
 
 export function nutritionSections() {
-  return pick({
-    en: nutritionSectionsEn,
-    no: nutritionSectionsNo,
-    pl: nutritionSectionsPl,
-    dk: nutritionSectionsDk,
-    se: nutritionSectionsSe,
-    fi: nutritionSectionsFi,
-    de: nutritionSectionsDe,
-    fr: nutritionSectionsFr,
-    nl: nutritionSectionsNl,
-  });
+  return pick({ en: nutritionSectionsEn, no: nutritionSectionsNo, pl: nutritionSectionsPl, dk: nutritionSectionsDk, se: nutritionSectionsSe, fi: nutritionSectionsFi, de: nutritionSectionsDe, fr: nutritionSectionsFr, nl: nutritionSectionsNl });
 }

@@ -77,30 +77,30 @@ const shellCopy = {
   },
   de: {
     notFound: "Diese Seite scheint sich verlaufen zu haben.",
-    notFoundBody: "Kein Problem — wir bringen Sie zurück auf den richtigen Weg.",
+    notFoundBody: "Kein Problem — wir bringen dich wieder auf den richtigen Weg.",
     back: "Zurück zu DoggMatch",
     errorTitle: "Bei uns ist etwas schiefgelaufen.",
-    errorBody: "Tut uns leid. Ihre Antworten sind sicher — versuchen Sie es noch einmal.",
+    errorBody: "Tut uns leid. Deine Antworten sind sicher — versuch es noch einmal.",
     retry: "Erneut versuchen",
     home: "Zur Startseite",
   },
   fr: {
-    notFound: "Cette page semble s'être égarée.",
-    notFoundBody: "Pas de souci — remettons-vous sur la bonne voie.",
+    notFound: "Il semble que cette page se soit égarée.",
+    notFoundBody: "Aucun mal fait — remettons-vous sur la bonne voie.",
     back: "Retour à DoggMatch",
     errorTitle: "Quelque chose s'est mal passé de notre côté.",
     errorBody: "Désolé pour ça. Vos réponses sont en sécurité — réessayez.",
     retry: "Réessayer",
-    home: "Retour à l'accueil",
+    home: "Accueil",
   },
   nl: {
-    notFound: "Deze pagina lijkt zoek te zijn geraakt.",
-    notFoundBody: "Geen probleem — we brengen u terug op het juiste spoor.",
+    notFound: "Deze pagina lijkt te zijn afgedwaald.",
+    notFoundBody: "Geen probleem — we brengen je weer op het juiste spoor.",
     back: "Terug naar DoggMatch",
     errorTitle: "Er is iets misgegaan aan onze kant.",
-    errorBody: "Excuses daarvoor. Uw antwoorden zijn veilig — probeer het nog eens.",
-    retry: "Probeer opnieuw",
-    home: "Naar de homepage",
+    errorBody: "Sorry daarvoor. Je antwoorden zijn veilig — probeer het nog eens.",
+    retry: "Opnieuw proberen",
+    home: "Naar home",
   },
 };
 
@@ -213,7 +213,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "WebSite",
           name: "DoggMatch",
           url: "https://www.doggmatch.com/",
-          inLanguage: ["en", "nb-NO", "pl-PL"],
+          inLanguage: ["en", "nb-NO", "pl-PL", "da-DK", "sv-SE", "fi-FI", "de-DE", "fr-FR", "nl-NL"],
+          potentialAction: {
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: "https://www.doggmatch.com/breeds?q={search_term_string}",
+            },
+            "query-input": "required name=search_term_string",
+          },
           description:
             "A friendly, honest way to work out which dog would really suit your life.",
           publisher: {
@@ -278,7 +286,7 @@ function SkipLink() {
     fi: { skip: "Siirry sisältöön" },
     de: { skip: "Zum Inhalt springen" },
     fr: { skip: "Passer au contenu" },
-    nl: { skip: "Naar inhoud springen" },
+    nl: { skip: "Naar de inhoud" },
   });
   return (
     <a href="#main" className="skip-link">

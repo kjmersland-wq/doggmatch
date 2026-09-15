@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { X } from "lucide-react";
 import { Arrow, Button, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
@@ -16,19 +18,7 @@ const description =
   "A calm weekly overview built from your dog's age, breed, activity and training: walks, short sessions, meals and the bits of care that are easy to forget.";
 
 export const Route = createFileRoute("/{-$lang}/my-dog/week")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/my-dog/week"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/my-dog/week", pageSeo.myDogWeek),
   component: WeekPage,
 });
 
@@ -161,31 +151,31 @@ const copy = {
   },
   de: {
     eyebrow: "Meine Hundewoche",
-    titleFor: (name: string) => `Die Woche von ${name}`,
-    titleFallback: "Eine Woche mit Ihrem Hund",
+    titleFor: (name: string) => `${name}s Woche`,
+    titleFallback: "Eine Woche mit deinem Hund",
     intro:
-      "Hier ist, was Sie sich diese Woche merken möchten. Es ist zusammengestellt aus dem, was Sie uns über Ihren Hund erzählt haben — nichts ist festgelegt, also entfernen Sie, was nicht zu Ihren Tagen passt.",
+      "Hier ist, was du diese Woche vielleicht im Kopf behalten möchtest. Es basiert auf dem, was du uns über deinen Hund erzählt hast — nichts ist fest vorgegeben, also entferne alles, was nicht zu deinen Tagen passt.",
     printWeek: "Diese Woche drucken",
-    putBack: "Vorschläge zurücksetzen",
+    putBack: "Vorschläge wiederherstellen",
     today: "Heute",
     removeAria: (label: string, day: string) => `${label} von ${day} entfernen`,
     addPlaceholder: "Welpenkurs, langer Spaziergang…",
     add: "Hinzufügen",
     addOwn: "Etwas Eigenes hinzufügen",
-    genericNotePrefix: "Diese Woche ist allgemein, bis Sie uns von Ihrem Hund erzählen.",
-    addDog: "Fügen Sie Ihren Hund hinzu",
-    genericNoteSuffix: "dann passt sie sich ihm an.",
+    genericNotePrefix: "Diese Woche ist allgemein, bis du uns von deinem Hund erzählst.",
+    addDog: "Füge deinen Hund hinzu",
+    genericNoteSuffix: "dann passt sie sich an.",
     vetNote:
-      "Solche Tage sind ein Rhythmus, kein Regelwerk. Manche Wochen sind hektischer als andere, und ein ausgefallener Spaziergang oder ausgelassenes Bürsten ist kein Versagen — es ist einfach das Leben mit einem Hund.",
+      "Solche Tage sind ein Rhythmus, kein Regelwerk. Manche Wochen sind voller als andere, und ein ausgelassener Spaziergang oder eine ausgefallene Bürstenrunde ist kein Versagen — das ist einfach das Leben mit einem Hund.",
     footer: (n: number) =>
-      `Vorschläge für ${n} Tage, berechnet aus den Angaben Ihres Hundes — nie aus einer Vermutung oder einem Modell.`,
+      `Vorschläge für ${n} Tage, berechnet aus den Angaben zu deinem Hund — nie aus einer Vermutung oder einem Modell.`,
   },
   fr: {
     eyebrow: "Ma semaine avec mon chien",
     titleFor: (name: string) => `La semaine de ${name}`,
     titleFallback: "Une semaine avec votre chien",
     intro:
-      "Voici ce que vous voudrez peut-être retenir cette semaine. C'est établi à partir de ce que vous nous avez dit sur votre chien — rien n'est figé, donc retirez ce qui ne convient pas à vos journées.",
+      "Voici ce que vous pourriez vouloir retenir cette semaine. C'est construit à partir de ce que vous nous avez dit sur votre chien — rien n'est figé, alors retirez tout ce qui ne convient pas à vos journées.",
     printWeek: "Imprimer cette semaine",
     putBack: "Remettre les suggestions",
     today: "Aujourd'hui",
@@ -193,7 +183,8 @@ const copy = {
     addPlaceholder: "Cours pour chiot, longue promenade…",
     add: "Ajouter",
     addOwn: "Ajouter quelque chose de personnel",
-    genericNotePrefix: "Cette semaine est générique jusqu'à ce que vous nous parliez de votre chien.",
+    genericNotePrefix:
+      "Cette semaine est générique tant que vous ne nous parlez pas de votre chien.",
     addDog: "Ajoutez votre chien",
     genericNoteSuffix: "et elle s'adaptera à lui.",
     vetNote:
@@ -204,23 +195,23 @@ const copy = {
   nl: {
     eyebrow: "Mijn hondenweek",
     titleFor: (name: string) => `De week van ${name}`,
-    titleFallback: "Een week met uw hond",
+    titleFallback: "Een week met je hond",
     intro:
-      "Hier is wat u deze week misschien wilt onthouden. Het is samengesteld op basis van wat u ons over uw hond heeft verteld — niets ligt vast, dus verwijder wat niet bij uw dagen past.",
-    printWeek: "Deze week afdrukken",
+      "Hier is wat je deze week misschien wilt onthouden. Het is samengesteld op basis van wat je ons over je hond hebt verteld — niets ligt vast, dus haal weg wat niet bij jouw dagen past.",
+    printWeek: "Print deze week",
     putBack: "Zet de suggesties terug",
     today: "Vandaag",
-    removeAria: (label: string, day: string) => `${label} verwijderen van ${day}`,
+    removeAria: (label: string, day: string) => `Verwijder ${label} van ${day}`,
     addPlaceholder: "Puppycursus, lange wandeling…",
     add: "Toevoegen",
-    addOwn: "Voeg iets van uzelf toe",
-    genericNotePrefix: "Deze week is algemeen totdat u ons over uw hond vertelt.",
-    addDog: "Voeg uw hond toe",
-    genericNoteSuffix: "dan wordt hij op hem/haar afgestemd.",
+    addOwn: "Voeg iets van jezelf toe",
+    genericNotePrefix: "Deze week is generiek totdat je ons over je hond vertelt.",
+    addDog: "Voeg je hond toe",
+    genericNoteSuffix: "dan wordt hij hierop afgestemd.",
     vetNote:
-      "Dagen zoals deze zijn een ritme, geen regelboek. Sommige weken zijn drukker dan andere, en een gemiste wandeling of overgeslagen borstelbeurt is geen mislukking — het is gewoon het leven met een hond.",
+      "Dagen zoals deze zijn een ritme, geen regelboek. Sommige weken zijn drukker dan andere, en een gemiste wandeling of overgeslagen borstelbeurt is geen mislukking — dat is gewoon het leven met een hond.",
     footer: (n: number) =>
-      `Suggesties voor ${n} dagen, berekend op basis van de gegevens van uw hond — nooit op basis van een gok of een model.`,
+      `Suggesties voor ${n} dagen, berekend op basis van de gegevens van je hond — nooit op basis van een gok of een model.`,
   },
 } as const;
 
@@ -350,7 +341,9 @@ function WeekPage() {
         </div>
       </Section>
 
-      <p className="container-page text-sm text-muted-foreground">{c.footer(getDayNames().length)}</p>
+      <p className="container-page text-sm text-muted-foreground">
+        {c.footer(getDayNames().length)}
+      </p>
     </div>
   );
 }

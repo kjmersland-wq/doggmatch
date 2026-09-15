@@ -1,10 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { useT, pick, useCopy } from "@/i18n";
+import { useServerFn } from "@tanstack/react-start";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
+import { useT, pick, useCopy, useLocale } from "@/i18n";
 import { Button, Eyebrow } from "@/components/dogmatch/ui";
 import dogLifeImage from "@/assets/dog-life.jpg";
 import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
+import { getPlacesCopy } from "@/lib/places/copy";
+import { findNearbyPlaces, suggestPlaces } from "@/lib/places/places.functions";
+import { PLACE_CATEGORIES, type NearbyResult, type PlaceCategory, type Suggestion } from "@/lib/places/types";
+import { PlaceSend, SavedPlacesPanel } from "@/components/dogmatch/place-send";
+
+
+const PlacesMap = lazy(() => import("@/components/dogmatch/places-map"));
 
 const title = "Dog Life — dog-friendly places where you live | DoggMatch";
 const description =
@@ -38,19 +46,20 @@ const seoCopy = {
       "Puistoja, hyviä lenkkejä, koirakursseja, eläinlääkäreitä, trimmaajia ja paikkoja, jotka ottavat koirat mielellään vastaan. Kerro vain, missä asut.",
   },
   de: {
-    title: "Hundeleben — hundefreundliche Orte in Ihrer Nähe | DoggMatch",
+    title: "Hundeleben — hundefreundliche Orte bei dir vor Ort | DoggMatch",
     description:
-      "Parks, gute Spazierwege, Hundeschulen, Tierärzte, Hundefriseure und Orte, die Hunde willkommen heißen. Sagen Sie uns einfach, wo Sie wohnen.",
+      "Parks, schöne Gassirunden, Hundeschulen, Tierärzte, Hundefriseure und Orte, die Hunde willkommen heißen. Sag uns einfach, wo du wohnst.",
   },
   fr: {
-    title: "Vie de chien — des endroits accueillants pour chiens près de chez vous | DoggMatch",
+    title:
+      "Vie de chien — des lieux qui accueillent bien votre chien près de chez vous | DoggMatch",
     description:
-      "Parcs, belles balades, cours d'éducation, vétérinaires, toiletteurs et lieux qui accueillent les chiens. Dites-nous simplement où vous habitez.",
+      "Parcs, belles balades, cours d'éducation, vétérinaires, toiletteurs et lieux qui aiment les chiens. Dites-nous simplement où vous habitez.",
   },
   nl: {
-    title: "Hondenleven — hondvriendelijke plekken bij u in de buurt | DoggMatch",
+    title: "Hondenleven — hondvriendelijke plekken bij jou in de buurt | DoggMatch",
     description:
-      "Parken, fijne wandelingen, hondencursussen, dierenartsen, trimsalons en plekken die honden verwelkomen. Vertel ons gewoon waar u woont.",
+      "Parken, fijne wandelroutes, hondenscholen, dierenartsen, trimsalons en plekken die honden verwelkomen. Vertel ons gewoon waar je woont.",
   },
 };
 
@@ -176,57 +185,57 @@ const tipCopy = {
       `Meillä ei ole vielä varmennettuja paikkoja alueelle ${place}. Kerro meille, niin priorisoimme sen — alla oleva tarkistuslista toimii sitä ennen kaikkialla.`,
   },
   de: {
-    lead: "Wir bauen die lokalen Übersichten Stadt für Stadt auf. Bis Ihre bereit ist, hier, worauf wir selbst achten würden — dieselbe Checkliste, die wir selbst verwenden.",
+    lead: "Wir bauen die lokalen Übersichten Stadt für Stadt auf. Bis deine fertig ist, ist das hier, worauf wir selbst achten würden — dieselbe Checkliste, die wir auch benutzen.",
     tips: [
-      "Eingezäunt, mit einem separaten Bereich für kleine Hunde, und nie so voll, dass Ihr Hund sich nicht zurückziehen kann.",
-      "Runden von 30-45 Minuten mit weichem Untergrund und Schatten. Wechseln Sie die Route — neue Gerüche ermüden einen Hund mehr als neue Kilometer.",
-      "Prüfen Sie die örtlichen Regeln und die Jahreszeit; bodenbrütende Vögel bedeuten im Frühling fast überall Leinenpflicht.",
-      "Fragen Sie, welche Methoden verwendet werden. Belohnungsbasiert, kleine Gruppen, und Sie sollten eine Stunde vor der Anmeldung mitverfolgen dürfen.",
-      "Registrieren Sie sich, bevor Sie es brauchen, und notieren Sie die nächste Notfallklinik am Kühlschrank.",
-      "Bitten Sie darum zu sehen, wie mit einem ängstlichen Hund umgegangen wird. Ein guter Hundefriseur macht gerne einen kurzen ersten Besuch ganz ohne Schneiden.",
-      "Versicherung, Referenzen und ein Treffen nach den Bedingungen des Hundes. Fragen Sie, wie viele Hunde gleichzeitig ausgeführt werden.",
-      "Ein Wassernapf draußen ist ein gutes Zeichen; ein Napf und ein Leckerli hinter der Theke ist ein noch besseres.",
-      "Rufen Sie vorher an — hundefreundlich bedeutet oft nur die Terrasse, und das macht im Februar einen Unterschied.",
-      "Prüfen Sie saisonale Badeverbote für Hunde, Strömungen und Warnungen vor Blaualgen, bevor der Hund schwimmen darf.",
-      "Ein Laden, der Ihr Futter bestellt und die rassespezifischen Feinheiten kennt, schlägt den billigsten Regalpreis.",
+      "Eingezäunt, mit einem eigenen Bereich für kleine Hunde, und nie so voll, dass dein Hund einer Situation nicht ausweichen kann.",
+      "Runden von 30-45 Minuten auf weichem Untergrund im Schatten. Wechsle die Route — neue Gerüche ermüden einen Hund mehr als neue Kilometer.",
+      "Prüfe die lokalen Regeln und die Jahreszeit; Bodenbrüter bedeuten im Frühling fast überall Leinenpflicht.",
+      "Frag, welche Methoden verwendet werden. Belohnungsbasiert, kleine Gruppen, und du solltest eine Stunde beobachten dürfen, bevor du buchst.",
+      "Melde dich an, bevor du es brauchst, und notiere die nächste Notfallklinik außerhalb der Öffnungszeiten am Kühlschrank.",
+      "Frag, wie sie mit einem nervösen Hund umgehen. Ein guter Hundefriseur macht gerne einen kurzen ersten Besuch ganz ohne Schneiden.",
+      "Versicherung, Referenzen und ein Treffen nach den Bedingungen deines Hundes. Frag, wie viele Hunde gleichzeitig ausgeführt werden.",
+      "Ein Wassernapf draußen ist ein gutes Zeichen; ein Napf und ein Leckerli hinter der Theke ist noch besser.",
+      "Ruf vorher an — hundefreundlich bedeutet oft nur die Terrasse, und das macht im Februar einen Unterschied.",
+      "Prüfe saisonale Badeverbote für Hunde, Strömungen und Blaualgen-Warnungen, bevor der Hund schwimmen darf.",
+      "Ein Laden, der dein Futter bestellt und die rassespezifischen Dinge kennt, schlägt den billigsten Regalpreis.",
     ],
-    searching: (place: string) => `Wir schauen uns ${place} an`,
+    searching: (place: string) => `Wir schauen uns in ${place} um`,
     notReady: (place: string) =>
-      `Wir haben noch keine geprüften Orte für ${place}. Sagen Sie uns Bescheid, dann priorisieren wir das — die Checkliste unten funktioniert in der Zwischenzeit überall.`,
+      `Wir haben noch keine verifizierten Orte für ${place}. Sag uns Bescheid, dann priorisieren wir das — die Checkliste unten funktioniert in der Zwischenzeit überall.`,
   },
   fr: {
-    lead: "Nous construisons les listes locales ville par ville. En attendant que la vôtre soit prête, voici ce que nous rechercherions nous-mêmes — la même liste de vérification que nous utilisons.",
+    lead: "Nous construisons les annuaires locaux ville par ville. En attendant que le vôtre soit prêt, voici ce que nous chercherions nous-mêmes — la même liste de critères que nous utilisons.",
     tips: [
-      "Clôturé, avec un espace séparé pour les petits chiens, et jamais si bondé que votre chien ne puisse pas se retirer.",
-      "Des boucles de 30 à 45 minutes avec un sol souple et de l'ombre. Variez l'itinéraire — de nouvelles odeurs fatiguent un chien plus que de nouveaux kilomètres.",
-      "Vérifiez les règles locales et la saison ; les oiseaux nichant au sol signifient la laisse obligatoire au printemps presque partout.",
-      "Demandez quelles méthodes sont utilisées. Basées sur la récompense, petits groupes, et vous devriez pouvoir observer un cours avant de réserver.",
+      "Clôturé, avec une zone séparée pour les petits chiens, et jamais si bondé que votre chien ne puisse s'éloigner d'une situation.",
+      "Des boucles de 30 à 45 minutes sur sol souple et à l'ombre. Variez l'itinéraire — de nouvelles odeurs fatiguent plus un chien que de nouveaux kilomètres.",
+      "Vérifiez les règles locales et la saison ; la nidification au sol impose la laisse au printemps presque partout.",
+      "Demandez quelles méthodes sont utilisées. Renforcement positif, petits groupes, et vous devriez pouvoir observer un cours avant de réserver.",
       "Inscrivez-vous avant d'en avoir besoin, et notez la clinique d'urgence la plus proche sur le frigo.",
-      "Demandez à voir comment un chien anxieux est traité. Un bon toiletteur fera volontiers une première visite courte, sans aucune coupe.",
-      "Assurance, références et une rencontre aux conditions du chien. Demandez combien de chiens sont promenés en même temps.",
+      "Demandez à voir comment ils gèrent un chien anxieux. Un bon toiletteur fera volontiers une première visite courte, sans aucune tonte.",
+      "Assurance, références et une rencontre selon les conditions de votre chien. Demandez combien de chiens ils promènent à la fois.",
       "Une gamelle d'eau dehors est bon signe ; une gamelle et une friandise derrière le comptoir, c'est encore mieux.",
-      "Appelez à l'avance — « accepte les chiens » signifie souvent seulement la terrasse, ce qui compte en février.",
+      "Appelez avant d'y aller — « accepte les chiens » veut souvent dire seulement la terrasse, et cela compte en février.",
       "Vérifiez les interdictions de baignade saisonnières, les courants et les alertes cyanobactéries avant de laisser un chien nager.",
-      "Un magasin qui commande votre nourriture et connaît les particularités de la race vaut mieux que le prix en rayon le plus bas.",
+      "Un magasin qui commande votre nourriture et connaît les particularités de la race vaut mieux que le prix le plus bas en rayon.",
     ],
-    searching: (place: string) => `Nous regardons autour de ${place}`,
+    searching: (place: string) => `À la découverte de ${place}`,
     notReady: (place: string) =>
-      `Nous n'avons pas encore de lieux vérifiés pour ${place}. Dites-le-nous et nous le prioriserons — la liste ci-dessous fonctionne partout en attendant.`,
+      `Nous n'avons pas encore de lieux vérifiés pour ${place}. Dites-le-nous et nous en ferons une priorité — en attendant, la liste ci-dessous fonctionne partout.`,
   },
   nl: {
-    lead: "We bouwen de lokale overzichten stad voor stad op. Tot die van u klaar is, is dit waar we zelf op zouden letten — dezelfde checklist die we zelf gebruiken.",
+    lead: "We bouwen de lokale overzichten stad voor stad op. Tot die van jou klaar is, is dit waar we zelf op zouden letten — dezelfde checklist die we zelf gebruiken.",
     tips: [
-      "Omheind, met een apart gedeelte voor kleine honden, en nooit zo druk dat uw hond zich niet kan terugtrekken.",
-      "Rondes van 30-45 minuten met een zachte ondergrond en schaduw. Varieer de route — nieuwe geuren vermoeien een hond meer dan nieuwe kilometers.",
-      "Controleer de lokale regels en het seizoen; grondbroedende vogels betekenen bijna overal aanlijnplicht in de lente.",
-      "Vraag welke methoden gebruikt worden. Beloningsgericht, kleine groepen, en u zou een les moeten kunnen bijwonen voordat u boekt.",
-      "Registreer u voordat u het nodig heeft, en noteer de dichtstbijzijnde spoedkliniek op de koelkast.",
-      "Vraag te zien hoe met een nerveuze hond wordt omgegaan. Een goede trimmer doet graag een kort eerste bezoek zonder te knippen.",
-      "Verzekering, referenties en een kennismaking op de voorwaarden van de hond. Vraag hoeveel honden er tegelijk worden uitgelaten.",
-      "Een waterbak buiten is een goed teken; een bak en een snack achter de toonbank is nog beter.",
-      "Bel van tevoren — hondvriendelijk betekent vaak alleen het terras, en dat merkt u in februari.",
-      "Controleer seizoensgebonden zwemverboden voor honden, stromingen en waarschuwingen voor blauwalg voordat u uw hond laat zwemmen.",
-      "Een zaak die uw voer bestelt en de rasspecifieke dingen kent, wint het van de goedkoopste schapprijs.",
+      "Omheind, met een apart gedeelte voor kleine honden, en nooit zo druk dat je hond een situatie niet kan ontwijken.",
+      "Rondjes van 30-45 minuten op zachte ondergrond en in de schaduw. Varieer de route — nieuwe geuren vermoeien een hond meer dan nieuwe kilometers.",
+      "Check de lokale regels en het seizoen; broedende vogels op de grond betekenen bijna overal een aanlijnplicht in het voorjaar.",
+      "Vraag welke methodes ze gebruiken. Beloningsgericht, kleine groepen, en je zou een les moeten mogen bijwonen voordat je boekt.",
+      "Registreer je voordat je het nodig hebt, en noteer de dichtstbijzijnde 24-uursdierenkliniek op de koelkast.",
+      "Vraag hoe ze omgaan met een nerveuze hond. Een goede trimsalon doet graag een kort eerste bezoek zonder te knippen.",
+      "Verzekering, referenties en een kennismaking op de voorwaarden van je hond. Vraag hoeveel honden ze tegelijk uitlaten.",
+      "Een waterbak buiten is een goed teken; een bak en een snoepje achter de toonbank is nog beter.",
+      "Bel van tevoren — hondvriendelijk betekent vaak alleen het terras, en dat merk je in februari.",
+      "Check seizoensgebonden zwemverboden voor honden, stromingen en blauwalgwaarschuwingen voordat je een hond laat zwemmen.",
+      "Een winkel die je voer bestelt en de rasspecifieke dingen kent, wint het van de goedkoopste schapprijs.",
     ],
     searching: (place: string) => `We kijken rond in ${place}`,
     notReady: (place: string) =>
@@ -234,11 +243,141 @@ const tipCopy = {
   },
 } as const;
 
+const RADIUS_STEPS = [10, 25, 50];
+
+function makeToken(): string {
+  const bytes = new Uint8Array(16);
+  if (typeof crypto !== "undefined") crypto.getRandomValues(bytes);
+  return Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+function Stars({ rating }: { rating: number }) {
+  return (
+    <span className="text-accent" aria-hidden>
+      {"★".repeat(Math.round(rating))}
+      <span className="text-muted-foreground">{"★".repeat(5 - Math.round(rating))}</span>
+    </span>
+  );
+}
+
 function DogLifePage() {
   const t = useT();
   const c = useCopy(tipCopy);
-  const [location, setLocation] = useState("");
-  const [submitted, setSubmitted] = useState<string | null>(null);
+  const { locale } = useLocale();
+  const p = getPlacesCopy(locale);
+
+  const suggest = useServerFn(suggestPlaces);
+  const findNearby = useServerFn(findNearbyPlaces);
+
+  const [mounted, setMounted] = useState(false);
+  const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+  const [tokenState, setToken] = useState(() => makeToken());
+  const [loading, setLoading] = useState(false);
+  const [locating, setLocating] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [label, setLabel] = useState("");
+  const [radiusKm, setRadiusKm] = useState(10);
+  const [tab, setTab] = useState<PlaceCategory>("parks");
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const [result, setResult] = useState<NearbyResult | null>(null);
+
+  const chosenRef = useRef<string | null>(null);
+  const requestRef = useRef(0);
+
+  useEffect(() => setMounted(true), []);
+
+  // Suggestions while typing, gently debounced and safe against stale answers.
+  useEffect(() => {
+    const text = query.trim();
+    if (chosenRef.current === text) return;
+    if (text.length < 2) {
+      setSuggestions([]);
+      return;
+    }
+    const id = ++requestRef.current;
+    const timer = setTimeout(() => {
+      void suggest({ data: { input: text, locale, sessionToken: tokenState } })
+        .then((response) => {
+          if (id === requestRef.current) setSuggestions(response.suggestions);
+        })
+        .catch(() => undefined);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [query, locale, tokenState, suggest]);
+
+  const runSearch = useCallback(
+    async (input: {
+      placeId?: string;
+      query?: string;
+      lat?: number;
+      lng?: number;
+      radius?: number;
+      label?: string;
+    }) => {
+      setLoading(true);
+      setError(null);
+      setSuggestions([]);
+      const radius = input.radius ?? radiusKm;
+      try {
+        const response = await findNearby({
+          data: {
+            locale,
+            radiusKm: radius,
+            ...(input.placeId ? { placeId: input.placeId, sessionToken: tokenState } : {}),
+            ...(input.query ? { query: input.query } : {}),
+            ...(typeof input.lat === "number" ? { lat: input.lat, lng: input.lng } : {}),
+          },
+        });
+        if (!response.ok || !response.result) {
+          setError(
+            response.error === "not_found"
+              ? p.notFound
+              : response.error === "busy"
+                ? p.busy
+                : p.unavailable,
+          );
+          return;
+        }
+        setResult(response.result);
+        setRadiusKm(radius);
+        setLabel(input.label ?? response.label ?? input.query ?? p.yourLocation);
+        setActiveId(null);
+        if (input.placeId) setToken(makeToken());
+      } catch {
+        setError(p.unavailable);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [findNearby, locale, p, radiusKm, tokenState],
+  );
+
+  const useMyLocation = useCallback(() => {
+    if (typeof navigator === "undefined" || !navigator.geolocation) {
+      setError(p.geoDenied);
+      return;
+    }
+    setLocating(true);
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLocating(false);
+        void runSearch({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+          label: p.yourLocation,
+        });
+      },
+      () => {
+        setLocating(false);
+        setError(p.geoDenied);
+      },
+      { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 },
+    );
+  }, [p, runSearch]);
+
+  const list = result ? (result.places[tab] ?? []) : [];
+  const nextRadius = RADIUS_STEPS.find((step) => step > radiusKm);
 
   return (
     <div className="pb-24">
@@ -249,63 +388,262 @@ function DogLifePage() {
         <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">{t.dogLife.subtitle}</p>
 
         <form
-          className="mt-10 flex max-w-xl flex-col gap-3 sm:flex-row"
+          className="relative mt-10 flex max-w-xl flex-col gap-3 sm:flex-row"
           onSubmit={(e) => {
             e.preventDefault();
-            setSubmitted(location.trim() || null);
+            const text = query.trim();
+            if (text) void runSearch({ query: text });
           }}
         >
-          <label htmlFor="location" className="sr-only">
-            {t.dogLife.placeholder}
-          </label>
-          <input
-            id="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            placeholder={t.dogLife.placeholder}
-            autoComplete="address-level2"
-            className="h-14 flex-1 rounded-full border border-border bg-card px-6 outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
-          />
-          <Button size="lg" type="submit">
-            {t.dogLife.search}
+          <div className="relative flex-1">
+            <label htmlFor="location" className="sr-only">
+              {p.searchLabel}
+            </label>
+            <input
+              id="location"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={p.placeholder}
+              autoComplete="off"
+              autoCapitalize="words"
+              className="h-14 w-full rounded-full border border-border bg-card px-6 outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
+            />
+            {suggestions.length > 0 && (
+              <ul className="absolute left-0 right-0 top-16 z-20 overflow-hidden rounded-2xl border border-border bg-card shadow-xl">
+                {suggestions.map((item) => (
+                  <li key={item.placeId}>
+                    <button
+                      type="button"
+                      className="block w-full px-6 py-3 text-left text-sm transition-colors hover:bg-muted"
+                      onClick={() => {
+                        chosenRef.current = item.label;
+                        requestRef.current += 1;
+                        setSuggestions([]);
+                        setQuery(item.label);
+                        void runSearch({ placeId: item.placeId, label: item.label });
+                      }}
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <Button size="lg" type="submit" disabled={loading}>
+            {loading ? p.searching : p.search}
           </Button>
         </form>
-        <p className="mt-4 text-sm text-muted-foreground">{t.dogLife.optional}</p>
+
+        <div className="mt-4 flex flex-wrap items-center gap-4">
+          <button
+            type="button"
+            onClick={useMyLocation}
+            disabled={locating || loading}
+            className="text-sm font-medium text-primary underline-offset-4 hover:underline disabled:opacity-60"
+          >
+            {locating ? p.locating : p.useMyLocation}
+          </button>
+          <p className="text-sm text-muted-foreground">{t.dogLife.optional}</p>
+        </div>
+
+        {error && <p className="mt-4 max-w-xl text-sm text-accent">{error}</p>}
       </section>
 
       <section className="container-page">
-        <div className="relative overflow-hidden rounded-[2rem] border border-border">
-          <img
-            src={dogLifeImage}
-            alt="Aerial view of a park with walking paths at dawn"
-            width={1600}
-            height={1008}
-            loading="lazy"
-            className="h-[22rem] w-full object-cover md:h-[30rem]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 p-8 md:p-12">
-            <p className="font-display text-2xl text-primary-foreground">
-              {submitted
-                ? c.searching(submitted)
-                : pick({
+        <div className="overflow-hidden rounded-[2rem] border border-border">
+          {mounted && result ? (
+            <Suspense
+              fallback={<div className="h-[22rem] w-full bg-ink md:h-[30rem]" aria-hidden />}
+            >
+              <PlacesMap
+                center={result.center}
+                places={list}
+                activeId={activeId}
+                onSelect={setActiveId}
+                label={p.mapLabel}
+                radiusKm={result.radiusKm}
+                standardLabel={p.mapStandard}
+                satelliteLabel={p.mapSatellite}
+              />
+            </Suspense>
+          ) : (
+            <div className="relative">
+              <img
+                src={dogLifeImage}
+                alt="Aerial view of a park with walking paths at dawn"
+                width={1600}
+                height={1008}
+                loading="lazy"
+                className="h-[22rem] w-full object-cover md:h-[30rem]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/55 to-ink/15" />
+              <div className="absolute inset-x-0 bottom-0 p-8 md:p-12">
+                <p className="font-display text-2xl text-ivory drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
+                  {pick({
                     en: "Wherever you are",
                     no: "Uansett hvor du er",
                     pl: "Gdziekolwiek jesteś",
                     dk: "Uanset hvor du er",
                     se: "Var du än är",
                     fi: "Missä ikinä oletkin",
-                    de: "Wo immer Sie sind",
+                    de: "Wo auch immer du bist",
                     fr: "Où que vous soyez",
-                    nl: "Waar u ook bent",
+                    nl: "Waar je ook bent",
                   })}
-            </p>
-            <p className="mt-2 max-w-md text-sm text-primary-foreground/80">
-              {submitted ? c.notReady(submitted) : c.lead}
-            </p>
-          </div>
+                </p>
+                <p className="mt-2 max-w-md text-sm text-ivory/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">
+                  {c.lead}
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </section>
+
+      <SavedPlacesPanel />
+
+      {result && (
+
+        <section className="container-page mt-10">
+          <div className="flex flex-wrap items-baseline justify-between gap-3">
+            <h2 className="font-display text-2xl tracking-tight">
+              {label ? p.around(label) : p.yourLocation}
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              {p.results(list.length)} · {radiusKm} km
+            </p>
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-2" role="tablist">
+            {PLACE_CATEGORIES.map((category) => (
+              <button
+                key={category}
+                type="button"
+                role="tab"
+                aria-selected={tab === category}
+                onClick={() => {
+                  setTab(category);
+                  setActiveId(null);
+                }}
+                className={`rounded-full border px-5 py-2 text-sm transition-colors ${
+                  tab === category
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card text-foreground hover:border-primary"
+                }`}
+              >
+                {p.tabs[category]}
+              </button>
+            ))}
+          </div>
+
+          {list.length > 0 ? (
+            <ul className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
+              {list.map((place) => (
+                <li
+                  key={place.id}
+                  className={`bg-background p-6 transition-colors ${
+                    activeId === place.id ? "bg-muted" : ""
+                  }`}
+                >
+                  <button
+                    type="button"
+                    className="w-full text-left"
+                    onClick={() => setActiveId(place.id)}
+                  >
+                    {place.partner && (
+                      <span className="mb-3 inline-block rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-wide text-accent-foreground">
+                        {p.verifiedPartner}
+                      </span>
+                    )}
+                    <p className="font-display text-lg leading-tight tracking-tight">{place.name}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{place.address}</p>
+                    <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+                      {place.rating ? (
+                        <span className="flex items-center gap-2">
+                          <Stars rating={place.rating} />
+                          <span className="text-muted-foreground">
+                            {place.rating.toFixed(1)}
+                            {place.ratingCount ? ` · ${p.ratings(place.ratingCount)}` : ""}
+                          </span>
+                        </span>
+                      ) : (
+                        <span className="text-muted-foreground">{p.noRating}</span>
+                      )}
+                      <span className="text-muted-foreground">
+                        {p.away(place.distanceKm.toFixed(1))}
+                      </span>
+                      <span
+                        className={
+                          place.openNow === null
+                            ? "text-muted-foreground"
+                            : place.openNow
+                              ? "text-primary"
+                              : "text-accent"
+                        }
+                      >
+                        {place.openNow === null
+                          ? p.hoursUnknown
+                          : place.openNow
+                            ? p.openNow
+                            : p.closedNow}
+                      </span>
+                    </p>
+                    {place.partnerBenefit && (
+                      <p className="mt-3 text-sm leading-relaxed">{place.partnerBenefit}</p>
+                    )}
+                  </button>
+                  <a
+                    className="mt-3 inline-block text-sm font-medium text-primary underline-offset-4 hover:underline"
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                      `${place.name} ${place.address}`,
+                    )}&query_place_id=${place.id}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {p.directions}
+                  </a>
+                  <PlaceSend place={place} />
+
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className="mt-8 rounded-2xl border border-border bg-card p-8">
+              <p className="font-display text-xl tracking-tight">{p.emptyTitle}</p>
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                {p.emptyBody}
+              </p>
+              {nextRadius ? (
+                <Button
+                  className="mt-6"
+                  disabled={loading}
+                  onClick={() =>
+                    void runSearch({
+                      lat: result.center.lat,
+                      lng: result.center.lng,
+                      radius: nextRadius,
+                      label,
+                    })
+                  }
+                >
+                  {p.expand(nextRadius)}
+                </Button>
+              ) : (
+                <p className="mt-6 text-sm text-muted-foreground">{p.widest}</p>
+              )}
+              <div className="mt-8 border-t border-border pt-6">
+                <p className="font-display text-lg tracking-tight">{p.guidanceTitle}</p>
+                <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                  {p.guidance.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </section>
+      )}
 
       <section className="container-page mt-16">
         <ul className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">

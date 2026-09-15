@@ -16,7 +16,7 @@ import { withLangPrefix } from "@/lib/localized-path";
 
 const title = "DoggMatch — Find the dog that's right for your life";
 const description =
-  "Tell us a little about your life, your home and your days, and we'll help you find the dogs that may suit you best. Free, honest, and we always show our reasoning.";
+  "Tell us about your life, your home and your days, and we'll find the dogs that suit you best. Free, honest, and we always show our reasoning.";
 
 /**
  * Section ids are language-independent so a shared link lands in the right
@@ -76,18 +76,18 @@ const traitCopy = {
     energy: "Energie",
     trainability: "Trainierbarkeit",
     shedding: "Fellwechsel",
-    apartmentSuitability: "Wohnungstauglich",
+    apartmentSuitability: "Wohnungstauglichkeit",
   },
   fr: {
     energy: "Énergie",
     trainability: "Facilité de dressage",
-    shedding: "Mue",
-    apartmentSuitability: "Appartement",
+    shedding: "Perte de poils",
+    apartmentSuitability: "Adapté à l'appartement",
   },
   nl: {
     energy: "Energie",
     trainability: "Leerbaarheid",
-    shedding: "Verharen",
+    shedding: "Vachtverlies",
     apartmentSuitability: "Geschikt voor appartement",
   },
 } as const;
@@ -400,53 +400,53 @@ const localCopy = {
     ],
   },
   de: {
-    matchLooks: "So sieht ein passendes Match aus",
+    matchLooks: "So sieht eine Übereinstimmung aus",
     match: "Übereinstimmung",
-    heroAlt: "Eine Frau geht mit einem Golden Retriever bei Sonnenaufgang an der Küste spazieren",
+    heroAlt: "Eine Frau geht bei Sonnenaufgang mit einem Golden Retriever an der Küste spazieren",
     terrierAlt: "Ein Terrier ruht sich in einer sonnigen Wohnung aus",
     parkAlt: "Ein Stadtpark im Morgengrauen mit geschwungenen Spazierwegen",
     jumpLabel: "Zu einem Abschnitt dieser Seite springen",
     jumpTitle: "Auf dieser Seite",
     shareLabel: "DoggMatch in einer Sprache teilen",
-    shareTitle: "DoggMatch in Ihrer Sprache lesen",
+    shareTitle: "DoggMatch in deiner Sprache lesen",
     shareBody:
-      "Jeder Link öffnet DoggMatch direkt in dieser Sprache — kopieren Sie ihn und schicken Sie ihn jemandem, der es lieber in seiner eigenen Sprache liest.",
+      "Jeder Link öffnet DoggMatch direkt in dieser Sprache — kopiere ihn und schicke ihn an jemanden, der lieber in seiner eigenen Sprache liest.",
     shareCopy: "Link kopieren",
     shareCopied: "Kopiert",
     anchors: {
       "why-doggmatch": "Warum DoggMatch",
-      "how-it-works": "So funktioniert es",
+      "how-it-works": "So funktioniert's",
       "real-matches": "So funktioniert es in der Praxis",
       "dog-breeds": "Hunderassen entdecken",
       "compare-breeds": "Rassen vergleichen",
       "doggmatch-plus": "DoggMatch+",
-      "dog-life": "Hundeleben in Ihrer Nähe",
-      faq: "Häufig gestellte Fragen",
-      "find-your-dog": "Finden Sie Ihren Hund",
+      "dog-life": "Hundeleben in deiner Nähe",
+      faq: "Häufige Fragen",
+      "find-your-dog": "Finde deinen Hund",
     },
     plusEyebrow: "DoggMatch+",
     plusTitle: "Etwas mehr Unterstützung, sobald der Hund eingezogen ist",
     plusBody:
-      "Training, dem Sie Woche für Woche folgen können, Futter und Gewicht an einem Ort, Reisepapiere geregelt, und alles zum Ausdrucken für den Kühlschrank oder den Tierarzt.",
-    plusCta: "Sehen Sie, was in DoggMatch+ steckt",
+      "Training, dem du Woche für Woche folgen kannst, Fütterung und Gewicht an einem Ort, Reisepapiere geregelt, und alles zum Ausdrucken für den Kühlschrank oder den Tierarzt.",
+    plusCta: "Sieh dir an, was in DoggMatch+ steckt",
     faqEyebrow: "Gut zu wissen",
-    faqTitle: "Fragen, die uns gestellt werden",
+    faqTitle: "Fragen, die uns oft gestellt werden",
     faq: [
       {
         q: "Übernimmt eine KI das Matching?",
-        a: "Nein. Es sind feste Regeln, die wir selbst geschrieben haben. Dieselben Antworten ergeben immer dieselben Hunde, und wir zeigen Ihnen die Begründung hinter jedem Wert.",
+        a: "Nein. Es ist ein fester Regelsatz, den wir selbst geschrieben haben. Dieselben Antworten ergeben immer dieselben Hunde, und wir zeigen dir die Begründung hinter jeder Punktzahl.",
       },
       {
         q: "Kostet es etwas, meinen Hund zu finden?",
-        a: "Nein. Die Fragen, die Ergebnisse und jede Rasseseite sind kostenlos. DoggMatch+ gilt nur für die Werkzeuge, die Sie nutzen, nachdem der Hund eingezogen ist.",
+        a: "Nein. Die Fragen, das Ergebnis und jede Rasseseite sind kostenlos. DoggMatch+ betrifft nur die Werkzeuge, die du nutzt, nachdem der Hund eingezogen ist.",
       },
       {
         q: "Was, wenn ein Mischling zu mir passt?",
-        a: "Mischlinge sind willkommen. Sie können einen aus zwei Rassen zusammenstellen, und wir bewerten den Hund vor Ihnen, nicht ein Etikett.",
+        a: "Mischlinge sind herzlich willkommen. Du kannst einen aus zwei Rassen zusammenstellen, und wir bewerten den Hund vor dir — nicht ein Etikett.",
       },
       {
         q: "Kann ich den Rasseinformationen vertrauen?",
-        a: "Wir halten unsere Quellen offen. Jede Rasse-, Trainings- und Gesundheitsseite verlinkt zu den Stellen und der Forschung, auf die wir uns stützen.",
+        a: "Wir halten unsere Quellen offen. Jede Rasse-, Trainings- und Gesundheitsseite verlinkt zu den Stellen und Forschungsarbeiten, auf die wir uns stützen.",
       },
     ],
   },
@@ -454,7 +454,7 @@ const localCopy = {
     matchLooks: "À quoi ressemble une bonne correspondance",
     match: "correspondance",
     heroAlt: "Une femme promène un golden retriever le long d'un sentier côtier au lever du soleil",
-    terrierAlt: "Un terrier se reposant dans un appartement ensoleillé",
+    terrierAlt: "Un terrier qui se repose dans un appartement baigné de soleil",
     parkAlt: "Un parc urbain à l'aube avec des allées sinueuses",
     jumpLabel: "Aller à une section de cette page",
     jumpTitle: "Sur cette page",
@@ -476,41 +476,41 @@ const localCopy = {
       "find-your-dog": "Trouvez votre chien",
     },
     plusEyebrow: "DoggMatch+",
-    plusTitle: "Un peu plus d'aide, une fois le chien arrivé",
+    plusTitle: "Un peu plus d'aide, une fois le chien à la maison",
     plusBody:
-      "Un entraînement à suivre semaine après semaine, alimentation et poids réunis au même endroit, papiers de voyage en ordre, et tout imprimable pour le frigo ou le vétérinaire.",
-    plusCta: "Découvrir ce que contient DoggMatch+",
+      "Un entraînement à suivre semaine après semaine, l'alimentation et le poids réunis au même endroit, les papiers de voyage réglés, et tout est imprimable pour le frigo ou le vétérinaire.",
+    plusCta: "Découvrez ce que contient DoggMatch+",
     faqEyebrow: "Bon à savoir",
-    faqTitle: "Questions qu'on nous pose souvent",
+    faqTitle: "Questions que l'on nous pose",
     faq: [
       {
-        q: "Est-ce une IA qui fait la mise en correspondance ?",
-        a: "Non. Ce sont des règles fixes que nous avons écrites nous-mêmes. Les mêmes réponses donnent toujours les mêmes chiens, et nous vous montrons le raisonnement derrière chaque score.",
+        q: "Est-ce une IA qui fait le matching ?",
+        a: "Non. C'est un ensemble de règles fixes que nous avons écrites nous-mêmes. Les mêmes réponses donnent toujours les mêmes chiens, et nous vous montrons le raisonnement derrière chaque score.",
       },
       {
-        q: "Est-ce que trouver mon chien coûte quelque chose ?",
-        a: "Non. Les questions, les résultats et chaque page de race sont gratuits. DoggMatch+ concerne uniquement les outils que vous utilisez après l'arrivée du chien.",
+        q: "Est-ce que ça coûte quelque chose de trouver mon chien ?",
+        a: "Non. Les questions, les résultats et chaque page de race sont gratuits. DoggMatch+ ne concerne que les outils que vous utilisez une fois le chien arrivé chez vous.",
       },
       {
-        q: "Et si un chien croisé me convenait le mieux ?",
-        a: "Les croisements sont les bienvenus. Vous pouvez en composer un à partir de deux races, et nous évaluons le chien devant vous, pas une étiquette.",
+        q: "Et si un chien croisé me convient mieux ?",
+        a: "Les croisés sont les bienvenus. Vous pouvez en composer un à partir de deux races, et nous évaluons le chien qui est devant vous, pas une étiquette.",
       },
       {
         q: "Puis-je faire confiance aux informations sur les races ?",
-        a: "Nous gardons nos sources ouvertes. Chaque page de race, d'éducation et de santé renvoie vers les organismes et les recherches sur lesquels nous nous appuyons.",
+        a: "Nous gardons nos sources ouvertes. Chaque page de race, de dressage et de santé renvoie vers les organismes et les recherches sur lesquels nous nous appuyons.",
       },
     ],
   },
   nl: {
-    matchLooks: "Zo ziet een goede match eruit",
+    matchLooks: "Zo ziet een match eruit",
     match: "match",
     heroAlt: "Een vrouw wandelt met een golden retriever langs een kustpad bij zonsopgang",
-    terrierAlt: "Een terriër die uitrust in een zonnig appartement",
+    terrierAlt: "Een terriër rust uit in een zonovergoten appartement",
     parkAlt: "Een stadspark in de vroege ochtend met kronkelende wandelpaden",
-    jumpLabel: "Ga naar een onderdeel van deze pagina",
+    jumpLabel: "Spring naar een onderdeel van deze pagina",
     jumpTitle: "Op deze pagina",
     shareLabel: "Deel DoggMatch in een taal",
-    shareTitle: "Lees DoggMatch in uw taal",
+    shareTitle: "Lees DoggMatch in jouw taal",
     shareBody:
       "Elke link opent DoggMatch direct in die taal — kopieer hem en stuur hem naar iemand die liever op zijn eigen manier leest.",
     shareCopy: "Link kopiëren",
@@ -518,83 +518,106 @@ const localCopy = {
     anchors: {
       "why-doggmatch": "Waarom DoggMatch",
       "how-it-works": "Zo werkt het",
-      "real-matches": "Zie het in de praktijk",
+      "real-matches": "Zie het in actie",
       "dog-breeds": "Ontdek hondenrassen",
       "compare-breeds": "Vergelijk rassen",
       "doggmatch-plus": "DoggMatch+",
-      "dog-life": "Hondenleven bij u in de buurt",
+      "dog-life": "Hondenleven bij jou in de buurt",
       faq: "Veelgestelde vragen",
-      "find-your-dog": "Vind uw hond",
+      "find-your-dog": "Vind jouw hond",
     },
     plusEyebrow: "DoggMatch+",
     plusTitle: "Een beetje extra hulp, zodra de hond thuis is",
     plusBody:
-      "Training die u week na week kunt volgen, voeding en gewicht op één plek, reispapieren op orde, en alles afdrukbaar voor op de koelkast of voor de dierenarts.",
+      "Training die je week na week kunt volgen, voeding en gewicht op één plek, reispapieren op orde, en alles afdrukbaar voor op de koelkast of voor de dierenarts.",
     plusCta: "Bekijk wat er in DoggMatch+ zit",
     faqEyebrow: "Goed om te weten",
-    faqTitle: "Vragen die ons vaak gesteld worden",
+    faqTitle: "Vragen die we vaak krijgen",
     faq: [
       {
-        q: "Wordt de match door AI gemaakt?",
-        a: "Nee. Het is een vaste set regels die we zelf hebben geschreven. Dezelfde antwoorden leveren altijd dezelfde honden op, en we laten u de redenering achter elke score zien.",
+        q: "Wordt de matching door AI gedaan?",
+        a: "Nee. Het is een vaste set regels die we zelf hebben geschreven. Dezelfde antwoorden leveren altijd dezelfde honden op, en we laten je altijd de redenering achter elke score zien.",
       },
       {
         q: "Kost het iets om mijn hond te vinden?",
-        a: "Nee. De vragen, de resultaten en elke rassenpagina zijn gratis. DoggMatch+ geldt alleen voor de tools die u gebruikt nadat de hond is ingetrokken.",
+        a: "Nee. De vragen, de resultaten en elke rassenpagina zijn gratis. DoggMatch+ geldt alleen voor de tools die je gebruikt nadat de hond bij je is komen wonen.",
       },
       {
-        q: "Wat als een gemengd ras bij mij past?",
-        a: "Mixen zijn welkom. U kunt er een samenstellen uit twee rassen, en wij beoordelen de hond die voor u staat, niet een etiket.",
+        q: "Wat als een kruising het beste bij mij past?",
+        a: "Kruisingen zijn van harte welkom. Je kunt er zelf een samenstellen uit twee rassen, en wij beoordelen de hond die voor je staat — niet een label.",
       },
       {
         q: "Kan ik de rasinformatie vertrouwen?",
-        a: "We houden onze bronnen open. Elke ras-, trainings- en gezondheidspagina linkt naar de instanties en het onderzoek waarop we vertrouwen.",
+        a: "We houden onze bronnen open. Elke ras-, trainings- en gezondheidspagina linkt naar de organisaties en het onderzoek waarop we vertrouwen.",
       },
     ],
   },
 } as const;
+
+const englishDifferencePoints = [
+  {
+    title: "You can see how every match was made",
+    body: "DoggMatch uses a fixed set of rules, not black-box AI. The same answers give the same result, and we show our reasoning.",
+  },
+  {
+    title: "The difficult parts count too",
+    body: "We look at barking, shedding, time alone, exercise and other everyday realities — not only the lovely parts of a breed.",
+  },
+  {
+    title: "Your hard limits stay hard",
+    body: "If a dog cannot reasonably fit something you told us is essential, a high score elsewhere will not hide that.",
+  },
+  {
+    title: "There is more than a score",
+    body: "Every result leads to a full, balanced breed profile and a realistic yearly cost estimate you can adjust for your life.",
+  },
+  {
+    title: "We stay useful after the match",
+    body: "DoggMatch+ brings practical help with training, food, weight, care, travel and the paperwork worth keeping together.",
+  },
+] as const;
 
 const seoCopy = {
   en: { title, description },
   no: {
     title: "DoggMatch — finn hunden som passer livet ditt",
     description:
-      "Fortell oss litt om livet ditt, hjemmet ditt og dagene dine, så hjelper vi deg å finne hundene som kan passe best. Gratis, ærlig, og vi viser alltid hvordan vi tenker.",
+      "Fortell oss om livet ditt, hjemmet og dagene dine, så finner vi hundene som passer best. Gratis, ærlig, og vi viser alltid hvordan vi tenker.",
   },
   pl: {
-    title: "DoggMatch — znajdź psa, który pasuje do Twojego życia",
+    title: "DoggMatch — znajdź psa pasującego do Twojego życia",
     description:
-      "Opowiedz nam trochę o swoim życiu, domu i codziennych dniach, a pomożemy Ci znaleźć psy, które mogą pasować najlepiej. Za darmo, uczciwie i zawsze pokazujemy, jak liczymy.",
+      "Opowiedz o swoim życiu, domu i codzienności, a znajdziemy psy, które pasują najlepiej. Za darmo, uczciwie i zawsze pokazujemy, jak liczymy.",
   },
   dk: {
     title: "DoggMatch — find hunden, der passer til dit liv",
     description:
-      "Fortæl os lidt om dit liv, dit hjem og dine dage, så hjælper vi dig med at finde de hunde, der kan passe bedst. Gratis, ærligt, og vi viser altid, hvordan vi tænker.",
+      "Fortæl om dit liv, dit hjem og dine dage, så finder vi de hunde, der passer bedst. Gratis, ærligt, og vi viser altid, hvordan vi tænker.",
   },
   se: {
     title: "DoggMatch — hitta hunden som passar ditt liv",
     description:
-      "Berätta lite om ditt liv, ditt hem och dina dagar, så hjälper vi dig hitta de hundar som kan passa bäst. Gratis, ärligt, och vi visar alltid hur vi tänker.",
+      "Berätta om ditt liv, ditt hem och dina dagar, så hittar vi hundarna som passar bäst. Gratis, ärligt, och vi visar alltid hur vi tänker.",
   },
   fi: {
     title: "DoggMatch — löydä elämääsi sopiva koira",
     description:
-      "Kerro meille vähän elämästäsi, kodistasi ja päivistäsi, niin autamme sinua löytämään koirat, jotka voisivat sopia sinulle parhaiten. Ilmaista, rehellistä, ja näytämme aina, miten päättelemme asiat.",
+      "Kerro elämästäsi, kodistasi ja arjestasi, niin löydämme koirat, jotka sopivat sinulle parhaiten. Ilmaista, rehellistä, ja näytämme aina perustelut.",
   },
   de: {
-    title: "DoggMatch — finden Sie den Hund, der zu Ihrem Leben passt",
+    title: "DoggMatch — finde den Hund, der zu dir passt",
     description:
-      "Erzählen Sie uns ein wenig über Ihr Leben, Ihr Zuhause und Ihre Tage, und wir helfen Ihnen, die Hunde zu finden, die am besten zu Ihnen passen könnten. Kostenlos, ehrlich, und wir zeigen immer, wie wir zu unserer Einschätzung kommen.",
+      "Erzähl uns von deinem Leben, deinem Zuhause und deinem Alltag, und wir finden die Hunde, die zu dir passen. Kostenlos, ehrlich und immer nachvollziehbar.",
   },
   fr: {
-    title: "DoggMatch — trouvez le chien qui correspond à votre vie",
+    title: "DoggMatch — trouvez le chien fait pour votre vie",
     description:
-      "Parlez-nous un peu de votre vie, de votre foyer et de vos journées, et nous vous aiderons à trouver les chiens qui pourraient vous convenir le mieux. Gratuit, honnête, et nous montrons toujours notre raisonnement.",
+      "Parlez-nous de votre vie, de votre logement et de vos journées, et nous trouvons les chiens qui vous conviennent. Gratuit, honnête et toujours transparent.",
   },
   nl: {
-    title: "DoggMatch — vind de hond die bij uw leven past",
+    title: "DoggMatch — vind de hond die bij je leven past",
     description:
-      "Vertel ons iets over uw leven, uw huis en uw dagen, en wij helpen u de honden te vinden die het beste bij u zouden kunnen passen. Gratis, eerlijk, en we laten altijd onze redenering zien.",
+      "Vertel over je leven, je huis en je dagen, dan vinden wij de honden die het beste bij je passen. Gratis, eerlijk en we laten altijd ons denkwerk zien.",
   },
 };
 
@@ -614,7 +637,8 @@ function useParallax() {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const y = Math.min(window.scrollY, 600);
-        if (ref.current) ref.current.style.transform = `translate3d(0, ${y * 0.06}px, 0) scale(1.04)`;
+        if (ref.current)
+          ref.current.style.transform = `translate3d(0, ${y * 0.06}px, 0) scale(1.04)`;
       });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -629,6 +653,7 @@ function useParallax() {
 function HomePage() {
   const t = useT();
   const c = useCopy(localCopy);
+  const { locale } = useLocale();
   const traits = useCopy(traitCopy);
   const parallax = useParallax();
   const featured = breeds.slice(0, 4);
@@ -706,15 +731,41 @@ function HomePage() {
       <LanguageShare c={c} />
 
       {/* ---------------------------------------------------- Value strip */}
-      <section id="why-doggmatch" aria-label={c.anchors["why-doggmatch"]} className="container-page mt-16 md:mt-20">
-        <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-          {t.home.valueStrip.map((item) => (
-            <div key={item.title} className="bg-background p-7">
-              <dt className="font-display text-lg tracking-tight">{item.title}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</dd>
-            </div>
-          ))}
-        </dl>
+      <section
+        id="why-doggmatch"
+        aria-label={c.anchors["why-doggmatch"]}
+        className="container-page mt-16 md:mt-20"
+      >
+        {locale === "en" ? (
+          <div>
+            <Eyebrow>Why DoggMatch</Eyebrow>
+            <h2 className="display-lg mt-6 max-w-2xl text-balance">What makes this different</h2>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              Choosing a dog is too important for a cheerful score with no explanation. We try to
+              make the whole decision clearer.
+            </p>
+            <dl className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-5">
+              {englishDifferencePoints.map((item) => (
+                <div key={item.title} className="bg-background p-7">
+                  <Check aria-hidden="true" className="size-5 text-accent" />
+                  <dt className="mt-5 font-display text-lg tracking-tight">{item.title}</dt>
+                  <dd className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {item.body}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ) : (
+          <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+            {t.home.valueStrip.map((item) => (
+              <div key={item.title} className="bg-background p-7">
+                <dt className="font-display text-lg tracking-tight">{item.title}</dt>
+                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
       </section>
 
       {/* ------------------------------------------------------ How it works */}
@@ -837,15 +888,14 @@ function HomePage() {
               ))}
             </div>
             <div className="mt-4 divide-y divide-border">
-              {(["energy", "trainability", "shedding", "apartmentSuitability"] as const).map((key) => (
-                <div key={key} className="grid grid-cols-2 gap-4">
-                  <TraitMeter
-                    label={traits[key]}
-                    value={breeds[0]!.traits[key]}
-                  />
-                  <TraitMeter label="" value={breeds[1]!.traits[key]} />
-                </div>
-              ))}
+              {(["energy", "trainability", "shedding", "apartmentSuitability"] as const).map(
+                (key) => (
+                  <div key={key} className="grid grid-cols-2 gap-4">
+                    <TraitMeter label={traits[key]} value={breeds[0]!.traits[key]} />
+                    <TraitMeter label="" value={breeds[1]!.traits[key]} />
+                  </div>
+                ),
+              )}
             </div>
           </div>
         </div>
@@ -878,11 +928,13 @@ function HomePage() {
               loading="lazy"
               className="h-[26rem] w-full object-cover md:h-[34rem]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/25 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/60 to-ink/20" />
             <div className="absolute inset-x-0 bottom-0 p-8 md:p-14">
-              <p className="eyebrow text-primary-foreground/70">{t.home.lifeEyebrow}</p>
-              <h2 className="display-lg mt-4 max-w-xl text-primary-foreground">{t.home.lifeTitle}</h2>
-              <p className="mt-4 max-w-lg leading-relaxed text-primary-foreground/80">
+              <p className="eyebrow text-ivory/75">{t.home.lifeEyebrow}</p>
+              <h2 className="display-lg mt-4 max-w-xl text-ivory drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
+                {t.home.lifeTitle}
+              </h2>
+              <p className="mt-4 max-w-lg leading-relaxed text-ivory/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">
                 {t.home.lifeBody}
               </p>
               <div className="mt-8">
@@ -950,7 +1002,8 @@ const SHARE_LANGS = [
 const sharePath = (code: string) => (code === "en" ? "/" : `/${code}`);
 
 /** BCP-47 language tag for a share-link's `hreflang` — most locale codes double as the tag, but dk/se are market codes over the real language codes da/sv. */
-const shareHrefLang = (code: string) => (code === "no" ? "nb" : code === "dk" ? "da" : code === "se" ? "sv" : code);
+const shareHrefLang = (code: string) =>
+  code === "no" ? "nb" : code === "dk" ? "da" : code === "se" ? "sv" : code;
 
 function LanguageShare({ c }: { c: (typeof localCopy)["en"] }) {
   const { locale } = useLocale();

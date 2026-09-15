@@ -74,22 +74,22 @@ const copy = {
     checking: "Wird geprüft…",
     active: "✓ Aktives Mitglied",
     validUntil: "Gültig bis:",
-    ended: "Mitgliedschaft beendet",
+    ended: "Mitgliedschaft ist beendet",
     notFound: "Karte nicht gefunden",
   },
   fr: {
     checking: "Vérification…",
     active: "✓ Membre actif",
     validUntil: "Valable jusqu'au :",
-    ended: "L'adhésion a pris fin",
+    ended: "L'abonnement a pris fin",
     notFound: "Carte introuvable",
   },
   nl: {
-    checking: "Controleren…",
+    checking: "Bezig met controleren…",
     active: "✓ Actief lid",
     validUntil: "Geldig tot:",
     ended: "Lidmaatschap is beëindigd",
-    notFound: "Pas niet gevonden",
+    notFound: "Kaart niet gevonden",
   },
 } as const;
 

@@ -5,6 +5,8 @@
  * This module can be replaced by a JSON file, database table or API later.
  */
 
+import { newBreeds } from "./new-breeds";
+
 export type BreedId =
   | "labrador-retriever"
   | "golden-retriever"
@@ -33,7 +35,57 @@ export type BreedId =
   | "staffordshire-bull-terrier"
   | "vizsla"
   | "samoyed"
-  | "yorkshire-terrier";
+  | "yorkshire-terrier"
+  | "labradoodle"
+  | "goldendoodle"
+  | "cavapoo"
+  | "cockapoo"
+  | "maltipoo"
+  | "bernedoodle"
+  | "great-dane"
+  | "dobermann"
+  | "great-pyrenees"
+  | "newfoundland"
+  | "cane-corso"
+  | "bullmastiff"
+  | "english-bulldog"
+  | "boston-terrier"
+  | "pembroke-welsh-corgi"
+  | "belgian-malinois"
+  | "shetland-sheepdog"
+  | "australian-cattle-dog"
+  | "dalmatian"
+  | "weimaraner"
+  | "english-springer-spaniel"
+  | "brittany"
+  | "german-shorthaired-pointer"
+  | "havanese"
+  | "maltese"
+  | "pomeranian"
+  | "papillon"
+  | "akita"
+  | "basenji"
+  | "rhodesian-ridgeback"
+  | "basset-hound"
+  | "bloodhound"
+  | "italian-greyhound"
+  | "west-highland-white-terrier"
+  | "cairn-terrier"
+  | "airedale-terrier"
+  | "bull-terrier"
+  | "chinese-shar-pei"
+  | "chow-chow"
+  | "portuguese-water-dog"
+  | "rough-collie"
+  | "old-english-sheepdog"
+  | "saint-bernard"
+  | "irish-setter"
+  | "miniature-pinscher"
+  | "lhasa-apso"
+  | "alaskan-malamute"
+  | "english-mastiff"
+  | "toy-poodle"
+  | "australian-labradoodle";
 
 /** All trait values are 1–5 unless stated otherwise. */
 export interface BreedTraits {
@@ -374,6 +426,7 @@ export const breeds: Breed[] = [
     annualCost: [1000, 1800],
     traits: { size: 1, energy: 3, exerciseNeeds: 2, mentalStimulation: 3, trainability: 3, learningAbility: 4, independence: 3, affection: 5, sociability: 3, goodWithChildren: 3, goodWithDogs: 3, goodWithPets: 2, apartmentSuitability: 5, aloneTolerance: 2, shedding: 1, grooming: 5, drooling: 1, barking: 4, firstTimeSuitability: 3, strengthRequired: 1, heatTolerance: 3, coldTolerance: 2 },
   },
+  ...newBreeds,
 ];
 
 export const breedById = Object.fromEntries(breeds.map((b) => [b.id, b])) as Record<BreedId, Breed>;

@@ -43,20 +43,20 @@ const copy = {
   },
   de: {
     label: "Hinweis zu Cookies",
-    body: "Wir respektieren Ihre Privatsphäre. DoggMatch verwendet nur die Cookies, die nötig sind, um Ihre Match-Einstellungen zu speichern und sichere Sitzungen zu gewährleisten — keine Werbe-Tracker.",
+    body: "Wir respektieren deine Privatsphäre. DoggMatch verwendet nur die notwendigen Cookies, um deine Match-Einstellungen zu speichern und sichere Sitzungen zu gewährleisten – keine Werbe-Tracker.",
     essentialOnly: "Nur notwendige",
     acceptAll: "Alle akzeptieren",
   },
   fr: {
-    label: "À propos des cookies",
-    body: "Nous respectons votre vie privée. DoggMatch utilise uniquement les cookies essentiels pour enregistrer vos préférences de match et garantir des sessions sécurisées — aucun traceur publicitaire.",
+    label: "Avis sur les cookies",
+    body: "Nous respectons votre vie privée. DoggMatch utilise uniquement les cookies essentiels pour enregistrer vos préférences de correspondance et assurer des sessions sécurisées — aucun traceur publicitaire.",
     essentialOnly: "Essentiels uniquement",
     acceptAll: "Tout accepter",
   },
   nl: {
     label: "Over cookies",
-    body: "We respecteren uw privacy. DoggMatch gebruikt alleen essentiële cookies om uw matchvoorkeuren op te slaan en veilige sessies te garanderen — geen advertentietrackers.",
-    essentialOnly: "Alleen essentiële",
+    body: "We respecteren je privacy. DoggMatch gebruikt alleen essentiële cookies om je matchvoorkeuren op te slaan en veilige sessies te garanderen — geen advertentietrackers.",
+    essentialOnly: "Alleen essentieel",
     acceptAll: "Alles accepteren",
   },
 } as const;

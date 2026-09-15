@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute, useRouterState } from "@tanstack/react-router";
 import { breedGroupLabel } from "@/data/breed-meta";
 import { useState } from "react";
 import { useT, interpolate, useCopy } from "@/i18n";
@@ -6,7 +6,7 @@ import { breeds } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Eyebrow } from "@/components/dogmatch/ui";
-import { seoLinks, abs, localizedHead } from "@/lib/seo";
+import { seoLinks, abs, localizedHead, headLocale, breadcrumbLd } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
@@ -44,22 +44,40 @@ const seoCopy = {
   de: {
     title: "Hunderassen — ein ehrlicher Blick auf jede einzelne | DoggMatch",
     description:
-      "Wie das Leben mit jeder Rasse wirklich aussieht — ihre Energie, ihr Fell, wie sie lernen, und wie ein gewöhnlicher Tag mit ihnen abläuft.",
+      "Wie das Zusammenleben mit jeder Rasse wirklich ist — ihre Energie, ihr Fell, wie sie lernen und wie ein ganz normaler Tag mit ihnen aussieht.",
   },
   fr: {
     title: "Races de chiens — un regard honnête sur chacune | DoggMatch",
     description:
-      "À quoi ressemble vraiment la vie avec chaque race — leur énergie, leur pelage, leur façon d'apprendre, et à quoi ressemble une journée ordinaire à leurs côtés.",
+      "À quoi ressemble vraiment la vie avec chaque race — son énergie, son pelage, sa façon d'apprendre et le déroulé d'une journée ordinaire à ses côtés.",
   },
   nl: {
     title: "Hondenrassen — een eerlijke blik op elk ras | DoggMatch",
     description:
-      "Hoe het leven met elk ras er werkelijk uitziet — hun energie, hun vacht, hoe ze leren, en hoe een gewone dag met hen eruitziet.",
+      "Hoe het echt is om met elk ras samen te leven — hun energie, hun vacht, hoe ze leren en hoe een doodgewone dag met hen eruitziet.",
   },
 };
 
 export const Route = createFileRoute("/{-$lang}/breeds/")({
-  head: (ctx) => localizedHead(ctx, "/breeds", seoCopy),
+  head: (ctx) => {
+    const locale = headLocale(ctx);
+    const base = localizedHead(ctx, "/breeds", seoCopy);
+    return {
+      ...base,
+      scripts: [
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            {
+              name: seoCopy[locale]?.title.split(" | ")[0]?.split(" — ")[0] ?? "Breeds",
+              path: "/breeds",
+            },
+          ],
+          locale,
+        ),
+      ],
+    };
+  },
   component: BreedsPage,
 });
 
@@ -96,25 +114,29 @@ const pageCopy = {
   },
   de: {
     intro:
-      "Unsere deterministische Matching-Engine stützt sich auf ein Modell mit über 250 Rassen. Unten finden Sie die {count}, die wir bisher veröffentlicht haben — jede auf dieselbe Weise geprüft und mit einem vollständigen, verifizierten redaktionellen Profil statt eines dünnen Merkmalsblatts.",
-    deepDiveBadge: "Redaktionelles Tiefenprofil",
+      "Unsere deterministische Matching-Engine stützt sich auf ein Modell mit über 250 Rassen. Unten findest du die {count}, die wir bisher veröffentlicht haben — jede auf dieselbe Weise geprüft und mit einem vollständigen, verifizierten Redaktionsprofil statt einer dünnen Merkmalsliste.",
+    deepDiveBadge: "Redaktionelle Tiefenrecherche",
   },
   fr: {
     intro:
-      "Notre moteur de correspondance déterministe s'appuie sur un modèle couvrant plus de 250 races. Voici les {count} races que nous avons publiées jusqu'ici — chacune évaluée de la même façon, avec un profil éditorial complet et vérifié plutôt qu'une simple fiche de traits.",
-    deepDiveBadge: "Profil éditorial approfondi",
+      "Notre moteur de matching déterministe s'appuie sur un modèle couvrant plus de 250 races. Voici les {count} que nous avons publiées à ce jour — chacune évaluée selon la même méthode, avec un profil éditorial complet et vérifié plutôt qu'une simple fiche de traits.",
+    deepDiveBadge: "Dossier éditorial approfondi",
   },
   nl: {
     intro:
-      "Onze deterministische matching-engine is gebaseerd op een model met meer dan 250 rassen. Hieronder vindt u de {count} rassen die we tot nu toe hebben gepubliceerd — elk op dezelfde manier beoordeeld, met een volledig, geverifieerd redactioneel profiel in plaats van een dun overzicht van eigenschappen.",
-    deepDiveBadge: "Uitgebreid redactioneel profiel",
+      "Onze deterministische matchmachine bouwt op een model dat meer dan 250 rassen omvat. Hieronder vind je de {count} die we tot nu toe hebben gepubliceerd — elk op dezelfde manier beoordeeld en voorzien van een volledig, geverifieerd redactioneel profiel in plaats van een summier kenmerkenblaadje.",
+    deepDiveBadge: "Redactionele verdieping",
   },
 } as const;
 
 function BreedsPage() {
   const t = useT();
   const c = useCopy(pageCopy);
-  const [query, setQuery] = useState("");
+  // A ?q= in the address bar pre-fills the search, so a search engine (or a
+  // shared link) can point straight at a breed someone is looking for.
+  const rawSearch = useRouterState({ select: (s) => s.location.search as Record<string, unknown> });
+  const initialQuery = typeof rawSearch["q"] === "string" ? (rawSearch["q"] as string) : "";
+  const [query, setQuery] = useState(initialQuery);
   const filtered = breeds.filter((b) =>
     breedContent()[b.id].displayName.toLowerCase().includes(query.trim().toLowerCase()),
   );
@@ -148,7 +170,11 @@ function BreedsPage() {
         <ul className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((breed) => (
             <li key={breed.id}>
-              <Link to={withLangPrefix("/breeds/$breedId")} params={{ breedId: breed.id }} className="group block">
+              <Link
+                to={withLangPrefix("/breeds/$breedId")}
+                params={{ breedId: breed.id }}
+                className="group block"
+              >
                 <div className="overflow-hidden rounded-[1.25rem] bg-surface">
                   <img
                     src={breedImages[breed.id]}
@@ -163,7 +189,8 @@ function BreedsPage() {
                   {breedContent()[breed.id].displayName}
                 </h2>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  {breedGroupLabel(breed.group)} · {breed.lifespan[0]}–{breed.lifespan[1]} {t.breeds.years}
+                  {breedGroupLabel(breed.group)} · {breed.lifespan[0]}–{breed.lifespan[1]}{" "}
+                  {t.breeds.years}
                 </p>
                 <span className="mt-2 inline-flex items-center rounded-full border border-border-strong px-2.5 py-1 text-xs text-muted-foreground">
                   {c.deepDiveBadge}

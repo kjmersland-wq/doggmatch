@@ -166,6 +166,36 @@ export const en = {
     beginnerHigh: "High",
     beginnerModerate: "Moderate",
     beginnerLow: "Low",
+    homeWithDogEyebrow: "Once the dog is home",
+    homeWithDogTitle: "The first year is easier with a little structure",
+    homeWithDogBody:
+      "DoggMatch+ is a quiet companion for the practical side of dog life. No pressure — just the tools we wish we'd had when our own dogs came home.",
+    homeWithDogFeatures: [
+      {
+        title: "My Dog hub",
+        body: "One place for vet dates, weight notes, mealtimes and the small things you don't want to forget.",
+      },
+      {
+        title: "Weekly plans",
+        body: "A gentle rhythm of exercise, grooming, training and rest that fits your dog's age and energy.",
+      },
+      {
+        title: "Training lessons",
+        body: "Short, step-by-step guides with clear pictures — five to ten minutes at a time.",
+      },
+      {
+        title: "Food portions",
+        body: "Feeding guidance worked out from your dog's weight, age and activity, not generic advice.",
+      },
+      {
+        title: "Travel documents",
+        body: "Checklists for trips abroad, country rules and the paperwork that is easy to leave behind.",
+      },
+    ],
+    homeWithDogCtaPrimary: "See how My Dog works",
+    homeWithDogCtaSecondary: "Explore DoggMatch+",
+    homeWithDogNote:
+      "Your match result stays free and complete. This is simply here when you want a little extra help.",
   },
   dimensions: {
     lifestyle: "Everyday life",
@@ -191,7 +221,7 @@ export const en = {
   },
   compare: {
     title: "Compare these dogs",
-    subtitle: "Pick up to three breeds and see where they really differ.",
+    subtitle: "Pick up to four breeds and see where they really differ.",
     add: "Add a breed",
     remove: "Remove",
     empty: "Pick a breed to get started.",

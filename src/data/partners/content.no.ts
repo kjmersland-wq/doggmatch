@@ -5,14 +5,46 @@
 import type { PartnerCategory } from "./content.en";
 
 export const partnerCategories: PartnerCategory[] = [
-  { id: "equipment", label: "Utstyr til hund", blurb: "Seler, bånd, senger, leker og alt det hverdagslige som til slutt slites ut." },
-  { id: "grooming", label: "Klipp og stell", blurb: "Salonger og mobile groomere som tar seg tid med nervøse hunder." },
-  { id: "training", label: "Trening", blurb: "Valpekurs, en-til-en-hjelp og belønningsbasert atferdsarbeid." },
-  { id: "vet", label: "Veterinær og helse", blurb: "Klinikker, fysioterapeuter, tannbehandling og alle som holder hunder friske." },
-  { id: "insurance", label: "Forsikring", blurb: "Dekning som er tydelig på hva den faktisk dekker — og ikke." },
-  { id: "boarding", label: "Hundepensjonat og dagpass", blurb: "Pensjonater, privatpassere, dagtilbud og folk du kan stole på." },
-  { id: "food", label: "Mat og ernæring", blurb: "Mat, godbiter og tilskudd du selv ville gitt din egen hund." },
-  { id: "travel", label: "Reise og aktiviteter", blurb: "Hundevennlige overnattinger, biltilbehør, turer, bading og dager ute." },
+  {
+    id: "equipment",
+    label: "Utstyr til hund",
+    blurb: "Seler, bånd, senger, leker og alt det hverdagslige som til slutt slites ut.",
+  },
+  {
+    id: "grooming",
+    label: "Klipp og stell",
+    blurb: "Salonger og mobile groomere som tar seg tid med nervøse hunder.",
+  },
+  {
+    id: "training",
+    label: "Trening",
+    blurb: "Valpekurs, en-til-en-hjelp og belønningsbasert atferdsarbeid.",
+  },
+  {
+    id: "vet",
+    label: "Veterinær og helse",
+    blurb: "Klinikker, fysioterapeuter, tannbehandling og alle som holder hunder friske.",
+  },
+  {
+    id: "insurance",
+    label: "Forsikring",
+    blurb: "Dekning som er tydelig på hva den faktisk dekker — og ikke.",
+  },
+  {
+    id: "boarding",
+    label: "Hundepensjonat og dagpass",
+    blurb: "Pensjonater, privatpassere, dagtilbud og folk du kan stole på.",
+  },
+  {
+    id: "food",
+    label: "Mat og ernæring",
+    blurb: "Mat, godbiter og tilskudd du selv ville gitt din egen hund.",
+  },
+  {
+    id: "travel",
+    label: "Reise og aktiviteter",
+    blurb: "Hundevennlige overnattinger, biltilbehør, turer, bading og dager ute.",
+  },
 ];
 
 export const partnerBenefits = [

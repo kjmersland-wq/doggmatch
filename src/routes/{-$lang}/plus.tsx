@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Arrow, ButtonLink, Badge, Eyebrow, Section } from "@/components/dogmatch/ui";
 import { SectionHead } from "@/components/dogmatch/journey/parts";
 import { JoinPlusButton } from "@/components/dogmatch/plus/join";
+import { PartnerCodeField } from "@/components/dogmatch/plus/partner-code";
 import { MemberCardShowcase } from "@/components/dogmatch/plus/card-showcase";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
@@ -14,7 +15,16 @@ import dogLifeImage from "@/assets/dog-life.jpg";
 import travelImage from "@/assets/travel-car.jpg";
 import lunaImage from "@/assets/breed-labrador-retriever.jpg";
 import maxImage from "@/assets/breed-cocker-spaniel.jpg";
-import { seoLinks, abs, localizedHead } from "@/lib/seo";
+import {
+  seoLinks,
+  abs,
+  localizedHead,
+  headLocale,
+  langUrl,
+  breadcrumbLd,
+  faqLd,
+  jsonLd,
+} from "@/lib/seo";
 import { withLangPrefix } from "@/lib/localized-path";
 
 const title = "DoggMatch+ | Premium Dog Life Membership";
@@ -52,22 +62,855 @@ const seoCopy = {
   de: {
     title: "DoggMatch+ | Premium-Mitgliedschaft für das Leben mit Hund",
     description:
-      "DoggMatch+ bringt Training, Gesundheit, Ernährung, Pflege, Reisen und den Alltag Ihres Hundes an einem schönen Ort zusammen.",
+      "DoggMatch+ bringt Training, Gesundheit, Ernährung, Pflege, Reisen und den Alltag deines Hundes an einem schönen Ort zusammen.",
   },
   fr: {
-    title: "DoggMatch+ | L'adhésion premium pour la vie avec votre chien",
+    title: "DoggMatch+ | Abonnement premium pour la vie avec votre chien",
     description:
-      "DoggMatch+ rassemble l'éducation, la santé, l'alimentation, les soins, les voyages et le quotidien de votre chien en un seul bel endroit.",
+      "DoggMatch+ réunit l'éducation, la santé, l'alimentation, les soins, les voyages et le quotidien de votre chien en un seul bel endroit.",
   },
   nl: {
-    title: "DoggMatch+ | Premium lidmaatschap voor het leven met een hond",
+    title: "DoggMatch+ | Premium lidmaatschap voor het leven met je hond",
     description:
-      "DoggMatch+ brengt de training, gezondheid, voeding, verzorging, reizen en het dagelijks leven van uw hond samen op één mooie plek.",
+      "DoggMatch+ brengt training, gezondheid, voeding, verzorging, reizen en het dagelijks leven van je hond samen op één mooie plek.",
+  },
+};
+
+/* ----------------------------------------- membership journey (8 stages) */
+/* English is the source language; other locales fall back until translated. */
+
+const stagesCopy = {
+  en: {
+    eyebrow: "From matching to everyday life",
+    title: "One journey, from first search to daily life",
+    body: "The free version helps you find the right dog. DoggMatch+ is everything that comes after — understanding, preparing, and living well with that dog, every single day.",
+    freeLabel: "Free — find the right dog",
+    freeLine:
+      "The quiz, honest breed profiles, comparisons and yearly cost estimates. Yours to keep, no account needed.",
+    plusLabel: "DoggMatch+ — live well with that dog, every day",
+    plusLine:
+      'Eight connected stages that carry you from "we think this is the one" to a calm, organised everyday life together.',
+    stages: [
+      {
+        title: "Understand your dog",
+        line: "Before anything else, get to know who you're living with.",
+        examples: [
+          "A personal profile built from your dog's breed, age and personality",
+          "Plain-language notes on energy, sociability and typical quirks",
+          "What your dog's breed was originally bred to do — and why it still shows",
+        ],
+      },
+      {
+        title: "Prepare for arrival",
+        line: "The weeks before the dog comes home, handled calmly.",
+        examples: [
+          "A readiness checklist paced to your moving-in date",
+          "Breed-aware shopping list — bed, lead, crate size and grooming tools",
+          "Realistic first-year and yearly cost ranges for your specific breed",
+        ],
+      },
+      {
+        title: "Daily life — the My Dog hub",
+        line: "One quiet place where your dog's whole day lives.",
+        examples: [
+          "Today's walks, meals, training and care on one simple screen",
+          "Weekly plans that adapt as your dog grows from puppy to adult",
+          "Separate profiles for every dog in the family",
+        ],
+      },
+      {
+        title: "Training",
+        line: "Short, kind sessions that fit into an ordinary day.",
+        examples: [
+          "Step-by-step lessons with a built-in timer — most take five minutes",
+          "Progress tracking from first sit to reliable recall",
+          "Difficulty matched to your dog's age and your experience",
+        ],
+      },
+      {
+        title: "Food & weight",
+        line: "Feeding that adjusts to the dog in front of you.",
+        examples: [
+          "Daily portion guidance based on weight, age and activity",
+          "Weight tracking with gentle nudges if the curve drifts",
+          "An honest food-safety list — what's fine, what's never fine",
+        ],
+      },
+      {
+        title: "Health & care calendar",
+        line: "The small things, remembered for you.",
+        examples: [
+          "Vaccinations, worming and vet visits on one shared calendar",
+          "Dental, coat, paws and nails — each with a simple routine",
+          "A health diary that helps you spot changes over weeks, not guess",
+        ],
+      },
+      {
+        title: "Travel & documents",
+        line: "Crossing borders without the last-minute paperwork panic.",
+        examples: [
+          "Country-to-country rules checked before you book anything",
+          "Passport, chip and vaccination requirements in plain language",
+          "A travel document pack ready to show at the border or the vet",
+        ],
+      },
+      {
+        title: "The printable Dog Pack",
+        line: "Everything about your dog, on paper, for anyone who needs it.",
+        examples: [
+          "A one-page summary for the vet, sitter or kennel",
+          "Feeding, medication and emergency contacts in one place",
+          "Print it, save it as a PDF, or share it before you travel",
+        ],
+      },
+    ],
+    closing:
+      "No pressure and no lock-in — the free result stays complete either way. DoggMatch+ is simply there when the dog comes home.",
+  },
+  no: {
+    eyebrow: "Fra matching til hverdagen",
+    title: "Én reise, fra første søk til dagligliv",
+    body: "Gratisversjonen hjelper deg å finne den rette hunden. DoggMatch+ er alt som kommer etter – forståelse, forberedelse og et godt liv sammen med den hunden, hver eneste dag.",
+    freeLabel: "Gratis – finn den rette hunden",
+    freeLine:
+      "Quizen, ærlige raseprofiler, sammenligninger og årlige kostnadsestimater. Ditt for alltid, ingen konto nødvendig.",
+    plusLabel: "DoggMatch+ – lev godt med den hunden, hver dag",
+    plusLine:
+      "Åtte sammenkoblede faser som tar deg fra «vi tror dette er den rette» til et rolig, organisert hverdagsliv sammen.",
+    stages: [
+      {
+        title: "Forstå hunden din",
+        line: "Før noe annet, bli kjent med den du skal bo sammen med.",
+        examples: [
+          "En personlig profil bygget på hundens rase, alder og personlighet",
+          "Enkel forklaring på energinivå, sosialitet og typiske særegenheter",
+          "Hva hundens rase opprinnelig ble avlet for – og hvorfor det fortsatt vises",
+        ],
+      },
+      {
+        title: "Forbered deg på ankomst",
+        line: "Ukene før hunden kommer hjem, håndtert rolig.",
+        examples: [
+          "En sjekkliste for klarhet, tilpasset innflyttingsdatoen din",
+          "Rase-tilpasset handleliste – seng, bånd, burstørrelse og pleieverktøy",
+          "Realistiske kostnadsanslag for første år og årlig for din spesifikke rase",
+        ],
+      },
+      {
+        title: "Hverdagsliv – My Dog-huben",
+        line: "Ett rolig sted der hele hundens dag bor.",
+        examples: [
+          "Dagens turer, måltider, trening og stell på én enkel skjerm",
+          "Ukentlige planer som tilpasses etter hvert som hunden din vokser fra valp til voksen",
+          "Separate profiler for hver hund i familien",
+        ],
+      },
+      {
+        title: "Trening",
+        line: "Korte, vennlige økter som passer inn i en vanlig dag.",
+        examples: [
+          "Steg-for-steg-leksjoner med innebygd tidtaker – de fleste tar fem minutter",
+          "Fremdriftssporing fra første «sitt» til pålitelig innkalling",
+          "Vanskelighetsgrad tilpasset hundens alder og din erfaring",
+        ],
+      },
+      {
+        title: "Mat & vekt",
+        line: "Fôring som tilpasses hunden foran deg.",
+        examples: [
+          "Daglig porsjonsveiledning basert på vekt, alder og aktivitet",
+          "Vektsporing med milde påminnelser hvis kurven avviker",
+          "En ærlig liste over trygg mat – hva som er greit, hva som aldri er greit",
+        ],
+      },
+      {
+        title: "Helse & stell-kalender",
+        line: "De små tingene, husket for deg.",
+        examples: [
+          "Vaksinasjoner, ormekur og veterinærbesøk på én delt kalender",
+          "Tannpleie, pels, poter og klør – hver med en enkel rutine",
+          "En helsedagbok som hjelper deg å oppdage endringer over uker, ikke gjette",
+        ],
+      },
+      {
+        title: "Reise & dokumenter",
+        line: "Kryss grenser uten panikk for papirarbeid i siste liten.",
+        examples: [
+          "Regler for land-til-land sjekket før du bestiller noe",
+          "Pass, chip og vaksinasjonskrav forklart enkelt",
+          "En reisedokumentpakke klar til å vises ved grensen eller hos veterinæren",
+        ],
+      },
+      {
+        title: "Den utskrivbare Hundepakken",
+        line: "Alt om hunden din, på papir, for alle som trenger det.",
+        examples: [
+          "En oppsummering på én side for veterinæren, passeren eller kennel",
+          "Fôring, medisinering og nødnummer på ett sted",
+          "Skriv den ut, lagre den som PDF, eller del den før du reiser",
+        ],
+      },
+    ],
+    closing:
+      "Ingen press og ingen binding – gratisresultatet forblir komplett uansett. DoggMatch+ er rett og slett der når hunden kommer hjem.",
+  },
+  pl: {
+    eyebrow: "Od dopasowania do codzienności",
+    title: "Jedna podróż, od pierwszego wyszukiwania do życia na co dzień",
+    body: "Darmowa wersja pomaga znaleźć odpowiedniego psa. DoggMatch+ to wszystko, co dzieje się później – zrozumienie, przygotowanie i dobre życie z tym psem, każdego dnia.",
+    freeLabel: "Za darmo – znajdź odpowiedniego psa",
+    freeLine:
+      "Quiz, rzetelne profile ras, porównania i szacunkowe roczne koszty. Twoje na zawsze, bez konieczności zakładania konta.",
+    plusLabel: "DoggMatch+ – żyj dobrze z tym psem, każdego dnia",
+    plusLine:
+      "Osiem połączonych etapów, które przeprowadzą Cię od „myślimy, że to ten” do spokojnego, zorganizowanego wspólnego życia.",
+    stages: [
+      {
+        title: "Poznaj swojego psa",
+        line: "Zanim cokolwiek innego, dowiedz się, z kim będziesz mieszkać.",
+        examples: [
+          "Osobisty profil stworzony na podstawie rasy, wieku i osobowości Twojego psa",
+          "Proste wyjaśnienia dotyczące poziomu energii, socjalności i typowych zachowań",
+          "Do czego pierwotnie hodowano daną rasę – i dlaczego nadal to widać",
+        ],
+      },
+      {
+        title: "Przygotuj się na przybycie",
+        line: "Tygodnie przed przybyciem psa, spokojnie ogarnięte.",
+        examples: [
+          "Lista kontrolna gotowości, dopasowana do daty przeprowadzki",
+          "Lista zakupów uwzględniająca rasę – legowisko, smycz, rozmiar klatki i narzędzia do pielęgnacji",
+          "Realistyczne szacunki kosztów pierwszego roku i kosztów rocznych dla Twojej konkretnej rasy",
+        ],
+      },
+      {
+        title: "Codzienne życie – centrum Mój Pies",
+        line: "Jedno spokojne miejsce, w którym toczy się cały dzień Twojego psa.",
+        examples: [
+          "Dzisiejsze spacery, posiłki, treningi i opieka na jednym prostym ekranie",
+          "Tygodniowe plany, które dostosowują się w miarę dorastania psa od szczeniaka do dorosłego",
+          "Oddzielne profile dla każdego psa w rodzinie",
+        ],
+      },
+      {
+        title: "Trening",
+        line: "Krótkie, łagodne sesje, które pasują do zwykłego dnia.",
+        examples: [
+          "Lekcje krok po kroku z wbudowanym timerem – większość trwa pięć minut",
+          "Śledzenie postępów od pierwszego „siad” do pewnego przywołania",
+          "Poziom trudności dopasowany do wieku psa i Twojego doświadczenia",
+        ],
+      },
+      {
+        title: "Jedzenie i waga",
+        line: "Karmienie, które dostosowuje się do psa przed Tobą.",
+        examples: [
+          "Dzienne wytyczne dotyczące porcji na podstawie wagi, wieku i aktywności",
+          "Śledzenie wagi z delikatnymi przypomnieniami, jeśli waga odbiega od normy",
+          "Rzetelna lista bezpiecznych pokarmów – co jest w porządku, co nigdy nie jest w porządku",
+        ],
+      },
+      {
+        title: "Kalendarz zdrowia i pielęgnacji",
+        line: "Drobiazgi, o których pamiętamy za Ciebie.",
+        examples: [
+          "Szczepienia, odrobaczanie i wizyty u weterynarza w jednym, wspólnym kalendarzu",
+          "Zęby, sierść, łapy i pazury – każdy z prostą rutyną",
+          "Dziennik zdrowia, który pomaga zauważyć zmiany w ciągu tygodni, a nie zgadywać",
+        ],
+      },
+      {
+        title: "Podróże i dokumenty",
+        line: "Przekraczanie granic bez paniki związanej z ostatnią chwilą i papierkową robotą.",
+        examples: [
+          "Zasady obowiązujące między krajami sprawdzane przed dokonaniem rezerwacji",
+          "Wymagania dotyczące paszportu, chipa i szczepień wyjaśnione prostym językiem",
+          "Zestaw dokumentów podróżnych gotowy do okazania na granicy lub u weterynarza",
+        ],
+      },
+      {
+        title: "Pies Pack do wydruku",
+        line: "Wszystko o Twoim psie, na papierze, dla każdego, kto tego potrzebuje.",
+        examples: [
+          "Jednostronicowe podsumowanie dla weterynarza, opiekuna lub hotelu dla psów",
+          "Karmienie, leki i kontakty alarmowe w jednym miejscu",
+          "Wydrukuj, zapisz jako PDF lub udostępnij przed podróżą",
+        ],
+      },
+    ],
+    closing:
+      "Bez presji i bez zobowiązań – darmowy wynik pozostaje kompletny w każdym przypadku. DoggMatch+ jest po prostu dostępny, gdy pies już przyjedzie do domu.",
+  },
+  dk: {
+    eyebrow: "Fra match til hverdag",
+    title: "Én rejse, fra første søgning til dagligdagen",
+    body: "Gratisversionen hjælper dig med at finde den rette hund. DoggMatch+ er alt det, der kommer derefter — forståelse, forberedelse og et godt liv med hunden, hver eneste dag.",
+    freeLabel: "Gratis — find den rette hund",
+    freeLine:
+      "Quizzen, ærlige raceprofiler, sammenligninger og estimater for årlige omkostninger. Dit til evig tid, ingen konto nødvendig.",
+    plusLabel: "DoggMatch+ — lev godt med hunden, hver dag",
+    plusLine:
+      'Otte forbundne faser, der fører dig fra "vi tror, det er den" til en rolig, organiseret hverdag sammen.',
+    stages: [
+      {
+        title: "Forstå din hund",
+        line: "Først og fremmest, lær hvem du skal bo sammen med at kende.",
+        examples: [
+          "En personlig profil baseret på din hunds race, alder og personlighed",
+          "Letforståelige noter om energiniveau, social adfærd og typiske særheder",
+          "Hvad din hunds race oprindeligt blev avlet til — og hvorfor det stadig viser sig",
+        ],
+      },
+      {
+        title: "Forbered ankomsten",
+        line: "Ugerne før hunden kommer hjem, håndteret roligt.",
+        examples: [
+          "En tjekliste for parathed, tilpasset din indflytningsdato",
+          "Race-specifik indkøbsliste — seng, snor, kurvstørrelse og plejeværktøj",
+          "Realistiske omkostningsintervaller for det første år og årligt for din specifikke race",
+        ],
+      },
+      {
+        title: 'Dagligdagen — "Min Hund"-hubben',
+        line: "Ét roligt sted, hvor din hunds hele dag lever.",
+        examples: [
+          "Dagens gåture, måltider, træning og pleje på én simpel skærm",
+          "Ugentlige planer, der tilpasser sig, efterhånden som din hund vokser fra hvalp til voksen",
+          "Separate profiler for hver hund i familien",
+        ],
+      },
+      {
+        title: "Træning",
+        line: "Korte, venlige sessioner, der passer ind i en almindelig dag.",
+        examples: [
+          "Trin-for-trin lektioner med indbygget timer — de fleste tager fem minutter",
+          'Fremdriftssporing fra første "sit" til pålidelig indkaldelse',
+          "Sværhedsgrad matchet til din hunds alder og din erfaring",
+        ],
+      },
+      {
+        title: "Mad & vægt",
+        line: "Fodring, der tilpasser sig den hund, du har foran dig.",
+        examples: [
+          "Daglig portionsvejledning baseret på vægt, alder og aktivitet",
+          "Vægtsporing med blide påmindelser, hvis kurven afviger",
+          "En ærlig liste over fødevaresikkerhed — hvad der er okay, hvad der aldrig er okay",
+        ],
+      },
+      {
+        title: "Sundheds- & plejekalender",
+        line: "De små ting, husket for dig.",
+        examples: [
+          "Vaccinationer, ormekur og dyrlægebesøg på én delt kalender",
+          "Tænder, pels, poter og negle — hver med en simpel rutine",
+          "En sundhedsdagbog, der hjælper dig med at spotte ændringer over uger, ikke gætte",
+        ],
+      },
+      {
+        title: "Rejser & dokumenter",
+        line: "Kryds grænser uden panik over papirarbejde i sidste øjeblik.",
+        examples: [
+          "Regler fra land til land tjekket, før du booker noget",
+          "Pas-, chip- og vaccinationskrav i letforståeligt sprog",
+          "En rejsedokumentpakke klar til at vise ved grænsen eller dyrlægen",
+        ],
+      },
+      {
+        title: "Den printbare Hundepakke",
+        line: "Alt om din hund, på papir, til alle der har brug for det.",
+        examples: [
+          "En opsummering på én side til dyrlægen, hundepasseren eller kennel",
+          "Fodring, medicin og nødnumre samlet ét sted",
+          "Print den, gem den som PDF, eller del den før du rejser",
+        ],
+      },
+    ],
+    closing:
+      "Intet pres og ingen binding — det gratis resultat forbliver komplet uanset hvad. DoggMatch+ er der simpelthen, når hunden kommer hjem.",
+  },
+  se: {
+    eyebrow: "Från matchning till vardagsliv",
+    title: "En resa, från första sökning till vardagsliv",
+    body: "Gratisversionen hjälper dig att hitta rätt hund. DoggMatch+ är allt som kommer sedan – att förstå, förbereda sig för och leva ett bra liv med den hunden, varje dag.",
+    freeLabel: "Gratis – hitta rätt hund",
+    freeLine:
+      "Frågorna, ärliga rasprofiler, jämförelser och uppskattade årskostnader. Ditt att behålla, ingen inloggning behövs.",
+    plusLabel: "DoggMatch+ – lev ett bra liv med den hunden, varje dag",
+    plusLine:
+      'Åtta sammankopplade steg som tar dig från "vi tror att det är den här" till ett lugnt, organiserat vardagsliv tillsammans.',
+    stages: [
+      {
+        title: "Förstå din hund",
+        line: "Innan något annat, lär känna vem du bor med.",
+        examples: [
+          "En personlig profil baserad på din hunds ras, ålder och personlighet",
+          "Enkla förklaringar om energinivå, socialitet och typiska egenheter",
+          "Vad din hunds ras ursprungligen avlades för – och varför det fortfarande syns",
+        ],
+      },
+      {
+        title: "Förbered för ankomst",
+        line: "Veckorna innan hunden kommer hem, hanterade lugnt.",
+        examples: [
+          "En checklista för förberedelser, anpassad efter din inflyttningsdatum",
+          "Inköpslista anpassad efter rasen – säng, koppel, burstorlek och pälsvårdsverktyg",
+          "Realistiska kostnadsintervall för första året och per år för din specifika ras",
+        ],
+      },
+      {
+        title: "Vardagsliv – My Dog-navet",
+        line: "En lugn plats där din hunds hela dag lever.",
+        examples: [
+          "Dagens promenader, måltider, träning och skötsel på en enkel skärm",
+          "Veckoplaner som anpassas när din hund växer från valp till vuxen",
+          "Separata profiler för varje hund i familjen",
+        ],
+      },
+      {
+        title: "Träning",
+        line: "Korta, vänliga pass som passar in i en vanlig dag.",
+        examples: [
+          "Steg-för-steg-lektioner med inbyggd timer – de flesta tar fem minuter",
+          "Framstegsspårning från första sitt till pålitlig inkallning",
+          "Svårighetsgrad anpassad efter din hunds ålder och din erfarenhet",
+        ],
+      },
+      {
+        title: "Mat & vikt",
+        line: "Utfodring som anpassas efter hunden framför dig.",
+        examples: [
+          "Daglig portionsguide baserad på vikt, ålder och aktivitet",
+          "Vikthantering med milda påminnelser om kurvan avviker",
+          "En ärlig lista över livsmedelssäkerhet – vad som är okej, vad som aldrig är okej",
+        ],
+      },
+      {
+        title: "Hälsa & skötselkalender",
+        line: "De små sakerna, ihågkomna åt dig.",
+        examples: [
+          "Vaccinationer, avmaskning och veterinärbesök i en gemensam kalender",
+          "Tänder, päls, tassar och klor – var och en med en enkel rutin",
+          "En hälsodagbok som hjälper dig att upptäcka förändringar över veckor, inte gissa",
+        ],
+      },
+      {
+        title: "Resor & dokument",
+        line: "Att korsa gränser utan panik för sista-minuten-papper.",
+        examples: [
+          "Regler för land-till-land kontrollerade innan du bokar något",
+          "Pass, chip och vaccinationskrav på enkel svenska",
+          "Ett resehandledningspaket redo att visas vid gränsen eller hos veterinären",
+        ],
+      },
+      {
+        title: "Den utskrivbara Hundpaketet",
+        line: "Allt om din hund, på papper, för alla som behöver det.",
+        examples: [
+          "En sammanfattning på en sida för veterinären, hundvakten eller pensionatet",
+          "Utfodring, medicinering och nödnummer på ett ställe",
+          "Skriv ut det, spara det som PDF, eller dela det innan du reser",
+        ],
+      },
+    ],
+    closing:
+      "Inget tryck och ingen bindning – det gratis resultat förblir komplett oavsett. DoggMatch+ finns helt enkelt där när hunden kommer hem.",
+  },
+  fi: {
+    eyebrow: "Sopivasta arkeen",
+    title: "Yksi matka, ensi etsinnästä jokapäiväiseen elämään",
+    body: "Ilmaisversio auttaa sinua löytämään oikean koiran. DoggMatch+ on kaikki sen jälkeen – koiran ymmärtäminen, siihen valmistautuminen ja sen kanssa hyvin eläminen, joka ikinen päivä.",
+    freeLabel: "Ilmainen – löydä oikea koira",
+    freeLine:
+      "Tietovisa, rehelliset rotukuvaukset, vertailut ja vuotuiset kustannusarviot. Sinun omaksi, ei vaadi tiliä.",
+    plusLabel: "DoggMatch+ – elä hyvin koirasi kanssa, joka päivä",
+    plusLine:
+      'Kahdeksan yhdistettyä vaihetta, jotka johdattavat sinut "uskomme, että tämä on se oikea" -ajatuksesta rauhalliseen, järjestettyyn arkeen yhdessä.',
+    stages: [
+      {
+        title: "Ymmärrä koiraasi",
+        line: "Ennen kaikkea, tutustu siihen, kenen kanssa elät.",
+        examples: [
+          "Henkilökohtainen profiili koirasi rodun, iän ja persoonallisuuden perusteella",
+          "Selkokieliset huomiot energiatasosta, sosiaalisuudesta ja tyypillisistä piirteistä",
+          "Mihin koirasi rotua alun perin jalostettiin – ja miksi se näkyy edelleen",
+        ],
+      },
+      {
+        title: "Valmistaudu tuloon",
+        line: "Viikot ennen koiran kotiintuloa, hoidettuna rauhallisesti.",
+        examples: [
+          "Valmiustarkistuslista rytmitettynä kotiintulopäivääsi",
+          "Rotutietoinen ostoslista – peti, talutin, kuljetuskopan koko ja hoitovälineet",
+          "Realistiset ensimmäisen vuoden ja vuotuiset kustannusarviot juuri sinun rodullesi",
+        ],
+      },
+      {
+        title: "Arki – Oma Koira -keskus",
+        line: "Yksi rauhallinen paikka, jossa koirasi koko päivä elää.",
+        examples: [
+          "Päivän lenkit, ruokinnat, koulutukset ja hoito yhdellä yksinkertaisella näytöllä",
+          "Viikko-ohjelmat, jotka mukautuvat koiran kasvaessa pennusta aikuiseksi",
+          "Erilliset profiilit jokaiselle perheen koiralle",
+        ],
+      },
+      {
+        title: "Koulutus",
+        line: "Lyhyitä, lempeitä harjoituksia, jotka sopivat tavalliseen päivään.",
+        examples: [
+          "Vaiheittaiset oppitunnit sisäänrakennetulla ajastimella – useimmat kestävät viisi minuuttia",
+          "Edistymisen seuranta ensimmäisestä istumisesta luotettavaan luoksetuloon",
+          "Vaikeustaso sovitettuna koirasi ikään ja sinun kokemukseesi",
+        ],
+      },
+      {
+        title: "Ruoka & paino",
+        line: "Ruokinta, joka mukautuu edessäsi olevaan koiraan.",
+        examples: [
+          "Päivittäinen annosohje painon, iän ja aktiivisuuden mukaan",
+          "Painon seuranta lempeillä muistutuksilla, jos käyrä poikkeaa",
+          "Rehellinen ruokaturvallisuuslista – mikä on ok, mikä ei koskaan ole ok",
+        ],
+      },
+      {
+        title: "Terveys & hoitokalenteri",
+        line: "Pienet asiat, muistettuna sinulle.",
+        examples: [
+          "Rokotukset, madotukset ja eläinlääkärikäynnit yhdellä jaetulla kalenterilla",
+          "Hampaat, turkki, tassut ja kynnet – jokaiselle yksinkertainen rutiini",
+          "Terveyspäiväkirja, joka auttaa sinua huomaamaan muutokset viikkojen aikana, ei arvailemaan",
+        ],
+      },
+      {
+        title: "Matkustus & dokumentit",
+        line: "Rajojen ylitys ilman viime hetken paperityöpaniikkia.",
+        examples: [
+          "Maa-kohtaiset säännöt tarkistettuna ennen kuin varaat mitään",
+          "Passi-, siru- ja rokotusvaatimukset selkokielellä",
+          "Matkustusasiakirjapaketti valmiina näytettäväksi rajalla tai eläinlääkärissä",
+        ],
+      },
+      {
+        title: "Tulostettava Koirapaketti",
+        line: "Kaikki koirastasi, paperilla, kaikille, jotka sitä tarvitsevat.",
+        examples: [
+          "Yhden sivun yhteenveto eläinlääkärille, hoitajalle tai kennelille",
+          "Ruokinta-, lääkitys- ja hätäyhteystiedot yhdessä paikassa",
+          "Tulosta se, tallenna PDF:ksi tai jaa se ennen matkaa",
+        ],
+      },
+    ],
+    closing:
+      "Ei paineita eikä sitoumuksia – ilmainen tulos pysyy täydellisenä joka tapauksessa. DoggMatch+ on yksinkertaisesti olemassa, kun koira tulee kotiin.",
+  },
+  de: {
+    eyebrow: "Vom Kennenlernen bis zum Alltag",
+    title: "Ein Weg, von der ersten Suche bis zum täglichen Leben",
+    body: "Die kostenlose Version hilft Ihnen, den richtigen Hund zu finden. DoggMatch+ ist alles, was danach kommt – den Hund verstehen, sich vorbereiten und gut mit ihm leben, jeden einzelnen Tag.",
+    freeLabel: "Kostenlos – finden Sie den richtigen Hund",
+    freeLine:
+      "Der Quiz, ehrliche Rassenprofile, Vergleiche und jährliche Kostenschätzungen. Zum Behalten, kein Konto nötig.",
+    plusLabel: "DoggMatch+ – leben Sie gut mit diesem Hund, jeden Tag",
+    plusLine:
+      "Acht miteinander verbundene Phasen, die Sie von „Wir glauben, das ist er/sie“ zu einem ruhigen, organisierten Alltag gemeinsam begleiten.",
+    stages: [
+      {
+        title: "Verstehen Sie Ihren Hund",
+        line: "Lernen Sie zuerst kennen, mit wem Sie zusammenleben.",
+        examples: [
+          "Ein persönliches Profil, erstellt aus Rasse, Alter und Persönlichkeit Ihres Hundes",
+          "Erklärungen in einfacher Sprache zu Energielevel, Sozialverhalten und typischen Eigenheiten",
+          "Wofür Ihre Hunderasse ursprünglich gezüchtet wurde – und warum sie sich immer noch zeigt",
+        ],
+      },
+      {
+        title: "Vorbereitung auf die Ankunft",
+        line: "Die Wochen vor der Ankunft des Hundes, ruhig und gelassen.",
+        examples: [
+          "Eine Checkliste zur Vorbereitung, abgestimmt auf Ihr Einzugsdatum",
+          "Rassespezifische Einkaufsliste – Bett, Leine, Körbchengröße und Pflegeutensilien",
+          "Realistische Kosten für das erste Jahr und jährliche Kosten für Ihre spezifische Rasse",
+        ],
+      },
+      {
+        title: "Alltag – die „Mein Hund“-Zentrale",
+        line: "Ein ruhiger Ort, an dem der ganze Tag Ihres Hundes stattfindet.",
+        examples: [
+          "Spaziergänge, Mahlzeiten, Training und Pflege des Tages auf einem einfachen Bildschirm",
+          "Wochenpläne, die sich anpassen, wenn Ihr Hund vom Welpen zum Erwachsenen heranwächst",
+          "Separate Profile für jeden Hund in der Familie",
+        ],
+      },
+      {
+        title: "Training",
+        line: "Kurze, freundliche Einheiten, die in einen normalen Tag passen.",
+        examples: [
+          "Schritt-für-Schritt-Anleitungen mit integriertem Timer – die meisten dauern fünf Minuten",
+          "Fortschrittsverfolgung vom ersten „Sitz“ bis zum zuverlässigen Rückruf",
+          "Schwierigkeitsgrad angepasst an das Alter Ihres Hundes und Ihre Erfahrung",
+        ],
+      },
+      {
+        title: "Futter & Gewicht",
+        line: "Fütterung, die sich an den Hund vor Ihnen anpasst.",
+        examples: [
+          "Tägliche Portionsangaben basierend auf Gewicht, Alter und Aktivität",
+          "Gewichtskontrolle mit sanften Hinweisen, wenn die Kurve abweicht",
+          "Eine ehrliche Liste zur Lebensmittelsicherheit – was ist in Ordnung, was ist niemals in Ordnung",
+        ],
+      },
+      {
+        title: "Gesundheits- & Pflegekalender",
+        line: "Die kleinen Dinge, an die für Sie gedacht wird.",
+        examples: [
+          "Impfungen, Entwurmungen und Tierarztbesuche in einem gemeinsamen Kalender",
+          "Zähne, Fell, Pfoten und Krallen – jeder mit einer einfachen Routine",
+          "Ein Gesundheitstagebuch, das Ihnen hilft, Veränderungen über Wochen zu erkennen, statt zu raten",
+        ],
+      },
+      {
+        title: "Reisen & Dokumente",
+        line: "Grenzen überqueren ohne den Last-Minute-Papierkram-Schreck.",
+        examples: [
+          "Länderübergreifende Regeln, geprüft, bevor Sie etwas buchen",
+          "Pass-, Chip- und Impfanforderungen in einfacher Sprache",
+          "Ein Reise-Dokumentenpaket, bereit zur Vorlage an der Grenze oder beim Tierarzt",
+        ],
+      },
+      {
+        title: "Das ausdruckbare Hunde-Paket",
+        line: "Alles über Ihren Hund, auf Papier, für jeden, der es braucht.",
+        examples: [
+          "Eine Ein-Seiten-Zusammenfassung für den Tierarzt, Sitter oder die Pension",
+          "Fütterung, Medikamente und Notfallkontakte an einem Ort",
+          "Ausdrucken, als PDF speichern oder vor der Reise teilen",
+        ],
+      },
+    ],
+    closing:
+      "Kein Druck und keine Verpflichtung – das kostenlose Ergebnis bleibt so oder so vollständig. DoggMatch+ ist einfach da, wenn der Hund nach Hause kommt.",
+  },
+  fr: {
+    eyebrow: "De la recherche à la vie de tous les jours",
+    title: "Un parcours, de la première recherche à la vie quotidienne",
+    body: "La version gratuite vous aide à trouver le bon chien. DoggMatch+ est tout ce qui suit : comprendre, préparer et vivre en harmonie avec ce chien, chaque jour.",
+    freeLabel: "Gratuit — trouvez le bon chien",
+    freeLine:
+      "Le quiz, des profils de races honnêtes, des comparaisons et des estimations de coûts annuels. À vous de garder, aucun compte nécessaire.",
+    plusLabel: "DoggMatch+ — vivez en harmonie avec ce chien, chaque jour",
+    plusLine:
+      "Huit étapes connectées qui vous mènent de « nous pensons que c'est le bon » à une vie quotidienne calme et organisée ensemble.",
+    stages: [
+      {
+        title: "Comprendre votre chien",
+        line: "Avant toute chose, apprenez à connaître celui avec qui vous vivez.",
+        examples: [
+          "Un profil personnel basé sur la race, l'âge et la personnalité de votre chien",
+          "Des notes en langage clair sur l'énergie, la sociabilité et les particularités typiques",
+          "Ce pour quoi la race de votre chien a été initialement sélectionnée — et pourquoi cela se manifeste encore",
+        ],
+      },
+      {
+        title: "Préparer l'arrivée",
+        line: "Les semaines avant l'arrivée du chien, gérées en toute sérénité.",
+        examples: [
+          "Une liste de préparation adaptée à votre date d'emménagement",
+          "Liste de courses adaptée à la race — panier, laisse, taille de cage et outils de toilettage",
+          "Estimations réalistes des coûts pour la première année et annuels pour votre race spécifique",
+        ],
+      },
+      {
+        title: "Vie quotidienne — le hub Mon Chien",
+        line: "Un espace tranquille où se déroule la journée de votre chien.",
+        examples: [
+          "Les promenades, repas, entraînements et soins du jour sur un écran simple",
+          "Des plans hebdomadaires qui s'adaptent à mesure que votre chien grandit, du chiot à l'adulte",
+          "Des profils séparés pour chaque chien de la famille",
+        ],
+      },
+      {
+        title: "Éducation",
+        line: "Des sessions courtes et bienveillantes qui s'intègrent dans une journée ordinaire.",
+        examples: [
+          "Leçons étape par étape avec un minuteur intégré — la plupart prennent cinq minutes",
+          "Suivi des progrès, du premier « assis » au rappel fiable",
+          "Difficulté adaptée à l'âge de votre chien et à votre expérience",
+        ],
+      },
+      {
+        title: "Alimentation & poids",
+        line: "Une alimentation qui s'adapte au chien que vous avez devant vous.",
+        examples: [
+          "Guide des portions quotidiennes basé sur le poids, l'âge et l'activité",
+          "Suivi du poids avec des rappels discrets si la courbe dévie",
+          "Une liste honnête sur la sécurité alimentaire — ce qui est acceptable, ce qui ne l'est jamais",
+        ],
+      },
+      {
+        title: "Calendrier santé & soins",
+        line: "Les petits détails, dont on se souvient pour vous.",
+        examples: [
+          "Vaccinations, vermifugations et visites chez le vétérinaire sur un calendrier partagé",
+          "Dents, pelage, pattes et griffes — chacun avec une routine simple",
+          "Un journal de santé qui vous aide à repérer les changements sur plusieurs semaines, sans deviner",
+        ],
+      },
+      {
+        title: "Voyages & documents",
+        line: "Traverser les frontières sans la panique des papiers de dernière minute.",
+        examples: [
+          "Règles pays par pays vérifiées avant de réserver quoi que ce soit",
+          "Passeport, puce électronique et exigences de vaccination expliqués simplement",
+          "Un dossier de documents de voyage prêt à présenter à la frontière ou chez le vétérinaire",
+        ],
+      },
+      {
+        title: "Le Pack Chien imprimable",
+        line: "Tout sur votre chien, sur papier, pour quiconque en a besoin.",
+        examples: [
+          "Un résumé d'une page pour le vétérinaire, le gardien ou le chenil",
+          "Alimentation, médicaments et contacts d'urgence en un seul endroit",
+          "Imprimez-le, enregistrez-le en PDF, ou partagez-le avant de voyager",
+        ],
+      },
+    ],
+    closing:
+      "Aucune pression et aucun engagement — le résultat gratuit reste complet dans tous les cas. DoggMatch+ est simplement là quand le chien arrive à la maison.",
+  },
+  nl: {
+    eyebrow: "Van match tot dagelijks leven",
+    title: "Eén reis, van de eerste zoektocht tot het dagelijks leven",
+    body: "De gratis versie helpt je de juiste hond te vinden. DoggMatch+ is alles wat daarna komt — begrijpen, voorbereiden en goed leven met die hond, elke dag weer.",
+    freeLabel: "Gratis — vind de juiste hond",
+    freeLine:
+      "De quiz, eerlijke rasprofielen, vergelijkingen en jaarlijkse kostenramingen. Voor jou, zonder account nodig.",
+    plusLabel: "DoggMatch+ — leef elke dag goed met die hond",
+    plusLine:
+      "Acht verbonden fasen die je begeleiden van 'we denken dat dit 'm is' naar een rustig, georganiseerd dagelijks leven samen.",
+    stages: [
+      {
+        title: "Begrijp je hond",
+        line: "Leer eerst wie je in huis haalt kennen.",
+        examples: [
+          "Een persoonlijk profiel op basis van ras, leeftijd en persoonlijkheid van je hond",
+          "Duidelijke uitleg over energie, sociaal gedrag en typische eigenaardigheden",
+          "Waar je hond oorspronkelijk voor gefokt is — en waarom dat nog steeds zichtbaar is",
+        ],
+      },
+      {
+        title: "Voorbereiden op de komst",
+        line: "De weken voordat de hond thuiskomt, rustig geregeld.",
+        examples: [
+          "Een checklist voorbereiding, afgestemd op je verhuisdatum",
+          "Ras-specifieke boodschappenlijst — mand, riem, benchmaat en verzorgingsspullen",
+          "Realistische kostenramingen voor het eerste jaar en daarna, voor jouw specifieke ras",
+        ],
+      },
+      {
+        title: "Dagelijks leven — de 'Mijn Hond' hub",
+        line: "Eén rustige plek waar de hele dag van je hond samenkomt.",
+        examples: [
+          "Wandelingen, maaltijden, training en verzorging van vandaag op één eenvoudig scherm",
+          "Wekelijkse plannen die zich aanpassen naarmate je hond groeit van pup tot volwassen",
+          "Aparte profielen voor elke hond in het gezin",
+        ],
+      },
+      {
+        title: "Training",
+        line: "Korte, vriendelijke sessies die in een gewone dag passen.",
+        examples: [
+          "Stapsgewijze lessen met een ingebouwde timer — de meeste duren vijf minuten",
+          "Voortgang bijhouden van de eerste zit tot betrouwbaar komen",
+          "Moeilijkheidsgraad aangepast aan de leeftijd van je hond en jouw ervaring",
+        ],
+      },
+      {
+        title: "Voeding & gewicht",
+        line: "Voeding die zich aanpast aan de hond voor je.",
+        examples: [
+          "Dagelijkse portie-advies op basis van gewicht, leeftijd en activiteit",
+          "Gewicht bijhouden met zachte aanwijzingen als de curve afwijkt",
+          "Een eerlijke lijst met voedselveiligheid — wat mag wel, wat mag nooit",
+        ],
+      },
+      {
+        title: "Gezondheid & zorg kalender",
+        line: "De kleine dingen, voor jou onthouden.",
+        examples: [
+          "Vaccinaties, ontworming en dierenartsbezoeken op één gedeelde kalender",
+          "Tanden, vacht, poten en nagels — elk met een eenvoudige routine",
+          "Een gezondheidsdagboek dat je helpt veranderingen over weken te signaleren, niet te raden",
+        ],
+      },
+      {
+        title: "Reizen & documenten",
+        line: "Grenzen over zonder de paniek van last-minute papierwerk.",
+        examples: [
+          "Regels per land gecheckt voordat je iets boekt",
+          "Paspoort-, chip- en vaccinatievereisten in duidelijke taal",
+          "Een reispapierenpakket klaar om te tonen bij de grens of de dierenarts",
+        ],
+      },
+      {
+        title: "Het printbare Hondenpakket",
+        line: "Alles over je hond, op papier, voor iedereen die het nodig heeft.",
+        examples: [
+          "Een samenvatting van één pagina voor de dierenarts, oppas of kennel",
+          "Voeding, medicatie en noodcontacten op één plek",
+          "Print het, sla het op als PDF, of deel het voordat je op reis gaat",
+        ],
+      },
+    ],
+    closing:
+      "Geen druk en geen verplichtingen — het gratis resultaat blijft hoe dan ook compleet. DoggMatch+ is er gewoon als de hond thuiskomt.",
   },
 };
 
 export const Route = createFileRoute("/{-$lang}/plus")({
-  head: (ctx) => localizedHead(ctx, "/plus", seoCopy),
+  head: (ctx) => {
+    const locale = headLocale(ctx);
+    const base = localizedHead(ctx, "/plus", seoCopy);
+    const text = copy[locale] ?? copy.en;
+    return {
+      ...base,
+      scripts: [
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: "DoggMatch+", path: "/plus" },
+          ],
+          locale,
+        ),
+        jsonLd({
+          "@type": "SoftwareApplication",
+          name: "DoggMatch+",
+          applicationCategory: "LifestyleApplication",
+          operatingSystem: "Web",
+          url: langUrl("/plus", locale),
+          inLanguage: locale,
+          publisher: { "@type": "Organization", name: "KM TECH LABS" },
+          offers: [
+            {
+              "@type": "Offer",
+              name: "DoggMatch+ monthly",
+              price: "7.99",
+              priceCurrency: "EUR",
+              url: langUrl("/plus", locale),
+              availability: "https://schema.org/InStock",
+            },
+            {
+              "@type": "Offer",
+              name: "DoggMatch+ yearly",
+              price: "59.99",
+              priceCurrency: "EUR",
+              url: langUrl("/plus", locale),
+              availability: "https://schema.org/InStock",
+            },
+          ],
+        }),
+        faqLd(text.faqs.map((f) => ({ question: f.q, answer: f.a }))),
+      ],
+    };
+  },
   component: PlusPage,
 });
 
@@ -103,7 +946,16 @@ function RailItem({ children }: { children: ReactNode }) {
 
 function Tick() {
   return (
-    <svg viewBox="0 0 20 20" aria-hidden className="mt-[3px] h-4 w-4 shrink-0 text-accent" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 20 20"
+      aria-hidden
+      className="mt-[3px] h-4 w-4 shrink-0 text-accent"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M4 10.5 8 14.5 16 6" />
     </svg>
   );
@@ -113,7 +965,13 @@ function Stars({ filled, label }: { filled: number; label: string }) {
   return (
     <span className="flex gap-0.5" role="img" aria-label={label}>
       {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} viewBox="0 0 20 20" className={cn("h-3.5 w-3.5", i < filled ? "text-accent" : "text-border-strong")} fill="currentColor" aria-hidden>
+        <svg
+          key={i}
+          viewBox="0 0 20 20"
+          className={cn("h-3.5 w-3.5", i < filled ? "text-accent" : "text-border-strong")}
+          fill="currentColor"
+          aria-hidden
+        >
           <path d="m10 1.8 2.5 5.1 5.6.8-4 3.9 1 5.6-5.1-2.7-5 2.7 1-5.6-4.1-3.9 5.6-.8z" />
         </svg>
       ))}
@@ -263,12 +1121,28 @@ const copy = {
     ],
     firstWeek: [
       { day: "Day 1", title: "Create My Dog", line: "Give your dog a place of their own." },
-      { day: "Day 2", title: "Set up care", line: "Add feeding, dental, grooming and everyday routines." },
-      { day: "Day 3", title: "Start training", line: "Choose a programme and take the first small step." },
+      {
+        day: "Day 2",
+        title: "Set up care",
+        line: "Add feeding, dental, grooming and everyday routines.",
+      },
+      {
+        day: "Day 3",
+        title: "Start training",
+        line: "Choose a programme and take the first small step.",
+      },
       { day: "Day 4", title: "Build My Week", line: "Bring walks, training and care together." },
-      { day: "Day 5", title: "Explore Dog Life", line: "Find places and services that fit your life with your dog." },
+      {
+        day: "Day 5",
+        title: "Explore Dog Life",
+        line: "Find places and services that fit your life with your dog.",
+      },
       { day: "Day 6", title: "Plan your next trip", line: "Get your travel checklist ready." },
-      { day: "Day 7", title: "Create your Dog Pack", line: "Keep the important things together, on screen or on paper." },
+      {
+        day: "Day 7",
+        title: "Create your Dog Pack",
+        line: "Keep the important things together, on screen or on paper.",
+      },
     ],
     faqs: [
       {
@@ -331,7 +1205,8 @@ const copy = {
       lunaBreedAge: "Labrador Retriever · 3 years",
       today: "Today",
       sideTitle: "Everything about your dog, in one place",
-      sideBody: "Health, food, training, dental, coat, paws, weight, activity, behaviour, your week, travel and documents. You don't have to fill it all in. Add what's useful, and the rest waits quietly until you need it.",
+      sideBody:
+        "Health, food, training, dental, coat, paws, weight, activity, behaviour, your week, travel and documents. You don't have to fill it all in. Add what's useful, and the rest waits quietly until you need it.",
       cta: "See My Dog",
     },
     productMessage: {
@@ -384,7 +1259,13 @@ const copy = {
       body: "From the school run to crossing a border. Rules are based on current official requirements and do change — always check with the authorities before you travel.",
       checkerEyebrow: "International travel checker",
       route: "Norway → Poland",
-      checkerItems: ["Microchip", "Rabies vaccination", "Pet passport", "Destination requirements", "Return requirements"],
+      checkerItems: [
+        "Microchip",
+        "Rabies vaccination",
+        "Pet passport",
+        "Destination requirements",
+        "Return requirements",
+      ],
       checkCta: "Check your route",
     },
     print: {
@@ -456,7 +1337,8 @@ const copy = {
       yearlyBody: "Save €35.89 a year compared with paying monthly.",
       yearlyJoin: "Join yearly — best value",
       openLine: "Membership is open.",
-      openBody: "Payment is handled securely by Stripe. You can change or cancel your membership yourself at any time from your account.",
+      openBody:
+        "Payment is handled securely by Stripe. You can change or cancel your membership yourself at any time from your account.",
     },
     faqSection: {
       eyebrow: "Questions",
@@ -470,6 +1352,382 @@ const copy = {
       body: "DoggMatch helps you find the dog that's right for you. DoggMatch+ helps you give that dog a really good life.",
       join: "Join DoggMatch+",
       find: "Find My Dog",
+    },
+  },
+  fi: {
+    flow: [
+      "Etsi koirasi",
+      "Ymmärrä koiraasi",
+      "Valmistaudu koiraasi",
+      "Elä koirasi kanssa",
+      "Pidä huolta koirastasi",
+      "Nauttikaa elämästä yhdessä",
+    ],
+    myDogSections: [
+      { to: "/my-dog/care/everyday-check", label: "Terveys", line: "Nopea päivittäinen tarkastus" },
+      { to: "/my-dog/nutrition", label: "Ruokinta", line: "Annoskoot ja ateriat" },
+      { to: "/train", label: "Koulutus", line: "Päivän lyhyt harjoitus" },
+      { to: "/my-dog/care/dental", label: "Hampaat", line: "Minuutti päivässä" },
+      { to: "/my-dog/care/coat", label: "Turkki & hoito", line: "Harjaus ja pesu" },
+      { to: "/my-dog/care/paws", label: "Tassut & kynnet", line: "Anturat ja talvi" },
+      { to: "/my-dog/weight", label: "Paino", line: "Hellä, yksinkertainen seuranta" },
+      { to: "/my-dog/care/wellbeing", label: "Aktiivisuus", line: "Liikunta ja lepo" },
+      { to: "/train/library", label: "Käytös", line: "Yksi oppitunti kerrallaan" },
+      { to: "/my-dog/week", label: "Oma Viikko", line: "Viikon rytmi" },
+      { to: "/travel", label: "Matkustus", line: "Auto, retket ja rajat" },
+      { to: "/my-dog/print", label: "Asiakirjat", line: "Paperit jääkaappiin" },
+    ],
+    programmes: [
+      { title: "Pennun perusteet", line: "Ensimmäiset viikot, hellävaraisesti" },
+      { title: "Luoksetulo", line: "Tulee luokse joka kerta kun pyydät" },
+      { title: "Vapaana kulkeva hihna", line: "Lenkit ilman hinausta" },
+      { title: "Rauhallinen käytös", line: "Rauhoittuminen alustalle" },
+      { title: "Arjen tavat", line: "Ovet, tervehdykset, odottaminen" },
+      { title: "Keskittyminen", line: "Nimi, huomio" },
+      { title: "Paikka", line: "Sekunti pidempään joka kerta" },
+      { title: "Sosiaalistaminen", line: "Uudet paikat omaan tahtiin" },
+    ],
+    careItems: [
+      { title: "Terveyspäiväkirja", line: "Huomaa muutokset viikkojen aikana, ei arvailuja." },
+      { title: "Paino", line: "Käsin tehtävä tarkastus ja yksinkertainen loki." },
+      { title: "Hampaat", line: "Hampaat ja ikenet, kolmekymmentä sekuntia kerrallaan." },
+      { title: "Turkki & iho", line: "Turkin tyyppi, harjausrutiini, kyhmyt ja takkuuntuminen." },
+      { title: "Tassut & kynnet", line: "Anturat, kynnet, suola ja kuuma asfaltti." },
+      { title: "Hoitokalenteri", line: "Lempeät muistutukset, kun jotain on vuorossa." },
+      { title: "Eläinlääkärikäynnin muistiinpanot", line: "Mitä kysyit, mitä sinulle kerrottiin." },
+      { title: "Terveysyhteenveto", line: "Yksi sivu mukaasi." },
+    ],
+    foodItems: [
+      { title: "Ruoka & ruokintasuunnitelma", line: "Kuinka paljon, karkeasti, koirallesi." },
+      { title: "Ruokintarutiini", line: "Ateriat päivässä, aikoihin jotka sopivat sinulle." },
+      { title: "Ruokintaseuranta", line: "Mitä he syövät, yhdessä paikassa." },
+      { title: "Painoyhteys", line: "Annoskoot, jotka seuraavat painolokia." },
+      { title: "Herkut", line: "Pidetty järkevänä osana päivää." },
+      { title: "Vesi", line: "Puhtaana ja täytettynä, aina." },
+      { title: "Ruokaturvallisuus", line: "Turvallinen, varovainen tai vältettävä — 55+ ruokaa." },
+    ],
+    week: [
+      { day: "Maanantai", items: ["Lenkki", "Koulutus", "Hampaat"] },
+      { day: "Tiistai", items: ["Lenkki", "Mielen virkistys"] },
+      { day: "Keskiviikko", items: ["Koulutus", "Turkinhoito"] },
+      { day: "Torstai", items: ["Pitkä lenkki", "Tassutarkastus"] },
+      { day: "Perjantai", items: ["Lenkki", "Koulutus", "Hampaat"] },
+      { day: "Lauantai", items: ["Seikkailu", "Painon tarkistus"] },
+      { day: "Sunnuntai", items: ["Hajulenkkki", "Rauhoittumishetki"] },
+    ],
+    dogLife: [
+      "Puistot",
+      "Lenkkeilyalueet",
+      "Koiraystävälliset paikat",
+      "Kouluttajat",
+      "Turkinhoitajat",
+      "Eläinlääkärit",
+      "Koiraystävälliset majoitukset",
+    ],
+    travelItems: [
+      "Automatkustus",
+      "Pitkät lenkit",
+      "Vaellus",
+      "Lomat",
+      "Kansainvälinen matkustus",
+      "Matkustuslista",
+      "Matkustusasiakirjat",
+      "Maasta toiseen vaadittavat asiat",
+    ],
+    packContents: [
+      "Koiraprofiili",
+      "Omistajan tiedot",
+      "Tärkeät yhteystiedot",
+      "Matkustuslista",
+      "Terveystiedot",
+      "Asiakirjat",
+      "Hätätilannetiedot",
+    ],
+    docs: [
+      "Täydellinen koirapaketti",
+      "Terveysyhteenveto",
+      "Koulutussuunnitelma",
+      "Ruoka- ja ruokintasuunnitelma",
+      "Viikko-ohjelma",
+      "Tärkeät yhteystiedot",
+      "Eläinlääkärikäynnin muistiinpanot",
+      "Matkapaketti",
+      "Turkinhoitoluettelo",
+    ],
+    journey: [
+      "Ajatus koirasta",
+      "Etsi koirani",
+      "Valmistaudu",
+      "Tervetuloa kotiin",
+      "Oma Koira",
+      "Koulutus",
+      "Ruokinta",
+      "Hoito",
+      "Matkustus",
+      "Nauti elämästä",
+    ],
+    freeList: [
+      "Sopiiko koira minulle?",
+      "Etsi koirani",
+      "Perusrotutiedot",
+      "Opas koiran hankintaan",
+      "Perus koira-elämä",
+      "Valitut ilmaiset oppaat",
+    ],
+    plusList: [
+      "Kaikki ilmaisessa",
+      "Oma Koira",
+      "Täydellinen koulutus",
+      "Terveys & hoito",
+      "Ruoka & ruokinta",
+      "Oma Viikko",
+      "Hoitokalenteri",
+      "Edistynyt koira-elämä",
+      "Matkustustyökalut",
+      "Kansainvälinen matkustusseuranta",
+      "Täydellinen koirapaketti",
+      "Tulostettavat asiakirjat",
+      "Useampi koira",
+      "Tarkempi match-raportti",
+      "Edistyminen ajan myötä",
+    ],
+    firstWeek: [
+      { day: "Päivä 1", title: "Luo Oma Koira", line: "Anna koirallesi oma paikka." },
+      {
+        day: "Päivä 2",
+        title: "Aseta hoito",
+        line: "Lisää ruokinta, hampaat, turkinhoito ja päivittäiset rutiinit.",
+      },
+      {
+        day: "Päivä 3",
+        title: "Aloita koulutus",
+        line: "Valitse ohjelma ja ota ensimmäinen pieni askel.",
+      },
+      { day: "Päivä 4", title: "Rakenna Oma Viikko", line: "Yhdistä lenkit, koulutus ja hoito." },
+      {
+        day: "Päivä 5",
+        title: "Tutustu koira-elämään",
+        line: "Löydä paikkoja ja palveluita, jotka sopivat elämääsi koirasi kanssa.",
+      },
+      {
+        day: "Päivä 6",
+        title: "Suunnittele seuraava matkasi",
+        line: "Valmistele matkustuslistasi.",
+      },
+      {
+        day: "Päivä 7",
+        title: "Luo Koirapakettisi",
+        line: "Pidä tärkeät asiat yhdessä, ruudulla tai paperilla.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Mikä on DoggMatch+?",
+        a: "Se on DoggMatchin jäsenosa. Ilmainen auttaa sinua löytämään oikean koiran. DoggMatch+ auttaa sinua hoitamaan sitä koiraa päivittäin — koulutus, ruoka, terveys, rutiinit, matkustus ja asiakirjat, kaikki yhdessä paikassa.",
+      },
+      {
+        q: "Mitä saan DoggMatch+:lla?",
+        a: "Oma Koira, täydelliset koulutusohjelmat, terveys ja hoito, ruoka ja ruokinta, Oma Viikko, hoitokalenteri, matkustustyökalut, täydellinen Koirapaketti ja tulostettavat asiakirjat — sekä tarkempi match-raportti.",
+      },
+      {
+        q: "Mikä pysyy ilmaisena?",
+        a: "Kaikki mitä tarvitset oikean koiran löytämiseen. Sopiiko koira minulle?, Etsi koirani, rotutiedot, koiran hankinta-oppaat, perus koira-elämä ja ilmaiset oppaamme pysyvät ilmaisina.",
+      },
+      {
+        q: "Voinko käyttää DoggMatch+:aa useammalle kuin yhdelle koiralle?",
+        a: "Kyllä. Voit pitää erillisen profiilin jokaiselle koiralle ja vaihtaa niiden välillä, jotta mikään ei mene sekaisin.",
+      },
+      {
+        q: "Voinko tulostaa koirani tiedot?",
+        a: "Kyllä. Koirapaketti ja yksittäiset asiakirjat — terveysyhteenveto, ruokintasuunnitelma, viikko-ohjelma, yhteystiedot, matkapaketti — on kaikki suunniteltu tulostettavaksi siististi A4-kokoisena tai tallennettavaksi PDF-muodossa.",
+      },
+      {
+        q: "Voinko käyttää DoggMatch+:aa matkustaessani?",
+        a: "Kyllä. Tarjolla on opastusta autolla matkustamiseen, vaellukseen ja lomamatkoihin, maasta toiseen -tarkistus ulkomaille matkustamiseen ja matkapaketti, jonka voit ottaa mukaasi paperilla.",
+      },
+      {
+        q: "Onko DoggMatch eläinlääketieteellistä neuvontaa?",
+        a: "Ei. Tarjoamme yleistä ohjeistusta elämään koiran kanssa. Jos jokin asia huolestuttaa sinua tai koiraasi, ota yhteyttä eläinlääkäriisi.",
+      },
+      {
+        q: "Voinko peruuttaa jäsenyyteni?",
+        a: "Kyllä, milloin tahansa. Avaa tilisivusi ja voit muuttaa tai peruuttaa jäsenyytesi itse — se pysyy aktiivisena maksamasi kauden loppuun asti.",
+      },
+      {
+        q: "Voinko valita kuukausi- vai vuosilaskutuksen?",
+        a: "Kyllä — 7,99 € kuukaudessa tai 59,99 € vuodessa, mikä tekee noin 5 € kuukaudessa. Voit vaihtaa niiden välillä myöhemmin tililtäsi.",
+      },
+      {
+        q: "Mitä tapahtuu, kun liityn?",
+        a: "Luot Oman Koiran, lisäät muutaman tiedon, ja kaikki muu sivustolla alkaa mukautua kyseisen koiran mukaan. Ensimmäinen viikko opastaa sinua lempeästi.",
+      },
+    ],
+    starsLabel: (filled: number) => `${filled} / 5`,
+    hero: {
+      eyebrow: "Jäsenyys",
+      lead: "Enemmän kuin vain koiran löytäminen. Parempi elämä yhdessä.",
+      body: "DoggMatch-matkasi ei pääty, kun löydät oikean koiran. Premium tarjoaa työkalut, suunnitelmat ja henkilökohtaisen tilan, jotka auttavat sinua antamaan koirallesi onnellisen, terveen ja hyvin järjestetyn elämän.",
+      heroAlt: "Nainen nojaa otsallaan labradoriinsa auringonlaskussa",
+      exploreCta: "Tutustu DoggMatch+:aan",
+      seeAllCta: "Katso kaikki sisältyvät",
+    },
+    coreMessage: "yhdistää kaiken.",
+    myDog: {
+      eyebrow: "Kaiken keskipiste",
+      title: "Sinun koirasi. Sinun tilasi.",
+      body: "Oma Koira on koirasi henkilökohtainen koti DoggMatchin sisällä. Kaikki mitä seuraat, elää täällä — ja kaikki muu sivustolla syöttää tietoa tänne.",
+      lunaAlt: "Luna, labradorinnoutaja",
+      lunaName: "Luna",
+      lunaBreedAge: "Labradorinnoutaja · 3 vuotta",
+      today: "Tänään",
+      sideTitle: "Kaikki koirastasi, yhdessä paikassa",
+      sideBody:
+        "Terveys, ruoka, koulutus, hampaat, turkki, tassut, paino, aktiivisuus, käytös, oma viikko, matkustus ja asiakirjat. Sinun ei tarvitse täyttää kaikkea. Lisää se, mikä on hyödyllistä, ja loput odottavat hiljaa, kunnes tarvitset sitä.",
+      cta: "Katso Oma Koira",
+    },
+    productMessage: {
+      titleLine1: "Etsi koirasi.",
+      titleLine2: "Eläkää sitten yhdessä.",
+      body: "Oikean koiran löytäminen on vasta alkua. DoggMatch+ tarjoaa yhden paikan hoitaa tärkeitä arjen asioita — koulutuksesta ja ruokinnasta terveyteen, matkustamiseen, rutiineihin ja pieniin hetkiin välissä.",
+    },
+    training: {
+      trainAlt: "Mies harjoittelee luoksetuloa koiransa kanssa pellolla",
+      eyebrow: "Kouluta yhdessä",
+      title: "Pieniä askelia. Todellista edistystä.",
+      body: "Jäsennellyt ohjelmat, jotka on rakennettu lyhyistä, ystävällisistä sessioista, jotka voit todella sovittaa normaaliin päivään. Ei huutamista, ei apuvälineitä, ei lupauksia siitä, kuinka nopeasti se etenee.",
+      lunaName: "Luna",
+      recall: "Luoksetulo",
+      progressNote: "4 harjoitusta suoritettu tällä viikolla.",
+      railLabel: "Koulutusohjelmat",
+      libraryCta: "Avaa oppituntikirjasto",
+    },
+    healthCare: {
+      eyebrow: "Terveys & hoito",
+      title: "Pidä huolta pienistä asioista",
+      body: "Pidä tärkeät asiat yhdessä, huomaa muutokset ajan myötä ja pysy järjestäytyneenä. DoggMatch ei ole eläinlääkäripalvelu — kun jokin huolestuttaa sinua, eläinlääkäri on oikea taho.",
+      careAlt: "Omistaja tarkastaa rauhallisesti koiraansa kotona",
+    },
+    food: {
+      foodAlt: "Mitattu ruokakuppi valmistellaan odottavalle koiralle",
+      eyebrow: "Ruoki hyvin",
+      title: "Tee ruokinnasta helpommin ymmärrettävää",
+      body: "Annoskoot laskettu koirasi painon, iän ja aktiivisuuden perusteella — sitten pidetty tahdissa painolokin kanssa. Järkevää, näyttöön perustuvaa, ei muotivillityksiä.",
+      portionsCta: "Ruoka & annoskoot",
+      safetyCta: "Voiko koirani syödä tätä?",
+    },
+    myWeek: {
+      eyebrow: "Oma Viikko",
+      title: "Sinun viikkosi koirasi kanssa",
+      body: "Yhdistä koulutus, hoito, aktiivisuus ja päivittäiset rutiinit, jotta mikään tärkeä ei lipsahda huomaamatta.",
+      cta: "Avaa Oma Viikko",
+    },
+    dogLifeSection: {
+      eyebrow: "Koiran elämä",
+      title: "Elämä kodin ulkopuolella",
+      body: "Arjen kartta koiran elämästä lähelläsi — minne mennä lenkille, minne olet tervetullut ja kenelle soittaa.",
+      cta: "Tutustu koira-elämään",
+      dogLifeAlt: "Koira ja omistaja rannikkopolulla aikaisin aamulla",
+    },
+    travel: {
+      travelAlt: "Koira turvallisesti valjastettuna auton takaosassa ennen matkaa",
+      eyebrow: "Matkustus",
+      title: "Ota koirasi mukaan",
+      body: "Koulureissusta rajan ylitykseen. Säännöt perustuvat nykyisiin virallisiin vaatimuksiin ja muuttuvat — tarkista aina viranomaisilta ennen matkustamista.",
+      checkerEyebrow: "Kansainvälinen matkustusseuranta",
+      route: "Norja → Puola",
+      checkerItems: [
+        "Mikrosiru",
+        "Rabiesrokote",
+        "Lemmikkipassi",
+        "Kohdemaan vaatimukset",
+        "Paluuvaatimukset",
+      ],
+      checkCta: "Tarkista reittisi",
+    },
+    print: {
+      eyebrow: "Tulosta & tallenna",
+      title: "Jotkut asiat ovat parempia paperilla.",
+      body: "Pidä tärkeät tiedot mukanasi — kotona, autossa, eläinlääkärissä tai kun joku muu hoitaa koiraasi.",
+      cardBrand: "DoggMatch",
+      cardTitle: "Koiran matkapaketti",
+      cardDog: "Luna · Labradorinnoutaja",
+      createCta: "Luo matkapaketti",
+      printCta: "Katso mitä voit tulostaa",
+    },
+    multipleDogs: {
+      eyebrow: "Useampi koira",
+      title: "Yksi koti. Jokainen koira.",
+      body: "Premium tukee useampaa kuin yhtä koiraa, jokaisella oma profiili, rutiinit, koulutus, terveys ja asiakirjat. Niiden välillä vaihtaminen vie yhden napautuksen.",
+      dogs: [
+        { name: "Luna", breed: "Labradorinnoutaja" },
+        { name: "Max", breed: "Cocker Spanieli" },
+      ],
+    },
+    personalisation: {
+      title: "Kaikki tuntuu merkityksellisemmältä koirallesi",
+      body: "DoggMatch ei tarvitse älykkäitä koneita tehdäkseen tästä henkilökohtaista. Koirasi rotu, ikä, koko, aktiivisuus, elämäntyylisi, rutiinisi ja kaikki mitä päätät kertoa meille, muokkaavat hiljaa sitä, mitä näet — mitkä oppitunnit tulevat esiin, kuinka paljon ruokaa on karkeasti sopivaa, mitä viikkosi ehdottaa.",
+    },
+    journeySection: {
+      eyebrow: "Koko matka",
+      title: "Ensimmäisestä ajatuksesta pitkään yhteiseen elämään",
+      closing: "— kaikki yhdistettynä yhdessä paikassa.",
+    },
+    compare: {
+      eyebrow: "Ilmainen ja Premium",
+      title: "Mikä on ilmaista ja mikä tulee Premiumin mukana",
+      body: "Kaikki mitä tarvitset oikean koiran löytämiseen pysyy ilmaisena. Premium on elämää varten, joka tulee sen jälkeen.",
+      freeLabel: "Ilmainen",
+      freeHeadline: "Oikean koiran löytämiseen.",
+      freeQuote: "\u201CLöydä koira, joka sopii minulle.\u201D",
+      plusLabel: "DoggMatch+",
+      plusHeadline: "Elämään koirasi kanssa.",
+      plusQuote: "\u201CNyt auta minua antamaan sille koiralle todella hyvä elämä.\u201D",
+    },
+    value: {
+      eyebrow: "Miksi DoggMatch+",
+      title: "Kolme yksinkertaista syytä",
+      items: [
+        { title: "Yksi paikka", body: "Kaikki koirasi elämästä, yhdessä." },
+        { title: "Hyödyllinen joka päivä", body: "Ei vain jotain, jota käytät kerran." },
+        { title: "Rakennettu koirasi ympärille", body: "Koirasi tiedot muokkaavat kokemusta." },
+      ],
+    },
+    firstWeekSection: {
+      eyebrow: "Ensimmäinen viikkosi DoggMatch+:n kanssa",
+      title: "Helppo alku elämään DoggMatch+:n kanssa.",
+      body: "Ei ole kiirettä. Vähän joka päivä, ja viikon loppuun mennessä koirallasi on täällä kotinsa.",
+    },
+    membership: {
+      eyebrow: "Jäsenyys",
+      body: "Yksi jäsenyys, kaikki sisältyy. Valitse sinulle sopiva rytmi.",
+      monthlyLabel: "Kuukausi",
+      monthlyPrice: "7,99",
+      monthlyUnit: "/ kk",
+      monthlyBody: "Kaikki DoggMatch+:ssa, kuukausittain.",
+      monthlyJoin: "Liity kuukausijäseneksi",
+      yearlyLabel: "Vuosi",
+      bestValue: "Paras hinta",
+      yearlyPrice: "59,99",
+      yearlyUnit: "/ vuosi",
+      yearlyHighlight: "Vain 5 € kuukaudessa, kun laskutetaan vuosittain",
+      yearlyBody: "Säästä 35,89 € vuodessa verrattuna kuukausimaksuun.",
+      yearlyJoin: "Liity vuodella — paras hinta",
+      openLine: "Jäsenyys on avoin.",
+      openBody:
+        "Maksut hoidetaan turvallisesti Stripellä. Voit muuttaa tai peruuttaa jäsenyytesi itse milloin tahansa tililtäsi.",
+    },
+    faqSection: {
+      eyebrow: "Kysymyksiä",
+      title: "Asiat, joita ihmiset yleensä kysyvät",
+      body: "Lyhyitä, rehellisiä vastauksia. Jos on jotain muuta, mitä haluaisit tietää, kirjoita meille.",
+      stillWondering: "Mietitkö vielä jotain?",
+      getInTouch: "Ota yhteyttä",
+    },
+    finalCta: {
+      title: "Koirasi on enemmän kuin pelkkä match.",
+      body: "DoggMatch auttaa sinua löytämään oikean koiran. DoggMatch+ auttaa sinua antamaan sille koiralle todella hyvän elämän.",
+      join: "Liity DoggMatch+:aan",
+      find: "Etsi Minun Koirani",
     },
   },
   no: {
@@ -611,12 +1869,28 @@ const copy = {
     ],
     firstWeek: [
       { day: "Dag 1", title: "Opprett Min hund", line: "Gi hunden din et eget sted." },
-      { day: "Dag 2", title: "Sett opp stell", line: "Legg til fôring, tenner, pels og hverdagsrutiner." },
-      { day: "Dag 3", title: "Start trening", line: "Velg et program og ta det første lille steget." },
+      {
+        day: "Dag 2",
+        title: "Sett opp stell",
+        line: "Legg til fôring, tenner, pels og hverdagsrutiner.",
+      },
+      {
+        day: "Dag 3",
+        title: "Start trening",
+        line: "Velg et program og ta det første lille steget.",
+      },
       { day: "Dag 4", title: "Bygg Min uke", line: "Samle turer, trening og stell på ett sted." },
-      { day: "Dag 5", title: "Utforsk hundeliv", line: "Finn steder og tjenester som passer livet ditt med hund." },
+      {
+        day: "Dag 5",
+        title: "Utforsk hundeliv",
+        line: "Finn steder og tjenester som passer livet ditt med hund.",
+      },
       { day: "Dag 6", title: "Planlegg neste tur", line: "Gjør reisesjekklisten din klar." },
-      { day: "Dag 7", title: "Lag hundepakken din", line: "Ha det viktigste samlet, på skjerm eller på papir." },
+      {
+        day: "Dag 7",
+        title: "Lag hundepakken din",
+        line: "Ha det viktigste samlet, på skjerm eller på papir.",
+      },
     ],
     faqs: [
       {
@@ -679,7 +1953,8 @@ const copy = {
       lunaBreedAge: "Labrador retriever · 3 år",
       today: "I dag",
       sideTitle: "Alt om hunden din, på ett sted",
-      sideBody: "Helse, mat, trening, tenner, pels, poter, vekt, aktivitet, atferd, uken din, reise og dokumenter. Du trenger ikke fylle ut alt. Legg til det som er nyttig, resten venter stille til du trenger det.",
+      sideBody:
+        "Helse, mat, trening, tenner, pels, poter, vekt, aktivitet, atferd, uken din, reise og dokumenter. Du trenger ikke fylle ut alt. Legg til det som er nyttig, resten venter stille til du trenger det.",
       cta: "Se Min hund",
     },
     productMessage: {
@@ -732,7 +2007,13 @@ const copy = {
       body: "Fra skoleveien til å krysse en grense. Reglene bygger på gjeldende offisielle krav og endres — sjekk alltid med myndighetene før du reiser.",
       checkerEyebrow: "Sjekk for utenlandsreise",
       route: "Norge → Polen",
-      checkerItems: ["Mikrochip", "Rabiesvaksine", "Kjæledyrpass", "Krav i mottakerland", "Krav ved retur"],
+      checkerItems: [
+        "Mikrochip",
+        "Rabiesvaksine",
+        "Kjæledyrpass",
+        "Krav i mottakerland",
+        "Krav ved retur",
+      ],
       checkCta: "Sjekk ruten din",
     },
     print: {
@@ -804,7 +2085,8 @@ const copy = {
       yearlyBody: "Spar 359 kr i året sammenlignet med månedlig betaling.",
       yearlyJoin: "Bli medlem årlig — best verdi",
       openLine: "Medlemskapet er åpent.",
-      openBody: "Betaling håndteres trygt av Stripe. Du kan endre eller si opp medlemskapet ditt selv, når som helst, fra kontoen din.",
+      openBody:
+        "Betaling håndteres trygt av Stripe. Du kan endre eller si opp medlemskapet ditt selv, når som helst, fra kontoen din.",
     },
     faqSection: {
       eyebrow: "Spørsmål",
@@ -870,7 +2152,10 @@ const copy = {
       { title: "Powiązanie z wagą", line: "Porcje dopasowane do zapisu wagi." },
       { title: "Przysmaki", line: "Utrzymane w rozsądnej części dnia." },
       { title: "Woda", line: "Czysta i uzupełniona, zawsze." },
-      { title: "Bezpieczeństwo jedzenia", line: "Bezpieczne, ostrożnie lub unikać — ponad 55 produktów." },
+      {
+        title: "Bezpieczeństwo jedzenia",
+        line: "Bezpieczne, ostrożnie lub unikać — ponad 55 produktów.",
+      },
     ],
     week: [
       { day: "Poniedziałek", items: ["Spacer", "Trening", "Zęby"] },
@@ -959,12 +2244,32 @@ const copy = {
     ],
     firstWeek: [
       { day: "Dzień 1", title: "Utwórz Mój pies", line: "Daj swojemu psu własne miejsce." },
-      { day: "Dzień 2", title: "Skonfiguruj opiekę", line: "Dodaj karmienie, zęby, pielęgnację i codzienne rutyny." },
-      { day: "Dzień 3", title: "Rozpocznij trening", line: "Wybierz program i zrób pierwszy mały krok." },
-      { day: "Dzień 4", title: "Zbuduj Mój tydzień", line: "Połącz spacery, trening i opiekę w jedno." },
-      { day: "Dzień 5", title: "Odkryj Życie z psem", line: "Znajdź miejsca i usługi dopasowane do Twojego życia z psem." },
+      {
+        day: "Dzień 2",
+        title: "Skonfiguruj opiekę",
+        line: "Dodaj karmienie, zęby, pielęgnację i codzienne rutyny.",
+      },
+      {
+        day: "Dzień 3",
+        title: "Rozpocznij trening",
+        line: "Wybierz program i zrób pierwszy mały krok.",
+      },
+      {
+        day: "Dzień 4",
+        title: "Zbuduj Mój tydzień",
+        line: "Połącz spacery, trening i opiekę w jedno.",
+      },
+      {
+        day: "Dzień 5",
+        title: "Odkryj Życie z psem",
+        line: "Znajdź miejsca i usługi dopasowane do Twojego życia z psem.",
+      },
       { day: "Dzień 6", title: "Zaplanuj następny wyjazd", line: "Przygotuj listę podróżną." },
-      { day: "Dzień 7", title: "Utwórz swoją Paczkę dla psa", line: "Trzymaj najważniejsze rzeczy razem, na ekranie lub na papierze." },
+      {
+        day: "Dzień 7",
+        title: "Utwórz swoją Paczkę dla psa",
+        line: "Trzymaj najważniejsze rzeczy razem, na ekranie lub na papierze.",
+      },
     ],
     faqs: [
       {
@@ -1027,7 +2332,8 @@ const copy = {
       lunaBreedAge: "Labrador retriever · 3 lata",
       today: "Dzisiaj",
       sideTitle: "Wszystko o Twoim psie, w jednym miejscu",
-      sideBody: "Zdrowie, jedzenie, trening, zęby, sierść, łapy, waga, aktywność, zachowanie, Twój tydzień, podróże i dokumenty. Nie musisz wypełniać wszystkiego. Dodaj to, co przydatne, a reszta poczeka cicho, aż będzie potrzebna.",
+      sideBody:
+        "Zdrowie, jedzenie, trening, zęby, sierść, łapy, waga, aktywność, zachowanie, Twój tydzień, podróże i dokumenty. Nie musisz wypełniać wszystkiego. Dodaj to, co przydatne, a reszta poczeka cicho, aż będzie potrzebna.",
       cta: "Zobacz Mój pies",
     },
     productMessage: {
@@ -1080,7 +2386,13 @@ const copy = {
       body: "Od codziennego dowożenia dzieci do szkoły po przekraczanie granicy. Zasady opierają się na aktualnych oficjalnych wymaganiach i się zmieniają — zawsze sprawdzaj je u odpowiednich instytucji przed podróżą.",
       checkerEyebrow: "Sprawdzarka podróży międzynarodowych",
       route: "Norwegia → Polska",
-      checkerItems: ["Mikrochip", "Szczepienie przeciw wściekliźnie", "Paszport dla zwierząt", "Wymagania kraju docelowego", "Wymagania przy powrocie"],
+      checkerItems: [
+        "Mikrochip",
+        "Szczepienie przeciw wściekliźnie",
+        "Paszport dla zwierząt",
+        "Wymagania kraju docelowego",
+        "Wymagania przy powrocie",
+      ],
       checkCta: "Sprawdź swoją trasę",
     },
     print: {
@@ -1128,7 +2440,10 @@ const copy = {
       items: [
         { title: "Jedno miejsce", body: "Wszystko o życiu Twojego psa, razem." },
         { title: "Przydatne każdego dnia", body: "Nie coś, co odwiedzasz tylko raz." },
-        { title: "Zbudowane wokół Twojego psa", body: "Informacje o Twoim psie kształtują to doświadczenie." },
+        {
+          title: "Zbudowane wokół Twojego psa",
+          body: "Informacje o Twoim psie kształtują to doświadczenie.",
+        },
       ],
     },
     firstWeekSection: {
@@ -1152,7 +2467,8 @@ const copy = {
       yearlyBody: "Oszczędzasz 35,89 € rocznie w porównaniu z płatnością miesięczną.",
       yearlyJoin: "Dołącz rocznie — najlepsza oferta",
       openLine: "Członkostwo jest otwarte.",
-      openBody: "Płatności są bezpiecznie obsługiwane przez Stripe. Możesz samodzielnie zmienić lub anulować członkostwo w dowolnym momencie z poziomu swojego konta.",
+      openBody:
+        "Płatności są bezpiecznie obsługiwane przez Stripe. Możesz samodzielnie zmienić lub anulować członkostwo w dowolnym momencie z poziomu swojego konta.",
     },
     faqSection: {
       eyebrow: "Pytania",
@@ -1307,12 +2623,28 @@ const copy = {
     ],
     firstWeek: [
       { day: "Dag 1", title: "Opret Min hund", line: "Giv din hund sit eget sted." },
-      { day: "Dag 2", title: "Sæt pleje op", line: "Tilføj fodring, tænder, pels og hverdagsrutiner." },
-      { day: "Dag 3", title: "Start træning", line: "Vælg et program og tag det første lille skridt." },
+      {
+        day: "Dag 2",
+        title: "Sæt pleje op",
+        line: "Tilføj fodring, tænder, pels og hverdagsrutiner.",
+      },
+      {
+        day: "Dag 3",
+        title: "Start træning",
+        line: "Vælg et program og tag det første lille skridt.",
+      },
       { day: "Dag 4", title: "Byg Min uge", line: "Saml gåture, træning og pleje ét sted." },
-      { day: "Dag 5", title: "Udforsk hundeliv", line: "Find steder og tjenester, der passer til livet med din hund." },
+      {
+        day: "Dag 5",
+        title: "Udforsk hundeliv",
+        line: "Find steder og tjenester, der passer til livet med din hund.",
+      },
       { day: "Dag 6", title: "Planlæg din næste tur", line: "Gør din rejsetjekliste klar." },
-      { day: "Dag 7", title: "Opret din hundepakke", line: "Hav det vigtigste samlet, på skærm eller papir." },
+      {
+        day: "Dag 7",
+        title: "Opret din hundepakke",
+        line: "Hav det vigtigste samlet, på skærm eller papir.",
+      },
     ],
     faqs: [
       {
@@ -1375,7 +2707,8 @@ const copy = {
       lunaBreedAge: "Labrador retriever · 3 år",
       today: "I dag",
       sideTitle: "Alt om din hund, ét sted",
-      sideBody: "Sundhed, mad, træning, tænder, pels, poter, vægt, aktivitet, adfærd, din uge, rejser og dokumenter. Du behøver ikke udfylde det hele. Tilføj det, der er nyttigt, resten venter stille, til du får brug for det.",
+      sideBody:
+        "Sundhed, mad, træning, tænder, pels, poter, vægt, aktivitet, adfærd, din uge, rejser og dokumenter. Du behøver ikke udfylde det hele. Tilføj det, der er nyttigt, resten venter stille, til du får brug for det.",
       cta: "Se Min hund",
     },
     productMessage: {
@@ -1428,7 +2761,13 @@ const copy = {
       body: "Fra skoleture til at krydse en grænse. Reglerne bygger på aktuelle officielle krav og ændrer sig — tjek altid med myndighederne, før du rejser.",
       checkerEyebrow: "Tjek for udlandsrejse",
       route: "Norge → Polen",
-      checkerItems: ["Mikrochip", "Rabiesvaccination", "Kæledyrspas", "Krav i modtagerlandet", "Krav ved hjemrejse"],
+      checkerItems: [
+        "Mikrochip",
+        "Rabiesvaccination",
+        "Kæledyrspas",
+        "Krav i modtagerlandet",
+        "Krav ved hjemrejse",
+      ],
       checkCta: "Tjek din rute",
     },
     print: {
@@ -1500,7 +2839,8 @@ const copy = {
       yearlyBody: "Spar €35,89 om året sammenlignet med månedlig betaling.",
       yearlyJoin: "Bliv medlem årligt — bedste værdi",
       openLine: "Medlemskabet er åbent.",
-      openBody: "Betaling håndteres sikkert af Stripe. Du kan selv ændre eller opsige dit medlemskab når som helst fra din konto.",
+      openBody:
+        "Betaling håndteres sikkert af Stripe. Du kan selv ændre eller opsige dit medlemskab når som helst fra din konto.",
     },
     faqSection: {
       eyebrow: "Spørgsmål",
@@ -1655,12 +2995,32 @@ const copy = {
     ],
     firstWeek: [
       { day: "Dag 1", title: "Skapa Min hund", line: "Ge din hund en egen plats." },
-      { day: "Dag 2", title: "Ställ in skötsel", line: "Lägg till utfodring, tänder, päls och vardagsrutiner." },
-      { day: "Dag 3", title: "Börja träna", line: "Välj ett program och ta det första lilla steget." },
-      { day: "Dag 4", title: "Bygg Min vecka", line: "Samla promenader, träning och skötsel på ett ställe." },
-      { day: "Dag 5", title: "Utforska hundliv", line: "Hitta platser och tjänster som passar livet med din hund." },
+      {
+        day: "Dag 2",
+        title: "Ställ in skötsel",
+        line: "Lägg till utfodring, tänder, päls och vardagsrutiner.",
+      },
+      {
+        day: "Dag 3",
+        title: "Börja träna",
+        line: "Välj ett program och ta det första lilla steget.",
+      },
+      {
+        day: "Dag 4",
+        title: "Bygg Min vecka",
+        line: "Samla promenader, träning och skötsel på ett ställe.",
+      },
+      {
+        day: "Dag 5",
+        title: "Utforska hundliv",
+        line: "Hitta platser och tjänster som passar livet med din hund.",
+      },
       { day: "Dag 6", title: "Planera din nästa resa", line: "Gör din resechecklista klar." },
-      { day: "Dag 7", title: "Skapa ditt hundpaket", line: "Ha det viktigaste samlat, på skärm eller på papper." },
+      {
+        day: "Dag 7",
+        title: "Skapa ditt hundpaket",
+        line: "Ha det viktigaste samlat, på skärm eller på papper.",
+      },
     ],
     faqs: [
       {
@@ -1723,7 +3083,8 @@ const copy = {
       lunaBreedAge: "Labrador retriever · 3 år",
       today: "Idag",
       sideTitle: "Allt om din hund, på ett ställe",
-      sideBody: "Hälsa, mat, träning, tänder, päls, tassar, vikt, aktivitet, beteende, din vecka, resor och dokument. Du behöver inte fylla i allt. Lägg till det som är användbart, resten väntar tyst tills du behöver det.",
+      sideBody:
+        "Hälsa, mat, träning, tänder, päls, tassar, vikt, aktivitet, beteende, din vecka, resor och dokument. Du behöver inte fylla i allt. Lägg till det som är användbart, resten väntar tyst tills du behöver det.",
       cta: "Se Min hund",
     },
     productMessage: {
@@ -1776,7 +3137,13 @@ const copy = {
       body: "Från vardagspromenader till att korsa en gräns. Reglerna bygger på gällande officiella krav och ändras — kontrollera alltid med myndigheterna innan du reser.",
       checkerEyebrow: "Kontroll för utlandsresa",
       route: "Norge → Polen",
-      checkerItems: ["Mikrochip", "Rabiesvaccination", "Djurpass", "Krav i mottagarlandet", "Krav vid återresa"],
+      checkerItems: [
+        "Mikrochip",
+        "Rabiesvaccination",
+        "Djurpass",
+        "Krav i mottagarlandet",
+        "Krav vid återresa",
+      ],
       checkCta: "Kontrollera din rutt",
     },
     print: {
@@ -1848,7 +3215,8 @@ const copy = {
       yearlyBody: "Spara €35,89 per år jämfört med månadsbetalning.",
       yearlyJoin: "Gå med årsvis — bäst värde",
       openLine: "Medlemskapet är öppet.",
-      openBody: "Betalning hanteras säkert av Stripe. Du kan själv ändra eller säga upp ditt medlemskap när som helst från ditt konto.",
+      openBody:
+        "Betalning hanteras säkert av Stripe. Du kan själv ändra eller säga upp ditt medlemskap när som helst från ditt konto.",
     },
     faqSection: {
       eyebrow: "Frågor",
@@ -1864,409 +3232,68 @@ const copy = {
       find: "Hitta min hund",
     },
   },
-  fi: {
-    flow: [
-      "Löydä koirasi",
-      "Tutustu koiraasi",
-      "Valmistaudu koiraasi varten",
-      "Elä arkea koirasi kanssa",
-      "Huolehdi koirastasi",
-      "Nauti yhteisestä elämästä",
-    ],
-    myDogSections: [
-      { to: "/my-dog/care/everyday-check", label: "Terveys", line: "Nopea päivittäinen tarkistus" },
-      { to: "/my-dog/nutrition", label: "Ruoka", line: "Annokset ja ateriat" },
-      { to: "/train", label: "Koulutus", line: "Päivän lyhyt harjoitus" },
-      { to: "/my-dog/care/dental", label: "Hampaat", line: "Minuutti päivässä" },
-      { to: "/my-dog/care/coat", label: "Turkki & hoito", line: "Harjaus ja kylvetys" },
-      { to: "/my-dog/care/paws", label: "Tassut & kynnet", line: "Tassun alustat ja talvi" },
-      { to: "/my-dog/weight", label: "Paino", line: "Yksinkertainen, lempeä yleiskatsaus" },
-      { to: "/my-dog/care/wellbeing", label: "Aktiivisuus", line: "Liikuntaa ja lepoa" },
-      { to: "/train/library", label: "Käytös", line: "Yksi oppitunti kerrallaan" },
-      { to: "/my-dog/week", label: "Minun viikkoni", line: "Viikkosi rytmi" },
-      { to: "/travel", label: "Matkat", line: "Autoilu, retket ja rajat" },
-      { to: "/my-dog/print", label: "Asiakirjat", line: "Paperit jääkaapin oveen" },
-    ],
-    programmes: [
-      { title: "Pentuperusteet", line: "Ensimmäiset viikot, rauhalliseen tahtiin" },
-      { title: "Luoksetulo", line: "Tulee luoksesi, joka kerta kun pyydät" },
-      { title: "Kaunis kävely hihnassa", line: "Kävelyjä ilman vetämistä" },
-      { title: "Rauhallinen käytös", line: "Rentoutumista omalla peitolla" },
-      { title: "Arjen tavat", line: "Ovet, tervehtiminen, odottaminen" },
-      { title: "Keskittyminen", line: "Oma nimi, oma huomio" },
-      { title: "Jää paikoillesi", line: "Sekunti kerrallaan pidempään" },
-      { title: "Sosiaalistaminen", line: "Uusia paikkoja koiran omaan tahtiin" },
-    ],
-    careItems: [
-      { title: "Terveyspäiväkirja", line: "Huomaa muutokset viikkojen kuluessa, ei arvailua." },
-      { title: "Paino", line: "Konkreettinen tarkistus ja yksinkertainen loki." },
-      { title: "Hampaat", line: "Hampaat ja ikenet, kolmekymmentä sekuntia kerrallaan." },
-      { title: "Turkki & iho", line: "Turkin tyyppi, harjausrytmi, patit ja takkuuntumat." },
-      { title: "Tassut & kynnet", line: "Tassun alustat, kynnet, suola ja kuuma asfaltti." },
-      { title: "Hoitokalenteri", line: "Hiljaiset muistutukset, kun jotain pitää tehdä." },
-      { title: "Eläinlääkärimuistiinpanot", line: "Mitä kysyit, mitä sait tietää." },
-      { title: "Terveysyhteenveto", line: "Yksi sivu, jonka voit ottaa mukaan." },
-    ],
-    foodItems: [
-      { title: "Ruoka- ja ruokintasuunnitelma", line: "Suunnilleen kuinka paljon, juuri sinun koirallesi." },
-      { title: "Ruokintarutiini", line: "Ateriat päivässä, sinulle sopiviin aikoihin." },
-      { title: "Ruokapäiväkirja", line: "Kaikki mitä koira syö, yhdessä paikassa." },
-      { title: "Yhteys painoon", line: "Annokset, jotka seuraavat painolokia." },
-      { title: "Herkut", line: "Pidetty järkevänä osana päivää." },
-      { title: "Vesi", line: "Puhdasta ja täynnä, aina." },
-      { title: "Ruokaturvallisuus", line: "Turvallista, varovasti tai vältä — yli 55 ruoka-ainetta." },
-    ],
-    week: [
-      { day: "Maanantai", items: ["Kävely", "Koulutus", "Hampaat"] },
-      { day: "Tiistai", items: ["Kävely", "Aivojumppa"] },
-      { day: "Keskiviikko", items: ["Koulutus", "Hoito"] },
-      { day: "Torstai", items: ["Pitkä kävely", "Tassutarkistus"] },
-      { day: "Perjantai", items: ["Kävely", "Koulutus", "Hampaat"] },
-      { day: "Lauantai", items: ["Seikkailu", "Punnitus"] },
-      { day: "Sunnuntai", items: ["Nuuskimiskävely", "Rauhallinen hetki"] },
-    ],
-    dogLife: [
-      "Puistot",
-      "Hyvät kävelyreitit",
-      "Koiraystävälliset paikat",
-      "Koirakouluttajat",
-      "Turkinhoitajat",
-      "Eläinlääkärit",
-      "Koiraystävälliset yöpymiset",
-    ],
-    travelItems: [
-      "Automatkat",
-      "Pitkät kävelyt",
-      "Vaellukset",
-      "Lomat",
-      "Ulkomaanmatkat",
-      "Matkan tarkistuslista",
-      "Matka-asiakirjat",
-      "Maakohtaiset vaatimukset",
-    ],
-    packContents: [
-      "Koiraprofiili",
-      "Omistajan tiedot",
-      "Tärkeät yhteystiedot",
-      "Matkan tarkistuslista",
-      "Terveystiedot",
-      "Asiakirjat",
-      "Hätätilannetiedot",
-    ],
-    docs: [
-      "Täydellinen koirapaketti",
-      "Terveysyhteenveto",
-      "Koulutussuunnitelma",
-      "Ruoka- ja ruokintasuunnitelma",
-      "Viikkosuunnitelma",
-      "Tärkeät yhteystiedot",
-      "Muistiinpanot eläinlääkärikäynneistä",
-      "Matkapaketti",
-      "Hoidon tarkistuslista",
-    ],
-    journey: [
-      "Harkitsee koiraa",
-      "Löydä koirani",
-      "Valmistaudu",
-      "Tervetuloa kotiin",
-      "Minun koirani",
-      "Koulutus",
-      "Ruokinta",
-      "Hoito",
-      "Matkat",
-      "Nauti elämästä",
-    ],
-    freeList: [
-      "Sopiiko koira minulle?",
-      "Löydä koirani",
-      "Rotujen perustiedot",
-      "Oppaat koiran hankintaan",
-      "Koiraelämän perusteet",
-      "Valikoituja ilmaisoppaita",
-    ],
-    plusList: [
-      "Kaikki Ilmaisessa",
-      "Minun koirani",
-      "Täysi koulutus",
-      "Terveys & hoito",
-      "Ruoka & ruokinta",
-      "Minun viikkoni",
-      "Hoitokalenteri",
-      "Laajennettu koiraelämä",
-      "Matkatyökalut",
-      "Ulkomaanmatkan tarkistus",
-      "Täydellinen koirapaketti",
-      "Tulostettavat asiakirjat",
-      "Useita koiria",
-      "Kattavampi täsmäysraportti",
-      "Edistyminen ajan myötä",
-    ],
-    firstWeek: [
-      { day: "Päivä 1", title: "Luo Minun koirani", line: "Anna koirallesi oma paikka." },
-      { day: "Päivä 2", title: "Aseta hoito", line: "Lisää ruokinta, hampaat, turkki ja arjen rutiinit." },
-      { day: "Päivä 3", title: "Aloita koulutus", line: "Valitse ohjelma ja ota ensimmäinen pieni askel." },
-      { day: "Päivä 4", title: "Rakenna Minun viikkoni", line: "Kokoa kävelyt, koulutus ja hoito yhteen paikkaan." },
-      { day: "Päivä 5", title: "Tutustu koiraelämään", line: "Löydä paikkoja ja palveluita, jotka sopivat koirasi kanssa elettyyn elämään." },
-      { day: "Päivä 6", title: "Suunnittele seuraava matkasi", line: "Viimeistele matkan tarkistuslistasi." },
-      { day: "Päivä 7", title: "Luo koirapakettisi", line: "Pidä tärkeimmät tiedot koossa, ruudulla tai paperilla." },
-    ],
-    faqs: [
-      {
-        q: "Mikä on DoggMatch+?",
-        a: "Se on DoggMatchin jäsenosa. Ilmainen puoli auttaa löytämään oikean koiran. DoggMatch+ auttaa huolehtimaan siitä koirasta päivä kerrallaan — koulutus, ruoka, terveys, rutiinit, matkat ja asiakirjat, kaikki yhdessä paikassa.",
-      },
-      {
-        q: "Mitä saan DoggMatch+:lla?",
-        a: "Minun koirani -osion, täydet koulutusohjelmat, terveyden ja hoidon, ruoan ja ruokinnan, Minun viikkoni -osion, hoitokalenterin, matkatyökalut, täydellisen koirapaketin ja tulostettavat asiakirjat — sekä kattavamman täsmäysraportin.",
-      },
-      {
-        q: "Mikä pysyy ilmaisena?",
-        a: "Kaikki, mitä tarvitset oikean koiran löytämiseen. Sopiiko koira minulle?, Löydä koirani, rotutiedot, oppaat koiran hankintaan, koiraelämän perusteet ja ilmaisoppaamme pysyvät ilmaisina.",
-      },
-      {
-        q: "Voinko käyttää DoggMatch+:aa useammalle kuin yhdelle koiralle?",
-        a: "Kyllä. Voit pitää jokaiselle koiralle oman profiilin ja vaihtaa niiden välillä, jotta mikään ei mene sekaisin.",
-      },
-      {
-        q: "Voinko tulostaa tietoja koirastani?",
-        a: "Kyllä. Koirapaketti ja yksittäiset asiakirjat — terveysyhteenveto, ruokintasuunnitelma, viikkosuunnitelma, yhteystiedot, matkapaketti — on kaikki tehty tulostumaan siististi A4:lle tai tallennettavaksi PDF:nä.",
-      },
-      {
-        q: "Voinko käyttää DoggMatchia matkoilla?",
-        a: "Kyllä. Tarjolla on ohjeita automatkoihin, vaelluksiin ja lomiin, maakohtaisten vaatimusten tarkistus ulkomaanmatkoja varten, sekä matkapaketti, jonka voit ottaa mukaan paperilla.",
-      },
-      {
-        q: "Onko DoggMatch eläinlääketieteellistä neuvontaa?",
-        a: "Ei. Annamme yleistä ohjeistusta koiran kanssa elämiseen. Kaikessa lääketieteellisessä, tai jos olet huolissasi koirastasi, puhu eläinlääkärillesi.",
-      },
-      {
-        q: "Voinko peruuttaa jäsenyyteni?",
-        a: "Kyllä, milloin tahansa. Avaa tilisivusi, niin voit itse muuttaa tai peruuttaa jäsenyytesi — se pysyy voimassa jo maksamasi jakson loppuun.",
-      },
-      {
-        q: "Voinko valita kuukausi- vai vuosijäsenyyden?",
-        a: "Kyllä — 7,99 € kuukaudessa, tai 59,99 € vuodessa, mikä on noin 5 € kuukaudessa. Voit vaihtaa niiden välillä myöhemmin tililtäsi.",
-      },
-      {
-        q: "Mitä tapahtuu, kun liityn?",
-        a: "Luot Minun koirani -osion, lisäät muutamia tietoja, ja kaikki muu sivustolla alkaa mukautua sen koiran mukaan. Rauhallinen ensimmäinen viikko opastaa sinut sen läpi.",
-      },
-    ],
-    starsLabel: (filled: number) => `${filled}/5`,
-    hero: {
-      eyebrow: "Jäsenyys",
-      lead: "Enemmän kuin koirasi löytäminen. Parempi elämä yhdessä.",
-      body: "DoggMatch-matkasi ei pääty siihen, kun löydät oikean koiran. Premium antaa sinulle työkalut, suunnitelmat ja henkilökohtaisen tilan, joilla annat koirallesi onnellisen, terveen ja hyvin järjestetyn elämän.",
-      heroAlt: "Nainen nojaa otsansa labradoriaan vasten auringonlaskussa",
-      exploreCta: "Tutustu DoggMatch+:aan",
-      seeAllCta: "Katso kaikki mitä sisältyy",
-    },
-    coreMessage: "kokoaa kaiken.",
-    myDog: {
-      eyebrow: "Kaiken keskipiste",
-      title: "Sinun koirasi. Sinun tilasi.",
-      body: "Minun koirani on koirasi henkilökohtainen koti DoggMatchin sisällä. Kaikki mitä seuraat, asuu täällä — ja kaikki muu sivustolla vaikuttaa siihen.",
-      lunaAlt: "Luna, labradorinnoutaja",
-      lunaName: "Luna",
-      lunaBreedAge: "Labradorinnoutaja · 3 vuotta",
-      today: "Tänään",
-      sideTitle: "Kaikki koirastasi, yhdessä paikassa",
-      sideBody: "Terveys, ruoka, koulutus, hampaat, turkki, tassut, paino, aktiivisuus, käytös, viikkosi, matkat ja asiakirjat. Sinun ei tarvitse täyttää kaikkea. Lisää se, mikä on hyödyllistä, loput odottavat hiljaa, kunnes tarvitset niitä.",
-      cta: "Katso Minun koirani",
-    },
-    productMessage: {
-      titleLine1: "Löydä koirasi.",
-      titleLine2: "Elä sitten elämää yhdessä.",
-      body: "Oikean koiran löytäminen on vasta alku. DoggMatch+ antaa sinulle paikan huolehtia arjen asioista, joilla on väliä — koulutuksesta ja ruokinnasta terveyteen, matkoihin, rutiineihin ja pieniin hetkiin siinä välissä.",
-    },
-    training: {
-      trainAlt: "Mies harjoittelee luoksetuloa koiransa kanssa niityllä",
-      eyebrow: "Harjoitelkaa yhdessä",
-      title: "Pieniä askelia. Todellista edistystä.",
-      body: "Jäsenneltyjä ohjelmia, jotka koostuvat lyhyistä, lempeistä harjoituksista, jotka mahtuvat oikeasti tavalliseen päivään. Ei huutamista, ei laitteita, ei lupauksia siitä, kuinka nopeasti se sujuu.",
-      lunaName: "Luna",
-      recall: "Luoksetulo",
-      progressNote: "4 harjoitusta suoritettu tällä viikolla.",
-      railLabel: "Koulutusohjelmat",
-      libraryCta: "Avaa oppituntikirjasto",
-    },
-    healthCare: {
-      eyebrow: "Terveys & hoito",
-      title: "Huolehdi pienistä asioista",
-      body: "Pidä tärkeät asiat koossa, huomaa muutokset ajan myötä ja pysy järjestyksessä. DoggMatch ei ole eläinlääkäripalvelu — kun jokin huolestuttaa, eläinlääkäri on oikea valinta.",
-      careAlt: "Omistaja tarkistaa rauhassa koiraansa kotona",
-    },
-    food: {
-      foodAlt: "Mitattu ruoka-annos valmiina odottavalle koiralle",
-      eyebrow: "Ruoki hyvin",
-      title: "Tee ruokinnasta helpompi ymmärtää",
-      body: "Annokset laskettu koirasi painon, iän ja aktiivisuustason mukaan — pysyen linjassa painolokin kanssa. Järkevää, tietoon perustuvaa, ei muotivirtauksia.",
-      portionsCta: "Ruoka & annokset",
-      safetyCta: "Voiko koirani syödä tätä?",
-    },
-    myWeek: {
-      eyebrow: "Minun viikkoni",
-      title: "Viikkosi koirasi kanssa",
-      body: "Kokoa koulutus, hoito, aktiivisuus ja arjen rutiinit yhteen paikkaan, jotta mikään tärkeä ei pääse hiljaa unohtumaan.",
-      cta: "Avaa Minun viikkoni",
-    },
-    dogLifeSection: {
-      eyebrow: "Koiraelämä",
-      title: "Elämää kodin ulkopuolella",
-      body: "Arjen kartta koiran elämästä lähelläsi — missä voit kävellä, missä olet tervetullut ja kenelle soittaa.",
-      cta: "Tutustu koiraelämään",
-      dogLifeAlt: "Koira ja omistaja rantapolulla aikaisin aamulla",
-    },
-    travel: {
-      travelAlt: "Koira turvallisesti kiinnitettynä takapenkille ennen matkaa",
-      eyebrow: "Matkat",
-      title: "Ota koirasi mukaan",
-      body: "Arkisista kävelyistä rajan ylitykseen. Säännöt perustuvat kulloinkin voimassa oleviin virallisiin vaatimuksiin ja muuttuvat — tarkista aina viranomaisilta ennen matkaa.",
-      checkerEyebrow: "Ulkomaanmatkan tarkistus",
-      route: "Norja → Puola",
-      checkerItems: ["Mikrosiru", "Rabiesrokotus", "Lemmikkipassi", "Kohdemaan vaatimukset", "Paluumatkan vaatimukset"],
-      checkCta: "Tarkista reittisi",
-    },
-    print: {
-      eyebrow: "Tulosta & tallenna",
-      title: "Jotkin asiat toimivat paremmin paperilla.",
-      body: "Pidä tärkeät tiedot mukanasi — kotona, autossa, eläinlääkärillä tai kun joku muu huolehtii koirastasi.",
-      cardBrand: "DoggMatch",
-      cardTitle: "Koiran matkapaketti",
-      cardDog: "Luna · Labradorinnoutaja",
-      createCta: "Luo matkapaketti",
-      printCta: "Katso mitä voit tulostaa",
-    },
-    multipleDogs: {
-      eyebrow: "Useita koiria",
-      title: "Yksi koti. Jokainen koira.",
-      body: "Premium tukee useampaa kuin yhtä koiraa, kullakin oma profiilinsa, rutiininsa, koulutuksensa, terveytensä ja asiakirjansa. Niiden välillä vaihtaminen vie yhden napautuksen.",
-      dogs: [
-        { name: "Luna", breed: "Labradorinnoutaja" },
-        { name: "Max", breed: "Cockerspanieli" },
-      ],
-    },
-    personalisation: {
-      title: "Kaikki tuntuu osuvammalta juuri sinun koirallesi",
-      body: "DoggMatch ei tarvitse älykästä konetta tehdäkseen tästä henkilökohtaista. Koirasi rotu, ikä, koko, aktiivisuus, elämäntapasi, rutiinisi ja kaikki, mitä valitset kertoa meille, muovaa hiljaa sitä, mitä näet — mitkä oppitunnit nousevat esiin, suunnilleen kuinka paljon ruokaa on sopivaa, mitä viikkosi ehdottaa.",
-    },
-    journeySection: {
-      eyebrow: "Koko matka",
-      title: "Ensimmäisestä ajatuksesta pitkään yhteiseen elämään",
-      closing: "— kaikki yhdistettynä yhteen paikkaan.",
-    },
-    compare: {
-      eyebrow: "Ilmainen ja Premium",
-      title: "Mikä on ilmaista, ja mikä sisältyy Premiumiin",
-      body: "Kaikki, mitä tarvitset oikean koiran löytämiseen, pysyy ilmaisena. Premium on sitä elämää varten, joka tulee sen jälkeen.",
-      freeLabel: "Ilmainen",
-      freeHeadline: "Oikean koiran löytämiseen.",
-      freeQuote: "”Löydä koira, joka sopii minulle.”",
-      plusLabel: "DoggMatch+",
-      plusHeadline: "Elämään koirasi kanssa.",
-      plusQuote: "”Auta minua nyt antamaan sille koiralle todella hyvä elämä.”",
-    },
-    value: {
-      eyebrow: "Miksi DoggMatch+",
-      title: "Kolme yksinkertaista syytä",
-      items: [
-        { title: "Yksi paikka", body: "Kaikki koirasi elämästä, koottuna yhteen." },
-        { title: "Hyödyllistä joka päivä", body: "Ei vain jotain, jossa käyt kerran." },
-        { title: "Rakennettu koirasi ympärille", body: "Koirasi tiedot muovaavat kokemusta." },
-      ],
-    },
-    firstWeekSection: {
-      eyebrow: "Ensimmäinen viikkosi DoggMatch+:n kanssa",
-      title: "Yksinkertainen alku elämälle DoggMatch+:n kanssa.",
-      body: "Ei mitään stressattavaa. Vähän joka päivä, ja viikon lopussa koirallasi on täällä koti.",
-    },
-    membership: {
-      eyebrow: "Jäsenyys",
-      body: "Yksi jäsenyys, kaikki mukana. Valitse sinulle sopiva rytmi.",
-      monthlyLabel: "Kuukausittain",
-      monthlyPrice: "7,99 €",
-      monthlyUnit: "/ kk",
-      monthlyBody: "Kaikki DoggMatch+:ssa, kuukausi kerrallaan.",
-      monthlyJoin: "Liity kuukausittain",
-      yearlyLabel: "Vuosittain",
-      bestValue: "Paras arvo",
-      yearlyPrice: "59,99 €",
-      yearlyUnit: "/ vuosi",
-      yearlyHighlight: "Vain 5 € kuukaudessa vuosilaskutuksella",
-      yearlyBody: "Säästä 35,89 € vuodessa verrattuna kuukausimaksuun.",
-      yearlyJoin: "Liity vuosittain — paras arvo",
-      openLine: "Jäsenyys on avointa.",
-      openBody: "Maksut hoitaa turvallisesti Stripe. Voit itse muuttaa tai peruuttaa jäsenyytesi milloin tahansa tililtäsi.",
-    },
-    faqSection: {
-      eyebrow: "Kysymyksiä",
-      title: "Mitä ihmiset yleensä miettivät",
-      body: "Lyhyitä, rehellisiä vastauksia. Jos mietit jotain muuta, kirjoita vain meille.",
-      stillWondering: "Mietitkö vielä jotain?",
-      getInTouch: "Ota yhteyttä",
-    },
-    finalCta: {
-      title: "Koirasi on enemmän kuin täsmäys.",
-      body: "DoggMatch auttaa sinua löytämään koiran, joka sopii sinulle. DoggMatch+ auttaa sinua antamaan sille koiralle todella hyvän elämän.",
-      join: "Liity DoggMatch+:aan",
-      find: "Löydä koirani",
-    },
-  },
   de: {
     flow: [
-      "Finden Sie Ihren Hund",
-      "Verstehen Sie Ihren Hund",
-      "Bereiten Sie sich auf Ihren Hund vor",
-      "Leben Sie mit Ihrem Hund",
-      "Kümmern Sie sich um Ihren Hund",
-      "Genießen Sie das Leben zusammen",
+      "Finde deinen Hund",
+      "Verstehe deinen Hund",
+      "Bereite dich auf deinen Hund vor",
+      "Lebe mit deinem Hund",
+      "Kümmere dich um deinen Hund",
+      "Genießt das Leben zusammen",
     ],
     myDogSections: [
-      { to: "/my-dog/care/everyday-check", label: "Gesundheit", line: "Der schnelle tägliche Check" },
+      {
+        to: "/my-dog/care/everyday-check",
+        label: "Gesundheit",
+        line: "Der schnelle tägliche Rundumblick",
+      },
       { to: "/my-dog/nutrition", label: "Futter", line: "Portionen und Mahlzeiten" },
       { to: "/train", label: "Training", line: "Die kurze Einheit von heute" },
       { to: "/my-dog/care/dental", label: "Zähne", line: "Eine Minute am Tag" },
       { to: "/my-dog/care/coat", label: "Fell & Pflege", line: "Bürsten und Baden" },
       { to: "/my-dog/care/paws", label: "Pfoten & Krallen", line: "Ballen und Winter" },
-      { to: "/my-dog/weight", label: "Gewicht", line: "Eine einfache, freundliche Aufzeichnung" },
+      { to: "/my-dog/weight", label: "Gewicht", line: "Eine einfache, freundliche Übersicht" },
       { to: "/my-dog/care/wellbeing", label: "Aktivität", line: "Bewegung und Ruhe" },
       { to: "/train/library", label: "Verhalten", line: "Eine Lektion nach der anderen" },
-      { to: "/my-dog/week", label: "Meine Woche", line: "Ihr wöchentlicher Rhythmus" },
+      { to: "/my-dog/week", label: "Meine Woche", line: "Dein Wochenrhythmus" },
       { to: "/travel", label: "Reisen", line: "Auto, Wanderungen und Grenzen" },
       { to: "/my-dog/print", label: "Dokumente", line: "Papier für den Kühlschrank" },
     ],
     programmes: [
-      { title: "Welpen-Grundlagen", line: "Die ersten Wochen, sanft angegangen" },
-      { title: "Rückruf", line: "Kommt zurück, jedes Mal, wenn Sie fragen" },
+      { title: "Welpengrundlagen", line: "Die ersten Wochen, ganz sanft" },
+      { title: "Rückruf", line: "Zurückkommen, jedes Mal wenn du rufst" },
       { title: "Lockere Leine", line: "Spaziergänge ohne Ziehen" },
       { title: "Ruhiges Verhalten", line: "Entspannen auf einer Decke" },
       { title: "Alltagsmanieren", line: "Türen, Begrüßungen, Warten" },
-      { title: "Fokus", line: "Ihr Name, ihre Aufmerksamkeit" },
+      { title: "Fokus", line: "Sein Name, seine Aufmerksamkeit" },
       { title: "Bleib", line: "Jedes Mal eine Sekunde länger" },
-      { title: "Sozialisierung", line: "Neue Orte, im Tempo des Hundes" },
+      { title: "Sozialisierung", line: "Neue Orte im eigenen Tempo" },
     ],
     careItems: [
-      { title: "Gesundheitstagebuch", line: "Veränderungen über Wochen bemerken, nicht raten." },
-      { title: "Gewicht", line: "Die handfeste Kontrolle plus ein einfaches Protokoll." },
-      { title: "Zähne", line: "Zähne und Zahnfleisch, dreißig Sekunden am Stück." },
+      { title: "Gesundheitstagebuch", line: "Veränderungen über Wochen bemerken, statt zu raten." },
+      { title: "Gewicht", line: "Der handfeste Check plus ein einfaches Protokoll." },
+      { title: "Zähne", line: "Zähne und Zahnfleisch, jeweils dreißig Sekunden." },
       { title: "Fell & Haut", line: "Felltyp, Bürstrhythmus, Knoten und Verfilzungen." },
       { title: "Pfoten & Krallen", line: "Ballen, Krallen, Salz und heißer Asphalt." },
-      { title: "Pflegekalender", line: "Stille Erinnerungen, wenn etwas ansteht." },
-      { title: "Tierarztnotizen", line: "Was Sie gefragt haben, was Ihnen gesagt wurde." },
+      { title: "Pflegekalender", line: "Sanfte Erinnerungen, wenn etwas ansteht." },
+      { title: "Tierarztnotizen", line: "Was du gefragt hast, was dir gesagt wurde." },
       { title: "Gesundheitsübersicht", line: "Eine Seite zum Mitnehmen." },
     ],
     foodItems: [
-      { title: "Futter- und Fütterungsplan", line: "Ungefähr wie viel, für Ihren Hund." },
-      { title: "Fütterungsroutine", line: "Mahlzeiten pro Tag, Zeiten, die Ihnen passen." },
-      { title: "Futterprotokoll", line: "Was gefressen wird, an einem Ort gesammelt." },
+      { title: "Futter- & Fütterungsplan", line: "Ungefähr wie viel, für deinen Hund." },
+      { title: "Fütterungsroutine", line: "Mahlzeiten pro Tag, zu Zeiten, die dir passen." },
+      { title: "Futterprotokoll", line: "Was er isst, an einem Ort gesammelt." },
       { title: "Verbindung zum Gewicht", line: "Portionen, die dem Gewichtsprotokoll folgen." },
-      { title: "Leckerlis", line: "Auf einen sinnvollen Anteil des Tages begrenzt." },
-      { title: "Wasser", line: "Sauber und aufgefüllt, immer." },
-      { title: "Futtersicherheit", line: "Sicher, mit Vorsicht oder vermeiden — über 55 Lebensmittel." },
+      { title: "Leckerlis", line: "Auf einen vernünftigen Teil des Tages begrenzt." },
+      { title: "Wasser", line: "Sauber und immer aufgefüllt." },
+      {
+        title: "Futtersicherheit",
+        line: "Sicher, mit Vorsicht oder vermeiden — 55+ Lebensmittel.",
+      },
     ],
     week: [
       { day: "Montag", items: ["Spaziergang", "Training", "Zähne"] },
-      { day: "Dienstag", items: ["Spaziergang", "Geistige Beschäftigung"] },
+      { day: "Dienstag", items: ["Spaziergang", "Mentale Beschäftigung"] },
       { day: "Mittwoch", items: ["Training", "Fellpflege"] },
       { day: "Donnerstag", items: ["Langer Spaziergang", "Pfotencheck"] },
       { day: "Freitag", items: ["Spaziergang", "Training", "Zähne"] },
@@ -2275,7 +3302,7 @@ const copy = {
     ],
     dogLife: [
       "Parks",
-      "Gassi-Bereiche",
+      "Gassi-Gebiete",
       "Hundefreundliche Orte",
       "Trainer",
       "Hundefriseure",
@@ -2285,12 +3312,12 @@ const copy = {
     travelItems: [
       "Autofahrten",
       "Lange Spaziergänge",
-      "Wanderungen",
-      "Urlaube",
+      "Wandern",
+      "Urlaub",
       "Auslandsreisen",
       "Reisecheckliste",
       "Reisedokumente",
-      "Länderspezifische Anforderungen",
+      "Anforderungen von Land zu Land",
     ],
     packContents: [
       "Hundeprofil",
@@ -2305,75 +3332,99 @@ const copy = {
       "Komplettes Hundepaket",
       "Gesundheitsübersicht",
       "Trainingsplan",
-      "Futter- und Fütterungsplan",
+      "Futter- & Fütterungsplan",
       "Wochenplan",
       "Wichtige Kontakte",
-      "Notizen zum Tierarztbesuch",
+      "Notizen vom Tierarztbesuch",
       "Reisepaket",
       "Pflege-Checkliste",
     ],
     journey: [
-      "Über einen Hund nachdenken",
+      "Überlegst du dir einen Hund",
       "Meinen Hund finden",
-      "Vorbereiten",
+      "Bereit machen",
       "Willkommen zu Hause",
       "Mein Hund",
-      "Training",
-      "Fütterung",
+      "Trainieren",
+      "Füttern",
       "Pflege",
       "Reisen",
       "Das Leben genießen",
     ],
     freeList: [
-      "Ist ein Hund das Richtige für mich?",
+      "Passt ein Hund zu mir?",
       "Meinen Hund finden",
-      "Grundlegende Rasseinformationen",
+      "Grundlegende Rasseninformationen",
       "Ratgeber zur Hundeanschaffung",
-      "Einfaches Hundeleben",
+      "Grundlegendes Hundeleben",
       "Ausgewählte kostenlose Ratgeber",
     ],
     plusList: [
-      "Alles aus Kostenlos",
+      "Alles aus Free",
       "Mein Hund",
-      "Vollständiges Training",
+      "Komplettes Training",
       "Gesundheit & Pflege",
       "Futter & Fütterung",
       "Meine Woche",
       "Pflegekalender",
       "Erweitertes Hundeleben",
-      "Reisewerkzeuge",
+      "Reisetools",
       "Prüfung für Auslandsreisen",
       "Komplettes Hundepaket",
-      "Druckbare Dokumente",
+      "Ausdruckbare Dokumente",
       "Mehrere Hunde",
       "Ein ausführlicherer Match-Bericht",
       "Fortschritt über die Zeit",
     ],
     firstWeek: [
-      { day: "Tag 1", title: "Mein Hund anlegen", line: "Geben Sie Ihrem Hund einen eigenen Platz." },
-      { day: "Tag 2", title: "Pflege einrichten", line: "Fügen Sie Fütterung, Zähne, Fellpflege und Alltagsroutinen hinzu." },
-      { day: "Tag 3", title: "Training beginnen", line: "Wählen Sie ein Programm und machen Sie den ersten kleinen Schritt." },
-      { day: "Tag 4", title: "Meine Woche aufbauen", line: "Bringen Sie Spaziergänge, Training und Pflege zusammen." },
-      { day: "Tag 5", title: "Hundeleben entdecken", line: "Finden Sie Orte und Dienste, die zu Ihrem Leben mit Ihrem Hund passen." },
-      { day: "Tag 6", title: "Nächste Reise planen", line: "Machen Sie Ihre Reisecheckliste fertig." },
-      { day: "Tag 7", title: "Hundepaket erstellen", line: "Behalten Sie das Wichtige zusammen, auf dem Bildschirm oder auf Papier." },
+      { day: "Tag 1", title: "Mein Hund anlegen", line: "Gib deinem Hund einen eigenen Platz." },
+      {
+        day: "Tag 2",
+        title: "Pflege einrichten",
+        line: "Füge Fütterung, Zahnpflege, Fellpflege und Alltagsroutinen hinzu.",
+      },
+      {
+        day: "Tag 3",
+        title: "Mit dem Training beginnen",
+        line: "Wähle ein Programm und mach den ersten kleinen Schritt.",
+      },
+      {
+        day: "Tag 4",
+        title: "Meine Woche aufbauen",
+        line: "Bringe Spaziergänge, Training und Pflege zusammen.",
+      },
+      {
+        day: "Tag 5",
+        title: "Hundeleben entdecken",
+        line: "Finde Orte und Services, die zu deinem Leben mit deinem Hund passen.",
+      },
+      {
+        day: "Tag 6",
+        title: "Deine nächste Reise planen",
+        line: "Mach deine Reisecheckliste fertig.",
+      },
+      {
+        day: "Tag 7",
+        title: "Dein Hundepaket erstellen",
+        line: "Halte das Wichtigste zusammen, auf dem Bildschirm oder auf Papier.",
+      },
     ],
     faqs: [
       {
         q: "Was ist DoggMatch+?",
-        a: "Das ist die Mitgliederseite von DoggMatch. Kostenlos hilft Ihnen, den richtigen Hund zu finden. DoggMatch+ hilft Ihnen, sich Tag für Tag um diesen Hund zu kümmern — Training, Futter, Gesundheit, Routinen, Reisen und Dokumente, alles an einem Ort.",
+        a: "Das ist die Mitgliedschaftsseite von DoggMatch. Free hilft dir, den richtigen Hund zu finden. DoggMatch+ hilft dir, dich Tag für Tag um diesen Hund zu kümmern — Training, Futter, Gesundheit, Routinen, Reisen und Dokumente, alles an einem Ort.",
       },
       {
         q: "Was bekomme ich mit DoggMatch+?",
-        a: "Mein Hund, die vollständigen Trainingsprogramme, Gesundheit und Pflege, Futter und Fütterung, Meine Woche, den Pflegekalender, Reisewerkzeuge, das komplette Hundepaket und druckbare Dokumente — plus einen ausführlicheren Match-Bericht.",
+        a: "Mein Hund, die vollständigen Trainingsprogramme, Gesundheit und Pflege, Futter und Fütterung, Meine Woche, den Pflegekalender, Reisetools, das komplette Hundepaket und ausdruckbare Dokumente — plus einen ausführlicheren Match-Bericht.",
       },
       {
         q: "Was bleibt kostenlos?",
-        a: "Alles, was Sie brauchen, um den richtigen Hund zu finden. Ist ein Hund das Richtige für mich?, Meinen Hund finden, Rasseinformationen, die Ratgeber zur Hundeanschaffung, einfaches Hundeleben und unsere kostenlosen Ratgeber bleiben kostenlos.",
+        a: "Alles, was du brauchst, um den richtigen Hund zu finden. Passt ein Hund zu mir?, Meinen Hund finden, Rasseninformationen, die Ratgeber zur Hundeanschaffung, das grundlegende Hundeleben und unsere kostenlosen Ratgeber bleiben kostenlos.",
       },
       {
         q: "Kann ich DoggMatch+ für mehr als einen Hund nutzen?",
-        a: "Ja. Sie können für jeden Hund ein eigenes Profil führen und zwischen ihnen wechseln, sodass nichts durcheinandergerät.",
+        a: "Ja. Du kannst für jeden Hund ein eigenes Profil führen und zwischen ihnen wechseln, sodass nichts durcheinandergerät.",
       },
       {
         q: "Kann ich die Informationen zu meinem Hund ausdrucken?",
@@ -2381,57 +3432,58 @@ const copy = {
       },
       {
         q: "Kann ich DoggMatch auf Reisen nutzen?",
-        a: "Ja. Es gibt Hinweise zu Autofahrten, Wanderungen und Urlauben, eine länderspezifische Prüfung für Auslandsreisen und ein Reisepaket, das Sie auf Papier mitnehmen können.",
+        a: "Ja. Es gibt Hinweise zu Autofahrten, Wanderungen und Urlaub, eine Prüfung der Anforderungen von Land zu Land für Auslandsreisen und ein Reisepaket, das du auf Papier mitnehmen kannst.",
       },
       {
-        q: "Ist DoggMatch tierärztlicher Rat?",
-        a: "Nein. Wir bieten allgemeine Hinweise zum Leben mit Hund. Bei allem Medizinischen, oder wenn Sie sich um Ihren Hund sorgen, sprechen Sie bitte mit Ihrem Tierarzt.",
+        q: "Ist DoggMatch tierärztliche Beratung?",
+        a: "Nein. Wir bieten allgemeine Hinweise zum Leben mit Hund. Bei allem Medizinischen oder wenn du dir Sorgen um deinen Hund machst, wende dich bitte an deinen Tierarzt.",
       },
       {
         q: "Kann ich meine Mitgliedschaft kündigen?",
-        a: "Ja, jederzeit. Öffnen Sie Ihre Kontoseite, und Sie können Ihre Mitgliedschaft selbst ändern oder kündigen — sie bleibt bis zum Ende des bereits bezahlten Zeitraums aktiv.",
+        a: "Ja, jederzeit. Öffne deine Kontoseite, dort kannst du deine Mitgliedschaft selbst ändern oder kündigen — sie bleibt bis zum Ende des bereits bezahlten Zeitraums aktiv.",
       },
       {
         q: "Kann ich zwischen monatlicher und jährlicher Mitgliedschaft wählen?",
-        a: "Ja — 7,99 € im Monat, oder 59,99 € im Jahr, was etwa 5 € im Monat entspricht. Sie können später von Ihrem Konto aus zwischen beiden wechseln.",
+        a: "Ja — 7,99 € im Monat oder 59,99 € im Jahr, was etwa 5 € im Monat entspricht. Du kannst später jederzeit über dein Konto wechseln.",
       },
       {
         q: "Was passiert, wenn ich beitrete?",
-        a: "Sie erstellen Mein Hund, fügen ein paar Details hinzu, und alles andere auf der Seite beginnt, sich um diesen Hund herum einzurichten. Eine ruhige erste Woche führt Sie hindurch.",
+        a: "Du legst Mein Hund an, fügst ein paar Details hinzu, und alles andere auf der Seite beginnt, sich um diesen Hund herum einzurichten. Eine sanfte erste Woche führt dich durch die ersten Schritte.",
       },
     ],
     starsLabel: (filled: number) => `${filled} von 5`,
     hero: {
       eyebrow: "Mitgliedschaft",
-      lead: "Mehr als nur Ihren Hund zu finden. Ein besseres Leben zusammen.",
-      body: "Ihre DoggMatch-Reise endet nicht, wenn Sie den richtigen Hund gefunden haben. Premium gibt Ihnen die Werkzeuge, Pläne und den persönlichen Raum, um Ihrem Hund ein glückliches, gesundes und gut organisiertes Leben zu geben.",
-      heroAlt: "Eine Frau lehnt ihre Stirn an ihren Labrador bei Sonnenuntergang",
+      lead: "Mehr als nur deinen Hund zu finden. Ein besseres Leben zusammen.",
+      body: "Deine DoggMatch-Reise endet nicht, wenn du den richtigen Hund gefunden hast. Premium gibt dir die Werkzeuge, Pläne und den persönlichen Raum, um deinem Hund ein glückliches, gesundes und gut organisiertes Leben zu ermöglichen.",
+      heroAlt: "Eine Frau lehnt bei Sonnenuntergang ihre Stirn an ihren Labrador",
       exploreCta: "DoggMatch+ entdecken",
       seeAllCta: "Alles Enthaltene ansehen",
     },
     coreMessage: "bringt alles zusammen.",
     myDog: {
       eyebrow: "Der Mittelpunkt von allem",
-      title: "Ihr Hund. Ihr Raum.",
-      body: "Mein Hund ist das persönliche Zuhause Ihres Hundes innerhalb von DoggMatch. Alles, was Sie festhalten, lebt hier — und alles andere auf der Seite fließt hinein.",
-      lunaAlt: "Luna, ein Labrador Retriever",
+      title: "Dein Hund. Dein Raum.",
+      body: "Mein Hund ist das persönliche Zuhause deines Hundes innerhalb von DoggMatch. Alles, was du im Blick behältst, lebt hier — und alles andere auf der Seite fließt hier ein.",
+      lunaAlt: "Luna, eine Labrador Retriever Hündin",
       lunaName: "Luna",
       lunaBreedAge: "Labrador Retriever · 3 Jahre",
       today: "Heute",
-      sideTitle: "Alles über Ihren Hund, an einem Ort",
-      sideBody: "Gesundheit, Futter, Training, Zähne, Fell, Pfoten, Gewicht, Aktivität, Verhalten, Ihre Woche, Reisen und Dokumente. Sie müssen nicht alles ausfüllen. Fügen Sie hinzu, was nützlich ist, der Rest wartet still, bis Sie es brauchen.",
+      sideTitle: "Alles über deinen Hund, an einem Ort",
+      sideBody:
+        "Gesundheit, Futter, Training, Zähne, Fell, Pfoten, Gewicht, Aktivität, Verhalten, deine Woche, Reisen und Dokumente. Du musst nicht alles ausfüllen. Füge hinzu, was nützlich ist, der Rest wartet still, bis du es brauchst.",
       cta: "Mein Hund ansehen",
     },
     productMessage: {
-      titleLine1: "Finden Sie Ihren Hund.",
-      titleLine2: "Dann leben Sie das Leben zusammen.",
-      body: "Den richtigen Hund zu finden, ist nur der Anfang. DoggMatch+ gibt Ihnen einen Ort, um sich um die alltäglichen Dinge zu kümmern, die zählen — von Training und Fütterung bis zu Gesundheit, Reisen, Routinen und den kleinen Momenten dazwischen.",
+      titleLine1: "Finde deinen Hund.",
+      titleLine2: "Dann lebt das Leben gemeinsam.",
+      body: "Den richtigen Hund zu finden ist nur der Anfang. DoggMatch+ gibt dir einen Ort, um dich um die alltäglichen Dinge zu kümmern, die zählen — von Training und Fütterung bis zu Gesundheit, Reisen, Routinen und den kleinen Momenten dazwischen.",
     },
     training: {
       trainAlt: "Ein Mann übt Rückruf mit seinem Hund auf einer Wiese",
       eyebrow: "Gemeinsam trainieren",
       title: "Kleine Schritte. Echter Fortschritt.",
-      body: "Strukturierte Programme aus kurzen, freundlichen Einheiten, die tatsächlich in einen normalen Tag passen. Kein Anschreien, keine Geräte, keine Versprechen darüber, wie schnell es geht.",
+      body: "Strukturierte Programme aus kurzen, freundlichen Einheiten, die tatsächlich in einen normalen Tag passen. Kein Schreien, keine Hilfsmittel, keine Versprechen, wie schnell es geht.",
       lunaName: "Luna",
       recall: "Rückruf",
       progressNote: "4 Einheiten diese Woche abgeschlossen.",
@@ -2440,122 +3492,132 @@ const copy = {
     },
     healthCare: {
       eyebrow: "Gesundheit & Pflege",
-      title: "Kümmern Sie sich um die kleinen Dinge",
-      body: "Halten Sie das Wichtige zusammen, bemerken Sie Veränderungen über die Zeit, und bleiben Sie organisiert. DoggMatch ist kein tierärztlicher Dienst — wenn Sie sich Sorgen machen, ist Ihr Tierarzt die richtige Adresse.",
-      careAlt: "Eine Halterin überprüft ruhig ihren Hund zu Hause",
+      title: "Kümmere dich um die kleinen Dinge",
+      body: "Halte das Wichtige zusammen, bemerke Veränderungen über die Zeit und bleib organisiert. DoggMatch ist kein tierärztlicher Dienst — wenn dir etwas Sorgen macht, ist dein Tierarzt die richtige Anlaufstelle.",
+      careAlt: "Eine Halterin untersucht ihren Hund ruhig zu Hause",
     },
     food: {
-      foodAlt: "Eine abgemessene Schüssel Futter wird für einen wartenden Hund zubereitet",
+      foodAlt: "Eine abgemessene Schüssel Futter wird für einen wartenden Hund vorbereitet",
       eyebrow: "Gut füttern",
       title: "Fütterung leichter verständlich machen",
-      body: "Portionen, berechnet aus Gewicht, Alter und Aktivität Ihres Hundes — im Einklang mit dem Gewichtsprotokoll. Vernünftig, wissenschaftlich fundiert, keine Modeerscheinungen.",
+      body: "Portionen, berechnet nach Gewicht, Alter und Aktivitätslevel deines Hundes — und im Takt mit dem Gewichtsprotokoll gehalten. Vernünftig, evidenzbasiert, keine Modetrends.",
       portionsCta: "Futter & Portionen",
       safetyCta: "Darf mein Hund das essen?",
     },
     myWeek: {
       eyebrow: "Meine Woche",
-      title: "Ihre Woche mit Ihrem Hund",
-      body: "Bringen Sie Training, Pflege, Aktivität und Alltagsroutinen zusammen, damit nichts Wichtiges still verloren geht.",
+      title: "Deine Woche mit deinem Hund",
+      body: "Bringe Training, Pflege, Aktivität und Alltagsroutinen zusammen, damit nichts Wichtiges still untergeht.",
       cta: "Meine Woche öffnen",
     },
     dogLifeSection: {
       eyebrow: "Hundeleben",
-      title: "Das Leben außerhalb des Zuhauses",
-      body: "Die Alltagskarte des Hundelebens in Ihrer Nähe — wo Sie spazieren gehen können, wo Sie willkommen sind und wen Sie anrufen sollten.",
+      title: "Das Leben jenseits des Zuhauses",
+      body: "Die alltägliche Karte des Hundelebens in deiner Nähe — wo man laufen kann, wo man willkommen ist und wen man anrufen kann.",
       cta: "Hundeleben entdecken",
       dogLifeAlt: "Ein Hund und sein Halter auf einem Küstenweg am frühen Morgen",
     },
     travel: {
-      travelAlt: "Ein Hund sicher angeschnallt im Kofferraum vor einer Fahrt",
+      travelAlt: "Ein Hund, sicher angeschnallt auf dem Rücksitz eines Autos vor einer Fahrt",
       eyebrow: "Reisen",
-      title: "Nehmen Sie Ihren Hund mit",
-      body: "Vom Schulweg bis zum Grenzübertritt. Die Regeln basieren auf aktuellen offiziellen Anforderungen und ändern sich — prüfen Sie vor der Reise immer bei den Behörden.",
+      title: "Nimm deinen Hund mit",
+      body: "Vom Schulweg bis zum Grenzübertritt. Die Regeln basieren auf aktuellen offiziellen Anforderungen und ändern sich — prüfe vor der Reise immer bei den Behörden.",
       checkerEyebrow: "Prüfung für Auslandsreisen",
       route: "Norwegen → Polen",
-      checkerItems: ["Mikrochip", "Tollwutimpfung", "Heimtierausweis", "Anforderungen im Zielland", "Anforderungen bei der Rückkehr"],
-      checkCta: "Ihre Route prüfen",
+      checkerItems: [
+        "Mikrochip",
+        "Tollwutimpfung",
+        "Heimtierausweis",
+        "Anforderungen des Ziellandes",
+        "Anforderungen bei der Rückreise",
+      ],
+      checkCta: "Route prüfen",
     },
     print: {
       eyebrow: "Drucken & speichern",
-      title: "Manche Dinge sind auf Papier besser.",
-      body: "Halten Sie die wichtigen Informationen bei sich — zu Hause, im Auto, beim Tierarzt oder wenn jemand anderes sich um Ihren Hund kümmert.",
+      title: "Manches ist besser auf Papier.",
+      body: "Trage die wichtigen Informationen bei dir — zu Hause, im Auto, beim Tierarzt oder wenn jemand anderes auf deinen Hund aufpasst.",
       cardBrand: "DoggMatch",
-      cardTitle: "Reisepaket für Hunde",
+      cardTitle: "Hunde-Reisepaket",
       cardDog: "Luna · Labrador Retriever",
       createCta: "Reisepaket erstellen",
-      printCta: "Ansehen, was Sie drucken können",
+      printCta: "Sieh, was du drucken kannst",
     },
     multipleDogs: {
       eyebrow: "Mehrere Hunde",
       title: "Ein Zuhause. Jeder Hund.",
-      body: "Premium unterstützt mehr als einen Hund, jeder mit eigenem Profil, Routinen, Training, Gesundheit und Dokumenten. Zwischen ihnen zu wechseln, dauert einen Fingertipp.",
+      body: "Premium unterstützt mehr als einen Hund, jeder mit eigenem Profil, eigenen Routinen, Training, Gesundheit und Dokumenten. Zwischen ihnen wechseln geht mit einem Fingertipp.",
       dogs: [
         { name: "Luna", breed: "Labrador Retriever" },
         { name: "Max", breed: "Cocker Spaniel" },
       ],
     },
     personalisation: {
-      title: "Alles fühlt sich relevanter für Ihren Hund an",
-      body: "DoggMatch braucht keine schlauen Maschinen, um das persönlich zu machen. Die Rasse, das Alter, die Größe und die Aktivität Ihres Hundes, Ihr Lebensstil, Ihre Routinen und alles, was Sie uns mitteilen möchten, formen still, was Sie sehen — welche Lektionen erscheinen, wie viel Futter ungefähr richtig ist, was Ihre Woche vorschlägt.",
+      title: "Alles fühlt sich relevanter für deinen Hund an",
+      body: "DoggMatch braucht keine schlauen Maschinen, um das persönlich zu machen. Rasse, Alter, Größe und Aktivität deines Hundes, dein Lebensstil, deine Routinen und alles, was du uns mitteilst, prägen still, was du siehst — welche Lektionen erscheinen, wie viel Futter ungefähr richtig ist, was deine Woche vorschlägt.",
     },
     journeySection: {
       eyebrow: "Die ganze Reise",
-      title: "Vom ersten Gedanken bis zu einem langen Leben zusammen",
+      title: "Vom ersten Gedanken bis zu einem langen gemeinsamen Leben",
       closing: "— alles an einem Ort verbunden.",
     },
     compare: {
-      eyebrow: "Kostenlos und Premium",
-      title: "Was kostenlos ist, und was mit Premium kommt",
-      body: "Alles, was Sie brauchen, um den richtigen Hund zu finden, bleibt kostenlos. Premium ist für das Leben danach.",
-      freeLabel: "Kostenlos",
+      eyebrow: "Free und Premium",
+      title: "Was kostenlos ist und was mit Premium kommt",
+      body: "Alles, was du brauchst, um den richtigen Hund zu finden, bleibt kostenlos. Premium ist für das Leben danach.",
+      freeLabel: "Free",
       freeHeadline: "Um den richtigen Hund zu finden.",
-      freeQuote: "„Finde den Hund, der zu mir passt.“",
+      freeQuote: "\u201CFinde den Hund, der zu mir passt.\u201D",
       plusLabel: "DoggMatch+",
-      plusHeadline: "Für das Leben mit Ihrem Hund.",
-      plusQuote: "„Hilf mir jetzt, diesem Hund ein wirklich gutes Leben zu geben.“",
+      plusHeadline: "Für das Leben mit deinem Hund.",
+      plusQuote: "\u201CHilf mir jetzt, diesem Hund ein richtig gutes Leben zu geben.\u201D",
     },
     value: {
       eyebrow: "Warum DoggMatch+",
       title: "Drei einfache Gründe",
       items: [
-        { title: "Ein Ort", body: "Alles über das Leben Ihres Hundes, zusammen." },
-        { title: "Jeden Tag nützlich", body: "Nicht nur etwas, das Sie einmal besuchen." },
-        { title: "Rund um Ihren Hund gebaut", body: "Die Informationen Ihres Hundes prägen das Erlebnis." },
+        { title: "Ein Ort", body: "Alles über das Leben deines Hundes, an einem Ort." },
+        { title: "Jeden Tag nützlich", body: "Nicht nur etwas, das du einmal besuchst." },
+        {
+          title: "Auf deinen Hund zugeschnitten",
+          body: "Die Informationen deines Hundes prägen das Erlebnis.",
+        },
       ],
     },
     firstWeekSection: {
-      eyebrow: "Ihre erste Woche mit DoggMatch+",
+      eyebrow: "Deine erste Woche mit DoggMatch+",
       title: "Ein einfacher Start ins Leben mit DoggMatch+.",
-      body: "Nichts, wobei man sich beeilen müsste. Ein bisschen jeden Tag, und am Ende der Woche hat Ihr Hund hier ein Zuhause.",
+      body: "Nichts, wobei du dich beeilen musst. Jeden Tag ein bisschen, und am Ende der Woche hat dein Hund hier ein Zuhause.",
     },
     membership: {
       eyebrow: "Mitgliedschaft",
-      body: "Eine Mitgliedschaft, alles inklusive. Wählen Sie den Rhythmus, der zu Ihnen passt.",
+      body: "Eine Mitgliedschaft, alles inklusive. Wähle den Rhythmus, der zu dir passt.",
       monthlyLabel: "Monatlich",
-      monthlyPrice: "7,99 €",
+      monthlyPrice: "€7,99",
       monthlyUnit: "/ Monat",
       monthlyBody: "Alles in DoggMatch+, Monat für Monat.",
       monthlyJoin: "Monatlich beitreten",
       yearlyLabel: "Jährlich",
-      bestValue: "Bestes Angebot",
-      yearlyPrice: "59,99 €",
+      bestValue: "Bester Wert",
+      yearlyPrice: "€59,99",
       yearlyUnit: "/ Jahr",
-      yearlyHighlight: "Nur 5 € im Monat bei jährlicher Abrechnung",
-      yearlyBody: "Sparen Sie 35,89 € im Jahr im Vergleich zur monatlichen Zahlung.",
-      yearlyJoin: "Jährlich beitreten — bestes Angebot",
+      yearlyHighlight: "Nur €5 im Monat bei jährlicher Abrechnung",
+      yearlyBody: "Spare €35,89 im Jahr im Vergleich zur monatlichen Zahlung.",
+      yearlyJoin: "Jährlich beitreten — bester Wert",
       openLine: "Die Mitgliedschaft ist offen.",
-      openBody: "Die Zahlung wird sicher von Stripe abgewickelt. Sie können Ihre Mitgliedschaft jederzeit selbst ändern oder kündigen, direkt über Ihr Konto.",
+      openBody:
+        "Die Zahlung wird sicher über Stripe abgewickelt. Du kannst deine Mitgliedschaft jederzeit selbst über dein Konto ändern oder kündigen.",
     },
     faqSection: {
       eyebrow: "Fragen",
-      title: "Was Leute meistens fragen",
-      body: "Kurze, ehrliche Antworten. Wenn Sie noch etwas anderes wissen möchten, schreiben Sie uns einfach.",
-      stillWondering: "Fragen Sie sich noch etwas?",
-      getInTouch: "Kontakt aufnehmen",
+      title: "Was Menschen meistens fragen",
+      body: "Kurze, ehrliche Antworten. Wenn du noch etwas anderes wissen möchtest, schreib uns einfach.",
+      stillWondering: "Fragst du dich noch etwas?",
+      getInTouch: "Kontaktiere uns",
     },
     finalCta: {
-      title: "Ihr Hund ist mehr als ein Match.",
-      body: "DoggMatch hilft Ihnen, den Hund zu finden, der zu Ihnen passt. DoggMatch+ hilft Ihnen, diesem Hund ein wirklich gutes Leben zu geben.",
+      title: "Dein Hund ist mehr als ein Match.",
+      body: "DoggMatch hilft dir, den Hund zu finden, der zu dir passt. DoggMatch+ hilft dir, diesem Hund ein richtig gutes Leben zu geben.",
       join: "DoggMatch+ beitreten",
       find: "Meinen Hund finden",
     },
@@ -2564,16 +3626,16 @@ const copy = {
     flow: [
       "Trouvez votre chien",
       "Comprenez votre chien",
-      "Préparez-vous pour votre chien",
+      "Préparez-vous",
       "Vivez avec votre chien",
       "Prenez soin de votre chien",
       "Profitez de la vie ensemble",
     ],
     myDogSections: [
-      { to: "/my-dog/care/everyday-check", label: "Santé", line: "Le rapide contrôle quotidien" },
-      { to: "/my-dog/nutrition", label: "Alimentation", line: "Portions et repas" },
-      { to: "/train", label: "Éducation", line: "La courte session du jour" },
-      { to: "/my-dog/care/dental", label: "Dentaire", line: "Une minute par jour" },
+      { to: "/my-dog/care/everyday-check", label: "Santé", line: "Le petit contrôle quotidien" },
+      { to: "/my-dog/nutrition", label: "Nourriture", line: "Portions et repas" },
+      { to: "/train", label: "Éducation", line: "La séance courte du jour" },
+      { to: "/my-dog/care/dental", label: "Dents", line: "Une minute par jour" },
       { to: "/my-dog/care/coat", label: "Pelage & soins", line: "Brossage et bain" },
       { to: "/my-dog/care/paws", label: "Pattes & griffes", line: "Coussinets et hiver" },
       { to: "/my-dog/weight", label: "Poids", line: "Un suivi simple et bienveillant" },
@@ -2585,41 +3647,50 @@ const copy = {
     ],
     programmes: [
       { title: "Bases pour chiot", line: "Les premières semaines, en douceur" },
-      { title: "Rappel", line: "Revient, chaque fois que vous demandez" },
-      { title: "Marche en laisse détendue", line: "Des promenades sans bras de fer" },
-      { title: "Comportement calme", line: "S'installer sur un tapis" },
-      { title: "Bonnes manières du quotidien", line: "Portes, salutations, attente" },
+      { title: "Rappel", line: "Revenir, à chaque fois qu'on l'appelle" },
+      { title: "Marche en laisse détendue", line: "Des balades sans bras de fer" },
+      { title: "Calme", line: "S'installer sur un tapis" },
+      { title: "Bonnes manières au quotidien", line: "Portes, salutations, attente" },
       { title: "Concentration", line: "Son nom, son attention" },
       { title: "Reste", line: "Une seconde de plus à chaque fois" },
       { title: "Socialisation", line: "De nouveaux endroits, à son rythme" },
     ],
     careItems: [
-      { title: "Journal de santé", line: "Remarquez les changements sur plusieurs semaines, pas à vue de nez." },
-      { title: "Poids", line: "Le contrôle manuel plus un relevé simple." },
-      { title: "Dentaire", line: "Dents et gencives, trente secondes à la fois." },
-      { title: "Pelage & peau", line: "Type de pelage, rythme de brossage, nœuds et bosses." },
-      { title: "Pattes & griffes", line: "Coussinets, griffes, sel et bitume chaud." },
-      { title: "Calendrier de soins", line: "Des rappels discrets quand quelque chose arrive à échéance." },
-      { title: "Notes vétérinaires", line: "Ce que vous avez demandé, ce qu'on vous a dit." },
-      { title: "Résumé de santé", line: "Une page à emporter avec vous." },
+      {
+        title: "Journal de santé",
+        line: "Repérer les changements sur des semaines, pas au hasard.",
+      },
+      { title: "Poids", line: "Le contrôle manuel, plus un suivi simple." },
+      { title: "Dents", line: "Dents et gencives, trente secondes à la fois." },
+      { title: "Pelage & peau", line: "Type de pelage, rythme de brossage, nœuds et grosseurs." },
+      { title: "Pattes & griffes", line: "Coussinets, griffes, sel et trottoir brûlant." },
+      {
+        title: "Calendrier de soins",
+        line: "Des petits rappels discrets quand quelque chose approche.",
+      },
+      { title: "Notes du vétérinaire", line: "Ce que vous avez demandé, ce qu'on vous a répondu." },
+      { title: "Résumé santé", line: "Une page à emporter avec vous." },
     ],
     foodItems: [
-      { title: "Plan alimentaire", line: "Environ combien, pour votre chien." },
-      { title: "Routine alimentaire", line: "Repas par jour, à des horaires qui vous conviennent." },
-      { title: "Suivi alimentaire", line: "Ce qu'il mange, rassemblé au même endroit." },
-      { title: "Lien avec le poids", line: "Des portions qui suivent le relevé de poids." },
-      { title: "Friandises", line: "Limitées à une part raisonnable de la journée." },
-      { title: "Eau", line: "Propre et remplie, toujours." },
-      { title: "Sécurité alimentaire", line: "Sûr, à surveiller ou à éviter — plus de 55 aliments." },
+      { title: "Plan alimentaire", line: "Combien, à peu près, pour votre chien." },
+      { title: "Routine des repas", line: "Repas par jour, à des horaires qui vous conviennent." },
+      { title: "Suivi alimentaire", line: "Ce qu'il mange, regroupé au même endroit." },
+      { title: "Lien avec le poids", line: "Des portions qui suivent le suivi de poids." },
+      { title: "Friandises", line: "Gardées à une part raisonnable de la journée." },
+      { title: "Eau", line: "Propre et toujours disponible." },
+      {
+        title: "Sécurité alimentaire",
+        line: "Sûr, à surveiller ou à éviter — plus de 55 aliments.",
+      },
     ],
     week: [
-      { day: "Lundi", items: ["Promenade", "Éducation", "Dentaire"] },
+      { day: "Lundi", items: ["Promenade", "Éducation", "Dents"] },
       { day: "Mardi", items: ["Promenade", "Stimulation mentale"] },
       { day: "Mercredi", items: ["Éducation", "Toilettage"] },
       { day: "Jeudi", items: ["Longue promenade", "Contrôle des pattes"] },
-      { day: "Vendredi", items: ["Promenade", "Éducation", "Dentaire"] },
+      { day: "Vendredi", items: ["Promenade", "Éducation", "Dents"] },
       { day: "Samedi", items: ["Aventure", "Pesée"] },
-      { day: "Dimanche", items: ["Promenade reniflante", "Moment calme"] },
+      { day: "Dimanche", items: ["Balade renifleuse", "Moment calme"] },
     ],
     dogLife: [
       "Parcs",
@@ -2628,15 +3699,15 @@ const copy = {
       "Éducateurs",
       "Toiletteurs",
       "Vétérinaires",
-      "Hébergements acceptant les chiens",
+      "Hébergements pour chiens",
     ],
     travelItems: [
-      "Trajets en voiture",
+      "Voyage en voiture",
       "Longues promenades",
-      "Randonnées",
+      "Randonnée",
       "Vacances",
-      "Voyages à l'étranger",
-      "Liste de voyage",
+      "Voyages internationaux",
+      "Check-list de voyage",
       "Documents de voyage",
       "Exigences d'un pays à l'autre",
     ],
@@ -2644,27 +3715,27 @@ const copy = {
       "Profil du chien",
       "Informations sur le propriétaire",
       "Contacts importants",
-      "Liste de voyage",
-      "Informations de santé",
+      "Check-list de voyage",
+      "Informations santé",
       "Documents",
       "Informations d'urgence",
     ],
     docs: [
-      "Pack chien complet",
-      "Résumé de santé",
+      "Pack complet du chien",
+      "Résumé santé",
       "Plan d'éducation",
       "Plan alimentaire",
       "Plan hebdomadaire",
       "Contacts importants",
-      "Notes de visite vétérinaire",
-      "Pack voyage",
-      "Liste de toilettage",
+      "Notes de visite chez le vétérinaire",
+      "Pack de voyage",
+      "Check-list toilettage",
     ],
     journey: [
-      "Envisager un chien",
+      "Envisager d'avoir un chien",
       "Trouver mon chien",
       "Se préparer",
-      "Bienvenue à la maison",
+      "L'accueillir",
       "Mon chien",
       "Éduquer",
       "Nourrir",
@@ -2677,8 +3748,8 @@ const copy = {
       "Trouver mon chien",
       "Informations de base sur les races",
       "Guides pour adopter un chien",
-      "Vie du chien de base",
-      "Guides gratuits sélectionnés",
+      "Dog Life de base",
+      "Une sélection de guides gratuits",
     ],
     plusList: [
       "Tout ce qui est dans Gratuit",
@@ -2688,155 +3759,190 @@ const copy = {
       "Alimentation",
       "Ma semaine",
       "Calendrier de soins",
-      "Vie du chien avancée",
+      "Dog Life avancé",
       "Outils de voyage",
       "Vérificateur de voyage international",
-      "Pack chien complet",
+      "Pack complet du chien",
       "Documents imprimables",
       "Plusieurs chiens",
       "Un rapport de compatibilité plus complet",
-      "Progrès dans le temps",
+      "Une évolution suivie dans le temps",
     ],
     firstWeek: [
-      { day: "Jour 1", title: "Créer Mon chien", line: "Donnez à votre chien un espace bien à lui." },
-      { day: "Jour 2", title: "Configurer les soins", line: "Ajoutez alimentation, dentaire, toilettage et routines quotidiennes." },
-      { day: "Jour 3", title: "Commencer l'éducation", line: "Choisissez un programme et faites le premier petit pas." },
-      { day: "Jour 4", title: "Construire Ma semaine", line: "Rassemblez promenades, éducation et soins en un seul endroit." },
-      { day: "Jour 5", title: "Explorer la Vie du chien", line: "Trouvez des lieux et des services adaptés à votre vie avec votre chien." },
-      { day: "Jour 6", title: "Planifier votre prochain voyage", line: "Préparez votre liste de voyage." },
-      { day: "Jour 7", title: "Créer votre Pack chien", line: "Gardez l'essentiel rassemblé, à l'écran ou sur papier." },
+      {
+        day: "Jour 1",
+        title: "Créer Mon chien",
+        line: "Offrez à votre chien un espace bien à lui.",
+      },
+      {
+        day: "Jour 2",
+        title: "Mettre en place les soins",
+        line: "Ajoutez alimentation, dents, toilettage et routines quotidiennes.",
+      },
+      {
+        day: "Jour 3",
+        title: "Commencer l'éducation",
+        line: "Choisissez un programme et faites le premier petit pas.",
+      },
+      {
+        day: "Jour 4",
+        title: "Construire Ma semaine",
+        line: "Réunissez promenades, éducation et soins.",
+      },
+      {
+        day: "Jour 5",
+        title: "Explorer Dog Life",
+        line: "Trouvez des lieux et services adaptés à votre vie avec votre chien.",
+      },
+      {
+        day: "Jour 6",
+        title: "Préparer votre prochain voyage",
+        line: "Préparez votre check-list de voyage.",
+      },
+      {
+        day: "Jour 7",
+        title: "Créer votre Pack du chien",
+        line: "Gardez l'essentiel réuni, à l'écran ou sur papier.",
+      },
     ],
     faqs: [
       {
         q: "Qu'est-ce que DoggMatch+ ?",
-        a: "C'est le volet adhésion de DoggMatch. La version gratuite vous aide à trouver le bon chien. DoggMatch+ vous aide à prendre soin de ce chien au quotidien — éducation, alimentation, santé, routines, voyages et documents, tout au même endroit.",
+        a: "C'est la partie abonnement de DoggMatch. Gratuit vous aide à trouver le bon chien. DoggMatch+ vous aide à vous en occuper au quotidien — éducation, nourriture, santé, routines, voyages et documents, tout au même endroit.",
       },
       {
         q: "Qu'est-ce que j'obtiens avec DoggMatch+ ?",
-        a: "Mon chien, les programmes d'éducation complets, la santé et les soins, l'alimentation, Ma semaine, le calendrier de soins, les outils de voyage, le Pack chien complet et les documents imprimables — plus un rapport de compatibilité plus complet.",
+        a: "Mon chien, les programmes d'éducation complets, la santé et les soins, l'alimentation, Ma semaine, le calendrier de soins, les outils de voyage, le Pack du chien complet et des documents imprimables — ainsi qu'un rapport de compatibilité plus complet.",
       },
       {
         q: "Qu'est-ce qui reste gratuit ?",
-        a: "Tout ce dont vous avez besoin pour trouver le bon chien. Un chien est-il fait pour moi ?, Trouver mon chien, les informations sur les races, les guides pour adopter un chien, la Vie du chien de base et nos guides gratuits restent gratuits.",
+        a: "Tout ce dont vous avez besoin pour trouver le bon chien. « Un chien est-il fait pour moi ? », Trouver mon chien, les informations sur les races, les guides pour adopter un chien, Dog Life de base et nos guides gratuits restent gratuits.",
       },
       {
-        q: "Puis-je utiliser DoggMatch+ pour plus d'un chien ?",
-        a: "Oui. Vous pouvez avoir un profil séparé pour chaque chien et passer de l'un à l'autre, sans que rien ne se mélange.",
+        q: "Puis-je utiliser DoggMatch+ pour plusieurs chiens ?",
+        a: "Oui. Vous pouvez garder un profil distinct pour chaque chien et passer de l'un à l'autre, sans rien mélanger.",
       },
       {
         q: "Puis-je imprimer les informations de mon chien ?",
-        a: "Oui. Le Pack chien et les documents individuels — résumé de santé, plan alimentaire, plan hebdomadaire, contacts, pack voyage — sont tous conçus pour s'imprimer proprement sur A4 ou s'enregistrer en PDF.",
+        a: "Oui. Le Pack du chien et les documents individuels — résumé santé, plan alimentaire, plan hebdomadaire, contacts, pack de voyage — sont tous conçus pour s'imprimer proprement sur A4 ou s'enregistrer en PDF.",
       },
       {
         q: "Puis-je utiliser DoggMatch en voyage ?",
-        a: "Oui. Il y a des conseils pour les trajets en voiture, les randonnées et les vacances, un vérificateur d'exigences d'un pays à l'autre pour les voyages à l'étranger, et un pack voyage que vous pouvez emporter sur papier.",
+        a: "Oui. Il y a des conseils pour la voiture, la randonnée et les vacances, un vérificateur d'un pays à l'autre pour les voyages à l'étranger, et un pack de voyage à emporter sur papier.",
       },
       {
         q: "DoggMatch est-il un avis vétérinaire ?",
-        a: "Non. Nous proposons des conseils généraux sur la vie avec un chien. Pour tout ce qui est médical, ou si vous vous inquiétez pour votre chien, parlez-en à votre vétérinaire.",
+        a: "Non. Nous proposons des conseils généraux sur la vie avec un chien. Pour tout ce qui est médical, ou si votre chien vous inquiète, parlez-en à votre vétérinaire.",
       },
       {
-        q: "Puis-je résilier mon adhésion ?",
-        a: "Oui, quand vous voulez. Ouvrez votre page de compte, et vous pouvez modifier ou résilier votre adhésion vous-même — elle reste active jusqu'à la fin de la période déjà payée.",
+        q: "Puis-je résilier mon abonnement ?",
+        a: "Oui, à tout moment. Ouvrez la page de votre compte, vous pouvez modifier ou résilier votre abonnement vous-même — il reste actif jusqu'à la fin de la période déjà payée.",
       },
       {
-        q: "Puis-je choisir une adhésion mensuelle ou annuelle ?",
-        a: "Oui — 7,99 € par mois, ou 59,99 € par an, ce qui revient à environ 5 € par mois. Vous pouvez basculer entre les deux plus tard depuis votre compte.",
+        q: "Puis-je choisir un abonnement mensuel ou annuel ?",
+        a: "Oui — 7,99 € par mois, ou 59,99 € par an, soit environ 5 € par mois. Vous pouvez changer de formule plus tard depuis votre compte.",
       },
       {
-        q: "Que se passe-t-il quand je rejoins DoggMatch+ ?",
-        a: "Vous créez Mon chien, ajoutez quelques détails, et tout le reste du site commence à s'organiser autour de ce chien. Une première semaine en douceur vous guide tout du long.",
+        q: "Que se passe-t-il quand je m'inscris ?",
+        a: "Vous créez Mon chien, ajoutez quelques informations, et tout le reste du site s'organise autour de ce chien. Une première semaine en douceur vous guide pas à pas.",
       },
     ],
     starsLabel: (filled: number) => `${filled} sur 5`,
     hero: {
-      eyebrow: "Adhésion",
-      lead: "Plus que trouver votre chien. Une meilleure vie ensemble.",
-      body: "Votre parcours DoggMatch ne s'arrête pas quand vous trouvez le bon chien. Premium vous donne les outils, les plans et l'espace personnel pour offrir à votre chien une vie heureuse, saine et bien organisée.",
-      heroAlt: "Une femme pose son front contre son labrador au coucher du soleil",
+      eyebrow: "Abonnement",
+      lead: "Plus que trouver votre chien. Une vie meilleure ensemble.",
+      body: "Votre parcours DoggMatch ne s'arrête pas une fois le bon chien trouvé. Premium vous donne les outils, les plans et l'espace personnel pour offrir à votre chien une vie heureuse, saine et bien organisée.",
+      heroAlt: "Une femme posant son front contre son labrador au coucher du soleil",
       exploreCta: "Découvrir DoggMatch+",
       seeAllCta: "Voir tout ce qui est inclus",
     },
-    coreMessage: "rassemble tout.",
+    coreMessage: "réunit tout cela.",
     myDog: {
       eyebrow: "Le cœur de tout",
       title: "Votre chien. Votre espace.",
-      body: "Mon chien est la maison personnelle de votre chien à l'intérieur de DoggMatch. Tout ce que vous suivez vit ici — et tout le reste du site vient s'y nourrir.",
-      lunaAlt: "Luna, une Labrador Retriever",
+      body: "Mon chien est l'espace personnel de votre chien au sein de DoggMatch. Tout ce que vous suivez vit ici — et tout le reste du site s'y rattache.",
+      lunaAlt: "Luna, une labrador retriever",
       lunaName: "Luna",
       lunaBreedAge: "Labrador Retriever · 3 ans",
       today: "Aujourd'hui",
       sideTitle: "Tout sur votre chien, au même endroit",
-      sideBody: "Santé, alimentation, éducation, dentaire, pelage, pattes, poids, activité, comportement, votre semaine, voyages et documents. Vous n'avez pas besoin de tout remplir. Ajoutez ce qui est utile, le reste attend tranquillement que vous en ayez besoin.",
+      sideBody:
+        "Santé, nourriture, éducation, dents, pelage, pattes, poids, activité, comportement, votre semaine, voyages et documents. Vous n'avez pas besoin de tout remplir. Ajoutez ce qui vous est utile, le reste attend tranquillement.",
       cta: "Voir Mon chien",
     },
     productMessage: {
       titleLine1: "Trouvez votre chien.",
       titleLine2: "Puis vivez la vie ensemble.",
-      body: "Trouver le bon chien n'est que le début. DoggMatch+ vous donne un seul endroit pour prendre soin des choses du quotidien qui comptent — de l'éducation à l'alimentation, en passant par la santé, les voyages, les routines et les petits moments entre les deux.",
+      body: "Trouver le bon chien n'est qu'un début. DoggMatch+ vous offre un seul endroit pour vous occuper de l'essentiel au quotidien — de l'éducation à l'alimentation, en passant par la santé, les voyages, les routines et les petits moments entre les deux.",
     },
     training: {
-      trainAlt: "Un homme travaille le rappel avec son chien dans un pré",
+      trainAlt: "Un homme travaillant le rappel avec son chien dans un champ",
       eyebrow: "Éduquer ensemble",
       title: "Petits pas. Vrais progrès.",
-      body: "Des programmes structurés, faits de courtes sessions bienveillantes que vous pouvez vraiment caser dans une journée normale. Pas de cris, pas de gadgets, aucune promesse sur la vitesse à laquelle ça ira.",
+      body: "Des programmes structurés faits de séances courtes et bienveillantes que vous pouvez vraiment glisser dans une journée normale. Pas de cris, pas de gadgets, pas de promesses sur la vitesse des progrès.",
       lunaName: "Luna",
       recall: "Rappel",
-      progressNote: "4 sessions terminées cette semaine.",
+      progressNote: "4 séances effectuées cette semaine.",
       railLabel: "Programmes d'éducation",
       libraryCta: "Ouvrir la bibliothèque de leçons",
     },
     healthCare: {
       eyebrow: "Santé & soins",
       title: "Prenez soin des petites choses",
-      body: "Gardez l'essentiel rassemblé, remarquez les changements dans le temps, et restez organisé. DoggMatch n'est pas un service vétérinaire — quand quelque chose vous inquiète, votre vétérinaire est le bon interlocuteur.",
-      careAlt: "Une propriétaire examine calmement son chien à la maison",
+      body: "Gardez l'essentiel réuni, repérez les changements dans le temps, et restez organisé. DoggMatch n'est pas un service vétérinaire — quand quelque chose vous inquiète, votre vétérinaire est le bon interlocuteur.",
+      careAlt: "Une propriétaire examinant calmement son chien à la maison",
     },
     food: {
       foodAlt: "Une gamelle de nourriture mesurée préparée pour un chien qui attend",
       eyebrow: "Bien nourrir",
       title: "Rendre l'alimentation plus facile à comprendre",
-      body: "Des portions calculées à partir du poids, de l'âge et de l'activité de votre chien — tenues à jour avec le relevé de poids. Sensé, fondé sur des données, sans effets de mode.",
-      portionsCta: "Alimentation & portions",
+      body: "Des portions calculées selon le poids, l'âge et l'activité de votre chien — puis ajustées au fil du suivi de poids. Sensé, fondé sur des données, sans effet de mode.",
+      portionsCta: "Nourriture & portions",
       safetyCta: "Mon chien peut-il manger ça ?",
     },
     myWeek: {
       eyebrow: "Ma semaine",
       title: "Votre semaine avec votre chien",
-      body: "Rassemblez éducation, soins, activité et routines quotidiennes en un seul endroit, pour que rien d'important ne vous échappe discrètement.",
+      body: "Réunissez éducation, soins, activité et routines quotidiennes, pour que rien d'important ne passe entre les mailles.",
       cta: "Ouvrir Ma semaine",
     },
     dogLifeSection: {
-      eyebrow: "Vie du chien",
-      title: "La vie hors de la maison",
-      body: "La carte quotidienne de la vie d'un chien près de chez vous — où se promener, où vous êtes bienvenu et qui appeler.",
-      cta: "Explorer la Vie du chien",
+      eyebrow: "Dog Life",
+      title: "La vie au-delà de la maison",
+      body: "La carte du quotidien de la vie avec un chien près de chez vous — où se promener, où vous êtes bienvenu et qui appeler.",
+      cta: "Explorer Dog Life",
       dogLifeAlt: "Un chien et son propriétaire sur un sentier côtier tôt le matin",
     },
     travel: {
-      travelAlt: "Un chien attaché en sécurité à l'arrière d'une voiture avant un trajet",
+      travelAlt: "Un chien harnaché en sécurité à l'arrière d'une voiture avant un trajet",
       eyebrow: "Voyages",
       title: "Emmenez votre chien avec vous",
-      body: "De l'école au passage d'une frontière. Les règles sont basées sur les exigences officielles en vigueur et changent — vérifiez toujours auprès des autorités avant de voyager.",
+      body: "Du trajet à l'école au passage d'une frontière. Les règles s'appuient sur les exigences officielles actuelles et changent — vérifiez toujours auprès des autorités avant de voyager.",
       checkerEyebrow: "Vérificateur de voyage international",
       route: "Norvège → Pologne",
-      checkerItems: ["Puce électronique", "Vaccination antirabique", "Passeport pour animaux", "Exigences du pays de destination", "Exigences au retour"],
-      checkCta: "Vérifier votre itinéraire",
+      checkerItems: [
+        "Puce électronique",
+        "Vaccination antirabique",
+        "Passeport pour animaux",
+        "Exigences de destination",
+        "Exigences de retour",
+      ],
+      checkCta: "Vérifiez votre itinéraire",
     },
     print: {
-      eyebrow: "Imprimer & sauvegarder",
-      title: "Certaines choses sont meilleures sur papier.",
-      body: "Gardez les informations importantes sur vous — à la maison, dans la voiture, chez le vétérinaire ou quand quelqu'un d'autre s'occupe de votre chien.",
+      eyebrow: "Imprimer & enregistrer",
+      title: "Certaines choses sont mieux sur papier.",
+      body: "Gardez les informations importantes avec vous — à la maison, en voiture, chez le vétérinaire ou quand quelqu'un d'autre garde votre chien.",
       cardBrand: "DoggMatch",
-      cardTitle: "Pack voyage pour chien",
+      cardTitle: "Pack de voyage du chien",
       cardDog: "Luna · Labrador Retriever",
-      createCta: "Créer un pack voyage",
+      createCta: "Créer un pack de voyage",
       printCta: "Voir ce que vous pouvez imprimer",
     },
     multipleDogs: {
       eyebrow: "Plusieurs chiens",
-      title: "Une maison. Chaque chien.",
-      body: "Premium prend en charge plus d'un chien, chacun avec son propre profil, ses routines, son éducation, sa santé et ses documents. Passer de l'un à l'autre ne prend qu'un geste.",
+      title: "Un espace. Chaque chien.",
+      body: "Premium prend en charge plusieurs chiens, chacun avec son propre profil, ses routines, son éducation, sa santé et ses documents. Passer de l'un à l'autre se fait en un geste.",
       dogs: [
         { name: "Luna", breed: "Labrador Retriever" },
         { name: "Max", breed: "Cocker Spaniel" },
@@ -2844,130 +3950,138 @@ const copy = {
     },
     personalisation: {
       title: "Tout paraît plus pertinent pour votre chien",
-      body: "DoggMatch n'a pas besoin de machines savantes pour rendre cela personnel. La race, l'âge, la taille et l'activité de votre chien, votre mode de vie, vos routines et tout ce que vous choisissez de nous dire façonnent discrètement ce que vous voyez — quelles leçons apparaissent, à peu près quelle quantité de nourriture est adaptée, ce que votre semaine suggère.",
+      body: "DoggMatch n'a pas besoin de machines savantes pour rendre cela personnel. La race, l'âge, la taille et l'activité de votre chien, votre mode de vie, vos routines et tout ce que vous choisissez de nous dire façonnent discrètement ce que vous voyez — quelles leçons apparaissent, quelle quantité de nourriture est à peu près juste, ce que votre semaine suggère.",
     },
     journeySection: {
       eyebrow: "Tout le parcours",
-      title: "De la première pensée à une longue vie ensemble",
-      closing: "— tout connecté en un seul endroit.",
+      title: "De la première idée à une longue vie ensemble",
+      closing: "— tout connecté au même endroit.",
     },
     compare: {
       eyebrow: "Gratuit et Premium",
       title: "Ce qui est gratuit, et ce qui vient avec Premium",
-      body: "Tout ce dont vous avez besoin pour trouver le bon chien reste gratuit. Premium est pour la vie qui vient après.",
+      body: "Tout ce dont vous avez besoin pour trouver le bon chien reste gratuit. Premium, c'est pour la vie qui suit.",
       freeLabel: "Gratuit",
       freeHeadline: "Pour trouver le bon chien.",
-      freeQuote: "« Trouve le chien qui me correspond. »",
+      freeQuote: "\u201CTrouver le chien qui me correspond.\u201D",
       plusLabel: "DoggMatch+",
       plusHeadline: "Pour la vie avec votre chien.",
-      plusQuote: "« Maintenant, aide-moi à offrir à ce chien une vraiment bonne vie. »",
+      plusQuote: "\u201CMaintenant, aidez-moi à offrir une vraiment bonne vie à ce chien.\u201D",
     },
     value: {
       eyebrow: "Pourquoi DoggMatch+",
       title: "Trois raisons simples",
       items: [
-        { title: "Un seul endroit", body: "Tout sur la vie de votre chien, rassemblé." },
-        { title: "Utile chaque jour", body: "Pas juste quelque chose que vous visitez une fois." },
-        { title: "Construit autour de votre chien", body: "Les informations de votre chien façonnent l'expérience." },
+        { title: "Un seul endroit", body: "Tout ce qui concerne la vie de votre chien, réuni." },
+        { title: "Utile chaque jour", body: "Pas seulement un endroit qu'on visite une fois." },
+        {
+          title: "Construit autour de votre chien",
+          body: "Les informations de votre chien façonnent l'expérience.",
+        },
       ],
     },
     firstWeekSection: {
       eyebrow: "Votre première semaine avec DoggMatch+",
-      title: "Un début simple à la vie avec DoggMatch+.",
-      body: "Rien pour lequel se précipiter. Un peu chaque jour, et d'ici la fin de la semaine, votre chien aura ici une maison.",
+      title: "Un début simple avec DoggMatch+.",
+      body: "Rien à précipiter. Un peu chaque jour, et à la fin de la semaine, votre chien a un espace bien à lui ici.",
     },
     membership: {
-      eyebrow: "Adhésion",
-      body: "Une seule adhésion, tout inclus. Choisissez le rythme qui vous convient.",
+      eyebrow: "Abonnement",
+      body: "Un seul abonnement, tout inclus. Choisissez le rythme qui vous convient.",
       monthlyLabel: "Mensuel",
       monthlyPrice: "7,99 €",
       monthlyUnit: "/ mois",
       monthlyBody: "Tout DoggMatch+, mois après mois.",
-      monthlyJoin: "Rejoindre au mois",
+      monthlyJoin: "S'abonner au mois",
       yearlyLabel: "Annuel",
-      bestValue: "Meilleur rapport qualité-prix",
+      bestValue: "Meilleure offre",
       yearlyPrice: "59,99 €",
       yearlyUnit: "/ an",
       yearlyHighlight: "Seulement 5 € par mois en facturation annuelle",
       yearlyBody: "Économisez 35,89 € par an par rapport au paiement mensuel.",
-      yearlyJoin: "Rejoindre à l'année — meilleur rapport qualité-prix",
-      openLine: "L'adhésion est ouverte.",
-      openBody: "Le paiement est géré en toute sécurité par Stripe. Vous pouvez modifier ou résilier votre adhésion vous-même à tout moment, depuis votre compte.",
+      yearlyJoin: "S'abonner à l'année — meilleure offre",
+      openLine: "L'abonnement est ouvert.",
+      openBody:
+        "Le paiement est géré en toute sécurité par Stripe. Vous pouvez modifier ou résilier votre abonnement vous-même, à tout moment, depuis votre compte.",
     },
     faqSection: {
       eyebrow: "Questions",
-      title: "Ce que les gens demandent le plus souvent",
+      title: "Ce que l'on nous demande souvent",
       body: "Des réponses courtes et honnêtes. S'il y a autre chose que vous aimeriez savoir, écrivez-nous simplement.",
-      stillWondering: "Vous vous posez encore des questions ?",
+      stillWondering: "Une question sans réponse ?",
       getInTouch: "Nous contacter",
     },
     finalCta: {
-      title: "Votre chien est plus qu'une compatibilité.",
-      body: "DoggMatch vous aide à trouver le chien qui vous correspond. DoggMatch+ vous aide à offrir à ce chien une vraiment bonne vie.",
+      title: "Votre chien, c'est bien plus qu'un match.",
+      body: "DoggMatch vous aide à trouver le chien qui vous correspond. DoggMatch+ vous aide à lui offrir une vraiment bonne vie.",
       join: "Rejoindre DoggMatch+",
       find: "Trouver mon chien",
     },
   },
   nl: {
     flow: [
-      "Vind uw hond",
-      "Begrijp uw hond",
-      "Bereid u voor op uw hond",
-      "Leef met uw hond",
-      "Zorg voor uw hond",
+      "Vind je hond",
+      "Begrijp je hond",
+      "Bereid je voor",
+      "Leef met je hond",
+      "Zorg voor je hond",
       "Geniet samen van het leven",
     ],
     myDogSections: [
-      { to: "/my-dog/care/everyday-check", label: "Gezondheid", line: "De snelle dagelijkse check" },
+      {
+        to: "/my-dog/care/everyday-check",
+        label: "Gezondheid",
+        line: "De snelle dagelijkse check",
+      },
       { to: "/my-dog/nutrition", label: "Voeding", line: "Porties en maaltijden" },
       { to: "/train", label: "Training", line: "De korte sessie van vandaag" },
-      { to: "/my-dog/care/dental", label: "Gebit", line: "Eén minuut per dag" },
+      { to: "/my-dog/care/dental", label: "Gebit", line: "Eén minuutje per dag" },
       { to: "/my-dog/care/coat", label: "Vacht & verzorging", line: "Borstelen en baden" },
-      { to: "/my-dog/care/paws", label: "Poten & nagels", line: "Zooltjes en winter" },
-      { to: "/my-dog/weight", label: "Gewicht", line: "Een eenvoudige, vriendelijke registratie" },
+      { to: "/my-dog/care/paws", label: "Poten & nagels", line: "Kussentjes en winter" },
+      { to: "/my-dog/weight", label: "Gewicht", line: "Een vriendelijk, eenvoudig overzicht" },
       { to: "/my-dog/care/wellbeing", label: "Activiteit", line: "Beweging en rust" },
       { to: "/train/library", label: "Gedrag", line: "Eén les tegelijk" },
-      { to: "/my-dog/week", label: "Mijn week", line: "Uw wekelijkse ritme" },
+      { to: "/my-dog/week", label: "Mijn week", line: "Jouw wekelijkse ritme" },
       { to: "/travel", label: "Reizen", line: "Auto, wandelingen en grenzen" },
-      { to: "/my-dog/print", label: "Documenten", line: "Papier voor op de koelkast" },
+      { to: "/my-dog/print", label: "Documenten", line: "Papier voor aan de koelkast" },
     ],
     programmes: [
       { title: "Puppybasis", line: "De eerste weken, rustig aan" },
-      { title: "Terugroepen", line: "Komt terug, elke keer dat u erom vraagt" },
-      { title: "Los aan de lijn lopen", line: "Wandelingen zonder trekken" },
-      { title: "Rustig gedrag", line: "Tot rust komen op een kleed" },
-      { title: "Alledaagse manieren", line: "Deuren, begroetingen, wachten" },
+      { title: "Terugroepen", line: "Terugkomen, elke keer dat je het vraagt" },
+      { title: "Losse lijn wandelen", line: "Wandelen zonder trekken" },
+      { title: "Rustig gedrag", line: "Tot rust komen op een mat" },
+      { title: "Dagelijkse omgangsvormen", line: "Deuren, begroetingen, wachten" },
       { title: "Focus", line: "Zijn naam, zijn aandacht" },
       { title: "Blijf", line: "Elke keer een seconde langer" },
-      { title: "Socialisatie", line: "Nieuwe plekken, op het tempo van de hond" },
+      { title: "Socialisatie", line: "Nieuwe plekken op zijn eigen tempo" },
     ],
     careItems: [
-      { title: "Gezondheidsdagboek", line: "Merk veranderingen op over weken, geen giswerk." },
-      { title: "Gewicht", line: "De tastbare check plus een eenvoudig logboek." },
+      { title: "Gezondheidsdagboek", line: "Veranderingen opmerken over weken, niet gokken." },
+      { title: "Gewicht", line: "De handmatige check plus een eenvoudig logboek." },
       { title: "Gebit", line: "Tanden en tandvlees, dertig seconden per keer." },
-      { title: "Vacht & huid", line: "Vachttype, borstelritme, klitten en knobbels." },
-      { title: "Poten & nagels", line: "Zooltjes, nagels, zout en heet asfalt." },
-      { title: "Verzorgingskalender", line: "Stille herinneringen wanneer iets aan de beurt is." },
-      { title: "Dierenartsnotities", line: "Waar u naar vroeg, wat u te horen kreeg." },
+      { title: "Vacht & huid", line: "Vachttype, borstelritme, klitten en bultjes." },
+      { title: "Poten & nagels", line: "Kussentjes, nagels, zout en heet asfalt." },
+      { title: "Zorgkalender", line: "Rustige herinneringen wanneer iets aan de beurt is." },
+      { title: "Dierenartsnotities", line: "Wat je vroeg, wat je te horen kreeg." },
       { title: "Gezondheidsoverzicht", line: "Eén pagina om mee te nemen." },
     ],
     foodItems: [
-      { title: "Voedings- en voerplan", line: "Ongeveer hoeveel, voor uw hond." },
-      { title: "Voerroutine", line: "Maaltijden per dag, tijden die u uitkomen." },
-      { title: "Voeding bijhouden", line: "Wat er gegeten wordt, op één plek verzameld." },
+      { title: "Voedings- en voerplan", line: "Hoeveel, ongeveer, voor jouw hond." },
+      { title: "Voerroutine", line: "Maaltijden per dag, op tijden die jou uitkomen." },
+      { title: "Voeding bijhouden", line: "Wat hij eet, allemaal op één plek." },
       { title: "Koppeling met gewicht", line: "Porties die het gewichtslogboek volgen." },
-      { title: "Snacks", line: "Binnen een verstandig deel van de dag gehouden." },
-      { title: "Water", line: "Schoon en bijgevuld, altijd." },
-      { title: "Voedselveiligheid", line: "Veilig, met voorzichtigheid of vermijden — meer dan 55 voedingsmiddelen." },
+      { title: "Snoepjes", line: "Binnen een verstandig deel van de dag gehouden." },
+      { title: "Water", line: "Schoon en altijd aangevuld." },
+      { title: "Voedselveiligheid", line: "Veilig, oppassen of vermijden — 55+ voedingsmiddelen." },
     ],
     week: [
       { day: "Maandag", items: ["Wandeling", "Training", "Gebit"] },
-      { day: "Dinsdag", items: ["Wandeling", "Mentale stimulatie"] },
+      { day: "Dinsdag", items: ["Wandeling", "Mentale prikkeling"] },
       { day: "Woensdag", items: ["Training", "Verzorging"] },
-      { day: "Donderdag", items: ["Lange wandeling", "Potencheck"] },
+      { day: "Donderdag", items: ["Lange wandeling", "Poten check"] },
       { day: "Vrijdag", items: ["Wandeling", "Training", "Gebit"] },
       { day: "Zaterdag", items: ["Avontuur", "Wegen"] },
-      { day: "Zondag", items: ["Snuffelwandeling", "Rustig moment"] },
+      { day: "Zondag", items: ["Snuffelwandeling", "Rustmoment"] },
     ],
     dogLife: [
       "Parken",
@@ -2981,16 +4095,16 @@ const copy = {
     travelItems: [
       "Autoreizen",
       "Lange wandelingen",
-      "Wandeltochten",
+      "Wandelen",
       "Vakanties",
-      "Buitenlandse reizen",
+      "Internationale reizen",
       "Reischecklist",
       "Reisdocumenten",
       "Vereisten per land",
     ],
     packContents: [
-      "Hondenprofiel",
-      "Informatie over de eigenaar",
+      "Hondprofiel",
+      "Eigenaarsgegevens",
       "Belangrijke contacten",
       "Reischecklist",
       "Gezondheidsinformatie",
@@ -3004,15 +4118,15 @@ const copy = {
       "Voedings- en voerplan",
       "Weekplan",
       "Belangrijke contacten",
-      "Notities van dierenartsbezoek",
+      "Notities dierenartsbezoek",
       "Reispakket",
       "Verzorgingschecklist",
     ],
     journey: [
-      "Nadenken over een hond",
+      "Overwegen een hond te nemen",
       "Mijn hond vinden",
-      "Voorbereiden",
-      "Welkom thuis",
+      "Je voorbereiden",
+      "Thuiskomst",
       "Mijn hond",
       "Trainen",
       "Voeden",
@@ -3024,9 +4138,9 @@ const copy = {
       "Is een hond iets voor mij?",
       "Mijn hond vinden",
       "Basisinformatie over rassen",
-      "Gidsen voor het aanschaffen van een hond",
-      "Basis Hondenleven",
-      "Geselecteerde gratis gidsen",
+      "Gidsen voor het nemen van een hond",
+      "Dog Life basis",
+      "Uitgekozen gratis gidsen",
     ],
     plusList: [
       "Alles uit Gratis",
@@ -3035,164 +4149,191 @@ const copy = {
       "Gezondheid & verzorging",
       "Voeding",
       "Mijn week",
-      "Verzorgingskalender",
-      "Uitgebreid Hondenleven",
+      "Zorgkalender",
+      "Uitgebreide Dog Life",
       "Reistools",
       "Internationale reischecker",
       "Compleet hondenpakket",
       "Afdrukbare documenten",
       "Meerdere honden",
-      "Een vollediger matchrapport",
+      "Een uitgebreider matchrapport",
       "Voortgang over tijd",
     ],
     firstWeek: [
-      { day: "Dag 1", title: "Mijn hond aanmaken", line: "Geef uw hond een eigen plek." },
-      { day: "Dag 2", title: "Verzorging instellen", line: "Voeg voeding, gebit, vachtverzorging en dagelijkse routines toe." },
-      { day: "Dag 3", title: "Begin met trainen", line: "Kies een programma en zet de eerste kleine stap." },
-      { day: "Dag 4", title: "Mijn week opbouwen", line: "Breng wandelingen, training en verzorging samen." },
-      { day: "Dag 5", title: "Hondenleven verkennen", line: "Vind plekken en diensten die passen bij uw leven met uw hond." },
-      { day: "Dag 6", title: "Uw volgende reis plannen", line: "Maak uw reischecklist klaar." },
-      { day: "Dag 7", title: "Uw hondenpakket aanmaken", line: "Houd het belangrijkste bij elkaar, op scherm of op papier." },
+      { day: "Dag 1", title: "Maak Mijn hond aan", line: "Geef je hond een eigen plek." },
+      {
+        day: "Dag 2",
+        title: "Stel verzorging in",
+        line: "Voeg voeding, gebit, verzorging en dagelijkse routines toe.",
+      },
+      {
+        day: "Dag 3",
+        title: "Begin met trainen",
+        line: "Kies een programma en zet de eerste kleine stap.",
+      },
+      {
+        day: "Dag 4",
+        title: "Bouw Mijn week op",
+        line: "Breng wandelingen, training en verzorging samen.",
+      },
+      {
+        day: "Dag 5",
+        title: "Ontdek Dog Life",
+        line: "Vind plekken en diensten die passen bij het leven met je hond.",
+      },
+      { day: "Dag 6", title: "Plan je volgende reis", line: "Maak je reischecklist klaar." },
+      {
+        day: "Dag 7",
+        title: "Maak je hondenpakket aan",
+        line: "Houd de belangrijke dingen samen, op het scherm of op papier.",
+      },
     ],
     faqs: [
       {
         q: "Wat is DoggMatch+?",
-        a: "Dat is het lidmaatschapsdeel van DoggMatch. Gratis helpt u de juiste hond te vinden. DoggMatch+ helpt u dag na dag voor die hond te zorgen — training, voeding, gezondheid, routines, reizen en documenten, allemaal op één plek.",
+        a: "Dit is het lidmaatschapsgedeelte van DoggMatch. Gratis helpt je de juiste hond te vinden. DoggMatch+ helpt je om dag in dag uit voor die hond te zorgen — training, voeding, gezondheid, routines, reizen en documenten, allemaal op één plek.",
       },
       {
         q: "Wat krijg ik met DoggMatch+?",
-        a: "Mijn hond, de volledige trainingsprogramma's, gezondheid en verzorging, voeding, Mijn week, de verzorgingskalender, reistools, het complete hondenpakket en afdrukbare documenten — plus een vollediger matchrapport.",
+        a: "Mijn hond, de volledige trainingsprogramma's, gezondheid en verzorging, voeding, Mijn week, de zorgkalender, reistools, het complete hondenpakket en afdrukbare documenten — plus een uitgebreider matchrapport.",
       },
       {
         q: "Wat blijft gratis?",
-        a: "Alles wat u nodig heeft om de juiste hond te vinden. Is een hond iets voor mij?, Mijn hond vinden, rasinformatie, de gidsen voor het aanschaffen van een hond, basis Hondenleven en onze gratis gidsen blijven gratis.",
+        a: "Alles wat je nodig hebt om de juiste hond te vinden. Is een hond iets voor mij?, Mijn hond vinden, rasinformatie, de gidsen voor het nemen van een hond, Dog Life basis en onze gratis gidsen blijven gratis.",
       },
       {
         q: "Kan ik DoggMatch+ voor meer dan één hond gebruiken?",
-        a: "Ja. U kunt voor elke hond een apart profiel bijhouden en ertussen wisselen, zodat niets door elkaar loopt.",
+        a: "Ja. Je kunt voor elke hond een apart profiel bijhouden en ertussen wisselen, zonder dat iets door elkaar loopt.",
       },
       {
         q: "Kan ik de informatie van mijn hond afdrukken?",
-        a: "Ja. Het hondenpakket en de afzonderlijke documenten — gezondheidsoverzicht, voerplan, weekplan, contacten, reispakket — zijn allemaal gemaakt om netjes op A4 te printen of als pdf op te slaan.",
+        a: "Ja. Het hondenpakket en de losse documenten — gezondheidsoverzicht, voerplan, weekplan, contacten, reispakket — zijn allemaal gemaakt om netjes op A4 af te drukken of als pdf op te slaan.",
       },
       {
-        q: "Kan ik DoggMatch gebruiken op reis?",
-        a: "Ja. Er is uitleg over autoreizen, wandeltochten en vakanties, een checker voor vereisten per land bij buitenlandse reizen, en een reispakket dat u op papier kunt meenemen.",
+        q: "Kan ik DoggMatch gebruiken tijdens het reizen?",
+        a: "Ja. Er is uitleg over autoreizen, wandelen en vakanties, een checker per land voor reizen naar het buitenland, en een reispakket dat je op papier kunt meenemen.",
       },
       {
-        q: "Is DoggMatch dierenartsadvies?",
-        a: "Nee. Wij bieden algemene informatie over het leven met een hond. Neem voor alles wat medisch is, of als u zich zorgen maakt over uw hond, contact op met uw dierenarts.",
+        q: "Is DoggMatch veterinair advies?",
+        a: "Nee. Wij bieden algemene informatie over het leven met een hond. Voor alles wat medisch is, of als je je zorgen maakt om je hond, praat je het beste met je dierenarts.",
       },
       {
         q: "Kan ik mijn lidmaatschap opzeggen?",
-        a: "Ja, wanneer u maar wilt. Open uw accountpagina, en u kunt uw lidmaatschap zelf wijzigen of opzeggen — het blijft actief tot het einde van de al betaalde periode.",
+        a: "Ja, wanneer je maar wilt. Open je accountpagina en je kunt je lidmaatschap zelf wijzigen of opzeggen — het blijft actief tot het einde van de periode die je al hebt betaald.",
       },
       {
-        q: "Kan ik kiezen tussen maandelijks of jaarlijks lidmaatschap?",
-        a: "Ja — € 7,99 per maand, of € 59,99 per jaar, wat neerkomt op ongeveer € 5 per maand. U kunt later vanuit uw account wisselen tussen beide.",
+        q: "Kan ik kiezen voor een maandelijks of jaarlijks lidmaatschap?",
+        a: "Ja — € 7,99 per maand, of € 59,99 per jaar, wat neerkomt op ongeveer € 5 per maand. Je kunt later vanuit je account wisselen.",
       },
       {
         q: "Wat gebeurt er als ik lid word?",
-        a: "U maakt Mijn hond aan, voegt een paar details toe, en al het andere op de site begint zich rond die hond te richten. Er is een rustige eerste week die u erdoorheen leidt.",
+        a: "Je maakt Mijn hond aan, vult een paar gegevens in, en al het andere op de site gaat zich rond die hond schikken. Een rustige eerste week begeleidt je er stap voor stap doorheen.",
       },
     ],
-    starsLabel: (filled: number) => `${filled} van de 5`,
+    starsLabel: (filled: number) => `${filled} van 5`,
     hero: {
       eyebrow: "Lidmaatschap",
-      lead: "Meer dan alleen uw hond vinden. Een beter leven samen.",
-      body: "Uw DoggMatch-reis eindigt niet zodra u de juiste hond vindt. Premium geeft u de tools, plannen en persoonlijke ruimte om uw hond een gelukkig, gezond en goed georganiseerd leven te geven.",
-      heroAlt: "Een vrouw legt haar voorhoofd tegen haar labrador bij zonsondergang",
+      lead: "Meer dan je hond vinden. Een beter leven samen.",
+      body: "Je DoggMatch-reis stopt niet zodra je de juiste hond hebt gevonden. Premium geeft je de tools, plannen en persoonlijke ruimte om je hond een gelukkig, gezond en goed georganiseerd leven te geven.",
+      heroAlt: "Een vrouw die haar voorhoofd tegen haar labrador legt bij zonsondergang",
       exploreCta: "Ontdek DoggMatch+",
       seeAllCta: "Bekijk alles wat inbegrepen is",
     },
     coreMessage: "brengt het allemaal samen.",
     myDog: {
       eyebrow: "Het middelpunt van alles",
-      title: "Uw hond. Uw ruimte.",
-      body: "Mijn hond is het persoonlijke thuis van uw hond binnen DoggMatch. Alles wat u bijhoudt, woont hier — en al het andere op de site voedt dit.",
+      title: "Jouw hond. Jouw ruimte.",
+      body: "Mijn hond is het persoonlijke thuis van je hond binnen DoggMatch. Alles wat je bijhoudt, leeft hier — en al het andere op de site sluit erop aan.",
       lunaAlt: "Luna, een labrador retriever",
       lunaName: "Luna",
-      lunaBreedAge: "Labrador retriever · 3 jaar",
+      lunaBreedAge: "Labrador Retriever · 3 jaar",
       today: "Vandaag",
-      sideTitle: "Alles over uw hond, op één plek",
-      sideBody: "Gezondheid, voeding, training, gebit, vacht, poten, gewicht, activiteit, gedrag, uw week, reizen en documenten. U hoeft niet alles in te vullen. Voeg toe wat nuttig is, de rest wacht rustig tot u het nodig heeft.",
+      sideTitle: "Alles over je hond, op één plek",
+      sideBody:
+        "Gezondheid, voeding, training, gebit, vacht, poten, gewicht, activiteit, gedrag, je week, reizen en documenten. Je hoeft niet alles in te vullen. Voeg toe wat nuttig is, de rest wacht rustig tot je het nodig hebt.",
       cta: "Bekijk Mijn hond",
     },
     productMessage: {
-      titleLine1: "Vind uw hond.",
-      titleLine2: "Leef dan samen het leven.",
-      body: "De juiste hond vinden is nog maar het begin. DoggMatch+ geeft u één plek om voor de dagelijkse dingen te zorgen die ertoe doen — van training en voeding tot gezondheid, reizen, routines en de kleine momenten daartussen.",
+      titleLine1: "Vind je hond.",
+      titleLine2: "En leef daarna samen verder.",
+      body: "De juiste hond vinden is nog maar het begin. DoggMatch+ geeft je één plek om voor de dagelijkse dingen te zorgen die ertoe doen — van training en voeding tot gezondheid, reizen, routines en de kleine momenten ertussenin.",
     },
     training: {
-      trainAlt: "Een man oefent terugroepen met zijn hond in een weiland",
+      trainAlt: "Een man oefent terugroepen met zijn hond in een veld",
       eyebrow: "Samen trainen",
       title: "Kleine stappen. Echte vooruitgang.",
-      body: "Gestructureerde programma's opgebouwd uit korte, vriendelijke sessies die echt in een gewone dag passen. Geen schreeuwen, geen gadgets, geen beloftes over hoe snel het gaat.",
+      body: "Gestructureerde programma's opgebouwd uit korte, vriendelijke sessies die echt in een gewone dag passen. Geen geschreeuw, geen gadgets, geen beloftes over hoe snel het gaat.",
       lunaName: "Luna",
       recall: "Terugroepen",
-      progressNote: "4 sessies deze week voltooid.",
+      progressNote: "4 sessies deze week afgerond.",
       railLabel: "Trainingsprogramma's",
       libraryCta: "Open de lessenbibliotheek",
     },
     healthCare: {
       eyebrow: "Gezondheid & verzorging",
-      title: "Zorg voor de kleine dingen",
-      body: "Houd het belangrijke bij elkaar, merk veranderingen op over tijd, en houd overzicht. DoggMatch is geen dierenartsendienst — als iets u zorgen baart, is uw dierenarts de juiste keuze.",
-      careAlt: "Een eigenaar controleert rustig haar hond thuis",
+      title: "Let op de kleine dingen",
+      body: "Houd de belangrijke dingen samen, merk veranderingen op over tijd, en blijf georganiseerd. DoggMatch is geen veterinaire dienst — als iets je zorgen baart, is je dierenarts de juiste persoon om te bellen.",
+      careAlt: "Een eigenaar die haar hond rustig thuis nakijkt",
     },
     food: {
-      foodAlt: "Een afgemeten bak voer wordt klaargemaakt voor een wachtende hond",
-      eyebrow: "Goed voeren",
+      foodAlt: "Een afgemeten bak voeding die klaargemaakt wordt voor een wachtende hond",
+      eyebrow: "Goed voeden",
       title: "Voeding makkelijker te begrijpen maken",
-      body: "Porties berekend op basis van het gewicht, de leeftijd en de activiteit van uw hond — in lijn gehouden met het gewichtslogboek. Verstandig, onderbouwd, geen modegrillen.",
+      body: "Porties berekend op basis van het gewicht, de leeftijd en activiteit van je hond — en vervolgens afgestemd op het gewichtslogboek. Verstandig, onderbouwd, zonder hypes.",
       portionsCta: "Voeding & porties",
       safetyCta: "Mag mijn hond dit eten?",
     },
     myWeek: {
       eyebrow: "Mijn week",
-      title: "Uw week met uw hond",
+      title: "Jouw week met je hond",
       body: "Breng training, verzorging, activiteit en dagelijkse routines samen, zodat niets belangrijks er stilletjes tussendoor glipt.",
       cta: "Open Mijn week",
     },
     dogLifeSection: {
-      eyebrow: "Hondenleven",
+      eyebrow: "Dog Life",
       title: "Het leven buiten huis",
-      body: "De alledaagse kaart van het hondenleven bij u in de buurt — waar u kunt wandelen, waar u welkom bent en wie u kunt bellen.",
-      cta: "Ontdek Hondenleven",
+      body: "De dagelijkse kaart van het leven met een hond bij jou in de buurt — waar je kunt wandelen, waar je welkom bent en wie je kunt bellen.",
+      cta: "Ontdek Dog Life",
       dogLifeAlt: "Een hond en eigenaar op een kustpad vroeg in de ochtend",
     },
     travel: {
-      travelAlt: "Een hond veilig vastgemaakt achterin een auto voor een rit",
+      travelAlt: "Een hond die veilig vastzit op de achterbank van een auto voor een reis",
       eyebrow: "Reizen",
-      title: "Neem uw hond mee",
-      body: "Van het schoolritje tot het oversteken van een grens. Regels zijn gebaseerd op actuele officiële vereisten en veranderen — controleer altijd bij de autoriteiten voordat u reist.",
+      title: "Neem je hond overal mee naartoe",
+      body: "Van het schoolritje tot het oversteken van een grens. Regels zijn gebaseerd op actuele officiële vereisten en veranderen — controleer voor het reizen altijd bij de autoriteiten.",
       checkerEyebrow: "Internationale reischecker",
       route: "Noorwegen → Polen",
-      checkerItems: ["Microchip", "Rabiësvaccinatie", "Dierenpaspoort", "Vereisten van bestemming", "Vereisten bij terugkeer"],
-      checkCta: "Controleer uw route",
+      checkerItems: [
+        "Chip",
+        "Rabiësvaccinatie",
+        "Dierenpaspoort",
+        "Vereisten bestemming",
+        "Vereisten terugreis",
+      ],
+      checkCta: "Controleer je route",
     },
     print: {
-      eyebrow: "Printen & bewaren",
+      eyebrow: "Afdrukken & opslaan",
       title: "Sommige dingen zijn beter op papier.",
-      body: "Houd de belangrijke informatie bij de hand — thuis, in de auto, bij de dierenarts of wanneer iemand anders op uw hond past.",
+      body: "Houd de belangrijke informatie bij je — thuis, in de auto, bij de dierenarts of wanneer iemand anders op je hond past.",
       cardBrand: "DoggMatch",
-      cardTitle: "Reispakket voor honden",
-      cardDog: "Luna · Labrador retriever",
-      createCta: "Reispakket maken",
-      printCta: "Bekijk wat u kunt printen",
+      cardTitle: "Reispakket voor je hond",
+      cardDog: "Luna · Labrador Retriever",
+      createCta: "Maak reispakket aan",
+      printCta: "Bekijk wat je kunt afdrukken",
     },
     multipleDogs: {
       eyebrow: "Meerdere honden",
       title: "Eén thuis. Elke hond.",
-      body: "Premium ondersteunt meer dan één hond, elk met een eigen profiel, routines, training, gezondheid en documenten. Wisselen tussen honden kost één tik.",
+      body: "Premium ondersteunt meer dan één hond, elk met een eigen profiel, routines, training, gezondheid en documenten. Wisselen tussen honden gaat met één tik.",
       dogs: [
-        { name: "Luna", breed: "Labrador retriever" },
-        { name: "Max", breed: "Cocker spaniël" },
+        { name: "Luna", breed: "Labrador Retriever" },
+        { name: "Max", breed: "Cocker Spaniel" },
       ],
     },
     personalisation: {
-      title: "Alles voelt relevanter voor uw hond",
-      body: "DoggMatch heeft geen slimme machines nodig om dit persoonlijk te maken. Het ras, de leeftijd, de grootte en de activiteit van uw hond, uw levensstijl, uw routines en alles wat u ons vertelt, vormen stilletjes wat u ziet — welke lessen verschijnen, ongeveer hoeveel voer goed is, wat uw week voorstelt.",
+      title: "Alles voelt relevanter voor jouw hond",
+      body: "DoggMatch heeft geen slimme machines nodig om dit persoonlijk te maken. Het ras, de leeftijd, de grootte en activiteit van je hond, jouw levensstijl, jouw routines en alles wat je zelf kiest te vertellen, vormen stilletjes wat je te zien krijgt — welke lessen naar boven komen, hoeveel voeding ongeveer klopt, wat je week voorstelt.",
     },
     journeySection: {
       eyebrow: "De hele reis",
@@ -3201,59 +4342,60 @@ const copy = {
     },
     compare: {
       eyebrow: "Gratis en Premium",
-      title: "Wat gratis is, en wat bij Premium hoort",
-      body: "Alles wat u nodig heeft om de juiste hond te vinden blijft gratis. Premium is voor het leven dat daarna komt.",
+      title: "Wat gratis is, en wat je krijgt met Premium",
+      body: "Alles wat je nodig hebt om de juiste hond te vinden, blijft gratis. Premium is voor het leven daarna.",
       freeLabel: "Gratis",
       freeHeadline: "Om de juiste hond te vinden.",
-      freeQuote: "“Vind de hond die bij mij past.”",
+      freeQuote: "\u201CVind de hond die bij mij past.\u201D",
       plusLabel: "DoggMatch+",
-      plusHeadline: "Voor het leven met uw hond.",
-      plusQuote: "“Help me nu die hond een echt goed leven te geven.”",
+      plusHeadline: "Voor het leven met je hond.",
+      plusQuote: "\u201CHelp me nu om die hond een echt goed leven te geven.\u201D",
     },
     value: {
       eyebrow: "Waarom DoggMatch+",
       title: "Drie eenvoudige redenen",
       items: [
-        { title: "Eén plek", body: "Alles over het leven van uw hond, samen." },
-        { title: "Elke dag nuttig", body: "Niet iets wat u maar één keer bezoekt." },
-        { title: "Gebouwd rond uw hond", body: "De informatie van uw hond vormt de ervaring." },
+        { title: "Eén plek", body: "Alles over het leven van je hond, samen op één plek." },
+        { title: "Elke dag nuttig", body: "Niet iets wat je maar één keer bezoekt." },
+        { title: "Opgebouwd rond je hond", body: "De informatie van je hond bepaalt de ervaring." },
       ],
     },
     firstWeekSection: {
-      eyebrow: "Uw eerste week met DoggMatch+",
-      title: "Een eenvoudige start van het leven met DoggMatch+.",
-      body: "Niets om u druk over te maken. Elke dag een beetje, en aan het eind van de week heeft uw hond hier een thuis.",
+      eyebrow: "Jouw eerste week met DoggMatch+",
+      title: "Een eenvoudige start met DoggMatch+.",
+      body: "Niets om te haasten. Elke dag een beetje, en aan het eind van de week heeft je hond hier een thuis.",
     },
     membership: {
       eyebrow: "Lidmaatschap",
-      body: "Eén lidmaatschap, alles inbegrepen. Kies het ritme dat bij u past.",
+      body: "Eén lidmaatschap, alles inbegrepen. Kies het ritme dat bij je past.",
       monthlyLabel: "Maandelijks",
       monthlyPrice: "€ 7,99",
       monthlyUnit: "/ maand",
-      monthlyBody: "Alles in DoggMatch+, maand na maand.",
-      monthlyJoin: "Maandelijks lid worden",
+      monthlyBody: "Alles van DoggMatch+, maand na maand.",
+      monthlyJoin: "Word maandelijks lid",
       yearlyLabel: "Jaarlijks",
-      bestValue: "Beste waarde",
+      bestValue: "Beste deal",
       yearlyPrice: "€ 59,99",
       yearlyUnit: "/ jaar",
-      yearlyHighlight: "Slechts € 5 per maand bij jaarlijkse facturering",
+      yearlyHighlight: "Slechts € 5 per maand bij jaarlijkse facturatie",
       yearlyBody: "Bespaar € 35,89 per jaar vergeleken met maandelijks betalen.",
-      yearlyJoin: "Jaarlijks lid worden — beste waarde",
-      openLine: "Lidmaatschap is open.",
-      openBody: "Betaling wordt veilig afgehandeld door Stripe. U kunt uw lidmaatschap zelf op elk moment wijzigen of opzeggen via uw account.",
+      yearlyJoin: "Word jaarlijks lid — beste deal",
+      openLine: "Het lidmaatschap staat open.",
+      openBody:
+        "Betaling wordt veilig verwerkt door Stripe. Je kunt je lidmaatschap op elk moment zelf wijzigen of opzeggen vanuit je account.",
     },
     faqSection: {
       eyebrow: "Vragen",
       title: "Wat mensen meestal vragen",
-      body: "Korte, eerlijke antwoorden. Als er iets anders is wat u wilt weten, schrijf ons dan gewoon.",
-      stillWondering: "Vraagt u zich nog iets af?",
+      body: "Korte, eerlijke antwoorden. Is er iets anders dat je wilt weten, schrijf ons dan gewoon.",
+      stillWondering: "Nog iets onduidelijk?",
       getInTouch: "Neem contact op",
     },
     finalCta: {
-      title: "Uw hond is meer dan een match.",
-      body: "DoggMatch helpt u de hond te vinden die bij u past. DoggMatch+ helpt u die hond een echt goed leven te geven.",
+      title: "Je hond is meer dan een match.",
+      body: "DoggMatch helpt je de hond te vinden die bij jou past. DoggMatch+ helpt je die hond een echt goed leven te geven.",
       join: "Word lid van DoggMatch+",
-      find: "Mijn hond vinden",
+      find: "Vind Mijn hond",
     },
   },
 } as const;
@@ -3262,6 +4404,7 @@ const copy = {
 
 function PlusPage() {
   const c = useCopy(copy);
+  const s = useCopy(stagesCopy);
   return (
     <div className="overflow-x-clip pb-24">
       {/* 2 — Hero */}
@@ -3275,9 +4418,7 @@ function PlusPage() {
             <p className="mt-6 font-display text-2xl leading-snug tracking-tight md:text-3xl">
               {c.hero.lead}
             </p>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              {c.hero.body}
-            </p>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{c.hero.body}</p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
                 href="#included"
@@ -3326,13 +4467,65 @@ function PlusPage() {
         </div>
       </Section>
 
+      {/* 3b — The membership journey in 8 stages */}
+      <Section className="container-page pt-0">
+        <div className="max-w-2xl">
+          <Eyebrow>{s.eyebrow}</Eyebrow>
+          <h2 className="display-lg mt-6">{s.title}</h2>
+          <p className="mt-5 leading-relaxed text-muted-foreground">{s.body}</p>
+        </div>
+
+        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-background p-7">
+            <p className="eyebrow">{s.freeLabel}</p>
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+              {s.freeLine}
+            </p>
+          </div>
+          <div className="rounded-2xl border border-border-strong bg-surface p-7">
+            <p className="eyebrow text-accent">{s.plusLabel}</p>
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+              {s.plusLine}
+            </p>
+          </div>
+        </div>
+
+        <ol className="mt-8 grid gap-5 md:grid-cols-2">
+          {s.stages.map((stage, i) => (
+            <li
+              key={stage.title}
+              className="rounded-2xl border border-border bg-background p-7 shadow-[var(--shadow-soft)] md:p-9"
+            >
+              <div className="flex items-baseline gap-4">
+                <span className="font-display text-sm tabular-nums text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className="font-display text-xl tracking-tight md:text-2xl">{stage.title}</h3>
+                  <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                    {stage.line}
+                  </p>
+                </div>
+              </div>
+              <ul className="mt-6 space-y-2.5 border-t border-border pt-5">
+                {stage.examples.map((ex) => (
+                  <li key={ex} className="flex gap-3 text-sm leading-relaxed">
+                    <Tick />
+                    <span>{ex}</span>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-10 max-w-2xl text-[0.9375rem] leading-relaxed text-muted-foreground">
+          {s.closing}
+        </p>
+      </Section>
+
       {/* 4 — My Dog */}
       <Section id="included" className="container-page scroll-mt-24 pt-0">
-        <SectionHead
-          eyebrow={c.myDog.eyebrow}
-          title={c.myDog.title}
-          body={c.myDog.body}
-        />
+        <SectionHead eyebrow={c.myDog.eyebrow} title={c.myDog.title} body={c.myDog.body} />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-center">
           {/* device mockup */}
@@ -3348,7 +4541,9 @@ function PlusPage() {
                   className="h-12 w-12 rounded-full object-cover"
                 />
                 <div>
-                  <p className="font-display text-lg leading-none tracking-tight">{c.myDog.lunaName}</p>
+                  <p className="font-display text-lg leading-none tracking-tight">
+                    {c.myDog.lunaName}
+                  </p>
                   <p className="mt-1 text-xs text-muted-foreground">{c.myDog.lunaBreedAge}</p>
                 </div>
                 <span className="ml-auto">
@@ -3375,9 +4570,7 @@ function PlusPage() {
 
           <div className="max-w-lg">
             <h3 className="display-md">{c.myDog.sideTitle}</h3>
-            <p className="mt-5 leading-relaxed text-muted-foreground">
-              {c.myDog.sideBody}
-            </p>
+            <p className="mt-5 leading-relaxed text-muted-foreground">{c.myDog.sideBody}</p>
             <div className="mt-8">
               <ButtonLink to={withLangPrefix("/my-dog")} size="lg">
                 {c.myDog.cta}
@@ -3419,11 +4612,17 @@ function PlusPage() {
               />
             </div>
             <div>
-              <SectionHead eyebrow={c.training.eyebrow} title={c.training.title} body={c.training.body} />
+              <SectionHead
+                eyebrow={c.training.eyebrow}
+                title={c.training.title}
+                body={c.training.body}
+              />
               <Card className="mt-8 max-w-sm">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-display text-lg leading-none tracking-tight">{c.training.lunaName}</p>
+                    <p className="font-display text-lg leading-none tracking-tight">
+                      {c.training.lunaName}
+                    </p>
                     <p className="mt-1.5 text-sm text-muted-foreground">{c.training.recall}</p>
                   </div>
                   <Stars filled={4} label={c.starsLabel(4)} />
@@ -3467,7 +4666,9 @@ function PlusPage() {
               {c.careItems.map((item) => (
                 <li key={item.title} className="bg-background p-6">
                   <h3 className="text-[0.9375rem] font-medium">{item.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{item.line}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    {item.line}
+                  </p>
                 </li>
               ))}
             </ul>
@@ -3499,11 +4700,7 @@ function PlusPage() {
             />
           </div>
           <div>
-            <SectionHead
-              eyebrow={c.food.eyebrow}
-              title={c.food.title}
-              body={c.food.body}
-            />
+            <SectionHead eyebrow={c.food.eyebrow} title={c.food.title} body={c.food.body} />
             <ul className="mt-9 space-y-3">
               {c.foodItems.map((f) => (
                 <li key={f.title} className="flex gap-3">
@@ -3516,8 +4713,12 @@ function PlusPage() {
               ))}
             </ul>
             <div className="mt-9 flex flex-wrap gap-3">
-              <ButtonLink to={withLangPrefix("/my-dog/nutrition")} tone="outline">{c.food.portionsCta}</ButtonLink>
-              <ButtonLink to={withLangPrefix("/my-dog/food")} tone="outline">{c.food.safetyCta}</ButtonLink>
+              <ButtonLink to={withLangPrefix("/my-dog/nutrition")} tone="outline">
+                {c.food.portionsCta}
+              </ButtonLink>
+              <ButtonLink to={withLangPrefix("/my-dog/food")} tone="outline">
+                {c.food.safetyCta}
+              </ButtonLink>
             </div>
           </div>
         </div>
@@ -3525,11 +4726,7 @@ function PlusPage() {
 
       {/* 8 — My Week */}
       <Section className="container-page">
-        <SectionHead
-          eyebrow={c.myWeek.eyebrow}
-          title={c.myWeek.title}
-          body={c.myWeek.body}
-        />
+        <SectionHead eyebrow={c.myWeek.eyebrow} title={c.myWeek.title} body={c.myWeek.body} />
         <div className="mt-12 -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-0 md:grid md:grid-cols-4 md:snap-none md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-7">
           {c.week.map((d) => (
             <div key={d.day} className="w-[62vw] shrink-0 snap-start md:w-auto">
@@ -3607,11 +4804,7 @@ function PlusPage() {
             />
           </div>
           <div>
-            <SectionHead
-              eyebrow={c.travel.eyebrow}
-              title={c.travel.title}
-              body={c.travel.body}
-            />
+            <SectionHead eyebrow={c.travel.eyebrow} title={c.travel.title} body={c.travel.body} />
             <ul className="mt-9 grid gap-2.5 sm:grid-cols-2">
               {c.travelItems.map((t) => (
                 <li key={t} className="flex gap-3 text-[0.9375rem]">
@@ -3625,9 +4818,7 @@ function PlusPage() {
 
         <Card className="mt-14 max-w-xl">
           <Eyebrow>{c.travel.checkerEyebrow}</Eyebrow>
-          <p className="mt-5 font-display text-2xl tracking-tight">
-            {c.travel.route}
-          </p>
+          <p className="mt-5 font-display text-2xl tracking-tight">{c.travel.route}</p>
           <ul className="mt-6 space-y-3">
             {c.travel.checkerItems.map((r) => (
               <li key={r} className="flex gap-3 text-[0.9375rem]">
@@ -3648,11 +4839,7 @@ function PlusPage() {
       {/* 11 + 12 — Travel pack and print */}
       <Section className="bg-surface">
         <div className="container-page">
-          <SectionHead
-            eyebrow={c.print.eyebrow}
-            title={c.print.title}
-            body={c.print.body}
-          />
+          <SectionHead eyebrow={c.print.eyebrow} title={c.print.title} body={c.print.body} />
 
           <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-start">
             {/* travel pack preview */}
@@ -3682,7 +4869,10 @@ function PlusPage() {
               <ul className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
                 {c.docs.map((d) => (
                   <li key={d} className="bg-background p-6">
-                    <span className="block h-10 w-8 rounded-[3px] border border-border-strong bg-surface" aria-hidden />
+                    <span
+                      className="block h-10 w-8 rounded-[3px] border border-border-strong bg-surface"
+                      aria-hidden
+                    />
                     <p className="mt-4 text-[0.9375rem] font-medium">{d}</p>
                   </li>
                 ))}
@@ -3699,7 +4889,11 @@ function PlusPage() {
 
       {/* 13 — Multiple dogs */}
       <Section className="container-page">
-        <SectionHead eyebrow={c.multipleDogs.eyebrow} title={c.multipleDogs.title} body={c.multipleDogs.body} />
+        <SectionHead
+          eyebrow={c.multipleDogs.eyebrow}
+          title={c.multipleDogs.title}
+          body={c.multipleDogs.body}
+        />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:max-w-3xl">
           {[
             { ...c.multipleDogs.dogs[0], img: lunaImage },
@@ -3728,9 +4922,7 @@ function PlusPage() {
         <div className="rounded-[2rem] border border-border bg-surface p-8 md:p-14">
           <div className="max-w-2xl">
             <h2 className="display-lg">{c.personalisation.title}</h2>
-            <p className="mt-6 leading-relaxed text-muted-foreground">
-              {c.personalisation.body}
-            </p>
+            <p className="mt-6 leading-relaxed text-muted-foreground">{c.personalisation.body}</p>
           </div>
         </div>
       </Section>
@@ -3840,15 +5032,16 @@ function PlusPage() {
           <h2 className="display-lg mt-6">
             DoggMatch<span className="text-accent">+</span>
           </h2>
-          <p className="mt-5 leading-relaxed text-muted-foreground">
-            {c.membership.body}
-          </p>
+          <p className="mt-5 leading-relaxed text-muted-foreground">{c.membership.body}</p>
         </div>
         <div className="mt-12 grid gap-6 lg:max-w-4xl lg:grid-cols-2">
           <Card className="flex flex-col">
             <p className="eyebrow">{c.membership.monthlyLabel}</p>
             <p className="mt-6 font-display text-4xl tracking-tight">
-              {c.membership.monthlyPrice} <span className="text-lg font-normal text-muted-foreground">{c.membership.monthlyUnit}</span>
+              {c.membership.monthlyPrice}{" "}
+              <span className="text-lg font-normal text-muted-foreground">
+                {c.membership.monthlyUnit}
+              </span>
             </p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               {c.membership.monthlyBody}
@@ -3863,7 +5056,10 @@ function PlusPage() {
               <Badge tone="accent">{c.membership.bestValue}</Badge>
             </div>
             <p className="mt-6 font-display text-4xl tracking-tight">
-              {c.membership.yearlyPrice} <span className="text-lg font-normal text-muted-foreground">{c.membership.yearlyUnit}</span>
+              {c.membership.yearlyPrice}{" "}
+              <span className="text-lg font-normal text-muted-foreground">
+                {c.membership.yearlyUnit}
+              </span>
             </p>
             <p className="mt-4 font-display text-lg tracking-tight text-accent">
               {c.membership.yearlyHighlight}
@@ -3876,6 +5072,7 @@ function PlusPage() {
             </div>
           </Card>
         </div>
+        <PartnerCodeField className="mt-10 max-w-xl rounded-3xl border border-border p-6" />
         <div className="mt-8 max-w-xl">
           <p className="font-display text-lg tracking-tight">{c.membership.openLine}</p>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -3893,9 +5090,14 @@ function PlusPage() {
         />
         <div className="mt-12 overflow-hidden rounded-[1.75rem] border border-border">
           {c.faqs.map((f) => (
-            <details key={f.q} className="group border-b border-border bg-background last:border-b-0">
+            <details
+              key={f.q}
+              className="group border-b border-border bg-background last:border-b-0"
+            >
               <summary className="flex cursor-pointer list-none items-start justify-between gap-5 p-6 md:p-8">
-                <h3 className="font-display text-lg leading-snug tracking-tight md:text-xl">{f.q}</h3>
+                <h3 className="font-display text-lg leading-snug tracking-tight md:text-xl">
+                  {f.q}
+                </h3>
                 <span
                   aria-hidden="true"
                   className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-border-strong text-accent transition-transform duration-300 group-open:rotate-45"
@@ -3911,7 +5113,10 @@ function PlusPage() {
         </div>
         <p className="mt-8 text-[0.9375rem] text-muted-foreground">
           {c.faqSection.stillWondering}{" "}
-          <Link to={withLangPrefix("/contact")} className="underline underline-offset-4 hover:text-foreground">
+          <Link
+            to={withLangPrefix("/contact")}
+            className="underline underline-offset-4 hover:text-foreground"
+          >
             {c.faqSection.getInTouch}
           </Link>
           .
@@ -3923,9 +5128,7 @@ function PlusPage() {
         <div className="rounded-[2rem] bg-primary p-10 text-primary-foreground md:p-16">
           <div className="max-w-2xl">
             <h2 className="display-lg">{c.finalCta.title}</h2>
-            <p className="mt-6 text-lg leading-relaxed opacity-80">
-              {c.finalCta.body}
-            </p>
+            <p className="mt-6 text-lg leading-relaxed opacity-80">{c.finalCta.body}</p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
                 href="#membership"

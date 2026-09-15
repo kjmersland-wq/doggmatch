@@ -1,8 +1,15 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { Notice, PointList, SectionHead } from "@/components/dogmatch/journey/parts";
-import { getCountries, getTransportModes, getTravelTimeline, type Rule } from "@/data/travel/countries";
+import {
+  getCountries,
+  getTransportModes,
+  getTravelTimeline,
+  type Rule,
+} from "@/data/travel/countries";
 import { getBeforeYouLeave } from "@/data/travel/content";
 import { useCopy } from "@/i18n";
 import { checkRoute, type Leg } from "@/lib/travel/rules";
@@ -19,19 +26,7 @@ const description =
   "Tell us where you're travelling from, where you're going and when. We'll show what's usually required — microchip, rabies, passport, tapeworm — and link the official source.";
 
 export const Route = createFileRoute("/{-$lang}/travel/abroad")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/travel/abroad"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/travel/abroad", pageSeo.travelAbroad),
   component: AbroadPage,
 });
 
@@ -48,7 +43,8 @@ const copy = {
     dateLabel: "When are you going?",
     countryPlaceholder: "Choose a country",
     transportEyebrow: "How are you travelling?",
-    datePrefix: "Some steps have waiting periods measured in weeks, so the date matters. Work backwards from",
+    datePrefix:
+      "Some steps have waiting periods measured in weeks, so the date matters. Work backwards from",
     dateSuffix: "using the timeline below.",
     dateLocale: "en-GB",
     going: "Going",
@@ -144,7 +140,8 @@ const copy = {
     dateLabel: "Kiedy wyjeżdżacie?",
     countryPlaceholder: "Wybierz kraj",
     transportEyebrow: "Jak podróżujecie?",
-    datePrefix: "Niektóre kroki mają okresy oczekiwania liczone w tygodniach, więc data ma znaczenie. Licz wstecz od",
+    datePrefix:
+      "Niektóre kroki mają okresy oczekiwania liczone w tygodniach, więc data ma znaczenie. Licz wstecz od",
     dateSuffix: "korzystając z osi czasu poniżej.",
     dateLocale: "pl-PL",
     going: "W drogę",
@@ -240,7 +237,8 @@ const copy = {
     dateLabel: "När reser ni?",
     countryPlaceholder: "Välj ett land",
     transportEyebrow: "Hur reser ni?",
-    datePrefix: "Vissa steg har väntetider mätta i veckor, så datumet spelar roll. Räkna bakåt från",
+    datePrefix:
+      "Vissa steg har väntetider mätta i veckor, så datumet spelar roll. Räkna bakåt från",
     dateSuffix: "med tidslinjen nedan.",
     dateLocale: "sv-SE",
     going: "På väg ut",
@@ -288,7 +286,8 @@ const copy = {
     dateLabel: "Milloin olette menossa?",
     countryPlaceholder: "Valitse maa",
     transportEyebrow: "Miten matkustatte?",
-    datePrefix: "Joissakin vaiheissa on viikkojen mittaisia odotusaikoja, joten päivämäärällä on väliä. Laske taaksepäin",
+    datePrefix:
+      "Joissakin vaiheissa on viikkojen mittaisia odotusaikoja, joten päivämäärällä on väliä. Laske taaksepäin",
     dateSuffix: "käyttäen alla olevaa aikajanaa.",
     dateLocale: "fi-FI",
     going: "Menomatka",
@@ -325,45 +324,46 @@ const copy = {
     lastCheckedPrefix: "Tarkistimme tämän viimeksi",
   },
   de: {
-    eyebrow: "Über Grenzen hinweg",
-    title: "Mit Ihrem Hund ins Ausland reisen.",
+    eyebrow: "Grenzen überqueren",
+    title: "Mit deinem Hund ins Ausland reisen.",
     intro:
-      "Die Anforderungen hängen ganz davon ab, von wo Sie abreisen und wohin Sie reisen. Sagen Sie uns die Route, und wir zeigen Ihnen, was üblicherweise nötig ist — und wo Sie es verlässlich bestätigen können.",
+      "Die Anforderungen hängen ganz davon ab, von wo du abreist und wohin du fährst. Nenn uns die Route, und wir zeigen dir, was üblicherweise nötig ist — und wo du es sauber bestätigen kannst.",
     heroAlt: "Ein Hund wartet ruhig neben einem Koffer in einer luftigen Abflughalle",
-    journeyEyebrow: "Ihre Reise",
-    fromLabel: "Reisen von",
-    toLabel: "Reisen nach",
-    dateLabel: "Wann reisen Sie?",
+    journeyEyebrow: "Deine Reise",
+    fromLabel: "Abreise von",
+    toLabel: "Reiseziel",
+    dateLabel: "Wann geht es los?",
     countryPlaceholder: "Land wählen",
-    transportEyebrow: "Wie reisen Sie?",
-    datePrefix: "Manche Schritte haben Wartezeiten von mehreren Wochen, daher zählt das Datum. Rechnen Sie rückwärts von",
-    dateSuffix: "anhand des Zeitplans unten.",
+    transportEyebrow: "Wie reist ihr?",
+    datePrefix:
+      "Manche Schritte haben Wartezeiten von mehreren Wochen, deshalb zählt das Datum. Rechne rückwärts ab",
+    dateSuffix: "anhand der Zeitleiste unten.",
     dateLocale: "de-DE",
     going: "Hinreise",
     comingHome: "Rückreise",
-    noRulesTitle: "Für diese Route liegen uns noch keine geprüften Regeln vor",
+    noRulesTitle: "Für diese Route haben wir noch keine verifizierten Regeln",
     noRulesBody:
-      "Statt zu raten, verweisen wir Sie auf die zuständige Behörde im Zielland. Deren Angaben sind die einzige Version, die an der Grenze zählt.",
+      "Statt zu raten, verweisen wir dich an die offizielle Behörde im Zielland. Deren Vorgaben gelten allein an der Grenze.",
     timingEyebrow: "Timing",
-    timingTitle: "Beginnen Sie früher, als nötig erscheint.",
+    timingTitle: "Fang früher an, als nötig erscheint.",
     timingBody:
       "Der häufigste Grund, warum eine Reise scheitert, ist eine Wartezeit, von der niemand wusste. Nichts hier ist schwierig — es dauert nur länger, als man denkt.",
     timelineAlt: "Illustrierter Heimtierausweis, Mikrochip-Scanner und Reisedokumente",
-    beforeYouLeaveEyebrow: "Bevor Sie losfahren",
+    beforeYouLeaveEyebrow: "Bevor ihr losfahrt",
     beforeYouLeaveTitle: "Der letzte Check an der Tür.",
     onPaperEyebrow: "Auf Papier",
     packTitle: "Das Hunde-Reisepaket.",
     packBody:
-      "Alles, was Sie an der Grenze oder im Wartezimmer eines ausländischen Tierarztes bei sich haben möchten: die Daten Ihres Hundes, Mikrochipnummer, Impfungen, Medikamente, Fütterung, Notfallkontakte und die Checkliste für diese Reise — auf Papier, funktioniert auch, wenn das Handy es nicht tut.",
+      "Alles, was du an einer Grenze oder im Wartezimmer eines ausländischen Tierarztes bei dir haben möchtest: die Daten deines Hundes, Mikrochipnummer, Impfungen, Medikamente, Fütterung, Notfallkontakte und die Checkliste für diese Reise — auf Papier, das auch funktioniert, wenn das Handy es nicht tut.",
     printCta: "Mein Reisepaket drucken",
     myDogCta: "Mein Hund",
-    finalNoticeTitle: "Bitte betrachten Sie dies als Ausgangspunkt",
+    finalNoticeTitle: "Bitte betrachte dies als Ausgangspunkt",
     finalNoticeBody:
-      "Regeln für Haustierreisen ändern sich und unterscheiden sich je nach genauem Ausreise- und Einreiseland. Alles hier verweist auf die zuständige Behörde für das letzte Wort — bestätigen Sie immer bei ihr und bei Ihrem Tierarzt, bevor Sie buchen.",
+      "Regeln für Reisen mit Haustieren ändern sich und unterscheiden sich je nach genauem Ausreise- und Einreiseland. Alles hier verweist für das letzte Wort auf die offizielle Behörde — bestätige immer dort und bei deinem Tierarzt, bevor ihr bucht.",
     withinEu: "Innerhalb der EU-Heimtierreiseregelung",
     outsideEu: "Ein- oder Ausreise außerhalb der Regelung",
     unknownLeg:
-      "Für diese Richtung liegen uns keine geprüften Regeln vor, daher raten wir nicht. Die offizielle Quelle unten ist maßgeblich.",
+      "Für diese Richtung haben wir keine verifizierten Regeln, daher raten wir nicht. Die offizielle Quelle unten ist die maßgebliche.",
     required: "Erforderlich",
     recommended: "Dringend empfohlen",
     goodToHave: "Gut zu haben",
@@ -377,87 +377,89 @@ const copy = {
     title: "Voyager à l'étranger avec votre chien.",
     intro:
       "Les exigences dépendent entièrement d'où vous partez et où vous allez. Indiquez-nous l'itinéraire, et nous vous montrerons ce qui est généralement requis — et où le confirmer correctement.",
-    heroAlt: "Un chien attendant calmement près d'une valise dans un hall de départ lumineux",
-    journeyEyebrow: "Votre trajet",
+    heroAlt: "Un chien attendant calmement à côté d'une valise dans un hall de départ lumineux",
+    journeyEyebrow: "Votre voyage",
     fromLabel: "Départ de",
     toLabel: "Destination",
     dateLabel: "Quand partez-vous ?",
     countryPlaceholder: "Choisir un pays",
     transportEyebrow: "Comment voyagez-vous ?",
-    datePrefix: "Certaines étapes ont des délais d'attente de plusieurs semaines, donc la date compte. Comptez à rebours à partir du",
+    datePrefix:
+      "Certaines étapes ont des délais d'attente de plusieurs semaines, donc la date compte. Comptez à rebours à partir du",
     dateSuffix: "à l'aide de la chronologie ci-dessous.",
     dateLocale: "fr-FR",
     going: "Aller",
     comingHome: "Retour",
     noRulesTitle: "Nous n'avons pas encore de règles vérifiées pour cet itinéraire",
     noRulesBody:
-      "Plutôt que de deviner, nous vous orienterons vers l'autorité officielle du pays de destination. Leurs indications sont les seules qui comptent à la frontière.",
-    timingEyebrow: "Calendrier",
-    timingTitle: "Commencez plus tôt que ce qui semble nécessaire.",
+      "Plutôt que de deviner, nous vous orientons vers l'autorité officielle du pays de destination. Leurs instructions sont les seules qui comptent à la frontière.",
+    timingEyebrow: "Le bon moment",
+    timingTitle: "Commencez plus tôt que vous ne le pensez.",
     timingBody:
-      "La raison la plus courante pour laquelle un voyage échoue est un délai d'attente dont personne n'était au courant. Rien ici n'est difficile — cela prend juste plus de temps qu'on ne le pense.",
-    timelineAlt: "Passeport pour animaux illustré, lecteur de puce électronique et documents de voyage",
+      "La raison la plus courante d'un voyage compromis est un délai d'attente dont personne n'avait connaissance. Rien ici n'est difficile — cela prend simplement plus de temps qu'on ne le croit.",
+    timelineAlt: "Passeport pour animaux, lecteur de puce et documents de voyage illustrés",
     beforeYouLeaveEyebrow: "Avant de partir",
-    beforeYouLeaveTitle: "La dernière vérification à la porte.",
+    beforeYouLeaveTitle: "Le dernier contrôle à la porte.",
     onPaperEyebrow: "Sur papier",
     packTitle: "Le kit de voyage pour chien.",
     packBody:
-      "Tout ce que vous voudrez avoir sur vous à une frontière ou dans la salle d'attente d'un vétérinaire étranger : les informations de votre chien, numéro de puce, vaccinations, médicaments, alimentation, contacts d'urgence et la liste de contrôle pour ce voyage — sur papier, qui fonctionne même quand votre téléphone ne fonctionne pas.",
+      "Tout ce que vous voudrez avoir sur vous à une frontière ou dans la salle d'attente d'un vétérinaire étranger : les informations de votre chien, le numéro de puce, les vaccinations, les médicaments, l'alimentation, les contacts d'urgence et la liste de contrôle pour ce voyage — sur papier, qui fonctionne même quand votre téléphone ne fonctionne plus.",
     printCta: "Imprimer mon kit de voyage",
     myDogCta: "Mon chien",
-    finalNoticeTitle: "Veuillez considérer ceci comme un point de départ",
+    finalNoticeTitle: "Merci de considérer ceci comme un point de départ",
     finalNoticeBody:
-      "Les règles de voyage pour animaux changent, et elles diffèrent selon le pays exact de départ et celui d'entrée. Tout ici renvoie à l'autorité officielle pour le mot final — confirmez toujours auprès d'elle, et de votre vétérinaire, avant de réserver.",
-    withinEu: "Dans le cadre du régime européen de voyage des animaux",
+      "Les règles de voyage avec un animal changent, et diffèrent selon le pays exact de départ et celui d'arrivée. Tout ici renvoie à l'autorité officielle pour le mot final — confirmez toujours auprès d'elle, et de votre vétérinaire, avant de réserver.",
+    withinEu: "Au sein du régime européen de voyage des animaux",
     outsideEu: "Entrée ou sortie du régime",
     unknownLeg:
-      "Nous n'avons pas de règles vérifiées pour cette direction, donc nous ne devinerons pas. La source officielle ci-dessous est celle qui compte.",
+      "Nous n'avons pas de règles vérifiées pour ce sens de trajet, donc nous ne devinons pas. La source officielle ci-dessous est celle qui compte.",
     required: "Requis",
     recommended: "Fortement recommandé",
     goodToHave: "Utile à avoir",
     quarantine: "Quarantaine",
     minimumAge: "Âge minimum",
-    checkItHere: "Vérifier ici",
+    checkItHere: "Vérifiez ici",
     lastCheckedPrefix: "Dernière vérification le",
   },
   nl: {
     eyebrow: "Grenzen over",
-    title: "Met uw hond naar het buitenland reizen.",
+    title: "Naar het buitenland reizen met je hond.",
     intro:
-      "De vereisten hangen volledig af van waar u vandaan vertrekt en waar u naartoe gaat. Vertel ons de route, en we laten zien wat meestal nodig is — en waar u het goed kunt bevestigen.",
-    heroAlt: "Een hond die rustig naast een koffer wacht in een lichte vertrekhal",
-    journeyEyebrow: "Uw reis",
-    fromLabel: "Reist vanaf",
+      "De vereisten hangen volledig af van waar je vertrekt en waar je naartoe gaat. Vertel ons de route, dan laten we zien wat meestal nodig is — en waar je het goed kunt bevestigen.",
+    heroAlt: "Een hond wacht rustig naast een koffer in een lichte vertrekhal",
+    journeyEyebrow: "Jouw reis",
+    fromLabel: "Reist vanuit",
     toLabel: "Reist naar",
-    dateLabel: "Wanneer vertrekt u?",
+    dateLabel: "Wanneer vertrekken jullie?",
     countryPlaceholder: "Kies een land",
-    transportEyebrow: "Hoe reist u?",
-    datePrefix: "Sommige stappen hebben wachttijden van weken, dus de datum is belangrijk. Reken terug vanaf",
+    transportEyebrow: "Hoe reizen jullie?",
+    datePrefix:
+      "Sommige stappen hebben wachttijden van meerdere weken, dus de datum is belangrijk. Reken terug vanaf",
     dateSuffix: "met de tijdlijn hieronder.",
     dateLocale: "nl-NL",
     going: "Heenreis",
-    comingHome: "Thuisreis",
+    comingHome: "Terugreis",
     noRulesTitle: "We hebben nog geen geverifieerde regels voor die route",
     noRulesBody:
-      "In plaats van te gokken, verwijzen we u naar de officiële instantie in het land waar u naartoe reist. Hun richtlijnen zijn de enige die tellen aan de grens.",
+      "In plaats van te gokken, verwijzen we je naar de officiële instantie in het land waar je naartoe reist. Hun richtlijnen zijn de enige die tellen aan de grens.",
     timingEyebrow: "Timing",
     timingTitle: "Begin eerder dan nodig lijkt.",
     timingBody:
-      "De meest voorkomende reden dat een reis mislukt, is een wachttijd waar niemand van wist. Niets hier is moeilijk — het duurt gewoon langer dan je zou denken.",
+      "De meest voorkomende reden dat een reis misgaat, is een wachttijd waar niemand van wist. Niets hier is moeilijk — het duurt gewoon langer dan je zou denken.",
     timelineAlt: "Een geïllustreerd dierenpaspoort, microchipscanner en reisdocumenten",
-    beforeYouLeaveEyebrow: "Voordat u vertrekt",
+    beforeYouLeaveEyebrow: "Voor jullie vertrekken",
     beforeYouLeaveTitle: "De laatste check bij de deur.",
     onPaperEyebrow: "Op papier",
-    packTitle: "Het hondenreispakket.",
+    packTitle: "Het reispakket voor je hond.",
     packBody:
-      "Alles wat u bij u wilt hebben aan een grens of in de wachtkamer van een buitenlandse dierenarts: de gegevens van uw hond, microchipnummer, vaccinaties, medicatie, voeding, noodcontacten en de checklist voor deze reis — op papier, dat werkt wanneer uw telefoon dat niet doet.",
-    printCta: "Mijn reispakket printen",
+      "Alles wat je bij je wilt hebben aan een grens of in de wachtkamer van een buitenlandse dierenarts: de gegevens van je hond, microchipnummer, vaccinaties, medicatie, voeding, noodcontacten en de checklist voor deze reis — op papier, dat werkt ook als je telefoon dat niet doet.",
+    printCta: "Print mijn reispakket",
     myDogCta: "Mijn hond",
-    finalNoticeTitle: "Beschouw dit alstublieft als een startpunt",
+    finalNoticeTitle: "Beschouw dit alsjeblieft als een startpunt",
     finalNoticeBody:
-      "Regels voor huisdierreizen veranderen, en ze verschillen per exact land van vertrek en het land van aankomst. Alles hier verwijst naar de officiële instantie voor het laatste woord — bevestig altijd bij hen, en bij uw dierenarts, voordat u boekt.",
+      "Regels voor reizen met huisdieren veranderen, en verschillen per exact land van vertrek en aankomst. Alles hier verwijst naar de officiële instantie voor het laatste woord — bevestig altijd bij hen, en bij je dierenarts, voordat je boekt.",
     withinEu: "Binnen de EU-regeling voor huisdierreizen",
-    outsideEu: "In- of uitgaand buiten de regeling",
+    outsideEu: "In of uit de regeling",
     unknownLeg:
       "We hebben geen geverifieerde regels voor deze richting, dus we gokken niet. De officiële bron hieronder is degene die telt.",
     required: "Vereist",
@@ -491,7 +493,14 @@ function AbroadPage() {
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
           </div>
           <div className="overflow-hidden rounded-[2rem] bg-surface">
-            <img src={abroadImage} alt={c.heroAlt} width={1600} height={1100} fetchPriority="high" className="aspect-[4/3] w-full object-cover" />
+            <img
+              src={abroadImage}
+              alt={c.heroAlt}
+              width={1600}
+              height={1100}
+              fetchPriority="high"
+              className="aspect-[4/3] w-full object-cover"
+            />
           </div>
         </div>
       </section>
@@ -538,7 +547,9 @@ function AbroadPage() {
                       onClick={() => getDogStore.setTrip({ transport: on ? undefined : mode.id })}
                       className={cn(
                         "h-11 rounded-full border px-5 text-[0.9375rem] transition-colors",
-                        on ? "border-accent bg-accent text-accent-foreground" : "border-border hover:border-border-strong",
+                        on
+                          ? "border-accent bg-accent text-accent-foreground"
+                          : "border-border hover:border-border-strong",
                       )}
                     >
                       {mode.label}
@@ -556,7 +567,12 @@ function AbroadPage() {
             {trip.date && (
               <p className="mt-8 text-sm text-muted-foreground">
                 {c.datePrefix}{" "}
-                {new Date(trip.date).toLocaleDateString(c.dateLocale, { day: "numeric", month: "long", year: "numeric" })} {c.dateSuffix}
+                {new Date(trip.date).toLocaleDateString(c.dateLocale, {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}{" "}
+                {c.dateSuffix}
               </p>
             )}
           </div>
@@ -574,9 +590,7 @@ function AbroadPage() {
               </div>
             ) : null}
 
-            {!check.outbound && (
-              <Notice title={c.noRulesTitle}>{c.noRulesBody}</Notice>
-            )}
+            {!check.outbound && <Notice title={c.noRulesTitle}>{c.noRulesBody}</Notice>}
           </div>
         </Section>
       )}
@@ -589,15 +603,27 @@ function AbroadPage() {
               <SectionHead eyebrow={c.timingEyebrow} title={c.timingTitle} body={c.timingBody} />
               <ol className="mt-10 space-y-px overflow-hidden rounded-2xl border border-border bg-border">
                 {getTravelTimeline().map((row) => (
-                  <li key={row.when} className="flex flex-wrap items-baseline gap-x-6 gap-y-1 bg-background p-6">
+                  <li
+                    key={row.when}
+                    className="flex flex-wrap items-baseline gap-x-6 gap-y-1 bg-background p-6"
+                  >
                     <span className="font-display text-[0.9375rem] text-accent">{row.when}</span>
-                    <span className="flex-1 text-[0.9375rem] text-muted-foreground">{row.what}</span>
+                    <span className="flex-1 text-[0.9375rem] text-muted-foreground">
+                      {row.what}
+                    </span>
                   </li>
                 ))}
               </ol>
             </div>
             <div className="overflow-hidden rounded-[1.5rem] lg:sticky lg:top-28 lg:self-start">
-              <img src={illus} alt={c.timelineAlt} width={1200} height={1200} loading="lazy" className="aspect-square w-full object-cover" />
+              <img
+                src={illus}
+                alt={c.timelineAlt}
+                width={1200}
+                height={1200}
+                loading="lazy"
+                className="aspect-square w-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -699,11 +725,15 @@ function LegPanel({ leg, heading, copy: c }: { leg: Leg; heading: string; copy: 
             <div className="mt-10 grid gap-6 md:grid-cols-2">
               <div className="rounded-2xl bg-surface p-6">
                 <p className="eyebrow">{c.quarantine}</p>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{leg.ruleSet.quarantine}</p>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                  {leg.ruleSet.quarantine}
+                </p>
               </div>
               <div className="rounded-2xl bg-surface p-6">
                 <p className="eyebrow">{c.minimumAge}</p>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{leg.ruleSet.minimumAge}</p>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                  {leg.ruleSet.minimumAge}
+                </p>
               </div>
             </div>
           )}
@@ -753,7 +783,9 @@ function RuleGroup({ title, rules, accent }: { title: string; rules: Rule[]; acc
       <ul className="mt-5 space-y-px overflow-hidden rounded-2xl border border-border bg-border">
         {rules.map((rule) => (
           <li key={rule.id} className="bg-background p-6">
-            <p className="font-display text-[1.0625rem] leading-tight tracking-tight">{rule.title}</p>
+            <p className="font-display text-[1.0625rem] leading-tight tracking-tight">
+              {rule.title}
+            </p>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{rule.detail}</p>
           </li>
         ))}

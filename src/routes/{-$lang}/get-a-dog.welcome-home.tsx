@@ -1,3 +1,5 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { CardGrid, Notice, SectionHead } from "@/components/dogmatch/journey/parts";
@@ -13,19 +15,7 @@ const description =
   "A calm, step-by-step guide to bringing your dog home: the journey, the first evening, sleep, the first small lessons, and settling into a routine together.";
 
 export const Route = createFileRoute("/{-$lang}/get-a-dog/welcome-home")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/get-a-dog/welcome-home"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/get-a-dog/welcome-home", pageSeo.getDogWelcome),
   component: WelcomeHomePage,
 });
 
@@ -75,7 +65,8 @@ const copy = {
     packCta: "Den utskriftsvennlige hundepakken",
   },
   pl: {
-    imgAlt: "Rodzina siedząca spokojnie na podłodze, gdy nowo przybyły pies obwąchuje swoje nowe legowisko",
+    imgAlt:
+      "Rodzina siedząca spokojnie na podłodze, gdy nowo przybyły pies obwąchuje swoje nowe legowisko",
     eyebrow: "Witaj w domu",
     title: "Dzień, w którym pies przyjeżdża.",
     intro:
@@ -97,7 +88,8 @@ const copy = {
     packCta: "Drukowalny Pakiet Psa",
   },
   dk: {
-    imgAlt: "En familie der sidder stille på gulvet, mens en nyankommet hund snuser til sin nye seng",
+    imgAlt:
+      "En familie der sidder stille på gulvet, mens en nyankommet hund snuser til sin nye seng",
     eyebrow: "Velkommen hjem",
     title: "Dagen den kommer.",
     intro:
@@ -163,70 +155,73 @@ const copy = {
     packCta: "Tulostettava koirapaketti",
   },
   de: {
-    imgAlt: "Eine Familie sitzt still auf dem Boden, während ein neu angekommener Hund an seinem neuen Bett schnuppert",
+    imgAlt:
+      "Eine Familie sitzt still auf dem Boden, während ein neu angekommener Hund an seinem neuen Bett schnuppert",
     eyebrow: "Willkommen zu Hause",
-    title: "Der Tag der Ankunft.",
+    title: "Der Tag, an dem er einzieht.",
     intro:
-      "Ruhiger, als Sie sich vorstellen, und langsamer, als Sie vielleicht möchten. Genau das ist richtig. Ein neuer Hund braucht am ersten Tag sehr wenig — Ruhe, Wasser und einen eigenen Platz.",
+      "Ruhiger als du dir vorstellst, und langsamer, als dir lieb ist. Genau so soll es sein. Ein neuer Hund braucht am ersten Tag sehr wenig außer Ruhe, Wasser und einem eigenen Platz.",
     firstDayEyebrow: "Der erste Tag",
-    firstDayTitle: "Sechs Dinge, und sonst nichts.",
+    firstDayTitle: "Sechs Dinge, und nichts weiter.",
     firstWeekEyebrow: "Die erste Woche",
-    firstWeekTitle: "Dann, behutsam, ein Rhythmus.",
+    firstWeekTitle: "Dann, ganz sanft, ein Rhythmus.",
     firstWeekBody:
-      "Die meisten Hunde brauchen zwei bis drei Wochen, um Ihnen zu zeigen, wer sie wirklich sind. Urteilen Sie in den ersten Tagen über nichts — weder Appetit, noch Toilettengewohnheiten, noch Charakter.",
-    vetTitle: "Wann Sie den Tierarzt anrufen sollten",
+      "Die meisten Hunde brauchen zwei bis drei Wochen, um dir zu zeigen, wer sie wirklich sind. Beurteile in den ersten Tagen nichts — weder ihren Appetit, noch ihre Stubenreinheit, noch ihren Charakter.",
+    vetTitle: "Wann du den Tierarzt anrufen solltest",
     vetBody:
-      "Verweigerung des Futters über mehr als einen Tag, wiederholtes Erbrechen oder Durchfall, erschwerte Atmung, anhaltende Mattigkeit, oder jegliche Anzeichen von Schmerz. Neue Hunde sind oft unruhig — aber Sie erkennen Krankheit, wenn Sie sie sehen, und nachfragen ist nie Zeitverschwendung.",
+      "Futterverweigerung über mehr als einen Tag, wiederholtes Erbrechen oder Durchfall, erschwerte Atmung, anhaltende Mattheit oder jedes Anzeichen von Schmerz. Neue Hunde sind oft aufgewühlt — aber du erkennst Krankheit, wenn du sie siehst, und nachzufragen ist nie Zeitverschwendung.",
     andThen: "Und dann",
     myDogTitle: "Hier beginnt Mein Hund.",
     myDogBody:
-      "Alles ab hier — Futter und Portionen, Trainingseinheiten, Gewicht, Tierarztbesuche, Spaziergänge und die ganze Woche — lebt an einem Ort, aufgebaut um Ihren tatsächlichen Hund. Legen Sie sein Profil an, und alles, was Sie uns schon erzählt haben, kommt mit.",
+      "Alles von hier an — Futter und Portionen, Trainingseinheiten, Gewicht, Tierarztbesuche, Spaziergänge und die ganze Woche — findet sich an einem Ort, gebaut um deinen konkreten Hund. Richte sein Profil ein, und alles, was du uns schon erzählt hast, kommt mit.",
     createCta: "Meinen Hund anlegen",
     packCta: "Das druckbare Hundepaket",
   },
   fr: {
-    imgAlt: "Une famille assise tranquillement sur le sol pendant qu'un chien nouvellement arrivé renifle son nouveau panier",
+    imgAlt:
+      "Une famille assise en silence sur le sol pendant qu'un chien tout juste arrivé renifle son nouveau panier",
     eyebrow: "Bienvenue à la maison",
     title: "Le jour de son arrivée.",
     intro:
-      "Plus calme que vous ne l'imaginez, et plus lent que vous ne le souhaiteriez. C'est exactement ce qu'il faut. Un nouveau chien a besoin de très peu le premier jour — du calme, de l'eau, et un endroit bien à lui.",
+      "Plus calme que vous ne l'imaginez, et plus lent que vous ne le voudriez. C'est exactement ce qu'il faut. Un nouveau chien a besoin de très peu le premier jour, à part du calme, de l'eau et un endroit bien à lui.",
     firstDayEyebrow: "Le premier jour",
     firstDayTitle: "Six choses, et rien d'autre.",
     firstWeekEyebrow: "La première semaine",
     firstWeekTitle: "Puis, doucement, un rythme.",
     firstWeekBody:
-      "La plupart des chiens ont besoin de deux ou trois semaines pour vous montrer qui ils sont vraiment. Ne jugez rien les premiers jours — ni l'appétit, ni les habitudes de propreté, ni le caractère.",
+      "La plupart des chiens ont besoin de deux ou trois semaines pour vous montrer qui ils sont vraiment. Ne jugez rien les premiers jours — ni leur appétit, ni leur propreté, ni leur caractère.",
     vetTitle: "Quand appeler le vétérinaire",
     vetBody:
-      "Refus de manger pendant plus d'un jour, vomissements ou diarrhée répétés, respiration difficile, léthargie qui ne passe pas, ou tout signe de douleur. Les nouveaux chiens sont souvent perturbés — mais vous reconnaîtrez la maladie quand vous la verrez, et demander n'est jamais une perte de temps.",
+      "Refus de manger pendant plus d'un jour, vomissements ou diarrhée répétés, respiration difficile, léthargie qui ne passe pas, ou tout signe de douleur. Les nouveaux chiens sont souvent perturbés — mais vous reconnaîtrez le malaise quand vous le verrez, et demander n'est jamais une perte de temps.",
     andThen: "Et ensuite",
-    myDogTitle: "C'est ici que Mon chien commence.",
+    myDogTitle: "C'est ici que commence Mon Chien.",
     myDogBody:
-      "Tout à partir de maintenant — nourriture et portions, séances d'éducation, poids, visites vétérinaires, promenades et toute la semaine — vit au même endroit, construit autour de votre chien réel. Créez son profil, et tout ce que vous nous avez déjà confié vous suit.",
-    createCta: "Créer le profil de mon chien",
-    packCta: "Le pack chien imprimable",
+      "Tout à partir de maintenant — alimentation et portions, séances d'éducation, poids, visites vétérinaires, promenades et toute la semaine — vit au même endroit, construit autour de votre chien réel. Créez son profil, et tout ce que vous nous avez déjà confié vous suit.",
+    createCta: "Créer mon chien",
+    packCta: "Le Dog Pack imprimable",
   },
   nl: {
-    imgAlt: "Een gezin dat rustig op de grond zit terwijl een nieuw aangekomen hond aan zijn nieuwe mand snuffelt",
+    imgAlt:
+      "Een gezin zit stil op de vloer terwijl een net aangekomen hond aan zijn nieuwe mand snuffelt",
     eyebrow: "Welkom thuis",
     title: "De dag dat hij aankomt.",
     intro:
-      "Rustiger dan u zich voorstelt, en langzamer dan u misschien wilt. Dat is precies goed. Een nieuwe hond heeft de eerste dag heel weinig nodig — rust, water, en een eigen plekje.",
+      "Rustiger dan je je voorstelt, en trager dan je zou willen. Dat klopt precies. Een nieuwe hond heeft de eerste dag heel weinig nodig, behalve rust, water en een eigen plekje.",
     firstDayEyebrow: "De eerste dag",
     firstDayTitle: "Zes dingen, en verder niets.",
     firstWeekEyebrow: "De eerste week",
     firstWeekTitle: "Dan, voorzichtig, een ritme.",
     firstWeekBody:
-      "De meeste honden hebben twee tot drie weken nodig om u te laten zien wie ze werkelijk zijn. Oordeel de eerste dagen nergens over — niet over de eetlust, niet over de zindelijkheid, niet over het karakter.",
-    vetTitle: "Wanneer u de dierenarts moet bellen",
+      "De meeste honden hebben twee tot drie weken nodig om te laten zien wie ze echt zijn. Oordeel de eerste dagen nergens over — niet over eetlust, niet over zindelijkheid, niet over karakter.",
+    vetTitle: "Wanneer de dierenarts bellen",
     vetBody:
-      "Meer dan een dag weigeren te eten, herhaaldelijk braken of diarree, moeizame ademhaling, lusteloosheid die niet overgaat, of enig teken van pijn. Nieuwe honden zijn vaak onrustig — maar u herkent onwel-zijn als u het ziet, en vragen is nooit tijdverspilling.",
+      "Meer dan een dag geen voer eten, herhaaldelijk braken of diarree, moeizame ademhaling, lusteloosheid die niet overgaat, of enig teken van pijn. Nieuwe honden zijn vaak van slag — maar je herkent ziek zijn wanneer je het ziet, en vragen is nooit tijdverspilling.",
     andThen: "En dan",
-    myDogTitle: "Hier begint Mijn hond.",
+    myDogTitle: "Hier begint Mijn Hond.",
     myDogBody:
-      "Alles vanaf hier — voeding en porties, trainingssessies, gewicht, dierenartsbezoeken, wandelingen en de hele week — leeft op één plek, opgebouwd rond uw echte hond. Maak zijn profiel aan, en alles wat u ons al heeft verteld gaat mee.",
+      "Alles vanaf hier — voeding en porties, trainingssessies, gewicht, dierenartsbezoeken, wandelingen en de hele week — komt op één plek samen, opgebouwd rond jouw eigen hond. Stel zijn profiel in, en alles wat je ons al hebt verteld gaat mee.",
     createCta: "Mijn hond aanmaken",
-    packCta: "Het afdrukbare hondenpakket",
+    packCta: "Het afdrukbare Hondenpakket",
   },
 } as const;
 
@@ -266,7 +261,11 @@ function WelcomeHomePage() {
 
       <Section className="bg-surface pt-0">
         <div className="container-page pt-20 md:pt-28">
-          <SectionHead eyebrow={c.firstWeekEyebrow} title={c.firstWeekTitle} body={c.firstWeekBody} />
+          <SectionHead
+            eyebrow={c.firstWeekEyebrow}
+            title={c.firstWeekTitle}
+            body={c.firstWeekBody}
+          />
           <div className="mt-12">
             <CardGrid items={firstWeek} />
           </div>

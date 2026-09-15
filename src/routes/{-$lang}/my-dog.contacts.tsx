@@ -68,7 +68,8 @@ const copy = {
     intro:
       "Fyll inn det du vet. Det blir liggende på denne enheten, og du kan skrive det ut når du trenger det — til veterinæren, hundepasseren eller kjøleskapsdøren.",
     printSave: "Skriv ut og lagre",
-    addDogNote: "Legg til hunden din først, så blir alt du skriver her tatt vare på sammen med den.",
+    addDogNote:
+      "Legg til hunden din først, så blir alt du skriver her tatt vare på sammen med den.",
     detailsTitle: "Detaljer om hunden din",
     dob: "Fødselsdato",
     colour: "Farge og tegninger",
@@ -89,7 +90,8 @@ const copy = {
     intro:
       "Uzupełnij to, co wiesz. Zostaje to na tym urządzeniu i możesz to wydrukować, kiedy tylko potrzebujesz — dla weterynarza, opiekuna albo na drzwi lodówki.",
     printSave: "Wydrukuj i zapisz",
-    addDogNote: "Dodaj najpierw swojego psa, a wszystko, co tu wpiszesz, zostanie zapisane razem z nim.",
+    addDogNote:
+      "Dodaj najpierw swojego psa, a wszystko, co tu wpiszesz, zostanie zapisane razem z nim.",
     detailsTitle: "Dane twojego psa",
     dob: "Data urodzenia",
     colour: "Umaszczenie i znaki szczególne",
@@ -245,7 +247,12 @@ function Field({
   return (
     <label className="block">
       <span className="text-xs uppercase tracking-[0.14em] text-muted-foreground">{label}</span>
-      <input type={type} value={value} onChange={(e) => onChange(e.target.value)} className={inputClass} />
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className={inputClass}
+      />
     </label>
   );
 }
@@ -272,9 +279,7 @@ function ContactsPage() {
             <Arrow />
           </ButtonLink>
         </div>
-        {!dog && (
-          <p className="mt-6 text-sm text-muted-foreground">{c.addDogNote}</p>
-        )}
+        {!dog && <p className="mt-6 text-sm text-muted-foreground">{c.addDogNote}</p>}
       </section>
 
       <Section className="container-page">
@@ -330,7 +335,9 @@ function ContactsPage() {
       <Section className="container-page">
         <Eyebrow>{c.worthKnowing}</Eyebrow>
         <h2 className="display-lg mt-5 max-w-2xl">{c.worthKnowingTitle}</h2>
-        <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.worthKnowingIntro}</p>
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          {c.worthKnowingIntro}
+        </p>
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           {infoFields.map((field) => (
             <Panel key={field.key} title={field.label}>

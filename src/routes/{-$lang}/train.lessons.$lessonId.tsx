@@ -8,11 +8,12 @@ import { Arrow, Badge, Button, ButtonLink, Eyebrow } from "@/components/dogmatch
 import { withLangPrefix } from "@/lib/localized-path";
 import {
   levelLabel,
-  SessionTimer,
   StatusPicker,
   StepFigure,
   TreatCounter,
 } from "@/components/dogmatch/training/parts";
+import { MarkDoneButton, StepTimer, WhyItMatters } from "@/components/dogmatch/training/plan-parts";
+import { sessionMinutes, whyItMatters } from "@/lib/training/schedule";
 import {
   today,
   trainingStore,
@@ -21,10 +22,9 @@ import {
   useTrainingState,
 } from "@/lib/training/store";
 import { cn } from "@/lib/utils";
-import { seoLinks, breadcrumbLd } from "@/lib/seo";
+import { seoLinks, breadcrumbLd, headLocale, langUrl, ogLocaleTag } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { useCopy } from "@/i18n";
-
 
 const copy = {
   en: {
@@ -104,7 +104,11 @@ const copy = {
     howDidItGo: "Jak poszło?",
     tellUsWhere: (name: string) =>
       `Powiedz nam, na jakim etapie jest ${name}. To tylko dla ciebie \u2014 dzięki temu twoja droga pozostaje szczera i pomaga nam zaproponować kolejny krok.`,
-    feelings: ["Poszło naprawdę dobrze", "Wystarczająco dobrze jak na dziś", "Potrzebujemy więcej ćwiczeń"] as const,
+    feelings: [
+      "Poszło naprawdę dobrze",
+      "Wystarczająco dobrze jak na dziś",
+      "Potrzebujemy więcej ćwiczeń",
+    ] as const,
     logged: "Zapisano. Świetna robota \u2014 to kolejna wspólna sesja.",
     noteLabel: "Coś, co warto zapamiętać na następny raz?",
     notePlaceholder: "Lepiej w korytarzu niż w ogrodzie.",
@@ -147,8 +151,7 @@ const copy = {
     whileYouTrainLead: "Hold det kort, og slut af på noget godt.",
     heroAlt: (title: string) => `${title} — en hund og deres menneske øver sammen`,
     notFoundTitle: "Vi kunne ikke finde den lektion.",
-    notFoundBody:
-      "Den kan være flyttet. Kig i biblioteket — det, du ledte efter, ligger nok der.",
+    notFoundBody: "Den kan være flyttet. Kig i biblioteket — det, du ledte efter, ligger nok der.",
     seeEvery: "Se alle lektioner",
   },
   se: {
@@ -197,7 +200,11 @@ const copy = {
     howDidItGo: "Miten meni?",
     tellUsWhere: (name: string) =>
       `Kerro, missä vaiheessa ${name} on tämän kanssa. Tieto on vain sinua varten — se pitää matkanne rehellisenä ja auttaa meitä ehdottamaan seuraavaa askelta.`,
-    feelings: ["Tämä meni tosi hyvin", "Riittävän hyvin tälle päivälle", "Tarvitsemme lisää harjoitusta"] as const,
+    feelings: [
+      "Tämä meni tosi hyvin",
+      "Riittävän hyvin tälle päivälle",
+      "Tarvitsemme lisää harjoitusta",
+    ] as const,
     logged: "Kirjattu. Hyvää työtä — taas yksi yhteinen harjoitus.",
     noteLabel: "Jotain, minkä haluat muistaa ensi kertaa varten?",
     notePlaceholder: "Sujui paremmin eteisessä kuin pihalla.",
@@ -209,8 +216,7 @@ const copy = {
     whileYouTrainLead: "Pidä se lyhyenä ja lopeta hyvään hetkeen.",
     heroAlt: (title: string) => `${title} — koira ja sen ihminen harjoittelevat yhdessä`,
     notFoundTitle: "Emme löytäneet sitä oppituntia.",
-    notFoundBody:
-      "Se on voinut siirtyä. Käy kirjastossa — etsimäsi asia löytyy varmasti sieltä.",
+    notFoundBody: "Se on voinut siirtyä. Käy kirjastossa — etsimäsi asia löytyy varmasti sieltä.",
     seeEvery: "Katso kaikki oppitunnit",
   },
   de: {
@@ -218,30 +224,30 @@ const copy = {
     training: "Training",
     min: "Min.",
     inProgress: "In Arbeit",
-    youllNeed: "Sie brauchen",
+    youllNeed: "Du brauchst",
     howTo: "So geht's",
     step: "Schritt",
     illustration: "Illustration",
     buildingUp: "Schritt für Schritt aufbauen",
     buildingUpLead:
-      "Machen Sie weiter, wenn der vorherige Schritt sich leicht anfühlt. Wenn es wackelt, gehen Sie einen Schritt zurück — das ist kein Scheitern, so funktioniert Lernen einfach.",
+      "Geh weiter, wenn sich der vorherige Schritt leicht anfühlt. Wackelt es, geh einen Schritt zurück — das ist kein Scheitern, so funktioniert Lernen einfach.",
     howDidItGo: "Wie ist es gelaufen?",
     tellUsWhere: (name: string) =>
-      `Sagen Sie uns, wo ${name} damit gerade steht. Das ist nur für Sie — es hält Ihre Reise ehrlich und hilft uns, den nächsten Schritt vorzuschlagen.`,
-    feelings: ["Das lief richtig gut", "Für heute gut genug", "Wir brauchen mehr Übung"] as const,
-    logged: "Gespeichert. Gut gemacht — wieder eine gemeinsame Einheit.",
-    noteLabel: "Etwas, das Sie sich für nächstes Mal merken möchten?",
+      `Sag uns, wo ${name} damit gerade steht. Das ist nur für dich — es hält eure Reise ehrlich und hilft uns, den nächsten Schritt vorzuschlagen.`,
+    feelings: ["Das lief richtig gut", "Gut genug für heute", "Wir brauchen mehr Übung"] as const,
+    logged: "Eingetragen. Gut gemacht — noch eine gemeinsame Einheit.",
+    noteLabel: "Etwas, das du dir fürs nächste Mal merken willst?",
     notePlaceholder: "Im Flur klappt es besser als im Garten.",
     noDogLead:
-      "Erzählen Sie uns von Ihrem Hund, und wir behalten den Überblick über das, woran Sie gearbeitet haben, und schlagen vor, was Sie als Nächstes probieren können.",
-    tellUsAboutDog: "Erzählen Sie uns von Ihrem Hund",
-    nextUp: "Eine gute Lektion für als Nächstes",
-    whileYouTrain: "Während des Trainings",
-    whileYouTrainLead: "Halten Sie es kurz und hören Sie bei etwas Gutem auf.",
-    heroAlt: (title: string) => `${title} — ein Hund und sein Mensch üben gemeinsam`,
-    notFoundTitle: "Wir konnten diese Lektion nicht finden.",
+      "Erzähl uns von deinem Hund, dann behalten wir im Blick, woran ihr gearbeitet habt, und schlagen vor, was als Nächstes kommt.",
+    tellUsAboutDog: "Erzähl uns von deinem Hund",
+    nextUp: "Eine gute nächste Lektion",
+    whileYouTrain: "Während ihr trainiert",
+    whileYouTrainLead: "Halte es kurz und hör mit etwas Gutem auf.",
+    heroAlt: (title: string) => `${title} — ein Hund und sein Mensch üben zusammen`,
+    notFoundTitle: "Diese Lektion konnten wir nicht finden.",
     notFoundBody:
-      "Sie könnte verschoben worden sein. Schauen Sie in der Bibliothek nach — was Sie gesucht haben, ist wahrscheinlich dort.",
+      "Sie könnte umgezogen sein. Schau in der Bibliothek nach — was du gesucht hast, ist wahrscheinlich dort.",
     seeEvery: "Alle Lektionen ansehen",
   },
   fr: {
@@ -255,24 +261,28 @@ const copy = {
     illustration: "Illustration",
     buildingUp: "Progresser étape par étape",
     buildingUpLead:
-      "Passez à la suite quand l'étape précédente devient facile. Si ça vacille, revenez en arrière d'une étape — ce n'est pas un échec, c'est juste ainsi que l'apprentissage fonctionne.",
+      "Passez à la suite quand l'étape précédente semble facile. Si ça vacille, revenez d'une étape — ce n'est pas un échec, c'est simplement ainsi qu'on apprend.",
     howDidItGo: "Comment ça s'est passé ?",
     tellUsWhere: (name: string) =>
-      `Dites-nous où en est ${name} avec cela. C'est uniquement pour vous — cela garde votre parcours honnête et nous aide à proposer la suite.`,
-    feelings: ["Ça s'est vraiment bien passé", "Assez bien pour aujourd'hui", "Il nous faut plus de pratique"] as const,
-    logged: "Enregistré. Beau travail — encore une séance ensemble.",
+      `Dites-nous où en est ${name} avec ça. C'est seulement pour vous — ça garde votre parcours honnête et nous aide à suggérer la suite.`,
+    feelings: [
+      "Ça s'est vraiment bien passé",
+      "Assez bien pour aujourd'hui",
+      "On a besoin de plus de pratique",
+    ] as const,
+    logged: "Enregistré. Bien joué — encore une séance ensemble.",
     noteLabel: "Quelque chose à retenir pour la prochaine fois ?",
     notePlaceholder: "Mieux dans le couloir que dans le jardin.",
     noDogLead:
-      "Parlez-nous de votre chien, et nous suivrons ce sur quoi vous avez travaillé, en vous suggérant la suite.",
+      "Parlez-nous de votre chien, et nous suivrons ce sur quoi vous avez travaillé, et suggérerons la suite.",
     tellUsAboutDog: "Parlez-nous de votre chien",
     nextUp: "Une bonne leçon à faire ensuite",
     whileYouTrain: "Pendant l'entraînement",
-    whileYouTrainLead: "Restez bref et terminez sur une réussite.",
+    whileYouTrainLead: "Restez bref et terminez sur une bonne note.",
     heroAlt: (title: string) => `${title} — un chien et son humain s'entraînent ensemble`,
     notFoundTitle: "Nous n'avons pas trouvé cette leçon.",
     notFoundBody:
-      "Elle a peut-être été déplacée. Jetez un œil à la bibliothèque — ce que vous cherchiez s'y trouve probablement.",
+      "Elle a peut-être changé de place. Jetez un œil à la bibliothèque — ce que vous cherchiez s'y trouve probablement.",
     seeEvery: "Voir toutes les leçons",
   },
   nl: {
@@ -280,30 +290,34 @@ const copy = {
     training: "Training",
     min: "min",
     inProgress: "Bezig",
-    youllNeed: "U heeft nodig",
-    howTo: "Zo doet u het",
+    youllNeed: "Je hebt nodig",
+    howTo: "Zo doe je het",
     step: "Stap",
     illustration: "Illustratie",
     buildingUp: "Stap voor stap opbouwen",
     buildingUpLead:
-      "Ga verder zodra de vorige stap makkelijk aanvoelt. Wankelt het, ga dan één stap terug — dat is geen mislukking, zo werkt leren nu eenmaal.",
+      "Ga verder als de vorige stap makkelijk aanvoelt. Wankelt het, ga dan een stap terug — dat is geen mislukking, zo werkt leren nu eenmaal.",
     howDidItGo: "Hoe ging het?",
     tellUsWhere: (name: string) =>
-      `Vertel ons waar ${name} hiermee staat. Dit is alleen voor u — het houdt uw reis eerlijk en helpt ons de volgende stap voor te stellen.`,
-    feelings: ["Dit ging heel goed", "Goed genoeg voor vandaag", "We hebben meer oefening nodig"] as const,
-    logged: "Opgeslagen. Goed gedaan — weer een sessie samen.",
-    noteLabel: "Iets wat u wilt onthouden voor de volgende keer?",
+      `Vertel ons waar ${name} hiermee staat. Dit is alleen voor jou — het houdt jullie traject eerlijk en helpt ons de volgende stap voor te stellen.`,
+    feelings: [
+      "Dat ging heel goed",
+      "Goed genoeg voor vandaag",
+      "We hebben meer oefening nodig",
+    ] as const,
+    logged: "Vastgelegd. Goed gedaan — weer een sessie samen.",
+    noteLabel: "Iets wat je voor de volgende keer wilt onthouden?",
     notePlaceholder: "Beter in de gang dan in de tuin.",
     noDogLead:
-      "Vertel ons over uw hond, dan houden we bij waar u aan gewerkt heeft en stellen we voor wat u hierna kunt proberen.",
-    tellUsAboutDog: "Vertel ons over uw hond",
+      "Vertel ons over je hond, dan houden we bij waar jullie aan hebben gewerkt en stellen we voor wat je hierna kunt proberen.",
+    tellUsAboutDog: "Vertel ons over je hond",
     nextUp: "Een goede volgende les",
-    whileYouTrain: "Tijdens het trainen",
+    whileYouTrain: "Terwijl je traint",
     whileYouTrainLead: "Houd het kort en eindig op iets goeds.",
-    heroAlt: (title: string) => `${title} — een hond en zijn baasje oefenen samen`,
+    heroAlt: (title: string) => `${title} — een hond en zijn mens oefenen samen`,
     notFoundTitle: "We konden die les niet vinden.",
     notFoundBody:
-      "Hij is misschien verplaatst. Kijk in de bibliotheek — wat u zocht staat er waarschijnlijk.",
+      "Misschien is hij verplaatst. Kijk even in de bibliotheek — wat je zocht staat daar waarschijnlijk.",
     seeEvery: "Bekijk alle lessen",
   },
 } as const;
@@ -314,13 +328,16 @@ export const Route = createFileRoute("/{-$lang}/train/lessons/$lessonId")({
     if (!lesson) throw notFound();
     return { lesson };
   },
-  head: ({ loaderData }) => {
+  head: (ctx) => {
+    const { loaderData } = ctx;
+    const locale = headLocale(ctx);
     if (!loaderData) {
       return {
         meta: [{ title: "Lesson not found | DoggMatch" }, { name: "robots", content: "noindex" }],
       };
     }
     const { lesson } = loaderData;
+    const path = `/train/lessons/${lesson.id}`;
     const title = `${lesson.title} — Train Your Dog | DoggMatch`;
     return {
       meta: [
@@ -329,18 +346,25 @@ export const Route = createFileRoute("/{-$lang}/train/lessons/$lessonId")({
         { property: "og:title", content: title },
         { property: "og:description", content: lesson.promise },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: langUrl(path, locale) },
+        { property: "og:locale", content: ogLocaleTag(locale) },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: lesson.promise },
       ],
-      links: seoLinks(`/train/lessons/${lesson.id}`),
+      links: seoLinks(path).map((l) =>
+        l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
+      ),
       scripts: [
-        breadcrumbLd([
-          { name: "DoggMatch", path: "/" },
-          { name: "Train Your Dog", path: "/train" },
-          { name: "Library", path: "/train/library" },
-          { name: lesson.title, path: `/train/lessons/${lesson.id}` },
-        ]),
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: "Train Your Dog", path: "/train" },
+            { name: "Library", path: "/train/library" },
+            { name: lesson.title, path },
+          ],
+          locale,
+        ),
       ],
     };
   },
@@ -360,6 +384,7 @@ function LessonPage() {
   const status: SkillStatus = progress[lesson.id] ?? "not-started";
   const [note, setNote] = useState(state.notes[lesson.id] ?? "");
   const [logged, setLogged] = useState(false);
+  const doneToday = state.sessions.some((s) => s.lessonId === lesson.id && s.day === today());
   const category = getTrainingCategories().find((c) => c.id === lesson.category);
   const next = lesson.nextLessonId ? getLessonsById()[lesson.nextLessonId] : undefined;
 
@@ -385,7 +410,10 @@ function LessonPage() {
 
   return (
     <article className="pb-28">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo) }}
+      />
 
       <header className="container-page pt-28 md:pt-36">
         <Link
@@ -429,6 +457,9 @@ function LessonPage() {
 
       <div className="container-page mt-16 grid gap-16 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-20">
         <div>
+          <div className="mb-12">
+            <WhyItMatters text={whyItMatters(lesson)} />
+          </div>
           <h2 className="display-md">{c.howTo}</h2>
           <ol className="mt-10 space-y-14">
             {lesson.steps.map((step, i) => (
@@ -515,15 +546,18 @@ function LessonPage() {
                     </Button>
                   ))}
                 </div>
-                {logged && (
-                  <p className="mt-4 text-[0.9375rem] text-accent">
-                    {c.logged}
-                  </p>
-                )}
+                <div className="mt-8">
+                  <MarkDoneButton
+                    done={logged || doneToday}
+                    onDone={() => {
+                      trainingStore.markDone(dog.id, lesson.id);
+                      setLogged(true);
+                    }}
+                  />
+                </div>
+                {logged && <p className="mt-4 text-[0.9375rem] text-accent">{c.logged}</p>}
                 <label className="mt-8 block">
-                  <span className="text-sm text-muted-foreground">
-                    {c.noteLabel}
-                  </span>
+                  <span className="text-sm text-muted-foreground">{c.noteLabel}</span>
                   <textarea
                     value={note}
                     onChange={(e) => setNote(e.target.value)}
@@ -536,9 +570,7 @@ function LessonPage() {
               </>
             ) : (
               <>
-                <p className="mt-3 leading-relaxed text-muted-foreground">
-                  {c.noDogLead}
-                </p>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{c.noDogLead}</p>
                 <div className="mt-6">
                   <ButtonLink to={withLangPrefix("/train/setup")}>
                     {c.tellUsAboutDog}
@@ -581,7 +613,7 @@ function LessonPage() {
               {c.whileYouTrainLead}
             </p>
             <div className="mt-6">
-              <SessionTimer minutes={lesson.duration} />
+              <StepTimer lesson={lesson} minutes={sessionMinutes(lesson, dog)} />
             </div>
             <div className="mt-8 border-t border-border pt-6">
               <TreatCounter />

@@ -2,10 +2,10 @@
  * Central SEO helpers for DoggMatch.
  *
  * One source of truth for the canonical origin, absolute URLs, hreflang
- * pairs (EN / NO / PL / DK / SE / FI / DE / FR / NL) and the small JSON-LD
- * builders used across routes. The language lives in the path — / is
- * English, /no, /pl, /dk, /se, /fi, /de, /fr and /nl are the other
- * readings — so that is what canonical and the hreflang alternates point at.
+ * pairs (EN / NO / PL / DK / SE / FI) and the small JSON-LD builders used
+ * across routes. The language lives in the path — / is English, /no, /pl,
+ * /dk, /se and /fi are the other readings — so that is what canonical and
+ * the hreflang alternates point at.
  */
 
 export const SITE_URL = "https://www.doggmatch.com";
@@ -15,22 +15,38 @@ export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-en.jpg`;
 export type Locale = "en" | "no" | "pl" | "dk" | "se" | "fi" | "de" | "fr" | "nl";
 
 /** Share cards are written in the reader's language, so previews match the page. */
-export const OG_IMAGE_BY_LOCALE: Record<Locale, string> = {
-  en: `${SITE_URL}/og-en.jpg`,
-  no: `${SITE_URL}/og-no.jpg`,
-  pl: `${SITE_URL}/og-pl.jpg`,
-  // No dedicated share-card art yet for these — fall back to the English
-  // card rather than reference an image that doesn't exist.
-  dk: DEFAULT_OG_IMAGE,
-  se: DEFAULT_OG_IMAGE,
-  fi: DEFAULT_OG_IMAGE,
-  de: DEFAULT_OG_IMAGE,
-  fr: DEFAULT_OG_IMAGE,
-  nl: DEFAULT_OG_IMAGE,
-};
+const LOCALES: Locale[] = ["en", "no", "pl", "dk", "se", "fi", "de", "fr", "nl"];
+
+function cards(suffix: string): Record<Locale, string> {
+  return Object.fromEntries(LOCALES.map((l) => [l, `${SITE_URL}/og-${l}${suffix}.jpg`])) as Record<
+    Locale,
+    string
+  >;
+}
+
+/** 1200×630 — Facebook, LinkedIn, X, WhatsApp link previews, Messenger, Slack. */
+export const OG_IMAGE_BY_LOCALE = cards("");
+/** 1200×1200 — Instagram feed, WhatsApp status, square placements. */
+export const OG_SQUARE_BY_LOCALE = cards("-square");
+/** 1080×1920 — Instagram / Facebook / TikTok stories and reels covers. */
+export const OG_STORY_BY_LOCALE = cards("-story");
+/** 1000×1500 — Pinterest pins. */
+export const OG_PIN_BY_LOCALE = cards("-pin");
 
 export function ogImage(locale: Locale): string {
   return OG_IMAGE_BY_LOCALE[locale] ?? DEFAULT_OG_IMAGE;
+}
+
+export function ogSquare(locale: Locale): string {
+  return OG_SQUARE_BY_LOCALE[locale] ?? OG_SQUARE_BY_LOCALE.en;
+}
+
+export function ogStory(locale: Locale): string {
+  return OG_STORY_BY_LOCALE[locale] ?? OG_STORY_BY_LOCALE.en;
+}
+
+export function ogPin(locale: Locale): string {
+  return OG_PIN_BY_LOCALE[locale] ?? OG_PIN_BY_LOCALE.en;
 }
 
 /** Absolute URL for an app path ("/breeds/labrador" -> full https URL). */
@@ -90,7 +106,7 @@ type LinkTag = { rel: string; href: string; hrefLang?: string };
 
 /**
  * Canonical + a reciprocal hreflang set for a public page. Every language
- * lists all nine, so EN, NO, PL, DK, SE, FI, DE, FR and NL point at one another.
+ * lists all six, so EN, NO, PL, DK, SE and FI point at one another.
  */
 export function seoLinks(path: string): LinkTag[] {
   return [
@@ -116,8 +132,11 @@ export const noindexMeta = [
 
 export type Crumb = { name: string; path: string };
 
-/** BreadcrumbList JSON-LD for deeper pages. */
-export function breadcrumbLd(crumbs: Crumb[]) {
+/**
+ * BreadcrumbList JSON-LD for deeper pages. Pass the locale so the trail
+ * points at the localized route paths (/no/breeds/..., /de/breeds/...).
+ */
+export function breadcrumbLd(crumbs: Crumb[], locale: Locale = "en") {
   return {
     type: "application/ld+json" as const,
     children: JSON.stringify({
@@ -127,7 +146,23 @@ export function breadcrumbLd(crumbs: Crumb[]) {
         "@type": "ListItem",
         position: i + 1,
         name: c.name,
-        item: abs(c.path),
+        item: langUrl(c.path, locale),
+      })),
+    }),
+  };
+}
+
+/** FAQPage JSON-LD from plain question / answer pairs. */
+export function faqLd(items: { question: string; answer: string }[]) {
+  return {
+    type: "application/ld+json" as const,
+    children: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: items.map((i) => ({
+        "@type": "Question",
+        name: i.question,
+        acceptedAnswer: { "@type": "Answer", text: i.answer },
       })),
     }),
   };
@@ -146,7 +181,7 @@ export type SeoCopy = { title: string; description: string };
 
 type HeadCtx = { params: { lang?: string | undefined } };
 
-/** The language a request asked for (the /no, /pl, /dk, /se, /fi, /de, /fr, /nl path segment), readable inside `head()`. */
+/** The language a request asked for (the /no, /pl, /dk, /se, /fi path segment), readable inside `head()`. */
 export function headLocale(ctx: HeadCtx): Locale {
   const raw = String(ctx?.params?.lang ?? "").toLowerCase();
   if (raw === "no" || raw === "nb" || raw === "nn" || raw === "nb-no") return "no";
@@ -155,7 +190,7 @@ export function headLocale(ctx: HeadCtx): Locale {
   if (raw === "se" || raw === "sv" || raw === "sv-se") return "se";
   if (raw === "fi" || raw === "fi-fi") return "fi";
   if (raw === "de" || raw === "de-de" || raw === "de-at") return "de";
-  if (raw === "fr" || raw === "fr-fr") return "fr";
+  if (raw === "fr" || raw === "fr-fr" || raw === "fr-be") return "fr";
   if (raw === "nl" || raw === "nl-nl" || raw === "nl-be") return "nl";
   return "en";
 }
@@ -172,10 +207,15 @@ const OG_LOCALE: Record<Locale, string> = {
   nl: "nl_NL",
 };
 
+/** Open Graph locale string for a language ("de" -> "de_DE"). */
+export function ogLocaleTag(locale: Locale): string {
+  return OG_LOCALE[locale];
+}
+
 /**
  * Meta + links for a public page, written in the language the URL asks for.
  * The canonical points at that language's URL and every language lists all
- * nine alternates, so EN, NO, PL, DK, SE, FI, DE, FR and NL stay reciprocal.
+ * six alternates, so EN, NO, PL, DK, SE and FI stay reciprocal.
  */
 export function localizedHead(
   ctx: HeadCtx,
@@ -219,6 +259,8 @@ export function localizedHead(
       { property: "og:url", content: url },
       { property: "og:locale", content: ogLocale },
       { property: "og:image", content: image },
+      { property: "og:image:secure_url", content: image },
+      { property: "og:image:type", content: "image/jpeg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { property: "og:image:alt", content: title },

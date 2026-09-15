@@ -166,6 +166,36 @@ export const se: Dictionary = {
     beginnerHigh: "Hög",
     beginnerModerate: "Måttlig",
     beginnerLow: "Låg",
+    homeWithDogEyebrow: "När hunden har kommit hem",
+    homeWithDogTitle: "Det första året blir lättare med lite struktur",
+    homeWithDogBody:
+      "DoggMatch+ är ett lugnt stöd för den praktiska delen av hundlivet. Ingen press — bara de verktyg vi själva önskar att vi hade haft när våra hundar kom hem.",
+    homeWithDogFeatures: [
+      {
+        title: "Min hund",
+        body: "En plats för veterinärbesök, viktanteckningar, måltider och de små sakerna du inte vill glömma.",
+      },
+      {
+        title: "Veckoplaner",
+        body: "En lugn rytm med motion, pälsvård, träning och vila som passar hundens ålder och energi.",
+      },
+      {
+        title: "Träningslektioner",
+        body: "Korta steg-för-steg-guider med tydliga bilder — fem till tio minuter åt gången.",
+      },
+      {
+        title: "Foderportioner",
+        body: "Utfodringsråd utifrån hundens vikt, ålder och aktivitet — inte allmänna råd.",
+      },
+      {
+        title: "Resedokument",
+        body: "Checklistor för utlandsresor, regler för olika länder och papperen som är lätta att glömma.",
+      },
+    ],
+    homeWithDogCtaPrimary: "Se hur Min hund fungerar",
+    homeWithDogCtaSecondary: "Utforska DoggMatch+",
+    homeWithDogNote:
+      "Ditt matchresultat förblir gratis och komplett. Det här finns bara här när du vill ha lite extra hjälp.",
   },
   dimensions: {
     lifestyle: "Vardagen",
@@ -191,7 +221,7 @@ export const se: Dictionary = {
   },
   compare: {
     title: "Jämför de här hundarna",
-    subtitle: "Välj upp till tre raser och se var de verkligen skiljer sig.",
+    subtitle: "Välj upp till fyra raser och se var de verkligen skiljer sig.",
     add: "Lägg till en ras",
     remove: "Ta bort",
     empty: "Välj en ras för att komma igång.",

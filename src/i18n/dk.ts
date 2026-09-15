@@ -166,6 +166,36 @@ export const dk: Dictionary = {
     beginnerHigh: "Høj",
     beginnerModerate: "Moderat",
     beginnerLow: "Lav",
+    homeWithDogEyebrow: "Når hunden er kommet hjem",
+    homeWithDogTitle: "Det første år bliver lettere med lidt struktur",
+    homeWithDogBody:
+      "DoggMatch+ er en rolig følgesvend til den praktiske side af hundelivet. Intet pres — bare de værktøjer, vi selv ville ønske, vi havde haft, da vores hunde kom hjem.",
+    homeWithDogFeatures: [
+      {
+        title: "Min hund",
+        body: "Ét sted til dyrlægetider, vægtnoter, måltider og de små ting, du ikke vil glemme.",
+      },
+      {
+        title: "Ugeplaner",
+        body: "En rolig rytme med motion, pelspleje, træning og hvile, der passer til din hunds alder og energi.",
+      },
+      {
+        title: "Træningslektioner",
+        body: "Korte trin-for-trin-vejledninger med tydelige billeder — fem til ti minutter ad gangen.",
+      },
+      {
+        title: "Foderportioner",
+        body: "Fodervejledning beregnet ud fra din hunds vægt, alder og aktivitet — ikke generelle råd.",
+      },
+      {
+        title: "Rejsedokumenter",
+        body: "Tjeklister til udlandsrejser, regler for hvert land og de papirer, der er lette at glemme.",
+      },
+    ],
+    homeWithDogCtaPrimary: "Se, hvordan Min hund fungerer",
+    homeWithDogCtaSecondary: "Udforsk DoggMatch+",
+    homeWithDogNote:
+      "Dit matchresultat forbliver gratis og komplet. Det her er bare til dig, når du gerne vil have lidt ekstra hjælp.",
   },
   dimensions: {
     lifestyle: "Hverdagsliv",
@@ -191,7 +221,7 @@ export const dk: Dictionary = {
   },
   compare: {
     title: "Sammenlign disse hunde",
-    subtitle: "Vælg op til tre racer, og se hvor de virkelig adskiller sig.",
+    subtitle: "Vælg op til fire racer, og se hvor de virkelig adskiller sig.",
     add: "Tilføj en race",
     remove: "Fjern",
     empty: "Vælg en race for at komme i gang.",

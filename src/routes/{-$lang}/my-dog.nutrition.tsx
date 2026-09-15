@@ -1,10 +1,12 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Eyebrow, Section } from "@/components/dogmatch/ui";
-import { Panel, Stat, VetNote } from "@/components/dogmatch/care/parts";
+import { Panel, VetNote } from "@/components/dogmatch/care/parts";
+import { PortionCalculator } from "@/components/dogmatch/care/portion-calculator";
 import { careImages } from "@/data/care/images";
 import { nutritionSections } from "@/data/care/nutrition";
-import { estimatePortions } from "@/lib/care/portions";
-import { useCareProfile, useMyDog } from "@/lib/care/store";
+import { useMyDog } from "@/lib/care/store";
 import { useCopy } from "@/i18n";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { seoLinks } from "@/lib/seo";
@@ -16,31 +18,7 @@ const description =
   "Work out roughly how much to feed your dog each day, how often to feed, and how to change food without upsetting their stomach.";
 
 export const Route = createFileRoute("/{-$lang}/my-dog/nutrition")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/my-dog/nutrition"),
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Article",
-          headline: "How much should I feed my dog?",
-          description,
-          about: "Dog nutrition and portion sizes",
-        }),
-      },
-    ],
-  }),
+  head: (ctx) => localizedHead(ctx, "/my-dog/nutrition", pageSeo.myDogNutrition),
   component: NutritionPage,
 });
 
@@ -329,8 +307,6 @@ const copy = {
 function NutritionPage() {
   const c = useCopy(copy);
   const dog = useMyDog();
-  const profile = useCareProfile(dog?.id);
-  const portions = estimatePortions(profile.weightKg, dog?.ageStage ?? "adult", profile);
 
   return (
     <div className="pb-24">
@@ -356,39 +332,15 @@ function NutritionPage() {
 
       <Section className="container-page">
         <Panel title={dog ? c.startingPointFor(dog.name) : c.startingPoint}>
-          {portions ? (
-            <>
-              <div className="grid gap-3 sm:grid-cols-3">
-                <Stat label={c.statDay} value={`${portions.dailyKcal} kcal`} hint={portions.factorReason} />
-                <Stat
-                  label={c.statFoodDay}
-                  value={portions.gramsPerDay ? `${portions.gramsPerDay} g` : "—"}
-                  hint={portions.gramsPerDay ? c.statFoodDayHintWeighed : c.statFoodDayHintMissing}
-                />
-                <Stat
-                  label={c.statPerMeal}
-                  value={portions.gramsPerMeal ? `${portions.gramsPerMeal} g` : "—"}
-                  hint={c.statPerMealHint(portions.mealsPerDay)}
-                />
-              </div>
-              <div className="mt-6 rounded-[1.25rem] border border-border bg-surface p-6">
-                <h3 className="font-display text-lg tracking-tight">{c.howWeGotThereTitle}</h3>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
-                  {c.howWeGotThereP1(profile.weightKg!, portions.restingKcal, portions.factor, portions.factorReason)}
-                </p>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
-                  {c.howWeGotThereP2(portions.treatKcal)}
-                </p>
-              </div>
-            </>
-          ) : (
-            <div>
-              <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">{c.noPortionsBody}</p>
-              <ButtonLink to={withLangPrefix("/my-dog/setup")} className="mt-6" size="lg">
-                {c.addDetailsCta}
-                <Arrow />
-              </ButtonLink>
-            </div>
+          <PortionCalculator
+            {...(dog ? { dogId: dog.id, dogName: dog.name } : {})}
+            ageStage={dog?.ageStage ?? "adult"}
+          />
+          {!dog && (
+            <ButtonLink to={withLangPrefix("/my-dog/setup")} tone="outline" className="mt-6">
+              {c.addDetailsCta}
+              <Arrow />
+            </ButtonLink>
           )}
         </Panel>
       </Section>
@@ -400,12 +352,20 @@ function NutritionPage() {
           {nutritionSections().map((s) => (
             <article key={s.title} className="rounded-[1.5rem] border border-border bg-card p-7">
               <h3 className="font-display text-xl leading-tight tracking-tight">{s.title}</h3>
-              <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{s.body}</p>
+              <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                {s.body}
+              </p>
               {"points" in s && s.points && (
                 <ul className="mt-4 space-y-2">
                   {s.points.map((p) => (
-                    <li key={p} className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
-                      <span aria-hidden="true" className="mt-[0.6rem] h-1 w-3 shrink-0 rounded-full bg-accent" />
+                    <li
+                      key={p}
+                      className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted-foreground"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-[0.6rem] h-1 w-3 shrink-0 rounded-full bg-accent"
+                      />
                       {p}
                     </li>
                   ))}
@@ -421,7 +381,9 @@ function NutritionPage() {
           <VetNote>{c.vetNote}</VetNote>
           <div className="rounded-[1.5rem] border border-border bg-surface p-7">
             <h3 className="font-display text-xl tracking-tight">{c.watchShapeTitle}</h3>
-            <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">{c.watchShapeBody}</p>
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
+              {c.watchShapeBody}
+            </p>
             <ButtonLink to={withLangPrefix("/my-dog/weight")} tone="outline" className="mt-6">
               {c.weightCta}
               <Arrow />

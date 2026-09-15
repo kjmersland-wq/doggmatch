@@ -8,7 +8,7 @@ import { costRange, prepCards } from "@/lib/getdog/prep";
 import { getDogStore } from "@/lib/getdog/store";
 import { useCopy } from "@/i18n";
 import { useEffect } from "react";
-import { seoLinks, abs, breadcrumbLd } from "@/lib/seo";
+import { seoLinks, abs, breadcrumbLd, headLocale, langUrl, ogLocaleTag } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
@@ -18,9 +18,13 @@ export const Route = createFileRoute("/{-$lang}/get-a-dog/breed/$breedId")({
     if (!breed) throw notFound();
     return { breedId: breed.id };
   },
-  head: ({ loaderData }) => {
+  head: (ctx) => {
+    const { loaderData } = ctx;
+    const locale = headLocale(ctx);
     if (!loaderData) {
-      return { meta: [{ title: "Unavailable | DoggMatch" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [{ title: "Unavailable | DoggMatch" }, { name: "robots", content: "noindex" }],
+      };
     }
     const name = breedContent()[loaderData.breedId].displayName;
     const title = `Getting ready for a ${name} — what to know before you commit | DoggMatch`;
@@ -33,24 +37,29 @@ export const Route = createFileRoute("/{-$lang}/get-a-dog/breed/$breedId")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: abs(path) },
+        { property: "og:url", content: langUrl(path, locale) },
+        { property: "og:locale", content: ogLocaleTag(locale) },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
       ],
-      links: seoLinks(path),
+      links: seoLinks(path).map((l) =>
+        l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
+      ),
       scripts: [
-        breadcrumbLd([
-          { name: "DoggMatch", path: "/" },
-          { name: "Get a dog", path: "/get-a-dog" },
-          { name, path },
-        ]),
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: "Get a dog", path: "/get-a-dog" },
+            { name, path },
+          ],
+          locale,
+        ),
       ],
     };
   },
   component: BreedPrepPage,
 });
-
 
 const copy = {
   en: {
@@ -186,23 +195,23 @@ const copy = {
     costsCta: "Kustannukset kokonaisuudessaan",
   },
   de: {
-    eyebrow: "Ich bin interessiert — was sollte ich wissen?",
+    eyebrow: "Ich interessiere mich — was sollte ich wissen?",
     heading: (name: string) => `Bereit werden für einen ${name}.`,
     intro:
-      "Alles unten stammt aus den eigenen Eigenschaften dieser Rasse in unserer Bibliothek — was sie " +
-      "Woche für Woche von Ihnen verlangt, einschließlich der Dinge, die andere gerne vorher gewusst hätten.",
-    askEyebrow: "Was dieser Hund von Ihnen verlangen wird",
+      "Alles unten stammt aus den eigenen Merkmalen dieser Rasse in unserer Bibliothek — was sie Woche für Woche von dir verlangt, " +
+      "einschließlich der Dinge, von denen sich Menschen wünschen, sie hätten sie vorher gewusst.",
+    askEyebrow: "Was dieser Hund von dir verlangen wird",
     askTitle: "Ehrlich gesagt, Woche für Woche.",
     moneyEyebrow: "Das Geld",
     moneyTitle: (name: string) => `Was ein ${name} in der Regel kostet`,
     moneyBody:
-      "Pro Jahr, sobald der Hund sich eingelebt hat — Futter, Versicherung, routinemäßige Tierarztbesuche und Pflege. " +
-      "Bewusst breit gefasst: Die Preise unterscheiden sich enorm nach Land und Stadt, und dies ist kein Angebot.",
-    noticeTitle: "Bevor Sie ja sagen",
+      "Pro Jahr, sobald er sich eingelebt hat — Futter, Versicherung, routinemäßige Tierarztkosten und Pflege. Bewusst breit gefasst: " +
+      "Preise unterscheiden sich enorm nach Land und Stadt, und dies ist kein Angebot.",
+    noticeTitle: "Bevor du Ja sagst",
     noticeBody:
-      "Treffen Sie den Hund nach Möglichkeit mehr als einmal, an einem gewöhnlichen Tag statt an einem besonderen. " +
-      "Fragen Sie, wie er um sechs Uhr morgens und um zehn Uhr abends ist. Die ehrliche Antwort auf diese " +
-      "Frage sagt Ihnen mehr als jede Rassebeschreibung, auch diese hier.",
+      "Triff den Hund wenn möglich mehr als einmal, an einem ganz normalen Tag statt an einem besonderen. " +
+      "Frag, wie er um sechs Uhr morgens und um zehn Uhr abends ist. Die ehrliche Antwort darauf " +
+      "sagt dir mehr als jede Rassebeschreibung, auch diese hier.",
     prepareCta: "Mein Zuhause vorbereiten",
     profileCta: "Das vollständige Rasseprofil",
     costsCta: "Kosten im Detail",
@@ -211,18 +220,18 @@ const copy = {
     eyebrow: "Je suis intéressé — que devrais-je savoir ?",
     heading: (name: string) => `Se préparer pour un ${name}.`,
     intro:
-      "Tout ce qui suit provient des caractéristiques propres de cette race dans notre bibliothèque — ce " +
-      "qu'elle vous demandera semaine après semaine, y compris ce que les gens auraient aimé savoir à l'avance.",
+      "Tout ce qui suit provient des traits propres à cette race dans notre bibliothèque — ce qu'elle vous demandera " +
+      "semaine après semaine, y compris ce que les gens auraient aimé savoir à l'avance.",
     askEyebrow: "Ce que ce chien vous demandera",
     askTitle: "Honnêtement, semaine après semaine.",
     moneyEyebrow: "L'argent",
-    moneyTitle: (name: string) => `Ce qu'un ${name} coûte généralement`,
+    moneyTitle: (name: string) => `Ce que coûte généralement un ${name}`,
     moneyBody:
-      "Par an, une fois le chien installé — nourriture, assurance, soins vétérinaires de routine et toilettage. " +
-      "Volontairement large : les prix varient énormément selon le pays et la ville, et ceci n'est pas un devis.",
+      "Par an, une fois qu'il est installé — nourriture, assurance, soins vétérinaires courants et toilettage. Volontairement large : " +
+      "les prix varient énormément selon le pays et la ville, et ceci n'est pas un devis.",
     noticeTitle: "Avant de dire oui",
     noticeBody:
-      "Rencontrez le chien plus d'une fois si vous le pouvez, un jour ordinaire plutôt qu'un jour spécial. " +
+      "Rencontrez le chien plus d'une fois si possible, un jour ordinaire plutôt qu'un jour spécial. " +
       "Demandez comment il est à six heures du matin et à dix heures du soir. La réponse honnête à cette " +
       "question vous en dira plus que n'importe quelle description de race, y compris celle-ci.",
     prepareCta: "Préparer ma maison",
@@ -231,23 +240,23 @@ const copy = {
   },
   nl: {
     eyebrow: "Ik ben geïnteresseerd — wat moet ik weten?",
-    heading: (name: string) => `Klaarmaken voor een ${name}.`,
+    heading: (name: string) => `Je klaarmaken voor een ${name}.`,
     intro:
-      "Alles hieronder komt uit de eigen eigenschappen van dit ras in onze bibliotheek — wat het week na " +
-      "week van u zal vragen, inclusief de dingen waarvan mensen wensen dat ze ze vooraf hadden geweten.",
-    askEyebrow: "Wat deze hond van u zal vragen",
+      "Alles hieronder komt uit de eigen eigenschappen van dit ras in onze bibliotheek — wat het week na week " +
+      "van je zal vragen, inclusief de dingen waarvan mensen achteraf wensten dat ze ze eerder wisten.",
+    askEyebrow: "Wat deze hond van je zal vragen",
     askTitle: "Eerlijk gezegd, week na week.",
     moneyEyebrow: "Het geld",
     moneyTitle: (name: string) => `Wat een ${name} doorgaans kost`,
     moneyBody:
-      "Per jaar, zodra de hond gewend is — voeding, verzekering, routinematige dierenartszorg en verzorging. " +
-      "Bewust breed: prijzen verschillen enorm per land en stad, en dit is geen offerte.",
-    noticeTitle: "Voordat u ja zegt",
+      "Per jaar, zodra hij is ingeburgerd — voeding, verzekering, routine dierenartszorg en verzorging. Bewust breed: " +
+      "prijzen verschillen enorm per land en stad, en dit is geen offerte.",
+    noticeTitle: "Voordat je ja zegt",
     noticeBody:
-      "Ontmoet de hond meer dan één keer als u dat kunt, op een gewone dag in plaats van een bijzondere. " +
+      "Ontmoet de hond meer dan eens als je kunt, op een gewone dag in plaats van een bijzondere. " +
       "Vraag hoe hij is om zes uur 's ochtends en om tien uur 's avonds. Het eerlijke antwoord op die " +
-      "vraag vertelt u meer dan welke rassenbeschrijving dan ook, deze inbegrepen.",
-    prepareCta: "Mijn huis voorbereiden",
+      "vraag vertelt je meer dan welke rassenbeschrijving dan ook, ook deze.",
+    prepareCta: "Mijn huis klaarmaken",
     profileCta: "Het volledige rasprofiel",
     costsCta: "Kosten in detail",
   },
@@ -273,9 +282,7 @@ function BreedPrepPage() {
             <h1 className="display-xl mt-6">{c.heading(content.displayName)}</h1>
             <ShareBar className="mt-6" />
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{content.summary}</p>
-            <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted-foreground">
-              {c.intro}
-            </p>
+            <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted-foreground">{c.intro}</p>
           </div>
           <div className="overflow-hidden rounded-[2rem] bg-surface">
             <img
@@ -310,14 +317,12 @@ function BreedPrepPage() {
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
             <div>
               <SectionHead eyebrow={c.moneyEyebrow} title={c.moneyTitle(content.displayName)} />
-              <p className="mt-6 font-display text-4xl tracking-tight text-accent">{costRange(breed)}</p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                {c.moneyBody}
+              <p className="mt-6 font-display text-4xl tracking-tight text-accent">
+                {costRange(breed)}
               </p>
+              <p className="mt-3 text-sm text-muted-foreground">{c.moneyBody}</p>
             </div>
-            <Notice title={c.noticeTitle}>
-              {c.noticeBody}
-            </Notice>
+            <Notice title={c.noticeTitle}>{c.noticeBody}</Notice>
           </div>
 
           <div className="mt-14 flex flex-wrap gap-3">

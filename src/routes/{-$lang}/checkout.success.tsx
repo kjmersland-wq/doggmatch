@@ -1,13 +1,17 @@
 import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { ButtonLink, Arrow, Eyebrow, Section } from "@/components/dogmatch/ui";
+import { confirmPartnerReferral } from "@/lib/plus/stripe.functions";
+import { PARTNER_CODE_KEY } from "@/components/dogmatch/plus/partner-code";
 import { useMembership } from "@/hooks/use-membership";
 import { useCopy } from "@/i18n";
 import { noindexMeta } from "@/lib/seo";
 import { withLangPrefix } from "@/lib/localized-path";
 
 const title = "Welcome to DoggMatch+ | DoggMatch";
-const description = "Your DoggMatch+ membership is active. Everything is ready for you and your dog.";
+const description =
+  "Your DoggMatch+ membership is active. Everything is ready for you and your dog.";
 
 export const Route = createFileRoute("/{-$lang}/checkout/success")({
   head: () => ({
@@ -71,24 +75,24 @@ const copy = {
     seeMembership: "Katso jäsenyyteni",
   },
   de: {
-    eyebrow: "Vielen Dank",
-    heading: "Sie sind dabei. Willkommen bei DoggMatch",
-    body: "Ihre Mitgliedschaft ist aktiv, und Ihre Quittung ist per E-Mail unterwegs. Kümmern wir uns gemeinsam gut um Ihren Hund.",
+    eyebrow: "Danke",
+    heading: "Du bist dabei. Willkommen bei DoggMatch",
+    body: "Deine Mitgliedschaft ist aktiv, und deine Quittung ist per E-Mail unterwegs. Lass uns gemeinsam gut für deinen Hund sorgen.",
     goToMyDog: "Zu Mein Hund",
     seeMembership: "Meine Mitgliedschaft ansehen",
   },
   fr: {
     eyebrow: "Merci",
-    heading: "Vous y êtes. Bienvenue chez DoggMatch",
-    body: "Votre abonnement est actif et votre reçu arrive par e-mail. Prenons soin de votre chien ensemble.",
+    heading: "Vous êtes des nôtres. Bienvenue chez DoggMatch",
+    body: "Votre abonnement est actif et votre reçu arrive par e-mail. Prenons bien soin de votre chien ensemble.",
     goToMyDog: "Aller à Mon chien",
     seeMembership: "Voir mon abonnement",
   },
   nl: {
-    eyebrow: "Dank u wel",
-    heading: "U doet mee. Welkom bij DoggMatch",
-    body: "Uw lidmaatschap is actief en uw bevestiging is onderweg per e-mail. Laten we samen goed voor uw hond zorgen.",
-    goToMyDog: "Ga naar Mijn hond",
+    eyebrow: "Bedankt",
+    heading: "Je doet mee. Welkom bij DoggMatch",
+    body: "Je lidmaatschap is actief en je bevestiging is onderweg per e-mail. Laten we samen goed voor je hond zorgen.",
+    goToMyDog: "Naar Mijn hond",
     seeMembership: "Bekijk mijn lidmaatschap",
   },
 } as const;
@@ -96,10 +100,17 @@ const copy = {
 function SuccessPage() {
   const c = useCopy(copy);
   const { refetch } = useMembership();
+  const confirmReferral = useServerFn(confirmPartnerReferral);
   useEffect(() => {
     const t = setTimeout(() => void refetch(), 1500);
+    void confirmReferral().catch(() => undefined);
+    try {
+      window.localStorage.removeItem(PARTNER_CODE_KEY);
+    } catch {
+      /* nothing to clear */
+    }
     return () => clearTimeout(t);
-  }, [refetch]);
+  }, [refetch, confirmReferral]);
 
   return (
     <div className="pb-24">

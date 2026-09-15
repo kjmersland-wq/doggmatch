@@ -1,8 +1,24 @@
+import { localizedHead } from "@/lib/seo";
+import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { useCopy } from "@/i18n";
 import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
-import { CardGrid, Notice, PointList, SectionHead, StepList } from "@/components/dogmatch/journey/parts";
-import { getCarSafety, getCarSickness, getCarSteps, getLongJourney, getNervousDog, getPublicTransport, getAirTravel } from "@/data/travel/content";
+import {
+  CardGrid,
+  Notice,
+  PointList,
+  SectionHead,
+  StepList,
+} from "@/components/dogmatch/journey/parts";
+import {
+  getCarSafety,
+  getCarSickness,
+  getCarSteps,
+  getLongJourney,
+  getNervousDog,
+  getPublicTransport,
+  getAirTravel,
+} from "@/data/travel/content";
 import carImage from "@/assets/travel-car.jpg";
 import safetyIllus from "@/assets/illus-car-safety.jpg";
 import { seoLinks } from "@/lib/seo";
@@ -14,19 +30,7 @@ const description =
   "How to secure a dog in a car, first journeys for a nervous dog, car sickness, long drives and breaks — and the honest truth about hot cars.";
 
 export const Route = createFileRoute("/{-$lang}/travel/car")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: seoLinks("/travel/car"),
-  }),
+  head: (ctx) => localizedHead(ctx, "/travel/car", pageSeo.travelCar),
   component: CarPage,
 });
 
@@ -40,7 +44,8 @@ const copy = {
     safeUnsafeTitle: "How your dog should travel.",
     safe: "Safe",
     notSafe: "Not safe",
-    safetyAlt: "An illustration comparing a dog secured in a crate with an unsecured dog on a car seat",
+    safetyAlt:
+      "An illustration comparing a dog secured in a crate with an unsecured dog on a car seat",
     hotCarEyebrow: "Please read this one",
     hotCarTitle: "Never leave your dog in a parked car in warm weather.",
     hotCarBody1:
@@ -59,7 +64,8 @@ const copy = {
     longJourneysTitle: "Breaks, water and patience.",
     otherEyebrow: "Trains, buses, boats and planes",
     otherTitle: "Everything else that moves.",
-    otherBody: "Every operator sets its own rules, and they change. Always confirm directly with them before you book anything.",
+    otherBody:
+      "Every operator sets its own rules, and they change. Always confirm directly with them before you book anything.",
     publicTransport: "Public transport",
     flying: "Flying",
     flyingNotice:
@@ -76,7 +82,8 @@ const copy = {
     safeUnsafeTitle: "Hvordan hunden din bør reise.",
     safe: "Trygt",
     notSafe: "Ikke trygt",
-    safetyAlt: "En illustrasjon som sammenligner en hund sikret i et bur med en usikret hund på bilsetet",
+    safetyAlt:
+      "En illustrasjon som sammenligner en hund sikret i et bur med en usikret hund på bilsetet",
     hotCarEyebrow: "Vennligst les denne",
     hotCarTitle: "Aldri la hunden din bli igjen i en parkert bil i varmt vær.",
     hotCarBody1:
@@ -95,7 +102,8 @@ const copy = {
     longJourneysTitle: "Pauser, vann og tålmodighet.",
     otherEyebrow: "Tog, buss, båt og fly",
     otherTitle: "Alt annet som beveger seg.",
-    otherBody: "Hver operatør har sine egne regler, og de endrer seg. Bekreft alltid direkte med dem før dere bestiller noe.",
+    otherBody:
+      "Hver operatør har sine egne regler, og de endrer seg. Bekreft alltid direkte med dem før dere bestiller noe.",
     publicTransport: "Offentlig transport",
     flying: "Fly",
     flyingNotice:
@@ -112,7 +120,8 @@ const copy = {
     safeUnsafeTitle: "Jak powinien podróżować twój pies.",
     safe: "Bezpiecznie",
     notSafe: "Niebezpiecznie",
-    safetyAlt: "Ilustracja porównująca psa zabezpieczonego w transporterze z niezabezpieczonym psem na siedzeniu samochodu",
+    safetyAlt:
+      "Ilustracja porównująca psa zabezpieczonego w transporterze z niezabezpieczonym psem na siedzeniu samochodu",
     hotCarEyebrow: "Koniecznie to przeczytaj",
     hotCarTitle: "Nigdy nie zostawiaj psa w zaparkowanym samochodzie w ciepłą pogodę.",
     hotCarBody1:
@@ -131,7 +140,8 @@ const copy = {
     longJourneysTitle: "Przerwy, woda i cierpliwość.",
     otherEyebrow: "Pociągi, autobusy, statki i samoloty",
     otherTitle: "Wszystko inne, co się porusza.",
-    otherBody: "Każdy przewoźnik ma własne zasady i one się zmieniają. Zawsze potwierdź je bezpośrednio przed rezerwacją.",
+    otherBody:
+      "Każdy przewoźnik ma własne zasady i one się zmieniają. Zawsze potwierdź je bezpośrednio przed rezerwacją.",
     publicTransport: "Transport publiczny",
     flying: "Podróż samolotem",
     flyingNotice:
@@ -148,7 +158,8 @@ const copy = {
     safeUnsafeTitle: "Sådan bør din hund rejse.",
     safe: "Sikkert",
     notSafe: "Ikke sikkert",
-    safetyAlt: "En illustration der sammenligner en hund sikret i en boks med en usikret hund på et bilsæde",
+    safetyAlt:
+      "En illustration der sammenligner en hund sikret i en boks med en usikret hund på et bilsæde",
     hotCarEyebrow: "Læs venligst denne",
     hotCarTitle: "Efterlad aldrig din hund i en parkeret bil i varmt vejr.",
     hotCarBody1:
@@ -167,7 +178,8 @@ const copy = {
     longJourneysTitle: "Pauser, vand og tålmodighed.",
     otherEyebrow: "Tog, busser, både og fly",
     otherTitle: "Alt andet der bevæger sig.",
-    otherBody: "Hver operatør har sine egne regler, og de ændrer sig. Bekræft altid direkte med dem, før du booker noget.",
+    otherBody:
+      "Hver operatør har sine egne regler, og de ændrer sig. Bekræft altid direkte med dem, før du booker noget.",
     publicTransport: "Offentlig transport",
     flying: "At flyve",
     flyingNotice:
@@ -184,7 +196,8 @@ const copy = {
     safeUnsafeTitle: "Så här bör din hund resa.",
     safe: "Säkert",
     notSafe: "Inte säkert",
-    safetyAlt: "En illustration som jämför en hund säkrad i en bur med en osäkrad hund i ett bilsäte",
+    safetyAlt:
+      "En illustration som jämför en hund säkrad i en bur med en osäkrad hund i ett bilsäte",
     hotCarEyebrow: "Läs den här",
     hotCarTitle: "Lämna aldrig din hund i en parkerad bil i varmt väder.",
     hotCarBody1:
@@ -203,7 +216,8 @@ const copy = {
     longJourneysTitle: "Pauser, vatten och tålamod.",
     otherEyebrow: "Tåg, bussar, båtar och flyg",
     otherTitle: "Allt annat som rör sig.",
-    otherBody: "Varje operatör har sina egna regler, och de ändras. Bekräfta alltid direkt med dem innan du bokar något.",
+    otherBody:
+      "Varje operatör har sina egna regler, och de ändras. Bekräfta alltid direkt med dem innan du bokar något.",
     publicTransport: "Kollektivtrafik",
     flying: "Att flyga",
     flyingNotice:
@@ -220,7 +234,8 @@ const copy = {
     safeUnsafeTitle: "Näin koirasi tulisi matkustaa.",
     safe: "Turvallista",
     notSafe: "Ei turvallista",
-    safetyAlt: "Kuva, joka vertaa häkkiin kiinnitettyä koiraa kiinnittämättömään koiraan autonistuimella",
+    safetyAlt:
+      "Kuva, joka vertaa häkkiin kiinnitettyä koiraa kiinnittämättömään koiraan autonistuimella",
     hotCarEyebrow: "Lue tämä ehdottomasti",
     hotCarTitle: "Älä koskaan jätä koiraasi pysäköityyn autoon lämpimällä säällä.",
     hotCarBody1:
@@ -239,7 +254,8 @@ const copy = {
     longJourneysTitle: "Tauot, vesi ja kärsivällisyys.",
     otherEyebrow: "Junat, bussit, laivat ja lentokoneet",
     otherTitle: "Kaikki muu, mikä liikkuu.",
-    otherBody: "Jokaisella liikennöitsijällä on omat sääntönsä, ja ne muuttuvat. Varmista aina suoraan heiltä ennen varaamista.",
+    otherBody:
+      "Jokaisella liikennöitsijällä on omat sääntönsä, ja ne muuttuvat. Varmista aina suoraan heiltä ennen varaamista.",
     publicTransport: "Julkinen liikenne",
     flying: "Lentäminen",
     flyingNotice:
@@ -249,73 +265,77 @@ const copy = {
   },
   de: {
     eyebrow: "Im Auto",
-    title: "Sicher ans Ziel kommen.",
+    title: "Sicher ankommen.",
     intro:
-      "Ein ungesicherter Hund ist gefährlich — für sich selbst und für alle anderen im Auto. Es ist auch das Einfachste auf dieser Seite, richtig zu machen.",
+      "Ein ungesicherter Hund ist gefährlich — für ihn selbst und für alle anderen im Auto. Es ist auch das Einfachste auf dieser Seite, das man richtig machen kann.",
     safeUnsafeEyebrow: "Sicher und unsicher",
-    safeUnsafeTitle: "Wie Ihr Hund reisen sollte.",
+    safeUnsafeTitle: "So sollte dein Hund reisen.",
     safe: "Sicher",
     notSafe: "Nicht sicher",
-    safetyAlt: "Eine Illustration, die einen in einer Box gesicherten Hund mit einem ungesicherten Hund auf dem Autositz vergleicht",
-    hotCarEyebrow: "Bitte lesen Sie das hier",
-    hotCarTitle: "Lassen Sie Ihren Hund nie in einem geparkten Auto bei warmem Wetter.",
+    safetyAlt:
+      "Eine Illustration, die einen im Käfig gesicherten Hund mit einem ungesicherten Hund auf dem Autositz vergleicht",
+    hotCarEyebrow: "Bitte unbedingt lesen",
+    hotCarTitle: "Lass deinen Hund bei warmem Wetter nie in einem geparkten Auto.",
     hotCarBody1:
-      "Ein Auto heizt sich viel schneller auf, als man erwartet, und ein Hund kann sich nicht so abkühlen wie wir. Der Schatten wandert. Ein gekipptes Fenster hilft kaum. Selbst an einem milden Tag kann es innerhalb von Minuten gefährlich werden.",
+      "Ein Auto heizt sich viel schneller auf, als man erwartet, und ein Hund kann sich nicht so abkühlen wie wir. Der Schatten wandert. Ein gekipptes Fenster hilft kaum. Selbst an einem milden Tag kann es innen in wenigen Minuten gefährlich werden.",
     hotCarBody2:
-      "Sehen Sie einen Hund in Not in einem verschlossenen Auto — starkes Hecheln, Speicheln, Wackligkeit, Reaktionslosigkeit — rufen Sie die örtliche Notrufnummer an. Es ist immer besser, sich zu irren, als zu spät zu sein.",
+      "Siehst du einen Hund in Not in einem verschlossenen Auto — starkes Hecheln, Sabbern, Unsicherheit, keine Reaktion — ruf sofort die örtliche Notrufnummer an. Es ist immer besser, sich zu irren, als zu spät zu handeln.",
     firstJourneysEyebrow: "Erste Fahrten",
-    firstJourneysTitle: "Fangen Sie kleiner an, als Sie denken.",
+    firstJourneysTitle: "Fang kleiner an, als du denkst.",
     firstJourneysBody:
-      "Die meisten Hunde, die das Auto hassen, haben das bei einer einzigen langen, beängstigenden Fahrt gelernt. Das rückgängig zu machen dauert weit länger, als es von Anfang an behutsam anzugehen.",
-    ifNervous: "Wenn Ihr Hund nervös ist",
+      "Die meisten Hunde, die das Auto hassen, haben es bei einer einzigen langen, beängstigenden Fahrt gelernt. Das rückgängig zu machen dauert weit länger, als es von Anfang an sanft anzugehen.",
+    ifNervous: "Wenn dein Hund nervös ist",
     sicknessEyebrow: "Reisekrankheit",
-    sicknessTitle: "Sehr häufig, und meist wird es besser.",
-    signsToWatch: "Anzeichen, auf die Sie achten sollten:",
+    sicknessTitle: "Sehr häufig, und meist besser mit der Zeit.",
+    signsToWatch: "Anzeichen, auf die du achten solltest:",
     longJourneysEyebrow: "Lange Fahrten",
     longJourneysTitle: "Pausen, Wasser und Geduld.",
-    otherEyebrow: "Bahn, Bus, Schiff und Flugzeug",
+    otherEyebrow: "Zug, Bus, Boot und Flugzeug",
     otherTitle: "Alles andere, was sich bewegt.",
-    otherBody: "Jeder Anbieter hat eigene Regeln, und sie ändern sich. Bestätigen Sie immer direkt bei ihnen, bevor Sie etwas buchen.",
+    otherBody:
+      "Jeder Anbieter hat eigene Regeln, und sie ändern sich. Bestätige immer direkt bei ihm, bevor du etwas buchst.",
     publicTransport: "Öffentliche Verkehrsmittel",
     flying: "Fliegen",
     flyingNotice:
-      "Fliegen ist für manche Hunde wirklich anstrengend, und manche Fluggesellschaften befördern kurznasige Rassen wegen des Risikos gar nicht. Gibt es die Möglichkeit, stattdessen zu fahren oder eine Fähre zu nehmen, ist das meist die schonendere Wahl.",
+      "Fliegen ist für manche Hunde wirklich hart, und manche Airlines nehmen kurznasige Rassen wegen des Risikos gar nicht mit. Wenn es eine Möglichkeit gibt, stattdessen zu fahren oder die Fähre zu nehmen, ist das meist die schonendere Wahl.",
     walksCta: "Spaziergänge, Wege und Wetter",
     abroadCta: "Ins Ausland reisen",
   },
   fr: {
     eyebrow: "En voiture",
-    title: "Arriver en sécurité.",
+    title: "Arriver en toute sécurité.",
     intro:
-      "Un chien non attaché est dangereux — pour lui-même et pour tous les autres dans la voiture. C'est aussi la chose la plus facile à corriger sur cette page.",
+      "Un chien non attaché est dangereux — pour lui-même et pour tous les autres passagers de la voiture. C'est aussi la chose la plus facile à corriger sur cette page.",
     safeUnsafeEyebrow: "Sûr et dangereux",
     safeUnsafeTitle: "Comment votre chien devrait voyager.",
     safe: "Sûr",
     notSafe: "Pas sûr",
-    safetyAlt: "Une illustration comparant un chien attaché dans une cage à un chien non attaché sur un siège de voiture",
+    safetyAlt:
+      "Une illustration comparant un chien attaché dans une cage à un chien non attaché sur un siège de voiture",
     hotCarEyebrow: "Merci de lire ceci",
     hotCarTitle: "Ne laissez jamais votre chien dans une voiture garée par temps chaud.",
     hotCarBody1:
-      "Une voiture chauffe bien plus vite qu'on ne le pense, et un chien ne peut pas se rafraîchir comme nous. L'ombre se déplace. Une vitre entrouverte n'aide que très peu. Même par temps doux, l'intérieur peut devenir dangereux en quelques minutes.",
+      "Une voiture chauffe bien plus vite qu'on ne l'imagine, et un chien ne peut pas se rafraîchir comme nous. L'ombre se déplace. Une fenêtre entrouverte n'aide que très peu. Même par une journée douce, l'intérieur peut devenir dangereux en quelques minutes.",
     hotCarBody2:
-      "Si vous voyez un chien en détresse dans une voiture fermée — halètement intense, bave, instabilité, absence de réaction — appelez le numéro d'urgence local. Il vaut toujours mieux se tromper que d'agir trop tard.",
+      "Si vous voyez un chien en détresse dans une voiture verrouillée — halètement fort, bave, instabilité, absence de réaction — appelez le numéro d'urgence local. Il vaut toujours mieux se tromper que d'agir trop tard.",
     firstJourneysEyebrow: "Premiers trajets",
     firstJourneysTitle: "Commencez plus petit que vous ne le pensez.",
     firstJourneysBody:
-      "La plupart des chiens qui détestent la voiture ont appris à la détester lors d'un long trajet effrayant. Défaire cela prend bien plus de temps que de bien faire les choses dès le départ.",
-    ifNervous: "Si votre chien est anxieux",
+      "La plupart des chiens qui détestent la voiture ont appris à la détester lors d'un long trajet effrayant. Défaire cela prend bien plus de temps que de le faire en douceur dès le départ.",
+    ifNervous: "Si votre chien est nerveux",
     sicknessEyebrow: "Mal des transports",
-    sicknessTitle: "Très fréquent, et cela s'améliore généralement.",
+    sicknessTitle: "Très courant, et qui s'améliore généralement.",
     signsToWatch: "Signes à surveiller :",
     longJourneysEyebrow: "Longs trajets",
     longJourneysTitle: "Pauses, eau et patience.",
     otherEyebrow: "Trains, bus, bateaux et avions",
-    otherTitle: "Tout ce qui se déplace autrement.",
-    otherBody: "Chaque opérateur fixe ses propres règles, et elles changent. Confirmez toujours directement auprès d'eux avant de réserver quoi que ce soit.",
+    otherTitle: "Tout ce qui bouge, en fait.",
+    otherBody:
+      "Chaque opérateur fixe ses propres règles, et elles changent. Confirmez toujours directement auprès de lui avant de réserver quoi que ce soit.",
     publicTransport: "Transports en commun",
     flying: "Prendre l'avion",
     flyingNotice:
-      "Prendre l'avion est vraiment éprouvant pour certains chiens, et certaines compagnies aériennes refusent carrément les races brachycéphales en raison du risque. S'il est possible de prendre la voiture ou un ferry à la place, c'est généralement plus doux.",
+      "Voyager en avion est réellement difficile pour certains chiens, et certaines compagnies aériennes ne transportent pas du tout les races brachycéphales à cause du risque. S'il existe une possibilité de conduire ou de prendre le ferry à la place, c'est généralement plus doux.",
     walksCta: "Promenades, sentiers et météo",
     abroadCta: "Voyager à l'étranger",
   },
@@ -323,35 +343,37 @@ const copy = {
     eyebrow: "In de auto",
     title: "Veilig aankomen.",
     intro:
-      "Een niet-vastgezette hond is gevaarlijk — voor zichzelf en voor iedereen anders in de auto. Het is ook het makkelijkste om op deze pagina recht te zetten.",
+      "Een niet-vastgezette hond is gevaarlijk — voor zichzelf en voor iedereen in de auto. Het is ook het makkelijkste om op deze pagina te verbeteren.",
     safeUnsafeEyebrow: "Veilig en onveilig",
-    safeUnsafeTitle: "Hoe uw hond zou moeten reizen.",
+    safeUnsafeTitle: "Zo zou je hond moeten reizen.",
     safe: "Veilig",
     notSafe: "Niet veilig",
-    safetyAlt: "Een illustratie die een hond vastgezet in een bench vergelijkt met een niet-vastgezette hond op een autostoel",
-    hotCarEyebrow: "Lees dit alstublieft",
-    hotCarTitle: "Laat uw hond nooit achter in een geparkeerde auto bij warm weer.",
+    safetyAlt:
+      "Een illustratie die een hond vastgezet in een bench vergelijkt met een niet-vastgezette hond op een autostoel",
+    hotCarEyebrow: "Lees dit alsjeblieft",
+    hotCarTitle: "Laat je hond nooit achter in een geparkeerde auto bij warm weer.",
     hotCarBody1:
-      "Een auto warmt veel sneller op dan mensen verwachten, en een hond kan zichzelf niet afkoelen zoals wij dat kunnen. Schaduw verschuift. Een op een kier gezet raam helpt heel weinig. Zelfs op een milde dag kan het binnen enkele minuten gevaarlijk worden.",
+      "Een auto warmt veel sneller op dan mensen verwachten, en een hond kan zichzelf niet afkoelen zoals wij dat kunnen. De schaduw verplaatst zich. Een op een kier staand raam helpt heel weinig. Zelfs op een milde dag kan het binnen in enkele minuten gevaarlijk worden.",
     hotCarBody2:
-      "Ziet u een hond in nood in een afgesloten auto — zwaar hijgen, kwijlen, wankelheid, geen reactie — bel dan het lokale alarmnummer. Het is altijd beter om je te vergissen dan te laat te zijn.",
-    firstJourneysEyebrow: "Eerste ritten",
-    firstJourneysTitle: "Begin kleiner dan u denkt.",
+      "Zie je een hond in nood in een afgesloten auto — hevig hijgen, kwijlen, wankelheid, niet reageren — bel dan direct het plaatselijke alarmnummer. Het is altijd beter om je te vergissen dan te laat te zijn.",
+    firstJourneysEyebrow: "Eerste ritjes",
+    firstJourneysTitle: "Begin kleiner dan je denkt.",
     firstJourneysBody:
-      "De meeste honden die de auto haten, hebben dat geleerd tijdens één lange, angstaanjagende rit. Dat ongedaan maken duurt veel langer dan het van het begin af aan rustig aanpakken.",
-    ifNervous: "Als uw hond nerveus is",
+      "De meeste honden die de auto haten, hebben dat geleerd tijdens één lange, angstaanjagende rit. Dat weer afleren duurt veel langer dan het van begin af aan rustig aanpakken.",
+    ifNervous: "Als je hond nerveus is",
     sicknessEyebrow: "Reisziekte",
-    sicknessTitle: "Heel gebruikelijk, en meestal wordt het beter.",
+    sicknessTitle: "Heel gewoon, en meestal wordt het beter.",
     signsToWatch: "Signalen om op te letten:",
     longJourneysEyebrow: "Lange ritten",
     longJourneysTitle: "Pauzes, water en geduld.",
     otherEyebrow: "Trein, bus, boot en vliegtuig",
     otherTitle: "Al het andere dat beweegt.",
-    otherBody: "Elke vervoerder heeft eigen regels, en die veranderen. Bevestig altijd rechtstreeks bij hen voordat u iets boekt.",
+    otherBody:
+      "Elke vervoerder heeft zijn eigen regels, en die veranderen. Bevestig altijd rechtstreeks bij hen voordat je iets boekt.",
     publicTransport: "Openbaar vervoer",
     flying: "Vliegen",
     flyingNotice:
-      "Vliegen is voor sommige honden echt zwaar, en sommige luchtvaartmaatschappijen vervoeren platneuzige rassen vanwege het risico helemaal niet. Is er een manier om in plaats daarvan te rijden of de veerboot te nemen, dan is dat meestal vriendelijker.",
+      "Vliegen is voor sommige honden echt zwaar, en sommige luchtvaartmaatschappijen vervoeren platneushonden vanwege het risico helemaal niet. Als er een manier is om in plaats daarvan te rijden of de veerboot te nemen, is dat meestal vriendelijker.",
     walksCta: "Wandelingen, paden en weer",
     abroadCta: "Naar het buitenland reizen",
   },
@@ -372,7 +394,14 @@ function CarPage() {
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
           </div>
           <div className="overflow-hidden rounded-[2rem] bg-surface">
-            <img src={carImage} alt="A dog secured in a travel crate in the boot of an estate car" width={1600} height={1100} fetchPriority="high" className="aspect-[4/3] w-full object-cover" />
+            <img
+              src={carImage}
+              alt="A dog secured in a travel crate in the boot of an estate car"
+              width={1600}
+              height={1100}
+              fetchPriority="high"
+              className="aspect-[4/3] w-full object-cover"
+            />
           </div>
         </div>
       </section>
@@ -399,7 +428,14 @@ function CarPage() {
               </div>
             </div>
             <div className="overflow-hidden rounded-[1.5rem]">
-              <img src={safetyIllus} alt={c.safetyAlt} width={1200} height={1200} loading="lazy" className="aspect-square w-full object-cover" />
+              <img
+                src={safetyIllus}
+                alt={c.safetyAlt}
+                width={1200}
+                height={1200}
+                loading="lazy"
+                className="aspect-square w-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -466,11 +502,7 @@ function CarPage() {
       {/* ----------------------------------------------- Other transport */}
       <Section className="pt-0">
         <div className="container-page">
-          <SectionHead
-            eyebrow={c.otherEyebrow}
-            title={c.otherTitle}
-            body={c.otherBody}
-          />
+          <SectionHead eyebrow={c.otherEyebrow} title={c.otherTitle} body={c.otherBody} />
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
             <div>
               <p className="eyebrow">{c.publicTransport}</p>
