@@ -1617,6 +1617,7 @@ function MyDogHome() {
           {[
             "dental",
             "coat",
+            "body-condition",
             "paws",
             "ears",
             "eyes",

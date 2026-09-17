@@ -77,6 +77,7 @@ const pageCopy = {
     yourFitTitle: "How this dog fits your life",
     yourFitNote: "Read against the answers you gave in Find My Dog, kept on this device.",
     relatedTitle: "Similar breeds worth a look",
+    prepareLinkLabel: "See what to prepare",
     timeMorning: "07:00",
     timeMidday: "12:00",
     timeEvening: "17:30",
@@ -104,6 +105,7 @@ const pageCopy = {
     yourFitTitle: "Hvordan denne hunden passer livet ditt",
     yourFitNote: "Lest opp mot svarene du ga i Finn min hund, lagret på denne enheten.",
     relatedTitle: "Lignende raser, verdt en titt",
+    prepareLinkLabel: "Se hva du bør forberede",
     timeMorning: "07:00",
     timeMidday: "12:00",
     timeEvening: "17:30",
@@ -132,6 +134,7 @@ const pageCopy = {
     yourFitNote:
       "Odczytane na tle odpowiedzi, które podałeś w Znajdź mojego psa, zapisanych na tym urządzeniu.",
     relatedTitle: "Podobne rasy, warte spojrzenia",
+    prepareLinkLabel: "Zobacz, do czego się przygotować",
     timeMorning: "07:00",
     timeMidday: "12:00",
     timeEvening: "17:30",
@@ -159,6 +162,7 @@ const pageCopy = {
     yourFitTitle: "Hvordan denne hund passer dit liv",
     yourFitNote: "Læst op mod de svar du gav i Find min hund, gemt på denne enhed.",
     relatedTitle: "Lignende racer, værd at kigge på",
+    prepareLinkLabel: "Se hvad du skal forberede",
     timeMorning: "07:00",
     timeMidday: "12:00",
     timeEvening: "17:30",
@@ -186,6 +190,7 @@ const pageCopy = {
     yourFitTitle: "Hur den här hunden passar ditt liv",
     yourFitNote: "Läst mot svaren du gav i Hitta min hund, sparade på den här enheten.",
     relatedTitle: "Liknande raser värda en titt",
+    prepareLinkLabel: "Se vad du bör förbereda",
     timeMorning: "07:00",
     timeMidday: "12:00",
     timeEvening: "17:30",
@@ -213,6 +218,7 @@ const pageCopy = {
     yourFitTitle: "Miten tämä koira sopii elämääsi",
     yourFitNote: "Verrattu vastauksiisi Löydä koirani -kyselyssä, tallennettuna tälle laitteelle.",
     relatedTitle: "Samankaltaisia rotuja, joihin kannattaa tutustua",
+    prepareLinkLabel: "Katso, mihin kannattaa varautua",
     timeMorning: "07:00",
     timeMidday: "12:00",
     timeEvening: "17:30",
@@ -241,6 +247,7 @@ const pageCopy = {
     yourFitNote:
       "Abgeglichen mit den Antworten, die du bei Finde meinen Hund gegeben hast, gespeichert auf diesem Gerät.",
     relatedTitle: "Ähnliche Rassen, einen Blick wert",
+    prepareLinkLabel: "Worauf du dich vorbereiten solltest",
     timeMorning: "07:00",
     timeMidday: "12:00",
     timeEvening: "17:30",
@@ -269,6 +276,7 @@ const pageCopy = {
     yourFitNote:
       "Analysé à partir des réponses que vous avez données dans Trouver mon chien, conservées sur cet appareil.",
     relatedTitle: "Des races proches qui méritent un coup d'œil",
+    prepareLinkLabel: "Voir ce qu'il faut préparer",
     timeMorning: "07h00",
     timeMidday: "12h00",
     timeEvening: "17h30",
@@ -297,6 +305,7 @@ const pageCopy = {
     yourFitNote:
       "Afgezet tegen de antwoorden die je gaf bij Vind mijn hond, bewaard op dit apparaat.",
     relatedTitle: "Vergelijkbare rassen die de moeite waard zijn",
+    prepareLinkLabel: "Bekijk waar je je op moet voorbereiden",
     timeMorning: "07:00",
     timeMidday: "12:00",
     timeEvening: "17:30",
@@ -948,6 +957,14 @@ function BreedDetail() {
         </ButtonLink>
         <ButtonLink to={withLangPrefix("/compare")} tone="outline" size="lg">
           {t.nav.compare}
+        </ButtonLink>
+        <ButtonLink
+          to={withLangPrefix("/get-a-dog/breed/$breedId")}
+          params={{ breedId: breed.id }}
+          tone="outline"
+          size="lg"
+        >
+          {c.prepareLinkLabel}
         </ButtonLink>
       </div>
 
