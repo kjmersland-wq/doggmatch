@@ -5,6 +5,7 @@ import { getBreed, type BreedId } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n";
 import { dossierPrice } from "./pricing";
+import { PURCHASES_ENABLED, PURCHASES_PAUSED_ERROR } from "@/lib/purchases";
 
 /**
  * One-time Stripe Checkout for the paid "Complete Breed & Puppy Buyer
@@ -33,6 +34,7 @@ export const createDossierCheckout = createServerFn({ method: "POST" })
     return { breedId: data.breedId as BreedId, locale: data.locale };
   })
   .handler(async ({ data }): Promise<{ url: string }> => {
+    if (!PURCHASES_ENABLED) throw new Error(PURCHASES_PAUSED_ERROR);
     const { getStripe } = await import("@/lib/plus/stripe.server");
     const stripe = getStripe();
     const name = breedContent(data.locale)[data.breedId]?.displayName ?? data.breedId;
