@@ -3,6 +3,7 @@ import { trustedOrigin } from "@/lib/trusted-origin";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { PLUS_PLANS, type PlanId } from "./plans";
 import { founderEmailFromClaims, isFounderEmail } from "./founder";
+import { PURCHASES_ENABLED, PURCHASES_PAUSED_ERROR } from "@/lib/purchases";
 
 export type MembershipStatus = {
   subscribed: boolean;
@@ -28,6 +29,7 @@ export const createPlusCheckout = createServerFn({ method: "POST" })
     };
   })
   .handler(async ({ data, context }): Promise<{ url: string }> => {
+    if (!PURCHASES_ENABLED) throw new Error(PURCHASES_PAUSED_ERROR);
     const { getStripe, findCustomerId } = await import("./stripe.server");
     const stripe = getStripe();
     const email = context.claims?.email as string | undefined;

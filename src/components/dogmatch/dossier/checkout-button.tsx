@@ -8,6 +8,7 @@ import { Button } from "@/components/dogmatch/ui";
 import { cn } from "@/lib/utils";
 import { useMembership } from "@/hooks/use-membership";
 import { withLangPrefix } from "@/lib/localized-path";
+import { PURCHASES_ENABLED, purchasesPausedCopy } from "@/lib/purchases";
 
 const copy = {
   en: {
@@ -68,6 +69,7 @@ export function DossierCheckoutButton({
   className?: string;
 }) {
   const c = useCopy(copy);
+  const p = useCopy(purchasesPausedCopy);
   const { locale } = useLocale();
   const startCheckout = useServerFn(createDossierCheckout);
   const navigate = useNavigate();
@@ -92,11 +94,14 @@ export function DossierCheckoutButton({
     }
   }
 
+  const paused = !PURCHASES_ENABLED && !membership.lifetime;
+
   return (
     <div className={cn("flex flex-col items-start gap-3", className)}>
-      <Button size="lg" onClick={onClick} disabled={busy}>
+      <Button size="lg" onClick={onClick} disabled={busy || paused}>
         {busy ? c.opening : interpolate(c.cta, { breed: breedName })}
       </Button>
+      {paused && <p className="text-sm leading-relaxed text-muted-foreground">{p.paused}</p>}
       {error && (
         <p role="alert" className="text-sm leading-relaxed text-accent">
           {error}

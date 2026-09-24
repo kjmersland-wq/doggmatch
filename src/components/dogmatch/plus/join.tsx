@@ -8,6 +8,7 @@ import { readPartnerCode } from "@/components/dogmatch/plus/partner-code";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
+import { PURCHASES_ENABLED, purchasesPausedCopy } from "@/lib/purchases";
 
 
 type Props = {
@@ -86,6 +87,7 @@ const copy = {
 /** Takes someone from the pricing card straight into Stripe checkout. */
 export function JoinPlusButton({ plan, tone = "primary", label, className }: Props) {
   const c = useCopy(copy);
+  const p = useCopy(purchasesPausedCopy);
   const navigate = useNavigate();
   const startCheckout = useServerFn(createPlusCheckout);
   const { membership, signedIn, loading } = useMembership();
@@ -122,12 +124,14 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
         ? c.signInToJoin
         : (label ?? c.join);
 
+  const paused = !PURCHASES_ENABLED && !already;
+
   return (
     <div className={cn("mt-8", className)}>
       <button
         type="button"
         onClick={onClick}
-        disabled={busy || loading}
+        disabled={busy || loading || paused}
         className={cn(
           "inline-flex h-14 w-full items-center justify-center rounded-full px-6 text-[0.9375rem] font-medium transition-colors sm:text-base disabled:opacity-70",
           tone === "primary"
@@ -137,6 +141,7 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
       >
         {text}
       </button>
+      {paused && <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.paused}</p>}
       {error && (
         <p role="alert" className="mt-3 text-sm leading-relaxed text-accent">
           {error}
