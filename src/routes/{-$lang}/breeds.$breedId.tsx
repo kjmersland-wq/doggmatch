@@ -959,8 +959,7 @@ function BreedDetail() {
           {t.nav.compare}
         </ButtonLink>
         <ButtonLink
-          to={withLangPrefix("/get-a-dog/breed/$breedId")}
-          params={{ breedId: breed.id }}
+          to={withLangPrefix(`/get-a-dog/breed/${breed.id}`)}
           tone="outline"
           size="lg"
         >
