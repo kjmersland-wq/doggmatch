@@ -7,6 +7,7 @@
  */
 import { breedById, type BreedId, type BreedTraits } from "@/data/breeds";
 import { pick } from "@/i18n";
+import type { Locale } from "@/i18n";
 import type { DogProfile } from "@/lib/training/store";
 import { OBSERVED_KEYS } from "./types";
 import { matchDogTraits, type DogFit } from "@/lib/matching/engine";
@@ -230,23 +231,23 @@ export function resolveDogTraits(dog?: DogProfile): DogTraitProfile {
   };
 }
 
-const TRAIT_LABELS: Partial<Record<keyof BreedTraits, { en: string; no: string; pl: string }>> = {
-  energy: { en: "energy", no: "energi", pl: "energia" },
-  exerciseNeeds: { en: "exercise needs", no: "mosjonsbehov", pl: "potrzeba ruchu" },
-  mentalStimulation: { en: "mental stimulation", no: "mental stimulering", pl: "stymulacja umysłowa" },
-  grooming: { en: "coat care", no: "pelsstell", pl: "pielęgnacja sierści" },
-  shedding: { en: "shedding", no: "pelsfelling", pl: "linienie" },
-  barking: { en: "barking", no: "bjeffing", pl: "szczekanie" },
-  drooling: { en: "drooling", no: "sikling", pl: "ślinienie się" },
-  strengthRequired: { en: "strength on the lead", no: "styrke i bånd", pl: "siła na smyczy" },
-  apartmentSuitability: { en: "flat living", no: "leilighetsliv", pl: "życie w mieszkaniu" },
-  aloneTolerance: { en: "time alone", no: "å være alene", pl: "przebywanie samemu" },
-  firstTimeSuitability: { en: "first-time owners", no: "førstegangseiere", pl: "początkujący opiekunowie" },
-  goodWithChildren: { en: "life with children", no: "livet med barn", pl: "życie z dziećmi" },
-  goodWithDogs: { en: "other dogs", no: "andre hunder", pl: "inne psy" },
-  goodWithPets: { en: "other pets", no: "andre dyr", pl: "inne zwierzęta" },
-  heatTolerance: { en: "warm weather", no: "varme dager", pl: "upalne dni" },
-  coldTolerance: { en: "cold weather", no: "kulde", pl: "zimno" },
+const TRAIT_LABELS: Partial<Record<keyof BreedTraits, Record<Locale, string>>> = {
+  energy: { en: "energy", no: "energi", pl: "energia", dk: "energi", se: "energi", fi: "energia", de: "Energie", fr: "l’énergie", nl: "energie" },
+  exerciseNeeds: { en: "exercise needs", no: "mosjonsbehov", pl: "potrzeba ruchu", dk: "motionsbehov", se: "motionsbehov", fi: "liikunnan tarve", de: "Bewegungsbedarf", fr: "le besoin d’exercice", nl: "bewegingsbehoefte" },
+  mentalStimulation: { en: "mental stimulation", no: "mental stimulering", pl: "stymulacja umysłowa", dk: "mental stimulering", se: "mental stimulans", fi: "henkinen aktivointi", de: "geistige Auslastung", fr: "la stimulation mentale", nl: "mentale prikkels" },
+  grooming: { en: "coat care", no: "pelsstell", pl: "pielęgnacja sierści", dk: "pelspleje", se: "pälsvård", fi: "turkinhoito", de: "Fellpflege", fr: "l’entretien du pelage", nl: "vachtverzorging" },
+  shedding: { en: "shedding", no: "pelsfelling", pl: "linienie", dk: "fældning", se: "fällning", fi: "karvanlähtö", de: "Haaren", fr: "la perte de poils", nl: "verharen" },
+  barking: { en: "barking", no: "bjeffing", pl: "szczekanie", dk: "gøen", se: "skällande", fi: "haukkuminen", de: "Bellen", fr: "les aboiements", nl: "blaffen" },
+  drooling: { en: "drooling", no: "sikling", pl: "ślinienie się", dk: "savlen", se: "dregling", fi: "kuolaaminen", de: "Sabbern", fr: "la bave", nl: "kwijlen" },
+  strengthRequired: { en: "strength on the lead", no: "styrke i bånd", pl: "siła na smyczy", dk: "styrke i snoren", se: "styrka i kopplet", fi: "voima hihnassa", de: "Kraft an der Leine", fr: "la force en laisse", nl: "kracht aan de lijn" },
+  apartmentSuitability: { en: "flat living", no: "leilighetsliv", pl: "życie w mieszkaniu", dk: "lejlighedsliv", se: "lägenhetsliv", fi: "kerrostaloelämä", de: "Wohnungsleben", fr: "la vie en appartement", nl: "wonen in een appartement" },
+  aloneTolerance: { en: "time alone", no: "å være alene", pl: "przebywanie samemu", dk: "tid alene", se: "tid ensam", fi: "yksinolo", de: "Alleinsein", fr: "le temps seul", nl: "alleen zijn" },
+  firstTimeSuitability: { en: "first-time owners", no: "førstegangseiere", pl: "początkujący opiekunowie", dk: "førstegangsejere", se: "förstagångsägare", fi: "ensikertalaiset", de: "Ersthundehalter", fr: "les premiers maîtres", nl: "beginnende eigenaren" },
+  goodWithChildren: { en: "life with children", no: "livet med barn", pl: "życie z dziećmi", dk: "livet med børn", se: "livet med barn", fi: "elämä lasten kanssa", de: "Leben mit Kindern", fr: "la vie avec des enfants", nl: "leven met kinderen" },
+  goodWithDogs: { en: "other dogs", no: "andre hunder", pl: "inne psy", dk: "andre hunde", se: "andra hundar", fi: "muut koirat", de: "andere Hunde", fr: "les autres chiens", nl: "andere honden" },
+  goodWithPets: { en: "other pets", no: "andre dyr", pl: "inne zwierzęta", dk: "andre dyr", se: "andra djur", fi: "muut lemmikit", de: "andere Haustiere", fr: "les autres animaux", nl: "andere huisdieren" },
+  heatTolerance: { en: "warm weather", no: "varme dager", pl: "upalne dni", dk: "varmt vejr", se: "varmt väder", fi: "lämmin sää", de: "warmes Wetter", fr: "la chaleur", nl: "warm weer" },
+  coldTolerance: { en: "cold weather", no: "kulde", pl: "zimno", dk: "koldt vejr", se: "kallt väder", fi: "kylmä sää", de: "kaltes Wetter", fr: "le froid", nl: "koud weer" },
 };
 
 export function traitLabel(key: keyof BreedTraits): string {
@@ -262,6 +263,12 @@ export function crossContributionLines(profile: DogTraitProfile): string[] {
       en: `${c.breedName} shows most in ${traits}.`,
       no: `${c.breedName} merkes mest på ${traits}.`,
       pl: `${c.breedName} widać najbardziej w: ${traits}.`,
+      dk: `${c.breedName} ses mest i ${traits}.`,
+      se: `${c.breedName} märks mest i ${traits}.`,
+      fi: `${c.breedName} näkyy eniten näissä: ${traits}.`,
+      de: `${c.breedName} zeigt sich am meisten bei: ${traits}.`,
+      fr: `${c.breedName} se voit surtout dans : ${traits}.`,
+      nl: `${c.breedName} zie je vooral terug in: ${traits}.`,
     });
   });
 }
@@ -295,24 +302,48 @@ export function traitBasisNote(profile: DogTraitProfile): string {
         en: "Based on the breed, adjusted by what you've told us about your own dog.",
         no: "Basert på rasen, justert etter det du har fortalt oss om din egen hund.",
         pl: "Na podstawie rasy, dopasowane do tego, co powiedziałeś nam o swoim psie.",
+        dk: "Baseret på racen og justeret efter det, du har fortalt os om din egen hund.",
+        se: "Baserat på rasen och justerat efter det du har berättat om din egen hund.",
+        fi: "Perustuu rotuun ja on tarkennettu sen mukaan, mitä kerroit omasta koirastasi.",
+        de: "Auf Basis der Rasse, angepasst an das, was Sie uns über Ihren eigenen Hund erzählt haben.",
+        fr: "Basé sur la race, ajusté selon ce que vous nous avez dit de votre propre chien.",
+        nl: "Gebaseerd op het ras, bijgesteld met wat u ons over uw eigen hond vertelde.",
       });
     case "mix-known":
       return pick({
         en: "Built mostly on your own dog, combined with what each breed in the mix tends to bring — the more demanding side sets the bar for needs, the more careful side for what we'd promise. A mix is never an exact copy of the breeds behind it.",
         no: "Bygger mest på din egen hund, kombinert med det hver rase i blandingen pleier å bidra med — den mest krevende siden setter nivået for behov, den mest forsiktige for hva vi tør love. En blanding blir aldri en nøyaktig kopi av rasene bak den.",
         pl: "Opiera się głównie na Twoim psie, w połączeniu z tym, co zwykle wnosi każda rasa w mieszance — bardziej wymagająca strona wyznacza poziom potrzeb, a ta ostrożniejsza to, co możemy obiecać. Mieszaniec nigdy nie jest dokładną kopią ras, z których pochodzi.",
+        dk: "Bygger mest på din egen hund, kombineret med det, hver race i blandingen plejer at bidrage med — den mest krævende side sætter niveauet for behov, den mest forsigtige for, hvad vi tør love. En blanding er aldrig en præcis kopi af racerne bag den.",
+        se: "Bygger mest på din egen hund, i kombination med vad varje ras i blandningen brukar bidra med — den mest krävande sidan sätter nivån för behov, den mest försiktiga för vad vi vågar lova. En blandning är aldrig en exakt kopia av raserna bakom den.",
+        fi: "Perustuu enimmäkseen omaan koiraasi yhdistettynä siihen, mitä kukin sekoituksen rotu yleensä tuo mukanaan — vaativampi puoli määrää tarpeiden tason ja varovaisempi sen, mitä uskallamme luvata. Sekarotuinen ei ole koskaan tarkka kopio taustansa roduista.",
+        de: "Stützt sich vor allem auf Ihren eigenen Hund, kombiniert mit dem, was jede Rasse im Mix meist mitbringt — die anspruchsvollere Seite bestimmt den Bedarf, die vorsichtigere, was wir versprechen. Ein Mischling ist nie eine genaue Kopie der Rassen dahinter.",
+        fr: "Repose surtout sur votre propre chien, combiné à ce que chaque race du croisement apporte généralement — le côté le plus exigeant fixe les besoins, le plus prudent ce que nous osons promettre. Un croisement n’est jamais la copie exacte des races qui le composent.",
+        nl: "Grotendeels gebaseerd op uw eigen hond, gecombineerd met wat elk ras in de mix meestal meebrengt — de veeleisendste kant bepaalt de behoeften, de voorzichtigste wat we durven beloven. Een kruising is nooit een exacte kopie van de rassen erachter.",
       });
     case "individual":
       return pick({
         en: "Built entirely from what you've told us about your dog — no breed guesswork.",
         no: "Bygget helt på det du har fortalt oss om hunden din — ingen gjetting på rase.",
         pl: "Oparte całkowicie na tym, co powiedziałeś nam o swoim psie — żadnego zgadywania rasy.",
+        dk: "Bygget helt på det, du har fortalt os om din hund — intet gætteri om racen.",
+        se: "Byggt helt på det du har berättat om din hund — inget gissande kring ras.",
+        fi: "Perustuu kokonaan siihen, mitä kerroit koirastasi — ei rotuarvailua.",
+        de: "Ganz auf dem aufgebaut, was Sie uns über Ihren Hund erzählt haben — ohne Rasseraten.",
+        fr: "Entièrement construit à partir de ce que vous nous avez dit de votre chien — sans deviner la race.",
+        nl: "Volledig gebaseerd op wat u ons over uw hond vertelde — zonder te gokken naar het ras.",
       });
     default:
       return pick({
         en: "We don't know much about your dog yet, so this is a careful average. Add a few details and it gets a lot more useful.",
         no: "Vi vet ikke så mye om hunden din ennå, så dette er et forsiktig gjennomsnitt. Legg inn noen detaljer, så blir det mye mer nyttig.",
         pl: "Nie wiemy jeszcze wiele o Twoim psie, więc to ostrożna średnia. Dodaj kilka szczegółów, a stanie się dużo bardziej przydatna.",
+        dk: "Vi ved endnu ikke så meget om din hund, så dette er et forsigtigt gennemsnit. Tilføj et par detaljer, så bliver det meget mere brugbart.",
+        se: "Vi vet ännu inte så mycket om din hund, så det här är ett försiktigt genomsnitt. Lägg till några detaljer så blir det mycket mer användbart.",
+        fi: "Emme vielä tiedä koirastasi paljon, joten tämä on varovainen keskiarvo. Lisää muutama tieto, niin tästä tulee paljon hyödyllisempi.",
+        de: "Wir wissen noch nicht viel über Ihren Hund, daher ist das ein vorsichtiger Durchschnitt. Ergänzen Sie ein paar Angaben, dann wird es viel aussagekräftiger.",
+        fr: "Nous ne savons pas encore grand-chose de votre chien, c’est donc une moyenne prudente. Ajoutez quelques détails et elle deviendra bien plus utile.",
+        nl: "We weten nog niet veel over uw hond, dus dit is een voorzichtig gemiddelde. Voeg een paar details toe en het wordt een stuk nuttiger.",
       });
   }
 }

@@ -1,4 +1,4 @@
-import { pick } from "@/i18n";
+import { pick, type Locale } from "@/i18n";
 
 /** DoggMatch+ plans. Price IDs live in code so purchases stay traceable in Stripe. */
 export type PlanId = "monthly" | "yearly";
@@ -16,9 +16,9 @@ export const PLUS_PLANS: Record<PlanId, { priceId: string; productId: string; la
   },
 };
 
-const planLabels: Record<PlanId, { en: string; no: string; pl: string }> = {
-  monthly: { en: "Monthly", no: "Månedlig", pl: "Miesięczny" },
-  yearly: { en: "Yearly", no: "Årlig", pl: "Roczny" },
+const planLabels: Record<PlanId, Record<Locale, string>> = {
+  monthly: { en: "Monthly", no: "Månedlig", pl: "Miesięczny", dk: "Månedlig", se: "Månadsvis", fi: "Kuukausittain", de: "Monatlich", fr: "Mensuel", nl: "Maandelijks" },
+  yearly: { en: "Yearly", no: "Årlig", pl: "Roczny", dk: "Årlig", se: "Årsvis", fi: "Vuosittain", de: "Jährlich", fr: "Annuel", nl: "Jaarlijks" },
 };
 
 /** Bilingual, locale-aware label for a plan (safe outside React too). */
