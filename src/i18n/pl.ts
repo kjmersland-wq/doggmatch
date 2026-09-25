@@ -85,7 +85,7 @@ export const pl: Dictionary = {
     heroSecondary: "Zobacz rasy",
     heroCaption: "Zajmuje około dwóch minut. Konto nie jest potrzebne.",
     valueStrip: [
-      { title: "250+ ras", body: "Opisane szczerze — zarówno to, co miłe, jak i to, co trudne." },
+      { title: "{count} ras", body: "Opisane szczerze — zarówno to, co miłe, jak i to, co trudne." },
       { title: "Stworzone dla Twojego życia", body: "Nie lista top dziesięć, taka sama dla wszystkich." },
       { title: "Pokazujemy nasze rozumowanie", body: "Zawsze możesz zobaczyć, dlaczego dany pies wypadł tak, a nie inaczej." },
       { title: "Prawdziwa codzienność", body: "Twój dom, Twój czas, Twój budżet, Twoje granice." },

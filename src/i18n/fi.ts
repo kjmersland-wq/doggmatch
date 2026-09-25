@@ -85,7 +85,7 @@ export const fi: Dictionary = {
     heroSecondary: "Katso rodut",
     heroCaption: "Kestää 2 minuuttia · Täysin ilmaista · Ei sähköpostia tai rekisteröitymistä.",
     valueStrip: [
-      { title: "Yli 250 rotua", body: "Kuvattu rehellisesti — sekä hyvät että vaikeat puolet." },
+      { title: "{count} rotua", body: "Kuvattu rehellisesti — sekä hyvät että vaikeat puolet." },
       { title: "Tehty juuri sinun elämääsi varten", body: "Ei kymmenen parhaan listaa, joka on sama kaikille." },
       { title: "Näytämme päättelymme", body: "Näet aina, miksi koira sijoittui juuri niin." },
       { title: "Aitoa arkea", body: "Kotisi, tuntisi, budjettisi, rajasi." },

@@ -85,7 +85,7 @@ export const dk: Dictionary = {
     heroSecondary: "Kig på racerne",
     heroCaption: "Tager 2 minutter · Helt gratis · Ingen e-mail eller oprettelse nødvendig.",
     valueStrip: [
-      { title: "250+ racer", body: "Beskrevet ærligt, de gode og de svære sider." },
+      { title: "{count} racer", body: "Beskrevet ærligt, de gode og de svære sider." },
       { title: "Lavet til dit liv", body: "Ikke en top-ti-liste, der er den samme for alle." },
       { title: "Vi viser vores tankegang", body: "Du kan altid se, hvorfor en hund endte, hvor den gjorde." },
       { title: "Det virkelige hverdagsliv", body: "Dit hjem, dine timer, dit budget, dine grænser." },

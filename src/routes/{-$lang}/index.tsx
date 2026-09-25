@@ -2,7 +2,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
 import { useEffect, useRef, useState } from "react";
 import { Check, Copy } from "lucide-react";
-import { useT, useCopy, useLocale } from "@/i18n";
+import { useT, useCopy, useLocale, interpolate } from "@/i18n";
 import { breeds } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
@@ -760,7 +760,7 @@ function HomePage() {
           <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
             {t.home.valueStrip.map((item) => (
               <div key={item.title} className="bg-background p-7">
-                <dt className="font-display text-lg tracking-tight">{item.title}</dt>
+                <dt className="font-display text-lg tracking-tight">{interpolate(item.title, { count: breeds.length })}</dt>
                 <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</dd>
               </div>
             ))}

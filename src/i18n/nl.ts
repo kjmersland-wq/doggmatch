@@ -86,7 +86,7 @@ export const nl: Dictionary = {
     heroSecondary: "Bekijk de rassen",
     heroCaption: "Duurt 2 minuten · Volledig gratis · Geen e-mail of account nodig.",
     valueStrip: [
-      { title: "250+ rassen", body: "Eerlijk beschreven, zowel de leuke als de lastige kanten." },
+      { title: "{count} rassen", body: "Eerlijk beschreven, zowel de leuke als de lastige kanten." },
       { title: "Gemaakt voor jouw leven", body: "Geen top-tienlijst die voor iedereen hetzelfde is." },
       { title: "We laten onze redenering zien", body: "Je ziet altijd waarom een hond ergens op uitkomt." },
       { title: "Echt dagelijks leven", body: "Jouw huis, jouw tijd, jouw budget, jouw grenzen." },

@@ -86,7 +86,7 @@ export const en = {
     heroSecondary: "Have a look at the breeds",
     heroCaption: "Takes 2 minutes · Completely free · No email or sign-up needed.",
     valueStrip: [
-      { title: "250+ breeds", body: "Described honestly, the good parts and the hard parts." },
+      { title: "{count} breeds", body: "Described honestly, the good parts and the hard parts." },
       { title: "Made for your life", body: "Not a top-ten list that's the same for everyone." },
       { title: "We show our reasoning", body: "You can always see why a dog came out where it did." },
       { title: "Real everyday life", body: "Your home, your hours, your budget, your limits." },

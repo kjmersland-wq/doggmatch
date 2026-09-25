@@ -86,7 +86,7 @@ export const fr: Dictionary = {
     heroSecondary: "Jetez un œil aux races",
     heroCaption: "2 minutes · Entièrement gratuit · Aucun e-mail ni inscription requis.",
     valueStrip: [
-      { title: "250+ races", body: "Décrites honnêtement, les bons côtés comme les plus exigeants." },
+      { title: "{count} races", body: "Décrites honnêtement, les bons côtés comme les plus exigeants." },
       { title: "Pensé pour votre vie", body: "Pas une liste des dix meilleurs, identique pour tout le monde." },
       { title: "Nous montrons notre raisonnement", body: "Vous voyez toujours pourquoi un chien arrive à ce résultat." },
       { title: "La vraie vie de tous les jours", body: "Votre logement, votre emploi du temps, votre budget, vos limites." },

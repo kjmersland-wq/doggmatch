@@ -86,7 +86,7 @@ export const de: Dictionary = {
     heroSecondary: "Schau dir die Rassen an",
     heroCaption: "Dauert 2 Minuten · Völlig kostenlos · Keine E-Mail oder Anmeldung nötig.",
     valueStrip: [
-      { title: "250+ Rassen", body: "Ehrlich beschrieben, die schönen und die anspruchsvollen Seiten." },
+      { title: "{count} Rassen", body: "Ehrlich beschrieben, die schönen und die anspruchsvollen Seiten." },
       { title: "Gemacht für dein Leben", body: "Keine Top-Ten-Liste, die für alle gleich ist." },
       { title: "Wir zeigen unsere Überlegungen", body: "Du siehst immer, warum ein Hund so abgeschnitten hat." },
       { title: "Echter Alltag", body: "Dein Zuhause, deine Zeit, dein Budget, deine Grenzen." },

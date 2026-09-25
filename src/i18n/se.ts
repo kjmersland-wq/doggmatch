@@ -85,7 +85,7 @@ export const se: Dictionary = {
     heroSecondary: "Ta en titt på raserna",
     heroCaption: "Tar 2 minuter · Helt gratis · Inget konto eller mejl behövs.",
     valueStrip: [
-      { title: "250+ raser", body: "Beskrivna ärligt, både det fina och det krävande." },
+      { title: "{count} raser", body: "Beskrivna ärligt, både det fina och det krävande." },
       { title: "Gjord för ditt liv", body: "Inte en topp tio-lista som är likadan för alla." },
       { title: "Vi visar hur vi tänker", body: "Du kan alltid se varför en hund hamnade där den gjorde." },
       { title: "Verklig vardag", body: "Ditt hem, dina timmar, din budget, dina gränser." },
