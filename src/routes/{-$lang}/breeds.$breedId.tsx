@@ -24,6 +24,7 @@ import { CostCalculator } from "@/components/dogmatch/cost-calculator";
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
 import { relatedBreeds } from "@/lib/breeds/related";
+import { traitLabels } from "@/lib/breeds/trait-labels";
 import { breedFaq } from "@/lib/breeds/faq";
 import {
   BreedFaq,
@@ -411,129 +412,30 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
   component: BreedDetail,
 });
 
-const labels = {
-  size: { en: "Size", no: "Størrelse", pl: "Rozmiar", de: "Größe", fr: "Taille", nl: "Grootte" },
-  energy: {
-    en: "Energy",
-    no: "Energi",
-    pl: "Energia",
-    de: "Energie",
-    fr: "Énergie",
-    nl: "Energie",
-  },
-  exerciseNeeds: {
-    en: "Exercise needs",
-    no: "Mosjonsbehov",
-    pl: "Potrzeby ruchowe",
-    de: "Bewegungsbedarf",
-    fr: "Besoin d'exercice",
-    nl: "Behoefte aan beweging",
-  },
-  mentalStimulation: {
-    en: "Mental stimulation",
-    no: "Mental stimulering",
-    pl: "Stymulacja umysłowa",
-    de: "Geistige Auslastung",
-    fr: "Stimulation mentale",
-    nl: "Mentale prikkeling",
-  },
-  trainability: {
-    en: "Trainability",
-    no: "Lærevillighet",
-    pl: "Podatność na szkolenie",
-    de: "Erziehbarkeit",
-    fr: "Facilité d'éducation",
-    nl: "Leerbaarheid",
-  },
-  sociability: {
-    en: "Sociability",
-    no: "Sosial med folk",
-    pl: "Towarzyskość z ludźmi",
-    de: "Geselligkeit mit Menschen",
-    fr: "Sociabilité avec les gens",
-    nl: "Sociaal met mensen",
-  },
-  affection: {
-    en: "Affection",
-    no: "Kosete",
-    pl: "Czułość",
-    de: "Anhänglichkeit",
-    fr: "Affection",
-    nl: "Aanhankelijkheid",
-  },
-  independence: {
-    en: "Independence",
-    no: "Selvstendighet",
-    pl: "Niezależność",
-    de: "Eigenständigkeit",
-    fr: "Indépendance",
-    nl: "Zelfstandigheid",
-  },
-  goodWithChildren: {
-    en: "Good with children",
-    no: "Passer med barn",
-    pl: "Dobrze z dziećmi",
-    de: "Kinderfreundlich",
-    fr: "Bon avec les enfants",
-    nl: "Goed met kinderen",
-  },
-  goodWithDogs: {
-    en: "Good with other dogs",
-    no: "Passer med andre hunder",
-    pl: "Dobrze z innymi psami",
-    de: "Verträgt sich mit anderen Hunden",
-    fr: "Bon avec les autres chiens",
-    nl: "Goed met andere honden",
-  },
-  apartmentSuitability: {
-    en: "Apartment suitability",
-    no: "Passer i leilighet",
-    pl: "Do mieszkania",
-    de: "Wohnungstauglichkeit",
-    fr: "Adapté à la vie en appartement",
-    nl: "Geschikt voor een appartement",
-  },
-  aloneTolerance: {
-    en: "Tolerance of being alone",
-    no: "Tåler å være alene",
-    pl: "Tolerancja samotności",
-    de: "Verträgt Alleinsein",
-    fr: "Tolérance à la solitude",
-    nl: "Verdraagt alleen zijn",
-  },
-  shedding: {
-    en: "Shedding",
-    no: "Pelsfelling",
-    pl: "Linienie",
-    de: "Fellwechsel",
-    fr: "Perte de poils",
-    nl: "Verharen",
-  },
-  grooming: {
-    en: "Grooming",
-    no: "Pelsstell",
-    pl: "Pielęgnacja sierści",
-    de: "Fellpflege",
-    fr: "Toilettage",
-    nl: "Vachtverzorging",
-  },
-  barking: {
-    en: "Barking",
-    no: "Bjeffing",
-    pl: "Szczekanie",
-    de: "Bellen",
-    fr: "Aboiements",
-    nl: "Blaffen",
-  },
-  firstTimeSuitability: {
-    en: "First-time owner suitability",
-    no: "Passer for førstegangseiere",
-    pl: "Odpowiedni dla początkujących",
-    de: "Geeignet für Ersthundehalter",
-    fr: "Adapté aux primo-adoptants",
-    nl: "Geschikt voor beginners",
-  },
-} as const;
+/** The traits shown on a breed profile, in reading order. */
+const PROFILE_TRAITS = [
+  "size",
+  "energy",
+  "exerciseNeeds",
+  "mentalStimulation",
+  "trainability",
+  "sociability",
+  "affection",
+  "independence",
+  "goodWithChildren",
+  "goodWithDogs",
+  "apartmentSuitability",
+  "aloneTolerance",
+  "shedding",
+  "grooming",
+  "barking",
+  "firstTimeSuitability",
+] as const;
+
+const labels = Object.fromEntries(PROFILE_TRAITS.map((key) => [key, traitLabels[key]])) as Record<
+  (typeof PROFILE_TRAITS)[number],
+  (typeof traitLabels)[keyof typeof traitLabels]
+>;
 
 function BreedDetail() {
   const t = useT();
