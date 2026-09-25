@@ -17,9 +17,48 @@ import { breedContentNewFi } from "./breed-content-new.fi";
 import { breedContentNewDe } from "./breed-content-new.de";
 import { breedContentNewFr } from "./breed-content-new.fr";
 import { breedContentNewNl } from "./breed-content-new.nl";
+import { breedDeepDiveEn, type BreedDeepDive } from "./breed-deepdive.en";
+import { breedDeepDiveNo } from "./breed-deepdive.no";
+import { breedDeepDivePl } from "./breed-deepdive.pl";
+import { breedDeepDiveDk } from "./breed-deepdive.dk";
+import { breedDeepDiveSe } from "./breed-deepdive.se";
+import { breedDeepDiveFi } from "./breed-deepdive.fi";
+import { breedDeepDiveDe } from "./breed-deepdive.de";
+import { breedDeepDiveFr } from "./breed-deepdive.fr";
+import { breedDeepDiveNl } from "./breed-deepdive.nl";
 import type { BreedId } from "./breeds";
 
 export type { BreedContent };
+
+type ContentMap = Partial<Record<BreedId, BreedContent>>;
+
+/** Lays the deep-dive fields over the original profiles, breed by breed. */
+function withDeepDive(
+  content: ContentMap,
+  deepDive: Partial<Record<BreedId, BreedDeepDive>>,
+): ContentMap {
+  const merged: ContentMap = { ...content };
+  for (const [id, fields] of Object.entries(deepDive) as [BreedId, BreedDeepDive][]) {
+    const base = merged[id];
+    if (base) merged[id] = { ...base, ...fields };
+  }
+  return merged;
+}
+
+const english = withDeepDive({ ...breedContentEn, ...breedContentNewEn }, breedDeepDiveEn);
+
+/** Built once: each language's full prose, with English underneath as the fallback. */
+const byLocale = {
+  en: english,
+  no: { ...english, ...withDeepDive({ ...breedContentNo, ...breedContentNewNo }, breedDeepDiveNo) },
+  pl: { ...english, ...withDeepDive({ ...breedContentPl, ...breedContentNewPl }, breedDeepDivePl) },
+  dk: { ...english, ...withDeepDive({ ...breedContentDk, ...breedContentNewDk }, breedDeepDiveDk) },
+  se: { ...english, ...withDeepDive({ ...breedContentSe, ...breedContentNewSe }, breedDeepDiveSe) },
+  fi: { ...english, ...withDeepDive({ ...breedContentFi, ...breedContentNewFi }, breedDeepDiveFi) },
+  de: { ...english, ...withDeepDive({ ...breedContentDe, ...breedContentNewDe }, breedDeepDiveDe) },
+  fr: { ...english, ...withDeepDive({ ...breedContentFr, ...breedContentNewFr }, breedDeepDiveFr) },
+  nl: { ...english, ...withDeepDive({ ...breedContentNl, ...breedContentNewNl }, breedDeepDiveNl) },
+} as Record<Locale, Record<BreedId, BreedContent>>;
 
 /**
  * Breed prose in the reader's language. Safe inside and outside React.
@@ -27,19 +66,5 @@ export type { BreedContent };
  * (e.g. building a Stripe product name inside a server function).
  */
 export function breedContent(locale?: Locale): Record<BreedId, BreedContent> {
-  const localized = pick(
-    {
-      en: { ...breedContentEn, ...breedContentNewEn },
-      no: { ...breedContentNo, ...breedContentNewNo },
-      pl: { ...breedContentPl, ...breedContentNewPl },
-      dk: { ...breedContentDk, ...breedContentNewDk },
-      se: { ...breedContentSe, ...breedContentNewSe },
-      fi: { ...breedContentFi, ...breedContentNewFi },
-      de: { ...breedContentDe, ...breedContentNewDe },
-      fr: { ...breedContentFr, ...breedContentNewFr },
-      nl: { ...breedContentNl, ...breedContentNewNl },
-    },
-    locale,
-  );
-  return { ...breedContentEn, ...breedContentNewEn, ...localized };
+  return pick(byLocale, locale);
 }
