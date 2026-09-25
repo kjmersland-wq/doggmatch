@@ -270,18 +270,18 @@ export function crossContributionLines(profile: DogTraitProfile): string[] {
 export function crossHeading(profile: DogTraitProfile): string | undefined {
   if (!profile.isMixed || profile.breedIds.length < 2) return undefined;
   const names = profile.breedIds.map((id) => breedById[id]?.name).filter(Boolean).join(" × ");
-  return pick({ en: `Known cross: ${names}`, no: `Kjent krysning: ${names}`, pl: `Znana krzyżówka: ${names}` });
+  return pick({ en: `Known cross: ${names}`, no: `Kjent krysning: ${names}`, pl: `Znana krzyżówka: ${names}`, dk: `Kendt krydsning: ${names}`, se: `Känd korsning: ${names}`, fi: `Tunnettu risteytys: ${names}`, de: `Bekannte Kreuzung: ${names}`, fr: `Croisement connu : ${names}`, nl: `Bekende kruising: ${names}` });
 }
 
 /** Human label for the dog's breed line: "Mixed breed · Labrador × Poodle". */
 export function dogBreedLabel(dog?: DogProfile): string {
   if (!dog) return "";
-  const mixedWord = pick({ en: "Mixed breed", no: "Blandingshund", pl: "Kundelek" });
+  const mixedWord = pick({ en: "Mixed breed", no: "Blandingshund", pl: "Kundelek", dk: "Blandingshund", se: "Blandras", fi: "Sekarotuinen", de: "Mischling", fr: "Chien croisé", nl: "Kruising" });
   if (isMixedDog(dog)) {
     const names = knownBreedIds(dog).map((id) => breedById[id]!.name);
     if (names.length > 0) return `${mixedWord} · ${names.join(" × ")}`;
     if (dog.breedOther?.trim()) return `${mixedWord} · ${dog.breedOther.trim()}`;
-    return `${mixedWord} · ${pick({ en: "unknown mix", no: "ukjent blanding", pl: "nieznana mieszanka" })}`;
+    return `${mixedWord} · ${pick({ en: "unknown mix", no: "ukjent blanding", pl: "nieznana mieszanka", dk: "ukendt blanding", se: "okänd blandning", fi: "tuntematon sekoitus", de: "unbekannte Mischung", fr: "mélange inconnu", nl: "onbekende mix" })}`;
   }
   if (dog.breedId && breedById[dog.breedId]) return breedById[dog.breedId]!.name;
   return dog.breedOther?.trim() ?? "";
