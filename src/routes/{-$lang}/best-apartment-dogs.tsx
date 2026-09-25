@@ -1,13 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { localizedHead, headLocale, breadcrumbLd } from "@/lib/seo";
+import { localizedHead, headLocale, breadcrumbLd, faqLd } from "@/lib/seo";
 import { guidesCrumb } from "@/lib/seo/pages";
+import { localeFromParam } from "@/i18n/locale";
 import { LifestyleGuide } from "@/components/dogmatch/lifestyle-guide";
+import { ClusterHubExtras } from "@/components/dogmatch/cluster-page";
+import { getClusterHub } from "@/lib/guides/clusters/clusters.functions";
 import { APARTMENT_GUIDE } from "@/lib/guides/lifestyle";
 
 export const Route = createFileRoute("/{-$lang}/best-apartment-dogs")({
+  loader: ({ params }) =>
+    getClusterHub({
+      data: { cluster: "apartment", locale: localeFromParam((params as { lang?: string }).lang) ?? "en" },
+    }),
   head: (ctx) => {
     const locale = headLocale(ctx);
     const seo = APARTMENT_GUIDE.seo[locale] ?? APARTMENT_GUIDE.seo.en;
+    const hub = ctx.loaderData;
     return {
       ...localizedHead(ctx, APARTMENT_GUIDE.path, APARTMENT_GUIDE.seo),
       scripts: [
@@ -19,8 +27,19 @@ export const Route = createFileRoute("/{-$lang}/best-apartment-dogs")({
           ],
           locale,
         ),
+        ...(hub ? [faqLd(hub.faq.map((f) => ({ question: f.q, answer: f.a })))] : []),
       ],
     };
   },
-  component: () => <LifestyleGuide config={APARTMENT_GUIDE} />,
+  component: ApartmentGuidePage,
 });
+
+function ApartmentGuidePage() {
+  const hub = Route.useLoaderData();
+  return (
+    <>
+      <LifestyleGuide config={APARTMENT_GUIDE} />
+      <ClusterHubExtras data={hub} />
+    </>
+  );
+}

@@ -54,7 +54,7 @@ const seoCopy = {
   },
 };
 
-export const Route = createFileRoute("/{-$lang}/guides")({
+export const Route = createFileRoute("/{-$lang}/guides/")({
   head: (ctx) => localizedHead(ctx, "/guides", seoCopy),
   component: GuidesPage,
 });

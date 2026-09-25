@@ -1,7 +1,10 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useCopy } from "@/i18n";
 import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
-import { localizedHead, seoLinks } from "@/lib/seo";
+import { faqLd, localizedHead, seoLinks } from "@/lib/seo";
+import { localeFromParam } from "@/i18n/locale";
+import { ClusterHubExtras } from "@/components/dogmatch/cluster-page";
+import { getClusterHub } from "@/lib/guides/clusters/clusters.functions";
 import { breeds, type BreedId } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { ShareBar, SectionShare } from "@/components/dogmatch/share";
@@ -58,7 +61,16 @@ const seoCopy = {
 };
 
 export const Route = createFileRoute("/{-$lang}/best-dog-breeds-for-families")({
-  head: (ctx) => localizedHead(ctx, PATH, seoCopy),
+  loader: ({ params }) =>
+    getClusterHub({
+      data: { cluster: "families", locale: localeFromParam((params as { lang?: string }).lang) ?? "en" },
+    }),
+  head: (ctx) => ({
+    ...localizedHead(ctx, PATH, seoCopy),
+    scripts: ctx.loaderData
+      ? [faqLd(ctx.loaderData.faq.map((f) => ({ question: f.q, answer: f.a })))]
+      : [],
+  }),
   component: FamilyBreedsPage,
 });
 
@@ -404,8 +416,10 @@ function LevelDot({ level, label }: { level: number; label: string }) {
 function FamilyBreedsPage() {
   const c = useCopy(copy);
   const content = breedContent();
+  const hub = Route.useLoaderData();
 
   return (
+    <>
     <article className="mx-auto max-w-3xl px-5 py-16 sm:py-24">
       <Eyebrow>{c.eyebrow}</Eyebrow>
       <h1 className="mt-3 font-display text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
@@ -538,5 +552,7 @@ function FamilyBreedsPage() {
         </div>
       </section>
     </article>
+    <ClusterHubExtras data={hub} />
+    </>
   );
 }

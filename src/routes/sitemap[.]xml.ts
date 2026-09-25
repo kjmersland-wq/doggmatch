@@ -4,6 +4,7 @@ import { breeds } from "@/data/breeds";
 import { careTopics } from "@/data/care/topics";
 import { getLessons } from "@/data/training/lessons";
 import { foodIds } from "@/lib/food";
+import { ALL_CLUSTER_PATHS } from "@/lib/guides/clusters/registry";
 
 const BASE_URL = "https://www.doggmatch.com";
 
@@ -51,6 +52,7 @@ function collect(): SitemapEntry[] {
     { path: "/low-shedding-dogs", changefreq: "monthly", priority: "0.8" },
     { path: "/what-a-dog-costs", changefreq: "monthly", priority: "0.8" },
     { path: "/most-mismatched-breeds", changefreq: "monthly", priority: "0.8" },
+    ...ALL_CLUSTER_PATHS.map((path) => ({ path, changefreq: "monthly" as const, priority: "0.7" })),
     { path: "/dog-life", changefreq: "monthly", priority: "0.6" },
     { path: "/get-a-dog", changefreq: "monthly", priority: "0.8" },
     { path: "/get-a-dog/ready", changefreq: "monthly", priority: "0.7" },
