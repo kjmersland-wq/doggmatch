@@ -19,8 +19,8 @@ import {
   getPublicTransport,
   getAirTravel,
 } from "@/data/travel/content";
-import carImage from "@/assets/travel-car.jpg";
-import safetyIllus from "@/assets/illus-car-safety.jpg";
+import carImage from "@/assets/travel-car.webp";
+import safetyIllus from "@/assets/illus-car-safety.webp";
 import { seoLinks } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";

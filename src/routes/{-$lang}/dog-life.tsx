@@ -3,7 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useT, pick, useCopy, useLocale } from "@/i18n";
 import { Button, Eyebrow } from "@/components/dogmatch/ui";
-import dogLifeImage from "@/assets/dog-life.jpg";
+import dogLifeImage from "@/assets/dog-life.webp";
 import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { getPlacesCopy } from "@/lib/places/copy";

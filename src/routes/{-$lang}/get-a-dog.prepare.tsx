@@ -12,7 +12,7 @@ import {
 import { getDogContent } from "@/data/getdog/content";
 import { useGetDog } from "@/lib/getdog/store";
 import { useCopy } from "@/i18n";
-import homePrepImage from "@/assets/illus-home-prep.jpg";
+import homePrepImage from "@/assets/illus-home-prep.webp";
 import { seoLinks } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";

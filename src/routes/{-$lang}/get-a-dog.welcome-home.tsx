@@ -5,7 +5,7 @@ import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { CardGrid, Notice, SectionHead } from "@/components/dogmatch/journey/parts";
 import { getDogContent } from "@/data/getdog/content";
 import { useCopy } from "@/i18n";
-import welcomeImage from "@/assets/welcome-home.jpg";
+import welcomeImage from "@/assets/welcome-home.webp";
 import { seoLinks } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";

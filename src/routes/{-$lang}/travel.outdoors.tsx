@@ -17,7 +17,7 @@ import {
   getWalkPrep,
   getWeather,
 } from "@/data/travel/content";
-import hikeImage from "@/assets/travel-hike.jpg";
+import hikeImage from "@/assets/travel-hike.webp";
 import { seoLinks } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";

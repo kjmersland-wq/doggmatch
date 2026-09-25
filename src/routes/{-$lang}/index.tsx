@@ -8,9 +8,9 @@ import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Arrow, ButtonLink, Eyebrow, Section, TraitMeter } from "@/components/dogmatch/ui";
 import { RealMatchesSection } from "@/components/dogmatch/real-matches";
-import heroImage from "@/assets/hero.jpg";
-import homeImage from "@/assets/editorial-home.jpg";
-import dogLifeImage from "@/assets/dog-life.jpg";
+import heroImage from "@/assets/hero.webp";
+import homeImage from "@/assets/editorial-home.webp";
+import dogLifeImage from "@/assets/dog-life.webp";
 import { seoLinks, abs, localizedHead } from "@/lib/seo";
 import { withLangPrefix } from "@/lib/localized-path";
 

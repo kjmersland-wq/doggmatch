@@ -5,7 +5,7 @@ import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
 import { useT, pick, useCopy, interpolate } from "@/i18n";
 import { getBreed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
-import { breedImages, breedLifestyleImages } from "@/data/breed-images";
+import { breedImages, breedLifestyleImages, breedOgImages } from "@/data/breed-images";
 import { withLangPrefix } from "@/lib/localized-path";
 import {
   bestSuitedFor,
@@ -349,7 +349,7 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
     const name = loaderData.content.displayName;
     const title = `${name} – ${breedDescriptor[locale]} | DoggMatch`;
     const description = loaderData.content.summary;
-    const image = abs(breedImages[loaderData.breed.id] ?? "/og-en.jpg");
+    const image = abs(breedOgImages[loaderData.breed.id] ?? "/og-en.jpg");
     return {
       meta: [
         { title },
@@ -657,6 +657,7 @@ function BreedDetail() {
               alt={content.displayName}
               width={1024}
               height={1280}
+              fetchPriority="high"
               decoding="async"
               className="aspect-[4/5] w-full object-cover"
             />

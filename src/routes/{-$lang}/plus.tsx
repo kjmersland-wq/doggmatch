@@ -7,14 +7,14 @@ import { PartnerCodeField } from "@/components/dogmatch/plus/partner-code";
 import { MemberCardShowcase } from "@/components/dogmatch/plus/card-showcase";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
-import heroImage from "@/assets/plus-hero.jpg";
-import trainImage from "@/assets/train-recall.jpg";
-import careImage from "@/assets/care-hero.jpg";
-import foodImage from "@/assets/care-nutrition.jpg";
-import dogLifeImage from "@/assets/dog-life.jpg";
-import travelImage from "@/assets/travel-car.jpg";
-import lunaImage from "@/assets/breed-labrador-retriever.jpg";
-import maxImage from "@/assets/breed-cocker-spaniel.jpg";
+import heroImage from "@/assets/plus-hero.webp";
+import trainImage from "@/assets/train-recall.webp";
+import careImage from "@/assets/care-hero.webp";
+import foodImage from "@/assets/care-nutrition.webp";
+import dogLifeImage from "@/assets/dog-life.webp";
+import travelImage from "@/assets/travel-car.webp";
+import lunaImage from "@/assets/breed-labrador-retriever.webp";
+import maxImage from "@/assets/breed-cocker-spaniel.webp";
 import {
   seoLinks,
   abs,

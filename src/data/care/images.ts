@@ -1,19 +1,19 @@
-import careHero from "@/assets/care-hero.jpg";
-import careNutrition from "@/assets/care-nutrition.jpg";
-import careDental from "@/assets/care-dental.jpg";
-import careCoat from "@/assets/care-coat.jpg";
-import carePaws from "@/assets/care-paws.jpg";
-import careWeight from "@/assets/care-weight.jpg";
-import careWellbeing from "@/assets/care-wellbeing.jpg";
-import illusBrush1 from "@/assets/illus-brush-1.jpg";
-import illusBrush2 from "@/assets/illus-brush-2.jpg";
-import illusNails from "@/assets/illus-nails.jpg";
-import illusPawCheck from "@/assets/illus-paw-check.jpg";
-import illusBodyCondition from "@/assets/illus-body-condition.jpg";
-import illusCoatTypes from "@/assets/illus-coat-types.jpg";
-import trainRecall from "@/assets/train-recall.jpg";
-import trainHome from "@/assets/train-home.jpg";
-import dogLife from "@/assets/dog-life.jpg";
+import careHero from "@/assets/care-hero.webp";
+import careNutrition from "@/assets/care-nutrition.webp";
+import careDental from "@/assets/care-dental.webp";
+import careCoat from "@/assets/care-coat.webp";
+import carePaws from "@/assets/care-paws.webp";
+import careWeight from "@/assets/care-weight.webp";
+import careWellbeing from "@/assets/care-wellbeing.webp";
+import illusBrush1 from "@/assets/illus-brush-1.webp";
+import illusBrush2 from "@/assets/illus-brush-2.webp";
+import illusNails from "@/assets/illus-nails.webp";
+import illusPawCheck from "@/assets/illus-paw-check.webp";
+import illusBodyCondition from "@/assets/illus-body-condition.webp";
+import illusCoatTypes from "@/assets/illus-coat-types.webp";
+import trainRecall from "@/assets/train-recall.webp";
+import trainHome from "@/assets/train-home.webp";
+import dogLife from "@/assets/dog-life.webp";
 import type { CareCategoryId } from "./types";
 
 export const careImages = {

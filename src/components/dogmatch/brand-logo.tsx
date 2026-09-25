@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import markSrc from "@/assets/doggmatch-mark.png";
+import markSrc from "@/assets/doggmatch-mark.webp";
 
 /**
  * The approved DoggMatch identity: navy dog emblem inside the orange swoosh,

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 import { BrandLock, BrandMark } from "@/components/dogmatch/brand-logo";
 import { useCopy } from "@/i18n";
-import coverPhoto from "@/assets/brochure-cover.jpg";
+import coverPhoto from "@/assets/brochure-cover.webp";
 
 /**
  * The DoggMatch A5 flyer (148 × 210 mm, single page) made for counters in

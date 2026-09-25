@@ -1,18 +1,18 @@
-import trainHero from "@/assets/train-hero.jpg";
-import trainRecall from "@/assets/train-recall.jpg";
-import trainPuppy from "@/assets/train-puppy.jpg";
-import trainWalking from "@/assets/train-walking.jpg";
-import trainHome from "@/assets/train-home.jpg";
-import trainTricks from "@/assets/train-tricks.jpg";
-import illusRecall1 from "@/assets/illus-recall-1.jpg";
-import illusRecall2 from "@/assets/illus-recall-2.jpg";
-import illusRecall3 from "@/assets/illus-recall-3.jpg";
-import illusRecall4 from "@/assets/illus-recall-4.jpg";
-import illusSit1 from "@/assets/illus-sit-1.jpg";
-import illusSit2 from "@/assets/illus-sit-2.jpg";
-import illusSit3 from "@/assets/illus-sit-3.jpg";
-import illusLeash from "@/assets/illus-leash.jpg";
-import illusGreeting from "@/assets/illus-greeting.jpg";
+import trainHero from "@/assets/train-hero.webp";
+import trainRecall from "@/assets/train-recall.webp";
+import trainPuppy from "@/assets/train-puppy.webp";
+import trainWalking from "@/assets/train-walking.webp";
+import trainHome from "@/assets/train-home.webp";
+import trainTricks from "@/assets/train-tricks.webp";
+import illusRecall1 from "@/assets/illus-recall-1.webp";
+import illusRecall2 from "@/assets/illus-recall-2.webp";
+import illusRecall3 from "@/assets/illus-recall-3.webp";
+import illusRecall4 from "@/assets/illus-recall-4.webp";
+import illusSit1 from "@/assets/illus-sit-1.webp";
+import illusSit2 from "@/assets/illus-sit-2.webp";
+import illusSit3 from "@/assets/illus-sit-3.webp";
+import illusLeash from "@/assets/illus-leash.webp";
+import illusGreeting from "@/assets/illus-greeting.webp";
 import type { CategoryId } from "./types";
 
 /** Imagery is kept out of the content layer so it can move to a CDN later. */

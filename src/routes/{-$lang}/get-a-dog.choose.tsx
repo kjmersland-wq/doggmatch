@@ -11,10 +11,10 @@ import {
 } from "@/components/dogmatch/journey/parts";
 import { getDogContent } from "@/data/getdog/content";
 import { useCopy } from "@/i18n";
-import puppyImage from "@/assets/puppy.jpg";
-import adultImage from "@/assets/adult-dog.jpg";
-import breederImage from "@/assets/breeder.jpg";
-import adoptionImage from "@/assets/adoption.jpg";
+import puppyImage from "@/assets/puppy.webp";
+import adultImage from "@/assets/adult-dog.webp";
+import breederImage from "@/assets/breeder.webp";
+import adoptionImage from "@/assets/adoption.webp";
 import { seoLinks } from "@/lib/seo";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
