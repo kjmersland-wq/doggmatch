@@ -191,6 +191,10 @@ export const se: Dictionary = {
         title: "Resedokument",
         body: "Checklistor för utlandsresor, regler för olika länder och papperen som är lätta att glömma.",
       },
+      {
+        title: "Hundpaket att skriva ut",
+        body: "En tydlig sammanfattning av utfodring, mediciner och nödkontakter till veterinären, hundvakten eller hundpensionatet.",
+      },
     ],
     homeWithDogCtaPrimary: "Se hur Min hund fungerar",
     homeWithDogCtaSecondary: "Utforska DoggMatch+",

@@ -191,6 +191,10 @@ export const nl: Dictionary = {
         title: "Reisdocumenten",
         body: "Checklists voor reizen naar het buitenland, regels per land en de papieren die je makkelijk vergeet.",
       },
+      {
+        title: "Hondenpakket om te printen",
+        body: "Een overzichtelijke samenvatting van voeding, medicijnen en noodcontacten voor de dierenarts, de oppas of het pension.",
+      },
     ],
     homeWithDogCtaPrimary: "Bekijk hoe Mijn hond werkt",
     homeWithDogCtaSecondary: "Ontdek DoggMatch+",

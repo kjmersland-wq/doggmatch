@@ -191,6 +191,10 @@ export const pl: Dictionary = {
         title: "Dokumenty podróży",
         body: "Listy kontrolne na wyjazdy za granicę, przepisy krajowe i dokumenty, które łatwo zostawić w domu.",
       },
+      {
+        title: "Pakiet psa do druku",
+        body: "Przejrzyste podsumowanie karmienia, leków i kontaktów alarmowych dla weterynarza, opiekuna albo hotelu dla psów.",
+      },
     ],
     homeWithDogCtaPrimary: "Zobacz, jak działa Mój pies",
     homeWithDogCtaSecondary: "Odkryj DoggMatch+",

@@ -191,6 +191,10 @@ export const no: Dictionary = {
         title: "Reisedokumenter",
         body: "Sjekklister for utenlandsturer, landeregler og papirene som er lette å glemme.",
       },
+      {
+        title: "Hundepakke til utskrift",
+        body: "En ryddig oversikt over fôring, medisiner og nødkontakter til veterinæren, hundepasseren eller hundepensjonatet.",
+      },
     ],
     homeWithDogCtaPrimary: "Se hvordan Min hund fungerer",
     homeWithDogCtaSecondary: "Utforsk DoggMatch+",

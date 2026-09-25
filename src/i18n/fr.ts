@@ -191,6 +191,10 @@ export const fr: Dictionary = {
         title: "Documents de voyage",
         body: "Des listes pour les voyages à l'étranger, les règles de chaque pays et les papiers faciles à oublier.",
       },
+      {
+        title: "Pack du chien à imprimer",
+        body: "Un résumé clair de l’alimentation, des médicaments et des contacts d’urgence pour le vétérinaire, le pet-sitter ou la pension.",
+      },
     ],
     homeWithDogCtaPrimary: "Découvrir Mon chien",
     homeWithDogCtaSecondary: "Découvrir DoggMatch+",

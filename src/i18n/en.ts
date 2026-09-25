@@ -191,6 +191,10 @@ export const en = {
         title: "Travel documents",
         body: "Checklists for trips abroad, country rules and the paperwork that is easy to leave behind.",
       },
+      {
+        title: "Printable Dog Pack",
+        body: "A tidy summary of feeding, medication and emergency contacts for the vet, the sitter or the kennel.",
+      },
     ],
     homeWithDogCtaPrimary: "See how My Dog works",
     homeWithDogCtaSecondary: "Explore DoggMatch+",

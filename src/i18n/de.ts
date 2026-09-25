@@ -191,6 +191,10 @@ export const de: Dictionary = {
         title: "Reisedokumente",
         body: "Checklisten für Auslandsreisen, Länderregeln und die Unterlagen, die man leicht zu Hause liegen lässt.",
       },
+      {
+        title: "Hundepaket zum Ausdrucken",
+        body: "Eine übersichtliche Zusammenfassung von Fütterung, Medikamenten und Notfallkontakten für Tierarzt, Hundesitter oder Pension.",
+      },
     ],
     homeWithDogCtaPrimary: "So funktioniert Mein Hund",
     homeWithDogCtaSecondary: "DoggMatch+ entdecken",

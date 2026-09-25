@@ -191,6 +191,10 @@ export const fi: Dictionary = {
         title: "Matka-asiakirjat",
         body: "Tarkistuslistat ulkomaanmatkoille, maakohtaiset säännöt ja helposti unohtuvat paperit.",
       },
+      {
+        title: "Tulostettava koirapaketti",
+        body: "Selkeä kooste ruokinnasta, lääkkeistä ja hätäyhteystiedoista eläinlääkärille, hoitajalle tai hoitolaan.",
+      },
     ],
     homeWithDogCtaPrimary: "Katso, miten Oma koira toimii",
     homeWithDogCtaSecondary: "Tutustu DoggMatch+:aan",

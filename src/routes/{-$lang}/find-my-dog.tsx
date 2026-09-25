@@ -1,6 +1,22 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState, type Dispatch, type SetStateAction } from "react";
-import { CalendarDays, ChevronDown, Dumbbell, Heart, Plane, Utensils } from "lucide-react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
+import {
+  CalendarDays,
+  ChevronDown,
+  Dumbbell,
+  Heart,
+  Lock,
+  Plane,
+  Printer,
+  Utensils,
+} from "lucide-react";
 import { useT, interpolate, useCopy, useLocale } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
 
@@ -61,6 +77,15 @@ const resultCopy = {
     ],
     dossierGuarantee: "100% Satisfaction Guarantee",
     dossierNote: "One-time payment. Yours to keep, print, and take with you.",
+    reportPeek: "A look inside the {breed} report",
+    reportFirstYear: "First year, all in",
+    reportYearly: "Every year after",
+    reportTemperament: "Temperament at a glance",
+    reportBreederQs: "{count} questions to ask a breeder",
+    reportLocked: "Also in the full report",
+    plusCtaFirstYear: "See what DoggMatch+ adds to the first year",
+    plusCtaWeekly: "Plan the first year, week by week",
+    plusPrice: "€7.99 a month or €59.99 a year, and you can cancel from your account at any time.",
   },
   no: {
     scoreNote: "Basert på alt du har fortalt oss, også grensene du sa du ikke kunne tøye.",
@@ -117,6 +142,15 @@ const resultCopy = {
     ],
     dossierGuarantee: "100 % fornøydgaranti",
     dossierNote: "Engangsbetaling. Din å beholde, skrive ut og ta med deg.",
+    reportPeek: "En titt inn i rapporten om {breed}",
+    reportFirstYear: "Første år, alt inkludert",
+    reportYearly: "Hvert år etter det",
+    reportTemperament: "Gemyttet i korte trekk",
+    reportBreederQs: "{count} spørsmål å stille oppdretteren",
+    reportLocked: "Også i den fulle rapporten",
+    plusCtaFirstYear: "Se hva DoggMatch+ gir deg det første året",
+    plusCtaWeekly: "Planlegg det første året, uke for uke",
+    plusPrice: "79 kr i måneden eller 599 kr i året, og du kan avslutte fra kontoen din når som helst.",
   },
   pl: {
     scoreNote:
@@ -173,6 +207,15 @@ const resultCopy = {
     ],
     dossierGuarantee: "100% gwarancji satysfakcji",
     dossierNote: "Płatność jednorazowa. Zostaje przy tobie — do zapisania i wydrukowania.",
+    reportPeek: "Zajrzyj do raportu o rasie {breed}",
+    reportFirstYear: "Pierwszy rok, wszystko razem",
+    reportYearly: "Każdy kolejny rok",
+    reportTemperament: "Charakter w skrócie",
+    reportBreederQs: "Pytania do hodowcy: {count}",
+    reportLocked: "W pełnym raporcie znajdziesz też",
+    plusCtaFirstYear: "Zobacz, co DoggMatch+ daje w pierwszym roku",
+    plusCtaWeekly: "Zaplanuj pierwszy rok, tydzień po tygodniu",
+    plusPrice: "7,99 € miesięcznie albo 59,99 € rocznie, a zrezygnować możesz w każdej chwili na swoim koncie.",
   },
   dk: {
     scoreNote: "Baseret på alt du har fortalt os, også de grænser du sagde du ikke kunne rykke.",
@@ -229,6 +272,15 @@ const resultCopy = {
     ],
     dossierGuarantee: "100 % tilfredshedsgaranti",
     dossierNote: "Engangsbetaling. Din at beholde, udskrive og tage med.",
+    reportPeek: "Et kig ind i rapporten om {breed}",
+    reportFirstYear: "Første år, alt inklusive",
+    reportYearly: "Hvert år derefter",
+    reportTemperament: "Temperamentet i korte træk",
+    reportBreederQs: "{count} spørgsmål til opdrætteren",
+    reportLocked: "Også i den fulde rapport",
+    plusCtaFirstYear: "Se, hvad DoggMatch+ giver dig det første år",
+    plusCtaWeekly: "Planlæg det første år, uge for uge",
+    plusPrice: "7,99 € om måneden eller 59,99 € om året, og du kan opsige fra din konto når som helst.",
   },
   se: {
     scoreNote:
@@ -286,6 +338,15 @@ const resultCopy = {
     ],
     dossierGuarantee: "100 % nöjdhetsgaranti",
     dossierNote: "Engångsbetalning. Din att behålla, skriva ut och ta med.",
+    reportPeek: "En titt in i rapporten om {breed}",
+    reportFirstYear: "Första året, allt inräknat",
+    reportYearly: "Varje år därefter",
+    reportTemperament: "Temperamentet i korthet",
+    reportBreederQs: "{count} frågor att ställa till uppfödaren",
+    reportLocked: "Också i den fullständiga rapporten",
+    plusCtaFirstYear: "Se vad DoggMatch+ ger dig det första året",
+    plusCtaWeekly: "Planera det första året, vecka för vecka",
+    plusPrice: "7,99 € i månaden eller 59,99 € om året, och du kan avsluta från ditt konto när du vill.",
   },
   fi: {
     scoreNote:
@@ -344,6 +405,15 @@ const resultCopy = {
     ],
     dossierGuarantee: "100 % tyytyväisyystakuu",
     dossierNote: "Kertamaksu. Jää sinulle — tulosta ja ota mukaan.",
+    reportPeek: "Kurkistus raporttiin: {breed}",
+    reportFirstYear: "Ensimmäinen vuosi kaikkineen",
+    reportYearly: "Jokainen seuraava vuosi",
+    reportTemperament: "Luonne lyhyesti",
+    reportBreederQs: "{count} kysymystä kasvattajalle",
+    reportLocked: "Täydessä raportissa myös",
+    plusCtaFirstYear: "Katso, mitä DoggMatch+ tuo ensimmäiseen vuoteen",
+    plusCtaWeekly: "Suunnittele ensimmäinen vuosi viikko kerrallaan",
+    plusPrice: "7,99 € kuukaudessa tai 59,99 € vuodessa, ja voit lopettaa tililtäsi milloin tahansa.",
   },
   de: {
     scoreNote: "Basierend auf allem, was Sie uns mitgeteilt haben, einschließlich der Grenzen, die Sie als unverhandelbar bezeichnet haben.",
@@ -395,6 +465,15 @@ const resultCopy = {
     ],
     dossierGuarantee: "100 % Zufriedenheitsgarantie",
     dossierNote: "Einmalige Zahlung. Gehört Ihnen — zum Behalten, Drucken und Mitnehmen.",
+    reportPeek: "Ein Blick in Ihren Bericht: {breed}",
+    reportFirstYear: "Erstes Jahr, alles inklusive",
+    reportYearly: "Jedes weitere Jahr",
+    reportTemperament: "Wesen auf einen Blick",
+    reportBreederQs: "{count} Fragen an den Züchter",
+    reportLocked: "Außerdem im vollständigen Bericht",
+    plusCtaFirstYear: "Sehen Sie, was DoggMatch+ im ersten Jahr bietet",
+    plusCtaWeekly: "Das erste Jahr planen, Woche für Woche",
+    plusPrice: "7,99 € im Monat oder 59,99 € im Jahr, jederzeit über Ihr Konto kündbar.",
   },
   fr: {
     scoreNote: "En fonction de tout ce que vous nous avez indiqué, y compris les limites que vous avez dites ne pas pouvoir dépasser.",
@@ -446,6 +525,15 @@ const resultCopy = {
     ],
     dossierGuarantee: "Garantie satisfaction 100 %",
     dossierNote: "Paiement unique. À vous — à garder, imprimer et emporter.",
+    reportPeek: "Un aperçu de votre rapport : {breed}",
+    reportFirstYear: "Première année, tout compris",
+    reportYearly: "Chaque année ensuite",
+    reportTemperament: "Le tempérament en un coup d’œil",
+    reportBreederQs: "{count} questions à poser à l’éleveur",
+    reportLocked: "Également dans le rapport complet",
+    plusCtaFirstYear: "Découvrez ce que DoggMatch+ apporte la première année",
+    plusCtaWeekly: "Planifiez la première année, semaine après semaine",
+    plusPrice: "7,99 € par mois ou 59,99 € par an, résiliable à tout moment depuis votre compte.",
   },
   nl: {
     scoreNote: "Gebaseerd op alles wat u ons heeft verteld, inclusief de grenzen waarvan u zei dat ze niet onderhandelbaar waren.",
@@ -497,6 +585,15 @@ const resultCopy = {
     ],
     dossierGuarantee: "100% tevredenheidsgarantie",
     dossierNote: "Eenmalige betaling. Van u — om te bewaren, af te drukken en mee te nemen.",
+    reportPeek: "Een kijkje in uw rapport: {breed}",
+    reportFirstYear: "Eerste jaar, alles inbegrepen",
+    reportYearly: "Elk jaar daarna",
+    reportTemperament: "Karakter in één oogopslag",
+    reportBreederQs: "{count} vragen voor de fokker",
+    reportLocked: "Ook in het volledige rapport",
+    plusCtaFirstYear: "Bekijk wat DoggMatch+ toevoegt aan het eerste jaar",
+    plusCtaWeekly: "Plan het eerste jaar, week voor week",
+    plusPrice: "€ 7,99 per maand of € 59,99 per jaar, en u kunt op elk moment opzeggen via uw account.",
   },
 };
 import { quizQuestions } from "@/data/questions.locale";
@@ -527,6 +624,14 @@ import {
 } from "@/components/dogmatch/ui";
 import { DossierCheckoutButton } from "@/components/dogmatch/dossier/checkout-button";
 import { dossierPrice } from "@/lib/dossier/pricing";
+import {
+  TEMPERAMENT_KEYS,
+  breederQuestions,
+  firstYearEstimate,
+  temperamentLabel,
+} from "@/lib/dossier/content";
+import { track, useVariant } from "@/lib/analytics";
+import { PURCHASES_ENABLED } from "@/lib/purchases";
 import { MatchNotes } from "@/components/dogmatch/match-notes";
 import { CostCalculator } from "@/components/dogmatch/cost-calculator";
 import { MixMatcher } from "@/components/dogmatch/mix-matcher";
@@ -913,6 +1018,7 @@ function FindMyDogPage() {
   );
 
   function choose(value: string) {
+    if (step === 0 && Object.keys(profile).length === 0) track("quiz_started");
     setProfile((p) => ({ ...p, [question.id]: value }));
   }
 
@@ -1492,7 +1598,9 @@ function FirstThirtyDays({ breedName }: { breedName: string }) {
             ))}
           </ul>
 
-          <ButtonLink to={withLangPrefix("/plus")} tone="outline" className="mt-8">
+          <ButtonLink to={withLangPrefix("/plus")} tone="outline" className="mt-8"
+            onClick={() => track("plus_cta_clicked", { source: "first_30_days" })}
+          >
             {c.plusLinkLabel}
           </ButtonLink>
         </div>
@@ -1501,10 +1609,102 @@ function FirstThirtyDays({ breedName }: { breedName: string }) {
   );
 }
 
-const featureIcons = [Heart, CalendarDays, Dumbbell, Utensils, Plane];
+const featureIcons = [Heart, CalendarDays, Dumbbell, Utensils, Plane, Printer];
 
-function PostMatchJourney() {
+const PLUS_PLACEMENTS = ["bottom", "early"] as const;
+const PLUS_CTA_VARIANTS = ["control", "first-year", "weekly"] as const;
+
+/**
+ * A real glimpse of the printable report for this breed: two sections with
+ * the actual numbers, the rest named honestly as what's inside.
+ */
+function ReportPreview({ breedId, breedName }: { breedId: MatchResult["breedId"]; breedName: string }) {
+  const c = useCopy(resultCopy);
+  const breed = breedById[breedId];
+  const ref = useRef<HTMLDivElement>(null);
+  const [lo, hi] = firstYearEstimate(breed);
+  const shownTraits = TEMPERAMENT_KEYS.slice(0, 3);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          track("full_report_viewed", { breed: breedId });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [breedId]);
+
+  return (
+    <div ref={ref} className="mt-8 rounded-2xl border border-border bg-card p-6">
+      <p className="font-display text-base leading-tight">
+        {interpolate(c.reportPeek, { breed: breedName })}
+      </p>
+      <dl className="mt-5 grid grid-cols-2 gap-4 text-sm">
+        <div>
+          <dt className="text-muted-foreground">{c.reportFirstYear}</dt>
+          <dd className="mt-1 font-display text-lg tabular-nums">
+            €{lo}–{hi}
+          </dd>
+        </div>
+        <div>
+          <dt className="text-muted-foreground">{c.reportYearly}</dt>
+          <dd className="mt-1 font-display text-lg tabular-nums">
+            €{breed.annualCost[0]}–{breed.annualCost[1]}
+          </dd>
+        </div>
+      </dl>
+      <p className="mt-5 text-sm text-muted-foreground">{c.reportTemperament}</p>
+      <ul className="mt-2 space-y-1.5 text-sm">
+        {shownTraits.map((key) => (
+          <li key={key} className="flex justify-between gap-4">
+            <span>{temperamentLabel(key)}</span>
+            <span className="tabular-nums text-muted-foreground">{breed.traits[key]} / 5</span>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-5 text-sm text-muted-foreground">{c.reportLocked}</p>
+      <ul className="mt-2 space-y-1.5 text-sm text-muted-foreground">
+        <li className="flex items-center gap-2">
+          <Lock className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+          {interpolate(c.reportBreederQs, { count: breederQuestions().length })}
+        </li>
+        {[c.dossierFeatures[2], c.dossierFeatures[4]].map((feature) => (
+          <li key={feature} className="flex items-center gap-2">
+            <Lock className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+            {feature}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function PostMatchJourney({ placement }: { placement: (typeof PLUS_PLACEMENTS)[number] }) {
   const t = useT();
+  const c = useCopy(resultCopy);
+  // A/B: which invitation reads as help rather than a pitch?
+  const ctaVariant = useVariant("result-plus-cta", PLUS_CTA_VARIANTS, "control");
+  const ctaLabel =
+    ctaVariant === "first-year"
+      ? c.plusCtaFirstYear
+      : ctaVariant === "weekly"
+        ? c.plusCtaWeekly
+        : t.result.homeWithDogCtaSecondary;
+  const onPlusClick = () =>
+    track("plus_cta_clicked", {
+      source: "quiz_result",
+      placement,
+      variant: ctaVariant,
+      purchases_open: PURCHASES_ENABLED,
+    });
+
   return (
     <section aria-labelledby="post-match-title">
       <div className="rounded-[1.75rem] border border-border bg-surface p-8 md:p-12">
@@ -1539,13 +1739,19 @@ function PostMatchJourney() {
             {t.result.homeWithDogCtaPrimary}
             <Arrow />
           </ButtonLink>
-          <ButtonLink to={withLangPrefix("/plus")} tone="outline" size="lg">
-            {t.result.homeWithDogCtaSecondary}
+          <ButtonLink
+            to={withLangPrefix("/plus")}
+            hash="membership"
+            tone="outline"
+            size="lg"
+            onClick={onPlusClick}
+          >
+            {ctaLabel}
           </ButtonLink>
         </div>
 
         <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          {t.result.homeWithDogNote}
+          {c.plusPrice} {t.result.homeWithDogNote}
         </p>
       </div>
     </section>
@@ -1602,6 +1808,22 @@ function Results({
   useEffect(() => {
     saveMatchProfile(profile);
   }, [profile]);
+
+  // One completion per result screen; adjusting answers afterwards isn't a new quiz.
+  const reported = useRef(false);
+  useEffect(() => {
+    if (reported.current) return;
+    reported.current = true;
+    track("quiz_completed", {
+      top_breed: best.breedId,
+      top_score: best.score,
+      matches: results.length,
+      limits_relaxed: limitsRelaxed,
+    });
+  }, [best.breedId, best.score, results.length, limitsRelaxed]);
+
+  // A/B: does meeting DoggMatch+ straight after the 30-day plan help, or push too early?
+  const plusPlacement = useVariant("result-plus-placement", PLUS_PLACEMENTS, "bottom");
 
   return (
     <div className="pb-24">
@@ -1702,6 +1924,12 @@ function Results({
       <section className="container-page mt-12 md:mt-16">
         <FirstThirtyDays breedName={content.displayName} />
       </section>
+
+      {plusPlacement === "early" && (
+        <section className="container-page mt-20 md:mt-28">
+          <PostMatchJourney placement="early" />
+        </section>
+      )}
 
       {/* the dog you already have — scored from the dog itself, not a breed guess */}
       {ownDog && ownFit && (
@@ -1940,6 +2168,7 @@ function Results({
               ))}
             </ul>
             <p className="mt-6 text-sm text-muted-foreground">{c.dossierNote}</p>
+            <ReportPreview breedId={best.breedId} breedName={content.displayName} />
           </div>
           <div className="flex flex-col items-start gap-4 rounded-2xl border border-border bg-card p-6 md:items-end md:text-right">
             <Badge tone="primary">{c.dossierGuarantee}</Badge>
@@ -1956,9 +2185,11 @@ function Results({
       </section>
 
       {/* home-with-your-dog journey */}
-      <section className="container-page mt-20 md:mt-28">
-        <PostMatchJourney />
-      </section>
+      {plusPlacement === "bottom" && (
+        <section className="container-page mt-20 md:mt-28">
+          <PostMatchJourney placement="bottom" />
+        </section>
+      )}
 
       {/* essentials */}
       <section className="container-page mt-20 md:mt-28">
