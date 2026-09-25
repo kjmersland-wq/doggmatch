@@ -5,6 +5,7 @@ import {
   createRootRouteWithContext,
   useRouter,
   useParams,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -19,6 +20,7 @@ import { SiteFooter } from "@/components/dogmatch/site-footer";
 import { MobileTabs } from "@/components/dogmatch/mobile-tabs";
 import { CookieConsent } from "@/components/dogmatch/cookie-consent";
 import { withLangPrefix } from "@/lib/localized-path";
+import { initAnalytics, trackPageview } from "@/lib/analytics";
 
 const shellCopy = {
   en: {
@@ -275,6 +277,16 @@ function RootComponent() {
   );
 }
 
+/** Starts consent-gated analytics and records one page view per navigation. */
+function AnalyticsBridge() {
+  const href = useRouterState({ select: (s) => s.location.href });
+  useEffect(() => initAnalytics(), []);
+  useEffect(() => {
+    trackPageview(window.location.href);
+  }, [href]);
+  return null;
+}
+
 /** Keyboard users get straight to the content, ahead of the navigation. */
 function SkipLink() {
   const c = useCopy({
@@ -313,6 +325,7 @@ function RootBody({ queryClient }: { queryClient: QueryClient }) {
         <SiteFooter />
         <MobileTabs />
         <CookieConsent />
+        <AnalyticsBridge />
       </LocaleProvider>
     </QueryClientProvider>
   );

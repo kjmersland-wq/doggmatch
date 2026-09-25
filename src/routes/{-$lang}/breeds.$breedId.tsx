@@ -1,4 +1,6 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { track } from "@/lib/analytics";
 import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
 import { useT, pick, useCopy, interpolate } from "@/i18n";
 import { getBreed } from "@/data/breeds";
@@ -15,7 +17,7 @@ import {
   typicalDay,
 } from "@/lib/breeds/everyday";
 import { matchDogTraits } from "@/lib/matching/engine";
-import { useMatchProfile } from "@/lib/matching/store";
+import { readMatchProfile, useMatchProfile } from "@/lib/matching/store";
 import { Arrow, ButtonLink, Eyebrow, TraitMeter } from "@/components/dogmatch/ui";
 import { FitPanel } from "@/components/dogmatch/fit-panel";
 import { CostCalculator } from "@/components/dogmatch/cost-calculator";
@@ -544,6 +546,10 @@ function BreedDetail() {
     (key) => [pick(labels[key]), breed.traits[key]],
   );
   const related = relatedBreeds(breed.id, 4);
+
+  useEffect(() => {
+    track("breed_profile_viewed", { breed: breed.id, has_match_profile: Boolean(readMatchProfile()) });
+  }, [breed.id]);
 
   const day = typicalDay(breed.traits);
   const dailyHours = dailyCommitmentHours(breed.traits);

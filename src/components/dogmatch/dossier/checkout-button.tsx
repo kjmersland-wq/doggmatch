@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { useMembership } from "@/hooks/use-membership";
 import { withLangPrefix } from "@/lib/localized-path";
 import { PURCHASES_ENABLED, purchasesPausedCopy } from "@/lib/purchases";
+import { track } from "@/lib/analytics";
 
 const copy = {
   en: {
@@ -80,6 +81,7 @@ export function DossierCheckoutButton({
   async function onClick() {
     setError(null);
     setBusy(true);
+    track("dossier_checkout_started", { breed: breedId, lifetime: membership.lifetime });
     try {
       // Lifetime members never pay for a dossier — the server checks this again.
       if (membership.lifetime) {

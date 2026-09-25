@@ -63,7 +63,7 @@ const copy = {
     title: "Your data, handled with care",
     intro:
       "We ask for as little as we possibly can, we tell you plainly what we do with it, and you can ask us to delete it at any time. This page explains all of that in normal language.",
-    updated: "16 August 2026",
+    updated: "25 September 2026",
     contactPage: "contact page",
     sections: {
       responsible: {
@@ -114,7 +114,7 @@ const copy = {
       },
       cookies: {
         title: "Cookies and local storage",
-        p1: "We only use what's strictly necessary to make the site work: a sign-in session, your light/dark preference, your language, and the local data described above. Under the ePrivacy Directive and Norwegian ekomlov, strictly necessary storage of this kind does not require consent, which is why you don't see a cookie banner. If we ever add analytics or marketing cookies, we will ask you first.",
+        p1: "We use what's strictly necessary to make the site work: a sign-in session, your light/dark preference, your language, and the local data described above. Under the ePrivacy Directive and Norwegian ekomlov, this kind of storage doesn't need consent. With your permission, and only then, we also use PostHog, hosted in the EU, to count visits and see which pages and steps genuinely help people, such as how many finish the quiz. We don't record your screen, we never use it for advertising, and you can change your mind at any time under Cookie settings in the footer.",
       },
       processors: {
         title: "Who processes data on our behalf",
@@ -127,6 +127,10 @@ const copy = {
           {
             strong: "Stripe.",
             rest: " Payments and subscription billing, as an independent controller for payment data.",
+          },
+          {
+            strong: "PostHog (EU).",
+            rest: " Privacy-friendly product statistics, only if you say yes to statistics in the cookie notice. Data is stored in the EU (Frankfurt).",
           },
           {
             strong: "Google.",
@@ -187,7 +191,7 @@ const copy = {
     title: "Dine data, behandlet med omtanke",
     intro:
       "Vi ber om så lite som mulig, vi forteller deg rett fram hva vi bruker det til, og du kan be oss slette det når som helst. Denne siden forklarer alt dette på vanlig norsk.",
-    updated: "16. august 2026",
+    updated: "25. september 2026",
     contactPage: "kontaktsiden",
     sections: {
       responsible: {
@@ -238,7 +242,7 @@ const copy = {
       },
       cookies: {
         title: "Informasjonskapsler og lokal lagring",
-        p1: "Vi bruker kun det som er strengt nødvendig for at siden skal fungere: en innloggingsøkt, ditt lys/mørk-valg, ditt språk, og de lokale dataene beskrevet over. Under ePrivacy-direktivet og den norske ekomloven krever ikke slik strengt nødvendig lagring samtykke, og det er derfor du ikke ser et cookie-banner. Hvis vi noen gang legger til analyse- eller markedsføringsinformasjonskapsler, spør vi deg først.",
+        p1: "Vi bruker det som er strengt nødvendig for at siden skal fungere: en innloggingsøkt, ditt lys/mørk-valg, språket ditt og de lokale dataene beskrevet over. Etter ePrivacy-direktivet og ekomloven krever slik lagring ikke samtykke. Hvis du gir oss lov, og bare da, bruker vi også PostHog, driftet i EU, til å telle besøk og se hvilke sider og steg som faktisk hjelper, for eksempel hvor mange som fullfører quizen. Vi tar ikke opp skjermen din, vi bruker det aldri til reklame, og du kan når som helst ombestemme deg under «Innstillinger for informasjonskapsler» nederst på siden.",
       },
       processors: {
         title: "Hvem behandler data på våre vegne",
@@ -251,6 +255,10 @@ const copy = {
           {
             strong: "Stripe.",
             rest: " Betalinger og abonnementsfakturering, som selvstendig behandlingsansvarlig for betalingsdata.",
+          },
+          {
+            strong: "PostHog (EU).",
+            rest: " Personvernvennlig bruksstatistikk, bare hvis du sier ja til statistikk i cookie-meldingen. Dataene lagres i EU (Frankfurt).",
           },
           {
             strong: "Google.",
@@ -311,7 +319,7 @@ const copy = {
     title: "Twoje dane, traktowane z troską",
     intro:
       "Prosimy o jak najmniej danych, jasno mówimy, co z nimi robimy, i możesz w każdej chwili poprosić nas o ich usunięcie. Ta strona wyjaśnia to wszystko zwykłym językiem.",
-    updated: "16 sierpnia 2026",
+    updated: "25 września 2026",
     contactPage: "stronę kontaktową",
     sections: {
       responsible: {
@@ -363,7 +371,7 @@ const copy = {
       },
       cookies: {
         title: "Pliki cookie i lokalna pamięć",
-        p1: "Używamy wyłącznie tego, co jest absolutnie niezbędne do działania strony: sesji logowania, twojego wyboru jasnego/ciemnego motywu, twojego języka oraz opisanych powyżej danych lokalnych. Zgodnie z dyrektywą ePrivacy i norweską ustawą ekomlov, tego rodzaju niezbędne przechowywanie danych nie wymaga zgody, dlatego nie widzisz baneru cookie. Jeśli kiedykolwiek dodamy pliki cookie analityczne lub marketingowe, najpierw cię o to zapytamy.",
+        p1: "Używamy tego, co jest absolutnie niezbędne do działania strony: sesji logowania, Twojego wyboru jasnego/ciemnego motywu, Twojego języka oraz opisanych wyżej danych lokalnych. Zgodnie z dyrektywą ePrivacy i norweską ustawą ekomlov takie przechowywanie nie wymaga zgody. Jeśli nam na to pozwolisz, i tylko wtedy, korzystamy też z PostHog, hostowanego w UE, aby liczyć wizyty i sprawdzać, które strony i kroki naprawdę pomagają, na przykład ile osób kończy quiz. Nie nagrywamy Twojego ekranu, nigdy nie używamy tych danych do reklam, a swoją decyzję możesz zmienić w każdej chwili w „Ustawieniach plików cookie” w stopce.",
       },
       processors: {
         title: "Kto przetwarza dane w naszym imieniu",
@@ -376,6 +384,10 @@ const copy = {
           {
             strong: "Stripe.",
             rest: " Płatności i rozliczenia subskrypcji, jako niezależny administrator danych płatniczych.",
+          },
+          {
+            strong: "PostHog (EU).",
+            rest: " Przyjazne prywatności statystyki korzystania, tylko jeśli zgodzisz się na statystyki w komunikacie o plikach cookie. Dane są przechowywane w UE (Frankfurt).",
           },
           {
             strong: "Google.",
@@ -436,7 +448,7 @@ const copy = {
     title: "Dine data, behandlet med omhu",
     intro:
       "Vi beder om så lidt som muligt, vi fortæller dig ligeud, hvad vi bruger det til, og du kan bede os om at slette det når som helst. Denne side forklarer alt det i almindeligt sprog.",
-    updated: "16. august 2026",
+    updated: "25. september 2026",
     contactPage: "kontaktsiden",
     sections: {
       responsible: {
@@ -488,7 +500,7 @@ const copy = {
       },
       cookies: {
         title: "Cookies og lokal lagring",
-        p1: "Vi bruger kun det, der er strengt nødvendigt for at få siden til at fungere: en login-session, din lys/mørk-præference, dit sprog, og de lokale data beskrevet ovenfor. Under ePrivacy-direktivet og den norske ekomlov kræver denne slags strengt nødvendige lagring ikke samtykke, hvilket er derfor du ikke ser et cookie-banner. Hvis vi nogensinde tilføjer analyse- eller marketingcookies, spørger vi dig først.",
+        p1: "Vi bruger det, der er strengt nødvendigt for at få siden til at fungere: en login-session, dit lys/mørk-valg, dit sprog og de lokale data beskrevet ovenfor. Efter ePrivacy-direktivet og den norske ekomlov kræver denne slags lagring ikke samtykke. Hvis du giver os lov, og kun da, bruger vi også PostHog, hostet i EU, til at tælle besøg og se, hvilke sider og trin der faktisk hjælper, for eksempel hvor mange der gennemfører quizzen. Vi optager ikke din skærm, vi bruger det aldrig til reklamer, og du kan til enhver tid ombestemme dig under Cookieindstillinger nederst på siden.",
       },
       processors: {
         title: "Hvem behandler data på vores vegne",
@@ -501,6 +513,10 @@ const copy = {
           {
             strong: "Stripe.",
             rest: " Betalinger og abonnementsfakturering, som selvstændig dataansvarlig for betalingsdata.",
+          },
+          {
+            strong: "PostHog (EU).",
+            rest: " Privatlivsvenlig brugsstatistik, kun hvis du siger ja til statistik i cookiemeddelelsen. Data opbevares i EU (Frankfurt).",
           },
           {
             strong: "Google.",
@@ -561,7 +577,7 @@ const copy = {
     title: "Dina uppgifter, hanterade med omsorg",
     intro:
       "Vi ber om så lite som möjligt, vi berättar rakt på sak vad vi använder det till, och du kan be oss radera det när som helst. Den här sidan förklarar allt det på vanlig svenska.",
-    updated: "16 augusti 2026",
+    updated: "25 september 2026",
     contactPage: "kontaktsidan",
     sections: {
       responsible: {
@@ -612,7 +628,7 @@ const copy = {
       },
       cookies: {
         title: "Cookies och lokal lagring",
-        p1: "Vi använder bara det som är absolut nödvändigt för att sidan ska fungera: en inloggningssession, ditt ljus/mörk-val, ditt språk, och de lokala data som beskrivs ovan. Enligt ePrivacy-direktivet och den norska ekomlagen kräver den här sortens strikt nödvändiga lagring inget samtycke, vilket är varför du inte ser en cookiebanner. Om vi någonsin lägger till analys- eller marknadsföringscookies frågar vi dig först.",
+        p1: "Vi använder det som är absolut nödvändigt för att sidan ska fungera: en inloggningssession, ditt ljus/mörk-val, ditt språk och de lokala data som beskrivs ovan. Enligt ePrivacy-direktivet och den norska ekomlagen kräver sådan lagring inget samtycke. Om du ger oss lov, och bara då, använder vi också PostHog, som drivs inom EU, för att räkna besök och se vilka sidor och steg som verkligen hjälper, till exempel hur många som gör klart quizen. Vi spelar inte in din skärm, vi använder det aldrig för reklam, och du kan när som helst ändra dig under Cookie-inställningar längst ner på sidan.",
       },
       processors: {
         title: "Vem som behandlar data å våra vägnar",
@@ -625,6 +641,10 @@ const copy = {
           {
             strong: "Stripe.",
             rest: " Betalningar och prenumerationsfakturering, som självständigt personuppgiftsansvarig för betalningsdata.",
+          },
+          {
+            strong: "PostHog (EU).",
+            rest: " Integritetsvänlig användningsstatistik, bara om du säger ja till statistik i cookiemeddelandet. Uppgifterna lagras inom EU (Frankfurt).",
           },
           {
             strong: "Google.",
@@ -685,7 +705,7 @@ const copy = {
     title: "Tietosi, käsiteltynä huolella",
     intro:
       "Pyydämme mahdollisimman vähän tietoja, kerromme suoraan, mihin niitä käytämme, ja voit pyytää meitä poistamaan ne milloin tahansa. Tämä sivu selittää kaiken sen tavallisella kielellä.",
-    updated: "16. elokuuta 2026",
+    updated: "25. syyskuuta 2026",
     contactPage: "yhteydenottosivun",
     sections: {
       responsible: {
@@ -736,7 +756,7 @@ const copy = {
       },
       cookies: {
         title: "Evästeet ja paikallinen tallennus",
-        p1: "Käytämme vain sitä, mikä on ehdottoman välttämätöntä sivuston toiminnalle: kirjautumisistuntoa, vaalea/tumma-valintaasi, kieltäsi, ja edellä kuvattuja paikallisia tietoja. ePrivacy-direktiivin ja Norjan sähköisen viestinnän lain (ekomlov) mukaan tällainen ehdottoman välttämätön tallennus ei vaadi suostumusta, minkä vuoksi et näe evästebanneria. Jos joskus lisäämme analytiikka- tai markkinointievästeitä, kysymme siitä ensin.",
+        p1: "Käytämme sitä, mikä on ehdottoman välttämätöntä sivuston toiminnalle: kirjautumisistuntoa, vaalea/tumma-valintaasi, kieltäsi ja edellä kuvattuja paikallisia tietoja. ePrivacy-direktiivin ja Norjan ekomlov-lain mukaan tällainen tallennus ei vaadi suostumusta. Jos annat luvan, ja vain silloin, käytämme myös EU:ssa toimivaa PostHogia laskemaan käyntejä ja näkemään, mitkä sivut ja vaiheet todella auttavat, esimerkiksi kuinka moni tekee kyselyn loppuun. Emme tallenna näyttöäsi, emme koskaan käytä tietoja mainontaan, ja voit muuttaa valintaasi milloin tahansa sivun alareunan Evästeasetuksista.",
       },
       processors: {
         title: "Kuka käsittelee tietoja puolestamme",
@@ -749,6 +769,10 @@ const copy = {
           {
             strong: "Stripe.",
             rest: " Maksut ja tilauslaskutus, itsenäisenä rekisterinpitäjänä maksutiedoille.",
+          },
+          {
+            strong: "PostHog (EU).",
+            rest: " Yksityisyyttä kunnioittavaa käyttötilastointia, vain jos hyväksyt tilastoinnin evästeilmoituksessa. Tiedot säilytetään EU:ssa (Frankfurt).",
           },
           {
             strong: "Google.",
@@ -809,7 +833,7 @@ const copy = {
     title: "Ihre Daten, mit Sorgfalt behandelt",
     intro:
       "Wir fragen nach so wenig wie möglich, wir erklären Ihnen offen, wofür wir es verwenden, und Sie können uns jederzeit bitten, es zu löschen. Diese Seite erklärt das alles in normaler Sprache.",
-    updated: "16. August 2026",
+    updated: "25. September 2026",
     contactPage: "Kontaktseite",
     sections: {
       responsible: {
@@ -870,7 +894,7 @@ const copy = {
       cookies: {
         title: "Cookies und lokaler Speicher",
         p1:
-          "Wir verwenden nur das, was für das Funktionieren der Seite unbedingt notwendig ist: eine Anmeldesitzung, Ihre Hell/Dunkel-Einstellung, Ihre Sprache und die oben beschriebenen lokalen Daten. Nach der ePrivacy-Richtlinie und dem norwegischen Telekommunikationsgesetz (ekomlov) erfordert eine derart unbedingt notwendige Speicherung keine Einwilligung, weshalb Sie kein Cookie-Banner sehen. Sollten wir jemals Analyse- oder Marketing-Cookies hinzufügen, fragen wir Sie vorher.",
+          "Wir verwenden, was für das Funktionieren der Seite unbedingt notwendig ist: eine Anmeldesitzung, Ihre Hell/Dunkel-Einstellung, Ihre Sprache und die oben beschriebenen lokalen Daten. Nach der ePrivacy-Richtlinie und dem norwegischen ekomlov braucht diese Art der Speicherung keine Einwilligung. Nur wenn Sie zustimmen, nutzen wir außerdem PostHog mit Hosting in der EU, um Besuche zu zählen und zu sehen, welche Seiten und Schritte wirklich weiterhelfen, etwa wie viele den Test abschließen. Wir zeichnen Ihren Bildschirm nicht auf, nutzen die Daten nie für Werbung, und Sie können Ihre Entscheidung jederzeit unter „Cookie-Einstellungen“ im Seitenfuß ändern.",
       },
       processors: {
         title: "Wer Daten in unserem Auftrag verarbeitet",
@@ -884,6 +908,10 @@ const copy = {
           {
             strong: "Stripe.",
             rest: " Zahlungen und Abonnementabrechnung, als eigenständiger Verantwortlicher für Zahlungsdaten.",
+          },
+          {
+            strong: "PostHog (EU).",
+            rest: " Datenschutzfreundliche Nutzungsstatistik, nur wenn Sie im Cookie-Hinweis der Statistik zustimmen. Die Daten werden in der EU (Frankfurt) gespeichert.",
           },
           {
             strong: "Google.",
@@ -948,7 +976,7 @@ const copy = {
     title: "Vos données, traitées avec soin",
     intro:
       "Nous demandons le moins de données possible, nous vous disons clairement ce que nous en faisons, et vous pouvez nous demander de les supprimer à tout moment. Cette page explique tout cela en langage courant.",
-    updated: "16 août 2026",
+    updated: "25 septembre 2026",
     contactPage: "page de contact",
     sections: {
       responsible: {
@@ -1009,7 +1037,7 @@ const copy = {
       cookies: {
         title: "Cookies et stockage local",
         p1:
-          "Nous n'utilisons que ce qui est strictement nécessaire au fonctionnement du site : une session de connexion, votre préférence clair/sombre, votre langue, et les données locales décrites ci-dessus. En vertu de la directive ePrivacy et de la loi norvégienne sur les communications électroniques (ekomlov), ce type de stockage strictement nécessaire ne requiert pas de consentement, c'est pourquoi vous ne voyez pas de bannière de cookies. Si nous ajoutons un jour des cookies d'analyse ou marketing, nous vous demanderons d'abord votre accord.",
+          "Nous utilisons ce qui est strictement nécessaire au fonctionnement du site : une session de connexion, votre préférence clair/sombre, votre langue et les données locales décrites ci-dessus. En vertu de la directive ePrivacy et de la loi norvégienne ekomlov, ce type de stockage ne requiert pas de consentement. Si vous nous y autorisez, et seulement dans ce cas, nous utilisons aussi PostHog, hébergé dans l’UE, pour compter les visites et voir quelles pages et étapes aident vraiment, par exemple combien de personnes terminent le quiz. Nous n’enregistrons pas votre écran, nous ne nous en servons jamais pour la publicité, et vous pouvez changer d’avis à tout moment via « Paramètres des cookies » en bas de page.",
       },
       processors: {
         title: "Qui traite les données en notre nom",
@@ -1023,6 +1051,10 @@ const copy = {
           {
             strong: "Stripe.",
             rest: " Paiements et facturation des abonnements, en tant que responsable indépendant pour les données de paiement.",
+          },
+          {
+            strong: "PostHog (EU).",
+            rest: " Statistiques d’utilisation respectueuses de la vie privée, uniquement si vous acceptez les statistiques dans l’avis sur les cookies. Les données sont stockées dans l’UE (Francfort).",
           },
           {
             strong: "Google.",
@@ -1087,7 +1119,7 @@ const copy = {
     title: "Uw gegevens, met zorg behandeld",
     intro:
       "We vragen zo weinig mogelijk, we vertellen u eerlijk wat we ermee doen, en u kunt ons op elk moment vragen het te verwijderen. Deze pagina legt dat allemaal uit in gewone taal.",
-    updated: "16 augustus 2026",
+    updated: "25 september 2026",
     contactPage: "contactpagina",
     sections: {
       responsible: {
@@ -1148,7 +1180,7 @@ const copy = {
       cookies: {
         title: "Cookies en lokale opslag",
         p1:
-          "We gebruiken alleen wat strikt noodzakelijk is om de site te laten werken: een inlogsessie, uw licht/donker-voorkeur, uw taal, en de hierboven beschreven lokale gegevens. Onder de ePrivacy-richtlijn en de Noorse telecommunicatiewet (ekomlov) is voor dit soort strikt noodzakelijke opslag geen toestemming vereist, en daarom ziet u geen cookiebanner. Als we ooit analytische of marketingcookies toevoegen, vragen we u dat eerst.",
+          "We gebruiken wat strikt nodig is om de site te laten werken: een inlogsessie, je licht/donker-voorkeur, je taal en de lokale gegevens die hierboven zijn beschreven. Volgens de ePrivacy-richtlijn en de Noorse ekomlov is voor dit soort opslag geen toestemming nodig. Alleen als je ons toestemming geeft, gebruiken we ook PostHog, gehost in de EU, om bezoeken te tellen en te zien welke pagina's en stappen mensen echt helpen, bijvoorbeeld hoeveel mensen de quiz afmaken. We nemen je scherm niet op, gebruiken het nooit voor advertenties, en je kunt je keuze op elk moment wijzigen via Cookie-instellingen onderaan de pagina.",
       },
       processors: {
         title: "Wie namens ons gegevens verwerkt",
@@ -1162,6 +1194,10 @@ const copy = {
           {
             strong: "Stripe.",
             rest: " Betalingen en abonnementsfacturatie, als zelfstandige verwerkingsverantwoordelijke voor betaalgegevens.",
+          },
+          {
+            strong: "PostHog (EU).",
+            rest: " Privacyvriendelijke gebruiksstatistieken, alleen als je in de cookiemelding ja zegt tegen statistieken. De gegevens worden opgeslagen in de EU (Frankfurt).",
           },
           {
             strong: "Google.",
