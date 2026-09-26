@@ -26,9 +26,10 @@ enable **"Discard client IP data"**.
 | `quiz_started` | first answer on /find-my-dog | — |
 | `quiz_completed` | result screen shown (once per result) | `top_breed`, `top_score`, `matches`, `limits_relaxed` |
 | `breed_profile_viewed` | a breed profile opens | `breed`, `has_match_profile` |
-| `full_report_viewed` | the report preview on the result page is ≥50% visible | `breed` |
+| `full_report_viewed` | no longer fired — the report preview was removed from the result page | `breed` |
+| `result_shared` | copy link / copy text / native share on the result | `kind`, `breed` |
 | `plus_cta_clicked` | any DoggMatch+ link on result, guides or clusters | `source`, `placement`, `variant`, `purchases_open` |
-| `dossier_checkout_started` | "buy the report" button | `breed`, `lifetime` |
+| `dossier_checkout_started` | "buy the report" button (no longer on the result page; billing paused) | `breed`, `lifetime` |
 | `signup_started` | a Join DoggMatch+ button | `plan`, `signed_in` |
 | `subscription_started` | /checkout/success loads | — |
 
@@ -48,7 +49,7 @@ Create a dashboard called **DoggMatch KPIs** with these insights:
    conversion window 1 hour.
 3. **Result → Plus** — Funnel: `quiz_completed` → `plus_cta_clicked` →
    `signup_started` → `subscription_started`, window 14 days.
-4. **Report interest** — Funnel: `quiz_completed` → `full_report_viewed` →
+4. **Report interest** (dormant while the report is off the result page) — Funnel: `quiz_completed` → `full_report_viewed` →
    `dossier_checkout_started`.
 5. **Top breeds** — Trends, `breed_profile_viewed`, breakdown by `breed`,
    and `quiz_completed` breakdown by `top_breed`.
@@ -78,22 +79,19 @@ exists — sees `control`.
 
 Goal metric: `signup_started`; secondary: `plus_cta_clicked`.
 
-### `result-plus-placement` — where the DoggMatch+ block sits
+### `result-plus-placement` — RETIRED, not running
 
-| Variant | Placement |
-|---|---|
-| `bottom` (control) | after the paid report card, near the end |
-| `early` | straight after the "first 30 days" plan |
-
-Goal metric: `signup_started`. Guardrail: `full_report_viewed` and
-`dossier_checkout_started` must not drop — the earlier Plus block should not
-crowd out the report.
+Switched off in the brief-1 branch (`cc/brief-1-ia-plus`). The DoggMatch+ block on
+the result page now always sits at the bottom, after all free content, so there is
+nothing left to test. Do not create or keep a PostHog flag/experiment for it; any
+running experiment will only ever serve `bottom`. The paid report card that the old
+`bottom` variant referred to was also removed from the result page.
 
 A third idea, not yet built: show the price line (`plusPrice`) **above** the
 button instead of below it, to test whether upfront pricing builds trust.
 
 Run each test until PostHog reports significance — with modest traffic that
-can take several weeks. Run one at a time on the result page.
+can take several weeks. Only `result-plus-cta` is live on the result page.
 
 ## 5. Performance notes
 

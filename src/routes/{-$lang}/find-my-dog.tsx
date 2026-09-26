@@ -622,8 +622,6 @@ import {
   ScoreBar,
   ScoreRing,
 } from "@/components/dogmatch/ui";
-import { DossierCheckoutButton } from "@/components/dogmatch/dossier/checkout-button";
-import { dossierPrice } from "@/lib/dossier/pricing";
 import {
   TEMPERAMENT_KEYS,
   breederQuestions,
@@ -1666,81 +1664,13 @@ function FirstThirtyDays({ breedName }: { breedName: string }) {
 
 const featureIcons = [Heart, CalendarDays, Dumbbell, Utensils, Plane, Printer];
 
-const PLUS_PLACEMENTS = ["bottom", "early"] as const;
+const PLUS_PLACEMENTS = ["bottom"] as const;
 const PLUS_CTA_VARIANTS = ["control", "first-year", "weekly"] as const;
 
 /**
  * A real glimpse of the printable report for this breed: two sections with
  * the actual numbers, the rest named honestly as what's inside.
  */
-function ReportPreview({ breedId, breedName }: { breedId: MatchResult["breedId"]; breedName: string }) {
-  const c = useCopy(resultCopy);
-  const breed = breedById[breedId];
-  const ref = useRef<HTMLDivElement>(null);
-  const [lo, hi] = firstYearEstimate(breed);
-  const shownTraits = TEMPERAMENT_KEYS.slice(0, 3);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node || typeof IntersectionObserver === "undefined") return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          track("full_report_viewed", { breed: breedId });
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.5 },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [breedId]);
-
-  return (
-    <div ref={ref} className="mt-8 rounded-2xl border border-border bg-card p-6">
-      <p className="font-display text-base leading-tight">
-        {interpolate(c.reportPeek, { breed: breedName })}
-      </p>
-      <dl className="mt-5 grid grid-cols-2 gap-4 text-sm">
-        <div>
-          <dt className="text-muted-foreground">{c.reportFirstYear}</dt>
-          <dd className="mt-1 font-display text-lg tabular-nums">
-            €{lo}–{hi}
-          </dd>
-        </div>
-        <div>
-          <dt className="text-muted-foreground">{c.reportYearly}</dt>
-          <dd className="mt-1 font-display text-lg tabular-nums">
-            €{breed.annualCost[0]}–{breed.annualCost[1]}
-          </dd>
-        </div>
-      </dl>
-      <p className="mt-5 text-sm text-muted-foreground">{c.reportTemperament}</p>
-      <ul className="mt-2 space-y-1.5 text-sm">
-        {shownTraits.map((key) => (
-          <li key={key} className="flex justify-between gap-4">
-            <span>{temperamentLabel(key)}</span>
-            <span className="tabular-nums text-muted-foreground">{breed.traits[key]} / 5</span>
-          </li>
-        ))}
-      </ul>
-      <p className="mt-5 text-sm text-muted-foreground">{c.reportLocked}</p>
-      <ul className="mt-2 space-y-1.5 text-sm text-muted-foreground">
-        <li className="flex items-center gap-2">
-          <Lock className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-          {interpolate(c.reportBreederQs, { count: breederQuestions().length })}
-        </li>
-        {[c.dossierFeatures[2], c.dossierFeatures[4]].map((feature) => (
-          <li key={feature} className="flex items-center gap-2">
-            <Lock className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-            {feature}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 function PostMatchJourney({ placement }: { placement: (typeof PLUS_PLACEMENTS)[number] }) {
   const t = useT();
   const c = useCopy(resultCopy);
@@ -2221,40 +2151,6 @@ function Results({
           <PostMatchJourney placement="bottom" />
         </section>
       )}
-
-      {/* paid dossier teaser — the one thing in this result that isn't free */}
-      <section className="container-page mt-20 md:mt-28">
-        <div className="grid gap-8 rounded-[1.75rem] border border-border bg-surface p-8 shadow-[var(--shadow-soft)] md:grid-cols-[1.2fr_1fr] md:items-center md:p-12">
-          <div>
-            <p className="eyebrow">{c.dossierEyebrow}</p>
-            <h2 className="display-md mt-4">{c.dossierTitle}</h2>
-            <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">{c.dossierBody}</p>
-            <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
-              {c.dossierFeatures.map((feature) => (
-                <li key={feature} className="flex items-start gap-2 text-sm leading-relaxed">
-                  <span aria-hidden="true" className="mt-[3px] text-primary">
-                    ✓
-                  </span>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 text-sm text-muted-foreground">{c.dossierNote}</p>
-            <ReportPreview breedId={best.breedId} breedName={content.displayName} />
-          </div>
-          <div className="flex flex-col items-start gap-4 rounded-2xl border border-border bg-card p-6 md:items-end md:text-right">
-            <Badge tone="primary">{c.dossierGuarantee}</Badge>
-            <span className="font-display text-4xl tracking-tight">
-              {dossierPrice(locale).display}
-            </span>
-            <DossierCheckoutButton
-              breedId={best.breedId}
-              breedName={content.displayName}
-              className="w-full items-stretch md:items-end"
-            />
-          </div>
-        </div>
-      </section>
 
       {/* essentials */}
       <section className="container-page mt-20 md:mt-28">

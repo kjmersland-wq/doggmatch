@@ -17,15 +17,16 @@ Branch: `cc/brief-1-ia-plus` (not pushed). No matching math, questions, scoring 
 
 The existing switch `PURCHASES_ENABLED` in `src/lib/purchases.ts` is the billing flag (the brief's `BILLING_ENABLED`). It is `false`. Server functions for Plus and dossier checkout already throw when it is off; the UI now no longer offers a checkout button at all on `/plus`.
 
-## Not done / needs a decision
+## Decisions applied
 
-- **Waitlist stores name + email only.** The brief asks for locale and result id too; that needs a migration on `plus_waitlist` (applied through Lovable). Not added.
-- **OG share image not generated.** The share card is text (breed, %, three reasons, tagline, link). A real image needs a server render route.
-- **Alternatives are not diversified.** That needs a rule in the engine (or a breed-group field); left alone per "no new matching math".
-- **The paid dossier (with a € price) is still on the result page.** It contradicts "the result page is free"; its button is disabled while billing is off. Your call whether it stays.
-- **Cookie banner stays.** PostHog analytics is consent-gated, so a banner is required. It was already pinned to the bottom, max 15 vh.
-- **A/B `result-plus-placement` retired.** Plus always renders after the free sections now (`early` broke that rule). `result-plus-cta` still runs. `docs/analytics.md` still mentions the old test.
+- **Result page is fully free.** Paid dossier, its price and the disabled button are gone. A DoggMatch+ teaser stays at the bottom and links to `/plus#waitlist` while `PURCHASES_ENABLED=false` (`#membership` once it is true). The dossier is not yet shown on `/plus` — it is per-breed, so it needs a design decision before it goes there.
+- **Waitlist:** name + email only. `plus_waitlist` has no column for locale, so nothing extra is written; no migration in this branch. Locale and result id come later.
+- **Share:** text card + `?r=` answers link. No OG image.
+- **Alternatives:** engine untouched; no diversification and no extra UI (the "Compare the top 3" button already covers it).
+- **Cookie banner:** unchanged, pinned at the bottom (PostHog is consent-gated).
+- **`result-plus-placement` A/B retired** and marked off in `docs/analytics.md`; `result-plus-cta` is the only result-page test. Report-related events (`full_report_viewed`, `dossier_checkout_started`) are no longer fired from the result page and are marked as such in the doc.
 - New event `result_shared`.
+- `/pricing` verified: 301 → that locale's `/plus#membership` for en, no, pl, dk, se, fi, de, fr, nl.
 
 ## i18n
 
