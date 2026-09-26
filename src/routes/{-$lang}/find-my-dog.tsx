@@ -632,6 +632,8 @@ import {
 } from "@/lib/dossier/content";
 import { track, useVariant } from "@/lib/analytics";
 import { useQuizChrome } from "@/lib/quiz-chrome";
+import { decodeProfile } from "@/lib/matching/share";
+import { ResultActions, ResultNextSteps } from "@/components/dogmatch/result-actions";
 import { PURCHASES_ENABLED } from "@/lib/purchases";
 import { MatchNotes } from "@/components/dogmatch/match-notes";
 import { CostCalculator } from "@/components/dogmatch/cost-calculator";
@@ -874,6 +876,9 @@ export const Route = createFileRoute("/{-$lang}/find-my-dog")({
       ],
     };
   },
+  /** ?r=<answers> reopens a result: same answers, same dogs. */
+  validateSearch: (search: Record<string, unknown>): { r?: string } =>
+    typeof search["r"] === "string" ? { r: search["r"] } : {},
   component: FindMyDogPage,
 });
 
@@ -1029,9 +1034,18 @@ function FindMyDogPage() {
   const t = useT();
   const fc = useCopy(flowCopy);
   const questions = quizQuestions();
+  const { r: sharedAnswers } = Route.useSearch();
+  const shared = useMemo(() => decodeProfile(sharedAnswers, questions), [sharedAnswers]); // eslint-disable-line react-hooks/exhaustive-deps
   const [step, setStep] = useState(0);
-  const [profile, setProfile] = useState<UserProfile>({});
-  const [phase, setPhase] = useState<Phase>("quiz");
+  const [profile, setProfile] = useState<UserProfile>(shared ?? {});
+  const [phase, setPhase] = useState<Phase>(shared ? "result" : "quiz");
+  // A result link opened while already on this page (e.g. "My match" in the header).
+  useEffect(() => {
+    if (shared) {
+      setProfile(shared);
+      setPhase("result");
+    }
+  }, [shared]);
 
   const question = questions[step]!;
   const total = questions.length;
@@ -1782,7 +1796,7 @@ function PostMatchJourney({ placement }: { placement: (typeof PLUS_PLACEMENTS)[n
           </ButtonLink>
           <ButtonLink
             to={withLangPrefix("/plus")}
-            hash="membership"
+            hash={PURCHASES_ENABLED ? "membership" : "waitlist"}
             tone="outline"
             size="lg"
             onClick={onPlusClick}
@@ -1863,8 +1877,7 @@ function Results({
     });
   }, [best.breedId, best.score, results.length, limitsRelaxed]);
 
-  // A/B: does meeting DoggMatch+ straight after the 30-day plan help, or push too early?
-  const plusPlacement = useVariant("result-plus-placement", PLUS_PLACEMENTS, "bottom");
+  // DoggMatch+ is only ever introduced after the free value, at the bottom of the result.
 
   return (
     <div className="pb-24">
@@ -1911,120 +1924,17 @@ function Results({
         </div>
       </section>
 
-      <section className="container-page mt-12 md:mt-16" aria-labelledby="adjust-results-title">
-        <div className="rounded-2xl border border-border bg-surface p-6 md:p-8">
-          <Eyebrow>{ic.adjustEyebrow}</Eyebrow>
-          <div className="mt-4 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-            <div>
-              <h2 id="adjust-results-title" className="display-md">
-                {ic.adjustTitle}
-              </h2>
-              <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
-                {ic.adjustBody}
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {adjustableQuestions.map((question) => (
-                <label key={question.id} className="grid gap-2 text-sm font-medium">
-                  <span>{question.title}</span>
-                  <select
-                    value={profile[question.id] ?? question.options[0]?.value ?? ""}
-                    onChange={(event) => adjustAnswer(question.id, event.target.value)}
-                    className="h-12 w-full rounded-lg border border-border-strong bg-background px-4 text-sm text-foreground outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/20"
-                  >
-                    {question.options.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              ))}
-            </div>
-          </div>
-          <p className="sr-only" aria-live="polite">
-            {announceUpdate ? ic.updated : ""}
-          </p>
-        </div>
+      {/* what to do with the match: profile, compare, keep, share */}
+      <section className="container-page mt-10 md:mt-12">
+        <ResultActions
+          profile={profile}
+          breedId={best.breedId}
+          breedName={content.displayName}
+          score={best.score}
+          reasons={detail.strengths}
+          compareIds={results.slice(0, 3).map((r) => r.breedId)}
+        />
       </section>
-
-      {limitsRelaxed && (
-        <section className="container-page mt-8" aria-labelledby="relaxed-limits-title">
-          <div className="border-l-2 border-accent pl-5">
-            <h2 id="relaxed-limits-title" className="font-display text-xl">
-              {ic.relaxedTitle}
-            </h2>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              {ic.relaxedBody}
-            </p>
-          </div>
-        </section>
-      )}
-
-      {/* actionable next step, right beneath the top match */}
-      <section className="container-page mt-12 md:mt-16">
-        <FirstThirtyDays breedName={content.displayName} />
-      </section>
-
-      {plusPlacement === "early" && (
-        <section className="container-page mt-20 md:mt-28">
-          <PostMatchJourney placement="early" />
-        </section>
-      )}
-
-      {/* the dog you already have — scored from the dog itself, not a breed guess */}
-      {ownDog && ownFit && (
-        <section className="container-page mt-20 md:mt-28">
-          <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
-            <h2 className="display-md">{c.ownDogTitle}</h2>
-            <div className="mt-8 flex flex-wrap items-center gap-8">
-              <ScoreRing value={ownFit.score} />
-              <div className="max-w-md">
-                <p className="font-display text-lg leading-tight">{c.ownDogFit}</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {interpolate(
-                    ownTraits.unknownMix
-                      ? c.ownDogUnknown
-                      : ownTraits.isMixed
-                        ? c.ownDogMixed
-                        : c.ownDogPure,
-                    { name: ownDog.name },
-                  )}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {traitBasisNote(ownTraits)}
-                </p>
-                {crossHeading(ownTraits) && (
-                  <div className="mt-4 rounded-xl border border-border bg-background p-4">
-                    <p className="text-sm font-medium">{crossHeading(ownTraits)}</p>
-                    <ul className="mt-2 space-y-1">
-                      {crossContributionLines(ownTraits).map((line) => (
-                        <li key={line} className="text-sm leading-relaxed text-muted-foreground">
-                          {line}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                <div className="mt-5">
-                  <ButtonLink to={withLangPrefix("/my-dog/setup")} tone="outline">
-                    {interpolate(c.ownDogEdit, { name: ownDog.name })}
-                  </ButtonLink>
-                </div>
-              </div>
-            </div>
-            {ownFit.warnings.length > 0 && (
-              <ul className="mt-8 space-y-3">
-                {ownFit.warnings.map((w) => (
-                  <li key={w} className="text-[0.9375rem] leading-relaxed text-muted-foreground">
-                    {w}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </section>
-      )}
 
       {/* breakdown */}
       <section className="container-page mt-20 md:mt-28">
@@ -2037,10 +1947,6 @@ function Results({
         <MatchNotes profile={profile} />
       </section>
 
-      <section className="container-page mt-20 md:mt-28">
-        <CostCalculator breed={best.breed} />
-      </section>
-
       {/* fit and trade-offs, tied line by line to the answers given */}
       <section className="container-page mt-20 md:mt-28">
         <MatchBreakdown
@@ -2048,11 +1954,6 @@ function Results({
           profile={profile}
           score={best.score}
         />
-      </section>
-
-      {/* mixed / designer crosses, scored with the same engine */}
-      <section className="container-page mt-20 md:mt-28">
-        <MixMatcher profile={profile} />
       </section>
 
       {/* why + considerations */}
@@ -2089,6 +1990,59 @@ function Results({
           </p>
         </div>
       </section>
+
+      {limitsRelaxed && (
+        <section className="container-page mt-8" aria-labelledby="relaxed-limits-title">
+          <div className="border-l-2 border-accent pl-5">
+            <h2 id="relaxed-limits-title" className="font-display text-xl">
+              {ic.relaxedTitle}
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              {ic.relaxedBody}
+            </p>
+          </div>
+        </section>
+      )}
+
+      {eliminated.length > 0 && !limitsRelaxed && (
+        <section className="container-page mt-20 md:mt-28" aria-labelledby="removed-breeds-title">
+          <Eyebrow>{ic.removedEyebrow}</Eyebrow>
+          <h2 id="removed-breeds-title" className="display-md mt-4">
+            {ic.removedTitle}
+          </h2>
+          <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">{ic.removedBody}</p>
+          <Button
+            tone="outline"
+            className="mt-6"
+            onClick={() => setShowRemoved((open) => !open)}
+            aria-expanded={showRemoved}
+          >
+            {showRemoved ? ic.hideRemoved : ic.showRemoved}
+            <ChevronDown
+              className={cn("h-4 w-4 transition-transform", showRemoved && "rotate-180")}
+              aria-hidden="true"
+            />
+          </Button>
+          {showRemoved && (
+            <ul className="animate-fade mt-6 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
+              {eliminated.slice(0, 8).map(({ result, reasons }) => (
+                <li key={result.breedId} className="bg-background p-6">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h3 className="font-display text-lg">
+                      {breedContent()[result.breedId].displayName}
+                    </h3>
+                    <span className="text-xs text-muted-foreground">{result.score}%</span>
+                  </div>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent">
+                    {ic.removedReason}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{reasons[0]}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      )}
 
       {/* other matches */}
       <section className="container-page mt-20 md:mt-28">
@@ -2151,43 +2105,120 @@ function Results({
         </ul>
       </section>
 
-      {eliminated.length > 0 && !limitsRelaxed && (
-        <section className="container-page mt-20 md:mt-28" aria-labelledby="removed-breeds-title">
-          <Eyebrow>{ic.removedEyebrow}</Eyebrow>
-          <h2 id="removed-breeds-title" className="display-md mt-4">
-            {ic.removedTitle}
-          </h2>
-          <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">{ic.removedBody}</p>
-          <Button
-            tone="outline"
-            className="mt-6"
-            onClick={() => setShowRemoved((open) => !open)}
-            aria-expanded={showRemoved}
-          >
-            {showRemoved ? ic.hideRemoved : ic.showRemoved}
-            <ChevronDown
-              className={cn("h-4 w-4 transition-transform", showRemoved && "rotate-180")}
-              aria-hidden="true"
-            />
-          </Button>
-          {showRemoved && (
-            <ul className="animate-fade mt-6 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
-              {eliminated.slice(0, 8).map(({ result, reasons }) => (
-                <li key={result.breedId} className="bg-background p-6">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="font-display text-lg">
-                      {breedContent()[result.breedId].displayName}
-                    </h3>
-                    <span className="text-xs text-muted-foreground">{result.score}%</span>
+      <section className="container-page mt-20 md:mt-28">
+        <CostCalculator breed={best.breed} />
+      </section>
+
+      {/* the dog you already have — scored from the dog itself, not a breed guess */}
+      {ownDog && ownFit && (
+        <section className="container-page mt-20 md:mt-28">
+          <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
+            <h2 className="display-md">{c.ownDogTitle}</h2>
+            <div className="mt-8 flex flex-wrap items-center gap-8">
+              <ScoreRing value={ownFit.score} />
+              <div className="max-w-md">
+                <p className="font-display text-lg leading-tight">{c.ownDogFit}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {interpolate(
+                    ownTraits.unknownMix
+                      ? c.ownDogUnknown
+                      : ownTraits.isMixed
+                        ? c.ownDogMixed
+                        : c.ownDogPure,
+                    { name: ownDog.name },
+                  )}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {traitBasisNote(ownTraits)}
+                </p>
+                {crossHeading(ownTraits) && (
+                  <div className="mt-4 rounded-xl border border-border bg-background p-4">
+                    <p className="text-sm font-medium">{crossHeading(ownTraits)}</p>
+                    <ul className="mt-2 space-y-1">
+                      {crossContributionLines(ownTraits).map((line) => (
+                        <li key={line} className="text-sm leading-relaxed text-muted-foreground">
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent">
-                    {ic.removedReason}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{reasons[0]}</p>
-                </li>
+                )}
+                <div className="mt-5">
+                  <ButtonLink to={withLangPrefix("/my-dog/setup")} tone="outline">
+                    {interpolate(c.ownDogEdit, { name: ownDog.name })}
+                  </ButtonLink>
+                </div>
+              </div>
+            </div>
+            {ownFit.warnings.length > 0 && (
+              <ul className="mt-8 space-y-3">
+                {ownFit.warnings.map((w) => (
+                  <li key={w} className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                    {w}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </section>
+      )}
+
+      <section className="container-page mt-12 md:mt-16" aria-labelledby="adjust-results-title">
+        <div className="rounded-2xl border border-border bg-surface p-6 md:p-8">
+          <Eyebrow>{ic.adjustEyebrow}</Eyebrow>
+          <div className="mt-4 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <h2 id="adjust-results-title" className="display-md">
+                {ic.adjustTitle}
+              </h2>
+              <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
+                {ic.adjustBody}
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {adjustableQuestions.map((question) => (
+                <label key={question.id} className="grid gap-2 text-sm font-medium">
+                  <span>{question.title}</span>
+                  <select
+                    value={profile[question.id] ?? question.options[0]?.value ?? ""}
+                    onChange={(event) => adjustAnswer(question.id, event.target.value)}
+                    className="h-12 w-full rounded-lg border border-border-strong bg-background px-4 text-sm text-foreground outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  >
+                    {question.options.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
               ))}
-            </ul>
-          )}
+            </div>
+          </div>
+          <p className="sr-only" aria-live="polite">
+            {announceUpdate ? ic.updated : ""}
+          </p>
+        </div>
+      </section>
+
+      {/* free next steps — before any mention of DoggMatch+ */}
+      <section className="container-page mt-20 md:mt-28">
+        <ResultNextSteps />
+      </section>
+
+      {/* actionable next step, right beneath the top match */}
+      <section className="container-page mt-12 md:mt-16">
+        <FirstThirtyDays breedName={content.displayName} />
+      </section>
+
+      {/* mixed / designer crosses, scored with the same engine */}
+      <section className="container-page mt-20 md:mt-28">
+        <MixMatcher profile={profile} />
+      </section>
+
+      {/* home-with-your-dog journey */}
+      {(
+        <section className="container-page mt-20 md:mt-28">
+          <PostMatchJourney placement="bottom" />
         </section>
       )}
 
@@ -2225,13 +2256,6 @@ function Results({
         </div>
       </section>
 
-      {/* home-with-your-dog journey */}
-      {plusPlacement === "bottom" && (
-        <section className="container-page mt-20 md:mt-28">
-          <PostMatchJourney placement="bottom" />
-        </section>
-      )}
-
       {/* essentials */}
       <section className="container-page mt-20 md:mt-28">
         <h2 className="display-md max-w-lg">
@@ -2253,14 +2277,6 @@ function Results({
       </section>
 
       <div className="container-page mt-16 flex flex-wrap gap-3">
-        <ButtonLink
-          to={withLangPrefix("/breeds/$breedId")}
-          params={{ breedId: best.breedId } as never}
-          size="lg"
-        >
-          {t.result.viewBreed}
-          <Arrow />
-        </ButtonLink>
         <Button tone="outline" size="lg" onClick={onRestart}>
           {t.result.restart}
         </Button>

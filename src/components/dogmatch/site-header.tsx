@@ -11,6 +11,7 @@ import { CookieSettingsLink } from "./cookie-consent";
 import { useNavGroups } from "./nav-structure";
 import { withLangPrefix } from "@/lib/localized-path";
 import { useMatchProfile } from "@/lib/matching/store";
+import { encodeProfile } from "@/lib/matching/share";
 import { useMyDog } from "@/lib/care/store";
 
 const copy = {
@@ -114,7 +115,7 @@ export function SiteHeader() {
 
   // Before a match: one story — quiz, breeds, Plus. After: the dog's everyday life.
   const primaryLinks = hasMatch
-    ? [{ to: findLink.to, label: c.myMatch }, first("my-dog"), first("train"), first("travel")]
+    ? [{ to: findLink.to, label: c.myMatch, search: profile ? { r: encodeProfile(profile) } : undefined }, first("my-dog"), first("train"), first("travel")]
     : [findLink, breedsLink];
   const moreLinks = hasMatch
     ? [first("get-a-dog"), breedsLink, pick(1), pick(3), pick(2)]
@@ -174,6 +175,7 @@ export function SiteHeader() {
               <Link
                 key={item.to}
                 to={item.to}
+                {...((item as { search?: never }).search ? { search: (item as { search?: never }).search } : {})}
                 className="rounded-full px-3.5 py-2 text-[0.9375rem] text-muted-foreground transition-colors hover:text-foreground"
                 activeProps={{ className: "text-foreground" }}
               >

@@ -22,6 +22,7 @@ const CONSENT_EVENT = "doggmatch:consent";
 export type AnalyticsEvent =
   | "quiz_started"
   | "quiz_completed"
+  | "result_shared"
   | "breed_profile_viewed"
   | "full_report_viewed"
   | "plus_cta_clicked"
