@@ -31,3 +31,10 @@ The existing switch `PURCHASES_ENABLED` in `src/lib/purchases.ts` is the billing
 ## i18n
 
 All new strings use the existing per-component `useCopy` maps with all nine locales (en, no, pl, dk, se, fi, de, fr, nl). No English fallbacks left; no keys missing. Translations are mine — worth a native read for the tagline and the chapter names.
+
+## Follow-up: a calmer companion (no new engine, no new quiz questions)
+
+- **New guide** `/guides/a-calmer-companion` (all nine locales, e.g. `/no/guides/a-calmer-companion`): size, trainability, street manners, health burdens, "small is not the same as easy". Seven breeds from the library: Cavalier King Charles Spaniel, Whippet, Greyhound, Maltese, Havanese, Bichon Frise, Italian Greyhound — each with one real drawback. Flat-faced breeds are left off on purpose and explained. Portraits reused from the breed library. No video (nothing suitable in the repo).
+- **Homepage "Four lifestyles, matched"**: fourth card is the real engine's output for "daily walks, quieter home, not too big, easy to live with". The engine's top pick there is the French Bulldog (98%); this card skips flat-faced breeds (listed in `real-matches.tsx`) and says so on the card, so it shows the Cavalier King Charles Spaniel at its real score (98%). Quote and drawback are hand-written and only used if the engine lands on that breed; otherwise the card falls back to the engine's own reasoning. All four cards now carry a breed portrait.
+- Quiet link "Want a calmer dog for daily walks?" on `/` and `/get-a-dog`.
+- Sitemap entry added. Static route beats `/guides/$slug`, cluster support pages are unaffected.

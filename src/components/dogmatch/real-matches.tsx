@@ -1,4 +1,7 @@
+import { Link } from "@tanstack/react-router";
 import { useCopy } from "@/i18n";
+import { withLangPrefix } from "@/lib/localized-path";
+import { breedImages } from "@/data/breed-images";
 import { Eyebrow } from "@/components/dogmatch/ui";
 import { matchBreeds } from "@/lib/matching/engine";
 import { matchInsights } from "@/lib/matching/insights";
@@ -11,7 +14,17 @@ import type { UserProfile } from "@/lib/matching/types";
  * live on every render — not testimonials, and not tuned to land on a
  * particular breed. Whatever breed and score come out is what's shown.
  */
-const SCENARIOS: { key: string; profile: UserProfile }[] = [
+/**
+ * Breeds skipped for the "calmer companion" example. The engine can score
+ * flat-faced breeds very high for calm and size, but their breathing problems
+ * are not something a score shows — so this one card leaves them out, and says so.
+ */
+const FLAT_FACED = ["french-bulldog", "pug", "english-bulldog", "boston-terrier", "shih-tzu", "boxer", "bullmastiff"];
+
+/** The breed the hand-written quote and drawback below were written for. */
+const CALMER_EDITORIAL_BREED = "cavalier-king-charles-spaniel";
+
+const SCENARIOS: { key: string; profile: UserProfile; skip?: string[] }[] = [
   {
     key: "apartmentAlone",
     profile: {
@@ -72,16 +85,40 @@ const SCENARIOS: { key: string; profile: UserProfile }[] = [
       wellbeing: "some",
     },
   },
+  {
+    key: "calmerCompanion",
+    skip: FLAT_FACED,
+    profile: {
+      home: "house",
+      alone: "2",
+      activity: "2",
+      experience: "some",
+      size: "small",
+      temperament: "calm",
+      children: "visitors",
+      pets: "none",
+      shedding: "prefer-low",
+      grooming: "moderate",
+      physical: "light",
+      energyLimit: "no",
+      companionship: "calm-company",
+      allergy: "none",
+      wellbeing: "some",
+    },
+  },
 ];
 
 const copy = {
   en: {
     eyebrow: "See it work",
-    title: "Three lifestyles, matched",
+    title: "Four lifestyles, matched",
     intro:
-      "Not testimonials — the same deterministic engine, run live against three common situations, so you can see exactly how it reasons before you try it yourself.",
+      "Not testimonials — the same deterministic engine, run live against four common situations, so you can see exactly how it reasons before you try it yourself.",
     badge: "Worked example",
+    skipNote: "Flat-faced breeds are left out of this example on purpose: their breathing problems matter more than a score shows.",
+    calmerLink: "Want a calmer dog for daily walks?",
     scenarios: {
+      calmerCompanion: { context: "Daily walks, a quieter home, not too big, easy to live with", quote: "A good walk each day and a warm spot beside you — that's most of what this dog asks for.", drawback: "Heart disease is very common in the breed, and long days alone are hard on them. Ask breeders for heart screening on both parents." },
       apartmentAlone: { context: "Apartment living, alone 6+ hours on a workday" },
       familyShedding: { context: "House with a garden, young children, wants low shedding" },
       firstTimeOutdoor: { context: "First dog, house with a garden, wants an outdoor companion" },
@@ -89,11 +126,14 @@ const copy = {
   },
   no: {
     eyebrow: "Se det i praksis",
-    title: "Tre liv, matchet",
+    title: "Fire liv, matchet",
     intro:
-      "Ikke kundeuttalelser — samme deterministiske motor, brukt direkte på tre vanlige situasjoner, så du kan se nøyaktig hvordan den tenker før du prøver selv.",
+      "Ikke kundeuttalelser — samme deterministiske motor, brukt direkte på fire vanlige situasjoner, så du kan se nøyaktig hvordan den tenker før du prøver selv.",
     badge: "Reelt eksempel",
+    skipNote: "Flatnesete raser er bevisst utelatt i dette eksempelet: pusteproblemene deres veier tyngre enn en score viser.",
+    calmerLink: "Vil du ha en roligere hund til daglige turer?",
     scenarios: {
+      calmerCompanion: { context: "Daglige turer, et roligere hjem, ikke for stor, enkel å leve med", quote: "En god tur hver dag og en varm plass ved siden av deg – det er det meste denne hunden ber om.", drawback: "Hjertesykdom er svært vanlig i rasen, og lange dager alene er tunge for dem. Be oppdretteren om hjerteundersøkelse av begge foreldrene." },
       apartmentAlone: { context: "Leilighet, alene 6+ timer på en vanlig arbeidsdag" },
       familyShedding: { context: "Hus med hage, små barn, vil ha lite pelsfelling" },
       firstTimeOutdoor: { context: "Første hund, hus med hage, ønsker en aktiv turkamerat" },
@@ -101,11 +141,14 @@ const copy = {
   },
   pl: {
     eyebrow: "Zobacz, jak to działa",
-    title: "Trzy życia, dopasowane",
+    title: "Cztery życia, dopasowane",
     intro:
-      "To nie opinie klientów — ten sam deterministyczny silnik, użyty na żywo w trzech typowych sytuacjach, żebyś zobaczył/a dokładnie, jak wnioskuje, zanim spróbujesz sam/sama.",
+      "To nie opinie klientów — ten sam deterministyczny silnik, użyty na żywo w czterech typowych sytuacjach, żebyś zobaczył/a dokładnie, jak wnioskuje, zanim spróbujesz sam/sama.",
     badge: "Praktyczny przykład",
+    skipNote: "Rasy o spłaszczonym pysku celowo pominięto w tym przykładzie: ich problemy z oddychaniem znaczą więcej, niż pokazuje wynik.",
+    calmerLink: "Szukasz spokojniejszego psa na codzienne spacery?",
     scenarios: {
+      calmerCompanion: { context: "Codzienne spacery, cichszy dom, niezbyt duży pies, z którym łatwo się żyje", quote: "Dobry spacer każdego dnia i ciepłe miejsce obok ciebie – tego ten pies chce najbardziej.", drawback: "Choroby serca są w tej rasie bardzo częste, a długie dni w samotności są dla niej trudne. Poproś hodowcę o wyniki badań serca obojga rodziców." },
       apartmentAlone: { context: "Mieszkanie, pies zostaje sam na 6+ godzin w dzień roboczy" },
       familyShedding: { context: "Dom z ogrodem, małe dzieci, priorytetem jest małe linienie" },
       firstTimeOutdoor: { context: "Pierwszy pies, dom z ogrodem, szuka aktywnego towarzysza" },
@@ -113,11 +156,14 @@ const copy = {
   },
   dk: {
     eyebrow: "Se det i praksis",
-    title: "Tre liv, matchet",
+    title: "Fire liv, matchet",
     intro:
-      "Ikke kundeudtalelser — samme deterministiske motor, brugt direkte på tre almindelige situationer, så du kan se præcis, hvordan den tænker, før du selv prøver.",
+      "Ikke kundeudtalelser — samme deterministiske motor, brugt direkte på fire almindelige situationer, så du kan se præcis, hvordan den tænker, før du selv prøver.",
     badge: "Reelt eksempel",
+    skipNote: "Fladnæsede racer er med vilje udeladt i dette eksempel: deres vejrtrækningsproblemer vejer tungere, end en score viser.",
+    calmerLink: "Vil du have en roligere hund til daglige gåture?",
     scenarios: {
+      calmerCompanion: { context: "Daglige gåture, et roligere hjem, ikke for stor, nem at leve med", quote: "En god tur hver dag og en varm plads ved siden af dig – det er det meste, denne hund beder om.", drawback: "Hjertesygdom er meget almindelig i racen, og lange dage alene er hårde for dem. Bed opdrætteren om hjerteundersøgelse af begge forældre." },
       apartmentAlone: { context: "Lejlighed, hunden er alene 6+ timer på en hverdag" },
       familyShedding: { context: "Hus med have, små børn, prioriterer lidt fældning" },
       firstTimeOutdoor: { context: "Første hund, hus med have, ønsker en aktiv følgesvend" },
@@ -125,11 +171,14 @@ const copy = {
   },
   se: {
     eyebrow: "Se det i praktiken",
-    title: "Tre liv, matchade",
+    title: "Fyra liv, matchade",
     intro:
-      "Inga kundomdömen — samma deterministiska motor, använd direkt på tre vanliga situationer, så att du kan se exakt hur den resonerar innan du testar själv.",
+      "Inga kundomdömen — samma deterministiska motor, använd direkt på fyra vanliga situationer, så att du kan se exakt hur den resonerar innan du testar själv.",
     badge: "Exempel ur verkligheten",
+    skipNote: "Plattnosade raser är medvetet utelämnade i det här exemplet: deras andningsproblem väger tyngre än en poäng visar.",
+    calmerLink: "Vill du ha en lugnare hund för dagliga promenader?",
     scenarios: {
+      calmerCompanion: { context: "Dagliga promenader, ett lugnare hem, inte för stor, lätt att leva med", quote: "En bra promenad varje dag och en varm plats bredvid dig – det är det mesta den här hunden ber om.", drawback: "Hjärtsjukdom är mycket vanligt i rasen, och långa dagar ensam är tunga för dem. Be uppfödaren om hjärtundersökning av båda föräldrarna." },
       apartmentAlone: { context: "Lägenhet, hunden är ensam 6+ timmar en vardag" },
       familyShedding: { context: "Hus med trädgård, små barn, prioriterar lite fällning" },
       firstTimeOutdoor: { context: "Första hunden, hus med trädgård, vill ha en aktiv följeslagare" },
@@ -137,11 +186,14 @@ const copy = {
   },
   fi: {
     eyebrow: "Katso, miten se toimii",
-    title: "Kolme elämäntilannetta, kolme täsmäystä",
+    title: "Neljä elämäntilannetta, neljä täsmäystä",
     intro:
-      "Ei asiakaskertomuksia — sama deterministinen moottori, ajettuna suoraan kolmen tavallisen elämäntilanteen läpi, jotta näet tarkalleen, miten se päättelee, ennen kuin kokeilet itse.",
+      "Ei asiakaskertomuksia — sama deterministinen moottori, ajettuna suoraan neljän tavallisen elämäntilanteen läpi, jotta näet tarkalleen, miten se päättelee, ennen kuin kokeilet itse.",
     badge: "Käytännön esimerkki",
+    skipNote: "Litteänaamaiset rodut on jätetty tästä esimerkistä tarkoituksella pois: niiden hengitysongelmat painavat enemmän kuin pistemäärä näyttää.",
+    calmerLink: "Kaipaatko rauhallisempaa koiraa päivittäisille kävelyille?",
     scenarios: {
+      calmerCompanion: { context: "Päivittäiset kävelyt, rauhallisempi koti, ei liian suuri, helppo elää kanssa", quote: "Hyvä kävely joka päivä ja lämmin paikka vierelläsi – sitä tämä koira pyytää eniten.", drawback: "Sydänsairaudet ovat rodussa hyvin yleisiä, ja pitkät päivät yksin ovat sille raskaita. Pyydä kasvattajalta molempien vanhempien sydäntutkimukset." },
       apartmentAlone: { context: "Kerrostaloasunto, koira yksin 6+ tuntia arkipäivänä" },
       familyShedding: { context: "Talo pihalla, pieniä lapsia, vähäinen karvanlähtö tärkeää" },
       firstTimeOutdoor: { context: "Ensimmäinen koira, talo pihalla, toivoo aktiivista seuralaista" },
@@ -149,11 +201,14 @@ const copy = {
   },
   de: {
     eyebrow: "Sieh es in Aktion",
-    title: "Drei Lebenssituationen, passend gematcht",
+    title: "Vier Lebenssituationen, passend gematcht",
     intro:
-      "Keine Erfahrungsberichte — derselbe deterministische Algorithmus, live angewendet auf drei alltägliche Situationen, damit du genau siehst, wie er denkt, bevor du es selbst ausprobierst.",
+      "Keine Erfahrungsberichte — derselbe deterministische Algorithmus, live angewendet auf vier alltägliche Situationen, damit du genau siehst, wie er denkt, bevor du es selbst ausprobierst.",
     badge: "Praxisbeispiel",
+    skipNote: "Kurzköpfige Rassen lassen wir in diesem Beispiel bewusst weg: Ihre Atemprobleme wiegen schwerer, als eine Punktzahl zeigt.",
+    calmerLink: "Wünschst du dir einen ruhigeren Hund für die täglichen Spaziergänge?",
     scenarios: {
+      calmerCompanion: { context: "Tägliche Spaziergänge, ein ruhigeres Zuhause, nicht zu groß, unkompliziert im Alltag", quote: "Ein guter Spaziergang am Tag und ein warmer Platz neben dir – mehr verlangt dieser Hund kaum.", drawback: "Herzerkrankungen sind bei dieser Rasse sehr häufig, und lange Tage allein fallen ihr schwer. Frag den Züchter nach Herzuntersuchungen beider Elterntiere." },
       apartmentAlone: { context: "Wohnung, Hund an Werktagen 6+ Stunden allein" },
       familyShedding: { context: "Haus mit Garten, kleine Kinder, wenig Haarausfall gewünscht" },
       firstTimeOutdoor: { context: "Erster Hund, Haus mit Garten, aktiver Begleiter gewünscht" },
@@ -161,11 +216,14 @@ const copy = {
   },
   fr: {
     eyebrow: "Voyez-le à l'œuvre",
-    title: "Trois façons de vivre, trois matchs",
+    title: "Quatre façons de vivre, quatre matchs",
     intro:
-      "Pas des témoignages — le même moteur déterministe, appliqué en direct à trois situations courantes, pour que vous voyiez exactement comment il raisonne avant de l'essayer vous-même.",
+      "Pas des témoignages — le même moteur déterministe, appliqué en direct à quatre situations courantes, pour que vous voyiez exactement comment il raisonne avant de l'essayer vous-même.",
     badge: "Cas pratique",
+    skipNote: "Les races à museau plat sont volontairement écartées de cet exemple : leurs problèmes respiratoires pèsent plus lourd que ne le montre un score.",
+    calmerLink: "Envie d'un chien plus calme pour les balades de tous les jours ?",
     scenarios: {
+      calmerCompanion: { context: "Des balades quotidiennes, une maison plus calme, pas trop grand, facile à vivre", quote: "Une bonne balade chaque jour et une place au chaud près de vous : c'est presque tout ce que ce chien demande.", drawback: "Les maladies cardiaques sont très fréquentes dans la race, et les longues journées seul lui pèsent. Demandez à l'éleveur les dépistages cardiaques des deux parents." },
       apartmentAlone: { context: "Appartement, chien seul 6h ou plus un jour de semaine" },
       familyShedding: { context: "Maison avec jardin, jeunes enfants, peu de perte de poils souhaitée" },
       firstTimeOutdoor: { context: "Premier chien, maison avec jardin, envie d'un compagnon actif" },
@@ -173,11 +231,14 @@ const copy = {
   },
   nl: {
     eyebrow: "Zie het in actie",
-    title: "Drie levensstijlen, gematcht",
+    title: "Vier levensstijlen, gematcht",
     intro:
-      "Geen getuigenissen — dezelfde deterministische engine, live toegepast op drie herkenbare situaties, zodat je precies ziet hoe ze redeneert voordat je het zelf probeert.",
+      "Geen getuigenissen — dezelfde deterministische engine, live toegepast op vier herkenbare situaties, zodat je precies ziet hoe ze redeneert voordat je het zelf probeert.",
     badge: "Praktijkvoorbeeld",
+    skipNote: "Platsnuitige rassen laten we in dit voorbeeld bewust weg: hun ademhalingsproblemen wegen zwaarder dan een score laat zien.",
+    calmerLink: "Zoek je een rustigere hond voor de dagelijkse wandelingen?",
     scenarios: {
+      calmerCompanion: { context: "Dagelijkse wandelingen, een rustiger huis, niet te groot, makkelijk om mee te leven", quote: "Elke dag een fijne wandeling en een warm plekje naast je – veel meer vraagt deze hond niet.", drawback: "Hartziekten komen bij dit ras heel vaak voor, en lange dagen alleen zijn zwaar. Vraag de fokker om hartonderzoek bij beide ouders." },
       apartmentAlone: { context: "Appartement, hond op werkdagen 6+ uur alleen" },
       familyShedding: { context: "Huis met tuin, jonge kinderen, weinig haarverlies gewenst" },
       firstTimeOutdoor: { context: "Eerste hond, huis met tuin, wil een actieve buitenmaatje" },
@@ -188,10 +249,11 @@ const copy = {
 export function RealMatchesSection({ className }: { className?: string }) {
   const c = useCopy(copy);
 
-  const runs = SCENARIOS.map(({ key, profile }) => {
-    const result = matchBreeds(profile)[0]!;
+  const runs = SCENARIOS.map(({ key, profile, skip }) => {
+    const ranked = matchBreeds(profile);
+    const result = (skip ? ranked.find((r) => !skip.includes(r.breedId)) : undefined) ?? ranked[0]!;
     const insights = matchInsights(breedById[result.breedId].traits, profile);
-    return { key, result, insights };
+    return { key, result, insights, skipped: Boolean(skip) };
   });
 
   // The engine's first "fit" line is often the same generic one for every profile
@@ -211,14 +273,24 @@ export function RealMatchesSection({ className }: { className?: string }) {
     return best;
   };
 
-  const cards = runs.map(({ key, result, insights }) => {
+  const cards = runs.map(({ key, result, insights, skipped }) => {
+    const scenario = c.scenarios[key as keyof typeof c.scenarios] as {
+      context: string;
+      quote?: string;
+      drawback?: string;
+    };
+    // Hand-written text only when the engine really landed on the breed it was written for;
+    // otherwise fall back to the engine's own reasoning.
+    const editorial = scenario.quote && result.breedId === CALMER_EDITORIAL_BREED;
     return {
       key,
-      context: c.scenarios[key as keyof typeof c.scenarios].context,
+      breedId: result.breedId,
+      skipped,
+      context: scenario.context,
       breedName: breedContent()[result.breedId].displayName,
       score: result.score,
-      fit: quoteFor(insights.fits),
-      tradeoff: insights.tradeoffs[0]?.text,
+      fit: editorial ? scenario.quote : quoteFor(insights.fits),
+      tradeoff: editorial ? scenario.drawback : insights.tradeoffs[0]?.text,
     };
   });
 
@@ -229,9 +301,19 @@ export function RealMatchesSection({ className }: { className?: string }) {
         <h2 className="display-lg mt-6 max-w-xl">{c.title}</h2>
         <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">{c.intro}</p>
 
-        <ul className="mt-12 grid gap-6 lg:grid-cols-3">
+        <ul className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {cards.map((card) => (
             <li key={card.key} className="flex flex-col rounded-2xl border border-border bg-surface p-7">
+              {breedImages[card.breedId as keyof typeof breedImages] && (
+                <img
+                  src={breedImages[card.breedId as keyof typeof breedImages]}
+                  alt={card.breedName}
+                  width={1024}
+                  height={1280}
+                  loading="lazy"
+                  className="mb-5 aspect-[16/10] w-full rounded-xl object-cover object-[50%_35%]"
+                />
+              )}
               <span className="inline-flex w-fit items-center rounded-full border border-border-strong px-2.5 py-1 text-xs text-muted-foreground">
                 {c.badge}
               </span>
@@ -248,9 +330,20 @@ export function RealMatchesSection({ className }: { className?: string }) {
               {card.tradeoff && (
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{card.tradeoff}</p>
               )}
+              {card.skipped && (
+                <p className="mt-4 text-xs leading-relaxed text-muted-foreground/80">{c.skipNote}</p>
+              )}
             </li>
           ))}
         </ul>
+        <p className="mt-8">
+          <Link
+            to={withLangPrefix("/guides/a-calmer-companion")}
+            className="text-[0.9375rem] font-medium underline underline-offset-4 decoration-border-strong hover:decoration-foreground"
+          >
+            {c.calmerLink}
+          </Link>
+        </p>
       </div>
     </section>
   );

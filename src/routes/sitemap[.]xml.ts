@@ -47,6 +47,7 @@ function collect(): SitemapEntry[] {
     { path: "/guides", changefreq: "monthly", priority: "0.8" },
     { path: "/best-dog-breeds-for-families", changefreq: "monthly", priority: "0.8" },
     { path: "/best-apartment-dogs", changefreq: "monthly", priority: "0.8" },
+    { path: "/guides/a-calmer-companion", changefreq: "monthly", priority: "0.8" },
     { path: "/best-dogs-for-first-time-owners", changefreq: "monthly", priority: "0.8" },
     { path: "/dogs-that-can-be-left-alone", changefreq: "monthly", priority: "0.8" },
     { path: "/low-shedding-dogs", changefreq: "monthly", priority: "0.8" },

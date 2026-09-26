@@ -67,6 +67,7 @@ export const Route = createFileRoute("/{-$lang}/get-a-dog/")({
 
 const copy = {
   en: {
+    calmerLink: "Want a calmer dog for daily walks?",
     eyebrow: "Get a dog",
     heroTitle: "Thinking about getting a dog?",
     heroBody:
@@ -100,6 +101,7 @@ const copy = {
     welcomeCta: "See the first week",
   },
   no: {
+    calmerLink: "Vil du ha en roligere hund til daglige turer?",
     eyebrow: "Skaff hund",
     heroTitle: "Går du og tenker på å skaffe hund?",
     heroBody:
@@ -134,6 +136,7 @@ const copy = {
     welcomeCta: "Se den første uken",
   },
   pl: {
+    calmerLink: "Szukasz spokojniejszego psa na codzienne spacery?",
     eyebrow: "Zdobądź psa",
     heroTitle: "Zastanawiasz się nad zabraniem psa do domu?",
     heroBody:
@@ -168,6 +171,7 @@ const copy = {
     welcomeCta: "Zobacz pierwszy tydzień",
   },
   dk: {
+    calmerLink: "Vil du have en roligere hund til daglige gåture?",
     eyebrow: "Skaf hund",
     heroTitle: "Går du og overvejer at skaffe en hund?",
     heroBody:
@@ -202,6 +206,7 @@ const copy = {
     welcomeCta: "Se den første uge",
   },
   se: {
+    calmerLink: "Vill du ha en lugnare hund för dagliga promenader?",
     eyebrow: "Skaffa hund",
     heroTitle: "Funderar du på att skaffa hund?",
     heroBody:
@@ -236,6 +241,7 @@ const copy = {
     welcomeCta: "Se den första veckan",
   },
   fi: {
+    calmerLink: "Kaipaatko rauhallisempaa koiraa päivittäisille kävelyille?",
     eyebrow: "Hanki koira",
     heroTitle: "Harkitsetko koiran hankkimista?",
     heroBody:
@@ -271,6 +277,7 @@ const copy = {
     welcomeCta: "Katso ensimmäinen viikko",
   },
   de: {
+    calmerLink: "Wünschst du dir einen ruhigeren Hund für die täglichen Spaziergänge?",
     eyebrow: "Einen Hund holen",
     heroTitle: "Denkst du darüber nach, einen Hund zu holen?",
     heroBody:
@@ -306,6 +313,7 @@ const copy = {
     welcomeCta: "Die erste Woche ansehen",
   },
   fr: {
+    calmerLink: "Envie d'un chien plus calme pour les balades de tous les jours ?",
     eyebrow: "Adopter un chien",
     heroTitle: "Vous pensez à adopter un chien ?",
     heroBody:
@@ -340,6 +348,7 @@ const copy = {
     welcomeCta: "Voir la première semaine",
   },
   nl: {
+    calmerLink: "Zoek je een rustigere hond voor de dagelijkse wandelingen?",
     eyebrow: "Een hond nemen",
     heroTitle: "Denk je erover na om een hond te nemen?",
     heroBody:
@@ -398,6 +407,14 @@ function GetADogPage() {
               </ButtonLink>
             </div>
             <p className="mt-6 text-sm text-muted-foreground">{c.heroFootnote}</p>
+            <p className="mt-3 text-sm">
+              <Link
+                to={withLangPrefix("/guides/a-calmer-companion")}
+                className="text-muted-foreground underline underline-offset-4 decoration-border-strong hover:text-foreground hover:decoration-foreground"
+              >
+                {c.calmerLink}
+              </Link>
+            </p>
           </div>
 
           <div className="overflow-hidden rounded-[2rem] bg-surface">

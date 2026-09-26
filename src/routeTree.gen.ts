@@ -53,6 +53,7 @@ import { Route as Char123LangChar125GetADogReadyRouteImport } from './routes/{-$
 import { Route as Char123LangChar125GetADogWelcomeHomeRouteImport } from './routes/{-$lang}/get-a-dog.welcome-home'
 import { Route as Char123LangChar125GuidesIndexRouteImport } from './routes/{-$lang}/guides.index'
 import { Route as Char123LangChar125GuidesSlugRouteImport } from './routes/{-$lang}/guides.$slug'
+import { Route as Char123LangChar125GuidesACalmerCompanionRouteImport } from './routes/{-$lang}/guides.a-calmer-companion'
 import { Route as Char123LangChar125MyDogIndexRouteImport } from './routes/{-$lang}/my-dog.index'
 import { Route as Char123LangChar125MyDogContactsRouteImport } from './routes/{-$lang}/my-dog.contacts'
 import { Route as Char123LangChar125MyDogFoodRouteImport } from './routes/{-$lang}/my-dog.food'
@@ -334,6 +335,12 @@ const Char123LangChar125GuidesSlugRoute =
     path: '/guides/$slug',
     getParentRoute: () => Char123LangChar125Route,
   } as any)
+const Char123LangChar125GuidesACalmerCompanionRoute =
+  Char123LangChar125GuidesACalmerCompanionRouteImport.update({
+    id: '/guides/a-calmer-companion',
+    path: '/guides/a-calmer-companion',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
 const Char123LangChar125MyDogIndexRoute =
   Char123LangChar125MyDogIndexRouteImport.update({
     id: '/',
@@ -526,6 +533,7 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/get-a-dog/ready': typeof Char123LangChar125GetADogReadyRoute
   '/{-$lang}/get-a-dog/welcome-home': typeof Char123LangChar125GetADogWelcomeHomeRoute
   '/{-$lang}/guides/$slug': typeof Char123LangChar125GuidesSlugRoute
+  '/{-$lang}/guides/a-calmer-companion': typeof Char123LangChar125GuidesACalmerCompanionRoute
   '/{-$lang}/my-dog/contacts': typeof Char123LangChar125MyDogContactsRoute
   '/{-$lang}/my-dog/food': typeof Char123LangChar125MyDogFoodRoute
   '/{-$lang}/my-dog/nutrition': typeof Char123LangChar125MyDogNutritionRoute
@@ -592,6 +600,7 @@ export interface FileRoutesByTo {
   '/{-$lang}/get-a-dog/ready': typeof Char123LangChar125GetADogReadyRoute
   '/{-$lang}/get-a-dog/welcome-home': typeof Char123LangChar125GetADogWelcomeHomeRoute
   '/{-$lang}/guides/$slug': typeof Char123LangChar125GuidesSlugRoute
+  '/{-$lang}/guides/a-calmer-companion': typeof Char123LangChar125GuidesACalmerCompanionRoute
   '/{-$lang}/my-dog/contacts': typeof Char123LangChar125MyDogContactsRoute
   '/{-$lang}/my-dog/food': typeof Char123LangChar125MyDogFoodRoute
   '/{-$lang}/my-dog/nutrition': typeof Char123LangChar125MyDogNutritionRoute
@@ -664,6 +673,7 @@ export interface FileRoutesById {
   '/{-$lang}/get-a-dog/ready': typeof Char123LangChar125GetADogReadyRoute
   '/{-$lang}/get-a-dog/welcome-home': typeof Char123LangChar125GetADogWelcomeHomeRoute
   '/{-$lang}/guides/$slug': typeof Char123LangChar125GuidesSlugRoute
+  '/{-$lang}/guides/a-calmer-companion': typeof Char123LangChar125GuidesACalmerCompanionRoute
   '/{-$lang}/my-dog/contacts': typeof Char123LangChar125MyDogContactsRoute
   '/{-$lang}/my-dog/food': typeof Char123LangChar125MyDogFoodRoute
   '/{-$lang}/my-dog/nutrition': typeof Char123LangChar125MyDogNutritionRoute
@@ -737,6 +747,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/get-a-dog/ready'
     | '/{-$lang}/get-a-dog/welcome-home'
     | '/{-$lang}/guides/$slug'
+    | '/{-$lang}/guides/a-calmer-companion'
     | '/{-$lang}/my-dog/contacts'
     | '/{-$lang}/my-dog/food'
     | '/{-$lang}/my-dog/nutrition'
@@ -803,6 +814,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/get-a-dog/ready'
     | '/{-$lang}/get-a-dog/welcome-home'
     | '/{-$lang}/guides/$slug'
+    | '/{-$lang}/guides/a-calmer-companion'
     | '/{-$lang}/my-dog/contacts'
     | '/{-$lang}/my-dog/food'
     | '/{-$lang}/my-dog/nutrition'
@@ -874,6 +886,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/get-a-dog/ready'
     | '/{-$lang}/get-a-dog/welcome-home'
     | '/{-$lang}/guides/$slug'
+    | '/{-$lang}/guides/a-calmer-companion'
     | '/{-$lang}/my-dog/contacts'
     | '/{-$lang}/my-dog/food'
     | '/{-$lang}/my-dog/nutrition'
@@ -1220,6 +1233,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LangChar125GuidesSlugRouteImport
       parentRoute: typeof Char123LangChar125Route
     }
+    '/{-$lang}/guides/a-calmer-companion': {
+      id: '/{-$lang}/guides/a-calmer-companion'
+      path: '/guides/a-calmer-companion'
+      fullPath: '/{-$lang}/guides/a-calmer-companion'
+      preLoaderRoute: typeof Char123LangChar125GuidesACalmerCompanionRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
     '/{-$lang}/my-dog/': {
       id: '/{-$lang}/my-dog/'
       path: '/'
@@ -1558,6 +1578,7 @@ interface Char123LangChar125RouteChildren {
   Char123LangChar125CheckoutCanceledRoute: typeof Char123LangChar125CheckoutCanceledRoute
   Char123LangChar125CheckoutSuccessRoute: typeof Char123LangChar125CheckoutSuccessRoute
   Char123LangChar125GuidesSlugRoute: typeof Char123LangChar125GuidesSlugRoute
+  Char123LangChar125GuidesACalmerCompanionRoute: typeof Char123LangChar125GuidesACalmerCompanionRoute
   Char123LangChar125QuizSuccessRoute: typeof Char123LangChar125QuizSuccessRoute
   Char123LangChar125VerifyMemberIdRoute: typeof Char123LangChar125VerifyMemberIdRoute
   Char123LangChar125BreedsIndexRoute: typeof Char123LangChar125BreedsIndexRoute
@@ -1608,6 +1629,8 @@ const Char123LangChar125RouteChildren: Char123LangChar125RouteChildren = {
   Char123LangChar125CheckoutSuccessRoute:
     Char123LangChar125CheckoutSuccessRoute,
   Char123LangChar125GuidesSlugRoute: Char123LangChar125GuidesSlugRoute,
+  Char123LangChar125GuidesACalmerCompanionRoute:
+    Char123LangChar125GuidesACalmerCompanionRoute,
   Char123LangChar125QuizSuccessRoute: Char123LangChar125QuizSuccessRoute,
   Char123LangChar125VerifyMemberIdRoute: Char123LangChar125VerifyMemberIdRoute,
   Char123LangChar125BreedsIndexRoute: Char123LangChar125BreedsIndexRoute,

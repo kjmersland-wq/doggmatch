@@ -61,6 +61,10 @@ export interface LifestyleGuideConfig {
   shortlist?: Breed[];
   /** One honest line per shortlisted breed, keyed by breed id. */
   reasons?: CopyMap<Record<string, string>>;
+  /** Breed portrait shown under the introduction. */
+  heroBreedId?: string;
+  /** Show each shortlisted breed's portrait on its card. */
+  portraits?: boolean;
   /** Example breeds with real yearly cost ranges (cost guide). */
   costExamples?: { breed: Breed; sizeLabel: CopyMap<string> }[];
 }

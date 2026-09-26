@@ -3,6 +3,7 @@ import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
 import { ShareBar, SectionShare } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 import { breedContent } from "@/data/breed-content";
+import { breedImages } from "@/data/breed-images";
 import { useCopy, useLocale, pick, INTL_LOCALE } from "@/i18n";
 import type { BreedId } from "@/data/breeds";
 import type { LifestyleGuideConfig } from "@/lib/guides/lifestyle";
@@ -63,6 +64,17 @@ export function LifestyleGuide({ config }: { config: LifestyleGuideConfig }) {
         <ShareBar path={config.path} title={c.h1} />
       </div>
 
+      {config.heroBreedId && breedImages[config.heroBreedId as BreedId] && (
+        <img
+          src={breedImages[config.heroBreedId as BreedId]}
+          alt={content[config.heroBreedId as BreedId]?.displayName ?? ""}
+          width={1024}
+          height={1280}
+          fetchPriority="high"
+          className="mt-10 aspect-[4/3] w-full rounded-[2rem] object-cover object-[50%_35%]"
+        />
+      )}
+
       <section className="mt-14">
         <h2 className="font-display text-2xl font-semibold text-foreground">
           {c.howChosenTitle}
@@ -96,6 +108,16 @@ export function LifestyleGuide({ config }: { config: LifestyleGuideConfig }) {
                   key={breed.id}
                   className="rounded-3xl border border-border bg-card p-6 transition-shadow hover:shadow-md"
                 >
+                  {config.portraits && breedImages[breed.id as BreedId] && (
+                    <img
+                      src={breedImages[breed.id as BreedId]}
+                      alt={bc?.displayName ?? breed.name}
+                      width={1024}
+                      height={1280}
+                      loading="lazy"
+                      className="mb-5 aspect-[16/10] w-full rounded-2xl object-cover object-[50%_35%]"
+                    />
+                  )}
                   <h3 className="font-display text-lg font-semibold text-foreground">
                     {bc?.displayName ?? breed.name}
                   </h3>
