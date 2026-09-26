@@ -127,7 +127,7 @@ export const nl: Dictionary = {
     lifeCta: "Vind plekken in de buurt",
     closingTitle: "Neem de tijd. Dit is een beslissing die het waard is om goed te maken.",
     closingBody: "We helpen je erover na te denken, eerlijk.",
-    closingCta: "Laten we beginnen",
+    closingCta: "Vind mijn hond",
   },
   quiz: {
     intro: "Vind mijn hond",

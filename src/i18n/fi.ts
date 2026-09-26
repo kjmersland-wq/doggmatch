@@ -126,7 +126,7 @@ export const fi: Dictionary = {
     lifeCta: "Löydä paikkoja läheltäsi",
     closingTitle: "Ota aikaa. Tämä on päätös, joka kannattaa tehdä huolella.",
     closingBody: "Autamme sinua miettimään sen läpi, rehellisesti.",
-    closingCta: "Aloitetaan",
+    closingCta: "Löydä koirani",
   },
   quiz: {
     intro: "Löydä koirani",

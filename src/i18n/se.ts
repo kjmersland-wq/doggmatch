@@ -126,7 +126,7 @@ export const se: Dictionary = {
     lifeCta: "Hitta platser i närheten",
     closingTitle: "Ta den tid ni behöver. Det här är ett beslut värt att ta rätt.",
     closingBody: "Vi hjälper er tänka igenom det, ärligt.",
-    closingCta: "Låt oss börja",
+    closingCta: "Hitta min hund",
   },
   quiz: {
     intro: "Hitta min hund",

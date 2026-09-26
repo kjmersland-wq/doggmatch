@@ -127,7 +127,7 @@ export const de: Dictionary = {
     lifeCta: "Orte in der Nähe finden",
     closingTitle: "Lass dir Zeit. Diese Entscheidung lohnt sich, richtig zu treffen.",
     closingBody: "Wir helfen dir, ehrlich darüber nachzudenken.",
-    closingCta: "Los geht's",
+    closingCta: "Meinen Hund finden",
   },
   quiz: {
     intro: "Meinen Hund finden",

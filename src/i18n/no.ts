@@ -126,7 +126,7 @@ export const no: Dictionary = {
     lifeCta: "Finn steder i nærheten",
     closingTitle: "Ta deg god tid. Dette er en avgjørelse det er verdt å ta riktig.",
     closingBody: "Vi hjelper deg å tenke det gjennom, ærlig.",
-    closingCta: "La oss begynne",
+    closingCta: "Finn min hund",
   },
   quiz: {
     intro: "Finn min hund",

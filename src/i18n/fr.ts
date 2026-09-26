@@ -127,7 +127,7 @@ export const fr: Dictionary = {
     lifeCta: "Trouver des lieux à proximité",
     closingTitle: "Prenez votre temps. C'est une décision qui mérite d'être bien prise.",
     closingBody: "Nous vous aidons à y réfléchir, honnêtement.",
-    closingCta: "Commençons",
+    closingCta: "Trouver mon chien",
   },
   quiz: {
     intro: "Trouver mon chien",

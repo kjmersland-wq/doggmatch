@@ -7,6 +7,7 @@ import { breeds } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Arrow, ButtonLink, Eyebrow, Section, TraitMeter } from "@/components/dogmatch/ui";
+import { PURCHASES_ENABLED } from "@/lib/purchases";
 import { RealMatchesSection } from "@/components/dogmatch/real-matches";
 import heroImage from "@/assets/hero.webp";
 import homeImage from "@/assets/editorial-home.webp";
@@ -123,6 +124,10 @@ const localCopy = {
     plusBody:
       "Training you can follow week by week, food and weight kept in one place, travel paperwork sorted, and everything printable for the fridge or the vet.",
     plusCta: "See what's inside DoggMatch+",
+    plusPrice: "€7.99 a month, or €59.99 a year (VAT included where applicable)",
+    plusItems: ["A weekly training plan you can follow", "Food portions and a weight log", "A printable Dog Pack with travel papers"],
+    plusPaused: "Checkout is paused while we move billing to Poland. The product is ready; payments are not.",
+    plusWaitlistCta: "Notify me when membership opens",
     faqEyebrow: "Good to know",
     faqTitle: "Questions people ask us",
     faq: [
@@ -174,6 +179,10 @@ const localCopy = {
     plusBody:
       "Trening du kan følge uke for uke, fôr og vekt samlet på ett sted, reisepapirene i orden, og alt kan skrives ut til kjøleskapet eller veterinæren.",
     plusCta: "Se hva som ligger i DoggMatch+",
+    plusPrice: "€7,99 i måneden, eller €59,99 i året (inkl. mva der det gjelder)",
+    plusItems: ["En ukentlig treningsplan du kan følge", "Fôrporsjoner og vektlogg", "En utskriftsvennlig hundepakke med reisedokumenter"],
+    plusPaused: "Betaling er satt på pause mens vi flytter fakturering til Polen. Produktet er klart; betalingen er det ikke.",
+    plusWaitlistCta: "Si fra når medlemskap åpner",
     faqEyebrow: "Godt å vite",
     faqTitle: "Spørsmål vi ofte får",
     faq: [
@@ -225,6 +234,10 @@ const localCopy = {
     plusBody:
       "Trening krok po kroku na każdy tydzień, karmienie i waga w jednym miejscu, dokumenty podróżne w porządku i wszystko gotowe do wydrukowania na lodówkę albo do weterynarza.",
     plusCta: "Zobacz, co zawiera DoggMatch+",
+    plusPrice: "7,99 € miesięcznie lub 59,99 € rocznie (z VAT, gdzie ma zastosowanie)",
+    plusItems: ["Cotygodniowy plan treningu, który da się realizować", "Porcje jedzenia i dziennik wagi", "Pakiet Dog Pack do wydruku z dokumentami podróżnymi"],
+    plusPaused: "Płatności są wstrzymane, dopóki przenosimy rozliczenia do Polski. Produkt jest gotowy; płatności jeszcze nie.",
+    plusWaitlistCta: "Powiadom mnie, gdy członkostwo się otworzy",
     faqEyebrow: "Warto wiedzieć",
     faqTitle: "Pytania, które nam zadajecie",
     faq: [
@@ -276,6 +289,10 @@ const localCopy = {
     plusBody:
       "Træning du kan følge uge for uge, foder og vægt samlet ét sted, styr på rejsepapirerne, og alt kan printes ud til køleskabet eller dyrlægen.",
     plusCta: "Se, hvad der er i DoggMatch+",
+    plusPrice: "€7,99 om måneden eller €59,99 om året (inkl. moms, hvor det gælder)",
+    plusItems: ["En ugentlig træningsplan, du kan følge", "Foderportioner og vægtlog", "En printvenlig hundepakke med rejsepapirer"],
+    plusPaused: "Betaling er sat på pause, mens vi flytter fakturering til Polen. Produktet er klar; betalingen er ikke.",
+    plusWaitlistCta: "Giv mig besked, når medlemskab åbner",
     faqEyebrow: "Godt at vide",
     faqTitle: "Spørgsmål, folk stiller os",
     faq: [
@@ -327,6 +344,10 @@ const localCopy = {
     plusBody:
       "Träning du kan följa vecka för vecka, foder och vikt samlat på ett ställe, resepapper i ordning, och allt går att skriva ut till kylskåpet eller veterinären.",
     plusCta: "Se vad som ingår i DoggMatch+",
+    plusPrice: "€7,99 i månaden eller €59,99 per år (inkl. moms där det gäller)",
+    plusItems: ["En veckovis träningsplan du kan följa", "Foderportioner och viktlogg", "Ett utskrivbart hundpaket med resehandlingar"],
+    plusPaused: "Betalningen är pausad medan vi flyttar faktureringen till Polen. Produkten är klar; betalningen är det inte.",
+    plusWaitlistCta: "Meddela mig när medlemskap öppnar",
     faqEyebrow: "Bra att veta",
     faqTitle: "Frågor vi ofta får",
     faq: [
@@ -378,6 +399,10 @@ const localCopy = {
     plusBody:
       "Koulutusta, jota voit seurata viikko kerrallaan, ruokinta ja paino samassa paikassa, matkapaperit kunnossa, ja kaiken voi tulostaa jääkaapin oveen tai eläinlääkärille.",
     plusCta: "Katso, mitä DoggMatch+ sisältää",
+    plusPrice: "7,99 € kuukaudessa tai 59,99 € vuodessa (sis. ALV, jos sovellettavissa)",
+    plusItems: ["Viikoittainen koulutussuunnitelma, jota voi seurata", "Ruokamäärät ja painopäiväkirja", "Tulostettava koirapaketti matka-asiakirjoineen"],
+    plusPaused: "Maksu on tauolla, kun siirrämme laskutuksen Puolaan. Tuote on valmis; maksut eivät vielä.",
+    plusWaitlistCta: "Ilmoita minulle, kun jäsenyys aukeaa",
     faqEyebrow: "Hyvä tietää",
     faqTitle: "Kysymyksiä, joita meiltä usein kysytään",
     faq: [
@@ -429,6 +454,10 @@ const localCopy = {
     plusBody:
       "Training, dem du Woche für Woche folgen kannst, Fütterung und Gewicht an einem Ort, Reisepapiere geregelt, und alles zum Ausdrucken für den Kühlschrank oder den Tierarzt.",
     plusCta: "Sieh dir an, was in DoggMatch+ steckt",
+    plusPrice: "7,99 € im Monat oder 59,99 € im Jahr (inkl. MwSt., wo zutreffend)",
+    plusItems: ["Ein Wochen-Trainingsplan, dem du folgen kannst", "Futterportionen und Gewichtsprotokoll", "Ein druckbares Hunde-Paket mit Reiseunterlagen"],
+    plusPaused: "Die Zahlung ist pausiert, während wir die Abrechnung nach Polen verlegen. Das Produkt ist bereit; die Zahlung noch nicht.",
+    plusWaitlistCta: "Benachrichtige mich, wenn die Mitgliedschaft öffnet",
     faqEyebrow: "Gut zu wissen",
     faqTitle: "Fragen, die uns oft gestellt werden",
     faq: [
@@ -480,6 +509,10 @@ const localCopy = {
     plusBody:
       "Un entraînement à suivre semaine après semaine, l'alimentation et le poids réunis au même endroit, les papiers de voyage réglés, et tout est imprimable pour le frigo ou le vétérinaire.",
     plusCta: "Découvrez ce que contient DoggMatch+",
+    plusPrice: "7,99 € par mois ou 59,99 € par an (TVA incluse le cas échéant)",
+    plusItems: ["Un plan d'éducation hebdomadaire à suivre", "Portions d'alimentation et suivi du poids", "Un Dog Pack imprimable avec les papiers de voyage"],
+    plusPaused: "Le paiement est suspendu le temps de transférer la facturation en Pologne. Le produit est prêt ; les paiements ne le sont pas encore.",
+    plusWaitlistCta: "Prévenez-moi à l'ouverture de l'abonnement",
     faqEyebrow: "Bon à savoir",
     faqTitle: "Questions que l'on nous pose",
     faq: [
@@ -531,6 +564,10 @@ const localCopy = {
     plusBody:
       "Training die je week na week kunt volgen, voeding en gewicht op één plek, reispapieren op orde, en alles afdrukbaar voor op de koelkast of voor de dierenarts.",
     plusCta: "Bekijk wat er in DoggMatch+ zit",
+    plusPrice: "€ 7,99 per maand of € 59,99 per jaar (incl. btw waar van toepassing)",
+    plusItems: ["Een wekelijks trainingsplan dat je kunt volgen", "Voerporties en gewichtslog", "Een printbaar Dog Pack met reispapieren"],
+    plusPaused: "Betalen is gepauzeerd terwijl we de facturatie naar Polen verhuizen. Het product is klaar; de betalingen nog niet.",
+    plusWaitlistCta: "Laat me weten wanneer lidmaatschap opent",
     faqEyebrow: "Goed om te weten",
     faqTitle: "Vragen die we vaak krijgen",
     faq: [
@@ -893,11 +930,36 @@ function HomePage() {
           <Eyebrow>{c.plusEyebrow}</Eyebrow>
           <h2 className="display-lg mt-6">{c.plusTitle}</h2>
           <p className="mt-5 leading-relaxed text-muted-foreground">{c.plusBody}</p>
-          <div className="mt-9">
-            <ButtonLink to={withLangPrefix("/plus")} tone="outline" size="lg">
-              {c.plusCta}
+          <p className="mt-6 font-display text-lg tracking-tight">{c.plusPrice}</p>
+          <ul className="mt-4 space-y-2">
+            {c.plusItems.map((item) => (
+              <li key={item} className="flex gap-3 text-[0.9375rem] leading-relaxed">
+                <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-accent" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          {!PURCHASES_ENABLED && (
+            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{c.plusPaused}</p>
+          )}
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <ButtonLink
+              to={withLangPrefix("/plus")}
+              hash={PURCHASES_ENABLED ? "membership" : "waitlist"}
+              tone="outline"
+              size="lg"
+            >
+              {PURCHASES_ENABLED ? c.plusCta : c.plusWaitlistCta}
               <Arrow />
             </ButtonLink>
+            {!PURCHASES_ENABLED && (
+              <Link
+                to={withLangPrefix("/plus")}
+                className="text-[0.9375rem] font-medium underline underline-offset-4 decoration-border-strong hover:decoration-foreground"
+              >
+                {c.plusCta}
+              </Link>
+            )}
           </div>
         </div>
       </Section>
@@ -924,7 +986,12 @@ function HomePage() {
                 {t.home.lifeBody}
               </p>
               <div className="mt-8">
-                <ButtonLink to={withLangPrefix("/dog-life")} tone="accent" size="lg">
+                <ButtonLink
+                  to={withLangPrefix("/dog-life")}
+                  tone="outline"
+                  size="lg"
+                  className="border-ivory/50 text-ivory hover:border-ivory hover:bg-ivory/10"
+                >
                   {t.home.lifeCta}
                   <Arrow />
                 </ButtonLink>
@@ -957,29 +1024,12 @@ function HomePage() {
           <p className="mt-5 text-lg text-muted-foreground">{t.home.closingBody}</p>
           <div className="mt-10 flex justify-center">
             <ButtonLink to={withLangPrefix("/find-my-dog")} size="lg">
-              {t.home.closingCta}
+              {t.home.heroCta}
               <Arrow />
             </ButtonLink>
           </div>
         </div>
       </Section>
-
-      {/* ------------------------------------------- Anchors for this page */}
-      <nav aria-label={c.jumpLabel} className="container-page mt-16 md:mt-20">
-        <h2 className="eyebrow">{c.jumpTitle}</h2>
-        <ul className="mt-4 flex flex-wrap gap-2">
-          {SECTION_IDS.map((id) => (
-            <li key={id}>
-              <a
-                href={`#${id}`}
-                className="inline-flex min-h-11 items-center rounded-full border border-border bg-surface px-4 text-sm transition-colors hover:border-primary hover:text-primary"
-              >
-                {c.anchors[id]}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
 
       {/* ------------------------- Shareable link for each language version */}
       <LanguageShare c={c} />

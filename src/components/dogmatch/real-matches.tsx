@@ -188,16 +188,36 @@ const copy = {
 export function RealMatchesSection({ className }: { className?: string }) {
   const c = useCopy(copy);
 
-  const cards = SCENARIOS.map(({ key, profile }) => {
+  const runs = SCENARIOS.map(({ key, profile }) => {
     const result = matchBreeds(profile)[0]!;
-    const traits = breedById[result.breedId].traits;
-    const insights = matchInsights(traits, profile);
+    const insights = matchInsights(breedById[result.breedId].traits, profile);
+    return { key, result, insights };
+  });
+
+  // The engine's first "fit" line is often the same generic one for every profile
+  // ("the walking and running lines up…"). Give each card its own quote: prefer the
+  // line that appears in the fewest scenarios, and never reuse one across cards.
+  const seen = new Map<string, number>();
+  for (const { insights } of runs)
+    for (const text of new Set(insights.fits.map((f) => f.text)))
+      seen.set(text, (seen.get(text) ?? 0) + 1);
+  const used = new Set<string>();
+  const quoteFor = (fits: { text: string }[]) => {
+    const pool = fits.filter((f) => !used.has(f.text));
+    const best = [...(pool.length ? pool : fits)].sort(
+      (x, y) => (seen.get(x.text) ?? 0) - (seen.get(y.text) ?? 0),
+    )[0]?.text;
+    if (best) used.add(best);
+    return best;
+  };
+
+  const cards = runs.map(({ key, result, insights }) => {
     return {
       key,
       context: c.scenarios[key as keyof typeof c.scenarios].context,
       breedName: breedContent()[result.breedId].displayName,
       score: result.score,
-      fit: insights.fits[0]?.text,
+      fit: quoteFor(insights.fits),
       tradeoff: insights.tradeoffs[0]?.text,
     };
   });

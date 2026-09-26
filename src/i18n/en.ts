@@ -127,7 +127,7 @@ export const en = {
     lifeCta: "Find Places Near Me",
     closingTitle: "Take your time. This is a decision worth getting right.",
     closingBody: "We'll help you think it through, honestly.",
-    closingCta: "Let's Begin",
+    closingCta: "Find My Dog",
   },
   quiz: {
     intro: "Find My Dog",
