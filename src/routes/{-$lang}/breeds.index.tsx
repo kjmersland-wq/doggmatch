@@ -84,47 +84,47 @@ export const Route = createFileRoute("/{-$lang}/breeds/")({
 const pageCopy = {
   en: {
     intro:
-      "Our deterministic matching engine scores {count} published breeds, all in the same way. You'll find every one below, each with a full, verified editorial profile rather than a thin trait sheet.",
+      "Our deterministic matching engine scores {count} published breeds, all in the same way. You'll find every one below, each with an honest profile, and some with a longer Editorial Deep-Dive.",
     deepDiveBadge: "Editorial Deep-Dive",
   },
   no: {
     intro:
-      "Vår deterministiske matchemotor vurderer {count} publiserte raser, alle på samme måte. Under finner du hver eneste av dem, med en fullstendig, verifisert redaksjonell profil i stedet for et tynt egenskapsark.",
+      "Vår deterministiske matchemotor vurderer {count} publiserte raser, alle på samme måte. Under finner du hver eneste av dem, alle med en ærlig profil, og noen med en lengre redaksjonell dybdeprofil.",
     deepDiveBadge: "Redaksjonell dybdeprofil",
   },
   pl: {
     intro:
-      "Nasz deterministyczny silnik dopasowania ocenia {count} opublikowanych ras, wszystkie w ten sam sposób. Poniżej znajdziesz każdą z nich – z pełnym, zweryfikowanym profilem redakcyjnym, a nie skróconą kartą cech.",
+      "Nasz deterministyczny silnik dopasowania ocenia {count} opublikowanych ras, wszystkie w ten sam sposób. Poniżej znajdziesz każdą z nich – każda ma uczciwy profil, a niektóre także dłuższy, pogłębiony profil redakcyjny.",
     deepDiveBadge: "Pogłębiony profil redakcyjny",
   },
   dk: {
     intro:
-      "Vores deterministiske matchmotor vurderer {count} udgivne racer, alle på samme måde. Nedenfor finder du hver eneste af dem, med en fuld, verificeret redaktionel profil frem for et tyndt egenskabsark.",
+      "Vores deterministiske matchmotor vurderer {count} udgivne racer, alle på samme måde. Nedenfor finder du hver eneste af dem, alle med en ærlig profil, og nogle med en længere redaktionel dybdeprofil.",
     deepDiveBadge: "Redaktionel dybdeprofil",
   },
   se: {
     intro:
-      "Vår deterministiska matchmotor bedömer {count} publicerade raser, alla på samma sätt. Nedan hittar du varenda en, med en fullständig, verifierad redaktionell profil i stället för ett tunt egenskapsblad.",
+      "Vår deterministiska matchmotor bedömer {count} publicerade raser, alla på samma sätt. Nedan hittar du varenda en, alla med en ärlig profil, och några med en längre redaktionell djupprofil.",
     deepDiveBadge: "Redaktionell djupprofil",
   },
   fi: {
     intro:
-      "Deterministinen täsmäysmoottorimme arvioi {count} julkaistua rotua, kaikki samalla tavalla. Alta löydät jokaisen niistä, täydellä, varmennetulla toimituksellisella profiililla ohuen ominaisuuslistan sijaan.",
+      "Deterministinen täsmäysmoottorimme arvioi {count} julkaistua rotua, kaikki samalla tavalla. Alta löydät jokaisen niistä: jokaisella on rehellinen profiili, ja joillakin on lisäksi pidempi toimituksellinen syväsukellus.",
     deepDiveBadge: "Toimituksellinen syväsukellus",
   },
   de: {
     intro:
-      "Unsere deterministische Matching-Engine bewertet {count} veröffentlichte Rassen, alle auf dieselbe Weise. Unten findest du jede einzelne, mit einem vollständigen, verifizierten Redaktionsprofil statt einer dünnen Merkmalsliste.",
+      "Unsere deterministische Matching-Engine bewertet {count} veröffentlichte Rassen, alle auf dieselbe Weise. Unten findest du jede einzelne, alle mit einem ehrlichen Profil, einige mit einer ausführlicheren redaktionellen Tiefenrecherche.",
     deepDiveBadge: "Redaktionelle Tiefenrecherche",
   },
   fr: {
     intro:
-      "Notre moteur de matching déterministe évalue {count} races publiées, toutes selon la même méthode. Vous les trouverez toutes ci-dessous, chacune avec un profil éditorial complet et vérifié plutôt qu'une simple fiche de traits.",
+      "Notre moteur de matching déterministe évalue {count} races publiées, toutes selon la même méthode. Vous les trouverez toutes ci-dessous, chacune avec un profil honnête, et certaines avec en plus un dossier éditorial approfondi.",
     deepDiveBadge: "Dossier éditorial approfondi",
   },
   nl: {
     intro:
-      "Onze deterministische matchmachine beoordeelt {count} gepubliceerde rassen, allemaal op dezelfde manier. Hieronder vind je ze stuk voor stuk, met een volledig, geverifieerd redactioneel profiel in plaats van een summier kenmerkenblaadje.",
+      "Onze deterministische matchmachine beoordeelt {count} gepubliceerde rassen, allemaal op dezelfde manier. Hieronder vind je ze stuk voor stuk, elk met een eerlijk profiel, en sommige met een langere redactionele verdieping.",
     deepDiveBadge: "Redactionele verdieping",
   },
 } as const;
