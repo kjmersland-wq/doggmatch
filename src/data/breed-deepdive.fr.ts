@@ -51,7 +51,7 @@ export const breedDeepDiveFr: Partial<Record<BreedId, BreedDeepDive>> = {
     originalPurpose:
       "Le Cavalier a été recréé en Angleterre dans les années 1920 pour ressembler aux petits épagneuls des tableaux de la cour de Charles II, et il est depuis toujours un chien de compagnie dévoué.",
     healthConsiderations:
-      "La maladie de la valve mitrale est très fréquente et commence souvent à l’âge adulte moyen : demandez à voir des certificats cardiaques récents pour les deux parents. La syringomyélie est aussi une vraie préoccupation, et des parents dépistés par IRM valent la peine d’attendre. Des tests ADN existent pour l’episodic falling et le dry eye/curly coat.",
+      "Les problèmes cardiaques sont souvent observés dans la race, fréquemment à partir de la maturité : demandez à l'éleveur quels contrôles cardiaques ont passés les deux parents. La syringomyélie est une autre affection dont on parle souvent chez le cavalier, posez donc aussi la question. Lisez le profil de la race et demandez à un vétérinaire quels examens ont du sens. Repères généraux, pas un avis vétérinaire.",
     poorMatchFor: [
       "Votre Cavalier resterait seul la plus grande partie de chaque journée de semaine",
       "Des contrôles cardiaques réguliers, et peut-être un traitement à vie, ne rentrent pas dans le budget",

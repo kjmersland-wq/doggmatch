@@ -51,7 +51,7 @@ export const breedDeepDiveDe: Partial<Record<BreedId, BreedDeepDive>> = {
     originalPurpose:
       "Der Cavalier wurde in den 1920er-Jahren in England wiederbelebt, um den kleinen Spaniels auf den Gemälden vom Hof Karls II. zu gleichen, und ist seit jeher ein hingebungsvoller Schoßhund.",
     healthConsiderations:
-      "Herzklappenerkrankungen sind sehr häufig und beginnen oft im mittleren Alter. Lassen Sie sich daher aktuelle Herzbefunde beider Elterntiere zeigen. Auch Syringomyelie ist ein ernstes Thema, und es lohnt sich, auf MRT-untersuchte Eltern zu warten. Für Episodic Falling und Dry Eye/Curly Coat gibt es DNA-Tests.",
+      "Herzprobleme sieht man bei dieser Rasse häufig, oft ab dem mittleren Alter; fragen Sie die Züchterin oder den Züchter deshalb, welche Herzuntersuchungen beide Elterntiere hatten. Syringomyelie ist eine weitere Erkrankung, die bei Cavalieren häufig besprochen wird, fragen Sie also auch danach. Lesen Sie das Rassenprofil und fragen Sie eine Tierärztin oder einen Tierarzt, welche Untersuchungen sinnvoll sind. Allgemeine Orientierung, kein tierärztlicher Rat.",
     poorMatchFor: [
       "Ihr Cavalier wäre an den meisten Wochentagen überwiegend allein",
       "Regelmäßige Herzkontrollen und vielleicht lebenslange Medikamente sind im Budget nicht drin",

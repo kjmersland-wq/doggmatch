@@ -61,7 +61,7 @@ export const breedDeepDiveEn: Partial<Record<BreedId, BreedDeepDive>> = {
     originalPurpose:
       "Cavaliers were brought back in 1920s England to match the little spaniels in paintings from Charles II's court, and they've been devoted lap dogs from the start.",
     healthConsiderations:
-      "Heart valve disease is very common and often begins in middle age, so ask to see recent heart certificates for both parents. Syringomyelia is another real concern, and parents with MRI screening are well worth waiting for. DNA tests exist for episodic falling and dry eye/curly coat.",
+      "Heart problems are commonly seen in the breed, often from middle age, so ask the breeder what heart checks both parents had. Syringomyelia is another condition commonly discussed with Cavaliers, so ask about that too. Read the breed profile and ask a vet what checks make sense. General guidance, not a vet.",
     poorMatchFor: [
       "Your Cavalier would be on their own for most of each weekday",
       "Regular heart check-ups, and perhaps lifelong medication, wouldn't fit the budget",

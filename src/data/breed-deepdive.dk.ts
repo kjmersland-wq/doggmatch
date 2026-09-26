@@ -51,7 +51,7 @@ export const breedDeepDiveDk: Partial<Record<BreedId, BreedDeepDive>> = {
     originalPurpose:
       "Cavalieren blev genskabt i England i 1920'erne for at ligne de små spaniels på malerierne fra Karl II's hof, og den har været en hengiven skødehund fra første dag.",
     healthConsiderations:
-      "Hjerteklapsygdom er meget almindelig og starter ofte i den midaldrende alder, så bed om at se friske hjerteattester for begge forældre. Syringomyeli er også en reel bekymring, og det er værd at vente på MR-scannede forældre. Der findes DNA-tests for episodic falling og dry eye/curly coat.",
+      "Hjerteproblemer ses ofte i racen, gerne fra midten af livet, så spørg opdrætteren, hvilke hjertetjek begge forældre har fået. Syringomyeli er en anden tilstand, der ofte nævnes for cavalier, så spørg til den også. Læs racens profil og spørg en dyrlæge, hvilke undersøgelser der giver mening. Generel vejledning, ikke dyrlægeråd.",
     poorMatchFor: [
       "Din cavalier ville være alene det meste af hver hverdag",
       "Jævnlige hjertetjek, og måske livslang medicin, kan ikke være i budgettet",

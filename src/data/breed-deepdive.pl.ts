@@ -51,7 +51,7 @@ export const breedDeepDivePl: Partial<Record<BreedId, BreedDeepDive>> = {
     originalPurpose:
       "Cavaliera odtworzono w Anglii w latach 20. XX wieku, by przypominał małe spaniele z obrazów dworu Karola II, i od początku jest oddanym psem do towarzystwa.",
     healthConsiderations:
-      "Choroba zastawki mitralnej zdarza się bardzo często i zwykle zaczyna się w średnim wieku, więc poproś o aktualne wyniki badań serca obojga rodziców. Syringomielia to także poważny problem, a rodzice przebadani rezonansem są warci czekania. Istnieją testy DNA w kierunku episodic falling i dry eye/curly coat.",
+      "Problemy z sercem często widuje się w tej rasie, zwykle od średniego wieku, więc zapytaj hodowcę, jakie badania serca mieli oboje rodzice. Syringomielia to inna choroba, o której często mówi się w przypadku cavalierów, warto więc zapytać i o nią. Przeczytaj profil rasy i zapytaj weterynarza, jakie badania mają sens. Ogólne wskazówki, nie porada weterynaryjna.",
     poorMatchFor: [
       "Twój cavalier zostawałby sam przez większą część każdego dnia roboczego",
       "Regularne badania serca, a może i leczenie do końca życia, nie mieszczą się w budżecie",

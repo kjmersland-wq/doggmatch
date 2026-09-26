@@ -51,7 +51,7 @@ export const breedDeepDiveSe: Partial<Record<BreedId, BreedDeepDive>> = {
     originalPurpose:
       "Cavaliern återskapades i England på 1920-talet för att likna de små spanielerna i målningarna från Karl II:s hov, och har varit en hängiven knähund från första stund.",
     healthConsiderations:
-      "Hjärtklaffsjukdom är mycket vanligt och börjar ofta i medelåldern, så be att få se färska hjärtintyg för båda föräldrarna. Syringomyeli är också ett verkligt bekymmer, och det är väl värt att vänta på MR-undersökta föräldrar. Det finns DNA-tester för episodic falling och dry eye/curly coat.",
+      "Hjärtproblem ses ofta i rasen, gärna från medelåldern, så fråga uppfödaren vilka hjärtkontroller båda föräldrarna har gjort. Syringomyeli är ett annat tillstånd som ofta nämns för cavalier, så fråga om den också. Läs rasens profil och fråga en veterinär vilka undersökningar som är vettiga. Allmän vägledning, inte veterinärråd.",
     poorMatchFor: [
       "Din cavalier skulle vara ensam större delen av varje vardag",
       "Regelbundna hjärtkontroller, och kanske livslång medicin, ryms inte i budgeten",

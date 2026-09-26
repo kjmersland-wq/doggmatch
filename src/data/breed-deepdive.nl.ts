@@ -51,7 +51,7 @@ export const breedDeepDiveNl: Partial<Record<BreedId, BreedDeepDive>> = {
     originalPurpose:
       "De Cavalier werd in de jaren twintig in Engeland opnieuw gefokt om te lijken op de kleine spaniëls op schilderijen van het hof van Karel II, en is vanaf het begin een toegewijde schoothond geweest.",
     healthConsiderations:
-      "Hartklepziekte komt heel vaak voor en begint meestal op middelbare leeftijd, dus vraag om recente hartuitslagen van beide ouders. Syringomyelie is ook een serieuze zorg, en ouders met een MRI-screening zijn het wachten meer dan waard. Er bestaan DNA-tests voor episodic falling en dry eye/curly coat.",
+      "Hartproblemen zie je bij dit ras vaak, meestal vanaf middelbare leeftijd, dus vraag de fokker welke hartcontroles beide ouders hebben gehad. Syringomyelie is een andere aandoening waar bij de cavalier vaak over gesproken wordt, dus vraag daar ook naar. Lees het rasprofiel en vraag een dierenarts welke onderzoeken zinvol zijn. Algemene richtlijn, geen dierenartsadvies.",
     poorMatchFor: [
       "Uw Cavalier zou het grootste deel van elke werkdag alleen zijn",
       "Regelmatige hartcontroles, en misschien levenslang medicijnen, passen niet in het budget",

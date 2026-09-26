@@ -51,7 +51,7 @@ export const breedDeepDiveFi: Partial<Record<BreedId, BreedDeepDive>> = {
     originalPurpose:
       "Cavalier luotiin uudelleen Englannissa 1920-luvulla muistuttamaan Kaarle II:n hovin maalausten pieniä spanieleita, ja se on alusta asti ollut omistautunut sylikoira.",
     healthConsiderations:
-      "Sydämen läppävika on hyvin yleinen ja alkaa usein keski-iässä, joten pyydä nähtäväksi kummankin vanhemman tuoreet sydäntodistukset. Myös syringomyelia on todellinen huoli, ja magneettikuvattuja vanhempia kannattaa odottaa. DNA-testit ovat saatavilla episodic falling- ja dry eye/curly coat -sairauksiin.",
+      "Sydänongelmia nähdään rodussa usein, tavallisesti keski-iästä alkaen, joten kysy kasvattajalta, mitkä sydäntutkimukset kummallekin vanhemmalle on tehty. Syringomyelia on toinen tila, josta cavalieren yhteydessä puhutaan usein, joten kysy siitäkin. Lue rodun profiili ja kysy eläinlääkäriltä, mitkä tutkimukset ovat järkeviä. Yleistä ohjausta, ei eläinlääkärin neuvo.",
     poorMatchFor: [
       "Cavalier olisi yksin suurimman osan jokaisesta arkipäivästä",
       "Säännölliset sydäntarkastukset ja ehkä elinikäinen lääkitys eivät mahdu budjettiin",

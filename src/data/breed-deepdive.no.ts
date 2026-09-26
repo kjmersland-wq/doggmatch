@@ -51,7 +51,7 @@ export const breedDeepDiveNo: Partial<Record<BreedId, BreedDeepDive>> = {
     originalPurpose:
       "Cavalieren ble gjenskapt i England på 1920-tallet for å ligne de små spanielene i maleriene fra Karl IIs hoff, og har vært en hengiven fanghund fra første stund.",
     healthConsiderations:
-      "Hjerteklaffsykdom er svært vanlig og starter ofte i middelalderen, så be om å få se ferske hjerteattester for begge foreldrene. Syringomyeli er også en reell bekymring, og det er vel verdt å vente på foreldre som er MR-undersøkt. Det finnes DNA-tester for episodic falling og dry eye/curly coat.",
+      "Hjerteproblemer ses ofte i rasen, gjerne fra midt i livet, så spør oppdretteren hvilke hjertesjekker begge foreldrene har hatt. Syringomyeli er en annen tilstand som ofte nevnes for cavalier, så spør om den også. Les rasens profil og spør en veterinær hvilke undersøkelser som gir mening. Generell veiledning, ikke veterinærråd.",
     poorMatchFor: [
       "Cavalieren ville vært alene det meste av hver ukedag",
       "Jevnlige hjertekontroller, og kanskje livslang medisin, får ikke plass i budsjettet",
