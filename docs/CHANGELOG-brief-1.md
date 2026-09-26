@@ -44,3 +44,12 @@ All new strings use the existing per-component `useCopy` maps with all nine loca
 - Health claims now name a body already in `src/data/sources/registry.ts` and end with "general guidance, not a vet": The Kennel Club (UK) and RVC VetCompass for breed health information, the British Veterinary Association for heat risk. The guide ends with a note linking to `/sources`.
 - Claims with no source in the registry are softened to "commonly seen in the breed — read the breed profile and ask a vet": Cavalier heart problems, Italian Greyhound legs, flat-faced breathing, back trouble in long-backed dogs. Removed: "very common", "often need surgery", "break easily", "heart screening".
 - The homepage card keeps the Cavalier; French Bulldog is not on it. Matching math and homepage order untouched.
+
+## Guides card + twenty more breed deep-dives
+
+- **/guides**: new card `calmer-companion` (all nine locales) after "Calm dogs for quieter homes", which is unchanged. With seven cards the last one spans the row.
+- **Breed count**: 78 engine breeds, 78 published pages (each with portrait, profile, trait data, cost and Compare), 10 deep-dives before this pass. Adding breeds to the engine would change matching, so the "missing" editorial layer is the deep-dive (purpose, health, poor match, trade-offs). 20 added, 30 of 78 now.
+- **The 20** (in order): whippet, greyhound, poodle, bichon-frise, maltese, havanese, italian-greyhound, pug, shih-tzu, golden-retriever, boston-terrier, papillon, lhasa-apso, miniature-schnauzer, labradoodle, cavapoo, yorkshire-terrier, siberian-husky, pembroke-welsh-corgi, shiba-inu. Chosen from calmer-companion / apartment / first-dog / low-shedding / mismatch guides, the homepage cards and quiz top-3 frequency, then popular searches.
+- Files: `src/data/breed-deepdive-more.<locale>.ts`, merged over the base profiles in `breed-content.ts`. Health lines follow the trust rule (commonly seen, read the breed profile and ask a vet, "general guidance, not a vet"; British Veterinary Association only for heat risk in flat-faced breeds).
+- Routes, sitemap and `/breeds` already cover all 78 breeds, so nothing new to register.
+- Note: the older Cavalier deep-dive still says heart valve disease is "very common"; it predates the trust pass and was not touched.

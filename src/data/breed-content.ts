@@ -26,6 +26,15 @@ import { breedDeepDiveFi } from "./breed-deepdive.fi";
 import { breedDeepDiveDe } from "./breed-deepdive.de";
 import { breedDeepDiveFr } from "./breed-deepdive.fr";
 import { breedDeepDiveNl } from "./breed-deepdive.nl";
+import { breedDeepDiveMoreEn } from "./breed-deepdive-more.en";
+import { breedDeepDiveMoreNo } from "./breed-deepdive-more.no";
+import { breedDeepDiveMorePl } from "./breed-deepdive-more.pl";
+import { breedDeepDiveMoreDk } from "./breed-deepdive-more.dk";
+import { breedDeepDiveMoreSe } from "./breed-deepdive-more.se";
+import { breedDeepDiveMoreFi } from "./breed-deepdive-more.fi";
+import { breedDeepDiveMoreDe } from "./breed-deepdive-more.de";
+import { breedDeepDiveMoreFr } from "./breed-deepdive-more.fr";
+import { breedDeepDiveMoreNl } from "./breed-deepdive-more.nl";
 import type { BreedId } from "./breeds";
 
 export type { BreedContent };
@@ -45,19 +54,19 @@ function withDeepDive(
   return merged;
 }
 
-const english = withDeepDive({ ...breedContentEn, ...breedContentNewEn }, breedDeepDiveEn);
+const english = withDeepDive({ ...breedContentEn, ...breedContentNewEn }, { ...breedDeepDiveEn, ...breedDeepDiveMoreEn });
 
 /** Built once: each language's full prose, with English underneath as the fallback. */
 const byLocale = {
   en: english,
-  no: { ...english, ...withDeepDive({ ...breedContentNo, ...breedContentNewNo }, breedDeepDiveNo) },
-  pl: { ...english, ...withDeepDive({ ...breedContentPl, ...breedContentNewPl }, breedDeepDivePl) },
-  dk: { ...english, ...withDeepDive({ ...breedContentDk, ...breedContentNewDk }, breedDeepDiveDk) },
-  se: { ...english, ...withDeepDive({ ...breedContentSe, ...breedContentNewSe }, breedDeepDiveSe) },
-  fi: { ...english, ...withDeepDive({ ...breedContentFi, ...breedContentNewFi }, breedDeepDiveFi) },
-  de: { ...english, ...withDeepDive({ ...breedContentDe, ...breedContentNewDe }, breedDeepDiveDe) },
-  fr: { ...english, ...withDeepDive({ ...breedContentFr, ...breedContentNewFr }, breedDeepDiveFr) },
-  nl: { ...english, ...withDeepDive({ ...breedContentNl, ...breedContentNewNl }, breedDeepDiveNl) },
+  no: { ...english, ...withDeepDive({ ...breedContentNo, ...breedContentNewNo }, { ...breedDeepDiveNo, ...breedDeepDiveMoreNo }) },
+  pl: { ...english, ...withDeepDive({ ...breedContentPl, ...breedContentNewPl }, { ...breedDeepDivePl, ...breedDeepDiveMorePl }) },
+  dk: { ...english, ...withDeepDive({ ...breedContentDk, ...breedContentNewDk }, { ...breedDeepDiveDk, ...breedDeepDiveMoreDk }) },
+  se: { ...english, ...withDeepDive({ ...breedContentSe, ...breedContentNewSe }, { ...breedDeepDiveSe, ...breedDeepDiveMoreSe }) },
+  fi: { ...english, ...withDeepDive({ ...breedContentFi, ...breedContentNewFi }, { ...breedDeepDiveFi, ...breedDeepDiveMoreFi }) },
+  de: { ...english, ...withDeepDive({ ...breedContentDe, ...breedContentNewDe }, { ...breedDeepDiveDe, ...breedDeepDiveMoreDe }) },
+  fr: { ...english, ...withDeepDive({ ...breedContentFr, ...breedContentNewFr }, { ...breedDeepDiveFr, ...breedDeepDiveMoreFr }) },
+  nl: { ...english, ...withDeepDive({ ...breedContentNl, ...breedContentNewNl }, { ...breedDeepDiveNl, ...breedDeepDiveMoreNl }) },
 } as Record<Locale, Record<BreedId, BreedContent>>;
 
 /**
