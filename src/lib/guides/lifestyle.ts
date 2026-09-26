@@ -3048,7 +3048,7 @@ export const LIFESTYLE_GUIDES = [
  */
 export const GUIDE_HUB_LINKS: Record<
   string,
-  { path: string; label: { en: string; no: string; pl: string } }
+  { path: string; label: { en: string; no: string; pl: string } & Partial<Record<Locale, string>> }
 > = {
   "family-dogs": {
     path: "/best-dog-breeds-for-families",
@@ -3088,6 +3088,20 @@ export const GUIDE_HUB_LINKS: Record<
       en: "Read the honest guide to low-shedding dogs and allergies",
       no: "Les den ærlige guiden om lite røytende hunder og allergi",
       pl: "Przeczytaj szczery przewodnik o psach mało liniących i alergii",
+    },
+  },
+  "calmer-companion": {
+    path: "/guides/a-calmer-companion",
+    label: {
+      en: "Read the guide to a calmer companion",
+      no: "Les guiden til en roligere følgesvenn",
+      pl: "Przeczytaj przewodnik o spokojnym towarzyszu",
+      dk: "Læs guiden til en roligere følgesvend",
+      se: "Läs guiden till en lugnare följeslagare",
+      fi: "Lue opas rauhalliseen kumppaniin",
+      de: "Den Ratgeber für einen ruhigen Begleiter lesen",
+      fr: "Lire le guide du compagnon plus calme",
+      nl: "Lees de gids over een rustigere metgezel",
     },
   },
   "yearly-cost": {

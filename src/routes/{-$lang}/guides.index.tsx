@@ -132,6 +132,18 @@ const copy = {
           "Greyhound, cavalier King Charles spaniel, bernese mountain dog and older rescues of many breeds all fit quieter homes well.",
       },
       {
+        id: "calmer-companion",
+        title: "A calmer companion, for daily walks",
+        body: "You want a kind, steady dog to walk beside, and a home that stays easy — not sport, not status. Here's how to find one.",
+        points: [
+          "'Not too big' is about handling: can you hold the lead on a slippery pavement and lift your dog into the car?",
+          "'Easy' means trainable — a calm dog that ignores you isn't easy.",
+          "Small isn't the same as easy: many small breeds struggle with being alone and need regular grooming.",
+        ],
+        close:
+          "Seven breeds worth meeting, each with the honest catch — and why we left flat-faced breeds off the list.",
+      },
+      {
         id: "active-life",
         title: "Dogs for people who like to move",
         body: "Be honest about the week you actually have, not the one you'd like to have.",
@@ -229,6 +241,18 @@ const copy = {
         ],
         close:
           "Greyhound, cavalier king charles spaniel, berner sennenhund og eldre omplasseringshunder passer godt i stille hjem.",
+      },
+      {
+        id: "calmer-companion",
+        title: "En roligere følgesvenn til daglige turer",
+        body: "Du vil ha en snill, stødig hund å gå ved siden av, og et hjem som forblir enkelt – ikke sport, ikke status. Slik finner du en.",
+        points: [
+          "«Ikke for stor» handler om håndtering: klarer du å holde i båndet på glatt fortau og løfte hunden inn i bilen?",
+          "«Lett» betyr trenbar – en rolig hund som ignorerer deg er ikke lett.",
+          "Liten betyr ikke lett: mange små raser takler dårlig å være alene og trenger jevnlig stell.",
+        ],
+        close:
+          "Sju raser verdt å møte, hver med sitt ærlige minus – og hvorfor vi lot de flatnesete rasene stå utenfor.",
       },
       {
         id: "active-life",
@@ -330,6 +354,18 @@ const copy = {
           "Greyhound, cavalier king charles spaniel, berneński pies pasterski i starsze psy z adopcji dobrze pasują do cichych domów.",
       },
       {
+        id: "calmer-companion",
+        title: "Spokojny towarzysz na codzienne spacery",
+        body: "Chcesz łagodnego, stałego psa u boku i domu, w którym wszystko jest proste – bez sportu i prestiżu. Oto jak go znaleźć.",
+        points: [
+          "„Nie za duży” dotyczy prowadzenia: czy utrzymasz smycz na śliskim chodniku i podniesiesz psa do auta?",
+          "„Łatwy” znaczy dający się szkolić – spokojny pies, który cię ignoruje, nie jest łatwy.",
+          "Mały nie znaczy łatwy: wiele małych ras źle znosi samotność i wymaga regularnej pielęgnacji.",
+        ],
+        close:
+          "Siedem ras wartych poznania, każda z uczciwym minusem – i dlaczego pominęliśmy rasy o spłaszczonym pysku.",
+      },
+      {
         id: "active-life",
         title: "Psy dla osób, które lubią ruch",
         body: "Bądź szczery co do tygodnia, jaki naprawdę masz, a nie tego, jaki chciałbyś mieć.",
@@ -427,6 +463,18 @@ const copy = {
         ],
         close:
           "Greyhound, cavalier king charles spaniel, berner sennenhund og ældre omplaceringshunde af mange racer passer godt i stille hjem.",
+      },
+      {
+        id: "calmer-companion",
+        title: "En roligere følgesvend til daglige gåture",
+        body: "Du vil gerne have en venlig, stabil hund at gå ved siden af og et hjem, der bliver ved med at være nemt – ikke sport, ikke status. Sådan finder du en.",
+        points: [
+          "»Ikke for stor« handler om håndtering: kan du holde snoren på et glat fortov og løfte hunden ind i bilen?",
+          "»Nem« betyder træningsvillig – en rolig hund, der ignorerer dig, er ikke nem.",
+          "Lille betyder ikke nem: mange små racer tåler dårligt at være alene og skal plejes jævnligt.",
+        ],
+        close:
+          "Syv racer, der er værd at møde, hver med sit ærlige minus – og hvorfor vi lod de fladnæsede racer stå udenfor.",
       },
       {
         id: "active-life",
@@ -528,6 +576,18 @@ const copy = {
           "Greyhound, cavalier king charles spaniel, berner sennenhund och äldre omplaceringshundar av många raser passar bra i tysta hem.",
       },
       {
+        id: "calmer-companion",
+        title: "En lugnare följeslagare för dagliga promenader",
+        body: "Du vill ha en snäll, stabil hund att gå bredvid och ett hem som förblir enkelt – inte sport, inte status. Så hittar du en.",
+        points: [
+          "»Inte för stor« handlar om hanterbarhet: klarar du att hålla i kopplet på hal trottoar och lyfta in hunden i bilen?",
+          "»Lätt« betyder träningsbar – en lugn hund som ignorerar dig är inte lätt.",
+          "Liten betyder inte lätt: många små raser klarar sig dåligt ensamma och behöver regelbunden pälsvård.",
+        ],
+        close:
+          "Sju raser värda att träffa, var och en med sitt ärliga minus – och varför vi lämnade de plattnosade raserna utanför.",
+      },
+      {
         id: "active-life",
         title: "Hundar för dig som gillar att röra på dig",
         body: "Var ärlig om den vecka du faktiskt har, inte den du önskar att du hade.",
@@ -627,6 +687,18 @@ const copy = {
           "Vinttikoira, cavalier kingcharlesinspanieli, sveitsinpaimenkoira ja monen rodun iäkkäämmät uudelleensijoitettavat koirat sopivat hyvin hiljaisiin koteihin.",
       },
       {
+        id: "calmer-companion",
+        title: "Rauhallinen kumppani päivittäisille kävelyille",
+        body: "Haluat ystävällisen, tasaisen koiran kävelemään vierellesi ja kodin, joka pysyy helppona – ei urheilua, ei statusta. Näin löydät sellaisen.",
+        points: [
+          "”Ei liian suuri” tarkoittaa käsiteltävyyttä: pystytkö pitämään hihnasta liukkaalla jalkakäytävällä ja nostamaan koiran autoon?",
+          "”Helppo” tarkoittaa koulutettavaa – rauhallinen koira, joka ei kuuntele sinua, ei ole helppo.",
+          "Pieni ei tarkoita helppoa: monet pienet rodut sietävät huonosti yksinoloa ja tarvitsevat säännöllistä hoitoa.",
+        ],
+        close:
+          "Seitsemän rotua, joihin kannattaa tutustua, kullakin rehellinen miinuspuoli – ja miksi jätimme litteänaamaiset rodut pois.",
+      },
+      {
         id: "active-life",
         title: "Koirat sinulle, joka pidät liikkumisesta",
         body: "Ole rehellinen sen viikon suhteen, joka sinulla oikeasti on — älä sen, jonka toivoisit olevan.",
@@ -724,6 +796,18 @@ const copy = {
         ],
         close:
           "Windhund, Cavalier King Charles Spaniel, Berner Sennenhund und ältere Tierschutzhunde vieler Rassen passen gut zu stilleren Zuhause.",
+      },
+      {
+        id: "calmer-companion",
+        title: "Ein ruhiger Begleiter für den täglichen Spaziergang",
+        body: "Du wünschst dir einen freundlichen, verlässlichen Hund an deiner Seite und ein Zuhause, das einfach bleibt – kein Sport, kein Status. So findest du ihn.",
+        points: [
+          "»Nicht zu groß« meint Handhabung: Kannst du die Leine auf glattem Pflaster halten und den Hund ins Auto heben?",
+          "»Leicht« heißt trainierbar – ein ruhiger Hund, der dich ignoriert, ist nicht leicht.",
+          "Klein heißt nicht leicht: Viele kleine Rassen können schlecht allein bleiben und brauchen regelmäßige Pflege.",
+        ],
+        close:
+          "Sieben Rassen zum Kennenlernen, jede mit ihrem ehrlichen Haken – und warum wir kurzköpfige Rassen weggelassen haben.",
       },
       {
         id: "active-life",
@@ -826,6 +910,18 @@ const copy = {
           "Lévrier, cavalier king charles spaniel, bouvier bernois et de nombreux chiens de refuge plus âgés conviennent bien aux foyers tranquilles.",
       },
       {
+        id: "calmer-companion",
+        title: "Un compagnon plus calme pour les balades de tous les jours",
+        body: "Vous voulez un chien gentil et stable à vos côtés, et une maison qui reste simple – ni sport, ni statut. Voici comment le trouver.",
+        points: [
+          "« Pas trop grand » parle de maniabilité : pouvez-vous tenir la laisse sur un trottoir glissant et soulever votre chien pour le mettre en voiture ?",
+          "« Facile » veut dire éducable – un chien calme qui vous ignore n'est pas facile.",
+          "Petit ne veut pas dire facile : beaucoup de petites races supportent mal la solitude et demandent un toilettage régulier.",
+        ],
+        close:
+          "Sept races à rencontrer, chacune avec son revers honnête – et pourquoi nous avons écarté les races à museau plat.",
+      },
+      {
         id: "active-life",
         title: "Chiens pour les personnes qui aiment bouger",
         body: "Soyez honnête sur la semaine que vous avez réellement, pas celle que vous aimeriez avoir.",
@@ -925,6 +1021,18 @@ const copy = {
           "Windhond, cavalier king charles spaniël, berner sennenhond en oudere herplaatsingshonden van veel rassen passen goed bij stillere huishoudens.",
       },
       {
+        id: "calmer-companion",
+        title: "Een rustigere metgezel voor de dagelijkse wandeling",
+        body: "Je wilt een vriendelijke, stabiele hond naast je en een huis dat makkelijk blijft – geen sport, geen status. Zo vind je er een.",
+        points: [
+          "'Niet te groot' gaat over hanteerbaarheid: kun je de lijn vasthouden op een gladde stoep en je hond de auto in tillen?",
+          "'Makkelijk' betekent trainbaar – een rustige hond die je negeert, is niet makkelijk.",
+          "Klein is niet hetzelfde als makkelijk: veel kleine rassen kunnen slecht alleen zijn en hebben regelmatig verzorging nodig.",
+        ],
+        close:
+          "Zeven rassen om te ontmoeten, elk met de eerlijke keerzijde – en waarom we platsnuitige rassen hebben weggelaten.",
+      },
+      {
         id: "active-life",
         title: "Honden voor mensen die graag bewegen",
         body: "Wees eerlijk over de week die je echt hebt, niet de week die je zou willen hebben.",
@@ -966,7 +1074,7 @@ function GuidesPage() {
 
       <ul className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
         {c.guides.map((guide) => (
-          <li key={guide.id} id={guide.id} className="group scroll-mt-28 bg-background p-8 md:p-10">
+          <li key={guide.id} id={guide.id} className="group scroll-mt-28 bg-background p-8 md:p-10 md:[&:last-child:nth-child(odd)]:col-span-2">
             <div className="flex items-start justify-between gap-4">
               <h2 className="display-md">{guide.title}</h2>
               <SectionShare anchor={guide.id} title={guide.title} text={guide.body} />

@@ -377,7 +377,7 @@ const CONTENT: Record<Locale, Locale9> = {
     eyebrow: "Välja hund",
     h1: "En lugnare följeslagare: en snäll, stabil hund för dagliga promenader",
     intro:
-      "Du behöver ingen hund som springer maraton eller får folk att vända sig om. Du vill ha någon stadig att gå bredvid varje dag och ett hem som är tyst och enkelt. Det är en alldeles fin önskan – och mer träffande än »en liten hund«. Här är vad du bör titta på, och de sju raserna som kom bäst ut – var och en med det du bör veta innan du blir kär.",
+      "Du behöver ingen hund som springer maraton eller får folk att vända sig om. Du vill ha någon stadig att gå bredvid varje dag och ett hem som är tyst och enkelt. Det är en alldeles fin önskan – och mer träffande än »en liten hund». Här är vad du bör titta på, och de sju raserna som kom bäst ut – var och en med det du bör veta innan du blir kär.",
     howChosenTitle: "Så valde vi",
     howChosen: [
       "Vi utgick från samma egenskapsdata som matchningsmotorn använder och letade efter lugn energi, lätt träning, lite skällande och måttligt motionsbehov – egenskaperna som gör vardagen mild.",
@@ -391,14 +391,14 @@ const CONTENT: Record<Locale, Locale9> = {
       "Vilken du än fastnar för: träffa den faktiska hunden, och vid en valp föräldrarna. En lugn ras ger ändå då och då en livlig individ, och föräldrarnas temperament säger mer än någon lista.",
     sections: [
       {
-        title: "Storlek: »inte för stor« handlar om hanterbarhet, inte utseende",
+        title: "Storlek: »inte för stor» handlar om hanterbarhet, inte utseende",
         paragraphs: [
           "Det som räknas är om du kan hålla i kopplet på hal trottoar, och om du kan lyfta in hunden i bilen eller upp på veterinärens bord om det behövs. En liten hund är lätt att hantera på nästan alla sätt; en medelstor, väluppfostrad hund fungerar också fint. Blir hunden större måste uppförandet vara riktigt bra.",
           "Riktigt små hundar har egna bekymmer: de är lättare att snubbla på och skada, och de fryser snabbt. En medelstor, kraftig hund är ofta den tryggare följeslagaren.",
         ],
       },
       {
-        title: "Träningsbarhet: vad »lätt« egentligen betyder",
+        title: "Träningsbarhet: vad »lätt» egentligen betyder",
         paragraphs: [
           "En lätt hund vill lösa saker tillsammans med dig: den lär sig en signal på några få repetitioner och lugnar sig efteråt. Det är träningsbarhet, och det är något annat än energi. En lugn hund som ignorerar dig är inte lätt.",
           "Även snabba elever behöver några minuters övning varje dag. Belöningen är en hund som går fint bredvid dig, kommer när du kallar och inte gör varje ringklocka till en händelse.",
@@ -457,7 +457,7 @@ const CONTENT: Record<Locale, Locale9> = {
     eyebrow: "Koiran valinta",
     h1: "Rauhallinen kumppani: ystävällinen, tasainen koira päivittäisille kävelyille",
     intro:
-      "Et tarvitse koiraa, joka juoksee maratonin tai saa ihmiset kääntymään katsomaan. Haluat jonkun tasaisen kävelemään vierellesi joka päivä ja kodin, jossa on rauhallista ja helppoa. Se on täysin hyvä toive – ja tarkempi kuin »pieni koira«. Tässä on, mihin kannattaa katsoa, sekä seitsemän rotua, jotka pärjäsivät parhaiten – kunkin mukana se, mikä kannattaa tietää ennen kuin ihastut.",
+      "Et tarvitse koiraa, joka juoksee maratonin tai saa ihmiset kääntymään katsomaan. Haluat jonkun tasaisen kävelemään vierellesi joka päivä ja kodin, jossa on rauhallista ja helppoa. Se on täysin hyvä toive – ja tarkempi kuin ”pieni koira”. Tässä on, mihin kannattaa katsoa, sekä seitsemän rotua, jotka pärjäsivät parhaiten – kunkin mukana se, mikä kannattaa tietää ennen kuin ihastut.",
     howChosenTitle: "Näin valitsimme",
     howChosen: [
       "Lähdimme samoista ominaisuustiedoista, joita sovitusmoottori käyttää, ja etsimme rauhallista energiaa, helppoa koulutusta, vähäistä haukkumista ja kohtuullista liikunnantarvetta – ominaisuuksia, jotka tekevät arjesta lempeää.",
@@ -471,14 +471,14 @@ const CONTENT: Record<Locale, Locale9> = {
       "Mihin tahansa ihastutkin: tapaa itse koira, ja pennun kohdalla sen vanhemmat. Rauhallisestakin rodusta tulee toisinaan vilkas yksilö, ja vanhempien luonne kertoo enemmän kuin mikään lista.",
     sections: [
       {
-        title: "Koko: »ei liian suuri« tarkoittaa käsiteltävyyttä, ei ulkonäköä",
+        title: "Koko: ”ei liian suuri” tarkoittaa käsiteltävyyttä, ei ulkonäköä",
         paragraphs: [
           "Ratkaisevaa on, pystytkö pitämään hihnasta kiinni liukkaalla jalkakäytävällä ja nostamaan koiran autoon tai eläinlääkärin pöydälle tarvittaessa. Pientä koiraa on helppo käsitellä lähes joka suhteessa; keskikokoinen, hyvin koulutettu koira sopii myös. Jos koira on isompi, käytöksen on oltava todella hyvä.",
           "Aivan pienillä koirilla on omat huolensa: niihin on helpompi kompastua ja ne loukkaantuvat helposti, ja ne palelevat nopeasti. Keskikokoinen, vankka koira on usein turvallisempi kumppani.",
         ],
       },
       {
-        title: "Koulutettavuus: mitä »helppo« oikeasti tarkoittaa",
+        title: "Koulutettavuus: mitä ”helppo” oikeasti tarkoittaa",
         paragraphs: [
           "Helppo koira haluaa selvittää asiat kanssasi: se oppii merkin muutamalla toistolla ja rauhoittuu sen jälkeen. Se on koulutettavuutta, ja se on eri asia kuin energia. Rauhallinen koira, joka ei kuuntele sinua, ei ole helppo.",
           "Nopeatkin oppijat tarvitsevat muutaman minuutin harjoittelun päivässä. Palkkiona on koira, joka kävelee siististi vierellä, tulee kutsuttaessa eikä tee jokaisesta ovikellosta tapahtumaa.",
