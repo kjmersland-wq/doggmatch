@@ -65,3 +65,10 @@ All new strings use the existing per-component `useCopy` maps with all nine loca
 - Order: hero → first question → four lifestyle cards → "what makes this different" (compact, essay paragraph removed, all five points kept) → three steps → breeds → compare → Plus → places → FAQ → closing → language grid. No sections deleted.
 - Cookie notice: while it shows, `<main>` gets extra bottom padding so the last content and quiz options can scroll clear of it (mobile tab bar included).
 - New analytics source: `quiz_started` with `source: home_first_question`.
+
+## Quiz chrome + result polish
+
+- Quiz: the engineer status chip ("Screening against 9 lifestyle dimensions…", "Calculating constraint overlap…", "Deterministic scoring — no AI guesswork…") and its nine locale string sets are removed — no chip. Chapter label, "Question X of Y" and the progress bar stay. Continue on hard-limit questions and auto-advance elsewhere are unchanged.
+- Back after the homepage `?s=` handoff was already correct and quiz state was not touched: question 2 → Back → question 1 with the chosen answer still selected (profile is seeded with it; the radio reads from that profile).
+- Result: when hard limits removed breeds, a calm one-line note sits directly under the hero ("Your non-negotiables ruled out N breeds — we show you which, and why, a little further down" + link to that section), nine locales. Layout otherwise unchanged; Plus teaser is still after the free sections, points to `/plus#waitlist` while `PURCHASES_ENABLED=false`, and no dossier price is shown.
+- Footer legal line ("Built and run by KM TECH LABS, org.nr. 934 044 029, in Kristiansand, Norway") is unchanged everywhere. While the quiz hides the rest of the footer, that line alone stays visible at the bottom.

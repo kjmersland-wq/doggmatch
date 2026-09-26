@@ -923,112 +923,49 @@ const AUTO_ADVANCE_MS = 250;
 const flowCopy = {
   en: {
     chapters: { days: "Your days", home: "Your home", limits: "Your limits" },
-    statusPhrases: [
-      "Screening against 9 lifestyle dimensions…",
-      "Calculating constraint overlap…",
-      "Weighing trait compatibility…",
-      "Cross-referencing breed traits…",
-      "Deterministic scoring — no AI guesswork…",
-    ],
     hardLimitLabel: "Set as Non-Negotiable (Hard Limit)",
     hardLimitNote:
       "Breeds exceeding this boundary will be strictly eliminated from recommendations.",
   },
   no: {
     chapters: { days: "Dagene dine", home: "Hjemmet ditt", limits: "Grensene dine" },
-    statusPhrases: [
-      "Vurderer opp mot 9 livsstilsdimensjoner…",
-      "Beregner overlapp mellom grenser…",
-      "Vekter egenskapskompatibilitet…",
-      "Sammenligner med rasenes egenskaper…",
-      "Deterministisk beregning — ingen KI-gjetting…",
-    ],
     hardLimitLabel: "Sett som ufravikelig grense",
     hardLimitNote: "Raser som går utover denne grensen blir utelukket helt fra forslagene.",
   },
   pl: {
     chapters: { days: "Twoje dni", home: "Twój dom", limits: "Twoje granice" },
-    statusPhrases: [
-      "Sprawdzanie względem 9 wymiarów stylu życia…",
-      "Obliczanie nakładania się ograniczeń…",
-      "Ważenie zgodności cech…",
-      "Porównywanie z cechami ras…",
-      "Deterministyczne wyliczenia — bez zgadywania AI…",
-    ],
     hardLimitLabel: "Ustaw jako warunek bezwzględny",
     hardLimitNote:
       "Rasy, które nie spełniają tego warunku, zostaną całkowicie wykluczone z rekomendacji.",
   },
   dk: {
     chapters: { days: "Dine dage", home: "Dit hjem", limits: "Dine grænser" },
-    statusPhrases: [
-      "Screener mod 9 livsstilsdimensioner…",
-      "Beregner overlap mellem krav…",
-      "Vejer egenskabskompatibilitet…",
-      "Sammenligner med racernes egenskaber…",
-      "Deterministisk beregning — ingen AI-gætteri…",
-    ],
     hardLimitLabel: "Sæt som ufravigeligt krav",
     hardLimitNote: "Racer, der ikke opfylder dette krav, bliver udelukket helt fra anbefalingerne.",
   },
   se: {
     chapters: { days: "Dina dagar", home: "Ditt hem", limits: "Dina gränser" },
-    statusPhrases: [
-      "Screenar mot 9 livsstilsdimensioner…",
-      "Beräknar överlapp mellan krav…",
-      "Väger egenskapskompatibilitet…",
-      "Jämför med rasernas egenskaper…",
-      "Deterministisk beräkning — inga AI-gissningar…",
-    ],
     hardLimitLabel: "Ange som ofrånkomligt krav",
     hardLimitNote: "Raser som inte uppfyller det här kravet utesluts helt från rekommendationerna.",
   },
   fi: {
     chapters: { days: "Päiväsi", home: "Kotisi", limits: "Rajasi" },
-    statusPhrases: [
-      "Tarkistetaan 9 elämäntyylin ulottuvuutta vasten…",
-      "Lasketaan ehtojen päällekkäisyyttä…",
-      "Punnitaan ominaisuuksien yhteensopivuutta…",
-      "Verrataan rotujen ominaisuuksiin…",
-      "Deterministinen laskenta — ei tekoälyn arvailua…",
-    ],
     hardLimitLabel: "Aseta ehdottomaksi kriteeriksi",
     hardLimitNote:
       "Rodut, jotka eivät täytä tätä kriteeriä, suljetaan kokonaan pois suosituksista.",
   },
   de: {
     chapters: { days: "Dein Alltag", home: "Dein Zuhause", limits: "Deine Grenzen" },
-    statusPhrases: [
-      "Abgleich mit 9 Lebensstil-Dimensionen…",
-      "Überschneidung der Ausschlusskriterien wird berechnet…",
-      "Eigenschaftskompatibilität wird gewichtet…",
-      "Abgleich mit Rasseeigenschaften…",
-      "Deterministische Berechnung — kein KI-Raten…",
-    ],
     hardLimitLabel: "Als Ausschlusskriterium festlegen",
     hardLimitNote: "Rassen, die diese Grenze überschreiten, werden strikt aus den Empfehlungen ausgeschlossen.",
   },
   fr: {
     chapters: { days: "Vos journées", home: "Votre foyer", limits: "Vos limites" },
-    statusPhrases: [
-      "Évaluation sur 9 dimensions de style de vie…",
-      "Calcul du chevauchement des contraintes…",
-      "Pondération de la compatibilité des traits…",
-      "Comparaison avec les traits des races…",
-      "Calcul déterministe — aucune estimation par IA…",
-    ],
     hardLimitLabel: "Définir comme critère rédhibitoire",
     hardLimitNote: "Les races dépassant cette limite seront strictement exclues des recommandations.",
   },
   nl: {
     chapters: { days: "Je dagen", home: "Je huis", limits: "Je grenzen" },
-    statusPhrases: [
-      "Toetsing aan 9 leefstijldimensies…",
-      "Overlap tussen criteria wordt berekend…",
-      "Weging van eigenschap-compatibiliteit…",
-      "Vergelijking met raseigenschappen…",
-      "Deterministische berekening — geen AI-giswerk…",
-    ],
     hardLimitLabel: "Instellen als ononderhandelbaar criterium",
     hardLimitNote: "Rassen die deze grens overschrijden, worden volledig uitgesloten van de aanbevelingen.",
   },
@@ -1063,7 +1000,6 @@ function FindMyDogPage() {
   const total = questions.length;
   const selected = profile[question.id];
   const progress = Math.round(((step + (selected ? 1 : 0)) / total) * 100);
-  const statusPhrase = fc.statusPhrases[step % fc.statusPhrases.length];
   const isHardLimitEligible = HARD_LIMIT_QUESTIONS.has(question.id);
   const hardLimitOn = profile[`${question.id}HardLimit`] === "true";
   const chapter = fc.chapters[CHAPTER_OF[question.id] ?? "days"];
@@ -1148,16 +1084,6 @@ function FindMyDogPage() {
             style={{ width: `${progress}%` }}
           />
         </div>
-        <p
-          aria-live="polite"
-          className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-surface px-3 py-1 text-xs text-muted-foreground"
-        >
-          <span
-            className="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-accent"
-            aria-hidden="true"
-          />
-          {statusPhrase}
-        </p>
       </div>
 
       <div key={question.id} className="animate-rise mt-12 flex-1 md:mt-16">
@@ -1314,6 +1240,8 @@ const interactiveResultCopy = {
     adjustBody:
       "Life changes, and sometimes an answer needs a second thought. Change any of these and your matches will reorder straight away.",
     updated: "Your ranking has been updated.",
+    removedNote: "Your non-negotiables ruled out {count} breeds — we show you which, and why, a little further down.",
+    removedNoteLink: "Show me",
     removedEyebrow: "Your non-negotiables",
     removedTitle: "Why some breeds were removed",
     removedBody:
@@ -1334,6 +1262,8 @@ const interactiveResultCopy = {
     adjustBody:
       "Livet endrer seg, og noen ganger fortjener et svar en ny vurdering. Endrer du noe her, oppdateres rekkefølgen med én gang.",
     updated: "Rangeringen din er oppdatert.",
+    removedNote: "Grensene dine utelukket {count} raser – vi viser hvilke, og hvorfor, litt lenger ned.",
+    removedNoteLink: "Vis meg",
     removedEyebrow: "Grensene dine",
     removedTitle: "Hvorfor noen raser ble tatt bort",
     removedBody:
@@ -1354,6 +1284,8 @@ const interactiveResultCopy = {
     adjustBody:
       "Życie się zmienia, a czasem warto jeszcze raz przemyśleć odpowiedź. Zmień dowolną z nich, a kolejność dopasowań od razu się zaktualizuje.",
     updated: "Ranking został zaktualizowany.",
+    removedNote: "Twoje nieprzekraczalne granice wykluczyły {count} ras – niżej pokazujemy, które i dlaczego.",
+    removedNoteLink: "Pokaż",
     removedEyebrow: "Twoje nieprzekraczalne granice",
     removedTitle: "Dlaczego niektóre rasy odpadły",
     removedBody:
@@ -1375,6 +1307,8 @@ const interactiveResultCopy = {
     adjustBody:
       "Livet ændrer sig, og nogle gange fortjener et svar en ny tanke. Ændr noget her, så opdateres rækkefølgen med det samme.",
     updated: "Din rangering er opdateret.",
+    removedNote: "Dine faste grænser udelukkede {count} racer – lidt længere nede viser vi, hvilke og hvorfor.",
+    removedNoteLink: "Vis mig",
     removedEyebrow: "Dine faste grænser",
     removedTitle: "Derfor blev nogle racer sorteret fra",
     removedBody:
@@ -1395,6 +1329,8 @@ const interactiveResultCopy = {
     adjustBody:
       "Livet förändras, och ibland behöver ett svar tänkas igenom en gång till. Ändra något här så uppdateras ordningen direkt.",
     updated: "Din rangordning har uppdaterats.",
+    removedNote: "Dina fasta gränser uteslöt {count} raser – lite längre ner visar vi vilka, och varför.",
+    removedNoteLink: "Visa mig",
     removedEyebrow: "Dina fasta gränser",
     removedTitle: "Därför valdes vissa raser bort",
     removedBody:
@@ -1415,6 +1351,8 @@ const interactiveResultCopy = {
     adjustBody:
       "Elämä muuttuu, ja joskus vastausta kannattaa miettiä uudelleen. Kun muutat jotakin näistä, järjestys päivittyy heti.",
     updated: "Järjestys on päivitetty.",
+    removedNote: "Rajasi sulkivat pois {count} rotua – hieman alempana näytämme, mitkä ja miksi.",
+    removedNoteLink: "Näytä",
     removedEyebrow: "Rajasi",
     removedTitle: "Miksi jotkin rodut jäivät pois",
     removedBody:
@@ -1436,6 +1374,8 @@ const interactiveResultCopy = {
     adjustBody:
       "Das Leben verändert sich, und manchmal lohnt es sich, eine Antwort neu zu bedenken. Ändern Sie hier etwas, wird die Reihenfolge sofort aktualisiert.",
     updated: "Ihre Reihenfolge wurde aktualisiert.",
+    removedNote: "Ihre festen Grenzen haben {count} Rassen ausgeschlossen – etwas weiter unten zeigen wir Ihnen, welche und warum.",
+    removedNoteLink: "Anzeigen",
     removedEyebrow: "Ihre festen Grenzen",
     removedTitle: "Warum einige Rassen aussortiert wurden",
     removedBody:
@@ -1457,6 +1397,8 @@ const interactiveResultCopy = {
     adjustBody:
       "La vie change, et certaines réponses méritent parfois d'être repensées. Modifiez l'une d'elles et le classement s'actualisera aussitôt.",
     updated: "Votre classement a été mis à jour.",
+    removedNote: "Vos limites essentielles ont écarté {count} races – un peu plus bas, nous vous montrons lesquelles, et pourquoi.",
+    removedNoteLink: "Voir lesquelles",
     removedEyebrow: "Vos limites essentielles",
     removedTitle: "Pourquoi certaines races ont été écartées",
     removedBody:
@@ -1478,6 +1420,8 @@ const interactiveResultCopy = {
     adjustBody:
       "Het leven verandert en soms verdient een antwoord een tweede gedachte. Pas hier iets aan en de volgorde wordt meteen bijgewerkt.",
     updated: "Je ranglijst is bijgewerkt.",
+    removedNote: "Jouw vaste grenzen sloten {count} rassen uit – iets verderop laten we zien welke, en waarom.",
+    removedNoteLink: "Toon ze",
     removedEyebrow: "Jouw vaste grenzen",
     removedTitle: "Waarom sommige rassen afvielen",
     removedBody:
@@ -1867,6 +1811,21 @@ function Results({
           </div>
         </div>
       </section>
+
+      {/* hard limits removed breeds: a calm, visible note before anything else */}
+      {eliminated.length > 0 && !limitsRelaxed && (
+        <section className="container-page mt-8" aria-label={ic.removedEyebrow}>
+          <p className="border-l-2 border-border pl-4 text-sm leading-relaxed text-muted-foreground">
+            {interpolate(ic.removedNote, { count: eliminated.length })}{" "}
+            <a
+              href="#removed-breeds-title"
+              className="font-medium text-foreground underline underline-offset-4 hover:text-accent"
+            >
+              {ic.removedNoteLink}
+            </a>
+          </p>
+        </section>
+      )}
 
       {/* what to do with the match: profile, compare, keep, share */}
       <section className="container-page mt-10 md:mt-12">

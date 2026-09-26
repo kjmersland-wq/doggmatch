@@ -74,8 +74,27 @@ const copy = {
 
 export function SiteFooter() {
   const quizActive = useQuizChromeActive();
-  if (quizActive) return null;
+  // During the quiz only the legal line stays; the rest of the footer steps aside.
+  if (quizActive) {
+    return (
+      <div className="container-page pb-6 pt-2">
+        <LegalLine className="text-center" />
+      </div>
+    );
+  }
   return <SiteFooterFull />;
+}
+
+/** "Built and run by KM TECH LABS, org.nr. …" — never hidden; text unchanged until a new entity is supplied. */
+function LegalLine({ className }: { className?: string }) {
+  const t = useT();
+  return (
+    <p className={`text-xs leading-relaxed text-muted-foreground ${className ?? ""}`}>
+      {t.footer.builtBy}{" "}
+      <span className="font-medium tracking-[0.02em] text-foreground">KM TECH LABS</span>,
+      org.nr. 934 044 029, {t.footer.builtIn}
+    </p>
+  );
 }
 
 function SiteFooterFull() {
@@ -135,11 +154,7 @@ function SiteFooterFull() {
             <p className="max-w-md md:text-right">{t.footer.note}</p>
           </div>
 
-          <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
-            {t.footer.builtBy}{" "}
-            <span className="font-medium tracking-[0.02em] text-foreground">KM TECH LABS</span>,
-            org.nr. 934 044 029, {t.footer.builtIn}
-          </p>
+          <LegalLine className="mt-6" />
         </div>
       </div>
     </footer>
