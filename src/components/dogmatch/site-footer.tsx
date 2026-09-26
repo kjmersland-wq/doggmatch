@@ -1,3 +1,4 @@
+import { useQuizChromeActive } from "@/lib/quiz-chrome";
 import { Link } from "@tanstack/react-router";
 import { useCopy, useT } from "@/i18n";
 import { BrandLock } from "./brand-logo";
@@ -72,6 +73,12 @@ const copy = {
 };
 
 export function SiteFooter() {
+  const quizActive = useQuizChromeActive();
+  if (quizActive) return null;
+  return <SiteFooterFull />;
+}
+
+function SiteFooterFull() {
   const t = useT();
   const c = useCopy(copy);
   const year = new Date().getFullYear();

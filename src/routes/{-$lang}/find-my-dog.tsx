@@ -631,6 +631,7 @@ import {
   temperamentLabel,
 } from "@/lib/dossier/content";
 import { track, useVariant } from "@/lib/analytics";
+import { useQuizChrome } from "@/lib/quiz-chrome";
 import { PURCHASES_ENABLED } from "@/lib/purchases";
 import { MatchNotes } from "@/components/dogmatch/match-notes";
 import { CostCalculator } from "@/components/dogmatch/cost-calculator";
@@ -888,8 +889,31 @@ const HARD_LIMIT_QUESTIONS = new Set(["home", "alone", "shedding", "allergy"]);
 /** Sensible, neutral answers applied when a reader skips a non-critical question. */
 const SKIP_DEFAULTS: Record<string, string> = { size: "any", pets: "none" };
 
+/** Three chapters over the same questions — grouping only, order and count are unchanged. */
+const CHAPTER_OF: Record<string, "days" | "home" | "limits"> = {
+  activity: "days",
+  alone: "days",
+  experience: "days",
+  temperament: "days",
+  companionship: "days",
+  home: "home",
+  size: "home",
+  children: "home",
+  pets: "home",
+  shedding: "limits",
+  grooming: "limits",
+  physical: "limits",
+  energyLimit: "limits",
+  allergy: "limits",
+  wellbeing: "limits",
+};
+
+/** Beat before a single-choice answer moves on by itself. */
+const AUTO_ADVANCE_MS = 250;
+
 const flowCopy = {
   en: {
+    chapters: { days: "Your days", home: "Your home", limits: "Your limits" },
     statusPhrases: [
       "Screening against 9 lifestyle dimensions…",
       "Calculating constraint overlap…",
@@ -902,6 +926,7 @@ const flowCopy = {
       "Breeds exceeding this boundary will be strictly eliminated from recommendations.",
   },
   no: {
+    chapters: { days: "Dagene dine", home: "Hjemmet ditt", limits: "Grensene dine" },
     statusPhrases: [
       "Vurderer opp mot 9 livsstilsdimensjoner…",
       "Beregner overlapp mellom grenser…",
@@ -913,6 +938,7 @@ const flowCopy = {
     hardLimitNote: "Raser som går utover denne grensen blir utelukket helt fra forslagene.",
   },
   pl: {
+    chapters: { days: "Twoje dni", home: "Twój dom", limits: "Twoje granice" },
     statusPhrases: [
       "Sprawdzanie względem 9 wymiarów stylu życia…",
       "Obliczanie nakładania się ograniczeń…",
@@ -925,6 +951,7 @@ const flowCopy = {
       "Rasy, które nie spełniają tego warunku, zostaną całkowicie wykluczone z rekomendacji.",
   },
   dk: {
+    chapters: { days: "Dine dage", home: "Dit hjem", limits: "Dine grænser" },
     statusPhrases: [
       "Screener mod 9 livsstilsdimensioner…",
       "Beregner overlap mellem krav…",
@@ -936,6 +963,7 @@ const flowCopy = {
     hardLimitNote: "Racer, der ikke opfylder dette krav, bliver udelukket helt fra anbefalingerne.",
   },
   se: {
+    chapters: { days: "Dina dagar", home: "Ditt hem", limits: "Dina gränser" },
     statusPhrases: [
       "Screenar mot 9 livsstilsdimensioner…",
       "Beräknar överlapp mellan krav…",
@@ -947,6 +975,7 @@ const flowCopy = {
     hardLimitNote: "Raser som inte uppfyller det här kravet utesluts helt från rekommendationerna.",
   },
   fi: {
+    chapters: { days: "Päiväsi", home: "Kotisi", limits: "Rajasi" },
     statusPhrases: [
       "Tarkistetaan 9 elämäntyylin ulottuvuutta vasten…",
       "Lasketaan ehtojen päällekkäisyyttä…",
@@ -959,6 +988,7 @@ const flowCopy = {
       "Rodut, jotka eivät täytä tätä kriteeriä, suljetaan kokonaan pois suosituksista.",
   },
   de: {
+    chapters: { days: "Dein Alltag", home: "Dein Zuhause", limits: "Deine Grenzen" },
     statusPhrases: [
       "Abgleich mit 9 Lebensstil-Dimensionen…",
       "Überschneidung der Ausschlusskriterien wird berechnet…",
@@ -970,6 +1000,7 @@ const flowCopy = {
     hardLimitNote: "Rassen, die diese Grenze überschreiten, werden strikt aus den Empfehlungen ausgeschlossen.",
   },
   fr: {
+    chapters: { days: "Vos journées", home: "Votre foyer", limits: "Vos limites" },
     statusPhrases: [
       "Évaluation sur 9 dimensions de style de vie…",
       "Calcul du chevauchement des contraintes…",
@@ -981,6 +1012,7 @@ const flowCopy = {
     hardLimitNote: "Les races dépassant cette limite seront strictement exclues des recommandations.",
   },
   nl: {
+    chapters: { days: "Je dagen", home: "Je huis", limits: "Je grenzen" },
     statusPhrases: [
       "Toetsing aan 9 leefstijldimensies…",
       "Overlap tussen criteria wordt berekend…",
@@ -1008,6 +1040,10 @@ function FindMyDogPage() {
   const statusPhrase = fc.statusPhrases[step % fc.statusPhrases.length];
   const isHardLimitEligible = HARD_LIMIT_QUESTIONS.has(question.id);
   const hardLimitOn = profile[`${question.id}HardLimit`] === "true";
+  const chapter = fc.chapters[CHAPTER_OF[question.id] ?? "days"];
+  const advanceTimer = useRef<number | undefined>(undefined);
+  useQuizChrome(phase === "quiz");
+  useEffect(() => () => window.clearTimeout(advanceTimer.current), [step]);
 
   const ranking = useMemo(
     () =>
@@ -1020,6 +1056,11 @@ function FindMyDogPage() {
   function choose(value: string) {
     if (step === 0 && Object.keys(profile).length === 0) track("quiz_started");
     setProfile((p) => ({ ...p, [question.id]: value }));
+    // Hard-limit questions keep the Continue button: the reader may still flip the switch.
+    if (!isHardLimitEligible) {
+      window.clearTimeout(advanceTimer.current);
+      advanceTimer.current = window.setTimeout(next, AUTO_ADVANCE_MS);
+    }
   }
 
   function setHardLimit(on: boolean) {
@@ -1063,7 +1104,7 @@ function FindMyDogPage() {
       {/* progress */}
       <div>
         <div className="flex items-baseline justify-between">
-          <Eyebrow>{t.quiz.intro}</Eyebrow>
+          <Eyebrow>{chapter}</Eyebrow>
           <p className="text-sm tabular-nums text-muted-foreground">
             {t.quiz.question} {step + 1} {t.quiz.of} {total}
           </p>

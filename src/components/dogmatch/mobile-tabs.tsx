@@ -1,6 +1,7 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { Compass, GraduationCap, Heart, Home, Sparkles } from "lucide-react";
 import { useCopy, useT } from "@/i18n";
+import { useQuizChromeActive } from "@/lib/quiz-chrome";
 
 const copy = {
   en: { mobileNav: "Mobile" },
@@ -18,6 +19,7 @@ export function MobileTabs() {
   const pathname = useLocation({ select: (l) => l.pathname });
   const t = useT();
   const c = useCopy(copy);
+  const quizActive = useQuizChromeActive();
   const items = [
     { to: "/", label: t.nav.home, Icon: Home },
     { to: "/find-my-dog", label: t.nav.match, Icon: Sparkles },
@@ -26,7 +28,7 @@ export function MobileTabs() {
     { to: "/my-dog", label: t.nav.myDogShort, Icon: Heart },
   ];
 
-  if (pathname.startsWith("/brochure")) return null;
+  if (pathname.startsWith("/brochure") || quizActive) return null;
 
   return (
     <nav

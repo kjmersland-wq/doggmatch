@@ -674,9 +674,12 @@ function HomePage() {
                 {t.home.heroCta}
                 <Arrow />
               </ButtonLink>
-              <ButtonLink to={withLangPrefix("/breeds")} tone="outline" size="lg">
+              <Link
+                to={withLangPrefix("/breeds")}
+                className="inline-flex h-14 items-center px-3 text-base font-medium text-foreground underline underline-offset-4 decoration-border-strong transition-colors hover:decoration-foreground"
+              >
                 {t.home.heroSecondary}
-              </ButtonLink>
+              </Link>
             </div>
             <p className="mt-6 text-sm text-muted-foreground">{t.home.heroCaption}</p>
           </div>
@@ -710,64 +713,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------------------- Anchors for this page */}
-      <nav aria-label={c.jumpLabel} className="container-page mt-16 md:mt-20">
-        <h2 className="eyebrow">{c.jumpTitle}</h2>
-        <ul className="mt-4 flex flex-wrap gap-2">
-          {SECTION_IDS.map((id) => (
-            <li key={id}>
-              <a
-                href={`#${id}`}
-                className="inline-flex min-h-11 items-center rounded-full border border-border bg-surface px-4 text-sm transition-colors hover:border-primary hover:text-primary"
-              >
-                {c.anchors[id]}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      {/* ------------------------- Shareable link for each language version */}
-      <LanguageShare c={c} />
-
-      {/* ---------------------------------------------------- Value strip */}
-      <section
-        id="why-doggmatch"
-        aria-label={c.anchors["why-doggmatch"]}
-        className="container-page mt-16 md:mt-20"
-      >
-        {locale === "en" ? (
-          <div>
-            <Eyebrow>Why DoggMatch</Eyebrow>
-            <h2 className="display-lg mt-6 max-w-2xl text-balance">What makes this different</h2>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Choosing a dog is too important for a cheerful score with no explanation. We try to
-              make the whole decision clearer.
-            </p>
-            <dl className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-5">
-              {englishDifferencePoints.map((item) => (
-                <div key={item.title} className="bg-background p-7">
-                  <Check aria-hidden="true" className="size-5 text-accent" />
-                  <dt className="mt-5 font-display text-lg tracking-tight">{item.title}</dt>
-                  <dd className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {item.body}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        ) : (
-          <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-            {t.home.valueStrip.map((item) => (
-              <div key={item.title} className="bg-background p-7">
-                <dt className="font-display text-lg tracking-tight">{interpolate(item.title, { count: breeds.length })}</dt>
-                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</dd>
-              </div>
-            ))}
-          </dl>
-        )}
-      </section>
-
       {/* ------------------------------------------------------ How it works */}
       <Section id="how-it-works">
         <div className="container-page">
@@ -799,6 +744,47 @@ function HomePage() {
           </div>
         </div>
       </Section>
+
+      {/* ---------------------------------------------------- Value strip */}
+      <section
+        id="why-doggmatch"
+        aria-label={c.anchors["why-doggmatch"]}
+        className="container-page mt-16 md:mt-20"
+      >
+        {locale === "en" ? (
+          <div>
+            <Eyebrow>Why DoggMatch</Eyebrow>
+            <h2 className="display-lg mt-6 max-w-2xl text-balance">What makes this different</h2>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              Choosing a dog is too important for a cheerful score with no explanation. We try to
+              make the whole decision clearer.
+            </p>
+            <dl className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
+              {englishDifferencePoints.map((item, i) => (
+                <div
+                  key={item.title}
+                  className={i === englishDifferencePoints.length - 1 ? "bg-background p-7 md:col-span-2" : "bg-background p-7"}
+                >
+                  <Check aria-hidden="true" className="size-5 text-accent" />
+                  <dt className="mt-5 font-display text-lg tracking-tight">{item.title}</dt>
+                  <dd className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {item.body}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ) : (
+          <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+            {t.home.valueStrip.map((item) => (
+              <div key={item.title} className="bg-background p-7">
+                <dt className="font-display text-lg tracking-tight">{interpolate(item.title, { count: breeds.length })}</dt>
+                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+      </section>
 
       {/* ------------------------------------------------------ Real matches */}
       <Section id="real-matches">
@@ -977,6 +963,26 @@ function HomePage() {
           </div>
         </div>
       </Section>
+
+      {/* ------------------------------------------- Anchors for this page */}
+      <nav aria-label={c.jumpLabel} className="container-page mt-16 md:mt-20">
+        <h2 className="eyebrow">{c.jumpTitle}</h2>
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {SECTION_IDS.map((id) => (
+            <li key={id}>
+              <a
+                href={`#${id}`}
+                className="inline-flex min-h-11 items-center rounded-full border border-border bg-surface px-4 text-sm transition-colors hover:border-primary hover:text-primary"
+              >
+                {c.anchors[id]}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* ------------------------- Shareable link for each language version */}
+      <LanguageShare c={c} />
     </>
   );
 }
