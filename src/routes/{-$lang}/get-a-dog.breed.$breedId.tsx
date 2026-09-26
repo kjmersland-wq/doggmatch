@@ -3,12 +3,13 @@ import { Arrow, ButtonLink, Section } from "@/components/dogmatch/ui";
 import { Notice, SectionHead } from "@/components/dogmatch/journey/parts";
 import { getBreed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
-import { breedImages } from "@/data/breed-images";
+import { breedImages, breedOgImages } from "@/data/breed-images";
 import { costRange, prepCards } from "@/lib/getdog/prep";
 import { getDogStore } from "@/lib/getdog/store";
 import { useCopy } from "@/i18n";
 import { useEffect } from "react";
 import { seoLinks, abs, breadcrumbLd, headLocale, langUrl, ogLocaleTag } from "@/lib/seo";
+import { getDogBreedSeo } from "@/lib/seo/suffixes";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
@@ -26,9 +27,11 @@ export const Route = createFileRoute("/{-$lang}/get-a-dog/breed/$breedId")({
         meta: [{ title: "Unavailable | DoggMatch" }, { name: "robots", content: "noindex" }],
       };
     }
-    const name = breedContent()[loaderData.breedId].displayName;
-    const title = `Getting ready for a ${name} — what to know before you commit | DoggMatch`;
-    const description = `What a ${name} will actually ask of you: exercise, training, grooming, being alone, cost and the first weeks — drawn from their real traits, not a sales pitch.`;
+    const name = breedContent(locale)[loaderData.breedId].displayName;
+    const seo = getDogBreedSeo[locale];
+    const title = `${seo.title.replace("{n}", name)} | DoggMatch`;
+    const description = seo.description.replace("{n}", name);
+    const image = abs(breedOgImages[loaderData.breedId] ?? "/og-en.jpg");
     const path = `/get-a-dog/breed/${loaderData.breedId}`;
     return {
       meta: [
@@ -39,9 +42,11 @@ export const Route = createFileRoute("/{-$lang}/get-a-dog/breed/$breedId")({
         { property: "og:type", content: "article" },
         { property: "og:url", content: langUrl(path, locale) },
         { property: "og:locale", content: ogLocaleTag(locale) },
+        { property: "og:image", content: image },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
+        { name: "twitter:image", content: image },
       ],
       links: seoLinks(path).map((l) =>
         l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,

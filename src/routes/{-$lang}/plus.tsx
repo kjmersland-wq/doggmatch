@@ -867,10 +867,26 @@ const stagesCopy = {
   },
 };
 
+/** While checkout is paused the tags say so: membership exists, waitlist open, no "subscribe now". */
+const pausedDescriptions: Record<string, string> = {
+  en: "Membership for life with your dog: training plans, food and weight, travel, printable packs. Checkout is paused while billing moves — join the waitlist.",
+  no: "Medlemskap for livet med hund: treningsplaner, fôr og vekt, reise og utskriftsklare pakker. Betaling er satt på pause mens fakturering flyttes – sett deg på ventelisten.",
+  pl: "Członkostwo na co dzień z psem: plany treningowe, jedzenie i waga, podróże, pakiety do wydruku. Płatności są wstrzymane, dopóki przenosimy rozliczenia – dołącz do listy oczekujących.",
+  dk: "Medlemskab til livet med hund: træningsplaner, foder og vægt, rejser og printvenlige pakker. Betaling er sat på pause, mens fakturering flyttes – kom på ventelisten.",
+  se: "Medlemskap för livet med hund: träningsplaner, foder och vikt, resor och utskrivbara paket. Betalningen är pausad medan faktureringen flyttas – ställ dig på väntelistan.",
+  fi: "Jäsenyys koiran kanssa elämiseen: koulutussuunnitelmat, ruoka ja paino, matkat ja tulostettavat paketit. Maksu on tauolla laskutuksen siirron ajan – liity odotuslistalle.",
+  de: "Mitgliedschaft für das Leben mit Hund: Trainingspläne, Futter und Gewicht, Reisen und druckbare Pakete. Die Zahlung ist pausiert, während die Abrechnung umzieht – trag dich in die Warteliste ein.",
+  fr: "L'abonnement pour la vie avec votre chien : plans d'éducation, alimentation et poids, voyages, dossiers imprimables. Paiement suspendu le temps du transfert de facturation – rejoignez la liste d'attente.",
+  nl: "Lidmaatschap voor het leven met je hond: trainingsplannen, voer en gewicht, reizen en printbare pakketten. Betalen is gepauzeerd terwijl de facturatie verhuist – zet je op de wachtlijst.",
+};
+const seoCopyPaused = Object.fromEntries(
+  Object.entries(seoCopy).map(([l, v]) => [l, { title: v.title, description: pausedDescriptions[l] ?? v.description }]),
+) as typeof seoCopy;
+
 export const Route = createFileRoute("/{-$lang}/plus")({
   head: (ctx) => {
     const locale = headLocale(ctx);
-    const base = localizedHead(ctx, "/plus", seoCopy);
+    const base = localizedHead(ctx, "/plus", PURCHASES_ENABLED ? seoCopy : seoCopyPaused);
     const text = copy[locale] ?? copy.en;
     return {
       ...base,
@@ -890,24 +906,29 @@ export const Route = createFileRoute("/{-$lang}/plus")({
           url: langUrl("/plus", locale),
           inLanguage: locale,
           publisher: { "@type": "Organization", name: "KM TECH LABS" },
-          offers: [
-            {
-              "@type": "Offer",
-              name: "DoggMatch+ monthly",
-              price: "7.99",
-              priceCurrency: "EUR",
-              url: langUrl("/plus", locale),
-              availability: "https://schema.org/InStock",
-            },
-            {
-              "@type": "Offer",
-              name: "DoggMatch+ yearly",
-              price: "59.99",
-              priceCurrency: "EUR",
-              url: langUrl("/plus", locale),
-              availability: "https://schema.org/InStock",
-            },
-          ],
+          // No Offer while checkout is paused: the page must not claim it is in stock.
+          ...(PURCHASES_ENABLED
+            ? {
+            offers: [
+              {
+                "@type": "Offer",
+                name: "DoggMatch+ monthly",
+                price: "7.99",
+                priceCurrency: "EUR",
+                url: langUrl("/plus", locale),
+                availability: "https://schema.org/InStock",
+              },
+              {
+                "@type": "Offer",
+                name: "DoggMatch+ yearly",
+                price: "59.99",
+                priceCurrency: "EUR",
+                url: langUrl("/plus", locale),
+                availability: "https://schema.org/InStock",
+              },
+            ],
+            }
+            : {}),
         }),
         faqLd(text.faqs.map((f) => ({ question: f.q, answer: f.a }))),
       ],

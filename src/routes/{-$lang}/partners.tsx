@@ -34,50 +34,49 @@ import { seoLinks, abs, localizedHead, headLocale, breadcrumbLd, faqLd } from "@
 import { ShareBar } from "@/components/dogmatch/share";
 
 const title = "Become a DoggMatch Partner";
-const description =
-  "Choose your own DoggMatch+ member benefit, while your customers receive 25% off their first year. No listing fee and no commission.";
+const description = "Applications are open. Choose a benefit for DoggMatch+ members; when membership opens, your customers get 25% off their first year. No listing fee or commission.";
 
 const seoCopy = {
   en: { title, description },
   no: {
     title: "Bli DoggMatch-partner",
     description:
-      "Gi DoggMatch+-medlemmer en eksklusiv rabatt eller fordel. Ingen listepris, ingen provisjon — bare bedriften din foran hundeeiere som allerede leter.",
+      "Søknader er åpne. Velg en fordel for DoggMatch+-medlemmer; når medlemskap åpner, får kundene dine 25 % rabatt det første året. Ingen oppføringsavgift eller provisjon.",
   },
   pl: {
     title: "Zostań partnerem DoggMatch",
     description:
-      "Zaproponuj członkom DoggMatch+ wyjątkowy rabat lub korzyść. Bez opłat za wpis, bez prowizji — po prostu Twoja firma przed oczami opiekunów psów, którzy już szukają.",
+      "Zgłoszenia są otwarte. Wybierz korzyść dla członków DoggMatch+; gdy członkostwo się otworzy, twoi klienci dostaną 25% rabatu na pierwszy rok. Bez opłat za wpis i prowizji.",
   },
   dk: {
     title: "Bliv DoggMatch-partner",
     description:
-      "Giv DoggMatch+-medlemmer en eksklusiv rabat eller fordel. Ingen listepris, ingen provision — bare din virksomhed foran hundeejere, der allerede leder.",
+      "Ansøgninger er åbne. Vælg en fordel til DoggMatch+-medlemmer; når medlemskab åbner, får dine kunder 25 % rabat det første år. Ingen listepris eller provision.",
   },
   se: {
     title: "Bli DoggMatch-partner",
     description:
-      "Ge DoggMatch+-medlemmar en exklusiv rabatt eller förmån. Ingen listavgift, ingen provision — bara ditt företag inför hundägare som redan letar.",
+      "Ansökningar är öppna. Välj en förmån för DoggMatch+-medlemmar; när medlemskapet öppnar får dina kunder 25 % rabatt första året. Ingen listavgift eller provision.",
   },
   de: {
     title: "DoggMatch-Partner werden",
     description:
-      "Bieten Sie DoggMatch+-Mitgliedern einen exklusiven Rabatt oder Vorteil. Keine Listungsgebühr, keine Provision — nur Ihr Unternehmen vor Hundehaltern, die bereits suchen.",
+      "Bewerbungen sind offen. Wählen Sie einen Vorteil für DoggMatch+-Mitglieder; sobald die Mitgliedschaft öffnet, erhalten Ihre Kunden 25 % Rabatt im ersten Jahr. Keine Listungsgebühr, keine Provision.",
   },
   fr: {
     title: "Devenez partenaire DoggMatch",
     description:
-      "Offrez aux membres DoggMatch+ une réduction ou un avantage exclusif. Pas de frais de référencement, pas de commission — juste votre entreprise mise en avant auprès de propriétaires de chiens déjà à la recherche.",
+      "Les candidatures sont ouvertes. Choisissez un avantage pour les membres DoggMatch+ ; à l'ouverture de l'abonnement, vos clients auront 25 % de réduction la première année. Sans frais ni commission.",
   },
   nl: {
     title: "Word DoggMatch-partner",
     description:
-      "Geef DoggMatch+-leden een exclusieve korting of voordeel. Geen vermeldingskosten, geen commissie — gewoon jouw bedrijf onder de aandacht bij hondeneigenaren die al aan het zoeken zijn.",
+      "Aanmelden kan. Kies een voordeel voor DoggMatch+-leden; zodra het lidmaatschap opent, krijgen je klanten 25% korting op het eerste jaar. Geen vermeldingskosten, geen commissie.",
   },
   fi: {
     title: "Ryhdy DoggMatch-kumppaniksi",
     description:
-      "Tarjoa DoggMatch+-jäsenille ainutlaatuinen alennus tai etu. Ei listautumismaksua, ei provisiota — vain yrityksesi jo etsivien koiranomistajien silmien edessä.",
+      "Hakemukset ovat auki. Valitse etu DoggMatch+-jäsenille; kun jäsenyys aukeaa, asiakkaasi saavat 25 % alennuksen ensimmäisestä vuodesta. Ei listautumismaksua eikä provisiota.",
   },
 };
 

@@ -473,7 +473,7 @@ export const breedContentNewDe: Partial<Record<BreedId, BreedContent>> = {
     keyTradeoffs: ["Freundlich zu Menschen, schwierig mit Freiheit", "Majestätischer Kälte-Athlet, überwältigendes Fell und Kraft"],
   },
   "english-mastiff": {
-    displayName: "Englische Bulldogge",
+    displayName: "Englischer Mastiff",
     originalPurpose: "Abstammend von alten Mastiff-artigen Wächtern, in Grossbritannien entwickelt, um Anwesen und Familien zu schützen.",
     summary: "Ruhig, liebevoll und fast unmöglich gross. Ein Mastiff verlangt vielleicht wenig Geschwindigkeit, benötigt aber Platz, Geld und kompetente Führung.",
     strengths: ["Baut eine bedeutungsvolle Bindung zur richtigen Familie auf", "Bringt den ursprünglichen Arbeitscharakter in den Alltag", "Kann gedeihen, wenn seine wahren Bedürfnisse geplant sind"],

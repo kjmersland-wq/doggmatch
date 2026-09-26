@@ -72,3 +72,23 @@ All new strings use the existing per-component `useCopy` maps with all nine loca
 - Back after the homepage `?s=` handoff was already correct and quiz state was not touched: question 2 → Back → question 1 with the chosen answer still selected (profile is seeded with it; the radio reads from that profile).
 - Result: when hard limits removed breeds, a calm one-line note sits directly under the hero ("Your non-negotiables ruled out N breeds — we show you which, and why, a little further down" + link to that section), nine locales. Layout otherwise unchanged; Plus teaser is still after the free sections, points to `/plus#waitlist` while `PURCHASES_ENABLED=false`, and no dossier price is shown.
 - Footer legal line ("Built and run by KM TECH LABS, org.nr. 934 044 029, in Kristiansand, Norway") is unchanged everywhere. While the quiz hides the rest of the footer, that line alone stays visible at the bottom.
+
+## Technical + on-page SEO pass
+
+Method: crawled all 2,718 sitemap URLs (every route × 9 locales) on a dev server and read title, description, canonical, hreflang, robots, og:* and h1 from the rendered HTML.
+
+Already sound (unchanged): 200 on every URL, none noindex, self-canonical per language (not EN), 11 hreflang links incl. x-default, exactly one h1, no empty titles or descriptions, `<html lang>` correct, `/pricing` a 301 and not in the sitemap, Plus and Partners indexable.
+
+Fixed:
+- **Language leaking into `<head>`** (real bug): `pick()` reads a process-wide locale that is only set during render, but loaders and `head()` run before render and interleave across requests. Breed descriptions, care-topic and lesson titles/descriptions could come out in another visitor's language. Breed, care, lesson and get-a-dog/breed loaders now pass the locale explicitly. Leak test over all 65 route shapes: 6 leaks → 0.
+- **Mixed/English titles**: `/get-a-dog/breed/*` (English on every locale), food, care and lesson titles (English tails on localized names) now use localized templates (`src/lib/seo/suffixes.ts`); breadcrumb names localized too.
+- **Breed title** is now "[Breed] — temperament, daily life and costs | DoggMatch" (localized descriptor; same words as the H1 sub-line).
+- **og:image / twitter:image** added to the four families that had none (get-a-dog/breed, food, care, lessons), using the existing per-locale share images.
+- **Plus**: description says membership exists, checkout paused, join the waitlist (nine locales) while `PURCHASES_ENABLED=false`; the JSON-LD `Offer … InStock` is omitted until people can buy. **Partners**: description says applications are open and 25% applies when membership opens.
+- **robots.txt**: private routes were disallowed for only /, /no, /pl; now all nine locales. Plus, Partners, breeds, guides stay crawlable.
+- **noindex**: `/train/journey` (personal, already in robots.txt) and `/find-my-dog?r=` / `?s=` variants (canonical stays `/find-my-dog`).
+- **Internal links**: breed pages on the calmer-companion shortlist and the quiet / low-energy / calm-beginner / small-family support guides now link to `/guides/a-calmer-companion`.
+- **Calmer-companion guide** title/description shortened in all locales.
+- **Content errors that made titles duplicate**: German "English Mastiff" was labelled "Englische Bulldogge"; Polish "Weimaraner" carried the Pointer's name.
+
+Not changed / for a later pass: ~650 titles over 70 characters and ~360 descriptions over 170 (search engines truncate them; none are empty or duplicated); noindex private pages still carry an English canonical on non-English paths; the 404 page returns status 404 but not a noindex tag.

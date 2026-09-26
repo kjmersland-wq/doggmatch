@@ -7,13 +7,16 @@ import { knownBreedIds } from "@/lib/dogs/profile";
 import { useMyDog } from "@/lib/care/store";
 import { useCopy } from "@/i18n";
 import { SourcesLink } from "@/components/dogmatch/sources-link";
-import { seoLinks, headLocale, langUrl, ogLocaleTag, breadcrumbLd } from "@/lib/seo";
+import { seoLinks, headLocale, langUrl, ogLocaleTag, ogImage, breadcrumbLd } from "@/lib/seo";
+import { careTitleSuffix } from "@/lib/seo/suffixes";
+import { localeFromParam } from "@/i18n/locale";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
 export const Route = createFileRoute("/{-$lang}/my-dog/care/$topicId")({
   loader: ({ params }) => {
-    const topic = getCareTopic(params.topicId);
+    // Explicit locale: the render-time global is not set yet (and is shared between requests).
+    const topic = getCareTopic(params.topicId, localeFromParam((params as { lang?: string }).lang) ?? "en");
     if (!topic) throw notFound();
     return { topic };
   },
@@ -25,7 +28,7 @@ export const Route = createFileRoute("/{-$lang}/my-dog/care/$topicId")({
     }
     const { topic } = loaderData;
     const path = `/my-dog/care/${topic.id}`;
-    const t = `${topic.title} — My Dog | DoggMatch`;
+    const t = `${topic.title} — ${careTitleSuffix[locale]} | DoggMatch`;
     return {
       meta: [
         { title: t },
@@ -35,9 +38,11 @@ export const Route = createFileRoute("/{-$lang}/my-dog/care/$topicId")({
         { property: "og:type", content: "article" },
         { property: "og:url", content: langUrl(path, locale) },
         { property: "og:locale", content: ogLocaleTag(locale) },
+        { property: "og:image", content: ogImage(locale) },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: t },
         { name: "twitter:description", content: topic.promise },
+        { name: "twitter:image", content: ogImage(locale) },
       ],
       links: seoLinks(path).map((l) =>
         l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
@@ -46,7 +51,7 @@ export const Route = createFileRoute("/{-$lang}/my-dog/care/$topicId")({
         breadcrumbLd(
           [
             { name: "DoggMatch", path: "/" },
-            { name: "My Dog", path: "/my-dog" },
+            { name: careTitleSuffix[locale], path: "/my-dog" },
             { name: topic.title, path },
           ],
           locale,

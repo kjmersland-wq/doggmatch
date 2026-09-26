@@ -2,7 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Arrow, Eyebrow } from "@/components/dogmatch/ui";
 import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
-import { INTL_LOCALE, interpolate, useCopy, useLocale } from "@/i18n";
+import { INTL_LOCALE, interpolate, pick, useCopy, useLocale } from "@/i18n";
+import { GUIDE_HUB_LINKS } from "@/lib/guides/lifestyle";
 import { track } from "@/lib/analytics";
 import type { ClusterHubData, ClusterPageData, NavLink } from "@/lib/guides/clusters/clusters.functions";
 import type { FaqItem } from "@/lib/guides/clusters/types";
@@ -262,6 +263,14 @@ function QuizAndPlus({ source }: { source: string }) {
 }
 
 /** A focused support page inside a topic cluster. */
+/** Support pages about quiet, small or low-energy dogs, where the calmer-companion guide is relevant. */
+const CALMER_RELATED = new Set([
+  "quiet-apartment-dogs",
+  "low-energy-apartment-dogs",
+  "calm-dogs-for-beginners",
+  "small-family-dogs",
+]);
+
 export function ClusterPage({ data }: { data: ClusterPageData }) {
   const c = useCopy(ui);
   const { locale } = useLocale();
@@ -366,7 +375,22 @@ export function ClusterPage({ data }: { data: ClusterPageData }) {
 
       <FaqSection items={copy.faq} />
       <QuizAndPlus source={`cluster_${data.slug}`} />
-      <GuideLinks title={c.moreTitle} links={[data.pillar, ...data.siblings]} />
+      <GuideLinks
+        title={c.moreTitle}
+        links={[
+          data.pillar,
+          ...data.siblings,
+          // Quiet, small-dog and easy-walk pages point at the calmer-companion guide.
+          ...(CALMER_RELATED.has(data.slug)
+            ? [
+                {
+                  path: "/guides/a-calmer-companion",
+                  label: pick(GUIDE_HUB_LINKS["calmer-companion"]!.label, locale),
+                },
+              ]
+            : []),
+        ]}
+      />
     </article>
   );
 }

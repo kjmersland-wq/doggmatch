@@ -22,7 +22,9 @@ import {
   plUrl,
   seUrl,
   seoLinks,
+  ogImage,
 } from "@/lib/seo";
+import { foodCrumb, foodTitleSuffix } from "@/lib/seo/suffixes";
 import { cn } from "@/lib/utils";
 
 /** "Can dogs eat X?" — the phrase people actually type, in each language. */
@@ -108,7 +110,7 @@ export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
     }
     const path = `/can-dogs-eat/${id}`;
     const heading = question[locale](item.name);
-    const title = `${heading} — a straight answer | DoggMatch`;
+    const title = `${heading} — ${foodTitleSuffix[locale]} | DoggMatch`;
     const description = `${verdict[locale][item.safety]}. ${item.body}`.slice(0, 300);
     return {
       meta: [
@@ -118,19 +120,24 @@ export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: langUrl(path, locale) },
+        { property: "og:image", content: ogImage(locale) },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
+        { name: "twitter:image", content: ogImage(locale) },
       ],
       links: seoLinks(path).map((l) =>
         l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
       ),
       scripts: [
-        breadcrumbLd([
-          { name: "DoggMatch", path: "/" },
-          { name: "Can dogs eat that?", path: "/can-dogs-eat" },
-          { name: item.name, path },
-        ]),
+        breadcrumbLd(
+          [
+            { name: "DoggMatch", path: "/" },
+            { name: foodCrumb[locale], path: "/can-dogs-eat" },
+            { name: item.name, path },
+          ],
+          locale,
+        ),
         jsonLd({
           "@type": "FAQPage",
           mainEntity: [

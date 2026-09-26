@@ -5,6 +5,10 @@ import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
 import { useT, pick, useCopy, interpolate } from "@/i18n";
 import { getBreed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
+import { breedTitleDescriptor } from "@/lib/seo/suffixes";
+import { CALMER_GUIDE } from "@/lib/guides/calmer";
+import { GUIDE_HUB_LINKS } from "@/lib/guides/lifestyle";
+import { localeFromParam } from "@/i18n/locale";
 import { breedImages, breedLifestyleImages, breedOgImages } from "@/data/breed-images";
 import { withLangPrefix } from "@/lib/localized-path";
 import {
@@ -45,17 +49,10 @@ import {
 } from "@/lib/seo";
 
 /** The short "what this page covers" descriptor used in the title and the H1. */
-const breedDescriptor: Record<Locale, string> = {
-  en: "temperament & daily life",
-  no: "vesen og hverdag",
-  pl: "charakter i codzienność",
-  dk: "temperament og hverdag",
-  se: "temperament och vardag",
-  fi: "luonne ja arki",
-  de: "Wesen, Haltung & Alltag",
-  fr: "tempérament et quotidien",
-  nl: "karakter en dagelijks leven",
-};
+const breedDescriptor: Record<Locale, string> = breedTitleDescriptor;
+
+/** Breeds on the calmer-companion shortlist link to that guide (and the guide links back to them). */
+const CALMER_BREED_IDS = new Set((CALMER_GUIDE.shortlist ?? []).map((b) => b.id));
 
 const breadcrumbBreeds: Record<Locale, string> = {
   en: "Breeds",
@@ -333,7 +330,10 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
   loader: ({ params }) => {
     const breed = getBreed(params.breedId);
     if (!breed) throw notFound();
-    return { breed, content: breedContent()[breed.id] };
+    return {
+      breed,
+      content: breedContent(localeFromParam((params as { lang?: string }).lang) ?? "en")[breed.id],
+    };
   },
   head: (ctx) => {
     const { params, loaderData } = ctx;
@@ -348,7 +348,7 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
     const path = `/breeds/${params.breedId}`;
     const locale = headLocale(ctx);
     const name = loaderData.content.displayName;
-    const title = `${name} – ${breedDescriptor[locale]} | DoggMatch`;
+    const title = `${name} — ${breedTitleDescriptor[locale]} | DoggMatch`;
     const description = loaderData.content.summary;
     const image = abs(breedOgImages[loaderData.breed.id] ?? "/og-en.jpg");
     return {
@@ -827,6 +827,18 @@ function BreedDetail() {
       <CompareSimilar breed={breed} />
 
       <BreedQuizCta />
+
+      {CALMER_BREED_IDS.has(breed.id) && (
+        <section className="container-page border-t border-border py-10">
+          <Link
+            to={withLangPrefix("/guides/a-calmer-companion")}
+            className="inline-flex items-center gap-2 text-[0.9375rem] font-medium text-foreground underline underline-offset-4 decoration-border-strong transition-colors hover:decoration-foreground"
+          >
+            {pick(GUIDE_HUB_LINKS["calmer-companion"]!.label)}
+            <Arrow />
+          </Link>
+        </section>
+      )}
 
       {/* onward links for readers comparing breeds, and for Googlebot to reach every breed page without going back to the index */}
       <section className="container-page border-t border-border py-16">

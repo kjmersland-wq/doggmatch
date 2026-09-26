@@ -51,9 +51,9 @@ const SHORTLIST_IDS = [
 
 const CONTENT: Record<Locale, Locale9> = {
   en: {
-    seoTitle: "A calmer companion: gentle dogs for daily walks",
+    seoTitle: "A calmer companion, for daily walks",
     seoDescription:
-      "A kind, steady dog for daily walks — not sport, not status. What to look at in size, training, street manners and health, and seven breeds worth meeting.",
+      "A kind, steady dog for daily walks — not sport, not status. What to look at in size, training and health, and seven breeds worth meeting.",
     eyebrow: "Choosing a dog",
     h1: "A calmer companion: a kind, steady dog for daily walks",
     intro:
@@ -131,9 +131,9 @@ const CONTENT: Record<Locale, Locale9> = {
     sourcesNote: { text: "Health notes on this page are general guidance, not a vet. For breed health information, see The Kennel Club (UK) and RVC VetCompass, and for heat risk the British Veterinary Association — all listed, with the date we last checked them, on our sources page. For your own dog, your vet knows best.", linkLabel: "See our sources" },
   },
   no: {
-    seoTitle: "En roligere følgesvenn: milde hunder til daglige turer",
+    seoTitle: "En roligere følgesvenn til daglige turer",
     seoDescription:
-      "En snill, stødig hund til daglige turer – ikke sport, ikke statussymbol. Hva du bør se på når det gjelder størrelse, trening, gateoppførsel og helse, og sju raser verdt å møte.",
+      "En snill, stødig hund til daglige turer – ikke sport, ikke status. Hva du bør se på ved størrelse, trening og helse, og sju raser verdt å møte.",
     eyebrow: "Velge hund",
     h1: "En roligere følgesvenn: en snill, stødig hund til daglige turer",
     intro:
@@ -211,9 +211,9 @@ const CONTENT: Record<Locale, Locale9> = {
     sourcesNote: { text: "Helsenotatene på denne siden er generell veiledning, ikke veterinærråd. For rasehelse, se The Kennel Club (UK) og RVC VetCompass, og for varmerisiko British Veterinary Association – alle oppført, med datoen vi sist sjekket dem, på kildesiden vår. For din egen hund vet veterinæren best.", linkLabel: "Se kildene våre" },
   },
   pl: {
-    seoTitle: "Spokojny towarzysz: łagodne psy na codzienne spacery",
+    seoTitle: "Spokojny towarzysz na codzienne spacery",
     seoDescription:
-      "Dobry, stały pies na codzienne spacery – bez sportu i bez prestiżu. Na co patrzeć przy wielkości, szkoleniu, zachowaniu na ulicy i zdrowiu oraz siedem ras wartych poznania.",
+      "Łagodny, stały pies na codzienne spacery – bez sportu i prestiżu. Na co patrzeć przy rozmiarze, szkoleniu i zdrowiu oraz siedem ras wartych poznania.",
     eyebrow: "Wybór psa",
     h1: "Spokojny towarzysz: łagodny, stały pies na codzienne spacery",
     intro:
@@ -291,9 +291,9 @@ const CONTENT: Record<Locale, Locale9> = {
     sourcesNote: { text: "Uwagi zdrowotne na tej stronie to ogólne wskazówki, nie porada weterynaryjna. Informacje o zdrowiu ras znajdziesz w The Kennel Club (UK) i RVC VetCompass, a o ryzyku przegrzania – w British Veterinary Association; wszystkie są wymienione na stronie źródeł wraz z datą ostatniego sprawdzenia. W sprawie własnego psa najlepiej wie weterynarz.", linkLabel: "Zobacz nasze źródła" },
   },
   dk: {
-    seoTitle: "En roligere følgesvend: milde hunde til daglige gåture",
+    seoTitle: "En roligere følgesvend til daglige gåture",
     seoDescription:
-      "En venlig, stabil hund til daglige gåture – ikke sport, ikke status. Hvad du skal se på ved størrelse, træning, gadeopførsel og helbred, og syv racer, der er værd at møde.",
+      "En venlig, stabil hund til daglige gåture – ikke sport, ikke status. Hvad du skal se på ved størrelse, træning og helbred, og syv racer at møde.",
     eyebrow: "Valg af hund",
     h1: "En roligere følgesvend: en venlig, stabil hund til daglige gåture",
     intro:
@@ -371,9 +371,9 @@ const CONTENT: Record<Locale, Locale9> = {
     sourcesNote: { text: "Sundhedsnoterne på denne side er generel vejledning, ikke dyrlægeråd. For racesundhed, se The Kennel Club (UK) og RVC VetCompass, og for varmerisiko British Veterinary Association – alle er opført, med datoen vi sidst tjekkede dem, på vores kildeside. For din egen hund ved dyrlægen bedst.", linkLabel: "Se vores kilder" },
   },
   se: {
-    seoTitle: "En lugnare följeslagare: milda hundar för dagliga promenader",
+    seoTitle: "En lugnare följeslagare för dagliga promenader",
     seoDescription:
-      "En snäll, stabil hund för dagliga promenader – inte sport, inte status. Vad du ska titta på när det gäller storlek, träning, gatubeteende och hälsa, och sju raser värda att träffa.",
+      "En snäll, stabil hund för dagliga promenader – inte sport, inte status. Vad du ska titta på vid storlek, träning och hälsa, och sju raser att träffa.",
     eyebrow: "Välja hund",
     h1: "En lugnare följeslagare: en snäll, stabil hund för dagliga promenader",
     intro:
@@ -451,9 +451,9 @@ const CONTENT: Record<Locale, Locale9> = {
     sourcesNote: { text: "Hälsonoteringarna på den här sidan är allmän vägledning, inte veterinärråd. För rashälsa, se The Kennel Club (UK) och RVC VetCompass, och för värmerisk British Veterinary Association – alla finns upptagna, med datumet vi senast kontrollerade dem, på vår källsida. För din egen hund vet veterinären bäst.", linkLabel: "Se våra källor" },
   },
   fi: {
-    seoTitle: "Rauhallinen kumppani: lempeät koirat päivittäisille kävelyille",
+    seoTitle: "Rauhallinen kumppani päivittäisille kävelyille",
     seoDescription:
-      "Ystävällinen, tasainen koira päivittäisille kävelyille – ei urheilua, ei statusta. Mihin kannattaa kiinnittää huomiota koossa, koulutuksessa, käytöksessä kadulla ja terveydessä, sekä seitsemän rotua, joihin kannattaa tutustua.",
+      "Ystävällinen, tasainen koira päivittäisille kävelyille – ei urheilua, ei statusta. Mihin katsoa koossa, koulutuksessa ja terveydessä, sekä seitsemän rotua.",
     eyebrow: "Koiran valinta",
     h1: "Rauhallinen kumppani: ystävällinen, tasainen koira päivittäisille kävelyille",
     intro:
@@ -531,9 +531,9 @@ const CONTENT: Record<Locale, Locale9> = {
     sourcesNote: { text: "Tämän sivun terveysmerkinnät ovat yleistä ohjausta, eivät eläinlääkärin neuvo. Rotujen terveystietoa löydät The Kennel Clubilta (UK) ja RVC VetCompassilta, ja lämpöriskistä British Veterinary Associationilta – kaikki on lueteltu lähdesivullamme viimeisimmän tarkistuspäivän kanssa. Oman koirasi asioissa eläinlääkäri tietää parhaiten.", linkLabel: "Katso lähteemme" },
   },
   de: {
-    seoTitle: "Ein ruhiger Begleiter: sanfte Hunde für den täglichen Spaziergang",
+    seoTitle: "Ein ruhiger Begleiter für den täglichen Spaziergang",
     seoDescription:
-      "Ein freundlicher, verlässlicher Hund für die täglichen Runden – kein Sport, kein Statussymbol. Worauf es bei Größe, Erziehung, Straßenmanieren und Gesundheit ankommt, und sieben Rassen, die man kennenlernen sollte.",
+      "Ein freundlicher, verlässlicher Hund für die täglichen Runden – kein Sport, kein Status. Worauf es bei Größe, Erziehung und Gesundheit ankommt, plus sieben Rassen.",
     eyebrow: "Einen Hund wählen",
     h1: "Ein ruhiger Begleiter: ein freundlicher, verlässlicher Hund für den täglichen Spaziergang",
     intro:
@@ -611,9 +611,9 @@ const CONTENT: Record<Locale, Locale9> = {
     sourcesNote: { text: "Die Gesundheitshinweise auf dieser Seite sind allgemeine Orientierung, kein tierärztlicher Rat. Informationen zur Rassegesundheit findest du beim The Kennel Club (UK) und bei RVC VetCompass, zum Hitzerisiko bei der British Veterinary Association – alle sind auf unserer Quellenseite mit dem Datum der letzten Prüfung aufgeführt. Für deinen eigenen Hund weiß deine Tierarztpraxis es am besten.", linkLabel: "Unsere Quellen ansehen" },
   },
   fr: {
-    seoTitle: "Un compagnon plus calme : des chiens doux pour les balades de tous les jours",
+    seoTitle: "Un compagnon plus calme pour vos balades",
     seoDescription:
-      "Un chien gentil et stable pour les balades quotidiennes – ni sport, ni statut. Ce qu'il faut regarder côté taille, éducation, tenue en ville et santé, et sept races à rencontrer.",
+      "Un chien gentil et stable pour les balades quotidiennes – ni sport, ni statut. Taille, éducation, santé : ce qu'il faut regarder, et sept races à rencontrer.",
     eyebrow: "Choisir un chien",
     h1: "Un compagnon plus calme : un chien gentil et stable pour les balades de tous les jours",
     intro:
@@ -691,9 +691,9 @@ const CONTENT: Record<Locale, Locale9> = {
     sourcesNote: { text: "Les notes de santé de cette page sont des repères généraux, pas un avis vétérinaire. Pour la santé des races, voir The Kennel Club (UK) et RVC VetCompass, et pour le risque de chaleur la British Veterinary Association – tous figurent, avec la date de notre dernière vérification, sur notre page des sources. Pour votre propre chien, votre vétérinaire sait mieux.", linkLabel: "Voir nos sources" },
   },
   nl: {
-    seoTitle: "Een rustigere metgezel: zachte honden voor de dagelijkse wandeling",
+    seoTitle: "Een rustigere metgezel voor de dagelijkse wandeling",
     seoDescription:
-      "Een vriendelijke, stabiele hond voor dagelijkse wandelingen – geen sport, geen statussymbool. Waar je op let bij formaat, training, straatmanieren en gezondheid, en zeven rassen om te ontmoeten.",
+      "Een vriendelijke, stabiele hond voor dagelijkse wandelingen – geen sport, geen statussymbool. Waar je op let bij formaat, training en gezondheid, plus zeven rassen.",
     eyebrow: "Een hond kiezen",
     h1: "Een rustigere metgezel: een vriendelijke, stabiele hond voor de dagelijkse wandeling",
     intro:

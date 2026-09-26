@@ -1,4 +1,4 @@
-import { localizedHead } from "@/lib/seo";
+import { localizedHead, noindexMeta } from "@/lib/seo";
 import { pageSeo } from "@/lib/seo/pages";
 import { createFileRoute } from "@tanstack/react-router";
 import { Arrow, ButtonLink, Eyebrow } from "@/components/dogmatch/ui";
@@ -16,7 +16,11 @@ const description =
   "Everything you and your dog have worked on, in one place — what's going well, what needs practice, and what to try next.";
 
 export const Route = createFileRoute("/{-$lang}/train/journey")({
-  head: (ctx) => localizedHead(ctx, "/train/journey", pageSeo.trainJourney),
+  // Personal to this device (and disallowed in robots.txt): keep it out of the index as well.
+  head: (ctx) => {
+    const base = localizedHead(ctx, "/train/journey", pageSeo.trainJourney);
+    return { ...base, meta: [...base.meta, ...noindexMeta] };
+  },
   component: JourneyPage,
 });
 

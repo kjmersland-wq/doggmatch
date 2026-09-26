@@ -860,8 +860,13 @@ export const Route = createFileRoute("/{-$lang}/find-my-dog")({
   head: (ctx) => {
     const locale = headLocale(ctx);
     const base = localizedHead(ctx, "/find-my-dog", seoCopy);
+    // ?r= (a saved result) and ?s= (a homepage hand-off) are personal states, not pages: canonical stays
+    // /find-my-dog, and those variants stay out of the index.
+    const search = (ctx as unknown as { match?: { search?: { r?: string; s?: string } } }).match?.search;
+    const personal = Boolean(search?.r || search?.s);
     return {
       ...base,
+      meta: personal ? [...base.meta, { name: "robots", content: "noindex, follow" }] : base.meta,
       scripts: [
         faqLd(quizFaq[locale] ?? quizFaq["en"]!),
         breadcrumbLd(

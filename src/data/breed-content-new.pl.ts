@@ -193,7 +193,7 @@ export const breedContentNewPl: Partial<Record<BreedId, BreedContent>> = {
     keyTradeoffs: ["Spektakularna wytrzymałość, wymagająca konsekwencja", "Prosta pielęgnacja, ciągłe drobne białe włosy"],
   },
   "weimaraner": {
-    displayName: "Wyżeł Niemiecki Krótkowłosy",
+    displayName: "Wyżeł weimarski",
     originalPurpose: "Wyhodowany przez niemiecką szlachtę jako wszechstronny pies myśliwski na dużą, a później mniejszą zwierzynę.",
     summary: "Elegancki, potężny i intensywnie przywiązany. Wyżeł Niemiecki Krótkowłosy potrzebuje intensywnych ćwiczeń, szkolenia i towarzystwa w mniej więcej równych proporcjach.",
     strengths: ["Tworzy znaczącą więź z odpowiednią rodziną", "Wprowadza pierwotny charakter pracujący do codziennego życia", "Może dobrze prosperować, gdy jego rzeczywiste potrzeby są zaplanowane"],

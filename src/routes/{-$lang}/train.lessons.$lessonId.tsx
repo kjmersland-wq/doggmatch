@@ -22,7 +22,9 @@ import {
   useTrainingState,
 } from "@/lib/training/store";
 import { cn } from "@/lib/utils";
-import { seoLinks, breadcrumbLd, headLocale, langUrl, ogLocaleTag } from "@/lib/seo";
+import { seoLinks, breadcrumbLd, headLocale, langUrl, ogLocaleTag, ogImage } from "@/lib/seo";
+import { lessonTitleSuffix, libraryCrumb } from "@/lib/seo/suffixes";
+import { localeFromParam } from "@/i18n/locale";
 import { ShareBar } from "@/components/dogmatch/share";
 import { useCopy } from "@/i18n";
 
@@ -324,7 +326,7 @@ const copy = {
 
 export const Route = createFileRoute("/{-$lang}/train/lessons/$lessonId")({
   loader: ({ params }) => {
-    const lesson = getLesson(params.lessonId);
+    const lesson = getLesson(params.lessonId, localeFromParam((params as { lang?: string }).lang) ?? "en");
     if (!lesson) throw notFound();
     return { lesson };
   },
@@ -338,7 +340,7 @@ export const Route = createFileRoute("/{-$lang}/train/lessons/$lessonId")({
     }
     const { lesson } = loaderData;
     const path = `/train/lessons/${lesson.id}`;
-    const title = `${lesson.title} — Train Your Dog | DoggMatch`;
+    const title = `${lesson.title} — ${lessonTitleSuffix[locale]} | DoggMatch`;
     return {
       meta: [
         { title },
@@ -348,9 +350,11 @@ export const Route = createFileRoute("/{-$lang}/train/lessons/$lessonId")({
         { property: "og:type", content: "article" },
         { property: "og:url", content: langUrl(path, locale) },
         { property: "og:locale", content: ogLocaleTag(locale) },
+        { property: "og:image", content: ogImage(locale) },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: lesson.promise },
+        { name: "twitter:image", content: ogImage(locale) },
       ],
       links: seoLinks(path).map((l) =>
         l.rel === "canonical" ? { rel: "canonical", href: langUrl(path, locale) } : l,
@@ -359,8 +363,8 @@ export const Route = createFileRoute("/{-$lang}/train/lessons/$lessonId")({
         breadcrumbLd(
           [
             { name: "DoggMatch", path: "/" },
-            { name: "Train Your Dog", path: "/train" },
-            { name: "Library", path: "/train/library" },
+            { name: lessonTitleSuffix[locale], path: "/train" },
+            { name: libraryCrumb[locale], path: "/train/library" },
             { name: lesson.title, path },
           ],
           locale,
