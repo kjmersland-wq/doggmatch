@@ -35,6 +35,7 @@ type Locale9 = {
   quizBody: string;
   quizCta: string;
   compareCta: string;
+  sourcesNote: { text: string; linkLabel: string };
 };
 
 /** The seven breeds, in reading order. All exist in the published library. */
@@ -93,7 +94,7 @@ const CONTENT: Record<Locale, Locale9> = {
       {
         title: "Health burdens worth avoiding",
         paragraphs: [
-          "Some breeds are calm partly because they can't breathe easily. Flat-faced dogs struggle in warm weather and often need surgery, which is why they're not on our list even where the engine likes them. Ask what a breed is known for: heart disease in Cavaliers, spine problems in long-backed dogs, fragile legs in the very fine-boned breeds.",
+          "Flat-faced dogs can struggle in warm weather — heat risk is one of the welfare concerns the British Veterinary Association raises — and breathing trouble is commonly seen in these breeds, which is why they're not on our list even where the engine likes them. Ask what a breed is commonly known for: heart trouble in some breeds such as Cavaliers, back trouble in long-backed dogs, delicate legs in very fine-boned breeds. Read the breed profile, then ask a vet — this is general guidance, not a vet.",
           "A good breeder will show you health-test results for both parents. If they can't or won't, walk away — however sweet the puppy. And think about insurance early: it costs far less than the first bill you didn't plan for.",
         ],
       },
@@ -107,7 +108,7 @@ const CONTENT: Record<Locale, Locale9> = {
     ],
     reasons: {
       "cavalier-king-charles-spaniel":
-        "Gentle, affectionate and happy with an easy walk — but heart disease is very common in the breed, and long days alone are hard on them. Ask about heart screening for both parents.",
+        "Gentle, affectionate and happy with an easy walk — heart problems are commonly seen in the breed, and long days alone are hard on them. Read the breed profile and ask a vet what heart checks make sense; general guidance, not a vet.",
       whippet:
         "Quiet, clean and calm indoors, with a couple of proper sprints a week — but the chase instinct is real off the lead, and they feel the cold.",
       greyhound:
@@ -119,7 +120,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "bichon-frise":
         "Cheerful and low-shedding, lovely with visitors — but the grooming is a real commitment, and long days alone are hard.",
       "italian-greyhound":
-        "Small, quiet and affectionate — but the very fine legs break easily, so jumping and rough play need care, and it feels the cold.",
+        "Small, quiet and affectionate — but the legs are very fine, so ask a vet how to keep jumping and rough play safe, and read the breed profile; it also feels the cold. General guidance, not a vet.",
     },
     levelLabels: ["Very low", "Low", "Moderate", "High", "Very high"],
     quizTitle: "The right dog is the one that fits your days",
@@ -127,6 +128,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "A shortlist is a place to start. The Find My Dog quiz takes your home, your week and what you'd rather not deal with, and shows you the reasoning behind every score — so you can judge it yourself.",
     quizCta: "Find My Dog",
     compareCta: "Compare breeds side by side",
+    sourcesNote: { text: "Health notes on this page are general guidance, not a vet. For breed health information, see The Kennel Club (UK) and RVC VetCompass, and for heat risk the British Veterinary Association — all listed, with the date we last checked them, on our sources page. For your own dog, your vet knows best.", linkLabel: "See our sources" },
   },
   no: {
     seoTitle: "En roligere følgesvenn: milde hunder til daglige turer",
@@ -172,7 +174,7 @@ const CONTENT: Record<Locale, Locale9> = {
       {
         title: "Helseplager det er verdt å unngå",
         paragraphs: [
-          "Noen raser er rolige delvis fordi de ikke får puste lett. Flatnesete hunder sliter i varmen og trenger ofte operasjon; derfor har vi ikke tatt dem med, selv der motoren liker dem. Spør hva rasen er kjent for: hjertesykdom hos cavalier, ryggproblemer hos langrygga hunder, sårbare ben hos de tynnbeinte rasene.",
+          "Flatnesete hunder kan ha det tungt i varmen – varmerisiko er blant velferdshensynene British Veterinary Association tar opp – og pustebesvær ses ofte hos disse rasene, derfor har vi ikke tatt dem med, selv der motoren liker dem. Spør hva rasen er vanlig kjent for: hjerteproblemer hos enkelte raser som cavalier, ryggproblemer hos langrygga hunder, sarte ben hos de tynnbeinte rasene. Les rasens profil, og spør en veterinær – dette er generell veiledning, ikke veterinærråd.",
           "En god oppdretter viser deg helseresultater for begge foreldrene. Kan eller vil de ikke det, la være – uansett hvor søt valpen er. Vurder forsikring tidlig: det koster langt mindre enn den første regningen du ikke hadde planlagt.",
         ],
       },
@@ -186,7 +188,7 @@ const CONTENT: Record<Locale, Locale9> = {
     ],
     reasons: {
       "cavalier-king-charles-spaniel":
-        "Mild, kjærlig og fornøyd med en rolig tur – men hjertesykdom er svært vanlig i rasen, og lange dager alene er tunge. Spør om hjerteundersøkelse av begge foreldrene.",
+        "Mild, kjærlig og fornøyd med en rolig tur – hjerteproblemer ses ofte i rasen, og lange dager alene er tunge. Les rasens profil og spør en veterinær hvilke hjertesjekker som gir mening; generell veiledning, ikke veterinærråd.",
       whippet:
         "Stille, ren og rolig inne, med et par skikkelige spurter i uka – men jaktlysten er reell uten bånd, og de fryser lett.",
       greyhound:
@@ -198,7 +200,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "bichon-frise":
         "Blid og lite røytende, fin med gjester – men pelsstellet er stort, og lange dager alene er vanskelig.",
       "italian-greyhound":
-        "Liten, stille og kjærlig – men de tynne beina brekker lett, så hopp og røff lek krever aktsomhet, og den fryser fort.",
+        "Liten, stille og kjærlig – men beina er veldig tynne, så spør en veterinær hvordan hopp og røff lek kan holdes trygt, og les rasens profil; den fryser også lett. Generell veiledning, ikke veterinærråd.",
     },
     levelLabels: ["Svært lavt", "Lavt", "Middels", "Høyt", "Svært høyt"],
     quizTitle: "Den rette hunden er den som passer dagene dine",
@@ -206,6 +208,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "En kortliste er et sted å begynne. Finn min hund-quizen tar hjemmet ditt, uken din og det du helst slipper å bry deg med, og viser deg begrunnelsen bak hver score – så du kan vurdere den selv.",
     quizCta: "Finn min hund",
     compareCta: "Sammenlign raser side ved side",
+    sourcesNote: { text: "Helsenotatene på denne siden er generell veiledning, ikke veterinærråd. For rasehelse, se The Kennel Club (UK) og RVC VetCompass, og for varmerisiko British Veterinary Association – alle oppført, med datoen vi sist sjekket dem, på kildesiden vår. For din egen hund vet veterinæren best.", linkLabel: "Se kildene våre" },
   },
   pl: {
     seoTitle: "Spokojny towarzysz: łagodne psy na codzienne spacery",
@@ -251,7 +254,7 @@ const CONTENT: Record<Locale, Locale9> = {
       {
         title: "Problemy zdrowotne, których warto unikać",
         paragraphs: [
-          "Niektóre rasy są spokojne po części dlatego, że trudno im oddychać. Psy o spłaszczonym pysku źle znoszą upał i często wymagają operacji; dlatego ich nie polecamy, nawet tam, gdzie silnik je lubi. Zapytaj, z czego rasa jest znana: z chorób serca u cavalierów, problemów z kręgosłupem u psów o długim grzbiecie, kruchych nóg u ras o cienkich kościach.",
+          "Psy o spłaszczonym pysku mogą źle znosić upał – ryzyko przegrzania to jedna z kwestii dobrostanu, które podnosi British Veterinary Association – a kłopoty z oddychaniem często widuje się u tych ras, dlatego ich nie polecamy, nawet tam, gdzie silnik je lubi. Zapytaj, z czego rasa jest zwykle znana: problemy z sercem u niektórych ras, jak cavalier, problemy z plecami u psów o długim grzbiecie, delikatne łapy u ras o cienkich kościach. Przeczytaj profil rasy i zapytaj weterynarza – to ogólne wskazówki, nie porada weterynaryjna.",
           "Dobry hodowca pokaże wyniki badań zdrowotnych obojga rodziców. Jeśli nie może lub nie chce, odpuść – choćby szczeniak był najsłodszy. Pomyśl też wcześnie o ubezpieczeniu: kosztuje znacznie mniej niż pierwszy nieplanowany rachunek.",
         ],
       },
@@ -265,7 +268,7 @@ const CONTENT: Record<Locale, Locale9> = {
     ],
     reasons: {
       "cavalier-king-charles-spaniel":
-        "Łagodny, czuły i zadowolony ze spokojnego spaceru – ale choroby serca są w tej rasie bardzo częste, a długie dni w samotności są dla niego trudne. Zapytaj o badania serca obojga rodziców.",
+        "Łagodny, czuły i zadowolony ze spokojnego spaceru – problemy z sercem często widuje się w tej rasie, a długie dni w samotności są dla niego trudne. Przeczytaj profil rasy i zapytaj weterynarza, jakie badania serca mają sens; ogólne wskazówki, nie porada weterynaryjna.",
       whippet:
         "Cichy, czysty i spokojny w domu, z kilkoma porządnymi sprintami w tygodniu – ale instynkt pogoni jest prawdziwy bez smyczy, a zimno mu doskwiera.",
       greyhound:
@@ -277,7 +280,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "bichon-frise":
         "Radosny i mało się liniejący, dobrze znosi gości – ale pielęgnacja to duże zobowiązanie, a długie dni w samotności są dla niego trudne.",
       "italian-greyhound":
-        "Mały, cichy i czuły – ale cienkie łapy łatwo się łamią, więc skoki i ostra zabawa wymagają ostrożności, a zimno mu doskwiera.",
+        "Mały, cichy i czuły – ale łapy ma bardzo cienkie, więc zapytaj weterynarza, jak bezpiecznie podchodzić do skoków i ostrej zabawy, i przeczytaj profil rasy; łatwo też marznie. Ogólne wskazówki, nie porada weterynaryjna.",
     },
     levelLabels: ["Bardzo niski", "Niski", "Umiarkowany", "Wysoki", "Bardzo wysoki"],
     quizTitle: "Dobry pies to taki, który pasuje do twoich dni",
@@ -285,6 +288,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "Krótka lista to punkt wyjścia. Quiz „Znajdź mojego psa” bierze pod uwagę twój dom, twój tydzień i to, z czym wolisz nie mieć do czynienia, i pokazuje uzasadnienie każdej oceny – żebyś mógł/mogła ją ocenić samodzielnie.",
     quizCta: "Znajdź mojego psa",
     compareCta: "Porównaj rasy obok siebie",
+    sourcesNote: { text: "Uwagi zdrowotne na tej stronie to ogólne wskazówki, nie porada weterynaryjna. Informacje o zdrowiu ras znajdziesz w The Kennel Club (UK) i RVC VetCompass, a o ryzyku przegrzania – w British Veterinary Association; wszystkie są wymienione na stronie źródeł wraz z datą ostatniego sprawdzenia. W sprawie własnego psa najlepiej wie weterynarz.", linkLabel: "Zobacz nasze źródła" },
   },
   dk: {
     seoTitle: "En roligere følgesvend: milde hunde til daglige gåture",
@@ -330,7 +334,7 @@ const CONTENT: Record<Locale, Locale9> = {
       {
         title: "Helbredsproblemer, det er værd at undgå",
         paragraphs: [
-          "Nogle racer er rolige delvis fordi de har svært ved at trække vejret. Fladnæsede hunde har det svært i varmen og har ofte brug for operation; derfor har vi ikke taget dem med, selv hvor motoren kan lide dem. Spørg, hvad racen er kendt for: hjertesygdom hos cavalier, rygproblemer hos langrygede hunde, skrøbelige ben hos de finbenede racer.",
+          "Fladnæsede hunde kan have det svært i varmen – varmerisiko er blandt de velfærdshensyn, British Veterinary Association peger på – og vejrtrækningsproblemer ses ofte hos disse racer, derfor har vi ikke taget dem med, selv hvor motoren kan lide dem. Spørg, hvad racen almindeligvis er kendt for: hjerteproblemer hos nogle racer som cavalier, rygproblemer hos langrygede hunde, sarte ben hos de finbenede racer. Læs racens profil, og spørg en dyrlæge – det her er generel vejledning, ikke dyrlægeråd.",
           "En god opdrætter viser dig helbredsresultater for begge forældre. Kan eller vil de ikke det, så lad være – uanset hvor sød hvalpen er. Overvej forsikring tidligt: det koster langt mindre end den første regning, du ikke havde planlagt.",
         ],
       },
@@ -344,7 +348,7 @@ const CONTENT: Record<Locale, Locale9> = {
     ],
     reasons: {
       "cavalier-king-charles-spaniel":
-        "Mild, kærlig og tilfreds med en rolig tur – men hjertesygdom er meget almindelig i racen, og lange dage alene er hårde. Spørg til hjerteundersøgelse af begge forældre.",
+        "Mild, kærlig og tilfreds med en rolig tur – hjerteproblemer ses ofte i racen, og lange dage alene er hårde. Læs racens profil og spørg en dyrlæge, hvilke hjertetjek der giver mening; generel vejledning, ikke dyrlægeråd.",
       whippet:
         "Stille, ren og rolig indenfor, med et par ordentlige sprint om ugen – men jagtinstinktet er reelt uden snor, og de fryser let.",
       greyhound:
@@ -356,7 +360,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "bichon-frise":
         "Frisk og lidt fældende, god med gæster – men pelsplejen er stor, og lange dage alene er svære.",
       "italian-greyhound":
-        "Lille, stille og kærlig – men de tynde ben knækker let, så hop og hård leg kræver forsigtighed, og den fryser hurtigt.",
+        "Lille, stille og kærlig – men benene er meget tynde, så spørg en dyrlæge, hvordan hop og hård leg holdes trygt, og læs racens profil; den fryser også let. Generel vejledning, ikke dyrlægeråd.",
     },
     levelLabels: ["Meget lavt", "Lavt", "Middel", "Højt", "Meget højt"],
     quizTitle: "Den rigtige hund er den, der passer til dine dage",
@@ -364,6 +368,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "En kortliste er et sted at begynde. Find min hund-quizzen tager udgangspunkt i dit hjem, din uge og det, du helst vil slippe for, og viser dig begrundelsen bag hver score – så du selv kan vurdere den.",
     quizCta: "Find min hund",
     compareCta: "Sammenlign racer side om side",
+    sourcesNote: { text: "Sundhedsnoterne på denne side er generel vejledning, ikke dyrlægeråd. For racesundhed, se The Kennel Club (UK) og RVC VetCompass, og for varmerisiko British Veterinary Association – alle er opført, med datoen vi sidst tjekkede dem, på vores kildeside. For din egen hund ved dyrlægen bedst.", linkLabel: "Se vores kilder" },
   },
   se: {
     seoTitle: "En lugnare följeslagare: milda hundar för dagliga promenader",
@@ -409,7 +414,7 @@ const CONTENT: Record<Locale, Locale9> = {
       {
         title: "Hälsobördor värda att undvika",
         paragraphs: [
-          "Vissa raser är lugna delvis för att de har svårt att andas. Plattnosade hundar har det jobbigt i värme och behöver ofta opereras; därför har vi inte tagit med dem, även där motorn gillar dem. Fråga vad rasen är känd för: hjärtsjukdom hos cavalier, ryggproblem hos långryggade hundar, sköra ben hos de tunnbenta raserna.",
+          "Plattnosade hundar kan ha det jobbigt i värme – värmerisk är ett av de välfärdsskäl som British Veterinary Association lyfter – och andningsbesvär ses ofta hos de här raserna, därför har vi inte tagit med dem, även där motorn gillar dem. Fråga vad rasen vanligen är känd för: hjärtproblem hos vissa raser som cavalier, ryggproblem hos långryggade hundar, ömtåliga ben hos de tunnbenta raserna. Läs rasens profil och fråga en veterinär – det här är allmän vägledning, inte veterinärråd.",
           "En bra uppfödare visar hälsoresultat för båda föräldrarna. Kan eller vill de inte det, avstå – hur söt valpen än är. Fundera tidigt på försäkring: det kostar långt mindre än den första räkningen du inte hade planerat för.",
         ],
       },
@@ -423,7 +428,7 @@ const CONTENT: Record<Locale, Locale9> = {
     ],
     reasons: {
       "cavalier-king-charles-spaniel":
-        "Mild, tillgiven och nöjd med en lugn promenad – men hjärtsjukdom är mycket vanligt i rasen, och långa dagar ensam är svåra. Fråga efter hjärtundersökning av båda föräldrarna.",
+        "Mild, tillgiven och nöjd med en lugn promenad – hjärtproblem ses ofta i rasen, och långa dagar ensam är svåra. Läs rasens profil och fråga en veterinär vilka hjärtkontroller som är vettiga; allmän vägledning, inte veterinärråd.",
       whippet:
         "Tyst, ren och lugn inomhus, med ett par ordentliga språng i veckan – men jaktlusten är verklig utan koppel, och den fryser lätt.",
       greyhound:
@@ -435,7 +440,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "bichon-frise":
         "Glad och lite fällande, fin med gäster – men pälsvården är stor, och långa dagar ensam är svåra.",
       "italian-greyhound":
-        "Liten, tyst och tillgiven – men de tunna benen går lätt av, så hopp och vild lek kräver försiktighet, och den fryser snabbt.",
+        "Liten, tyst och tillgiven – men benen är mycket tunna, så fråga en veterinär hur hopp och vild lek kan hållas säkra, och läs rasens profil; den fryser också lätt. Allmän vägledning, inte veterinärråd.",
     },
     levelLabels: ["Mycket lågt", "Lågt", "Måttligt", "Högt", "Mycket högt"],
     quizTitle: "Rätt hund är den som passar dina dagar",
@@ -443,6 +448,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "En kortlista är en början. Hitta min hund-quizet utgår från ditt hem, din vecka och det du helst slipper, och visar resonemanget bakom varje poäng – så att du själv kan bedöma det.",
     quizCta: "Hitta min hund",
     compareCta: "Jämför raser sida vid sida",
+    sourcesNote: { text: "Hälsonoteringarna på den här sidan är allmän vägledning, inte veterinärråd. För rashälsa, se The Kennel Club (UK) och RVC VetCompass, och för värmerisk British Veterinary Association – alla finns upptagna, med datumet vi senast kontrollerade dem, på vår källsida. För din egen hund vet veterinären bäst.", linkLabel: "Se våra källor" },
   },
   fi: {
     seoTitle: "Rauhallinen kumppani: lempeät koirat päivittäisille kävelyille",
@@ -488,7 +494,7 @@ const CONTENT: Record<Locale, Locale9> = {
       {
         title: "Terveysrasitteet, joita kannattaa välttää",
         paragraphs: [
-          "Jotkut rodut ovat rauhallisia osittain siksi, että niiden on vaikea hengittää. Litteänaamaiset koirat kärsivät helteestä ja tarvitsevat usein leikkauksen; siksi emme ottaneet niitä mukaan, vaikka moottori pitäisi niistä. Kysy, mistä rotu on tunnettu: sydänsairaudet cavalier-spanieleilla, selkäongelmat pitkäselkäisillä koirilla, hauraat jalat hienokoisilla roduilla.",
+          "Litteänaamaiset koirat voivat kärsiä helteestä – lämpöriski on yksi eläinten hyvinvointiin liittyvistä huolista, jotka British Veterinary Association nostaa esiin – ja hengitysvaikeuksia nähdään näillä roduilla usein, siksi emme ottaneet niitä mukaan, vaikka moottori pitäisi niistä. Kysy, mistä rotu on yleensä tunnettu: sydänongelmat joillakin roduilla, kuten cavalier-spanielilla, selkäongelmat pitkäselkäisillä koirilla, herkät jalat hienokoisilla roduilla. Lue rodun profiili ja kysy eläinlääkäriltä – tämä on yleistä ohjausta, ei eläinlääkärin neuvo.",
           "Hyvä kasvattaja näyttää molempien vanhempien terveystulokset. Jos hän ei voi tai halua, jätä väliin – vaikka pentu olisi kuinka suloinen. Harkitse vakuutusta ajoissa: se maksaa paljon vähemmän kuin ensimmäinen suunnittelematon lasku.",
         ],
       },
@@ -502,7 +508,7 @@ const CONTENT: Record<Locale, Locale9> = {
     ],
     reasons: {
       "cavalier-king-charles-spaniel":
-        "Lempeä, kiintyvä ja tyytyväinen rauhalliseen kävelyyn – mutta sydänsairaudet ovat rodussa hyvin yleisiä, ja pitkät päivät yksin ovat sille raskaita. Kysy molempien vanhempien sydäntutkimuksista.",
+        "Lempeä, kiintyvä ja tyytyväinen rauhalliseen kävelyyn – sydänongelmia nähdään rodussa usein, ja pitkät päivät yksin ovat sille raskaita. Lue rodun profiili ja kysy eläinlääkäriltä, mitkä sydäntutkimukset ovat järkeviä; yleistä ohjausta, ei eläinlääkärin neuvo.",
       whippet:
         "Hiljainen, siisti ja rauhallinen sisällä, pari kunnon pyrähdystä viikossa – mutta jahtiviettiä on aidosti ilman hihnaa, ja se palelee helposti.",
       greyhound:
@@ -514,7 +520,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "bichon-frise":
         "Iloinen ja vähän karvaa lähtevä, hyvä vieraiden kanssa – mutta turkinhoito on työlästä, ja pitkät päivät yksin ovat vaikeita.",
       "italian-greyhound":
-        "Pieni, hiljainen ja kiintyvä – mutta ohuet jalat katkeavat helposti, joten hypyt ja rajut leikit vaativat varovaisuutta, ja se palelee nopeasti.",
+        "Pieni, hiljainen ja kiintyvä – mutta jalat ovat hyvin ohuet, joten kysy eläinlääkäriltä, miten hypyt ja rajut leikit pidetään turvallisina, ja lue rodun profiili; se myös palelee helposti. Yleistä ohjausta, ei eläinlääkärin neuvo.",
     },
     levelLabels: ["Hyvin matala", "Matala", "Kohtalainen", "Korkea", "Hyvin korkea"],
     quizTitle: "Oikea koira on se, joka sopii päiviisi",
@@ -522,6 +528,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "Lyhyt lista on lähtökohta. Löydä koirani -kysely ottaa huomioon kotisi, viikkosi ja sen, mistä mieluiten pääset eroon, ja näyttää perustelut jokaisen pistemäärän takana – jotta voit arvioida ne itse.",
     quizCta: "Löydä koirani",
     compareCta: "Vertaile rotuja rinnakkain",
+    sourcesNote: { text: "Tämän sivun terveysmerkinnät ovat yleistä ohjausta, eivät eläinlääkärin neuvo. Rotujen terveystietoa löydät The Kennel Clubilta (UK) ja RVC VetCompassilta, ja lämpöriskistä British Veterinary Associationilta – kaikki on lueteltu lähdesivullamme viimeisimmän tarkistuspäivän kanssa. Oman koirasi asioissa eläinlääkäri tietää parhaiten.", linkLabel: "Katso lähteemme" },
   },
   de: {
     seoTitle: "Ein ruhiger Begleiter: sanfte Hunde für den täglichen Spaziergang",
@@ -567,7 +574,7 @@ const CONTENT: Record<Locale, Locale9> = {
       {
         title: "Gesundheitslasten, die du meiden solltest",
         paragraphs: [
-          "Manche Rassen sind unter anderem deshalb ruhig, weil sie schlecht Luft bekommen. Kurzköpfige Hunde leiden bei Wärme und brauchen oft eine Operation; deshalb haben wir sie nicht aufgenommen, auch wenn die Engine sie mag. Frag, wofür die Rasse bekannt ist: Herzerkrankungen beim Cavalier, Rückenprobleme bei langrückigen Hunden, zerbrechliche Beine bei sehr feingliedrigen Rassen.",
+          "Kurzköpfige Hunde können bei Wärme leiden – Hitzerisiko gehört zu den Tierschutzthemen, die die British Veterinary Association anspricht – und Atemprobleme sieht man bei diesen Rassen häufig; deshalb haben wir sie nicht aufgenommen, auch wenn die Engine sie mag. Frag, wofür eine Rasse üblicherweise bekannt ist: Herzprobleme bei manchen Rassen wie dem Cavalier, Rückenprobleme bei langrückigen Hunden, empfindliche Beine bei sehr feingliedrigen Rassen. Lies das Rassenprofil und frag eine Tierärztin oder einen Tierarzt – das ist allgemeine Orientierung, kein tierärztlicher Rat.",
           "Ein guter Züchter zeigt dir die Gesundheitsergebnisse beider Elterntiere. Kann oder will er das nicht, lass es – so süß der Welpe auch ist. Denk früh über eine Versicherung nach: Sie kostet weit weniger als die erste Rechnung, mit der du nicht gerechnet hast.",
         ],
       },
@@ -581,7 +588,7 @@ const CONTENT: Record<Locale, Locale9> = {
     ],
     reasons: {
       "cavalier-king-charles-spaniel":
-        "Sanft, anhänglich und mit einer ruhigen Runde zufrieden – aber Herzerkrankungen sind bei dieser Rasse sehr häufig, und lange Tage allein fallen ihr schwer. Frag nach Herzuntersuchungen beider Elterntiere.",
+        "Sanft, anhänglich und mit einer ruhigen Runde zufrieden – Herzprobleme sieht man bei dieser Rasse häufig, und lange Tage allein fallen ihr schwer. Lies das Rassenprofil und frag eine Tierärztin oder einen Tierarzt, welche Herzuntersuchungen sinnvoll sind; allgemeine Orientierung, kein tierärztlicher Rat.",
       whippet:
         "Leise, sauber und ruhig im Haus, mit ein, zwei richtigen Sprints pro Woche – aber der Jagdtrieb ist ohne Leine echt, und er friert schnell.",
       greyhound:
@@ -593,7 +600,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "bichon-frise":
         "Fröhlich und haart kaum, gut mit Gästen – aber die Fellpflege ist aufwendig, und lange Tage allein fallen ihm schwer.",
       "italian-greyhound":
-        "Klein, leise und anhänglich – aber die dünnen Beine brechen leicht, deshalb brauchen Sprünge und wildes Spiel Vorsicht, und er friert schnell.",
+        "Klein, leise und anhänglich – aber die Beine sind sehr dünn, frag deshalb eine Tierärztin oder einen Tierarzt, wie Sprünge und wildes Spiel sicher bleiben, und lies das Rassenprofil; er friert außerdem schnell. Allgemeine Orientierung, kein tierärztlicher Rat.",
     },
     levelLabels: ["Sehr niedrig", "Niedrig", "Mittel", "Hoch", "Sehr hoch"],
     quizTitle: "Der richtige Hund ist der, der zu deinen Tagen passt",
@@ -601,6 +608,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "Eine Shortlist ist ein Anfang. Das Quiz »Meinen Hund finden« berücksichtigt dein Zuhause, deine Woche und das, womit du lieber nichts zu tun hättest, und zeigt dir die Begründung hinter jeder Punktzahl – damit du sie selbst beurteilen kannst.",
     quizCta: "Meinen Hund finden",
     compareCta: "Rassen nebeneinander vergleichen",
+    sourcesNote: { text: "Die Gesundheitshinweise auf dieser Seite sind allgemeine Orientierung, kein tierärztlicher Rat. Informationen zur Rassegesundheit findest du beim The Kennel Club (UK) und bei RVC VetCompass, zum Hitzerisiko bei der British Veterinary Association – alle sind auf unserer Quellenseite mit dem Datum der letzten Prüfung aufgeführt. Für deinen eigenen Hund weiß deine Tierarztpraxis es am besten.", linkLabel: "Unsere Quellen ansehen" },
   },
   fr: {
     seoTitle: "Un compagnon plus calme : des chiens doux pour les balades de tous les jours",
@@ -646,7 +654,7 @@ const CONTENT: Record<Locale, Locale9> = {
       {
         title: "Les fardeaux de santé à éviter",
         paragraphs: [
-          "Certaines races sont calmes en partie parce qu'elles respirent mal. Les chiens à museau plat souffrent de la chaleur et ont souvent besoin d'une opération ; c'est pourquoi nous ne les avons pas retenus, même quand le moteur les apprécie. Demandez ce pour quoi la race est connue : maladies cardiaques chez le cavalier, problèmes de dos chez les chiens au dos long, pattes fragiles chez les races très fines.",
+          "Les chiens à museau plat peuvent souffrir de la chaleur – le risque de coup de chaleur fait partie des préoccupations de bien-être que soulève la British Veterinary Association – et les difficultés respiratoires sont souvent observées dans ces races ; c'est pourquoi nous ne les avons pas retenues, même quand le moteur les apprécie. Demandez ce pour quoi une race est couramment connue : problèmes cardiaques chez certaines races comme le cavalier, problèmes de dos chez les chiens au dos long, pattes délicates chez les races très fines. Lisez le profil de la race, puis demandez à un vétérinaire – ce sont des repères généraux, pas un avis vétérinaire.",
           "Un bon éleveur vous montre les résultats des tests de santé des deux parents. S'il ne peut pas ou ne veut pas, passez votre chemin – même si le chiot est adorable. Pensez tôt à une assurance : elle coûte bien moins que la première facture imprévue.",
         ],
       },
@@ -660,7 +668,7 @@ const CONTENT: Record<Locale, Locale9> = {
     ],
     reasons: {
       "cavalier-king-charles-spaniel":
-        "Doux, affectueux et content d'une balade tranquille – mais les maladies cardiaques sont très fréquentes dans la race, et les longues journées seul lui pèsent. Demandez les dépistages cardiaques des deux parents.",
+        "Doux, affectueux et content d'une balade tranquille – les problèmes cardiaques sont souvent observés dans la race, et les longues journées seul lui pèsent. Lisez le profil de la race et demandez à un vétérinaire quels contrôles cardiaques ont du sens ; repères généraux, pas un avis vétérinaire.",
       whippet:
         "Silencieux, propre et calme à la maison, avec un ou deux vrais sprints par semaine – mais l'instinct de chasse est bien réel sans laisse, et il souffre du froid.",
       greyhound:
@@ -672,7 +680,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "bichon-frise":
         "Joyeux et peu perdeur de poils, très bien avec les invités – mais le toilettage est lourd, et les longues journées seul lui sont difficiles.",
       "italian-greyhound":
-        "Petit, silencieux et affectueux – mais ses pattes fines se cassent facilement, donc sauts et jeux brusques demandent de la prudence, et il a vite froid.",
+        "Petit, silencieux et affectueux – mais ses pattes sont très fines : demandez à un vétérinaire comment garder sauts et jeux brusques sans danger, et lisez le profil de la race ; il a aussi vite froid. Repères généraux, pas un avis vétérinaire.",
     },
     levelLabels: ["Très faible", "Faible", "Modéré", "Élevé", "Très élevé"],
     quizTitle: "Le bon chien est celui qui s'accorde à vos journées",
@@ -680,6 +688,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "Une présélection n'est qu'un début. Le quiz Trouver mon chien tient compte de votre logement, de votre semaine et de ce que vous préférez éviter, et vous montre le raisonnement derrière chaque score – pour que vous puissiez en juger vous-même.",
     quizCta: "Trouver mon chien",
     compareCta: "Comparer les races côte à côte",
+    sourcesNote: { text: "Les notes de santé de cette page sont des repères généraux, pas un avis vétérinaire. Pour la santé des races, voir The Kennel Club (UK) et RVC VetCompass, et pour le risque de chaleur la British Veterinary Association – tous figurent, avec la date de notre dernière vérification, sur notre page des sources. Pour votre propre chien, votre vétérinaire sait mieux.", linkLabel: "Voir nos sources" },
   },
   nl: {
     seoTitle: "Een rustigere metgezel: zachte honden voor de dagelijkse wandeling",
@@ -725,7 +734,7 @@ const CONTENT: Record<Locale, Locale9> = {
       {
         title: "Gezondheidslasten die je liever vermijdt",
         paragraphs: [
-          "Sommige rassen zijn deels rustig omdat ze moeilijk kunnen ademen. Platsnuitige honden hebben het zwaar bij warmte en hebben vaak een operatie nodig; daarom staan ze niet op de lijst, ook al vindt de engine ze leuk. Vraag waar het ras om bekendstaat: hartziekten bij de cavalier, rugproblemen bij langgerekte honden, breekbare poten bij fijngebouwde rassen.",
+          "Platsnuitige honden kunnen het zwaar hebben bij warmte – hitterisico is een van de welzijnszorgen die de British Veterinary Association noemt – en ademhalingsproblemen zie je bij deze rassen vaak; daarom staan ze niet op de lijst, ook al vindt de engine ze leuk. Vraag waar een ras gewoonlijk om bekendstaat: hartproblemen bij sommige rassen zoals de cavalier, rugproblemen bij langgerekte honden, tere pootjes bij fijngebouwde rassen. Lees het rasprofiel en vraag het aan een dierenarts – dit is algemene richtlijn, geen dierenartsadvies.",
           "Een goede fokker laat je de gezondheidsuitslagen van beide ouders zien. Kan of wil hij dat niet, laat het dan – hoe lief de pup ook is. Denk vroeg aan een verzekering: die kost veel minder dan de eerste rekening waar je niet op had gerekend.",
         ],
       },
@@ -739,7 +748,7 @@ const CONTENT: Record<Locale, Locale9> = {
     ],
     reasons: {
       "cavalier-king-charles-spaniel":
-        "Zacht, aanhankelijk en tevreden met een rustige wandeling – maar hartziekten komen bij dit ras heel vaak voor, en lange dagen alleen zijn zwaar. Vraag naar hartonderzoek bij beide ouders.",
+        "Zacht, aanhankelijk en tevreden met een rustige wandeling – hartproblemen zie je bij dit ras vaak, en lange dagen alleen zijn zwaar. Lees het rasprofiel en vraag een dierenarts welke hartcontroles zinvol zijn; algemene richtlijn, geen dierenartsadvies.",
       whippet:
         "Stil, schoon en rustig in huis, met een of twee flinke sprints per week – maar het jachtinstinct is echt zonder lijn, en hij heeft snel kou.",
       greyhound:
@@ -751,7 +760,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "bichon-frise":
         "Vrolijk en verhaart weinig, fijn met bezoek – maar de vachtverzorging is intensief, en lange dagen alleen zijn moeilijk.",
       "italian-greyhound":
-        "Klein, stil en aanhankelijk – maar de dunne pootjes breken snel, dus springen en wild spel vragen om voorzichtigheid, en hij heeft snel kou.",
+        "Klein, stil en aanhankelijk – maar de pootjes zijn heel dun, dus vraag een dierenarts hoe je springen en wild spel veilig houdt, en lees het rasprofiel; hij heeft ook snel kou. Algemene richtlijn, geen dierenartsadvies.",
     },
     levelLabels: ["Heel laag", "Laag", "Gemiddeld", "Hoog", "Heel hoog"],
     quizTitle: "De juiste hond is de hond die bij je dagen past",
@@ -759,6 +768,7 @@ const CONTENT: Record<Locale, Locale9> = {
       "Een shortlist is een begin. De quiz Vind mijn hond kijkt naar je huis, je week en waar je liever niet mee te maken hebt, en toont de redenering achter elke score – zodat je zelf kunt beoordelen of het klopt.",
     quizCta: "Vind mijn hond",
     compareCta: "Vergelijk rassen naast elkaar",
+    sourcesNote: { text: "De gezondheidsnotities op deze pagina zijn algemene richtlijnen, geen dierenartsadvies. Voor rasgezondheid: zie The Kennel Club (UK) en RVC VetCompass, en voor hitterisico de British Veterinary Association – allemaal vermeld, met de datum van onze laatste controle, op onze bronnenpagina. Voor je eigen hond weet je dierenarts het best.", linkLabel: "Bekijk onze bronnen" },
   },
 };
 
@@ -805,6 +815,7 @@ function copyFor(locale: Locale): GuideCopy {
     quizBody: t.quizBody,
     quizCta: t.quizCta,
     compareCta: t.compareCta,
+    sourcesNote: { text: t.sourcesNote.text, linkLabel: t.sourcesNote.linkLabel },
     levelLabels: t.levelLabels,
   };
 }

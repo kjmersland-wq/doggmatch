@@ -38,3 +38,9 @@ All new strings use the existing per-component `useCopy` maps with all nine loca
 - **Homepage "Four lifestyles, matched"**: fourth card is the real engine's output for "daily walks, quieter home, not too big, easy to live with". The engine's top pick there is the French Bulldog (98%); this card skips flat-faced breeds (listed in `real-matches.tsx`) and says so on the card, so it shows the Cavalier King Charles Spaniel at its real score (98%). Quote and drawback are hand-written and only used if the engine lands on that breed; otherwise the card falls back to the engine's own reasoning. All four cards now carry a breed portrait.
 - Quiet link "Want a calmer dog for daily walks?" on `/` and `/get-a-dog`.
 - Sitemap entry added. Static route beats `/guides/$slug`, cluster support pages are unaffected.
+
+## Trust pass: health lines in the calmer-companion guide and card
+
+- Health claims now name a body already in `src/data/sources/registry.ts` and end with "general guidance, not a vet": The Kennel Club (UK) and RVC VetCompass for breed health information, the British Veterinary Association for heat risk. The guide ends with a note linking to `/sources`.
+- Claims with no source in the registry are softened to "commonly seen in the breed — read the breed profile and ask a vet": Cavalier heart problems, Italian Greyhound legs, flat-faced breathing, back trouble in long-backed dogs. Removed: "very common", "often need surgery", "break easily", "heart screening".
+- The homepage card keeps the Cavalier; French Bulldog is not on it. Matching math and homepage order untouched.

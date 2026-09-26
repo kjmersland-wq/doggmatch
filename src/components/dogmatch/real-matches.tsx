@@ -115,10 +115,10 @@ const copy = {
     intro:
       "Not testimonials — the same deterministic engine, run live against four common situations, so you can see exactly how it reasons before you try it yourself.",
     badge: "Worked example",
-    skipNote: "Flat-faced breeds are left out of this example on purpose: their breathing problems matter more than a score shows.",
+    skipNote: "Flat-faced breeds are left out of this example on purpose: heat and breathing trouble are commonly seen in them, and that matters more than a score shows. General guidance, not a vet.",
     calmerLink: "Want a calmer dog for daily walks?",
     scenarios: {
-      calmerCompanion: { context: "Daily walks, a quieter home, not too big, easy to live with", quote: "A good walk each day and a warm spot beside you — that's most of what this dog asks for.", drawback: "Heart disease is very common in the breed, and long days alone are hard on them. Ask breeders for heart screening on both parents." },
+      calmerCompanion: { context: "Daily walks, a quieter home, not too big, easy to live with", quote: "A good walk each day and a warm spot beside you — that's most of what this dog asks for.", drawback: "Heart problems are commonly seen in the breed, and long days alone are hard on them. Read the breed profile and ask a vet — general guidance, not a vet." },
       apartmentAlone: { context: "Apartment living, alone 6+ hours on a workday" },
       familyShedding: { context: "House with a garden, young children, wants low shedding" },
       firstTimeOutdoor: { context: "First dog, house with a garden, wants an outdoor companion" },
@@ -130,10 +130,10 @@ const copy = {
     intro:
       "Ikke kundeuttalelser — samme deterministiske motor, brukt direkte på fire vanlige situasjoner, så du kan se nøyaktig hvordan den tenker før du prøver selv.",
     badge: "Reelt eksempel",
-    skipNote: "Flatnesete raser er bevisst utelatt i dette eksempelet: pusteproblemene deres veier tyngre enn en score viser.",
+    skipNote: "Flatnesete raser er bevisst utelatt i dette eksempelet: varme- og pustebesvær ses ofte hos dem, og det veier tyngre enn en score viser. Generell veiledning, ikke veterinærråd.",
     calmerLink: "Vil du ha en roligere hund til daglige turer?",
     scenarios: {
-      calmerCompanion: { context: "Daglige turer, et roligere hjem, ikke for stor, enkel å leve med", quote: "En god tur hver dag og en varm plass ved siden av deg – det er det meste denne hunden ber om.", drawback: "Hjertesykdom er svært vanlig i rasen, og lange dager alene er tunge for dem. Be oppdretteren om hjerteundersøkelse av begge foreldrene." },
+      calmerCompanion: { context: "Daglige turer, et roligere hjem, ikke for stor, enkel å leve med", quote: "En god tur hver dag og en varm plass ved siden av deg – det er det meste denne hunden ber om.", drawback: "Hjerteproblemer ses ofte i rasen, og lange dager alene er tunge for dem. Les rasens profil og spør en veterinær – generell veiledning, ikke veterinærråd." },
       apartmentAlone: { context: "Leilighet, alene 6+ timer på en vanlig arbeidsdag" },
       familyShedding: { context: "Hus med hage, små barn, vil ha lite pelsfelling" },
       firstTimeOutdoor: { context: "Første hund, hus med hage, ønsker en aktiv turkamerat" },
@@ -145,10 +145,10 @@ const copy = {
     intro:
       "To nie opinie klientów — ten sam deterministyczny silnik, użyty na żywo w czterech typowych sytuacjach, żebyś zobaczył/a dokładnie, jak wnioskuje, zanim spróbujesz sam/sama.",
     badge: "Praktyczny przykład",
-    skipNote: "Rasy o spłaszczonym pysku celowo pominięto w tym przykładzie: ich problemy z oddychaniem znaczą więcej, niż pokazuje wynik.",
+    skipNote: "Rasy o spłaszczonym pysku celowo pominięto w tym przykładzie: kłopoty z upałem i oddychaniem często się u nich zdarzają i znaczą więcej, niż pokazuje wynik. Ogólne wskazówki, nie porada weterynaryjna.",
     calmerLink: "Szukasz spokojniejszego psa na codzienne spacery?",
     scenarios: {
-      calmerCompanion: { context: "Codzienne spacery, cichszy dom, niezbyt duży pies, z którym łatwo się żyje", quote: "Dobry spacer każdego dnia i ciepłe miejsce obok ciebie – tego ten pies chce najbardziej.", drawback: "Choroby serca są w tej rasie bardzo częste, a długie dni w samotności są dla niej trudne. Poproś hodowcę o wyniki badań serca obojga rodziców." },
+      calmerCompanion: { context: "Codzienne spacery, cichszy dom, niezbyt duży pies, z którym łatwo się żyje", quote: "Dobry spacer każdego dnia i ciepłe miejsce obok ciebie – tego ten pies chce najbardziej.", drawback: "Problemy z sercem często widuje się w tej rasie, a długie dni w samotności są dla niej trudne. Przeczytaj profil rasy i zapytaj weterynarza – ogólne wskazówki, nie porada weterynaryjna." },
       apartmentAlone: { context: "Mieszkanie, pies zostaje sam na 6+ godzin w dzień roboczy" },
       familyShedding: { context: "Dom z ogrodem, małe dzieci, priorytetem jest małe linienie" },
       firstTimeOutdoor: { context: "Pierwszy pies, dom z ogrodem, szuka aktywnego towarzysza" },
@@ -160,10 +160,10 @@ const copy = {
     intro:
       "Ikke kundeudtalelser — samme deterministiske motor, brugt direkte på fire almindelige situationer, så du kan se præcis, hvordan den tænker, før du selv prøver.",
     badge: "Reelt eksempel",
-    skipNote: "Fladnæsede racer er med vilje udeladt i dette eksempel: deres vejrtrækningsproblemer vejer tungere, end en score viser.",
+    skipNote: "Fladnæsede racer er med vilje udeladt i dette eksempel: varme- og vejrtrækningsproblemer ses ofte hos dem, og det vejer tungere, end en score viser. Generel vejledning, ikke dyrlægeråd.",
     calmerLink: "Vil du have en roligere hund til daglige gåture?",
     scenarios: {
-      calmerCompanion: { context: "Daglige gåture, et roligere hjem, ikke for stor, nem at leve med", quote: "En god tur hver dag og en varm plads ved siden af dig – det er det meste, denne hund beder om.", drawback: "Hjertesygdom er meget almindelig i racen, og lange dage alene er hårde for dem. Bed opdrætteren om hjerteundersøgelse af begge forældre." },
+      calmerCompanion: { context: "Daglige gåture, et roligere hjem, ikke for stor, nem at leve med", quote: "En god tur hver dag og en varm plads ved siden af dig – det er det meste, denne hund beder om.", drawback: "Hjerteproblemer ses ofte i racen, og lange dage alene er hårde for dem. Læs racens profil og spørg en dyrlæge – generel vejledning, ikke dyrlægeråd." },
       apartmentAlone: { context: "Lejlighed, hunden er alene 6+ timer på en hverdag" },
       familyShedding: { context: "Hus med have, små børn, prioriterer lidt fældning" },
       firstTimeOutdoor: { context: "Første hund, hus med have, ønsker en aktiv følgesvend" },
@@ -175,10 +175,10 @@ const copy = {
     intro:
       "Inga kundomdömen — samma deterministiska motor, använd direkt på fyra vanliga situationer, så att du kan se exakt hur den resonerar innan du testar själv.",
     badge: "Exempel ur verkligheten",
-    skipNote: "Plattnosade raser är medvetet utelämnade i det här exemplet: deras andningsproblem väger tyngre än en poäng visar.",
+    skipNote: "Plattnosade raser är medvetet utelämnade i det här exemplet: värme- och andningsproblem ses ofta hos dem, och det väger tyngre än en poäng visar. Allmän vägledning, inte veterinärråd.",
     calmerLink: "Vill du ha en lugnare hund för dagliga promenader?",
     scenarios: {
-      calmerCompanion: { context: "Dagliga promenader, ett lugnare hem, inte för stor, lätt att leva med", quote: "En bra promenad varje dag och en varm plats bredvid dig – det är det mesta den här hunden ber om.", drawback: "Hjärtsjukdom är mycket vanligt i rasen, och långa dagar ensam är tunga för dem. Be uppfödaren om hjärtundersökning av båda föräldrarna." },
+      calmerCompanion: { context: "Dagliga promenader, ett lugnare hem, inte för stor, lätt att leva med", quote: "En bra promenad varje dag och en varm plats bredvid dig – det är det mesta den här hunden ber om.", drawback: "Hjärtproblem ses ofta i rasen, och långa dagar ensam är tunga för dem. Läs rasens profil och fråga en veterinär – allmän vägledning, inte veterinärråd." },
       apartmentAlone: { context: "Lägenhet, hunden är ensam 6+ timmar en vardag" },
       familyShedding: { context: "Hus med trädgård, små barn, prioriterar lite fällning" },
       firstTimeOutdoor: { context: "Första hunden, hus med trädgård, vill ha en aktiv följeslagare" },
@@ -190,10 +190,10 @@ const copy = {
     intro:
       "Ei asiakaskertomuksia — sama deterministinen moottori, ajettuna suoraan neljän tavallisen elämäntilanteen läpi, jotta näet tarkalleen, miten se päättelee, ennen kuin kokeilet itse.",
     badge: "Käytännön esimerkki",
-    skipNote: "Litteänaamaiset rodut on jätetty tästä esimerkistä tarkoituksella pois: niiden hengitysongelmat painavat enemmän kuin pistemäärä näyttää.",
+    skipNote: "Litteänaamaiset rodut on jätetty tästä esimerkistä tarkoituksella pois: lämpö- ja hengitysongelmia nähdään niillä usein, ja se painaa enemmän kuin pistemäärä näyttää. Yleistä ohjausta, ei eläinlääkärin neuvo.",
     calmerLink: "Kaipaatko rauhallisempaa koiraa päivittäisille kävelyille?",
     scenarios: {
-      calmerCompanion: { context: "Päivittäiset kävelyt, rauhallisempi koti, ei liian suuri, helppo elää kanssa", quote: "Hyvä kävely joka päivä ja lämmin paikka vierelläsi – sitä tämä koira pyytää eniten.", drawback: "Sydänsairaudet ovat rodussa hyvin yleisiä, ja pitkät päivät yksin ovat sille raskaita. Pyydä kasvattajalta molempien vanhempien sydäntutkimukset." },
+      calmerCompanion: { context: "Päivittäiset kävelyt, rauhallisempi koti, ei liian suuri, helppo elää kanssa", quote: "Hyvä kävely joka päivä ja lämmin paikka vierelläsi – sitä tämä koira pyytää eniten.", drawback: "Sydänongelmia nähdään rodussa usein, ja pitkät päivät yksin ovat sille raskaita. Lue rodun profiili ja kysy eläinlääkäriltä – yleistä ohjausta, ei eläinlääkärin neuvo." },
       apartmentAlone: { context: "Kerrostaloasunto, koira yksin 6+ tuntia arkipäivänä" },
       familyShedding: { context: "Talo pihalla, pieniä lapsia, vähäinen karvanlähtö tärkeää" },
       firstTimeOutdoor: { context: "Ensimmäinen koira, talo pihalla, toivoo aktiivista seuralaista" },
@@ -205,10 +205,10 @@ const copy = {
     intro:
       "Keine Erfahrungsberichte — derselbe deterministische Algorithmus, live angewendet auf vier alltägliche Situationen, damit du genau siehst, wie er denkt, bevor du es selbst ausprobierst.",
     badge: "Praxisbeispiel",
-    skipNote: "Kurzköpfige Rassen lassen wir in diesem Beispiel bewusst weg: Ihre Atemprobleme wiegen schwerer, als eine Punktzahl zeigt.",
+    skipNote: "Kurzköpfige Rassen lassen wir in diesem Beispiel bewusst weg: Hitze- und Atemprobleme sieht man bei ihnen häufig, und das wiegt schwerer, als eine Punktzahl zeigt. Allgemeine Orientierung, kein tierärztlicher Rat.",
     calmerLink: "Wünschst du dir einen ruhigeren Hund für die täglichen Spaziergänge?",
     scenarios: {
-      calmerCompanion: { context: "Tägliche Spaziergänge, ein ruhigeres Zuhause, nicht zu groß, unkompliziert im Alltag", quote: "Ein guter Spaziergang am Tag und ein warmer Platz neben dir – mehr verlangt dieser Hund kaum.", drawback: "Herzerkrankungen sind bei dieser Rasse sehr häufig, und lange Tage allein fallen ihr schwer. Frag den Züchter nach Herzuntersuchungen beider Elterntiere." },
+      calmerCompanion: { context: "Tägliche Spaziergänge, ein ruhigeres Zuhause, nicht zu groß, unkompliziert im Alltag", quote: "Ein guter Spaziergang am Tag und ein warmer Platz neben dir – mehr verlangt dieser Hund kaum.", drawback: "Herzprobleme sieht man bei dieser Rasse häufig, und lange Tage allein fallen ihr schwer. Lies das Rassenprofil und frag eine Tierärztin oder einen Tierarzt – allgemeine Orientierung, kein tierärztlicher Rat." },
       apartmentAlone: { context: "Wohnung, Hund an Werktagen 6+ Stunden allein" },
       familyShedding: { context: "Haus mit Garten, kleine Kinder, wenig Haarausfall gewünscht" },
       firstTimeOutdoor: { context: "Erster Hund, Haus mit Garten, aktiver Begleiter gewünscht" },
@@ -220,10 +220,10 @@ const copy = {
     intro:
       "Pas des témoignages — le même moteur déterministe, appliqué en direct à quatre situations courantes, pour que vous voyiez exactement comment il raisonne avant de l'essayer vous-même.",
     badge: "Cas pratique",
-    skipNote: "Les races à museau plat sont volontairement écartées de cet exemple : leurs problèmes respiratoires pèsent plus lourd que ne le montre un score.",
+    skipNote: "Les races à museau plat sont volontairement écartées de cet exemple : chaleur et difficultés respiratoires y sont souvent observées, et cela pèse plus lourd que ne le montre un score. Repères généraux, pas un avis vétérinaire.",
     calmerLink: "Envie d'un chien plus calme pour les balades de tous les jours ?",
     scenarios: {
-      calmerCompanion: { context: "Des balades quotidiennes, une maison plus calme, pas trop grand, facile à vivre", quote: "Une bonne balade chaque jour et une place au chaud près de vous : c'est presque tout ce que ce chien demande.", drawback: "Les maladies cardiaques sont très fréquentes dans la race, et les longues journées seul lui pèsent. Demandez à l'éleveur les dépistages cardiaques des deux parents." },
+      calmerCompanion: { context: "Des balades quotidiennes, une maison plus calme, pas trop grand, facile à vivre", quote: "Une bonne balade chaque jour et une place au chaud près de vous : c'est presque tout ce que ce chien demande.", drawback: "Les problèmes cardiaques sont souvent observés dans la race, et les longues journées seul lui pèsent. Lisez le profil de la race et demandez à un vétérinaire – repères généraux, pas un avis vétérinaire." },
       apartmentAlone: { context: "Appartement, chien seul 6h ou plus un jour de semaine" },
       familyShedding: { context: "Maison avec jardin, jeunes enfants, peu de perte de poils souhaitée" },
       firstTimeOutdoor: { context: "Premier chien, maison avec jardin, envie d'un compagnon actif" },
@@ -235,10 +235,10 @@ const copy = {
     intro:
       "Geen getuigenissen — dezelfde deterministische engine, live toegepast op vier herkenbare situaties, zodat je precies ziet hoe ze redeneert voordat je het zelf probeert.",
     badge: "Praktijkvoorbeeld",
-    skipNote: "Platsnuitige rassen laten we in dit voorbeeld bewust weg: hun ademhalingsproblemen wegen zwaarder dan een score laat zien.",
+    skipNote: "Platsnuitige rassen laten we in dit voorbeeld bewust weg: hitte- en ademhalingsproblemen zie je bij hen vaak, en dat weegt zwaarder dan een score laat zien. Algemene richtlijn, geen dierenartsadvies.",
     calmerLink: "Zoek je een rustigere hond voor de dagelijkse wandelingen?",
     scenarios: {
-      calmerCompanion: { context: "Dagelijkse wandelingen, een rustiger huis, niet te groot, makkelijk om mee te leven", quote: "Elke dag een fijne wandeling en een warm plekje naast je – veel meer vraagt deze hond niet.", drawback: "Hartziekten komen bij dit ras heel vaak voor, en lange dagen alleen zijn zwaar. Vraag de fokker om hartonderzoek bij beide ouders." },
+      calmerCompanion: { context: "Dagelijkse wandelingen, een rustiger huis, niet te groot, makkelijk om mee te leven", quote: "Elke dag een fijne wandeling en een warm plekje naast je – veel meer vraagt deze hond niet.", drawback: "Hartproblemen zie je bij dit ras vaak, en lange dagen alleen zijn zwaar. Lees het rasprofiel en vraag een dierenarts – algemene richtlijn, geen dierenartsadvies." },
       apartmentAlone: { context: "Appartement, hond op werkdagen 6+ uur alleen" },
       familyShedding: { context: "Huis met tuin, jonge kinderen, weinig haarverlies gewenst" },
       firstTimeOutdoor: { context: "Eerste hond, huis met tuin, wil een actieve buitenmaatje" },

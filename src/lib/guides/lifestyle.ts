@@ -33,6 +33,8 @@ export interface GuideCopy {
   readProfile: string;
   tradeoffNote?: string;
   sections?: GuideSection[];
+  /** Optional "general guidance, not a vet" note with a link to the sources page. */
+  sourcesNote?: { text: string; linkLabel: string };
   quizTitle: string;
   quizBody: string;
   quizCta: string;

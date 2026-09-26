@@ -208,6 +208,18 @@ export function LifestyleGuide({ config }: { config: LifestyleGuideConfig }) {
         </section>
       ))}
 
+      {c.sourcesNote && (
+        <p className="mt-14 border-l-2 border-border pl-4 text-sm leading-relaxed text-muted-foreground">
+          {c.sourcesNote.text}{" "}
+          <Link
+            to={withLangPrefix("/sources")}
+            className="font-medium text-foreground underline underline-offset-4 hover:text-accent"
+          >
+            {c.sourcesNote.linkLabel}
+          </Link>
+        </p>
+      )}
+
       <section className="mt-14 rounded-3xl bg-primary p-8 text-primary-foreground sm:p-10">
         <h2 className="font-display text-2xl font-semibold">{c.quizTitle}</h2>
         <p className="mt-4 leading-relaxed opacity-90">{c.quizBody}</p>
