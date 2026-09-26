@@ -84,47 +84,47 @@ export const Route = createFileRoute("/{-$lang}/breeds/")({
 const pageCopy = {
   en: {
     intro:
-      "Our deterministic matching engine draws on a model covering 250+ breeds. Below are the {count} we've published so far — each one screened the same way, and given a full, verified editorial profile rather than a thin trait sheet.",
+      "Our deterministic matching engine scores {count} published breeds, all in the same way. You'll find every one below, each with a full, verified editorial profile rather than a thin trait sheet.",
     deepDiveBadge: "Editorial Deep-Dive",
   },
   no: {
     intro:
-      "Vår deterministiske matchemotor bygger på en modell som dekker over 250 raser. Under finner du de {count} vi har publisert så langt — alle vurdert på samme måte, og med en fullstendig, verifisert redaksjonell profil i stedet for et tynt egenskapsark.",
+      "Vår deterministiske matchemotor vurderer {count} publiserte raser, alle på samme måte. Under finner du hver eneste av dem, med en fullstendig, verifisert redaksjonell profil i stedet for et tynt egenskapsark.",
     deepDiveBadge: "Redaksjonell dybdeprofil",
   },
   pl: {
     intro:
-      "Nasz deterministyczny silnik dopasowania opiera się na modelu obejmującym ponad 250 ras. Poniżej znajdziesz {count} ras, które opublikowaliśmy do tej pory — każda sprawdzona w ten sam sposób i opisana w pełnym, zweryfikowanym profilu redakcyjnym, a nie na skróconej karcie cech.",
+      "Nasz deterministyczny silnik dopasowania ocenia {count} opublikowanych ras, wszystkie w ten sam sposób. Poniżej znajdziesz każdą z nich – z pełnym, zweryfikowanym profilem redakcyjnym, a nie skróconą kartą cech.",
     deepDiveBadge: "Pogłębiony profil redakcyjny",
   },
   dk: {
     intro:
-      "Vores deterministiske matchemotor bygger på en model, der dækker over 250 racer. Nedenfor finder du de {count}, vi har udgivet indtil videre — alle vurderet på samme måde, og med en fuld, verificeret redaktionel profil frem for et tyndt egenskabsark.",
+      "Vores deterministiske matchmotor vurderer {count} udgivne racer, alle på samme måde. Nedenfor finder du hver eneste af dem, med en fuld, verificeret redaktionel profil frem for et tyndt egenskabsark.",
     deepDiveBadge: "Redaktionel dybdeprofil",
   },
   se: {
     intro:
-      "Vår deterministiska matchmotor bygger på en modell som täcker över 250 raser. Nedan hittar du de {count} vi har publicerat hittills — alla bedömda på samma sätt, och med en fullständig, verifierad redaktionell profil i stället för ett tunt egenskapsblad.",
+      "Vår deterministiska matchmotor bedömer {count} publicerade raser, alla på samma sätt. Nedan hittar du varenda en, med en fullständig, verifierad redaktionell profil i stället för ett tunt egenskapsblad.",
     deepDiveBadge: "Redaktionell djupprofil",
   },
   fi: {
     intro:
-      "Deterministinen täsmäysmoottorimme perustuu malliin, joka kattaa yli 250 rotua. Alta löydät ne {count} rotua, jotka olemme toistaiseksi julkaisseet — jokainen arvioitu samalla tavalla ja varustettu täydellä, varmennetulla toimituksellisella profiililla ohuen ominaisuuslistan sijaan.",
+      "Deterministinen täsmäysmoottorimme arvioi {count} julkaistua rotua, kaikki samalla tavalla. Alta löydät jokaisen niistä, täydellä, varmennetulla toimituksellisella profiililla ohuen ominaisuuslistan sijaan.",
     deepDiveBadge: "Toimituksellinen syväsukellus",
   },
   de: {
     intro:
-      "Unsere deterministische Matching-Engine stützt sich auf ein Modell mit über 250 Rassen. Unten findest du die {count}, die wir bisher veröffentlicht haben — jede auf dieselbe Weise geprüft und mit einem vollständigen, verifizierten Redaktionsprofil statt einer dünnen Merkmalsliste.",
+      "Unsere deterministische Matching-Engine bewertet {count} veröffentlichte Rassen, alle auf dieselbe Weise. Unten findest du jede einzelne, mit einem vollständigen, verifizierten Redaktionsprofil statt einer dünnen Merkmalsliste.",
     deepDiveBadge: "Redaktionelle Tiefenrecherche",
   },
   fr: {
     intro:
-      "Notre moteur de matching déterministe s'appuie sur un modèle couvrant plus de 250 races. Voici les {count} que nous avons publiées à ce jour — chacune évaluée selon la même méthode, avec un profil éditorial complet et vérifié plutôt qu'une simple fiche de traits.",
+      "Notre moteur de matching déterministe évalue {count} races publiées, toutes selon la même méthode. Vous les trouverez toutes ci-dessous, chacune avec un profil éditorial complet et vérifié plutôt qu'une simple fiche de traits.",
     deepDiveBadge: "Dossier éditorial approfondi",
   },
   nl: {
     intro:
-      "Onze deterministische matchmachine bouwt op een model dat meer dan 250 rassen omvat. Hieronder vind je de {count} die we tot nu toe hebben gepubliceerd — elk op dezelfde manier beoordeeld en voorzien van een volledig, geverifieerd redactioneel profiel in plaats van een summier kenmerkenblaadje.",
+      "Onze deterministische matchmachine beoordeelt {count} gepubliceerde rassen, allemaal op dezelfde manier. Hieronder vind je ze stuk voor stuk, met een volledig, geverifieerd redactioneel profiel in plaats van een summier kenmerkenblaadje.",
     deepDiveBadge: "Redactionele verdieping",
   },
 } as const;

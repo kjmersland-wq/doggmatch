@@ -53,3 +53,7 @@ All new strings use the existing per-component `useCopy` maps with all nine loca
 - Files: `src/data/breed-deepdive-more.<locale>.ts`, merged over the base profiles in `breed-content.ts`. Health lines follow the trust rule (commonly seen, read the breed profile and ask a vet, "general guidance, not a vet"; British Veterinary Association only for heat risk in flat-faced breeds).
 - Routes, sitemap and `/breeds` already cover all 78 breeds, so nothing new to register.
 - Note: the older Cavalier deep-dive still says heart valve disease is "very common"; it predates the trust pass and was not touched.
+
+## Truth pass: breed count
+
+- `/breeds` intro said the engine "draws on a model covering 250+ breeds". It now says the engine scores the published breeds, all the same way, using the live count (78 today). No unpublished library exists. Nine locales. This was the only "250+" claim in `src`, `docs`, `public` or the README.
