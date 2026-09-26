@@ -875,8 +875,14 @@ export const Route = createFileRoute("/{-$lang}/find-my-dog")({
     };
   },
   /** ?r=<answers> reopens a result: same answers, same dogs. */
-  validateSearch: (search: Record<string, unknown>): { r?: string } =>
-    typeof search["r"] === "string" ? { r: search["r"] } : {},
+  validateSearch: (search: Record<string, unknown>): { r?: string; s?: string } => ({
+    ...(typeof search["r"] === "string" ? { r: search["r"] } : {}),
+    // s = answer to question 1, chosen on the homepage; the quiz then opens at question 2.
+    // (A bare ?s=1 is parsed as a number by the router, so accept both.)
+    ...(typeof search["s"] === "string" || typeof search["s"] === "number"
+      ? { s: String(search["s"]) }
+      : {}),
+  }),
   component: FindMyDogPage,
 });
 
@@ -1032,10 +1038,18 @@ function FindMyDogPage() {
   const t = useT();
   const fc = useCopy(flowCopy);
   const questions = quizQuestions();
-  const { r: sharedAnswers } = Route.useSearch();
+  const { r: sharedAnswers, s: startAnswer } = Route.useSearch();
   const shared = useMemo(() => decodeProfile(sharedAnswers, questions), [sharedAnswers]); // eslint-disable-line react-hooks/exhaustive-deps
-  const [step, setStep] = useState(0);
-  const [profile, setProfile] = useState<UserProfile>(shared ?? {});
+  const start = useMemo<UserProfile | null>(() => {
+    const first = questions[0];
+    if (!first || !startAnswer || !first.options.some((o) => o.value === startAnswer)) return null;
+    return { [first.id]: startAnswer };
+  }, [startAnswer]); // eslint-disable-line react-hooks/exhaustive-deps
+  const [step, setStep] = useState(!shared && start ? 1 : 0);
+  const [profile, setProfile] = useState<UserProfile>(shared ?? start ?? {});
+  useEffect(() => {
+    if (!shared && start) track("quiz_started", { source: "home_first_question" });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const [phase, setPhase] = useState<Phase>(shared ? "result" : "quiz");
   // A result link opened while already on this page (e.g. "My match" in the header).
   useEffect(() => {

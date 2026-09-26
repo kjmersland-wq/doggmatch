@@ -69,7 +69,13 @@ export function CookieConsent() {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted || !ready || consent) return null;
+  const visible = mounted && ready && !consent;
+  useEffect(() => {
+    document.body.classList.toggle("has-cookie-banner", visible);
+    return () => document.body.classList.remove("has-cookie-banner");
+  }, [visible]);
+
+  if (!visible) return null;
 
   const choose = (choice: { analytics: boolean; marketing: boolean }) => {
     setLeaving(true);

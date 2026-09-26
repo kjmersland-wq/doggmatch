@@ -8,6 +8,7 @@ import { breedContent } from "@/data/breed-content";
 import { breedImages } from "@/data/breed-images";
 import { Arrow, ButtonLink, Eyebrow, Section, TraitMeter } from "@/components/dogmatch/ui";
 import { PURCHASES_ENABLED } from "@/lib/purchases";
+import { FirstQuestion } from "@/components/dogmatch/first-question";
 import { RealMatchesSection } from "@/components/dogmatch/real-matches";
 import heroImage from "@/assets/hero.webp";
 import homeImage from "@/assets/editorial-home.webp";
@@ -95,6 +96,9 @@ const traitCopy = {
 
 const localCopy = {
   en: {
+    heroLine: "Two quiet minutes. Then honest names — including the ones that don't fit.",
+    firstEyebrow: "Start right here",
+    firstSub: "Pick an answer — the quiz picks up from question 2.",
     matchLooks: "What a match looks like",
     match: "match",
     heroAlt: "A woman walking a golden retriever along a coastal path at sunrise",
@@ -150,6 +154,9 @@ const localCopy = {
     ],
   },
   no: {
+    heroLine: "To rolige minutter. Så ærlige navn – også på dem som ikke passer.",
+    firstEyebrow: "Begynn rett her",
+    firstSub: "Velg et svar – quizen fortsetter fra spørsmål 2.",
     matchLooks: "Slik ser en match ut",
     match: "match",
     heroAlt: "En kvinne g\u00e5r tur med en golden retriever langs kysten i soloppgang",
@@ -205,6 +212,9 @@ const localCopy = {
     ],
   },
   pl: {
+    heroLine: "Dwie spokojne minuty. Potem uczciwe nazwy ras – także tych, które nie pasują.",
+    firstEyebrow: "Zacznij od razu tutaj",
+    firstSub: "Wybierz odpowiedź – quiz zacznie się od pytania 2.",
     matchLooks: "Tak wygląda dopasowanie",
     match: "dopasowanie",
     heroAlt: "Kobieta spacerująca z golden retrieverem wzdłuż wybrzeża o wschodzie słońca",
@@ -260,6 +270,9 @@ const localCopy = {
     ],
   },
   dk: {
+    heroLine: "To rolige minutter. Så ærlige navne – også på dem, der ikke passer.",
+    firstEyebrow: "Start lige her",
+    firstSub: "Vælg et svar – quizzen fortsætter fra spørgsmål 2.",
     matchLooks: "Sådan ser et match ud",
     match: "match",
     heroAlt: "En kvinde går tur med en golden retriever langs kysten ved solopgang",
@@ -315,6 +328,9 @@ const localCopy = {
     ],
   },
   se: {
+    heroLine: "Två lugna minuter. Sedan ärliga namn – även på dem som inte passar.",
+    firstEyebrow: "Börja direkt här",
+    firstSub: "Välj ett svar – quizet fortsätter från fråga 2.",
     matchLooks: "Så här ser en matchning ut",
     match: "matchning",
     heroAlt: "En kvinna som går med en golden retriever längs en kustväg vid soluppgång",
@@ -370,6 +386,9 @@ const localCopy = {
     ],
   },
   fi: {
+    heroLine: "Kaksi rauhallista minuuttia. Sitten rehelliset nimet – myös niistä, jotka eivät sovi.",
+    firstEyebrow: "Aloita heti tästä",
+    firstSub: "Valitse vastaus – kysely jatkuu kysymyksestä 2.",
     matchLooks: "Tältä ehdotus näyttää",
     match: "osuvuus",
     heroAlt: "Nainen kävelyttää kultaistanoutajaa rantareitillä auringonnousun aikaan",
@@ -425,6 +444,9 @@ const localCopy = {
     ],
   },
   de: {
+    heroLine: "Zwei ruhige Minuten. Dann ehrliche Namen – auch die, die nicht passen.",
+    firstEyebrow: "Fang gleich hier an",
+    firstSub: "Wähle eine Antwort – das Quiz geht bei Frage 2 weiter.",
     matchLooks: "So sieht eine Übereinstimmung aus",
     match: "Übereinstimmung",
     heroAlt: "Eine Frau geht bei Sonnenaufgang mit einem Golden Retriever an der Küste spazieren",
@@ -480,6 +502,9 @@ const localCopy = {
     ],
   },
   fr: {
+    heroLine: "Deux minutes tranquilles. Puis des noms honnêtes – y compris ceux qui ne conviennent pas.",
+    firstEyebrow: "Commencez ici, tout de suite",
+    firstSub: "Choisissez une réponse – le quiz reprend à la question 2.",
     matchLooks: "À quoi ressemble une bonne correspondance",
     match: "correspondance",
     heroAlt: "Une femme promène un golden retriever le long d'un sentier côtier au lever du soleil",
@@ -535,6 +560,9 @@ const localCopy = {
     ],
   },
   nl: {
+    heroLine: "Twee rustige minuten. Daarna eerlijke namen – ook die van de honden die niet passen.",
+    firstEyebrow: "Begin meteen hier",
+    firstSub: "Kies een antwoord – de quiz gaat verder bij vraag 2.",
     matchLooks: "Zo ziet een match eruit",
     match: "match",
     heroAlt: "Een vrouw wandelt met een golden retriever langs een kustpad bij zonsopgang",
@@ -718,7 +746,9 @@ function HomePage() {
                 {t.home.heroSecondary}
               </Link>
             </div>
-            <p className="mt-6 text-sm text-muted-foreground">{t.home.heroCaption}</p>
+            <p className="mt-5 max-w-sm text-base leading-relaxed text-muted-foreground">
+              {c.heroLine}
+            </p>
           </div>
 
           <div className="relative">
@@ -742,12 +772,59 @@ function HomePage() {
                 94<span className="text-xl align-top">%</span>
               </p>
               <div className="mt-3 h-[3px] w-full overflow-hidden rounded-full bg-surface-strong">
-                <span className="block h-full w-[94%] rounded-full bg-accent" />
+                <span className="match-bar-fill block h-full w-[94%] rounded-full bg-accent" />
               </div>
               <p className="mt-2 text-xs text-muted-foreground">{c.match}</p>
             </figure>
           </div>
         </div>
+      </section>
+
+      {/* ------------------------------------------- First question (real quiz) */}
+      <FirstQuestion eyebrow={c.firstEyebrow} sub={c.firstSub} caption={t.home.heroCaption} />
+
+      {/* ------------------------------------------------------ Real matches */}
+      <Section id="real-matches">
+        <RealMatchesSection />
+      </Section>
+
+      {/* ---------------------------------------------------- Value strip */}
+      <section
+        id="why-doggmatch"
+        aria-label={c.anchors["why-doggmatch"]}
+        className="container-page mt-16 md:mt-20"
+      >
+        {locale === "en" ? (
+          <div>
+            <Eyebrow>Why DoggMatch</Eyebrow>
+            <h2 className="display-lg mt-6 max-w-2xl text-balance">What makes this different</h2>
+            <dl className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
+              {englishDifferencePoints.map((item, i) => (
+                <div
+                  key={item.title}
+                  className={i === englishDifferencePoints.length - 1 ? "bg-background p-5 md:col-span-2" : "bg-background p-5"}
+                >
+                  <dt className="flex items-center gap-2.5 font-display text-base tracking-tight">
+                    <Check aria-hidden="true" className="size-4 shrink-0 text-accent" />
+                    {item.title}
+                  </dt>
+                  <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {item.body}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ) : (
+          <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+            {t.home.valueStrip.map((item) => (
+              <div key={item.title} className="bg-background p-7">
+                <dt className="font-display text-lg tracking-tight">{interpolate(item.title, { count: breeds.length })}</dt>
+                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
       </section>
 
       {/* ------------------------------------------------------ How it works */}
@@ -780,52 +857,6 @@ function HomePage() {
             </ol>
           </div>
         </div>
-      </Section>
-
-      {/* ---------------------------------------------------- Value strip */}
-      <section
-        id="why-doggmatch"
-        aria-label={c.anchors["why-doggmatch"]}
-        className="container-page mt-16 md:mt-20"
-      >
-        {locale === "en" ? (
-          <div>
-            <Eyebrow>Why DoggMatch</Eyebrow>
-            <h2 className="display-lg mt-6 max-w-2xl text-balance">What makes this different</h2>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Choosing a dog is too important for a cheerful score with no explanation. We try to
-              make the whole decision clearer.
-            </p>
-            <dl className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
-              {englishDifferencePoints.map((item, i) => (
-                <div
-                  key={item.title}
-                  className={i === englishDifferencePoints.length - 1 ? "bg-background p-7 md:col-span-2" : "bg-background p-7"}
-                >
-                  <Check aria-hidden="true" className="size-5 text-accent" />
-                  <dt className="mt-5 font-display text-lg tracking-tight">{item.title}</dt>
-                  <dd className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {item.body}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        ) : (
-          <dl className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-            {t.home.valueStrip.map((item) => (
-              <div key={item.title} className="bg-background p-7">
-                <dt className="font-display text-lg tracking-tight">{interpolate(item.title, { count: breeds.length })}</dt>
-                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</dd>
-              </div>
-            ))}
-          </dl>
-        )}
-      </section>
-
-      {/* ------------------------------------------------------ Real matches */}
-      <Section id="real-matches">
-        <RealMatchesSection />
       </Section>
 
       {/* --------------------------------------------------- Breed preview */}

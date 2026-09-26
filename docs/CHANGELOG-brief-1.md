@@ -57,3 +57,11 @@ All new strings use the existing per-component `useCopy` maps with all nine loca
 ## Truth pass: breed count
 
 - `/breeds` intro said the engine "draws on a model covering 250+ breeds". It now says the engine scores the published breeds, all the same way, using the live count (78 today). No unpublished library exists. Nine locales. This was the only "250+" claim in `src`, `docs`, `public` or the README.
+
+## First-visit ignition (homepage + quiz entry)
+
+- Hero: one warm line under the single primary button (nine locales); the 94% match bar fills once on load (CSS only, reduced-motion jumps to full, no loop).
+- New: Question 1 of the real quiz right under the hero (`first-question.tsx`). Each answer links to `/find-my-dog?s=<value>`; the quiz validates it against the real first question's options and opens at question 2 with that answer stored. Bad or missing `s` starts at question 1; `?r=` (shared result) wins over `?s=`. No second quiz, no engine or question changes.
+- Order: hero → first question → four lifestyle cards → "what makes this different" (compact, essay paragraph removed, all five points kept) → three steps → breeds → compare → Plus → places → FAQ → closing → language grid. No sections deleted.
+- Cookie notice: while it shows, `<main>` gets extra bottom padding so the last content and quiz options can scroll clear of it (mobile tab bar included).
+- New analytics source: `quiz_started` with `source: home_first_question`.
