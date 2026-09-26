@@ -31,6 +31,7 @@ import { Route as Char123LangChar125MostMismatchedBreedsRouteImport } from './ro
 import { Route as Char123LangChar125MyDogRouteImport } from './routes/{-$lang}/my-dog'
 import { Route as Char123LangChar125PartnersRouteImport } from './routes/{-$lang}/partners'
 import { Route as Char123LangChar125PlusRouteImport } from './routes/{-$lang}/plus'
+import { Route as Char123LangChar125PricingRouteImport } from './routes/{-$lang}/pricing'
 import { Route as Char123LangChar125PrivacyRouteImport } from './routes/{-$lang}/privacy'
 import { Route as Char123LangChar125ResetPasswordRouteImport } from './routes/{-$lang}/reset-password'
 import { Route as Char123LangChar125SourcesRouteImport } from './routes/{-$lang}/sources'
@@ -203,6 +204,12 @@ const Char123LangChar125PlusRoute = Char123LangChar125PlusRouteImport.update({
   path: '/plus',
   getParentRoute: () => Char123LangChar125Route,
 } as any)
+const Char123LangChar125PricingRoute =
+  Char123LangChar125PricingRouteImport.update({
+    id: '/pricing',
+    path: '/pricing',
+    getParentRoute: () => Char123LangChar125Route,
+  } as any)
 const Char123LangChar125PrivacyRoute =
   Char123LangChar125PrivacyRouteImport.update({
     id: '/privacy',
@@ -500,6 +507,7 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/my-dog': typeof Char123LangChar125MyDogRouteWithChildren
   '/{-$lang}/partners': typeof Char123LangChar125PartnersRouteWithChildren
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
+  '/{-$lang}/pricing': typeof Char123LangChar125PricingRoute
   '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
   '/{-$lang}/reset-password': typeof Char123LangChar125ResetPasswordRoute
   '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
@@ -567,6 +575,7 @@ export interface FileRoutesByTo {
   '/{-$lang}/most-mismatched-breeds': typeof Char123LangChar125MostMismatchedBreedsRoute
   '/{-$lang}/partners': typeof Char123LangChar125PartnersRouteWithChildren
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
+  '/{-$lang}/pricing': typeof Char123LangChar125PricingRoute
   '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
   '/{-$lang}/reset-password': typeof Char123LangChar125ResetPasswordRoute
   '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
@@ -636,6 +645,7 @@ export interface FileRoutesById {
   '/{-$lang}/my-dog': typeof Char123LangChar125MyDogRouteWithChildren
   '/{-$lang}/partners': typeof Char123LangChar125PartnersRouteWithChildren
   '/{-$lang}/plus': typeof Char123LangChar125PlusRoute
+  '/{-$lang}/pricing': typeof Char123LangChar125PricingRoute
   '/{-$lang}/privacy': typeof Char123LangChar125PrivacyRoute
   '/{-$lang}/reset-password': typeof Char123LangChar125ResetPasswordRoute
   '/{-$lang}/sources': typeof Char123LangChar125SourcesRoute
@@ -708,6 +718,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog'
     | '/{-$lang}/partners'
     | '/{-$lang}/plus'
+    | '/{-$lang}/pricing'
     | '/{-$lang}/privacy'
     | '/{-$lang}/reset-password'
     | '/{-$lang}/sources'
@@ -775,6 +786,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/most-mismatched-breeds'
     | '/{-$lang}/partners'
     | '/{-$lang}/plus'
+    | '/{-$lang}/pricing'
     | '/{-$lang}/privacy'
     | '/{-$lang}/reset-password'
     | '/{-$lang}/sources'
@@ -843,6 +855,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog'
     | '/{-$lang}/partners'
     | '/{-$lang}/plus'
+    | '/{-$lang}/pricing'
     | '/{-$lang}/privacy'
     | '/{-$lang}/reset-password'
     | '/{-$lang}/sources'
@@ -1051,6 +1064,13 @@ declare module '@tanstack/react-router' {
       path: '/plus'
       fullPath: '/{-$lang}/plus'
       preLoaderRoute: typeof Char123LangChar125PlusRouteImport
+      parentRoute: typeof Char123LangChar125Route
+    }
+    '/{-$lang}/pricing': {
+      id: '/{-$lang}/pricing'
+      path: '/pricing'
+      fullPath: '/{-$lang}/pricing'
+      preLoaderRoute: typeof Char123LangChar125PricingRouteImport
       parentRoute: typeof Char123LangChar125Route
     }
     '/{-$lang}/privacy': {
@@ -1524,6 +1544,7 @@ interface Char123LangChar125RouteChildren {
   Char123LangChar125MyDogRoute: typeof Char123LangChar125MyDogRouteWithChildren
   Char123LangChar125PartnersRoute: typeof Char123LangChar125PartnersRouteWithChildren
   Char123LangChar125PlusRoute: typeof Char123LangChar125PlusRoute
+  Char123LangChar125PricingRoute: typeof Char123LangChar125PricingRoute
   Char123LangChar125PrivacyRoute: typeof Char123LangChar125PrivacyRoute
   Char123LangChar125ResetPasswordRoute: typeof Char123LangChar125ResetPasswordRoute
   Char123LangChar125SourcesRoute: typeof Char123LangChar125SourcesRoute
@@ -1570,6 +1591,7 @@ const Char123LangChar125RouteChildren: Char123LangChar125RouteChildren = {
   Char123LangChar125MyDogRoute: Char123LangChar125MyDogRouteWithChildren,
   Char123LangChar125PartnersRoute: Char123LangChar125PartnersRouteWithChildren,
   Char123LangChar125PlusRoute: Char123LangChar125PlusRoute,
+  Char123LangChar125PricingRoute: Char123LangChar125PricingRoute,
   Char123LangChar125PrivacyRoute: Char123LangChar125PrivacyRoute,
   Char123LangChar125ResetPasswordRoute: Char123LangChar125ResetPasswordRoute,
   Char123LangChar125SourcesRoute: Char123LangChar125SourcesRoute,

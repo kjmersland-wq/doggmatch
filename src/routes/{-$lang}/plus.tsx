@@ -4,6 +4,8 @@ import { Arrow, ButtonLink, Badge, Eyebrow, Section } from "@/components/dogmatc
 import { SectionHead } from "@/components/dogmatch/journey/parts";
 import { JoinPlusButton } from "@/components/dogmatch/plus/join";
 import { PartnerCodeField } from "@/components/dogmatch/plus/partner-code";
+import { PlusWaitlist } from "@/components/dogmatch/plus/waitlist";
+import { PURCHASES_ENABLED } from "@/lib/purchases";
 import { MemberCardShowcase } from "@/components/dogmatch/plus/card-showcase";
 import { cn } from "@/lib/utils";
 import { useCopy } from "@/i18n";
@@ -5080,6 +5082,13 @@ function PlusPage() {
           </p>
         </div>
       </Section>
+
+      {/* 19b — Waitlist (only while billing is paused; no card fields, ever) */}
+      {!PURCHASES_ENABLED && (
+        <Section id="waitlist" className="container-page scroll-mt-24 pt-0">
+          <PlusWaitlist />
+        </Section>
+      )}
 
       {/* 19c — FAQ */}
       <Section className="container-page pt-0">

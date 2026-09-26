@@ -10,17 +10,19 @@ import { LanguageToggle } from "./language-toggle";
 import { CookieSettingsLink } from "./cookie-consent";
 import { useNavGroups } from "./nav-structure";
 import { withLangPrefix } from "@/lib/localized-path";
+import { useMatchProfile } from "@/lib/matching/store";
+import { useMyDog } from "@/lib/care/store";
 
 const copy = {
-  en: { primaryNav: "Primary", mobileNav: "Mobile" },
-  no: { primaryNav: "Hovedmeny", mobileNav: "Mobilmeny" },
-  pl: { primaryNav: "Menu główne", mobileNav: "Menu mobilne" },
-  dk: { primaryNav: "Hovedmenu", mobileNav: "Mobilmenu" },
-  se: { primaryNav: "Huvudmeny", mobileNav: "Mobilmeny" },
-  fi: { primaryNav: "Päävalikko", mobileNav: "Mobiilivalikko" },
-  de: { primaryNav: "Hauptmenü", mobileNav: "Mobilmenü" },
-  fr: { primaryNav: "Menu principal", mobileNav: "Menu mobile" },
-  nl: { primaryNav: "Hoofdmenu", mobileNav: "Mobiel menu" },
+  en: { more: "More", myMatch: "My match", primaryNav: "Primary", mobileNav: "Mobile" },
+  no: { more: "Mer", myMatch: "Mitt treff", primaryNav: "Hovedmeny", mobileNav: "Mobilmeny" },
+  pl: { more: "Więcej", myMatch: "Moje dopasowanie", primaryNav: "Menu główne", mobileNav: "Menu mobilne" },
+  dk: { more: "Mere", myMatch: "Mit match", primaryNav: "Hovedmenu", mobileNav: "Mobilmenu" },
+  se: { more: "Mer", myMatch: "Min matchning", primaryNav: "Huvudmeny", mobileNav: "Mobilmeny" },
+  fi: { more: "Lisää", myMatch: "Osumani", primaryNav: "Päävalikko", mobileNav: "Mobiilivalikko" },
+  de: { more: "Mehr", myMatch: "Mein Match", primaryNav: "Hauptmenü", mobileNav: "Mobilmenü" },
+  fr: { more: "Autres", myMatch: "Mon match", primaryNav: "Menu principal", mobileNav: "Menu mobile" },
+  nl: { more: "Meer", myMatch: "Mijn match", primaryNav: "Hoofdmenu", mobileNav: "Mobiel menu" },
 } as const;
 
 const drawerCopy = {
@@ -91,11 +93,32 @@ export function SiteHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const barRef = useRef<HTMLDivElement>(null);
 
-  const primaryLinks = [
-    { to: withLangPrefix("/find-my-dog"), label: dc.findMyDog },
-    { to: withLangPrefix("/breeds"), label: dc.breedExplorer },
-    { to: withLangPrefix("/compare"), label: dc.compareBreeds },
-  ];
+  const profile = useMatchProfile();
+  const myDog = useMyDog();
+  const hasMatch = Boolean(profile || myDog);
+
+  // Labels come from the localized nav structure so no route is re-described here.
+  const group = (id: string) => navGroups.find((g) => g.id === id);
+  const first = (id: string) => ({
+    to: withLangPrefix((group(id)?.items[0]?.to ?? "/") as "/"),
+    label: group(id)?.label ?? "",
+  });
+  const findLabel = group("get-a-dog")?.items[2]?.label ?? dc.findMyDog;
+  const breedsGroup = group("breeds");
+  const pick = (i: number) => ({
+    to: withLangPrefix((breedsGroup?.items[i]?.to ?? "/breeds") as "/"),
+    label: breedsGroup?.items[i]?.label ?? "",
+  });
+  const breedsLink = { to: withLangPrefix("/breeds"), label: breedsGroup?.label ?? dc.breedExplorer };
+  const findLink = { to: withLangPrefix("/find-my-dog"), label: findLabel };
+
+  // Before a match: one story — quiz, breeds, Plus. After: the dog's everyday life.
+  const primaryLinks = hasMatch
+    ? [{ to: findLink.to, label: c.myMatch }, first("my-dog"), first("train"), first("travel")]
+    : [findLink, breedsLink];
+  const moreLinks = hasMatch
+    ? [first("get-a-dog"), breedsLink, pick(1), pick(3), pick(2)]
+    : [first("get-a-dog"), first("my-dog"), first("train"), first("travel"), pick(3), pick(1), pick(2)];
 
   useEffect(() => {
     setOpen(false);
@@ -147,34 +170,34 @@ export function SiteHeader() {
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label={c.primaryNav}>
-            {navGroups.map((g) => {
-              const active = menu === g.id;
-              return (
-                <button
-                  key={g.id}
-                  type="button"
-                  aria-expanded={active}
-                  onClick={() => setMenu(active ? null : g.id)}
-                  onMouseEnter={() => setMenu(g.id)}
-                  className={cn(
-                    "flex items-center gap-1.5 rounded-full px-3.5 py-2 text-[0.9375rem] transition-colors",
-                    active ? "bg-surface text-foreground" : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  {g.label}
-                  <ChevronDown
-                    className={cn("h-3.5 w-3.5 transition-transform", active && "rotate-180")}
-                    aria-hidden
-                  />
-                </button>
-              );
-            })}
+            {primaryLinks.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="rounded-full px-3.5 py-2 text-[0.9375rem] text-muted-foreground transition-colors hover:text-foreground"
+                activeProps={{ className: "text-foreground" }}
+              >
+                {item.label}
+              </Link>
+            ))}
             <Link
               to={withLangPrefix("/plus")}
               className="ml-1 flex items-center gap-1 rounded-full px-3.5 py-2 text-[0.9375rem] text-muted-foreground transition-colors hover:text-foreground"
             >
               DoggMatch<span className="font-semibold text-accent">+</span>
             </Link>
+            <button
+              type="button"
+              aria-expanded={menu === "more"}
+              onClick={() => setMenu(menu === "more" ? null : "more")}
+              className={cn(
+                "flex items-center gap-1.5 rounded-full px-3.5 py-2 text-[0.9375rem] transition-colors",
+                menu === "more" ? "bg-surface text-foreground" : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              {c.more}
+              <ChevronDown className={cn("h-3.5 w-3.5 transition-transform", menu === "more" && "rotate-180")} aria-hidden />
+            </button>
           </nav>
 
           <div className="hidden items-center gap-2.5 lg:flex">
@@ -186,7 +209,7 @@ export function SiteHeader() {
             >
               <UserRound className="h-[18px] w-[18px]" strokeWidth={1.6} aria-hidden />
             </Link>
-            <ButtonLink to={withLangPrefix("/find-my-dog")} tone="primary" size="md">
+            <ButtonLink to={withLangPrefix("/find-my-dog")} tone={hasMatch ? "outline" : "primary"} size="md">
               {t.nav.startMatching}
               <Arrow />
             </ButtonLink>
@@ -219,42 +242,26 @@ export function SiteHeader() {
           </div>
         </div>
 
-        {/* Desktop mega menu */}
-        {navGroups.map((g) =>
-          menu === g.id ? (
-            <div
-              key={g.id}
-              onMouseLeave={() => setMenu(null)}
-              className="animate-fade absolute inset-x-0 top-full hidden border-b border-border bg-background/98 backdrop-blur-xl lg:block"
-            >
-              <div className="container-page grid gap-10 py-10 md:grid-cols-[minmax(0,1fr)_2.2fr]">
-                <div className="max-w-xs">
-                  <p className="eyebrow">{g.label}</p>
-                  <p className="mt-3 font-display text-xl leading-snug tracking-tight text-foreground">
-                    {g.blurb}
-                  </p>
-                </div>
-                <ul className="grid gap-x-8 gap-y-1 sm:grid-cols-2 xl:grid-cols-3">
-                  {g.items.map((item) => (
-                    <li key={item.to}>
-                      <Link
-                        to={item.to}
-                        className="block rounded-2xl px-4 py-3 transition-colors hover:bg-surface"
-                        activeProps={{ className: "bg-surface" }}
-                      >
-                        <span className="block text-[0.9375rem] font-medium text-foreground">
-                          {item.label}
-                        </span>
-                        <span className="mt-0.5 block text-[0.8125rem] leading-snug text-muted-foreground">
-                          {item.hint}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ) : null,
+        {/* Desktop "More" panel — everything that is not the first-time story */}
+        {menu === "more" && (
+          <div
+            onMouseLeave={() => setMenu(null)}
+            className="animate-fade absolute inset-x-0 top-full hidden border-b border-border bg-background/98 backdrop-blur-xl lg:block"
+          >
+            <ul className="container-page grid gap-x-8 gap-y-1 py-8 sm:grid-cols-2 xl:grid-cols-4">
+              {moreLinks.map((item) => (
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
+                    className="block rounded-2xl px-4 py-3 text-[0.9375rem] font-medium text-foreground transition-colors hover:bg-surface"
+                    activeProps={{ className: "bg-surface" }}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
 
@@ -282,12 +289,23 @@ export function SiteHeader() {
               >
                 DoggMatch<span className="font-semibold text-accent">+</span>
               </Link>
+              {moreLinks.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-[48px] items-center rounded-2xl px-3 py-3 text-base text-muted-foreground transition-colors active:bg-surface"
+                  activeProps={{ className: "text-accent" }}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </nav>
 
             <div className="mt-auto flex flex-col gap-4 pt-10">
               <ButtonLink
                 to={withLangPrefix("/find-my-dog")}
-                tone="accent"
+                tone={hasMatch ? "outline" : "accent"}
                 size="lg"
                 className="w-full"
                 onClick={() => setOpen(false)}
