@@ -203,6 +203,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
+        // Lightweight traffic counter from KM TECH LABS — no cookies.
+        src: "https://km-techlabs.com/t.js",
+        defer: true,
+        "data-site": "doggmatch.com",
+      },
+      {
         // DoggMatch is always night mode — keep the class in place even if a
         // stale stored preference lingers in someone's browser.
         children:

@@ -4,7 +4,7 @@ import { renderErrorPage } from "./lib/error-page";
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://challenges.cloudflare.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://challenges.cloudflare.com https://km-techlabs.com",
   "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.stripe.com",
   "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://challenges.cloudflare.com",
   "img-src 'self' data: blob: https:",
