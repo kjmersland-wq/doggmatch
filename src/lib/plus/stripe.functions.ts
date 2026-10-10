@@ -56,6 +56,8 @@ export const createPlusCheckout = createServerFn({ method: "POST" })
       ...(customerId ? { customer: customerId } : { customer_email: email }),
       line_items: [{ price: PLUS_PLANS[data.plan].priceId, quantity: 1 }],
       mode: "subscription",
+      metadata: { site: "doggmatch.com" },
+      subscription_data: { metadata: { site: "doggmatch.com" } },
       ...(promotionCodeId
         ? { discounts: [{ promotion_code: promotionCodeId }] }
         : { allow_promotion_codes: true }),
