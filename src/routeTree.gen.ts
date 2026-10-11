@@ -39,7 +39,6 @@ import { Route as Char123LangChar125TermsRouteImport } from './routes/{-$lang}/t
 import { Route as Char123LangChar125TrainRouteImport } from './routes/{-$lang}/train'
 import { Route as Char123LangChar125TravelRouteImport } from './routes/{-$lang}/travel'
 import { Route as Char123LangChar125WhatADogCostsRouteImport } from './routes/{-$lang}/what-a-dog-costs'
-import { Route as ApiPublicKmtlTestRouteImport } from './routes/api/public/kmtl-test'
 import { Route as Char123LangChar125BreedsIndexRouteImport } from './routes/{-$lang}/breeds.index'
 import { Route as Char123LangChar125BreedsBreedIdRouteImport } from './routes/{-$lang}/breeds.$breedId'
 import { Route as Char123LangChar125CanDogsEatIndexRouteImport } from './routes/{-$lang}/can-dogs-eat.index'
@@ -253,11 +252,6 @@ const Char123LangChar125WhatADogCostsRoute =
     path: '/what-a-dog-costs',
     getParentRoute: () => Char123LangChar125Route,
   } as any)
-const ApiPublicKmtlTestRoute = ApiPublicKmtlTestRouteImport.update({
-  id: '/api/public/kmtl-test',
-  path: '/api/public/kmtl-test',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const Char123LangChar125BreedsIndexRoute =
   Char123LangChar125BreedsIndexRouteImport.update({
     id: '/breeds/',
@@ -536,7 +530,6 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/travel': typeof Char123LangChar125TravelRouteWithChildren
   '/{-$lang}/what-a-dog-costs': typeof Char123LangChar125WhatADogCostsRoute
   '/{-$lang}/': typeof Char123LangChar125IndexRoute
-  '/api/public/kmtl-test': typeof ApiPublicKmtlTestRoute
   '/{-$lang}/breeds/$breedId': typeof Char123LangChar125BreedsBreedIdRoute
   '/{-$lang}/can-dogs-eat/$foodId': typeof Char123LangChar125CanDogsEatFoodIdRoute
   '/{-$lang}/checkout/canceled': typeof Char123LangChar125CheckoutCanceledRoute
@@ -605,7 +598,6 @@ export interface FileRoutesByTo {
   '/{-$lang}/terms': typeof Char123LangChar125TermsRoute
   '/{-$lang}/what-a-dog-costs': typeof Char123LangChar125WhatADogCostsRoute
   '/{-$lang}': typeof Char123LangChar125IndexRoute
-  '/api/public/kmtl-test': typeof ApiPublicKmtlTestRoute
   '/{-$lang}/breeds/$breedId': typeof Char123LangChar125BreedsBreedIdRoute
   '/{-$lang}/can-dogs-eat/$foodId': typeof Char123LangChar125CanDogsEatFoodIdRoute
   '/{-$lang}/checkout/canceled': typeof Char123LangChar125CheckoutCanceledRoute
@@ -680,7 +672,6 @@ export interface FileRoutesById {
   '/{-$lang}/travel': typeof Char123LangChar125TravelRouteWithChildren
   '/{-$lang}/what-a-dog-costs': typeof Char123LangChar125WhatADogCostsRoute
   '/{-$lang}/': typeof Char123LangChar125IndexRoute
-  '/api/public/kmtl-test': typeof ApiPublicKmtlTestRoute
   '/{-$lang}/breeds/$breedId': typeof Char123LangChar125BreedsBreedIdRoute
   '/{-$lang}/can-dogs-eat/$foodId': typeof Char123LangChar125CanDogsEatFoodIdRoute
   '/{-$lang}/checkout/canceled': typeof Char123LangChar125CheckoutCanceledRoute
@@ -756,7 +747,6 @@ export interface FileRouteTypes {
     | '/{-$lang}/travel'
     | '/{-$lang}/what-a-dog-costs'
     | '/{-$lang}/'
-    | '/api/public/kmtl-test'
     | '/{-$lang}/breeds/$breedId'
     | '/{-$lang}/can-dogs-eat/$foodId'
     | '/{-$lang}/checkout/canceled'
@@ -825,7 +815,6 @@ export interface FileRouteTypes {
     | '/{-$lang}/terms'
     | '/{-$lang}/what-a-dog-costs'
     | '/{-$lang}'
-    | '/api/public/kmtl-test'
     | '/{-$lang}/breeds/$breedId'
     | '/{-$lang}/can-dogs-eat/$foodId'
     | '/{-$lang}/checkout/canceled'
@@ -899,7 +888,6 @@ export interface FileRouteTypes {
     | '/{-$lang}/travel'
     | '/{-$lang}/what-a-dog-costs'
     | '/{-$lang}/'
-    | '/api/public/kmtl-test'
     | '/{-$lang}/breeds/$breedId'
     | '/{-$lang}/can-dogs-eat/$foodId'
     | '/{-$lang}/checkout/canceled'
@@ -946,7 +934,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Char123LangChar125Route: typeof Char123LangChar125RouteWithChildren
-  ApiPublicKmtlTestRoute: typeof ApiPublicKmtlTestRoute
   ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
 }
 
@@ -1161,13 +1148,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/{-$lang}/what-a-dog-costs'
       preLoaderRoute: typeof Char123LangChar125WhatADogCostsRouteImport
       parentRoute: typeof Char123LangChar125Route
-    }
-    '/api/public/kmtl-test': {
-      id: '/api/public/kmtl-test'
-      path: '/api/public/kmtl-test'
-      fullPath: '/api/public/kmtl-test'
-      preLoaderRoute: typeof ApiPublicKmtlTestRouteImport
-      parentRoute: typeof rootRouteImport
     }
     '/{-$lang}/breeds/': {
       id: '/{-$lang}/breeds/'
@@ -1686,7 +1666,6 @@ const Char123LangChar125RouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Char123LangChar125Route: Char123LangChar125RouteWithChildren,
-  ApiPublicKmtlTestRoute: ApiPublicKmtlTestRoute,
   ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
 }
 export const routeTree = rootRouteImport
