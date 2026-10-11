@@ -1,59 +1,78 @@
 // Forwards verified Paddle events to KM TECH LABS (km-techlabs.com).
-// Signed with HMAC-SHA256 (header x-kmtl-signature) when KM_TECHLABS_WEBHOOK_SECRET is set.
+// Matches the receiver at /api/public/ingest/payments: Bearer auth with the
+// shared secret DOGGMATCH_INGEST_SECRET, one event per POST.
 // Never throws: a failed forward must not make Paddle retry the webhook.
 
 const DEFAULT_URL = "https://www.km-techlabs.com/api/public/ingest/payments";
 
-async function hmacHex(secret: string, body: string): Promise<string> {
-  const key = await crypto.subtle.importKey(
-    "raw",
-    new TextEncoder().encode(secret),
-    { name: "HMAC", hash: "SHA-256" },
-    false,
-    ["sign"],
-  );
-  const sig = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(body));
-  return Array.from(new Uint8Array(sig)).map((b) => b.toString(16).padStart(2, "0")).join("");
+type IngestType = "payment" | "discount" | "subscription_created" | "subscription_canceled";
+
+function mapType(eventType: string): IngestType {
+  if (eventType.startsWith("subscription.canceled")) return "subscription_canceled";
+  if (eventType.startsWith("subscription.created")) return "subscription_created";
+  return "payment"; // transaction.completed, transaction.payment_failed, subscription.updated, ...
 }
 
-function summarize(eventType: string, data: any) {
-  const totals = data?.details?.totals;
-  return {
-    id: data?.id,
-    status: data?.status,
-    customer_id: data?.customerId,
-    subscription_id: data?.subscriptionId ?? (eventType.startsWith("subscription") ? data?.id : undefined),
-    currency: data?.currencyCode,
-    total: totals?.total,
-    discount: totals?.discount,
-    tax: totals?.tax,
-    earnings: totals?.earnings,
-    discount_id: data?.discountId ?? data?.discount?.id,
-    items: (data?.items ?? []).map((i: any) => ({
-      price_id: i?.price?.importMeta?.externalId ?? i?.price?.id,
-      quantity: i?.quantity,
-    })),
-    canceled_at: data?.canceledAt,
-    scheduled_change: data?.scheduledChange,
-  };
+// Paddle totals are in minor units (cents); the receiver stores major units.
+function toMajor(minor: unknown): number {
+  const n = Number(minor);
+  return Number.isFinite(n) ? n / 100 : 0;
 }
 
-export async function forwardToKmTechlabs(event: { eventId?: string; eventType: string; occurredAt?: string; data: any }, env: string) {
+function planLabel(data: any): string | undefined {
+  const item = data?.items?.[0];
+  return item?.price?.importMeta?.externalId ?? item?.price?.id ?? undefined;
+}
+
+export async function forwardToKmTechlabs(
+  event: { eventId?: string; eventType: string; occurredAt?: string; data: any },
+  env: string,
+) {
   try {
-    const url = process.env["KM_TECHLABS_WEBHOOK_URL"] || DEFAULT_URL;
-    const body = JSON.stringify({
+    const data = event.data ?? {};
+    const totals = data?.details?.totals;
+    const discountTotal = toMajor(totals?.discount);
+    const type = mapType(event.eventType);
+
+    const payload = {
       site: "doggmatch.com",
-      environment: env,
-      event_id: event.eventId,
-      event_type: event.eventType,
-      occurred_at: event.occurredAt,
-      summary: summarize(event.eventType, event.data),
-    });
+      id: event.eventId ?? data?.id ?? `${event.eventType}-${Date.now()}`,
+      type,
+      status: String(data?.status ?? ""),
+      amount: toMajor(totals?.total),
+      discount: discountTotal,
+      currency: String(data?.currencyCode ?? "EUR").toUpperCase(),
+      customer: data?.customerId ? String(data.customerId) : undefined,
+      plan: planLabel(data),
+      occurred_at: event.occurredAt ?? new Date().toISOString(),
+    };
+
+    const url = process.env["KM_TECHLABS_WEBHOOK_URL"] || DEFAULT_URL;
     const headers: Record<string, string> = { "Content-Type": "application/json" };
-    const secret = process.env["KM_TECHLABS_WEBHOOK_SECRET"];
-    if (secret) headers["x-kmtl-signature"] = await hmacHex(secret, body);
-    const res = await fetch(url, { method: "POST", headers, body, signal: AbortSignal.timeout(5000) });
-    if (!res.ok) console.warn("KM TECH LABS forward failed:", res.status);
+    const secret = process.env["DOGGMATCH_INGEST_SECRET"];
+    if (secret) headers["Authorization"] = `Bearer ${secret}`;
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!res.ok) console.warn("KM TECH LABS forward failed:", res.status, await res.text().catch(() => ""));
+
+    // Discounts on payments are reported inside the payment event above.
+    // A pure discount event is only sent when there is a discount but no total
+    // (e.g. subscription.created with a discounted first period).
+    if (type !== "payment" && discountTotal > 0) {
+      const discountPayload = { ...payload, id: `${payload.id}-discount`, type: "discount" as const, amount: 0 };
+      const res2 = await fetch(url, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(discountPayload),
+        signal: AbortSignal.timeout(5000),
+      });
+      if (!res2.ok) console.warn("KM TECH LABS discount forward failed:", res2.status);
+    }
   } catch (e) {
     console.warn("KM TECH LABS forward error:", e);
   }
