@@ -17,7 +17,14 @@ const title = "Your Dossier | DoggMatch";
 
 export const Route = createFileRoute("/{-$lang}/quiz/success")({
   validateSearch: (search: Record<string, unknown>) => ({
-    session_id: typeof search["session_id"] === "string" ? search["session_id"] : "",
+    // Paddle appends ?_ptxn=txn_... to the success URL; session_id is kept for
+    // legacy links and the lifetime-member path.
+    session_id:
+      typeof search["_ptxn"] === "string"
+        ? search["_ptxn"]
+        : typeof search["session_id"] === "string"
+          ? search["session_id"]
+          : "",
     breed: typeof search["breed"] === "string" ? search["breed"] : "",
   }),
   head: () => ({
