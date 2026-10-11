@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 import { verifyWebhook, EventName, type PaddleEnv } from "@/lib/paddle.server";
+import { forwardToKmTechlabs } from "@/lib/km-techlabs.server";
 
 let _supabase: ReturnType<typeof createClient<Database>> | null = null;
 function getSupabase() {
@@ -74,6 +75,8 @@ async function handleSubscriptionCanceled(data: any, env: PaddleEnv) {
 
 async function handleWebhook(req: Request, env: PaddleEnv) {
   const event = await verifyWebhook(req, env);
+  await forwardToKmTechlabs(event as any, env);
+
 
   switch (event.eventType) {
     case EventName.SubscriptionCreated:
