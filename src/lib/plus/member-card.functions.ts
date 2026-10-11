@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import { getMembership } from "./stripe.functions";
+import { getMembership } from "./paddle.functions";
+import { getPaddleEnvironment } from "@/lib/paddle";
 
 export type MemberCard = {
   memberId: string;
@@ -16,7 +17,7 @@ export type CardCheck =
 
 /**
  * The member's card. Created the first time they look at it, then kept in step
- * with what Stripe says about their membership.
+ * with what Paddle says about their membership.
  */
 export const getMyMemberCard = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
