@@ -1578,7 +1578,7 @@ const copy = {
       },
       {
         q: "Voinko valita kuukausi- vai vuosilaskutuksen?",
-        a: "Kyllä — 8,49 € kuukaudessa tai 59,99 € vuodessa, mikä tekee noin 5 € kuukaudessa. Voit vaihtaa niiden välillä myöhemmin tililtäsi.",
+        a: "Kyllä — 8,49 € kuukaudessa tai 61,99 € vuodessa, mikä tekee noin 5 € kuukaudessa. Voit vaihtaa niiden välillä myöhemmin tililtäsi.",
       },
       {
         q: "Mitä tapahtuu, kun liityn?",
@@ -1730,7 +1730,7 @@ const copy = {
       monthlyJoin: "Liity kuukausijäseneksi",
       yearlyLabel: "Vuosi",
       bestValue: "Paras hinta",
-      yearlyPrice: "59,99",
+      yearlyPrice: "61,99",
       yearlyUnit: "/ vuosi",
       yearlyHighlight: "Vain 5 € kuukaudessa, kun laskutetaan vuosittain",
       yearlyBody: "Säästä 35,89 € vuodessa verrattuna kuukausimaksuun.",
@@ -2329,7 +2329,7 @@ const copy = {
       },
       {
         q: "Czy mogę wybrać członkostwo miesięczne lub roczne?",
-        a: "Tak — 8,49 € miesięcznie albo 59,99 € rocznie, co wychodzi na około 5 € miesięcznie. Możesz później przełączać się między nimi z poziomu konta.",
+        a: "Tak — 8,49 € miesięcznie albo 61,99 € rocznie, co wychodzi na około 5 € miesięcznie. Możesz później przełączać się między nimi z poziomu konta.",
       },
       {
         q: "Co się dzieje, gdy dołączam?",
@@ -2484,7 +2484,7 @@ const copy = {
       monthlyJoin: "Dołącz miesięcznie",
       yearlyLabel: "Rocznie",
       bestValue: "Najlepsza oferta",
-      yearlyPrice: "59,99 €",
+      yearlyPrice: "61,99 €",
       yearlyUnit: "/ rok",
       yearlyHighlight: "Tylko 5 € miesięcznie przy rozliczeniu rocznym",
       yearlyBody: "Oszczędzasz 35,89 € rocznie w porównaniu z płatnością miesięczną.",
@@ -2704,7 +2704,7 @@ const copy = {
       },
       {
         q: "Kan jeg vælge månedligt eller årligt medlemskab?",
-        a: "Ja — 8,49 € om måneden, eller 59,99 € om året, hvilket svarer til cirka 5 € om måneden. Du kan skifte mellem dem senere fra din konto.",
+        a: "Ja — 8,49 € om måneden, eller 61,99 € om året, hvilket svarer til cirka 5 € om måneden. Du kan skifte mellem dem senere fra din konto.",
       },
       {
         q: "Hvad sker der, når jeg bliver medlem?",
@@ -3080,7 +3080,7 @@ const copy = {
       },
       {
         q: "Kan jag välja månads- eller årsmedlemskap?",
-        a: "Ja — 8,49 € i månaden, eller 59,99 € om året, vilket blir ungefär 5 € i månaden. Du kan växla mellan dem senare från ditt konto.",
+        a: "Ja — 8,49 € i månaden, eller 61,99 € om året, vilket blir ungefär 5 € i månaden. Du kan växla mellan dem senare från ditt konto.",
       },
       {
         q: "Vad händer när jag går med?",
@@ -3232,7 +3232,7 @@ const copy = {
       monthlyJoin: "Gå med månadsvis",
       yearlyLabel: "Årsvis",
       bestValue: "Bäst värde",
-      yearlyPrice: "€59,99",
+      yearlyPrice: "€61,99",
       yearlyUnit: "/ år",
       yearlyHighlight: "Bara €5 i månaden vid årsfakturering",
       yearlyBody: "Spara €35,89 per år jämfört med månadsbetalning.",
@@ -3467,7 +3467,7 @@ const copy = {
       },
       {
         q: "Kann ich zwischen monatlicher und jährlicher Mitgliedschaft wählen?",
-        a: "Ja — 8,49 € im Monat oder 59,99 € im Jahr, was etwa 5 € im Monat entspricht. Du kannst später jederzeit über dein Konto wechseln.",
+        a: "Ja — 8,49 € im Monat oder 61,99 € im Jahr, was etwa 5 € im Monat entspricht. Du kannst später jederzeit über dein Konto wechseln.",
       },
       {
         q: "Was passiert, wenn ich beitrete?",
@@ -3622,7 +3622,7 @@ const copy = {
       monthlyJoin: "Monatlich beitreten",
       yearlyLabel: "Jährlich",
       bestValue: "Bester Wert",
-      yearlyPrice: "€59,99",
+      yearlyPrice: "€61,99",
       yearlyUnit: "/ Jahr",
       yearlyHighlight: "Nur €5 im Monat bei jährlicher Abrechnung",
       yearlyBody: "Spare €35,89 im Jahr im Vergleich zur monatlichen Zahlung.",
@@ -3863,7 +3863,7 @@ const copy = {
       },
       {
         q: "Puis-je choisir un abonnement mensuel ou annuel ?",
-        a: "Oui — 8,49 € par mois, ou 59,99 € par an, soit environ 5 € par mois. Vous pouvez changer de formule plus tard depuis votre compte.",
+        a: "Oui — 8,49 € par mois, ou 61,99 € par an, soit environ 5 € par mois. Vous pouvez changer de formule plus tard depuis votre compte.",
       },
       {
         q: "Que se passe-t-il quand je m'inscris ?",
@@ -4018,7 +4018,7 @@ const copy = {
       monthlyJoin: "S'abonner au mois",
       yearlyLabel: "Annuel",
       bestValue: "Meilleure offre",
-      yearlyPrice: "59,99 €",
+      yearlyPrice: "61,99 €",
       yearlyUnit: "/ an",
       yearlyHighlight: "Seulement 5 € par mois en facturation annuelle",
       yearlyBody: "Économisez 35,89 € par an par rapport au paiement mensuel.",
@@ -4246,7 +4246,7 @@ const copy = {
       },
       {
         q: "Kan ik kiezen voor een maandelijks of jaarlijks lidmaatschap?",
-        a: "Ja — € 8,49 per maand, of € 59,99 per jaar, wat neerkomt op ongeveer € 5 per maand. Je kunt later vanuit je account wisselen.",
+        a: "Ja — € 8,49 per maand, of € 61,99 per jaar, wat neerkomt op ongeveer € 5 per maand. Je kunt later vanuit je account wisselen.",
       },
       {
         q: "Wat gebeurt er als ik lid word?",
@@ -4398,7 +4398,7 @@ const copy = {
       monthlyJoin: "Word maandelijks lid",
       yearlyLabel: "Jaarlijks",
       bestValue: "Beste deal",
-      yearlyPrice: "€ 59,99",
+      yearlyPrice: "€ 61,99",
       yearlyUnit: "/ jaar",
       yearlyHighlight: "Slechts € 5 per maand bij jaarlijkse facturatie",
       yearlyBody: "Bespaar € 35,89 per jaar vergeleken met maandelijks betalen.",
