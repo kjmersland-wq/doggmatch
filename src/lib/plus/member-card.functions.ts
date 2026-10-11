@@ -23,7 +23,7 @@ export const getMyMemberCard = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((data?: { name?: string }) => ({ name: data?.name?.slice(0, 60) ?? "" }))
   .handler(async ({ data, context }): Promise<MemberCard | null> => {
-    const membership = await getMembership();
+    const membership = await getMembership({ data: { environment: getPaddleEnvironment() } });
     if (!membership.subscribed) return null;
 
     const { makeMemberId, nameFor } = await import("./member-card.server");
