@@ -88,7 +88,7 @@ const copy = {
         title: "DoggMatch+ membership and billing",
         items: [
           "DoggMatch+ costs €8.49 per month or €61.99 per year. Prices include VAT where it applies.",
-          "Payments are handled by Paddle. We never see your card details.",
+          "Payments are handled by Paddle. We never see your card details. Our order process is conducted by our online reseller Paddle.com — Paddle is the Merchant of Record for all our orders, and provides all customer service inquiries and handles returns.",
           "Membership renews automatically at the end of each period until you cancel.",
           "You can cancel at any time from your account. Your membership then stays active until the end of the period you've already paid for, and doesn't renew after that.",
           "If we change the price, we'll tell you at least 30 days before it affects you, and you can cancel before it takes effect.",
