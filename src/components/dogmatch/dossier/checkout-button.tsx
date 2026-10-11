@@ -3,7 +3,6 @@ import { useServerFn } from "@tanstack/react-start";
 import { useNavigate } from "@tanstack/react-router";
 import { prepareDossierCheckout } from "@/lib/dossier/paddle.functions";
 import { usePaddleCheckout } from "@/hooks/usePaddleCheckout";
-import { getPaddleEnvironment } from "@/lib/paddle";
 import { useCopy, useLocale, interpolate } from "@/i18n";
 import type { BreedId } from "@/data/breeds";
 import { Button } from "@/components/dogmatch/ui";
