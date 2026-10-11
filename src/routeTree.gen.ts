@@ -76,6 +76,7 @@ import { Route as Char123LangChar125TravelAbroadRouteImport } from './routes/{-$
 import { Route as Char123LangChar125TravelCarRouteImport } from './routes/{-$lang}/travel.car'
 import { Route as Char123LangChar125TravelOutdoorsRouteImport } from './routes/{-$lang}/travel.outdoors'
 import { Route as Char123LangChar125VerifyMemberIdRouteImport } from './routes/{-$lang}/verify.$memberId'
+import { Route as ApiPublicPaymentsWebhookRouteImport } from './routes/api/public/payments/webhook'
 import { Route as Char123LangChar125GetADogBreedBreedIdRouteImport } from './routes/{-$lang}/get-a-dog.breed.$breedId'
 import { Route as Char123LangChar125MyDogCareTopicIdRouteImport } from './routes/{-$lang}/my-dog.care.$topicId'
 import { Route as Char123LangChar125TrainLessonsLessonIdRouteImport } from './routes/{-$lang}/train.lessons.$lessonId'
@@ -473,6 +474,12 @@ const Char123LangChar125VerifyMemberIdRoute =
     path: '/verify/$memberId',
     getParentRoute: () => Char123LangChar125Route,
   } as any)
+const ApiPublicPaymentsWebhookRoute =
+  ApiPublicPaymentsWebhookRouteImport.update({
+    id: '/api/public/payments/webhook',
+    path: '/api/public/payments/webhook',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const Char123LangChar125GetADogBreedBreedIdRoute =
   Char123LangChar125GetADogBreedBreedIdRouteImport.update({
     id: '/breed/$breedId',
@@ -560,6 +567,7 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/my-dog/': typeof Char123LangChar125MyDogIndexRoute
   '/{-$lang}/train/': typeof Char123LangChar125TrainIndexRoute
   '/{-$lang}/travel/': typeof Char123LangChar125TravelIndexRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
   '/{-$lang}/get-a-dog/breed/$breedId': typeof Char123LangChar125GetADogBreedBreedIdRoute
   '/{-$lang}/my-dog/care/$topicId': typeof Char123LangChar125MyDogCareTopicIdRoute
   '/{-$lang}/train/lessons/$lessonId': typeof Char123LangChar125TrainLessonsLessonIdRoute
@@ -627,6 +635,7 @@ export interface FileRoutesByTo {
   '/{-$lang}/my-dog': typeof Char123LangChar125MyDogIndexRoute
   '/{-$lang}/train': typeof Char123LangChar125TrainIndexRoute
   '/{-$lang}/travel': typeof Char123LangChar125TravelIndexRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
   '/{-$lang}/get-a-dog/breed/$breedId': typeof Char123LangChar125GetADogBreedBreedIdRoute
   '/{-$lang}/my-dog/care/$topicId': typeof Char123LangChar125MyDogCareTopicIdRoute
   '/{-$lang}/train/lessons/$lessonId': typeof Char123LangChar125TrainLessonsLessonIdRoute
@@ -700,6 +709,7 @@ export interface FileRoutesById {
   '/{-$lang}/my-dog/': typeof Char123LangChar125MyDogIndexRoute
   '/{-$lang}/train/': typeof Char123LangChar125TrainIndexRoute
   '/{-$lang}/travel/': typeof Char123LangChar125TravelIndexRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
   '/{-$lang}/get-a-dog/breed/$breedId': typeof Char123LangChar125GetADogBreedBreedIdRoute
   '/{-$lang}/my-dog/care/$topicId': typeof Char123LangChar125MyDogCareTopicIdRoute
   '/{-$lang}/train/lessons/$lessonId': typeof Char123LangChar125TrainLessonsLessonIdRoute
@@ -774,6 +784,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/'
     | '/{-$lang}/train/'
     | '/{-$lang}/travel/'
+    | '/api/public/payments/webhook'
     | '/{-$lang}/get-a-dog/breed/$breedId'
     | '/{-$lang}/my-dog/care/$topicId'
     | '/{-$lang}/train/lessons/$lessonId'
@@ -841,6 +852,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog'
     | '/{-$lang}/train'
     | '/{-$lang}/travel'
+    | '/api/public/payments/webhook'
     | '/{-$lang}/get-a-dog/breed/$breedId'
     | '/{-$lang}/my-dog/care/$topicId'
     | '/{-$lang}/train/lessons/$lessonId'
@@ -913,6 +925,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/my-dog/'
     | '/{-$lang}/train/'
     | '/{-$lang}/travel/'
+    | '/api/public/payments/webhook'
     | '/{-$lang}/get-a-dog/breed/$breedId'
     | '/{-$lang}/my-dog/care/$topicId'
     | '/{-$lang}/train/lessons/$lessonId'
@@ -921,6 +934,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Char123LangChar125Route: typeof Char123LangChar125RouteWithChildren
+  ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1394,6 +1408,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LangChar125VerifyMemberIdRouteImport
       parentRoute: typeof Char123LangChar125Route
     }
+    '/api/public/payments/webhook': {
+      id: '/api/public/payments/webhook'
+      path: '/api/public/payments/webhook'
+      fullPath: '/api/public/payments/webhook'
+      preLoaderRoute: typeof ApiPublicPaymentsWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/{-$lang}/get-a-dog/breed/$breedId': {
       id: '/{-$lang}/get-a-dog/breed/$breedId'
       path: '/breed/$breedId'
@@ -1645,6 +1666,7 @@ const Char123LangChar125RouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Char123LangChar125Route: Char123LangChar125RouteWithChildren,
+  ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
