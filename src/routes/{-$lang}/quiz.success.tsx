@@ -227,7 +227,7 @@ function SuccessPage() {
       };
     }
 
-    verify({ data: { sessionId: session_id } })
+    verify({ data: { transactionId: session_id, environment: getPaddleEnvironment() } })
       .then((res) => {
         if (cancelled) return;
         if (res.paid && res.breedId) {
