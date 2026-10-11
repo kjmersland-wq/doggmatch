@@ -1361,7 +1361,7 @@ const copy = {
       yearlyJoin: "Join yearly — best value",
       openLine: "Membership is open.",
       openBody:
-        "Payment is handled securely by Stripe. You can change or cancel your membership yourself at any time from your account.",
+        "Payment is handled securely by Paddle. You can change or cancel your membership yourself at any time from your account.",
     },
     faqSection: {
       eyebrow: "Questions",
@@ -1737,7 +1737,7 @@ const copy = {
       yearlyJoin: "Liity vuodella — paras hinta",
       openLine: "Jäsenyys on avoin.",
       openBody:
-        "Maksut hoidetaan turvallisesti Stripellä. Voit muuttaa tai peruuttaa jäsenyytesi itse milloin tahansa tililtäsi.",
+        "Maksut hoidetaan turvallisesti Paddlella. Voit muuttaa tai peruuttaa jäsenyytesi itse milloin tahansa tililtäsi.",
     },
     faqSection: {
       eyebrow: "Kysymyksiä",
@@ -2109,7 +2109,7 @@ const copy = {
       yearlyJoin: "Bli medlem årlig — best verdi",
       openLine: "Medlemskapet er åpent.",
       openBody:
-        "Betaling håndteres trygt av Stripe. Du kan endre eller si opp medlemskapet ditt selv, når som helst, fra kontoen din.",
+        "Betaling håndteres trygt av Paddle. Du kan endre eller si opp medlemskapet ditt selv, når som helst, fra kontoen din.",
     },
     faqSection: {
       eyebrow: "Spørsmål",
@@ -2491,7 +2491,7 @@ const copy = {
       yearlyJoin: "Dołącz rocznie — najlepsza oferta",
       openLine: "Członkostwo jest otwarte.",
       openBody:
-        "Płatności są bezpiecznie obsługiwane przez Stripe. Możesz samodzielnie zmienić lub anulować członkostwo w dowolnym momencie z poziomu swojego konta.",
+        "Płatności są bezpiecznie obsługiwane przez Paddle. Możesz samodzielnie zmienić lub anulować członkostwo w dowolnym momencie z poziomu swojego konta.",
     },
     faqSection: {
       eyebrow: "Pytania",
@@ -2863,7 +2863,7 @@ const copy = {
       yearlyJoin: "Bliv medlem årligt — bedste værdi",
       openLine: "Medlemskabet er åbent.",
       openBody:
-        "Betaling håndteres sikkert af Stripe. Du kan selv ændre eller opsige dit medlemskab når som helst fra din konto.",
+        "Betaling håndteres sikkert af Paddle. Du kan selv ændre eller opsige dit medlemskab når som helst fra din konto.",
     },
     faqSection: {
       eyebrow: "Spørgsmål",
@@ -3239,7 +3239,7 @@ const copy = {
       yearlyJoin: "Gå med årsvis — bäst värde",
       openLine: "Medlemskapet är öppet.",
       openBody:
-        "Betalning hanteras säkert av Stripe. Du kan själv ändra eller säga upp ditt medlemskap när som helst från ditt konto.",
+        "Betalning hanteras säkert av Paddle. Du kan själv ändra eller säga upp ditt medlemskap när som helst från ditt konto.",
     },
     faqSection: {
       eyebrow: "Frågor",
@@ -3629,7 +3629,7 @@ const copy = {
       yearlyJoin: "Jährlich beitreten — bester Wert",
       openLine: "Die Mitgliedschaft ist offen.",
       openBody:
-        "Die Zahlung wird sicher über Stripe abgewickelt. Du kannst deine Mitgliedschaft jederzeit selbst über dein Konto ändern oder kündigen.",
+        "Die Zahlung wird sicher über Paddle abgewickelt. Du kannst deine Mitgliedschaft jederzeit selbst über dein Konto ändern oder kündigen.",
     },
     faqSection: {
       eyebrow: "Fragen",
@@ -4025,7 +4025,7 @@ const copy = {
       yearlyJoin: "S'abonner à l'année — meilleure offre",
       openLine: "L'abonnement est ouvert.",
       openBody:
-        "Le paiement est géré en toute sécurité par Stripe. Vous pouvez modifier ou résilier votre abonnement vous-même, à tout moment, depuis votre compte.",
+        "Le paiement est géré en toute sécurité par Paddle. Vous pouvez modifier ou résilier votre abonnement vous-même, à tout moment, depuis votre compte.",
     },
     faqSection: {
       eyebrow: "Questions",
@@ -4405,7 +4405,7 @@ const copy = {
       yearlyJoin: "Word jaarlijks lid — beste deal",
       openLine: "Het lidmaatschap staat open.",
       openBody:
-        "Betaling wordt veilig verwerkt door Stripe. Je kunt je lidmaatschap op elk moment zelf wijzigen of opzeggen vanuit je account.",
+        "Betaling wordt veilig verwerkt door Paddle. Je kunt je lidmaatschap op elk moment zelf wijzigen of opzeggen vanuit je account.",
     },
     faqSection: {
       eyebrow: "Vragen",

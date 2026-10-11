@@ -23,7 +23,7 @@ function isAllowedHost(host: string): boolean {
   return bare.endsWith(".lovable.app") || bare.endsWith(".lovableproject.com");
 }
 
-/** The origin every Stripe success/cancel/return URL is built from. */
+/** The origin every Paddle success/cancel/return URL is built from. */
 export function trustedOrigin(): string {
   const configured = process.env["SITE_URL"];
   if (configured) return configured.replace(/\/+$/, "");
