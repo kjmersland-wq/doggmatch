@@ -131,9 +131,9 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
       await openCheckout({
         priceId: prepared.priceId,
         quantity: 1,
-        customerEmail: prepared.email ?? undefined,
+        ...(prepared.email ? { customerEmail: prepared.email } : {}),
         customData: { userId: prepared.userId },
-        discountId: prepared.discountId ?? undefined,
+        ...(prepared.discountId ? { discountId: prepared.discountId } : {}),
         successUrl: `${window.location.origin}${successPath}`,
       });
       setBusy(false);
