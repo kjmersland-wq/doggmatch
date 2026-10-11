@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { createPlusCheckout } from "@/lib/plus/stripe.functions";
+import { preparePlusCheckout } from "@/lib/plus/paddle.functions";
+import { usePaddleCheckout } from "@/hooks/usePaddleCheckout";
+import { getPaddleEnvironment } from "@/lib/paddle";
 import type { PlanId } from "@/lib/plus/plans";
 import { useMembership } from "@/hooks/use-membership";
 import { readPartnerCode } from "@/components/dogmatch/plus/partner-code";
 import { cn } from "@/lib/utils";
-import { useCopy } from "@/i18n";
+import { useCopy, useLocale } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
 import { PURCHASES_ENABLED, purchasesPausedCopy } from "@/lib/purchases";
 import { track } from "@/lib/analytics";
