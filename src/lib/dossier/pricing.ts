@@ -1,16 +1,19 @@
 import type { Locale } from "@/i18n";
 
 export interface DossierPrice {
-  /** Stripe's lower-case ISO currency code. */
-  currency: "usd" | "nok";
-  /** Minor units — cents or øre. */
+  /** Lower-case ISO currency code. */
+  currency: "usd";
+  /** Minor units — cents. */
   amount: number;
-  /** Ready-to-show price string, in the reader's own currency. */
+  /** Ready-to-show price string. */
   display: string;
 }
 
-/** One-time price for the Complete Breed & Puppy Buyer Dossier, by locale. */
-export function dossierPrice(locale: Locale): DossierPrice {
-  if (locale === "no") return { currency: "nok", amount: 4900, display: "49 kr" };
+/**
+ * One-time price for the Complete Breed & Puppy Buyer Dossier.
+ * Paddle charges in USD for every locale, so the displayed price always
+ * matches what checkout actually charges.
+ */
+export function dossierPrice(_locale: Locale): DossierPrice {
   return { currency: "usd", amount: 499, display: "$4.99" };
 }

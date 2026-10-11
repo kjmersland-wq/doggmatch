@@ -85,7 +85,7 @@ const resultCopy = {
     reportLocked: "Also in the full report",
     plusCtaFirstYear: "See what DoggMatch+ adds to the first year",
     plusCtaWeekly: "Plan the first year, week by week",
-    plusPrice: "€7.99 a month or €59.99 a year, and you can cancel from your account at any time.",
+    plusPrice: "€8.49 a month or €61.99 a year, and you can cancel from your account at any time.",
   },
   no: {
     scoreNote: "Basert på alt du har fortalt oss, også grensene du sa du ikke kunne tøye.",
@@ -215,7 +215,7 @@ const resultCopy = {
     reportLocked: "W pełnym raporcie znajdziesz też",
     plusCtaFirstYear: "Zobacz, co DoggMatch+ daje w pierwszym roku",
     plusCtaWeekly: "Zaplanuj pierwszy rok, tydzień po tygodniu",
-    plusPrice: "7,99 € miesięcznie albo 59,99 € rocznie, a zrezygnować możesz w każdej chwili na swoim koncie.",
+    plusPrice: "8,49 € miesięcznie albo 61,99 € rocznie, a zrezygnować możesz w każdej chwili na swoim koncie.",
   },
   dk: {
     scoreNote: "Baseret på alt du har fortalt os, også de grænser du sagde du ikke kunne rykke.",
@@ -280,7 +280,7 @@ const resultCopy = {
     reportLocked: "Også i den fulde rapport",
     plusCtaFirstYear: "Se, hvad DoggMatch+ giver dig det første år",
     plusCtaWeekly: "Planlæg det første år, uge for uge",
-    plusPrice: "7,99 € om måneden eller 59,99 € om året, og du kan opsige fra din konto når som helst.",
+    plusPrice: "8,49 € om måneden eller 61,99 € om året, og du kan opsige fra din konto når som helst.",
   },
   se: {
     scoreNote:
@@ -346,7 +346,7 @@ const resultCopy = {
     reportLocked: "Också i den fullständiga rapporten",
     plusCtaFirstYear: "Se vad DoggMatch+ ger dig det första året",
     plusCtaWeekly: "Planera det första året, vecka för vecka",
-    plusPrice: "7,99 € i månaden eller 59,99 € om året, och du kan avsluta från ditt konto när du vill.",
+    plusPrice: "8,49 € i månaden eller 61,99 € om året, och du kan avsluta från ditt konto när du vill.",
   },
   fi: {
     scoreNote:
@@ -413,7 +413,7 @@ const resultCopy = {
     reportLocked: "Täydessä raportissa myös",
     plusCtaFirstYear: "Katso, mitä DoggMatch+ tuo ensimmäiseen vuoteen",
     plusCtaWeekly: "Suunnittele ensimmäinen vuosi viikko kerrallaan",
-    plusPrice: "7,99 € kuukaudessa tai 59,99 € vuodessa, ja voit lopettaa tililtäsi milloin tahansa.",
+    plusPrice: "8,49 € kuukaudessa tai 61,99 € vuodessa, ja voit lopettaa tililtäsi milloin tahansa.",
   },
   de: {
     scoreNote: "Basierend auf allem, was Sie uns mitgeteilt haben, einschließlich der Grenzen, die Sie als unverhandelbar bezeichnet haben.",
@@ -473,7 +473,7 @@ const resultCopy = {
     reportLocked: "Außerdem im vollständigen Bericht",
     plusCtaFirstYear: "Sehen Sie, was DoggMatch+ im ersten Jahr bietet",
     plusCtaWeekly: "Das erste Jahr planen, Woche für Woche",
-    plusPrice: "7,99 € im Monat oder 59,99 € im Jahr, jederzeit über Ihr Konto kündbar.",
+    plusPrice: "8,49 € im Monat oder 61,99 € im Jahr, jederzeit über Ihr Konto kündbar.",
   },
   fr: {
     scoreNote: "En fonction de tout ce que vous nous avez indiqué, y compris les limites que vous avez dites ne pas pouvoir dépasser.",
@@ -533,7 +533,7 @@ const resultCopy = {
     reportLocked: "Également dans le rapport complet",
     plusCtaFirstYear: "Découvrez ce que DoggMatch+ apporte la première année",
     plusCtaWeekly: "Planifiez la première année, semaine après semaine",
-    plusPrice: "7,99 € par mois ou 59,99 € par an, résiliable à tout moment depuis votre compte.",
+    plusPrice: "8,49 € par mois ou 61,99 € par an, résiliable à tout moment depuis votre compte.",
   },
   nl: {
     scoreNote: "Gebaseerd op alles wat u ons heeft verteld, inclusief de grenzen waarvan u zei dat ze niet onderhandelbaar waren.",
@@ -593,7 +593,7 @@ const resultCopy = {
     reportLocked: "Ook in het volledige rapport",
     plusCtaFirstYear: "Bekijk wat DoggMatch+ toevoegt aan het eerste jaar",
     plusCtaWeekly: "Plan het eerste jaar, week voor week",
-    plusPrice: "€ 7,99 per maand of € 59,99 per jaar, en u kunt op elk moment opzeggen via uw account.",
+    plusPrice: "€ 8,49 per maand of € 61,99 per jaar, en u kunt op elk moment opzeggen via uw account.",
   },
 };
 import { quizQuestions } from "@/data/questions.locale";

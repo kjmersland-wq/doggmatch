@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { useNavigate } from "@tanstack/react-router";
-import { createDossierCheckout } from "@/lib/dossier/stripe.functions";
+import { prepareDossierCheckout } from "@/lib/dossier/paddle.functions";
+import { usePaddleCheckout } from "@/hooks/usePaddleCheckout";
 import { useCopy, useLocale, interpolate } from "@/i18n";
 import type { BreedId } from "@/data/breeds";
 import { Button } from "@/components/dogmatch/ui";
@@ -59,7 +60,7 @@ const copy = {
   },
 } as const;
 
-/** Sends the reader straight into a one-time Stripe Checkout for the paid breed dossier. */
+/** Sends the reader straight into a one-time Paddle checkout for the paid breed dossier. */
 export function DossierCheckoutButton({
   breedId,
   breedName,
@@ -72,7 +73,8 @@ export function DossierCheckoutButton({
   const c = useCopy(copy);
   const p = useCopy(purchasesPausedCopy);
   const { locale } = useLocale();
-  const startCheckout = useServerFn(createDossierCheckout);
+  const prepare = useServerFn(prepareDossierCheckout);
+  const { openCheckout } = usePaddleCheckout();
   const navigate = useNavigate();
   const { membership } = useMembership();
   const [busy, setBusy] = useState(false);
@@ -88,8 +90,15 @@ export function DossierCheckoutButton({
         await navigate({ to: withLangPrefix("/quiz/success"), search: { breed: breedId, session_id: "" } });
         return;
       }
-      const { url } = await startCheckout({ data: { breedId, locale } });
-      window.location.href = url;
+      const { priceId } = await prepare({ data: { breedId, locale } });
+      const successPath = locale === "en" ? "/quiz/success" : `/${locale}/quiz/success`;
+      await openCheckout({
+        priceId,
+        quantity: 1,
+        customData: { breedId, locale },
+        successUrl: `${window.location.origin}${successPath}`,
+      });
+      setBusy(false);
     } catch {
       setError(c.error);
       setBusy(false);

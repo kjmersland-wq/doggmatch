@@ -87,8 +87,8 @@ const copy = {
       membership: {
         title: "DoggMatch+ membership and billing",
         items: [
-          "DoggMatch+ costs €7.99 per month or €59.99 per year. Prices include VAT where it applies.",
-          "Payments are handled by Stripe. We never see your card details.",
+          "DoggMatch+ costs €8.49 per month or €61.99 per year. Prices include VAT where it applies.",
+          "Payments are handled by Paddle. We never see your card details. Our order process is conducted by our online reseller Paddle.com — Paddle is the Merchant of Record for all our orders, and provides all customer service inquiries and handles returns.",
           "Membership renews automatically at the end of each period until you cancel.",
           "You can cancel at any time from your account. Your membership then stays active until the end of the period you've already paid for, and doesn't renew after that.",
           "If we change the price, we'll tell you at least 30 days before it affects you, and you can cancel before it takes effect.",
@@ -171,8 +171,8 @@ const copy = {
       membership: {
         title: "DoggMatch+ medlemskap og fakturering",
         items: [
-          "DoggMatch+ koster €7,99 per måned eller €59,99 per år. Prisene inkluderer mva. der det gjelder.",
-          "Betalinger håndteres av Stripe. Vi ser aldri kortopplysningene dine.",
+          "DoggMatch+ koster €8,49 per måned eller €61,99 per år. Prisene inkluderer mva. der det gjelder.",
+          "Betalinger håndteres av Paddle. Vi ser aldri kortopplysningene dine. Bestillingen gjennomføres av vår nettforhandler Paddle.com — Paddle er Merchant of Record for alle bestillinger, og håndterer kundeservice og returer.",
           "Medlemskapet fornyes automatisk ved slutten av hver periode inntil du sier opp.",
           "Du kan si opp når som helst fra kontoen din. Medlemskapet ditt forblir da aktivt ut perioden du allerede har betalt for, og fornyes ikke etter det.",
           "Hvis vi endrer prisen, sier vi fra minst 30 dager før det påvirker deg, og du kan si opp før det trer i kraft.",
@@ -255,8 +255,8 @@ const copy = {
       membership: {
         title: "Członkostwo DoggMatch+ i rozliczenia",
         items: [
-          "DoggMatch+ kosztuje 7,99 € miesięcznie lub 59,99 € rocznie. Ceny zawierają VAT tam, gdzie ma on zastosowanie.",
-          "Płatności obsługuje Stripe. Nigdy nie widzimy danych twojej karty.",
+          "DoggMatch+ kosztuje 8,49 € miesięcznie lub 61,99 € rocznie. Ceny zawierają VAT tam, gdzie ma on zastosowanie.",
+          "Płatności obsługuje Paddle. Nigdy nie widzimy danych twojej karty. Zamówienia realizuje nasz internetowy odsprzedawca Paddle.com — Paddle jest Merchant of Record dla wszystkich zamówień, obsługuje zapytania klientów i zwroty.",
           "Członkostwo odnawia się automatycznie na koniec każdego okresu, dopóki go nie anulujesz.",
           "Możesz anulować w dowolnym momencie ze swojego konta. Twoje członkostwo pozostaje wtedy aktywne do końca opłaconego już okresu i nie odnawia się później.",
           "Jeśli zmienimy cenę, poinformujemy cię co najmniej 30 dni przed tym, zanim to na ciebie wpłynie, i możesz anulować, zanim zmiana wejdzie w życie.",
@@ -339,8 +339,8 @@ const copy = {
       membership: {
         title: "DoggMatch+ medlemskab og fakturering",
         items: [
-          "DoggMatch+ koster 7,99 € om måneden eller 59,99 € om året. Priserne inkluderer moms, hvor det gælder.",
-          "Betalinger håndteres af Stripe. Vi ser aldrig dine kortoplysninger.",
+          "DoggMatch+ koster 8,49 € om måneden eller 61,99 € om året. Priserne inkluderer moms, hvor det gælder.",
+          "Betalinger håndteres af Paddle. Vi ser aldrig dine kortoplysninger. Bestillingen gennemføres af vores online-forhandler Paddle.com — Paddle er Merchant of Record for alle bestillinger og håndterer kundeservice og returneringer.",
           "Medlemskabet fornyes automatisk ved udgangen af hver periode, indtil du opsiger det.",
           "Du kan opsige når som helst fra din konto. Dit medlemskab forbliver derefter aktivt ud den periode, du allerede har betalt for, og fornyes ikke derefter.",
           "Hvis vi ændrer prisen, fortæller vi dig det mindst 30 dage før det påvirker dig, og du kan opsige, før det træder i kraft.",
@@ -423,8 +423,8 @@ const copy = {
       membership: {
         title: "DoggMatch+ medlemskap och fakturering",
         items: [
-          "DoggMatch+ kostar 7,99 € per månad eller 59,99 € per år. Priserna inkluderar moms där det gäller.",
-          "Betalningar hanteras av Stripe. Vi ser aldrig dina kortuppgifter.",
+          "DoggMatch+ kostar 8,49 € per månad eller 61,99 € per år. Priserna inkluderar moms där det gäller.",
+          "Betalningar hanteras av Paddle. Vi ser aldrig dina kortuppgifter. Beställningen genomförs av vår online-återförsäljare Paddle.com — Paddle är Merchant of Record för alla beställningar och hanterar kundtjänst och returer.",
           "Medlemskapet förnyas automatiskt vid slutet av varje period tills du säger upp det.",
           "Du kan säga upp när som helst från ditt konto. Ditt medlemskap förblir då aktivt ut den period du redan har betalat för, och förnyas inte därefter.",
           "Om vi ändrar priset meddelar vi dig minst 30 dagar innan det påverkar dig, och du kan säga upp innan det träder i kraft.",
@@ -507,8 +507,8 @@ const copy = {
       membership: {
         title: "DoggMatch+ -jäsenyys ja laskutus",
         items: [
-          "DoggMatch+ maksaa 7,99 € kuukaudessa tai 59,99 € vuodessa. Hinnat sisältävät alv:n siellä, missä se on sovellettavissa.",
-          "Maksut hoitaa Stripe. Emme koskaan näe korttitietojasi.",
+          "DoggMatch+ maksaa 8,49 € kuukaudessa tai 61,99 € vuodessa. Hinnat sisältävät alv:n siellä, missä se on sovellettavissa.",
+          "Maksut hoitaa Paddle. Emme koskaan näe korttitietojasi. Tilaukset välittää verkkojälleenmyyjämme Paddle.com — Paddle on kaikkien tilausten Merchant of Record ja hoitaa asiakaspalvelun ja palautukset.",
           "Jäsenyys uusiutuu automaattisesti jokaisen jakson lopussa, kunnes peruutat sen.",
           "Voit peruuttaa milloin tahansa tililtäsi. Jäsenyytesi pysyy tämän jälkeen voimassa jo maksamasi jakson loppuun, eikä se uusiudu sen jälkeen.",
           "Jos muutamme hintaa, kerromme siitä vähintään 30 päivää ennen kuin se vaikuttaa sinuun, ja voit peruuttaa ennen kuin se astuu voimaan.",
@@ -591,8 +591,8 @@ const copy = {
       membership: {
         title: "DoggMatch+ Mitgliedschaft und Abrechnung",
         items: [
-          "DoggMatch+ kostet 7,99 € pro Monat oder 59,99 € pro Jahr. Die Preise enthalten die Mehrwertsteuer, wo sie anfällt.",
-          "Zahlungen werden von Stripe abgewickelt. Wir sehen deine Kartendaten nie.",
+          "DoggMatch+ kostet 8,49 € pro Monat oder 61,99 € pro Jahr. Die Preise enthalten die Mehrwertsteuer, wo sie anfällt.",
+          "Zahlungen werden von Paddle abgewickelt. Wir sehen deine Kartendaten nie. Der Bestellvorgang läuft über unseren Online-Reseller Paddle.com — Paddle ist Merchant of Record für alle Bestellungen und kümmert sich um Kundenservice und Rücksendungen.",
           "Die Mitgliedschaft verlängert sich automatisch am Ende jedes Zeitraums, bis du sie kündigst.",
           "Du kannst jederzeit über dein Konto kündigen. Deine Mitgliedschaft bleibt dann bis zum Ende des bereits bezahlten Zeitraums aktiv und verlängert sich danach nicht mehr.",
           "Wenn wir den Preis ändern, sagen wir dir das mindestens 30 Tage bevor es dich betrifft, und du kannst kündigen, bevor es in Kraft tritt.",
@@ -676,8 +676,8 @@ const copy = {
       membership: {
         title: "Adhésion DoggMatch+ et facturation",
         items: [
-          "DoggMatch+ coûte 7,99 € par mois ou 59,99 € par an. Les prix incluent la TVA lorsqu'elle s'applique.",
-          "Les paiements sont traités par Stripe. Nous ne voyons jamais vos coordonnées bancaires.",
+          "DoggMatch+ coûte 8,49 € par mois ou 61,99 € par an. Les prix incluent la TVA lorsqu'elle s'applique.",
+          "Les paiements sont traités par Paddle. Nous ne voyons jamais vos coordonnées bancaires. Notre processus de commande est assuré par notre revendeur en ligne Paddle.com — Paddle est le Merchant of Record de toutes nos commandes et gère le service client et les retours.",
           "L'adhésion se renouvelle automatiquement à la fin de chaque période jusqu'à ce que vous l'annuliez.",
           "Vous pouvez annuler à tout moment depuis votre compte. Votre adhésion reste alors active jusqu'à la fin de la période déjà payée, et ne se renouvelle pas ensuite.",
           "Si nous modifions le prix, nous vous en informerons au moins 30 jours avant que cela ne vous affecte, et vous pourrez annuler avant que cela ne prenne effet.",
@@ -760,8 +760,8 @@ const copy = {
       membership: {
         title: "DoggMatch+ lidmaatschap en facturering",
         items: [
-          "DoggMatch+ kost € 7,99 per maand of € 59,99 per jaar. Prijzen zijn inclusief btw waar van toepassing.",
-          "Betalingen worden verwerkt door Stripe. Wij zien je kaartgegevens nooit.",
+          "DoggMatch+ kost € 8,49 per maand of € 61,99 per jaar. Prijzen zijn inclusief btw waar van toepassing.",
+          "Betalingen worden verwerkt door Paddle. Wij zien je kaartgegevens nooit. Ons bestelproces wordt uitgevoerd door onze online reseller Paddle.com — Paddle is de Merchant of Record voor al onze bestellingen en handelt klantenservice en retouren af.",
           "Het lidmaatschap wordt automatisch verlengd aan het einde van elke periode totdat je opzegt.",
           "Je kunt op elk moment opzeggen via je account. Je lidmaatschap blijft dan actief tot het einde van de reeds betaalde periode, en wordt daarna niet verlengd.",
           "Als we de prijs wijzigen, laten we het je minstens 30 dagen van tevoren weten, en je kunt opzeggen voordat het van kracht wordt.",

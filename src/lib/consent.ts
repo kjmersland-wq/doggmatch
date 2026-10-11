@@ -2,7 +2,7 @@
  * Cookie / storage consent for DoggMatch (GDPR, ePrivacy).
  *
  * Necessary storage — language, theme, your dog's own notes, sign-in and
- * Stripe checkout — always works and is never gated here. Only analytics
+ * Paddle checkout — always works and is never gated here. Only analytics
  * and marketing wait for a clear yes, and the choice can be changed at any
  * time from the footer.
  */

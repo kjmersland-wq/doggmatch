@@ -1,7 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
-export const PARTNER_COUPON_ID = "doggmatch-partner-25-first-year";
 
 export type PartnerRecord = {
   id: string;
@@ -149,20 +148,14 @@ export const issuePartnerCode = createServerFn({ method: "POST" })
     if (row.status !== "approved") return { ok: false, message: "not-approved" };
     if (row.code) return { ok: true, code: row.code };
 
-    const { getStripe } = await import("@/lib/plus/stripe.server");
+    // The 25% benefit itself is a shared Paddle discount applied at checkout
+    // when a valid partner code is entered — no per-partner promo codes needed.
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const stripe = getStripe();
-
     const code = codeFor(row.company);
-    const promo = await stripe.promotionCodes.create({
-      promotion: { type: "coupon", coupon: PARTNER_COUPON_ID },
-      code,
-      metadata: { partner_id: row.id, company: row.company },
-    });
 
     const { error } = await supabaseAdmin
       .from("partners")
-      .update({ code, stripe_promotion_code_id: promo.id })
+      .update({ code })
       .eq("id", row.id);
     if (error) {
       console.error("[partner-portal] saving code failed", error.message);

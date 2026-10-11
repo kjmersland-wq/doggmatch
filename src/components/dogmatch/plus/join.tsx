@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { createPlusCheckout } from "@/lib/plus/stripe.functions";
+import { preparePlusCheckout } from "@/lib/plus/paddle.functions";
+import { usePaddleCheckout } from "@/hooks/usePaddleCheckout";
+import { getPaddleEnvironment } from "@/lib/paddle";
 import type { PlanId } from "@/lib/plus/plans";
 import { useMembership } from "@/hooks/use-membership";
 import { readPartnerCode } from "@/components/dogmatch/plus/partner-code";
 import { cn } from "@/lib/utils";
-import { useCopy } from "@/i18n";
+import { useCopy, useLocale } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
 import { PURCHASES_ENABLED, purchasesPausedCopy } from "@/lib/purchases";
 import { track } from "@/lib/analytics";
@@ -94,12 +96,14 @@ const copy = {
   },
 } as const;
 
-/** Takes someone from the pricing card straight into Stripe checkout. */
+/** Takes someone from the pricing card straight into Paddle checkout. */
 export function JoinPlusButton({ plan, tone = "primary", label, className }: Props) {
   const c = useCopy(copy);
   const p = useCopy(purchasesPausedCopy);
+  const { locale } = useLocale();
   const navigate = useNavigate();
-  const startCheckout = useServerFn(createPlusCheckout);
+  const prepare = useServerFn(preparePlusCheckout);
+  const { openCheckout } = usePaddleCheckout();
   const { membership, signedIn, loading } = useMembership();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -119,8 +123,20 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
     }
     setBusy(true);
     try {
-      const { url } = await startCheckout({ data: { plan, code: readPartnerCode() } });
-      window.location.href = url;
+      const environment = getPaddleEnvironment();
+      const prepared = await prepare({
+        data: { plan, code: readPartnerCode(), environment },
+      });
+      const successPath = locale === "en" ? "/checkout/success" : `/${locale}/checkout/success`;
+      await openCheckout({
+        priceId: prepared.priceId,
+        quantity: 1,
+        ...(prepared.email ? { customerEmail: prepared.email } : {}),
+        customData: { userId: prepared.userId },
+        ...(prepared.discountId ? { discountId: prepared.discountId } : {}),
+        successUrl: `${window.location.origin}${successPath}`,
+      });
+      setBusy(false);
     } catch {
       setError(c.error);
       setBusy(false);
