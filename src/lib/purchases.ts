@@ -2,7 +2,7 @@
  * Single switch for all new payments (DoggMatch+ subscriptions and dossier purchases).
  * Set to true to re-enable checkout. Webhooks, billing portal and existing access are unaffected.
  */
-export const PURCHASES_ENABLED = false;
+export const PURCHASES_ENABLED = true;
 
 export const PURCHASES_PAUSED_ERROR =
   "Paid plans are paused for a short while as we set up in Poland. Everything free works as normal.";

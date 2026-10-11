@@ -913,7 +913,7 @@ export const Route = createFileRoute("/{-$lang}/plus")({
               {
                 "@type": "Offer",
                 name: "DoggMatch+ monthly",
-                price: "7.99",
+                price: "8.49",
                 priceCurrency: "EUR",
                 url: langUrl("/plus", locale),
                 availability: "https://schema.org/InStock",
@@ -921,7 +921,7 @@ export const Route = createFileRoute("/{-$lang}/plus")({
               {
                 "@type": "Offer",
                 name: "DoggMatch+ yearly",
-                price: "59.99",
+                price: "61.99",
                 priceCurrency: "EUR",
                 url: langUrl("/plus", locale),
                 availability: "https://schema.org/InStock",
@@ -1202,7 +1202,7 @@ const copy = {
       },
       {
         q: "Can I choose monthly or yearly membership?",
-        a: "Yes — €7.99 a month, or €59.99 a year, which works out at about €5 a month. You can switch between them later from your account.",
+        a: "Yes — €8.49 a month, or €61.99 a year, which works out at about €5 a month. You can switch between them later from your account.",
       },
       {
         q: "What happens when I join?",
@@ -1348,13 +1348,13 @@ const copy = {
       eyebrow: "Membership",
       body: "One membership, everything included. Choose the rhythm that suits you.",
       monthlyLabel: "Monthly",
-      monthlyPrice: "€7.99",
+      monthlyPrice: "€8.49",
       monthlyUnit: "/ month",
       monthlyBody: "Everything in DoggMatch+, month by month.",
       monthlyJoin: "Join monthly",
       yearlyLabel: "Yearly",
       bestValue: "Best value",
-      yearlyPrice: "€59.99",
+      yearlyPrice: "€61.99",
       yearlyUnit: "/ year",
       yearlyHighlight: "Just €5 a month when billed yearly",
       yearlyBody: "Save €35.89 a year compared with paying monthly.",
@@ -1578,7 +1578,7 @@ const copy = {
       },
       {
         q: "Voinko valita kuukausi- vai vuosilaskutuksen?",
-        a: "Kyllä — 7,99 € kuukaudessa tai 59,99 € vuodessa, mikä tekee noin 5 € kuukaudessa. Voit vaihtaa niiden välillä myöhemmin tililtäsi.",
+        a: "Kyllä — 8,49 € kuukaudessa tai 59,99 € vuodessa, mikä tekee noin 5 € kuukaudessa. Voit vaihtaa niiden välillä myöhemmin tililtäsi.",
       },
       {
         q: "Mitä tapahtuu, kun liityn?",
@@ -1724,7 +1724,7 @@ const copy = {
       eyebrow: "Jäsenyys",
       body: "Yksi jäsenyys, kaikki sisältyy. Valitse sinulle sopiva rytmi.",
       monthlyLabel: "Kuukausi",
-      monthlyPrice: "7,99",
+      monthlyPrice: "8,49",
       monthlyUnit: "/ kk",
       monthlyBody: "Kaikki DoggMatch+:ssa, kuukausittain.",
       monthlyJoin: "Liity kuukausijäseneksi",
@@ -2329,7 +2329,7 @@ const copy = {
       },
       {
         q: "Czy mogę wybrać członkostwo miesięczne lub roczne?",
-        a: "Tak — 7,99 € miesięcznie albo 59,99 € rocznie, co wychodzi na około 5 € miesięcznie. Możesz później przełączać się między nimi z poziomu konta.",
+        a: "Tak — 8,49 € miesięcznie albo 59,99 € rocznie, co wychodzi na około 5 € miesięcznie. Możesz później przełączać się między nimi z poziomu konta.",
       },
       {
         q: "Co się dzieje, gdy dołączam?",
@@ -2478,7 +2478,7 @@ const copy = {
       eyebrow: "Członkostwo",
       body: "Jedno członkostwo, wszystko w zestawie. Wybierz rytm, który Ci odpowiada.",
       monthlyLabel: "Miesięcznie",
-      monthlyPrice: "7,99 €",
+      monthlyPrice: "8,49 €",
       monthlyUnit: "/ miesiąc",
       monthlyBody: "Wszystko w DoggMatch+, miesiąc po miesiącu.",
       monthlyJoin: "Dołącz miesięcznie",
@@ -2704,7 +2704,7 @@ const copy = {
       },
       {
         q: "Kan jeg vælge månedligt eller årligt medlemskab?",
-        a: "Ja — 7,99 € om måneden, eller 59,99 € om året, hvilket svarer til cirka 5 € om måneden. Du kan skifte mellem dem senere fra din konto.",
+        a: "Ja — 8,49 € om måneden, eller 59,99 € om året, hvilket svarer til cirka 5 € om måneden. Du kan skifte mellem dem senere fra din konto.",
       },
       {
         q: "Hvad sker der, når jeg bliver medlem?",
@@ -2850,13 +2850,13 @@ const copy = {
       eyebrow: "Medlemskab",
       body: "Ét medlemskab, alt inkluderet. Vælg den rytme, der passer dig.",
       monthlyLabel: "Månedligt",
-      monthlyPrice: "€7.99",
+      monthlyPrice: "€8.49",
       monthlyUnit: "/ måned",
       monthlyBody: "Alt i DoggMatch+, måned for måned.",
       monthlyJoin: "Bliv medlem månedligt",
       yearlyLabel: "Årligt",
       bestValue: "Bedste værdi",
-      yearlyPrice: "€59.99",
+      yearlyPrice: "€61.99",
       yearlyUnit: "/ år",
       yearlyHighlight: "Kun €5 om måneden ved årlig fakturering",
       yearlyBody: "Spar €35,89 om året sammenlignet med månedlig betaling.",
@@ -3080,7 +3080,7 @@ const copy = {
       },
       {
         q: "Kan jag välja månads- eller årsmedlemskap?",
-        a: "Ja — 7,99 € i månaden, eller 59,99 € om året, vilket blir ungefär 5 € i månaden. Du kan växla mellan dem senare från ditt konto.",
+        a: "Ja — 8,49 € i månaden, eller 59,99 € om året, vilket blir ungefär 5 € i månaden. Du kan växla mellan dem senare från ditt konto.",
       },
       {
         q: "Vad händer när jag går med?",
@@ -3226,7 +3226,7 @@ const copy = {
       eyebrow: "Medlemskap",
       body: "Ett medlemskap, allt ingår. Välj den rytm som passar dig.",
       monthlyLabel: "Månadsvis",
-      monthlyPrice: "€7,99",
+      monthlyPrice: "€8,49",
       monthlyUnit: "/ månad",
       monthlyBody: "Allt i DoggMatch+, månad för månad.",
       monthlyJoin: "Gå med månadsvis",
@@ -3467,7 +3467,7 @@ const copy = {
       },
       {
         q: "Kann ich zwischen monatlicher und jährlicher Mitgliedschaft wählen?",
-        a: "Ja — 7,99 € im Monat oder 59,99 € im Jahr, was etwa 5 € im Monat entspricht. Du kannst später jederzeit über dein Konto wechseln.",
+        a: "Ja — 8,49 € im Monat oder 59,99 € im Jahr, was etwa 5 € im Monat entspricht. Du kannst später jederzeit über dein Konto wechseln.",
       },
       {
         q: "Was passiert, wenn ich beitrete?",
@@ -3616,7 +3616,7 @@ const copy = {
       eyebrow: "Mitgliedschaft",
       body: "Eine Mitgliedschaft, alles inklusive. Wähle den Rhythmus, der zu dir passt.",
       monthlyLabel: "Monatlich",
-      monthlyPrice: "€7,99",
+      monthlyPrice: "€8,49",
       monthlyUnit: "/ Monat",
       monthlyBody: "Alles in DoggMatch+, Monat für Monat.",
       monthlyJoin: "Monatlich beitreten",
@@ -3863,7 +3863,7 @@ const copy = {
       },
       {
         q: "Puis-je choisir un abonnement mensuel ou annuel ?",
-        a: "Oui — 7,99 € par mois, ou 59,99 € par an, soit environ 5 € par mois. Vous pouvez changer de formule plus tard depuis votre compte.",
+        a: "Oui — 8,49 € par mois, ou 59,99 € par an, soit environ 5 € par mois. Vous pouvez changer de formule plus tard depuis votre compte.",
       },
       {
         q: "Que se passe-t-il quand je m'inscris ?",
@@ -4012,7 +4012,7 @@ const copy = {
       eyebrow: "Abonnement",
       body: "Un seul abonnement, tout inclus. Choisissez le rythme qui vous convient.",
       monthlyLabel: "Mensuel",
-      monthlyPrice: "7,99 €",
+      monthlyPrice: "8,49 €",
       monthlyUnit: "/ mois",
       monthlyBody: "Tout DoggMatch+, mois après mois.",
       monthlyJoin: "S'abonner au mois",
@@ -4246,7 +4246,7 @@ const copy = {
       },
       {
         q: "Kan ik kiezen voor een maandelijks of jaarlijks lidmaatschap?",
-        a: "Ja — € 7,99 per maand, of € 59,99 per jaar, wat neerkomt op ongeveer € 5 per maand. Je kunt later vanuit je account wisselen.",
+        a: "Ja — € 8,49 per maand, of € 59,99 per jaar, wat neerkomt op ongeveer € 5 per maand. Je kunt later vanuit je account wisselen.",
       },
       {
         q: "Wat gebeurt er als ik lid word?",
@@ -4392,7 +4392,7 @@ const copy = {
       eyebrow: "Lidmaatschap",
       body: "Eén lidmaatschap, alles inbegrepen. Kies het ritme dat bij je past.",
       monthlyLabel: "Maandelijks",
-      monthlyPrice: "€ 7,99",
+      monthlyPrice: "€ 8,49",
       monthlyUnit: "/ maand",
       monthlyBody: "Alles van DoggMatch+, maand na maand.",
       monthlyJoin: "Word maandelijks lid",
