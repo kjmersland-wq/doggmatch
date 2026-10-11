@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { checkPartnerCode } from "@/lib/plus/stripe.functions";
+import { checkPartnerCode } from "@/lib/plus/paddle.functions";
 import { useCopy } from "@/i18n";
 
 export const PARTNER_CODE_KEY = "dm_partner_code";
