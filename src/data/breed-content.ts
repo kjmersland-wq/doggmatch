@@ -72,7 +72,7 @@ const byLocale = {
 /**
  * Breed prose in the reader's language. Safe inside and outside React.
  * Pass `locale` explicitly when there's no active render to read it from
- * (e.g. building a Stripe product name inside a server function).
+ * (e.g. building a Paddle product name inside a server function).
  */
 export function breedContent(locale?: Locale): Record<BreedId, BreedContent> {
   return pick(byLocale, locale);

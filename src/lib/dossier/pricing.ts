@@ -1,7 +1,7 @@
 import type { Locale } from "@/i18n";
 
 export interface DossierPrice {
-  /** Stripe's lower-case ISO currency code. */
+  /** Lower-case ISO currency code. */
   currency: "usd" | "nok";
   /** Minor units — cents or øre. */
   amount: number;
