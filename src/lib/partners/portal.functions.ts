@@ -1,7 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
-export const PARTNER_COUPON_ID = "doggmatch-partner-25-first-year";
 
 export type PartnerRecord = {
   id: string;

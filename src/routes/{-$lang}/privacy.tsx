@@ -91,7 +91,7 @@ const copy = {
           },
           {
             strong: "Payment details.",
-            rest: " Card data is handled entirely by Stripe. We never see or store your card number. We keep only the subscription reference we need to know whether your membership is active.",
+            rest: " Card data is handled entirely by Paddle. We never see or store your card number. We keep only the subscription reference we need to know whether your membership is active.",
           },
           {
             strong: "Messages you send us.",
@@ -125,7 +125,7 @@ const copy = {
             rest: " Runs our servers, stores account and membership records, and handles sign-in.",
           },
           {
-            strong: "Stripe.",
+            strong: "Paddle.",
             rest: " Payments and subscription billing, as an independent controller for payment data.",
           },
           {
@@ -219,7 +219,7 @@ const copy = {
           },
           {
             strong: "Betalingsopplysninger.",
-            rest: " Kortdata håndteres i sin helhet av Stripe. Vi ser eller lagrer aldri kortnummeret ditt. Vi beholder kun abonnementsreferansen vi trenger for å vite om medlemskapet er aktivt.",
+            rest: " Kortdata håndteres i sin helhet av Paddle. Vi ser eller lagrer aldri kortnummeret ditt. Vi beholder kun abonnementsreferansen vi trenger for å vite om medlemskapet er aktivt.",
           },
           {
             strong: "Meldinger du sender oss.",
@@ -253,7 +253,7 @@ const copy = {
             rest: " Driver våre servere, lagrer konto- og medlemskapsdata, og håndterer innlogging.",
           },
           {
-            strong: "Stripe.",
+            strong: "Paddle.",
             rest: " Betalinger og abonnementsfakturering, som selvstendig behandlingsansvarlig for betalingsdata.",
           },
           {
@@ -348,7 +348,7 @@ const copy = {
           },
           {
             strong: "Dane płatnicze.",
-            rest: " Dane karty są obsługiwane w całości przez Stripe. Nigdy nie widzimy ani nie przechowujemy numeru twojej karty. Zachowujemy jedynie odniesienie do subskrypcji potrzebne do wiedzy, czy członkostwo jest aktywne.",
+            rest: " Dane karty są obsługiwane w całości przez Paddle. Nigdy nie widzimy ani nie przechowujemy numeru twojej karty. Zachowujemy jedynie odniesienie do subskrypcji potrzebne do wiedzy, czy członkostwo jest aktywne.",
           },
           {
             strong: "Wiadomości, które do nas wysyłasz.",
@@ -382,7 +382,7 @@ const copy = {
             rest: " Obsługuje nasze serwery, przechowuje dane konta i członkostwa oraz obsługuje logowanie.",
           },
           {
-            strong: "Stripe.",
+            strong: "Paddle.",
             rest: " Płatności i rozliczenia subskrypcji, jako niezależny administrator danych płatniczych.",
           },
           {
@@ -477,7 +477,7 @@ const copy = {
           },
           {
             strong: "Betalingsoplysninger.",
-            rest: " Kortdata håndteres udelukkende af Stripe. Vi ser eller gemmer aldrig dit kortnummer. Vi beholder kun den abonnementsreference, vi har brug for, for at vide om dit medlemskab er aktivt.",
+            rest: " Kortdata håndteres udelukkende af Paddle. Vi ser eller gemmer aldrig dit kortnummer. Vi beholder kun den abonnementsreference, vi har brug for, for at vide om dit medlemskab er aktivt.",
           },
           {
             strong: "Beskeder du sender os.",
@@ -511,7 +511,7 @@ const copy = {
             rest: " Driver vores servere, gemmer konto- og medlemskabsdata, og håndterer login.",
           },
           {
-            strong: "Stripe.",
+            strong: "Paddle.",
             rest: " Betalinger og abonnementsfakturering, som selvstændig dataansvarlig for betalingsdata.",
           },
           {
@@ -605,7 +605,7 @@ const copy = {
           },
           {
             strong: "Betalningsuppgifter.",
-            rest: " Kortdata hanteras helt av Stripe. Vi ser eller sparar aldrig ditt kortnummer. Vi behåller endast den prenumerationsreferens vi behöver för att veta om ditt medlemskap är aktivt.",
+            rest: " Kortdata hanteras helt av Paddle. Vi ser eller sparar aldrig ditt kortnummer. Vi behåller endast den prenumerationsreferens vi behöver för att veta om ditt medlemskap är aktivt.",
           },
           {
             strong: "Meddelanden du skickar till oss.",
@@ -639,7 +639,7 @@ const copy = {
             rest: " Driver våra servrar, lagrar konto- och medlemskapsuppgifter, och hanterar inloggning.",
           },
           {
-            strong: "Stripe.",
+            strong: "Paddle.",
             rest: " Betalningar och prenumerationsfakturering, som självständigt personuppgiftsansvarig för betalningsdata.",
           },
           {
@@ -733,7 +733,7 @@ const copy = {
           },
           {
             strong: "Maksutiedot.",
-            rest: " Korttitiedot käsittelee kokonaan Stripe. Emme koskaan näe tai tallenna korttinumeroasi. Säilytämme vain tilausviitteen, jonka tarvitsemme tietääksemme, onko jäsenyytesi aktiivinen.",
+            rest: " Korttitiedot käsittelee kokonaan Paddle. Emme koskaan näe tai tallenna korttinumeroasi. Säilytämme vain tilausviitteen, jonka tarvitsemme tietääksemme, onko jäsenyytesi aktiivinen.",
           },
           {
             strong: "Meille lähettämäsi viestit.",
@@ -767,7 +767,7 @@ const copy = {
             rest: " Pyörittää palvelimiamme, tallentaa tili- ja jäsenyystietoja ja hoitaa kirjautumisen.",
           },
           {
-            strong: "Stripe.",
+            strong: "Paddle.",
             rest: " Maksut ja tilauslaskutus, itsenäisenä rekisterinpitäjänä maksutiedoille.",
           },
           {
@@ -868,7 +868,7 @@ const copy = {
           {
             strong: "Zahlungsdaten.",
             rest:
-              " Kartendaten werden vollständig von Stripe verarbeitet. Wir sehen oder speichern Ihre Kartennummer nie. Wir behalten nur die Abonnement-Referenz, die wir brauchen, um zu wissen, ob Ihre Mitgliedschaft aktiv ist.",
+              " Kartendaten werden vollständig von Paddle verarbeitet. Wir sehen oder speichern Ihre Kartennummer nie. Wir behalten nur die Abonnement-Referenz, die wir brauchen, um zu wissen, ob Ihre Mitgliedschaft aktiv ist.",
           },
           {
             strong: "Nachrichten, die Sie uns senden.",
@@ -906,7 +906,7 @@ const copy = {
             rest: " Betreibt unsere Server, speichert Konto- und Mitgliedschaftsdaten und übernimmt die Anmeldung.",
           },
           {
-            strong: "Stripe.",
+            strong: "Paddle.",
             rest: " Zahlungen und Abonnementabrechnung, als eigenständiger Verantwortlicher für Zahlungsdaten.",
           },
           {
@@ -1011,7 +1011,7 @@ const copy = {
           {
             strong: "Informations de paiement.",
             rest:
-              " Les données de carte sont entièrement traitées par Stripe. Nous ne voyons ni ne stockons jamais votre numéro de carte. Nous conservons uniquement la référence d'abonnement nécessaire pour savoir si votre adhésion est active.",
+              " Les données de carte sont entièrement traitées par Paddle. Nous ne voyons ni ne stockons jamais votre numéro de carte. Nous conservons uniquement la référence d'abonnement nécessaire pour savoir si votre adhésion est active.",
           },
           {
             strong: "Messages que vous nous envoyez.",
@@ -1049,7 +1049,7 @@ const copy = {
             rest: " Fait fonctionner nos serveurs, stocke les données de compte et d'adhésion, et gère la connexion.",
           },
           {
-            strong: "Stripe.",
+            strong: "Paddle.",
             rest: " Paiements et facturation des abonnements, en tant que responsable indépendant pour les données de paiement.",
           },
           {
@@ -1154,7 +1154,7 @@ const copy = {
           {
             strong: "Betaalgegevens.",
             rest:
-              " Kaartgegevens worden volledig door Stripe verwerkt. Wij zien of bewaren uw kaartnummer nooit. We houden alleen de abonnementsreferentie bij die we nodig hebben om te weten of uw lidmaatschap actief is.",
+              " Kaartgegevens worden volledig door Paddle verwerkt. Wij zien of bewaren uw kaartnummer nooit. We houden alleen de abonnementsreferentie bij die we nodig hebben om te weten of uw lidmaatschap actief is.",
           },
           {
             strong: "Berichten die u ons stuurt.",
@@ -1192,7 +1192,7 @@ const copy = {
             rest: " Draait onze servers, bewaart account- en lidmaatschapsgegevens, en verzorgt het inloggen.",
           },
           {
-            strong: "Stripe.",
+            strong: "Paddle.",
             rest: " Betalingen en abonnementsfacturatie, als zelfstandige verwerkingsverantwoordelijke voor betaalgegevens.",
           },
           {
