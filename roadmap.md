@@ -1,18 +1,15 @@
 # Roadmap
 
-- [x] Use the English partners page as the structural and visual source for all languages.
-- [x] Show the same premium partner-customer image on English, Norwegian, and Polish pages.
-- [x] Keep the text localized independently for English, Norwegian, and Polish.
-- [x] Verify the updated page and build.
-- [ ] Publish the updated site.
-- [x] Add 50 new English-first full editorial breed profiles with shared imagery across all locale paths.
-- [x] Add answer-specific reasoning, trade-offs, hard-limit explanations, and instant adjustments to Find My Dog results.
-- [x] Compare up to four breeds and show quiz-aware practical lifestyle differences.
-- [x] Explain what makes DoggMatch different on the English homepage.
-- [x] Add concrete member-benefit examples to the English Partners page.
-- [x] Complete training categories, goals, and lessons in Danish, Swedish, Finnish, German, French, and Dutch.
-- [x] Audit every public page and shared content source across all nine languages against English.
-- [x] Replace missing English fallbacks and incomplete localized content in Norwegian, Danish, Swedish, Finnish, German, French, Dutch, and Polish.
-- [x] Review localized wording for a natural, warm, calm voice without changing layout or functionality.
-- [x] Verify route coverage, metadata, rendering, and builds for every locale.
-- [ ] Fix the Dog Life places search error on the published site.
+## In progress: Stripe → Paddle
+- [x] Enable Paddle, create products (€8.49/mnd, €61.99/år)
+- [x] Partner discount 25% (sandbox monthly+yearly, live monthly)
+- [ ] Partner discount 25% yearly i live-miljø (avbrutt to ganger — opprett på nytt)
+- [ ] Paddle client/server utils, price resolver, checkout hook
+- [ ] Webhook handler /api/public/payments/webhook + subscriptions-tabell
+- [ ] Skriv om plus/dossier checkout, membership, billing portal til Paddle
+- [ ] Oppdater viste priser (€7.99→8.49, €59.99→61.99) alle språk
+- [ ] PURCHASES_ENABLED = true, fjern Stripe-avhengigheter, CSP for Paddle
+- [ ] Typecheck + bygg + verifisering
+
+## Venter
+- [ ] Integrere data/betalinger mot km-techlabs.com (brukerens ønske — avklar omfang: sporingsscript peker allerede dit; hva mer skal dit?)
