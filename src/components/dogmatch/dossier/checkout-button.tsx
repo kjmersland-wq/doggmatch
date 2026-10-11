@@ -92,11 +92,12 @@ export function DossierCheckoutButton({
         return;
       }
       const { priceId } = await prepare({ data: { breedId, locale } });
+      const successPath = locale === "en" ? "/quiz/success" : `/${locale}/quiz/success`;
       await openCheckout({
         priceId,
         quantity: 1,
         customData: { breedId, locale },
-        successUrl: `${window.location.origin}${withLangPrefix("/quiz/success", locale)}`,
+        successUrl: `${window.location.origin}${successPath}`,
       });
       setBusy(false);
     } catch {
