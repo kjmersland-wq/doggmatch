@@ -61,7 +61,7 @@ const copy = {
   },
 } as const;
 
-/** Sends the reader straight into a one-time Stripe Checkout for the paid breed dossier. */
+/** Sends the reader straight into a one-time Paddle checkout for the paid breed dossier. */
 export function DossierCheckoutButton({
   breedId,
   breedName,
@@ -74,7 +74,8 @@ export function DossierCheckoutButton({
   const c = useCopy(copy);
   const p = useCopy(purchasesPausedCopy);
   const { locale } = useLocale();
-  const startCheckout = useServerFn(createDossierCheckout);
+  const prepare = useServerFn(prepareDossierCheckout);
+  const { openCheckout } = usePaddleCheckout();
   const navigate = useNavigate();
   const { membership } = useMembership();
   const [busy, setBusy] = useState(false);
@@ -90,8 +91,14 @@ export function DossierCheckoutButton({
         await navigate({ to: withLangPrefix("/quiz/success"), search: { breed: breedId, session_id: "" } });
         return;
       }
-      const { url } = await startCheckout({ data: { breedId, locale } });
-      window.location.href = url;
+      const { priceId } = await prepare({ data: { breedId, locale } });
+      await openCheckout({
+        priceId,
+        quantity: 1,
+        customData: { breedId, locale },
+        successUrl: `${window.location.origin}${withLangPrefix("/quiz/success", locale)}`,
+      });
+      setBusy(false);
     } catch {
       setError(c.error);
       setBusy(false);
