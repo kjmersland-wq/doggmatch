@@ -111,6 +111,7 @@ function NotFoundComponent() {
   const c = useCopy(shellCopy);
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-6">
+      <meta name="robots" content="noindex, follow" />
       <div className="max-w-md text-center">
         <p className="eyebrow justify-center">404</p>
         <h1 className="display-lg mt-5">{c.notFound}</h1>
