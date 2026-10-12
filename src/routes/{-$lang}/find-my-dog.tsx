@@ -631,7 +631,7 @@ import {
 import { track, useVariant } from "@/lib/analytics";
 import { useQuizChrome } from "@/lib/quiz-chrome";
 import { decodeProfile } from "@/lib/matching/share";
-import { ResultActions, ResultNextSteps } from "@/components/dogmatch/result-actions";
+import { ResultActions, ResultNextSteps, ResultPlusNote } from "@/components/dogmatch/result-actions";
 import { PURCHASES_ENABLED } from "@/lib/purchases";
 import { MatchNotes } from "@/components/dogmatch/match-notes";
 import { CostCalculator } from "@/components/dogmatch/cost-calculator";
@@ -2111,6 +2111,10 @@ function Results({
       {/* free next steps — before any mention of DoggMatch+ */}
       <section className="container-page mt-20 md:mt-28">
         <ResultNextSteps />
+      </section>
+
+      <section className="container-page mt-10 md:mt-12">
+        <ResultPlusNote />
       </section>
 
       {/* actionable next step, right beneath the top match */}

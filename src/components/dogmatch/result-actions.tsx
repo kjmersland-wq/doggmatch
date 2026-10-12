@@ -152,3 +152,32 @@ export function ResultNextSteps() {
     </div>
   );
 }
+
+const plusNoteCopy = {
+  en: { title: "Want a little more help when the dog comes home?", body: "DoggMatch+ keeps training, food and the everyday paperwork in one calm place.", cta: "Have a look" },
+  no: { title: "Vil du ha mer hjelp når hunden kommer hjem?", body: "DoggMatch+ samler trening, fôr og de små praktiske tingene på ett rolig sted.", cta: "Ta en titt" },
+  pl: { title: "Chcesz trochę więcej wsparcia, gdy pies wróci do domu?", body: "DoggMatch+ zbiera trening, jedzenie i codzienne sprawy w jednym spokojnym miejscu.", cta: "Zajrzyj" },
+  dk: { title: "Vil du have lidt mere hjælp, når hunden kommer hjem?", body: "DoggMatch+ samler træning, foder og de praktiske ting ét roligt sted.", cta: "Tag et kig" },
+  se: { title: "Vill du ha lite mer hjälp när hunden kommer hem?", body: "DoggMatch+ samlar träning, foder och det praktiska på ett lugnt ställe.", cta: "Ta en titt" },
+  fi: { title: "Haluatko vähän lisää apua, kun koira tulee kotiin?", body: "DoggMatch+ kokoaa koulutuksen, ruokinnan ja arjen käytännön asiat yhteen rauhalliseen paikkaan.", cta: "Katso" },
+  de: { title: "Möchtest du etwas mehr Unterstützung, wenn der Hund einzieht?", body: "DoggMatch+ bündelt Training, Futter und den Alltagskram an einem ruhigen Ort.", cta: "Schau mal rein" },
+  fr: { title: "Envie d'un peu plus d'aide quand le chien arrive à la maison ?", body: "DoggMatch+ réunit éducation, alimentation et démarches du quotidien dans un endroit calme.", cta: "Jeter un œil" },
+  nl: { title: "Wil je wat meer hulp als de hond thuiskomt?", body: "DoggMatch+ brengt training, voeding en het praktische gedoe samen op één rustige plek.", cta: "Neem een kijkje" },
+} as const;
+
+/** A quiet, optional pointer to DoggMatch+ once the match and the free next steps have been read. */
+export function ResultPlusNote() {
+  const c = useCopy(plusNoteCopy);
+  return (
+    <aside className="flex flex-col gap-4 rounded-2xl border border-border bg-surface p-6 sm:flex-row sm:items-center sm:justify-between md:p-8">
+      <div className="max-w-xl">
+        <p className="font-display text-lg leading-tight">{c.title}</p>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.body}</p>
+      </div>
+      <ButtonLink to={withLangPrefix("/plus")} tone="outline" className="shrink-0 self-start sm:self-center">
+        {c.cta}
+        <Arrow />
+      </ButtonLink>
+    </aside>
+  );
+}
