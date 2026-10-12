@@ -1,7 +1,11 @@
 # Roadmap
 
-## In progress: Paddle → Creem
-- [ ] Brukeren legger inn CREEM_API_KEY, CREEM_WEBHOOK_SECRET, CREEM_PRODUCT_PLUS_MONTHLY, CREEM_PRODUCT_PLUS_YEARLY (ingen dossier-produkt)
-- [ ] Bygg om Plus-checkout, webhook, membership, billing portal til Creem
-- [ ] Partnerrabatt 25 %, founder lifetime, km-techlabs-videresending må virke
-- [ ] Fjern Paddle/Stripe-kode og -referanser
+## Done: Paddle → Creem
+- [x] Creem keys added (no dossier product)
+- [x] Plus checkout, webhook, membership, billing portal on Creem
+- [x] Partner discount DMPARTNER25 (25 %, 12 months), founder lifetime, km-techlabs forwarding
+- [x] Paddle/Stripe code and text removed
+
+## Waiting on user
+- [ ] Register webhook URL in Creem dashboard (https://doggmatch.com/api/public/payments/webhook)
+- [ ] Decide monthly price: Creem €8.69 vs site €8.49
