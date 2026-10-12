@@ -1,15 +1,12 @@
 import { useState } from "react";
-import { useServerFn } from "@tanstack/react-start";
 import { useNavigate } from "@tanstack/react-router";
-import { prepareDossierCheckout } from "@/lib/dossier/paddle.functions";
-import { usePaddleCheckout } from "@/hooks/usePaddleCheckout";
-import { useCopy, useLocale, interpolate } from "@/i18n";
+import { useCopy, interpolate } from "@/i18n";
 import type { BreedId } from "@/data/breeds";
 import { Button } from "@/components/dogmatch/ui";
 import { cn } from "@/lib/utils";
 import { useMembership } from "@/hooks/use-membership";
 import { withLangPrefix } from "@/lib/localized-path";
-import { PURCHASES_ENABLED, purchasesPausedCopy } from "@/lib/purchases";
+import { purchasesPausedCopy } from "@/lib/purchases";
 import { track } from "@/lib/analytics";
 
 const copy = {
@@ -60,7 +57,7 @@ const copy = {
   },
 } as const;
 
-/** Sends the reader straight into a one-time Paddle checkout for the paid breed dossier. */
+/** Sends the reader straight into a the breed dossier (lifetime members only — no one-time product is sold). */
 export function DossierCheckoutButton({
   breedId,
   breedName,
@@ -72,9 +69,6 @@ export function DossierCheckoutButton({
 }) {
   const c = useCopy(copy);
   const p = useCopy(purchasesPausedCopy);
-  const { locale } = useLocale();
-  const prepare = useServerFn(prepareDossierCheckout);
-  const { openCheckout } = usePaddleCheckout();
   const navigate = useNavigate();
   const { membership } = useMembership();
   const [busy, setBusy] = useState(false);
@@ -90,14 +84,6 @@ export function DossierCheckoutButton({
         await navigate({ to: withLangPrefix("/quiz/success"), search: { breed: breedId, session_id: "" } });
         return;
       }
-      const { priceId } = await prepare({ data: { breedId, locale } });
-      const successPath = locale === "en" ? "/quiz/success" : `/${locale}/quiz/success`;
-      await openCheckout({
-        priceId,
-        quantity: 1,
-        customData: { breedId, locale },
-        successUrl: `${window.location.origin}${successPath}`,
-      });
       setBusy(false);
     } catch {
       setError(c.error);
@@ -105,7 +91,7 @@ export function DossierCheckoutButton({
     }
   }
 
-  const paused = !PURCHASES_ENABLED && !membership.lifetime;
+  const paused = !membership.lifetime;
 
   return (
     <div className={cn("flex flex-col items-start gap-3", className)}>

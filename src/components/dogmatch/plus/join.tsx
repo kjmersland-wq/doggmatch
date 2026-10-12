@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { preparePlusCheckout } from "@/lib/plus/creem.functions";
-import { usePaddleCheckout } from "@/hooks/usePaddleCheckout";
+import { createPlusCheckout } from "@/lib/plus/creem.functions";
 import type { PlanId } from "@/lib/plus/plans";
 import { useMembership } from "@/hooks/use-membership";
 import { readPartnerCode } from "@/components/dogmatch/plus/partner-code";
@@ -95,14 +94,13 @@ const copy = {
   },
 } as const;
 
-/** Takes someone from the pricing card straight into Paddle checkout. */
+/** Takes someone from the pricing card straight into Creem checkout. */
 export function JoinPlusButton({ plan, tone = "primary", label, className }: Props) {
   const c = useCopy(copy);
   const p = useCopy(purchasesPausedCopy);
   const { locale } = useLocale();
   const navigate = useNavigate();
-  const prepare = useServerFn(preparePlusCheckout);
-  const { openCheckout } = usePaddleCheckout();
+  const startCheckout = useServerFn(createPlusCheckout);
   const { membership, signedIn, loading } = useMembership();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -122,20 +120,9 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
     }
     setBusy(true);
     try {
-      const environment = getPaddleEnvironment();
-      const prepared = await prepare({
-        data: { plan, code: readPartnerCode(), environment },
-      });
       const successPath = locale === "en" ? "/checkout/success" : `/${locale}/checkout/success`;
-      await openCheckout({
-        priceId: prepared.priceId,
-        quantity: 1,
-        ...(prepared.email ? { customerEmail: prepared.email } : {}),
-        customData: { userId: prepared.userId },
-        ...(prepared.discountId ? { discountId: prepared.discountId } : {}),
-        successUrl: `${window.location.origin}${successPath}`,
-      });
-      setBusy(false);
+      const { url } = await startCheckout({ data: { plan, code: readPartnerCode(), successPath } });
+      window.location.assign(url);
     } catch {
       setError(c.error);
       setBusy(false);

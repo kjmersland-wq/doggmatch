@@ -187,7 +187,6 @@ const copy = {
 function SuccessPage() {
   const c = useCopy(copy);
   const { session_id, breed: breedParam } = Route.useSearch();
-  const verify = useServerFn(verifyDossierCheckout);
   const unlockAsMember = useServerFn(unlockDossierAsMember);
   const [status, setStatus] = useState<"loading" | "paid" | "unpaid">("loading");
   const [breed, setBreed] = useState<Breed | null>(null);
@@ -223,7 +222,7 @@ function SuccessPage() {
     return () => {
       cancelled = true;
     };
-  }, [session_id, breedParam, verify, unlockAsMember]);
+  }, [session_id, breedParam, unlockAsMember]);
 
   if (status === "loading") {
     return (
