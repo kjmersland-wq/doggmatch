@@ -11,8 +11,7 @@ export interface DossierPrice {
 
 /**
  * One-time price for the Complete Breed & Puppy Buyer Dossier.
- * Paddle charges in USD for every locale, so the displayed price always
- * matches what checkout actually charges.
+ * Shown in USD for every locale.
  */
 export function dossierPrice(_locale: Locale): DossierPrice {
   return { currency: "usd", amount: 499, display: "$4.99" };

@@ -4,7 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { Printer, ShieldCheck } from "lucide-react";
 import { getBreed, type Breed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
-import { verifyDossierCheckout, unlockDossierAsMember } from "@/lib/dossier/paddle.functions";
+import { unlockDossierAsMember } from "@/lib/dossier/member.functions";
 import { dossierSections } from "@/lib/dossier/doc";
 import { DocPaper } from "@/components/dogmatch/print/doc";
 import { ButtonLink, Button, Eyebrow } from "@/components/dogmatch/ui";
@@ -16,14 +16,7 @@ const title = "Your Dossier | DoggMatch";
 
 export const Route = createFileRoute("/{-$lang}/quiz/success")({
   validateSearch: (search: Record<string, unknown>) => ({
-    // Paddle appends ?_ptxn=txn_... to the success URL; session_id is kept for
-    // legacy links and the lifetime-member path.
-    session_id:
-      typeof search["_ptxn"] === "string"
-        ? search["_ptxn"]
-        : typeof search["session_id"] === "string"
-          ? search["session_id"]
-          : "",
+    session_id: typeof search["session_id"] === "string" ? search["session_id"] : "",
     breed: typeof search["breed"] === "string" ? search["breed"] : "",
   }),
   head: () => ({
@@ -226,19 +219,7 @@ function SuccessPage() {
       };
     }
 
-    verify({ data: { transactionId: session_id, environment: getPaddleEnvironment() } })
-      .then((res) => {
-        if (cancelled) return;
-        if (res.paid && res.breedId) {
-          setBreed(getBreed(res.breedId) ?? null);
-          setStatus("paid");
-        } else {
-          setStatus("unpaid");
-        }
-      })
-      .catch(() => {
-        if (!cancelled) setStatus("unpaid");
-      });
+    setStatus("unpaid");
     return () => {
       cancelled = true;
     };
