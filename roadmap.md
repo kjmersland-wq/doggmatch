@@ -8,8 +8,8 @@
 - [x] Monthly price set to €8.69 (matches Creem)
 - [x] Paddle integration disconnected by user (no longer used)
 
-## In progress
-- [ ] Fix "couldn't open the payment page" on live /plus (login token not sent to server)
+- [x] Fixed "couldn't open the payment page" on live /plus (login token now always sent)
+- [x] km-techlabs tracker allowed from www subdomain
 
 ## Waiting on user
 - [ ] Confirm Creem webhook URL uses www: https://www.doggmatch.com/api/public/payments/webhook
