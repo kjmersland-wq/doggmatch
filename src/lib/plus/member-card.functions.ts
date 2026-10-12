@@ -1,7 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import { getMembership } from "./paddle.functions";
-import { getPaddleEnvironment } from "@/lib/paddle";
+import { getMembership } from "./creem.functions";
 
 export type MemberCard = {
   memberId: string;
@@ -17,13 +16,13 @@ export type CardCheck =
 
 /**
  * The member's card. Created the first time they look at it, then kept in step
- * with what Paddle says about their membership.
+ * with what Creem says about their membership.
  */
 export const getMyMemberCard = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((data?: { name?: string }) => ({ name: data?.name?.slice(0, 60) ?? "" }))
   .handler(async ({ data, context }): Promise<MemberCard | null> => {
-    const membership = await getMembership({ data: { environment: getPaddleEnvironment() } });
+    const membership = await getMembership();
     if (!membership.subscribed) return null;
 
     const { makeMemberId, nameFor } = await import("./member-card.server");

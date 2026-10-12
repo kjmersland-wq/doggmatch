@@ -4,8 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { useMembership } from "@/hooks/use-membership";
-import { openBillingPortal } from "@/lib/plus/paddle.functions";
-import { getPaddleEnvironment } from "@/lib/paddle";
+import { openBillingPortal } from "@/lib/plus/creem.functions";
 import { Panel } from "@/components/dogmatch/care/parts";
 import { Button, ButtonLink } from "@/components/dogmatch/ui";
 import { useCopy, useLocale, INTL_LOCALE } from "@/i18n";
@@ -317,7 +316,7 @@ export function AccountMembership() {
     setError(null);
     setBusy(true);
     try {
-      const { url } = await toPortal({ data: { environment: getPaddleEnvironment() } });
+      const { url } = await toPortal();
       window.open(url, "_blank", "noopener");
       setBusy(false);
     } catch {

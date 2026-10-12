@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
-import { verifyWebhook, EventName, type PaddleEnv } from "@/lib/paddle.server";
+import { verifyCreemWebhook, creemEnvironment, type PaymentEnv } from "@/lib/creem.server";
 import { forwardToKmTechlabs } from "@/lib/km-techlabs.server";
 
 let _supabase: ReturnType<typeof createClient<Database>> | null = null;
@@ -12,84 +12,32 @@ function getSupabase() {
   return _supabase;
 }
 
-async function handleSubscriptionCreated(data: any, env: PaddleEnv) {
-  const { id, customerId, items, status, currentBillingPeriod, customData } = data;
+const idOf = (v: any): string | null => (typeof v === "string" ? v : (v?.id ?? null));
 
-  const userId = customData?.userId;
-  if (!userId) {
-    console.error("No userId in customData");
-    return;
-  }
+/** Upserts a Creem subscription object into our subscriptions table. */
+async function syncSubscription(sub: any, env: PaymentEnv, metadata?: any) {
+  if (!sub?.id) return;
+  const userId = sub.metadata?.userId ?? metadata?.userId;
+  const productId = idOf(sub.product) ?? "";
+  const row = {
+    subscription_id: sub.id as string,
+    customer_id: idOf(sub.customer) ?? "",
+    product_id: productId,
+    price_id: productId,
+    status: String(sub.status ?? "active"),
+    current_period_start: sub.current_period_start_date ?? null,
+    current_period_end: sub.current_period_end_date ?? null,
+    cancel_at_period_end: sub.status === "scheduled_cancel",
+    environment: env,
+    updated_at: new Date().toISOString(),
+  };
 
-  const item = items[0];
-  const priceId = item.price.importMeta?.externalId;
-  const productId = item.product.importMeta?.externalId;
-  if (!priceId || !productId) {
-    console.warn("Skipping subscription: missing importMeta.externalId", {
-      rawPriceId: item.price.id,
-      rawProductId: item.product.id,
-    });
-    return;
-  }
-
-  await getSupabase().from("subscriptions").upsert(
-    {
-      user_id: userId,
-      paddle_subscription_id: id,
-      paddle_customer_id: customerId,
-      product_id: productId,
-      price_id: priceId,
-      status,
-      current_period_start: currentBillingPeriod?.startsAt,
-      current_period_end: currentBillingPeriod?.endsAt,
-      environment: env,
-      updated_at: new Date().toISOString(),
-    },
-    { onConflict: "paddle_subscription_id" },
-  );
-}
-
-async function handleSubscriptionUpdated(data: any, env: PaddleEnv) {
-  const { id, status, currentBillingPeriod, scheduledChange } = data;
-
-  await getSupabase()
-    .from("subscriptions")
-    .update({
-      status,
-      current_period_start: currentBillingPeriod?.startsAt,
-      current_period_end: currentBillingPeriod?.endsAt,
-      cancel_at_period_end: scheduledChange?.action === "cancel",
-      updated_at: new Date().toISOString(),
-    })
-    .eq("paddle_subscription_id", id)
-    .eq("environment", env);
-}
-
-async function handleSubscriptionCanceled(data: any, env: PaddleEnv) {
-  await getSupabase()
-    .from("subscriptions")
-    .update({ status: "canceled", updated_at: new Date().toISOString() })
-    .eq("paddle_subscription_id", data.id)
-    .eq("environment", env);
-}
-
-async function handleWebhook(req: Request, env: PaddleEnv) {
-  const event = await verifyWebhook(req, env);
-  await forwardToKmTechlabs(event as any, env);
-
-
-  switch (event.eventType) {
-    case EventName.SubscriptionCreated:
-      await handleSubscriptionCreated(event.data, env);
-      break;
-    case EventName.SubscriptionUpdated:
-      await handleSubscriptionUpdated(event.data, env);
-      break;
-    case EventName.SubscriptionCanceled:
-      await handleSubscriptionCanceled(event.data, env);
-      break;
-    default:
-      console.log("Unhandled event:", event.eventType);
+  if (userId) {
+    await getSupabase()
+      .from("subscriptions")
+      .upsert({ ...row, user_id: userId }, { onConflict: "subscription_id" });
+  } else {
+    await getSupabase().from("subscriptions").update(row).eq("subscription_id", row.subscription_id);
   }
 }
 
@@ -97,10 +45,25 @@ export const Route = createFileRoute("/api/public/payments/webhook")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const url = new URL(request.url);
-        const env = (url.searchParams.get("env") || "sandbox") as PaddleEnv;
+        let event: any;
         try {
-          await handleWebhook(request, env);
+          event = await verifyCreemWebhook(request);
+        } catch (e) {
+          console.error("Webhook rejected:", e);
+          return new Response("Invalid signature", { status: 401 });
+        }
+        try {
+          const env = creemEnvironment();
+          await forwardToKmTechlabs(event, env);
+          const type = String(event.eventType ?? "");
+          const obj = event.object ?? {};
+          if (type === "checkout.completed") {
+            if (obj.subscription && typeof obj.subscription === "object") {
+              await syncSubscription(obj.subscription, env, obj.metadata);
+            }
+          } else if (type.startsWith("subscription.")) {
+            await syncSubscription(obj, env);
+          }
           return Response.json({ received: true });
         } catch (e) {
           console.error("Webhook error:", e);

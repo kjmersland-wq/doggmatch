@@ -1,19 +1,11 @@
 import { pick, type Locale } from "@/i18n";
 
-/** DoggMatch+ plans. Human-readable Paddle price IDs, stable across test and live. */
+/** DoggMatch+ plans. Creem product IDs come from CREEM_PRODUCT_* env vars on the server. */
 export type PlanId = "monthly" | "yearly";
 
-export const PLUS_PLANS: Record<PlanId, { priceId: string; productId: string; label: string }> = {
-  monthly: {
-    priceId: "plus_monthly",
-    productId: "doggmatch_plus",
-    label: "Monthly",
-  },
-  yearly: {
-    priceId: "plus_yearly",
-    productId: "doggmatch_plus",
-    label: "Yearly",
-  },
+export const PLUS_PLANS: Record<PlanId, { label: string }> = {
+  monthly: { label: "Monthly" },
+  yearly: { label: "Yearly" },
 };
 
 const planLabels: Record<PlanId, Record<Locale, string>> = {

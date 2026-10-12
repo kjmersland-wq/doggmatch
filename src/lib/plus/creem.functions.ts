@@ -1,90 +1,80 @@
 import { createServerFn } from "@tanstack/react-start";
 import { trustedOrigin } from "@/lib/trusted-origin";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import { PLUS_PLANS, type PlanId } from "./plans";
+import type { PlanId } from "./plans";
 import { founderEmailFromClaims, isFounderEmail } from "./founder";
 import { PURCHASES_ENABLED, PURCHASES_PAUSED_ERROR } from "@/lib/purchases";
-import type { PaddleEnv } from "@/lib/paddle.server";
 
 export type MembershipStatus = {
   subscribed: boolean;
   plan: PlanId | null;
   renewsAt: string | null;
   cancelsAtPeriodEnd: boolean;
-  /** Founder account — permanent, granted without a Paddle subscription. */
+  /** Founder account — permanent, granted without a paid subscription. */
   lifetime: boolean;
 };
 
 /**
- * Partner benefit: 25% off the first year, applied as a Paddle discount when a
- * valid partner code is entered. IDs differ between test and live.
+ * Starts a DoggMatch+ checkout: validates the plan and any partner code,
+ * records the referral, and returns Creem's hosted checkout URL.
  */
-const PARTNER_DISCOUNTS: Record<PaddleEnv, Record<PlanId, string>> = {
-  sandbox: {
-    monthly: "dsc_01m4n1abd56qfxya0whhg22k6r",
-    yearly: "dsc_01m4n1h5v5bjdaex247wzgx4jf",
-  },
-  live: {
-    monthly: "dsc_01m4n1j0tvzsh8cpg99sznn5ax",
-    yearly: "dsc_01m4n28ah56n72s8m0bd4acvp4",
-  },
-};
-
-/**
- * Prepares a DoggMatch+ checkout: validates the plan and any partner code,
- * records the referral, and returns what the browser needs to open Paddle's
- * own checkout overlay.
- */
-export const preparePlusCheckout = createServerFn({ method: "POST" })
+export const createPlusCheckout = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((data: { plan: PlanId; code?: string; environment?: PaddleEnv }) => {
+  .inputValidator((data: { plan: PlanId; code?: string; successPath?: string }) => {
     if (data?.plan !== "monthly" && data?.plan !== "yearly") throw new Error("Unknown plan");
+    const path = typeof data.successPath === "string" && /^\/[a-z/-]{0,40}$/.test(data.successPath) ? data.successPath : "/checkout/success";
     return {
       plan: data.plan,
       code: typeof data.code === "string" ? data.code.trim().toUpperCase().slice(0, 40) : "",
-      environment: data.environment === "live" ? ("live" as const) : ("sandbox" as const),
+      successPath: path,
     };
   })
-  .handler(
-    async ({
-      data,
-      context,
-    }): Promise<{ priceId: string; discountId: string | null; email: string | null; userId: string }> => {
-      if (!PURCHASES_ENABLED) throw new Error(PURCHASES_PAUSED_ERROR);
-      const email = (context.claims?.email as string | undefined) ?? null;
+  .handler(async ({ data, context }): Promise<{ url: string }> => {
+    if (!PURCHASES_ENABLED) throw new Error(PURCHASES_PAUSED_ERROR);
+    const email = (context.claims?.email as string | undefined) ?? null;
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-      let partnerId: string | null = null;
-      if (data.code) {
-        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-        const { data: row } = await supabaseAdmin
-          .from("partners")
-          .select("id")
-          .eq("code", data.code)
-          .eq("status", "approved")
-          .maybeSingle();
-        partnerId = (row as { id: string } | null)?.id ?? null;
-      }
+    let partnerId: string | null = null;
+    if (data.code) {
+      const { data: row } = await supabaseAdmin
+        .from("partners")
+        .select("id")
+        .eq("code", data.code)
+        .eq("status", "approved")
+        .maybeSingle();
+      partnerId = (row as { id: string } | null)?.id ?? null;
+    }
 
-      if (partnerId) {
-        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-        const { error } = await supabaseAdmin.from("partner_referrals").insert({
-          partner_id: partnerId,
-          user_id: context.userId,
-          code: data.code,
-          plan: data.plan,
-          status: "started",
-        });
-        if (error) console.error("[plus] referral record failed", error.message);
-      }
+    if (partnerId) {
+      const { error } = await supabaseAdmin.from("partner_referrals").insert({
+        partner_id: partnerId,
+        user_id: context.userId,
+        code: data.code,
+        plan: data.plan,
+        status: "started",
+      });
+      if (error) console.error("[plus] referral record failed", error.message);
+    }
 
-      return {
-        priceId: PLUS_PLANS[data.plan].priceId,
-        discountId: partnerId ? PARTNER_DISCOUNTS[data.environment][data.plan] : null,
-        email,
-        userId: context.userId,
-      };
-    },
-  );
+    const { creemFetch, productIdFor, PARTNER_DISCOUNT_CODE } = await import("@/lib/creem.server");
+    const res = await creemFetch("/v1/checkouts", {
+      method: "POST",
+      body: JSON.stringify({
+        product_id: productIdFor(data.plan),
+        request_id: `${context.userId}-${Date.now()}`,
+        success_url: `${trustedOrigin()}${data.successPath}`,
+        ...(email ? { customer: { email } } : {}),
+        ...(partnerId ? { discount_code: PARTNER_DISCOUNT_CODE } : {}),
+        metadata: { userId: context.userId, site: "doggmatch.com", plan: data.plan, ...(partnerId ? { partnerCode: data.code } : {}) },
+      }),
+    });
+    const body = (await res.json().catch(() => ({}))) as { checkout_url?: string };
+    if (!res.ok || !body.checkout_url) {
+      console.error("[plus] creem checkout failed", res.status, body);
+      throw new Error("We couldn't open checkout just then.");
+    }
+    return { url: body.checkout_url };
+  });
 
 /** Does this partner code exist and is it live? Used before checkout. */
 export const checkPartnerCode = createServerFn({ method: "POST" })
@@ -123,10 +113,8 @@ export const confirmPartnerReferral = createServerFn({ method: "POST" })
 /** Is this person a DoggMatch+ member right now? Read from our subscriptions table. */
 export const getMembership = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((data?: { environment?: PaddleEnv }) => ({
-    environment: data?.environment === "sandbox" ? ("sandbox" as const) : ("live" as const),
-  }))
-  .handler(async ({ data, context }): Promise<MembershipStatus> => {
+  .handler(async ({ context }): Promise<MembershipStatus> => {
+    const { creemEnvironment, planForProduct } = await import("@/lib/creem.server");
     const none: MembershipStatus = {
       subscribed: false,
       plan: null,
@@ -152,7 +140,7 @@ export const getMembership = createServerFn({ method: "POST" })
       .from("subscriptions")
       .select("price_id, status, current_period_end, cancel_at_period_end, created_at")
       .eq("user_id", context.userId)
-      .eq("environment", data.environment)
+      .eq("environment", creemEnvironment())
       .order("created_at", { ascending: false })
       .limit(1);
 
@@ -169,16 +157,11 @@ export const getMembership = createServerFn({ method: "POST" })
     const periodEnd = sub.current_period_end ? new Date(sub.current_period_end) : null;
     const stillValid = !periodEnd || periodEnd > new Date();
     const active =
-      (["active", "trialing", "past_due"].includes(sub.status) && stillValid) ||
-      (sub.status === "canceled" && stillValid);
+      (["active", "trialing", "past_due", "scheduled_cancel"].includes(sub.status) && stillValid) ||
+      (["canceled", "expired"].includes(sub.status) && Boolean(periodEnd) && stillValid);
     if (!active) return none;
 
-    const plan: PlanId | null =
-      sub.price_id === PLUS_PLANS.yearly.priceId
-        ? "yearly"
-        : sub.price_id === PLUS_PLANS.monthly.priceId
-          ? "monthly"
-          : null;
+    const plan = planForProduct(sub.price_id);
 
     return {
       subscribed: true,
@@ -189,34 +172,29 @@ export const getMembership = createServerFn({ method: "POST" })
     };
   });
 
-/** Open Paddle's customer portal so people can change or cancel their membership. */
+/** Open Creem's customer portal so people can change or cancel their membership. */
 export const openBillingPortal = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((data?: { environment?: PaddleEnv }) => ({
-    environment: data?.environment === "sandbox" ? ("sandbox" as const) : ("live" as const),
-  }))
-  .handler(async ({ data, context }): Promise<{ url: string }> => {
+  .handler(async ({ context }): Promise<{ url: string }> => {
+    const { creemFetch, creemEnvironment: env } = await import("@/lib/creem.server");
     const { data: rows } = await context.supabase
       .from("subscriptions")
-      .select("paddle_customer_id, paddle_subscription_id")
+      .select("customer_id")
       .eq("user_id", context.userId)
-      .eq("environment", data.environment)
+      .eq("environment", env())
       .order("created_at", { ascending: false })
       .limit(1);
 
-    const sub = rows?.[0] as
-      | { paddle_customer_id: string; paddle_subscription_id: string }
-      | undefined;
-    if (!sub) throw new Error("There's no membership on this account yet.");
+    const customerId = (rows?.[0] as { customer_id: string | null } | undefined)?.customer_id;
+    if (!customerId) throw new Error("There's no membership on this account yet.");
 
-    const { getPaddleClient } = await import("@/lib/paddle.server");
-    const paddle = getPaddleClient(data.environment);
-    const session = await paddle.customerPortalSessions.create(sub.paddle_customer_id, [
-      sub.paddle_subscription_id,
-    ]);
-    const url = session.urls.general.overview;
-    if (!url) throw new Error("We couldn't open your billing page just then.");
-    return { url };
+    const res = await creemFetch("/v1/customers/billing", {
+      method: "POST",
+      body: JSON.stringify({ customer_id: customerId }),
+    });
+    const body = (await res.json().catch(() => ({}))) as { customer_portal_link?: string };
+    if (!res.ok || !body.customer_portal_link) throw new Error("We couldn't open your billing page just then.");
+    return { url: body.customer_portal_link };
   });
 
 /** Trusted origin helper kept for success/cancel URLs built elsewhere. */
