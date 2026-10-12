@@ -191,6 +191,7 @@ const copy = {
     heading: "Vi vil meget gerne høre fra dig.",
     intro:
       "Et spørgsmål om at finde den rette hund, træning, mad, sundhed eller rejser sammen — eller noget, der ikke virker, som det skal. Skriv til os, og et rigtigt menneske svarer.",
+    emailIntro: "Foretrækker du e-mail? Skriv endelig direkte til",
     doneHeading: "Tak. Din besked er sendt.",
     doneBody:
       "Vi vender tilbage så hurtigt som muligt. Hold øje med din indbakke — vi har sendt dig en kort bekræftelse på, at den er kommet frem.",
