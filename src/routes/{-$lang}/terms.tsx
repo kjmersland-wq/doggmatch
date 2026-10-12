@@ -87,7 +87,7 @@ const copy = {
       membership: {
         title: "DoggMatch+ membership and billing",
         items: [
-          "DoggMatch+ costs €8.49 per month or €61.99 per year. Prices include VAT where it applies.",
+          "DoggMatch+ costs €8.69 per month or €61.99 per year. Prices include VAT where it applies.",
           "Payments are handled by Creem. We never see your card details. Our order process is conducted by our online reseller Creem (creem.io) — Creem is the Merchant of Record for all our orders, and provides all customer service inquiries and handles returns. Creem checkout buyer terms: https://www.creem.io/terms-buyer-terms",
           "Membership renews automatically at the end of each period until you cancel.",
           "You can cancel at any time from your account. Your membership then stays active until the end of the period you've already paid for, and doesn't renew after that.",
@@ -171,7 +171,7 @@ const copy = {
       membership: {
         title: "DoggMatch+ medlemskap og fakturering",
         items: [
-          "DoggMatch+ koster €8,49 per måned eller €61,99 per år. Prisene inkluderer mva. der det gjelder.",
+          "DoggMatch+ koster €8,69 per måned eller €61,99 per år. Prisene inkluderer mva. der det gjelder.",
           "Betalinger håndteres av Creem. Vi ser aldri kortopplysningene dine. Bestillingen gjennomføres av vår nettforhandler Creem (creem.io) — Creem er Merchant of Record for alle bestillinger, og håndterer kundeservice og returer. Creem checkout buyer terms: https://www.creem.io/terms-buyer-terms",
           "Medlemskapet fornyes automatisk ved slutten av hver periode inntil du sier opp.",
           "Du kan si opp når som helst fra kontoen din. Medlemskapet ditt forblir da aktivt ut perioden du allerede har betalt for, og fornyes ikke etter det.",
@@ -255,7 +255,7 @@ const copy = {
       membership: {
         title: "Członkostwo DoggMatch+ i rozliczenia",
         items: [
-          "DoggMatch+ kosztuje 8,49 € miesięcznie lub 61,99 € rocznie. Ceny zawierają VAT tam, gdzie ma on zastosowanie.",
+          "DoggMatch+ kosztuje 8,69 € miesięcznie lub 61,99 € rocznie. Ceny zawierają VAT tam, gdzie ma on zastosowanie.",
           "Płatności obsługuje Creem. Nigdy nie widzimy danych twojej karty. Zamówienia realizuje nasz internetowy odsprzedawca Creem (creem.io) — Creem jest Merchant of Record dla wszystkich zamówień, obsługuje zapytania klientów i zwroty. Creem checkout buyer terms: https://www.creem.io/terms-buyer-terms",
           "Członkostwo odnawia się automatycznie na koniec każdego okresu, dopóki go nie anulujesz.",
           "Możesz anulować w dowolnym momencie ze swojego konta. Twoje członkostwo pozostaje wtedy aktywne do końca opłaconego już okresu i nie odnawia się później.",
@@ -339,7 +339,7 @@ const copy = {
       membership: {
         title: "DoggMatch+ medlemskab og fakturering",
         items: [
-          "DoggMatch+ koster 8,49 € om måneden eller 61,99 € om året. Priserne inkluderer moms, hvor det gælder.",
+          "DoggMatch+ koster 8,69 € om måneden eller 61,99 € om året. Priserne inkluderer moms, hvor det gælder.",
           "Betalinger håndteres af Creem. Vi ser aldrig dine kortoplysninger. Bestillingen gennemføres af vores online-forhandler Creem (creem.io) — Creem er Merchant of Record for alle bestillinger og håndterer kundeservice og returneringer. Creem checkout buyer terms: https://www.creem.io/terms-buyer-terms",
           "Medlemskabet fornyes automatisk ved udgangen af hver periode, indtil du opsiger det.",
           "Du kan opsige når som helst fra din konto. Dit medlemskab forbliver derefter aktivt ud den periode, du allerede har betalt for, og fornyes ikke derefter.",
@@ -423,7 +423,7 @@ const copy = {
       membership: {
         title: "DoggMatch+ medlemskap och fakturering",
         items: [
-          "DoggMatch+ kostar 8,49 € per månad eller 61,99 € per år. Priserna inkluderar moms där det gäller.",
+          "DoggMatch+ kostar 8,69 € per månad eller 61,99 € per år. Priserna inkluderar moms där det gäller.",
           "Betalningar hanteras av Creem. Vi ser aldrig dina kortuppgifter. Beställningen genomförs av vår online-återförsäljare Creem (creem.io) — Creem är Merchant of Record för alla beställningar och hanterar kundtjänst och returer. Creem checkout buyer terms: https://www.creem.io/terms-buyer-terms",
           "Medlemskapet förnyas automatiskt vid slutet av varje period tills du säger upp det.",
           "Du kan säga upp när som helst från ditt konto. Ditt medlemskap förblir då aktivt ut den period du redan har betalat för, och förnyas inte därefter.",
@@ -507,7 +507,7 @@ const copy = {
       membership: {
         title: "DoggMatch+ -jäsenyys ja laskutus",
         items: [
-          "DoggMatch+ maksaa 8,49 € kuukaudessa tai 61,99 € vuodessa. Hinnat sisältävät alv:n siellä, missä se on sovellettavissa.",
+          "DoggMatch+ maksaa 8,69 € kuukaudessa tai 61,99 € vuodessa. Hinnat sisältävät alv:n siellä, missä se on sovellettavissa.",
           "Maksut hoitaa Creem. Emme koskaan näe korttitietojasi. Tilaukset välittää verkkojälleenmyyjämme Creem (creem.io) — Creem on kaikkien tilausten Merchant of Record ja hoitaa asiakaspalvelun ja palautukset. Creem checkout buyer terms: https://www.creem.io/terms-buyer-terms",
           "Jäsenyys uusiutuu automaattisesti jokaisen jakson lopussa, kunnes peruutat sen.",
           "Voit peruuttaa milloin tahansa tililtäsi. Jäsenyytesi pysyy tämän jälkeen voimassa jo maksamasi jakson loppuun, eikä se uusiudu sen jälkeen.",
@@ -591,7 +591,7 @@ const copy = {
       membership: {
         title: "DoggMatch+ Mitgliedschaft und Abrechnung",
         items: [
-          "DoggMatch+ kostet 8,49 € pro Monat oder 61,99 € pro Jahr. Die Preise enthalten die Mehrwertsteuer, wo sie anfällt.",
+          "DoggMatch+ kostet 8,69 € pro Monat oder 61,99 € pro Jahr. Die Preise enthalten die Mehrwertsteuer, wo sie anfällt.",
           "Zahlungen werden von Creem abgewickelt. Wir sehen deine Kartendaten nie. Der Bestellvorgang läuft über unseren Online-Reseller Creem (creem.io) — Creem ist Merchant of Record für alle Bestellungen und kümmert sich um Kundenservice und Rücksendungen. Creem checkout buyer terms: https://www.creem.io/terms-buyer-terms",
           "Die Mitgliedschaft verlängert sich automatisch am Ende jedes Zeitraums, bis du sie kündigst.",
           "Du kannst jederzeit über dein Konto kündigen. Deine Mitgliedschaft bleibt dann bis zum Ende des bereits bezahlten Zeitraums aktiv und verlängert sich danach nicht mehr.",
@@ -676,7 +676,7 @@ const copy = {
       membership: {
         title: "Adhésion DoggMatch+ et facturation",
         items: [
-          "DoggMatch+ coûte 8,49 € par mois ou 61,99 € par an. Les prix incluent la TVA lorsqu'elle s'applique.",
+          "DoggMatch+ coûte 8,69 € par mois ou 61,99 € par an. Les prix incluent la TVA lorsqu'elle s'applique.",
           "Les paiements sont traités par Creem. Nous ne voyons jamais vos coordonnées bancaires. Notre processus de commande est assuré par notre revendeur en ligne Creem (creem.io) — Creem est le Merchant of Record de toutes nos commandes et gère le service client et les retours. Creem checkout buyer terms: https://www.creem.io/terms-buyer-terms",
           "L'adhésion se renouvelle automatiquement à la fin de chaque période jusqu'à ce que vous l'annuliez.",
           "Vous pouvez annuler à tout moment depuis votre compte. Votre adhésion reste alors active jusqu'à la fin de la période déjà payée, et ne se renouvelle pas ensuite.",
@@ -760,7 +760,7 @@ const copy = {
       membership: {
         title: "DoggMatch+ lidmaatschap en facturering",
         items: [
-          "DoggMatch+ kost € 8,49 per maand of € 61,99 per jaar. Prijzen zijn inclusief btw waar van toepassing.",
+          "DoggMatch+ kost € 8,69 per maand of € 61,99 per jaar. Prijzen zijn inclusief btw waar van toepassing.",
           "Betalingen worden verwerkt door Creem. Wij zien je kaartgegevens nooit. Ons bestelproces wordt uitgevoerd door onze online reseller Creem (creem.io) — Creem is de Merchant of Record voor al onze bestellingen en handelt klantenservice en retouren af. Creem checkout buyer terms: https://www.creem.io/terms-buyer-terms",
           "Het lidmaatschap wordt automatisch verlengd aan het einde van elke periode totdat je opzegt.",
           "Je kunt op elk moment opzeggen via je account. Je lidmaatschap blijft dan actief tot het einde van de reeds betaalde periode, en wordt daarna niet verlengd.",
