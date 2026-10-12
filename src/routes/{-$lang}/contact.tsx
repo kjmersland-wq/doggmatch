@@ -81,6 +81,7 @@ const copy = {
     heading: "We'd love to hear from you.",
     intro:
       "A question about finding the right dog, training, food, health or travelling together — or something that isn't working as it should. Write to us and a real person will answer.",
+    emailIntro: "Prefer email? You can always write to us directly at",
     doneHeading: "Thank you. Your message has been sent.",
     doneBody:
       "We'll get back to you as soon as we can. Keep an eye on your inbox — we've sent you a short note confirming it arrived.",
@@ -116,6 +117,7 @@ const copy = {
     heading: "Vi vil gjerne høre fra deg.",
     intro:
       "Et spørsmål om å finne riktig hund, trening, mat, helse eller reise sammen — eller noe som ikke virker som det skal. Skriv til oss, så svarer et ekte menneske.",
+    emailIntro: "Foretrekker du e-post? Skriv gjerne direkte til",
     doneHeading: "Takk. Meldingen din er sendt.",
     doneBody:
       "Vi svarer så snart vi kan. Følg med i innboksen din — vi har sendt deg en kort bekreftelse på at den kom fram.",
@@ -152,6 +154,7 @@ const copy = {
     heading: "Chętnie cię wysłuchamy.",
     intro:
       "Pytanie dotyczące znalezienia odpowiedniego psa, szkolenia, jedzenia, zdrowia lub wspólnego podróżowania — albo coś, co nie działa tak, jak powinno. Napisz do nas, a odpowie ci prawdziwa osoba.",
+    emailIntro: "Wolisz e-mail? Napisz do nas bezpośrednio na",
     doneHeading: "Dziękujemy. Twoja wiadomość została wysłana.",
     doneBody:
       "Odpowiemy najszybciej, jak to możliwe. Sprawdzaj swoją skrzynkę — wysłaliśmy krótką wiadomość potwierdzającą, że dotarła.",
@@ -188,6 +191,7 @@ const copy = {
     heading: "Vi vil meget gerne høre fra dig.",
     intro:
       "Et spørgsmål om at finde den rette hund, træning, mad, sundhed eller rejser sammen — eller noget, der ikke virker, som det skal. Skriv til os, og et rigtigt menneske svarer.",
+    emailIntro: "Foretrækker du e-mail? Skriv endelig direkte til",
     doneHeading: "Tak. Din besked er sendt.",
     doneBody:
       "Vi vender tilbage så hurtigt som muligt. Hold øje med din indbakke — vi har sendt dig en kort bekræftelse på, at den er kommet frem.",
@@ -224,6 +228,7 @@ const copy = {
     heading: "Vi vill gärna höra från dig.",
     intro:
       "En fråga om att hitta rätt hund, träning, mat, hälsa eller att resa tillsammans — eller något som inte fungerar som det ska. Skriv till oss, så svarar en riktig person.",
+    emailIntro: "Föredrar du e-post? Skriv gärna direkt till",
     doneHeading: "Tack. Ditt meddelande har skickats.",
     doneBody:
       "Vi återkommer så snart vi kan. Håll utkik i din inkorg — vi har skickat en kort bekräftelse på att det kom fram.",
@@ -260,6 +265,7 @@ const copy = {
     heading: "Kuulisimme mielellämme sinusta.",
     intro:
       "Kysymys oikean koiran löytämisestä, koulutuksesta, ruokinnasta, terveydestä tai yhdessä matkustamisesta — tai jokin, joka ei toimi niin kuin pitäisi. Kirjoita meille, niin oikea ihminen vastaa.",
+    emailIntro: "Haluatko mieluummin laittaa sähköpostia? Kirjoita meille suoraan osoitteeseen",
     doneHeading: "Kiitos. Viestisi on lähetetty.",
     doneBody:
       "Vastaamme niin pian kuin mahdollista. Pidä silmällä sähköpostiasi — lähetimme sinulle lyhyen vahvistuksen viestin perillepääsystä.",
@@ -296,6 +302,7 @@ const copy = {
     heading: "Wir hören gerne von dir.",
     intro:
       "Eine Frage zur Wahl des richtigen Hundes, zum Training, zum Futter, zur Gesundheit oder zum gemeinsamen Reisen — oder etwas, das nicht so funktioniert, wie es sollte. Schreib uns, und ein echter Mensch antwortet dir.",
+    emailIntro: "Lieber per E-Mail? Schreib uns gerne direkt an",
     doneHeading: "Danke. Deine Nachricht wurde gesendet.",
     doneBody:
       "Wir melden uns so schnell wie möglich. Behalte dein Postfach im Auge — wir haben dir eine kurze Bestätigung geschickt, dass sie angekommen ist.",
@@ -332,6 +339,7 @@ const copy = {
     heading: "Nous serions ravis de vous lire.",
     intro:
       "Une question sur le choix du bon chien, l'éducation, l'alimentation, la santé ou les voyages ensemble — ou quelque chose qui ne fonctionne pas comme il faut. Écrivez-nous, une vraie personne vous répondra.",
+    emailIntro: "Vous préférez l'e-mail ? Écrivez-nous directement à",
     doneHeading: "Merci. Votre message a bien été envoyé.",
     doneBody:
       "Nous vous répondrons dès que possible. Surveillez votre boîte mail — nous vous avons envoyé un court message confirmant sa bonne réception.",
@@ -368,6 +376,7 @@ const copy = {
     heading: "We horen graag van je.",
     intro:
       "Een vraag over het vinden van de juiste hond, training, voeding, gezondheid of samen reizen — of iets dat niet werkt zoals het zou moeten. Schrijf ons, en een echt persoon antwoordt je.",
+    emailIntro: "Liever e-mail? Schrijf ons gerust direct op",
     doneHeading: "Bedankt. Je bericht is verzonden.",
     doneBody:
       "We reageren zo snel mogelijk. Houd je inbox in de gaten — we hebben je een kort bericht gestuurd ter bevestiging dat het is aangekomen.",
@@ -447,6 +456,15 @@ function ContactPage() {
       <Eyebrow>{c.eyebrow}</Eyebrow>
       <h1 className="display-lg mt-6">{c.heading}</h1>
       <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{c.intro}</p>
+      <p className="mt-3 text-sm text-muted-foreground">
+        {c.emailIntro}{" "}
+        <a
+          href="mailto:support@doggmatch.com"
+          className="font-medium text-accent underline underline-offset-4 transition-colors hover:text-accent/80"
+        >
+          support@doggmatch.com
+        </a>
+      </p>
 
       {done ? (
         <div className="animate-fade mt-10 rounded-3xl border border-border bg-surface p-8 md:p-10">
