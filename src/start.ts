@@ -4,8 +4,8 @@ import { renderErrorPage } from "./lib/error-page";
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://km-techlabs.com",
-  "connect-src 'self' https://*.supabase.co wss://*.supabase.co",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://km-techlabs.com https://www.km-techlabs.com",
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://km-techlabs.com https://www.km-techlabs.com",
   "frame-src 'self' https://challenges.cloudflare.com",
   "img-src 'self' data: blob: https:",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com",
@@ -55,17 +55,13 @@ const csrfMiddleware = createCsrfMiddleware({
   filter: (ctx) => ctx.handlerType === "serverFn",
 });
 
-// Only attach a Supabase bearer token when Supabase is actually configured.
-// This keeps public server functions (e.g. places lookup) working even if the
-// published build is missing Supabase env vars, while still protecting auth-
-// required functions on properly configured deployments.
+// Attach the signed-in user's bearer token to every server function call.
+// The client module carries the project's publishable fallbacks, so this must
+// not be gated on VITE_SUPABASE_* — the published build may not inline them,
+// and gating here silently broke every auth-required function (checkout,
+// membership). Failures fall through with no header so public functions work.
 const safeSupabaseAuth = createMiddleware({ type: "function" }).client(
   async ({ next }) => {
-    const url = import.meta.env["VITE_SUPABASE_URL"];
-    const key = import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"];
-    if (!url || !key) {
-      return next({ headers: {} });
-    }
     try {
       const { supabase } = await import("@/integrations/supabase/client");
       const { data } = await supabase.auth.getSession();
