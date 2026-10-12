@@ -154,15 +154,15 @@ export function ResultNextSteps() {
 }
 
 const plusNoteCopy = {
-  en: { title: "Want a little more help when the dog comes home?", body: "DoggMatch+ keeps training, food and the everyday paperwork in one calm place.", cta: "Have a look" },
-  no: { title: "Vil du ha mer hjelp når hunden kommer hjem?", body: "DoggMatch+ samler trening, fôr og de små praktiske tingene på ett rolig sted.", cta: "Ta en titt" },
-  pl: { title: "Chcesz trochę więcej wsparcia, gdy pies wróci do domu?", body: "DoggMatch+ zbiera trening, jedzenie i codzienne sprawy w jednym spokojnym miejscu.", cta: "Zajrzyj" },
-  dk: { title: "Vil du have lidt mere hjælp, når hunden kommer hjem?", body: "DoggMatch+ samler træning, foder og de praktiske ting ét roligt sted.", cta: "Tag et kig" },
-  se: { title: "Vill du ha lite mer hjälp när hunden kommer hem?", body: "DoggMatch+ samlar träning, foder och det praktiska på ett lugnt ställe.", cta: "Ta en titt" },
-  fi: { title: "Haluatko vähän lisää apua, kun koira tulee kotiin?", body: "DoggMatch+ kokoaa koulutuksen, ruokinnan ja arjen käytännön asiat yhteen rauhalliseen paikkaan.", cta: "Katso" },
-  de: { title: "Möchtest du etwas mehr Unterstützung, wenn der Hund einzieht?", body: "DoggMatch+ bündelt Training, Futter und den Alltagskram an einem ruhigen Ort.", cta: "Schau mal rein" },
-  fr: { title: "Envie d'un peu plus d'aide quand le chien arrive à la maison ?", body: "DoggMatch+ réunit éducation, alimentation et démarches du quotidien dans un endroit calme.", cta: "Jeter un œil" },
-  nl: { title: "Wil je wat meer hulp als de hond thuiskomt?", body: "DoggMatch+ brengt training, voeding en het praktische gedoe samen op één rustige plek.", cta: "Neem een kijkje" },
+  en: { title: "Want a little more help when the dog comes home?", body: "When the dog comes home, a little extra support can make the days feel lighter.", cta: "See how DoggMatch+ can help" },
+  no: { title: "Vil du ha mer hjelp når hunden kommer hjem?", body: "Når hunden kommer hjem, kan litt ekstra støtte gjøre dagene lettere.", cta: "Se hvordan DoggMatch+ kan hjelpe" },
+  pl: { title: "Chcesz trochę więcej wsparcia, gdy pies wróci do domu?", body: "Gdy pies wróci do domu, odrobina wsparcia może sprawić, że dni staną się lżejsze.", cta: "Zobacz, jak DoggMatch+ może pomóc" },
+  dk: { title: "Vil du have lidt mere hjælp, når hunden kommer hjem?", body: "Når hunden kommer hjem, kan lidt ekstra støtte gøre dagene lettere.", cta: "Se, hvordan DoggMatch+ kan hjælpe" },
+  se: { title: "Vill du ha lite mer hjälp när hunden kommer hem?", body: "När hunden kommer hem kan lite extra stöd göra dagarna lättare.", cta: "Se hur DoggMatch+ kan hjälpa" },
+  fi: { title: "Haluatko vähän lisää apua, kun koira tulee kotiin?", body: "Kun koira tulee kotiin, vähän lisätukea voi tehdä päivistä kevyempiä.", cta: "Katso, miten DoggMatch+ voi auttaa" },
+  de: { title: "Möchtest du etwas mehr Unterstützung, wenn der Hund einzieht?", body: "Wenn der Hund einzieht, kann ein bisschen zusätzliche Unterstützung die Tage leichter machen.", cta: "Sieh, wie DoggMatch+ helfen kann" },
+  fr: { title: "Envie d'un peu plus d'aide quand le chien arrive à la maison ?", body: "Quand le chien arrive à la maison, un peu de soutien en plus peut rendre les journées plus légères.", cta: "Découvrez comment DoggMatch+ peut aider" },
+  nl: { title: "Wil je wat meer hulp als de hond thuiskomt?", body: "Als de hond thuiskomt, kan een beetje extra steun de dagen lichter maken.", cta: "Bekijk hoe DoggMatch+ kan helpen" },
 } as const;
 
 /** A quiet, optional pointer to DoggMatch+ once the match and the free next steps have been read. */

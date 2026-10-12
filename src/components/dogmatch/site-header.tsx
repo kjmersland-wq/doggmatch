@@ -184,7 +184,7 @@ export function SiteHeader() {
             ))}
             <Link
               to={withLangPrefix("/plus")}
-              className="ml-1 flex items-center gap-1 rounded-full px-3.5 py-2 text-[0.9375rem] text-muted-foreground transition-colors hover:text-foreground"
+              className="ml-1 flex items-center gap-1 rounded-full bg-accent/10 px-3.5 py-2 text-[0.9375rem] font-medium text-foreground transition-colors hover:bg-accent/15"
             >
               DoggMatch<span className="font-semibold text-accent">+</span>
             </Link>
