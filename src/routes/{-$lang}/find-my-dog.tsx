@@ -1844,6 +1844,10 @@ function Results({
         />
       </section>
 
+      <section className="container-page mt-10 md:mt-12">
+        <ResultPlusNote />
+      </section>
+
       {/* breakdown */}
       <section className="container-page mt-20 md:mt-28">
         <h2 className="display-md">{t.result.breakdown}</h2>
@@ -2111,10 +2115,6 @@ function Results({
       {/* free next steps — before any mention of DoggMatch+ */}
       <section className="container-page mt-20 md:mt-28">
         <ResultNextSteps />
-      </section>
-
-      <section className="container-page mt-10 md:mt-12">
-        <ResultPlusNote />
       </section>
 
       {/* actionable next step, right beneath the top match */}
