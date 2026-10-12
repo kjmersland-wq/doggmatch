@@ -114,6 +114,7 @@ export const confirmPartnerReferral = createServerFn({ method: "POST" })
 export const getMembership = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }): Promise<MembershipStatus> => {
+    const { creemEnvironment, planForProduct } = await import("@/lib/creem.server");
     const none: MembershipStatus = {
       subscribed: false,
       plan: null,

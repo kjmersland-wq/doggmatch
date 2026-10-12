@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { preparePlusCheckout } from "@/lib/plus/paddle.functions";
+import { preparePlusCheckout } from "@/lib/plus/creem.functions";
 import { usePaddleCheckout } from "@/hooks/usePaddleCheckout";
-import { getPaddleEnvironment } from "@/lib/paddle";
 import type { PlanId } from "@/lib/plus/plans";
 import { useMembership } from "@/hooks/use-membership";
 import { readPartnerCode } from "@/components/dogmatch/plus/partner-code";

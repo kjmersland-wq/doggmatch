@@ -5,7 +5,6 @@ import { Printer, ShieldCheck } from "lucide-react";
 import { getBreed, type Breed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { verifyDossierCheckout, unlockDossierAsMember } from "@/lib/dossier/paddle.functions";
-import { getPaddleEnvironment } from "@/lib/paddle";
 import { dossierSections } from "@/lib/dossier/doc";
 import { DocPaper } from "@/components/dogmatch/print/doc";
 import { ButtonLink, Button, Eyebrow } from "@/components/dogmatch/ui";
