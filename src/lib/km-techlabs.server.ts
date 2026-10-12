@@ -1,50 +1,50 @@
-// Forwards verified Paddle events to KM TECH LABS (km-techlabs.com).
+// Forwards verified Creem events to KM TECH LABS (km-techlabs.com).
 // Matches the receiver at /api/public/ingest/payments: Bearer auth with the
 // shared secret DOGGMATCH_INGEST_SECRET, one event per POST.
-// Never throws: a failed forward must not make Paddle retry the webhook.
+// Never throws: a failed forward must not make Creem retry the webhook.
 
 const DEFAULT_URL = "https://www.km-techlabs.com/api/public/ingest/payments";
 
 type IngestType = "payment" | "discount" | "subscription_created" | "subscription_canceled";
 
 function mapType(eventType: string): IngestType {
-  if (eventType.startsWith("subscription.canceled")) return "subscription_canceled";
-  if (eventType.startsWith("subscription.created")) return "subscription_created";
-  return "payment"; // transaction.completed, transaction.payment_failed, subscription.updated, ...
+  if (eventType === "subscription.canceled" || eventType === "subscription.expired") return "subscription_canceled";
+  if (eventType === "subscription.active") return "subscription_created";
+  return "payment"; // checkout.completed, subscription.paid, refund.created, ...
 }
 
-// Paddle totals are in minor units (cents); the receiver stores major units.
+// Creem amounts are in minor units (cents); the receiver stores major units.
 function toMajor(minor: unknown): number {
   const n = Number(minor);
   return Number.isFinite(n) ? n / 100 : 0;
 }
 
-function planLabel(data: any): string | undefined {
-  const item = data?.items?.[0];
-  return item?.price?.importMeta?.externalId ?? item?.price?.id ?? undefined;
-}
+const idOf = (v: any): string | undefined => (typeof v === "string" ? v : (v?.id ?? undefined));
 
 export async function forwardToKmTechlabs(
-  event: { eventId?: string; eventType: string; occurredAt?: string; data: any },
-  env: string,
+  event: { id?: string; eventType: string; created_at?: number | string; object?: any },
+  _env: string,
 ) {
   try {
-    const data = event.data ?? {};
-    const totals = data?.details?.totals;
-    const discountTotal = toMajor(totals?.discount);
+    const obj = event.object ?? {};
+    const order = obj.order ?? obj.last_transaction ?? obj.transaction ?? {};
+    const product = obj.product ?? obj.subscription?.product;
+    const discountTotal = toMajor(order.discount_amount ?? order.discount ?? 0);
     const type = mapType(event.eventType);
+    const occurred =
+      typeof event.created_at === "number" ? new Date(event.created_at).toISOString() : (event.created_at ?? new Date().toISOString());
 
     const payload = {
       site: "doggmatch.com",
-      id: event.eventId ?? data?.id ?? `${event.eventType}-${Date.now()}`,
+      id: event.id ?? obj.id ?? `${event.eventType}-${Date.now()}`,
       type,
-      status: String(data?.status ?? ""),
-      amount: toMajor(totals?.total),
+      status: String(obj.status ?? event.eventType),
+      amount: toMajor(order.amount_paid ?? order.amount ?? 0),
       discount: discountTotal,
-      currency: String(data?.currencyCode ?? "EUR").toUpperCase(),
-      customer: data?.customerId ? String(data.customerId) : undefined,
-      plan: planLabel(data),
-      occurred_at: event.occurredAt ?? new Date().toISOString(),
+      currency: String(order.currency ?? (typeof product === "object" ? product?.currency : undefined) ?? "EUR").toUpperCase(),
+      customer: idOf(obj.customer),
+      plan: typeof product === "object" ? (product?.name ?? product?.id) : product,
+      occurred_at: occurred,
     };
 
     const url = process.env["KM_TECHLABS_WEBHOOK_URL"] || DEFAULT_URL;
@@ -60,15 +60,11 @@ export async function forwardToKmTechlabs(
     });
     if (!res.ok) console.warn("KM TECH LABS forward failed:", res.status, await res.text().catch(() => ""));
 
-    // Discounts on payments are reported inside the payment event above.
-    // A pure discount event is only sent when there is a discount but no total
-    // (e.g. subscription.created with a discounted first period).
     if (type !== "payment" && discountTotal > 0) {
-      const discountPayload = { ...payload, id: `${payload.id}-discount`, type: "discount" as const, amount: 0 };
       const res2 = await fetch(url, {
         method: "POST",
         headers,
-        body: JSON.stringify(discountPayload),
+        body: JSON.stringify({ ...payload, id: `${payload.id}-discount`, type: "discount", amount: 0 }),
         signal: AbortSignal.timeout(5000),
       });
       if (!res2.ok) console.warn("KM TECH LABS discount forward failed:", res2.status);
