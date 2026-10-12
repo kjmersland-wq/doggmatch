@@ -13,7 +13,7 @@ import { RealMatchesSection } from "@/components/dogmatch/real-matches";
 import heroImage from "@/assets/hero.webp";
 import homeImage from "@/assets/editorial-home.webp";
 import dogLifeImage from "@/assets/dog-life.webp";
-import { seoLinks, abs, localizedHead } from "@/lib/seo";
+import { seoLinks, abs, localizedHead, faqLd } from "@/lib/seo";
 import { withLangPrefix } from "@/lib/localized-path";
 
 const title = "DoggMatch — Find the dog that's right for your life";
@@ -1035,6 +1035,15 @@ function HomePage() {
       {/* -------------------------------------------------------------- FAQ */}
       <Section id="faq" className="pt-0">
         <div className="container-page">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: faqLd(c.faq.map((i) => ({ question: i.q, answer: i.a }))).children.replace(
+                /</g,
+                "\\u003c",
+              ),
+            }}
+          />
           <Eyebrow>{c.faqEyebrow}</Eyebrow>
           <h2 className="display-lg mt-6 max-w-lg">{c.faqTitle}</h2>
           <dl className="mt-12 grid gap-x-14 gap-y-10 md:grid-cols-2">
