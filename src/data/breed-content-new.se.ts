@@ -25,6 +25,7 @@ export const breedContentNewSe: Partial<Record<BreedId, BreedContent>> = {
   "cavapoo": {
     displayName: "Cavapoo",
     originalPurpose: "Utvecklades som en liten sällskapskorsning mellan Cavalier King Charles Spaniel och Pudel.",
+    intro: "Cavapoo är en liten, kärleksfull sällskapshund – en korsning mellan cavalier king charles spaniel och pudel. I vardagen vill den vara med i allt: den är social, lätt att träna och snäll mot både barn och andra husdjur, men har svårt att vara ensam. Räkna med ungefär 1 300–2 300 euro om året i löpande kostnader, plus regelbunden pälsvård. Cavapoo passar dig om du är hemma mycket och vill ha en hund som följer med överallt – den trivs även i lägenhet.",
     summary: "Liten, kärleksfull och lätt att integrera i vardagen. De flesta Cavapoos vill ha betydligt mer mänskligt sällskap än ensamhet.",
     strengths: ["Mild, glad sällskap", "Praktisk storlek för lägenheter och resor", "Oftast mottaglig för belöningsbaserad träning", "Måttlig motion passar många hushåll"],
     considerations: ["Regelbunden borstning och professionell pälsvård är normalt", "Har ofta svårt med långa perioder ensam", "Pälstyp och fällning varierar mellan kullar", "Rumsrenhet kan kräva tålamod"],
@@ -45,6 +46,7 @@ export const breedContentNewSe: Partial<Record<BreedId, BreedContent>> = {
   "maltipoo": {
     displayName: "Maltipoo",
     originalPurpose: "Avelsavel som en liten sällskapskorsning mellan Malteser och Toy- eller Dvärgpudel.",
+    intro: "Maltipoo är en liten, social sällskapshund – en korsning mellan malteser och toy- eller dvärgpudel. I vardagen är den kelig, lättlärd och vill helst vara nära dig, men den tycker inte om att vara ensam länge och kan skälla på ljud och besökare. Räkna med ungefär 1 200–2 100 euro om året i löpande kostnader, och att pälsen behöver borstas ofta och klippas hos hundfrisör. Maltipoo passar dig om du är hemma mycket, vill ha en liten följeslagare och inte har något emot pälsvården.",
     summary: "En liten, social sällskapshund som gillar att lära sig och vara inkluderad. Skörhet, skällande och pälsvård är de praktiska realiteterna.",
     strengths: ["Kärleksfull och lätt att ta med sig", "Oftast pigg och mottaglig", "Kan trivas i en liten lägenhet", "Fäller lite i många, men inte alla, pälsar"],
     considerations: ["Behöver frekvent borstning och professionell pälsvård", "Kan skälla på ljud och besökare", "Gillar inte långa perioder ensam", "Små ben kräver varsam hantering"],

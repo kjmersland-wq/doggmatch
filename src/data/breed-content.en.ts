@@ -8,6 +8,8 @@ export interface BreedContent {
   strengths: string[];
   considerations: string[];
   originalPurpose?: string;
+  /** Optional longer opening for the breed page itself (and its meta description); cards keep using `summary`. */
+  intro?: string;
   healthConsiderations?: string;
   poorMatchFor?: string[];
   keyTradeoffs?: string[];

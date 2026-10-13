@@ -350,7 +350,7 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
     const locale = headLocale(ctx);
     const name = loaderData.content.displayName;
     const title = `${name} — ${breedTitleDescriptor[locale]} | DoggMatch`;
-    const description = fitMeta(loaderData.content.summary);
+    const description = fitMeta(loaderData.content.intro ?? loaderData.content.summary);
     const image = abs(breedOgImages[loaderData.breed.id] ?? "/og-en.jpg");
     return {
       meta: [
@@ -517,7 +517,7 @@ function BreedDetail() {
               <ShareBar compact className="mt-1 shrink-0" />
             </div>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
-              {content.summary}
+              {content.intro ?? content.summary}
             </p>
             {content.originalPurpose && (
               <p className="mt-5 max-w-lg border-l-2 border-primary pl-4 text-sm leading-relaxed text-foreground/90">
