@@ -1015,9 +1015,9 @@ dk: {
       "Hvilke hunderacer klarer sig bedst alene, hvad 'længere' egentlig betyder, og hvordan du opbygger alenetid på en kærlig måde – ingen myter, ingen skyldfølelse, bare det ærlige billede.",
   },
 se: {
-    title: "Hundar som kan vara ensamma längre | DoggMatch",
+    title: "Hundar som kan vara ensamma – raser och hur länge | DoggMatch",
     description:
-      "Vilka hundraser klarar sig bäst ensamma, vad 'längre' egentligen betyder, och hur du bygger upp ensamtid på ett vänligt sätt – inga myter, ingen skuld, bara den ärliga bilden.",
+      "Hur länge kan en hund vara ensam? Det ärliga svaret, vilka raser som klarar det bäst och hur du bygger upp ensamträningen steg för steg.",
   },
 fi: {
     title: "Koirat, jotka voivat olla yksin pidempään | DoggMatch",
@@ -1164,7 +1164,7 @@ se: {
     eyebrow: "Välja hund",
     h1: "Hundar som klarar sig bra ensamma hemma",
     intro:
-      "Låt oss börja med det ärliga: ingen hund bör regelbundet tillbringa en hel arbetsdag ensam. Hundar är sociala djur, och åtta timmar eller mer är lång tid för dem. Men vissa raser klarar sig ärligt talat bättre med några timmar än andra – och om din vecka inkluderar pendling, spelar den skillnaden roll. Här är den realistiska bilden.",
+      "Ja, många hundar klarar att vara ensamma – men inte en hel arbetsdag. Fyra timmar är ett rimligt tak för de flesta vuxna hundar, och sex timmar ska vara ett undantag, inte rutinen. Hundar som klarar det bäst är ofta självständiga och lugna av sig, och de har fått lära sig i små steg att ensamtid inte är farligt. Här är raserna som oftast klarar det bäst, och vad du behöver tänka på innan du går hemifrån.",
     howChosenTitle: "De ärliga grundreglerna",
     howChosen: [
       "Fyra timmar är ett rimligt dagligt tak för de flesta vuxna hundar; sex är enstaka undantag, inte rutinen.",

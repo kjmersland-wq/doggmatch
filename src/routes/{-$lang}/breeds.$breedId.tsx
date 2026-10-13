@@ -2,7 +2,7 @@ import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { track } from "@/lib/analytics";
 import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
-import { useT, pick, useCopy, interpolate } from "@/i18n";
+import { useT, pick, useCopy, useLocale, interpolate } from "@/i18n";
 import { getBreed } from "@/data/breeds";
 import { breedContent } from "@/data/breed-content";
 import { breedTitleDescriptor } from "@/lib/seo/suffixes";
@@ -51,6 +51,15 @@ import {
 
 /** The short "what this page covers" descriptor used in the title and the H1. */
 const breedDescriptor: Record<Locale, string> = breedTitleDescriptor;
+
+/**
+ * Swedish pages that rank for these breeds point readers to the left-alone guide: honest about the
+ * breed's own alone-time limits first, then the way on to the breeds that cope better.
+ */
+const ALONE_GUIDE_NOTE_SE: Partial<Record<string, string>> = {
+  maltipoo: "Maltipoo vill helst inte vara ensam länge.",
+  cavapoo: "Cavapoo har svårt att vara ensam.",
+};
 
 /** Breeds on the calmer-companion shortlist link to that guide (and the guide links back to them). */
 const CALMER_BREED_IDS = new Set((CALMER_GUIDE.shortlist ?? []).map((b) => b.id));
@@ -442,6 +451,7 @@ function BreedDetail() {
   const t = useT();
   const c = useCopy(pageCopy);
   const descriptor = useCopy(breedDescriptor);
+  const { locale } = useLocale();
   const profile = useMatchProfile();
   const { breed } = Route.useLoaderData();
   const content = breedContent()[breed.id];
@@ -519,6 +529,18 @@ function BreedDetail() {
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
               {content.intro ?? content.summary}
             </p>
+            {locale === "se" && ALONE_GUIDE_NOTE_SE[breed.id] && (
+              <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground">
+                {ALONE_GUIDE_NOTE_SE[breed.id]} Läs{" "}
+                <Link
+                  to={withLangPrefix("/dogs-that-can-be-left-alone")}
+                  className="font-medium text-foreground underline underline-offset-4 decoration-border-strong hover:decoration-foreground"
+                >
+                  hur länge en hund kan vara ensam
+                </Link>{" "}
+                och vilka raser som klarar det bäst.
+              </p>
+            )}
             {content.originalPurpose && (
               <p className="mt-5 max-w-lg border-l-2 border-primary pl-4 text-sm leading-relaxed text-foreground/90">
                 <strong className="font-display font-medium">
