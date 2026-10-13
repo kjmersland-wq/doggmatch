@@ -23,8 +23,9 @@ import {
   seUrl,
   seoLinks,
   ogImage,
+  fitMeta,
 } from "@/lib/seo";
-import { foodCrumb, foodTitleSuffix } from "@/lib/seo/suffixes";
+import { foodCrumb } from "@/lib/seo/suffixes";
 import { cn } from "@/lib/utils";
 
 /** "Can dogs eat X?" — the phrase people actually type, in each language. */
@@ -33,7 +34,7 @@ const question = {
   no: (name: string) => `Kan hunder spise ${name.toLowerCase()}?`,
   pl: (name: string) => `Czy psy mogą jeść ${name.toLowerCase()}?`,
   dk: (name: string) => `Må hunde spise ${name.toLowerCase()}?`,
-  se: (name: string) => `Kan hundar äta ${name.toLowerCase()}?`,
+  se: (name: string) => `Får hundar äta ${name.toLowerCase()}?`,
   fi: (name: string) => `Voiko koira syödä ${name.toLowerCase()}?`,
   de: (name: string) => `Dürfen Hunde ${name.toLowerCase()} fressen?`,
   fr: (name: string) => `Les chiens peuvent-ils manger ${name.toLowerCase()} ?`,
@@ -110,8 +111,10 @@ export const Route = createFileRoute("/{-$lang}/can-dogs-eat/$foodId")({
     }
     const path = `/can-dogs-eat/${id}`;
     const heading = question[locale](item.name);
-    const title = `${heading} — ${foodTitleSuffix[locale]} | DoggMatch`;
-    const description = `${verdict[locale][item.safety]}. ${item.body}`.slice(0, 300);
+    // The answer goes in the title: people scan results for yes / no, not for the brand.
+    const answered = `${heading} ${verdict[locale][item.safety]}`;
+    const title = answered.length <= 62 ? `${answered} | DoggMatch` : answered;
+    const description = fitMeta(`${verdict[locale][item.safety]}. ${item.body}`);
     return {
       meta: [
         { title },

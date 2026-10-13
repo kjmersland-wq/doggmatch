@@ -65,7 +65,7 @@ export const breedTitleDescriptor = all({
   no: "vesen, hverdag og kostnader",
   pl: "charakter, codzienność i koszty",
   dk: "temperament, hverdag og udgifter",
-  se: "temperament, vardag och kostnader",
+  se: "personlighet, vardag och vad den kostar",
   fi: "luonne, arki ja kustannukset",
   de: "Wesen, Alltag und Kosten",
   fr: "tempérament, quotidien et coûts",

@@ -272,3 +272,18 @@ export function localizedHead(
     links: seoLinks(path).map((l) => (l.rel === "canonical" ? { rel: "canonical", href: url } : l)),
   };
 }
+
+/**
+ * Trim a meta description to what a search result actually shows (~155
+ * characters, less on mobile): end on a sentence if one fits, otherwise on a
+ * whole word with an ellipsis, so the snippet never stops mid-thought.
+ */
+export function fitMeta(text: string, max = 155): string {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const head = clean.slice(0, max);
+  const sentenceEnd = Math.max(head.lastIndexOf(". "), head.lastIndexOf("? "), head.lastIndexOf("! "));
+  if (sentenceEnd >= 70) return head.slice(0, sentenceEnd + 1);
+  const wordEnd = head.lastIndexOf(" ");
+  return `${head.slice(0, wordEnd > 0 ? wordEnd : max).replace(/[,;:\s—-]+$/, "")}…`;
+}

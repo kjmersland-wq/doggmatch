@@ -44,6 +44,7 @@ import {
   headLocale,
   langUrl,
   seoLinks,
+  fitMeta,
   ogLocaleTag,
   type Locale,
 } from "@/lib/seo";
@@ -349,7 +350,7 @@ export const Route = createFileRoute("/{-$lang}/breeds/$breedId")({
     const locale = headLocale(ctx);
     const name = loaderData.content.displayName;
     const title = `${name} — ${breedTitleDescriptor[locale]} | DoggMatch`;
-    const description = loaderData.content.summary;
+    const description = fitMeta(loaderData.content.summary);
     const image = abs(breedOgImages[loaderData.breed.id] ?? "/og-en.jpg");
     return {
       meta: [
