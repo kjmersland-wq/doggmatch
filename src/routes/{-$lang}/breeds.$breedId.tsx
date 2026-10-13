@@ -53,12 +53,45 @@ import {
 const breedDescriptor: Record<Locale, string> = breedTitleDescriptor;
 
 /**
- * Swedish pages that rank for these breeds point readers to the left-alone guide: honest about the
- * breed's own alone-time limits first, then the way on to the breeds that cope better.
+ * Breeds that score lowest on alone-time tolerance point readers to the left-alone guide in the Nordic
+ * languages: honest about the breed's own limits first, then the way on to breeds that cope better.
  */
-const ALONE_GUIDE_NOTE_SE: Partial<Record<string, string>> = {
-  maltipoo: "Maltipoo vill helst inte vara ensam länge.",
-  cavapoo: "Cavapoo har svårt att vara ensam.",
+const ALONE_NOTE_BREEDS = new Set([
+  "maltipoo",
+  "cavapoo",
+  "weimaraner",
+  "havanese",
+  "maltese",
+  "italian-greyhound",
+]);
+
+const ALONE_NOTE: Partial<
+  Record<Locale, { lead: (name: string) => string; read: string; link: string; rest: string }>
+> = {
+  se: {
+    lead: (n) => `${n} har svårt att vara ensam.`,
+    read: "Läs",
+    link: "hur länge en hund kan vara ensam",
+    rest: "och vilka raser som klarar det bäst.",
+  },
+  no: {
+    lead: (n) => `${n} har det vanskelig med å være alene.`,
+    read: "Les",
+    link: "hvor lenge en hund kan være alene",
+    rest: "og hvilke raser som klarer det best.",
+  },
+  dk: {
+    lead: (n) => `${n} har det svært ved at være alene.`,
+    read: "Læs",
+    link: "hvor længe en hund kan være alene",
+    rest: "og hvilke racer der klarer det bedst.",
+  },
+  fi: {
+    lead: (n) => `${n} ei pärjää hyvin yksin.`,
+    read: "Lue",
+    link: "kuinka pitkään koira voi olla yksin",
+    rest: "ja mitkä rodut pärjäävät siinä parhaiten.",
+  },
 };
 
 /** Breeds on the calmer-companion shortlist link to that guide (and the guide links back to them). */
@@ -452,6 +485,7 @@ function BreedDetail() {
   const c = useCopy(pageCopy);
   const descriptor = useCopy(breedDescriptor);
   const { locale } = useLocale();
+  const aloneNote = ALONE_NOTE[locale];
   const profile = useMatchProfile();
   const { breed } = Route.useLoaderData();
   const content = breedContent()[breed.id];
@@ -529,16 +563,16 @@ function BreedDetail() {
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
               {content.intro ?? content.summary}
             </p>
-            {locale === "se" && ALONE_GUIDE_NOTE_SE[breed.id] && (
+            {aloneNote && ALONE_NOTE_BREEDS.has(breed.id) && (
               <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground">
-                {ALONE_GUIDE_NOTE_SE[breed.id]} Läs{" "}
+                {aloneNote.lead(content.displayName)} {aloneNote.read}{" "}
                 <Link
                   to={withLangPrefix("/dogs-that-can-be-left-alone")}
                   className="font-medium text-foreground underline underline-offset-4 decoration-border-strong hover:decoration-foreground"
                 >
-                  hur länge en hund kan vara ensam
+                  {aloneNote.link}
                 </Link>{" "}
-                och vilka raser som klarar det bäst.
+                {aloneNote.rest}
               </p>
             )}
             {content.originalPurpose && (

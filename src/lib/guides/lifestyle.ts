@@ -1000,9 +1000,9 @@ export const ALONE_GUIDE: LifestyleGuideConfig = {
       "Which dog breeds cope best with time alone, what 'longer' really means, and how to build alone time kindly — no myths, no guilt, just the honest picture.",
   } ,
   no: {
-    title: "Hunder som kan være alene lenger | DoggMatch",
+    title: "Hunder som kan være alene – raser og hvor lenge | DoggMatch",
     description:
-      "Hvilke hunderaser takler å være alene best, hva 'lenger' egentlig betyr, og hvordan du bygger opp alenetid på en snill måte – ingen myter, ingen skyldfølelse, bare det ærlige bildet.",
+      "Hvor lenge kan en hund være alene? Det ærlige svaret, hvilke raser som klarer det best, og hvordan du bygger opp alenetreningen steg for steg.",
   },
 pl: {
     title: "Psy, które mogą zostać same dłużej | DoggMatch",
@@ -1010,9 +1010,9 @@ pl: {
       "Które rasy psów najlepiej radzą sobie z samotnością, co tak naprawdę oznacza „dłużej” i jak budować czas samotności w łagodny sposób – bez mitów, bez poczucia winy, tylko szczery obraz sytuacji.",
   },
 dk: {
-    title: "Hunde der kan være alene længere | DoggMatch",
+    title: "Hunde der kan være alene – racer og hvor længe | DoggMatch",
     description:
-      "Hvilke hunderacer klarer sig bedst alene, hvad 'længere' egentlig betyder, og hvordan du opbygger alenetid på en kærlig måde – ingen myter, ingen skyldfølelse, bare det ærlige billede.",
+      "Hvor længe kan en hund være alene? Det ærlige svar, hvilke racer der klarer det bedst, og hvordan du træner alenetid trin for trin.",
   },
 se: {
     title: "Hundar som kan vara ensamma – raser och hur länge | DoggMatch",
@@ -1020,9 +1020,9 @@ se: {
       "Hur länge kan en hund vara ensam? Det ärliga svaret, vilka raser som klarar det bäst och hur du bygger upp ensamträningen steg för steg.",
   },
 fi: {
-    title: "Koirat, jotka voivat olla yksin pidempään | DoggMatch",
+    title: "Kuinka pitkään koira voi olla yksin? Rodut ja ohjeet | DoggMatch",
     description:
-      "Mitkä koirarodut selviävät parhaiten yksin, mitä 'pidempään' todella tarkoittaa ja miten yksinoloa voi rakentaa lempeästi – ei myyttejä, ei syyllisyyttä, vain rehellinen kuva.",
+      "Kuinka pitkään koira voi olla yksin? Rehellinen vastaus, mitkä rodut pärjäävät parhaiten ja miten yksinoloa harjoitellaan askel kerrallaan.",
   },
 de: {
     title: "Hunde, die länger allein bleiben können | DoggMatch",
@@ -1074,7 +1074,7 @@ nl: {
     eyebrow: "Velge hund",
     h1: "Hunder som tåler å være alene",
     intro:
-      "La oss starte med det ærlige: ingen hund bør regelmessig være alene en hel arbeidsdag. Hunder er sosiale dyr, og åtte timer eller mer er lenge for dem. Men noen raser takler noen timer bedre enn andre – og hvis uken din inkluderer pendling, betyr den forskjellen noe. Her er det realistiske bildet.",
+      "Ja, mange hunder klarer å være alene – men ikke en hel arbeidsdag. Fire timer er en rimelig grense for de fleste voksne hunder, og seks timer bør være unntaket, ikke rutinen. Hunder som klarer det best er ofte selvstendige og rolige av seg, og de har lært seg i små steg at det er trygt å være alene. Her er rasene som oftest klarer det best, og hva du bør tenke på før du går hjemmefra.",
     howChosenTitle: "De ærlige grunnreglene",
     howChosen: [
       "Fire timer er en fornuftig daglig grense for de fleste voksne hunder; seks timer er en sjelden strekk, ikke rutinen.",
@@ -1134,7 +1134,7 @@ dk: {
     eyebrow: "Valg af hund",
     h1: "Hunde der kan klare at være alene hjemme",
     intro:
-      "Lad os starte med det ærlige: ingen hund bør regelmæssigt tilbringe en hel arbejdsdag alene. Hunde er sociale dyr, og otte timer eller mere er lang tid for dem. Men nogle racer klarer sig ærligt talt bedre med et par timer end andre – og hvis din uge inkluderer transport, betyder den forskel noget. Her er det realistiske billede.",
+      "Ja, mange hunde kan være alene – men ikke en hel arbejdsdag. Fire timer er en rimelig grænse for de fleste voksne hunde, og seks timer bør være undtagelsen, ikke rutinen. De hunde, der klarer det bedst, er ofte selvstændige og rolige i sig selv, og de har lært i små skridt, at det er trygt at være alene. Her er de racer, der oftest klarer det bedst, og hvad du skal tænke på, før du går hjemmefra.",
     howChosenTitle: "De ærlige grundregler",
     howChosen: [
       "Fire timer er et fornuftigt dagligt loft for de fleste voksne hunde; seks er en lejlighedsvis strækning, ikke rutinen.",
@@ -1194,7 +1194,7 @@ fi: {
     eyebrow: "Koiran valinta",
     h1: "Koirat, jotka selviävät yksin olosta",
     intro:
-      "Aloitetaan rehellisesti: mikään koira ei saisi säännöllisesti viettää koko työpäivää yksin. Koirat ovat sosiaalisia eläimiä, ja kahdeksan tuntia tai enemmän on pitkä aika kenelle tahansa niistä. Mutta jotkut rodut selviävät muutamasta tunnista paremmin kuin toiset – ja jos viikkoosi kuuluu työmatka, sillä erolla on merkitystä. Tässä on realistinen kuva.",
+      "Kyllä, moni koira pärjää yksin – mutta ei koko työpäivää. Neljä tuntia on järkevä yläraja useimmille aikuisille koirille, ja kuusi tuntia on poikkeus, ei rutiini. Parhaiten yksinolosta selviävät koirat ovat usein itsenäisiä ja tasaisia, ja ne on opetettu pienin askelin siihen, ettei yksin jääminen ole vaarallista. Tässä ovat rodut, jotka pärjäävät yleensä parhaiten, ja asiat, jotka kannattaa miettiä ennen kuin lähdet kotoa.",
     howChosenTitle: "Rehelliset pelisäännöt",
     howChosen: [
       "Neljä tuntia on järkevä päivittäinen yläraja useimmille aikuisille koirille; kuusi tuntia on satunnainen venytys, ei rutiini.",
