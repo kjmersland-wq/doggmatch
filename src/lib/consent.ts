@@ -19,7 +19,7 @@ export type ConsentRecord = ConsentCategories & {
   decidedAt: string;
 };
 
-export const CONSENT_VERSION = 1;
+export const CONSENT_VERSION = 2;
 const KEY = "doggmatch.consent";
 const EVENT = "doggmatch:consent";
 
