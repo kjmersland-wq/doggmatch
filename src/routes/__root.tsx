@@ -20,7 +20,7 @@ import { SiteFooter } from "@/components/dogmatch/site-footer";
 import { MobileTabs } from "@/components/dogmatch/mobile-tabs";
 import { CookieConsent } from "@/components/dogmatch/cookie-consent";
 import { withLangPrefix } from "@/lib/localized-path";
-import { initAnalytics, trackPageview } from "@/lib/analytics";
+import { initGoogleAnalytics, trackGooglePageview } from "@/lib/google-analytics";
 
 const shellCopy = {
   en: {
@@ -204,15 +204,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
-        // Google tag (gtag.js)
-        src: "https://www.googletagmanager.com/gtag/js?id=G-X15TZXQSRD",
-        async: true,
-      },
-      {
-        children:
-          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X15TZXQSRD');",
-      },
-      {
         // Lightweight traffic counter from KM TECH LABS — no cookies.
         src: "https://km-techlabs.com/t.js",
         defer: true,
@@ -301,10 +292,10 @@ function RootComponent() {
 /** Starts consent-gated analytics and records one page view per navigation. */
 function AnalyticsBridge() {
   const href = useRouterState({ select: (s) => s.location.href });
-  useEffect(() => initAnalytics(), []);
   useEffect(() => {
-    trackPageview(window.location.href);
+    trackGooglePageview();
   }, [href]);
+  useEffect(() => initGoogleAnalytics(), []);
   return null;
 }
 
