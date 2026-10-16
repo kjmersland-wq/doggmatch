@@ -1670,7 +1670,6 @@ function PostMatchJourney({ placement }: { placement: (typeof PLUS_PLACEMENTS)[n
             hash={PURCHASES_ENABLED ? "membership" : "waitlist"}
             tone="outline"
             size="lg"
-            onClick={onPlusClick}
           >
             {ctaLabel}
           </ButtonLink>
@@ -1735,18 +1734,6 @@ function Results({
     saveMatchProfile(profile);
   }, [profile]);
 
-  // One completion per result screen; adjusting answers afterwards isn't a new quiz.
-  const reported = useRef(false);
-  useEffect(() => {
-    if (reported.current) return;
-    reported.current = true;
-    track("quiz_completed", {
-      top_breed: best.breedId,
-      top_score: best.score,
-      matches: results.length,
-      limits_relaxed: limitsRelaxed,
-    });
-  }, [best.breedId, best.score, results.length, limitsRelaxed]);
 
   // DoggMatch+ is only ever introduced after the free value, at the bottom of the result.
 
