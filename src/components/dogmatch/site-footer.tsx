@@ -2,7 +2,6 @@ import { useQuizChromeActive } from "@/lib/quiz-chrome";
 import { Link } from "@tanstack/react-router";
 import { useCopy, useT } from "@/i18n";
 import { BrandLock } from "./brand-logo";
-import { CookieSettingsLink } from "@/components/dogmatch/cookie-consent";
 import { ShareStrip } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 
@@ -141,7 +140,6 @@ function SiteFooterFull() {
             <FooterLink to={withLangPrefix("/privacy")}>{t.footer.privacy}</FooterLink>
             <FooterLink to={withLangPrefix("/terms")}>{t.footer.terms}</FooterLink>
             <li>
-              <CookieSettingsLink className="text-left text-[0.9375rem] text-muted-foreground transition-colors hover:text-foreground" />
             </li>
           </FooterColumn>
         </div>

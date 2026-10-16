@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 import { useCopy, useLocale } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
 import { PURCHASES_ENABLED, purchasesPausedCopy } from "@/lib/purchases";
-import { track } from "@/lib/analytics";
 
 
 type Props = {
@@ -109,7 +108,6 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
 
   async function onClick() {
     setError(null);
-    if (!already) track("signup_started", { plan, signed_in: signedIn });
     if (!signedIn) {
       void navigate({ to: withLangPrefix("/auth"), search: { next: "/plus" } });
       return;

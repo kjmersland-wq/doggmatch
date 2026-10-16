@@ -114,7 +114,7 @@ const copy = {
       },
       cookies: {
         title: "Cookies and local storage",
-        p1: "We use what's strictly necessary to make the site work: a sign-in session, your light/dark preference, your language, and the local data described above. Under the ePrivacy Directive and Norwegian ekomlov, this kind of storage doesn't need consent. With your permission, and only then, we also use PostHog, hosted in the EU, to count visits and see which pages and steps genuinely help people, such as how many finish the quiz. We don't record your screen, we never use it for advertising, and you can change your mind at any time under Cookie settings in the footer.",
+        p1: "We use what's strictly necessary to make the site work: a sign-in session, your light/dark preference, your language, and the local data described above. Under the ePrivacy Directive and Norwegian ekomlov, this kind of storage doesn't need consent. To count visits we use our own cookie-free counter, run by KM TECH LABS: it notes the page, roughly which country, and the type of device — never who you are, and nothing is stored on your device.",
       },
       processors: {
         title: "Who processes data on our behalf",
@@ -129,8 +129,8 @@ const copy = {
             rest: " Payments and subscription billing, as an independent controller for payment data.",
           },
           {
-            strong: "PostHog (EU).",
-            rest: " Privacy-friendly product statistics, only if you say yes to statistics in the cookie notice. Data is stored in the EU (Frankfurt).",
+            strong: "KM TECH LABS.",
+            rest: " Our own cookie-free visit counter, run by KM TECH LABS. It counts pages and devices anonymously — no cookies, no personal data.",
           },
           {
             strong: "Google.",
@@ -242,7 +242,7 @@ const copy = {
       },
       cookies: {
         title: "Informasjonskapsler og lokal lagring",
-        p1: "Vi bruker det som er strengt nødvendig for at siden skal fungere: en innloggingsøkt, ditt lys/mørk-valg, språket ditt og de lokale dataene beskrevet over. Etter ePrivacy-direktivet og ekomloven krever slik lagring ikke samtykke. Hvis du gir oss lov, og bare da, bruker vi også PostHog, driftet i EU, til å telle besøk og se hvilke sider og steg som faktisk hjelper, for eksempel hvor mange som fullfører quizen. Vi tar ikke opp skjermen din, vi bruker det aldri til reklame, og du kan når som helst ombestemme deg under «Innstillinger for informasjonskapsler» nederst på siden.",
+        p1: "Vi bruker det som er strengt nødvendig for at siden skal fungere: en innloggingsøkt, ditt lys/mørk-valg, språket ditt og de lokale dataene beskrevet over. Etter ePrivacy-direktivet og ekomloven krever slik lagring ikke samtykke. For å telle besøk bruker vi vår egen informasjonskapsel-frie teller, drevet av KM TECH LABS: den noterer siden, omtrent hvilket land og hvilken type enhet — aldri hvem du er, og ingenting lagres på enheten din.",
       },
       processors: {
         title: "Hvem behandler data på våre vegne",
@@ -257,8 +257,8 @@ const copy = {
             rest: " Betalinger og abonnementsfakturering, som selvstendig behandlingsansvarlig for betalingsdata.",
           },
           {
-            strong: "PostHog (EU).",
-            rest: " Personvernvennlig bruksstatistikk, bare hvis du sier ja til statistikk i cookie-meldingen. Dataene lagres i EU (Frankfurt).",
+            strong: "KM TECH LABS.",
+            rest: " Vår egen informasjonskapsel-frie besøksteller, drevet av KM TECH LABS. Den teller sider og enheter anonymt — ingen informasjonskapsler, ingen personopplysninger.",
           },
           {
             strong: "Google.",
@@ -371,7 +371,7 @@ const copy = {
       },
       cookies: {
         title: "Pliki cookie i lokalna pamięć",
-        p1: "Używamy tego, co jest absolutnie niezbędne do działania strony: sesji logowania, Twojego wyboru jasnego/ciemnego motywu, Twojego języka oraz opisanych wyżej danych lokalnych. Zgodnie z dyrektywą ePrivacy i norweską ustawą ekomlov takie przechowywanie nie wymaga zgody. Jeśli nam na to pozwolisz, i tylko wtedy, korzystamy też z PostHog, hostowanego w UE, aby liczyć wizyty i sprawdzać, które strony i kroki naprawdę pomagają, na przykład ile osób kończy quiz. Nie nagrywamy Twojego ekranu, nigdy nie używamy tych danych do reklam, a swoją decyzję możesz zmienić w każdej chwili w „Ustawieniach plików cookie” w stopce.",
+        p1: "Używamy tego, co jest absolutnie niezbędne do działania strony: sesji logowania, Twojego wyboru jasnego/ciemnego motywu, Twojego języka oraz opisanych wyżej danych lokalnych. Zgodnie z dyrektywą ePrivacy i norweską ustawą ekomlov takie przechowywanie nie wymaga zgody. Do liczenia odwiedzin używamy własnego licznika bez plików cookie, prowadzonego przez KM TECH LABS: zapisuje stronę, przybliżony kraj i typ urządzenia — nigdy to, kim jesteś, i nic nie jest zapisywane na Twoim urządzeniu.",
       },
       processors: {
         title: "Kto przetwarza dane w naszym imieniu",
@@ -386,8 +386,8 @@ const copy = {
             rest: " Płatności i rozliczenia subskrypcji, jako niezależny administrator danych płatniczych.",
           },
           {
-            strong: "PostHog (EU).",
-            rest: " Przyjazne prywatności statystyki korzystania, tylko jeśli zgodzisz się na statystyki w komunikacie o plikach cookie. Dane są przechowywane w UE (Frankfurt).",
+            strong: "KM TECH LABS.",
+            rest: " Nasz własny licznik odwiedzin bez plików cookie, prowadzony przez KM TECH LABS. Anonimowo liczy strony i urządzenia — bez plików cookie i danych osobowych.",
           },
           {
             strong: "Google.",
@@ -500,7 +500,7 @@ const copy = {
       },
       cookies: {
         title: "Cookies og lokal lagring",
-        p1: "Vi bruger det, der er strengt nødvendigt for at få siden til at fungere: en login-session, dit lys/mørk-valg, dit sprog og de lokale data beskrevet ovenfor. Efter ePrivacy-direktivet og den norske ekomlov kræver denne slags lagring ikke samtykke. Hvis du giver os lov, og kun da, bruger vi også PostHog, hostet i EU, til at tælle besøg og se, hvilke sider og trin der faktisk hjælper, for eksempel hvor mange der gennemfører quizzen. Vi optager ikke din skærm, vi bruger det aldrig til reklamer, og du kan til enhver tid ombestemme dig under Cookieindstillinger nederst på siden.",
+        p1: "Vi bruger det, der er strengt nødvendigt for at få siden til at fungere: en login-session, dit lys/mørk-valg, dit sprog og de lokale data beskrevet ovenfor. Efter ePrivacy-direktivet og den norske ekomlov kræver denne slags lagring ikke samtykke. Til at tælle besøg bruger vi vores egen cookie-fri tæller, drevet af KM TECH LABS: den noterer siden, omtrent hvilket land og hvilken type enhed — aldrig hvem du er, og intet gemmes på din enhed.",
       },
       processors: {
         title: "Hvem behandler data på vores vegne",
@@ -515,8 +515,8 @@ const copy = {
             rest: " Betalinger og abonnementsfakturering, som selvstændig dataansvarlig for betalingsdata.",
           },
           {
-            strong: "PostHog (EU).",
-            rest: " Privatlivsvenlig brugsstatistik, kun hvis du siger ja til statistik i cookiemeddelelsen. Data opbevares i EU (Frankfurt).",
+            strong: "KM TECH LABS.",
+            rest: " Vores egen cookie-fri besøgstæller, drevet af KM TECH LABS. Den tæller sider og enheder anonymt — ingen cookies, ingen persondata.",
           },
           {
             strong: "Google.",
@@ -628,7 +628,7 @@ const copy = {
       },
       cookies: {
         title: "Cookies och lokal lagring",
-        p1: "Vi använder det som är absolut nödvändigt för att sidan ska fungera: en inloggningssession, ditt ljus/mörk-val, ditt språk och de lokala data som beskrivs ovan. Enligt ePrivacy-direktivet och den norska ekomlagen kräver sådan lagring inget samtycke. Om du ger oss lov, och bara då, använder vi också PostHog, som drivs inom EU, för att räkna besök och se vilka sidor och steg som verkligen hjälper, till exempel hur många som gör klart quizen. Vi spelar inte in din skärm, vi använder det aldrig för reklam, och du kan när som helst ändra dig under Cookie-inställningar längst ner på sidan.",
+        p1: "Vi använder det som är absolut nödvändigt för att sidan ska fungera: en inloggningssession, ditt ljus/mörk-val, ditt språk och de lokala data som beskrivs ovan. Enligt ePrivacy-direktivet och den norska ekomlagen kräver sådan lagring inget samtycke. För att räkna besök använder vi vår egen cookie-fria räknare, driven av KM TECH LABS: den noterar sidan, ungefär vilket land och vilken typ av enhet — aldrig vem du är, och ingenting lagras på din enhet.",
       },
       processors: {
         title: "Vem som behandlar data å våra vägnar",
@@ -643,7 +643,7 @@ const copy = {
             rest: " Betalningar och prenumerationsfakturering, som självständigt personuppgiftsansvarig för betalningsdata.",
           },
           {
-            strong: "PostHog (EU).",
+            strong: "KM TECH LABS.",
             rest: " Integritetsvänlig användningsstatistik, bara om du säger ja till statistik i cookiemeddelandet. Uppgifterna lagras inom EU (Frankfurt).",
           },
           {
@@ -756,7 +756,7 @@ const copy = {
       },
       cookies: {
         title: "Evästeet ja paikallinen tallennus",
-        p1: "Käytämme sitä, mikä on ehdottoman välttämätöntä sivuston toiminnalle: kirjautumisistuntoa, vaalea/tumma-valintaasi, kieltäsi ja edellä kuvattuja paikallisia tietoja. ePrivacy-direktiivin ja Norjan ekomlov-lain mukaan tällainen tallennus ei vaadi suostumusta. Jos annat luvan, ja vain silloin, käytämme myös EU:ssa toimivaa PostHogia laskemaan käyntejä ja näkemään, mitkä sivut ja vaiheet todella auttavat, esimerkiksi kuinka moni tekee kyselyn loppuun. Emme tallenna näyttöäsi, emme koskaan käytä tietoja mainontaan, ja voit muuttaa valintaasi milloin tahansa sivun alareunan Evästeasetuksista.",
+        p1: "Käytämme sitä, mikä on ehdottoman välttämätöntä sivuston toiminnalle: kirjautumisistuntoa, vaalea/tumma-valintaasi, kieltäsi ja edellä kuvattuja paikallisia tietoja. ePrivacy-direktiivin ja Norjan ekomlov-lain mukaan tällainen tallennus ei vaadi suostumusta. Käyntien laskemiseen käytämme omaa evästeetöntä laskuria, jota ylläpitää KM TECH LABS: se tallentaa sivun, karkean maan ja laitetyypin — ei koskaan sitä, kuka olet, eikä laitteellesi tallenneta mitään.",
       },
       processors: {
         title: "Kuka käsittelee tietoja puolestamme",
@@ -771,7 +771,7 @@ const copy = {
             rest: " Maksut ja tilauslaskutus, itsenäisenä rekisterinpitäjänä maksutiedoille.",
           },
           {
-            strong: "PostHog (EU).",
+            strong: "KM TECH LABS.",
             rest: " Yksityisyyttä kunnioittavaa käyttötilastointia, vain jos hyväksyt tilastoinnin evästeilmoituksessa. Tiedot säilytetään EU:ssa (Frankfurt).",
           },
           {
@@ -894,7 +894,7 @@ const copy = {
       cookies: {
         title: "Cookies und lokaler Speicher",
         p1:
-          "Wir verwenden, was für das Funktionieren der Seite unbedingt notwendig ist: eine Anmeldesitzung, Ihre Hell/Dunkel-Einstellung, Ihre Sprache und die oben beschriebenen lokalen Daten. Nach der ePrivacy-Richtlinie und dem norwegischen ekomlov braucht diese Art der Speicherung keine Einwilligung. Nur wenn Sie zustimmen, nutzen wir außerdem PostHog mit Hosting in der EU, um Besuche zu zählen und zu sehen, welche Seiten und Schritte wirklich weiterhelfen, etwa wie viele den Test abschließen. Wir zeichnen Ihren Bildschirm nicht auf, nutzen die Daten nie für Werbung, und Sie können Ihre Entscheidung jederzeit unter „Cookie-Einstellungen“ im Seitenfuß ändern.",
+          "Wir verwenden, was für das Funktionieren der Seite unbedingt notwendig ist: eine Anmeldesitzung, Ihre Hell/Dunkel-Einstellung, Ihre Sprache und die oben beschriebenen lokalen Daten. Nach der ePrivacy-Richtlinie und dem norwegischen ekomlov braucht diese Art der Speicherung keine Einwilligung. Zum Zählen der Besuche nutzen wir unseren eigenen cookiefreien Zähler, betrieben von KM TECH LABS: Er notiert die Seite, ungefähr das Land und den Gerätetyp — niemals, wer Sie sind, und auf Ihrem Gerät wird nichts gespeichert.",
       },
       processors: {
         title: "Wer Daten in unserem Auftrag verarbeitet",
@@ -910,7 +910,7 @@ const copy = {
             rest: " Zahlungen und Abonnementabrechnung, als eigenständiger Verantwortlicher für Zahlungsdaten.",
           },
           {
-            strong: "PostHog (EU).",
+            strong: "KM TECH LABS.",
             rest: " Datenschutzfreundliche Nutzungsstatistik, nur wenn Sie im Cookie-Hinweis der Statistik zustimmen. Die Daten werden in der EU (Frankfurt) gespeichert.",
           },
           {
@@ -1037,7 +1037,7 @@ const copy = {
       cookies: {
         title: "Cookies et stockage local",
         p1:
-          "Nous utilisons ce qui est strictement nécessaire au fonctionnement du site : une session de connexion, votre préférence clair/sombre, votre langue et les données locales décrites ci-dessus. En vertu de la directive ePrivacy et de la loi norvégienne ekomlov, ce type de stockage ne requiert pas de consentement. Si vous nous y autorisez, et seulement dans ce cas, nous utilisons aussi PostHog, hébergé dans l’UE, pour compter les visites et voir quelles pages et étapes aident vraiment, par exemple combien de personnes terminent le quiz. Nous n’enregistrons pas votre écran, nous ne nous en servons jamais pour la publicité, et vous pouvez changer d’avis à tout moment via « Paramètres des cookies » en bas de page.",
+          "Nous utilisons ce qui est strictement nécessaire au fonctionnement du site : une session de connexion, votre préférence clair/sombre, votre langue et les données locales décrites ci-dessus. En vertu de la directive ePrivacy et de la loi norvégienne ekomlov, ce type de stockage ne requiert pas de consentement. Pour compter les visites, nous utilisons notre propre compteur sans cookies, géré par KM TECH LABS : il note la page, le pays approximatif et le type d’appareil — jamais qui vous êtes, et rien n’est stocké sur votre appareil.",
       },
       processors: {
         title: "Qui traite les données en notre nom",
@@ -1053,8 +1053,8 @@ const copy = {
             rest: " Paiements et facturation des abonnements, en tant que responsable indépendant pour les données de paiement.",
           },
           {
-            strong: "PostHog (EU).",
-            rest: " Statistiques d’utilisation respectueuses de la vie privée, uniquement si vous acceptez les statistiques dans l’avis sur les cookies. Les données sont stockées dans l’UE (Francfort).",
+            strong: "KM TECH LABS.",
+            rest: " Notre propre compteur de visites sans cookies, géré par KM TECH LABS. Il compte les pages et les appareils de façon anonyme — ni cookies ni données personnelles.",
           },
           {
             strong: "Google.",
@@ -1180,7 +1180,7 @@ const copy = {
       cookies: {
         title: "Cookies en lokale opslag",
         p1:
-          "We gebruiken wat strikt nodig is om de site te laten werken: een inlogsessie, je licht/donker-voorkeur, je taal en de lokale gegevens die hierboven zijn beschreven. Volgens de ePrivacy-richtlijn en de Noorse ekomlov is voor dit soort opslag geen toestemming nodig. Alleen als je ons toestemming geeft, gebruiken we ook PostHog, gehost in de EU, om bezoeken te tellen en te zien welke pagina's en stappen mensen echt helpen, bijvoorbeeld hoeveel mensen de quiz afmaken. We nemen je scherm niet op, gebruiken het nooit voor advertenties, en je kunt je keuze op elk moment wijzigen via Cookie-instellingen onderaan de pagina.",
+          "We gebruiken wat strikt nodig is om de site te laten werken: een inlogsessie, je licht/donker-voorkeur, je taal en de lokale gegevens die hierboven zijn beschreven. Volgens de ePrivacy-richtlijn en de Noorse ekomlov is voor dit soort opslag geen toestemming nodig. Om bezoeken te tellen gebruiken we onze eigen cookieloze teller, beheerd door KM TECH LABS: die noteert de pagina, ongeveer het land en het type apparaat — nooit wie je bent, en er wordt niets op je apparaat opgeslagen.",
       },
       processors: {
         title: "Wie namens ons gegevens verwerkt",
@@ -1196,7 +1196,7 @@ const copy = {
             rest: " Betalingen en abonnementsfacturatie, als zelfstandige verwerkingsverantwoordelijke voor betaalgegevens.",
           },
           {
-            strong: "PostHog (EU).",
+            strong: "KM TECH LABS.",
             rest: " Privacyvriendelijke gebruiksstatistieken, alleen als je in de cookiemelding ja zegt tegen statistieken. De gegevens worden opgeslagen in de EU (Frankfurt).",
           },
           {

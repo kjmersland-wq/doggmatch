@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { track } from "@/lib/analytics";
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { ButtonLink, Arrow, Eyebrow, Section } from "@/components/dogmatch/ui";
@@ -103,7 +102,6 @@ function SuccessPage() {
   const { refetch } = useMembership();
   const confirmReferral = useServerFn(confirmPartnerReferral);
   useEffect(() => {
-    track("subscription_started");
   }, []);
   useEffect(() => {
     const t = setTimeout(() => void refetch(), 1500);

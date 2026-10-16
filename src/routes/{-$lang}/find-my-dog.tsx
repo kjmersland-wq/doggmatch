@@ -628,7 +628,6 @@ import {
   firstYearEstimate,
   temperamentLabel,
 } from "@/lib/dossier/content";
-import { track, useVariant } from "@/lib/analytics";
 import { useQuizChrome } from "@/lib/quiz-chrome";
 import { decodeProfile } from "@/lib/matching/share";
 import { ResultActions, ResultNextSteps, ResultPlusNote } from "@/components/dogmatch/result-actions";
@@ -989,9 +988,6 @@ function FindMyDogPage() {
   }, [startAnswer]); // eslint-disable-line react-hooks/exhaustive-deps
   const [step, setStep] = useState(!shared && start ? 1 : 0);
   const [profile, setProfile] = useState<UserProfile>(shared ?? start ?? {});
-  useEffect(() => {
-    if (!shared && start) track("quiz_started", { source: "home_first_question" });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const [phase, setPhase] = useState<Phase>(shared ? "result" : "quiz");
   // A result link opened while already on this page (e.g. "My match" in the header).
   useEffect(() => {
@@ -1021,7 +1017,6 @@ function FindMyDogPage() {
   );
 
   function choose(value: string) {
-    if (step === 0 && Object.keys(profile).length === 0) track("quiz_started");
     setProfile((p) => ({ ...p, [question.id]: value }));
     // Hard-limit questions keep the Continue button: the reader may still flip the switch.
     if (!isHardLimitEligible) {
@@ -1614,9 +1609,7 @@ function FirstThirtyDays({ breedName }: { breedName: string }) {
             ))}
           </ul>
 
-          <ButtonLink to={withLangPrefix("/plus")} tone="outline" className="mt-8"
-            onClick={() => track("plus_cta_clicked", { source: "first_30_days" })}
-          >
+          <ButtonLink to={withLangPrefix("/plus")} tone="outline" className="mt-8">
             {c.plusLinkLabel}
           </ButtonLink>
         </div>
@@ -1628,7 +1621,6 @@ function FirstThirtyDays({ breedName }: { breedName: string }) {
 const featureIcons = [Heart, CalendarDays, Dumbbell, Utensils, Plane, Printer];
 
 const PLUS_PLACEMENTS = ["bottom"] as const;
-const PLUS_CTA_VARIANTS = ["control", "first-year", "weekly"] as const;
 
 /**
  * A real glimpse of the printable report for this breed: two sections with
@@ -1637,21 +1629,7 @@ const PLUS_CTA_VARIANTS = ["control", "first-year", "weekly"] as const;
 function PostMatchJourney({ placement }: { placement: (typeof PLUS_PLACEMENTS)[number] }) {
   const t = useT();
   const c = useCopy(resultCopy);
-  // A/B: which invitation reads as help rather than a pitch?
-  const ctaVariant = useVariant("result-plus-cta", PLUS_CTA_VARIANTS, "control");
-  const ctaLabel =
-    ctaVariant === "first-year"
-      ? c.plusCtaFirstYear
-      : ctaVariant === "weekly"
-        ? c.plusCtaWeekly
-        : t.result.homeWithDogCtaSecondary;
-  const onPlusClick = () =>
-    track("plus_cta_clicked", {
-      source: "quiz_result",
-      placement,
-      variant: ctaVariant,
-      purchases_open: PURCHASES_ENABLED,
-    });
+  const ctaLabel = t.result.homeWithDogCtaSecondary;
 
   return (
     <section aria-labelledby="post-match-title">
@@ -1692,7 +1670,6 @@ function PostMatchJourney({ placement }: { placement: (typeof PLUS_PLACEMENTS)[n
             hash={PURCHASES_ENABLED ? "membership" : "waitlist"}
             tone="outline"
             size="lg"
-            onClick={onPlusClick}
           >
             {ctaLabel}
           </ButtonLink>
@@ -1757,18 +1734,6 @@ function Results({
     saveMatchProfile(profile);
   }, [profile]);
 
-  // One completion per result screen; adjusting answers afterwards isn't a new quiz.
-  const reported = useRef(false);
-  useEffect(() => {
-    if (reported.current) return;
-    reported.current = true;
-    track("quiz_completed", {
-      top_breed: best.breedId,
-      top_score: best.score,
-      matches: results.length,
-      limits_relaxed: limitsRelaxed,
-    });
-  }, [best.breedId, best.score, results.length, limitsRelaxed]);
 
   // DoggMatch+ is only ever introduced after the free value, at the bottom of the result.
 

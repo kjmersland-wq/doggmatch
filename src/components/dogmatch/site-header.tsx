@@ -7,7 +7,6 @@ import { ButtonLink, Arrow } from "./ui";
 import { BrandLock } from "./brand-logo";
 
 import { LanguageToggle } from "./language-toggle";
-import { CookieSettingsLink } from "./cookie-consent";
 import { useNavGroups } from "./nav-structure";
 import { withLangPrefix } from "@/lib/localized-path";
 import { useMatchProfile } from "@/lib/matching/store";
@@ -327,7 +326,6 @@ export function SiteHeader() {
                   <UserRound className="h-3.5 w-3.5" aria-hidden />
                   {t.nav.account}
                 </Link>
-                <CookieSettingsLink className="transition-colors hover:text-foreground" />
               </div>
             </div>
           </div>

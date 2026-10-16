@@ -4,7 +4,6 @@ import { ShareBar } from "@/components/dogmatch/share";
 import { withLangPrefix } from "@/lib/localized-path";
 import { INTL_LOCALE, interpolate, pick, useCopy, useLocale } from "@/i18n";
 import { GUIDE_HUB_LINKS } from "@/lib/guides/lifestyle";
-import { track } from "@/lib/analytics";
 import type { ClusterHubData, ClusterPageData, NavLink } from "@/lib/guides/clusters/clusters.functions";
 import type { FaqItem } from "@/lib/guides/clusters/types";
 
@@ -251,7 +250,6 @@ function QuizAndPlus({ source }: { source: string }) {
         <p className="mt-3 leading-relaxed text-muted-foreground">{c.plusBody}</p>
         <Link
           to={withLangPrefix("/plus")}
-          onClick={() => track("plus_cta_clicked", { source })}
           className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
         >
           {c.plusCta}
@@ -407,7 +405,6 @@ export function ClusterHubExtras({ data }: { data: ClusterHubData }) {
         <p className="mt-3 leading-relaxed text-muted-foreground">{c.plusBody}</p>
         <Link
           to={withLangPrefix("/plus")}
-          onClick={() => track("plus_cta_clicked", { source: `pillar_${data.cluster}` })}
           className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
         >
           {c.plusCta}
