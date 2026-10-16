@@ -9,7 +9,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -18,9 +18,7 @@ import { HTML_LANG, localeFromParam } from "@/i18n/locale";
 import { SiteHeader } from "@/components/dogmatch/site-header";
 import { SiteFooter } from "@/components/dogmatch/site-footer";
 import { MobileTabs } from "@/components/dogmatch/mobile-tabs";
-import { CookieConsent } from "@/components/dogmatch/cookie-consent";
 import { withLangPrefix } from "@/lib/localized-path";
-import { initGoogleAnalytics, trackGooglePageview } from "@/lib/google-analytics";
 
 const shellCopy = {
   en: {
@@ -204,8 +202,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
-        // Lightweight traffic counter from KM TECH LABS — no cookies.
-        src: "https://km-techlabs.com/t.js",
+        // Cookie-free traffic counter, hosted by us and reported to KM TECH LABS.
+        src: "/tracker.js",
         defer: true,
         "data-site": "doggmatch.com",
       },
@@ -289,13 +287,18 @@ function RootComponent() {
   );
 }
 
-/** Starts consent-gated analytics and records one page view per navigation. */
+/** Records one page view per navigation in the cookie-free counter. */
 function AnalyticsBridge() {
   const href = useRouterState({ select: (s) => s.location.href });
+  const first = useRef(true);
   useEffect(() => {
-    trackGooglePageview();
+    // The tracker script already sent the initial pageview; only report navigations.
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    (window as unknown as { __doggmatchTrack?: () => void }).__doggmatchTrack?.();
   }, [href]);
-  useEffect(() => initGoogleAnalytics(), []);
   return null;
 }
 
@@ -336,7 +339,6 @@ function RootBody({ queryClient }: { queryClient: QueryClient }) {
         </main>
         <SiteFooter />
         <MobileTabs />
-        <CookieConsent />
         <AnalyticsBridge />
       </LocaleProvider>
     </QueryClientProvider>
