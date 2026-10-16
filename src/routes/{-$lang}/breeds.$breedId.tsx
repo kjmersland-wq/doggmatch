@@ -493,9 +493,6 @@ function BreedDetail() {
   );
   const related = relatedBreeds(breed.id, 4);
 
-  useEffect(() => {
-    track("breed_profile_viewed", { breed: breed.id, has_match_profile: Boolean(readMatchProfile()) });
-  }, [breed.id]);
 
   const day = typicalDay(breed.traits);
   const dailyHours = dailyCommitmentHours(breed.traits);
