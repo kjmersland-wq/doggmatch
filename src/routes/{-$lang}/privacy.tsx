@@ -1054,7 +1054,7 @@ const copy = {
           },
           {
             strong: "KM TECH LABS.",
-            rest: " Statistiques d’utilisation respectueuses de la vie privée, uniquement si vous acceptez les statistiques dans l’avis sur les cookies. Les données sont stockées dans l’UE (Francfort).",
+            rest: " Notre propre compteur de visites sans cookies, géré par KM TECH LABS. Il compte les pages et les appareils de façon anonyme — ni cookies ni données personnelles.",
           },
           {
             strong: "Google.",
