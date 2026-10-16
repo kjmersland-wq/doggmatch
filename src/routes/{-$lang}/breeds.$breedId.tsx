@@ -1,6 +1,5 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { track } from "@/lib/analytics";
 import { breedGroupLabel, breedOriginLabel } from "@/data/breed-meta";
 import { useT, pick, useCopy, useLocale, interpolate } from "@/i18n";
 import { getBreed } from "@/data/breeds";

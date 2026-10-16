@@ -8,7 +8,6 @@ import { useNavGroups } from "./nav-structure";
 import { encodeProfile } from "@/lib/matching/share";
 import type { UserProfile } from "@/lib/matching/types";
 import { SITE_URL } from "@/lib/seo";
-import { track } from "@/lib/analytics";
 
 const copy = {
   en: { compare: "Compare the top {n}", copyLink: "Copy link to this result", copied: "Link copied", share: "Share", cardLabel: "Your share card", reasons: "Why it fits", tagline: "Matched on DoggMatch — rules you can see.", copyText: "Copy as text", textCopied: "Text copied", nextTitle: "Next steps, all free", nextBody: "Read the breed honestly, then look at what living with one really involves." },
@@ -47,7 +46,6 @@ export function ResultActions({ profile, breedId, breedName, score, reasons, com
     try {
       await navigator.clipboard.writeText(value);
       setDone(kind);
-      track("result_shared", { kind, breed: breedId });
       window.setTimeout(() => setDone(null), 2200);
     } catch {
       /* clipboard blocked — the card text is still on screen */
@@ -58,7 +56,6 @@ export function ResultActions({ profile, breedId, breedName, score, reasons, com
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
         await navigator.share({ title: `${breedName} — ${score}%`, text: cardText, url });
-        track("result_shared", { kind: "native", breed: breedId });
         return;
       } catch {
         /* dismissed — fall back to copy */
