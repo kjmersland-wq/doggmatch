@@ -43,17 +43,21 @@ export const CURRENCY: Record<Country, string> = {
 };
 
 /**
- * Indicative units of local currency per euro. A fixed, rounded rate on
- * purpose: these are planning figures, not a quote, and a live rate would make
- * the same page read differently from day to day. Review these now and then.
+ * Units of local currency per euro: the ECB euro reference rates for 2026-10-16
+ * (https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml). The rates are fixed
+ * on purpose, so the same page always reads the same; the cost note on the page says
+ * the figures are approximate. To refresh, copy the new ECB values here and update
+ * RATES_AS_OF. Rates older than a few months should be refreshed.
  */
+export const RATES_AS_OF = "2026-10-16";
+
 const PER_EURO: Record<string, number> = {
   EUR: 1,
-  GBP: 0.85,
-  NOK: 11.7,
-  SEK: 11.3,
-  DKK: 7.46,
-  PLN: 4.3,
+  GBP: 0.84385,
+  NOK: 10.624,
+  SEK: 11.145,
+  DKK: 7.4748,
+  PLN: 4.37,
 };
 
 /** True when amounts are converted from euro rather than shown as euro. */
@@ -76,6 +80,11 @@ export function toLocalAmount(euros: number, country: Country): number {
 
 export type Climate = "cold" | "temperate" | "warm";
 
+/**
+ * A coarse national summary, not a forecast: "cold" means long, hard winters across most
+ * of the country, "warm" means hot summers across most of it. It only decides which
+ * single weather note can appear next to a breed that copes badly with that weather.
+ */
 export const CLIMATE: Record<Country, Climate> = {
   GB: "temperate",
   NO: "cold",
@@ -102,15 +111,28 @@ export function climateNote(breed: Breed, country: Country): ClimateNote | null 
 /* ---------- breed rules ---------- */
 
 /**
- * - restricted: special national rules, such as import or breeding limits, permits
- *   or a temperament test.
+ * - restricted: national rules such as import and breeding limits, a permit or a
+ *   temperament test.
  * - permit: the owner has to hold a permit or register the dog.
  * - regional: some regions list the breed and others do not.
  *
- * DRAFT: written from general knowledge of each country's dog laws and meant to
- * be checked against the current rules before relying on it. The notes shown to
- * the reader always tell them to check the local rules.
+ * Checked on RULES_CHECKED against official or official-derived sources:
+ * - DE: federal import and breeding ban (Pit Bull Terrier, American Staffordshire Terrier,
+ *   Staffordshire Bull Terrier, Bull Terrier) plus separate state lists that commonly name
+ *   Rottweiler, Dobermann, Cane Corso and mastiff types (Zoll.de, state dog laws).
+ * - FR: Rottweiler is category 2 (declaration, permit, behavioural evaluation) under the
+ *   2008 dangerous dogs rules; the Staffordshire Bull Terrier is not covered (Ministry of
+ *   Agriculture / customs guidance).
+ * - PL: the 2003 Interior Ministry list of 11 breeds needs a permit from the municipality;
+ *   of the breeds in our library only Rottweiler is on it.
+ * - GB, DK, NO: outright bans (GB: Pit Bull Terrier type, Japanese Tosa, Dogo Argentino,
+ *   Fila Brasileiro, XL Bully type; DK: 13 breeds; NO: 6 breeds) cover no breed in our
+ *   library, so they produce no entry. SE, FI and NL have no national breed list.
+ * When a breed is added to the library, check it against these lists before shipping.
+ * The notes shown to readers always say to check the current local rules.
  */
+export const RULES_CHECKED = "2026-10-19";
+
 export type RuleLevel = "restricted" | "permit" | "regional";
 
 const RULES: Partial<Record<Country, Partial<Record<BreedId, RuleLevel>>>> = {
@@ -127,8 +149,6 @@ const RULES: Partial<Record<Country, Partial<Record<BreedId, RuleLevel>>>> = {
   },
   PL: {
     rottweiler: "permit",
-    "bull-terrier": "permit",
-    akita: "permit",
   },
 };
 
