@@ -1819,6 +1819,22 @@ function Results({
           score={best.score}
           reasons={detail.strengths}
           compareIds={results.slice(0, 3).map((r) => r.breedId)}
+          limits={
+            limitsRelaxed
+              ? []
+              : eliminated
+                  // One line per distinct limit, so the card never repeats the same reason.
+                  .filter(
+                    ({ reasons }, i, all) =>
+                      i === all.findIndex((other) => other.reasons[0] === reasons[0]),
+                  )
+                  .slice(0, 2)
+                  .map(({ result, reasons }) => ({
+                    breedName: breedContent()[result.breedId].displayName,
+                    reason: reasons[0] ?? "",
+                  }))
+          }
+          limitsTotal={limitsRelaxed ? 0 : eliminated.length}
         />
       </section>
 
