@@ -635,6 +635,7 @@ import { PURCHASES_ENABLED } from "@/lib/purchases";
 import { MatchNotes } from "@/components/dogmatch/match-notes";
 import { CostCalculator } from "@/components/dogmatch/cost-calculator";
 import { MixMatcher } from "@/components/dogmatch/mix-matcher";
+import { PlusPreview } from "@/components/dogmatch/plus-preview";
 
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { cn } from "@/lib/utils";
@@ -1626,7 +1627,17 @@ const PLUS_PLACEMENTS = ["bottom"] as const;
  * A real glimpse of the printable report for this breed: two sections with
  * the actual numbers, the rest named honestly as what's inside.
  */
-function PostMatchJourney({ placement }: { placement: (typeof PLUS_PLACEMENTS)[number] }) {
+function PostMatchJourney({
+  placement,
+  breed,
+  breedName,
+  profile,
+}: {
+  placement: (typeof PLUS_PLACEMENTS)[number];
+  breed: MatchResult["breed"];
+  breedName: string;
+  profile: UserProfile;
+}) {
   const t = useT();
   const c = useCopy(resultCopy);
   const ctaLabel = t.result.homeWithDogCtaSecondary;
@@ -1641,6 +1652,8 @@ function PostMatchJourney({ placement }: { placement: (typeof PLUS_PLACEMENTS)[n
         <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
           {t.result.homeWithDogBody}
         </p>
+
+        <PlusPreview breed={breed} breedName={breedName} profile={profile} />
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {t.result.homeWithDogFeatures.map((feature, index) => {
@@ -2095,7 +2108,12 @@ function Results({
       {/* home-with-your-dog journey */}
       {(
         <section className="container-page mt-20 md:mt-28">
-          <PostMatchJourney placement="bottom" />
+          <PostMatchJourney
+            placement="bottom"
+            breed={best.breed}
+            breedName={content.displayName}
+            profile={profile}
+          />
         </section>
       )}
 
