@@ -2,7 +2,6 @@ import { CalendarDays, Utensils } from "lucide-react";
 import { interpolate, useCopy } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
 import { estimatePortions } from "@/lib/care/portions";
-import { track } from "@/lib/analytics";
 import { PURCHASES_ENABLED } from "@/lib/purchases";
 import type { Breed } from "@/data/breeds";
 import type { UserProfile } from "@/lib/matching/types";
@@ -333,12 +332,6 @@ export function PlusPreview({
           to={withLangPrefix("/plus")}
           hash={PURCHASES_ENABLED ? "membership" : "waitlist"}
           tone="outline"
-          onClick={() =>
-            track("plus_cta_clicked", {
-              source: "quiz_result_preview",
-              purchases_open: PURCHASES_ENABLED,
-            })
-          }
         >
           {c.cta}
           <Arrow />

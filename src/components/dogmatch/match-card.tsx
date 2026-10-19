@@ -3,7 +3,6 @@ import { Download } from "lucide-react";
 import { interpolate, useCopy } from "@/i18n";
 import { breedImages } from "@/data/breed-images";
 import type { BreedId } from "@/data/breeds";
-import { track } from "@/lib/analytics";
 import { Button } from "./ui";
 
 /**
@@ -157,7 +156,6 @@ export function MatchCard({ breedId, breedName, score, reasons, limits, limitsTo
       a.remove();
       window.setTimeout(() => URL.revokeObjectURL(url), 4000);
       setSaved(true);
-      track("result_shared", { kind: "image", breed: breedId });
       window.setTimeout(() => setSaved(false), 2200);
     } catch {
       /* canvas or download blocked — the card on screen is still there to screenshot */
