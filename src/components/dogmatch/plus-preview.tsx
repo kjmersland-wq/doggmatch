@@ -132,7 +132,7 @@ const copy = {
     ctaNote: "Valfritt — din match och allt ovan är fortfarande gratis.",
   },
   fi: {
-    title: "Pieni maistiainen DoggMatch+:sta, tehty rodulle {breed}",
+    title: "Pieni maistiainen DoggMatch+:sta — {breed}",
     intro:
       "Rakennettu omien vastaustesi pohjalta. Nämä kaksi työkalua saisit heti ensimmäisestä päivästä.",
     weekTitle: "Ensimmäinen viikkosi kolmessa vaiheessa",
@@ -158,7 +158,7 @@ const copy = {
     ctaNote: "Vapaaehtoinen — osumasi ja kaikki yllä pysyy ilmaisena.",
   },
   de: {
-    title: "Ein kleiner Vorgeschmack auf DoggMatch+, gemacht für deinen {breed}",
+    title: "Ein kleiner Vorgeschmack auf DoggMatch+, gemacht für deine Rasse {breed}",
     intro:
       "Aus deinen eigenen Antworten gebaut. Das bekämst du mit zwei der Werkzeuge ab Tag eins.",
     weekTitle: "Deine erste Woche in drei Schritten",
@@ -176,7 +176,7 @@ const copy = {
       "Übe das Alleinsein in kleinen Schritten: erst eine Minute außer Sicht, dann langsam in Richtung deiner Arbeitszeiten.",
     aloneShort: "Übe trotzdem kurze Trennungen, damit Alleinsein später nie eine Überraschung ist.",
     mealTitle: "Ein Beispieltag beim Futter",
-    meal: "Ein ausgewachsener {breed} wiegt typischerweise etwa {kg} kg. Bei deinem Aktivitätsniveau sind das rund {kcal} kcal am Tag — ungefähr {grams} g übliches Trockenfutter, verteilt auf {meals} Mahlzeiten.",
+    meal: "Ein ausgewachsener Hund der Rasse {breed} wiegt typischerweise etwa {kg} kg. Bei deinem Aktivitätsniveau sind das rund {kcal} kcal am Tag — ungefähr {grams} g übliches Trockenfutter, verteilt auf {meals} Mahlzeiten.",
     mealNote:
       "Eine erste Schätzung zum Besprechen mit der Tierärztin oder dem Tierarzt, keine Verordnung. DoggMatch+ passt sie an deinen echten Hund und dein Futter an.",
     cta: "Sieh, was DoggMatch+ noch enthält",
@@ -203,7 +203,7 @@ const copy = {
     aloneShort:
       "Faites quand même de courtes séparations, pour que la solitude ne soit jamais une surprise plus tard.",
     mealTitle: "Un exemple de journée de repas",
-    meal: "Un {breed} adulte pèse en général environ {kg} kg. À votre niveau d'activité, cela représente près de {kcal} kcal par jour — environ {grams} g de croquettes classiques, en {meals} repas.",
+    meal: "Un chien adulte de race {breed} pèse en général environ {kg} kg. À votre niveau d'activité, cela représente près de {kcal} kcal par jour — environ {grams} g de croquettes classiques, en {meals} repas.",
     mealNote:
       "Une estimation de départ à discuter avec votre vétérinaire, pas une prescription. DoggMatch+ l'ajuste à votre vrai chien et à son alimentation.",
     cta: "Voir ce que contient d'autre DoggMatch+",

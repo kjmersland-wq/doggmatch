@@ -183,7 +183,7 @@ const copy = {
       "Die Sommer können hier heiß werden, und {breed} leidet unter Hitze. Lege Spaziergänge auf früh morgens und abends, mit Schatten und Wasser immer in Reichweite.",
     restricted:
       "{breed} ist in {country} eingeschränkt: Es können besondere Regeln, Erlaubnisse oder ein Wesenstest gelten, und manche Hunde können abgelehnt werden.",
-    permit: "In {country} braucht ein {breed} eine Erlaubnis oder eine Anmeldung bei den Behörden.",
+    permit: "In {country} braucht ein Hund der Rasse {breed} eine Erlaubnis oder eine Anmeldung bei den Behörden.",
     regional:
       "Die Regeln für {breed} hängen in {country} von der Region ab, und manche Regionen führen die Rasse als eingeschränkt.",
     check:
@@ -203,14 +203,14 @@ const copy = {
       warm: "Climat : étés chauds.",
     },
     feelsCold:
-      "Le {breed} craint le froid plus que la plupart. Prévoyez un manteau pour les promenades d'hiver et des sorties plus courtes par grand froid.",
+      "La race {breed} craint le froid plus que la plupart. Prévoyez un manteau pour les promenades d'hiver et des sorties plus courtes par grand froid.",
     feelsHeat:
-      "Les étés peuvent être chauds ici, et le {breed} supporte mal la chaleur. Gardez les promenades pour le petit matin et le soir, avec toujours de l'ombre et de l'eau à portée.",
+      "Les étés peuvent être chauds ici, et la race {breed} supporte mal la chaleur. Gardez les promenades pour le petit matin et le soir, avec toujours de l'ombre et de l'eau à portée.",
     restricted:
-      "Le {breed} est encadré en {country} : des règles particulières, des autorisations ou un test de comportement peuvent s'appliquer, et certains chiens peuvent être refusés.",
-    permit: "En {country}, un {breed} nécessite un permis ou une déclaration auprès des autorités.",
+      "La race {breed} est encadrée en {country} : des règles particulières, des autorisations ou un test de comportement peuvent s'appliquer, et certains chiens peuvent être refusés.",
+    permit: "En {country}, la race {breed} nécessite un permis ou une déclaration auprès des autorités.",
     regional:
-      "Les règles pour le {breed} dépendent de la région en {country}, et certaines régions le classent comme restreint.",
+      "Les règles pour la race {breed} dépendent de la région en {country}, et certaines régions la classent comme restreinte.",
     check:
       "Les règles changent, alors vérifiez les règles locales en vigueur avant de vous décider. Ceci est un repère, pas un conseil juridique.",
   },
@@ -232,11 +232,11 @@ const copy = {
     feelsHeat:
       "De zomers kunnen hier heet worden, en een {breed} heeft het zwaar in de hitte. Houd wandelingen bij vroeg in de ochtend en 's avonds, met schaduw en water altijd in de buurt.",
     restricted:
-      "De {breed} is in {country} aan beperkingen gebonden: er kunnen bijzondere regels, vergunningen of een gedragstest gelden, en sommige honden kunnen worden geweigerd.",
+      "Het ras {breed} is in {country} aan beperkingen gebonden: er kunnen bijzondere regels, vergunningen of een gedragstest gelden, en sommige honden kunnen worden geweigerd.",
     permit:
       "In {country} heeft een {breed} een vergunning of registratie bij de autoriteiten nodig.",
     regional:
-      "De regels voor de {breed} hangen in {country} af van de regio, en sommige regio's zetten het ras op de beperkte lijst.",
+      "De regels voor het ras {breed} hangen in {country} af van de regio, en sommige regio's zetten het ras op de beperkte lijst.",
     check:
       "Regels veranderen, dus controleer de actuele lokale regels voordat je besluit. Dit is een richtlijn, geen juridisch advies.",
   },
