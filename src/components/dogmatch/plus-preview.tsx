@@ -3,6 +3,7 @@ import { interpolate, useCopy } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
 import { estimatePortions } from "@/lib/care/portions";
 import { PURCHASES_ENABLED } from "@/lib/purchases";
+import { track } from "@/lib/track";
 import type { Breed } from "@/data/breeds";
 import type { UserProfile } from "@/lib/matching/types";
 import { Arrow, ButtonLink } from "./ui";
@@ -332,6 +333,7 @@ export function PlusPreview({
           to={withLangPrefix("/plus")}
           hash={PURCHASES_ENABLED ? "membership" : "waitlist"}
           tone="outline"
+          onClick={() => track("plus_preview_click", { source: "quiz_result" })}
         >
           {c.cta}
           <Arrow />

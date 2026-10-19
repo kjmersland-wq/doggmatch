@@ -21,8 +21,11 @@
     else fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body, keepalive: true }).catch(() => {});
   }
   send('pageview');
-  // SPA navigations change the URL without a page load; the app calls this.
-  window.__doggmatchTrack = function() { send('pageview'); };
+  // The app calls this: with no arguments after an SPA navigation (the URL changes
+  // without a page load), or with an event name and a few plain values for an action.
+  window.__doggmatchTrack = function(event, extra) {
+    send(typeof event === 'string' && event ? event : 'pageview', extra && typeof extra === 'object' ? extra : {});
+  };
   document.addEventListener('click', e => {
     const a = e.target.closest('a');
     if (a?.href && a.host !== location.host) send('outbound', { url: a.href });
