@@ -1,4 +1,6 @@
 import type { Breed } from "@/data/breeds";
+import { getLocale, type Locale } from "@/i18n";
+import { prepCopy } from "./prep-copy";
 
 /**
  * Turns the breed trait data we already have into honest preparation notes.
@@ -13,144 +15,62 @@ export interface PrepCard {
   body: string;
 }
 
-const scale = (v: number, words: [string, string, string, string, string]) =>
+const scale = (v: number, words: readonly [string, string, string, string, string]) =>
   words[Math.min(4, Math.max(0, Math.round(v) - 1))]!;
 
-export function prepCards(breed: Breed): PrepCard[] {
+/** The notes for one breed, in the reader's language. Which sentence applies comes from the breed's traits. */
+export function prepCards(breed: Breed, locale: Locale = getLocale()): PrepCard[] {
   const t = breed.traits;
+  const c = prepCopy[locale] ?? prepCopy.en;
+  const withApp = (text: string) => text.replace("{myDog}", c.myDog);
 
   return [
-    {
-      id: "activity",
-      title: "Activity",
-      headline: scale(t.exerciseNeeds, [
-        "Short, gentle walks",
-        "Around an hour a day",
-        "An hour or so, most days",
-        "One to two hours, every day",
-        "Two hours or more, every day",
-      ]),
-      body: "Many dogs of this type settle far better in the house when the walking is regular rather than occasional. Build any distance up slowly, especially with a young or older dog.",
-    },
+    { id: "activity", title: c.titles.activity, headline: scale(t.exerciseNeeds, c.activity), body: c.activityBody },
     {
       id: "training",
-      title: "Training",
-      headline: scale(t.trainability, [
-        "Patience will be needed",
-        "Takes a little persistence",
-        "Learns steadily",
-        "Learns quickly",
-        "Learns very quickly",
-      ]),
-      body: t.trainability >= 4
-        ? "Quick learners pick up the habits you didn't mean to teach just as fast. Short, kind, reward-based sessions from day one."
-        : "Independent thinkers aren't being difficult — they simply need a better reason. Keep sessions short and worth their while.",
+      title: c.titles.training,
+      headline: scale(t.trainability, c.training),
+      body: t.trainability >= 4 ? c.trainingBodyQuick : c.trainingBodyIndependent,
     },
-    {
-      id: "food",
-      title: "Food",
-      headline: scale(t.size, [
-        "A small daily amount",
-        "A modest daily amount",
-        "A moderate daily amount",
-        "A substantial daily amount",
-        "A large daily amount",
-      ]),
-      body: "Weigh meals rather than guessing, and count treats as food. My Dog can work out a starting portion once you know their weight.",
-    },
+    { id: "food", title: c.titles.food, headline: scale(t.size, c.food), body: withApp(c.foodBody) },
     {
       id: "grooming",
-      title: "Grooming",
-      headline: scale(t.grooming, [
-        "Very little upkeep",
-        "An occasional brush",
-        "A regular brush",
-        "Frequent brushing",
-        "Brushing plus professional grooming",
-      ]),
-      body: t.grooming >= 4
-        ? "Coats like this mat if they're left. Getting a puppy used to being handled early makes the next fifteen years far easier."
-        : "Easy-going coats still need nails, ears and teeth looking after — that part is the same for every dog.",
+      title: c.titles.grooming,
+      headline: scale(t.grooming, c.grooming),
+      body: t.grooming >= 4 ? c.groomingBodyHigh : c.groomingBodyLow,
     },
-    {
-      id: "shedding",
-      title: "Shedding",
-      headline: scale(t.shedding, [
-        "Sheds very little",
-        "Sheds lightly",
-        "Sheds moderately",
-        "Sheds a good deal",
-        "Sheds heavily, all year",
-      ]),
-      body: "Lower-shedding breeds are sometimes easier for people with allergies, but no dog is completely allergy-free and reactions vary from person to person.",
-    },
+    { id: "shedding", title: c.titles.shedding, headline: scale(t.shedding, c.shedding), body: c.sheddingBody },
     {
       id: "dental",
-      title: "Dental",
-      headline: t.size <= 2 ? "Worth extra attention" : "Part of the weekly routine",
-      body: t.size <= 2
-        ? "Smaller mouths tend to have more crowded teeth, and dental problems are common in middle age. Daily brushing is the cheapest care there is."
-        : "Brushing a few times a week, started early, saves a great deal of money and discomfort later on.",
+      title: c.titles.dental,
+      headline: t.size <= 2 ? c.dentalSmall : c.dentalLarge,
+      body: t.size <= 2 ? c.dentalBodySmall : c.dentalBodyLarge,
     },
     {
       id: "weight",
-      title: "Weight",
-      headline: t.energy <= 2 ? "Easy to overfeed" : "Keep an eye as they mature",
-      body: "You should be able to feel the ribs easily without pressing. Weight creeps on slowly — a monthly note in My Dog catches it early.",
+      title: c.titles.weight,
+      headline: t.energy <= 2 ? c.weightEasy : c.weightWatch,
+      body: withApp(c.weightBody),
     },
     {
       id: "mental",
-      title: "Mental stimulation",
-      headline: scale(t.mentalStimulation, [
-        "Content with quiet days",
-        "A little variety is plenty",
-        "Needs something to do",
-        "Needs a job most days",
-        "Needs real work to be content",
-      ]),
-      body: t.mentalStimulation >= 4
-        ? "Boredom in this kind of dog usually shows up as noise, chewing or invented jobs. Scentwork, training and puzzles cost you ten minutes and buy hours of calm."
-        : "A sniffy walk, a chew and a bit of training is usually enough to keep this kind of dog settled.",
+      title: c.titles.mental,
+      headline: scale(t.mentalStimulation, c.mental),
+      body: t.mentalStimulation >= 4 ? c.mentalBodyHigh : c.mentalBodyLow,
     },
     {
       id: "home",
-      title: "Home",
-      headline: t.apartmentSuitability >= 4
-        ? "Usually fine in a flat"
-        : t.apartmentSuitability >= 3
-          ? "A flat can work with good walks"
-          : "Happier with more space and daily outdoor time",
-      body: "What matters most is the walking near your door and the hours you keep, not the number of rooms.",
+      title: c.titles.home,
+      headline: t.apartmentSuitability >= 4 ? c.home[0] : t.apartmentSuitability >= 3 ? c.home[1] : c.home[2],
+      body: c.homeBody,
     },
-    {
-      id: "alone",
-      title: "Time alone",
-      headline: scale(t.aloneTolerance, [
-        "Finds being alone hard",
-        "Prefers company most of the day",
-        "Manages a few hours",
-        "Copes well with a normal working morning",
-        "Fairly independent",
-      ]),
-      body: "There's no single maximum that fits every dog. Age, training and temperament all change the answer — and being alone is a skill you teach gradually.",
-    },
-    {
-      id: "social",
-      title: "Social life",
-      headline: scale(t.sociability, [
-        "Reserved with strangers",
-        "Takes a while to warm up",
-        "Friendly once introduced",
-        "Sociable with most people",
-        "Delighted by everyone",
-      ]),
-      body: "Early, calm, positive introductions to people, dogs, traffic and handling shape this more than the breed does.",
-    },
+    { id: "alone", title: c.titles.alone, headline: scale(t.aloneTolerance, c.alone), body: c.aloneBody },
+    { id: "social", title: c.titles.social, headline: scale(t.sociability, c.social), body: c.socialBody },
     {
       id: "health",
-      title: "Health to read up on",
-      headline: `Typically lives ${breed.lifespan[0]}–${breed.lifespan[1]} years`,
-      body: "Every breed has conditions that appear more often than average. Ask a breeder which tests they do and why, or ask a rescue what's known. Your vet is the right person for anything specific.",
+      title: c.titles.health,
+      headline: c.healthHead.replace("{a}", String(breed.lifespan[0])).replace("{b}", String(breed.lifespan[1])),
+      body: c.healthBody,
     },
   ];
 }

@@ -6,7 +6,7 @@ import { breedContent } from "@/data/breed-content";
 import { breedImages, breedOgImages } from "@/data/breed-images";
 import { costRange, prepCards } from "@/lib/getdog/prep";
 import { getDogStore } from "@/lib/getdog/store";
-import { useCopy } from "@/i18n";
+import { useCopy, useLocale } from "@/i18n";
 import { useEffect } from "react";
 import { seoLinks, abs, breadcrumbLd, headLocale, langUrl, ogLocaleTag } from "@/lib/seo";
 import { getDogBreedSeo } from "@/lib/seo/suffixes";
@@ -272,7 +272,8 @@ function BreedPrepPage() {
   const { breedId } = Route.useLoaderData();
   const breed = getBreed(breedId)!;
   const content = breedContent()[breed.id];
-  const cards = prepCards(breed);
+  const { locale } = useLocale();
+  const cards = prepCards(breed, locale);
 
   useEffect(() => {
     getDogStore.setInterest(breed.id);
