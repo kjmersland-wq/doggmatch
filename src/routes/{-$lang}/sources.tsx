@@ -111,6 +111,7 @@ const copy = {
     registryTitle: "The source registry",
     registryBody:
       "Organised by subject. Every entry links to the original source. New sources and review dates are added here as the site grows.",
+    languageNote: "",
     usedOn: "Used on",
     reviewedShort: "Checked",
     addTitle: "Spotted something wrong?",
@@ -170,6 +171,7 @@ const copy = {
     registryTitle: "Kildelisten",
     registryBody:
       "Sortert etter tema. Hver oppføring lenker til originalkilden. Nye kilder og gjennomgangsdatoer legges inn her etter hvert som siden vokser.",
+    languageNote: "",
     usedOn: "Brukes på",
     reviewedShort: "Sjekket",
     addTitle: "Har du funnet noe som er feil?",
@@ -229,6 +231,7 @@ const copy = {
     registryTitle: "Rejestr źródeł",
     registryBody:
       "Uporządkowany według tematu. Każdy wpis linkuje do oryginalnego źródła. Nowe źródła i daty przeglądu są dodawane tutaj w miarę rozwoju strony.",
+    languageNote: "",
     usedOn: "Wykorzystywane w",
     reviewedShort: "Sprawdzono",
     addTitle: "Zauważyłaś/zauważyłeś coś, co jest błędne?",
@@ -288,6 +291,7 @@ const copy = {
     registryTitle: "Kilderegistret",
     registryBody:
       "Sorteret efter emne. Hver post linker til den oprindelige kilde. Nye kilder og gennemgangsdatoer tilføjes her, efterhånden som siden vokser.",
+    languageNote: "Kildelisten nedenfor er på engelsk, som er sproget i de fleste af de originale kilder.",
     usedOn: "Bruges på",
     reviewedShort: "Tjekket",
     addTitle: "Har du fundet noget, der er forkert?",
@@ -347,6 +351,7 @@ const copy = {
     registryTitle: "Källregistret",
     registryBody:
       "Sorterat efter ämne. Varje post länkar till originalkällan. Nya källor och granskningsdatum läggs till här allteftersom sidan växer.",
+    languageNote: "Källistan nedan är på engelska, som är språket i de flesta av originalkällorna.",
     usedOn: "Används på",
     reviewedShort: "Kontrollerat",
     addTitle: "Har du hittat något som är fel?",
@@ -406,6 +411,7 @@ const copy = {
     registryTitle: "Lähderekisteri",
     registryBody:
       "Järjestetty aiheittain. Jokainen merkintä linkittää alkuperäiseen lähteeseen. Uusia lähteitä ja tarkistuspäivämääriä lisätään tänne sivun kasvaessa.",
+    languageNote: "Alla oleva lähdeluettelo on englanniksi, sillä useimmat alkuperäiset lähteet ovat englanninkielisiä.",
     usedOn: "Käytetty sivulla",
     reviewedShort: "Tarkistettu",
     addTitle: "Huomasitko jotain väärää?",
@@ -465,6 +471,7 @@ const copy = {
     registryTitle: "Das Quellenverzeichnis",
     registryBody:
       "Nach Thema geordnet. Jeder Eintrag verlinkt zur Originalquelle. Neue Quellen und Prüfdaten werden hier ergänzt, während die Seite wächst.",
+    languageNote: "Das Quellenverzeichnis unten ist auf Englisch, der Sprache der meisten Originalquellen.",
     usedOn: "Verwendet auf",
     reviewedShort: "Geprüft",
     addTitle: "Etwas Falsches entdeckt?",
@@ -525,6 +532,7 @@ const copy = {
     registryTitle: "Le registre des sources",
     registryBody:
       "Organisé par sujet. Chaque entrée renvoie vers la source d'origine. De nouvelles sources et dates de vérification sont ajoutées ici à mesure que le site évolue.",
+    languageNote: "Le registre des sources ci-dessous est en anglais, langue de la plupart des sources d'origine.",
     usedOn: "Utilisé sur",
     reviewedShort: "Vérifié",
     addTitle: "Tu as repéré une erreur ?",
@@ -584,6 +592,7 @@ const copy = {
     registryTitle: "Het bronnenregister",
     registryBody:
       "Geordend per onderwerp. Elke vermelding linkt naar de oorspronkelijke bron. Nieuwe bronnen en controledatums worden hier toegevoegd naarmate de site groeit.",
+    languageNote: "Het bronnenregister hieronder is in het Engels, de taal van de meeste originele bronnen.",
     usedOn: "Gebruikt op",
     reviewedShort: "Gecontroleerd",
     addTitle: "Iets verkeerds gespot?",
@@ -675,14 +684,27 @@ function SourcesPage() {
       <section className="mt-20">
         <h2 className="font-display text-2xl font-semibold tracking-tight">{c.registryTitle}</h2>
         <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">{c.registryBody}</p>
+        {c.languageNote && (
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            {c.languageNote}
+          </p>
+        )}
 
         <div className="mt-10 space-y-12">
           {categories.map((cat) => (
             <div key={cat.id} id={cat.id} className="scroll-mt-28">
-              <h3 className="font-display text-xl font-semibold tracking-tight text-foreground">
+              <h3
+                lang={c.languageNote ? "en" : undefined}
+                className="font-display text-xl font-semibold tracking-tight text-foreground"
+              >
                 {cat.title}
               </h3>
-              <p className="mt-2 leading-relaxed text-muted-foreground">{cat.blurb}</p>
+              <p
+                lang={c.languageNote ? "en" : undefined}
+                className="mt-2 leading-relaxed text-muted-foreground"
+              >
+                {cat.blurb}
+              </p>
               <p className="mt-2 text-xs uppercase tracking-[0.12em] text-muted-foreground">
                 {c.usedOn}: {cat.usedOn}
               </p>
@@ -697,7 +719,10 @@ function SourcesPage() {
                     >
                       {s.org}
                     </a>
-                    <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                    <p
+                      lang={c.languageNote ? "en" : undefined}
+                      className="mt-1.5 text-[0.9375rem] leading-relaxed text-muted-foreground"
+                    >
                       {s.what}
                     </p>
                     <p className="mt-2 text-xs text-muted-foreground">
