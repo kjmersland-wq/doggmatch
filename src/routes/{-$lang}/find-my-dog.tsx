@@ -585,7 +585,7 @@ import { breedById } from "@/data/breeds";
 import { saveMatchProfile } from "@/lib/matching/store";
 import { matchInsights, scoreReading } from "@/lib/matching/insights";
 import type { BreedTraits } from "@/data/breeds";
-import type { DimensionKey, MatchResult, UserProfile } from "@/lib/matching/types";
+import type { DimensionKey, MatchResult, QuizQuestion, UserProfile } from "@/lib/matching/types";
 import {
   Arrow,
   Badge,
@@ -866,7 +866,7 @@ export const Route = createFileRoute("/{-$lang}/find-my-dog")({
   component: FindMyDogPage,
 });
 
-type Phase = "quiz" | "revealing" | "result";
+type Phase = "quiz" | "checkpoint" | "revealing" | "result";
 
 /**
  * The four high-stakes questions where a reader can mark their answer as
@@ -897,55 +897,105 @@ const CHAPTER_OF: Record<string, "days" | "home" | "limits"> = {
   wellbeing: "limits",
 };
 
+const CHAPTER_ORDER = ["days", "home", "limits"] as const;
+
+/** The same questions, grouped so each chapter is one unbroken run. Stable, so question 1 stays question 1. */
+function orderByChapter(list: QuizQuestion[]): QuizQuestion[] {
+  const rank = (q: QuizQuestion) => CHAPTER_ORDER.indexOf(CHAPTER_OF[q.id] ?? "days");
+  return list
+    .map((q, i) => ({ q, i }))
+    .sort((a, b) => rank(a.q) - rank(b.q) || a.i - b.i)
+    .map(({ q }) => q);
+}
+
+/** The first look at the top three comes after this chapter, once the days and the home are told. */
+const CHECKPOINT_AFTER_CHAPTER = "home";
+
 /** Beat before a single-choice answer moves on by itself. */
 const AUTO_ADVANCE_MS = 250;
 
 const flowCopy = {
   en: {
     chapters: { days: "Your days", home: "Your home", limits: "Your limits" },
+    checkpointEyebrow: "A first look",
+    checkpointTitle: "Your top 3 so far",
+    checkpointBody: "Based on your first {done} answers. The last {left} questions are about your limits, and they can change this list — so treat it as a first look.",
+    checkpointContinue: "Continue — {left} to go",
     hardLimitLabel: "Set as Non-Negotiable (Hard Limit)",
     hardLimitNote:
       "Breeds exceeding this boundary will be strictly eliminated from recommendations.",
   },
   no: {
     chapters: { days: "Dagene dine", home: "Hjemmet ditt", limits: "Grensene dine" },
+    checkpointEyebrow: "Et første blikk",
+    checkpointTitle: "Dine 3 beste så langt",
+    checkpointBody: "Basert på de første {done} svarene dine. De siste {left} spørsmålene handler om grensene dine, og de kan endre listen — så se på dette som et første blikk.",
+    checkpointContinue: "Fortsett — {left} igjen",
     hardLimitLabel: "Sett som ufravikelig grense",
     hardLimitNote: "Raser som går utover denne grensen blir utelukket helt fra forslagene.",
   },
   pl: {
     chapters: { days: "Twoje dni", home: "Twój dom", limits: "Twoje granice" },
+    checkpointEyebrow: "Pierwszy rzut oka",
+    checkpointTitle: "Twoje 3 najlepsze dotąd",
+    checkpointBody: "Na podstawie pierwszych {done} odpowiedzi. Pozostałe {left} pytań dotyczy Twoich granic i może zmienić tę listę — potraktuj to jako pierwszy rzut oka.",
+    checkpointContinue: "Dalej — zostało {left}",
     hardLimitLabel: "Ustaw jako warunek bezwzględny",
     hardLimitNote:
       "Rasy, które nie spełniają tego warunku, zostaną całkowicie wykluczone z rekomendacji.",
   },
   dk: {
     chapters: { days: "Dine dage", home: "Dit hjem", limits: "Dine grænser" },
+    checkpointEyebrow: "Et første blik",
+    checkpointTitle: "Dine 3 bedste indtil videre",
+    checkpointBody: "Baseret på dine første {done} svar. De sidste {left} spørgsmål handler om dine grænser, og de kan ændre listen — så se det som et første blik.",
+    checkpointContinue: "Fortsæt — {left} tilbage",
     hardLimitLabel: "Sæt som ufravigeligt krav",
     hardLimitNote: "Racer, der ikke opfylder dette krav, bliver udelukket helt fra anbefalingerne.",
   },
   se: {
     chapters: { days: "Dina dagar", home: "Ditt hem", limits: "Dina gränser" },
+    checkpointEyebrow: "En första titt",
+    checkpointTitle: "Dina 3 bästa hittills",
+    checkpointBody: "Baserat på dina första {done} svar. De sista {left} frågorna handlar om dina gränser, och de kan ändra listan — så se det som en första titt.",
+    checkpointContinue: "Fortsätt — {left} kvar",
     hardLimitLabel: "Ange som ofrånkomligt krav",
     hardLimitNote: "Raser som inte uppfyller det här kravet utesluts helt från rekommendationerna.",
   },
   fi: {
     chapters: { days: "Päiväsi", home: "Kotisi", limits: "Rajasi" },
+    checkpointEyebrow: "Ensimmäinen katsaus",
+    checkpointTitle: "Kolme parastasi toistaiseksi",
+    checkpointBody: "Perustuu ensimmäisiin {done} vastaukseesi. Viimeiset {left} kysymystä koskevat rajojasi, ja ne voivat muuttaa tätä listaa — pidä tätä ensimmäisenä katsauksena.",
+    checkpointContinue: "Jatka — {left} jäljellä",
     hardLimitLabel: "Aseta ehdottomaksi kriteeriksi",
     hardLimitNote:
       "Rodut, jotka eivät täytä tätä kriteeriä, suljetaan kokonaan pois suosituksista.",
   },
   de: {
     chapters: { days: "Dein Alltag", home: "Dein Zuhause", limits: "Deine Grenzen" },
+    checkpointEyebrow: "Ein erster Blick",
+    checkpointTitle: "Deine Top 3 bisher",
+    checkpointBody: "Basierend auf deinen ersten {done} Antworten. Die letzten {left} Fragen drehen sich um deine Grenzen und können diese Liste verändern — sieh es als ersten Blick.",
+    checkpointContinue: "Weiter — noch {left}",
     hardLimitLabel: "Als Ausschlusskriterium festlegen",
     hardLimitNote: "Rassen, die diese Grenze überschreiten, werden strikt aus den Empfehlungen ausgeschlossen.",
   },
   fr: {
     chapters: { days: "Vos journées", home: "Votre foyer", limits: "Vos limites" },
+    checkpointEyebrow: "Un premier aperçu",
+    checkpointTitle: "Votre top 3 pour l'instant",
+    checkpointBody: "D'après vos {done} premières réponses. Les {left} dernières questions portent sur vos limites et peuvent changer cette liste — voyez-y un premier aperçu.",
+    checkpointContinue: "Continuer — encore {left}",
     hardLimitLabel: "Définir comme critère rédhibitoire",
     hardLimitNote: "Les races dépassant cette limite seront strictement exclues des recommandations.",
   },
   nl: {
     chapters: { days: "Je dagen", home: "Je huis", limits: "Je grenzen" },
+    checkpointEyebrow: "Een eerste blik",
+    checkpointTitle: "Je top 3 tot nu toe",
+    checkpointBody: "Gebaseerd op je eerste {done} antwoorden. De laatste {left} vragen gaan over je grenzen en kunnen deze lijst veranderen — zie het als een eerste blik.",
+    checkpointContinue: "Doorgaan — nog {left}",
     hardLimitLabel: "Instellen als ononderhandelbaar criterium",
     hardLimitNote: "Rassen die deze grens overschrijden, worden volledig uitgesloten van de aanbevelingen.",
   },
@@ -954,7 +1004,7 @@ const flowCopy = {
 function FindMyDogPage() {
   const t = useT();
   const fc = useCopy(flowCopy);
-  const questions = quizQuestions();
+  const questions = orderByChapter(quizQuestions());
   const { r: sharedAnswers, s: startAnswer } = Route.useSearch();
   const shared = useMemo(() => decodeProfile(sharedAnswers, questions), [sharedAnswers]); // eslint-disable-line react-hooks/exhaustive-deps
   const start = useMemo<UserProfile | null>(() => {
@@ -965,6 +1015,7 @@ function FindMyDogPage() {
   const [step, setStep] = useState(!shared && start ? 1 : 0);
   const [profile, setProfile] = useState<UserProfile>(shared ?? start ?? {});
   const [phase, setPhase] = useState<Phase>(shared ? "result" : "quiz");
+  const [checkpointSeen, setCheckpointSeen] = useState(false);
   // A result link opened while already on this page (e.g. "My match" in the header).
   useEffect(() => {
     if (shared) {
@@ -1006,8 +1057,19 @@ function FindMyDogPage() {
   }
 
   function next() {
-    if (step + 1 < total) setStep(step + 1);
-    else setPhase("revealing");
+    if (step + 1 >= total) {
+      setPhase("revealing");
+      return;
+    }
+    const endsCheckpointChapter =
+      CHAPTER_OF[question.id] === CHECKPOINT_AFTER_CHAPTER &&
+      CHAPTER_OF[questions[step + 1]!.id] !== CHECKPOINT_AFTER_CHAPTER;
+    if (endsCheckpointChapter && !checkpointSeen) {
+      setCheckpointSeen(true);
+      setPhase("checkpoint");
+      return;
+    }
+    setStep(step + 1);
   }
 
   function skip() {
@@ -1023,6 +1085,21 @@ function FindMyDogPage() {
     window.scrollTo({ top: 0 });
   }
 
+  if (phase === "checkpoint") {
+    return (
+      <Checkpoint
+        profile={profile}
+        answered={step + 1}
+        total={total}
+        onBack={() => setPhase("quiz")}
+        onContinue={() => {
+          setStep(step + 1);
+          setPhase("quiz");
+          window.scrollTo({ top: 0 });
+        }}
+      />
+    );
+  }
   if (phase === "revealing") return <Reveal onDone={() => setPhase("result")} />;
   if (phase === "result") {
     return (
@@ -1039,7 +1116,7 @@ function FindMyDogPage() {
 
   return (
     <div className="container-page flex min-h-[calc(100vh-72px)] max-w-3xl flex-col py-10 md:py-16">
-      {/* progress */}
+      {/* progress: one bar per chapter, so the quiz reads as three short parts */}
       <div>
         <div className="flex items-baseline justify-between">
           <Eyebrow>{chapter}</Eyebrow>
@@ -1048,17 +1125,40 @@ function FindMyDogPage() {
           </p>
         </div>
         <div
-          className="mt-4 h-[3px] w-full overflow-hidden rounded-full bg-surface-strong"
+          className="mt-4 flex gap-1.5"
           role="progressbar"
           aria-valuenow={progress}
           aria-valuemin={0}
           aria-valuemax={100}
           aria-label={t.quiz.progress}
         >
-          <div
-            className="h-full rounded-full bg-accent transition-[width] duration-500 ease-out"
-            style={{ width: `${progress}%` }}
-          />
+          {CHAPTER_ORDER.map((id) => {
+            const indexes = questions.flatMap((q, i) => (CHAPTER_OF[q.id] === id ? [i] : []));
+            const first = indexes[0] ?? 0;
+            const filled = Math.min(
+              indexes.length,
+              Math.max(0, step + (selected ? 1 : 0) - first),
+            );
+            const current = CHAPTER_OF[question.id] === id;
+            return (
+              <div key={id} className="min-w-0 basis-0" style={{ flexGrow: indexes.length }}>
+                <div className="h-[3px] overflow-hidden rounded-full bg-surface-strong">
+                  <div
+                    className="h-full rounded-full bg-accent transition-[width] duration-500 ease-out"
+                    style={{ width: `${(filled / Math.max(1, indexes.length)) * 100}%` }}
+                  />
+                </div>
+                <p
+                  className={cn(
+                    "mt-2 truncate text-xs",
+                    current ? "font-medium text-foreground" : "text-muted-foreground",
+                  )}
+                >
+                  {fc.chapters[id]}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -1171,6 +1271,69 @@ function FindMyDogPage() {
         )}
         <Button size="lg" className="ml-auto" disabled={!selected} onClick={next}>
           {step + 1 === total ? t.quiz.seeResult : t.quiz.continue}
+          <Arrow />
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------- The first look */
+
+/** A provisional top three, shown once the days and the home are told. The limits still to come can change it. */
+function Checkpoint({
+  profile,
+  answered,
+  total,
+  onBack,
+  onContinue,
+}: {
+  profile: UserProfile;
+  answered: number;
+  total: number;
+  onBack: () => void;
+  onContinue: () => void;
+}) {
+  const t = useT();
+  const fc = useCopy(flowCopy);
+  const top = useMemo(() => matchBreedRanking(profile).matches.slice(0, 3), [profile]);
+  const left = total - answered;
+
+  return (
+    <div className="container-page flex min-h-[calc(100vh-72px)] max-w-3xl flex-col py-10 md:py-16">
+      <div className="animate-rise flex-1">
+        <Eyebrow>{fc.checkpointEyebrow}</Eyebrow>
+        <h1 className="display-lg mt-4">{fc.checkpointTitle}</h1>
+        <p className="mt-4 max-w-xl text-[0.9375rem] leading-relaxed text-muted-foreground">
+          {interpolate(fc.checkpointBody, { done: answered, left })}
+        </p>
+        <ol className="mt-10 grid grid-cols-3 gap-3 sm:gap-5">
+          {top.map((match, index) => (
+            <li key={match.breedId} className="min-w-0">
+              <div className="overflow-hidden rounded-[1.25rem]">
+                <img
+                  src={breedImages[match.breedId]}
+                  alt={breedContent()[match.breedId].displayName}
+                  width={1024}
+                  height={1280}
+                  className="aspect-[4/5] w-full object-cover"
+                />
+              </div>
+              <p className="mt-3 text-xs tabular-nums text-muted-foreground">{index + 1}</p>
+              <p className="font-display text-base leading-tight tracking-tight">
+                {breedContent()[match.breedId].displayName}
+              </p>
+              <p className="mt-1 font-display text-sm tabular-nums text-accent">{match.score}%</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div className="sticky bottom-20 mt-12 flex items-center gap-3 border-t border-border bg-background/90 py-5 backdrop-blur-xl lg:bottom-0">
+        <Button tone="ghost" onClick={onBack}>
+          {t.quiz.back}
+        </Button>
+        <Button size="lg" className="ml-auto" onClick={onContinue}>
+          {interpolate(fc.checkpointContinue, { left })}
           <Arrow />
         </Button>
       </div>
