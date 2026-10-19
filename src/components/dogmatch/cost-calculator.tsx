@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useCopy, useLocale, INTL_LOCALE } from "@/i18n";
+import { useCopy } from "@/i18n";
+import { useMoney } from "@/hooks/use-country";
 import { cn } from "@/lib/utils";
 import type { Breed } from "@/data/breeds";
 import {
@@ -155,7 +156,7 @@ const copy = {
       buffer: "Buffer voor onverwachte kosten",
     } as Record<CostLineId, string>,
     total: "Jouw waarschijnlijke jaarlijkse kosten",
-    perMonth: "ongeveer €{amount} per maand",
+    perMonth: "ongeveer {amount} per maand",
     note: "Werkelijke kosten variëren per land, per formaat en eetlust van je eigen hond, en per gezondheid. Ziekte, tandheelkundige zorg en noodgevallen kunnen ruim boven dit bereik uitkomen, daarom is de buffer er überhaupt.",
   },
   no: {
@@ -202,17 +203,6 @@ const copy = {
   },
 } as const;
 
-/** Euro is the shared base currency; separators follow the reader's language. */
-function useEuro() {
-  const { locale } = useLocale();
-  const fmt = new Intl.NumberFormat(INTL_LOCALE[locale], {
-    style: "currency",
-    currency: "EUR",
-    maximumFractionDigits: 0,
-  });
-  return (n: number) => fmt.format(Math.round(n));
-}
-
 function Chip({
   active,
   children,
@@ -237,7 +227,7 @@ function Chip({
 
 export function CostCalculator({ breed, className }: { breed: Breed; className?: string }) {
   const c = useCopy(copy);
-  const euro = useEuro();
+  const euro = useMoney();
   const [options, setOptions] = useState<CostOptions>(DEFAULT_COST_OPTIONS);
   const estimate = yearlyCost(breed, options);
   const set = (patch: Partial<CostOptions>) => setOptions((o) => ({ ...o, ...patch }));

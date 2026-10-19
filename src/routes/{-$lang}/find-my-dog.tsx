@@ -48,11 +48,8 @@ const resultCopy = {
     thirtyDaysTitle: "Your First 30 Days with a {breed}",
     budgetTitle: "Estimated setup budget",
     budgetGear: "Initial gear — bed, crate, lead, bowls, toys",
-    budgetGearRange: "€150–350",
     budgetVet: "First vet visit, vaccinations & microchipping",
-    budgetVetRange: "€80–180",
     budgetInsurance: "First month of pet insurance",
-    budgetInsuranceRange: "€15–40",
     budgetNote:
       "A general starting point — actual costs vary by country, breeder and vet practice.",
     checklistTitle: "Home-prep checklist",
@@ -113,11 +110,8 @@ const resultCopy = {
     thirtyDaysTitle: "De første 30 dagene sammen med en {breed}",
     budgetTitle: "Anslått oppstartsbudsjett",
     budgetGear: "Startutstyr — seng, bur, bånd, boller, leker",
-    budgetGearRange: "150–350 €",
     budgetVet: "Første veterinærbesøk, vaksiner og ID-merking",
-    budgetVetRange: "80–180 €",
     budgetInsurance: "Første måned med forsikring",
-    budgetInsuranceRange: "15–40 €",
     budgetNote:
       "Et generelt utgangspunkt — faktiske kostnader varierer med land, oppdretter og veterinær.",
     checklistTitle: "Sjekkliste for hjemmet",
@@ -179,11 +173,8 @@ const resultCopy = {
     thirtyDaysTitle: "Wasze pierwsze 30 dni razem z {breed}",
     budgetTitle: "Szacowany budżet startowy",
     budgetGear: "Podstawowy sprzęt — legowisko, kojec, smycz, miski, zabawki",
-    budgetGearRange: "150–350 €",
     budgetVet: "Pierwsza wizyta u weterynarza, szczepienia i czipowanie",
-    budgetVetRange: "80–180 €",
     budgetInsurance: "Pierwszy miesiąc ubezpieczenia",
-    budgetInsuranceRange: "15–40 €",
     budgetNote: "Ogólny punkt wyjścia — rzeczywiste koszty zależą od kraju, hodowcy i weterynarza.",
     checklistTitle: "Lista przygotowań w domu",
     checklistItems: [
@@ -243,11 +234,8 @@ const resultCopy = {
     thirtyDaysTitle: "De første 30 dage sammen med en {breed}",
     budgetTitle: "Anslået startbudget",
     budgetGear: "Startudstyr — seng, bur, snor, skåle, legetøj",
-    budgetGearRange: "150–350 €",
     budgetVet: "Første dyrlægebesøg, vaccinationer og chipmærkning",
-    budgetVetRange: "80–180 €",
     budgetInsurance: "Første måned med forsikring",
-    budgetInsuranceRange: "15–40 €",
     budgetNote:
       "Et generelt udgangspunkt — de reelle omkostninger varierer med land, opdrætter og dyrlæge.",
     checklistTitle: "Tjekliste til hjemmet",
@@ -309,11 +297,8 @@ const resultCopy = {
     thirtyDaysTitle: "De första 30 dagarna tillsammans med en {breed}",
     budgetTitle: "Uppskattad startbudget",
     budgetGear: "Startutrustning — säng, bur, koppel, skålar, leksaker",
-    budgetGearRange: "150–350 €",
     budgetVet: "Första veterinärbesöket, vaccinationer och id-märkning",
-    budgetVetRange: "80–180 €",
     budgetInsurance: "Första månadens försäkring",
-    budgetInsuranceRange: "15–40 €",
     budgetNote:
       "En generell utgångspunkt — de faktiska kostnaderna varierar med land, uppfödare och veterinär.",
     checklistTitle: "Checklista för hemmet",
@@ -376,11 +361,8 @@ const resultCopy = {
     thirtyDaysTitle: "Ensimmäiset 30 yhteistä päivää — {breed}",
     budgetTitle: "Arvioitu aloitusbudjetti",
     budgetGear: "Perusvarusteet — peti, häkki, hihna, ruokakupit, lelut",
-    budgetGearRange: "150–350 €",
     budgetVet: "Ensimmäinen eläinlääkärikäynti, rokotukset ja mikrosirutus",
-    budgetVetRange: "80–180 €",
     budgetInsurance: "Ensimmäinen kuukausi vakuutusta",
-    budgetInsuranceRange: "15–40 €",
     budgetNote:
       "Yleinen lähtökohta — todelliset kustannukset vaihtelevat maan, kasvattajan ja eläinlääkärin mukaan.",
     checklistTitle: "Kodin valmistelun tarkistuslista",
@@ -437,11 +419,8 @@ const resultCopy = {
     thirtyDaysTitle: "Ihre ersten 30 Tage mit einem {breed}",
     budgetTitle: "Geschätztes Startbudget",
     budgetGear: "Erstausstattung — Bett, Box, Leine, Näpfe, Spielzeug",
-    budgetGearRange: "150–350 €",
     budgetVet: "Erster Tierarztbesuch, Impfungen & Chippen",
-    budgetVetRange: "80–180 €",
     budgetInsurance: "Erster Monat Hundeversicherung",
-    budgetInsuranceRange: "15–40 €",
     budgetNote: "Ein allgemeiner Ausgangspunkt — die tatsächlichen Kosten variieren je nach Land, Züchter und Tierarztpraxis.",
     checklistTitle: "Checkliste zur Vorbereitung zu Hause",
     checklistItems: [
@@ -497,11 +476,8 @@ const resultCopy = {
     thirtyDaysTitle: "Vos 30 premiers jours avec un {breed}",
     budgetTitle: "Budget de départ estimé",
     budgetGear: "Équipement initial — couchage, caisse, laisse, gamelles, jouets",
-    budgetGearRange: "150–350 €",
     budgetVet: "Première visite vétérinaire, vaccins et puce électronique",
-    budgetVetRange: "80–180 €",
     budgetInsurance: "Premier mois d'assurance",
-    budgetInsuranceRange: "15–40 €",
     budgetNote: "Un point de départ général — les coûts réels varient selon le pays, l'éleveur et le cabinet vétérinaire.",
     checklistTitle: "Liste de préparation du logement",
     checklistItems: [
@@ -557,11 +533,8 @@ const resultCopy = {
     thirtyDaysTitle: "Uw eerste 30 dagen met een {breed}",
     budgetTitle: "Geschat opstartbudget",
     budgetGear: "Startuitrusting — mand, bench, riem, bakken, speelgoed",
-    budgetGearRange: "€150–350",
     budgetVet: "Eerste dierenartsbezoek, vaccinaties & chippen",
-    budgetVetRange: "€80–180",
     budgetInsurance: "Eerste maand huisdierenverzekering",
-    budgetInsuranceRange: "€15–40",
     budgetNote: "Een algemeen uitgangspunt — de werkelijke kosten variëren per land, fokker en dierenartspraktijk.",
     checklistTitle: "Checklist voorbereiding thuis",
     checklistItems: [
@@ -636,6 +609,8 @@ import { MatchNotes } from "@/components/dogmatch/match-notes";
 import { CostCalculator } from "@/components/dogmatch/cost-calculator";
 import { MixMatcher } from "@/components/dogmatch/mix-matcher";
 import { PlusPreview } from "@/components/dogmatch/plus-preview";
+import { CountryPicker, RegionNotes } from "@/components/dogmatch/region-panel";
+import { useMoney } from "@/hooks/use-country";
 
 import { JourneyLinks } from "@/components/dogmatch/journey-links";
 import { cn } from "@/lib/utils";
@@ -1086,6 +1061,8 @@ function FindMyDogPage() {
           />
         </div>
       </div>
+
+      {step === 0 && <CountryPicker className="mt-8 block max-w-xs" />}
 
       <div key={question.id} className="animate-rise mt-12 flex-1 md:mt-16">
         <p className="eyebrow">{question.eyebrow}</p>
@@ -1548,9 +1525,18 @@ function MatchBreakdown({
   );
 }
 
+/** Typical first-month spend in euro; shown in the reader's own currency. */
+const BUDGET = {
+  gear: [150, 350],
+  vet: [80, 180],
+  insurance: [15, 40],
+} as const;
+
 /** A collapsed-by-default drawer with the concrete first steps for one breed. */
 function FirstThirtyDays({ breedName }: { breedName: string }) {
   const c = useCopy(resultCopy);
+  const money = useMoney();
+  const range = ([low, high]: readonly [number, number]) => `${money(low)}–${money(high)}`;
   const [open, setOpen] = useState(false);
 
   return (
@@ -1579,19 +1565,19 @@ function FirstThirtyDays({ breedName }: { breedName: string }) {
             <li className="flex items-baseline justify-between gap-4 text-[0.9375rem]">
               <span>{c.budgetGear}</span>
               <span className="shrink-0 font-display tabular-nums text-muted-foreground">
-                {c.budgetGearRange}
+                {range(BUDGET.gear)}
               </span>
             </li>
             <li className="flex items-baseline justify-between gap-4 text-[0.9375rem]">
               <span>{c.budgetVet}</span>
               <span className="shrink-0 font-display tabular-nums text-muted-foreground">
-                {c.budgetVetRange}
+                {range(BUDGET.vet)}
               </span>
             </li>
             <li className="flex items-baseline justify-between gap-4 text-[0.9375rem]">
               <span>{c.budgetInsurance}</span>
               <span className="shrink-0 font-display tabular-nums text-muted-foreground">
-                {c.budgetInsuranceRange}
+                {range(BUDGET.insurance)}
               </span>
             </li>
           </ul>
@@ -1809,6 +1795,11 @@ function Results({
           </p>
         </section>
       )}
+
+      {/* what the reader's country changes: currency, climate, breed rules */}
+      <section className="container-page mt-10 md:mt-12">
+        <RegionNotes breed={best.breed} breedName={content.displayName} />
+      </section>
 
       {/* what to do with the match: profile, compare, keep, share */}
       <section className="container-page mt-10 md:mt-12">
