@@ -1,6 +1,6 @@
 import { pick, type Locale } from "@/i18n";
 
-/** DoggMatch+ plans. Creem product IDs come from CREEM_PRODUCT_* env vars on the server. */
+/** DoggMatch+ plans. Stripe price IDs (lookup keys) live in plus.functions.ts. */
 export type PlanId = "monthly" | "yearly";
 
 export const PLUS_PLANS: Record<PlanId, { label: string }> = {

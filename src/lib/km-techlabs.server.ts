@@ -1,19 +1,19 @@
-// Forwards verified Creem events to KM TECH LABS (km-techlabs.com).
+// Forwards verified Stripe payment events to KM TECH LABS (km-techlabs.com).
 // Matches the receiver at /api/public/ingest/payments: Bearer auth with the
 // shared secret DOGGMATCH_INGEST_SECRET, one event per POST.
-// Never throws: a failed forward must not make Creem retry the webhook.
+// Never throws: a failed forward must not make Stripe retry the webhook.
 
 const DEFAULT_URL = "https://www.km-techlabs.com/api/public/ingest/payments";
 
 type IngestType = "payment" | "discount" | "subscription_created" | "subscription_canceled";
 
 function mapType(eventType: string): IngestType {
-  if (eventType === "subscription.canceled" || eventType === "subscription.expired") return "subscription_canceled";
-  if (eventType === "subscription.active") return "subscription_created";
-  return "payment"; // checkout.completed, subscription.paid, refund.created, ...
+  if (eventType === "customer.subscription.deleted") return "subscription_canceled";
+  if (eventType === "customer.subscription.created") return "subscription_created";
+  return "payment"; // checkout.session.completed, invoice.paid, ...
 }
 
-// Creem amounts are in minor units (cents); the receiver stores major units.
+// Stripe amounts are in minor units (cents); the receiver stores major units.
 function toMajor(minor: unknown): number {
   const n = Number(minor);
   return Number.isFinite(n) ? n / 100 : 0;
@@ -22,28 +22,32 @@ function toMajor(minor: unknown): number {
 const idOf = (v: any): string | undefined => (typeof v === "string" ? v : (v?.id ?? undefined));
 
 export async function forwardToKmTechlabs(
-  event: { id?: string; eventType: string; created_at?: number | string; object?: any },
+  event: { id?: string; type: string; created?: number; data?: { object?: any } },
   _env: string,
 ) {
   try {
-    const obj = event.object ?? {};
-    const order = obj.order ?? obj.last_transaction ?? obj.transaction ?? {};
-    const product = obj.product ?? obj.subscription?.product;
-    const discountTotal = toMajor(order.discount_amount ?? order.discount ?? 0);
-    const type = mapType(event.eventType);
-    const occurred =
-      typeof event.created_at === "number" ? new Date(event.created_at).toISOString() : (event.created_at ?? new Date().toISOString());
+    const obj = event.data?.object ?? {};
+    const type = mapType(event.type);
+
+    // Amount/discount/currency differ per object kind: checkout sessions and
+    // invoices carry totals; subscriptions carry the price on the first item.
+    const item = obj.items?.data?.[0];
+    const amount = toMajor(obj.amount_total ?? obj.amount_paid ?? item?.price?.unit_amount ?? 0);
+    const discountTotal = toMajor(obj.total_details?.amount_discount ?? obj.discount?.coupon?.percent_off ? 0 : 0);
+    const currency = String(obj.currency ?? item?.price?.currency ?? "EUR").toUpperCase();
+    const plan = obj.metadata?.plan ?? item?.price?.lookup_key ?? item?.price?.id ?? null;
+    const occurred = typeof event.created === "number" ? new Date(event.created * 1000).toISOString() : new Date().toISOString();
 
     const payload = {
       site: "doggmatch.com",
-      id: event.id ?? obj.id ?? `${event.eventType}-${Date.now()}`,
+      id: event.id ?? obj.id ?? `${event.type}-${Date.now()}`,
       type,
-      status: String(obj.status ?? event.eventType),
-      amount: toMajor(order.amount_paid ?? order.amount ?? 0),
+      status: String(obj.status ?? event.type),
+      amount,
       discount: discountTotal,
-      currency: String(order.currency ?? (typeof product === "object" ? product?.currency : undefined) ?? "EUR").toUpperCase(),
+      currency,
       customer: idOf(obj.customer),
-      plan: typeof product === "object" ? (product?.name ?? product?.id) : product,
+      plan,
       occurred_at: occurred,
     };
 

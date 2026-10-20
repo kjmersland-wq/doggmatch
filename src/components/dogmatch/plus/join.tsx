@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { createPlusCheckout } from "@/lib/plus/creem.functions";
+import { createPlusCheckout } from "@/lib/plus/plus.functions";
 import type { PlanId } from "@/lib/plus/plans";
 import { useMembership } from "@/hooks/use-membership";
 import { readPartnerCode } from "@/components/dogmatch/plus/partner-code";
+import { StripeEmbeddedCheckout } from "@/components/StripeEmbeddedCheckout";
+import { getStripeEnvironment } from "@/lib/stripe";
 import { cn } from "@/lib/utils";
 import { useCopy, useLocale } from "@/i18n";
 import { withLangPrefix } from "@/lib/localized-path";
 import { PURCHASES_ENABLED, purchasesPausedCopy } from "@/lib/purchases";
-
 
 type Props = {
   plan: PlanId;
@@ -25,6 +26,7 @@ const copy = {
     already: "You're already a member",
     signInToJoin: "Sign in to join",
     join: "Join DoggMatch+",
+    close: "Close",
     error: "We couldn't open the payment page just then. Please try again.",
   },
   no: {
@@ -33,6 +35,7 @@ const copy = {
     already: "Du er allerede medlem",
     signInToJoin: "Logg inn for å bli medlem",
     join: "Bli DoggMatch+-medlem",
+    close: "Lukk",
     error: "Vi klarte ikke å åpne betalingssiden akkurat nå. Prøv gjerne igjen.",
   },
   pl: {
@@ -41,6 +44,7 @@ const copy = {
     already: "Jesteś już członkiem",
     signInToJoin: "Zaloguj się, by dołączyć",
     join: "Dołącz do DoggMatch+",
+    close: "Zamknij",
     error: "Nie udało się teraz otworzyć strony płatności. Spróbuj ponownie.",
   },
   dk: {
@@ -49,6 +53,7 @@ const copy = {
     already: "Du er allerede medlem",
     signInToJoin: "Log ind for at blive medlem",
     join: "Bliv DoggMatch+-medlem",
+    close: "Luk",
     error: "Vi kunne ikke åbne betalingssiden lige nu. Prøv venligst igen.",
   },
   se: {
@@ -57,6 +62,7 @@ const copy = {
     already: "Du är redan medlem",
     signInToJoin: "Logga in för att gå med",
     join: "Bli DoggMatch+-medlem",
+    close: "Stäng",
     error: "Vi kunde inte öppna betalsidan just nu. Försök gärna igen.",
   },
   fi: {
@@ -65,6 +71,7 @@ const copy = {
     already: "Olet jo jäsen",
     signInToJoin: "Kirjaudu sisään liittyäksesi",
     join: "Liity DoggMatch+:aan",
+    close: "Sulje",
     error: "Emme juuri nyt saaneet avattua maksusivua. Yritä uudelleen.",
   },
   de: {
@@ -73,6 +80,7 @@ const copy = {
     already: "Du bist bereits Mitglied",
     signInToJoin: "Melde dich an, um beizutreten",
     join: "DoggMatch+ beitreten",
+    close: "Schließen",
     error: "Wir konnten die Zahlungsseite gerade nicht öffnen. Bitte versuch es noch einmal.",
   },
   fr: {
@@ -81,6 +89,7 @@ const copy = {
     already: "Vous êtes déjà membre",
     signInToJoin: "Connectez-vous pour adhérer",
     join: "Rejoindre DoggMatch+",
+    close: "Fermer",
     error: "Nous n'avons pas pu ouvrir la page de paiement pour le moment. Merci de réessayer.",
   },
   nl: {
@@ -89,11 +98,12 @@ const copy = {
     already: "Je bent al lid",
     signInToJoin: "Log in om lid te worden",
     join: "Word lid van DoggMatch+",
+    close: "Sluiten",
     error: "We konden de betaalpagina nu niet openen. Probeer het opnieuw.",
   },
 } as const;
 
-/** Takes someone from the pricing card straight into Creem checkout. */
+/** Takes someone from the pricing card straight into secure checkout. */
 export function JoinPlusButton({ plan, tone = "primary", label, className }: Props) {
   const c = useCopy(copy);
   const p = useCopy(purchasesPausedCopy);
@@ -103,6 +113,7 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
   const { membership, signedIn, loading } = useMembership();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
 
   const already = membership.subscribed;
 
@@ -119,21 +130,19 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
     setBusy(true);
     try {
       const successPath = locale === "en" ? "/checkout/success" : `/${locale}/checkout/success`;
-      const { url } = await startCheckout({ data: { plan, code: readPartnerCode(), successPath } });
-      window.location.assign(url);
+      const result = await startCheckout({
+        data: { plan, code: readPartnerCode(), successPath, environment: getStripeEnvironment() },
+      });
+      if ("error" in result) throw new Error(result.error);
+      setClientSecret(result.clientSecret);
     } catch {
       setError(c.error);
+    } finally {
       setBusy(false);
     }
   }
 
-  const text = busy
-    ? c.opening
-    : already
-      ? c.already
-      : !signedIn
-        ? c.signInToJoin
-        : (label ?? c.join);
+  const text = busy ? c.opening : already ? c.already : !signedIn ? c.signInToJoin : (label ?? c.join);
 
   const paused = !PURCHASES_ENABLED && !already;
 
@@ -176,6 +185,25 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
         <p role="alert" className="mt-3 text-sm leading-relaxed text-accent">
           {error}
         </p>
+      )}
+
+      {clientSecret && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-foreground/60 p-4 backdrop-blur-sm sm:items-center"
+        >
+          <div className="relative w-full max-w-2xl rounded-3xl bg-background p-4 shadow-2xl sm:p-6">
+            <button
+              type="button"
+              onClick={() => setClientSecret(null)}
+              className="absolute right-4 top-4 z-10 rounded-full border border-border bg-background px-4 py-2 text-sm hover:bg-surface"
+            >
+              {c.close}
+            </button>
+            <StripeEmbeddedCheckout clientSecret={clientSecret} />
+          </div>
+        </div>
       )}
     </div>
   );

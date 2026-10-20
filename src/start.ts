@@ -4,9 +4,9 @@ import { renderErrorPage } from "./lib/error-page";
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://km-techlabs.com https://www.km-techlabs.com",
-  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://km-techlabs.com https://www.km-techlabs.com",
-  "frame-src 'self' https://challenges.cloudflare.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://km-techlabs.com https://www.km-techlabs.com https://js.stripe.com",
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://km-techlabs.com https://www.km-techlabs.com https://api.stripe.com https://m.stripe.network https://r.stripe.com",
+  "frame-src 'self' https://challenges.cloudflare.com https://js.stripe.com https://checkout.stripe.com",
   "img-src 'self' data: blob: https:",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com",
   "font-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com",

@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { getMembership } from "@/lib/plus/creem.functions";
-import type { MembershipStatus } from "@/lib/plus/creem.functions";
+import { getMembership } from "@/lib/plus/plus.functions";
+import type { MembershipStatus } from "@/lib/plus/plus.functions";
+import { getStripeEnvironment } from "@/lib/stripe";
 import { useAuth } from "./use-auth";
 
 const none: MembershipStatus = {
@@ -19,7 +20,7 @@ export function useMembership() {
 
   const query = useQuery({
     queryKey: ["membership", user?.id ?? "anonymous"],
-    queryFn: () => fetchMembership(),
+    queryFn: () => fetchMembership({ data: { environment: getStripeEnvironment() } }),
     enabled: Boolean(user),
     staleTime: 30_000,
   });
