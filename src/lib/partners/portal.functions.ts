@@ -148,8 +148,8 @@ export const issuePartnerCode = createServerFn({ method: "POST" })
     if (row.status !== "approved") return { ok: false, message: "not-approved" };
     if (row.code) return { ok: true, code: row.code };
 
-    // The 25% benefit itself is a shared Creem discount applied at checkout
-    // when a valid partner code is entered — no per-partner promo codes needed.
+    // The 25% benefit itself is a shared Stripe promotion code applied at
+    // checkout when a valid partner code is entered — no per-partner codes needed.
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const code = codeFor(row.company);
 
