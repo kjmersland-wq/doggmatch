@@ -19,6 +19,7 @@ import { SiteHeader } from "@/components/dogmatch/site-header";
 import { SiteFooter } from "@/components/dogmatch/site-footer";
 import { MobileTabs } from "@/components/dogmatch/mobile-tabs";
 import { withLangPrefix } from "@/lib/localized-path";
+import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
 
 const shellCopy = {
   en: {
@@ -332,6 +333,7 @@ function RootBody({ queryClient }: { queryClient: QueryClient }) {
     <QueryClientProvider client={queryClient}>
       <LocaleProvider initialLocale={initialLocale}>
         <SkipLink />
+        <PaymentTestModeBanner />
         <SiteHeader />
         <main id="main" className="pb-20 pt-[72px] print:p-0 lg:pb-0">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
