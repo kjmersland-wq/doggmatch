@@ -1,4 +1,4 @@
-const clientToken = import.meta.env.VITE_PAYMENTS_CLIENT_TOKEN;
+const clientToken = import.meta.env["VITE_PAYMENTS_CLIENT_TOKEN"];
 
 /** Test-mode notice for the preview; renders nothing once live keys are in place. */
 export function PaymentTestModeBanner() {

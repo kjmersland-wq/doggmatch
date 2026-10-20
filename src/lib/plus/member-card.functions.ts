@@ -20,9 +20,12 @@ export type CardCheck =
  */
 export const getMyMemberCard = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((data?: { name?: string }) => ({ name: data?.name?.slice(0, 60) ?? "" }))
+  .inputValidator((data?: { name?: string; environment?: "sandbox" | "live" }) => ({
+    name: data?.name?.slice(0, 60) ?? "",
+    environment: data?.environment === "live" ? ("live" as const) : ("sandbox" as const),
+  }))
   .handler(async ({ data, context }): Promise<MemberCard | null> => {
-    const membership = await getMembership();
+    const membership = await getMembership({ data: { environment: data.environment } });
     if (!membership.subscribed) return null;
 
     const { makeMemberId, nameFor } = await import("./member-card.server");

@@ -6,6 +6,7 @@ import { ArrowLeft, Printer } from "lucide-react";
 import { Button, ButtonLink } from "@/components/dogmatch/ui";
 import { MemberCardBack, MemberCardFront } from "@/components/dogmatch/plus/member-card";
 import { getMyMemberCard } from "@/lib/plus/member-card.functions";
+import { getStripeEnvironment } from "@/lib/stripe";
 import { useAuth } from "@/hooks/use-auth";
 import { useMyDog } from "@/lib/care/store";
 import { useDogDetails } from "@/lib/care/records";
@@ -190,7 +191,7 @@ function MemberCardPage() {
 
   const { data, isLoading } = useQuery({
     queryKey: ["member-card", user?.id ?? "anonymous"],
-    queryFn: () => fetchCard({ data: {} }),
+    queryFn: () => fetchCard({ data: { environment: getStripeEnvironment() } }),
     enabled: Boolean(user),
   });
 
