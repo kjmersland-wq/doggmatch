@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { ButtonLink, Arrow, Eyebrow, Section } from "@/components/dogmatch/ui";
-import { confirmPartnerReferral } from "@/lib/plus/creem.functions";
+import { confirmPartnerReferral } from "@/lib/plus/plus.functions";
 import { PARTNER_CODE_KEY } from "@/components/dogmatch/plus/partner-code";
 import { useMembership } from "@/hooks/use-membership";
 import { useCopy } from "@/i18n";
