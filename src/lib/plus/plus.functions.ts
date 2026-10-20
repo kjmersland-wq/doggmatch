@@ -1,5 +1,4 @@
 import { createServerFn } from "@tanstack/react-start";
-import { trustedOrigin } from "@/lib/trusted-origin";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import type { PlanId } from "./plans";
 import { founderEmailFromClaims, isFounderEmail } from "./founder";
@@ -45,13 +44,14 @@ async function resolveOrCreateCustomer(
       query: `metadata['userId']:'${options.userId}'`,
       limit: 1,
     });
-    if (found.data.length) return found.data[0].id;
+    const hit = found.data[0];
+    if (hit) return hit.id;
   }
   if (options.email) {
     const existing = await stripe.customers.list({ email: options.email, limit: 1 });
-    if (existing.data.length) {
-      const customer = existing.data[0];
-      if (options.userId && customer.metadata?.userId !== options.userId) {
+    const customer = existing.data[0];
+    if (customer) {
+      if (options.userId && customer.metadata?.["userId"] !== options.userId) {
         await stripe.customers.update(customer.id, {
           metadata: { ...customer.metadata, userId: options.userId },
         });
@@ -74,7 +74,8 @@ async function ensurePartnerPromotionCode(
   stripe: ReturnType<typeof import("@/lib/stripe.server").createStripeClient>,
 ): Promise<string> {
   const existing = await stripe.promotionCodes.list({ code: PARTNER_DISCOUNT_CODE, limit: 1 });
-  if (existing.data.length) return existing.data[0].id;
+  const promo0 = existing.data[0];
+  if (promo0) return promo0.id;
 
   let couponId: string;
   try {
@@ -150,15 +151,16 @@ export const createPlusCheckout = createServerFn({ method: "POST" })
       const stripe = createStripeClient(data.environment);
 
       const prices = await stripe.prices.list({ lookup_keys: [PRICE_FOR_PLAN[data.plan]] });
-      if (!prices.data.length) throw new Error("Price not found");
       const stripePrice = prices.data[0];
+      if (!stripePrice) throw new Error("Price not found");
 
       const customerId = await resolveOrCreateCustomer(stripe, {
-        email: email ?? undefined,
+        ...(email ? { email } : {}),
         userId: context.userId,
       });
 
       const promotionCodeId = partnerId ? await ensurePartnerPromotionCode(stripe) : null;
+      const { trustedOrigin } = await import("@/lib/trusted-origin");
 
       const session = await stripe.checkout.sessions.create({
         line_items: [{ price: stripePrice.id, quantity: 1 }],
@@ -326,8 +328,3 @@ export const openBillingPortal = createServerFn({ method: "POST" })
       return { error: getStripeErrorMessage(error) };
     }
   });
-
-/** Trusted origin helper kept for success/cancel URLs built elsewhere. */
-export function originOf(): string {
-  return trustedOrigin();
-}
