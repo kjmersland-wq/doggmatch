@@ -1,8 +1,8 @@
 # Roadmap: Creem → innebygd Stripe
 
 ## Temporary payments pause
-- [ ] Show localized site-wide relocation notice and stop new checkout with one shared switch
-- [ ] Verify notice, blocked purchase entry points and continued existing-user access
+- [x] Show localized site-wide relocation notice and stop new checkout with one shared switch
+- [x] Verify notice, blocked purchase entry points and continued existing-user access
 
 - [x] Aktiver Lovable Payments med Stripe (testmiljø oppe)
 - [x] Produkter/priser: DoggMatch+ €8,69/mnd + €61,99/år (uendret)
