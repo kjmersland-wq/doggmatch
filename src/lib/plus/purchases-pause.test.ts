@@ -1,3 +1,4 @@
+/// <reference types="bun" />
 import { expect, mock, test } from "bun:test";
 import { PURCHASES_ENABLED, PURCHASES_PAUSED_ERROR } from "../purchases";
 
