@@ -1,7 +1,10 @@
+import { PURCHASES_ENABLED } from "@/lib/purchases";
+
 const clientToken = import.meta.env["VITE_PAYMENTS_CLIENT_TOKEN"];
 
 /** Test-mode notice for the preview; renders nothing once live keys are in place. */
 export function PaymentTestModeBanner() {
+  if (!PURCHASES_ENABLED) return null;
   if (!clientToken) {
     return (
       <div className="w-full border-b border-red-300 bg-red-100 px-4 py-2 text-center text-sm text-red-800">

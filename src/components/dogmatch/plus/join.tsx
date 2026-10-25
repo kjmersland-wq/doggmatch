@@ -119,6 +119,7 @@ export function JoinPlusButton({ plan, tone = "primary", label, className }: Pro
 
   async function onClick() {
     setError(null);
+    if (!PURCHASES_ENABLED && !already) return;
     if (!signedIn) {
       void navigate({ to: withLangPrefix("/auth"), search: { next: "/plus" } });
       return;

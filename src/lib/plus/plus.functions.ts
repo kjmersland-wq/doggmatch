@@ -120,7 +120,7 @@ export const createPlusCheckout = createServerFn({ method: "POST" })
     };
   })
   .handler(async ({ data, context }): Promise<{ clientSecret: string } | { error: string }> => {
-    if (!PURCHASES_ENABLED) throw new Error(PURCHASES_PAUSED_ERROR);
+    if (!PURCHASES_ENABLED) return { error: PURCHASES_PAUSED_ERROR };
     const email = (context.claims?.email as string | undefined) ?? null;
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
