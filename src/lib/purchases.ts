@@ -1,22 +1,23 @@
 /**
- * Single switch for all new payments (DoggMatch+ subscriptions and dossier purchases).
- * TEMPORARY POLAND RELOCATION PAUSE: set ONLY this flag to true to remove
- * the site-wide notice and re-enable checkout. No automatic date-based reopening.
- * Webhooks, billing portal and existing access are unaffected.
+ * Single switch for all new payments (DoggMatch+ subscriptions).
+ * TEMPORARY SITE-UPGRADE + POLAND RELOCATION PAUSE: set ONLY this flag to
+ * true to remove the site-wide notice and re-enable checkout. No automatic
+ * date-based reopening. Webhooks, billing portal and existing access are
+ * unaffected.
  */
 export const PURCHASES_ENABLED = false;
 
 export const PURCHASES_PAUSED_ERROR =
-  "New purchases and subscriptions are temporarily paused while we relocate to Poland and set up our new company. Existing users continue as normal. We will reopen in November/December 2026.";
+  "We are upgrading the site and preparing for our move to Poland. New purchases and subscriptions are temporarily paused, and some features may not work fully right now. Existing users continue as normal. Everything will be online and updated in December/January. Thank you for your patience.";
 
 export const purchasesPausedCopy = {
   en: { paused: PURCHASES_PAUSED_ERROR },
-  no: { paused: "Nye kjøp og abonnementer er midlertidig satt på pause mens vi flytter til Polen og etablerer vårt nye selskap. Eksisterende brukere fortsetter som normalt. Vi åpner igjen i november/desember 2026." },
-  pl: { paused: "Nowe zakupy i subskrypcje są tymczasowo wstrzymane, ponieważ przeprowadzamy się do Polski i zakładamy nową firmę. Obecni użytkownicy korzystają ze strony jak dotychczas. Wznowimy sprzedaż w listopadzie/grudniu 2026 r." },
-  dk: { paused: "Nye køb og abonnementer er midlertidigt sat på pause, mens vi flytter til Polen og etablerer vores nye virksomhed. Eksisterende brugere fortsætter som normalt. Vi åbner igen i november/december 2026." },
-  se: { paused: "Nya köp och abonnemang är tillfälligt pausade medan vi flyttar till Polen och startar vårt nya företag. Befintliga användare fortsätter som vanligt. Vi öppnar igen i november/december 2026." },
-  fi: { paused: "Uudet ostot ja tilaukset ovat tilapäisesti tauolla, kun muutamme Puolaan ja perustamme uuden yrityksemme. Nykyiset käyttäjät voivat jatkaa tavalliseen tapaan. Avaamme jälleen marras–joulukuussa 2026." },
-  de: { paused: "Neue Käufe und Abonnements sind vorübergehend pausiert, während wir nach Polen ziehen und unser neues Unternehmen gründen. Bestehende Nutzer können alles wie gewohnt weiter nutzen. Wir öffnen wieder im November/Dezember 2026." },
-  fr: { paused: "Les nouveaux achats et abonnements sont temporairement suspendus pendant notre déménagement en Pologne et la création de notre nouvelle entreprise. Les utilisateurs actuels continuent comme d’habitude. Nous rouvrirons en novembre/décembre 2026." },
-  nl: { paused: "Nieuwe aankopen en abonnementen zijn tijdelijk gepauzeerd terwijl we naar Polen verhuizen en ons nieuwe bedrijf oprichten. Bestaande gebruikers kunnen gewoon doorgaan. We gaan weer open in november/december 2026." },
+  no: { paused: "Vi oppgraderer nettstedet og gjør klar flyttingen vår til Polen. Nye kjøp og abonnementer er midlertidig satt på pause, og noen funksjoner kan være utilgjengelige en stund. Eksisterende brukere fortsetter som normalt. Alt er på plass og oppdatert i desember/januar. Takk for tålmodigheten." },
+  pl: { paused: "Ulepszamy stronę i przygotowujemy się do przeprowadzki do Polski. Nowe zakupy i subskrypcje są tymczasowo wstrzymane, a część funkcji może na razie działać niepełną. Obecni użytkownicy korzystają ze strony jak dotychczas. Wszystko będzie w pełni dostępne i zaktualizowane w grudniu/styczniu. Dziękujemy za cierpliwość." },
+  dk: { paused: "Vi opgraderer hjemmesiden og gør klar til vores flytning til Polen. Nye køb og abonnementer er midlertidigt sat på pause, og enkelte funktioner virker måske ikke helt endnu. Eksisterende brugere fortsætter som normalt. Alt vil være online og opdateret i december/januar. Tak for din tålmodighed." },
+  se: { paused: "Vi uppgraderar webbplatsen och förbereder vår flytt till Polen. Nya köp och prenumerationer är tillfälligt pausade, och vissa funktioner kan vara ofullständiga just nu. Befintliga användare fortsätter som vanligt. Allt är online och uppdaterat i december/januari. Tack för ditt tålamod." },
+  fi: { paused: "Päivitämme sivustoa ja valmistaudumme muuttoon Puolaan. Uudet ostot ja tilaukset ovat toistaiseksi tauolla, ja jotkin toiminnot eivät välttämättä toimi vielä täysin. Nykyiset käyttäjät voivat jatkaa tavalliseen tapaan. Kaikki on taas kunnossa ja päivitetty joulukuussa/tammikuussa. Kiitos kärsivällisyydestä." },
+  de: { paused: "Wir aktualisieren die Website und bereiten unseren Umzug nach Polen vor. Neue Käufe und Abonnements sind vorübergehend pausiert, und einige Funktionen funktionieren gerade vielleicht noch nicht ganz. Bestehende Nutzer können alles wie gewohnt weiter nutzen. Alles ist im Dezember/Januar wieder online und aktualisiert. Danke für deine Geduld." },
+  fr: { paused: "Nous mettons le site à jour et préparons notre déménagement en Pologne. Les nouveaux achats et abonnements sont temporairement suspendus, et certaines fonctionnalités peuvent être momentanément indisponibles. Les utilisateurs actuels continuent comme d’habitude. Tout sera de nouveau en ligne et à jour en décembre/janvier. Merci de votre patience." },
+  nl: { paused: "We werken aan een update van de site en bereiden onze verhuizing naar Polen voor. Nieuwe aankopen en abonnementen zijn tijdelijk gepauzeerd, en sommige functies werken op dit moment mogelijk nog niet volledig. Bestaande gebruikers kunnen gewoon doorgaan. Alles is weer online en bijgewerkt in december/januari. Bedankt voor je geduld." },
 } as const;
