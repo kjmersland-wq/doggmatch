@@ -9,3 +9,4 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 Consent-gated Google Analytics lives in src/lib/google-analytics.ts and is initialized by the shared root; never add unconditional Google tags to page heads, so every locale and navigation respects the saved choice.
+Use src/lib/purchases.ts as the single switch for the shared payment notice, new-checkout server guard and payment UI; existing membership reads, portal management and webhooks must remain independent so a pause never removes existing access.
