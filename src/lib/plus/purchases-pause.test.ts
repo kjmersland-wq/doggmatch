@@ -1,4 +1,3 @@
-/// <reference types="bun" />
 import { expect, mock, test } from "bun:test";
 import { PURCHASES_ENABLED, PURCHASES_PAUSED_ERROR } from "../purchases";
 
@@ -8,7 +7,7 @@ mock.module("@tanstack/react-start", () => ({
     const builder = {
       middleware: () => builder,
       inputValidator: () => builder,
-      handler: (handler: unknown) => handler,
+      handler: (handler) => handler,
     };
     return builder;
   },
@@ -21,10 +20,7 @@ test("new purchases stay paused until explicitly reopened", () => {
 
 test("checkout rejects new subscriptions before customer, referral or Stripe work", async () => {
   const { createPlusCheckout } = await import("./plus.functions");
-  const handler = createPlusCheckout as unknown as (input: {
-    data: { plan: string; environment: string };
-    context: object;
-  }) => Promise<{ error: string }>;
+  const handler = createPlusCheckout;
   const context = new Proxy({}, {
     get: () => { throw new Error("Paused checkout must not access user or payment data"); },
   });
